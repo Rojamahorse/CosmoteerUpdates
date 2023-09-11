@@ -1,0 +1,180 @@
+Type = None
+Count = 99 // Spawn as many as we can!
+Tags = [bounty]
+SuppressLocationAssertions = true
+Distance = [6000, 19000]
+MinDistanceFromTags = [[station, 4000], [bounty, 6000]]
+
+RandomSubSpawnerCount = 1
+SubSpawners
+[
+	// Single ship bounty.
+	{
+		Type = Ships
+		Tags = [bounty_ship]
+     	Allegiance = Unique
+		FamePerTier = &<tier_tables.rules>/StandardFamePerTier // Mission reward ALSO gives standard fame, effectively doubling fame reward for this bounty.
+		MaxFamePerTier = &<tier_tables.rules>/StandardMaxFamePerTier
+		ShipCriteria
+		{
+			UseLocalFactionWeights = true
+			UseTierField = true
+     		AllowTierRangeExpansion = true
+			Tags = [combat]
+			UseEvenShipTypeDistribution = true
+		}
+		AI
+		{
+			Type = Normal
+			PatrolRadius = 1000
+			TargetAcquireRangeFromOrigin = 3000
+			TargetUnacquireRangeFromOrigin = 4000
+		}
+
+		SubSpawners
+		[
+			{
+				Type = Doodads
+				Distance = [0, (&../ScaleFactor) - (&../../../AI/PatrolRadius)]
+				ScaleFactor = 2250
+				Tags = [bounty_area, poi_unknown]
+				DoodadType = cosmoteer.poi_target_area
+				ShowOnlyInFog = true
+				Undiscovered = true
+				HideIfUnexplored = true
+				AutoRemoveWhenTagDestroyed = bounty_ship
+			}
+			{
+				Type = Mission
+				Metatype = Bounty
+				SpawnAt = Tag
+				SpawnAtTag = { Mode=Nearest; Tag=trade_station; }
+				Faction = OwnerOfTag
+				FactionTag = &SpawnAtTag
+				Objectives
+				[
+					{
+						Type = Sequential
+						SubObjectives
+						[
+							{
+								Type = DestroyShips
+								TargetsTag = { Tag=bounty_ship; Max=1; }
+								TargetAreaTag = bounty_area
+								AutoDiscoverTargetArea = true
+							}
+							{
+								Type = ReceiveRewards
+							}
+						]
+					}
+				]
+				Rewards
+				[
+					{
+						Type = Money
+						MoneyPerHighTier = &<tier_tables.rules>/StandardMoneyPerTier
+						RoundToMultiple = 500
+					}
+					{
+						Type = Fame
+						FamePerHighTier = &<tier_tables.rules>/StandardFamePerTier
+						MaxFamePerHighTier = &<tier_tables.rules>/StandardMaxFamePerTier
+					}
+					{
+						Type = Reputation
+						ReputationPerHighTier = &<tier_tables.rules>/StandardReputationPerTier
+						ReputationPerTierMultiplier = 2
+					}
+				]
+			}
+		]
+	}
+
+	// Fleet bounty.
+	{
+		Conditions { MinParentFieldTier = &<fleet_tier_remap_table.rules>/FleetTierRemapTable/0/OriginalTier; }
+		Type = Ships
+		Tags = [bounty_ship]
+     	Allegiance = Unique
+     	SynchronizeAllegiance = true
+		FamePerTier = &<tier_tables.rules>/StandardFamePerTier // Mission reward ALSO gives standard fame, effectively doubling fame reward for this bounty.
+		MaxFamePerTier = &<tier_tables.rules>/StandardMaxFamePerTier
+		ShipCriteria
+		{
+			UseLocalFactionWeights = true
+			UseTierField = true
+     		AllowTierRangeExpansion = true
+			Tags = [combat]
+			UseEvenShipTypeDistribution = false
+			FleetTierRemapTable = &<fleet_tier_remap_table.rules>/FleetTierRemapTable
+		}
+		AI
+		{
+			Type = Normal
+			PatrolRadius = 1000
+			TargetAcquireRangeFromOrigin = 3000
+			TargetUnacquireRangeFromOrigin = 4000
+		}
+
+		SubSpawners
+		[
+			{
+				Type = Doodads
+				Distance = [0, (&../ScaleFactor) - (&../../../AI/PatrolRadius)]
+				ScaleFactor = 2250
+				Tags = [bounty_area, poi_unknown]
+				DoodadType = cosmoteer.poi_target_area
+				ShowOnlyInFog = true
+				Undiscovered = true
+				HideIfUnexplored = true
+				AutoRemoveWhenTagsDestroyed = { Tag=bounty_ship; LimitToFleet=true; }
+			}
+			{
+				Type = Mission
+				Metatype = FleetBounty
+				SpawnAt = Tag
+				SpawnAtTag = { Mode=Nearest; Tag=trade_station; }
+				Faction = OwnerOfTag
+				FactionTag = &SpawnAtTag
+				Objectives
+				[
+					{
+						Type = Sequential
+						SubObjectives
+						[
+							{
+								Type = DestroyShips
+								TargetsTag = { Tag=bounty_ship; LimitToFleet=true; }
+								TargetAreaTag = bounty_area
+								AutoDiscoverTargetArea = true
+								TierCombineMode = ValueSum
+							}
+							{
+								Type = ReceiveRewards
+							}
+						]
+					}
+				]
+				Rewards
+				[
+					{
+						Type = Money
+						MoneyPerHighTier = &<tier_tables.rules>/StandardMoneyPerTier
+						RoundToMultiple = 500
+					}
+					{
+						Type = Fame
+						FamePerHighTier = &<tier_tables.rules>/StandardFamePerTier
+						MaxFamePerHighTier = &<tier_tables.rules>/StandardMaxFamePerTier
+					}
+					{
+						Type = Reputation
+						ReputationPerHighTier = &<tier_tables.rules>/StandardReputationPerTier
+						ReputationPerTierMultiplier = 2
+					}
+				]
+			}
+		]
+	}
+]

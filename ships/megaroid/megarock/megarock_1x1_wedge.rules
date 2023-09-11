@@ -1,0 +1,284 @@
+Part : <../base_part_megaroid.rules>/Part
+{
+	NameKey = "Parts/MegaRockWedge1x1"
+	DescriptionKey = "Parts/RockHardDesc"
+	ID = cosmoteer.megarock_1x1_wedge // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	SelectionTypeID = "rock"
+	EditorGroup = "Rock"
+	Resources = []
+	MaxHealth = 80000
+	IsRotateable = true
+	AllowedContiguity = [Right, Bottom]
+	ExternalWalls = [TopRight, Right, BottomRight, Bottom, BottomLeft]
+	InternalWalls = [Left, TopLeft, Top]
+	FlipHRotate = [1, 0, 3, 2]
+	FlipVRotate = [3, 2, 1, 0]
+	GenerateRectCollider = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	EditorIcon
+	{
+		Texture = "./Data/ships/asteroid/rock/rock_1x1_wedge_icon.png"
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Collider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[1, 0]
+				[1, 1]
+				[0, 1]
+				[.39, .39]
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor
+			{
+				Layer = "asteroid"
+				DamageLevels
+				[
+					{
+						File = "rock_1x1_wedge.png"
+						NormalsFile = "rock_1x1_wedge_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "rock_1x1_wedge_33.png"
+						NormalsFile = "rock_1x1_wedge_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "rock_1x1_wedge_66.png"
+						NormalsFile = "rock_1x1_wedge_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		TriWall0a
+		{
+			Type = BlendSprite
+			OnlyWithRotation = 0
+			Location = [.5, -.5]
+			Layer = "asteroid"
+			BlendCheckRectType = Physical
+			AllowUndefinedBlendSprites = true
+			RequireExternalWallsToBlend = true
+			AmbiguousSprites
+			[
+				{
+					SituationCode = "*0*0****"
+					AllowRotation = false
+					DamageLevels
+					[
+						{
+							File = "../megaroid_walls/external08.png"
+							NormalsFile = "../megaroid_walls/external_normals08.png"
+							Size = [1, 1]
+							UVRotation = 2
+						}
+					]
+				}
+			]
+		}
+		TriWall0b
+		{
+			Type = BlendSprite
+			OnlyWithRotation = 0
+			Location = [-.5, .5]
+			Layer = "asteroid"
+			BlendCheckRectType = Physical
+			AllowUndefinedBlendSprites = true
+			RequireExternalWallsToBlend = true
+			AmbiguousSprites
+			[
+				{
+					SituationCode = "*****000"
+					AllowRotation = false
+					DamageLevels
+					[
+						{
+							File = "../megaroid_walls/external08.png"
+							NormalsFile = "../megaroid_walls/external_normals08.png"
+							Size = [1, 1]
+							UVRotation = 2
+						}
+					]
+				}
+			]
+		}
+		TriWall1a
+		{
+			Type = BlendSprite
+			OnlyWithRotation = 1
+			Location = [.5, -.5]
+			Layer = "asteroid"
+			BlendCheckRectType = Physical
+			AllowUndefinedBlendSprites = true
+			RequireExternalWallsToBlend = true
+			AmbiguousSprites
+			[
+				{
+					SituationCode = "***0*0**"
+					AllowRotation = false
+					DamageLevels
+					[
+						{
+							File = "../megaroid_walls/external08.png"
+							NormalsFile = "../megaroid_walls/external_normals08.png"
+							Size = [1, 1]
+							UVRotation = 3
+						}
+					]
+				}
+			]
+		}
+		TriWall1b
+		{
+			Type = BlendSprite
+			OnlyWithRotation = 1
+			Location = [-.5, .5]
+			Layer = "asteroid"
+			BlendCheckRectType = Physical
+			AllowUndefinedBlendSprites = true
+			RequireExternalWallsToBlend = true
+			AmbiguousSprites
+			[
+				{
+					SituationCode = "00*****0"
+					AllowRotation = false
+					DamageLevels
+					[
+						{
+							File = "../megaroid_walls/external08.png"
+							NormalsFile = "../megaroid_walls/external_normals08.png"
+							Size = [1, 1]
+							UVRotation = 3
+						}
+					]
+				}
+			]
+		}
+		TriWall2a
+		{
+			Type = BlendSprite
+			OnlyWithRotation = 2
+			Location = [.5, -.5]
+			Layer = "asteroid"
+			BlendCheckRectType = Physical
+			AllowUndefinedBlendSprites = true
+			RequireExternalWallsToBlend = true
+			AmbiguousSprites
+			[
+				{
+					SituationCode = "*****0*0"
+					AllowRotation = false
+					DamageLevels
+					[
+						{
+							File = "../megaroid_walls/external08.png"
+							NormalsFile = "../megaroid_walls/external_normals08.png"
+							Size = [1, 1]
+							UVRotation = 0
+						}
+					]
+				}
+			]
+		}
+		TriWall2b
+		{
+			Type = BlendSprite
+			OnlyWithRotation = 2
+			Location = [-.5, .5]
+			Layer = "asteroid"
+			BlendCheckRectType = Physical
+			AllowUndefinedBlendSprites = true
+			RequireExternalWallsToBlend = true
+			AmbiguousSprites
+			[
+				{
+					SituationCode = "*000****"
+					AllowRotation = false
+					DamageLevels
+					[
+						{
+							File = "../megaroid_walls/external08.png"
+							NormalsFile = "../megaroid_walls/external_normals08.png"
+							Size = [1, 1]
+							UVRotation = 0
+						}
+					]
+				}
+			]
+		}
+		TriWall3a
+		{
+			Type = BlendSprite
+			OnlyWithRotation = 3
+			Location = [.5, -.5]
+			Layer = "asteroid"
+			BlendCheckRectType = Physical
+			AllowUndefinedBlendSprites = true
+			RequireExternalWallsToBlend = true
+			AmbiguousSprites
+			[
+				{
+					SituationCode = "*0*****0"
+					AllowRotation = false
+					DamageLevels
+					[
+						{
+							File = "../megaroid_walls/external08.png"
+							NormalsFile = "../megaroid_walls/external_normals08.png"
+							Size = [1, 1]
+							UVRotation = 1
+						}
+					]
+				}
+			]
+		}
+		TriWall3b
+		{
+			Type = BlendSprite
+			OnlyWithRotation = 3
+			Location = [-.5, .5]
+			Layer = "asteroid"
+			BlendCheckRectType = Physical
+			AllowUndefinedBlendSprites = true
+			RequireExternalWallsToBlend = true
+			AmbiguousSprites
+			[
+				{
+					SituationCode = "***000**"
+					AllowRotation = false
+					DamageLevels
+					[
+						{
+							File = "../megaroid_walls/external08.png"
+							NormalsFile = "../megaroid_walls/external_normals08.png"
+							Size = [1, 1]
+							UVRotation = 1
+						}
+					]
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "rock_1x1_wedge_blueprints.png"
+			Size = [1, 1]
+		}
+	}
+}

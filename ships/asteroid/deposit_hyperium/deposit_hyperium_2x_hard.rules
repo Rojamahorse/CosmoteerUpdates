@@ -1,0 +1,95 @@
+Part : <../base_part_asteroid.rules>/Part
+{
+	NameKey = "Parts/DepositHyperium2xHard"
+	IconNameKey = "Parts/DepositHyperium2xHardIcon"
+	DescriptionKey = "Resource/HyperiumDesc"
+	ID = cosmoteer.deposit_hyperium_2x_hard // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	SelectionTypeID = "deposit_hyperium"
+	EditorGroup = "Hyperium"
+	IsFlippable = true
+	MaxHealth = 20000
+	IsCrewSalvageable = false
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Resources
+	[
+		[hyperium, 2]
+	]
+	EditorIcon
+	{
+		Texture = "deposit_hyperium_hard_2x_icon.png"
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor
+			{
+				Layer = "asteroid"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "deposit_hyperium_hard_2x.png"
+						NormalsFile = "deposit_hyperium_hard_2x_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "deposit_hyperium_hard_2x_33.png"
+						NormalsFile = "deposit_hyperium_hard_2x_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "deposit_hyperium_hard_2x_66.png"
+						NormalsFile = "deposit_hyperium_hard_2x_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "asteroid_roof_lights_fancy"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"deposit_hyperium_hard_2x_lights1.png"
+							"deposit_hyperium_hard_2x_lights2.png"
+							"deposit_hyperium_hard_2x_lights3.png"
+							"deposit_hyperium_hard_2x_lights4.png"
+						]
+						AnimationInterval = 0.1
+						Size = [1, 1]
+						Z = 1 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*2, 255*2, 255*2]
+					}
+				]
+			}
+		}
+
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "deposit_hyperium_hard_2x_blueprints.png"
+			Size = [1, 1]
+		}
+
+		CustomShipIcon
+		{
+			Type = CustomShipIcon
+			Icon : <./Data/resources/hyperium/hyperium.rules>/Overlay
+			{
+				Size = [32, 32]
+			}
+			Weight = &~/Part/Resources/0/1
+			PulseInterval = 2
+			PulseColor = [255, 255, 255, 64]
+			ShowAtZoom = 5
+		}
+	}
+}

@@ -1,0 +1,793 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/HyperdriveBeacon"
+	IconNameKey = "Parts/HyperdriveBeaconIcon"
+	ID = cosmoteer.hyperdrive_beacon // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Utilities"
+	DescriptionKey = "Parts/HyperdriveBeaconDesc"
+	Resources
+	[
+		[steel, 160]
+		[coil2, 40]
+		[diamond, 6]
+	]
+	Size = [4, 4]
+	SelectionPriority = 1
+	MaxHealth = 16000
+	TypeCategories = [uses_power, is_crewed]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ProhibitedBy : ^/0/ProhibitedBy [tall]
+	BlockedTravelCellDirections
+	[
+		{
+			Key = [0, 1]
+			Value = [Right]
+		}
+		{
+			Key = [1, 1]
+			Value = [Left]
+		}
+		{
+			Key = [0, 2]
+			Value = [Right]
+		}
+		{
+			Key = [1, 2]
+			Value = [Left]
+		}
+		{
+			Key = [2, 1]
+			Value = [Right]
+		}
+		{
+			Key = [3, 1]
+			Value = [Left]
+		}
+		{
+			Key = [2, 2]
+			Value = [Right]
+		}
+		{
+			Key = [3, 2]
+			Value = [Left]
+		}
+	]
+	ForceManhattanPathInPart = true
+	AllowedDoorLocations
+	[
+		[1, -1]
+		[2, -1]
+		[-1, 1]
+		[-1, 2]
+		[4, 1]
+		[4, 2]
+		[1, 4]
+		[2, 4]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, CommandToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 12
+		}
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+
+		FtlBeacon
+		{
+			Type = FtlBeacon
+			OperationalToggle = IsOperational
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 12000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Utility_Supply
+			ResupplyThreshold = 1000
+			OperationalToggle = PowerToggle
+		}
+
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 200
+			MinFromQuantityForConversion = 1
+			Interval = 1
+		}
+
+		HighCollider
+		{
+			Type = CircleCollider
+			Location = [2, 2]
+			Radius = 0.6
+			IsHigh = true
+		}
+
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [85/64, 100/64]
+			Rotation = -90d
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [85/64, 156/64]
+			Rotation = -90d
+		}
+		CrewLocation3
+		{
+			Type = CrewLocation
+			Location = [171/64, 100/64]
+			Rotation = 90d
+		}
+		CrewLocation4
+		{
+			Type = CrewLocation
+			Location = [171/64, 156/64]
+			Rotation = 90d
+		}
+		CrewLocation5
+		{
+			Type = CrewLocation
+			Location = [128/64, 73/64]
+			Rotation = 0d
+		}
+		CrewLocation6
+		{
+			Type = CrewLocation
+			Location = [128/64, 98/64]
+			Rotation = 180d
+		}
+		CrewLocation7
+		{
+			Type = CrewLocation
+			Location = [128/64, 158/64]
+			Rotation = 0d
+		}
+		CrewLocation8
+		{
+			Type = CrewLocation
+			Location = [128/64, 183/64]
+			Rotation = 180d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 6
+			DefaultPriority = &/PRIORITIES/Utility_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				[88/64, 100/64]
+				[88/64, 156/64]
+				[168/64, 100/64]
+				[168/64, 156/64]
+				[128/64, 76/64]
+				[128/64, 96/64]
+				[128/64, 160/64]
+				[128/64, 180/64]
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+				CrewLocation3
+				CrewLocation4
+				CrewLocation5
+				CrewLocation6
+				CrewLocation7
+				CrewLocation8
+			]
+			SwitchLocationInterval = [5, 10]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [4, 4]
+					}
+					{
+						File = "floor_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "floor_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [4, 4]
+					}
+					{
+						File = "walls_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "walls_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+		}
+
+		BigScreensGraphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_high_on1.png"
+							"doodads_high_on2.png"
+							"doodads_high_on3.png"
+							"doodads_high_on4.png"
+							"doodads_high_on5.png"
+							"doodads_high_on6.png"
+							"doodads_high_on7.png"
+							"doodads_high_on8.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_high_on1_33.png"
+							"doodads_high_on2_33.png"
+							"doodads_high_on3_33.png"
+							"doodads_high_on4_33.png"
+							"doodads_high_on5_33.png"
+							"doodads_high_on6_33.png"
+							"doodads_high_on7_33.png"
+							"doodads_high_on8_33.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_high_on1_66.png"
+							"doodads_high_on2_66.png"
+							"doodads_high_on3_66.png"
+							"doodads_high_on4_66.png"
+							"doodads_high_on5_66.png"
+							"doodads_high_on6_66.png"
+							"doodads_high_on7_66.png"
+							"doodads_high_on8_66.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads_high_off.png"
+						Size = [3, 2]
+					}
+					{
+						File = "doodads_high_off_33.png"
+						Size = [3, 2]
+					}
+					{
+						File = "doodads_high_off_66.png"
+						Size = [3, 2]
+					}
+				]
+			}
+		}
+
+		BeaconTop_Graphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = IsOperational
+			OperationalRoofDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						File = "beacon_top_on.png"
+						NormalsFile = "beacon_top_on_normals.png"
+						RotSpeed = -90d
+						Size = [1, 1]
+					}
+					{
+						File = "beacon_top_on_33.png"
+						NormalsFile = "beacon_top_on_normals_33.png"
+						RotSpeed = -90d
+						Size = [1, 1]
+					}
+					{
+						File = "beacon_top_on_66.png"
+						NormalsFile = "beacon_top_on_normals_66.png"
+						RotSpeed = -90d
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalRoofDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						File = "beacon_top_off.png"
+						NormalsFile = "beacon_top_off_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "beacon_top_off_33.png"
+						NormalsFile = "beacon_top_off_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "beacon_top_off_66.png"
+						NormalsFile = "beacon_top_off_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		BeaconAntenna_Graphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = IsOperational
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"beacon_antenna1.png"
+							"beacon_antenna2.png"
+							"beacon_antenna3.png"
+							"beacon_antenna4.png"
+							"beacon_antenna3.png"
+							"beacon_antenna2.png"
+						]
+						NormalsAnimationFiles
+						[
+							"beacon_antenna_normals1.png"
+							"beacon_antenna_normals2.png"
+							"beacon_antenna_normals3.png"
+							"beacon_antenna_normals4.png"
+							"beacon_antenna_normals3.png"
+							"beacon_antenna_normals2.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.125
+						RotSpeed = 180d
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"beacon_antenna1_33.png"
+							"beacon_antenna2_33.png"
+							"beacon_antenna3_33.png"
+							"beacon_antenna4_33.png"
+							"beacon_antenna3_33.png"
+							"beacon_antenna2_33.png"
+						]
+						NormalsAnimationFiles
+						[
+							"beacon_antenna_normals1_33.png"
+							"beacon_antenna_normals2_33.png"
+							"beacon_antenna_normals3_33.png"
+							"beacon_antenna_normals4_33.png"
+							"beacon_antenna_normals3_33.png"
+							"beacon_antenna_normals2_33.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.125
+						RotSpeed = 180d
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"beacon_antenna1_66.png"
+							"beacon_antenna2_66.png"
+							"beacon_antenna3_66.png"
+							"beacon_antenna4_66.png"
+							"beacon_antenna3_66.png"
+							"beacon_antenna2_66.png"
+						]
+						NormalsAnimationFiles
+						[
+							"beacon_antenna_normals1_66.png"
+							"beacon_antenna_normals2_66.png"
+							"beacon_antenna_normals3_66.png"
+							"beacon_antenna_normals4_66.png"
+							"beacon_antenna_normals3_66.png"
+							"beacon_antenna_normals2_66.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.125
+						RotSpeed = 180d
+						AnimationStartTime = WhenSpawned
+					}
+				]
+			}
+			NonOperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "beacon_antenna1.png"
+						NormalsFile = "beacon_antenna_normals1.png"
+						Size = [2, 2]
+					}
+					{
+						File = "beacon_antenna1_33.png"
+						NormalsFile = "beacon_antenna_normals1_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "beacon_antenna1_66.png"
+						NormalsFile = "beacon_antenna_normals1_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+
+		BeaconLight_Graphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "light_blob.png"
+						Size = [6, 6]
+						RotSpeed = 180d
+						Z = 1 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [80*2.5, 193*2.5, 255*2.5]
+					}
+				]
+			}
+		}
+
+
+		OperatingEffects
+		{
+			Type = ContinuousEffects
+			Location = [1.5, 1.5]
+			OperationalToggle = IsOperational
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "operating.wav"
+					Volume = 100%
+					Speed = 1
+					MaxConcurrent = 1
+					MaxConcurrentVolume = &Volume
+					DynamicVolume : ^/0/DynamicVolume
+					{
+						ExteriorVolume = .5
+					}
+				}
+			]
+		}
+
+		Pulse
+		{
+			Type = ContinuousEffects
+			Location = [1.5, 1.5]
+			OperationalToggle = IsOperational
+			FactorMediaEffectsIntensityWith = RoofOpacity
+			MediaEffects
+			[
+				&<hyperdrive_beacon_pulse.rules>
+				&<hyperdrive_beacon_pulse_simple.rules>
+			]
+		}
+		RoofOpacity
+		{
+			Type = RoofOpacity // DO NOT EVER USE COMPONENTS OF THIS TYPE FOR GAMEPLAY LOGIC!!! IT WILL CAUSE DESYNCS!!! USE FOR RENDERING ONLY!!!
+		}
+
+		BatterySprites1
+		{
+			Type = ResourceSprites
+			Location = [.5, .5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			RangeLow = 0
+			RangeHigh = 3000
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		BatterySprites2 : BatterySprites1
+		{
+			Location = [3.5, .5]
+			Rotation = 90d
+			RangeLow = 3000
+			RangeHigh = 6000
+		}
+		BatterySprites3 : BatterySprites1
+		{
+			Location = [3.5, 3.5]
+			Rotation = 180d
+			RangeLow = 6000
+			RangeHigh = 9000
+		}
+		BatterySprites4 : BatterySprites1
+		{
+			Location = [.5, 3.5]
+			Rotation = 270d
+			RangeLow = 9000
+			RangeHigh = 12000
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [2, 2]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [2, 2]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [2, 2]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [4, 4]
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = &PowerUsageContinuous
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+	}
+}

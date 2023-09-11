@@ -1,0 +1,27 @@
+ID = ftl
+TitleKey = "Tutorials/Ftl/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 52 or game.HasTechUnlocked('cosmoteer.hyperdrive_small')"
+TempShowCondition = "? game.HasPartCategoryInHand('ftl')"
+Entries
+[
+	{
+		Image { Texture { File="hyperdrive.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Ftl/BuildFtl"
+	}
+	{
+		Image { Texture { File="jump.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Ftl/PlotJump"
+	}
+	{
+		Image { Texture { File="beacon.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Ftl/Valid"
+	}
+	{
+		Image = &<./Data/resources/hyperium/hyperium.rules>/Icon
+		TextKey = "Tutorials/Ftl/Hyperium"
+	}
+	{
+		TextKey = "Tutorials/Ftl/Tip"
+	}
+]

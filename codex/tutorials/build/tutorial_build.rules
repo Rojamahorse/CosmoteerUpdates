@@ -1,0 +1,26 @@
+ID = build
+TitleKey = "Tutorials/Build/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 10 and sim.SelectedShip != None and sim.SelectedShip.ConstructionAllowed and not sim.SelectedShip.NeedsRepairs and sim.StationInSight"
+TempShowCondition = "? game.BuildUIOpen"
+Entries
+[
+	{
+		Image { Texture { File="build_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build/Button"
+	}
+	{
+		Image { Texture { File="laser_blaster.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build/Parts"
+	}
+	{
+		TextKey = "Tutorials/Build/Crew"
+	}
+	{
+		TextKey = "Tutorials/Build/Caution"
+	}
+	{
+		Image { Texture { File="rotate_buttons.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build/Rotate"
+	}
+]

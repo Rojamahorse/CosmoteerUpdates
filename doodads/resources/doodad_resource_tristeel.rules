@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_tristeel
+Type = Resource
+DescriptionKey = "Resource/Tristeel"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/tristeel/tristeel1.png"
+		MipLevels = 2
+	}
+}
+ResourceType = tristeel

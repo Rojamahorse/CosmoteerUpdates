@@ -1,0 +1,29 @@
+ID = repairs
+TitleKey = "Tutorials/Repairs/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.HasSeenCodexPage('salvaging') and sim.SelectedShip != None and sim.SelectedShip.NeedsRepairs and sim.SelectedShip.ConstructionAllowed"
+Entries
+[
+	{
+		Image { Texture { File="repair_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Repairs/Button"
+	}
+	{
+		Image { Texture { File="repair_part.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Repairs/Parts"
+	}
+	{
+		TextKey = "Tutorials/Repairs/Caution"
+	}
+	{
+		Image { Texture { File="repair_all.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Repairs/RepairAll"
+	}
+	{
+		TextKey = "Tutorials/Repairs/Materials"
+	}
+	{
+		Image { Texture { File="exit.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Repairs/Exit"
+	}
+]

@@ -1,0 +1,722 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/RailgunLauncher"
+	IconNameKey = "Parts/RailgunLauncherIcon"
+	ID = cosmoteer.railgun_launcher // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "WeaponsProjectile"
+	DescriptionKey = "Parts/RailgunLauncherDesc"
+	Resources
+	[
+		[steel, 100]
+		[coil2, 10]
+		[tristeel, 10]
+	]
+	Size = [2, 4]
+	PhysicalRect = [0, 1, 2, 3]
+	SaveRect = &PhysicalRect
+	Density = 6
+	SelectionTypeID = "railgun"
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	MaxHealth = 6000
+	Flammable = false
+	TypeCategories = [weapon, uses_power, railgun, railgun_power]
+	ProhibitAbove = 2
+	ReceivableBuffs : ^/0/ReceivableBuffs [Railgun, RailgunShot, RailgunOperation]
+	AllowedDoorLocations
+	[
+		[-1, 3]
+		[2, 3]
+	]
+	HasNonContiguousPathing = true
+	BlockedTravelCells
+	[
+		[0, 1]
+		[1, 1]
+		[0, 2]
+		[1, 2]
+	]
+	BlockedTravelCellDirections
+	[
+		{
+			Key = [0, 3]
+			Value = [Right]
+		}
+		{
+			Key = [1, 3]
+			Value = [Left]
+		}
+	]
+	ExternalWallsByCell
+	[
+		{
+			Key = [0, 1]
+			Value = [TopLeft, Bottom, BottomLeft, Left]
+		}
+		{
+			Key = [1, 1]
+			Value = [TopRight, Right, BottomRight, Bottom]
+		}
+	]
+	InternalWallsByCell
+	[
+		{
+			Key = [0, 0]
+			Value = [Left, TopLeft, Top, TopRight]
+		}
+		{
+			Key = [1, 0]
+			Value = [Right, TopRight, Top, TopLeft]
+		}
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [46, 92]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, RailgunOperationBuffToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+
+		RailgunBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = Railgun
+		}
+
+		RailgunOperationBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = RailgunOperation
+		}
+
+		ShotBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = RailgunShot
+			ChainsFromBuffType = Railgun
+			BuffAmount = { BaseValue=0; BuffType=Railgun; BuffMode=Add; }
+		}
+
+		ReverseOperationBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = RailgunReverseOperation
+			BuffArea = [0, 4, 2, 1]
+			OperationalToggle = IsOperational
+			Criteria
+			{
+				Rot = 0
+				Left = 0
+				Right = 2
+				Top = 4
+			}
+		}
+
+		AmmoProxy
+		{
+			Type = ResourceStorageProxy
+			ResourceType = bullet
+			PartLocation = [0, 4]
+			PartCriteria
+			{
+				Category = railgun_ammo
+				Rot = 0
+				Left = 0
+				Right = 2
+				Top = 4
+			}
+			ComponentID = LoadedAmmo
+		}
+
+		Weapon
+		{
+			Type = FixedWeapon
+			Location = [1, .5] // Relative to upper-left corner of unrotated part.
+			Rotation = -90d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 4
+			TargetingArc = 90d
+			AIFirepowerRating = { BaseValue=4000; BuffType=RailgunShot; BuffMode=Multiply; }
+			Emitter = BulletEmitter
+			FirePermissionToggle = FireModeToggle
+
+			AutoTarget
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+			}
+
+			CoverageLine
+			{
+				LineSprite
+				{
+					Texture = &/INDICATORS/RadialGradient
+					VertexColor = [255, 255, 255, 191]
+					UVRect = [.5, 0, 0, 1]
+				}
+				LineThickness = 2
+
+				BeginCapSprite : LineSprite
+				{
+					UVRect = [0, 0, .5, 1]
+				}
+				BeginCapSize = [1, 2]
+
+				EndCapSprite : LineSprite
+				{
+					UVRect = [.5, 0, .5, 1]
+				}
+				EndCapSize = [1, 2]
+			}
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = Weapon
+		}
+
+		BulletEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Weapon
+			FireTrigger = Projectile
+			GetTargetFrom = Weapon
+			OperationalToggle = IsOperational
+			DynamicDelayPredictor = Projectile
+			Bullet = &<./Data/shots/bullet_railgun/bullet_railgun.rules>
+			ResourceUsage
+			[
+				{
+					ResourceStorage = AmmoProxy
+					ResourcesUsed = 6
+				}
+				{
+					ResourceStorage = BatteryStorage
+					ResourcesUsed = 500
+				}
+			]
+		}
+
+		ProjectileToggle
+		{
+			Type = TriggeredToggle
+			OnTrigger = Weapon
+			OffTrigger = Projectile
+			OperationalToggle = IsOperational
+		}
+
+		Projectile
+		{
+			Type = RailgunProjectile
+			Location = [1, 4.5]
+			OperationalToggle = ProjectileToggle
+			YStartOffset = { BaseValue=3; BuffType=Railgun; BuffMode=Multiply; }
+			YEndOffset = -4
+			SpeedStart = &../BulletEmitter/Bullet/Speed/BaseValue
+			SpeedEnd = &../BulletEmitter/Bullet/Speed
+			Interpolate = true // WARNING: Only use this for interpolating graphics. Using it for game logic will cause multiplayer desyncs.
+		}
+
+		RecoilProjectile : Projectile
+		{
+			Interpolate = false
+		}
+		RecoilTimer
+		{
+			Type = Timer
+			OperationalToggle = ProjectileToggle
+			Duration = 1/30
+			AutoStart = true
+			Repeats = true
+			TriggerWhenStarted = true
+		}
+		RecoilEffects
+		{
+			Type = TriggeredEffects
+			ChainedTo = RecoilProjectile
+			Rotation = 90d
+			Trigger = RecoilTimer
+			HitEffects
+			[
+				{
+					Type = Impulse
+					Impulse = 2000
+				}
+			]
+		}
+		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Weapon
+			Trigger = BulletEmitter
+			Location = [1.1, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<particles/railgun_shoot.rules>
+				&<particles/railgun_shoot_distortion.rules>
+			]
+		}
+
+		ToggledProjectileSprite
+		{
+			Type = ToggledComponents
+			Toggle = ProjectileToggle
+			Components
+			{
+				ProjectileGlowSprite
+				{
+					Type = Sprite
+					ChainedTo = Projectile
+					Layer = "lights_add"
+					AtlasSprite
+					{
+						File = "projectile_glow.png"
+						Size = [2, 3]
+					}
+				}
+				ProjectileFancyLightSprite
+				{
+					Type = Sprite
+					ChainedTo = Projectile
+					Layer = "roof_lights_fancy"
+					AtlasSprite
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [9, 9]
+						Z = 0.25 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor
+						{
+							Rf = 0.69*12
+							Gf = 0.96383333*12
+							Bf = 1*12
+							Af = 1
+						}
+					}
+				}
+				ProjectileSprite
+				{
+					Type = Sprite
+					ChainedTo = Projectile
+					Layer = "walls"
+					AtlasSprite
+					{
+						File = "projectile.png"
+						Size = [1.5, 2.25]
+					}
+				}
+			}
+		}
+
+		ProjectileSound
+		{
+			Type = ContinuousEffects
+			ChainedTo = Projectile
+			OperationalToggle = ProjectileToggle
+			FactorMediaEffectsIntensityWith = Projectile
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "rail.wav"
+					Volume = 2
+					Speed = .8
+					RampUpTime = .05
+					RampDownTime = .25
+					AllowStacking = false
+					VolumeOverIntensity = 1
+					SpeedOverIntensity = [0.5, 1]
+				}
+			]
+		}
+
+		External_Walls_Graphics
+		{
+			Type = Graphics
+			Location = [1, 0.5]
+			Floor
+			{
+				Layer = "structure"
+				Offset = [0, 2]
+				DamageLevels
+				[
+					{
+						File = "structure.png"
+						NormalsFile = "structure_normals.png"
+						Size = [1, 3]
+					}
+					{
+						File = "structure_33.png"
+						NormalsFile = "structure_normals_33.png"
+						Size = [1, 3]
+					}
+					{
+						File = "structure_66.png"
+						NormalsFile = "structure_normals_66.png"
+						Size = [1, 3]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "external_walls"
+				DamageLevels
+				[
+					{
+						File = "external_walls.png"
+						NormalsFile = "external_walls_normals.png"
+						Size = [2, 1]
+					}
+					{
+						File = "external_walls_33.png"
+						NormalsFile = "external_walls_normals_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "external_walls_66.png"
+						NormalsFile = "external_walls_normals_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 2.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "weapons"
+				DamageLevels
+				[
+					{
+						File = "weapon.png"
+						NormalsFile = "weapon_normals.png"
+						Size = [2, 4]
+						Offset = [0, -0.5]
+					}
+					{
+						File = "weapon_33.png"
+						NormalsFile = "weapon_normals_33.png"
+						Size = [2, 4]
+						Offset = [0, -0.5]
+					}
+					{
+						File = "weapon_66.png"
+						NormalsFile = "weapon_normals_66.png"
+						Size = [2, 4]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "weapons"
+				DamageLevels
+				[
+					{
+						File = "weapon.png"
+						NormalsFile = "weapon_normals.png"
+						Size = [2, 4]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"lights1.png"
+							"lights2.png"
+							"lights3.png"
+							"lights4.png"
+							"lights5.png"
+							"lights6.png"
+						]
+						Size = [2, 4]
+						Offset = [0, -0.5]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 4]
+						Offset = [0, -0.5]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 4]
+						Offset = [0, -0.5]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 4]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1, 3.5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+					Offset = [-0.5, 0]
+				}
+				{
+					File = "batteries2.png"
+					Size = [2, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 2.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [1, 2.25]
+		}
+
+		RecursiveDeath
+		{
+			Type = DeathEffects
+			Location = [1, 4.5]
+
+			HitEffects
+			[
+				{
+					Type = AreaDamage
+					Damage = 3000
+					Radius = .6
+					Falloff = 0
+					Delay = .15
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 2.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Missing component
+				{
+					Toggle = RailgunBuffToggle
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					Delay = &~/Part/Components/Weapon/FireInterval
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 4]
+		}
+	}
+
+	Stats
+	{
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
+		RecCrew = (&RecPower) * 4
+	}
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/BulletRailgun"
+			Stats
+			{
+				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/DamagePool/Damage/BaseValue
+				DamagePerSecond = (&DamagePerShot) * (&ROF)
+				Damage = [&../DamagePerShot, &../DamagePerSecond]
+				Penetration = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/Penetration/BaseValue
+				ROF = 1 / (&~/Part/Components/Weapon/FireInterval)
+				RangeLimited = [&~/Part/Components/BulletEmitter/Bullet/Range/BaseValue, &~/Part/Components/BulletEmitter/Bullet/Range/MaxValue]
+				Arc = 0
+				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed/BaseValue
+				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
+				AmmoPerShot = &~/Part/Components/BulletEmitter/ResourceUsage/0/ResourcesUsed
+				AmmoPerSecond = (&AmmoPerShot) * (&ROF)
+				ShotAmmoUsage = [&../AmmoPerShot, &../AmmoPerSecond]
+				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourceUsage/1/ResourcesUsed) / 1000
+				PowerPerSecond = (&PowerPerShot) * (&ROF)
+				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
+			}
+		}
+	]
+
+	StatsNotesKey = "Stats/RailgunNotes"
+}

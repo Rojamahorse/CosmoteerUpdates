@@ -1,0 +1,404 @@
+Techs
+[
+	{
+		ID = cosmoteer.laser_blaster_small
+		NameKey = &<./Data/ships/terran/laser_blaster_small/laser_blaster_small.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/laser_blaster_small/laser_blaster_small.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/laser_blaster_small/laser_blaster_small.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/laser_blaster_small/laser_blaster_small.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/laser_blaster_small/laser_blaster_small.rules>/Part/ID]
+		Cost = 1000
+	}
+	{
+		ID = cosmoteer.laser_blaster_large
+		NameKey = &<./Data/ships/terran/laser_blaster_large/laser_blaster_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/laser_blaster_large/laser_blaster_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/laser_blaster_large/laser_blaster_large.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/laser_blaster_large/laser_blaster_large.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/laser_blaster_large/laser_blaster_large.rules>/Part/ID]
+		Cost = 3000
+		Prerequisites = [cosmoteer.laser_blaster_small]
+	}
+	{
+		ID = cosmoteer.disruptor
+		NameKey = &<./Data/ships/terran/disruptor/disruptor.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/disruptor/disruptor.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/disruptor/disruptor.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/disruptor/disruptor.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/disruptor/disruptor.rules>/Part/ID]
+		Cost = 1500
+		Prerequisites = [cosmoteer.laser_blaster_small]
+	}
+	{
+		ID = cosmoteer.ion_beam_emitter
+		NameKey = &<./Data/ships/terran/ion_beam_emitter/ion_beam_emitter.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/ion_beam_emitter/ion_beam_emitter.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/ion_beam_emitter/ion_beam_emitter.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/ion_beam_emitter/ion_beam_emitter.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/ion_beam_emitter/ion_beam_emitter.rules>/Part/ID]
+		Cost = 5000
+		Prerequisites = [cosmoteer.laser_blaster_large]
+	}
+	{
+		ID = cosmoteer.ion_beam_prism
+		NameKey = &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/ID]
+		Cost = 5000
+		Prerequisites = [cosmoteer.ion_beam_emitter]
+	}
+	{
+		ID = cosmoteer.cannon_med
+		NameKey = &<./Data/ships/terran/cannon_med/cannon_med.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/cannon_med/cannon_med.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/cannon_med/cannon_med.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/cannon_med/cannon_med.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/cannon_med/cannon_med.rules>/Part/ID]
+		Cost = 1000
+	}
+	{
+		ID = cosmoteer.cannon_large
+		NameKey = &<./Data/ships/terran/cannon_large/cannon_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/cannon_large/cannon_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/cannon_large/cannon_large.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/cannon_large/cannon_large.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/cannon_large/cannon_large.rules>/Part/ID]
+		Cost = 2500
+		Prerequisites = [cosmoteer.cannon_med]
+	}
+	{
+		ID = cosmoteer.cannon_deck
+		NameKey = &<./Data/ships/terran/cannon_deck/cannon_deck.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/cannon_deck/cannon_deck.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/cannon_deck/cannon_deck.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/cannon_deck/cannon_deck.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/cannon_deck/cannon_deck.rules>/Part/ID]
+		Cost = 10000
+		Prerequisites = [cosmoteer.cannon_large]
+	}
+	{
+		ID = cosmoteer.missile_launcher
+		NameKey = &<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/ID]
+		Cost = 5000
+	}
+	{
+		ID = cosmoteer.railgun
+		NameKey = "Parts/Railgun"
+		DescriptionKey = "Parts/RailgunDesc"
+		Icon = &<./Data/ships/terran/railgun_launcher/railgun_launcher.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/railgun_launcher/railgun_launcher.rules>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<./Data/ships/terran/railgun_loader/railgun_loader.rules>/Part/ID
+			&<./Data/ships/terran/railgun_accelerator/railgun_accelerator.rules>/Part/ID
+			&<./Data/ships/terran/railgun_launcher/railgun_launcher.rules>/Part/ID
+		]
+		Cost = 10000
+		Prerequisites = [cosmoteer.cannon_med]
+	}
+	{
+		ID = cosmoteer.flak_cannon_large
+		NameKey = &<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/EditorIcon
+		EditorGroups = &<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/EditorGroups
+		PartsUnlocked = [&<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/ID]
+		Cost = 7000
+		Prerequisites = [cosmoteer.cannon_med]
+	}
+	{
+		ID = cosmoteer.shield_gen_small
+		NameKey = &<./Data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/ID]
+		Cost = 2500
+	}
+	{
+		ID = cosmoteer.shield_gen_large
+		NameKey = &<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/ID]
+		Cost = 10000
+		Prerequisites = [cosmoteer.shield_gen_small]
+	}
+	{
+		ID = cosmoteer.hyperdrive_small
+		NameKey = &<./Data/ships/terran/hyperdrive_small/hyperdrive_small.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/hyperdrive_small/hyperdrive_small.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/hyperdrive_small/hyperdrive_small.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/hyperdrive_small/hyperdrive_small.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/hyperdrive_small/hyperdrive_small.rules>/Part/ID]
+		Cost = 1000
+	}
+	{
+		ID = cosmoteer.control_room_med
+		NameKey = &<./Data/ships/terran/control_room_med/control_room_med.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/control_room_med/control_room_med.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/control_room_med/control_room_med.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/control_room_med/control_room_med.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/control_room_med/control_room_med.rules>/Part/ID]
+		Cost = 5000
+	}
+	{
+		ID = cosmoteer.control_room_large
+		NameKey = &<./Data/ships/terran/control_room_large/control_room_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/control_room_large/control_room_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/control_room_large/control_room_large.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/control_room_large/control_room_large.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/control_room_large/control_room_large.rules>/Part/ID]
+		Cost = 10000
+		Prerequisites = [cosmoteer.control_room_med]
+	}
+	{
+		ID = cosmoteer.thruster_large
+		NameKey = &<./Data/ships/terran/thruster_large/thruster_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/thruster_large/thruster_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/thruster_large/thruster_large.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/thruster_large/thruster_large.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/thruster_large/thruster_large.rules>/Part/ID]
+		Cost = 2000
+	}
+	{
+		ID = cosmoteer.thruster_huge
+		NameKey = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/ID]
+		Cost = 5000
+		Prerequisites = [cosmoteer.thruster_large]
+	}
+	{
+		ID = cosmoteer.thruster_boost
+		NameKey = &<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/ID]
+		Cost = 3000
+		Prerequisites = [cosmoteer.thruster_large]
+	}
+	{
+		ID = cosmoteer.engine_room
+		NameKey = &<./Data/ships/terran/engine_room/engine_room.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/engine_room/engine_room.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/engine_room/engine_room.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/engine_room/engine_room.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/engine_room/engine_room.rules>/Part/ID]
+		Cost = 6000
+		Prerequisites = [cosmoteer.thruster_large]
+	}
+	{
+		ID = cosmoteer.conveyor
+		NameKey = &<./Data/ships/terran/conveyor/conveyor.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/conveyor/conveyor.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/conveyor/conveyor.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/conveyor/conveyor.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/conveyor/conveyor.rules>/Part/ID]
+		Cost = 2500
+	}
+	{
+		ID = cosmoteer.reactor_med
+		NameKey = &<./Data/ships/terran/reactor_med/reactor_med.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/reactor_med/reactor_med.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/reactor_med/reactor_med.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/reactor_med/reactor_med.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/reactor_med/reactor_med.rules>/Part/ID]
+		Cost = 10000
+	}
+	{
+		ID = cosmoteer.reactor_large
+		NameKey = &<./Data/ships/terran/reactor_large/reactor_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/reactor_large/reactor_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/reactor_large/reactor_large.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/reactor_large/reactor_large.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/reactor_large/reactor_large.rules>/Part/ID]
+		Cost = 20000
+		Prerequisites = [cosmoteer.reactor_med]
+	}
+	{
+		ID = cosmoteer.factory_ammo
+		NameKey = &<./Data/ships/terran/factory_ammo/factory_ammo.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/factory_ammo/factory_ammo.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/factory_ammo/factory_ammo.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/factory_ammo/factory_ammo.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/factory_ammo/factory_ammo.rules>/Part/ID]
+		Cost = 2000
+		Prerequisites = [cosmoteer.cannon_med]
+	}
+	{
+		ID = cosmoteer.factory_he
+		NameKey = &<./Data/ships/terran/factory_he/factory_he.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/factory_he/factory_he.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/factory_he/factory_he.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/factory_he/factory_he.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/factory_he/factory_he.rules>/Part/ID]
+		Cost = 7500
+		Prerequisites = [cosmoteer.missile_launcher]
+	}
+	{
+		ID = cosmoteer.factory_emp
+		NameKey = &<./Data/ships/terran/factory_emp/factory_emp.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/factory_emp/factory_emp.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/factory_emp/factory_emp.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/factory_emp/factory_emp.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/factory_emp/factory_emp.rules>/Part/ID]
+		Cost = 10000
+		Prerequisites = [cosmoteer.factory_he]
+	}
+	{
+		ID = cosmoteer.factory_mine
+		NameKey = &<./Data/ships/terran/factory_mine/factory_mine.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/factory_mine/factory_mine.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/factory_mine/factory_mine.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/factory_mine/factory_mine.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/factory_mine/factory_mine.rules>/Part/ID]
+		Cost = 10000
+		Prerequisites = [cosmoteer.factory_ammo, cosmoteer.factory_he]
+	}
+	{
+		ID = cosmoteer.factory_steel
+		NameKey = &<./Data/ships/terran/factory_steel/factory_steel.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/factory_steel/factory_steel.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/factory_steel/factory_steel.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/factory_steel/factory_steel.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/factory_steel/factory_steel.rules>/Part/ID]
+		Cost = 15000
+	}
+	{
+		ID = cosmoteer.factory_coil
+		NameKey = &<./Data/ships/terran/factory_coil/factory_coil.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/factory_coil/factory_coil.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/factory_coil/factory_coil.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/factory_coil/factory_coil.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/factory_coil/factory_coil.rules>/Part/ID]
+		Cost = 15000
+		Prerequisites = [cosmoteer.factory_steel]
+	}
+	{
+		ID = cosmoteer.factory_coil2
+		NameKey = &<./Data/ships/terran/factory_coil2/factory_coil2.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/factory_coil2/factory_coil2.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/factory_coil2/factory_coil2.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/factory_coil2/factory_coil2.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/factory_coil2/factory_coil2.rules>/Part/ID]
+		Cost = 25000
+		Prerequisites = [cosmoteer.factory_coil]
+	}
+	{
+		ID = cosmoteer.factory_tristeel
+		NameKey = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/ID]
+		Cost = 35000
+		Prerequisites = [cosmoteer.factory_coil2]
+	}
+	{
+		ID = cosmoteer.factory_diamond
+		NameKey = &<./Data/ships/terran/factory_diamond/factory_diamond.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/factory_diamond/factory_diamond.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/factory_diamond/factory_diamond.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/factory_diamond/factory_diamond.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/factory_diamond/factory_diamond.rules>/Part/ID]
+		Cost = 25000
+		Prerequisites = [cosmoteer.factory_tristeel]
+	}
+	{
+		ID = cosmoteer.factory_processor
+		NameKey = &<./Data/ships/terran/factory_processor/factory_processor.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/factory_processor/factory_processor.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/factory_processor/factory_processor.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/factory_processor/factory_processor.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/factory_processor/factory_processor.rules>/Part/ID]
+		Cost = 40000
+		Prerequisites = [cosmoteer.factory_coil2]
+	}
+	{
+		ID = cosmoteer.factory_uranium
+		NameKey = &<./Data/ships/terran/factory_uranium/factory_uranium.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/factory_uranium/factory_uranium.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/factory_uranium/factory_uranium.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/factory_uranium/factory_uranium.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/factory_uranium/factory_uranium.rules>/Part/ID]
+		Cost = 45000
+		Prerequisites = [cosmoteer.factory_coil2]
+	}
+	{
+		ID = cosmoteer.factory_nuke
+		NameKey = &<./Data/ships/terran/factory_nuke/factory_nuke.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/factory_nuke/factory_nuke.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/factory_nuke/factory_nuke.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/factory_nuke/factory_nuke.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/factory_nuke/factory_nuke.rules>/Part/ID]
+		Cost = 15000
+		Prerequisites = [cosmoteer.factory_he, cosmoteer.factory_uranium]
+	}
+	{
+		ID = cosmoteer.resource_collector
+		NameKey = &<./Data/ships/terran/resource_collector/resource_collector.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/resource_collector/resource_collector.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/resource_collector/resource_collector.rules>/Part/EditorIcon
+		EditorGroups = &<./Data/ships/terran/resource_collector/resource_collector.rules>/Part/EditorGroups
+		PartsUnlocked = [&<./Data/ships/terran/resource_collector/resource_collector.rules>/Part/ID]
+		Cost = 1500
+	}
+	{
+		ID = cosmoteer.mining_laser_small
+		NameKey = &<./Data/ships/terran/mining_laser_small/mining_laser_small.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/mining_laser_small/mining_laser_small.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/mining_laser_small/mining_laser_small.rules>/Part/EditorIcon
+		EditorGroups = &<./Data/ships/terran/mining_laser_small/mining_laser_small.rules>/Part/EditorGroups
+		PartsUnlocked = [&<./Data/ships/terran/mining_laser_small/mining_laser_small.rules>/Part/ID]
+		Cost = 3000
+	}
+	{
+		ID = cosmoteer.tractor_beam_emitter
+		NameKey = &<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/Part/ID]
+		Cost = 10000
+	}
+	{
+		ID = cosmoteer.sensor_array
+		NameKey = &<./Data/ships/terran/sensor_array/sensor_array.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/sensor_array/sensor_array.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/sensor_array/sensor_array.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/sensor_array/sensor_array.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/sensor_array/sensor_array.rules>/Part/ID]
+		Cost = 10000
+	}
+
+	{
+		ID = cosmoteer.hyperdrive_beacon
+		NameKey = &<./Data/ships/terran/hyperdrive_beacon/hyperdrive_beacon.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/hyperdrive_beacon/hyperdrive_beacon.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/hyperdrive_beacon/hyperdrive_beacon.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/hyperdrive_beacon/hyperdrive_beacon.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/hyperdrive_beacon/hyperdrive_beacon.rules>/Part/ID]
+		Cost = 20000
+		Prerequisites = [cosmoteer.hyperdrive_small]
+	}
+	{
+		ID = cosmoteer.explosive_charge
+		NameKey = &<./Data/ships/terran/explosive_charge/explosive_charge.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/explosive_charge/explosive_charge.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/explosive_charge/explosive_charge.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/explosive_charge/explosive_charge.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/explosive_charge/explosive_charge.rules>/Part/ID]
+		Cost = 1000
+	}
+]

@@ -1,0 +1,11 @@
+Background : <base_bg.rules>
+{
+	ID = bg_zero
+	NameKey = "Backgrounds/Zero"
+	InGameBackground = false
+	RegionSize = [10, 10]
+	NearPlaneDistance = 25
+	FarPlaneDistance = (&NearPlaneDistance) * 2
+
+	Objects []
+}

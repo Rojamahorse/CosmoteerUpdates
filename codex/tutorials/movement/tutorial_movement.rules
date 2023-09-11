@@ -1,0 +1,14 @@
+ID = movement
+TitleKey = "Tutorials/Movement/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.HasSeenCodexPage('camera')"
+Entries
+[
+	{
+		Image { Texture { File="move_order.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Movement/Move"
+	}
+	{
+		TextKey = "Tutorials/Movement/Codex"
+	}
+]

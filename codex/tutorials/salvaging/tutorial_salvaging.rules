@@ -1,0 +1,22 @@
+ID = salvaging
+TitleKey = "Tutorials/Salvaging/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame > 0 and not sim.EnemyInSight and (sim.JunkInSight or sim.NuggetsInSight)"
+Entries
+[
+	{
+		Image { Texture { File="materials.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Salvaging/DestroyedShips"
+	}
+	{
+		Image { Texture { File="tool.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Salvaging/GatherSalvage"
+	}
+	{
+		Image { Texture { File="recall.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Salvaging/RecallCrew"
+	}
+	{
+		TextKey = "Tutorials/Salvaging/Tip"
+	}
+]

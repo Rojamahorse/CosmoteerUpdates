@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_uranium
+Type = Resource
+DescriptionKey = "Resource/Uranium"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/uranium/uranium.png"
+		MipLevels = 2
+	}
+}
+ResourceType = uranium

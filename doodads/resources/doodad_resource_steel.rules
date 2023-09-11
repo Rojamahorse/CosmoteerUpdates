@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_steel
+Type = Resource
+DescriptionKey = "Resource/Steel"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/steel/steel1.png"
+		MipLevels = 2
+	}
+}
+ResourceType = steel

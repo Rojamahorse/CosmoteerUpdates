@@ -1,0 +1,15 @@
+Faction = fringe
+Tags = [station]
+
+Ships
+[
+	// Civilian stations
+	:~{ File="Small Fringe Trade Station.ship.png"; Tier=4;  Tags : ~/Tags [trade_station];    StasisIcon="Small Fringe Trade Station.png" }
+	:~{ File="Med Fringe Trade Station.ship.png";   Tier=10; Tags : ~/Tags [trade_station];    StasisIcon="Med Fringe Trade Station.png" }
+	:~{ File="Large Fringe Trade Station.ship.png"; Tier=16; Tags : ~/Tags [trade_station];    StasisIcon="Large Fringe Trade Station.png" }
+
+	// Military stations
+	:~{ File="Promise of Providence.ship.png";      Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station]; StasisIcon="Tiny Fringe Arms Depot.png"; OtherIDs=["Tiny Fringe Arms Depot"]; }
+	:~{ File="Inconspicuous Wreckage.ship.png";     Tier=9;  SpawnTier=8;  Tags : ~/Tags [military_station]; StasisIcon="Inconspicuous Wreckage.png" }
+	:~{ File="Ghost hardware.ship.png";             Tier=12; SpawnTier=12; Tags : ~/Tags [military_station]; StasisIcon="Ghost hardware.png" }
+]

@@ -1,0 +1,42 @@
+Type = PartQuad
+Sprite
+{
+	_colorTexture
+	{
+		File = "./Data/ships/terran/structure/structure.png"
+		MipLevels = max
+		SampleMode = Linear
+		UVMode = Wrap
+	}
+	_normalsTexture
+	{
+		File = "./Data/ships/terran/structure/structure_normals.png"
+		MipLevels = max
+		SampleMode = Linear
+	}
+	Shader = construction_struct.shader
+	NormalsShader
+	{
+		File = "./Data/sprite_normals.shader"
+	}
+	_hotColor = [0, 255, 187, 255]
+	_coldColor = [0, 94, 255, 255]
+	TargetBlendMode
+	{
+		SourceRgbFactor = One
+		DestRgbFactor = One
+		RgbOperator = Add
+		SourceAlphaFactor = Zero
+		DestAlphaFactor = One
+		AlphaOperator = Add
+	}
+}
+Bucket = Surface2
+Inflate = 0
+FadeInTime = 0.5
+FadeOutTime = 0.5
+ColorOverIntensity
+[
+	[0, 0, 0, 0]
+	[255, 255, 255, 255]
+]

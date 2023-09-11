@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_carbon
+Type = Resource
+DescriptionKey = "Resource/Carbon"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/carbon/carbon.png"
+		MipLevels = 2
+	}
+}
+ResourceType = carbon

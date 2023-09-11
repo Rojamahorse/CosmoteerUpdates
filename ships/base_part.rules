@@ -1,0 +1,48 @@
+Part
+{
+	FractionalCostToRepair = 25%
+	Density = 1
+	HealthType = Operational
+	ExplosiveDamageAbsorption = 50%
+	ExplosiveDamageResistance = 0%
+	Flammable = true
+	UnderlyingPartPerTile = cosmoteer.structure
+	CreatePartPerTileWhenGrabbed = corridor
+	DestroyedPartHealthFraction = 50%
+	CrewKillChanceWhenDestroyed = 25%
+	CrewThrowSpeedWhenDestroyed = 10
+	CrewSpeedFactor = .5
+	CrewCongestedSpeedFactor = .3
+	CrewFireSpeedFactor = .2;
+	ProhibitLeft = 0
+	ProhibitRight = 0
+	ProhibitAbove = 0
+	ProhibitBelow = 0
+	Prohibits = [default]
+	ProhibitedBy = [default]
+	SelectionPriority = 0
+	SelectionTypeByRotation = false
+	IsExternal = false
+	IsRotateable = true
+	IsFlippable = false
+	IsWalled = true
+	IsSelfDestructible = true
+	GeneratorRequiresDoor = true
+	AutoDoorMaxPathLength = 6
+	ExternalWalls = [All]
+	InternalWalls = [None]
+	TypeCategories = []
+	RequiresCategories = []
+	EditorReplacementPartID = corridor
+	FlipHRotate = [0, 3, 2, 1]
+	FlipVRotate = [2, 1, 0, 3]
+	InitialPenetrationResistance = 1
+	ContinuingPenetrationResistance = .5
+	PenetrationRectType = Physical
+	ReceivableBuffs = []
+
+	Components
+	{
+
+	}
+}

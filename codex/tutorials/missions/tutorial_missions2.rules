@@ -1,0 +1,22 @@
+ID = missions2
+TitleKey = "Tutorials/Missions2/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.HasSeenCodexPage('missions') and game.HasActiveMissionInCategory('bounties')"
+Entries
+[
+	{
+		Image { Texture { File="tracked.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Missions2/Tracked"
+	}
+	{
+		Image { Texture { File="location.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Missions2/Location"
+	}
+	{
+		Image { Texture { File="log.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Missions2/MissionLog"
+	}
+	{
+		TextKey = "Tutorials/Missions2/Try"
+	}
+]

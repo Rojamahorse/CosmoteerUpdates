@@ -1,0 +1,113 @@
+BaseCommand
+{
+	AvoidRadiusBuffer = 5
+	AvoidSlowdownAroundRadiusFactor = 1
+	AvoidSlowdownAroundRadiusAngleRange = [0d, 5d]
+	AvoidModeVelocityFactorThreshold = 4
+	AvoidanceMergeSpeedThreshold = 1
+	RepulseRadiusBuffer = 2
+	AvoidInsignificantMassFactor = .25
+	AvoidableDoodadTags = [sun]
+
+	WeaponOutOfCoverageColorFactor = [127, 127, 127, 127]
+	WeaponCoverageFadeInDuration = .15
+
+	MoverWidget
+	{
+		StateNoneSprite
+		{
+			Texture = &~/MoverPng
+			VertexColor = [255, 255, 255, 255]
+			Size = [96, 96]
+		}
+		StateOverSprite
+		{
+			Texture = &~/MoverPng
+			VertexColor = [255*1.5, 255*1.5, 255*1.5, 255]
+			Size = [96, 96]
+		}
+		StateDownSprite
+		{
+			Texture = &~/MoverPng
+			VertexColor = [255*1.5, 255*1.5, 255*1.5, 255]
+			Size = [96, 96]
+		}
+		MaxShipRelativeSize = [1, 1]
+	}
+
+	RotatorWidget
+	{
+		StateNoneSprite
+		{
+			Texture = &~/RotatorPng
+			VertexColor = [255, 255, 255, 255]
+			Size = [96, 96]
+		}
+		StateOverSprite
+		{
+			Texture = &~/RotatorPng
+			VertexColor = [255*1.5, 255*1.5, 255*1.5, 255]
+			Size = [96, 96]
+		}
+		StateDownSprite
+		{
+			Texture = &~/RotatorPng
+			VertexColor = [255*1.5, 255*1.5, 255*1.5, 255]
+			Size = [96, 96]
+		}
+		PixelOffset = [0, 0]
+		MaxShipRelativeSize = [.75, .75]
+	}
+
+	DeleterWidget
+	{
+		StateNoneSprite
+		{
+			Texture = &~/DeleterPng
+			VertexColor = [255, 255, 255, 255]
+			Size = [48, 48]
+		}
+		StateOverSprite
+		{
+			Texture = &~/DeleterPng
+			VertexColor = [255*1.5, 255*1.5, 255*1.5, 255]
+			Size = [48, 48]
+		}
+		StateDownSprite
+		{
+			Texture = &~/DeleterPng
+			VertexColor = [255*1.5, 255*1.5, 255*1.5, 255]
+			Size = [48, 48]
+		}
+		PixelOffset = [-12, -12]
+		MaxShipRelativeSize = [.5, .5]
+	}
+}
+
+MoverPng
+{
+	File = "./Data/gui/game/handle_mover.png"
+	SampleMode = Linear
+	MipLevels = max
+}
+
+RotatorPng
+{
+	File = "./Data/gui/game/handle_rotator.png"
+	SampleMode = Linear
+	MipLevels = max
+}
+
+DeleterPng
+{
+	File = "./Data/gui/game/handle_deleter.png"
+	SampleMode = Linear
+	MipLevels = max
+}
+
+FocusPng
+{
+	File = "./Data/gui/game/handle_focus.png"
+	SampleMode = Linear
+	MipLevels = max
+}

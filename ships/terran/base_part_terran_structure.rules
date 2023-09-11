@@ -1,0 +1,44 @@
+Part : <../base_part.rules>/Part
+{
+	SalvageProgressMediaEffectsTimeout = 1
+	SalvageProgressMediaEffects
+	[
+		&<../common/particles/salvage_progress_sparks.rules>
+		&<../common/particles/salvage_progress_ship_smoke.rules>
+		&<../common/particles/salvage_progress_ship_quad.rules>
+	]
+
+	ConstructionFinishedMediaEffects
+	[
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "../common/construction_complete_structure.wav"
+			Speed = 0.95
+			SpeedVariation = 0.15
+		}
+	]
+
+	Components : ^/0/Components
+	{
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			//Location = [0.5, 0.5]
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				&<../common/particles/salvage_complete_ship_shrapnel.rules>
+				&<../common/particles/salvage_complete_ship_flash.rules>
+				&<../common/particles/salvage_complete_ship_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "../common/salvage_finish.wav"
+					Volume = 0.75
+					SpeedVariation = .25
+				}
+			]
+		}
+	}
+}

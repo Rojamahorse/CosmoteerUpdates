@@ -1,0 +1,46 @@
+Part : <../base_part.rules>/Part
+{
+	Size = [1, 1]
+	Density = 10
+	MaxHealth = 10000
+	Flammable = false
+	UnderlyingPartPerTile = ""
+	CreatePartPerTileWhenGrabbed = ""
+	AllowedDoorLocations = []
+	IsRotateable = true
+	IgnoreRotationForMirroredSelection = true
+	CrewSpeedFactor = 0
+	TypeCategories = [asteroid]
+	InitialPenetrationResistance = 10
+	ContinuingPenetrationResistance = 10
+
+	SalvageProgressMediaEffectsTimeout = 1
+	SalvageProgressMediaEffects
+	[
+		&<../common/particles/salvage_progress_sparks.rules>
+		&<../common/particles/salvage_progress_asteroid_dust.rules>
+		&<../common/particles/salvage_progress_asteroid_quad.rules>
+	]
+
+	Components : ^/0/Components
+	{
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			Location = [.5, .5]
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				&<../common/particles/salvage_complete_asteroid_pebbles.rules>
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "../common/salvage_finish.wav"
+					Volume = 0.75
+					SpeedVariation = .25
+				}
+			]
+		}
+	}
+}

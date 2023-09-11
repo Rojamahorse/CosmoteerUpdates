@@ -1,0 +1,56 @@
+UpdateInterval = .25
+SpreadChancePerUpdate = .015
+KillChancePerUpdate = .02
+DamagePerUpdate = 10
+DefaultFireExtinguishPriority = &/PRIORITIES/ExtinguishFire
+FireExtinguishResource = fire_extinguisher
+ImmuneWhenCarryingExtinguisher = true
+FireExtinguishTime = [1, 2]
+NearbyFireSearchIterations = 10
+ParticleCellSize = [0.25, 0.25]
+
+FireSprite
+{
+	File = "indicator_fire_packed.png"
+	Size = [1, 1]
+}
+FireSpriteLayer = "fire_indicators"
+
+FireEffects
+[
+	&<particles/fire_base.rules>
+	&<particles/fire_base_simple.rules>
+	&<particles/fire_smoke.rules>
+	&<particles/fire_sparks.rules>
+
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "fire.wav"
+		Volume = .5
+		MaxConcurrentVolume = &Volume
+		VolumeOverIntensity = 1
+		RampUpTime = .2
+		RampDownTime = .2
+		MaxConcurrent = 1
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
+
+ExtinguisherEffects
+[
+	&<particles/fire_extinguisher.rules>
+
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "fire_extinguisher.wav"
+		Volume = .25
+		MaxConcurrentVolume = &Volume
+		RampUpTime = .05
+		RampDownTime = .05
+		MaxConcurrent = 1
+	}
+]

@@ -1,0 +1,11 @@
+Faction = monolith
+IDPrefix = "Monolith"
+Tags = [defense]
+
+Ships
+[
+	// Platforms
+	:~{ File="Small Point Defense Platform.ship.png"; Tier=2;  Difficulty=2; }
+	:~{ File="Small Cannon Platform.ship.png";        Tier=2;  Difficulty=2; }
+	:~{ File="Small HE Missile Platform.ship.png";    Tier=2;  Difficulty=2; }
+]

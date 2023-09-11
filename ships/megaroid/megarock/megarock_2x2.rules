@@ -1,0 +1,23 @@
+Part : <../base_part_megaroid.rules>/Part
+{
+	NameKey = "Parts/MegaRock2x2"
+	DescriptionKey = "Parts/RockHardDesc"
+	ID = cosmoteer.megarock_2x2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	SelectionTypeID = "rock"
+	EditorGroup = "Rock"
+	Resources = []
+	Size = [2, 2]
+	MaxHealth = 640000
+	EditorReplacementPartID = cosmoteer.megarock_1x1
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	EditorIcon
+	{
+		Texture = "./Data/ships/asteroid/rock/rock_4x4_icon.png"
+		Size = [48, 48]
+	}
+	Components : ^/0/Components
+	{
+		SpriteGrid = &<megarock_4x4.rules>/Part/Components/SpriteGrid
+		Blueprints = &<./Data/ships/asteroid/rock/rock_2x2.rules>/Part/Components/Blueprints
+	}
+}

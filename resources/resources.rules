@@ -1,0 +1,95 @@
+Resources
+[
+	// Power.
+	&<battery/battery.rules>
+
+	// Fuel.
+	&<hyperium/hyperium.rules>
+
+	// Ammo.
+	&<bullet/bullet.rules>
+	&<missile_part_he/missile_part_he.rules>
+	&<missile_part_emp/missile_part_emp.rules>
+	&<missile_part_nuke/missile_part_nuke.rules>
+	&<mine_part/mine_part.rules>
+
+	// Construction materials.
+	&<steel/steel.rules>
+	&<coil/coil.rules>
+	&<coil2/coil2.rules>
+	&<tristeel/tristeel.rules>
+	&<diamond/diamond.rules>
+	&<processor/processor.rules>
+	&<enriched_uranium/enriched_uranium.rules>
+
+	// Raw elements.
+	&<sulfur/sulfur.rules>
+	&<iron/iron.rules>
+	&<copper/copper.rules>
+	&<tritanium/tritanium.rules>
+	&<carbon/carbon.rules>
+	&<gold/gold.rules>
+	&<uranium/uranium.rules>
+
+	// Misc.
+	&<fire_extinguisher/fire_extinguisher.rules>
+	&<ion_energy/ion_energy.rules>
+	&<fake_resource/fake_resource.rules>
+]
+
+Nuggets
+{
+	LinearDamping = 0.5
+	AngularDamping = 0.5
+	DropLinearVelocity = [1, 5]
+	DropAngularVelocity = [-360d, 360d]
+	SelectionRadius = .4
+}
+
+VeryCommonMaterialDropRates
+{
+	PartDestroyed = 15%
+	PartSalvaged = 20%
+	PlayerPartDestroyed = 50%
+	PlayerPartSalvaged = 100%
+	StorageDestroyed = 50%
+	StorageSalvaged = 100%
+	PartRepairCost = 50%
+}
+
+CommonMaterialDropRates
+{
+	PartDestroyed = 10%
+	PartSalvaged = 15%
+	PlayerPartDestroyed = 50%
+	PlayerPartSalvaged = 100%
+	StorageDestroyed = 50%
+	StorageSalvaged = 100%
+	PartRepairCost = 50%
+}
+
+RareMaterialDropRates
+{
+	PartDestroyed = 10%
+	PartSalvaged = 15%
+	PlayerPartDestroyed = 50%
+	PlayerPartSalvaged = 100%
+	StorageDestroyed = 50%
+	StorageSalvaged = 100%
+}
+
+ElementDropRates
+{
+	PartDestroyed = 10%
+	PartSalvaged = 100%
+	PlayerPartDestroyed = 50%
+	StorageDestroyed = 50%
+	StorageSalvaged = 100%
+}
+
+AmmoDropRates
+{
+	PartDestroyed = 0%
+	StorageDestroyed = 0%
+	StorageSalvaged = 100%
+}

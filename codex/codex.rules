@@ -1,0 +1,6 @@
+CodexPages : <tutorials/tutorials.rules>/CodexPages, <lore/lore.rules>/CodexPages []
+
+NewTutorialSound
+{
+	Sound = "../gui/chat_notif.wav"
+}

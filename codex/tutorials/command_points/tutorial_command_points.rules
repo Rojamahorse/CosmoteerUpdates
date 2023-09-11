@@ -1,0 +1,22 @@
+ID = command_points
+TitleKey = "Tutorials/CommandPoints/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.RemainingCommandPoints < 5 and game.BuildUIOpen"
+Entries
+[
+	{
+		Image { Texture { File="cockpit.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/CommandPoints/CommandRooms"
+	}
+	{
+		Image { Texture { File="laser.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/CommandPoints/UsingPoints"
+	}
+	{
+		Image { Texture { File="remaining.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/CommandPoints/PointsRemaining"
+	}
+	{
+		TextKey = "Tutorials/CommandPoints/Tip"
+	}
+]

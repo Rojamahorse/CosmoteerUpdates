@@ -1,0 +1,37 @@
+Type = PartQuad
+Sprite
+{
+		Shader
+		{
+			File = ../../../common_effects/particles/particle_light.shader
+		}
+		_z = 0.5
+		_litReflectiveStrength = 12
+		_litAdditiveStrength = 0.05
+		_unlitAdditiveStrength = 0.05
+		VertexColor = [250, 125, 51]
+		Texture
+		{
+			File = ../../../common_effects/particles/wet_light_cookie.png
+			MipLevels = max
+			SampleMode = Linear
+		}
+		TargetBlendMode
+		{
+			SourceRgbFactor = InverseDestColor
+			DestRgbFactor = One
+			RgbOperator = Add
+			SourceAlphaFactor = Zero
+			DestAlphaFactor = One
+			AlphaOperator = Add
+		}
+}
+Bucket = Upper4
+Inflate = 0.5
+FadeInTime = 0
+FadeOutTime = 0.5
+ColorOverIntensity
+[
+	[255, 255, 255, 199]
+	[255, 255, 255, 199]
+]

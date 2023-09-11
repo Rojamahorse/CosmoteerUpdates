@@ -1,0 +1,14 @@
+ID = cosmoteer.resource_bullet
+Type = Resource
+DescriptionKey = "Resource/Bullet"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/bullet/bullet1.png"
+		MipLevels = 2
+	}
+}
+ResourceType = bullet
+Quantity = 1

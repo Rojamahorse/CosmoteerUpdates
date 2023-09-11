@@ -1,0 +1,44 @@
+Shaders
+[
+	// Normal.
+	{
+		NameKey = "PostShaders/Normal"
+		// No Shader
+	}
+
+	// Black & white.
+	{
+		NameKey = "PostShaders/BlackAndWhite"
+		Material
+		{
+			Shader = "blackandwhite.shader"
+		}
+	}
+
+	// Inversion.
+	{
+		NameKey = "PostShaders/Inversion"
+		Material
+		{
+			Shader = "inversion.shader"
+		}
+	}
+
+	// Apple II.
+	{
+		NameKey = "PostShaders/Apple2"
+		Material
+		{
+			Shader = "apple2.shader"
+		}
+	}
+
+	// Newspaper.
+	{
+		NameKey = "PostShaders/Newspaper"
+		Material
+		{
+			Shader = "newspaper.shader"
+		}
+	}
+]

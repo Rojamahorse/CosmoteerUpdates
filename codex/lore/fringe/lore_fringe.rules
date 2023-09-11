@@ -1,0 +1,24 @@
+ID = fringe
+TitleKey = "Lore/Fringe/Title"
+TabNameKey = "Codex/Lore"
+Entries
+[
+	{
+		TextKey = "Lore/Fringe/Lore1"
+		Image
+		{
+			Texture
+			{
+				File = "./Data/factions/fringe.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+		}
+	}
+	{
+		TextKey = "Lore/Fringe/Lore2"
+	}
+	{
+		TextKey = "Lore/Fringe/Lore3"
+	}
+]

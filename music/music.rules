@@ -1,0 +1,23 @@
+BufferTime = 0.1
+MenuZoom = 1.0
+ChannelCount = 2
+Frequency = 44100
+
+RootTrack
+{
+	Type = FSM
+	DebugName = "Root"
+	IntroTracks
+	[
+		&<cluster1.rules>
+		&<cluster2.rules>
+		&<cluster3.rules>
+		&<cluster4.rules>
+		&<cluster5.rules>
+		&<cluster6.rules>
+		&<cluster7.rules>
+		&<cluster8.rules>		
+	]
+	FirstBootIntroTracks = [&<cluster3.rules>]
+	DefaultNextTracks = &IntroTracks
+}

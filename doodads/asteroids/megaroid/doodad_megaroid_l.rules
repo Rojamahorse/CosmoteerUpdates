@@ -1,0 +1,70 @@
+ID = cosmoteer.megaroid_l
+Type = GeneratedShip
+DescriptionKey = "Doodads/Megaroid_L"
+CategoryKey = "Doodads/Asteroids"
+Icon
+{
+	Texture
+	{
+		File = "megaroid_l.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+Allegiance = -3 // Junk
+SpawnRadius = sqrt(&Generator/Stages/0/MaxParts) * (&<./Data/ships/megaroid/megaroid.rules>/Megaroid/ShipScale)
+Generator
+{
+	ShipRulesID = "cosmoteer.megaroid"
+	Stages
+	[
+		{
+			Type = AsteroidStage
+			Name = AsteroidStage
+			IsEnabled = true
+			Parts
+			[
+				cosmoteer.megarock_1x1
+			]
+			MinParts = 800
+			MaxParts = 1600
+		}
+		{
+			Type = AsteroidWedgesStage
+			ReplaceableParts
+			[
+				cosmoteer.megarock_1x1
+			]
+			LargerParts
+			[
+				cosmoteer.megarock_1x1
+				cosmoteer.megarock_2x2
+				cosmoteer.megarock_3x3
+			]
+			RandomizeReplaceOrder = true
+			Name = AsteroidWedgesStage
+			IsEnabled = true
+			WedgeParts
+			[
+				cosmoteer.megarock_1x1_wedge
+				cosmoteer.megarock_1x2_wedge
+			]
+		}
+		{
+			Type = EnlargeTilesStage
+			ReplaceableParts
+			[
+				cosmoteer.megarock_1x1
+			]
+			LargerParts
+			[
+				cosmoteer.megarock_4x4
+				cosmoteer.megarock_3x3
+				cosmoteer.megarock_2x2
+			]
+			RandomizeReplaceOrder = true
+			Name = EnlargeTilesStage
+			IsEnabled = true
+		}
+	]
+}

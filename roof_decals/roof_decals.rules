@@ -1,0 +1,55 @@
+Groups
+[
+	{
+		Folders = ["shapes"]
+		NameKey = "DecalGroups/Shapes"
+		Icon
+		{
+			Texture
+			{
+				File = "shapes.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+	{
+		Folders = ["symbols"]
+		NameKey = "DecalGroups/Symbols"
+		Icon
+		{
+			Texture
+			{
+				File = "symbols.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+	{
+		Folders = ["text_small"]
+		NameKey = "DecalGroups/TextSmall"
+		Icon
+		{
+			Texture
+			{
+				File = "text_small.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+	{
+		Folders = ["text_large"]
+		NameKey = "DecalGroups/TextLarge"
+		Icon
+		{
+			Texture
+			{
+				File = "text_large.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+]

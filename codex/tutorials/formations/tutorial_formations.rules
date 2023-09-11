@@ -1,0 +1,19 @@
+ID = formations
+TitleKey = "Tutorials/Formations/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? sim.PlayerSignificantShipCount >= 2 and game.HasSeenCodexPage('fleets')"
+Entries
+[
+	{
+		Image { Texture { File="basic_formations.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Formations/BasicFormations"
+	}
+	{
+		Image { Texture { File="follow.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Formations/CustomFormations"
+	}
+	{
+		Image { Texture { File="custom_formations.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Formations/SavingFormations"
+	}
+]

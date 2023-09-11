@@ -1,0 +1,92 @@
+Mode : <../base_pvp.rules>
+{
+	Icon
+	{
+		Texture
+		{
+			File = "arena.png"
+			SampleMode = Linear
+			MipLevels = 2
+		}
+	}
+
+	MinGoalPoints = 100
+	MaxGoalPoints = 100000
+	DefaultGoalPoints = 10000
+	ValuePerPoint = 1000
+	RollingDamageTime = 15
+
+	RespawnDelay = 1//5
+	ManualRespawnPenalty = 25%
+	ManualRespawnCooldown = 1//30
+	NotRespawningPenaltyFractionPerSecond = 1%
+	NotRespawningPenaltyDelay = 10
+	RespawnSelfDestructDuration = 5
+	MinRespawnDistanceFromCenter = 500
+	MinRespawnDistanceFromOthers = 500
+	RespawnCheckAngleIncrement = 45d
+	RespawnCheckDistanceIncrement = 150
+	ShipSpawnInvulnerabilityDuration = 5
+
+	JunkDamageFractionPerTick = .1
+	JunkDamageChancePerTick = .01
+
+	EnemyDefeatedSound
+	{
+		Sound = "enemy_defeated.wav"
+	}
+
+	OfficialRulesets
+	[
+		{
+			NameKey = "ArenaModeConfig/Rulesets/FFA500K"
+			ShortNameKey = "ArenaModeConfig/Rulesets/FFA500KShort"
+			Options : ~/BaseOptions
+			{
+				TeamFunds = 500000
+				MaxShipValue = 500000
+				GoalPoints = 5000
+			}
+		}
+		{
+			NameKey = "ArenaModeConfig/Rulesets/FFA1500K"
+			ShortNameKey = "ArenaModeConfig/Rulesets/FFA1500KShort"
+			Options : ~/BaseOptions
+			{
+				TeamFunds = 1500000
+				MaxShipValue = 1500000
+				GoalPoints = 15000
+			}
+		}
+		{
+			NameKey = "ArenaModeConfig/Rulesets/FFA3000K"
+			ShortNameKey = "ArenaModeConfig/Rulesets/FFA3000KShort"
+			Options : ~/BaseOptions
+			{
+				TeamFunds = 3000000
+				MaxShipValue = 3000000
+				GoalPoints = 30000
+			}
+		}
+	]
+}
+
+BaseOptions
+{
+	TeamCount = 3 // Index into list.
+	GameSpeed = 2 // Index into list.
+	MaxShips = 4 // Index into list.
+	TimeLimit = 2 // Index into list.
+	ShipAssignMode = 0 // Index into list.
+	ShipPreviewMode = 1 // Index into list.
+	FleetDistance = 1 // Index into list.
+	PerimeterDistance = 2 // Index into list.
+	ShrinkingPerimeter = 0 // true/false
+	ShareFunds = 0 // true/false
+	FogOfWar = 0 // true/false
+	AllowIllegalShips = 0 // true/false
+	FriendlyFire = 0 // true/false
+	AllowChangeShips = 1 // true/false
+	ResourceDrops = 0 // true/false
+	ShipConstruction = 1 // true/false
+}

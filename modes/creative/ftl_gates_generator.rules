@@ -1,0 +1,12 @@
+Spawners
+[
+	// FTL gates.
+	{
+		Type = FtlGates
+		Distance = [25000, 30000]
+		DoodadTypes
+		[
+			cosmoteer.ftl_gate
+		]
+	}
+]

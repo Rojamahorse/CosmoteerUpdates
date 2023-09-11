@@ -1,0 +1,4427 @@
+__Name = "简体中文"
+__DebugOnly = false
+AI
+{
+	
+	Easy = "简单 AI"
+	Normal = "普通 AI"
+}
+ArenaMode: Pvp
+{
+	
+	AtFirstPlaceFmt = "领先第 2 名 {0} 分（{1}）"
+	BehindFirstPlaceFmt = "距离第 1 名落后 {0} 分（{1}）"
+	CanRespawnCountdownFmt = "可在 {0} 后复活……"
+	EnemyDefeated = 击败的敌人
+	ManualRespawn = 复活
+	ManualRespawnConfirm = "要放弃星舰，令全舰队满状态复活吗？\n\n其他玩家仍可通过摧毁你放弃的星舰获得伤害分。"
+	ManualRespawnCountdownFmt = "复活\n{0}"
+	ManualRespawnTip = 放弃星舰，令全舰队满状态复活。
+	MultiplePlayers = 多玩家
+	Place = 排名
+	Points = 伤害分
+	PointsTip = 伤害或摧毁其他玩家的星舰获得的分数。
+	Respawn = 复活
+	RespawnCountdownFmt = "{0} 后复活……"
+	Scoreboard: ^/0/Scoreboard
+	{
+		
+		DamageReceived = "承受\n伤害"
+		Points = "伤害\n分"
+	}
+	ShipPointsFmt = "{0:n0} 分"
+	TimeRemainingTip = 距离游戏结束、伤害分最高的战队获胜所剩的时间。
+}
+ArenaModeConfig: PvpModeConfig
+{
+	
+	Description = 伤害、击溃其他玩家，以此赚取分数！星舰被摧毁后可以重生。
+	Name = 竞技场
+	Rulesets
+	{
+		
+		FFA1500K = "各自为战- 1.5M"
+		FFA1500KShort = "混战\n1.5M"
+		FFA3000K = "各自为战- 3M"
+		FFA3000KShort = "混战\n3M"
+		FFA500K = "各自为战 - 500K"
+		FFA500KShort = "混战\n500K"
+	}
+	TimeLimitTip = 游戏经过此时间后，由分数最高的战队获得胜利。
+}
+Backgrounds
+{
+	
+	Black = 黑色
+	Blue = 蓝色
+	Galaxy = 银河系地图
+	RedBlue = 蓝色/红色
+	TanPinkSilver = 古铜/粉色/银色
+	TanTealBlue = 古铜/蓝绿色/蓝色
+	YellowOrange = 黄色/橙色
+	Zero = 黑色（无恒星）
+}
+BillOfSale
+{
+	
+	ConstructionExpenses = <u>建造费用：</u>
+	DeconstructionRefunds = <u>拆解退款：</u>
+	ExpensesSubtotalFmt = "费用小计：{0}"
+	FireCrewFmt = "解雇 {0}x<b>名船员：</b>{1}"
+	HireCrewFmt = "雇佣 {0}x<b>名船员：</b>{1}"
+	ItemCostFmt = "  {0}x<b>{1}：</b>{2}"
+	ItemRefundFmt = "  {0}x<b>{1}：</b>{2}"
+	RefundsSubtotalFmt = "退款小计：{0}"
+	RepairsFmt = "小修：{0}"
+	ResourcePurchases = <u>购买缺失资源：</u>
+	TotalCostFmt = "<b>总费用：{0}</b>"
+	TotalRefundFmt = "<b>总退款：{0}</b>"
+}
+Brushes
+{
+	
+	Block10x10 = "10x10 区块"
+	Block10x10Icon = ""
+	Block1x1 = "1x1 区块"
+	Block1x1Icon = ""
+	Block2x2 = "2x2 区块"
+	Block2x2Icon = ""
+	Block3x3 = "3x3 区块"
+	Block3x3Icon = ""
+	Block4x4 = "4x4 区块"
+	Block4x4Icon = ""
+	Block5x5 = "5x5 区块"
+	Block5x5Icon = ""
+	Block6x6 = "6x6 区块"
+	Block6x6Icon = ""
+	Block7x7 = "7x7 区块"
+	Block7x7Icon = ""
+	Block8x8 = "8x8 区块"
+	Block8x8Icon = ""
+	Block9x9 = "9x9 区块"
+	Block9x9Icon = ""
+	Box = 方框
+	BoxIcon = 方框
+	BoxTip = "按住 <btn id='Design.RestrictShapeMode'/> 可绘制完美正方形。"
+	Fill = 洪水覆盖算法
+	FillIcon = 填充
+	Line = 直线
+	LineIcon = 直线
+	LineTip = "按住 <btn id='Design.RestrictShapeMode'/> 可绘制直线。"
+	Oval = 正圆
+	OvalIcon = 正圆
+	OvalTip = "按住 <btn id='Design.RestrictShapeMode'/> 可绘制完美圆圈。"
+	Triangle = 三角形
+	TriangleIcon = 三角
+	TriangleTip = "按住 <btn id='Design.RestrictShapeMode'/> 可绘制完美等腰三角形。"
+}
+BuildBox
+{
+	
+	BlueprintsInvalid = 无效蓝图
+	BrushDisabledTip = 所选部件或工具不支持不同的“笔刷”形状或尺寸。
+	BrushHotkeyFmt = "热键：<b>{0}</b>"
+	BrushTip = 更改“笔刷”的形状或尺寸，以用于选定的部件或工具。
+	BuffPercentageFmt = ""
+	CancelAll = "<s20>取消全部</s20><s4>\n \n</s4>"
+	CancelAllTip = "取消所有建造、拆除和修理行动。\n\n热键：<btn id='Design.CancelAll'/>"
+	CancelPasteTip = "取消并返回选择模式。\n\n热键：<btn id='General.Cancel'/>"
+	CantClearInvalidTip = 无可移除部件。
+	CantClearTip = 无可清除。
+	CantDiscardTip = 无可撤销。
+	CantRecenterTip = 蓝图已经居中。
+	CantRemoveSelected = 选定部件无法删除。
+	CantRotateTip = 所选部件不能旋转。
+	Clear = 清除蓝图
+	ClearInvalid = 移除无效部件
+	ClearInvalidTip = 移除蓝图中的所有无效（红色闪烁）部件。
+	ClearTip = 清除当前蓝图，从头开始设计。
+	CommandPoints = 指挥点数
+	CommandPointsFmt = ""
+	CommandPointsProvidedFmt = ""
+	CommandPointsTip = "<b>指挥点数</b>\n<good>已使用：<b>{0}</b>\n总计：<b>{1}</b></good>"
+	CommandPointsUsedFmt = ""
+	ConfirmForgetDestroyed = 确定要遗忘所有被摧毁的部件吗？此操作不可逆转，而且会清除星舰的撤消记录！
+	Construct = "<s20>按图造舰</s20><s4>\n \n</s4>"
+	ConstructionBlocked = 建造进程被另一艘星舰阻挡。
+	CoordsFmt = "位置：{0}, {1}"
+	CopyTip = "复制所选部件。\n\n热键：<btn id='Design.CopySelected'/>"
+	Crew = 船员/床位
+	CrewFmt = ""
+	CutTip = "剪切（复制并删除）选定部件。\n\n热键：<btn id='Design.CutSelected'/>"
+	DeletePartTip = "删除所持部件。\n\n热键：<btn id='Design.Delete'/>"
+	DeleteTip = "删除所选部件。\n\n热键：<btn id='Design.Delete'/>（或<btn id='Design.DeleteDoors'/>，只删除门）"
+	Discard = 撤销修改
+	DiscardModifications = 放弃修改
+	DiscardTip = 撤销所有星舰蓝图中尚未确认的修改。
+	EditBlueprintsTip = "<b>蓝图模式</b>\n\n允许对星舰设计临时进行无效或无法负担的改动。\n\n热键：<btn id='Design.ToggleBlueprints'/>"
+	FireCrewFmt = " 解雇 {0} 名船员"
+	FlightDirectionTip = "<b>飞行方向</b>\n\n星舰在远距离行驶时的飞行方向。"
+	FlipXTip = "水平翻转。\n\n热键：<btn id='Design.FlipX'/>"
+	FlipYTip = "垂直翻转。\n\n热键：<btn id='Design.FlipY'/>"
+	ForgetDestroyed = 遗忘被摧毁的部件
+	ForgetDestroyedTip = 遗忘所有已被摧毁而尚未重建的部件。
+	FtlEfficiency = 超空间驱动效率
+	GrabTip = "<b>抓取工具</b>\n\n选择后，点击一个星舰部件后会将其抓取，随后可以将其放置于其他位置。按住 <btn id='Game.AppendSelection'/> 可复制该部件，而非移动。\n\n<btn id='General.UIAltClick'/> 可选择该类型的部件，效果等同于点击其按键。\n\n热键：<btn id='Design.GrabTool'/>"
+	HireCrewFmt = " 雇佣 {0} 名船员：{1}"
+	HireCrewTip = 雇佣船员来填补床位。若船员多于床位，则多余的船员将被解雇。
+	ImportPng = "从 PNG 图片加载形状"
+	ImportPngBrightness = 判定<b>亮度</b>
+	ImportPngFileType = "PNG 图像文件（*.png）"
+	ImportPngInstructions = "从自定义 PNG 图片文件加载基本形状并替换当前蓝图（如有）。\n\n●<b>亮度</b>：明亮的像素（红、绿、蓝中任意色值大于 50%）将被判定为走廊格。\n\n●<b>不透明度</b>：不透明度大于 50% 的像素将被判定为走廊格。"
+	ImportPngOpacity = 判定<b>不透明度</b>
+	ImportPngSizeWarningFmt = "该图像文件大于 {0}x{1} 的最大星舰尺寸，将被裁剪。"
+	ImportPngTip = "从自定义的 PNG 图片文件中，以走廊格的形式加载星舰的基本形状。"
+	Indent = ""
+	IndentTransparent = ""
+	InsufficientBeds = 床位不足
+	InsufficientCommandPoints = 建造更多指挥室
+	InsufficientFunds = 资金不足
+	InsufficientResources = 资源不足
+	InsufficientResourcesFmt = "{0}不足"
+	InvalidReasons
+	{
+		
+		Blocked = <bad>建造受阻</bad>
+		CategorySlotsExceeded = <bad>此类型部件过多</bad>
+		ExistingPart = <bad>现有部件</bad>
+		MaxBordersExceeded = <bad>在网格外</bad>
+		NotAllowed = <bad>不允许</bad>
+		NotContiguous = <bad>未连接</bad>
+		PartLocked = <bad>缺失部分蓝图</bad>
+		ProhibitedZones = <bad>禁止区域</bad>
+	}
+	LoadBlueprintsAlsoCrewAssignments = 同时加载船员分配
+	LoadBlueprintsAlsoCrewRoles = 同时加载船员岗位
+	LoadBlueprintsAlsoFlightInfo = 同时加载飞行方向和默认攻击
+	LoadBlueprintsAlsoPaint = 同时加载涂装设计
+	LoadBlueprintsAlsoResourceAssignments = 同时加载资源分配
+	LoadBlueprintsAlsoTextInfo = 同时加载名称、设计者和描述
+	LoadBlueprintsOptionsPasteFmt = "从<b>{0}</b>加载蓝图，并将其<b>粘贴</b>至当前蓝图。"
+	LoadBlueprintsOptionsReplaceFmt = "从<b>{0}</b>加载并<b>替换</b>当前蓝图。"
+	LoadShipInto = 加载星舰（粘贴至现有）
+	LoadShipIntoTip = 加载先前保存的星舰设计，并切换到粘贴模式，可以在不取代当前设计的前提下将这些蓝图粘贴至其中。
+	LoadShipReplace = 加载星舰（取代现有）
+	LoadShipReplaceTip = 加载先前保存的星舰设计并完全取代当前设计。
+	MirrorToggleTip = "<b>镜像模式</b>\n\n启用后，星舰的设计变更将沿其中轴线镜像映射。\n\n热键：<btn id='Design.ToggleMirrorMode'/>\n\n<btn id='General.UIAltClick'/>可用以修改镜像设置。"
+	NearestCrewFmt = "<good>✓最近的船员：{0} 米</good>"
+	NearestCrewStrongWarningFmt = "<bad>⚠最近的船员：{0} 米</bad>"
+	NearestCrewWarningFmt = "<yellow>⚠最近的船员：{0} 米</yellow>"
+	NearestResourceFmt = "<good>✓最近的{0}：{1} 米</good>"
+	NearestResourceStrongWarningFmt = "<bad>⚠️最近的{0}：{1} 米</bad>"
+	NearestResourceWarningFmt = "<yellow>⚠️最近的{0}：{1} 米</yellow>"
+	NoCrewAccess = <bad>✘无船员权限</bad>
+	NoPartsCopied = 还没有复制过部件。
+	NoPartsSelected = 无已选部件。
+	NoResourceAccessFmt = "<bad>✘无{0}权限</bad>"
+	NoWorkNeeded = 无需工作
+	NothingToForget = 无可遗忘。
+	NothingToRedo = 无可重做。
+	NothingToUndo = 无可撤销。
+	NumCrewTip = 雇佣的船员数量。
+	PartCrewFmt = "{0} 名船员"
+	PartHotkeyFmt = "热键：<b>{0}</b>"
+	PartialRefundOnly = <orange><b>减额退款</b></orange>
+	PartialRefundOnlyConfirm = "<orange><b>按住 <btn id='Design.ConfirmPartialRefund'/> 确认</b></orange>"
+	PasteTip = "粘贴复制的部件。\n\n热键：<btn id='Design.Paste'/>"
+	Power = 能源
+	Recenter = 蓝图居中
+	RecenterTip = 将星舰蓝图移到建造网格的中心。
+	Redo = " 重做 "
+	RedoTip = "重做对星舰的上一次改动。\n\n热键：<btn id='Design.Redo'/>"
+	RemoveTip = "<b>删除工具</b>\n\n选择后，点击星舰部件便可将其删除并给予退款。\n\n热键：<btn id='Design.EraseTool'/>\n\n按住 <btn id='Design.EraseCursorMode'/> 可以暂时切换到此工具。"
+	RepairAll = "<s20>修理所有</s20><s4>\n \n</s4>"
+	RepairDebtFmt = "修理星舰将花费<ins_money>{0:n0}</ins_money>，但您只有<money>{1:n0}</money>。可以选择举债维修，但在赤字期间多数采购将无法进行，直到还清债务。"
+	RepairTip = "<b>修复工具</b>\n\n选择后，点击红色的受损或被毁部件可将其修复。\n\n热键：<btn id='Design.RepairTool'/>"
+	ResetMirrorLines = 重置镜像线
+	ResetMirrorLinesTip = 将水平、垂直镜像线重置到星舰中心。
+	RotateLeftTip = "逆时针旋转。\n\n热键：<btn id='Design.RotateLeft'/>"
+	RotateRightTip = "顺时针旋转。\n\n热键：<btn id='Design.RotateRight'/>"
+	SaveSelected = 保存选定部件
+	SaveSelectedTip = 将选定部件保存为星舰设计。
+	SelectTip = "<b>选择工具</b>\n\n选定后，可以拖动方框来选中想要复制、剪切、粘贴、镜像、旋转或删除的部分。\n\n热键：<btn id='Design.SelectionTool'/>\n\n按住 <btn id='Design.ContiguousSelectionMode'/> 可以使用选定邻接范围的“魔杖”。"
+	ShowPartDescription = "<gray>按住 <btn id='Design.ShowStats'/> 即可显示描述。</gray>"
+	ShowPartStats = "<gray>按住 <btn id='Design.ShowStats'/> 即可显示统计数据。</gray>"
+	ShowResourceDeliveries = 显示资源货运
+	ShowResourceDeliveriesTip = 选中后，会显示建造资源的货运交付计划。
+	StatBarTipFmt = ""
+	StatBarTipIdealFmt = "<b>{0}</b>\n<good>建议：<b>{1}</b></good>"
+	Title = 星舰编辑器
+	TotalBlueprintValueFmt = "星舰设计价值：\n<b>{0}</b>"
+	TotalMassFmt = "质量：\n<b>{0:.0}吨</b>"
+	TotalShipValueFmt = "当前价值：\n<b>{0}</b>"
+	UncomittedModifications = 此星舰蓝图上有一些未确认的修改。确定要放弃这些修改吗？
+	UndoTip = "撤消对星舰的上一次改动。\n\n热键：<btn id='Design.Undo'/>"
+}
+CareerLog
+{
+	
+	Title = 生涯日志
+}
+CareerMode
+{
+	
+	CommsTip = "<b>通信</b>\n\n打开与附近其他星舰的通讯链接。\n\n热键：<btn id='Comms.OpenClose'/>"
+	CreateCustomMarker = "使用 <btn id='General.UIClick'/> 键可在这里添加自定义标记。"
+	CustomMarkerName = 为该自定义标记输入名称：
+	CustomMarkerTip = "添加/重命名/删除自定义标记\n\n热键：<btn id='Game.CustomMarker'/>"
+	FameLevelUp = 名望提升
+	GameOver = 全舰阵亡
+	GotoNode = "<fame_color>这里有你的星舰。</fame_color>\n<btn id='General.UIClick'/>可跳转到该恒星系。"
+	LoadLastSave = 加载最近存档
+	MissionCompleted = 任务完成
+	MissionFailed = 任务失败
+	MissionLogTip = "生涯日志\n\n热键：<btn id='Game.MissionLog'/>"
+	NewMission = 新任务
+	PartLocked = 缺少蓝图
+	RememberedAsFmt = "星海将铭记你这位……\n<good>{0}</good>之人。"
+	RenameDeleteCustomMarker = "使用 <btn id='General.UIClick'/> 键可重命名此自定义标记。\n<btn id='General.UIAltClick'/> 键可删除此自定义标记。\n"
+	ReputationLevelDown = 声誉降级
+	ReputationLevelTitleFmt = ""
+	ReputationLevelUp = 声誉升级
+	StarSystemFactionLineFmt = ""
+	StarSystemFmt = "<b>{0}星系</b><s6>\n\n</s6>"
+	StarSystemTierFmt = "危险等级：{0}"
+	TierFmt = ""
+	TierRangeFmt = ""
+	TransferMoney = 将信用点转移到……
+	TransferMoneyFmt = "要将多少<money>信用点</money>转移到<b>{0}</b>？"
+	TransferShipControl = 将星舰控制权转移到……
+	TransferShipControlConfirmFmt = "确定要将所选星舰的控制权转移到<b>{0}</b>？"
+	UnexploredSpace = 未探索的太空
+	Victory = "<s32><good><b>你成为了星海的传奇</b></good></s32>\n\n祝贺你！你的名望已经达到了<fame>“星海传奇”</fame>，这是目前可达到的最高等级。\n\n你<b>成功通关了游戏</b>，抵达了当前版本《Cosmoteer》的结局，但欢迎你继续在星海探索。在之后的抢先体验期间，可能会加入新的结局。\n"
+	Wanted = ⚠被通缉⚠
+}
+CareerModeConfig
+{
+	
+	Advanced = 高级游戏选项
+	AdvancedInfo = 更改这些选项将改变游戏原有的模式，但只要能玩得更尽兴，你大可随意修改。
+	CantDisableSalvagingTip = 必须同时开启“我讨厌建造”。
+	CombatDifficulty = 战斗难度
+	CombatDifficultyTip = 与敌舰的战斗具有多高的挑战性。将鼠标光标悬停在各个选项上可了解详情。
+	CrewScarcity = 船员/名望比
+	CrewScarcityTip = 根据玩家的名望，提供可供雇佣船员的数量。船员越多，上手就越容易，不必与更强的敌人死磕。
+	CustomShipInfoFmt = "<s24>{0}</s24>\n\n剩余资金：{1}"
+	Description = "在探索星海的旅程中，建造、战斗、搜刮，成为传奇 Cosmoteer。"
+	DescriptionMP = 探索程序生成的银河系，执行任务，与敌对派系作战，打捞弃舰、回收。最多支持四名玩家多人合作。
+	DisableCrewConstruction = 我讨厌建造
+	DisableCrewConstructionTip = 勾选后，星舰的任何改动将瞬间生效，无需船员慢慢建造。
+	DisableExploration = 我讨厌探索
+	DisableExplorationTip = "自动揭示地图上的所有 <b>?</b> 图标，不必通过探索战争迷雾揭示。"
+	DisableSalvaging = 我讨厌回收
+	DisableSalvagingTip = "● 任务给予双倍信用点。\n● 不能回收星舰以获得资源。\n● 可以在任何地方只用信用点进行星舰改装。"
+	EconDifficulty = 经济难度
+	EconDifficultyTip = 赚取钱币、名望和资源具有多高的挑战性。将鼠标光标悬停在各个选项上可了解详情。
+	GalaxySeed = 银河系种子
+	GalaxySeedTip = 用于为随机银河系生成器提供“依据”的值。在同一版本的《Cosmoteer》中使用相同的值和相同的银河系大小将产生完全一致的银河系。
+	LoadShip = 加载自定义星舰
+	MapSize = 银河系规模
+	MapSizeTip = 银河系地图中恒星系的大致数量。
+	MaxPlayers = 玩家
+	MaxPlayersTip = 包括房主在内，可以加入该游戏的最大人数。
+	Name = 生涯
+	PlayerTeamFmt = "玩家 {0}"
+	SharedPlayerTeamFmt = "共享玩家 {0}"
+	ShipInfoFmt = "<s24>{0}</s24>\n\n{1}\n\n剩余资金：{2}"
+}
+CategoryNouns
+{
+	
+	ThrusterPlural = 推进器
+	ThrusterSingular = 推进器
+}
+ChatBox
+{
+	
+	ChatFmt = "<good>{0}：</good>{1}"
+	Send = 发送
+	SendingTooFast = 哇哦，别急！你消息发送得太频繁了！
+	TeamChatFmt = "<good>{0}：</good><bad>（战队）</bad> {1}"
+	ToggleTeam = 战队
+	ToggleTeamTip = "勾选后，你的消息只有队友可见。\n\n热键：<btn id='Multiplayer.ToggleTeamChat'/>"
+}
+CloudStorage
+{
+	
+	UsedFmt = "Steam 云存档：已使用 <good>{0:0.0}%</good>"
+	UsedTipFmt = "已使用：{0} / {1}\n可用：{2}"
+}
+Codex
+{
+	
+	CodexDialog = 教程和百科
+	HowToPlay = 游戏教程：
+	Lore = 百科
+	MarkUnread = 标记为未读
+	Okay = "<s20>知道了！</s20>\n<gray>（隐藏教程）</gray>"
+	Tutorials = 教程
+}
+ColorPicker
+{
+	
+	Copy = 复制颜色
+	Hex = ""
+	Hsv = ""
+	Paste = 粘贴颜色
+	Rgb = ""
+}
+Colorblind
+{
+	
+	Achromatopsia = 全色盲
+	Deuteranopia = 绿色盲
+	Normal = 正常
+	Protanopia = 红色盲
+	Tritanopia = 蓝色盲
+}
+CombatDifficulty
+{
+	
+	Easy = 少尉
+	EasyTip = "● 敌人造成的伤害减少 30%。\n● 对敌人造成的伤害增加 40%。"
+	Hard = 上将
+	HardTip = "● 敌人造成的伤害增加 25%。\n● 对敌人造成的伤害减少 20%。"
+	NoDeath = 平民（无敌）
+	NoDeathTip = "● 免疫来自敌人的所有伤害。\n● 对敌人造成常规伤害。\n● 可以在战斗中建造。"
+	Normal = 上校
+	NormalTip = "● 敌人造成的伤害数值正常。\n● 对敌人造成常规伤害。"
+	VeryHard = 元帅
+	VeryHardTip = "● 敌人造成的伤害增加 40%。\n● 对敌人造成的伤害减少 30%。"
+}
+CommWindow
+{
+	
+	AcceptMission = 接受
+	AcceptMissionTip = 接受这项任务并将其加入任务日志，达成目标后便可获得奖励。
+	AutoHireFmt = "最多雇佣（{0}）\n{1}"
+	AutoHireNone = "最多雇佣（0）\n<img name='money' colored='true'/>0"
+	Balance = 总计
+	Beds = 床位
+	BuyCapacity = 购买至容量上限
+	BuyCapacityTip = 购买资源，填充满所有指定的储存单元。
+	BuyHeader = 购买
+	BuyTechFmt = "解锁\n{0}"
+	CancelTrade = 取消交易
+	ConfirmDecline = 确定要永远拒绝这个任务吗？如此会无法获得奖励，且此操作只能通过加载先前保存的游戏来撤销。
+	Crew = 船员
+	DeclineMission = 拒绝
+	DeclineMissionTip = 拒绝这项任务，再也无法获得完成任务的奖励。
+	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n{2}上有 {1} <b>人</b>想成为你的船员。\n提高<fame>名望</fame>后可劝说更多人加入。</s12>"
+	Hire = 雇佣
+	HireCrew = 雇佣船员
+	InitiateTrade = 发起交易
+	InsufficientBeds = 星舰上的床位已满。建造更多船员宿舍后才能雇佣更多船员。
+	InsufficientFame = 提高<fame>名望</fame>便可劝说此人成为船员。
+	InsufficientFunds = 资金不足
+	Missions = 任务板
+	NoMissions = "无任务\n可接"
+	NoPathToBed = 因为没有通往空床位的路径而无法雇佣船员。请确保所有卧室都设有门和通往气闸的路径。
+	PendingMissionRewards = 待领奖励
+	PrerequisitesFmt = "需要：{0}"
+	ReceivePayment = 接收奖励
+	ReceivePaymentTip = 接收该任务的待领奖励，并在任务日志中将其标记为完成。
+	RehireDebtFmt = "雇佣替代船员将花费<ins_money>{0:n0}</ins_money>，但您只有<money>{1:n0}</money>。可以选择举债雇佣船员，但在赤字期间多数采购将无法进行，直到还清债务。"
+	Reset = 重置
+	SellExcess = 出售盈余
+	SellExcessTip = 卖出所有超出指定储存单元容纳量的资源。
+	SellHeader = 出售
+	ShipsTooFar = "星舰相距太远\n无法转移"
+	Techs = 购买蓝图
+	TechsInfo = 购买星舰的部件蓝图，永久解锁其建造权。
+	Trade = 交易
+	TradeInProgress = "<s24><good>交易正在进行中</good></s24>\n<s12><gray>可以关闭此窗口\n且不会中断交易。</gray></s12>"
+	UpdateTrade = 更新交易
+}
+CommsBox
+{
+	
+	DistFmt = "{0:0.00}公里"
+	Hail = 呼叫
+	HailingFailedFmt = "<bad>呼叫被拒</bad>\n{0}"
+	HailingFmt = "<good>呼叫中……</good>\n{0}"
+	IffAlly = 若有且仅限：<ally>我方</ally>
+	IffEnemy = 若有且仅限：<enemy>敌方</enemy>
+	IffNeutral = 若有且仅限：<neutral_bright>中立</neutral_bright>
+	IffPlayer = 若有且仅限：<player>自有</player>
+	NoShips = "呼叫范围内\n没有星舰"
+	Title = 通信
+}
+ConstructionLegality
+{
+	
+	IllegalInCombat = 在战斗中不能改装或修理星舰。
+	IllegalOutsideSpawnArea = 在生成区外不能改装或修理星舰。
+	IllegalSelfDestructing = 无法改装或修理正在自毁的星舰。
+	IllegalUnknown = 目前无法改装或修理这艘星舰。
+}
+CreativeMode
+{
+	
+	AddConnectionHover = "按住 <btn id='Game.UseTool'/> 拖动，即可在两个星系之间建立超空间跳跃连接。"
+	Ai
+	{
+		
+		None = 无
+		TipFmt = "将“{0}”AI 分配给选定的星舰。"
+		Title = AI
+	}
+	Allegiance
+	{
+		
+		Barbarian = 海贼
+		BarbarianTip = “海贼”星舰和其他星舰都是敌人，包括海贼星舰，但废弃星舰除外。
+		Junk = 废舰
+		JunkTip = 废弃星舰不与任何星舰为敌，但可能会遮挡射界遭到击毁。
+		Neutral = 中立
+		NeutralTip = 中立的星舰与其他星舰都是朋友，海贼除外。
+		PlayerIndexFmt = "玩家 {0}"
+		PlayerIndexTipFmt = "将所选星舰的阵营设置给玩家{0}。"
+		Title = 阵营
+	}
+	AutoBuilder: CameraHelper
+	{
+		
+		BottomToTop = 从下到上
+		BuildOrder = 建造顺序
+		Cheap = 优先最便宜
+		DepthFirst = 优先深度
+		Expensive = 优先最昂贵
+		Farthest = 优先最远
+		Inner = 优先内部
+		LeftToRight = 从左到右
+		Nearest = 优先最近
+		Outer = 优先外部
+		PerlinNoise = 柏林噪声
+		Random = 随机
+		RightToLeft = 从右到左
+		SelfDestruct = 自毁
+		SelfDestructAllParts = 自毁所有部件
+		SelfDestructDelay = 自毁延迟：
+		SelfDestructDuration = 自毁持续时间：
+		SetStartingPart = 设置起始部件
+		StartingPartFmt = "起始部件：{0}"
+		Title = 自动建造工具
+		TopToBottom = 从上到下
+	}
+	BattleHelper
+	{
+		
+		AI = AI
+		AddShip = 添加星舰
+		AutoCamera = 自动镜头
+		AutoCameraLbl = "（按 <btn id='CreativeMode.AutoBattleCamera'/> 可开/关自动视角转换）"
+		Clear = 清除玩家
+		Go = 前进四！
+		Player1 = "玩家 1"
+		Player2 = "玩家 2"
+		PlayerDistance = "玩家距离： "
+		Reset = 重启战斗
+		ResetSwap = "重启\n+交换"
+		ShipDistance = "同一舰队中星舰的距离： "
+		ShipFmt = " {0} （{1} {2} 船员）"
+		SpawnBlocked = 至少有一艘星舰或一块碎片挡住了星舰的生成。要移除它们吗？
+		Title = 战斗助手
+	}
+	BenchmarkHelper
+	{
+		
+		Duration = 持续时间
+		FpsFmt = "帧/秒：{0:.0}"
+		FramesFmt = "帧数：{0}"
+		FullThrottle = 全速前进
+		GoWhenUnpaused = 取消暂停后前进
+		Start = 前进
+		Stop = 停止
+		TicksFmt = "运行节拍：{0}"
+		TimeFmt = "时间：{0:.00}"
+		Title = 对比助手
+		TpsFmt = "运行节拍/秒：{0:.0}"
+	}
+	CameraHelper
+	{
+		
+		Buffer = 缓冲（米）
+		Delay = 延迟：
+		Duration = 持续时间：
+		EndFmt = "终点：X={0:.0}，Y={1:.0}，R={2:0}°，Z={3:.0}"
+		EndNone = 终点：未设定
+		FrameSelectedShips = 框定选中星舰
+		FrameShips = 框定星舰
+		FramedShipsFmt = "框定的星舰：{0}"
+		GoWhenUnpaused = 取消暂停后前进
+		Mode = 模式
+		PanAndZoom = 平移和缩放
+		PanSpeed = 镜头移动速度
+		Set = 设定
+		Start = 前进
+		StartFmt = "起点：X={0:.0}，Y={1:.0}，R={2:0}°，Z={3:.0}"
+		StartNone = 起点：未设定
+		Stop = 停止
+		Title = 镜头助手
+		ToggleInteriorDelay = 距切换内装显示还有：
+		Tween = 补间：
+		TweenMode
+		{
+			
+			EaseIn = 淡入
+			EaseInOut = 淡入/淡出
+			EaseOut = 淡出
+			Linear = 线性
+		}
+		View = 视图
+		ZoomSpeed = 缩放速度
+	}
+	ClearDebris = 清除碎片
+	ClearDebrisConfirm = 此操作将删除所有没有控制室或没有船员的星舰，以及所有漂浮在太空中的资源。此操作不可撤销。
+	ClearEverything = 清除所有
+	ClearEverythingConfirm = 确定要删除游戏中所有的星舰和物件吗？此操作不可撤销。
+	ClearProjectiles = 清除武器炮弹
+	ClearProjectilesConfirm = 此操作将删除所有飞行中的武器炮弹。此操作不可撤销。
+	ConfirmPartDestruct = 是否摧毁所选择的部件？该操作不可逆，且可能会造成额外的附带损害！
+	ConfirmRemoveObject = 从游戏中删除选定的星舰和/或物体？此操作不能撤销。
+	DeleteConnectionHover = "按 <btn id='Game.UseTool'/> 删除突出显示的超空间跳跃连接。"
+	DestructionDropsResources = 星舰被毁会掉落资源
+	Doodads = 各种物件
+	DoodadsTip = "<b>各种物件</b>\n\n浏览各种非星舰的“杂物”，并将其生成。"
+	EditConnectionsTip = "<b>编辑超空间跳跃连接</b>\n\n添加或删除恒星系之间的超空间跳跃连接。"
+	EditNodeDeleteConfirmFmt = "确定要删除<b><u>{0}</u></b>吗？该操作将删除该星系和其中的所有内容！此操作不可撤销。"
+	EditNodeDeleteCurNode = 无法删除当前恒星系。请先切换或超空间跳跃到另一个恒星系再删除它。
+	EditNodeHover = "按 <btn id='Game.UseTool'/> 并拖动可以移动。\n按 <btn id='CreativeMode.RenameNode'/> 可重命名。\n按 <btn id='CreativeMode.SetNodeFaction'/> 可以将派系更改为{0}。\n按 <btn id='CreativeMode.DeleteNode'/> 可以删除。"
+	EditNodeNew = "<btn id='Game.UseTool'/>在这里创建一个新的星系。\n（按住 <btn id='CreativeMode.NoDefaultConnections'/> 可禁用自动连接。）"
+	EditNodesTip = "<b>编辑银河系</b>\n\n在银河系地图上创建、移动和删除整个星系。\n\n<btn id='General.UIAltClick'/> 可改变派系。"
+	FogOfWar = 战争迷雾
+	FreeBuild = 自由建造模式
+	FriendlyFire = 友军误伤
+	FtlGateConnectionFmt = "超空间跳跃中继到<b>{0}</b>。\n（按 <btn id='CreativeMode.RotateFtlGate'/>可改变目的地。）"
+	GotoNode = "<btn id='General.UIClick'/> 可查看这个星系。"
+	GotoNodeVoteFmt = "{0}想查看<b>{1}</b>星系。这将把所有玩家转移到该星系。（必须全部投票通过）"
+	IllegalShipWarning = 这艘星舰的设计不合规。确定要使用它吗？
+	Invulnerable = 无敌
+	InvulnerableTip = 如果勾选，该星舰将免疫所有伤害。
+	POIConfig
+	{
+		
+		CustomName = 自定义名称
+		ShowOnlyInFog = 仅在迷雾中显示
+		Title = 兴趣点选项
+		Undiscovered = 未发现
+	}
+	PartDestruct = 自毁
+	PartDestructOkay = 给我摧毁！！
+	PartDestructTip = 摧毁所选的部件。
+	PlanetConfig
+	{
+		
+		Distance = 距离
+		Random = 随机
+		Seed = 种子
+		Style = 风格
+		Title = 恒星物体选项
+	}
+	PlayAs
+	{
+		
+		AllPlayers = 所有玩家
+		AllPlayersTipFmt = "使你能够控制所有玩家的星舰。\n\n新放置的星舰将被交给玩家 1。"
+		PlayerIndexFmt = "玩家 {0}"
+		PlayerIndexTipFmt = "使你能够控制玩家{0}的星舰。\n\n新放置的星舰将被交给玩家{0}。"
+		Tip = 更改你控制的玩家。
+		Title = 游戏身份……
+	}
+	ReleaseConnectionHover = 放开即可在两个星系之间建立超空间跳跃连接。
+	RemoveObjectOkay = 移除
+	RemoveShip = 移除
+	RemoveShipTip = "从游戏中删除选定的星舰。\n\n热键：<btn id='CreativeMode.Delete'/>\n按住 <btn id='General.SuppressConfirmation'/> 可取消确认。"
+	RenameNode = 输入该星系的名称：
+	ResetCrew = 重置船员
+	ResetCrewTip = 将所有船员传送回最初的空间站。
+	SavedShips
+	{
+		
+		CrewCountFmt = "{0} 名船员"
+	}
+	SelectObjectsTip = "<b>选择工具</b>\n\n选择、移动、旋转和删除星舰等对象。\n\n热键：<btn id='CreativeMode.SelectTool'/>"
+	SetBackground
+	{
+		
+		Tip = 改变太空背景的外观。
+		Title = 更改背景……
+	}
+	ShipLibrary = 星舰库
+	ShipLibraryTip = "<b>星舰库</b>\n\n浏览先前保存的星舰设计库并生成星舰。"
+}
+CreativeModeConfig
+{
+	
+	Description = 信用点无限且蓝图全部解锁。
+	GenerateFtlGates = 创建超空间跳跃中继站
+	GenerateFtlGatesTip = 如果勾选，将在相邻星系自动添加超空间跳跃中继站。
+	GeneratePlanets = 创建恒星、行星与卫星
+	GeneratePlanetsTip = 如果勾选，将在所有星系中自动添加恒星、行星与卫星。
+	LoadGame = 加载游戏
+	MapSize = 银河系规模
+	MapSizeTip = 银河系地图中恒星系的大致数量。
+	MaxPlayers = 玩家
+	MaxPlayersTip = 包括房主在内，可以加入该游戏的最大人数。
+	Name = 创意
+}
+CrewAndResourceTransfer
+{
+	
+	CancelTransfer = 取消转移
+	Crew = 船员
+	CrewFailure = 部分选定船员无法被转移。通常是由于没有气闸可供他们前往新星舰的。
+	InitiateTransfer = 启用转移
+	Reset = 重置
+	ResourceFailure = 部分选定资源无法被转移。通常是由于没有气闸可供船员将资源转移至新星舰的。
+	RestockResourcesDisabledTip = 星舰资源已达上限
+	RestockResourcesLeft = 资源转移至左舰
+	RestockResourcesRight = 资源转移至右舰
+	RestockResourcesTip = 两舰之间转移资源至上限
+	ShipsTooFar = "星舰相距太远\n无法转移"
+	Title = 转移船员/资源
+}
+CrewBox
+{
+	
+	AddCrew = 添加更多船员……
+	AddRole = 新岗位
+	AddRoleDisabledTip = 岗位数已达上限。
+	AddRoleTip = 添加新的船员岗位，其服装颜色和工作优先级独立。
+	AddTargetLineTip = "<color r='50' g='149' b='255'>添加班组命令\n（<btn id='Game.Command'/>）</color>"
+	AssignSource = "<good>分配到班组（<btn id='Game.Command'/>）</good>。"
+	CantDeleteRoleTip = 星舰内必须至少设置一个岗位。
+	ClearAllSquadTargets = 清除所有班组命令
+	ClearAllSquadTargetsTip = 清除整艘星舰的所有班组命令。
+	ClearTargetsTip = 移除所选区域中的所有班组命令。
+	Copy = 复制岗位
+	CopyRoles = 复制岗位
+	DeleteRole = 删除岗位
+	Duplicate = 生成副本
+	EditRole = 编辑岗位
+	HireCrewDialogFmt = "是否为 {1} 雇佣 <b>{0} 名船员</b>？"
+	LoadDefaultRoles = 加载默认岗位
+	LoadRoles = 加载星舰岗位
+	LoadRolesTip = 加载先前保存在星舰文件中的船员岗位。
+	MirrorToggleTip = "<b>镜像模式</b>\n\n启用后，星舰的班组变更将沿其中轴线进行镜像映射。\n\n热键：<btn id='Design.ToggleMirrorMode'/>\n\n<btn id='General.UIAltClick'/>可修改镜像设置。"
+	NoPathToSource = <bad>无法抵达</bad>
+	NothingToRedo = 无可重做。
+	NothingToUndo = 无可撤销。
+	Paste = 粘贴
+	PasteInfo = 仅替换信息
+	PasteInsertAfter = 在之后插入新岗位
+	PasteInsertBefore = 在之前插入新岗位
+	PastePriorities = 仅替换优先级
+	PasteRole = 替换信息和优先级
+	PasteRoles = 粘贴岗位
+	PasteRolesAdd = 添加至现有岗位
+	PasteRolesReplace = 替代现有岗位
+	Redo = " 重做 "
+	RedoTip = "重做上一次对星舰船员岗位和班组的修改。\n\n热键：<btn id='Design.Redo'/>"
+	RemoveSelected = 解雇所选船员
+	RemoveSelectedConfirmFmt = "确定要解雇所选的 <b>{0}</b> 名船员吗？此操作不可逆且<i>无法</i>退款。"
+	RemoveTargetLineTip = "<regular>取消班组命令\n（<btn id='Game.Command'/>）</regular>"
+	ResetMirrorLines = 重置镜像线
+	ResetMirrorLinesTip = 将水平、垂直镜像线重置到星舰中心。
+	RoleTip = "选择该按钮并点击船员房间后，将指示分配到该房间班组的船员使用该岗位的优先级。\n\n拖放可重新安排，或用<btn id='General.UIAltClick'/>编辑和删除。"
+	Roster = 名册
+	RosterTip = "查看星舰上所有船员的名单。\n\n热键：<btn id='Crew.Roster'/>"
+	SaveDefaultRoles = 另存为默认岗位
+	SaveDefaultRolesTip = 将这些岗位设置为创建新星舰时的默认岗位。
+	SelectCrewTip = "<b>选择工具</b>\n\n点击或拖动方框可选中想要编辑、转移和解雇的船员。\n\n热键：<btn id='Design.SelectionTool'/>"
+	ShowCrewHomes = 显示住所
+	ShowCrewHomesTip = 勾选后，将显示所选船员的住所。
+	ShowCrewPaths = 显示路径
+	ShowCrewPathsTip = 勾选后，将显示所选船员前往目的地时的路径。
+	ShowUnselectedCrewAssignment = 显示未选中船员的任务分配
+	ShowUnselectedCrewAssignmentTip = 如未勾选，则只显示选中或鼠标悬停船员的任务分配。
+	TargetToolTip = "<b>班组命令模式</b>\n\n命令船员班组操作特定的武器和其他星舰系统，并为其提供支持。\n\n热键：<btn id='Crew.TargetTool'/>"
+	Title = 船员管理
+	UndoTip = "撤销上一次对星舰船员岗位和班组的修改。\n\n热键：<btn id='Design.Undo'/>"
+}
+CrewEditor
+{
+	
+	BodyType = 发型
+	Copy = 复制
+	HairColor = 发色
+	IconTip = 点击收藏。
+	Name = 姓名
+	Paste = 粘贴
+	PasteAppearance = 仅粘贴外貌
+	PasteBoth = 粘贴姓名和外貌
+	PasteMsg = 此操作将把该船员的名字和/或外貌用先前复制的相应内容进行替换。此操作不可逆。
+	RandomizeTip = 随机化此船员的姓名和外貌。
+	SkinColor = 肤色
+}
+CrewScarcity
+{
+	
+	Max = 最大
+	MaxTip = "无论玩家的名望如何，最多可雇佣 2000 名船员。这样玩家可以无限地提升战斗力，不必与更强的敌人死磕，游戏将变得更加容易。"
+	Plentiful = 充足
+	PlentifulTip = "根据玩家的名望，可供雇佣的船员将增加 33%，最多可达 2000 人。这样可以为你提供更多在和更强的敌人交战前积累实力的机会，游戏将变得更加容易。"
+	Scarce = 稀少
+	ScarceTip = "根据玩家的名望，可供雇佣的船员将减少 33%，最多 1000 人。这样会削减你在和更强的敌人交战前积累实力的机会，游戏将变得更加困难。"
+	Standard = 标准
+	StandardTip = "根据玩家的名望，可以雇佣标准数量的船员，最多可达 1500 人。"
+}
+DecalGroups
+{
+	
+	Shapes = 形状
+	Symbols = 符号
+	TextLarge = 文本（2x2）
+	TextSmall = 文本（1x1）
+}
+DominationMapStyles
+{
+	
+	Large2T = "2 战队 - 大"
+	Large2TTip = 两支战队、六个小控制点、两个大控制点，一个超大控制点。
+	Large3T = "3 战队 - 大"
+	Large3TTip = 三支战队、九个小控制点、三个大控制点，一个超大控制点。
+	Large4T = "4 战队 - 大"
+	Large4TTip = 四支战队、十二个小控制点、四个大控制点，一个超大控制点。
+	Med2T = "2 战队 - 标准"
+	Med2TTip = 两支战队、四个小控制点，一个大控制点。
+	Med3T = "3 战队 - 标准"
+	Med3TTip = 三支战队、六个小控制点，一个大控制点。
+	Med4T = "4 战队 - 标准"
+	Med4TTip = 四支战队、八个小控制点，一个大控制点。
+	Small2T = "2 战队 - 小"
+	Small2TTip = 两支战队、两个小控制点，一个大控制点。
+	Small3T = "3 战队 - 小"
+	Small3TTip = 三支战队、三个小控制点，一个大控制点。
+	Small4T = "4 战队 - 小"
+	Small4TTip = 四支战队、四个小控制点，一个大控制点。
+}
+DominationMode: Pvp
+{
+	
+	CapturePointFmt = "<b>{0}</b>\n<add_money>{1:n0}</add_money><gray>/{2} 秒</gray>"
+	CapturePointNames
+	[
+		
+		"A 点"
+		"B 点"
+		"C 点"
+		"D 点"
+		"E 点"
+		"F 点"
+		"H 点"
+		"I 点"
+		"J 点"
+		"K 点"
+		"L 点"
+		"M 点"
+		"N 点"
+		"O 点"
+		"P 点"
+		"Q 点"
+		"R 点"
+		"S 点"
+		"T 点"
+		"U 点"
+		"V 点"
+		"W 点"
+		"X 点"
+		"Y 点"
+		"Z 点"
+	]
+	FleetValueFmt = "<s12>舰队价值\n</s12><money_color>{0}</money_color>/<money_color>{1}</money_color>"
+	HomeCircleRequiredTip = 必须在船员自身的生成区内。
+	IncomeFmt = "<add_money>{0:n0}</add_money><gray>/{1} 秒</gray>"
+	NoMissingCrew = 无船员缺失
+	NothingToRestock = 没有需要补给的项目
+	RestockCrewFmt = "重新雇用缺少的船员：{0}"
+	RestockCrewTip = 重新雇用缺少的船员，以可用床位数为限。
+	RestockResourcesFmt = "资源补给：{0}"
+	RestockResourcesTip = 补满本星舰的弹药与资源。
+	Scoreboard: ^/0/Scoreboard
+	{
+		
+		CapturePoints = 控制点数
+		Credits = 信用点
+		CurrentIncome = 当前收入
+		FleetValue = 舰队价值
+		TotalIncome = 总收入
+	}
+	TimeRemainingTip = 距离游戏结束、伤害分最高的战队获胜所剩的时间。
+}
+DominationModeConfig: PvpModeConfig
+{
+	
+	BasicIncome = 基础收入
+	BasicIncomeTip = "战队除控制点外每 10 秒（以 1/2 的速度）获得的信用点数（<img name='money' colored='true'/>）。"
+	CapturePointIncome = 控制点收入
+	CapturePointIncomeTip = "小规模控制点每 10 秒（以 1/2 的速度）所产生的信用点数（<img name='money' colored='true'/>）。"
+	Description = 占领控制点，用赚得的信用点获取新的星舰。占领所有控制点就能取得胜利！
+	Funds = 起始信用点
+	FundsTip = "比赛开始时每个战队所拥有的起始信用点数（<img name='money' colored='true'/>）。"
+	MapStyle = 地图类型
+	MapStyleTip = 设置地图大小和支持的战队数量。
+	MaxFleetValue = 最高舰队价值
+	MaxFleetValueTip = 战队所拥有舰队在任何情况下的最大总价值。
+	MinShipValue = 最低星舰价值
+	MinShipValueTip = 战斗中可购买任意星舰的最低价值。
+	Name = 统治赛
+	Rulesets
+	{
+		
+		Large1500K = "大地图 - 1.5M"
+		Large1500KShort = "大图\n1.5M"
+		Large3000K = "大地图 - 3M"
+		Large3000KShort = "大图\n3M"
+		Large500K = "大地图 - 500K"
+		Large500KShort = "大图\n500K"
+		Med1500K = "标准地图 - 1.5M"
+		Med1500KShort = "标图\n1.5M"
+		Med3000K = "标准地图 - 3M"
+		Med3000KShort = "标图\n3M"
+		Med500K = "标准地图 - 500K"
+		Med500KShort = "标图\n500K"
+		Small1500K = "小地图 - 1.5M"
+		Small1500KShort = "小图\n1.5M"
+		Small3000K = "小地图 - 3M"
+		Small3000KShort = "小图\n3M"
+		Small500K = "小地图 - 500K"
+		Small500KShort = "小图\n500K"
+	}
+	StartingFundsFmt = "<s14>起始信用点：</s14> <money>{0:n0}</money>"
+	StartingFundsTip = "该玩家在战斗开始时可用于购买星舰的信用点数（<img name='money' colored='true'/>）。"
+	TimeLimitTip = 游戏经过此时间后，由控制点最多的战队获得胜利。
+}
+Doodads
+{
+	
+	AsteroidCarbon_L = 碳矿小行星（L）
+	AsteroidCarbon_M = 碳矿小行星（M）
+	AsteroidCarbon_S = 碳矿小行星（S）
+	AsteroidCarbon_XL = 碳矿小行星（XL）
+	AsteroidCarbon_XXL = 碳矿小行星（XXL）
+	AsteroidCopper_L = 铜矿小行星（L）
+	AsteroidCopper_M = 铜矿小行星（M）
+	AsteroidCopper_S = 铜矿小行星（S）
+	AsteroidCopper_XL = 铜矿小行星（XL）
+	AsteroidCopper_XXL = 铜矿小行星（XXL）
+	AsteroidGold_L = 金矿小行星（L）
+	AsteroidGold_M = 金矿小行星（M）
+	AsteroidGold_S = 金矿小行星（S）
+	AsteroidGold_XL = 金矿小行星（XL）
+	AsteroidGold_XXL = 金矿小行星（XXL）
+	AsteroidHyperium_L = 超光素小行星（L）
+	AsteroidHyperium_M = 超光素小行星（M）
+	AsteroidHyperium_S = 超光素小行星（S）
+	AsteroidHyperium_XL = 超光素小行星（XL）
+	AsteroidHyperium_XXL = 超光素小行星（XXL）
+	AsteroidIron_L = 铁矿小行星（L）
+	AsteroidIron_M = 铁矿小行星（M）
+	AsteroidIron_S = 铁矿小行星（S）
+	AsteroidIron_XL = 铁矿小行星（XL）
+	AsteroidIron_XXL = 铁矿小行星（XXL）
+	AsteroidSulfur_L = 硫磺小行星（L）
+	AsteroidSulfur_M = 硫磺小行星（M）
+	AsteroidSulfur_S = 硫磺小行星（S）
+	AsteroidSulfur_XL = 硫磺小行星（XL）
+	AsteroidSulfur_XXL = 硫磺小行星（XXL）
+	AsteroidTritanium_L = 三钛原矿小行星（L）
+	AsteroidTritanium_M = 三钛原矿小行星（M）
+	AsteroidTritanium_S = 三钛原矿小行星（S）
+	AsteroidTritanium_XL = 三钛原矿小行星（XL）
+	AsteroidTritanium_XXL = 三钛原矿小行星（XXL）
+	AsteroidUranium_L = 铀矿小行星（L）
+	AsteroidUranium_M = 铀矿小行星（M）
+	AsteroidUranium_S = 铀矿小行星（S）
+	AsteroidUranium_XL = 铀矿小行星（XL）
+	AsteroidUranium_XXL = 铀矿小行星（XXL）
+	Asteroid_L = 小行星（L）
+	Asteroid_M = 小行星（M）
+	Asteroid_S = 小行星（S）
+	Asteroid_XL = 小行星（XL）
+	Asteroid_XXL = 小行星（XXL）
+	Asteroids = 小行星
+	Crew = 船员
+	CrewGeneric = 船员
+	FTLBeacon = 超空间跳跃信号站
+	FTLGate = 超空间跳跃中继站
+	Ftl = 超空间
+	Megaroid_L = 大行星（L）
+	Megaroid_XL = 大行星（XL）
+	POI = 兴趣点
+	POIAsteroidField = 小行星带
+	POICustom = 自定义标记
+	POIGraveyard = 星舰残骸带
+	POIRing = 环形区域
+	POITargetArea = 目标区域
+	POIUnknown = 未知信号
+	PlanetAlien = 异星
+	PlanetGas = 气态巨行星（无星环）
+	PlanetGasRinged = 气态巨行星（有星环）
+	PlanetLava = 熔岩
+	PlanetMiniSun = 微型恒星
+	PlanetRocky = 岩质
+	PlanetSand = 沙漠
+	PlanetSun = 恒星
+	PlanetTerra = 类地球
+	PlanetWater = 海洋
+	Planets = 恒星系
+	Resources = 资源
+}
+EconDifficulty
+{
+	
+	Fast = 建造工
+	FastTip = "● 资源掉落率提高 100%。\n● 金钱奖励提高 100%。\n● 名声/声誉奖励提高 50%。"
+	FreeBuild = 狂想者（自由建造）
+	FreeBuildTip = "● 可以随时随地建造，无需信用点或资源。\n● 常规资源掉落率。\n● 常规金钱奖励。\n● 常规名望/声誉奖励。"
+	Normal = 设计师
+	NormalTip = "● 常规资源掉落率。\n● 常规金钱奖励。\n● 常规名望/声誉奖励。"
+	Slow = 造星人
+	SlowTip = "● 资源掉落率降低 50%。\n● 金钱奖励降低 50%。\n● 名望/声誉奖励降低 25%。"
+}
+EditorGroups
+{
+	
+	Crew = 船员
+	Defenses = 防御
+	Flight = 飞行
+	None = 无
+	Power = 能源
+	Production = 生产
+	ResourcesCommon = 常见资源
+	ResourcesRare = 稀有资源
+	Rock = 基本岩石
+	Storage = 储存
+	Structure = 结构
+	Utilities = 设施
+	WeaponsEnergy = 能量武器
+	WeaponsProjectile = 实弹武器
+}
+EliminationMode: Pvp
+{
+	
+	Scoreboard: ^/0/Scoreboard
+	{
+		
+		Health = 血量
+	}
+	TeamStrengthTip = 此玩家或战队的剩余战力。如果此槽为空，该战队战败。
+	TimeRemainingTip = 距离游戏结束或死亡之环完全收缩所剩的时间。
+}
+EliminationModeConfig: PvpModeConfig
+{
+	
+	Description = 一场生死之战！最后存活的玩家或战队获胜！
+	Name = 淘汰赛
+	Rulesets
+	{
+		
+		BR1500K = "大逃杀 - 1.5M"
+		BR1500KShort = "大逃杀\n1.5M"
+		BR3000K = "大逃杀 - 3M"
+		BR3000KShort = "大逃杀\n3M"
+		BR500K = "大逃杀 - 500K"
+		BR500KShort = "大逃杀\n500K"
+		TVT1500K = "战队vs战队 - 1.5M"
+		TVT1500KShort = "战队赛\n1.5M"
+		TVT3000K = "战队vs战队 - 3M"
+		TVT3000KShort = "战队赛\n1.5M"
+		TVT500K = "战队vs战队 - 500K"
+		TVT500KShort = "战队赛\n500K"
+	}
+	TimeLimitTip = 游戏经过此时间后，由余下战队中战力最高的获得胜利。
+}
+Errors
+{
+	
+	GpuCrash = 图形驱动程序似乎崩溃了。如果问题无改善，请尝试更新图形驱动；或者，如果你最近更新过驱动，请降级到以前的版本。
+	HasMods = "有 Mod 在启用中。此次崩溃可能由 Mod 引起。\n请向 Mod 作者反馈该问题。"
+}
+Factions
+{
+	
+	Cabal = 拜日教
+	Fringe = 边缘星系抵抗军
+	Imperium = 半人马座帝国
+	Monolith = 巨石合作社
+	None = 无
+}
+FameTitles
+[
+	
+	“不为人知”
+	“默默无闻”
+	“不甚起眼”
+	“无足轻重”
+	“略有名气”
+	“小有名望”
+	“广受认可”
+	“惹人注目”
+	“尊贵显赫”
+	“贡献突出”
+	“备受追捧”
+	“颇有威望”
+	“受人爱戴”
+	“声名远播”
+	“名扬四海”
+	“闻名遐迩”
+	“威镇寰宇”
+	“比肩传说”
+	“星海传奇”
+]
+Feedback
+{
+	
+	AttachErrorLog = 附加错误日志
+	AttachErrorLogTip = "附上程序的错误日志。这将方便我们修复 bug。"
+	AttachSavedGame = 附上当前游戏的存档
+	AttachSavedGameTip = "创建一个当前游戏的存档，并将其附加到反馈中。这将方便我们修复 bug。"
+	AttachScreenshot = 附加截图
+	AttachScreenshotTip = "截取游戏画面，并将其附在反馈中。该截图需要包括你目前看到的所有内容，除了“发送反馈”窗口。这将方便我们修复 bug。"
+	ConfirmNoEmail = 如果不输入电子邮件地址，那么我们将没有办法回复信息。真的要在不留下电子邮件地址的情况下发送信息吗？（我们不会将你的电子邮件用于回复你的信息以外的任何用途）
+	Desc = "请尽可能详细地描述你的反馈或 bug 报告。"
+	Email = 电子邮件地址（选填）：
+	EmailTip = "提供您的电子邮件地址将使我们能够答复您，以便我们能够获得有关您的反馈或 bug 报告的更多细节。"
+	Error = 发送反馈信息时出现了错误。
+	Hint = "提示：你可以在任何时候按 <btn id='General.SubmitFeedback'/> 来发送反馈。"
+	SendAnyway = 仍然发送
+	Sending = 发送反馈信息……
+	Submit = 提交反馈
+	Title = 发送反馈
+}
+FleetsWorkshop: Workshop
+{
+	
+	DialogName = 创意工坊星舰系列加载器
+	Folder = 星舰系列文件夹：
+	Name = 星舰系列名称：
+	UpdatingExisting = <good>更新现有系列：</good>
+	UploadSuccessful = 上传成功！点击“确认”在创意工坊中查看你的星舰系列。如果这是第一次通过创意工坊上传，那么还需要接受创意工坊的法律协议，然后才能让其他玩家看到。
+	Warning = "<bad>警告：</bad>此文件夹及其所有子文件夹的全部内容将被上传到 Steam Workshop。请勿在其中放置任何你不希望或没有权利公开的文件。"
+}
+Formations
+{
+	
+	A = ""
+	Alpha = "A 编队"
+	B = ""
+	Bravo = "B 编队"
+	C = ""
+	CancelTip = 取消现有编队。
+	Charlie = "C 编队"
+	Claw = 爪形编队
+	CustomFormationsTip = 自定义编队
+	D = ""
+	Delete = 删除
+	DeleteTip = 删除保存在此栏位中的自定义编队。
+	Delta = "D 编队"
+	E = ""
+	Echo = "E 编队"
+	F = ""
+	Foxtrot = "F 编队"
+	G = ""
+	Gamma = "G 编队"
+	Line = 线形编队
+	NameHotkeyTipFmt = "<b>{0}</b>\n\n热键：<b>{1}</b>"
+	NameTipFmt = ""
+	Save = 保存
+	SaveTip = 将自定义编队保存到该栏位中。
+	Wedge = 楔形编队
+}
+GalaxyMap
+{
+	
+	CancelJump = 取消超空间跳跃
+	CantPlotCourseTip = 你必须至少有一艘搭载正常运转超空间驱动器的星舰。
+	InsufficientFuel = "麾下一些星舰的<u>超空间驱动器</u>中缺少超光素（<img name='resource.hyperium'/>），无法跳跃到这个星系。仍要规划路线吗？"
+	JumpDistanceFmt = "{0:0.0} 光年"
+	JumpFuelFmt = ""
+	Loading = 正在加载……
+	PlotCourse = 规划超空间跳跃
+	PlotCourseTip = "规划前往另一个星系的超空间跳跃路线。\n\n热键：<btn id='Game.MapFtlJump'/>"
+	TotalFuelCostFmt = "总计：{0}"
+}
+GameLaunchFlow
+{
+	
+	ClientInitializing = "正在启动游戏……\n（初始化）"
+	ClientReceivingFmt = "正在启动游戏……\n（数据接收中：{0:0}%）"
+	ClientStarting = 正在启动游戏！
+	ClientWaiting = "正在启动游戏……\n（等待其他玩家）"
+	HostInitializing = "正在启动游戏……\n（初始化）"
+	HostSendingFmt = "正在启动游戏……\n（数据传输中：{0:0}%）"
+	HostStarting = 正在启动游戏！
+	HostWaiting = "正在启动游戏……\n（等待其他玩家）"
+}
+GameMenu
+{
+	
+	Abort = 返回设置
+	CantSaveGameTip = 游戏目前无法保存。
+	Codex = 教程和百科
+	CodexTip = 查看教程和故事背景百科。
+	ConfirmLoadGame = 是否加载游戏存档？当前游戏中未保存的进度将会丢失。
+	ConfirmNewGame = 是否开始新游戏？当前游戏中未保存的进度将会丢失。
+	ConfirmQuit = 是否退出游戏？未保存的进度将会丢失。
+	ConfirmQuitClient = 是否离开此多人游戏？其他玩家仍可以继续游戏。
+	ConfirmQuitHost = 是否取消此多人游戏？因为你是主机，所有玩家的游戏都会被取消。
+	Feedback = 发送反馈
+	FeedbackTip = 向游戏开发者发送反馈。
+	LoadGame = 加载游戏
+	LoadgameTip = 从文件加载游戏进度。
+	NewGame = 新游戏
+	NewGameTip = 从头开始新游戏。
+	Quit = 退出游戏
+	QuitTip = 退出当前正在进行的游戏。
+	QuitToDesktop = 退出到桌面
+	QuitToMenu = 退出到菜单
+	Resume = 继续
+	ResumeTip = 关闭此菜单。
+	SaveGame = 保存游戏
+	SaveGameTip = 将当前游戏进度保存到文件中。
+	Settings = 设置
+	SettingsTip = 调整各种游戏设置。
+}
+GameResyncFlow
+{
+	
+	ClientInitializing = "游戏未同步，正在重新同步……\n（初始化）"
+	ClientReceivingFmt = "游戏未同步，正在重新同步……\n（正在接收游戏状态：{0:0}%）"
+	ClientResuming = 即将回到游戏！
+	ClientWaiting = "游戏未同步，正在重新同步……\n（正在等待其他玩家）"
+	HostInitializing = "游戏未同步，正在重新同步……\n（初始化）"
+	HostResuming = 正在回到游戏！
+	HostSaving = "游戏未同步，正在重新同步……\n（正在保存游戏状态）"
+	HostSendingFmt = "游戏未同步，正在重新同步……\n（正在传输游戏状态：{0:0}%）"
+	HostWaiting = "游戏未同步，正在重新同步……\n（等待其他玩家）"
+}
+GameSetupScreen
+{
+	
+	AddAI = "添加 AI 玩家"
+	AddShip = ""
+	AddShipTip = 将一艘舰船添加进舰队。
+	AdvancedRules = 高级游戏规则
+	BanConfirmHost = 确定要将此玩家踢出游戏并禁止其加入你主持的任何游戏？
+	BanPlayerClient = 拉黑
+	BanPlayerHost = 踢出并拉黑
+	CancelConfirm = 确定要取消此游戏吗？你和游戏中的所有玩家都将返回大厅。
+	CancelCountdown = 取消倒计时
+	CancelCountdownTip = "停止 15 秒倒计时。"
+	CancelGame = 取消游戏
+	CancelReady = 取消准备
+	CancelReadyTip = 在你再次点击“准备”前，游戏无法开始。
+	CannotSelectGameMode = 当前类型大厅中无法选择该游戏模式。
+	CantReadyTip = 舰队中需要至少一艘星舰。
+	CantStartCountdownTip = 舰队中需要至少一艘星舰。
+	CantStartOthersNotReadyTip = 所有玩家准备后游戏才能开始。
+	CantStartTip = 舰队中需要至少一艘星舰。
+	ChangeGameName = 更改名称
+	ChangeGameNameMsg = 输入此次游戏的新名称：
+	CountdownFmt = "<s12>启动倒计时……\n</s12><s28><good>{0}</good></s28>"
+	FundsRemainingFmt = ""
+	FundsRemainingTip = "该玩家目前可用的信用点（<img name='money' colored='true'/>）数量。"
+	GameChat = 游戏聊天
+	GameClosed = "游戏已<bad>关闭</bad>\n<s12>其他玩家无法加入。</s12>"
+	GameMode = 游戏模式
+	GameModeTip = 多人游戏的游玩模式。
+	GameOpen = "游戏已<good>开启</good>\n<s12>如果人数未满，其他玩家可以加入。</s12>"
+	HostDisconnectReason
+	{
+		
+		Canceled = 主机已取消游戏。
+		ConnectionLost = 与主机失去连接。
+		Kicked = 主机已将你踢出游戏。
+	}
+	InsFundsRemainingFmt = ""
+	InvalidShip = 该舰船设计在当前游戏设置下无效或不合规。
+	JoinTeam = 加入
+	KickPlayer = 踢出玩家
+	LeaveConfirm = 确定要离开此游戏？
+	LeaveGame = 离开游戏
+	LobbyChat = 大厅聊天
+	MatchResults = 匹配结果
+	ModsEnabledMsg = "你启用了一个或多个 Mod。其他玩家只有在启用完全相同的 Mod 时才能加入你的游戏。"
+	Observers = 观战
+	Password = 密码
+	PasswordTip = 若有密码，则其他玩家必须输入密码才能加入游戏。
+	PlayerDisconnectedFmt = "{0} 已断开连接。"
+	PlayerIsAI = "<good>AI 玩家</good>"
+	PlayerIsHost = <good>主机</good>
+	PlayerIsNotReady = <bad>未准备</bad>
+	PlayerIsReady = <good>准备</good>
+	PlayerJoinedFmt = "{0} 已加入游戏。"
+	PlayerKickedFmt = "{0} 已被主机踢出。"
+	PlayerLeftFmt = "{0} 已离开游戏。"
+	PlayerYouFmt = "{0} <color r='255' g='255' b='255' a='127'>（你）</color>"
+	Players = 玩家
+	PlayersFmt = "{0}/{1} 玩家"
+	Ready = 准备
+	ReadyTip = 让其他玩家看到你已做好准备！所有玩家准备就绪之后游戏才能开始。
+	RemoveAIPlayer = "移除 AI 玩家"
+	RemoveShipTip = 将此舰船移出舰队。
+	Start = 启动游戏
+	StartCountdown = 开始倒计时
+	StartCountdownTip = "开始 15 秒倒计时，无论玩家是否准备就绪，倒计时结束后游戏都将开始。若玩家无有效舰队，则只能观战，无法加入游戏。"
+	StartTip = 开始游戏！
+	TeamFmt = "{0}战队"
+}
+Hud
+{
+	
+	AbandonShip = 放弃星舰
+	AbandonShipTip = 指示所有船员尽快离开星舰。
+	AttackTip = "<b>攻击</b>\n\n攻击另一艘星舰。也可攻击自己的星舰。（按住 <btn id='Game.InvertCollisionAvoidance'/> 可开/关防撞功能。）\n\n热键：<btn id='Game.Attack'/>"
+	AutoThrustOffTip = "<b>自动开火助力：<bad>关</bad></b>\n\n热键：<btn id='Game.ToggleAutoThrust'/>"
+	AutoThrustOnTip = "<b>自动开火助力：<good>开</good></b>\n\n热键：<btn id='Game.ToggleAutoThrust'/>"
+	BuildTip = "<b>建造/修理</b>\n\n修改星舰设计或修理之。\n\n热键：<btn id='Design.BuildOpen'/>"
+	CancelPartSelectTip = "取消部件控制并返回星舰控制。\n\n热键：<btn id='General.Cancel'/>"
+	CancelTargetTip = "取消武器瞄准。\n\n热键：<btn id='Game.CancelWeaponTargets'/>"
+	CantSaveDefaultsTip = 必须先使用星舰攻击过，才能保存其默认的攻击距离、方向和角度。
+	ClickToEdit = 点击编辑该星舰的名称、设计师和描述。
+	ClickToFocus = "点击聚焦。\n\n热键：<btn id='View.FocusSelected'/>"
+	ClickToSelect = 点击选择。
+	ConfirmAbandonShip = 确定要放弃所选的星舰吗？
+	ConfirmSelfDestruct = 是否摧毁所选星舰？此操作不可逆！
+	ConstructionBlockedTip = 有其他物体位于建造区域，建造无法继续。
+	CrewEvaFmt = "<s16><bad>{0}</bad></s16>\n<s12><gray>舱外活动</gray></s12>"
+	CrewEvaTip = 目前在星舰外的船员数量。如果飞离太远，将会与其失去联络。
+	CrewTip = "<b>管理船员</b>\n\n管理星舰的船员编制。\n\n热键：<btn id='Crew.OpenClose'/>"
+	DebtOkay = 陷入赤字
+	DecreaseSpeedTip = "降低游戏速度\n\n热键：<btn id='Game.DecreaseSpeed'/>"
+	DirectControlTip = "<b>直接控制模式</b>\n\n直接控制星舰的飞行和武器。\n\n使用<btn id='Game.DirectControlForward'/>、<btn id='Game.DirectControlRotateLeft'/>、<btn id='Game.DirectControlReverse'/>、<btn id='Game.DirectControlRotateRight'/>、<btn id='Game.DirectControlStrafeLeft'/>和<btn id='Game.DirectControlStrafeRight'/> 操控星舰的飞行。使用鼠标瞄准和开火。\n\n热键：<btn id='Game.DirectControlToggle'/>"
+	DisableAll = 全部禁用
+	DisplayAllShips = 玩家全部星舰
+	DisplaySelectedShips = 仅选定星舰
+	DisplayShips = 显示
+	DistFmt = "{0:0.00}公里"
+	EditShipInfo = 编辑星舰名称/信息
+	EditShipInfoTip = 编辑星舰的名称、设计师和描述。
+	EnableAll = 全部启用
+	FameTip = 名望
+	FlightDirection = 飞行方向
+	FormationOrder = 编队顺序
+	FormationOrderFmt = ""
+	FormationTip = "<b>编队</b>\n\n将星舰组成一个飞行编队。"
+	FtlCancelJump = 取消
+	FtlCancelJumpTip = "所有星舰关闭超空间驱动，跃迁将被取消。\n\n热键：<btn id='Game.CancelFtlJump'/>"
+	FtlDoJumpFmt = "接战<s2>\n\n</s2>{0}"
+	FtlDoJumpTip = "所有<good>待命</good>的星舰都会跃迁进目标区域。\n\n热键：<btn id='Game.DoFtlJump'/>"
+	FtlGateFmt = "超空间跳跃至{0}"
+	FtlGuiTitle = 正在启动超空间驱动……
+	FtlJumpTip = "<b>超空间跳跃</b>\n\n快速传送到恒星系内的另一个位置。\n\n热键：<btn id='Game.LocalFtlJump'/>"
+	FtlShipsNotReady = 部分星舰无法进行超空间跳跃。是否继续，并留下无法超空间跳跃的星舰？
+	FtlStatusCanceled = <bad><s12>停留</s12></bad>
+	FtlStatusNeedFuel = <bad><s12>需要燃料</s12></bad>
+	FtlStatusNoFtl = <bad><s12>无动力</s12></bad>
+	FtlStatusPercentFmt = ""
+	FtlStatusReady = <good><s12>待命</s12></good>
+	FtlWaitingCountFmt = "等待{0}玩家接战……"
+	FtlWaitingYou = 等待你的接战……
+	HaltTip = "<b>停止</b>\n\n取消所有当前命令。\n\n热键：<btn id='Game.Halt'/>"
+	HelpsWithConstruction = 辅助建造
+	HelpsWithConstructionTip = 勾选后，选定的星舰会辅助其他附近友方星舰建造、拆除和修理。
+	IncreaseSpeedTip = "提高游戏速度\n\n热键：<btn id='Game.IncreaseSpeed'/>"
+	IndicatorDistFmt = "<s15>{0:0.00}</s15><s12>\n公里</s12>"
+	InteriorTip = "显示星舰内装。\n\n热键：<btn id='View.ToggleInteriors'/>"
+	MapTip = "显示/隐藏星系地图。\n\n热键：<btn id='Game.ToggleMap'/>"
+	MenuTip = "菜单\n\n热键：<btn id='General.Cancel'/>"
+	MiniviewResizerTip = 拖动可调整大小。
+	MoneyTip = 信用点
+	MoveTip = "<b>移动/跟随</b>\n\n移动到特定位置或跟随另一艘星舰。（按住 <btn id='Game.InvertCollisionAvoidance'/> 可开/关防撞功能。）\n\n热键：<btn id='Game.Move'/>"
+	NewShip = "按 <btn id='Game.UseTool'/> 在这里建造一艘新星舰。"
+	NewShipMultipleClassesTip = "<b>建造新星舰</b>\n\n从无到有建造一艘新星舰。<btn id='General.UIAltClick'/>可更改所要创建星舰的级别。"
+	NewShipNearEnemies = <bad>距敌舰太近</bad>
+	NewShipTip = "<b>建造新星舰</b>\n\n从无到有建造一艘新星舰。"
+	NewShipTooFar = <bad>距离太远</bad>
+	NoCommandsToCancel = 没有命令可以取消。
+	NoTargetsToCancel = 没有武器目标可以取消。
+	NuggetCollectAlreadyClaimed = 已被认领
+	NuggetCollectFull = 存储已满
+	NuggetCollectNoPath = 无存储路径
+	NuggetCollectTooFar = 距离太远
+	PaintTip = "<b>涂装</b>\n\n涂装星舰外部或使用贴纸。\n\n热键：<btn id='Design.PaintOpenClose'/>"
+	PartHealthFmt = ""
+	PauseTip = "暂停\n\n热键：<btn id='Game.PauseToggle'/>"
+	Paused = 已暂停
+	ReputationTipFmt = "{0}声誉"
+	ResetDefaults = 重置默认攻击
+	ResetDefaultsTip = 将保存的攻击距离和方向重置为初始值。
+	ResourcesTip = "<b>管理资源</b>\n\n管理星舰上的资源、建造材料和武器。\n\n热键：<btn id='Resources.OpenClose'/>"
+	RotateTip = "<b>旋转</b>\n\n旋转可面对目标或改变方向。\n\n热键：<btn id='Game.Rotate'/>"
+	SalvageTip = "<b>收集/回收/开采资源</b>\n\n选中该按键后，点击或框选漂浮的资源、星舰或小行星来收集、回收或开采。\n\n按住 <btn id='Game.CancelSalvageCollect'/> 进入取消模式。\n\n<btn id='General.UIAltClick'/>可筛选资源类型。\n\n热键：<btn id='Game.Salvage'/>"
+	SaveDefaults = 保存默认攻击
+	SaveDefaultsTip = 将当前的攻击距离、方向和角度保存为新的默认值，应用于选定的星舰。
+	SaveShip = 保存星舰设计
+	SaveShipTip = 将星舰的蓝图、涂装设计和船员配置保存为文件，以便后续加载。
+	Screenshot = 截图
+	ScreenshotBlueprints = 蓝图
+	ScreenshotBlueprintsTip = 截图星舰的蓝图，保存为文件。
+	ScreenshotExterior = 外装
+	ScreenshotExteriorTip = 截图星舰外装，保存为文件。
+	ScreenshotInterior = 内装
+	ScreenshotInteriorTip = 截图星舰的内部设计，保存为文件。
+	SelectMultipleShips = 至少选择两艘星舰。
+	SelectShip = 至少选择一艘星舰。
+	SelectSingleShip = 选择单艘星舰。
+	SelfDestruct = 自毁
+	SelfDestructOkay = 给我摧毁！！
+	SelfDestructTip = 启动自毁程序。
+	ShipCommandDistFmt = "<s14>{0:0.00}</s14>\n<s12><gray>公里</gray></s12>"
+	ShipCommandDistTip = 到星舰目的地的距离，单位是公里。
+	ShipCommandPercFmt = "<s14>{0:0}%</s14>\n<s12><gray>充能</gray></s12>"
+	ShipCommandPercTip = 当前的超空间驱动充能百分比。
+	ShipNoControlFmt = "<s14><bad>{0}/{1}</bad></s14>\n<s12><gray>指挥瘫痪</gray></s12>"
+	ShipNoControlJunkFmt = "<s14><bad>报废</bad></s14>\n<s12><gray>——</gray></s12>"
+	ShipNoControlJunkTip = 星舰报废，无法操控
+	ShipNoControlTip = "无法操控这艘星舰。原因可能为该舰没有能够运作的指挥室，或指挥室未为星舰的所有武器、推进器等系统提供足够的<image name='command_points' colored='true'/>指挥点数。"
+	ShipSpeedFmt = "<s14>{0:0.0}</s14>\n<s12><gray>米/秒</gray></s12>"
+	ShipSpeedTip = 星舰的当前速度，单位是米/秒。
+	Speed1 = ""
+	Speed1Long = 标准（1x）
+	Speed2 = ""
+	Speed2Long = 快速（2x）
+	Speed4 = ""
+	Speed4Long = 很快（4x）
+	Speed8 = ""
+	Speed8Long = 非常非常快（8x）
+	SpeedEighth = ""
+	SpeedEighthLong = 非常非常慢（⅛）
+	SpeedHalf = ""
+	SpeedHalfLong = "缓慢（½ - MP 标准）"
+	SpeedPaused = ""
+	SpeedQuarter = ""
+	SpeedQuarterLong = 很慢（¼）
+	StrafeTip = "<b>平移</b>\n\n在不转向的前提下移动。（按住 <btn id='Game.InvertCollisionAvoidance'/> 可开/关防撞功能。）\n\n热键：<btn id='Game.Strafe'/>"
+	SummonCrewTip = "<b>召回船员</b>\n\n立即召唤所有船员回到星舰中。\n\n热键：<btn id='Game.Halt'/>"
+	TargetTip = "<b>武器瞄准</b>\n\n将选定的武器瞄准敌方特定部件。也可瞄准自身部件。\n\n热键：<btn id='Game.TargetWeapon'/>"
+	UnderConstructionTip = 您的星舰正在建造中，船员可能离舰执行建造任务。如果飞离太远，将会与其失去联络。
+	UnknownContact = 未知联系人
+	WeaponBindingFmt = ""
+	WeaponBindingNone = "AI 控制"
+	WeaponBindings = 直接控制绑定
+}
+Inputs
+{
+	
+	Brushes
+	{
+		
+		Name = 星舰编辑器（刷子）
+	}
+	Clear = 清除
+	Comms
+	{
+		
+		Name = 通信
+		OpenClose = 打开/关闭通信面板
+	}
+	ControlGroups
+	{
+		
+		CreatePartGroupFmt = "创建部件组{0}"
+		CreateShipGroupFmt = "创建星舰组{0}"
+		Name = 控制组
+		RemoveFromPartGroupFmt = "移出部件组{0}"
+		RemoveFromShipGroupFmt = "移出星舰组{0}"
+		SelectPartGroupFmt = "选择部件组{0}"
+		SelectShipGroupFmt = "选择星舰组{0}"
+	}
+	CreativeMode
+	{
+		
+		AutoBattleCamera = 切换战斗镜头自动化
+		Delete = 删除已选对象
+		DeleteNode = 删除星系
+		EditConnectionsTool = 编辑超空间跳跃连接
+		EditNodesTool = 编辑星系工具
+		MoveShip = 移动已选星舰至目的地
+		Name = 创意模式
+		NoDefaultConnections = 禁用自动超空间跳跃连接
+		PlayAsAllPlayers = 游戏身份：所有玩家
+		PlayAsFmt = "游戏身份：玩家{0}"
+		Randomize = 随机选择星舰/物体
+		RenameNode = 重命名星系
+		RotateFtlGate = 旋转超空间跳跃中继站
+		SelectTool = 选择工具
+		SetNodeFaction = 更改星系派系
+		ShipLibrary = 星舰库
+		SpawnNotReady = 生成时无弹药/能量
+		ZeroPlanetCoordinates = 迫使星球重置坐标
+	}
+	Crew
+	{
+		
+		AddToSelection = 添加单个船员至选择
+		Name = 船员管理
+		OpenClose = 打开/关闭船员面板
+		RemoveSelected = 移除所选船员
+		Roster = 显示/隐藏船员名册
+		SelectAll = 选择所有
+		SelectRange = 添加船员范围至选择
+		TargetTool = 船员分配工具
+	}
+	Default = 默认
+	Defaults = 默认
+	Design
+	{
+		
+		AppendShapeMode = 附加形状模式
+		BuildClose = 关闭建造面板
+		BuildOpen = 打开建造面板
+		CancelAll = 取消全部
+		ConfirmPartialBuild = 确认部分建造
+		ConfirmPartialRefund = 确认减额退款
+		Construct = 按图造舰
+		ContiguousSelectionMode = 持续“魔法棒”选择模式
+		CopySelected = 复制已选部件/贴花
+		CutSelected = 剪切已选部件/贴花
+		Delete = 删除部件/贴花
+		DeleteDoors = 仅删除门
+		EraseCursorMode = 擦除光标模式
+		EraseTool = 删除工具
+		FillAllDoors = 填满所有门
+		FlipX = 水平翻转部件/贴花
+		FlipY = 垂直翻转部件/贴花
+		ForceBlueprints = 打开蓝图
+		GrabTool = 抓取工具
+		ImportPng = 导入PNG
+		Name = 星舰编辑器
+		NoAutoDoors = 不自动添加门
+		PaintOpenClose = 打开/关闭涂装面板
+		Paste = 粘贴部件/贴花
+		Redo = 重做
+		RepairTool = 修理工具
+		RestrictShapeMode = 限制形状模式
+		RotateLeft = 向左旋转部件/贴花
+		RotateRight = 向右旋转部件/贴花
+		SelectAll = 选择所有部件/贴花
+		SelectionTool = 选择/复制/粘贴工具
+		ShowStats = 显示部件统计
+		ToggleBlueprints = 切换蓝图
+		ToggleMirrorMode = 开/关镜像模式
+		Undo = 撤销
+	}
+	Formations
+	{
+		
+		MakeFormationFmt = "使用编队{0}"
+		Name = 编队
+	}
+	Game
+	{
+		
+		AllowSalvageOwnShip = 允许拆解回收本舰
+		AppendSelection = 挂件选择
+		Attack = 攻击
+		CancelFtlJump = 取消超空间跳跃
+		CancelSalvageCollect = 取消收集/回收/开采
+		CancelTool = 取消工具
+		CancelWeaponTargets = 取消武器瞄准
+		Chat = 聊天
+		Command = 向星舰/部件下指令
+		CustomMarker = 添加/重命名/删除自定义标记
+		DecreaseSpeed = 降速
+		DirectControlBrake = 直接控制：制动/滑行
+		DirectControlFireWeaponsFmt = "直接控制：武器绑定 #{0}"
+		DirectControlForward = 直接控制：前进
+		DirectControlLockTarget = 直接控制：锁定目标
+		DirectControlReverse = 直接控制：后退
+		DirectControlRotateLeft = 直接控制：向左旋转
+		DirectControlRotateRight = 直接控制：向右旋转
+		DirectControlStrafeLeft = 直接控制：向左平移
+		DirectControlStrafeRight = 直接控制：向右平移
+		DirectControlToggle = 切换直接控制模式
+		DirectControlToggleFaceCursor = 直接控制：切换自动对准光标
+		DirectControlToggleWeapons = 直接控制：切换武器控制
+		DoFtlJump = 启动超空间跳跃
+		Halt = 停止
+		IncreaseSpeed = 提速
+		InvertCollisionAvoidance = 反转防撞
+		Load = 加载游戏
+		LocalFtlJump = 星系内超空间跳跃
+		MapFtlJump = 银河系地图超空间跳跃
+		MissionLog = 显示生涯日志
+		Move = 移动/跟随
+		Name = 游戏
+		PauseToggle = 暂停/继续
+		QuickLoad = 快速加载
+		QuickSave = 快速保存
+		Rotate = 旋转
+		Salvage = 收集/回收/开采资源
+		Save = 保存游戏
+		SelectAllParts = 选择所有部件
+		SelectAllShips = 选择所有星舰
+		SelectParts = 选择部件
+		Selection = 星舰/部件选择
+		ShowCommandWidgets = 显示调整手柄
+		Strafe = 平移
+		TargetWeapon = 武器瞄准
+		ToggleAutoThrust = 推进器：切换自动点火
+		ToggleMap = 显示/隐藏银河系地图
+		ToggleUI = "开/关 UI"
+		UseTool = 使用工具
+		WorldRelativeFollowAngle = 使用网格参照攻击/跟随角度
+	}
+	General
+	{
+		
+		Cancel = 取消/返回/菜单
+		CaptureGif = "截取 GIF 动图"
+		Confirm = 好的/接受/确认
+		EmulateRightClick = 模拟右击
+		Name = 通用
+		RestartApp = 重启应用
+		SubmitFeedback = 发送反馈
+		SuppressConfirmation = 取消确认
+		TakeScreenshot = 截屏
+		ToggleFullscreen = 切换全屏
+		UIAltClick = "UI 备用点击"
+		UIClick = "UI 点击"
+		UIFocusClick = "UI 聚焦点击"
+	}
+	KeyNames
+	{
+		
+		A = ""
+		Alt = ""
+		Apps = 应用
+		B = ""
+		BackslashPipe = 反斜线
+		Backspace = 退格
+		C = ""
+		CapsLock = 大写锁定
+		Colon = 冒号
+		CommaLesser = 逗号
+		Command = 命令
+		Control = ""
+		D = ""
+		D0 = ""
+		D1 = ""
+		D2 = ""
+		D3 = ""
+		D4 = ""
+		D5 = ""
+		D6 = ""
+		D7 = ""
+		D8 = ""
+		D9 = ""
+		Delete = 删除
+		DownArrow = 下箭头
+		E = ""
+		End = ""
+		Enter = 回车
+		Escape = Esc
+		F = ""
+		F1 = ""
+		F10 = ""
+		F11 = ""
+		F12 = ""
+		F13 = ""
+		F14 = ""
+		F15 = ""
+		F2 = ""
+		F3 = ""
+		F4 = ""
+		F5 = ""
+		F6 = ""
+		F7 = ""
+		F8 = ""
+		F9 = ""
+		G = ""
+		H = ""
+		Home = ""
+		I = ""
+		Insert = ""
+		J = ""
+		K = ""
+		L = ""
+		LeftArrow = 左箭头
+		LeftBracket = 左括号
+		M = ""
+		MinusUnderscore = 减号
+		N = ""
+		NumLock = 数字锁
+		NumPad0 = "小键盘 0"
+		NumPad1 = "小键盘 1"
+		NumPad2 = "小键盘 2"
+		NumPad3 = "小键盘 3"
+		NumPad4 = "小键盘 4"
+		NumPad5 = "小键盘 5"
+		NumPad6 = "小键盘 6"
+		NumPad7 = "小键盘 7"
+		NumPad8 = "小键盘 8"
+		NumPad9 = "小键盘 9"
+		NumPadMinus = 小键盘减号
+		NumPadPeriod = 小键盘点号
+		NumPadPlus = 小键盘加号
+		NumPadSlash = 小键盘破折号
+		NumPadStar = 小键盘星号
+		O = ""
+		P = ""
+		PageDown = 下页
+		PageUp = 上页
+		Pause = 暂停
+		PeriodGreater = 句号
+		PlatformCmdCtrl = ""
+		PlusEquals = 加号
+		PrintScreen = 截屏键
+		Q = ""
+		Quote = 引号
+		R = ""
+		RightArrow = 右箭头
+		RightBracket = 右括号
+		S = ""
+		ScrollLock = 滚轮锁
+		Shift = ""
+		SlashQuestion = 斜杠
+		Space = 空格
+		T = ""
+		Tab = ""
+		TildeBacktick = 波浪号
+		U = ""
+		UpArrow = 上箭头
+		V = ""
+		W = ""
+		X = ""
+		Y = ""
+		Z = ""
+	}
+	MouseButtonNames
+	{
+		
+		Button4 = "鼠标键 4"
+		Button5 = "鼠标键 5"
+		Left = 左键单击
+		Middle = 中键单击
+		Right = 右键单击
+	}
+	Multiplayer
+	{
+		
+		Name = 多人游戏
+		SendChat = 发送聊天消息
+		ShowScoreboard = 显示记分牌
+		ToggleTeamChat = 显示/隐藏战队聊天
+	}
+	None = 无
+	PartTargetCancelers
+	{
+		
+		headlight_aim = 重置探照灯
+		tractor_beam = 取消牵引光束
+	}
+	PartTargeters
+	{
+		
+		headlight_aim = 探照灯瞄准
+		prism_aim = 离子棱镜瞄准
+		tractor_beam = 牵引光束瞄准
+	}
+	PartToggles
+	{
+		
+		airlock_type_both = 气闸：自由通行
+		airlock_type_closed = 气闸：关闭
+		airlock_type_entry = 气闸：只可进入
+		airlock_type_exit = 气闸：只可离开
+		fire_alternating_off = 开火模式：齐射
+		fire_alternating_on = 开火模式：交替
+		fire_mode_at_target = 武器：对目标开火
+		fire_mode_at_will = 武器：随意开火
+		fire_mode_auto = 武器：自动开火
+		fire_mode_hold = 武器：停火
+		fire_pref_attack = 开火限制：攻击
+		fire_pref_both = 开火限制：攻击+防御
+		fire_pref_defend = 开火限制：防御
+		launch_mines = 发射空雷
+		launch_mines_off = 取消空雷发射
+		launch_mines_on = 发射空雷
+		lights_high = 光照：高
+		lights_low = 光照：低
+		lights_med = 光照：中
+		missile_type_emp = 发射器类型：EMP
+		missile_type_he = 发射器类型：高爆
+		missile_type_mine = 发射器类型：空雷
+		missile_type_nuke = 发射器类型：核弹
+		on_off_off = 部件关机
+		on_off_on = 部件开机
+		rotate_off = 旋转：关
+		rotate_on = 旋转：开
+		thruster_boost_off = 推进模式关
+		thruster_boost_on = 推进模式开
+		tractor_mode_auto = 牵引光束：自动
+		tractor_mode_pull = 牵引光束：拉动
+		tractor_mode_push = 牵引光束：推动
+	}
+	PartTriggers
+	{
+		
+		detonate = 引爆炸弹
+	}
+	Parts
+	{
+		
+		Name = 星舰编辑器（部件）
+		SelectPartFmt = "在类别中选择部件{0}"
+		SelectPartGroupFmt = "选择部件类别{0}"
+	}
+	PressKeyOrClick = 按下你想使用的按键，或点击此框内部：
+	Resources
+	{
+		
+		ClearTool = 清除指定资源工具
+		ClearToolMode = 清除指定资源模式
+		Eject = 弹射资源
+		GrabTool = 移动资源工具
+		Move1 = "拾起/放下 1 个资源"
+		Move5 = "拾起/放下 5 个资源"
+		Name = 资源管理
+		OpenClose = 打开/关闭资源面板
+		RestockResources = 补给资源
+		SetAllSameToolMode = 指定匹配单元模式
+		SetAllToolMode = 指定所有单元模式
+		SupplyTool = 供应链工具
+		Transfer5 = "转移 5x 资源"
+	}
+	View
+	{
+		
+		DragFocus = 拖动/聚焦视角
+		FocusCursorMode = 聚焦光标模式
+		FocusMidpoint = 聚焦已选/目标中点
+		FocusSelected = 聚焦已选星舰/部件
+		FocusTargets = 聚焦被瞄准敌人
+		Name = 查看控制
+		PanDown = 下移
+		PanLeft = 左移
+		PanRight = 右移
+		PanUp = 上移
+		ResetRotation = 重置旋转
+		RotateLeft = 向左旋转
+		RotateRight = 向右旋转
+		RotationFocusSelected = 聚焦并锁定旋转
+		RotationFocusTargets = 聚焦敌人并锁定旋转
+		ToggleInteriors = 显示/隐藏星舰内装
+		ViewMinimap = 查看小地图
+		ZoomIn = 拉近
+		ZoomMax = 最大缩放
+		ZoomMin = 最小缩放
+		ZoomOut = 拉远
+	}
+}
+JobNames
+{
+	
+	CollectNuggets = 收集资源
+	Construct = 建造
+	Deconstruct = 拆解
+	EjectNuggets = 丢弃资源
+	ExtinguishFire = 灭火
+	General = 杂务
+	PartCrew = 操作
+	Repair = 修理
+	ResourceFetchFmt = "供应{0}"
+	Salvage = 回收/开采
+}
+Jobs
+{
+	
+	ConstructFmt = "建造{0}"
+	DeconstructFmt = "拆解{0}"
+	FireExtinguishGetFmt = "捡起{0}"
+	FireExtinguishUse = 灭火
+	ForConstructionFmt = "{0}（建造）"
+	ForRepairsFmt = "{0}（修理）"
+	Idle = 空闲
+	IdleReturning = 返回宿舍
+	IdleStuckFmt = "无处存放搬运的{0}"
+	OperateArrivedFmt = "操作{0}"
+	OperateTravelingFmt = "去往{0}"
+	RefillO2 = 填充氧气罐
+	RepairFmt = "修理{0}"
+	ResourceDeliverFmt = "将{0}运至{1}"
+	ResourceGetFmt = "捡起用于{1}的{0}"
+	SalvageFmt = "回收{0}"
+}
+LoadPaintScheme
+{
+	
+	ConfirmDelete = 确定要删除这个涂装方案吗？
+	Delete = 删除
+	Okay = 加载
+	Title = 加载涂装方案
+}
+LoadSaveGame
+{
+	
+	Auto = 自动存档
+	AutoSave = 自动存档
+	AutoSaving = 正在自动保存……
+	ConfirmDeleteFmt = "确定要删除'{0}'？文件将被放入计算机回收站。"
+	ConfirmOverwrite = 覆盖现有游戏存档？
+	Delete = 删除
+	Loading = 正在加载游戏……
+	Manual = 已命名存档
+	OkayLoad = 加载游戏
+	OkaySave = 保存游戏
+	OpenFolder = 打开文件夹
+	Quick = 快速存档
+	QuickSave = 快速存档
+	QuickSaving = 正在快速保存……
+	Saving = 正在保存游戏……
+	TitleLoad = 加载游戏
+	TitleSave = 保存游戏
+}
+LobbyScreen
+{
+	
+	Ban = 拉黑
+	BanTip = 勾选后，此玩家将无法加入你主持的任何游戏。
+	ClearFilters = 清除筛选条件
+	Closed = <bad>已关闭</bad>
+	ConnectingToLobby = 正在连接至大厅……
+	CopyPlayerID = "复制玩家 ID"
+	CopyPlayerIDTip = "复制此玩家的 Steam ID 至你的操作系统剪切板。向管理员举报玩家时可使用此 ID。"
+	DirectConnect = "通过 IP 连接"
+	DirectConnectMsg = "输入主机的 IP 地址。"
+	DirectConnectTip = "输入 IP 地址，加入其他计算机主持的游戏。"
+	EnterPassword = 需要密码：
+	FilterCompatible = 兼容
+	FilterJoinable = 可以加入
+	FilterMaxValue = "最大<money_color><img name='money' colored='true'/></money_color>"
+	FilterMinValue = "最小<money_color><img name='money' colored='true'/></money_color>"
+	FilterNoPassword = 无需密码
+	FilterOfficialRuleset = 官方规则集
+	FilterPing = 延迟：
+	FiltersFmt = "筛选条件：<bad>{0}活跃</bad>"
+	FiltersNone = 筛选条件：无
+	Full = <bad>已满</bad>
+	GameInfo
+	{
+		
+		Closed = <bad>游戏已关闭</bad>
+		CustomRuleset = <b>规则集：</b>自定义
+		Full = <bad>游戏人数已满</bad>
+		GameModeFmt = "<b>游戏模式：</b> <b>{0}</b>"
+		HostFmt = "<b>主机：</b> {0}"
+		HostMods = "主机在使用而你未使用的 Mod："
+		InProgress = <bad>游戏正在进行</bad>
+		Incompatible = <bad>不兼容</bad>
+		PasswordNo = <b>需要密码：</b>否
+		PasswordYes = "<b>需要密码：</b> <bad>是</bad>"
+		PlayersFmt = "<b>玩家：</b> {0}/{1}"
+		RulesetFmt = "<b>规则集：</b> <b>{0}</b>"
+		SettingFmt = ""
+		SettingNo = 否
+		SettingYes = 是
+		TimeRemainingFmt = "<bad>剩余时间{0:m\\:ss}</bad>"
+		YourMods = "你在使用而主机未使用的 Mod："
+	}
+	GameJoinDenyReason
+	{
+		
+		Banned = 主机已禁止你加入游戏。
+		DataIncompatible = "你的游戏数据与主机的游戏数据不兼容。这可能是 Mod 所致。"
+		GameClosed = 该主机已关闭游戏，因此无法加入。
+		GameFull = 该游戏目前已满。
+		GameNotRunning = 该主机未运行游戏。
+		IncorrectPassword = 密码错误。
+		ModsIncompatible = "你和主机所用的 Mod 不兼容。"
+		TooManyPasswordAttempts = 你用错误密码尝试加入游戏的次数过多。必须在主机更改密码之后才能再次尝试。
+		Unknown = 无法加入游戏，原因未知。
+		VersionIncompatible = "当前 Cosmoteer 版本（{0}）与主机 Cosmoteer 版本（{1}）不同。所有玩家的 Cosmoteer 版本必须保持一致。"
+	}
+	Host = 主持游戏
+	HostTip = 开始允许其他玩家加入的新游戏。你可以自定义游戏设置。
+	InProgress = <bad>游戏中</bad>
+	Incompatible = <bad>不兼容</bad>
+	Join = 加入游戏
+	JoinTip = 加入由其他玩家主持的游戏。
+	Joining = 正在加入游戏……
+	LAN = LAN
+	LatencyFmt = "{0} 毫秒"
+	LobbiesTip = 不显示已满的大厅。
+	Lobby = "大厅： "
+	LobbyItemFmt = ""
+	LobbyJoinFailed = 加入大厅失败。
+	LobbyTypeTip = 只显示该类型大厅。
+	LobbyTypes
+	{
+		
+		Coop = 多人合作
+		PVP = 多人竞技
+	}
+	Mute = 屏蔽
+	MuteTip = 勾选后，你将无法看见此玩家发送的任何聊天内容。
+	NoGamesFound = 未找到游戏。
+	Online = 在线
+	PasswordTip = 需要密码
+	PlayerName = "你的名字： "
+	PlayersFmt = ""
+	RefreshTip = 刷新大厅列表。
+	ReverseSort = 倒序
+	SortCurPlayers = "<img name='sort'/>玩家数"
+	SortFunds = "<img name='sort'/>信用点"
+	SortMaxPlayers = "<img name='sort'/>最大玩家数"
+	SortMode = "<img name='sort'/>游戏模式"
+	SortName = "<img name='sort'/>名称"
+	SortPing = "<img name='sort'/>延迟"
+	SortRuleset = "<img name='sort'/>规则集"
+	SortStatus = "<img name='sort'/>状态"
+	SortTeams = "<img name='sort'/>战队"
+	TimeRemainingFmt = "<bad>剩余时间{0:m\\:ss}</bad>"
+	TimedOut = 请求超时。
+}
+Lore
+{
+	
+	Cabal
+	{
+		
+		Lore1 = 拜日教是一个崇拜太阳（地球的恒星，于50年前毁灭）的宗教科研组织，现在致力于通过科学研究使他们的神，也就是那颗死亡的恒星“转世重生”。
+		Lore2 = 虽然没人知道拜日教成立的具体时间，但可以确信的是，它已经以某种形式存在了至少上百年。它从最初的秘密邪教，发展为现在信众遍地的主流宗教，甚至建立起了一个强大的银河系国家。它的信徒们相信，每颗恒星实际上都是一位神祇，祂们创造了行星与卫星，也为生命提供在星海间繁衍壮大的能量。但在这些神祇，也就是恒星中，有一颗是拜日教所特别崇拜的——太阳，他们认为祂不仅创造了人类，也创造了那个建造超空间跳跃星门并留下阿姆斯特朗巨石的古代文明。
+		Lore3 = 拜日教是一个高度组织化的宗教，它宣称治下星区已经超过了银河系五分之一的已知区域，因而位列银河系的大国之一。在教国中，宗教与政府密不可分。一个由十二名拜日教大祭司组成的世袭教廷理事会负责制定法律，他们建立起了由祭司等神职人员组成的复杂而森严的等级制度，以超乎寻常的严苛律法管理着政府的各项职能。但对于那些愿意接受理事会律法的人来说，由于教国可以为教民提供广泛的社会服务和基本收入，他们生活还算不错。银河系内不少人远道而来，勇敢地前往拜日教国，只为享受这些社会福利，而他们之所以能这样做，都要归功于教国开放的移民政策，任何人只要宣称信仰并赞美太阳，且背弃所有其他宗教，教国的大门便向他敞开。
+		Lore4 = 对于拜日教来说，宗教与科学不仅并非对立，反而能相辅相成。对神祇的心驰神往促使他们对恒星的形成与功能展开了前所未有的科学研究。银河系大多数杰出的宇宙学者也是太阳的虔诚崇拜者与拜日教的成员。由于对恒星科学研究极为热切的关注，拜日教在能量利用领域已经成为全银河系首屈一指的势力。
+		Lore5 = 虽然未经证实，但仍有传言说，拜日教的科学家正是太阳及太阳系意外毁灭的罪魁祸首。据这些传言，拜日教的科学家们当时正在竭尽全力开发超空间跳跃与护盾技术，星舰可以通过这些极其先进的技术，直接跳入恒星的核心，在那里，恒星最难以捉摸的秘密将得到揭示。但传言称，当时他们对太阳的核心进行了此种尝试，却并未得到期望中的科学与宗教方面的启迪，反倒招致灾难，摧毁了整个太阳系，令数十亿人死于非命，人类的发展亦倒退数千年。当然，拜日教官方矢口否认自己与太阳的毁灭有任何瓜葛，但阴谋论者声称，拜日教必须向公众开放其秘密资料库，才有可能自证清白——只不过拜日教从未同意这一要求。
+		Lore6 = 无论拜日教是否牵涉其中，他们当下的目的非常明确：重新点燃太阳那已经死去的核心，使他们死去的神祇转世重生。在过去五十年里，拜日教将几乎全部的科学力量都集中投入在这个目标上。
+		Title = 拜日教
+	}
+	Fringe
+	{
+		
+		Lore1 = 边缘星系抵抗军是一个由独立星系组成的松散联合体，其存在仅仅是出于生存和保持独立的共同愿望。
+		Lore2 = “边缘”星系是指位于已知银河系边缘或主要派系领地之间的星系。它们通常人口稀少，生活水平低下。虽然边缘星系的居民有很强的荣誉感，但边缘星系的定居点或空间站往往缺乏统一的政府或法律体系。因此，边缘星系容易吸引装备精良且不怀好意之人，海贼活动极为猖獗。
+		Lore3 = 边缘星系两两之间不存在任何正式的合作协议，因此他们所谓的“统一”完全是基于对其他主要派系的同仇敌忾，而且他们也心知肚明，相比于孤军奋战，携手抗敌更有利于（勉强）捍卫自己的独立。尽管能够通力合作，但边缘星系依然无法与任何主要派系的实力相抗衡，因此注定了战败并逐一失去独立地位的命运。
+		Title = 边缘星系抵抗军
+	}
+	Imperium
+	{
+		
+		Lore1 = 发源于半人马座的半人马座帝国是一个年轻的军事帝国，冷酷无情，野心勃勃。
+		Lore2 = "半人马座帝国的各个星系最初由总部位于地球的泰拉联盟管理，但随着 50 年前整个太阳系的毁灭，半人马座帝国发现自己突然摆脱了桎梏，而此时恰巧银河系的权力真空需要填补。在一场席卷整个半人马座的意识形态内战爆发并很快结束后，新成立的半人马座帝国取得了最终胜利，并通过征服和威慑迅速将其疆域扩大到周围的星系。在短短的50年内，半人马座帝国已经一举成为银河系中最强大的军事力量，掌控几近一半的已知星系，并已经开始为其他区域的征服枕戈待旦。"
+		Lore3 = "无论是民事还是军事方面，半人马座帝国的组织结构都呈现独特的扁平化。作为一个拥有真正的直接民主制度的政权，半人马座核心星系每一位公民在 12 岁以后都有权提出法律建议，并对每一项立法进行投票，而超光速通信与分散式公共区块链使得这一过程成为可能。即使是最重要的决定，如是否接受新征服星系的投降条件，也可以即时通知全体公民即将进行投票，并在几分钟内迅速完成投票。因此，大多数半人马座帝国公民都认为自己有极大的职责去了解帝国面临的各种问题，这也导致了极高的公民参与度。帝国不需要某位“国家元首”来领导，如果说真的存在任何权力的集中，那应该就是那些社会名流，他们能够影响其广大追随者，诱导他们按某种方式来投票。"
+		Lore4 = 而在半人马座帝国的军队中，权力也只比其执政模式略微集中些许。毕竟在战场上难免需要手握生杀大权的某人当机立断做出决定，因此大多数帝国星舰依然设有舰长，但这位舰长却是由其全体船员选举产生的，甚至可以在任何时候由船员们投票撤换。每艘帝国星舰都是一个独立的实体，可以自由地做出自己的战术决定，并且只受帝国公民们所规定的寥寥几条交战规则的限制。（帝国公民们认为，只要能够为半人马座核心星系带来更多财富与繁荣，几乎任何手段都是可以接受的。）这种能够自主决定的“不择手段”使得帝国的军队灵活而无情。对于较大的战略目标，会通过公民授权的赏金来协调，例如任何能强迫某个特定星系投降的人都将获得奖赏。为了完成这些较大的战略目标，个别星舰往往会组成临时舰队，一旦目标完成就会解散。在某些情况下，会同时存在多支舰队争夺赏金，而作为军事自由市场健康发展的印证，这种情况是被允许，甚至是得到鼓励的。但半人马座帝国的星舰或舰队之间严禁直接交战，违者将直接受到“格杀勿论”的悬赏。如果有多艘星舰或舰队同时前来认领同一赏金，则一如既往地由半人马座帝国的公民们来进行最终仲裁。
+		Lore5 = 公民权只授予那些在帝国成立时生活在半人马座核心星系内的人，或是<i>两位</i>半人马座帝国公民的孩子。仅有的例外情况必须得到全体公民的批准，这使得归化公民极为罕见。（一般来说，只有那些对帝国有巨大贡献的人才能获得这一殊荣。）因此，帝国中的大多数——那些生活在核心星系之外的半人马座帝国臣民都不算帝国公民，也无法享有任何形式的自治权。尽管那些核心星系张嘴闭嘴都是民主和平等，但事实是，他们对被征服的领土实行严厉的双重标准政策，实施着绝对的铁腕统治。
+		Title = 半人马座帝国
+	}
+	Monolith
+	{
+		
+		Lore1 = 巨石合作社是一家专营采矿、制造和运输的巨型企业，以近乎垄断的实力主导着银河系的贸易与经济。
+		Lore2 = 在超空间时代来临前，该企业起初名为“阿姆斯特朗开采合作社”。它非常幸运地率先发现了埋藏在太阳系小行星带深处的神秘物体，该物体即为现在人们所知的“阿姆斯特朗巨石”。阿姆斯特朗巨石是一个古老文明的最后遗物，该文明所在的星球原本在火星和木星之间的轨道上绕太阳公转，但后来却不幸毁灭，成为了小行星带。阿姆斯特朗巨石本身是一个技术档案库，人们对其进行破译后，在其中发现了超空间驱动技术的蓝图，人类因此也能够探测并使用该文明很久以前建造的巨大超空间跳跃中继网络。虽然目前仍存在争议，但人们普遍认为，古代文明的星球正是由于滥用超空间跳跃技术而招致了毁灭，而这恰巧与人类自己失手毁灭了整个太阳系的狂妄傲慢行为类似。人们尚未找到任何能够证明古代文明形态的遗迹或遗骸，这也导致人们对他们到底是天外来客还是人类祖先抱有诸多猜测。
+		Lore3 = 在发现巨石后，阿姆斯特朗开采合作社只用了两年时间就复现出了原始的超空间驱动技术，然后又用了五年时间，使其可堪商业用途。该技术是有史以来最重大的商业机密，尽管一开始公司成功地保守了这个秘密，但几年后，超空间驱动技术的基本原理还是遭到泄露，并迅速传遍了整个太阳系。即使如此，这几年的时间还是给了该公司（现在被称为巨石合作社）足够的先机，使其在竞争对手面前手握主导优势，并最终成为人类历史上最大的工业巨头。
+		Lore4 = 虽然没有公然展露出称霸的野心，但自从发现阿姆斯特朗巨石后的两百年间，巨石合作社逐渐集结了银河系最强大的军事力量之一。起初，这只是出于保卫运输路线以及采矿制造中心的考虑，但随着其手中军事大锤的分量越来越重，巨石合作社开始像俗话说的那样“看所有问题都像钉子”。合作社中层管理人员为了“说服”各殖民地“心甘情愿”地以高价购买维生必须的补给品，经常出动他们口中“自卫性质”的舰队来封锁竞争对手，胁迫殖民地签署不平等贸易合同。而此时由于基础商品的价格已比天高，当地政府也濒临破产，此时巨石合作社便“慷慨解囊”，以折扣价兜售自己提供的行政管理与治安维持服务——当然了，所谓的折扣价实际上指的是殖民地总收入的大头。虽然没有“占领”哪怕一寸土地，但巨石合作社现在已经成为银河系已知部分中近四分之一地区事实上的政府。
+		Lore5 = 其名称中的“合作社”一词来自于这样一个事实：巨石合作社一直完全由员工所有。没有任何一个人拥有超过0.1%的公司股份，也从来没有人公开或私下出售过巨石的股份。相反，巨石合作社的每个正式员工（不包括承包商）都拥有公司很小的一部分股份（具体数额取决于岗位级别和工作年限），因此除了基本工资外，还有权按比例获得公司的利润分红。由于公司最终要服从于自己的员工，那些有幸就职其中的人，无论是中层经理，还是底层清洁工，都享受着良好的薪酬、公平的待遇以及远超过银河系平均水平的生活质量，这也使得正式员工对公司极为忠诚。但是，由于他们不想稀释自己的股份，巨石合作社制定了及其严苛的聘用标准，以至于其治下人口中只有大约5%能成为其正式员工，而且这其中的许多人还是因为裙带关系才侥幸入职。而剩下的大部分人口则只能生活在极度贫困之中，因此由巨石合作社管理的殖民地是迄今为止银河系中财富不平等程度最高的地区。
+		Title = 巨石合作社
+	}
+}
+MapSizes
+{
+	
+	Huge = 巨大
+	HugeTip = "160-200 个恒星系。"
+	Large = 大
+	LargeTip = "80-100 个恒星系。"
+	None = 无星系
+	NoneTip = 不会有星系地图。
+	Small = 小
+	SmallTip = "20-25 个恒星系。"
+	Standard = 标准
+	StandardTip = "40-50 个恒星系。"
+	Tiny = 微小
+	TinyTip = "10-12 个恒星系。"
+}
+MirrorAxis
+{
+	
+	All = "镜像：8 向"
+	Both = 镜像：纵向+横向
+	BothDiagonal = 镜像：对角东北/西南+西北/东南
+	DiagonalNESW = 镜像：东北对角/西南轴
+	DiagonalNWSE = 镜像：西北对角/东南轴
+	Horizontal = 镜像：横轴
+	Vertical = 镜像：纵轴
+}
+Misc
+{
+	
+	Apply = 应用
+	Cancel = 取消
+	ClassicDowngrade = "<halign value='Left'>嗨，看来你之前玩过《Cosmoteer》的“经典”版本！你现在正在游玩的是“现代”升级版的试玩。\n\n虽然该试玩版与经典版本相比有很多改进，但你仍可决定是否回去继续游玩经典版本。你可以按照以下步骤进行操作：\n\n\t1、在 Steam 上打开《Cosmoteer》试玩版的“属性”。\n\t2、点击测试版选项卡。\n\t3、从下拉列表中选择“经典（classic）”。\n\n如此一来，《Cosmoteer》试玩版就会自动“更新”为经典旧版。尽情享受吧！</halign>"
+	Close = 关闭
+	DefaultShipName = 未命名舰船
+	LoadGameError = "游戏加载出错：{0}"
+	LoadShipError = "文件似乎并非有效的舰船文件。错误代码：{0}"
+	LoadingUncachedAssets = "正在初次加载新增或更新后的游戏文件。\n可能需要花费更长时间。"
+	MenuBack = 返回
+	No = 否
+	None = 无
+	Okay = 确认
+	OpenUrlConfirm = "该操作将最小化 Cosmoteer，并在网页浏览器中打开一个页面。"
+	SaveGameError = "将游戏保存至文件“{0}”时出错：{1}"
+	SaveGameUnauthorizedAccess = "将游戏保存至文件“{0}”时出错：{1}\n\n这种情况一般是杀毒软件、反恶意程序软件或反勒索软件误阻止 Cosmoteer 存储文件所导致的。"
+	SaveShipError = "将舰船保存至文件“{0}”时出错：{1}"
+	SaveShipUnauthorizedAccess = "将舰船保存至文件“{0}”时出错：{1}\n\n这种情况一般是杀毒软件、反恶意程序软件或反勒索软件误阻止 Cosmoteer 存储文件所导致的。"
+	SavedGameIncompatible = 抱歉！该游戏存档与当前版本《Cosmoteer》不兼容。
+	SavedShipIncompatible = 抱歉！该舰船存档与当前版本《Cosmoteer》不兼容。
+	ScreenshotOpenFolder = 打开文件夹
+	ShipClassIncompatible = 舰船级别不兼容。
+	ShortCostK = ""
+	ShortCostM = ""
+	SteamNotInitialized = "<bad>《Cosmoteer》无法连接到 Steam 客户端。</bad>\n\n无法使用在线多人游戏、创意工坊、云存档等功能。由于存档与 Steam 用户 ID 挂钩，而目前该 ID 无法进行认证，可能会出现游戏存档以及舰船存档丢失的情况。\n\n请确保 Steam 客户端正在运行且已更新到最新版本，且你没有以管理员模式或不同的操作系统用户身份运行该客户端，同时在 Steam 上拥有有效的《Cosmoteer》许可。"
+	TransferReset = 重置
+	Unknown = 未知
+	Yes = 是
+}
+MissionCategories
+{
+	
+	Bounties = 赏金
+	Debug = 调试
+	Deliveries = 货运（重复）
+	Exploration = 探索
+	FactionWars = 派系冲突
+	FameLevels = 名望等级
+	Stations = 空间站
+}
+MissionLog
+{
+	
+	Abandon = 放弃
+	AbandonTip = 放弃这项任务，将其从任务日志中永久删除，无法获得任何奖励。
+	CategorizeByFaction = "<image name='categorize'/>派系"
+	CategorizeByLocation = "<image name='categorize'/>星系"
+	CategorizeByMissionType = "<image name='categorize'/>任务类型"
+	CategorizeByNone = "<image name='categorize'/>无"
+	CategorizeByTracked = "<image name='categorize'/>收藏"
+	CategorizeTip = 任务的分类方式。
+	ConfirmAbandon = 确定要从任务日志中永久删除这个任务吗？这样将无法获得任何奖励，且只能通过重新加载之前的游戏存档来寻回该任务。
+	DistanceFmt = "{0:0.00} 公里"
+	DistanceIconFmt = "<image name='target'/> {0:0.00} 公里"
+	DistanceLYFmt = "{0:0.0} 光年"
+	EnemyFactionWarningFmt = "该任务需攻击 {0}。将失去在该派系内的声誉，并暂时遭到这一派系通缉。"
+	LocalOnly = 仅星系内
+	LocalOnlyTip = 如果勾选，则只显示在当前星系内的任务。
+	Location = 位置
+	MaxTrackedReachedFmt = "你最多只能同时收藏 {0} 个任务。在收藏该任务之前，请先取消对其他任务的收藏。"
+	NoMissions = "无激活\n任务"
+	Objectives = 目标
+	Rewards = 奖励
+	SortByDistance = "<image name='sort'/>距离"
+	SortByFaction = "<image name='sort'/>派系"
+	SortByMissionType = "<image name='sort'/>任务类型"
+	SortByName = "<image name='sort'/>名称"
+	SortByNewest = "<image name='sort'/>最新"
+	SortByOldest = "<image name='sort'/>最旧"
+	SortByRewardFame = "<image name='sort'/>名望"
+	SortByRewardMoney = "<image name='sort'/>信用点"
+	SortByRewardReputation = "<image name='sort'/>声誉"
+	SortByTier = "<image name='sort'/>危险等级"
+	SortByTimeRemaining = "<image name='sort'/>剩余时间"
+	SortByTracked = "<image name='sort'/>收藏"
+	SortTip = 任务在其所在分类中的排序方式。
+	StarSystemLocalFmt = "{0} <nostyle><gray>（星系内）</gray></nostyle>"
+	StarSystemLocalIconFmt = "<image name='star_system'/> {0} <gray>（星系内）</gray>"
+	StarSystemNone = 无
+	StarSystemRemoteFmt = "{0} <nostyle><gray>（{1:0.0} 光年）</gray></nostyle>"
+	StarSystemRemoteIconFmt = "<image name='star_system'/> {0} <gray>（{1:0.0} 光年）</gray>"
+	TabName = 任务日志
+	TierFmt = "<b>危险等级：</b> {0}"
+	TimeRemainingFmt = "{0}：{1:00}"
+	Track = 收藏
+	TrackTip = 在屏幕左上角显示该任务的状态，这样就可以在不打开任务日志的情况下跟踪其进展。
+	Tracked = 已收藏
+	Untrack = 取消收藏
+	UntrackTip = 该任务的状态目前正显示在屏幕左上角。点击可隐藏其状态。
+	Untracked = 已取消收藏
+}
+Missions
+{
+	
+	Bounty = 通缉犯赏金
+	BountyDesc = "一艘在逃的<b>{target_ship}</b>级星舰因在{mission_location}星系内从事非法活动而遭到通缉。{faction_name}当局将向消灭该通缉犯的 Cosmoteer 支付 {money} 赏金。"
+	ClearAsteroidField = 清理小行星带
+	ClearAsteroidFieldPiratesDesc = "一小撮海贼一直在附近的小行星带劫掠民用采矿船。采矿公司将向能消灭这些小行星带海贼的 Cosmoteer 支付 {money} 赏金。"
+	ClearAsteroidFieldPlatformsDesc = "海贼在附近的小行星带建造了几个固定防御平台，这对进行正当采矿活动的平民矿工来说过于危险。采矿公司将向能够摧毁这些小行星带内防御平台的 Cosmoteer 支付 {money} 赏金。"
+	Debug = 调试任务
+	DebugDesc = ""
+	Explore = "探索{mission_location}（{discover_perc:0}%）"
+	ExploreDesc = "来自{faction_name}的太空学者希望有人能够提供关于{mission_location}星系内各个相关地点的数据。"
+	FactionBaseDestruction = "摧毁{target_faction}基地"
+	FactionBaseDestructionDesc = "{faction_name}正与{target_faction}交战，如有私人承包商能消灭敌方位于{mission_location}星系的一个弹药供应基地，其将支付 {money} 奖金。"
+	FactionHunt = "{target_faction}猎人"
+	FactionHuntDesc = "{faction_name}正与{target_faction}交战，如有任何私人承包商能消灭正在{mission_location}星系巡航的 {target_count} 艘敌方星舰，将得到 {money} 的报酬。"
+	FleetBounty = 匪徒团伙赏金
+	FleetBountyDesc = "一匪徒团伙因在{mission_location}星系内骚扰并勒索平民而遭到通缉。{faction_name}当局将向消灭这一团伙的 Cosmoteer 支付 {money} 赏金。"
+	PirateBaseDestruction = 摧毁海贼基地
+	PirateBaseDestructionDesc = "本星系内海贼舰队的大本营位置已被发现！这些海贼一直厚颜无耻地偷袭劫掠星系内的{faction_name}巡逻舰船，必须予以消灭。{faction_name}当局将向有勇气、有能力将其摧毁的 Cosmoteer 支付总计 {money} 的巨额奖金。"
+	PirateHunt = 海贼猎人
+	PirateHuntDesc = "海贼们一直在攻击{mission_location}星系内的民用贸易星舰，损害了当地企业的利益。企业代表将向能够消灭 {target_count} 艘海贼星舰的 Cosmoteer 支付 {money} 赏金。"
+	ResourceDelivery = "{resource_type}货运"
+	ResourceDeliveryDesc = "{to_ship}请求紧急运送一批{target_count}{resource_icon}{resource_type_plural}，需在 {time_limit_minutes} 分钟内送到。除了为每件{resource_type}支付标准运费外，在交货全部完成后，还将额外支付 {money}作为奖金。"
+	StationContact = "联络{contact_ship}"
+	StationContactDesc = "{contact_ship}急需各位 Cosmoteer 的协助完成一系列任务。作为额外的激励，空间站的任务板管理部门还将赠予第一个访问该站点的 Cosmoteer {money} 奖金。"
+	StationRescue = "救援{contact_ship}"
+	StationRescueDesc = "收到了来自{contact_ship}的求救信号！压倒性数量的匪徒正在攻击该站点！空间站最高长官承诺将向消灭匪徒并拯救该站点的 Cosmoteer 提供 {money} 奖金。"
+	VisitSystem = "造访{mission_location}"
+	VisitSystemDesc = "一位著名的太空学者希望有人能够提供有关{mission_location}星系内恒星活动的数据。"
+}
+Mods
+{
+	
+	Activate = 激活
+	AuthorFmt = "发布者：{0}"
+	AutoDisabled = "某些 Mod 可能与当前版本的 Cosmoteer 不兼容，已被自动禁用。"
+	BuiltInFolder = "内置 Mod"
+	CreatePackage = "创建 Mod 包"
+	CreatePackageSuccessful = "Mod 包已保存！"
+	Deactivate = 停用
+	DialogName = "Mod 管理器"
+	IncompatibleWarning = "该 Mod 可能与当前版本的 Cosmoteer 不兼容，可能会导致错误。确定要启用它吗？"
+	InstallMod = "安装 Mod……"
+	InstallingMod = "正在安装 Mod……\n这可能需要一点时间，具体取决于 Mod 的大小。"
+	ModInstalled = "Mod 成功安装！必须将其打开才能生效。"
+	ModLoadError = "加载 Mod {0} 时出错：{1}"
+	ModOffFmt = "{0} <bad>（关）</bad>"
+	ModOnFmt = "{0} <good>（开）</good>"
+	NoModRulesFile = "所选 Mod 缺少 mod.rules 文件。"
+	NoModsMode = "<bad>Cosmoteer 当前在“无 Mod”模式下运行，Mod 即使启用也不会被加载。</bad>"
+	OverwriteConfirm = "已安装同名 Mod。是否覆盖？"
+	RestartInfo = "Mod 调整在重新启动 Cosmoteer 后才可生效。"
+	RestartLater = 稍后重启
+	RestartNow = 马上重启
+	ShowFolder = 显示文件夹
+	SteamWorkshop = 浏览创意工坊
+	UninstallComplete = "Mod 成功卸载。"
+	UninstallConfirm = "确定要卸载该 Mod 吗？"
+	UninstallMod = "卸载 Mod"
+	UninstallingMod = "正在卸载 Mod……\n这可能需要一点时间，具体取决于 Mod 的大小。"
+	UserFolder = "用户 Mod"
+	VersionFmt = "版本：{0}"
+	ViewInWorkshop = 在创意工坊中查看
+	WorkshopItemsDownloadingFmt = "正从创意工坊下载 {0} 个项目。一旦下载完成，它们将出现在该列表中。"
+	WorkshopUpload = 上传至创意工坊
+}
+ModsWorkshop: Workshop
+{
+	
+	DialogName = "创意工坊 Mod 上传工具"
+	Folder = "Mod 文件夹："
+	Name = "Mod 名称："
+	UpdatingExisting = "<good>更新现有 Mod：</good>"
+	UploadSuccessful = "上传成功！点击“确认”在创意工坊中查看你的 Mod。如果这是你第一次通过创意工坊上传，那么还需要接受创意工坊的法律协议，你的 Mod 才能让其他玩家看到。"
+	Warning = "<bad>警告：</bad>此 Mod 文件夹及其所有子文件夹的全部内容将被上传到创意工坊。请勿在其中放置任何你不希望或没有权利公开的文件。"
+}
+Multiplayer
+{
+	
+	AI = AI
+	AINameFmt = "AI 玩家{0}"
+	AddressAlreadyInUseFmt = "另一程序正在使用 UDP 端口{0}，必须将其关闭才能游玩多人模式。"
+	CpuNotSupported = "很遗憾，你的计算机 CPU 没有多人游戏所需的功能。多人游戏模式需要支持 SSE2 的 CPU。"
+	DefaultGameName = 未命名游戏
+	DefaultGameNameFmt = "{0}的游戏"
+	DefaultPlayerName = 未命名玩家
+	Disconnected = 已断开
+	ErrorInitializingFmt = "初始化多人游戏时出错：{0}"
+	GameEndReason
+	{
+		
+		ConnectionLost = 连接丢失
+		Deliberate = 主机已结束游戏。
+		Kicked = 主机已将你踢出游戏。
+		ReturnToGameSetup = 主机已结束游戏。
+	}
+	Host = 主机
+	LeftClickBuyShip = 左键单击购买舰船。
+	LoadGameVoteFmt = "主机想要加载游戏存档，存档名为“<b>{0}</b>”。"
+	NextGameCountdownFmt = "将在{0}秒后返回游戏前……"
+	Observer = 观战
+	PlayerLeftFmt = "{0} 已离开游戏。"
+	RightClickChangeShip = 右键单击更换舰船。
+	ShuttingDown = 请等待……
+	TeamFmt = "{0}战队"
+	TieGame = 平局
+	Vote = 投票！！！
+	VoteFailed = <bad><s24>投票未通过</s24></bad>
+	VoteNoFmt = "<bad>反对</bad>\n{0} 票"
+	VotePassed = <good><s24>投票通过</s24></good>
+	VoteWaitingFmt = "正在等待{0}票……"
+	VoteYesFmt = "<good>支持</good>\n{0} 票"
+	Waiting = 该玩家拖慢了游戏进程。
+}
+NewGame
+{
+	
+	SelectMode = 选择游戏模式
+	StartNewGame = 开始新游戏
+	Starting = 正在启动游戏……
+}
+News
+{
+	
+	Next = "下一个 ⮞"
+	Previous = "⮜ 上一个"
+	TitleFmt = "新闻（{0}/{1}）"
+}
+Objectives
+{
+	
+	CompletedFmt = ""
+	CountableFmt = ""
+	DebugEvent = 调试事件
+	DeliverResourcesFmt = "运送{0} {1}{2}至{3}"
+	DestroyCaptors = 消灭追捕者
+	DestroyFactionShips = "消灭{target_faction}的巡逻舰船"
+	DestroyPirates = 消灭海贼
+	DestroyPlatforms = 摧毁防御平台
+	DestroyRovingPirates = 消灭游荡海贼
+	DestroyShipFmt = "消灭{0}"
+	DestroyShips = 消灭目标
+	DiscoverFmt = "发现{0}"
+	DiscoverUnknown = 探索未知信号
+	FailedFmt = "<img name='objective_failed'/><bad><s>{0}</s> （失败）</bad>"
+	GatherResourcesFmt = "获得{0} {1}{2}"
+	GotoNodeFmt = "前往{0}星系"
+	GotoShipFmt = "抵达{0}"
+	InProgressFmt = ""
+	ProtectShipFmt = "{0}必须幸存"
+	ProtectShips = 目标必须幸存
+	ReachFameFmt = "达到<fame>{0}</fame>名望"
+	ReceiveRewardsAnywhere = 在任意空间站接收款项。
+	ReceiveRewardsFromShipFmt = "收到来自{0}的款项"
+	ReceiveRewardsInSystemFmt = "在{0}星系中的任意空间站接收款项"
+	TimeLimitFmt = "剩余时间：<bad>{0}:{1:00}</bad>"
+}
+PaintBox
+{
+	
+	BrushDisabledTip = 所选贴花或工具不支持不同的“笔刷”形状或尺寸。
+	BrushTip = 更改“笔刷”的形状或尺寸，以用于选定的贴花或工具。
+	CancelPasteTip = "取消并返回选择模式。\n\n热键：<btn id='General.Cancel'/>"
+	ClearAll = 清除所有贴花
+	ClearAllTip = 清楚所有贴花，以便从头开始设计涂装。
+	ClearLayer = 清除涂层
+	ClearLayerTip = 清除该涂层的所有贴花。
+	CopyTip = "复制所选贴花。\n\n热键：<btn id='Design.CopySelected'/>"
+	CutTip = "剪切（复制并删除）选定贴花。\n\n热键：<btn id='Design.CutSelected'/>"
+	DecalsLayerFmt = "贴花{0}"
+	DeleteDecalTip = "删除所持贴花。\n\n热键：<btn id='Design.Delete'/>"
+	DeleteTip = "删除所选贴花。\n\n热键：<btn id='Design.Delete'/>"
+	FlipXTip = "水平翻转。\n\n热键：<btn id='Design.FlipX'/>"
+	FlipYTip = "垂直翻转。\n\n热键：<btn id='Design.FlipY'/>"
+	GrabTip = "<b>抓取工具</b>\n\n选择后，点击贴花会将其抓取，随后可以将其放于其他位置。\n\n热键：<btn id='Design.GrabTool'/>"
+	Layers = 涂层
+	LoadDefaultPaintScheme = 加载默认涂装方案
+	LoadDefaultPaintSchemeTip = 用默认涂装方案替换当前涂装的颜色和图案。
+	LoadPaint = 加载涂装设计
+	LoadPaintScheme = 加载涂装方案
+	LoadPaintSchemeTip = 用先前保存的涂装方案取代现有。
+	LoadPaintTip = 从先前保存的文件中加载并取代当前的涂装设计。
+	MirrorToggleTip = "<b>镜像模式</b>\n\n启用后，星舰的贴花变更将沿其中轴线进行镜像映射。\n\n热键：<btn id='Design.ToggleMirrorMode'/>\n\n<btn id='General.UIAltClick'/>可修改镜像设置。"
+	NoDecalsCopied = 还没有复制过贴花。
+	NoDecalsSelected = 无已选贴花。
+	NothingToClear = 无可清除。
+	NothingToRedo = 无可重做。
+	NothingToUndo = 无可撤销。
+	PaintLayer = 底漆
+	PaintSchemeSaved = 涂装方案已保存。
+	PasteTip = "粘贴复制的贴花。\n\n热键：<btn id='Design.Paste'/>"
+	Redo = " 重做 "
+	RedoTip = "重做对星舰涂装设计的上一次改动。\n\n热键：<btn id='Design.Redo'/>"
+	RemoveTip = "<b>删除工具</b>\n\n选择后，点击贴花便可将其删除。\n\n热键：<btn id='Design.EraseTool'/>\n\n按住 <btn id='Design.EraseCursorMode'/> 可以暂时切换到此工具。"
+	ResetMirrorLines = 重置镜像线
+	ResetMirrorLinesTip = 将水平、垂直镜像线重置到星舰中心。
+	RotateLeftTip = "逆时针旋转。\n\n热键：<btn id='Design.RotateLeft'/>"
+	RotateRightTip = "顺时针旋转。\n\n热键：<btn id='Design.RotateRight'/>"
+	SaveDefaultPaintScheme = 保存为默认涂装方案
+	SaveDefaultPaintSchemeTip = 将星舰的涂装颜色和图案保存为默认涂装方案，以便用于新建造的星舰。
+	SavePaintScheme = 保存涂装方案
+	SavePaintSchemeTip = 保存此星舰的涂装颜色和图案，以便用于其他星舰。
+	SelectTip = "<b>选择工具</b>\n\n选定后，可以拖动方框来选中想要复制、剪切、粘贴、镜像、旋转或删除的贴花。\n\n热键：<btn id='Design.SelectionTool'/>\n\n按住 <btn id='Design.ContiguousSelectionMode'/> 可以使用选定邻接范围的“魔杖”。"
+	Title = 涂装编辑器
+	UndoTip = "撤销对星舰涂装设计的上一次改动。\n\n热键：<btn id='Design.Undo'/>"
+}
+PartColors
+{
+	
+	RoofLight = 灯光颜色/亮度
+}
+PartTargeters
+{
+	
+	HeadlightAim = "<b>探照灯瞄准</b>\n\n将选定的探照灯对准目标\n\n热键：<btn id='PartTargeters.headlight_aim'/>"
+	HeadlightAimCancel = "<b>重置探照灯瞄准</b>\n\n热键：<btn id='PartTargetCancelers.headlight_aim'/>"
+	PrismAim = "<b>瞄准离子棱镜</b>\n\n将选定离子光束棱镜对准目标或将其光束引导至另一个离子光束棱镜\n\n热键：<btn id='PartTargeters.prism_aim'/>"
+	TractorBeam = "<b>瞄准牵引光束</b>\n\n按住 <btn id='Game.SelectParts'/> 可瞄准特定部件。\n\n热键：<btn id='PartTargeters.tractor_beam'/>"
+	TractorBeamCancel = "<b>取消牵引光束</b>\n\n热键：<btn id='PartTargetCancelers.tractor_beam'/>"
+}
+PartToggles
+{
+	
+	Boost_Off = "<b>加速：<bad>关</bad></b>\n\n热键：<btn id='PartToggles.thruster_boost_off'/>"
+	Boost_On = "<b>加速：<good>开</good></b>\n\n热键：<btn id='PartToggles.thruster_boost_on'/>"
+	FireMode_AtTarget = "<b>对目标开火</b>\n只在获知目标后开火。\n\n热键：<btn id='PartToggles.fire_mode_at_target'/>"
+	FireMode_AtWill = "<b>随意开火</b>\n对范围内的所有敌人开火。\n\n热键：<btn id='PartToggles.fire_mode_at_will'/>"
+	FireMode_Auto = "<b>自动开火</b>\n没有目标也会持续开火。\n\n热键：<btn id='PartToggles.fire_mode_auto'/>"
+	FireMode_Hold = "<b>停火</b>\n任何情况下均不开火。\n\n热键：<btn id='PartToggles.fire_mode_hold'/>"
+	FirePref_Attack = "<b>攻击</b>\n只对敌舰开火。\n\n热键：<btn id='PartToggles.fire_pref_attack'/>"
+	FirePref_Both = "<b>攻击+防御</b>\n对敌舰和来袭的炮弹都开火。\n\n热键：<btn id='PartToggles.fire_pref_both'/>"
+	FirePref_Defend = "<b>防御</b>\n只对来袭的炮弹开火。此武器将忽略所有全舰瞄准命令。\n\n热键：<btn id='PartToggles.fire_pref_defend'/>"
+	Fire_Alternating = "<b>开火：交替</b>\n\n热键：<btn id='PartToggles.fire_alternating_on'/>"
+	Fire_Synchronized = "<b>开火：同步</b>\n\n热键：<btn id='PartToggles.fire_alternating_off'/>"
+	LaunchMines = "发射空雷\n\n热键：<btn id='PartToggles.launch_mines_on'/>"
+	Lights_High = "<b>灯光亮度：高</b>\n\n热键：<btn id='PartToggles.lights_high'/>"
+	Lights_Low = "<b>灯光亮度：低</b>\n\n热键：<btn id='PartToggles.lights_low'/>"
+	Lights_Med = "<b>灯光亮度：中</b>\n\n热键：<btn id='PartToggles.lights_med'/>"
+	MissileType_EMP = "<b>EMP 导弹</b>\n\n命中后释放电磁脉冲的大型导弹，可大范围耗尽敌方系统的能源。需要 EMP 导弹工厂生产。\n\n热键：<btn id='PartToggles.missile_type_emp'/>"
+	MissileType_HE = "<b>高爆导弹</b>\n\n可在小范围内造成高伤害的导弹。需要高爆导弹工厂生产。\n\n热键：<btn id='PartToggles.missile_type_he'/>"
+	MissileType_Mine = "<b>近炸空雷</b>\n\n固定空雷，敌舰靠近时引爆，射出杀伤性弹片。需要空雷工厂生产。\n\n热键：<btn id='PartToggles.missile_type_mine'/>"
+	MissileType_Nuke = "<b>战术核导弹</b>\n\n巨型慢速导弹，可在很大区域内引发猛烈核爆炸，杀伤力巨大。需要核导弹工厂生产。\n\n热键：<btn id='PartToggles.missile_type_nuke'/>"
+	OnOff_Off = "<b>能源：<bad>关</bad></b>\n\n热键：<btn id='PartToggles.on_off_off'/>"
+	OnOff_On = "<b>能源：<good>开</good></b>\n\n热键：<btn id='PartToggles.on_off_on'/>"
+	Rotate_Off = "<b>旋转：<bad>关</bad></b>\n\n热键：<btn id='PartToggles.rotate_off'/>"
+	Rotate_On = "<b>旋转：<good>开</good></b>\n\n热键：<btn id='PartToggles.rotate_on'/>"
+	TractorMode_Auto = "<b>牵引光束：自动</b>\n\n牵引光束将自动推拉目标，将其锁定在当前距离。\n\n热键：<btn id='PartToggles.tractor_mode_auto'/>"
+	TractorMode_Pull = "<b>牵引光束：拉</b>\n\n牵引光束将尽可能拉近目标。\n\n热键：<btn id='PartToggles.tractor_mode_pull'/>"
+	TractorMode_Push = "<b>牵引光束：推</b>\n\n牵引光束将尽可能推远目标。\n\n热键：<btn id='PartToggles.tractor_mode_push'/>"
+}
+PartTriggers
+{
+	
+	Detonate = "引爆炸弹\n\n热键：<btn id='PartTriggers.detonate'/>"
+}
+Parts
+{
+	
+	Airlock = 气闸舱门
+	AirlockDesc = 允许船员进出星舰，如拾取资源或在星舰之间移动。
+	AirlockIcon = 气闸舱门
+	Armor = 装甲
+	Armor1x2Wedge = "1x2 楔形装甲"
+	Armor1x2WedgeDesc = 可吸收大量敌军火力，保护星舰脆弱的内部。也可充当应对电磁脉冲的“避雷针”。
+	Armor1x2WedgeIcon = "1x2 楔形装甲"
+	Armor1x3Wedge = "1x3 楔形装甲"
+	Armor1x3WedgeDesc = 可吸收大量敌军火力，保护星舰脆弱的内部。也可充当应对电磁脉冲的“避雷针”。
+	Armor1x3WedgeIcon = "1x3 楔形装甲"
+	Armor2x1 = "2x1 装甲"
+	Armor2x1Desc = 可吸收大量敌军火力，保护星舰脆弱的内部。也可充当应对电磁脉冲的“避雷针”。
+	Armor2x1Icon = "2x1 装甲"
+	ArmorDesc = 可吸收大量敌军火力，保护星舰脆弱的内部。也可充当应对电磁脉冲的“避雷针”。
+	ArmorIcon = 装甲
+	ArmorStructureHybrid1x1 = 装甲+结构（楔形）
+	ArmorStructureHybrid1x1Desc = 可吸收大量敌军火力，保护星舰脆弱的内部。也可充当应对电磁脉冲的“避雷针”。
+	ArmorStructureHybrid1x1Icon = "装甲+结构\n（楔形）"
+	ArmorStructureHybrid1x2 = "装甲+结构（1x2 楔形）"
+	ArmorStructureHybrid1x2Desc = 可吸收大量敌军火力，保护星舰脆弱的内部。也可充当应对电磁脉冲的“避雷针”。
+	ArmorStructureHybrid1x2Icon = "装甲+结构\n（1x2 楔形）"
+	ArmorStructureHybrid1x3 = "装甲+结构（1x3 楔形）"
+	ArmorStructureHybrid1x3Desc = 可吸收大量敌军火力，保护星舰脆弱的内部。也可充当应对电磁脉冲的“避雷针”。
+	ArmorStructureHybrid1x3Icon = "装甲+结构\n（1x3 楔形）"
+	ArmorStructureHybridTri = 装甲+结构（三角形）
+	ArmorStructureHybridTriDesc = 可吸收大量敌军火力，保护星舰脆弱的内部。也可充当应对电磁脉冲的“避雷针”。
+	ArmorStructureHybridTriIcon = "装甲+结构\n（三角形）"
+	ArmorTri = 三角装甲
+	ArmorTriDesc = 可吸收大量敌军火力，保护星舰脆弱的内部。也可充当应对电磁脉冲的“避雷针”。
+	ArmorTriIcon = 三角装甲
+	ArmorWedge = 楔形装甲
+	ArmorWedgeDesc = 可吸收大量敌军火力，保护星舰脆弱的内部。也可充当应对电磁脉冲的“避雷针”。
+	ArmorWedgeIcon = 楔形装甲
+	CannonDeck = 甲板加农炮
+	CannonDeckDesc = "巨型双管炮，为了增加稳定性，安装在了星舰顶部而不是船舷上。每根炮管都能够融合 10 发炮弹，开炮时发出巨响，暂时震晕附近的船员。\n\n正面与侧面 2 单元格内不能存在其他甲板炮塔或“高大”部件。"
+	CannonDeckIcon = 甲板加农炮
+	CannonLarge = 大型加农炮
+	CannonLargeDesc = 与标准加农炮相比，将四发炮弹融合在一起，大大增强了伤害和穿深。
+	CannonLargeIcon = 大型加农炮
+	CannonMed = 标准加农炮
+	CannonMedDesc = 发射单发炮弹，可以穿透敌舰，击穿后可能引发火灾。
+	CannonMedIcon = 加农炮
+	ControlRoomLarge = 舰桥
+	ControlRoomLargeDesc = "星舰飞行与协调武器的关键，能够提供 <good>+1000<image name='command_points' colored='true'/></good> 点指挥点数。若星舰的武器、推进器等系统占用的指挥点数超过其可用点数，则将无法控制星舰。"
+	ControlRoomLargeIcon = 舰桥
+	ControlRoomMed = 控制室
+	ControlRoomMedDesc = "星舰飞行与协调武器的关键，能够提供 <good>+250<image name='command_points' colored='true'/></good> 点指挥点数。若星舰的武器、推进器等系统占用的指挥点数超过其可用点数，则将无法控制星舰。"
+	ControlRoomMedIcon = 控制室
+	ControlRoomSmall = 驾驶舱
+	ControlRoomSmallDesc = "星舰飞行与协调武器的关键，能够提供 <good>50<image name='command_points' colored='true'/></good>点指挥点数。若星舰的武器、推进器等系统占用的指挥点数超过其可用点数，则将无法控制星舰。"
+	ControlRoomSmallIcon = 驾驶舱
+	Conveyor = 移动过道
+	ConveyorDesc = 加快船员通行速度，但仅限单向加速。
+	ConveyorIcon = 移动过道
+	Corridor = 走廊
+	CorridorDesc = 一条走廊，船员可以从中快速通过。
+	CorridorIcon = 走廊
+	CrewQuartersMed = 船员宿舍
+	CrewQuartersMedDesc = "为 6 名船员提供床位。"
+	CrewQuartersMedIcon = 宿舍
+	CrewQuartersSmall = 船员铺位
+	CrewQuartersSmallDesc = "为 2 名船员提供床位。"
+	CrewQuartersSmallIcon = 铺位
+	DepositCarbon1x = "碳矿藏（1x 软）"
+	DepositCarbon1xHard = "碳矿藏（1x 硬）"
+	DepositCarbon1xHardIcon = "碳（1x 硬）"
+	DepositCarbon1xIcon = "碳（1x 软）"
+	DepositCarbon2x = "碳矿藏（2x 软）"
+	DepositCarbon2xHard = "碳矿藏（2x 硬）"
+	DepositCarbon2xHardIcon = "碳（2x 硬）"
+	DepositCarbon2xIcon = "碳（2x 软）"
+	DepositCarbon3x = "碳矿藏（3x 软）"
+	DepositCarbon3xHard = "碳矿藏（3x 硬）"
+	DepositCarbon3xHardIcon = "碳（3x 硬）"
+	DepositCarbon3xIcon = "碳（3x 软）"
+	DepositCopper1x = "铜矿藏（1x 软）"
+	DepositCopper1xHard = "铜矿藏（1x 硬）"
+	DepositCopper1xHardIcon = "铜（1x 硬）"
+	DepositCopper1xIcon = "铜（1x 软）"
+	DepositCopper2x = "铜矿藏（2x 软）"
+	DepositCopper2xHard = "铜矿藏（2x 硬）"
+	DepositCopper2xHardIcon = "铜（2x 硬）"
+	DepositCopper2xIcon = "铜（2x 软）"
+	DepositCopper3x = "铜矿藏（3x 软）"
+	DepositCopper3xHard = "铜矿藏（3x 硬）"
+	DepositCopper3xHardIcon = "铜（3x 硬）"
+	DepositCopper3xIcon = "铜（3x 软）"
+	DepositGold1x = "金矿藏（1x 软）"
+	DepositGold1xHard = "金矿藏（1x 硬）"
+	DepositGold1xHardIcon = "金（1x 硬）"
+	DepositGold1xIcon = "金（1x 软）"
+	DepositGold2x = "金矿藏（2x 软）"
+	DepositGold2xHard = "金矿藏（2x 硬）"
+	DepositGold2xHardIcon = "金（2x 硬）"
+	DepositGold2xIcon = "金（2x 软）"
+	DepositGold3x = "金矿藏（3x 软）"
+	DepositGold3xHard = "金矿藏（3x 硬）"
+	DepositGold3xHardIcon = "金（3x 硬）"
+	DepositGold3xIcon = "金（3x 软）"
+	DepositHyperium1x = "超光素矿藏（1x 软）"
+	DepositHyperium1xHard = "超光素矿藏（1x 硬）"
+	DepositHyperium1xHardIcon = "超光素（1x 硬）"
+	DepositHyperium1xIcon = "超光素（1x 软）"
+	DepositHyperium2x = "超光素矿藏（2x 软）"
+	DepositHyperium2xHard = "超光素矿藏（2x 硬）"
+	DepositHyperium2xHardIcon = "超光素（2x 硬）"
+	DepositHyperium2xIcon = "超光素（2x 软）"
+	DepositHyperium3x = "超光素矿藏（3x 软）"
+	DepositHyperium3xHard = "超光素矿藏（3x 硬）"
+	DepositHyperium3xHardIcon = "超光素（3x 硬）"
+	DepositHyperium3xIcon = "超光素（3x 软）"
+	DepositIron1x = "铁矿藏（1x 软）"
+	DepositIron1xHard = "铁矿藏（1x 硬）"
+	DepositIron1xHardIcon = "铁矿（1x 硬）"
+	DepositIron1xIcon = "铁矿（1x 软）"
+	DepositIron2x = "铁矿藏（2x 软）"
+	DepositIron2xHard = "铁矿藏（2x 硬）"
+	DepositIron2xHardIcon = "铁矿（2x 硬）"
+	DepositIron2xIcon = "铁矿（2x 软）"
+	DepositIron3x = "铁矿藏（3x 软）"
+	DepositIron3xHard = "铁矿藏（3x 硬）"
+	DepositIron3xHardIcon = "铁矿（3x 硬）"
+	DepositIron3xIcon = "铁矿（3x 软）"
+	DepositSulfur1x = "硫磺矿藏（1x 软）"
+	DepositSulfur1xHard = "硫磺矿藏（1x 硬）"
+	DepositSulfur1xHardIcon = "硫磺（1x 硬）"
+	DepositSulfur1xIcon = "硫磺（1x 软）"
+	DepositSulfur2x = "硫磺矿藏（2x 软）"
+	DepositSulfur2xHard = "硫磺矿藏（2x 硬）"
+	DepositSulfur2xHardIcon = "硫磺（2x 硬）"
+	DepositSulfur2xIcon = "硫磺（2x 软）"
+	DepositSulfur3x = "硫磺矿藏（3x 软）"
+	DepositSulfur3xHard = "硫磺矿藏（3x 硬）"
+	DepositSulfur3xHardIcon = "硫磺（3x 硬）"
+	DepositSulfur3xIcon = "硫磺（3x 软）"
+	DepositTritanium1x = "三钛原矿矿藏（1x 软）"
+	DepositTritanium1xHard = "三钛原矿矿藏（1x 硬）"
+	DepositTritanium1xHardIcon = "三钛原矿（1x 硬）"
+	DepositTritanium1xIcon = "三钛原矿（1x 软）"
+	DepositTritanium2x = "三钛原矿矿藏（2x 软）"
+	DepositTritanium2xHard = "三钛原矿矿藏（2x 硬）"
+	DepositTritanium2xHardIcon = "三钛原矿（2x 硬）"
+	DepositTritanium2xIcon = "三钛原矿（2x 软）"
+	DepositTritanium3x = "三钛原矿矿藏（3x 软）"
+	DepositTritanium3xHard = "三钛原矿矿藏（3x 硬）"
+	DepositTritanium3xHardIcon = "三钛原矿（3x 硬）"
+	DepositTritanium3xIcon = "三钛原矿（3x 软）"
+	DepositUranium1x = "铀矿藏（1x 软）"
+	DepositUranium1xHard = "铀矿藏（1x 硬）"
+	DepositUranium1xHardIcon = "铀（1x 硬）"
+	DepositUranium1xIcon = "碳（1x 软）"
+	DepositUranium2x = "铀矿藏（2x 软）"
+	DepositUranium2xHard = "铀矿藏（2x 硬）"
+	DepositUranium2xHardIcon = "铀（2x 硬）"
+	DepositUranium2xIcon = "铀（2x 软）"
+	DepositUranium3x = "铀矿藏（3x 软）"
+	DepositUranium3xHard = "铀矿藏（3x 硬）"
+	DepositUranium3xHardIcon = "铀（3x 硬）"
+	DepositUranium3xIcon = "铀（3x 软）"
+	Disruptor = 干扰器
+	DisruptorDesc = 可发出电击，只能造成少量伤害，但可以使敌舰的系统短路，使其失去动力。可以在穿透护盾的同时消耗护盾能量。
+	DisruptorIcon = 干扰器
+	Door = 舱门
+	DoorDesc = 允许船员（以及火焰！）在舱室间移动。
+	DoorIcon = 舱门
+	EngineRoom = 引擎室
+	EngineRoomDesc = "使相邻推进器的功率增加 50%。也可作为相邻推进器的中央输送点，船员可向其输送电池，而不必单独前往各个推进器。"
+	EngineRoomIcon = 引擎室
+	ExplosiveCharge = 炸弹
+	ExplosiveChargeDesc = 一种可以手动引爆的小型爆炸装置。主要用于主动将本舰分割成多块。
+	ExplosiveChargeIcon = 炸弹
+	FactoryAmmo = 炮弹工厂
+	FactoryAmmoDesc = "制造加农炮与轨道炮使用的炮弹。需要消耗硫磺。与之相邻的所有工厂都获得 +25% 生产速度。"
+	FactoryAmmoIcon = 弹药
+	FactoryCoil = 线圈工厂
+	FactoryCoil2 = 超感线圈工厂
+	FactoryCoil2Desc = "制造能用于建造许多先进星舰部件的超感线圈。需要消耗铜和线圈。与之相邻的所有工厂都获得 +25% 生产速度。"
+	FactoryCoil2Icon = 超感线圈
+	FactoryCoilDesc = "制造能用于建造许多星舰部件的线圈。需要消耗铜。与之相邻的所有工厂都获得 +25% 生产速度。"
+	FactoryCoilIcon = 线圈
+	FactoryDiamond = 金刚石工厂
+	FactoryDiamondDesc = 制造能用于建造一些先进星舰部件的金刚石。需要消耗碳。
+	FactoryDiamondIcon = 金刚石
+	FactoryEMP = "EMP 导弹工厂"
+	FactoryEMPDesc = "制造能在大范围内消耗敌舰系统能量的 EMP 导弹。需要消耗铁和铜。与之相邻的所有工厂都获得 +25% 生产速度。"
+	FactoryEMPIcon = "EMP 导弹"
+	FactoryHE = 高爆导弹工厂
+	FactoryHEDesc = "制造能在小范围内造成高伤害的高爆导弹。需要消耗铁和硫磺。与之相邻的所有工厂都获得 +25% 生产速度。"
+	FactoryHEIcon = 高爆导弹
+	FactoryMine = 空雷工厂
+	FactoryMineDesc = "制造能在敌舰接近时爆炸并射出弹片的空雷。需要消耗铁和炮弹。与之相邻的所有工厂都获得 +25% 生产速度。"
+	FactoryMineIcon = 空雷
+	FactoryNuke = 核导弹工厂
+	FactoryNukeDesc = "制造能在大范围内造成极高伤害的战术核导弹。需要消耗铁和铀。与之相邻的所有工厂都获得 +25% 生产速度。"
+	FactoryNukeIcon = 核弹
+	FactoryProcessor = 处理器装配机
+	FactoryProcessorDesc = "制造能用于建造一些先进星舰部件的处理器。需要消耗黄金和线圈。与之相邻的所有工厂都获得 +25% 生产速度。"
+	FactoryProcessorIcon = 处理器
+	FactorySteel = 炼钢厂
+	FactorySteelDesc = "制造能用于建造几乎所有星舰部件的钢板。需要消耗铁。与之相邻的所有工厂都获得 +25% 生产速度。"
+	FactorySteelIcon = 钢板
+	FactoryTristeel = 三钛钢炼钢厂
+	FactoryTristeelDesc = "制造能用于建造一些先进星舰部件的三钛钢板。需要消耗三钛原矿。与之相邻的所有工厂都获得 +25% 生产速度。"
+	FactoryTristeelIcon = 三钛钢板
+	FactoryUranium = 铀浓缩器
+	FactoryUraniumDesc = "浓缩建造反应堆等先进星舰部件必不可少的铀。需要消耗未浓缩的铀。与之相邻的所有工厂都获得 +25% 生产速度。"
+	FactoryUraniumIcon = 浓缩铀
+	FireExtinguisher = 灭火器
+	FireExtinguisherDesc = 储存一个灭火器，船员可以用其灭火。
+	FireExtinguisherIcon = 灭火器
+	FlakCannonLarge = 防空炮
+	FlakCannonLargeDesc = 强大的防御系统，可以摧毁敌人的导弹、激光和炮弹。也可以对敌舰造成中等程度的伤害。
+	FlakCannonLargeIcon = 防空炮
+	HyperdriveBeacon = 超空间驱动信标
+	HyperdriveBeaconDesc = 配备超空间驱动器的星舰可以跳跃至配备有超空间驱动信标的星舰附近。
+	HyperdriveBeaconIcon = 超空间驱动信标
+	HyperdriveSmall = 小型超空间驱动器
+	HyperdriveSmallDesc = 允许星舰瞬间跳跃至恒星系内的其他目的地，或者在超空间跳跃中继站的帮助下，前往其他恒星系。
+	HyperdriveSmallIcon = 小型超空间驱动器
+	IonBeamEmitter = 离子光束发射器
+	IonBeamEmitterDesc = 向固定方向发射一束强大的离子能量束。距离越远，伤害越低。可将其射入离子光束棱镜来调整角度。
+	IonBeamEmitterIcon = 离子光束
+	IonBeamPrism = 离子光束棱镜
+	IonBeamPrismDesc = 为入射的离子光束重新定向，瞄准敌舰或其他离子光束棱镜。
+	IonBeamPrismIcon = 离子棱镜
+	LaserBlasterLarge = 重型激光炮
+	LaserBlasterLargeDesc = 在炮塔上安装了两门大型激光炮，牺牲射击精度、进一步特化功能，获得了更高的伤害。
+	LaserBlasterLargeIcon = 重型激光
+	LaserBlasterSmall = 激光炮
+	LaserBlasterSmallDesc = 一种高精度多用途武器，发射单发爆能束，对敌舰造成中等程度的伤害。
+	LaserBlasterSmallIcon = 激光
+	MegaRock1x1 = 巨型岩石（1x1）
+	MegaRock2x2 = 巨型岩石（2x2）
+	MegaRock3x3 = 巨型岩石（3x3）
+	MegaRock4x4 = 巨型岩石（4x4）
+	MegaRockWedge1x1 = 巨型岩石（楔形）
+	MegaRockWedge1x2 = "巨型岩石（1x2 楔形）"
+	MiningLaserSmall = 开采激光
+	MiningLaserSmallDesc = 射出一对精确的激光束，迅速切割哪怕最为坚硬的小行星，从中提取资源。在回收弃舰方面也很有效，在紧要关头还可作为短程武器使用。
+	MiningLaserSmallIcon = 开采激光
+	MissileLauncher = 导弹与空雷发射器
+	MissileLauncherDesc = "可发射任意类型的导弹或空雷。\n\n哪怕在战斗中，也可以随时更换其发射的弹药类型。"
+	MissileLauncherIcon = 发射器
+	PointDefense = 点防系统
+	PointDefenseDesc = 自动防御系统，使用超热等离子弹击落敌人的导弹和炮弹。也可以对敌舰造成轻度伤害。
+	PointDefenseIcon = 点防
+	PowerStorage = 能源电容器
+	PowerStorageDesc = 能储存有限的等离子电池，可供附近的星舰系统使用。
+	PowerStorageIcon = 电容器
+	Railgun = 轨道炮
+	RailgunAccelerator = 轨道炮加速器模块
+	RailgunAcceleratorDesc = "可选组件，布置在轨道炮发射器与装填器之间。每一个加速器都会增加弹丸的速度、伤害和穿深。\n\n轨道炮可发射磁力加速弹丸，穿透至敌舰内部，造成巨大伤害。每门轨道炮都需要一个装填器和一个发射器，外加任意数量的加速器。\n\n轨道炮发射器以及加速器无法供船员通行。"
+	RailgunAcceleratorIcon = 轨道炮加速器
+	RailgunDesc = 模块化的武器，发射磁力加速弹丸，可以穿透至敌舰内部，造成巨大伤害。
+	RailgunLauncher = 轨道炮发射器模块
+	RailgunLauncherDesc = "所有轨道炮的必要组成部分。必须与一个装填器配对，还可酌情安装任意数量的加速器。\n\n轨道炮可发射磁力加速弹丸，穿透至敌舰内部，造成巨大伤害。每门轨道炮都需要一个装填器和一个发射器，外加任意数量的加速器。\n\n轨道炮发射器以及加速器无法供船员通行。"
+	RailgunLauncherIcon = 轨道炮发射器
+	RailgunLoader = 轨道炮装填器模块
+	RailgunLoaderDesc = "所有轨道炮的必要组成部分。必须与一个发射器配对，还可酌情安装任意数量的加速器。\n\n轨道炮可发射磁力加速弹丸，穿透至敌舰内部，造成巨大伤害。每门轨道炮都需要一个装填器和一个发射器，外加任意数量的加速器。"
+	RailgunLoaderIcon = 轨道炮装填器
+	ReactorLarge = 大型反应堆芯
+	ReactorLargeDesc = 发电装置，可为星舰各种系统生产三倍的供电等离子电池。
+	ReactorLargeIcon = 大型反应堆
+	ReactorMed = 中型反应堆芯
+	ReactorMedDesc = 发电装置，可为星舰各种系统生产双倍的供电等离子电池。
+	ReactorMedIcon = 中型反应堆
+	ReactorSmall = 小型反应堆芯
+	ReactorSmallDesc = 发电装置，可为星舰各种系统生产供电等离子电池。
+	ReactorSmallIcon = 小型反应堆
+	ResourceCollector = 资源收集器
+	ResourceCollectorDesc = "装备四具小型外部牵引光束，能够收集资源并将其直接递送至拥有外部舱门的储存舱室。\n\n只有回收已标记资源时，船员才会操作资源收集器。"
+	ResourceCollectorIcon = 资源收集器
+	Rock1x1 = "岩石（1x1 软）"
+	Rock1x1Hard = "岩石（1x1 硬）"
+	Rock2x2 = "岩石（2x2 软）"
+	Rock2x2Hard = "岩石（2x2 硬）"
+	Rock3x3 = "岩石（3x3 软）"
+	Rock3x3Hard = "岩石（3x3 硬）"
+	Rock4x4 = "岩石（4x4 软）"
+	Rock4x4Hard = "岩石（4x4 硬）"
+	RockDesc = 平平无奇的小行星岩石，不含任何有用的资源。可由船员轻松开采。
+	RockHardDesc = 平平无奇的小行星岩石，不含任何有用的资源。需要使用开采激光。
+	RockWedge1x1 = 岩石（楔形）
+	RockWedge1x2 = "岩石（1x2 楔形）"
+	RoofHeadlight = 外部探照灯
+	RoofHeadlightDesc = 可以瞄准的外部探照灯。仅有美观价值。
+	RoofHeadlightIcon = 外部探照灯
+	RoofLight = 外部灯光
+	RoofLightDesc = 小型外部灯光。仅有美观价值。
+	RoofLightIcon = 外部灯光
+	SensorArray = 传感器阵列
+	SensorArrayDesc = 扩大星舰的传感范围。（不会同其他传感器阵列叠加）
+	SensorArrayIcon = 传感器
+	ShieldGenLarge = 大型护盾发生器
+	ShieldGenLargeDesc = "在星舰外投射一层大型防御性能量盾，阻挡大部分来袭的火力。易受干扰器和 EMP 的影响。\n\n由于其体积巨大，能量护盾不能透过舰体的非结构部分投射，需要建造在星舰脆弱的外装上。"
+	ShieldGenLargeIcon = 大型护盾
+	ShieldGenSmall = 小型护盾发生器
+	ShieldGenSmallDesc = "在星舰外投射一层小型防御性能量盾，阻挡大部分来袭的火力。易受干扰器和 EMP 的影响。\n\n由于其体积小，能量护盾可以透过星舰舰体投射，从而允许小型护盾发生器建在受到良好保护的星舰内部。"
+	ShieldGenSmallIcon = 小型护盾
+	Storage2x2 = 储存坞（4）
+	Storage2x2Desc = "可储存 4 组任意资源。"
+	Storage2x2Icon = 储存（4）
+	Storage3x2 = 储存坞（6）
+	Storage3x2Desc = "可储存 6 组任意资源。"
+	Storage3x2Icon = 储存（6）
+	Storage3x3 = 储存坞（9）
+	Storage3x3Desc = "可储存 9 组任意资源。"
+	Storage3x3Icon = 储存（6）
+	Storage4x3 = 储存坞（12）
+	Storage4x3Desc = "可储存 12 组任意资源。"
+	Storage4x3Icon = 储存（12）
+	Storage4x4 = 储存坞（16）
+	Storage4x4Desc = "可储存 16 组任意资源。"
+	Storage4x4Icon = 储存（16）
+	Structure = 结构
+	Structure1x2Wedge = "结构（1x2 楔形）"
+	Structure1x2WedgeDesc = 支撑一艘星舰的底层结构框架。结构自动包含在所有房间和走廊中。
+	Structure1x2WedgeIcon = "结构（1x2 楔形）"
+	Structure1x3Wedge = "结构（1x3 楔形）"
+	Structure1x3WedgeDesc = 支撑一艘星舰的底层结构框架。结构自动包含在所有房间和走廊中。
+	Structure1x3WedgeIcon = "结构（1x3 楔形）"
+	StructureDesc = 支撑一艘星舰的底层结构框架。结构自动包含在所有房间和走廊中。
+	StructureIcon = 结构
+	StructureTri = 结构（三角形）
+	StructureTriDesc = 支撑一艘星舰的底层结构框架。结构自动包含在所有房间和走廊中。
+	StructureTriIcon = 结构（三角形）
+	StructureWedge = 结构（楔形）
+	StructureWedgeDesc = 支撑一艘星舰的底层结构框架。结构自动包含在所有房间和走廊中。
+	StructureWedgeIcon = 结构（楔形）
+	ThrusterBoost = 加速推进器
+	ThrusterBoostDesc = 大型推进器的一个变种，可以将原始等离子体直接注入其燃烧室，获得强大但短暂的加速。
+	ThrusterBoostIcon = 加速推进器
+	ThrusterHuge = 超大推进器
+	ThrusterHugeDesc = 巨大的推进引擎，能够以超过大型推进器两倍的动力推动星舰。需要很长时间才能达到最高推进力。
+	ThrusterHugeIcon = 超大推进器
+	ThrusterLarge = 大型推进器
+	ThrusterLargeDesc = 双倍大小的推进引擎，能够以超过标准推进器两倍的动力推动星舰。需要中等时间才能达到最高推进力。
+	ThrusterLargeIcon = 大型推进器
+	ThrusterMed = 标准推进器
+	ThrusterMedDesc = 标准大小的推进引擎，能够以适度的动力推动星舰。只需很短时间即可达到最高推进力。
+	ThrusterMedIcon = 标准推进器
+	ThrusterSmall = 小型推进器
+	ThrusterSmall2Way = 双向小型推进器
+	ThrusterSmall2WayDesc = 动力孱弱的双向推进引擎，主要用于机动与转向。
+	ThrusterSmall2WayIcon = 双向小型推进器
+	ThrusterSmall3Way = 三向小型推进器
+	ThrusterSmall3WayDesc = 动力孱弱的三向推进引擎，主要用于机动与转向。
+	ThrusterSmall3WayIcon = 三向小型推进器
+	ThrusterSmallDesc = 动力孱弱的推进引擎，主要用于机动与转向。
+	ThrusterSmallIcon = 小型推进器
+	TractorBeamEmitter = 牵引光束发射器
+	TractorBeamEmitterDesc = 发出引力光束，拉动或推动其他星舰与物体。
+	TractorBeamEmitterIcon = 牵引光束
+	WallHole = 墙洞
+	WallHoleDesc = 炸穿的墙洞
+}
+PostShaders
+{
+	
+	Apple2 = 老爷机
+	BlackAndWhite = 低成本科幻电影
+	Inversion = 反色
+	Newspaper = 旧报纸
+	Normal = 正常
+}
+Pvp: Multiplayer
+{
+	
+	ForfeitConfirm = 确定放弃战斗吗？
+	ForfeitTip = 弃权
+	Ranks
+	[
+		
+		"第 1 名"
+		"第 2 名"
+		"第 3 名"
+		"第 4 名"
+		"第 5 名"
+		"第 6 名"
+		"第 7 名"
+		"第 8 名"
+	]
+	Scoreboard
+	{
+		
+		Place = 排名
+		PlayerName = 玩家
+	}
+	WinnerFmt = "{0}获胜！"
+}
+PvpModeConfig
+{
+	
+	AllowChangeShips = 允许更改星舰配装
+	AllowChangeShipsTip = 勾选后玩家便能在战斗中改变可购买星舰的配装。
+	AllowIllegalShips = 允许非法星舰
+	AllowIllegalShipsTip = 勾选后玩家可以使用原本非法的星舰设计进行游戏。
+	AllowObservers = 允许观战
+	AllowObserversTip = 勾选后本次游戏玩家将可以观战，而无需选择或指挥任何星舰。
+	AsteroidDensities
+	{
+		
+		High = 高
+		Low = 低
+		None = 无
+		Normal = 正常
+	}
+	AsteroidDensity = 小行星密度
+	AsteroidDensityTip = 战斗区域内小行星的密度。
+	CustomRuleset = 自定义
+	DeleteCustomRuleset = 删除自定义规则集
+	DeleteCustomRulesetConfirmFmt = "确定要删除自定义规则集‘{0}’吗？"
+	DestructionGoalFmt = "{0}% 摧毁"
+	FleetDistance = 起始间距
+	FleetDistanceTip = 游戏开始时，每个玩家或战队舰队间的距离。
+	FleetDistances
+	{
+		
+		LongFmt = "长（{0}米）"
+		NormalFmt = "标准（{0}米）"
+		ShortFmt = "短（{0}米）"
+	}
+	FogOfWar = 战争迷雾
+	FogOfWarTip = 星舰是否视野有限；在视野外无法看到敌舰。
+	FriendlyFire = 友军误伤
+	FriendlyFireTip = 勾选后星舰能够攻击和伤害自己或盟友的星舰，无论有意还是无意。
+	Funds = 每玩家/战队的信用点
+	FundsTip = "每个玩家或战队可花费在其舰队上的信用点总数（<img name='money' colored='true'/>）。"
+	GameSpeed = 游戏速度
+	GameSpeedControl = 游戏速度控制
+	GameSpeedControlTip = 哪些玩家可以在战斗中改变游戏速度（如果允许）。
+	GameSpeedControls
+	{
+		
+		Disabled = 禁用
+		Everyone = 所有人
+		HostOnly = 仅主机
+	}
+	GameSpeedTip = 开始时的游戏速度，可以在之后更改。
+	GoalPoints = 目标分数
+	GoalPointsTip = 第一个达到该分数的玩家将获胜。
+	LockTeams = 只有主机可以分配战队
+	LockTeamsTip = 勾选后只有主机能够更改每个玩家的战队。未被勾选时，每个玩家都可以更改自己的战队。无论如何设置，主机均可更改任何玩家的战队。
+	MaxPlayers = 玩家
+	MaxPlayersTip = 包括房主在内，可以加入该游戏的最大人数。
+	MaxShipValue = 最大星舰价值
+	MaxShipValueTip = "单艘星舰的最大信用点（<img name='money' colored='true'/>）价值。"
+	MaxShips = 每位玩家的星舰数
+	MaxShipsTip = 每个玩家舰队中的最大星舰数量。
+	PerimeterDistance = 死亡之环
+	PerimeterDistanceTip = 以此为半径的圆圈外，星舰将迅速受到伤害。
+	PerimeterDistances
+	{
+		
+		FarFmt = "遥远（{0}米）"
+		NearFmt = "临近（{0}米）"
+		NormalFmt = "标准（{0}米）"
+		VeryNearFmt = "非常近（{0}米）"
+	}
+	ResourceDrops = 星舰被毁会掉落资源
+	ResourceDropsTip = 勾选后，星舰部件被摧毁后将掉落资源。可能会影响游戏性能。
+	Ruleset = 规则集
+	RulesetTip = 应用于特定游戏模式的一套预设规则。
+	SaveCustomRuleset = 保存自定义规则集
+	SaveCustomRulesetMsg = 为新的自定义规则集输入名称：
+	ShareFunds = 共享战队信用点
+	ShareFundsTip = 勾选后战队中所有玩家的信用点将被汇总共享。
+	ShipAssignMode = 星舰分配
+	ShipAssignModeTip = 规定谁可以把星舰分配给哪些玩家。
+	ShipAssignModes
+	{
+		
+		All = 所有人
+		Host = 仅主机
+		Self = 每个玩家
+		Team = 同战队
+	}
+	ShipConstruction = 允许随时建造
+	ShipConstructionTip = 勾选后，玩家在战斗中也能对星舰进行改动。船员会尽力收集足够的资源进行建造。
+	ShipPreviewMode = 星舰预览
+	ShipPreviewModeTip = 规定玩家是否能在游戏开始前看到其他玩家所选择的星舰。
+	ShipPreviewModes
+	{
+		
+		All = 所有人
+		Off = 关
+		Team = 同战队
+	}
+	ShrinkingPerimeter = 死亡之环缩圈
+	ShrinkingPerimeterTip = 勾选后死亡之环将随着时间的推移而逐渐缩小。
+	Teams = 战队
+	TeamsFfa = 各自为战
+	TeamsFmt = "{0}战队"
+	TeamsTip = 是否允许组队参战，以及有多少战队参加战斗。
+	TimeLimit = 时限
+	TimeLimitFmt = "{0}分钟"
+	TimeLimitNone = 无
+	VictoryCondition = 胜利条件
+	VictoryConditionTip = 规定某一战队获胜的时机。
+}
+ReputationLog
+{
+	
+	Fame = 星系名望
+	MaxCrewFmt = "最大船员数：{0}"
+	MilestoneFmt = ""
+	TabName = 名望和声誉
+}
+ReputationTitleTips
+[
+	
+	"任务信用点奖励 -40%。\n资源、船员、蓝图价格 +100%。\n通缉时间 +100%。\n追缉舰船数：7"
+	"任务信用点奖励 -30%。\n资源、船员、蓝图价格 +75%。\n通缉时间 +75%。\n追缉舰船数：6"
+	"任务信用点奖励 -20%。\n资源、船员、蓝图价格 +50%。\n通缉时间 +50%。\n追缉舰船数：5"
+	"任务信用点奖励 -10%。\n资源、船员、蓝图价格 +25%。\n通缉时间 +25%。\n追缉舰船数：4"
+	"无奖惩效果。\n追缉舰船数：3"
+	"任务信用点奖励 +10%。\n资源、船员、蓝图价格 -10%。\n追缉舰船数：3"
+	"任务信用点奖励 +20%。\n资源、船员、蓝图价格 -20%。\n追缉舰船数：3"
+	"任务信用点奖励 +30%。\n资源、船员、蓝图价格 -30%。\n追缉舰船数：3"
+	"任务信用点奖励 +40%。\n资源、船员、蓝图价格 -40%。\n追缉舰船数：3"
+]
+ReputationTitles
+[
+	
+	宿敌
+	仇视
+	敌人
+	厌恶
+	中立
+	合作
+	友好
+	友军
+	拥护
+]
+Resource
+{
+	
+	Battery = 电池
+	BatteryDesc = "为各种星舰系统提供能源的电池。\n\n与其他资源不同，电池无法存储在储存坞内。"
+	BatteryPlural = 能源
+	Bullet = 炮弹
+	BulletDesc = 加农炮和轨道炮使用的弹药。
+	BulletPlural = 炮弹
+	Carbon = 碳
+	CarbonDesc = 稀有的可开采资源，用于制造金刚石。
+	CarbonHardDesc = ""
+	CarbonPlural = 碳
+	Coil = 线圈
+	Coil2 = 超感线圈
+	Coil2Desc = 改进版线圈，用于建造许多先进星舰部件。
+	Coil2Plural = 超感线圈
+	CoilDesc = 基础组件，用于建造许多基础星舰部件。
+	CoilPlural = 线圈
+	Copper = 铜
+	CopperDesc = 常见的可开采资源，用于制造线圈。
+	CopperHardDesc = ""
+	CopperPlural = 铜
+	Diamond = 金刚石
+	DiamondDesc = 高价值聚能晶体，用于建造一些先进星舰部件。
+	DiamondPlural = 金刚石
+	EnrichedUranium = 浓缩铀
+	EnrichedUraniumDesc = 高价值放射性燃料，用于建造反应堆等先进星舰部件。
+	EnrichedUraniumPlural = 浓缩铀
+	FireExtinguisher = 灭火器
+	Gold = 金
+	GoldDesc = 稀有的可开采资源，用于制造处理器。
+	GoldHardDesc = ""
+	GoldPlural = 金
+	Hyperium = 超光素
+	HyperiumDesc = 能够弯曲时空的神秘晶体。用来助推超空间跳跃。
+	HyperiumPlural = 超光素
+	IonEnergy = 离子光束能量
+	Iron = 铁
+	IronDesc = 常见的可开采资源，用于制造钢板。
+	IronHardDesc = ""
+	IronPlural = 铁
+	MinePart = 空雷部件
+	MinePartDesc = 用于组装近炸空雷的部件。
+	MinePartPlural = 空雷部件
+	MissilePartEMP = "EMP 导弹部件"
+	MissilePartEMPDesc = "用于组装 EMP 导弹的部件。"
+	MissilePartEMPPlural = "EMP 导弹部件"
+	MissilePartHE = 高爆导弹部件
+	MissilePartHEDesc = 用于组装高爆导弹的部件。
+	MissilePartHEPlural = 高爆导弹部件
+	MissilePartNuke = 核导弹部件
+	MissilePartNukeDesc = 用于组装核导弹的部件。
+	MissilePartNukePlural = 核导弹部件
+	NotMineable = <b>船员无法开采。需要使用开采激光。</b>
+	Processor = 处理器
+	ProcessorDesc = 高价值计算机部件，用于建造一些先进星舰部件。
+	ProcessorPlural = 处理器
+	Steel = 钢板
+	SteelDesc = 基础金属合金，用于建造几乎所有的星舰部件。
+	SteelPlural = 钢板
+	Sulfur = 硫磺
+	SulfurDesc = 常见的可开采资源，用于制造各种弹药和导弹。
+	SulfurHardDesc = ""
+	SulfurPlural = 硫磺
+	Tristeel = 三钛钢板
+	TristeelDesc = 高价值超强金属合金，用于建造一些先进星舰部件。
+	TristeelPlural = 三钛钢板
+	Tritanium = 三钛原矿
+	TritaniumDesc = 稀有的可开采资源，用于制造三钛钢板。
+	TritaniumHardDesc = ""
+	TritaniumPlural = 三钛原矿
+	Uranium = 铀
+	UraniumDesc = 稀有的可开采资源，可以浓缩。
+	UraniumHardDesc = ""
+	UraniumPlural = 铀
+}
+ResourcesBox
+{
+	
+	AddSupplyLineTip = "<color r='50' g='149' b='255'>添加供应链\n（<btn id='Game.Command'/>）</color>"
+	BuySellCostFmt = "{0}<gray>（购买）</gray>/{1}<gray>（出售）</gray>"
+	CancelTransfers = 取消所有资源转移
+	ClearAllSupplyTargets = 清除所有供应链
+	ClearAllSupplyTargetsTip = 清除整艘星舰的所有供应链。
+	ClearTargetsTip = 清除所选区域的所有供应链。
+	ClearTileTypes = 清除储存单元指定
+	ClearTileTypesTip = 移除星舰上每个储存单元的资源类型指定。
+	ClearToolTip = "<b>清除指定资源</b>\n\n选择并点击储存单元后，可清除指定的资源类型。（按住 <btn id='Resources.SetAllToolMode'/> 可应用于房间里的所有单元，或按住 <btn id='Resources.SetAllSameToolMode'/>，应用于房间里所有匹配的单元。）\n\n热键：<btn id='Resources.ClearTool'/>"
+	ConsumptionOffTipFmt = "自动运输\n{0}：<bad>关</bad>"
+	ConsumptionOnTipFmt = "自动运输\n{0}：<good>开</good>"
+	EjectResourcesTip = "将选定资源从最近的气闸中弹出。\n\n热键：<btn id='Resources.Eject'/>"
+	GrabToolTip = "<b>移动资源</b>\n\n将资源从一个储存单元移至另一个。\n\n按住 <btn id='Resources.Move1'/> 可以一次移动 1 份资源，或按住 <btn id='Resources.Move5'/> 一次移动 5 份。\n\n热键：<btn id='Resources.GrabTool'/>"
+	MirrorToggleTip = "<b>镜像模式</b>\n\n启用后，星舰的资源管理变更将沿其中轴线镜像映射。\n\n热键：<btn id='Design.ToggleMirrorMode'/>\n\n<btn id='General.UIAltClick'/>可修改镜像设置。"
+	NothingToRedo = 无可重做。
+	NothingToUndo = 无可撤销。
+	Redo = " 重做 "
+	RedoTip = "撤销对星舰资源管理的上一次改动。\n\n热键：<btn id='Design.Redo'/>"
+	RemoveSupplyLineTip = "<regular>取消供应链\n（<btn id='Game.Command'/>）</regular>"
+	ResetMirrorLines = 重置镜像线
+	ResetMirrorLinesTip = 将水平、垂直镜像线重置到星舰中心。
+	RestockResources = 补给所有资源
+	RestockResourcesTip = "补满星舰的所有资源、军需品以及能量电池。\n\n热键：<btn id='CreativeMode.RestockResources'/>"
+	SetTypeTipFmt = "<b>{0}</b>\n{3}\n\n{1}\n\n选择此按钮并点击储存单元后，所有{2}将自动运往此处并存放在此。（按住 <btn id='Resources.SetAllToolMode'/> 可应用于房间里的所有单元，或按 <btn id='Resources.SetAllSameToolMode'/> 应用于房间里所有匹配的单元。）"
+	ShowAllResources = 显示所有资源类型
+	ShowAllResourcesTip = 勾选后会显示所有的资源类型（即便星舰没有任何特定类型的资源）。
+	ShowResourceCounts = 显示资源数量
+	ShowResourceCountsTip = 勾选后将显示每个单元中的资源数量。
+	ShowResourceTransfers = 显示资源转移
+	ShowResourceTransfersTip = 勾选后将显示资源储存点之间的预计资源转移情况。
+	ShowUnselectedResourceAssignment = 显示未选中资源的分配
+	ShowUnselectedResourceAssignmentTip = 如未勾选，则只显示选中或鼠标悬停资源的分配。
+	SupplyOffTipFmt = "自动补给\n{0}：<bad>关</bad>"
+	SupplyOnTipFmt = "自动补给\n{0}：<good>开</good>"
+	SupplyToolTip = "<b>供应链模式</b>\n\n将工厂、反应堆和仓库与其负责供应的星舰系统关联起来。\n\n热键：<btn id='Resources.SupplyTool'/>"
+	Title = 资源管理
+	TransferCrewOrResources = 转移船员/资源……
+	TransferCrewOrResourcesTip = 将此星舰的船员或资源转移至另一星舰。
+	TypeTipFmt = ""
+	UndoTip = "撤销对星舰资源管理的上一次改动。\n\n热键：<btn id='Design.Undo'/>"
+}
+Rewards
+{
+	
+	FameWithLimitFmt = "{0} <gray>（上限{1}）</gray>"
+}
+RoleEditor
+{
+	
+	Color = 服装颜色：
+	Info = 基本信息
+	Name = 姓名：
+	Priorities = 工作优先级
+	PriorityDisabledTip = 完全禁止这项工作。担任此岗位的船员将不会进行此工作。
+	PriorityTip = 优先级较高的工作将先于优先级较低的工作完成。
+	RevertPriorities = 恢复默认优先级
+	RevertPriorityFmt = "恢复默认（{0}）"
+	SetAllPrioritiesFmt = "将所有优先级设为{0}"
+	SetAllPrioritiesInGroupFmt = "将‘{0}’中的所有优先级设为{1}"
+	SetAllTypePrioritiesOfTypeFmt = "将所有‘{0}’的优先级设为{1}"
+	SetAllTypePrioritiesOfTypeInGroupFmt = "将‘{1}’中的所有‘{0}’优先级设为{2}"
+	TitleFmt = "编辑岗位：{0}"
+}
+Roles
+{
+	
+	DefaultExistingShipRoleName = 船员
+	DefaultNewShipRoleName = 红衣
+	NewRoleName = 未命名岗位
+}
+Roster
+{
+	
+	ClearFilters = 清除筛选条件
+	ConstructBeds = 建造更多住所，为船员们提供空间。
+	CopyAll = 复制姓名和外貌
+	CustomizeCrew = 自定义
+	Favorite = 收藏
+	FilterActive = 活跃
+	FilterFavorite = 收藏
+	FilterIdle = 空闲
+	FilterOffBoard = 不在舰
+	FilterOnBoard = 在舰
+	FilterSelected = 已选
+	FiltersFmt = "筛选条件：<bad>{0}活跃</bad>"
+	FiltersNone = 筛选条件：无
+	ImportNames = 从文件导入姓名……
+	ImportNamesMsg = "此操作将从所选文本文件中加载船员姓名。\n\n文本文件中的每一行都应有一个名字。\n\n文件中的名字将按顺序取代目前名册中船员的名字。"
+	PasteAll = 粘贴姓名和外貌
+	PasteAllMsg = 此操作将把目前名册上所有船员的名字和外貌用先前复制的相应内容进行替换。此操作不可逆。确定实行吗？
+	RandomizeAll = 所有船员随机化
+	RandomizeAllMsg = 此操作将使目前名册上所有船员的名字和外貌随机化。此操作不可逆。确定实行吗？
+	RemoveCrew = 移除
+	RemoveCrewConfirmFmt = "确定要解雇“{0}”吗？此操作不可逆且<i>无法</i>退款。"
+	RosterCrewCountFmt = "<s20>{0}<gray> 位船员/{1} 个床位</gray></s20>"
+	RosterSearchCountFmt = "<s20><white>{0}</white><gray>匹配船员</gray></s20>"
+	SortMode
+	{
+		
+		Favorite = "<img name='sort'/>收藏"
+		Job = "<img name='sort'/>当前工作"
+		Name = "<img name='sort'/>名字"
+		Role = "<img name='sort'/>岗位"
+	}
+	SortTip = 决定船员的排序方式。
+	Title = 船员名册
+}
+SaveMedia
+{
+	
+	CalculateSize = "计算\n文件大小"
+	Copy = 复制
+	CopyTip = 将图像复制到你的操作系统的剪贴板上，以便你可以将其粘贴到其他应用程序中。
+	FileSizeFmt = "预估文件大小：\n<bad>{0}</bad>"
+	Framerate1 = "帧率： "
+	Framerate2 = " FPS"
+	InfoFmt = "尺寸：{0} × {1}"
+	InfoGifFmt = "尺寸：{0} × {1}\n帧数：{2}\n长度：{3:0.00} 秒"
+	MPNotAvailable = 该功能在多人游戏中不可用。
+	QuickSave = 快速保存
+	QuickSaveTip = 将文件保存到默认的文件名和目录下。
+	SaveAs = 另存为……
+	SaveAsTip = 将文件保存到你选择的文件名和目录下。
+	SavedFmt = "已保存至<b>{0}</b>"
+	SavingGif = "正在渲染 GIF，请耐心等待……"
+	Scale = "比例： "
+	TitleGif = "保存 GIF 动图"
+	TitleImage = 保存图片
+}
+Settings
+{
+	
+	Accessibility
+	{
+		
+		Ally = 友军
+		ColorBlindLbl = 色盲
+		CustomPreset = 自定义
+		Description = 如果难以分辨某些颜色的区别，可以尝试在这里改变这些颜色，使它们更容易区分。
+		DontDimBackgrounds = 对话背景不变暗
+		DontDimBackgroundsTip = 如果勾选，对话框弹出窗口后面的背景将<i>不会</i>变暗。
+		DontFlickerBlueprints = 蓝图不闪烁
+		DontFlickerBlueprintsTip = 星舰蓝图会轻微闪烁，某些玩家可能会不喜欢这点。如果勾选该选项，蓝图将不会闪烁。
+		Enemy = 敌人
+		Friendly = 玩家
+		Neutral = 中立
+		PhotosensitiveLbl = 光敏
+		Preset = 色盲预置
+		PresetTip = 预设的颜色方案，旨在让特定类型色盲玩家能够无障碍游玩。
+		TabName = 无障碍
+	}
+	Audio
+	{
+		
+		EffectsVol = 效果音量
+		EffectsVolTip = 控制所有游戏音效效果的总体音量。
+		InterfaceVol = "UI 音量"
+		InterfaceVolTip = "控制所有 UI 音效的总体音量。"
+		MasterVol = 主音量
+		MasterVolTip = 控制所有游戏音效和音乐的总体音量。
+		MusicVol = 音乐音量
+		MusicVolTip = 控制所有音乐的总体音量。
+		MuteWhenUnfocused = 游戏非当前窗口时静音
+		MuteWhenUnfocusedTip = 如果勾选，当游戏不是当前焦点窗口时，游戏将自动静音。
+		PlayEnemyPings = 敌舰接近音效
+		PlayEnemyPingsTip = 如果勾选，敌舰靠近时将会发出音效提示。
+		PlayFriendlyPings = 友舰接近音效
+		PlayFriendlyPingsTip = 如果勾选，友舰靠近时将会发出音效提示。
+		TabName = 音频
+	}
+	Camera
+	{
+		
+		AutoTrack = 自动跟踪屏幕上的星舰
+		AutoTrackTip = 如果勾选，镜头将自动匹配屏幕上所显示星舰的移动。
+		DirectControlAutoRotate = 匹配星舰旋转
+		DirectControlAutoRotateTip = 如果勾选，在直接控制模式下，镜头将自动旋转，使星舰始终朝上。
+		DirectControlAutoZoom = 跟随鼠标光标缩放
+		DirectControlAutoZoomTip = 如果勾选，镜头将根据星舰和鼠标光标之间的距离自动缩放。
+		DirectControlLbl = 直接控制模式
+		DirectControlLockCameraToShip = 镜头锁定星舰
+		DirectControlLockCameraToShipTip = 如果勾选，在直接控制模式下，镜头将锁定在星舰上。
+		DirectControlViewFollowsCursor = 镜头跟随鼠标光标
+		DirectControlViewFollowsCursorTip = 如果勾选，镜头会聚焦至星舰和鼠标光标之间的一个点。如果不勾选，镜头会聚焦至星舰。
+		EdgePan = 边缘平移
+		EdgePanAnalog = 模拟
+		EdgePanAnalogTip = 把鼠标光标移动到屏幕边缘时，镜头将按照从屏幕中心到鼠标光标的具体移动方向平移。
+		EdgePanEightWay = 八向
+		EdgePanEightWayTip = 把鼠标光标移动到屏幕边缘时，镜头将只取八个基础方向中的一个平移，取决于鼠标光标所接触的是哪一边或哪个角。
+		EdgePanNone = 禁用
+		EdgePanNoneTip = 把鼠标光标移动到屏幕边缘时，镜头将不会平移。但仍然可以用方向键或鼠标中键来平移。
+		EdgePanSpeed = 边缘平移速度
+		EdgePanSpeedTip = 控制将鼠标光标移动到屏幕边缘时，镜头平移的速度。
+		EdgePanTip = 是否可以通过移动鼠标光标到屏幕边缘来平移镜头，以及如何平移。
+		EnableMouseWheelZoom = 使用鼠标滚轮缩放
+		EnableMouseWheelZoomTip = 如果勾选，将能够使用鼠标滚轮缩放。
+		FocusLbl = 聚焦跟随
+		InvertWheelZoom = 反转鼠标滚轮缩放
+		InvertWheelZoomTip = 如果勾选，使用鼠标滚轮缩放时的方向将反转。
+		KeyPanSpeed = 按键平移速度
+		KeyPanSpeedTip = 控制按方向键平移镜头的速度。
+		KeyRotSpeed = 按键旋转速度
+		KeyRotSpeedTip = "控制使用 <btn id='View.RotateLeft'/> 和 <btn id='View.RotateRight'/> 键时，镜头的旋转速度。"
+		KeyZoomSpeed = 按键缩放速度
+		KeyZoomSpeedTip = "控制使用 <btn id='View.ZoomIn'/> 和 <btn id='View.ZoomOut'/> 键时，镜头的缩放速度。"
+		MinimapLbl = 小地图
+		MiniviewCombatMode
+		{
+			
+			Auto = 自动
+			AutoTip = 在战斗中，显示主镜头未聚焦的星舰。
+			DontShow = 不显示
+			DontShowTip = 战斗中将不显示画中画。
+			ShowEnemy = 显示敌方星舰
+			ShowEnemyTip = 在战斗中，总是显示敌方星舰。
+			ShowPlayer = 显示玩家星舰
+			ShowPlayerTip = 在战斗中，总是显示玩家星舰。
+		}
+		MiniviewCombatModeLbl = 战斗中
+		MiniviewCombatModeLblTip = 选择在战斗中是否以及何时显示画中画。
+		MiniviewLbl = 画中画
+		MiniviewLockRotation = 锁定星舰旋转
+		MiniviewLockRotationTip = 如果勾选，画中画将随所显示的星舰旋转而旋转。
+		MiniviewNonCombatMode
+		{
+			
+			Auto = 自动
+			AutoTip = 在非战斗状态下，若主镜头未聚焦玩家的星舰，将显示玩家星舰。
+			DontShow = 不显示
+			DontShowTip = 在非战斗状态下，将不显示画中画。
+			ShowPlayer = 显示玩家星舰
+			ShowPlayerTip = 在非战斗状态下，总是显示玩家星舰。
+		}
+		MiniviewNonCombatModeLbl = 非战斗中
+		MiniviewNonCombatModeLblTip = 选择在非战斗状态下是否以及何时显示画中画。
+		PanLbl = 平移和旋转
+		RestoreZoomOnToolboxExit = 退出编辑器时镜头复位
+		RestoreZoomOnToolboxExitTip = 如果勾选，退出星舰编辑器、涂装编辑器、船员管理以及资源管理界面时，镜头将复位。
+		RotateMinimap = 匹配镜头旋转
+		RotateMinimapTip = 如果勾选，小地图将随镜头的旋转而旋转。
+		ShowMidpointFocusWidget = 显示中点聚焦“眼睛”图标
+		ShowMidpointFocusWidgetTip = 如果勾选，在己方星舰和其目标之间将显示一个“眼睛”图标。点击它将使镜头聚焦在两艘星舰的中点上。
+		StickyFocus = 粘性星舰聚焦
+		StickyFocusTip = 把镜头聚焦一艘星舰时，即使平移镜头，镜头也会“粘”在这艘星舰上。一旦镜头的中心移到星舰的圆圈外，聚焦就会失去粘性。
+		TabName = 镜头
+		WheelZoomAtCursor = 鼠标滚轮在光标处缩放
+		WheelZoomAtCursorTip = 如果勾选，使用鼠标滚轮缩放镜头时将在鼠标光标位置进行缩放。如果不勾选，则将在屏幕中心进行缩放。
+		WheelZoomSpeed = 滚轮缩放速度
+		WheelZoomSpeedTip = 控制使用鼠标滚轮时镜头缩放的速度。
+		ZoomLbl = 缩放
+		ZoomOutOnFtl = 超空间跳跃时镜头拉远
+		ZoomOutOnFtlTip = "如果勾选，在星系内规划超空间跳跃时镜头会自动拉远。（按住 <btn id='General.SuppressConfirmation'/> 使用其他模式）"
+	}
+	Controls
+	{
+		
+		ConfirmDefaults = 确定要把所有的控制重置为默认设置吗？
+		ConflictsFmt = "<bad>❗ {0}键位冲突❗</bad>"
+		Defaults = 恢复默认值
+		NoConflicts = <good>未检测到冲突</good>
+		TabName = 控制
+	}
+	CurrentGame
+	{
+		
+		CopyGalaxySeed = 复制银河系种子
+		DifficultyLbl = 难度
+		GalaxySeedFmt = "银河系种子：<b>{0}</b>"
+		OnlyHostChangeable = 只有游戏主机可以更改此设置。
+		TabName = 当前游戏
+	}
+	Designer
+	{
+		
+		BlueprintAutoPause = 蓝图模式下自动暂停
+		BlueprintAutoPauseTip = 如果勾选，打开蓝图编辑器将自动暂停游戏。
+		BuildAllowInsufficientCommand = 允许指挥点数不足
+		BuildAllowInsufficientCommandTip = "如果勾选，即使星舰没有足够的<image name='command_points' colored='true'/>指挥点数，仍可以继续建造其他部件。"
+		BuildAllowOverwrite = 覆盖现有部件
+		BuildAllowOverwriteTip = 如果勾选，在将一个部件添加到一艘已有另一个部件的星舰上时，将覆盖现有的部件。
+		BuildAutoDoors = 自动添加门
+		BuildAutoDoorsTip = 如果勾选，在向星舰添加部件时，会自动添加门。
+		BuildAutoInterior = 自动显示星舰内装
+		BuildAutoInteriorTip = 如果勾选，打开星舰编辑器后将自动显示星舰的内装。
+		BuildAutoRotate = 自动旋转对正星舰
+		BuildAutoRotateTip = 如果勾选，打开星舰编辑器后，镜头将自动旋转以对正所选的星舰。
+		BuildGrabTool = 抓取工具
+		BuildGrabToolTip = 打开星舰编辑器时，“抓取工具”是默认工具。
+		BuildLbl = 星舰编辑器
+		BuildSelectTool = 选择工具
+		BuildSelectToolTip = 打开星舰编辑器时，“选择工具”是默认工具。
+		BuildShowNearestPaths = 显示最近的船员/能源/弹药
+		BuildShowNearestPathsTip = 如果勾选，在建造星舰时，将显示通往最近的船员、能源和弹药来源的路径和距离。
+		ConstructExitsBuild = “按图造舰”退出建造模式
+		ConstructExitsBuildTip = 如果勾选，在蓝图模式下点击“按图造舰”按钮将完全退出建造模式，而不是关闭蓝图模式。
+		CrewAutoRotate = 自动旋转对正星舰
+		CrewAutoRotateTip = 如果勾选，打开船员管理器后，镜头将自动旋转以对正所选的星舰。
+		CrewLbl = 船员管理器
+		DefaultBuildTool = 默认工具
+		DefaultBuildToolTip = 打开星舰编辑器时选择的默认工具。
+		DefaultPaintTool = 默认工具
+		DefaultPaintToolTip = 打开涂装编辑器中“贴花”选项卡时选择的默认工具。
+		DiscardWhenCanceling = 取消建造恢复蓝图
+		DiscardWhenCancelingTip = 如果勾选，通过点击“取消全部”取消建造后，尚未开始建造的星舰蓝图会恢复原来的样子。
+		GrabLeavesCorridors = 抓手留下走廊
+		GrabLeavesCorridorsTip = 当使用抓手“拾起”一个部件时，该部件位置的走廊会留在原地。
+		PaintAllowOverwrite = 覆盖现有贴花
+		PaintAllowOverwriteTip = 如果勾选，在将一个贴花添加到一艘已有另一个贴花的星舰上时，将覆盖现有的贴花。
+		PaintAutoRotate = 自动旋转对正星舰
+		PaintAutoRotateTip = 如果勾选，打开涂装编辑器后，镜头将自动旋转以对正所选的星舰。
+		PaintGrabTool = 抓取工具
+		PaintGrabToolTip = 打开涂装编辑器时，“抓取工具”是默认工具。
+		PaintLbl = 涂装编辑器
+		PaintSelectTool = 选择工具
+		PaintSelectToolTip = 打开涂装编辑器时，“选择工具”是默认工具。
+		PartToolTipsDefaultToStats = 默认显示数据
+		PartToolTipsDefaultToStatsTip = "如果勾选，将鼠标光标悬停在一个部件上时，将显示其数据，而不是其描述。你仍然可以按住 <btn id='Design.ShowStats'/> 来显示其描述。"
+		RepairAutoDoors = 自动修复门
+		RepairAutoDoorsTip = 如果勾选，重建被破坏的部件也会自动重建与之连接的门。
+		RequirePartialRefundConfirmation = 要求确认减额的退款
+		RequirePartialRefundConfirmationTip = "如果勾选，需要按住 <btn id='Design.ConfirmPartialRefund'/> 才能拆解一个只减额退还资源的部件。"
+		ResourcesAutoRotate = 自动旋转对正星舰
+		ResourcesAutoRotateTip = 如果勾选，打开船员管理器后，镜头将自动旋转以对正所选的星舰。
+		ResourcesLbl = 资源管理器
+		RowsOfParts = 部件行数
+		RowsOfPartsTip = 不用滚动就能显示的部件行数。
+		ShowAutoRemovedDecals = 显示自动移除的贴花
+		ShowAutoRemovedDecalsTip = 如果勾选，将在被自动移除的贴花上显示红叉。
+		ShowAutoRemovedParts = 显示自动移除的部件
+		ShowAutoRemovedPartsTip = 如果勾选，将在被自动移除的部件上显示红叉。
+		ShowInvalidBlueprints = 用红色标注不合规蓝图
+		ShowInvalidBlueprintsTip = 如果勾选，不合规蓝图将以闪烁的红色进行标识。
+		ShowMissingPartsWarning = 显示缺失部件警告
+		ShowMissingPartsWarningTip = 如果勾选，星舰缺失关键部件时会发出警告。
+		ShowStatBars = 显示推荐栏
+		ShowStatBarsTip = 如果勾选，船员、能源和弹药推荐条将显示在星舰编辑器中。即使未勾选该选项，超空间驱动效率百分比也会一直显示。
+		TabName = 星舰编辑器
+	}
+	DialogName = 设置
+	Gameplay
+	{
+		
+		AllowShipDeselection = 允许取消选择星舰
+		AllowShipDeselectionTip = 如果勾选，左键点击空白处将取消选择当前勾选的星舰。
+		AlwaysShowCommandWidgets = 始终显示调整手柄
+		AlwaysShowCommandWidgetsTip = "如果勾选，不必按住 <btn id='Game.AppendSelection'/> 即可显示调整手柄。"
+		AutoCollectNuggets = 自动收集资源
+		AutoCollectNuggetsTip = 如果勾选，回收星舰和开采小行星获得的资源将被自动收集。
+		AutoRecallCrew = 自动召回船员
+		AutoRecallCrewTip = 如果勾选，在己方星舰远程航行前，会自动召回所有出舱船员。
+		AutoSlowWhenEnemySpotted = 发现敌舰
+		AutoSlowWhenEnemySpottedDisabled = 已禁用
+		AutoSlowWhenEnemySpottedPause = 暂停
+		AutoSlowWhenEnemySpottedSpeedFmt = "减慢至{0}"
+		AutoSlowWhenEnemySpottedTip = 如果启用，在雷达上发现敌人时，游戏将自动暂停或减慢到选定的速度。（不会加速。）
+		BlipColorMode = 光点颜色
+		BlipColorModeTip = 在多人游戏、小地图上以及战争迷雾中的星舰光点颜色。该设置不会影响到多人游戏中的其他玩家。
+		BreadcrumbTrails = 显示最近飞行路径
+		BreadcrumbTrailsTip = 如果勾选，将显示本舰最近的飞行路径。仅在生涯模式生效。
+		BreakFormationToAttack = 脱离编队攻击
+		BreakFormationToAttackTip = 如果勾选，星舰在敌人进入攻击范围时将自动脱离编队。
+		CommandsLbl = 星舰命令
+		CtrlSelectsParts = "需要按 <btn id='Game.SelectParts' xml='false'/> 来选择部件"
+		CtrlSelectsPartsTip = "如果勾选，在点击部件时必须按住 <btn id='Game.SelectParts'/> 键来选择。"
+		DirectControlAimAssist = 瞄准辅助
+		DirectControlAimAssistTip = 如果勾选，武器将自动瞄准离鼠标光标最近的敌舰部件。
+		DirectControlAutoBrake = 自动制动
+		DirectControlAutoBrakeTip = "如果勾选，在直接控制模式下没有按住任何键时，本舰会自动制动并停止。按住 <btn id='Game.DirectControlBrake'/> 可使用其他模式。"
+		DirectControlAutoFaceCursor = 将星舰朝向光标
+		DirectControlAutoFaceCursorTip = "如果勾选，在直接控制模式下，本舰会自动转向，朝向鼠标光标。在直接控制模式下，按 <btn id='Game.DirectControlToggleFaceCursor'/> 可以开/关该模式。"
+		DirectControlEnableWeapons = 启用武器控制
+		DirectControlEnableWeaponsTip = 如果勾选，使用直接控制模式将使你能够控制本舰上的武器。如果不勾选，本舰的武器将由AI控制。
+		DirectControlLbl = 直接控制模式
+		DirectControlShowWeaponCoverage = 显示射界
+		DirectControlShowWeaponCoverageTip = 如果勾选，在直接控制模式下，将显示武器的射界。
+		EnableArrivalMatching = 启用速度同步
+		EnableArrivalMatchingTip = 如果勾选，同时指挥多艘星舰时将指示它们同步速度，以便它们在大约同一时间到达。双击右键可以禁用该特定命令的速度同步（如果该选项未被勾选，则将其启用）。
+		EnableCollisionAvoidance = 启用防撞功能
+		EnableCollisionAvoidanceTip = "如果勾选，己方星舰将默认尝试避免与其他星舰相撞。按住 <btn id='Game.InvertCollisionAvoidance'/> 可使用其他模式。"
+		FriendAndFoe = 按敌我
+		FriendAndFoeTip = 本舰为绿色，同战队其他玩家的星舰为黄色，敌队的星舰为红色。
+		InterfaceLbl = UI
+		MultiplayerLbl = 多人游戏
+		OffScreenBlips = 显示屏幕外星舰光点提示
+		OffScreenBlipsTip = 如果勾选，位于屏幕边缘以外的星舰将以彩色“光点”进行显示。
+		OnShipIndicators = 显示星舰状态图标
+		OnShipIndicatorsTip = 如果勾选，将显示星舰状态图标，如无船员、无弹药和无动力。
+		OverlaysLbl = 信息覆载
+		PartToolTips = 显示星舰部件提示浮窗
+		PartToolTipsTip = 如果勾选，鼠标光标短暂停顿在星舰部件上后，就会显示相关信息。
+		PlayerName = 玩家名称
+		PlayerNameDisabledTip = 在游戏中无法修改名称。
+		PlayerNameTip = 多人游戏中显示的名称。
+		PreferWorldRelativeAttackAngle = 偏好网格参照攻击角度
+		PreferWorldRelativeAttackAngleTip = "如果勾选，右键点击并拖动到敌舰上，将使用相对于网格而非敌舰的攻击角度。按住 <btn id='Game.WorldRelativeFollowAngle'/> 可使用其他模式。"
+		PreferWorldRelativeFollowAngle = 偏好网格参照跟随角度
+		PreferWorldRelativeFollowAngleTip = "如果勾选，右键点击并拖动到友舰上，将使用相对于网格而非友舰的跟随角度。按住 <btn id='Game.WorldRelativeFollowAngle'/> 可使用其他模式。"
+		RandomPerPlayer = 按玩家随机
+		RandomPerPlayerTip = 星舰将被随机分配一种颜色，用以识别不同玩家。
+		RandomPerTeam = 按战队随机
+		RandomPerTeamTip = 星舰将被随机分配一种颜色，用以识别不同战队。同一战队的所有玩家颜色相同。
+		ResourceDisplayMode = 资源计数
+		ResourceDisplayModeAll = 所有
+		ResourceDisplayModeAllTip = 显示所有资源类型。
+		ResourceDisplayModeConstruction = 建造
+		ResourceDisplayModeConstructionTip = 只显示可用于建造星舰的资源。
+		ResourceDisplayModeContext = 检索
+		ResourceDisplayModeContextTip = 只显示鼠标光标所指的资源。
+		ResourceDisplayModeOwned = 拥有
+		ResourceDisplayModeOwnedTip = 只显示当前选择的星舰上拥有的资源。
+		ResourceDisplayModeTip = 屏幕的右上角、信用点计数器的下面显示哪些资源类型。
+		SelectedPartStatusBars = 显示所选部件的状态栏
+		SelectedPartStatusBarsTip = 如果勾选，将显示选定部件的血量和状态栏。
+		ShowAdvancedCommands = 显示高级星舰命令
+		ShowAdvancedCommandsTip = "如果勾选，高级星舰命令将显示在 UI 上。即使没有勾选，你仍然可以通过使用其热键来下达命令。"
+		ShowAllCommands = 显示对所有星舰的命令
+		ShowAllCommandsTip = 如果勾选，命令中的航行与和攻击路径将对你控制的所有星舰显示，而不仅仅是选定的星舰。
+		ShowDamagePoints = 显示伤害点数
+		ShowDamagePointsTip = 如果勾选，伤害敌舰所获得的点数将在伤害结算完毕后显示在敌舰上。
+		ShowNearbyMissions = "在 HUD 上显示附近的任务"
+		ShowNearbyMissionsTip = "当前附近的任务将自动显示在 HUD 左上角。"
+		ShowResourcePickupLines = 显示飘浮资源连线
+		ShowResourcePickupLinesTip = 如果勾选，将显示飘浮资源与本舰之间的连线。
+		ShowSpaceCrewLines = 显示出舱活动船员连线
+		ShowSpaceCrewLinesTip = 如果勾选，将显示出舱活动船员与本舰之间的连线。
+		TabName = 游戏玩法
+		ZoomedOutBlips = 显示拉远光点
+		ZoomedOutBlipsTip = 如果勾选，小型星舰在镜头拉远时将以彩色“光点”进行显示。
+	}
+	GifRecorder
+	{
+		
+		Enable = "启用 GIF 录制器"
+		EnableTip = "勾选后，将启用连续 GIF 录制。"
+		Framerate1 = "帧率： "
+		Framerate2 = " 每秒帧数"
+		FramerateTip = 每秒钟要录制的视频帧数。
+		Info = "启用后，该功能将持续记录游戏最后几秒钟的视频。可以随时按下 <btn id='General.CaptureGif'/> 来将录制的视频保存为 GIF 动图。"
+		RecordSeconds1 = "录制最后 "
+		RecordSeconds2 = " 秒的游戏。"
+		RecordSecondsTip = 要录制的游戏视频的秒数。
+		Resolution1 = "分辨率： "
+		Resolution2Fmt = " x {0} 像素"
+		ResolutionTip = 录制视频的宽度，单位是像素。（高度将自动计算）
+		TabName = "GIF 录制器"
+		VramFmt = "已使用显存：<bad>{0}</bad>"
+	}
+	Graphics
+	{
+		
+		AnimateBackgrounds = 动画背景
+		AnimateBackgroundsTip = 如果启用，游戏背景将变为动态。关掉它可以显著提高性能。
+		BackgroundGrid = 背景网格
+		BackgroundGridCrosses = 十字
+		BackgroundGridLines = 横线
+		BackgroundGridOff = 关
+		BackgroundGridTip = 是否要在背景中显示以便判断判断距离和速度的网格，以及背景网格的显示风格。
+		BorderlessFullScreen = 无边框全屏
+		BorderlessFullScreenTip = 游戏将占用整个显示屏，并以你当前的桌面分辨率运行。如果“专属全屏”导致游戏出现问题，或者你希望能够快速切换到其他应用程序，请使用该模式。
+		DisplayLbl = 显示
+		Dpi100 = ""
+		Dpi125 = ""
+		Dpi150 = ""
+		Dpi175 = ""
+		Dpi200 = ""
+		Dpi250 = ""
+		Dpi300 = ""
+		DpiScaleDisabledTip = "目前的窗口大小或屏幕分辨率不足以支持此种 DPI 比例。"
+		DpiScaling = "UI 缩放"
+		DpiScalingTip = "控制 UI 的大小。将其增加到 100% 以上可以在高分辨率下玩得更轻松。"
+		ExclusiveFullScreen = 专属全屏
+		ExclusiveFullScreenTip = "游戏将占用整个显示屏，并允许选择显示分辨率。有些高级 GPU 功能可能仅在此模式下生效，如 G-SYNC 和 FreeSync。"
+		FancyLighting = 高级灯光效果
+		FancyLightingTip = 如果启用，将渲染额外的灯光效果。关掉它可以提高性能。
+		FancyParticles = 高级粒子和视觉效果
+		FancyParticlesTip = 如果启用，将渲染额外的粒子和视觉效果将被渲染。关掉它可以提高性能。
+		FancyUIEffects = "高级 UI 效果"
+		FancyUIEffectsTip = "如果启用，将渲染额外的 UI 效果，如“玻璃状”模糊。关掉它可以提高性能。"
+		FpsTarget = 最低帧率
+		FpsTarget0 = 已禁用
+		FpsTarget30 = "30 FPS"
+		FpsTarget60 = "60 FPS"
+		FpsTargetTip = 如果游戏的帧率（每秒帧数）低于这个数字，游戏将自动放慢速度，以此提高帧率。
+		FpsTargetWarning = "<s14><bad><b>警告：</b>限制最低帧率为 60 FPS 的同时开启垂直同步可能会导致游戏出现性能问题。不建议同时开启这两项功能。</bad></s14>"
+		Language = 语言
+		LanguageTip = "UI 使用的语言。"
+		LimitFps = 限制帧率
+		LimitFpsNumber = " 每秒帧数"
+		LimitFpsNumberTip = 每秒钟要渲染的最大帧数。
+		LimitFpsTip = 如果勾选，游戏的运行速度将不会超过特定的帧率。
+		LockCursor = 圈定光标
+		LockCursorTip = 勾选后，在游戏过程中，鼠标光标无法离开游戏窗口。如果在专属全屏窗口中游戏，那么无论是否勾选该选项，光标都无法离开窗口。
+		Monitor = 显示器
+		MonitorTip = 在无边框全屏或专属全屏模式下运行时，游戏将在该显示器上进行。
+		PerformanceLbl = 性能
+		PlanetResolutionScale = 行星分辨率
+		PlanetResolutionScaleTip = 控制用于渲染背景行星纹理的分辨率。值越高，视觉效果越好，但会延长加载时间，占用更多显存。需要重新启动当前游戏，改动才会生效。
+		PostShader = 后处理着色器
+		PostShaderTip = 好玩的后处理着色器，使游戏看起来与众不同！试试吧！
+		PreferencesLbl = 偏好
+		RefreshRate = 刷新率
+		RefreshRateFmt = ""
+		RefreshRateTip = 显示器每秒显示的帧数。
+		ResizableWindow = 可调整窗口
+		ResizableWindowTip = 游戏将在桌面上的窗口中运行。你可以自由移动窗口并调整其大小。
+		Resolution = 分辨率
+		ResolutionFmt = ""
+		ResolutionScale = 分辨率比例
+		ResolutionScaleFmt = ""
+		ResolutionScaleTip = "若数值高于 100%，则大多数图形都将以高于游戏窗口的分辨率渲染，然后按比例缩小匹配窗口。数值较高时，抗锯齿（SSAA）的质量也会相应提高，但可能会极大降低性能，特别是对于低端 GPU 而言。\n\n若数值低于 100%，将导致大多数图形以比低于游戏窗口的分辨率渲染，然后按比例放大匹配窗口。低数值下，视觉效果将极大劣化，但也可能极大改善游戏使用低端 GPU 时的性能表现。"
+		ResolutionTip = 选择专属全屏后，游戏将以何种分辨率运行。
+		ScreenShake = 屏幕抖动
+		ScreenShakeTip = 如果启用，那么一些游戏中的事件（如爆炸）将会导致屏幕抖动。
+		TabName = 图形
+		UIAnimations = "UI 动画"
+		UIAnimationsTip = "如果启用，那么 UI 将根据用户输入显示相应动画效果。"
+		UncompressedTextures = 使用未经压缩的纹理
+		UncompressedTexturesTip = 如果启用，纹理将不会被压缩。启用这个选项将非常轻微地改善视觉质量，并大大增加显存占用率。该选项的更改需要重新启动游戏才能生效。
+		VSync = 垂直同步
+		VSyncOff = 关
+		VSyncOffTip = 游戏不会与显示器的刷新率同步。它将以最大的帧率和最小的输入延迟运行。
+		VSyncOn = 开
+		VSyncOnTip = 游戏将与显示器的刷新率同步。这将消除屏幕撕裂现象，但也会将帧率限制在显示器的刷新率内，并可能增加输入延迟。
+		VSyncTip = 游戏是否会与显示器的刷新率同步，这样可以消除撕裂，但增加了输入延迟。
+		VSyncTriBuf = 开（三重缓冲）
+		VSyncTriBufTip = 这种垂直同步的变体可能会提高帧率，但也可能增加输入延迟。
+		WindowMode = 窗口模式
+		WindowModeTip = 用来显示游戏的窗口样式。
+	}
+	KeepSettings = 保留
+	Misc
+	{
+		
+		AutoDisableMods = "更新时禁用 Mod"
+		AutoDisableModsTip = "如果勾选，在更新游戏时，如果 Mod 可能与游戏更新不兼容，将会被自动禁用。"
+		Bmp = ""
+		BmpTip = "最大文件尺寸，图像质量完美。（已经 21 世纪了，实在想象不出真的还有人会去选择 BMP 格式而不是 PNG 格式，不过，要是真有人非用 BMP 格式不可，我们也提供这个选项。）"
+		CheckForUpdate = 检查更新
+		CheckForUpdateTip = 点击立即检查游戏是否有更新。
+		ConfirmResetTutorials = 这将重新显示所有教程。
+		CycleMenuBackground = 循环目录背景
+		CycleMenuBackgroundTip = "如果勾选，每次启动应用程序时，标题界面上的背景都会改变。要手动改变背景，可在标题界面按 <btn id='View.PanLeft'/> 或 <btn id='View.PanRight'/> 。"
+		DesyncDebugging = 启用异步调试
+		DesyncDebuggingTip = "如果勾选，在主持多人游戏时，将启用异步调试功能。这将产生带有额外信息的 .rec 文件，帮助开发者调试多人游戏的异步，但性能会有所下降。如果遇到了异步问题，请将 Cosmoteer 日志文件夹中的 .rec 文件发送给开发者。"
+		FpsFollowsCursor = 开（靠近光标）
+		FpsFollowsCursorTip = "在鼠标光标附近显示 FPS。"
+		FpsInCorner = 开（角落）
+		FpsInCornerTip = "在屏幕的左上角显示 FPS。"
+		FpsNone = 关
+		FpsNoneTip = "不显示 FPS"
+		Jpeg = ""
+		JpegTip = 最小文件尺寸，图像质量较低。
+		LostFocusPause = 切换窗口时暂停
+		LostFocusPauseTip = "如果勾选，用户在游戏界面外点击或使用 Alt + Tab 切离游戏界面时，游戏将自动暂停。该设置在多人游戏中无效。"
+		MaxSendRate = 最大传输速率（KBps）
+		MaxSendRateTip = 网络数据传输的最大速率，以每秒千字节计算。
+		NetworkLbl = 多人游戏
+		OtherLbl = 其他
+		Png = ""
+		PngTip = 适中文件尺寸，图像质量完美。
+		ResetTutorials = 重置教程
+		ScreenshotFormat = 默认截屏格式
+		ScreenshotFormatTip = 保存截屏时默认使用的文件格式。（可以在截图时选择“另存为”来选择不同的格式）
+		ShowAlerts = 在标题界面显示提醒信息
+		ShowAlertsTip = 如果勾选，“提醒”将在标题界面右上角显示。
+		ShowFps = "显示 FPS"
+		ShowFpsTip = 是否显示每秒帧数以及在何处显示。
+		ShowNews = 启动时显示未读新闻
+		ShowNewsTip = 如果勾选，游戏将在启动时自动显示未读的新闻文章。
+		ShowTutorials = 显示教程
+		ShowTutorialsTip = 如果勾选，在游戏过程中会显示“游戏教程”。
+		TabName = 杂项
+		TutorialsLbl = 教程
+		UpdatesLbl = 更新与动态
+		VersionCheckMode
+		{
+			
+			Off = 关
+			OffTip = 游戏将不会检查更新。
+			Stable = 开（稳定）
+			StableTip = "游戏将检查更新，但只检查相对稳定以及 bug 可能较少的更新。"
+			Unstable = 开（不稳定）
+			UnstableTip = "游戏将检查更新，包括较新的更新，这些更新可能未经完全测试，因此可能会有更多 bug。"
+		}
+		VersionCheckModeLbl = 更新检查
+		VersionCheckModeLblTip = 选择是否在启动时检查更新以及检查何种更新。
+	}
+	RestartLater = 稍后重启
+	RestartNow = 马上重启
+	RestartRequired = 修改后的设置在游戏重启后才能生效。
+	RevertSettings = 还原
+	Saves
+	{
+		
+		AutoSave = 自动保存
+		AutoSaveEvery = "每 "
+		AutoSaveEveryMinutes = " 分钟"
+		AutoSaveEveryMinutesTip = 在游戏自动保存之前，距离上次保存间隔的分钟数。
+		AutoSaveTip = 如果勾选，游戏每过一段固定时间就会自动保存。
+		AutoSavesToKeep1 = "保留最近 "
+		AutoSavesToKeep2 = " 个自动保存文件。"
+		AutoSavesToKeepTip = 最旧的自动保存文件将自动删除，保留上述数量的自动保存文件。
+		FtlAutoSave = 超空间跳跃前自动保存
+		FtlAutoSaveTip = 如果勾选，游戏将在进行超空间跳跃之前自动保存。
+		LostShipsToKeep1 = "保留最近 "
+		LostShipsToKeep2 = " 个丢失星舰文件。"
+		LostShipsToKeepTip = 最旧的丢失星舰文件将自动删除，保留上述数量的丢失星舰文件。
+		QuickSavesToKeep1 = "保留最近 "
+		QuickSavesToKeep2 = " 个快速保存文件。"
+		QuickSavesToKeepTip = 最旧的快速保存文件将自动删除，保留上述数量的快速保存文件。
+		SaveLostShips = 保存丢失星舰的设计
+		SaveLostShipsTip = 如果勾选，设计修改未保存的丢失星舰将被自动保存到“丢失星舰”文件夹。
+		SavedGamesLbl = 游戏存档
+		SavedShipsLbl = 舰船存档
+		TabName = 自动保存
+		Warning = "<bad><b>警告：</b></bad>Cosmoteer 仍在开发中，可能偶尔崩溃，所以<i>强烈建议</i><b>打开</b>自动保存功能！若关闭自动保存，游戏一旦崩溃，可能导致丢失大量进度，投入的时间和精力也会付之东流！"
+	}
+	SettingsChanged = 显示设置已更改。想保留新的设置吗？
+}
+ShipClasses
+{
+	
+	Asteroid = 小行星
+	Megaroid = 大行星
+	Terran = 类地球
+}
+ShipInfoDialog
+{
+	
+	Author = 设计者：
+	Description = 描述/背景：
+	Name = 星舰名称：
+	SetDefaultAuthor = 设为默认
+	Title = 编辑星舰名称/信息
+}
+ShipLibraries
+{
+	
+	BuiltIn = 自带星舰
+	BuiltInTip = 《Cosmoteer》自带的星舰设计。
+	Classic = 我的经典星舰
+	ClassicTip = 已被自动导入的《Cosmoteer》经典版星舰设计。这些星舰很可能“不合规”和/或需要重大更新才能正常运行。
+	Lost = 丢失星舰
+	LostTip = 你可能无意中丢失的星舰设计，当时并未得到保存。
+	Saved = 我的星舰
+	SavedTip = 你所保存的星舰设计，供将来使用。
+	SteamWorkshop = 创意工坊
+	SteamWorkshopTip = 从创意工坊下载的星舰系列。
+}
+ShipLibrary
+{
+	
+	AuthorFmt = "设计者：{0}"
+	BrowseWorkshop = 浏览创意工坊
+	BudgetFmt = "预算：\n<s24>{0}</s24>"
+	ConfirmDeleteShipFmt = "确定要删除'{0}'？文件将被放入计算机回收站。"
+	ConfirmOverwrite = 覆盖现有星舰？
+	CrewCountFmt = "{0} 名船员"
+	DeleteFolder = 删除文件夹
+	DeleteFolderFmt = "确定要删除<b>{0}</b>文件夹吗？"
+	DeleteShip = 删除
+	DescriptionFmt = ""
+	FolderEmpty = 此文件夹为空。
+	FolderEmptyHasSubfolders = 此文件夹为空，但有子文件夹，可能包含星舰。点击文件夹名称旁边的箭头可查看其子文件夹。
+	ImportCustomName = 请为这艘星舰命名：
+	ImportError = "导入星舰时出现了错误：{0}"
+	LargeIcons = 大图标
+	NewFolder = 新建文件夹
+	NewFolderMsg = 输入新文件夹名称：
+	OkayBuy = 购买星舰
+	OkayLoad = 加载星舰
+	OkayPlaytest = 游戏测试
+	OkaySave = 保存星舰
+	OpenFolder = 打开文件夹
+	Organize = 整理
+	RenameFolder = 重命名文件夹
+	RenameFolderMsg = 输入文件夹新名称：
+	RenameShip = 重命名
+	RenameShipMsg = 输入星舰的新名称：
+	SearchTip = 筛选以下星舰，只显示名称与输入的文字相匹配的星舰。
+	SmallIcons = 小图标
+	SortMode
+	{
+		
+		CostHigh = "<img name='sort'/>成本（高）"
+		CostHighTip = 按成本降序排序。
+		CostLow = "<img name='sort'/>成本（低）"
+		CostLowTip = 按成本升序排序。
+		CrewLeast = "<img name='sort'/>船员（少）"
+		CrewLeastTip = 按船员数升序排序。
+		CrewMost = "<img name='sort'/>船员（多）"
+		CrewMostTip = 按船员数降序排序。
+		Name = "<img name='sort'/>名称"
+		NameTip = 按名称字母顺序排序。
+		Newest = "<img name='sort'/>最新"
+		NewestTip = 按变动从新到旧排序。
+		Oldest = "<img name='sort'/>最旧"
+		OldestTip = 按变动从旧到新排序。
+	}
+	SortTip = 决定星舰排列的顺序。
+	TechCostsAdded = 购买所需蓝图的费用已被计入每艘星舰的价格。
+	TitleBuy = 购买星舰
+	TitleLibrary = 星舰库
+	TitleLoad = 加载星舰
+	TitleSave = 保存星舰
+	ViewInWorkshop = 在创意工坊中查看
+	WorkshopUpload = 上传至创意工坊
+}
+StarterShips
+{
+	
+	ModelC = "C 型星舰速度慢，装甲坚固，携带两门加农炮，虽然准头一般，但可以穿透敌舰。"
+	ModelL = "L 型星舰具有极强的机动性，携带三门激光炮，可有效地摧毁敌舰子系统。该型号星舰缺乏有效的防御。"
+	ModelS = "S 型星舰牺牲速度以及火力，换来了可以阻挡敌方火力的防御性护盾发生器。"
+}
+StatCategories
+{
+	
+	BoostOff = 加速：关
+	BoostOn = 加速：开
+	BulletDeck = 甲板加农炮弹
+	BulletLarge = 大型加农炮弹
+	BulletMed = 标准加农炮弹
+	BulletRailgun = 轨道炮弹
+	CollectorBeam = 收集器光束（x4）
+	DisruptorBolt = 干扰器爆能束
+	Flak = 高射炮弹
+	IonBeam = 离子光束
+	LaserBoltLarge = 重型激光爆能束
+	LaserBoltSmall = 激光爆能束
+	Mine = 空雷
+	MineShrapnel = 弹片
+	MiningBeam = 开采光束
+	MissileEMP = "EMP 导弹"
+	MissileHE = 高爆导弹
+	MissileNuke = 战术核导弹
+	PDShot = 点防弹
+	RailgunBuff = 轨道炮加成
+	TractorBeam = 牵引光束
+}
+Stats
+{
+	
+	AOEResistFmt = "<white>抗 AOE：</white><good>{0}%</good>"
+	AbilityCooldownFmt = "<white>能力冷却：</white><good>{0:0.#}</good><gray>秒</gray>"
+	AccelerationDelayFmt = "<white>加速延迟：</white><good>{0:0.0#}</good> <gray>秒</gray>"
+	AccelerationFmt = "<white>加速度：</white><good>{0:0}</good> <gray>米/秒²</gray>"
+	AmmoCapacityFmt = "<white>炮弹容量：</white><good>{0}</good>"
+	AmmoPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/炮弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	AmmoProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>炮弹/秒</gray>"
+	AmmoSulfurUsageFmt = "<white>硫磺消耗：</white><good>{0:0.##}</good><gray>/炮弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	ArcFmt = "<white>射界：</white><good>{0:0}°</good>"
+	BatteryFillTimeFmt = "<white>电池充电时间：</white><good>{0:0.0#}</good> <gray>秒</gray>"
+	BatterySizeFmt = "<white>电池大小：</white><good>{0:0.0#}</good>"
+	BeamDamageFalloffFmt = "<white>组合衰减：</white> <good>-{0}%</good><gray>/光束</gray>\n  <white>第一光束：</white><good>{1:0}%</good><gray>伤害</gray>\n  <white>第二光束：</white><good>{2:0}%</good><gray>伤害</gray>\n  <white>第三光束：</white><good>{3:0}%</good><gray>伤害</gray>\n  <white>第四光束：</white><good>{4:0}%</good><gray>伤害</gray>\n  <white>第五光束：</white><good>{5:0}%</good><gray>伤害</gray>\n…"
+	BoostedPowerUsageContinuousFmt = "<zero>能源消耗：</zero><good>{0:0.##}</good><gray>/秒（持续）</gray>"
+	CarbonCapacityFmt = "<white>碳容量：</white><good>{0}</good>"
+	Coil2CapacityFmt = "<white>超感线圈容量：</white><good>{0}</good>"
+	Coil2CoilUsageFmt = "<white>线圈消耗：</white><good>{0:0.##}</good><gray>/超感线圈（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	Coil2CopperUsageFmt = "<white>铜消耗：</white><good>{0:0.##}</good><gray>/超感线圈（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	Coil2PowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/超感线圈（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	Coil2ProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray> 超感线圈/秒</gray>"
+	CoilCapacityFmt = "<white>线圈容量：</white><good>{0}</good>"
+	CoilCopperUsageFmt = "<white>铜消耗：</white><good>{0:0.##}</good><gray>/线圈（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	CoilPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/线圈（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	CoilProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>线圈/秒</gray>"
+	CommandPointsProvidedFmt = "<white>指挥点数：</white><good>+{0}<image name='command_points' colored='true'/></good> <gray>（可使用）</gray>"
+	CommandPointsUsedFmt = "<white>指挥点数：</white><good>-{0}<image name='command_points' colored='true'/></good> <gray>（已使用）</gray>"
+	CopperCapacityFmt = "<white>铜容量：</white><good>{0}</good>"
+	CostFmt = "<white>价值：</white><money>{0:n0}</money>"
+	CrewCapacityFmt = "<white>船员床位：</white><good>{0}</good>"
+	CrewRequiredFmt = "<white>所需船员：</white><good>{0}</good>"
+	CrewSpeedAcrFmt = "<white>船员速度（横向）：</white> <good>{0:0}%</good>"
+	CrewSpeedFmt = "<white>船员速度：</white><good>{0:0}%</good>"
+	CrewSpeedFwdFmt = "<white>船员速度（前进）：</white> <good>{0:0}%</good>"
+	CrewSpeedRevFmt = "<white>船员速度（后退）：</white> <good>{0:0}%</good>"
+	CrewStunDurationFmt = "<white>船员眩晕时间：</white><good>{0:0.#}-{1:0.#}</good> <gray>秒</gray>"
+	CrewStunRadiusFmt = "<white>船员眩晕半径：</white><good>{0:0.#}</good> <gray>米</gray>"
+	DamageAreaFmt = "<white>伤害范围：</white><good>{0:0.#}</good><gray> 米半径</gray>"
+	DamageContinuousAsteroidsFmt = "<white>对小行星伤害：</white><good>{0:n0}</good><gray>/秒</gray>"
+	DamageContinuousFarFmt = "<white>伤害（远处）：</white><good>{0:n0}</good><gray>/秒</gray>"
+	DamageContinuousFmt = "<white>伤害：</white><good>{0:n0}</good><gray>/秒</gray>"
+	DamageContinuousNearFmt = "<white>伤害（近处）：</white><good>{0:n0}</good><gray>/秒</gray>"
+	DamageFmt = "<white>伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><gray>/秒）</gray>"
+	DetonationRangeFmt = "<white>引爆距离：</white><good>{0:0}</good> <gray>米</gray>"
+	DiamondCapacityFmt = "<white>金刚石容量：</white><good>{0}</good>"
+	DiamondCarbonUsageFmt = "<white>碳消耗：</white><good>{0:0.##}</good><gray>/金刚石（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	DiamondPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/金刚石（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	DiamondProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>金刚石/秒</gray>"
+	EMPMissileCapacityFmt = "<white>EMP 导弹容量：</white><good>{0}</good>"
+	EMPResistFmt = "<white>抗 EMP：</white><good>-{0:0.##}</good> <gray>消耗能源</gray>"
+	EnrichedUraniumCapacityFmt = "<white>浓缩铀容量：</white><good>{0}</good>"
+	EnrichedUraniumPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/浓缩铀（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	EnrichedUraniumProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>浓缩铀/秒</gray>"
+	EnrichedUraniumUraniumUsageFmt = "<white>铀消耗：</white><good>{0:0.##}</good><gray>/浓缩铀（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	FactoryBuffFmt = "<white>附近工厂：</white><good>+{0:0}%</good><gray> 生产速度</gray>"
+	FireChanceFmt = "<white>点燃几率：</white><good>{0:0}%</good><gray> 几率/单元格</gray>"
+	FtlMaxEfficiencyRangeFmt = "<white>最优效率：</white><good>{0:0.##}</good><gray>米</gray>"
+	FtlMinEfficiencyRangeFmt = "<white>最低效率：</white><good>{0:0.##}</good><gray>米</gray>"
+	GoldCapacityFmt = "<white>金容量：</white><good>{0}</good>"
+	HEMissileCapacityFmt = "<white>高爆导弹容量：</white><good>{0}</good>"
+	HPFmt = "<white>血量：</white><good>{0:n0}</good>"
+	HyperiumCapacityFmt = "<white>超光素容量：</white><good>{0}</good>"
+	IronCapacityFmt = "<white>铁容量：</white><good>{0}</good>"
+	MaxDamageFmt = "<white>最大伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><gray>/秒）</gray>"
+	MineAmmoUsageFmt = "<white>炮弹消耗：</white><good>{0:0.##}</good><gray>/空雷（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	MineCapacityFmt = "<white>空雷容量：</white><good>{0}</good>"
+	MineIronUsageFmt = "<white>铁消耗：</white><good>{0:0.##}</good><gray>/空雷（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	MinePartCapacityFmt = "<white>容量：</white><good>{0}</good><gray> 部件（</gray><good>{1:0.##}</good><gray> 空雷）</gray>"
+	MinePowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/空雷（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	MineProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>空雷/秒</gray>"
+	MissileCopperUsageFmt = "<white>铜消耗：</white><good>{0:0.##}</good><gray>/导弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	MissileIronUsageFmt = "<white>铁消耗：</white><good>{0:0.##}</good><gray>/导弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	MissileLauncherNotes = <gray>关于弹药的数据，请参考每种类型弹药的相应工厂。</gray>
+	MissilePartCapacityFmt = "<white>容量：</white><good>{0}</good><gray> 部件（</gray><good>{1:0.##}</good><gray> 导弹）</gray>"
+	MissilePartsFmt = "<white>组装自：</white><good>{0}</good><gray>部件/导弹</gray>"
+	MissilePowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/导弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	MissileProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>导弹/秒</gray>"
+	MissileSulfurUsageFmt = "<white>硫磺消耗：</white><good>{0:0.##}</good><gray>/导弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	MissileUraniumUsageFmt = "<white>铀消耗：</white><good>{0:0.##}</good><gray>/导弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	NukeMissileCapacityFmt = "<white>核导弹容量：</white><good>{0}</good>"
+	PenResistFmt = "<white>抗穿：</white><good>-{0}</good> <gray>米</gray>"
+	PenetrationFmt = "<white>穿深：</white><good>{0:0.##}</good> <gray>米</gray>"
+	PowerCapacityFmt = "<white>电容量：</white><good>{0:0.##}</good>"
+	PowerDrainAreaFmt = "<white>耗能范围：</white><good>{0:0.#}</good><gray> 米半径</gray>"
+	PowerDrainFmt = "<white>击中时耗能：</white><good>{0:0.##}</good><gray>/发（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	PowerGenerationFmt = "<white>发电量：</white><good>{0:0.##}</good><gray>/秒</gray>"
+	PowerUsageContinuousFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/秒</gray>"
+	PowerUsageContinuousMinutesFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/秒</gray>"
+	ProcessorCapacityFmt = "<white>处理器容量：</white><good>{0}</good>"
+	ProcessorCoilUsageFmt = "<white>线圈消耗：</white><good>{0:0.##}</good><gray>/处理器（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	ProcessorGoldUsageFmt = "<white>金消耗：</white><good>{0:0.##}</good><gray>/处理器（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	ProcessorPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/处理器（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	ProcessorProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>处理器/秒</gray>"
+	ROFFmt = "<white>射速：</white><good>{0:0.##}</good> <gray>发/秒</gray>"
+	RadarRangeFmt = "<white>传感器范围（雷达）：</white><good>{0:0}</good><gray>米</gray>"
+	RailgunBuffFmt = "<gray>轨道炮的伤害、穿深、射程与炮弹弹速（按加速器数量）增量：</gray>\n  <TransparentWhite>0</TransparentWhite><white>1: </white><good>+{0:000}%</good>   <white>11: </white><good>+{10:000}%</good>   <white>21: </white><good>+{20:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>2: </white><good>+{1:000}%</good>   <white>12: </white><good>+{11:000}%</good>   <white>22: </white><good>+{21:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>3: </white><good>+{2:000}%</good>   <white>13: </white><good>+{12:000}%</good>   <white>23: </white><good>+{22:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>4: </white><good>+{3:000}%</good>   <white>14: </white><good>+{13:000}%</good>   <white>24: </white><good>+{23:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>5: </white><good>+{4:000}%</good>   <white>15: </white><good>+{14:000}%</good>   <white>25: </white><good>+{24:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>6: </white><good>+{5:000}%</good>   <white>16: </white><good>+{15:000}%</good>   <white>26: </white><good>+{25:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>7: </white><good>+{6:000}%</good>   <white>17: </white><good>+{16:000}%</good>   <white>27: </white><good>+{26:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>8: </white><good>+{7:000}%</good>   <white>18: </white><good>+{17:000}%</good>   <white>28: </white><good>+{27:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>9: </white><good>+{8:000}%</good>   <white>19: </white><good>+{18:000}%</good>   <white>29: </white><good>+{28:000}%</good>\n  <white>10: </white><good>+{9:000}%</good>   <white>20: </white><good>+{19:000}%</good>   <white>30: </white><good>+{29:000}%</good>"
+	RailgunNotes = <gray>注意：每增加一个轨道炮加速器，伤害、穿深、射程、弹速和功率消耗都会增加。</gray>
+	RangeFmt = "<white>射程：</white><good>{0:0}</good> <gray>米</gray>"
+	RangeLimitedFmt = "<white>射程：</white><good>{0:0}</good> <gray>米（最大 </gray><good>{1:0}</good><gray>米）</gray>"
+	Resources = "<white>资源：</white> "
+	SalvoFmt = "<white>齐射：</white><good>{0:0.##}</good> <gray>发/</gray><good>{1:0.##}</good> <gray>秒</gray>"
+	SeparationRangeFmt = "<white>分离：</white><good>{0:0}</good> <gray>米</gray>"
+	ShieldArcFmt = "<white>护盾弧度：</white><good>{0:0}°</good>"
+	ShieldDamageFmt = "<white>对护盾伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><gray>/秒）</gray>"
+	ShieldDistFmt = "<white>护盾距离：</white><good>{0}</good><gray>米</gray>"
+	ShieldHPFmt = "<white>护盾强度：</white><good>{0:n0}</good>"
+	ShieldPenResistFmt = "<white>护盾抗穿：</white><good>-{0}</good> <gray>米</gray>"
+	ShieldPenetrationFmt = "<white>护盾穿透：</white><good>{0:.##}</good> <gray>护盾</gray>"
+	ShotAmmoUsageFmt = "<white>炮弹消耗：</white><good>{0:0.##}</good><gray>/发（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	ShotDamageFmt = "<white>对来袭射弹伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><gray>/秒）</gray>"
+	ShotDeploySpeedFmt = "<white>部署速度：</white><gray>&lt;</gray> <good>{0:0}</good> <gray>米/秒</gray>"
+	ShotGuidanceFmt = "<white>制导：</white><good>{0:0.#}°</good><gray>/秒</gray>"
+	ShotHPFmt = "<white>耐久度：</white><good>{0:n0}</good>"
+	ShotLaunchSpeedFmt = "<white>发射速度：</white><good>{0:0}</good> <gray>米/秒</gray>"
+	ShotPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.###}</good><gray>/发（</gray><good>{1:0.###}</good><gray>/秒）</gray>"
+	ShotSpeedFmt = "<white>飞行速度：</white><good>{0:0}</good> <gray>米/秒</gray>"
+	ShrapnelFmt = "<white>弹片：</white><good>{0}</good>"
+	SightRangeFmt = "<white>传感器范围（视觉）：</white><good>{0:0}</good><gray>米</gray>"
+	SimpleDamageFmt = "<white>伤害：</white><good>{0:n0}</good>"
+	SimpleMaxDamageFmt = "<white>最大伤害：</white><good>{0:n0}</good>"
+	SizeFmt = "<white>尺寸：</white><good>{0}x{1}</good> <gray>米</gray>"
+	SpreadFmt = "<white>随机散布：</white><gray>+/-</gray> <good>{0:0.#}°</good>"
+	SteelCapacityFmt = "<white>钢板容量：</white><good>{0}</good>"
+	SteelIronUsageFmt = "<white>铁消耗：</white><good>{0:0.##}</good><gray>/钢板（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	SteelPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/钢板（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	SteelProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>钢板/秒</gray>"
+	StorageTilesFmt = "<white>存储空间：</white><good>{0}</good> <gray>堆</gray>"
+	StretchRangeFmt = "<white>延伸射程：</white><good>{0:0}</good> <gray>米</gray>"
+	SulfurCapacityFmt = "<white>硫磺容量：</white><good>{0}</good>"
+	ThrusterBuffFmt = "<white>推进器增益：</white><good>+{0:0}%</good><gray> 推进力和能量消耗</gray>"
+	ThrusterForceFmt = "<white>推力：</white><good>{0:#,0.#}</good><gray>千牛</gray>"
+	ThrusterPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/秒（100% 推进力）</gray>"
+	ThrusterRampUpFmt = "<white>加速时间：</white><good>{0:0.##}</good><gray>秒</gray>"
+	TractorForceFmt = "<white>牵引力：</white><good>{0:#,0.#}</good><gray>千牛</gray>"
+	TristeelCapacityFmt = "<white>三钛钢板容量：</white><good>{0}</good>"
+	TristeelPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/三钛钢板（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	TristeelProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>三钛钢板/秒</gray>"
+	TristeelTritaniumUsageFmt = "<white>三钛原矿消耗：</white><good>{0:0.##}</good><gray>/三钛钢板（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	TritaniumCapacityFmt = "<white>三钛原矿容量：</white><good>{0}</good>"
+	TurretSpeedFmt = "<white>炮塔旋转速度：</white><good>{0:0}°</good><gray>/秒</gray>"
+	UraniumCapacityFmt = "<white>铀容量：</white><good>{0}</good>"
+	WeightFmt = "<white>重量：</white><good>{0:0.0#}</good> <gray>吨</gray>"
+}
+TitleScreen
+{
+	
+	Codex = 百科
+	Community = 社区
+	ConfirmExitGame = 确定要退出游戏？
+	ConfirmHideAlert = 是否要隐藏此提醒？
+	Continue = 继续
+	Credits = 鸣谢
+	Discord = ""
+	Exit = 退出
+	Feedback = 发送反馈
+	LoadGame = 加载游戏
+	Mods = Mod
+	More = 更多
+	Multiplayer = 多人游戏
+	NewGame = 新游戏
+	News = 新闻
+	NewsFmt = "新闻<bad>（{0}）</bad>"
+	NextUpdateFmt = "下次更新大约在 {0} 天 {1} 小时后。"
+	Reddit = ""
+	Settings = 设置
+	ShipLibrary = 星舰库
+	Steam = "Steam 社区"
+	WishlistNow = "<s24>立即购买！</s24>\n<regular>不要错过发售折扣！</regular>"
+}
+Tutorials
+{
+	
+	AbandonedShips
+	{
+		
+		Dialog = 然后，<good>选择转移的船员数量</good>。（如果你已经拥有不止一艘星舰，或者附近有多艘弃舰，可能需要从右边的下拉菜单中选择指定的星舰）
+		Discover = "偶尔你会发现被船员<good>遗弃</good>的星舰。\n\n这些弃舰可以像其他废料一样被<good>回收拆解为资源</good>，但你也可以<good>控制</good>它们并将其纳入自己麾下。"
+		StartTransfer = 点击<white>启动转移</white>按钮派出船员。一旦这些船员到达该星舰，他们将控制该星舰！
+		Title = 太空弃舰
+		Transfer = "要<good>控制</good>一艘弃舰，请点击小<img name='hamburger_up'/>按钮并选择<white>转移船员</white>选项。"
+	}
+	AdvancedCommands
+	{
+		
+		Attack = "<good>攻击命令</good>（<btn id='Game.Attack'/>）对几乎所有星舰有效，包括你自己或友军的星舰。你还可以用它来快速调整现有攻击命令的角度和距离。"
+		DirectControl = 如果你喜欢使用键盘和鼠标<good>手动驾驶星舰</good>，请点击<white>直接控制模式</white>按钮。
+		Halt = "<good>停止命令</good>（<btn id='Game.Halt'/>）用于取消所有当前命令。"
+		Info = 在左下角有几个命令，可以让你更好地控制你的星舰：
+		Move = "<good>移动命令</good>（<btn id='Game.Move'/>）用来移动到特定位置或跟随其他星舰。"
+		Rotate = "<good>旋转命令</good>（<btn id='Game.Rotate'/>）可以使星舰原地旋转而不移动。"
+		Strafe = "<good>平移命令</good>（<btn id='Game.Strafe'/>）可以移动星舰，同时保持其当前朝向。"
+		Title = 高级星舰控制
+	}
+	Build
+	{
+		
+		Button = 要<good>升级星舰</good>，请点击左下方的<white>建造</white>按钮。（有敌舰对你开火时无法升级星舰。）
+		Caution = <bad>注意：</bad>船员出舱进行改装时非常容易遭受攻击！请勿在不安全的地方进行升级改装！
+		Crew = 船员会自动出舱对星舰进行改装。
+		Parts = 要为星舰<good>添加部件</good>，<white>请在下面的框中将其选定</white>。然后<white>左键单击</white>你想添加的位置。
+		Rotate = 要在正式添加之前<good>旋转某个部件</good>，请按下旋转按钮或<white>右键单击</white>。
+		Title = 升级星舰
+	}
+	Build2
+	{
+		
+		Close = "升级完星舰后，点击红色的 <bad>X</bad> 按钮或按 <btn id='General.Cancel'/> 即可退出建造模式。"
+		Delete = 要<good>从星舰上拆除部件</good>，请使用<white>删除</white>工具。用于建造该部件的所有材料将全部退还给你。
+		Grab = 要<good>抓起部件</good>并把它移到别的地方，请使用<white>抓取</white>工具。
+		Materials = 和修理一样，<good>建造也需要材料</good>。如果你没有足够的材料，那么将从附近的空间站<good>自动购买</good>额外所需的材料，前提是你有足够<money>信用点</money>，并且空间站有材料库存。
+		Tip = "<good>提示：</good>手滑了？只要点击<white>撤销</white>按钮或按 <btn id='Design.Undo'/> 即可。"
+		Title = 升级星舰（续）
+	}
+	Build3
+	{
+		
+		Brush = "选择了一个 1 单元的部件后，你可以选择各种形状和大小的<good>刷子</good>。"
+		Button = 要修改星舰的<good>蓝图</good>，请点击<white>切换蓝图</white>按钮。
+		Commit = 做出满意的设计后，即可点击<white>按图造舰</white>按钮。这样星舰将会更新，费用直接从当前资源和<money>信用点</money>中扣除。
+		MirrorMode = 启用<good>镜像模式</good>，可以高效制作对称的星舰设计。<white>右键单击</white>此按钮可查看更多选项。
+		SelectCopyPaste = 使用<good>选择工具</good>可以复制、粘贴、镜像、旋转或删除星舰的整个分区。
+		Ship = 使用蓝图可以对设计进行不合规的<good>临时修改</good>，在真正投入资源或<money>信用点</money>之前先完成测试。
+		Title = 高级星舰设计
+	}
+	Camera
+	{
+		
+		EdgePan = 要<good>平移镜头</good>，请将<white>鼠标光标</white>移动到屏幕边缘，或按<white>箭头键</white>。
+		Tip = "<good>提示：</good>找不到自己的星舰了？点击左下角的图标或按下 <btn id='View.FocusSelected'/>（聚焦）键即可。"
+		Title = 控制镜头
+		Zoom = "要<good>放大和缩小</good>，请使用鼠标上的<white>滚轮</white>或按下 <btn id='View.ZoomIn'/> 和 <btn id='View.ZoomOut'/> 键。"
+	}
+	Camera2
+	{
+		
+		AltDrag = "要<good>聚焦于多艘星舰</good>，按住 <btn id='View.FocusCursorMode'/>，<white>左键单击</white>，并在星舰周围拖出方框。"
+		Drag = 要<good>拖动镜头</good>，请点击、按住，然后拖动<white>鼠标中键</white>。
+		FocusClick = "要<good>将镜头</good>对准任何一艘星舰，请点击<white>鼠标中键</white>。\n\n你也可以用<white>鼠标中键</white>点击空白处，将镜头对准该处。"
+		Tip = "<good>提示：</good>按 <btn id='View.FocusSelected'/> 可以聚焦到你的星舰。"
+		Title = 控制镜头（高级）
+	}
+	Cannons
+	{
+		
+		Cannon = <good>加农炮</good>（和<good>轨道炮</good>）是使用<good>炮弹</good>而非能量的实弹武器。
+		Crew = <good>船员</good>将从存储室或工厂为加农炮运送炮弹。
+		Factory = "炮弹可以在空间站低价<good>购买</good>或在<img name='resource.sulfur'/>炮弹工厂中用硫磺<good>制造</good>。"
+		Tip = <good>提示：</good>加农炮的射速取决于船员向其输送弹药的速度。
+		Title = 加农炮和炮弹
+	}
+	Combat
+	{
+		
+		Attack = "要<good>攻击一艘敌舰</good>，<white>右键</white>点击该舰或其雷达光点。你的星舰将飞向它展开攻击。（此时游戏可能为了展示教程已经自动暂停。按 <btn id='Game.PauseToggle'/> 可以取消暂停）。"
+		Blips = 当敌舰进入雷达范围内，但尚未进入目视范围内时，将显示为闪烁的<red>雷达光点</red>。
+		Detected = 探测到附近有一艘敌舰！
+		Tip = <good>提示：</good>有些敌人的星舰太过强大，现阶段的你还无法战胜！先不要急着攻击，逃离战场、<good>升级</good>星舰才是上策。
+		Title = 攻击敌人
+	}
+	CommandPoints
+	{
+		
+		CommandRooms = "<white>驾驶舱</white>、<white>控制室</white>和<white>舰桥</white>分别提供一定数量的<good><img name='command_points' colored='true'/>指挥点数</good>，如每个舱室图标的右上角所示。"
+		PointsRemaining = <good>剩余指挥点数</good>的数量会在右边显示。一旦用完，你将无法添加新的武器或其他系统，除非添加或升级指挥室。
+		Tip = <good>提示：</good>如果指挥室被摧毁或失去动力，你将失去它提供的指挥点数，而如果星舰指挥点数不足，你将完全失去对星舰的控制。为了重新获得控制权，请修复指挥室或关闭各个系统的电源，直到重获足够的指挥点数。
+		Title = 指挥点数
+		UsingPoints = 大多数武器和其他系统均<good>使用指挥点数</good>，如每个图标的右上角所示。
+	}
+	Comms
+	{
+		
+		CommsButton = 要<good>呼叫一艘星舰或空间站</good>，首先点击左下方附近的<white>通信</white>按钮。
+		HailButton = 然后点击你想呼叫的星舰或空间站旁边的<white>呼叫</white>按钮，或者，如果在目视范围内，可以直接<white>点击</white>。<bad>试着呼叫附近的友好空间站吧。</bad>
+		Interact = 你可以<good>呼叫</good>其他星舰和空间站，与之互动。
+		Note = <good>注意：</good>并不是所有的星舰和空间站都会接受你的呼叫请求或提供所有类型的服务。
+		Stations = 友好<good>空间站会提供各种服务</good>，如<white>任务列表</white>、<white>船员雇佣</white>和<white>资源交易</white>。这些服务将在后面详细解释。
+		Title = 呼叫星舰和空间站
+	}
+	Creative
+	{
+		
+		AddShip = 要<good>将已保存的星舰</good>添加到游戏中，请点击<white>星舰库</white>按钮。
+		Allegiance = "要想<good>让星舰交战</good>，请点击星舰名称旁边的小<img name='hamburger_up'/>按钮，选择<white>阵营</white>，然后为每艘星舰挑选不同的玩家。可以命令分配给不同玩家的星舰互相攻击，它们将在进入射程后自动开火。"
+		NewShip = 要从头<good>设计新星舰</good>，请点击<white>新星舰</white>按钮。
+		PlayAs = "要更改你可以<good>控制的星舰</good>，请点击靠近顶部的<img name='hamburger_down'/>按钮，选择<white>游戏身份</white>。"
+		SaveShip = "要<good>保存</good>星舰设计，请点击星舰编辑器中的<img name='hamburger_up'/>按钮，然后选择<white>保存星舰设计</white>。"
+		Title = 创意模式
+		Unlimited = 在创意模式下，你可以使用无限<money>信用点</money>创造星舰、投入战斗。
+	}
+	Crew
+	{
+		
+		Crew = <good>船员</good>通过操作武器、驾驶和运送补给来维持星舰的运转。船员越多，星舰就越能有效地发挥功能！
+		Indicator = 没有船员操作的部件会显示一个<red>红色船员图标</red>。
+		InteriorButton = 要<good>查看星舰的内装</good>，请点击<white>显示/隐藏内装</white>按钮。
+		PathLines = 在建造时，请注意舱室离它所需要的船员、能源或弹药的距离。如距离较远，则意味着能源和弹药的运送会更慢。随着距离的增加，路径的颜色会从<good>绿色</good>变成<yellow>黄色</yellow>，如果远于推荐距离，则会变成<bad>红色</bad>。
+		Title = 星舰船员
+	}
+	Crew2
+	{
+		
+		Airlock = <white>气闸</white>允许船员在回收、开采和转移资源时，<good>进入或离开</good>你的星舰。
+		Button = 要想雇佣更多船员，你需要<good>建造更多的床位</good>。首先，再次点击<white>建造</white>按钮。
+		Door = 你还需要<white>门</white>，以便船员<good>在舱室之间穿行</good>。
+		Meter = <good>船员计</good>可显示星舰上的船员数量，<good>绿色竖条</good>表示推荐船员数量。
+		Quarters = 增加一个<white>船员铺位</white>或<white>船员宿舍</white>，即可提升<good>星舰可拥有的最大船员数量</good>。
+		Title = 雇佣船员
+	}
+	Crew3
+	{
+		
+		Hail = 要<good>雇佣更多船员</good>，请呼叫附近的空间站，然后点击<white>雇佣船员</white>选项卡。
+		Hire = 要<good>雇用某个人</good>，请点击其<white>雇用</white>按钮，或者点击<white>雇用全部</white>按钮来雇佣<good>尽可能多的人</good>。雇佣每名船员只需支付一次<money>信用点</money>。
+		List = 你会看到<good>愿意加入</good>的人员名单。提升<fame>名望</fame>即可吸引更多的人加入。
+		Tip1 = <good>提示：</good>雇佣费随着船员数量的增长而增加，随着名望增长而减少，所以可以等到<fame>名望</fame>更高时再雇佣新船员，从而节省<money>信用点</money>。
+		Tip2 = <good>提示：</good>所有船员的业务水平相同，均能胜任所有工作与岗位，所以想雇谁就雇谁吧！
+		Title = 雇佣船员（续）
+		Warning = <bad>警告：</bad>切记不要在雇佣的船员登舰之前就飞走了！
+	}
+	Crew4
+	{
+		
+		AddRole = 要<good>添加新的岗位</good>，点击大的<white>新岗位</white>按钮。
+		Autonomous = <good>船员大多自主行动</good>，他们会自主操作星舰，但如有需要，仍可以自定义船员的行为模式。
+		Button = 要<good>自定义船员的行为模式</good>，请点击<white>管理船员</white>按钮。
+		EditRole = "要<good>编辑岗位的</good>名称、颜色和工作优先级，请<btn id='General.UIAltClick'/>并选择“编辑岗位”。"
+		Priorities = 大多数星舰部件都有一个或多个与之相关的工作，每个工作都有<good>1到10之间的优先级</good>，你可以自行定义每个不同岗位的优先级。
+		Priorities2 = 优先级<good>较高</good>的工作始终在<good>优先级</good><good>较低</good>的工作之前完成。你也可以完全禁用一项工作，阻止担任相应岗位的船员从事该工作。
+		Roles = 每艘星舰都有一种或多种<good>“岗位”</good>，决定其船员的行为方式。
+		Title = 船员班组和岗位
+	}
+	Crew5
+	{
+		
+		AssigningCrew = 要<good>将船员分配到一个班组</good>，<white>左键单击</white>船员或在船员周围拖框，然后<white>右键单击</white>所需的班组卧室。
+		SquadRoles = <good>每个班组都分配了一个岗位。</good>要给班组分配岗位，请点击所需岗位的按钮，然后点击该岗位班组的卧室。
+		Squads = <good>船员会被编入“班组”。</good>每个班组都有自己的卧室，其成员无事可做时会回到这里。
+		Title = 船员班组和岗位（续）
+	}
+	Crew6
+	{
+		
+		Never = <bad>注意！身负命令的班组是不会执行其他部件相关的工作的！</bad>。
+		Order = <white>左键单击</white>你想命令的班组的卧室或在卧室周围拖动方框，然后<white>右键单击</white>你想分配给他们的武器等部件。
+		OrdersMode = 打开<white>船员管理</white>界面，然后打开<white>命令班组模式</white>。
+		Tell = 你还可以命令特定的船员班组，让他们<good>只做与特定武器或其他部件相关的工作</good>。
+		Tip = <good>提示：</good>如果发现船员的工作行为不符合你的设想，请仔细检查其所属班组的命令！
+		Title = 船员班组命令
+	}
+	DirectControl
+	{
+		
+		Camera = 在使用直接控制模式时，镜头将被锁定在你的星舰上。
+		Flight = "要想让你的星舰<good>向前或向后飞行</good>，请按 <btn id='Game.DirectControlForward'/> 或 <btn id='Game.DirectControlReverse'/>。\n\n要<good>向左或向右旋转</good>，请按 <btn id='Game.DirectControlRotateLeft'/> 或 <btn id='Game.DirectControlRotateRight'/>。\n\n要<good>向左或向右“平移”</good>，请按 <btn id='Game.DirectControlStrafeLeft'/> 或 <btn id='Game.DirectControlStrafeRight'/>。"
+		Tip = <good>提示：</good>在游戏设置中，有许多选项可以定制直接控制模式的飞行和镜头操作。
+		Title = 直接控制模式
+		Weapons = "点击<white>鼠标按键</white><good>开火</good>。\n\n武器将<good>自动瞄准</good>靠近鼠标光标的敌舰。按 <btn id='Game.DirectControlLockTarget'/> 可切换目标锁定。"
+	}
+	Fame
+	{
+		
+		Fame = 你当前的<fame>名望</fame>显示在右上角，<money>信用点</money>下面。
+		FameCrew = 随着<fame>名望</fame>的增加，会有更多人愿意加入你的队伍！船员永远不嫌多！
+		IncreasingFame = <good>击败敌人</good>、<good>完成任务</good>时，<fame>名望</fame>便会提升。名望值是永远不会下降的。
+		Tip = <good>提示：</good>随着你的名气越来越大，你很快就将无法通过摧毁低级别敌舰、完成低级别任务赚取名望。击败更高级别的敌舰，完成更困难的任务，稳步提升<fame>名望</fame>吧。
+		Title = 名扬四海
+	}
+	Fires
+	{
+		
+		Cause = 在被某些武器击中或易燃易爆部件爆炸时，舰内可能会<red>起火</red>。如果不加处理，火势会迅速蔓延，造成损失并烧死船员。
+		FireExtinguisher = 在星舰上加装<good>灭火器</good>可以帮助灭火。船员会拿起灭火器来扑灭火势。
+		Spread = <good>提示：</good>火势会通过开放区域以及舱门蔓延，但无法穿过墙壁。星舰上舱门数量越多，火势就越容易蔓延。
+		Title = 起火
+	}
+	Fleets
+	{
+		
+		BoxSelect = "要<good>同时控制多艘星舰</good>，可<b>使用左键</b>并在星舰周围拖框。\n\n或者，按住 <btn id='Game.AppendSelection'/> 并<b>左键单击</b>每艘星舰也可。"
+		ControlGroups = "<good>提示：</good>选择一艘或多艘星舰，然后按 <b>Ctrl + F1-F8</b> 可以创建<good>控制组</good>。按 <b>F1-F8</b> 即可选择该组。"
+		Selected = "当麾下拥有多艘星舰时，<b>左键点击</b>你想<good>控制</good>的星舰。\n\n被控制的星舰周围有一圈<good>绿色指示环</good>。"
+		Synchronize = 命令多艘星舰同时移动时，它们将<good>同步速度</good>。较快的星舰将放慢速度以配合最慢的星舰。（<b>双击右键</b>可禁用速度同步）
+		Title = 指挥舰队
+	}
+	Formations
+	{
+		
+		BasicFormations = 要命令麾下星舰<good>编队飞行</good>，至少选择两艘星舰，点击<white>编队</white>按钮，然后选择一种想要使用的队形。
+		CustomFormations = 要创建<good>自定义编队</good>，请选择一艘星舰，并将其置于另一艘星舰附近，具体操作为<white>右键点击</white>另一艘星舰，按住鼠标按钮，并<white>向相应方向拖动</white>。
+		SavingFormations = 要<good>保存自定义编队</good>，请点击小箭头，然后点击<white>保存</white>按钮，将编队保存在空的编队槽中。
+		Title = 编队
+	}
+	Ftl
+	{
+		
+		BuildFtl = 建造一个<good>超空间驱动器</good>即可在星系内实现超空间跳跃，甚至可以跳跃到其他星系。（首先需要从空间站购买其蓝图）
+		Hyperium = 跳跃需要使用一定数量的<good>超光素</good>晶体，具体取决于跳跃的距离、星舰的大小和超空间驱动器的效率。超光素可以从小行星上开采，从敌方弃舰回收，或者从空间站购买。
+		PlotJump = 一旦建成，点击<white>超空间跳跃</white>按钮，选择一个目的地。船员将为超空间驱动器提供动力，然后星舰将完成跳跃。
+		Tip = <good>提示：</good>若大型星舰只有一个超空间驱动器，其效率会非常低。如需提高效率，可添加更多超空间驱动器，使其均匀分布在舰上各个位置，这样可以消耗更少的超光素、跳跃更远的距离。
+		Title = 超空间驱动器
+		Valid = 在选择跳跃地点时，<good>有效的目的地将闪烁蓝色</good>。你可以跳到任何已经发现的空间站、超空间跳跃信号站或星门。
+	}
+	Ftl2
+	{
+		
+		Engage = 准备好超空间跳跃后，只需点击<white>起航</white>按钮即可。
+		ExitMap = 退出银河系地图，此时你应该使用的超空间跳跃中继站会<good>高亮显示</good>。<white>右键点击</white>中继站以飞往该中继站。到达之后，船员会自动为超空间驱动器充能。
+		GalaxyMap = 点击<white>银河系地图</white>按钮，查看整个银河系的地图。
+		Numbers = "每个星系名称旁边的数字（如 <gray>[<good>1</good>-<good>3</good>]</gray>）表示预期的危险程度。若未准备妥当就前往高危星系，将会遭遇<bad>极度困难</bad>的处境。"
+		PlotJump = "要<good>飞往另一个星系</good>，请点击<white>规划超空间跳跃</white>，然后点击目标星系。与星系内跳跃一样，跳跃到另一个星系会消耗一定量的<img name='resource.hyperium'/>超光素，具体取决于跳跃的距离、星舰的大小和超空间驱动器效率。"
+		Relays = "拥有超空间驱动器和足够<img name='resource.hyperium'/>超光素的星舰能够通过<good>超空间跳跃中继站</good>前往其他恒星系。"
+		Title = 超空间跳跃中继站
+	}
+	IonBeams
+	{
+		
+		Aiming = 要<good>瞄准一个棱镜</good>，首先退出建造模式，选择棱镜，然后点击<white>瞄准离子棱镜</white>按钮。
+		Combining = 射入单个棱镜的<good>光束可以合并</good>，形成一道更大、更强的光束。
+		IonBeams = <good>离子光束</good>是方向固定的能量束武器，不能瞄准，但能在一段时间内造成持续的高伤害。
+		IonPrisms = 但如果把<good>离子棱镜</good>放在离子光束前面，它可以把离子光束投射到任何方向，比如敌舰，甚至是另一个离子棱镜。
+		Tip = <good>提示：</good>将多道光束组合在一起会降低它们的总伤害输出。为了最大化整束光的伤害，一定要让每个棱镜组合两道大小相同的光束。
+		Title = 离子光束和棱镜
+	}
+	Micro
+	{
+		
+		ControlGroups = "<good>提示：</good>选择一个或多个部件，然后按 <white>Ctrl + 0-9</white>，可以创建一个<good>控制组</good>。按 <white>0-9</white> 即可选择该组。"
+		FireMode = 按下<white>开火模式</white>按钮，可以命令武器<good>停火</good>、<good>只向指定目标开火</good>或者<good>不停开火</good>，视你的需要而定。
+		Power = 按下<white>电源</white>按钮，<good>将其关闭</good>。所有操作该部件的船员都会离开，到其他地方帮忙。
+		Select = "<white>左键单击</white>一个单独的部件，以将其<good>选定</good>。\n\n你也可以按住 shift 点击多个部件或拖出方框来一次选中多个部件。"
+		Target = 在选择了武器的情况下，<white>右键点击</white>敌舰的某个部件，可以让武器<good>瞄准</good>该部件。
+		Title = 星舰微管理
+	}
+	Mining
+	{
+		
+		Asteroids = 在探索过程中，你经常会发现小行星含有宝贵的<good>资源矿藏</good>。
+		Icon = <good>拉远后</good>，含有未开采资源矿藏的小行星上会显示相应的化学元素符号。
+		Mine = 要<good>开采这些小行星</good>，请点击<white>收集/回收/开采</white>按钮，然后在要开采的小行星的资源矿藏周围拖动方框。星舰上的船员会自动开采资源，并将其储存在星舰中。
+		Tip = <good>提示：</good>许多资源矿藏会包藏在岩石中，对船员来说难以开采。建造一个<good>采矿激光</good>即可开采这些资源。
+		Title = 开采小行星
+	}
+	Missiles
+	{
+		
+		ChangeType = 要<good>改变其发射的弹药类型</good>，请选择发射器，然后点击<white>弹药类型</white>按钮。
+		Launcher = <good>发射器</good>是一种多用途的武器，可以发射<good>各种类型的弹药</good>，如导弹和空雷。
+		Tip = <good>提示：</good>发射器的弹药类型可以在任何时候更改，哪怕是在战斗中。
+		Title = 导弹和空雷
+	}
+	Missions
+	{
+		
+		Accept = 要<good>接受任务</good>，请从左边的列表中选择，然后点击<white>接受</white>按钮。
+		DangerLevel = "大多数任务都有一个<good>“危险等级”</good>，如<gray>[</gray><good>1</good><gray>]</gray>，表明它的难度水平。在接受高级别的任务之前，最好先升级你的星舰。"
+		Info = 任务是你赚取<money>信用点</money>和<fame>名望</fame>的主要方式。
+		Stations = 大多数友好空间站都会有一个<good>任务板</good>，显示可接下的任务。<bad>如果你还没有进行呼叫，请呼叫附近的友好站点，查看其任务板。</bad>
+		Tip = "<good>提示：</good>我们建议你接受第一级<gray>[</gray><good>1</good><gray>]</gray>通缉犯赏金任务。（之后你可以关闭呼叫窗口）在升级星舰之前，请不要去承接更高级别的任务。"
+		Title = 任务
+	}
+	Missions2
+	{
+		
+		Location = 许多任务也会<good>显示任务的目标地点</good>。（可能需要放大才能看到）<white>点击目标</white>，将镜头对准其位置。
+		MissionLog = 可以通过点击屏幕左上方的<white>生涯日志</white>按钮，<good>查看当前所有承接的任务</good>。
+		Title = 任务（续）
+		Tracked = <good>附近的任务</good>将自动得到“关注”，显示在屏幕左上方位置。
+		Try = <bad>尝试驾驶星舰飞抵任务地点吧。</bad>
+	}
+	Missions3
+	{
+		
+		Hail = 回到空间站后，请<good>再次呼叫它</good>。
+		ReceiveRewards = 然后你应该会看到一个可领取报酬的完工任务列表。<good>要领取报酬</good>，请点击任务，然后点击<white>接收奖励</white>按钮。
+		Return = 在完成所有任务目标后，通常需要<good>返回原站点</good>领取报酬。
+		Title = 获得报酬
+	}
+	Movement
+	{
+		
+		Codex = <good>提示：</good>从暂停菜单中选择<white>“教程和百科”</white>，可随时重新阅读所有教程。
+		Move = 要<good>使星舰移动</good>，请<white>右键点击</white>任意空白处。星舰会自动飞到那里。
+		Title = 星舰移动
+	}
+	Movement2
+	{
+		
+		Drag = 要<good>调整星舰的方向</good>，<white>右击</white>和<white>拖动</white>即可。
+		Handles = "要<good>移动或旋转</good>现有的航点，按住 <btn id='Game.AppendSelection'/>，然后拖动出现的手柄之一。\n\n要<good>删除</good>航点，请点击<white>垃圾桶</white>图标。"
+		Queue = "要<good>添加航点</good>，请按住 <btn id='Game.AppendSelection'/> 的同时单击右键。"
+		Title = 驾驶星舰（高级）
+	}
+	NotInDemo = <bad>以下功能在《Cosmoteer》试玩版中不可用。</bad>
+	Paint
+	{
+		
+		Button = 要<good>给星舰外部进行涂装</good>，请点击左下方的<white>涂装</white>按钮。
+		ColorWheel = 在这里，你可以更改星舰的<good>底漆颜色</good>和<good>图案</good>。
+		Decals = "你也可以把<good>贴花</good>喷涂在你的星舰上。\n\n一艘星舰最多可以有三层贴花。每一层都可以有不同的颜色，而且一层中的所有贴花都是该种颜色。"
+		Tip = <good>提示：</good>星舰涂装是免费的，且对星舰的性能没有任何影响。尽情涂装吧！
+		Title = 星舰涂装
+	}
+	Power
+	{
+		
+		Crew = 你的<good>船员</good>将把等离子电池从<white>反应堆</white>或<white>能源电容器</white>搬运到各个星舰部件处。
+		Indicator = 如果部件的电力供给不足，则会显示一个<red>红色的图标</red>。这通常是因为没有足够的船员来运送电池，或者离电源太远，但如果星舰的反应堆无法生产足够的电池，也可能发生这种情况。
+		Meter = <good>电力表</good>显示反应堆产生的总电力，而<good>绿色竖条</good>显示的是推荐量。
+		Reactor = <good>反应堆</good>可以为星舰推进器、能量武器等部件生产等离子电池。
+		Tip = <good>提示：</good>能量武器的射击速度取决于船员向它提供能量的速度。
+		Title = 为星舰供能
+	}
+	Railguns
+	{
+		
+		Accelerator = 轨道炮也可以安装任意数量的<good>加速器</good>模块。每个加速器都会增加射程、伤害和穿深。
+		Info = 轨道炮是能够<good>模块化</good>并<good>自定义长度</good>的实弹武器，由多个部件组成。轨道炮越长，它的伤害就越高，射程就越远。
+		Launcher = 每门轨道炮前端都需要一个<good>发射器</good>模块，以高速射出弹丸。
+		Loader = 最后，每门轨道炮后端都需要一个<good>装填器</good>模块，这是船员装填弹药的地方。
+		Tip = <good>提示：</good>每个发射器和加速器模块必须由船员运送的电池单独供电。哪怕一个发射器或加速器模块缺少动力，整门轨道炮将无法发射。（装填器模块只需要标准的加农炮弹，不需要供电）
+		Title = 轨道炮
+	}
+	Repairs
+	{
+		
+		Button = 当星舰需要修理时，左下方会出现红色的<white>修理</white>按钮。点击该按钮可以<good>打开建造/修理模式</good>。
+		Caution = <bad>注意：</bad>船员出舱进行维修时非常容易遭受攻击！请勿在不安全的地方进行维修！
+		Exit = "完成修理后，点击红色的 <bad>X</bad> 按钮或按 <btn id='General.Cancel'/> 都可以退出建造/修理模式。"
+		Materials = <good>修理需要用到材料。</good>若不能收集或采购到足够的材料，可能无法修理所有损伤。
+		Parts = "要<good>修理损坏或被摧毁的部件</good>，请<white>左键点击</white>该部件。\n\n船员会自动出舱对部件进行维修。"
+		RepairAll = 如果要<good>修理整艘星舰</good>，可以点击屏幕右下角的<white>修理所有</white>按钮。
+		Title = 修复星舰
+	}
+	Reputation
+	{
+		
+		Negative = 同样地，攻击各派系会导致你的声誉降低。<bad>负数</bad>声誉分数将提高购买价格，并使你在被通缉时更难逃脱。
+		Positive = 完成各派系的任务可提高你的声誉。若派系声誉分数为<good>正值</good>，对应空间站商品的售价将会降低。
+		ReputationScore = 每个派系对你都有自己的看法，通过<good>声誉分数</good>体现，可能是正数，也可能是负数。
+		Title = 派系声誉
+		View = 要查看你在各派系的声誉，请打开<white>生涯日志</white>，然后点击<white>名望和声誉</white>选项卡。
+	}
+	Resources
+	{
+		
+		Elements = <good>元素矿物</good>，如<white>铁</white>和<white>铜</white>，用于在工厂生产建筑材料和弹药。通常从小行星上开采而来。
+		Materials = <good>建筑材料</good>，如<white>钢板</white>和<white>线圈</white>，用于修理和升级星舰。它们通常是从被击沉的敌舰上回收出来，或者在空间站购买而来。
+		Munitions = <good>弹药</good>，如<white>加农炮弹</white>，由某些武器使用。通常由工厂生产或从空间站购买得来。
+		Resources = <good>资源</good>非常宝贵，而且有许多用途：
+		Storage = 资源储存在<good>储存坞</good>中。建造更多的储存坞，可以增加星舰的资源容量。
+		Title = 资源
+		Trade = 资源可以在空间站<good>买卖</good>，方法是呼叫空间站并选择<white>贸易</white>选项卡。（高价值资源可能经常缺货）
+	}
+	Resources2
+	{
+		
+		Designate = 你也可以命令船员<good>只将特定的资源</good>储存在特定的单元上。点击所需资源的按钮，然后点击专门储存该资源的单元。你的船员会尽可能地将该资源储存在这些单元中，而不会自动在上面存储其他资源。
+		Manage = 如需管理你的星舰资源，请点击<white>管理资源</white>按钮。
+		Move = 要命令你的船员<good>将资源从一个单元移到另一个单元</good>，请选择<white>移动资源</white>工具，点击你要移动的资源组，然后点击目标单元。
+		Stacks = 大多数资源都按<good>组</good>储存在<good>存储单元</good>中。储存坞可以存放任何类型的资源组。武器、工厂等特殊部件只能存放其实际使用或生产的资源。
+		SupplyChains = 最后，你还可以在仓库、工厂、反应堆、武器和其他部件之间建立<good>供应链</good>。这与船员班组命令的工作原理非常相似：供应环节添加完毕后，其供应者和接收者永远不会向任何其他部件收发资源。
+		Title = 资源管理
+	}
+	Salvaging
+	{
+		
+		DestroyedShips = 被摧毁的星舰会掉落<good>有价值的材料</good>，你可以用它们来<good>修理和升级</good>自己的星舰。被摧毁星舰的剩余部分也可以回收，以获得更多的材料。
+		GatherSalvage = 要<good>回收</good>这些材料，请点击左下方的<white>收集/回收/开采</white>按钮，然后在你想回收的东西周围拖出一个方框。你的船员会自动收集这些材料，并把它们储存在你的星舰上。
+		RecallCrew = 遇到紧急情况，请按下<white>召回船员</white>按钮，取消所有出舱船员的命令，并<good>召唤他们回到星舰</good>。
+		Tip = "<good>提示：</good>如果回收残骸的时间过长，请尝试使用<white>&gt;&gt;</white>按钮提高游戏速度。"
+		Title = 收集和回收材料
+	}
+	Tactics
+	{
+		
+		Reactor = <good>提示：</good>摧毁敌舰的<good>反应堆或指挥室</good>，可直接将其炸成一艘幽灵船！
+		Target = 发动攻击后，<white>右键</white>再次点击敌舰的某一特定部位，用你的武器<good>瞄准</good>那里。
+		Title = 战斗技巧
+	}
+	Tactics2
+	{
+		
+		Drag = 要选择攻击的<good>距离</good>和<good>方向</good>，请<white>右键点击</white>敌舰并相应<white>拖动</white>。
+		Handles = "要在下达攻击指令后调整<good>距离</good>、<good>方向</good>或<good>旋转角度</good>，请按住 <btn id='Game.AppendSelection'/>，然后拖动出现的手柄之一。"
+		TargetQueue = "要<good>依次攻击多个目标</good>，请在按住 <btn id='Game.AppendSelection'/> 的同时右击接下来想攻击的目标。"
+		Title = 战斗技巧（高级）
+	}
+	Techs
+	{
+		
+		Blueprints = 没有必需的蓝图，就<good>无法建造</good>许多武器等其他星舰部件。
+		Permanent = 购买蓝图能够<good>永久解锁</good>建造该类型部件的能力。
+		Purchase = 要购买蓝图，需要呼叫空间站并选择<white>购买蓝图</white>选项卡。
+		Title = 获取蓝图
+	}
+	Thrusters
+	{
+		
+		Many = "推进器会将星舰推向与之相反的方向。\n\n星舰的速度和机动性取决于其推进器的数量、位置、方向和大小。"
+		Thruster = 添加<good>推进器</good>可以提高星舰的速度和机动性。推进器太少的星舰无法飞行。
+		Tip = <good>提示：</good>想要速度又快，机动性又强，就得在不同位置和方向上都布置许多推进器。
+		Title = 推进器
+	}
+	Time
+	{
+		
+		Buttons = "要想随时<good>暂停游戏</good>，请点击屏幕中央上方附近的<white>||</white>按钮，或者按下 <btn id='Game.PauseToggle'/> 键。"
+		Faster = "要<good>加快</good>或<good>放慢</good>时间流速，请点击<white>&gt;&gt;</white>或<white>&lt;&lt;</white>按钮。"
+		Tip = "<good>提示：</good>如果某样东西移动得太快而，令你难以点选，只要按下 <btn id='Game.PauseToggle'/> 就可以暂停游戏。"
+		Title = 控制时间
+	}
+	Wanted
+	{
+		
+		Attacking = 攻击属于某个派系（或与之交好）的星舰或空间站会使你<bad>遭到通缉</bad>。
+		Evade = 如果能坚持<good>躲避追捕</good>一定时间，他们就会放弃追捕。
+		Hunted = 被通缉时，该派系会在你最后出现的已知位置附近<bad>追捕你</bad>，一旦发现你，他们会立即攻击。
+		Title = 被通缉
+	}
+}
+VersionCheck
+{
+	
+	ConfirmInstall = 下载完成。关闭《Cosmoteer》并安装更新？
+	DownloadInstall = 下载并安装
+	DownloadProgressFmt = "正在下载更新…… <good>{0}%</good>\n<gray>{1:0.0}MB / {2:0.0}MB</gray>"
+	ErrorFmt = "下载更新时出错：{0}"
+	NewVersionMsg = 新版本的《Cosmoteer》已经发布！
+	NoUpdateMsg = 没有新的更新。
+	ReleaseNotes = 查看发布说明
+}
+VitalCategories
+{
+	
+	Airlock = "⚠ 缺少气闸"
+	Command = "⚠ 缺少控制室"
+	Crew = "⚠ 缺少船员舱"
+	ExistingAirlock = "⚠ 缺少气闸。船员无法离舰进行建造。"
+	FireExtinguisher = "⚠ 缺少灭火器"
+	Header = <b>警告</b>
+	Reactor = "⚠ 缺少反应堆"
+}
+Wishlist
+{
+	
+	Caption = 立即购买！
+	ExitMsg = 感谢您体验《Cosmoteer》试玩版！
+	FameLimitReached = "恭喜你！！！\n你已经达到了试玩版的最高<fame>名望</fame>值，但离成为“星海传奇”还有很长的路要走。你可以继续游玩试玩版，但将无法赚取更多名望值，也无法前往其他星系。快快购买完整版，继续你的旅程吧！"
+	FeatureMissingMsg = <bad>抱歉，该功能在试玩版中不可用。</bad>
+	Features = "<fame_color>完整游戏包括……</fame_color><s4>\n\n</s4>● 完整的银河系探索体验……所有星系都将解锁！<s4>\n\n</s4>● 多人合作与多人对战<s4>\n\n</s4>● 更多武器等星舰部件（轨道炮、核弹、EMP、大型护盾、牵引光束等等！）<s4>\n\n</s4>● 来自四大独特派系的 200 多种星舰设计<s4>\n\n</s4>● 模组及创意工坊支持"
+	HoursFmt = "你已经游玩了{0}小时的《Cosmoteer》试玩版。你可以想玩多久就玩多久，但如果你真的乐在其中，是否考虑购买一份完整版呢？"
+	LaunchDiscount = <s24><u>发售折扣不容错过！</u></s24>
+	No = 以后再说
+	NotInDemo = 试玩版中不可用
+	Yes = "<s24>现在购买</s24>\n（或添加到愿望单）"
+}
+Workshop
+{
+	
+	Changes = 更改备注：
+	Description = 描述：
+	FirstVersion = 第一版
+	Preview = 预览图片：
+	SelectPreviewFile = 选择文件
+	Upload = 开始上传
+	UploadingFmt = "正在上传至创意工坊……{0}%"
+	ViewInWorkshop = 在创意工坊中查看
+	Visibility = 可见：
+	k_ERemoteStoragePublishedFileVisibilityFriendsOnly = 仅好友
+	k_ERemoteStoragePublishedFileVisibilityPrivate = 私密
+	k_ERemoteStoragePublishedFileVisibilityPublic = 所有人
+	k_ERemoteStoragePublishedFileVisibilityUnlisted = 不公开
+}

@@ -1,0 +1,71 @@
+ID = uranium
+NameKey = "Resource/Uranium"
+PluralNameKey = "Resource/UraniumPlural"
+DescriptionKey = "Resource/UraniumDesc"
+BuyPrice = 400
+AsteroidDensity = 40 / (&BuyPrice)
+MaxPerNugget = 1
+MaxStackSize = 5
+FlexGridPriorityKey = "flex_grid_uranium"
+FlexGridDefaultPriority = 1
+DropRates = &<../resources.rules>/ElementDropRates
+
+Icon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = max
+	}
+	Size = [64, 64]
+}
+
+Overlay
+{
+	Texture
+	{
+		File = "overlay.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+DeathMediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+
+NuggetSprite
+{
+	File = "uranium.png"
+	NormalsFile = "uranium_normals.png"
+	Size = [1, 1]
+	Offset = [.25+4/64, 0]
+	UVRotation = 1
+}
+
+StackSprites
+[
+	{
+		File = "uranium_stack_1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "uranium_stack_2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "uranium_stack_3.png"
+		Size = [1, 1]
+	}
+	{
+		File = "uranium_stack_4.png"
+		Size = [1, 1]
+	}
+	{
+		File = "uranium_stack_5.png"
+		Size = [1, 1]
+	}
+]
+
+StackReceiveMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

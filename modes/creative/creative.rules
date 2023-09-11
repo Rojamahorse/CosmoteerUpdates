@@ -1,0 +1,307 @@
+Icon
+{
+	Texture
+	{
+		File = "creative.png"
+		SampleMode = Linear
+		MipLevels = 2
+	}
+}
+LargeIcon
+{
+	Texture
+	{
+		File = "creative_large.png"
+		SampleMode = Linear
+		MipLevels = 2
+	}
+}
+
+Gui
+{
+	ShipLibraryIcon
+	{
+		Texture
+		{
+			File = "./Data/gui/game/hud_ship_library.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	DoodadsIcon
+	{
+		Texture
+		{
+			File = "./Data/gui/game/hud_doodads.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	EditNodesIcon
+	{
+		Texture
+		{
+			File = "./Data/gui/game/map/hud_edit_nodes.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	EditConnectionsIcon
+	{
+		Texture
+		{
+			File = "./Data/gui/game/map/hud_edit_connections.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+
+	SelectObjectsIcon = &<./Data/gui/game/designer/build_gui.rules>/SelectPartsSprite
+	SelectObjectsCursor = &<./Data/gui/game/designer/build_gui.rules>/SelectPartsCursor
+
+	SelectedObjectNineSlice
+	{
+		TopLeftSprite
+		{
+			Texture
+			{
+				File = "./Data/gui/game/overlay_object_selection.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Source = [0, 0, 128, 128]
+		}
+		TopSprite         : TopLeftSprite { Source=[128, 0, 0, 128]; }
+		TopRightSprite    : TopLeftSprite { Source=[128, 0, 128, 128]; }
+		LeftSprite        : TopLeftSprite { Source=[0, 128, 128, 0]; }
+		CenterSprite      : TopLeftSprite { Source=[128, 128, 0, 0]; }
+		RightSprite       : TopLeftSprite { Source=[128, 128, 128, 0]; }
+		BottomLeftSprite  : TopLeftSprite { Source=[0, 128, 128, 128]; }
+		BottomSprite      : TopLeftSprite { Source=[128, 128, 0, 128]; }
+		BottomRightSprite : TopLeftSprite { Source=[128, 128, 128, 128]; }
+		Borders = 1
+		Bleed = .5
+	}
+	TentativeSelectedObjectNineSlice
+	{
+		TopLeftSprite
+		{
+			Texture
+			{
+				File = "./Data/gui/game/overlay_object_selection_tentative.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Source = [0, 0, 128, 128]
+			VertexColor = [255, 255, 255, 127]
+		}
+		TopSprite         : TopLeftSprite { Source=[128, 0, 0, 128]; }
+		TopRightSprite    : TopLeftSprite { Source=[128, 0, 128, 128]; }
+		LeftSprite        : TopLeftSprite { Source=[0, 128, 128, 0]; }
+		CenterSprite      : TopLeftSprite { Source=[128, 128, 0, 0]; }
+		RightSprite       : TopLeftSprite { Source=[128, 128, 128, 0]; }
+		BottomLeftSprite  : TopLeftSprite { Source=[0, 128, 128, 128]; }
+		BottomSprite      : TopLeftSprite { Source=[128, 128, 0, 128]; }
+		BottomRightSprite : TopLeftSprite { Source=[128, 128, 128, 128]; }
+		Borders = 1
+		Bleed = .5
+	}
+
+	ObjectSelectionOutlineSprite
+	{
+		VertexColor = [255, 255, 255, 255]
+	}
+	ObjectSelectionFillSprite
+	{
+		VertexColor = [255, 255, 255, 16]
+	}
+
+	ObjectGhostColor = [255, 255, 255, 127]
+
+	ShipsPresentSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/icon_ship.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		Size = [.5, .5]
+	}
+	ShipsPresentSpriteOffset = [0, -.6]
+
+	OtherPlayerCursorSprite
+	{
+		Texture
+		{
+			File = "cursor_multiplayer.png"
+			SampleMode = Linear
+			MipLevels = 2
+		}
+		Size = [32, 32]
+	}
+	OtherPlayerCursorOffset = [-4, -4]
+
+	DefaultNewNodeNameGenerator = &<./Data/galaxy_map/map_generators/base_galaxy.rules>/MapNodes/NameGenerator
+	DefaultNewNodeConnectionDistance = &<./Data/galaxy_map/map_generators/base_galaxy.rules>/MapNodes/ConnectionRadius
+	DefaultNewNodeConnectionLineColor = [128, 221, 255]
+
+	DeleteConnectionLine
+	{
+		LineSprite
+		{
+			Texture
+			{
+				File = "./Data/gui/game/overlay_selection_dashed.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			VertexColor = [246, 49, 43, 255]
+			UVRect = [.25, 0, .5, 1]
+		}
+		LineThickness = 1
+
+		BeginCapSprite : LineSprite
+		{
+			UVRect = [0, 0, .25, 1]
+		}
+		BeginCapSize = [.5, 1]
+
+		EndCapSprite : LineSprite
+		{
+			UVRect = [.75, 0, .25, 1]
+		}
+		EndCapSize = [.5, 1]
+	}
+
+	ObjectMoverWidget
+	{
+		StateNoneSprite
+		{
+			Texture = &~/MoverPng
+			VertexColor = [255, 255, 255, 127]
+			Size = [96, 96]
+		}
+		StateOverSprite
+		{
+			Texture = &~/MoverPng
+			VertexColor = [255, 255, 255, 191]
+			Size = [96, 96]
+		}
+		StateDownSprite
+		{
+			Texture = &~/MoverPng
+			VertexColor = [255, 255, 255, 255]
+			Size = [96, 96]
+		}
+		MaxObjectRelativeSize = [1, 1]
+	}
+	ObjectRotatorWidget
+	{
+		StateNoneSprite
+		{
+			Texture = &~/RotatorPng
+			VertexColor = [255, 255, 255, 127]
+			Size = [96, 96]
+		}
+		StateOverSprite
+		{
+			Texture = &~/RotatorPng
+			VertexColor = [255, 255, 255, 191]
+			Size = [96, 96]
+		}
+		StateDownSprite
+		{
+			Texture = &~/RotatorPng
+			VertexColor = [255, 255, 255, 255]
+			Size = [96, 96]
+		}
+		PixelOffset = [64, 0]
+		MaxObjectRelativeSize = [.75, .75]
+	}
+	ObjectScalerWidget
+	{
+		StateNoneSprite
+		{
+			Texture = &~/ScalerPng
+			VertexColor = [255, 255, 255, 127]
+			Size = [32, 32]
+		}
+		StateOverSprite
+		{
+			Texture = &~/ScalerPng
+			VertexColor = [255, 255, 255, 191]
+			Size = [32, 32]
+		}
+		StateDownSprite
+		{
+			Texture = &~/ScalerPng
+			VertexColor = [255, 255, 255, 255]
+			Size = [32, 32]
+		}
+		PixelOffset = [-12, -12]
+		MaxObjectRelativeSize = [.75, .75]
+	}
+	ObjectConfigWidget
+	{
+		StateNoneSprite
+		{
+			Texture = &~/ConfigPng
+			VertexColor = [255, 255, 255, 127]
+			Size = [48, 48]
+		}
+		StateOverSprite
+		{
+			Texture = &~/ConfigPng
+			VertexColor = [255, 255, 255, 191]
+			Size = [48, 48]
+		}
+		StateDownSprite
+		{
+			Texture = &~/ConfigPng
+			VertexColor = [255, 255, 255, 255]
+			Size = [48, 48]
+		}
+		PixelOffset = [0, 64]
+		MaxObjectRelativeSize = [.75, .75]
+	}
+}
+
+StartingMoney = 1000000000
+
+MapSizes
+[
+	&<./Data/galaxy_map/map_generators/map_sizes.rules>/None
+	&<./Data/galaxy_map/map_generators/map_sizes.rules>/Standard
+]
+
+PlanetsGenerator = &<planets_generator.rules>
+FtlGatesGenerator = &<ftl_gates_generator.rules>
+
+MoverPng
+{
+	File = "./Data/gui/game/handle_mover.png"
+	SampleMode = Linear
+	MipLevels = max
+}
+
+RotatorPng
+{
+	File = "./Data/gui/game/handle_rotator.png"
+	SampleMode = Linear
+	MipLevels = max
+}
+
+ScalerPng
+{
+	File = "./Data/gui/game/handle_scaler.png"
+	SampleMode = Linear
+	MipLevels = max
+}
+
+ConfigPng
+{
+	File = "./Data/gui/game/handle_config.png"
+	SampleMode = Linear
+	MipLevels = max
+}

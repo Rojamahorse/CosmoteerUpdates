@@ -1,0 +1,151 @@
+EffectBuckets = &<common_effects/effect_buckets.rules>
+Crew = &<crew/crew.rules>
+Buffs = &<buffs/buffs.rules>
+Resources = &<resources/resources.rules>/Resources
+FtlFuelResource = hyperium
+Nuggets = &<resources/resources.rules>/Nuggets
+Doodads = &<doodads/doodads.rules>/Doodads
+Factions = &<factions/factions.rules>/Factions
+Commands = &<commands/commands.rules>
+Formations = &<formations/formations.rules>/Formations
+CustomFormations = &<formations/formations.rules>/CustomFormations
+CareerMode = &<modes/career/career.rules>
+CreativeMode = &<modes/creative/creative.rules>
+EliminationMode = &<modes/pvp/pvp_elimination/pvp_elimination.rules>/Mode
+ArenaMode = &<modes/pvp/pvp_arena/pvp_arena.rules>/Mode
+DominationMode = &<modes/pvp/pvp_domination/pvp_domination.rules>/Mode
+Codex = &<codex/codex.rules>
+ShipAIs = &<ai/ai.rules>
+BuiltinShips = &<builtin_ships/builtins.rules>/Ships
+GalaxyMap = &<galaxy_map/galaxy_map.rules>
+Planets = &<planets/planets.rules>
+TextSprites = &<gui/text_sprites.rules>
+Widgets = &<gui/widgets.rules>
+Menus = &<gui/menus.rules>
+PostShaders = &<post_shaders/post_shaders.rules>/Shaders
+Music = &<music/music.rules>
+LitSpriteShader = "sprite_lit.shader"
+SpriteNormalsShader = "sprite_normals.shader"
+
+BuiltInShipsFolder = "builtin_ships"
+
+Ships
+[
+	&<ships/terran/terran.rules>/Terran
+	&<ships/asteroid/asteroid.rules>/Asteroid
+	&<ships/megaroid/megaroid.rules>/Megaroid
+]
+
+Roles
+{
+	DefaultRoleColor = Red
+	NewRoleColor = Red
+	RoleColorSRange = [0, 1]
+	RoleColorVRange = [.15, 1]
+}
+
+Game
+{
+	GameGui = &<gui/game/game_gui.rules>
+	Backgrounds = &<backgrounds/backgrounds.rules>
+	MapTransitionDuration = .5
+	MapTransitionSimZoomFactor = (&~/Simulation/Camera/MaxScale) * 2
+	MapTransitionMapZoomFactor = .01
+	MaxFtlFuelPurchase = 1000
+}
+
+Simulation
+{
+	SimGui = &<gui/game/sim_gui.rules>
+
+	ClockScaleIncreaseDuration = .5
+	ClockScaleDecreaseDuration = .25
+	PhysicsUpdatesPerSecond = 30
+	CCDThresholdVelocity = (&PhysicsUpdatesPerSecond) * 0.75
+	SightCircleFadeDuration = .5
+	StasisCellSize = 2500
+	StasisLiveRange = &StasisCellSize
+	StasisPreloadRange = (&StasisLiveRange) * 1.5
+	StandardLightHeight = .3275
+
+	Network
+	{
+		InputTicksPerSecond = 30
+		MinInputTickDelay = 2
+		MaxInputTickDelay = 60
+		InputTickDelayLatencyFactor = 1
+	}
+
+	Grid
+	{
+		LineColor = [255, 255, 255, 46]
+		CrossColor = [255, 255, 255, 46]
+		DotColor = [255, 255, 255, 255]
+		DesiredLinesAcross = 3
+		ResolutionIncrementFactor = 2
+	}
+
+	Camera
+	{
+		PixelOrthographicFactor = 1/64
+		DefaultScale = 4
+		MinScale = 1
+		MaxScale = 4000
+		MousePanBorderThickness = 4
+		MouseWheelZoomSpeed = 10
+		BorderClampPanSpeed = 10
+		FollowFactor = .9999
+		AutoTrackRampTime = 1
+		DirectControlOffsetFactor = .99
+		DirectControlZoomFactor = 8
+		DirectControlZoomDeadZone = .1
+		DirectControlSmoothStrength = 15
+		ScreenShakeExponent = 1
+		LinearShakeAmount = 1
+		AngularShakeAmount = 2d
+		FTLZoomOutBufferMult = 1.25
+
+		ShakePerlinNoise
+		{
+			GridSize = 4
+			Octaves = 2
+		}
+
+		ZoomClickSound
+		{
+			Sound = "gui/game/zoom_tick.wav"
+			Volume = .125
+			Speed = 1
+		}
+	}
+
+	Overlays = &<Overlays/overlays.rules>
+
+	GameSpeeds
+	[
+		{ Speed=.125; NameKey="Hud/SpeedEighth"; LongNameKey="Hud/SpeedEighthLong" }
+		{ Speed=.25; NameKey="Hud/SpeedQuarter"; LongNameKey="Hud/SpeedQuarterLong" }
+		{ Speed=.5; NameKey="Hud/SpeedHalf"; LongNameKey="Hud/SpeedHalfLong" }
+		{ Speed=1; NameKey="Hud/Speed1"; LongNameKey="Hud/Speed1Long" }
+		{ Speed=2; NameKey="Hud/Speed2"; LongNameKey="Hud/Speed2Long" }
+		{ Speed=4; NameKey="Hud/Speed4"; LongNameKey="Hud/Speed4Long" }
+		{ Speed=8; NameKey="Hud/Speed8"; LongNameKey="Hud/Speed8Long" }
+	]
+
+	DebugPointLightSprite
+	{
+		Size = [20, 20]
+		Shader = "common_effects/point_light.shader"
+		TargetBlendMode = Add
+		Color = [500, 0, 0]
+	}
+	DebugPointLightHeight = 1
+}
+
+// Convenience references; only used by other .rules files.
+COMMON_EFFECTS = &<common_effects/common_effects.rules>
+COMMON_SOUNDS = &<common_effects/sounds/common_sounds.rules>
+BASE_SOUNDS = &<common_effects/sounds/base_sounds.rules>
+BASE_SHAKE = &<common_effects/base_shake.rules>
+INDICATORS = &<gui/game/indicators/indicators.rules>
+PRIORITIES = &<ships/priorities.rules>

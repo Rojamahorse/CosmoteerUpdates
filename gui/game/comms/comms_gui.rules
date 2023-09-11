@@ -1,0 +1,98 @@
+ToolIcon
+{
+	Texture
+	{
+		File = "hud_comms.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+HailIcon
+{
+	Texture
+	{
+		File = "hud_hail.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+HailingIcon
+{
+	Texture
+	{
+		File = "hud_hailing.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+HailingFailedIcon
+{
+	Texture
+	{
+		File = "hud_hailing_failed.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+HailingSound
+{
+    Sound = "hailing_shortened.wav"
+}
+HailAnsweredSound
+{
+    Sound = "hail_answered.wav"
+}
+HailFailedSound
+{
+    Sound = "hail_failed.wav"
+}
+
+CursorValid
+{
+	File = "cursor_comms_valid.png"
+	HotSpot = [8, 8]
+	Scale = .5
+}
+CursorInvalid
+{
+	File = "cursor_comms_invalid.png"
+	HotSpot = [8, 8]
+	Scale = .5
+}
+
+RadioUnderlayUntargetedMaterial
+{
+    Shader = "radio_underlay.shader"
+    Color = [255, 255, 255, 150]
+    _radioSpeed = 10
+    TargetBlendMode
+    {
+        SourceRgbFactor = SourceAlpha
+        DestRgbFactor = One
+        RgbOperator = Add
+        SourceAlphaFactor = InverseDestAlpha
+        DestAlphaFactor = One
+        AlphaOperator = Add
+    }
+}
+RadioUnderlayTargetedMaterial
+{
+    Shader = "radio_underlay.shader"
+    Color = [10, 212, 98, 255]
+    _radioSpeed = 10
+    TargetBlendMode
+    {
+        SourceRgbFactor = SourceAlpha
+        DestRgbFactor = One
+        RgbOperator = Add
+        SourceAlphaFactor = InverseDestAlpha
+        DestAlphaFactor = One
+        AlphaOperator = Add
+    }
+}
+
+MissionsTabIcon = &<../missions/missions_gui.rules>/LogIcon
+HireTabIcon = &<../crew/crew_gui.rules>/ToolIcon
+TradeTabIcon = &<../resources/resources_gui.rules>/ToolIcon
+TechsTabIcon = &<../designer/build_gui.rules>/BlueprintsOffSprite

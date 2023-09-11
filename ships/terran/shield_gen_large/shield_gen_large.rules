@@ -1,0 +1,771 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ShieldGenLarge"
+	IconNameKey = "Parts/ShieldGenLargeIcon"
+	ID = cosmoteer.shield_gen_large // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Defenses"
+	DescriptionKey = "Parts/ShieldGenLargeDesc"
+	Resources
+	[
+		[steel, 120]
+		[coil2, 30]
+		[diamond, 2]
+	]
+	AIValueFactor = 5
+	Size = [3, 6]
+	PhysicalRect = [0, 2, 3, 4]
+	SelectionPriority = 1
+	SelectionTypeID = "shield_gen"
+	SelectionTypeByRotation = true
+	MaxHealth = 12000
+	TypeCategories = [defense, uses_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	PenetrationRectType = Normal
+	AllowedDoorLocations
+	[
+		[-1, 5]
+		[3, 5]
+		[0, 6]
+		[1, 6]
+		[2, 6]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [48, 96]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 6
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 18000
+			ToggleOnResources = 17001
+			DrainOnFtlJump = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Defense_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+
+		ProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			LowColor = [0, 0, 255]
+			HighColor = [0, 0, 255]
+			FullColor = [0, 0, 255]
+			Height = 10
+		}
+
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 200
+			MinFromQuantityForConversion = 1
+			Interval = 1
+		}
+
+		ArcShield
+		{
+			Type = ArcShield
+			Radius = 13
+			Arc = 160d
+			OperationalToggle = IsOperational
+			BlockedByOperationalParts = true
+			PenetrationResistance = [75, 0]
+			DrainResourcesFrom = BatteryStorage
+			ResourceDrainPerDamage = .4
+			Rotation = -90d
+			Location = [1.5, 1.5]
+
+			BlueprintArcSprite
+			{
+				Texture
+				{
+					File = "../shield_gen_small/shield_energy.png"
+					UVMode = Wrap
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 3]
+				UVRect = [0, 1, 2, 1]
+				Color = [0, 0, 255, 127]
+			}
+			BlueprintArcSpriteSegments = 64
+
+			CoverageArcSprite
+			{
+				Texture
+				{
+					File = "../shield_gen_small/shield_energy.png"
+					UVMode = Wrap
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 3]
+				UVRect = [0, 1, 2, 1]
+				Color = [255, 255, 255, 127]
+			}
+			CoverageArcSpriteSegments = 64
+
+			ShieldMediaEffects
+			[
+				{
+					Type = ArcShield
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = &~/Part/Components/ArcShield/Arc
+					FadeInTime = .5
+					FadeOutTime = .5
+					FadeFromScale = .8
+					ArcSprite
+					{
+						Texture
+						{
+							File = "../shield_gen_small/shield_energy.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						Shader = "../shield_gen_small/shield.shader"
+						_waveTex
+						{
+							File = "../shield_gen_small/shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "../shield_gen_small/shield_mask.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = 1
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .35
+						_waveCurveUOffsetPerSecond = .2
+						_fullPowerColor1 = [54, 0, 91, 127]
+						_lowPowerColor1 = [54, 0, 91, 127]
+						_fullPowerColor2 = [0, 0, 255, 127]
+						_lowPowerColor2 = [255, 0, 0, 127]
+						_lowPowerThicknessExponent = .6
+						_xScale = 2
+						TargetBlendMode = Add
+						Size = [0, 3]
+					}
+					ArcSpriteSegments = 64
+					Bucket = Lower1
+				}
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "../shield_gen_small/shield_loop.wav"
+					Volume = .3
+					Speed = .25
+					MaxConcurrent = 1
+					MaxConcurrentVolume = .6
+					DynamicVolume : ^/0/DynamicVolume
+					{
+						MinDistance = .75
+						MaxDistance = 1.5
+					}
+					IgnoreIntensity = true
+				}
+			]
+
+			HitMediaEffects = &<../shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/HitMediaEffects
+		}
+
+		EmitterCollider
+		{
+			Type = CircleCollider
+			Location = [1.5, 1.9]
+			Radius = 1.4375
+			Density = .1
+		}
+
+		EmitterEffect
+		{
+			Type = ContinuousEffects
+			ChainedTo = ArcShield
+			FactorMediaEffectsIntensityWith = BatteryStorage
+			Location = [126/64, 0]
+			OperationalToggle = IsOperational
+			ParentToShip = true
+			MediaEffects
+			[
+				{
+					Type = ArcShield
+					Radius = 2.4
+					Arc = 160d
+					FadeInTime = .25
+					FadeOutTime = .25
+					ArcSprite
+					{
+						Texture
+						{
+							File = "../shield_gen_small/shield_energy.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						UVRect = [0, 1, 1, -1]
+						Shader = "../shield_gen_small/shield.shader"
+						_waveTex
+						{
+							File = "../shield_gen_small/shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "../shield_gen_small/shield_mask.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = -1
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .35
+						_waveCurveUOffsetPerSecond = .2
+						_fullPowerColor1 = [54, 0, 91, 127]
+						_lowPowerColor1 = [54, 0, 91, 127]
+						_fullPowerColor2 = [0, 0, 255, 127]
+						_lowPowerColor2 = [255, 0, 0, 127]
+						_xScale = 0.5
+						_lowPowerThicknessExponent = .6
+						TargetBlendMode = Add
+						Size = [0, 1.0]
+					}
+					ArcSpriteSegments = 12
+					Bucket = Lower1
+				}
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "../shield_gen_small/shield_emitter_loop.wav"
+					Volume = .4
+					Speed = .5
+					MaxConcurrent = 1
+					MaxConcurrentVolume = .8
+					IgnoreIntensity = true
+				}
+			]
+		}
+
+		ShieldOperationEffects
+		{
+			Type = ToggleEffects
+			ChainedTo = ArcShield
+			Location = [&~/Part/Components/ArcShield/Radius, 0]
+			Toggle = IsOperational
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../shield_gen_small/activate.wav"
+					Volume = 1
+					Speed = .5
+					IgnoreIntensity = true
+				}
+			]
+			ToggledOffMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../shield_gen_small/deactivate.wav"
+					Volume = 1
+					Speed = .5
+					IgnoreIntensity = true
+				}
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 2.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				Offset = [0, 1.5]
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [3, 4]
+					}
+					{
+						File = "floor_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "floor_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, -16/64]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [3, 4]
+						AnimationInterval = 0.1
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [3, 4]
+						AnimationInterval = 0.1
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [3, 4]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				Offset = [0, 1]
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [3, 5]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				Offset = [0, 1.5]
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [3, 4]
+					}
+					{
+						File = "walls_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "walls_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				Offset = [0, 1.5]
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [3, 4]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				Offset = [0, 1.5]
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [3, 4]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, 16/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [5.5, 5.5]
+						Z = 1 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [195*1.5, 60*1.5, 255*1.5]
+					}
+				]
+			}
+		}
+
+		External_Doodad_Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 1]
+			OperationalDoodad
+			{
+				Layer = "weapons"
+				DamageLevels
+				[
+					{
+						File = "doodad_external.png"
+						NormalsFile = "doodad_external_normals.png"
+						Size = [3, 2]
+					}
+					{
+						File = "doodad_external_33.png"
+						NormalsFile = "doodad_external_normals_33.png"
+						Size = [3, 2]
+					}
+					{
+						File = "doodad_external_66.png"
+						NormalsFile = "doodad_external_normals_66.png"
+						Size = [3, 2]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1.5, 3.5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Offset = [-0.5, -1]
+					Size = [2, 1]
+				}
+				{
+					File = "batteries2.png"
+					Offset = [0, -1]
+					Size = [3, 1]
+				}
+				{
+					File = "batteries3.png"
+					Offset = [0, -0.5]
+					Size = [3, 2]
+				}
+				{
+					File = "batteries4.png"
+					Offset = [0, -0.5]
+					Size = [3, 2]
+				}
+				{
+					File = "batteries5.png"
+					Offset = [0, -0.5]
+					Size = [3, 2]
+				}
+				{
+					File = "batteries6.png"
+					Offset = [0, -0.5]
+					Size = [3, 2]
+				}
+				{
+					File = "batteries7.png"
+					Offset = [0, -0.5]
+					Size = [3, 2]
+				}
+				{
+					File = "batteries8.png"
+					Offset = [0, -0.5]
+					Size = [3, 2]
+				}
+				{
+					File = "batteries9.png"
+					Offset = [0, -0.5]
+					Size = [3, 2]
+				}
+				{
+					File = "batteries10.png"
+					Offset = [0, -0.5]
+					Size = [3, 2]
+				}
+				{
+					File = "batteries11.png"
+					Offset = [0, -0.5]
+					Size = [3, 2]
+				}
+				{
+					File = "batteries12.png"
+					Offset = [0, -0.5]
+					Size = [3, 2]
+				}
+				{
+					File = "batteries13.png"
+					Offset = [0, -0.5]
+					Size = [3, 2]
+				}
+				{
+					File = "batteries14.png"
+					Offset = [0, -0.5]
+					Size = [3, 2]
+				}
+				{
+					File = "batteries15.png"
+					Size = [3, 3]
+				}
+				{
+					File = "batteries16.png"
+					Size = [3, 3]
+				}
+				{
+					File = "batteries17.png"
+					Size = [3, 3]
+				}
+				{
+					File = "batteries18.png"
+					Size = [3, 3]
+				}
+			]
+		}
+		RoofBatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1.5, 3.5-5/64]
+			ResourceStorage = BatteryStorage
+			Layer = "roof_doodads"
+			ResourceLevels
+			[
+				{
+					File = "roof_batteries1.png"
+					Offset = [-1, -0.5]
+					Size = [1, 1]
+				}
+				{
+					File = "roof_batteries2.png"
+					Offset = [0, -0.5]
+					Size = [3, 1]
+				}
+				{
+					File = "roof_batteries3.png"
+					Offset = [0, -0.5]
+					Size = [3, 1]
+				}
+				{
+					File = "roof_batteries4.png"
+					Offset = [0, -0.5]
+					Size = [3, 1]
+				}
+				{
+					File = "roof_batteries5.png"
+					Offset = [0, -0.5]
+					Size = [3, 1]
+				}
+				{
+					File = "roof_batteries6.png"
+					Offset = [0, -0.5]
+					Size = [3, 1]
+				}
+				{
+					File = "roof_batteries7.png"
+					Size = [3, 2]
+				}
+				{
+					File = "roof_batteries8.png"
+					Size = [3, 2]
+				}
+				{
+					File = "roof_batteries9.png"
+					Size = [3, 2]
+				}
+				{
+					File = "roof_batteries10.png"
+					Size = [3, 2]
+				}
+				{
+					File = "roof_batteries11.png"
+					Size = [3, 2]
+				}
+				{
+					File = "roof_batteries12.png"
+					Size = [3, 2]
+				}
+				{
+					File = "roof_batteries13.png"
+					Size = [3, 2]
+				}
+				{
+					File = "roof_batteries14.png"
+					Size = [3, 2]
+				}
+				{
+					File = "roof_batteries15.png"
+					Size = [3, 2]
+				}
+				{
+					File = "roof_batteries16.png"
+					Size = [3, 2]
+				}
+				{
+					File = "roof_batteries17.png"
+					Size = [3, 2]
+				}
+				{
+					File = "roof_batteries18.png"
+					Size = [3, 2]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1.5, 4]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1.5, 4]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [3, 6]
+		}
+	}
+
+	Stats
+	{
+		ShieldHP = (&~/Part/Components/BatteryStorage/MaxResources) / (&~/Part/Components/ArcShield/ResourceDrainPerDamage)
+		ShieldPenResist = &~/Part/Components/ArcShield/PenetrationResistance/0
+		ShieldArc = deg(&~/Part/Components/ArcShield/Arc)
+		ShieldDist = (&~/Part/Components/ArcShield/Radius) - (&~/Part/Components/ArcShield/Location/1)
+		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = (&PowerUsageContinuous) + 0.5
+		RecCrew = (&RecPower) * 4
+	}
+}

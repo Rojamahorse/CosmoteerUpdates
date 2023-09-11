@@ -1,0 +1,125 @@
+PartTargeters
+[
+	// Tractor beam.
+	{
+		TargeterID = "tractor_beam"
+		DefaultHotkey = [PlatformCmdCtrl, T]
+		DefaultCancelHotkey = [PlatformCmdCtrl, Shift, T]
+		ButtonToolTipKey = "PartTargeters/TractorBeam"
+		CancelButtonToolTipKey = "PartTargeters/TractorBeamCancel"
+		ShowWithShipCommands = true
+		AllowAppend = false
+		AllowSameShipTarget = false
+
+		ButtonSprite
+		{
+			Texture
+			{
+				File = "tractor_beam.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+
+		CancelButtonSprite
+		{
+			Texture
+			{
+				File = "cancel_tractor_beam.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+
+		Cursor
+		{
+			File = "cursor_tractor_beam.png"
+			HotSpot = [8, 8]
+			Scale = .5
+		}
+
+		OverrideTentativeTargetNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+		{
+			VertexColor = [102, 102, 255, 255]
+			TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+			TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+			TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+			LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+			CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+			RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+			BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+			BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+			BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+		}
+
+		OverrideTentativeTargetCircle : <./Data/commands/weapon_target.rules>/TentativeTargetCircle
+		{
+			VertexColor = [102, 102, 255, 127]
+		}
+	}
+
+	// Ion prism.
+	{
+		TargeterID = "prism_aim"
+		DefaultHotkey = [PlatformCmdCtrl, P]
+		ButtonToolTipKey = "PartTargeters/PrismAim"
+		HasCancelButton = false
+		TargetTypes = [Parts, ShipLocalPoint]
+		TargetPartCategories = [ion_beam_prism]
+		SnapToAngles = [0d, 45d, 90d, 135d, 180d, 225d, 270d, 315d]
+		SnapToAngleDistance = 2
+		TentativeTargetLine = &<./Data/commands/weapon_target.rules>/TargetLine
+		SortOrder = 1
+
+		ButtonSprite
+		{
+			Texture
+			{
+				File = "target_prism.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+
+		Cursor = &<../game_gui.rules>/TargetCursor
+		TargetObjectCursor
+		{
+			File = "cursor_link_target.png"
+			HotSpot = [8, 8]
+			Scale = .5
+		}
+	}
+
+	// Headlight.
+	{
+		TargeterID = "headlight_aim"
+		ButtonToolTipKey = "PartTargeters/HeadlightAim"
+		CancelButtonToolTipKey = "PartTargeters/HeadlightAimCancel"
+		TargetTypes = [ShipLocalPoint, Parts]
+		AllowSameShipTarget = false
+		SnapToAngles = [0d, 45d, 90d, 135d, 180d, 225d, 270d, 315d]
+		SnapToAngleDistance = 1
+		TentativeTargetLine = &<./Data/commands/weapon_target.rules>/TargetLine
+		SortOrder = 1
+
+		ButtonSprite
+		{
+			Texture
+			{
+				File = "target_headlight.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+
+		CancelButtonSprite = &<../game_gui.rules>/HaltIcon
+
+		Cursor = &<../game_gui.rules>/TargetCursor
+		TargetObjectCursor
+		{
+			File = "cursor_link_target.png"
+			HotSpot = [8, 8]
+			Scale = .5
+		}
+	}
+]

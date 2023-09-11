@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_diamond
+Type = Resource
+DescriptionKey = "Resource/Diamond"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/diamond/diamond.png"
+		MipLevels = 2
+	}
+}
+ResourceType = diamond

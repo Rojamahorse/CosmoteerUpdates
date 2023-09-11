@@ -1,0 +1,237 @@
+MirrorLine = &<build_gui.rules>/MirrorLine
+MirrorOffSprite = &<build_gui.rules>/MirrorOffSprite
+MirrorOnSprite = &<build_gui.rules>/MirrorOnSprite
+
+PaintShipToolIcon
+{
+	Texture
+	{
+		File = "hud_paint.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+LayerOnIcon
+{
+	Texture
+	{
+		File = "toggle_layer_on.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+LayerOffIcon
+{
+	Texture
+	{
+		File = "toggle_layer_off.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+LayerDragLine = &<../crew/crew_gui.rules>/RoleDragLine
+
+RemoveDecalSprite
+{
+	Texture
+	{
+		File = "tool_delete.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+GrabDecalSprite
+{
+	Texture
+	{
+		File = "../tool_grab.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+SelectDecalsSprite
+{
+	Texture
+	{
+		File = "../tool_select.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+SelectedDecalNineSlice = & <./Data/gui/game/sim_gui.rules>/SelectedPartNineSlice
+SelectedMirroredDecalNineSlice : SelectedDecalNineSlice
+{
+	VertexColor = [255, 255, 255, 127]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+TentativeSelectedDecalNineSlice = & <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+TentativeSelectedMirroredDecalNineSlice : TentativeSelectedDecalNineSlice
+{
+	VertexColor = [255, 255, 255, 127]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+DecalSelectionOutlineSprite
+{
+	VertexColor = [255, 255, 255, 255]
+}
+DecalSelectionFillSprite
+{
+	VertexColor = [255, 255, 255, 16]
+}
+
+RemoveDecalNineSlice = &<build_gui.rules>/RemovePartNineSlice
+RemoveDecalXLine = &<build_gui.rules>/RemovePartXLine
+RemoveDecalXLineRectDeflate = &<build_gui.rules>/RemovePartXLineRectDeflate
+
+GrabDecalNineSlice = &TentativeSelectedDecalNineSlice
+
+GrabDecalCursor
+{
+	File = "../cursor_grab.png"
+	HotSpot = [40, 40]
+	Scale = .5
+}
+RemoveDecalCursor
+{
+	File = "cursor_delete.png"
+	HotSpot = [8, 8]
+	Scale = .5
+}
+SelectDecalsCursor = &<../sim_gui.rules>/PartModeCursor
+
+RotateLeftSprite
+{
+	Texture
+	{
+		File = "tool_rotate_left.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+RotateRightSprite
+{
+	Texture
+	{
+		File = "tool_rotate_right.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+FlipHorizontalSprite
+{
+	Texture
+	{
+		File = "toggle_mirror_off.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+FlipVerticalSprite
+{
+	Texture
+	{
+		File = "tool_flip_vertical.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+TrashcanSprite
+{
+	Texture
+	{
+		File = "tool_delete_selected.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+DeleteDecalsSprite
+{
+	Texture
+	{
+		File = "tool_delete_selected.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+CopyDecalsSprite
+{
+	Texture
+	{
+		File = "tool_copy.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+CutDecalsSprite
+{
+	Texture
+	{
+		File = "tool_cut.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+PasteDecalsSprite
+{
+	Texture
+	{
+		File = "tool_paste.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+CancelPasteDecalsSprite
+{
+	Texture
+	{
+		File = "../../cancel.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+PaintSound
+{
+	Sound = "decal.wav"
+}
+
+PaintSchemeIcon
+{
+	Texture
+	{
+		File = "paintscheme_background.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Shader = "paintscheme_background.shader"
+}

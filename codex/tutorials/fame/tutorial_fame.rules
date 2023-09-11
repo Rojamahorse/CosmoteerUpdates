@@ -1,0 +1,21 @@
+ID = fame
+TitleKey = "Tutorials/Fame/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 20 and sim.StationInSight"
+Entries
+[
+	{
+		Image { Texture { File="fame.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Fame/Fame"
+	}
+	{
+		TextKey = "Tutorials/Fame/IncreasingFame"
+	}
+	{
+		Image { Texture { File="crew.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Fame/FameCrew"
+	}
+	{
+		TextKey = "Tutorials/Fame/Tip"
+	}
+]

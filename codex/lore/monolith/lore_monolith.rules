@@ -1,0 +1,30 @@
+ID = monolith
+TitleKey = "Lore/Monolith/Title"
+TabNameKey = "Codex/Lore"
+Entries
+[
+	{
+		TextKey = "Lore/Monolith/Lore1"
+		Image
+		{
+			Texture
+			{
+				File = "./Data/factions/monolith.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+		}
+	}
+	{
+		TextKey = "Lore/Monolith/Lore2"
+	}
+	{
+		TextKey = "Lore/Monolith/Lore3"
+	}
+	{
+		TextKey = "Lore/Monolith/Lore4"
+	}
+	{
+		TextKey = "Lore/Monolith/Lore5"
+	}
+]

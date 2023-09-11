@@ -1,0 +1,408 @@
+Type = Particles
+Def
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 0
+	Initializers
+	[
+		{
+			Type = LocationToWorldSpace
+			DataOut = energy
+			ValueType = Float
+			Value = 1
+			Name = "Convert location to world space."
+			Enabled = true
+			UpdateAfterInit = false
+			LocationIn = location
+			LocationOut = location
+		}
+		{
+			Type = RotationToWorldSpace
+			LocationIn = location
+			LocationOut = location
+			Name = "Convert rotation to world space."
+			Enabled = true
+			UpdateAfterInit = false
+			RotationIn = rot
+			RotationOut = rot
+		}
+		{
+			Type = VelocityToWorldSpace
+			Name = ""
+			VelocityIn = velocity
+			VelocityOut = velocity
+			Enabled = true
+			VelocityInOut = velocity
+			RotationIn = rot
+			RotationOut = rot
+			UpdateAfterInit = false
+		}
+		{
+			Type = AddFrameOfReference
+			VelocityInOut = velocity
+			Name = "Add frame of reference"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetWorldSpaceScale
+			ScaleOut = scale
+			LocalScale = 1
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	Updaters
+	[
+		{
+			Type = Lifetime
+			EnergyInOut = energy
+			Lifetime = 60
+			Name = Lifetime
+			Enabled = true
+			UpdateAfterInit = false
+			LifeInOut = life
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = location
+			BIn = velocity
+			ResultOut = location
+			Operator = AddDt
+			Name = "Apply velocity."
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = OperatorConst
+			DataType = Angle
+			AIn = velocity
+			BIn = rot_vel
+			ResultOut = velocity
+			Operator = MultiplyPowDt
+			Name = "Linear Drag"
+			Enabled = true
+			UpdateAfterInit = false
+			ValueType = Vector2
+			Value
+			{
+				X = 0.8
+				Y = 0.8
+			}
+		}
+		{
+			Type = Operator
+			AIn = rot
+			ResultOut = rot
+			Operator = AddDt
+			ValueType = Float
+			Value = 12
+			Name = "Apply rot velocity"
+			Enabled = true
+			UpdateAfterInit = false
+			DataType = Angle
+			BIn = rot_vel
+		}
+		{
+			Type = OperatorConst
+			AIn = rot_vel
+			ResultOut = rot_vel
+			Operator = MultiplyPowDt
+			ValueType = Float
+			Value = 0.8
+			Name = "Rot Drag"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = OperatorConst
+			LerpIn = fade_t
+			DataOut = color
+			Invert = false
+			ValueType = Float
+			FromValue
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 1
+			}
+			ToValue
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 0
+			}
+			Name = "Fade T (Multiply)"
+			Enabled = true
+			UpdateAfterInit = true
+			AIn = life
+			ResultOut = fade_t
+			Operator = Multiply
+			Value = 12
+		}
+		{
+			Type = OperatorConst
+			LerpIn = fade_t
+			DataOut = color
+			Invert = false
+			ValueType = Float
+			FromValue
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 1
+			}
+			ToValue
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 0
+			}
+			Name = "Fade T (Subtract)"
+			Enabled = true
+			UpdateAfterInit = false
+			AIn = fade_t
+			ResultOut = fade_t
+			Operator = Subtract
+			Value = 11
+		}
+		{
+			Type = OperatorConst
+			DataType = Color
+			AIn = fade_t
+			BIn = base_color
+			ResultOut = fade_t
+			Operator = Max
+			Name = "Fade T (Clamp)"
+			Enabled = true
+			UpdateAfterInit = true
+			LerpIn = fade_t
+			DataOut = color
+			Invert = false
+			ValueType = Float
+			FromValue
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 1
+			}
+			ToValue
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 0
+			}
+			Value = 0
+		}
+		{
+			Type = Lerp
+			DataType = Color
+			AIn = color
+			BIn = base_color
+			ResultOut = color
+			Operator = Multiply
+			Name = "Fade lerp"
+			Enabled = true
+			UpdateAfterInit = true
+			LerpIn = fade_t
+			DataOut = color
+			Invert = false
+			ValueType = Color
+			FromValue
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 1
+			}
+			ToValue
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 0
+			}
+		}
+		{
+			Type = Operator
+			DataType = Color
+			AIn = color
+			BIn = base_color
+			ResultOut = color
+			Operator = Multiply
+			Name = "Apply base color"
+			Enabled = true
+			UpdateAfterInit = true
+		}
+		{
+			Type = ParticleLightNormal
+			LocationIn = location
+			LightNormalOut = light_normal
+			Name = "Light normal"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	Renderer
+	{
+		Type = LitQuadRenderer
+		LocationIn = location
+		ScaleIn = scale
+		RotationIn = rot
+		ColorIn = color
+		BaseSize
+		{
+			X = 0.75
+			Y = 0.75
+		}
+		MaxScale = 1
+		UVRect
+		{
+			X = 0
+			Y = 0
+			Width = 1
+			Height = 1
+		}
+		Name = ""
+		UvRectIn
+		LightNormalIn = light_normal
+		NormalsShader = "../../common_effects/particles/particle_normals.shader"
+	}
+	Material
+	{
+		Texture
+		{
+			File = deadman.png
+			FixTransparentColors = false
+			PreMultiplyByAlpha = false
+			MipLevels = max
+		}
+		_normalsTexture
+		{
+			File = deadman_normals.png
+			MipLevels = max
+		}
+		Shader = "../../common_effects/particles/particle_lit.shader"
+		TargetBlendMode
+		{
+			SourceRgbFactor = SourceAlpha
+			DestRgbFactor = InverseSourceAlpha
+			RgbOperator = Add
+			SourceAlphaFactor = InverseDestAlpha
+			DestAlphaFactor = One
+			AlphaOperator = Add
+		}
+		Color
+		{
+			Rf = 1
+			Gf = 1
+			Bf = 1
+			Af = 1
+		}
+	}
+	DeleteMode = Fast
+	UpdatedEmittedParticles = false
+	EnableMultithreading = false
+	InitCapacity = 256
+}
+EmitterDef
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 1
+	PreInitializers
+	[
+		{
+			Type = SetRandomVelocity
+			VelocityOut = velocity
+			Speed
+			{
+				Min = 0.5
+				Max = 1
+			}
+			Direction
+			{
+				Min = 0d
+				Max = 360d
+			}
+			Name = "Init velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = rot_vel
+			ValueType = Angle
+			FromValue = -180d
+			ToValue = 180d
+			Name = "Init rot velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetValue
+			ColorOut = base_color
+			Name = "Base color"
+			Enabled = true
+			UpdateAfterInit = false
+			DataOut = base_color
+			ValueType = Color
+			Value
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 1
+			}
+		}
+	]
+	PostInitializers[]
+	UpdatedEmittedParticles = false
+}
+Bucket = Lower1
+Delay = 0
+IgnoreIntensity = false
+Sharing = Global
+MinIntensity = 0
+IsFancy = false
+DontEmitWhenOffScreen = false
+DontEmitWhenOffScreenSizeInflate = 1
+PenetratingBucket
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 3.4028235E+38
+ScaleEmissionWithIntensity = false
+UseRealTime = false
+IsSimple = false
+UnsharedRenderInWorldSpace = false
+ScaleEmissionWithBeamLength = false
+CaptureBackBuffer = false
+Filter
+{
+	Ships = true
+	OperationalHealth = true
+	StructuralHealth = true
+	OnlyPartCategories
+	ExcludePartCategories
+	Shields = true
+	Bullets = true
+	OnlyBulletCategories
+	ExcludeBulletCategories
+	IgnoreInvulnerability = true
+	Self
+	TargetedSelf
+	Friendlies = true
+	TargetedFriendlies
+	Enemies = true
+	TargetedEnemies
+	Junk = true
+	TargetedJunk
+	Crew = true
+	Nuggets = true
+}

@@ -1,0 +1,154 @@
+AllowedShipClasses = ["cosmoteer.terran"]
+RequiredPartCategories = [command]
+
+MapGenerator = &<./Data/galaxy_map/map_generators/galaxy_empty.rules>
+
+ShipSaleRefund = 75%
+
+PerimeterDamageFractionPerTick = .025
+PerimeterDamageFractionPerTickPerDistance = .0001
+PerimeterDamageChancePerTick = .01
+
+PerimeterDamageMediaEffects
+[
+	&<particles/perimeter_damage.rules>
+]
+
+FullHealthColor = [10, 212, 98]
+ZeroHealthColor = [255, 0, 0]
+
+PerimeterCircle
+{
+	Thickness = 8
+	QuadCount = 256
+	UVRect = [0, 0, .25, 1]
+	Color = [255, 255, 255, 255]
+	Texture
+	{
+		File = "perimeter.png"
+		UMode = Wrap
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Shader = "perimeter.shader"
+	TargetBlendMode
+	{
+		SourceRgbFactor = SourceAlpha
+		DestRgbFactor = One
+		RgbOperator = Add
+		SourceAlphaFactor = Zero
+		DestAlphaFactor = One
+		AlphaOperator = Add
+	}
+}
+PerimeterCircleThicknessZoomExponent = .4
+
+GameEndSound
+{
+	Sound = "game_end.wav"
+}
+
+PointsTickUpSound = &<./Data/gui/game/game_gui.rules>/FameTickUpSound
+PointsTickDownSound = &<./Data/gui/game/game_gui.rules>/FameTickDownSound
+
+SpawnPatterns
+[
+	// 1 ship
+	[
+		[0, 0]
+	]
+
+	// 2 ships
+	[
+		[0, -.5]
+		[0, .5]
+	]
+
+	// 3 ships
+	[
+		[0, 0]
+		[-1, -1]
+		[-1, 1]
+	]
+
+	// 4 ships
+	[
+		[0, -.5]
+		[0, .5]
+		[-1, -.5]
+		[-1, .5]
+	]
+
+	// 5 ships
+	[
+		[-1, 0]
+		[0, -1]
+		[0, 1]
+		[-2, -1]
+		[-2, 1]
+	]
+]
+DistBetweenShipsInPattern = 50
+DistBetweenPlayersOnTeam = 100
+
+ForfeitIcon
+{
+	Texture
+	{
+		File = "hud_forfeit.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+Teams
+[
+	{ TeamCount=2; NameFmtKey="PvpModeConfig/TeamsFmt"; IsDefault=true; }
+	{ TeamCount=3; NameFmtKey="PvpModeConfig/TeamsFmt"; }
+	{ TeamCount=4; NameFmtKey="PvpModeConfig/TeamsFmt"; }
+	{ TeamCount=0; NameFmtKey="PvpModeConfig/TeamsFfa"; }
+]
+
+TimeLimits
+[
+	{ Seconds=180; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+	{ Seconds=300; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+	{ Seconds=600; NameFmtKey="PvpModeConfig/TimeLimitFmt"; IsDefault=true; }
+	{ Seconds=900; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+	{ Seconds=1200; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+	{ Seconds=1500; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+	{ Seconds=1800; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+	{ Seconds=0; NameFmtKey="PvpModeConfig/TimeLimitNone"; }
+]
+
+AsteroidDensities
+[
+	{ Generator={Spawners=[]}; NameKey="PvpModeConfig/AsteroidDensities/None"; }
+	{ Generator=&<asteroids_low.rules>; NameKey="PvpModeConfig/AsteroidDensities/Low"; }
+	{ Generator=&<asteroids_normal.rules>; NameKey="PvpModeConfig/AsteroidDensities/Normal"; IsDefault=true; }
+	{ Generator=&<asteroids_high.rules>; NameKey="PvpModeConfig/AsteroidDensities/High"; }
+]
+
+FleetDistances
+[
+	{ Distance=750; NameFmtKey="PvpModeConfig/FleetDistances/ShortFmt"; }
+	{ Distance=1500; NameFmtKey="PvpModeConfig/FleetDistances/NormalFmt"; IsDefault=true; }
+	{ Distance=2500; NameFmtKey="PvpModeConfig/FleetDistances/LongFmt"; }
+]
+
+PerimeterDistances
+[
+	{ Radius=500; NameFmtKey="PvpModeConfig/PerimeterDistances/VeryNearFmt"; }
+	{ Radius=1000; NameFmtKey="PvpModeConfig/PerimeterDistances/NearFmt"; }
+	{ Radius=2000; NameFmtKey="PvpModeConfig/PerimeterDistances/NormalFmt"; IsDefault=true; }
+	{ Radius=4000; NameFmtKey="PvpModeConfig/PerimeterDistances/FarFmt"; }
+]
+
+VictoryConditions
+[
+	{ DestructionGoal=100%; NameFmtkey="PvpModeConfig/DestructionGoalFmt"; }
+	{ DestructionGoal=90%; NameFmtkey="PvpModeConfig/DestructionGoalFmt"; IsDefault=true; }
+	{ DestructionGoal=75%; NameFmtkey="PvpModeConfig/DestructionGoalFmt"; }
+	{ DestructionGoal=50%; NameFmtkey="PvpModeConfig/DestructionGoalFmt"; }
+	{ DestructionGoal=25%; NameFmtkey="PvpModeConfig/DestructionGoalFmt"; }
+]

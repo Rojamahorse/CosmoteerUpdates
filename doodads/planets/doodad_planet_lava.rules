@@ -1,0 +1,22 @@
+ID = cosmoteer.planet_lava
+Type = Planet
+DescriptionKey = "Doodads/PlanetLava"
+CategoryKey = "Doodads/Planets"
+Icon
+{
+	Texture
+	{
+		File = "planet_lava.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+StyleID = lava
+TextureSize = [512, 512]
+ScaleRange = [250, 1500]
+RandomScaleRange = [1000, 1250]
+DefaultScale = 1000
+DistanceRange = [50, 250]
+RandomDistanceRange = [50, 150]
+DefaultDistance = 150
+MinimapColorScale = [255, 255, 255, 127]

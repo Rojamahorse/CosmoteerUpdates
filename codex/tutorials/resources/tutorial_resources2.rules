@@ -1,0 +1,30 @@
+ID = resources2
+TitleKey = "Tutorials/Resources2/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 88"
+Entries
+[
+	{
+		Image { Texture { File="manage_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Resources2/Manage"
+	}
+	{
+		Image { Texture { File="stacks.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Resources2/Stacks"
+	}
+	{
+		Image { Texture { File="move_tool.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Resources2/Move"
+	}
+	{
+		Image { Texture { File="resource_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Resources2/Designate"
+	}
+	{
+		TextKey = "Tutorials/Resources2/Limits"
+	}
+	{
+		Image { Texture { File="supply_chains.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Resources2/SupplyChains"
+	}
+]

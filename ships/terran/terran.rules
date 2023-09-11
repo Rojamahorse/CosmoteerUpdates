@@ -1,0 +1,757 @@
+Terran : <../base_ship.rules>
+{
+	ID = cosmoteer.terran // Ship IDs must always be in the form of "author_name.ship_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla ships.
+	OtherIDs = [Terran, PlayerShips, cosmoteer.ancient]
+	NameKey = "ShipClasses/Terran"
+	DefaultPartID = cosmoteer.corridor
+	DefaultDoorID = door
+	JunkBlocksWeaponLOS = false
+	ExternalWalls = &<walls/external_walls.rules>
+	ExternalRoofWalls = &<walls/external_roof_walls.rules>
+	AssociateCollectNuggetJobWithPart = general_jobs
+	AssociateEjectNuggetJobWithPart = general_jobs
+	AssociateSalvageJobWithPart = general_jobs
+	AssociateConstructJobWithPart = general_jobs
+	AssociateDeconstructJobWithPart = general_jobs
+	AssociateRepairJobWithPart = general_jobs
+	SalvagingDisabledSuppressesResourceDrops = true
+
+	Parts
+	[
+		// Basic.
+		&<corridor/corridor.rules>/Part
+
+		// Energy weapons.
+		&<laser_blaster_small/laser_blaster_small.rules>/Part
+		&<laser_blaster_large/laser_blaster_large.rules>/Part
+		&<disruptor/disruptor.rules>/Part
+		&<ion_beam_emitter/ion_beam_emitter.rules>/Part
+		&<ion_beam_prism/ion_beam_prism.rules>/Part
+
+		// Projectile weapons.
+		&<cannon_med/cannon_med.rules>/Part
+		&<cannon_large/cannon_large.rules>/Part
+		&<cannon_deck/cannon_deck.rules>/Part
+		&<missile_launcher/missile_launcher.rules>/Part
+		&<railgun_loader/railgun_loader.rules>/Part
+		&<railgun_accelerator/railgun_accelerator.rules>/Part
+		&<railgun_launcher/railgun_launcher.rules>/Part
+
+		// Defenses.
+		&<shield_gen_small/shield_gen_small.rules>/Part
+		&<shield_gen_large/shield_gen_large.rules>/Part
+		&<flak_cannon_large/flak_cannon_large.rules>/Part
+		&<point_defense/point_defense.rules>/Part
+		&<fire_extinguisher/fire_extinguisher.rules>/Part
+		&<armor/armor.rules>/Part
+		&<armor_2x1/armor_2x1.rules>/Part
+		&<armor_wedge/armor_wedge.rules>/Part
+		&<armor_1x2_wedge/armor_1x2_wedge.rules>/Part
+		&<armor_1x3_wedge/armor_1x3_wedge.rules>/Part
+		&<armor_tri/armor_tri.rules>/Part
+
+		// Flight.
+		&<control_room_small/control_room_small.rules>/Part
+		&<control_room_med/control_room_med.rules>/Part
+		&<control_room_large/control_room_large.rules>/Part
+		&<hyperdrive_small/hyperdrive_small.rules>/Part
+		&<thruster_small/thruster_small.rules>/Part
+		&<thruster_small_2way/thruster_small_2way.rules>/Part
+		&<thruster_small_3way/thruster_small_3way.rules>/Part
+		&<thruster_med/thruster_med.rules>/Part
+		&<thruster_large/thruster_large.rules>/Part
+		&<thruster_huge/thruster_huge.rules>/Part
+		&<thruster_boost/thruster_boost.rules>/Part
+		&<engine_room/engine_room.rules>/Part
+
+		// Crew.
+		&<crew_quarters_small/crew_quarters_small.rules>/Part
+		&<crew_quarters_med/crew_quarters_med.rules>/Part
+		&<airlock/airlock.rules>/Part
+		&<conveyor/conveyor.rules>/Part
+
+		// Power.
+		&<reactor_small/reactor_small.rules>/Part
+		&<reactor_med/reactor_med.rules>/Part
+		&<reactor_large/reactor_large.rules>/Part
+		&<power_storage/power_storage.rules>/Part
+
+		// Production.
+		&<factory_ammo/factory_ammo.rules>/Part
+		&<factory_he/factory_he.rules>/Part
+		&<factory_emp/factory_emp.rules>/Part
+		&<factory_nuke/factory_nuke.rules>/Part
+		&<factory_mine/factory_mine.rules>/Part
+		&<factory_steel/factory_steel.rules>/Part
+		&<factory_coil/factory_coil.rules>/Part
+		&<factory_coil2/factory_coil2.rules>/Part
+		&<factory_tristeel/factory_tristeel.rules>/Part
+		&<factory_diamond/factory_diamond.rules>/Part
+		&<factory_processor/factory_processor.rules>/Part
+		&<factory_uranium/factory_uranium.rules>/Part
+
+		// Storage.
+		&<storage_2x2/storage_2x2.rules>/Part
+		&<storage_3x2/storage_3x2.rules>/Part
+		&<storage_3x3/storage_3x3.rules>/Part
+		&<storage_4x3/storage_4x3.rules>/Part
+		&<storage_4x4/storage_4x4.rules>/Part
+
+		// Utilities.
+		&<mining_laser_small/mining_laser_small.rules>/Part
+		&<resource_collector/resource_collector.rules>/Part
+		&<tractor_beam_emitter/tractor_beam_emitter.rules>/Part
+		&<sensor_array/sensor_array.rules>/Part
+		&<hyperdrive_beacon/hyperdrive_beacon.rules>/Part
+		&<explosive_charge/explosive_charge.rules>/Part
+		&<roof_light/roof_light.rules>/Part
+		&<roof_headlight/roof_headlight.rules>/Part
+
+		// Structure.
+		&<structure/structure.rules>/Part
+		&<structure_wedge/structure_wedge.rules>/Part
+		&<structure_1x2_wedge/structure_1x2_wedge.rules>/Part
+		&<structure_1x3_wedge/structure_1x3_wedge.rules>/Part
+		&<structure_tri/structure_tri.rules>/Part
+		&<armor_structure_hybrid_1x1/armor_structure_hybrid_1x1.rules>/Part
+		&<armor_structure_hybrid_1x2/armor_structure_hybrid_1x2.rules>/Part
+		&<armor_structure_hybrid_1x3/armor_structure_hybrid_1x3.rules>/Part
+		&<armor_structure_hybrid_tri/armor_structure_hybrid_tri.rules>/Part
+	]
+
+	Doors
+	[
+		&<door/door.rules>
+	]
+
+	CategoryNouns
+	[
+		{Category=thruster; SingularKey="CategoryNouns/ThrusterSingular"; PluralKey="CategoryNouns/ThrusterPlural"}
+	]
+
+	RenderLayers
+	[
+		// Structure.
+		{
+			Key = "structure"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -800
+				RenderStage = Lowest
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/parts_lit.shader"
+				}
+				DiffuseMaterial
+				{
+					Shader = "../common/parts.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/normals.shader"
+				}
+				GhostMaterial
+				{
+					Shader = "../common/parts_ghost.shader"
+				}
+			}
+		}
+
+		// Construction Structure.
+		{
+			Key = "structure_construction"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -750
+				RenderStage = Lowest
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+					//Compression = FullAlpha
+				}
+				Material
+				{
+					Shader = "../common/particles/construction_struct.shader"
+					_hotColor = [0, 255, 187, 255]
+					_coldColor = [0, 94, 255, 255]
+					_noiseTexture
+					{
+						File = "./Data/common_effects/particles/noise_gradient.png"
+						SampleMode = Linear
+						MipLevels = 7
+						UVMode = Wrap
+					}
+				}
+				DiffuseMaterial
+				{
+					Shader = "../common/particles/construction_struct_diffuse.shader"
+					_hotColor = [0, 255, 187, 255]
+					_coldColor = [0, 94, 255, 255]
+					_noiseTexture
+					{
+						File = "./Data/common_effects/particles/noise_gradient.png"
+						SampleMode = Linear
+						MipLevels = 7
+						UVMode = Wrap
+					}
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/particles/construction_struct_normals.shader"
+					_noiseTexture
+					{
+						File = "./Data/common_effects/particles/noise_gradient.png"
+						SampleMode = Linear
+						MipLevels = 7
+						UVMode = Wrap
+					}
+				}
+			}
+		}
+
+		// Floors.
+		{
+			Key = "floors"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -700
+				RenderStage = Low
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/parts.shader"
+				}
+				GhostMaterial
+				{
+					Shader = "../common/parts_ghost.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/no_normals.shader"
+				}
+			}
+		}
+
+		// Turrets.
+		{
+			Key = "turrets"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -600
+				RenderStage = Low
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/parts.shader"
+				}
+				GhostMaterial
+				{
+					Shader = "../common/parts_ghost.shader"
+				}
+			}
+		}
+
+		// Low-level doodads.
+		{
+			Key = "doodads_low"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -500
+				RenderStage = Low
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/parts.shader"
+				}
+			}
+		}
+
+		// Walls stencil.
+		{
+			Key = "walls_stencil"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -400
+				RenderStage = Low
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				StencilMaterial
+				{
+					Shader = "../common/parts.shader"
+				}
+			}
+		}
+
+		// External Walls.
+		{
+			Key = "external_walls"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -300
+				RenderStage = Low
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/walls_external_lit.shader"
+				}
+				DiffuseMaterial
+				{
+					Shader = "../common/walls_external.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/walls_external_normals.shader"
+				}
+			}
+		}
+
+		// Walls.
+		{
+			Key = "walls"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -200
+				RenderStage = Low
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/walls.shader"
+				}
+			}
+		}
+
+		// Doors.
+		{
+			Key = "doors"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -100
+				RenderStage = Low
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/parts.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/no_normals.shader"
+				}
+			}
+		}
+
+		// <------------ CREW GET RENDERED HERE
+
+		// Weapons.
+		{
+			Key = "weapons" // Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 0
+				RenderStage = High
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/parts_lit.shader"
+				}
+				DiffuseMaterial
+				{
+					Shader = "../common/parts.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/normals.shader"
+				}
+				GhostMaterial
+				{
+					Shader = "../common/parts_ghost.shader"
+				}
+			}
+		}
+
+		// High-level doodads.
+		{
+			Key = "doodads_high" // Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 100
+				RenderStage = High
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/parts.shader"
+				}
+			}
+		}
+
+		// Additive lights.
+		{
+			Key = "lights_add"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 200
+				RenderStage = High
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/parts.shader"
+					TargetBlendMode
+					{
+						SourceRgbFactor = One
+						DestRgbFactor = One
+						RgbOperator = Add
+						SourceAlphaFactor = Zero
+						DestAlphaFactor = One
+						AlphaOperator = Add
+					}
+				}
+			}
+		}
+
+		// Fire
+		{
+			Key = "fire" // Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 300
+				RenderStage = High
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/parts.shader"
+				}
+			}
+		}
+
+		// Roofs.
+		{
+			Key = "roofs"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 1000
+				RenderStage = High
+				IsRoof = true
+				Inflate = .0001
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/roof_colored_lit.shader"
+				}
+				DiffuseMaterial
+				{
+					Shader = "../common/roof_colored.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/normals.shader"
+				}
+			}
+		}
+
+		// Roof doodads.
+		{
+			Key = "roof_doodads"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 1100
+				RenderStage = High
+				IsRoof = true
+				Inflate = .0001
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/roof_uncolored_lit.shader"
+				}
+				DiffuseMaterial
+				{
+					Shader = "../common/roof_uncolored.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/normals.shader"
+				}
+			}
+		}
+
+		// Construction.
+		{
+			Key = "construction"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 1150
+				RenderStage = High
+				Inflate = .0001
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/roof_uncolored_lit.shader"
+				}
+				DiffuseMaterial
+				{
+					Shader = "../common/roof_uncolored.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/normals.shader"
+				}
+			}
+		}
+
+		// Construction Shader Animation.
+		{
+			Key = "construction_delta"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 1175
+				RenderStage = High
+				Inflate = .0001
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/particles/construction_delta.shader"
+					_hotColor = [0, 255, 187, 255]
+					_coldColor = [0, 94, 255, 255]
+					_noiseTexture
+					{
+						File = "./Data/common_effects/particles/noise_gradient.png"
+						SampleMode = Linear
+						MipLevels = 7
+						UVMode = Wrap
+					}
+				}
+				DiffuseMaterial
+				{
+					Shader = "../common/particles/construction_delta_diffuse.shader"
+					_hotColor = [0, 255, 187, 255]
+					_coldColor = [0, 94, 255, 255]
+					_noiseTexture
+					{
+						File = "./Data/common_effects/particles/noise_gradient.png"
+						SampleMode = Linear
+						MipLevels = 7
+						UVMode = Wrap
+					}
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/particles/construction_delta_normals.shader"
+					_noiseTexture
+					{
+						File = "./Data/common_effects/particles/noise_gradient.png"
+						SampleMode = Linear
+						MipLevels = 7
+						UVMode = Wrap
+					}
+				}
+			}
+		}
+
+		// Roof turrets.
+		{
+			Key = "roof_turrets"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 1200
+				RenderStage = High
+				IsRoof = true
+				Inflate = .0001
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/roof_uncolored_lit.shader"
+				}
+				DiffuseMaterial
+				{
+					Shader = "../common/roof_uncolored.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/normals.shader"
+				}
+			}
+		}
+
+		// Additive roof lights.
+		{
+			Key = "roof_lights_fancy"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 1300
+				RenderStage = Highest
+				//IsRoof = true
+				DrawWithFancyLightingOnly = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+					SampleMode = Linear
+				}
+				LightMaterial
+				{
+					Shader = "../common/roof_light.shader"
+
+					TargetBlendMode
+					{
+						SourceRgbFactor = InverseDestColor
+						DestRgbFactor = One
+						RgbOperator = Add
+						SourceAlphaFactor = Zero
+						DestAlphaFactor = One
+						AlphaOperator = Add
+					}
+				}
+			}
+		}
+
+		// Fire Indicator
+		{
+			Key = "fire_indicators" // Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 1900
+				RenderStage = Highest
+				DrawForLocalPlayerOnly = true
+				IsIndicators = true
+				IsRoof = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "./Data/fire/indicators_fire.shader"
+				}
+			}
+		}
+
+		// Indicators
+		{
+			Key = "indicators"// Ship bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 2000
+				RenderStage = Highest
+				DrawForLocalPlayerOnly = true
+				IsIndicators = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/indicators.shader"
+					_colorFluctuateLow = [255, 255, 255, 255*.7]
+					_colorFluctuateHigh = [255, 255, 255, 255*.9]
+					_fluctuateInterval = 1
+					_maxScale = 2
+					_background
+					{
+						File = "./Data/gui/game/indicators/indicator_background.png"
+						SampleMode = Linear
+						MipLevels = max
+					}
+				}
+			}
+		}
+	]
+
+	Blueprints : <../base_ship.rules>/Blueprints
+	{
+		ExternalWalls = &<walls/external_blueprint_walls.rules>
+	}
+
+	Roofs : <../base_ship.rules>/Roofs
+	{
+		RoofTexturesFolders = ["./Data/roof_textures"]
+		DefaultRoofTexture = "_none_"
+
+		RoofDecalGroups = &<./Data/roof_decals/roof_decals.rules>/Groups
+	}
+
+	Fire : <../base_ship.rules>/Fire
+	{
+		AssociateFireExtinguishJobWithPart = cosmoteer.fire_extinguisher
+	}
+
+	VitalCategories
+	[
+		{
+			Category = airlock
+			WarningKey = "VitalCategories/Airlock"
+		}
+		{
+			Category = command
+			WarningKey = "VitalCategories/Command"
+		}
+		{
+			Category = reactor
+			WarningKey = "VitalCategories/Reactor"
+		}
+		{
+			Category = provides_crew
+			WarningKey = "VitalCategories/Crew"
+		}
+		{
+			Category = fire_extinguisher
+			WarningKey = "VitalCategories/FireExtinguisher"
+		}
+	]
+}

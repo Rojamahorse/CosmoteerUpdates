@@ -1,0 +1,71 @@
+Part : <../base_part_asteroid.rules>/Part
+{
+	NameKey = "Parts/DepositTritanium1x"
+	IconNameKey = "Parts/DepositTritanium1xIcon"
+	DescriptionKey = "Resource/TritaniumDesc"
+	ID = cosmoteer.deposit_tritanium_1x // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	SelectionTypeID = "deposit_tritanium"
+	EditorGroup = "Tritanium"
+	IsFlippable = true
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Resources
+	[
+		[tritanium, 1]
+	]
+	EditorIcon
+	{
+		Texture = "deposit_tritanium_1x_icon.png"
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor
+			{
+				Layer = "asteroid"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "deposit_tritanium_1x.png"
+						NormalsFile = "deposit_tritanium_1x_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "deposit_tritanium_1x_33.png"
+						NormalsFile = "deposit_tritanium_1x_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "deposit_tritanium_1x_66.png"
+						NormalsFile = "deposit_tritanium_1x_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "deposit_tritanium_1x_blueprints.png"
+			Size = [1, 1]
+		}
+
+		CustomShipIcon
+		{
+			Type = CustomShipIcon
+			Icon : <./Data/resources/tritanium/tritanium.rules>/Overlay
+			{
+				Size = [32, 32]
+			}
+			Weight = &~/Part/Resources/0/1
+			PulseInterval = 2
+			PulseColor = [255, 255, 255, 64]
+			ShowAtZoom = 5
+		}
+	}
+}

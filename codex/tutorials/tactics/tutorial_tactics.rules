@@ -1,0 +1,15 @@
+ID = tactics
+TitleKey = "Tutorials/Tactics/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.CommandType == 'attack'"
+Entries
+[
+	{
+		Image { Texture { File="target.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Tactics/Target"
+	}
+	{
+		Image { Texture { File="reactor_cr.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Tactics/Reactor"
+	}
+]

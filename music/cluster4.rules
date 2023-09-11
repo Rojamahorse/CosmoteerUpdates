@@ -1,0 +1,243 @@
+Type = FSM
+DebugName = "Cluster 4"
+MaxConsecutivePlays = 1
+IntroTracks
+[
+	&~/Track4_1
+]
+
+FadeOutAfter = 15*60 // Twenty minutes.
+FadeOutDuration = 5
+FadeOutCondition = "? battle == False and wanted == False"
+FadeOutOnSimPop = true
+SilenceAfterFadeOut = 2
+
+Track4_1
+{
+	Type = Layers
+	DebugName = "Cluster 4.1"
+	MaxConsecutivePlays = 3
+	Layers
+	[
+		{
+			Type = File
+			File = "Cluster_4.1_Calm_Interior_Layer.music"
+            DynamicCondition = "? interior == True and paused == False"
+            DynamicVolumeVelocity = 4
+            ZoomVolumes
+            [
+                [1, 90%]
+                [6, 0%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 1
+		}
+		{
+			Type = File
+			File = "Cluster_4.1_Default_Layer.music"
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+		}
+        {
+            Type = File
+            File = "Cluster_4.1_Superzoom_Layer.music"
+            ZoomVolumes
+            [
+                [60, 0%]
+                [1000, 100%]
+            ]
+            ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+        }
+        {
+            Type = File
+            File = "Cluster_4.1_Battle_Layer.music"
+            DynamicCondition = "? battle == True or wanted == True"
+            DynamicVolumeVelocity = 4
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 75%]
+            ]
+            ZoomVolumeVelocityUp = 0.5
+            ZoomVolumeVelocityDown = 0.5
+        }
+        {
+            Type = File
+            File = "Cluster_4.1_Calm_Exterior_Layer.music"
+			DynamicCondition = "? battle == False and wanted == False"
+ /*           DynamicCondition = "? (interior == False or paused == True) and battle == False " */
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [10, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+        }
+	]
+	NextTracks
+	[
+		&~/Track4_1
+		&~/Track4_2
+	]
+}
+
+Track4_2
+{
+	Type = Layers
+	DebugName = "Cluster 4.2"
+	MaxConsecutivePlays = 3
+	Layers
+	[
+		{
+			Type = File
+			File = "Cluster_4.2_Calm_Interior_Layer.music"
+            DynamicCondition = "? interior == True and paused == False"
+            DynamicVolumeVelocity = 4
+            ZoomVolumes
+            [
+                [1, 90%]
+                [6, 0%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 1
+		}
+		{
+			Type = File
+			File = "Cluster_4.2_Default_Layer.music"
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+		}
+        {
+            Type = File
+            File = "Cluster_4.2_Superzoom_Layer.music"
+            ZoomVolumes
+            [
+                [60, 0%]
+                [1000, 100%]
+            ]
+            ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+        }
+        {
+            Type = File
+            File = "Cluster_4.2_Battle_Layer.music"
+            DynamicCondition = "? battle == True or wanted == True"
+            DynamicVolumeVelocity = 4
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 75%]
+            ]
+            ZoomVolumeVelocityUp = 0.5
+            ZoomVolumeVelocityDown = 0.5
+        }
+        {
+            Type = File
+            File = "Cluster_4.2_Calm_Exterior_Layer.music"
+            DynamicCondition = "? battle == False and wanted == False"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [10, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+        }
+	]
+	NextTracks
+	[
+		&~/Track4_1
+		&~/Track4_2
+		&~/Track4_3
+	]
+}
+
+Track4_3
+{
+	Type = Layers
+	DebugName = "Cluster 4.3"
+	MaxConsecutivePlays = 3
+	Layers
+	[
+		{
+			Type = File
+			File = "Cluster_4.3_Calm_Interior_Layer.music"
+            DynamicCondition = "? interior == True and paused == False"
+            DynamicVolumeVelocity = 4
+            ZoomVolumes
+            [
+                [1, 90%]
+                [6, 0%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 1
+		}
+		{
+			Type = File
+			File = "Cluster_4.3_Default_Layer.music"
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+		}
+        {
+            Type = File
+            File = "Cluster_4.3_Superzoom_Layer.music"
+            ZoomVolumes
+            [
+                [60, 0%]
+                [1000, 100%]
+            ]
+            ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+        }
+        {
+            Type = File
+            File = "Cluster_4.3_Battle_Layer.music"
+            DynamicCondition = "? battle == True or wanted == True"
+            DynamicVolumeVelocity = 4
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 75%]
+            ]
+            ZoomVolumeVelocityUp = 0.5
+            ZoomVolumeVelocityDown = 0.5
+        }
+        {
+            Type = File
+            File = "Cluster_4.3_Calm_Exterior_Layer.music"
+            DynamicCondition = "? battle == False and wanted == False"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [10, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+        }
+	]
+	NextTracks
+	[
+		&~/Track4_1
+		&~/Track4_2
+	]
+}

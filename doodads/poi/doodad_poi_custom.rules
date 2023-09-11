@@ -1,0 +1,16 @@
+ID = cosmoteer.poi_custom
+Type = POI
+DescriptionKey = "Doodads/POICustom"
+CategoryKey = "Doodads/POI"
+Icon = &HudIcon
+IndicatorSort = 1
+HudIcon
+{
+	Texture
+	{
+		File = "poi_custom.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+	Size = [32, 32]
+}

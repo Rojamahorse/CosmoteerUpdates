@@ -1,0 +1,19 @@
+ID = missions3
+TitleKey = "Tutorials/Missions3/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.HasActiveObjectiveType('ReceiveRewards')"
+Entries
+[
+	{
+		Image { Texture { File="station.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Missions3/Return"
+	}
+	{
+		Image { Texture { File="../comms/comms_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Missions3/Hail"
+	}
+	{
+		Image { Texture { File="payment_available.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Missions3/ReceiveRewards"
+	}
+]

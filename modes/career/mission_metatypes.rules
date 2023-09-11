@@ -1,0 +1,96 @@
+ResourceDelivery
+{
+	NameKey = "Missions/ResourceDelivery"
+	DescriptionKey = "Missions/ResourceDeliveryDesc"
+	CategoryID = deliveries
+}
+
+Bounty
+{
+	NameKey = "Missions/Bounty"
+	DescriptionKey = "Missions/BountyDesc"
+	CategoryID = bounties
+}
+
+FleetBounty
+{
+	NameKey = "Missions/FleetBounty"
+	DescriptionKey = "Missions/FleetBountyDesc"
+	CategoryID = bounties
+}
+
+PirateHunt
+{
+	NameKey = "Missions/PirateHunt"
+	DescriptionKey = "Missions/PirateHuntDesc"
+	CategoryID = bounties
+}
+
+FactionHunt
+{
+	NameKey = "Missions/FactionHunt"
+	DescriptionKey = "Missions/FactionHuntDesc"
+	CategoryID = faction_wars
+}
+
+ClearAsteroidFieldPirates
+{
+	NameKey = "Missions/ClearAsteroidField"
+	DescriptionKey = "Missions/ClearAsteroidFieldPiratesDesc"
+	CategoryID = bounties
+}
+
+ClearAsteroidFieldPlatforms
+{
+	NameKey = "Missions/ClearAsteroidField"
+	DescriptionKey = "Missions/ClearAsteroidFieldPlatformsDesc"
+	CategoryID = bounties
+}
+
+StationContact
+{
+	NameKey = "Missions/StationContact"
+	DescriptionKey = "Missions/StationContactDesc"
+	CategoryID = stations
+}
+StationRescue
+{
+	NameKey = "Missions/StationRescue"
+	DescriptionKey = "Missions/StationRescueDesc"
+	CategoryID = stations
+}
+
+PirateBaseDestruction
+{
+	NameKey = "Missions/PirateBaseDestruction"
+	DescriptionKey = "Missions/PirateBaseDestructionDesc"
+	CategoryID = bounties
+}
+
+FactionBaseDestruction
+{
+	NameKey = "Missions/FactionBaseDestruction"
+	DescriptionKey = "Missions/FactionBaseDestructionDesc"
+	CategoryID = faction_wars
+}
+
+Explore
+{
+	NameKey = "Missions/Explore"
+	DescriptionKey = "Missions/ExploreDesc"
+	CategoryID = exploration
+}
+
+VisitSystem
+{
+	NameKey = "Missions/VisitSystem"
+	DescriptionKey = "Missions/VisitSystemDesc"
+	CategoryID = exploration
+}
+
+Debug
+{
+	NameKey = "Missions/Debug"
+	DescriptionKey = "Missions/DebugDesc"
+	CategoryID = debug
+}

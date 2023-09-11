@@ -1,0 +1,11 @@
+Type = None
+SubSpawners
+[
+	{
+		Type = FtlGates
+		Distance = [18750, 22500]
+		Tags = [ftl_gate]
+		DoodadType = cosmoteer.ftl_gate
+		Invulnerable = true
+	}
+]

@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_missile_part_he
+Type = Resource
+DescriptionKey = "Resource/MissilePartHE"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/missile_part_he/missile_part_he.png"
+		MipLevels = 2
+	}
+}
+ResourceType = missile_part_he

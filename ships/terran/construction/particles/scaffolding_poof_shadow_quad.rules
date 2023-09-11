@@ -1,0 +1,34 @@
+Type = PartQuad
+Sprite
+{
+		Texture
+		{
+			File = ./Data/common_effects/particles/blob_square.png
+			MipLevels = max
+			SampleMode = Linear
+		}
+		VertexColor = [255, 255, 255, 255]
+		TargetBlendMode
+		{
+			SourceRgbFactor = SourceAlpha
+			DestRgbFactor = InverseSourceAlpha
+			RgbOperator = Add
+			SourceAlphaFactor = Zero
+			DestAlphaFactor = One
+			AlphaOperator = Add
+		}
+}
+Bucket = ScaffoldingPoofShadow
+Inflate = 0.5
+FadeInTime = 0.2
+FadeOutTime = 0.5
+ColorOverFade
+[
+	[0, 10, 20, 0]
+	[0, 10, 20, 300]
+]
+ColorOverIntensity
+[
+	[255, 255, 255, 255]
+	[255, 255, 255, 255]
+]

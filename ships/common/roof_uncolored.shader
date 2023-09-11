@@ -1,0 +1,4 @@
+#define USE_DEFAULT_VERT_ATLAS
+#define USE_DEFAULT_PIX_ATLAS
+#define ENABLE_ROOF_ALPHA
+#include "../../base_atlas.shader"

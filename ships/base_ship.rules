@@ -1,0 +1,300 @@
+ShipScale = 1.0
+
+CategoryLimits = []
+CategoryNouns = []
+
+MaxBorders
+{
+	Left = -60
+	Right = 60
+	Top = -60
+	Bottom = 60
+}
+
+MaxAbsLinearVelocity = Infinity
+MaxAbsAngularVelocity = 25
+
+PartsGhostShader = "common/parts_ghost.shader"
+
+Doors = []
+DefaultDoorID = ""
+
+BaseLinearDamping = 0.4
+LinearDampingFactorPerSpeed = 75
+LinearDampingFactorPerSpeedExponent = 2.0
+MinLinearDamping = 0.4
+BaseAngularDamping = 0.4
+AngularDampingFactorPerSpeed = 1
+AngularDampingFactorPerSpeedExponent = 0
+MinAngularDamping = 0.4
+Restitution = 0
+RotationalInertiaFactor = 1
+ThrusterSolverIterations = 3
+ThrusterSRFFactors = [1, 2, 100]
+UncommandedThrusterShutdownDelay = 2
+TargetReachedDistanceSizeRatio = 2
+TargetResetDistanceSizeRatio = 3
+AdjustRotationVelocity = 10
+VelocityCalculateFactor = 15
+AngularVelocityCalculateFactor = 10
+RetroVelocityCalculateFactor = 2
+RetroAngularVelocityCalculateFactor = 3
+AngleSatisfiedThreshold = [0d, 45d]
+HorizontalSatisfiedThreshold = [0, 15%] // Velocity as percentage of forward distance.
+ForwardThrustRatioHistoryCount = 10
+ArrivalTimeOptimisticBuffer = 0.5
+ArrivalTimeRampDown = 1.0
+OrbitModeRadiusFactor = 1.5
+MaxPartSearchIterations = 50
+SupplierSearchInterval = 1
+SelfDestructForce = 10
+BaseSightRadius = 25
+BaseRadarRadius = &BaseSightRadius
+DefaultTargetingRangeFactor = 4.0
+
+MapJumpFuelCostPerMass = 0
+MapJumpFuelCostPerMassDistance = 1 / 100 / 10 // 1 fuel per 100 mass to jump 10 LY at 100% efficiency
+MapJumpDistanceExponent = 1
+LocalJumpFuelCostPerMass = 0
+LocalJumpFuelCostPerMassDistance = 1 / 100 / 25000 // 1 fuel per 100 mass to jump 25km at 100% efficiency.
+LocalJumpDistanceExponent = 1
+LocalJumpMinDistance = 500
+
+DefaultCollectNuggetPriority = 8
+DefaultEjectNuggetPriority = 1
+DefaultSalvagePriority = 8
+DefaultConstructPriority = 9
+DefaultDeconstructPriority = 9
+DefaultRepairPriority = 9
+
+DefaultConstructionDurationPerHealth = 1 / 1000 // 1 second per corridor tile (+0.5 for the structure makes 1.5 total)
+DefaultRepairDurationPerHealth = 1 / 1000 // 1 second per corridor tile (+0.5 for the structure makes 1.5 total)
+ConstructionResourceSearchesPerTick = 1
+ConstructionNuggetSinkSearchesPerTick = 5
+MaxConstructionShipSpeed = 1
+
+Fire = &<./Data/fire/fire.rules>
+
+ExternalWalls
+{
+	Layer = ""
+	AmbiguousSprites
+	[
+		// No Walls.
+		{
+			SituationCode = "********"
+			DamageLevels = []
+		}
+	]
+}
+
+ExternalRoofWalls
+{
+	Layer = ""
+	AmbiguousSprites
+	[
+		// No Walls.
+		{
+			SituationCode = "********"
+			DamageLevels = []
+		}
+	]
+}
+
+Roofs
+{
+	RoofFadeInDuration = .5
+	RoofFadeOutDuration = .5
+
+	RoofTextureSizePerTile = [64, 64]
+
+	DecalSizePerTile = [64, 64]
+	DecalsAtlasParams
+	{
+		MipLevels = 7 // Assumes 64x64 min decal size.
+	}
+
+	BaseColorSRange = [0, 1]
+	BaseColorVRange = [0, 1]
+	BaseTextureARange = [0, 1]
+	DecalsSRange = [0, 1]
+	DecalsVRange = [0, 1]
+
+	DefaultBaseColor
+	{
+		H = 0
+		S = 0
+		V = 1
+		A = 127
+	}
+	DefaultDecalsColors
+	[
+		{
+			H = 0
+			S = 0
+			V = 0
+			A = 255
+		}
+		{
+			H = 0
+			S = 0
+			V = 0.5
+			A = 255
+		}
+		{
+			H = 0
+			S = 1
+			V = 1
+			A = 255
+		}
+	]
+}
+
+Blueprints
+{
+	AtlasTextureParams
+	{
+		MipLevels = 7 // Assumes 64x64 min part sprite size.
+	}
+	Material
+	{
+		Shader = "common/blueprints.shader"
+		_colorFluctuateLow = [255, 255, 255, 223]
+		_colorFluctuateHigh = [255, 255, 255, 229]
+		_fluctuateInterval = .1
+	}
+
+	InvalidMaterial : Material
+	{
+		// The atlaser won't build a separate atlas for this material, so we need to use the same texture.
+
+		Shader = "common/redprints.shader"
+		_colorFluctuateLow = [127, 255, 255, 229]
+		_colorFluctuateHigh = [255, 255, 255, 229]
+		_fluctuateInterval = .5
+	}
+
+	ExternalWalls
+	{
+		AmbiguousSprites
+		[
+			// No Walls.
+			{
+				SituationCode = "********"
+				DamageLevels = []
+			}
+		]
+	}
+
+	DrawProhibitedZoneCategories = [default]
+}
+
+Redprints
+{
+	Material : ../Blueprints/InvalidMaterial
+	{
+		_colorFluctuateLow = [255, 255, 255, 127]
+		_colorFluctuateHigh = [255, 255, 255, 191]
+		_fluctuateInterval = 1
+	}
+
+	RepairIndicatorAtlasTextureParams
+	{
+		MipLevels = 7 // Assumes 64x64 min part sprite size.
+	}
+	IndicatorsMaterial
+	{
+		Shader = "common/indicators.shader"
+		_colorFluctuateLow = [255, 255, 255, 255*.7]
+		_colorFluctuateHigh = [255, 255, 255, 255*.9]
+		_fluctuateInterval = 1
+		_maxScale = 2
+	}
+	RepairIndicatorSprite
+	{
+		File = "./Data/gui/game/indicators/indicator_repair.png"
+		Size = [1, 1]
+		VertexColor = [255, 255, 255, 255]
+		UVRotation = 0
+	}
+	RepairingIndicatorSprite
+	{
+		File = "./Data/gui/game/indicators/indicator_repairing.png"
+		Size = [1, 1]
+		VertexColor = [255, 255, 255, 255]
+		UVRotation = 0
+	}
+}
+
+FtlEffects
+{
+	TotalDuration = .75
+
+	CropTime = [0, .3]
+	CropSprite
+	{
+		Texture
+		{
+			File = "common/ftl_jump.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [229, 248, 255]
+	}
+	CropSizeFactor = [.75, 2]
+	CropPulseInterval = .1
+	CropAlphaPulse = .2
+	CropWidthPulse = 0
+	CropHeightPulse = 0
+	CropZeroAlphaSize = 0
+	CropFullAlphaSize = .7
+
+	WarpEffectIn = [0, 0]
+	WarpEffectOut = [0, .75]
+	WarpEffectShader = "common/ftl_distortion.shader"
+	WarpEffectTexture
+	{
+		File = "common/ftl_distortion.png"
+		UVMode = Wrap
+		SampleMode = Linear
+		MipLevels = max
+	}
+
+	LightSpeedEffectShader = "common/ftl_light_speed.shader"
+	LightSpeedEffectColor = [178, 235, 255, 255]
+	LightSpeedEffectBlendMode
+	{
+		SourceRgbFactor = SourceAlpha
+		DestRgbFactor = One
+		RgbOperator = Add
+		SourceAlphaFactor = Zero
+		DestAlphaFactor = One
+		AlphaOperator = Add
+	}
+
+	JumpOutMediaEffects
+	[
+		: /BASE_SOUNDS/AudioExteriorZoomless
+		{
+			Sound = "common/ftl_jump_out.wav"
+			Volume = 2
+			MaxConcurrentVolume = 1
+			Speed = 1
+			MaxConcurrent = 3
+		}
+	]
+	JumpOutDelay = [0, .5]
+
+	JumpInMediaEffects
+	[
+		: /BASE_SOUNDS/AudioExteriorZoomless
+		{
+			Sound = "common/ftl_jump_in.wav"
+			Volume = 1
+			MaxConcurrentVolume = 1
+			Speed = 1
+			MaxConcurrent = 3
+		}
+	]
+	JumpInDelay = [0, .5]
+}

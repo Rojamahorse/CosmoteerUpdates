@@ -1,0 +1,18 @@
+Faction = imperium
+Tags = [station]
+
+Ships
+[
+	// Civilian stations
+	:~{ File="Small Imperium Trade Station.ship.png"; Tier=4;  Tags : ~/Tags [trade_station];    StasisIcon="Small Imperium Trade Station.png" }
+	:~{ File="Small Imperium Trade Station II.ship.png"; Tier=4;  Tags : ~/Tags [trade_station]; StasisIcon="Small Imperium Trade Station II.png" }
+	:~{ File="Med Imperium Trade Station.ship.png";   Tier=10; Tags : ~/Tags [trade_station];    StasisIcon="Med Imperium Trade Station.png" }
+	:~{ File="Med Imperium Trade Station II.ship.png";   Tier=10; Tags : ~/Tags [trade_station]; StasisIcon="Med Imperium Trade Station II.png" }
+	:~{ File="Large Imperium Trade Station.ship.png"; Tier=16; Tags : ~/Tags [trade_station];    StasisIcon="Large Imperium Trade Station.png" }
+
+	// Military stations
+	:~{ File="Tiny Imperium Arms Depot.ship.png";     Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station]; StasisIcon="Tiny Imperium Arms Depot.png";  FlightDirection=UpLeft }
+	:~{ File="Small Imperium Arms Depot.ship.png";    Tier=9;  SpawnTier=8;  Tags : ~/Tags [military_station]; StasisIcon="Small Imperium Arms Depot.png"; FlightDirection=UpRight }
+	:~{ File="Med Imperium Arms Depot.ship.png";      Tier=12; SpawnTier=12; Tags : ~/Tags [military_station]; StasisIcon="Med Imperium Arms Depot.png";   FlightDirection=UpRight }
+	:~{ File="Large Imperium Arms Depot.ship.png";    Tier=16; SpawnTier=16; Tags : ~/Tags [military_station]; StasisIcon="Large Imperium Arms Depot.png"; FlightDirection=UpRight }
+]

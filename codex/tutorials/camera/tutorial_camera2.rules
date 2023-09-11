@@ -1,0 +1,22 @@
+ID = camera2
+TitleKey = "Tutorials/Camera2/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 40 and game.HasSeenCodexPage('camera')"
+Entries
+[
+	{
+		Image { Texture { File="middle_drag.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Camera2/Drag"
+	}
+	{
+		Image { Texture { File="focus_click.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Camera2/FocusClick"
+	}
+	{
+		Image { Texture { File="alt_drag.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Camera2/AltDrag"
+	}
+	{
+		TextKey = "Tutorials/Camera2/Tip"
+	}
+]

@@ -1,0 +1,18 @@
+ID = wanted
+TitleKey = "Tutorials/Wanted/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? sim.IsWanted"
+Entries
+[
+	{
+		Image { Texture { File="wanted.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Wanted/Attacking"
+	}
+	{
+		Image { Texture { File="hunted.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Wanted/Hunted"
+	}
+	{
+		TextKey = "Tutorials/Wanted/Evade"
+	}
+]

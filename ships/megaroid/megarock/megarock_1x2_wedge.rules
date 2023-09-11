@@ -1,0 +1,105 @@
+Part : <../base_part_megaroid.rules>/Part
+{
+	NameKey = "Parts/MegaRockWedge1x2"
+	DescriptionKey = "Parts/RockHardDesc"
+	ID = cosmoteer.megarock_1x2_wedge // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	FlipWhenLoadingIDs = [cosmoteer.megarock_1x2_wedge_R]
+	SelectionTypeID = "rock"
+	EditorGroup = "Rock"
+	Resources = []
+	Size = [1, 2]
+	MaxHealth = 160000
+	IsFlippable = true
+	IsRotateable = true
+	EditorReplacementPartID = cosmoteer.megarock_1x1
+	AllowedContiguity = [Right, Bottom]
+	FlipHRotate = [0, 3, 2, 1]
+	FlipVRotate = [2, 1, 0, 3]
+	GenerateRectCollider = false
+
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ExternalWallsByCell
+	[
+		{
+			Key = [0, 0]
+			Value = [TopRight, Right]
+		}
+		{
+			Key = [0, 1]
+			Value = [Right, BottomRight, Bottom, BottomLeft]
+		}
+	]
+	InternalWallsByCell
+	[
+	 	{
+	 		Key = [0, 0]
+	 		Value = [BottomLeft, Left, TopLeft, Top]
+	 	}
+	 	{
+	 		Key = [0, 1]
+	 		Value = [Left, TopLeft]
+	 	}
+	]
+	VirtualInternalCells
+	[
+		{ExternalCell=[0, -1]; InternalCell=[1, 0]}
+		{ExternalCell=[-1, 1]; InternalCell=[0, 2]}
+	]
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	EditorIcon
+	{
+		Texture = "./Data/ships/asteroid/rock/rock_1x2_wedge_icon.png"
+		Size = [32, 64]
+	}
+	Components : ^/0/Components
+	{
+		Collider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[1, 0]
+				[1, 2]
+				[0, 2]
+				[0.42, 1.1]
+				[0.47, 0.56]
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 1]
+			Floor
+			{
+				Layer = "asteroid"
+				DamageLevels
+				[
+					{
+						File = "rock_1x2_wedge.png"
+						NormalsFile = "rock_1x2_wedge_normals.png"
+						Size = [1, 2]
+					}
+					{
+						File = "rock_1x2_wedge_33.png"
+						NormalsFile = "rock_1x2_wedge_normals_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "rock_1x2_wedge_66.png"
+						NormalsFile = "rock_1x2_wedge_normals_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "rock_1x2_wedge_blueprints.png"
+			Size = [1, 2]
+		}
+	}
+}

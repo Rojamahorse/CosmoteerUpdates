@@ -1,0 +1,34 @@
+Type = PartQuad
+Sprite
+{
+	Texture
+	{
+		File = "./Data/common_effects/particles/noise_grainy.png"
+		MipLevels = max
+		SampleMode = Linear
+		UVMode = Wrap
+	}
+	_maskTexture
+	{
+		File = "./Data/common_effects/particles/blob_square.png"
+		MipLevels = max
+		SampleMode = Linear
+	}
+	Shader = scaffolding_quad.shader
+	_hotColor = [0, 255, 187, 255]
+	_coldColor = [0, 94, 255, 255]
+	_normalIntensity = 0.008; //lower is more intense, 0.02 for ship
+	_intensity = 0.5;
+	TargetBlendMode
+	{
+		SourceRgbFactor = One
+		DestRgbFactor = One
+		RgbOperator = Add
+		SourceAlphaFactor = Zero
+		DestAlphaFactor = One
+		AlphaOperator = Add
+	}
+}
+Bucket = ScaffoldingProgressGlow
+Inflate = 0.4
+IsFancyLight = true

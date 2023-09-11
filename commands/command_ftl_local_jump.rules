@@ -1,0 +1,7 @@
+FtlLocalJumpCommand : <command_ftl_gate_jump.rules>/FtlGateJumpCommand
+{
+	PreJumpDelay = .25
+	ShipRemoveDelay = &<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration
+	ShipTransitDelay = 1.25
+	DestinationDistance = 100
+}

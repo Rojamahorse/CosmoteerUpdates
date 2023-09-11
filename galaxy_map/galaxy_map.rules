@@ -1,0 +1,179 @@
+BackgroundStyleID = bg_galaxy
+TargetNodeFocusSpeed = 10
+
+NodeSprite
+{
+	Texture
+	{
+		File = "map_node.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	VertexColor = [10, 212, 98, 255]
+	Size = [.8, .8]
+}
+NodeUnvisitedSprite : NodeSprite
+{
+	VertexColor = [127, 127, 127, 255]
+}
+NodeSpriteRotSpeed = 30d
+NodeNameFontSize = 24
+NodeNameFadeRange = [8, 1]
+NodeNameWorldOffset = [.5, 0]
+NodeNamePixelOffset = [0, -15]
+NodeNameMouseOverLerpTime = 0.125
+NodeClickRadius = 2
+NodeFtlPulseSprite
+{
+	Texture
+	{
+		File = "./Data/gui/game/hud_pulse.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	VertexColor = [128, 221, 255, 255]
+	Size = [1, 1]
+	TargetBlendMode
+	{
+		SourceRgbFactor = SourceAlpha
+		DestRgbFactor = One
+		RgbOperator = Add
+		SourceAlphaFactor = Zero
+		DestAlphaFactor = One
+		AlphaOperator = Add
+	}
+}
+NodeFtlPulseInterval = 1
+NodeFtlPulseScaleRange = [1, 3]
+NodeFtlPulseAlphaRange = [1, 0]
+
+ConnectionLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "connection_line.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [127, 127, 127, 96]
+	}
+	LineThickness = .35
+	LineUPerLength = 0.5
+}
+ConnectionLinePulseSpeed = 1
+ConnectionClickDistance = 0.5
+
+CourseLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "course_line.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [0, 188, 255, 255]
+	}
+	LineThickness = .5
+	LineUPerLength = .5
+
+	EndCapSprite
+	{
+		Texture
+		{
+			File = "course_line_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [0, 188, 255, 255]
+	}
+	EndCapSize = [.5, .5]
+	EndCapOverlap = .25
+
+	BeginCapSprite = &EndCapSprite
+	BeginCapSize = &EndCapSize
+	BeginCapOverlap = &EndCapOverlap
+}
+CourseLinePulseSpeed = 8
+
+CurNodeSprite
+{
+	Texture
+	{
+		File = "map_node_current.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+}
+UnscaledCurNodeWorldSize = [1.6, 1.6]
+CurNodePulseInterval = 1
+CurNodeBeginScale = 1
+CurNodeEndScale = 1.25
+CurNodeBeginColor = [255, 255, 255, 255]
+CurNodeEndColor = [255, 255, 255, 217]
+
+DestNodeSprite = &CurNodeSprite
+UnscaledDestNodeWorldSize = [1.6, 1.6]
+DestNodePulseInterval = 1
+DestNodeBeginScale = 1
+DestNodeEndScale = 1
+DestNodeBeginColor = [0, 188, 255, 255]
+DestNodeEndColor = [0, 188, 255, 255*2]
+DestNodeFromTime = .9
+DestNodeFromColor = [255, 255, 255, 255]
+DestNodeFromScale = 3
+DestNodeFromRot = 360d
+
+FtlShip
+{
+	Texture
+	{
+		File = "ftl_ship.png"
+		MipLevels = max
+		SampleMode = Linear
+	}
+	Size = [.75, .75]
+}
+FtlShipSpeed = 5
+
+Camera : /Simulation/Camera
+{
+	PixelOrthographicFactor = 1/64
+	DefaultScale = 1
+	MinScale = 1
+	MaxScale = 10
+}
+
+FactionBorderSprite
+{
+	Texture
+	{
+		File = "faction_border.png"
+		UMode = Wrap
+		VMode = Clamp
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [0, 1] // Only height matters.
+	Shader = "faction_border.shader"
+	TargetBlendMode
+	{
+		SourceRgbFactor = SourceAlpha
+		DestRgbFactor = One
+		RgbOperator = Add
+		SourceAlphaFactor = Zero
+		DestAlphaFactor = One
+		AlphaOperator = Add
+	}
+}
+
+FactionBorderRadius = 10
+FactionBorderImaginaryNodeDistance = 9
+FactionMaxMissingBorderAngle = 90d
+FactionBorderPointUnifyTolerance = 2
+FactionCurveSegmentsPerDistance = 4

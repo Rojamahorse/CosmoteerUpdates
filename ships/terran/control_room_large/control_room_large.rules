@@ -1,0 +1,561 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ControlRoomLarge"
+	IconNameKey = "Parts/ControlRoomLargeIcon"
+	ID = cosmoteer.control_room_large // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Flight"
+	DescriptionKey = "Parts/ControlRoomLargeDesc"
+	Resources
+	[
+		[steel, 160]
+		[coil2, 70]
+		[processor, 10]
+	]
+	AIValueFactor = 5
+	Size = [4, 4]
+	SelectionPriority = 0
+	SelectionTypeID = "control_room"
+	MaxHealth = 16000
+	ContiguityOriginPriority = 3
+	TypeCategories = [command, uses_power, is_crewed]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	AllowedDoorLocations
+	[
+		[-1, 2]
+		[1, 4]
+		[2, 4]
+		[4, 2]
+	]
+	ForceManhattanPathInPart = true
+	BlockedTravelCells
+	[
+		[0, 0]
+		[3, 0]
+	]
+	BlockedTravelCellDirections
+	[
+		{
+			Key = [1, 1]
+			Value = [Right]
+		}
+		{
+			Key = [2, 1]
+			Value = [Left]
+		}
+		{
+			Key = [1, 2]
+			Value = [Right]
+		}
+		{
+			Key = [2, 2]
+			Value = [Left]
+		}
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [80, 80]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 8000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/ControlRoom_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+			AllowNonContiguousCrewSearch = true
+		}
+
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 1000
+			MinFromQuantityForConversion = 1
+			Interval = 15 // Drains 1 power every 15 seconds.
+		}
+
+		CommandProvider
+		{
+			Type = CommandProvider
+			OperationalToggle = IsOperational
+			CommandPoints = 1000 // Remember to update tooltip.
+		}
+
+		Sensor = &<../control_room_small/control_room_small.rules>/Part/Components/Sensor
+
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [44/64, 77/64]
+			Rotation = -64d
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [212/64, 77/64]
+			Rotation = 64d
+		}
+		CrewLocation3
+		{
+			Type = CrewLocation
+			Location = [1.5, 95/64]
+		}
+		CrewLocation4
+		{
+			Type = CrewLocation
+			Location = [2.5, 95/64]
+		}
+		CrewLocation5
+		{
+			Type = CrewLocation
+			Location = [2, 2.5]
+		}
+		CrewLocation6
+		{
+			Type = CrewLocation
+			Location = [.5+6/64, 3.5-6/64]
+			Rotation = -135d
+		}
+		CrewLocation7
+		{
+			Type = CrewLocation
+			Location = [3.5-6/64, 3.5-6/64]
+			Rotation = 135d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 7
+			DefaultPriority = &/PRIORITIES/ControlRoom_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				&../../CrewLocation1/Location
+				&../../CrewLocation2/Location
+				&../../CrewLocation3/Location
+				&../../CrewLocation4/Location
+				&../../CrewLocation5/Location
+				&../../CrewLocation6/Location
+				&../../CrewLocation7/Location
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+				CrewLocation3
+				CrewLocation4
+				CrewLocation5
+				CrewLocation6
+				CrewLocation7
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [4, 4]
+					}
+					{
+						File = "floor_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "floor_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+							"doodads_on9.png"
+							"doodads_on10.png"
+							"doodads_on11.png"
+							"doodads_on12.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+							"doodads_on9_33.png"
+							"doodads_on10_33.png"
+							"doodads_on11_33.png"
+							"doodads_on12_33.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+							"doodads_on9_66.png"
+							"doodads_on10_66.png"
+							"doodads_on11_66.png"
+							"doodads_on12_66.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [4, 4]
+					}
+					{
+						File = "walls_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "walls_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [-81/64, 27/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [6, 6]
+						Z = 1.4 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [36*1.0,105*1.0, 255*1.0]
+					}
+				]
+			}
+		}
+
+		Graphics2
+		{
+			Type = Graphics
+			Location = [2, 202/64]
+			OperationalToggle = IsOperational
+			OperationalRoofDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						File = "radar.png"
+						NormalsFile = "radar_normals.png"
+						RotSpeed = 240d
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalRoofDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						File = "radar.png"
+						NormalsFile = "radar_normals.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [81/64, -47/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [6, 6]
+						Z = 1.4 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [36*1.0,105*1.0, 255*1.0]
+					}
+				]
+			}
+		}
+
+		BatterySprites1
+		{
+			Type = ResourceSprites
+			Location = [42/64, 1]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			RangeLow = 0
+			RangeHigh = 4000
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+					Offset = [0, 0.5]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+					Offset = [0, 0.5]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 2]
+				}
+				{
+					File = "batteries4.png"
+					Size = [1, 2]
+				}
+			]
+		}
+		BatterySprites2 : BatterySprites1
+		{
+			Location = [214/64, 1]
+			RangeLow = 4000
+			RangeHigh = 8000
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+					Offset = [0, 0.5]
+					MirrorU = true
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+					Offset = [0, 0.5]
+					MirrorU = true
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 2]
+					MirrorU = true
+				}
+				{
+					File = "batteries4.png"
+					Size = [1, 2]
+					MirrorU = true
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [2, 2]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed
+			Location = [2, 2]
+		}
+
+		OperationSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [2, 2]
+			OperationalToggle = IsOperational
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "../control_room_small/operating.wav"
+					Volume = .15
+					MaxConcurrentVolume = .3
+					Speed = .75
+					MaxConcurrent = 1
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [2, 2]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [4, 4]
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		PowerUsageContinuousMinutes = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000 * 60
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		SightRange = &~/Part/Components/Sensor/SightRadius
+		RadarRange = &~/Part/Components/Sensor/RadarRadius
+
+		RecPower = (&PowerUsageContinuousMinutes) / 60
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+	}
+}

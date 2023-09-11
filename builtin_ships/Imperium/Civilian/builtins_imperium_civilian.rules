@@ -1,0 +1,17 @@
+Faction = imperium
+Tags = [civilian]
+
+Ships
+[
+	// Trade ships
+	:~{ File="Auklet.ship.png";     Tier=3;  Tags : ~/Tags [trade] }
+	:~{ File="Dovekie.ship.png";    Tier=3;  Tags : ~/Tags [trade] }
+	:~{ File="Cormorant.ship.png";  Tier=5;  Tags : ~/Tags [trade] }
+	:~{ File="Fulmar.ship.png";     Tier=5;  Tags : ~/Tags [trade] }
+	:~{ File="Murrelet.ship.png";   Tier=5;  Tags : ~/Tags [trade] }
+	:~{ File="Pelican.ship.png";    Tier=7;  Tags : ~/Tags [trade] }
+	:~{ File="Petrel.ship.png";     Tier=7;  Tags : ~/Tags [trade] }
+	:~{ File="Guillemot.ship.png";  Tier=7;  Tags : ~/Tags [trade] }
+	:~{ File="Albatross.ship.png";  Tier=10; Tags : ~/Tags [trade] }
+	:~{ File="Shearwater.ship.png"; Tier=10; Tags : ~/Tags [trade] }
+]

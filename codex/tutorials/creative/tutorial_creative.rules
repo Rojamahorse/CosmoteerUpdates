@@ -1,0 +1,30 @@
+ID = creative1
+TitleKey = "Tutorials/Creative/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.IsCreativeMode"
+Entries
+[
+	{
+		TextKey = "Tutorials/Creative/Unlimited"
+	}
+	{
+		Image { Texture { File="new_ship.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Creative/NewShip"
+	}
+	{
+		Image { Texture { File="save_ship.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Creative/SaveShip"
+	}
+	{
+		Image { Texture { File="ship_library.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Creative/AddShip"
+	}
+	{
+		Image { Texture { File="allegiance.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Creative/Allegiance"
+	}
+	{
+		Image { Texture { File="play_as.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Creative/PlayAs"
+	}
+]

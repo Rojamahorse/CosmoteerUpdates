@@ -1,0 +1,79 @@
+Engine
+{
+	CombineMode = Max
+	BaseValue = 100%
+
+	Icon
+	{
+		Texture
+		{
+			File = "buff_engine.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+Factory
+{
+	CombineMode = Add
+	BaseValue = 100%
+
+	Icon
+	{
+		Texture
+		{
+			File = "buff_factory.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+Railgun
+{
+	CombineMode = Add
+}
+
+RailgunShot
+{
+	CombineMode = Add
+	Exponent = 0.8
+	Multiplier = 20%
+	BaseValue = 100%
+
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+	ShowIconTextForZeroValue = false
+}
+
+RailgunOperation
+{
+	CombineMode = Add
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+RailgunReverseOperation
+{
+	CombineMode = Add
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}

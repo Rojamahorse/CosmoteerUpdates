@@ -1,0 +1,42 @@
+AttackCommand : <base_follow_command.rules>/BaseFollowCommand
+{
+	MatchVelocityFactor = .95
+	RightClickSetsAngleThreshold = 30d // This is dynamic based on attack distance and zoom.
+
+	IssueSound
+	{
+		Sound = "command_attack.wav"
+		Volume = .25
+	}
+
+	Circle : <./Data/gui/game/sim_gui.rules>/SelectedShipCircle
+	{
+		Arc = [22.5d, 360d]
+	}
+	CircleAddedRadius = 1.5
+
+	FocusWidget
+	{
+		WIDGETSIZE = 64
+		StateNoneSprite
+		{
+			Texture = &<base_command.rules>/FocusPng
+			VertexColor = [255, 255, 255, 255]
+			Size = [&../../WIDGETSIZE, &../../WIDGETSIZE]
+		}
+		StateOverSprite
+		{
+			Texture = &<base_command.rules>/FocusPng
+			VertexColor = [255*1.5, 255*1.5, 255*1.5, 255]
+			Size = [&../../WIDGETSIZE, &../../WIDGETSIZE]
+		}
+		StateDownSprite
+		{
+			Texture = &<base_command.rules>/FocusPng
+			VertexColor = [255*1.5, 255*1.5, 255*1.5, 255]
+			Size = [&../../WIDGETSIZE, &../../WIDGETSIZE]
+		}
+		MaxWorldSize = [30, 30]
+	}
+	DistIcon = &<./Data/gui/game/game_gui.rules>/AttackIcon
+}

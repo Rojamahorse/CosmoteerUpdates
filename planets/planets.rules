@@ -1,0 +1,41 @@
+Styles
+{
+	alien = &<planet_alien.rules>
+	gas = &<planet_gas.rules>
+	gas_ringed = &<planet_gas_ringed.rules>
+	lava = &<planet_lava.rules>
+	rocky = &<planet_rocky.rules>
+	sand = &<planet_sand.rules>
+	sun = &<planet_sun.rules>
+	terra = &<planet_terra.rules>
+	water = &<planet_water.rules>
+}
+
+DefaultPlanetMaterial
+{
+	Shader = "planet.shader"
+}
+
+DefaultWavesMaterial
+{
+	Shader = "waves.shader"
+    TargetBlendMode
+    {
+        SourceRgbFactor = SourceAlpha
+        DestRgbFactor = One
+        RgbOperator = Add
+        SourceAlphaFactor = InverseDestAlpha
+        DestAlphaFactor = One
+        AlphaOperator = Add
+    }
+}
+
+DefaultHaloMaterial
+{
+	Shader = "halo.shader"
+}
+
+DefaultRingMaterial
+{
+	Shader = "ring.shader"
+}

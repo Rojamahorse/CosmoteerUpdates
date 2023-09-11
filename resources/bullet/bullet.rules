@@ -1,0 +1,172 @@
+ID = bullet
+NameKey = "Resource/Bullet"
+PluralNameKey = "Resource/BulletPlural"
+DescriptionKey = "Resource/BulletDesc"
+BuyPrice = 4
+SellPrice = (&BuyPrice) / 2
+MaxPerNugget = 2
+MaxStackSize = 20
+FlexGridPriorityKey = "flex_grid_bullet"
+FlexGridDefaultPriority = 1
+DropRates = &<../resources.rules>/AmmoDropRates
+
+Icon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = max
+	}
+	Size = [64, 64]
+}
+
+Overlay
+{
+	Texture
+	{
+		File = "overlay.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+DeathHitEffects // Scaled with stack size.
+[
+	{
+		Type = ExplosiveDamage
+		TotalDamage = 6000
+		Radius = 3
+		Delay = .05
+		FireChancePerNDamage = 50%
+		NDamage = 1000
+		CrewKillChance = 10%
+		Filter
+		{
+			OperationalHealth = true
+			StructuralHealth = false
+			Friendlies = true
+		}
+	}
+	{
+		Type = ExplosiveDamage
+		TotalDamage = 1200
+		Radius = 2
+		Delay = .05
+		Filter
+		{
+			OperationalHealth = false
+			StructuralHealth = true
+			Friendlies = true
+			Crew = false
+		}
+	}
+]
+
+DeathMediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+
+NuggetSprites
+[
+	{
+		File = "bullet1.png"
+		NormalsFile = "bullet1_normals.png"
+		Size = [1, 1]
+		Offset = [.25, 0]
+		UVRotation = 1
+	}
+	{
+		File = "bullet2.png"
+		NormalsFile = "bullet2_normals.png"
+		Size = [1, 1]
+		Offset = [.25, 0]
+		UVRotation = 1
+	}
+]
+
+StackSprites
+[
+	{
+		File = "bullet_stack_1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_3.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_4.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_5.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_6.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_7.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_8.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_9.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_10.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_11.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_12.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_13.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_14.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_15.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_16.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_17.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_18.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_19.png"
+		Size = [1, 1]
+	}
+	{
+		File = "bullet_stack_20.png"
+		Size = [1, 1]
+	}
+]
+
+StackReceiveMediaEffects = &/COMMON_EFFECTS/AmmoDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

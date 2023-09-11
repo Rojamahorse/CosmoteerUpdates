@@ -1,0 +1,280 @@
+Type = Particles
+Def
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 0
+	Initializers
+	[
+		{
+			Type = LocationToWorldSpace
+			LocationIn = location
+			LocationOut = location
+			Name = "Location to world space"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = AddFrameOfReference
+			VelocityInOut = velocity
+			Name = "Add frame of reference"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ScaleToWorldSpace
+			ScaleIn = scale
+			ScaleOut = scale
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = RotationToWorldSpace
+			DataOut = rot
+			ValueType = Angle
+			FromValue = 0d
+			ToValue = 360d
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+			RotationIn = rot
+			RotationOut = rot
+		}
+	]
+	Updaters
+	[
+		{
+			Type = Lifetime
+			LifeInOut = life
+			Lifetime = 0.75
+			Name = Lifetime
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = location
+			BIn = velocity
+			ResultOut = location
+			Operator = AddDt
+			Name = "Apply velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ColorRamp
+			DataType = Color
+			AIn = color
+			BIn = base_color
+			ResultOut = color
+			Operator = Multiply
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = true
+			LerpIn = life
+			ColorOut = color
+			Invert = false
+			Colors
+			[
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 0.9
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 0.8
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 0.2
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 0
+				}
+			]
+		}
+		{
+			Type = Operator
+			DataType = Color
+			AIn = color
+			BIn = base_color
+			ResultOut = color
+			Operator = Multiply
+			Name = "Apply base color"
+			Enabled = true
+			UpdateAfterInit = true
+			LerpIn = colRamp
+			ColorOut = color
+			Invert = true
+			Colors
+			[
+				{
+					Rf = 1
+					Gf = 0.9411765
+					Bf = 0.83137256
+					Af = 0.4
+				}
+				{
+					Rf = 1
+					Gf = 0.9411765
+					Bf = 0.83137256
+					Af = 0
+				}
+			]
+		}
+	]
+	Renderer
+	{
+		Type = LightQuadRenderer
+		LocationIn = location
+		ScaleIn = scale
+		RotationIn = rot
+		ColorIn = color
+		UvRectIn
+		BaseSize
+		{
+			X = 1
+			Y = 1
+		}
+		MaxScale = 1
+		Name = ""
+	}
+	Material
+	{
+		Shader = "../particle_light.shader"
+		_z = 0.5
+		_litReflectiveStrength = 12
+		_litAdditiveStrength = 0.05
+		_unlitAdditiveStrength = 0.05
+		Texture
+		{
+			File = "../wet_light_cookie.png"
+			FixTransparentColors = false
+			PreMultiplyByAlpha = false
+			SampleMode = Linear
+			MipLevels = max
+		}
+		TargetBlendMode
+		{
+			SourceRgbFactor = InverseDestColor
+			DestRgbFactor = One
+			RgbOperator = Add
+			SourceAlphaFactor = Zero
+			DestAlphaFactor = One
+			AlphaOperator = Add
+		}
+		Color
+		{
+			Rf = 1
+			Gf = 1
+			Bf = 1
+			Af = 1
+		}
+	}
+	DeleteMode = Fast
+	EnableMultithreading = false
+	InitCapacity = 256
+}
+EmitterDef
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 1
+	PreInitializers
+	[
+		{
+			Type = SetValue
+			DataOut = base_color
+			ValueType = Color
+			Value
+			[
+				251
+				126
+				52
+				200
+			]
+			Name = "Base color"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = scale
+			ValueType = Float
+			Value
+			{
+				Rf = 1
+				Gf = 0.78431374
+				Bf = 0.5882353
+				Af = 0.6862745
+			}
+			Name = "Random scale"
+			Enabled = true
+			UpdateAfterInit = false
+			FromValue = 6
+			ToValue = 8
+		}
+		{
+			Type = SetRandom
+			DataOut = rot
+			ValueType = Angle
+			FromValue = 0d
+			ToValue = 360d
+			Name = "Random rotation"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	PostInitializers[]
+}
+Bucket = Upper4
+MinIntensity = 0
+IsFancy = false
+Sharing = Global
+DontEmitWhenOffScreen = true
+DontEmitWhenOffScreenSizeInflate = 5
+Delay = 0
+IgnoreIntensity = false
+PenetratingBucket
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 3.4028235E+38
+ScaleEmissionWithIntensity = false
+UseRealTime = false
+IsSimple = false
+UnsharedRenderInWorldSpace = false
+ScaleEmissionWithBeamLength = false
+ScaleEmissionWithPartSize = false
+ScaleEmissionWithPartPhysicalSize = false
+CaptureBackBuffer = false
+Filter
+{
+	Ships = true
+	OperationalHealth = true
+	StructuralHealth = true
+	OnlyPartCategories
+	ExcludePartCategories
+	Shields = true
+	Bullets = true
+	OnlyBulletCategories
+	ExcludeBulletCategories
+	Crew = true
+	Nuggets = true
+	IgnoreInvulnerability = true
+	Self
+	TargetedSelf
+	Friendlies = true
+	TargetedFriendlies
+	Enemies = true
+	TargetedEnemies
+	Junk = true
+	TargetedJunk
+}

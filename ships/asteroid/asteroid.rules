@@ -1,0 +1,168 @@
+Asteroid : <../base_ship.rules>
+{
+	ID = cosmoteer.asteroid // Ship IDs must always be in the form of "author_name.ship_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla ships.
+	OtherIDs = [Asteroid, Asteroids]
+	NameKey = "ShipClasses/Asteroid"
+	DefaultPartID = cosmoteer.rock_1x1
+	ImmuneToEnvDamage = true
+	JunkBlocksWeaponLOS = true
+	ExternalWalls = &<asteroid_walls/external_walls.rules>
+	OverrideConstructionMode = InstantCredits
+
+	Blueprints : <../base_ship.rules>/Blueprints
+	{
+		ExternalWalls = &<asteroid_walls/external_blueprint_walls.rules>
+	}
+
+	Roofs : <../base_ship.rules>/Roofs
+	{
+		RoofTexturesFolders = ["./Data/roof_textures"]
+		DefaultRoofTexture = "bumpy1"
+
+		RoofDecalGroups = &<./Data/roof_decals/roof_decals.rules>/Groups
+
+		DefaultBaseColor
+		{
+			H = 36
+			S = 0.28//0.14
+			V = 0.79//0.70
+			A = 255
+		}
+	}
+
+	Parts
+	[
+		&<rock/rock_1x1.rules>/Part
+		&<rock/rock_1x1_hard.rules>/Part
+		&<rock/rock_2x2.rules>/Part
+		&<rock/rock_2x2_hard.rules>/Part
+		&<rock/rock_3x3.rules>/Part
+		&<rock/rock_3x3_hard.rules>/Part
+		&<rock/rock_4x4.rules>/Part
+		&<rock/rock_4x4_hard.rules>/Part
+
+		&<rock/rock_1x1_wedge.rules>/Part
+		&<rock/rock_1x2_wedge.rules>/Part
+
+		&<deposit_hyperium/deposit_hyperium_1x.rules>/Part
+		&<deposit_hyperium/deposit_hyperium_1x_hard.rules>/Part
+		&<deposit_hyperium/deposit_hyperium_2x.rules>/Part
+		&<deposit_hyperium/deposit_hyperium_2x_hard.rules>/Part
+		&<deposit_hyperium/deposit_hyperium_3x.rules>/Part
+		&<deposit_hyperium/deposit_hyperium_3x_hard.rules>/Part
+
+		&<deposit_iron/deposit_iron_1x.rules>/Part
+		&<deposit_iron/deposit_iron_1x_hard.rules>/Part
+		&<deposit_iron/deposit_iron_2x.rules>/Part
+		&<deposit_iron/deposit_iron_2x_hard.rules>/Part
+		&<deposit_iron/deposit_iron_3x.rules>/Part
+		&<deposit_iron/deposit_iron_3x_hard.rules>/Part
+
+		&<deposit_copper/deposit_copper_1x.rules>/Part
+		&<deposit_copper/deposit_copper_1x_hard.rules>/Part
+		&<deposit_copper/deposit_copper_2x.rules>/Part
+		&<deposit_copper/deposit_copper_2x_hard.rules>/Part
+		&<deposit_copper/deposit_copper_3x.rules>/Part
+		&<deposit_copper/deposit_copper_3x_hard.rules>/Part
+
+		&<deposit_sulfur/deposit_sulfur_1x.rules>/Part
+		&<deposit_sulfur/deposit_sulfur_1x_hard.rules>/Part
+		&<deposit_sulfur/deposit_sulfur_2x.rules>/Part
+		&<deposit_sulfur/deposit_sulfur_2x_hard.rules>/Part
+		&<deposit_sulfur/deposit_sulfur_3x.rules>/Part
+		&<deposit_sulfur/deposit_sulfur_3x_hard.rules>/Part
+
+		&<deposit_tritanium/deposit_tritanium_1x.rules>/Part
+		&<deposit_tritanium/deposit_tritanium_1x_hard.rules>/Part
+		&<deposit_tritanium/deposit_tritanium_2x.rules>/Part
+		&<deposit_tritanium/deposit_tritanium_2x_hard.rules>/Part
+		&<deposit_tritanium/deposit_tritanium_3x.rules>/Part
+		&<deposit_tritanium/deposit_tritanium_3x_hard.rules>/Part
+
+		&<deposit_gold/deposit_gold_1x.rules>/Part
+		&<deposit_gold/deposit_gold_1x_hard.rules>/Part
+		&<deposit_gold/deposit_gold_2x.rules>/Part
+		&<deposit_gold/deposit_gold_2x_hard.rules>/Part
+		&<deposit_gold/deposit_gold_3x.rules>/Part
+		&<deposit_gold/deposit_gold_3x_hard.rules>/Part
+
+		&<deposit_carbon/deposit_carbon_1x.rules>/Part
+		&<deposit_carbon/deposit_carbon_1x_hard.rules>/Part
+		&<deposit_carbon/deposit_carbon_2x.rules>/Part
+		&<deposit_carbon/deposit_carbon_2x_hard.rules>/Part
+		&<deposit_carbon/deposit_carbon_3x.rules>/Part
+		&<deposit_carbon/deposit_carbon_3x_hard.rules>/Part
+
+		&<deposit_uranium/deposit_uranium_1x.rules>/Part
+		&<deposit_uranium/deposit_uranium_1x_hard.rules>/Part
+		&<deposit_uranium/deposit_uranium_2x.rules>/Part
+		&<deposit_uranium/deposit_uranium_2x_hard.rules>/Part
+		&<deposit_uranium/deposit_uranium_3x.rules>/Part
+		&<deposit_uranium/deposit_uranium_3x_hard.rules>/Part
+	]
+
+	RenderLayers
+	[
+		{
+			Key = "asteroid"// Asteroid bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -50	// low enough so the crew can be rendered over the external walls
+				RenderStage = Low	// low enough so the crew can be rendered over the external walls
+				DrawWithShipGhost = true
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/roof_colored_lit.shader"
+				}
+				DiffuseMaterial
+				{
+					Shader = "../common/roof_colored.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/normals.shader"
+				}
+				GhostMaterial
+				{
+					Shader = "../common/parts_ghost.shader"
+				}
+			}
+		}
+
+		// Asteroid additive lights.
+		{
+			Key = "asteroid_roof_lights_fancy"// Asteroid bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 1300
+				RenderStage = Highest
+				//IsRoof = true
+				DrawWithFancyLightingOnly = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+					SampleMode = Linear
+				}
+				LightMaterial
+				{
+					Shader = "../common/roof_light.shader"
+
+					TargetBlendMode
+					{
+						SourceRgbFactor = InverseDestColor
+						DestRgbFactor = One
+						RgbOperator = Add
+						SourceAlphaFactor = Zero
+						DestAlphaFactor = One
+						AlphaOperator = Add
+					}
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,117 @@
+ID = "cosmoteer.pd_shot"
+OtherIDs = ["point_defense_shot", "pd_shot"]
+Range = 150
+IdealRange = 65
+Speed = 350
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.1
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletLower1
+		Sprite
+		{
+			Texture
+			{
+				File = "pd_shot.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [8, .25]
+		}
+		Offset = [-3.5, 0]
+		LerpScaleFrom = [.25, 1]
+		LerpTime = .05
+	}
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Offset = [-3, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = pd_shot_glow.png
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [8, 2]
+			VertexColor = [255, 255, 255]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.2
+		}
+		LerpScaleFrom = [.25, 1]
+		LerpTime = .05
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+
+        BulletCollisions
+        {
+            Enemies = true
+            Junk = true
+            Friendlies = true
+            OnlyBulletCategories = [missile, mine, bullet]
+        }
+		HitBullet
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 150
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/pd_shot_spikes.rules>
+				&<particles/pd_shot_sparks.rules>
+				&<./Data/ships/terran/point_defense/particles/point_defense_shoot_flash.rules>
+			]
+		}
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 35
+				}
+			]
+			MediaEffects = &../HitBullet/MediaEffects
+		}
+		HitStructural = &HitOperational
+	}
+}

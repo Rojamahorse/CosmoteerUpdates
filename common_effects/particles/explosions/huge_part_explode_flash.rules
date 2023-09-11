@@ -1,0 +1,51 @@
+Type = Particles
+Def = &<../flash_def.rules>
+EmitterDef
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 1
+	PreInitializers
+	[
+		{
+			Type = SetValue
+			DataOut = scale
+			ValueType = Float
+			Value = 18
+			Name = Scale
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetValue
+			DataOut = base_color
+			ValueType = Color
+			Value
+			{
+				Rf = 1
+				Gf = 0.784313738
+				Bf = 0.5882353
+				Af = 0.784313738
+			}
+			Name = "Base color"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	PostInitializers[]
+}
+Bucket = Upper1
+MinIntensity = 0
+IsFancy = true
+Sharing = Global
+DontEmitWhenOffScreen = true
+DontEmitWhenOffScreenSizeInflate = 5
+Delay = 0
+IgnoreIntensity = false
+PenetratingBucket
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 3.40282347E+38
+ScaleEmissionWithIntensity = false
+UseRealTime = false
+UnsharedRenderInWorldSpace = false
+ScaleEmissionWithBeamLength = false
+CaptureBackBuffer = false

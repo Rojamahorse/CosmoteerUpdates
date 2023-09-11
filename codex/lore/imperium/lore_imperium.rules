@@ -1,0 +1,30 @@
+ID = imperium
+TitleKey = "Lore/Imperium/Title"
+TabNameKey = "Codex/Lore"
+Entries
+[
+	{
+		TextKey = "Lore/Imperium/Lore1"
+		Image
+		{
+			Texture
+			{
+				File = "./Data/factions/imperium.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+		}
+	}
+	{
+		TextKey = "Lore/Imperium/Lore2"
+	}
+	{
+		TextKey = "Lore/Imperium/Lore3"
+	}
+	{
+		TextKey = "Lore/Imperium/Lore4"
+	}
+	{
+		TextKey = "Lore/Imperium/Lore5"
+	}
+]
