@@ -1,0 +1,32 @@
+ID = build3
+TitleKey = "Tutorials/Build3/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? (game.Fame >= 64 and game.BuildUIOpen)"
+TempShowCondition = "? game.BlueprintsUIOpen"
+Entries
+[
+	{
+		Image { Texture { File="brush.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build3/Brush"
+	}
+	{
+		Image { Texture { File="mirror_mode.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build3/MirrorMode"
+	}
+	{
+		Image { Texture { File="select_tool.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build3/SelectCopyPaste"
+	}
+	{
+		Image { Texture { File="blueprints_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build3/Button"
+	}
+	{
+		Image { Texture { File="ship_blueprints.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build3/Ship"
+	}
+	{
+		Image { Texture { File="commit.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build3/Commit"
+	}
+]

@@ -1,0 +1,76 @@
+Megaroid : <../base_ship.rules>
+{
+	ID = cosmoteer.megaroid // Ship IDs must always be in the form of "author_name.ship_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla ships.
+	NameKey = "ShipClasses/Megaroid"
+	DefaultPartID = cosmoteer.megarock_1x1
+	ShipScale = 4.0
+	ImmuneToEnvDamage = true
+	JunkBlocksWeaponLOS = true
+	ExternalWalls = &<megaroid_walls/external_walls.rules>
+	OverrideConstructionMode = InstantCredits
+
+	Blueprints : <../base_ship.rules>/Blueprints
+	{
+		ExternalWalls = &<../asteroid/asteroid_walls/external_blueprint_walls.rules>
+	}
+
+	Roofs : <../base_ship.rules>/Roofs
+	{
+		RoofTexturesFolders = ["./Data/roof_textures"]
+		DefaultRoofTexture = "bumpy1"
+
+		RoofDecalGroups = &<./Data/roof_decals/roof_decals.rules>/Groups
+
+		DefaultBaseColor
+		{
+			H = 36
+			S = 0.13
+			V = 0.66
+			A = 190
+		}
+	}
+
+	Parts
+	[
+		&<megarock/megarock_1x1.rules>/Part
+		&<megarock/megarock_2x2.rules>/Part
+		&<megarock/megarock_3x3.rules>/Part
+		&<megarock/megarock_4x4.rules>/Part
+		&<megarock/megarock_1x1_wedge.rules>/Part
+		&<megarock/megarock_1x2_wedge.rules>/Part
+	]
+
+	RenderLayers
+	[
+		{
+			Key = "asteroid"// Asteroid bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -50	// low enough so the crew can be rendered over the external walls
+				RenderStage = Low	// low enough so the crew can be rendered over the external walls
+				DrawWithShipGhost = true
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "../common/roof_colored_lit.shader"
+				}
+				DiffuseMaterial
+				{
+					Shader = "../common/roof_colored.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "../common/normals.shader"
+				}
+				GhostMaterial
+				{
+					Shader = "../common/parts_ghost.shader"
+				}
+			}
+		}
+	]
+}

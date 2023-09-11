@@ -1,0 +1,392 @@
+Mode : <../base_pvp.rules>
+{
+	Icon
+	{
+		Texture
+		{
+			File = "domination.png"
+			SampleMode = Linear
+			MipLevels = 2
+		}
+	}
+
+	IncomeInterval = 5
+	SpawnSeparationRadiusFactor = 2
+	JunkDamageFractionPerTick = .1
+	JunkDamageChancePerTick = .01
+	PerimeterDistance = 200
+
+	CapturePointTypes
+	[
+		&~/CapturePointSmall
+		&~/CapturePointLarge
+		&~/CapturePointHuge
+	]
+
+	SpawnPointType = &~/SpawnPoint
+
+	MapStyles
+	[
+		{
+			NameKey = "DominationMapStyles/Small2T"
+			DescriptionKey = "DominationMapStyles/Small2TTip"
+			Teams = 2
+			CapturePointTypeCounts = [2, 1, 0]
+			StartingCapturePointTypeCountsPerTeam = [1, 0, 0]
+			DoodadTypeCounts
+			[
+				[cosmoteer.megaroid_l, 8]
+				[cosmoteer.megaroid_xl, 4]
+			]
+		}
+		{
+			NameKey = "DominationMapStyles/Med2T"
+			DescriptionKey = "DominationMapStyles/Med2TTip"
+			Teams = 2
+			CapturePointTypeCounts = [4, 1, 0]
+			StartingCapturePointTypeCountsPerTeam = [2, 0, 0]
+			DoodadTypeCounts
+			[
+				[cosmoteer.megaroid_l, 16]
+				[cosmoteer.megaroid_xl, 4]
+			]
+		}
+		{
+			NameKey = "DominationMapStyles/Large2T"
+			DescriptionKey = "DominationMapStyles/Large2TTip"
+			Teams = 2
+			CapturePointTypeCounts = [6, 2, 1]
+			StartingCapturePointTypeCountsPerTeam = [3, 1, 0]
+			DoodadTypeCounts
+			[
+				[cosmoteer.megaroid_l, 24]
+				[cosmoteer.megaroid_xl, 8]
+			]
+		}
+		{
+			NameKey = "DominationMapStyles/Small3T"
+			DescriptionKey = "DominationMapStyles/Small3TTip"
+			Teams = 3
+			CapturePointTypeCounts = [3, 1, 0]
+			StartingCapturePointTypeCountsPerTeam = [1, 0, 0]
+			DoodadTypeCounts
+			[
+				[cosmoteer.megaroid_l, 12]
+				[cosmoteer.megaroid_xl, 4]
+			]
+		}
+		{
+			NameKey = "DominationMapStyles/Med3T"
+			DescriptionKey = "DominationMapStyles/Med3TTip"
+			Teams = 3
+			CapturePointTypeCounts = [6, 1, 0]
+			StartingCapturePointTypeCountsPerTeam = [2, 0, 0]
+			DoodadTypeCounts
+			[
+				[cosmoteer.megaroid_l, 24]
+				[cosmoteer.megaroid_xl, 4]
+			]
+		}
+		{
+			NameKey = "DominationMapStyles/Large3T"
+			DescriptionKey = "DominationMapStyles/Large3TTip"
+			Teams = 3
+			CapturePointTypeCounts = [9, 3, 1]
+			StartingCapturePointTypeCountsPerTeam = [3, 1, 0]
+			DoodadTypeCounts
+			[
+				[cosmoteer.megaroid_l, 36]
+				[cosmoteer.megaroid_xl, 12]
+			]
+		}
+		{
+			NameKey = "DominationMapStyles/Small4T"
+			DescriptionKey = "DominationMapStyles/Small4TTip"
+			Teams = 4
+			CapturePointTypeCounts = [4, 1, 0]
+			StartingCapturePointTypeCountsPerTeam = [1, 0, 0]
+			DoodadTypeCounts
+			[
+				[cosmoteer.megaroid_l, 16]
+				[cosmoteer.megaroid_xl, 4]
+			]
+		}
+		{
+			NameKey = "DominationMapStyles/Med4T"
+			DescriptionKey = "DominationMapStyles/Med4TTip"
+			Teams = 4
+			CapturePointTypeCounts = [8, 1, 0]
+			StartingCapturePointTypeCountsPerTeam = [2, 0, 0]
+			DoodadTypeCounts
+			[
+				[cosmoteer.megaroid_l, 32]
+				[cosmoteer.megaroid_xl, 4]
+			]
+		}
+		{
+			NameKey = "DominationMapStyles/Large4T"
+			DescriptionKey = "DominationMapStyles/Large4TTip"
+			Teams = 4
+			CapturePointTypeCounts = [12, 4, 1]
+			StartingCapturePointTypeCountsPerTeam = [3, 1, 0]
+			DoodadTypeCounts
+			[
+				[cosmoteer.megaroid_l, 48]
+				[cosmoteer.megaroid_xl, 16]
+			]
+		}
+	]
+
+	OfficialRulesets
+	[
+		{
+			NameKey = "DominationModeConfig/Rulesets/Small500K"
+			ShortNameKey = "DominationModeConfig/Rulesets/Small500KShort"
+			Options : ~/BaseOptions
+			{
+				MapStyleIndex = 0
+				MaxFleetValue = 500000
+				TeamFunds = 250000
+				CapturePointIncome = 5000
+				BasicIncome = 5000
+			}
+		}
+		{
+			NameKey = "DominationModeConfig/Rulesets/Small1500K"
+			ShortNameKey = "DominationModeConfig/Rulesets/Small1500KShort"
+			Options : ~/BaseOptions
+			{
+				MapStyleIndex = 0
+				MaxFleetValue = 1500000
+				TeamFunds = 750000
+				CapturePointIncome = 15000
+				BasicIncome = 15000
+			}
+		}
+		{
+			NameKey = "DominationModeConfig/Rulesets/Small3000K"
+			ShortNameKey = "DominationModeConfig/Rulesets/Small3000KShort"
+			Options : ~/BaseOptions
+			{
+				MapStyleIndex = 0
+				MaxFleetValue = 3000000
+				TeamFunds = 1500000
+				CapturePointIncome = 30000
+				BasicIncome = 30000
+			}
+		}
+		{
+			NameKey = "DominationModeConfig/Rulesets/Med500K"
+			ShortNameKey = "DominationModeConfig/Rulesets/Med500KShort"
+			Options : ~/BaseOptions
+			{
+				MapStyleIndex = 1
+				MaxFleetValue = 500000
+				TeamFunds = 250000
+				CapturePointIncome = 3000
+				BasicIncome = 5000
+			}
+		}
+		{
+			NameKey = "DominationModeConfig/Rulesets/Med1500K"
+			ShortNameKey = "DominationModeConfig/Rulesets/Med1500KShort"
+			Options : ~/BaseOptions
+			{
+				MapStyleIndex = 1
+				MaxFleetValue = 1500000
+				TeamFunds = 750000
+				CapturePointIncome = 9000
+				BasicIncome = 15000
+			}
+		}
+		{
+			NameKey = "DominationModeConfig/Rulesets/Med3000K"
+			ShortNameKey = "DominationModeConfig/Rulesets/Med3000KShort"
+			Options : ~/BaseOptions
+			{
+				MapStyleIndex = 1
+				MaxFleetValue = 3000000
+				TeamFunds = 1500000
+				CapturePointIncome = 18000
+				BasicIncome = 30000
+			}
+		}
+		{
+			NameKey = "DominationModeConfig/Rulesets/Large500K"
+			ShortNameKey = "DominationModeConfig/Rulesets/Large500KShort"
+			Options : ~/BaseOptions
+			{
+				MapStyleIndex = 2
+				MaxFleetValue = 500000
+				TeamFunds = 250000
+				CapturePointIncome = 2000
+				BasicIncome = 5000
+			}
+		}
+		{
+			NameKey = "DominationModeConfig/Rulesets/Large1500K"
+			ShortNameKey = "DominationModeConfig/Rulesets/Large1500KShort"
+			Options : ~/BaseOptions
+			{
+				MapStyleIndex = 2
+				MaxFleetValue = 1500000
+				TeamFunds = 750000
+				CapturePointIncome = 6000
+				BasicIncome = 15000
+			}
+		}
+		{
+			NameKey = "DominationModeConfig/Rulesets/Large3000K"
+			ShortNameKey = "DominationModeConfig/Rulesets/Large3000KShort"
+			Options : ~/BaseOptions
+			{
+				MapStyleIndex = 2
+				MaxFleetValue = 3000000
+				TeamFunds = 1500000
+				CapturePointIncome = 12000
+				BasicIncome = 30000
+			}
+		}
+	]
+
+	Teams
+	[
+		{ TeamCount=2; NameFmtKey="PvpModeConfig/TeamsFmt"; IsDefault=true; }
+		{ TeamCount=3; NameFmtKey="PvpModeConfig/TeamsFmt"; }
+		{ TeamCount=4; NameFmtKey="PvpModeConfig/TeamsFmt"; }
+	]
+}
+
+BaseCapturePoint
+{
+	Circle
+	{
+		Thickness = .25
+		QuadCount = 256
+		Texture
+		{
+			File = "capture_point.png"
+			UMode = Wrap
+			VMode = Clamp
+			SampleMode = Linear
+			MipLevels = max
+		}
+	}
+	ProgressCircle
+	{
+		QuadCount = 256
+		Color = [255, 255, 255, 50]
+	}
+	MinimapThicknessScale = 5
+	ProgressCircleTransitionDuration = .25
+	ColorTransitionDuration = .25
+	TransitionColorMultiply = [255, 255, 255, 510]
+	TextYOffset = 0.25
+	TextFadeZoomRange = [600, 300]
+
+	AlertSound
+	{
+		Sound = "cp_alert.wav"
+	}
+	ActivateSound
+	{
+		Sound = "cp_activate.wav"
+	}
+	DeactivateSound
+	{
+		Sound = "cp_deactivate.wav"
+	}
+
+	NeutralIcon
+	{
+		Texture
+		{
+			File = "icon_cp_neutral.png"
+			MipLevels = 3
+			SampleMode = Linear
+		}
+		Size = [16, 16]
+	}
+	OwnedIcon
+	{
+		Texture
+		{
+			File = "icon_cp_owned.png"
+			MipLevels = 3
+			SampleMode = Linear
+		}
+		Size = [16, 16]
+	}
+}
+
+CapturePointSmall : BaseCapturePoint
+{
+	TimeToCapture = 10
+	TimeToUncapture = 10
+	Radius = 100
+	MinDistanceBuffer = 200
+	IncomeRate = 100%
+	CaptureBonus = 100%
+	AreaExpand = pi * ((&Radius) + (&MinDistanceBuffer))^2 * 2
+}
+
+CapturePointLarge : BaseCapturePoint
+{
+	TimeToCapture = 20
+	TimeToUncapture = 20
+	Radius = 200
+	MinDistanceBuffer = 200
+	IncomeRate = 200%
+	CaptureBonus = 100%
+	AreaExpand = pi * ((&Radius) + (&MinDistanceBuffer))^2 * 2
+
+	NeutralIcon : ^/0/NeutralIcon { Size=[24, 24]; }
+	OwnedIcon   : ^/0/OwnedIcon   { Size=[24, 24]; }
+}
+
+CapturePointHuge : BaseCapturePoint
+{
+	TimeToCapture = 30
+	TimeToUncapture = 30
+	Radius = 300
+	MinDistanceBuffer = 200
+	IncomeRate = 300%
+	CaptureBonus = 100%
+	AreaExpand = pi * ((&Radius) + (&MinDistanceBuffer))^2 * 2
+
+	NeutralIcon : ^/0/NeutralIcon { Size=[32, 32]; }
+	OwnedIcon   : ^/0/OwnedIcon   { Size=[32, 32]; }
+}
+
+SpawnPoint
+{
+	Radius = 200
+	SightRadius = 400
+	EnemyDamageFractionPerTick = .2
+	EnemyDamageChancePerTick = .01
+	MinDistanceBuffer = 200
+	AreaExpand = pi * ((&Radius) + (&MinDistanceBuffer))^2 * 2
+
+	Circle: <./Data/gui/game/sim_gui.rules>/SelectedShipCircle
+	{
+		Arc = [-11.25d, 360d]
+		VertexColor = [255, 255, 255, 127]
+		DashRepeat = 7
+	}
+	MinimapThicknessScale = 20
+}
+
+BaseOptions
+{
+	GameSpeed = 2 // Index into list.
+	TimeLimit = 2 // Index into list.
+	ShipAssignMode = 0 // Index into list.
+	ShipPreviewMode = 1 // Index into list.
+	ShareFunds = 0 // true/false
+	FogOfWar = 1 // true/false
+	AllowIllegalShips = 0 // true/false
+	FriendlyFire = 0 // true/false
+	AllowChangeShips = 1 // true/false
+	ResourceDrops = 0 // true/false
+	ShipConstruction = 1 // true/false
+}

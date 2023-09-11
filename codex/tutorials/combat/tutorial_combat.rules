@@ -1,0 +1,19 @@
+ID = combat
+TitleKey = "Tutorials/Combat/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? sim.EnemyDetected"
+AutoPause = true
+Entries
+[
+	{
+		Image { Texture { File="radar_blip.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Combat/Blips"
+	}
+	{
+		Image { Texture { File="attack.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Combat/Attack"
+	}
+	{
+		TextKey = "Tutorials/Combat/Tip"
+	}
+]

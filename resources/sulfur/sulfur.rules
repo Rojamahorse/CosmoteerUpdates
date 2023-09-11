@@ -1,0 +1,106 @@
+ID = sulfur
+NameKey = "Resource/Sulfur"
+PluralNameKey = "Resource/SulfurPlural"
+DescriptionKey = "Resource/SulfurDesc"
+BuyPrice = 20
+AsteroidDensity = 20 / (&BuyPrice)
+MaxPerNugget = 1
+MaxStackSize = 5
+FlexGridPriorityKey = "flex_grid_sulfur"
+FlexGridDefaultPriority = 1
+DropRates : &<../resources.rules>/ElementDropRates
+{
+	StorageDestroyed = 0%
+}
+
+Icon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = max
+	}
+	Size = [64, 64]
+}
+
+Overlay
+{
+	Texture
+	{
+		File = "overlay.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+DeathHitEffects // Scaled with stack size.
+[
+	{
+		Type = ExplosiveDamage
+		TotalDamage = 6000
+		Radius = 3
+		Delay = .05
+		FireChancePerNDamage = 50%
+		NDamage = 1000
+		CrewKillChance = 10%
+		Filter
+		{
+			OperationalHealth = true
+			StructuralHealth = false
+			Friendlies = true
+		}
+	}
+	{
+		Type = ExplosiveDamage
+		TotalDamage = 1200
+		Radius = 2
+		Delay = .05
+		Filter
+		{
+			OperationalHealth = false
+			StructuralHealth = true
+			Friendlies = true
+			Crew = false
+		}
+	}
+]
+
+DeathMediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+
+NuggetSprite
+{
+	File = "sulfur.png"
+	NormalsFile = "sulfur_normals.png"
+	Size = [1, 1]
+	Offset = [.25+4/64, 0]
+	UVRotation = 1
+}
+
+StackSprites
+[
+	{
+		File = "sulfur_stack_1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "sulfur_stack_2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "sulfur_stack_3.png"
+		Size = [1, 1]
+	}
+	{
+		File = "sulfur_stack_4.png"
+		Size = [1, 1]
+	}
+	{
+		File = "sulfur_stack_5.png"
+		Size = [1, 1]
+	}
+]
+
+StackReceiveMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

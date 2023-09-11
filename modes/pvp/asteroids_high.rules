@@ -1,0 +1,23 @@
+Spawners
+[
+	{
+		Type = Doodads
+		Tags = [asteroid]
+		Count = 2
+		MultiplyCount = AreaSquareKM
+		Distance = [0, 1000]
+		MultiplyDistance = AreaRadiusKM
+		MinDistanceFromTags
+		[
+			[player, 100]
+			[capture_point, 100]
+			[spawn_point, 200]
+			[asteroid, 0]
+		]
+		DoodadTypes
+		[
+			{ Type=cosmoteer.megaroid_l;  ChanceWeight=2; }
+			{ Type=cosmoteer.megaroid_xl; ChanceWeight=1; }
+		]
+	}
+]

@@ -1,0 +1,25 @@
+ID = missions
+TitleKey = "Tutorials/Missions/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.HasSeenCodexPage('comms') and game.CommWindowOpen"
+Entries
+[
+	{
+		TextKey = "Tutorials/Missions/Info"
+	}
+	{
+		Image { Texture { File="tab.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Missions/Stations"
+	}
+	{
+		Image { Texture { File="danger_level.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Missions/DangerLevel"
+	}
+	{
+		Image { Texture { File="accept.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Missions/Accept"
+	}
+	{
+		TextKey = "Tutorials/Missions/Tip"
+	}
+]

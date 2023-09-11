@@ -1,0 +1,103 @@
+Doodads
+[
+	// Planets.
+	&<planets/doodad_planet_sun.rules>
+	&<planets/doodad_planet_terra.rules>
+	&<planets/doodad_planet_rocky.rules>
+	&<planets/doodad_planet_lava.rules>
+	&<planets/doodad_planet_sand.rules>
+	&<planets/doodad_planet_alien.rules>
+	&<planets/doodad_planet_water.rules>
+	&<planets/doodad_planet_gas.rules>
+	&<planets/doodad_planet_gas_ringed.rules>
+	&<planets/doodad_planet_mini_sun.rules>
+
+	// Asteroids.
+	&<asteroids/plain/doodad_asteroid_s.rules>
+	&<asteroids/plain/doodad_asteroid_m.rules>
+	&<asteroids/plain/doodad_asteroid_l.rules>
+	&<asteroids/plain/doodad_asteroid_xl.rules>
+	&<asteroids/plain/doodad_asteroid_xxl.rules>
+	&<asteroids/megaroid/doodad_megaroid_l.rules>
+	&<asteroids/megaroid/doodad_megaroid_xl.rules>
+	&<asteroids/hyperium/doodad_asteroid_hyperium_s.rules>
+	&<asteroids/hyperium/doodad_asteroid_hyperium_m.rules>
+	&<asteroids/hyperium/doodad_asteroid_hyperium_l.rules>
+	&<asteroids/hyperium/doodad_asteroid_hyperium_xl.rules>
+	&<asteroids/hyperium/doodad_asteroid_hyperium_xxl.rules>
+	&<asteroids/iron/doodad_asteroid_iron_s.rules>
+	&<asteroids/iron/doodad_asteroid_iron_m.rules>
+	&<asteroids/iron/doodad_asteroid_iron_l.rules>
+	&<asteroids/iron/doodad_asteroid_iron_xl.rules>
+	&<asteroids/iron/doodad_asteroid_iron_xxl.rules>
+	&<asteroids/copper/doodad_asteroid_copper_s.rules>
+	&<asteroids/copper/doodad_asteroid_copper_m.rules>
+	&<asteroids/copper/doodad_asteroid_copper_l.rules>
+	&<asteroids/copper/doodad_asteroid_copper_xl.rules>
+	&<asteroids/copper/doodad_asteroid_copper_xxl.rules>
+	&<asteroids/sulfur/doodad_asteroid_sulfur_s.rules>
+	&<asteroids/sulfur/doodad_asteroid_sulfur_m.rules>
+	&<asteroids/sulfur/doodad_asteroid_sulfur_l.rules>
+	&<asteroids/sulfur/doodad_asteroid_sulfur_xl.rules>
+	&<asteroids/sulfur/doodad_asteroid_sulfur_xxl.rules>
+	&<asteroids/tritanium/doodad_asteroid_tritanium_s.rules>
+	&<asteroids/tritanium/doodad_asteroid_tritanium_m.rules>
+	&<asteroids/tritanium/doodad_asteroid_tritanium_l.rules>
+	&<asteroids/tritanium/doodad_asteroid_tritanium_xl.rules>
+	&<asteroids/tritanium/doodad_asteroid_tritanium_xxl.rules>
+	&<asteroids/gold/doodad_asteroid_gold_s.rules>
+	&<asteroids/gold/doodad_asteroid_gold_m.rules>
+	&<asteroids/gold/doodad_asteroid_gold_l.rules>
+	&<asteroids/gold/doodad_asteroid_gold_xl.rules>
+	&<asteroids/gold/doodad_asteroid_gold_xxl.rules>
+	&<asteroids/carbon/doodad_asteroid_carbon_s.rules>
+	&<asteroids/carbon/doodad_asteroid_carbon_m.rules>
+	&<asteroids/carbon/doodad_asteroid_carbon_l.rules>
+	&<asteroids/carbon/doodad_asteroid_carbon_xl.rules>
+	&<asteroids/carbon/doodad_asteroid_carbon_xxl.rules>
+	&<asteroids/uranium/doodad_asteroid_uranium_s.rules>
+	&<asteroids/uranium/doodad_asteroid_uranium_m.rules>
+	&<asteroids/uranium/doodad_asteroid_uranium_l.rules>
+	&<asteroids/uranium/doodad_asteroid_uranium_xl.rules>
+	&<asteroids/uranium/doodad_asteroid_uranium_xxl.rules>
+
+	// Resources.
+	&<resources/doodad_resource_hyperium.rules>
+	&<resources/doodad_resource_bullet.rules>
+	&<resources/doodad_resource_missile_part_he.rules>
+	&<resources/doodad_resource_missile_part_emp.rules>
+	&<resources/doodad_resource_missile_part_nuke.rules>
+	&<resources/doodad_resource_mine_part.rules>
+	&<resources/doodad_resource_steel.rules>
+	&<resources/doodad_resource_coil.rules>
+	&<resources/doodad_resource_coil2.rules>
+	&<resources/doodad_resource_tristeel.rules>
+	&<resources/doodad_resource_diamond.rules>
+	&<resources/doodad_resource_processor.rules>
+	&<resources/doodad_resource_enriched_uranium.rules>
+	&<resources/doodad_resource_sulfur.rules>
+	&<resources/doodad_resource_iron.rules>
+	&<resources/doodad_resource_copper.rules>
+	&<resources/doodad_resource_tritanium.rules>
+	&<resources/doodad_resource_carbon.rules>
+	&<resources/doodad_resource_gold.rules>
+	&<resources/doodad_resource_uranium.rules>
+
+	// Points of interest.
+	&<poi/doodad_poi_unknown.rules>
+	&<poi/doodad_poi_asteroid_field.rules>
+	&<poi/doodad_poi_graveyard.rules>
+	&<poi/doodad_poi_target_area.rules>
+	&<poi/doodad_poi_ring.rules>
+	&<poi/doodad_poi_custom.rules>
+
+	// FTL.
+	&<ftl/doodad_ftl_gate.rules>
+	&<ftl/doodad_ftl_beacon_fringe.rules>
+	&<ftl/doodad_ftl_beacon_monolith.rules>
+	&<ftl/doodad_ftl_beacon_cabal.rules>
+	&<ftl/doodad_ftl_beacon_imperium.rules>
+
+	// Crew.
+	&<crew/doodad_crew_generic.rules>
+]

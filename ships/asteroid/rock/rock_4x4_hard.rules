@@ -1,0 +1,142 @@
+Part : <../base_part_asteroid.rules>/Part
+{
+	NameKey = "Parts/Rock4x4Hard"
+	DescriptionKey = "Parts/RockHardDesc"
+	ID = cosmoteer.rock_4x4_hard // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	SelectionTypeID = "rock"
+	EditorGroup = "Rock"
+	Resources = []
+	Size = [4, 4]
+	IsFlippable = true
+	MaxHealth = 320000
+	IsCrewSalvageable = false
+	EditorReplacementPartID = cosmoteer.rock_1x1_hard
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	EditorIcon
+	{
+		Texture = "rock_hard_4x4_icon.png"
+		Size = [80, 80]
+	}
+	Components : ^/0/Components
+	{
+		Sprite
+		{
+			Type = Sprite
+			Location = [2, 2]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "rock_hard_4x4_v1.png"
+						NormalsFile = "rock_hard_4x4_v1_normals.png"
+						Size = [4, 4]
+					}
+					{
+						File = "rock_hard_4x4_v1_33.png"
+						NormalsFile = "rock_hard_4x4_v1_normals_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "rock_hard_4x4_v1_66.png"
+						NormalsFile = "rock_hard_4x4_v1_normals_66.png"
+						Size = [4, 4]
+					}
+				]
+				[
+					{
+						File = "rock_hard_4x4_v2.png"
+						NormalsFile = "rock_hard_4x4_v2_normals.png"
+						Size = [4, 4]
+					}
+					{
+						File = "rock_hard_4x4_v2_33.png"
+						NormalsFile = "rock_hard_4x4_v2_normals_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "rock_hard_4x4_v2_66.png"
+						NormalsFile = "rock_hard_4x4_v2_normals_66.png"
+						Size = [4, 4]
+					}
+				]
+				[
+					{
+						File = "rock_hard_4x4_v3.png"
+						NormalsFile = "rock_hard_4x4_v3_normals.png"
+						Size = [4, 4]
+					}
+					{
+						File = "rock_hard_4x4_v3_33.png"
+						NormalsFile = "rock_hard_4x4_v3_normals_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "rock_hard_4x4_v3_66.png"
+						NormalsFile = "rock_hard_4x4_v3_normals_66.png"
+						Size = [4, 4]
+					}
+				]
+				[
+					{
+						File = "rock_hard_4x4_v4.png"
+						NormalsFile = "rock_hard_4x4_v4_normals.png"
+						Size = [4, 4]
+					}
+					{
+						File = "rock_hard_4x4_v4_33.png"
+						NormalsFile = "rock_hard_4x4_v4_normals_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "rock_hard_4x4_v4_66.png"
+						NormalsFile = "rock_hard_4x4_v4_normals_66.png"
+						Size = [4, 4]
+					}
+				]
+				[
+					{
+						File = "rock_hard_4x4_v5.png"
+						NormalsFile = "rock_hard_4x4_v5_normals.png"
+						Size = [4, 4]
+					}
+					{
+						File = "rock_hard_4x4_v5_33.png"
+						NormalsFile = "rock_hard_4x4_v5_normals_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "rock_hard_4x4_v5_66.png"
+						NormalsFile = "rock_hard_4x4_v5_normals_66.png"
+						Size = [4, 4]
+					}
+				]
+				[
+					{
+						File = "rock_hard_4x4_v6.png"
+						NormalsFile = "rock_hard_4x4_v6_normals.png"
+						Size = [4, 4]
+					}
+					{
+						File = "rock_hard_4x4_v6_33.png"
+						NormalsFile = "rock_hard_4x4_v6_normals_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "rock_hard_4x4_v6_66.png"
+						NormalsFile = "rock_hard_4x4_v6_normals_66.png"
+						Size = [4, 4]
+					}
+				]
+			]
+			RandomUVRotation = true
+			Layer = "asteroid"
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "rock_hard_4x4_blueprints.png"
+			Size = [4, 4]
+		}
+	}
+}

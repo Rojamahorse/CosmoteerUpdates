@@ -1,0 +1,59 @@
+Type = Particles
+Def = &<./Data/common_effects/particles/smoke_short_def.rules>
+EmitterDef
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 10
+	PreInitializers
+	[
+		{
+			Type = SetRandomVelocity
+			VelocityOut = velocity
+			Speed
+			{
+				Min = 0
+				Max = 1.5
+			}
+			Direction
+			{
+				Min = 0d
+				Max = 360d
+			}
+			Name = "Initial velocity"
+			Enabled = true
+			UpdateAfterInit = false
+			DataOut = location
+			ValueType = Vector2D
+			Value
+			{
+				X = -0.5
+				Y = 0
+			}
+		}
+		{
+			Type = SetValue
+			DataOut = base_scale
+			ValueType = Float
+			Value = 1
+			Name = "Base scale"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	PostInitializers[]
+	UpdatedEmittedParticles = false
+}
+Bucket = BulletSmoke
+Delay = 0
+IgnoreIntensity = false
+Sharing = Global
+MinIntensity = 0
+IsFancy = true
+DontEmitWhenOffScreen = true
+DontEmitWhenOffScreenSizeInflate = 3
+PenetratingBucket
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 3.40282347E+38
+ScaleEmissionWithIntensity = true
+UnsharedRenderInWorldSpace = false
+ScaleEmissionWithBeamLength = false

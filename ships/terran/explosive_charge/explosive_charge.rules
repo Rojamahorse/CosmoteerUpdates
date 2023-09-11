@@ -1,0 +1,224 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ExplosiveCharge"
+	IconNameKey = "Parts/ExplosiveChargeIcon"
+	ID = cosmoteer.explosive_charge // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [explosive_charge]
+	EditorGroup = "Utilities"
+	DescriptionKey = "Parts/ExplosiveChargeDesc"
+	Resources
+	[
+		[steel, 16]
+		[coil, 6]
+	]
+	TypeCategories = [explosives]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Size = [1, 1]
+	IsRotateable = false
+	SelectionPriority = 1
+	MaxHealth = 1000
+	CreateUnderlyingWhenDestroyed = false
+	CrewSpeedFactor = 0
+	AllowedDoorLocations = []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		DetonateTrigger
+		{
+			Type = UITrigger
+			TriggerID = "detonate"
+		}
+
+		DetonateEffects
+		{
+			// This just destroys the part, which in turn will trigger the DeathEffects, causing the actual collateral damage.
+
+			Type = TriggeredEffects
+			Trigger = DetonateTrigger
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 999999
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = true
+					}
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [.5, .5]
+
+			MediaEffects
+			[
+				&<./Data/common_effects/particles/explosions/med_part_explode.rules>
+				&<./Data/common_effects/particles/explosions/big_part_explode_flash.rules>
+				&<particles/explosive_charge_shockwave.rules>
+				&<./Data/common_effects/particles/explosions/med_part_explode_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/common_effects/sounds/big_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = 1
+				}
+			]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 25000
+					Radius = 2.5
+					Delay = .05
+					ImpulsePerNDamage = 10
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 9500
+					Radius = 2.5
+					Delay = .05
+					ImpulsePerNDamage = 5
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+					}
+				}
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"lights1.png"
+							"lights2.png"
+							"lights3.png"
+							"lights4.png"
+							"lights5.png"
+							"lights4.png"
+							"lights3.png"
+							"lights2.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = .1
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"roof_light1.png"
+							"roof_light2.png"
+							"roof_light3.png"
+							"roof_light4.png"
+							"roof_light5.png"
+							"roof_light4.png"
+							"roof_light3.png"
+							"roof_light2.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = .1
+						AnimationStartTime = Zero
+					}
+				]
+			}
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		SimpleMaxDamage = &~/Part/Components/DestroyedEffects/HitEffects/0/TotalDamage
+		DamageArea = &~/Part/Components/DestroyedEffects/HitEffects/0/Radius
+	}
+}

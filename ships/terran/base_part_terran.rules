@@ -1,0 +1,96 @@
+Part : <../base_part.rules>/Part
+{
+	SalvageProgressMediaEffectsTimeout = 1
+	SalvageProgressMediaEffects
+	[
+		&<../common/particles/salvage_progress_sparks.rules>
+		&<../common/particles/salvage_progress_ship_smoke.rules>
+		&<../common/particles/salvage_progress_ship_quad.rules>
+	]
+
+	ConstructionProgressMediaEffects
+	[
+		&<../common/particles/construction_scaffolding_progress_quad.rules>
+	]
+	ConstructionProgressMediaEffectsTimeout = 1
+
+	ConstructionSwapDelay = 0.2
+	ConstructionFinishedMediaEffects
+	[
+		&<construction/particles/scaffolding_poof_wisps.rules>
+		&<construction/particles/scaffolding_poof_energy.rules>
+		&<construction/particles/scaffolding_poof_energy_simple.rules>
+		&<construction/particles/scaffolding_poof_shadow_quad.rules>
+		&<construction/particles/scaffolding_poof_flash.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "../common/construction_complete.wav"
+			Speed = 1.0
+			SpeedVariation = 0.15
+		}
+	]
+
+	Components : ^/0/Components
+	{
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			//Location = [0.5, 0.5]
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				&<../common/particles/salvage_complete_ship_shrapnel.rules>
+				&<../common/particles/salvage_complete_ship_flash.rules>
+				&<../common/particles/salvage_complete_ship_smoke.rules>
+
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "../common/salvage_finish.wav"
+					Volume = 0.75
+					SpeedVariation = .25
+				}
+			]
+		}
+
+		ConstructionStructureSprites
+		{
+			Type = SpriteGrid
+			IncludeWhenUnderConstruction = true
+			IncludeWhenNotUnderConstruction = false
+			Layer = "structure"
+			RectType = Physical
+			RandomUVRotation = true
+			AtlasSprite = &<structure/structure.rules>/Part/Components/Graphics/Floor/DamageLevels/0
+		}
+
+		ConstructionProgressSprites
+		{
+			Type = BlendSpriteGrid
+			IncludeWhenUnderConstruction = true
+			IncludeWhenNotUnderConstruction = false
+			Layer = "construction"
+			AmbiguousSprites = &<construction/scaffolding.rules>/AmbiguousSprites
+			AllowUndefinedBlendSprites = true
+			BlendsWithCategories = []
+			AlwaysBlendWithSelf = true
+			UseConstructionProgressAsDamage = true
+		}
+
+		ConstructionProgressAnimationSprites
+		{
+			Type = BlendSpriteGrid
+			IncludeWhenUnderConstruction = true
+			IncludeWhenNotUnderConstruction = false
+			GetColorFrom = ConstructionTracker
+			Layer = "construction_delta"
+			AmbiguousSprites = &<construction/scaffolding_delta/scaffolding_delta.rules>/AmbiguousSprites
+			AllowUndefinedBlendSprites = true
+			BlendsWithCategories = []
+			AlwaysBlendWithSelf = true
+			UseConstructionProgressAsDamage = true
+		}
+	}
+}

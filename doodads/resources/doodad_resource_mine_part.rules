@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_mine_part
+Type = Resource
+DescriptionKey = "Resource/MinePart"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/mine_part/mine_part.png"
+		MipLevels = 2
+	}
+}
+ResourceType = mine_part

@@ -1,0 +1,12 @@
+Faction = cabal
+IDPrefix = "Cabal"
+Tags = [defense]
+
+Ships
+[
+	// Platforms
+	:~{ File="Small Laser Platform.ship.png";     Tier=2; Difficulty=2; }
+	:~{ File="Small Disruptor Platform.ship.png"; Tier=2; Difficulty=2; }
+	:~{ File="Small EMP Platform.ship.png";       Tier=2; Difficulty=2; }
+	:~{ File="Small Ion Platform.ship.png";       Tier=2; Difficulty=2; }
+]

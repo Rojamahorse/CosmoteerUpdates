@@ -1,0 +1,639 @@
+SelectCrewCursor = &<../sim_gui.rules>/PartModeCursor
+AssignToSquadCursor
+{
+	File = "cursor_assign_squad.png"
+	HotSpot = [8, 8]
+	Scale = .5
+}
+SetCrewRoleCursor
+{
+	File = "../cursor_magic.png"
+	HotSpot = [22, 22]
+	Scale = .5
+}
+
+TargetToolCursor = &<../resources/resources_gui.rules>/SupplyChainToolCursor
+TargetToolSelectionCursor = &<../resources/resources_gui.rules>/SupplyChainToolSelectionCursor
+
+ToolIcon
+{
+	Texture
+	{
+		File = "hud_crew.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+RosterIcon
+{
+	Texture
+	{
+		File = "roster.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+SelectCrewIcon
+{
+	Texture
+	{
+		File = "../tool_select.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+TargetToolOffIcon
+{
+	Texture
+	{
+		File = "tool_target_squads_off.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+TargetToolOnIcon
+{
+	Texture
+	{
+		File = "tool_target_squads_on.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+ClearSquadTargetsIcon
+{
+	Texture
+	{
+		File = "../designer/tool_delete_selected.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+TransferCrewIcon = &ToolIcon
+
+CrewSelectionOutlineSprite
+{
+	VertexColor = [255, 255, 255, 255]
+}
+CrewSelectionFillSprite
+{
+	VertexColor = [255, 255, 255, 16]
+}
+
+CrewSelectSound = &<../sim_gui.rules>/PartSelectSound
+AssignToSquadSound = &<./Data/commands/command_move.rules>/MoveCommand/IssueSound
+ChangeRoleColorSound = &<../designer/paint_gui.rules>/PaintSound
+SetCrewRoleSound = &<../designer/build_gui.rules>/BlueprintAddSound
+SquadSelectSound = &<../sim_gui.rules>/PartSelectSound
+SquadDeselectSound = &<../sim_gui.rules>/PartDeselectSound
+AddSquadTargetSound = &<../designer/build_gui.rules>/BlueprintAddSound
+RemoveSquadTargetSound = &<../designer/build_gui.rules>/BlueprintDeleteSound
+
+TentativeCrewCircle
+{
+	Texture
+	{
+		File = "../overlay_selection_thin.png"
+		SampleMode = Linear
+		MipLevels = 2
+	}
+	VertexColor = [255, 255, 255, 153]
+	Thickness = .25
+	QuadCount = 32
+}
+SelectedCrewCircle
+{
+	Texture
+	{
+		File = "../overlay_selection_thin.png"
+		SampleMode = Linear
+		MipLevels = 2
+	}
+	VertexColor = [255, 255, 255, 255]
+	Thickness = .25
+	QuadCount = 32
+}
+
+SquadCrewCircle
+{
+	Texture
+	{
+		File = "../overlay_selection_thin.png"
+		SampleMode = Linear
+		MipLevels = 2
+	}
+	VertexColor = [255, 255, 255, 255]
+	Thickness = .25
+	QuadCount = 32
+}
+
+SquadCrewDimCircle
+{
+	Texture
+	{
+		File = "../overlay_selection_thin.png"
+		SampleMode = Linear
+		MipLevels = 2
+	}
+	VertexColor = [255, 255, 255, 153]
+	Thickness = .25
+	QuadCount = 32
+}
+
+TentativeCrewLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_dotted.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [255, 255, 255, 153]
+	}
+	LineThickness = .25
+	LineUPerLength = 4
+	LineBeginOverhang = 7/64
+}
+SelectedCrewLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_dotted.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	LineThickness = .25
+	LineUPerLength = 4
+	LineBeginOverhang = 7/64
+}
+SquadCrewLine = &SelectedCrewLine
+SquadCrewDimLine = &TentativeCrewLine
+
+TentativeSquadNineSlice : SelectedSquadNineSlice
+{
+	VertexColor = [255, 255, 255, 153]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+}
+
+SelectedSquadNineSlice
+{
+	TopLeftSprite
+	{
+		Texture
+		{
+			File = "../overlay_rect_dotted.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		Source = [0, 0, 64, 64]
+	}
+	TopRightSprite : TopLeftSprite { Source=[192, 0, 64, 64]; }
+	BottomLeftSprite : TopLeftSprite { Source=[0, 192, 64, 64]; }
+	BottomRightSprite : TopLeftSprite { Source=[192, 192, 64, 64]; }
+
+	LeftSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_dotted_v.png"
+			SampleMode = Linear
+			MipLevels = max
+			VMode = Wrap
+		}
+	}
+	RightSprite = &LeftSprite
+
+	TopSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_dotted.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+	}
+	BottomSprite = &TopSprite
+
+	Borders = 0.25
+	Bleed = 0.125 - 7/64
+	EdgeCenterUPerWidth = 2
+	EdgeCenterVPerHeight = 2
+}
+
+TentativeCrewPathLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "crew_path.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [255, 255, 255, 153]
+	}
+	LineThickness = .5
+	LineUPerLength = 1
+
+	EndCapSprite
+	{
+		Texture
+		{
+			File = "crew_path_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 153]
+	}
+	EndCapSize = [.5, .5]
+	EndCapOverlap = .25
+}
+
+SelectedCrewPathLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "crew_path.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	LineThickness = .5
+	LineUPerLength = 1
+
+	EndCapSprite
+	{
+		Texture
+		{
+			File = "crew_path_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	EndCapSize = [.5, .5]
+	EndCapOverlap = .25
+}
+
+CrewPathLineUSpeed = 4
+
+RoleSprite
+{
+	Texture
+	{
+		File = "role_base.png"
+		SampleMode = Linear
+		MipLevels = 2
+	}
+
+	_shirtTexture
+	{
+		File = "role_shirt.png"
+		SampleMode = Linear
+		MipLevels = 2
+	}
+
+	Shader = "role.shader"
+	Size = [96, 96]
+}
+RoleCursorSprite : RoleSprite
+{
+	Size = [32, 32]
+}
+
+RoleDragLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/dot.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [155, 214, 255, 255]
+		UVRect = [.5, 0, 0, 1]
+	}
+	LineThickness = 6
+
+	BeginCapSprite : LineSprite
+	{
+		UVRect = [0, 0, .5, 1]
+	}
+	BeginCapSize = [3, 6]
+
+	EndCapSprite : LineSprite
+	{
+		UVRect = [.5, 0, .5, 1]
+	}
+	EndCapSize = [3, 6]
+}
+
+PriorityDisableSprite
+{
+	Texture
+	{
+		File = "priority_disable.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+}
+
+MirrorLine = &<../designer/build_gui.rules>/MirrorLine
+MirrorOffSprite = &<../designer/build_gui.rules>/MirrorOffSprite
+MirrorOnSprite = &<../designer/build_gui.rules>/MirrorOnSprite
+
+CrewHighlightDimColor = [0, 0, 0, 127]
+CrewHighlightSprite
+{
+	Texture
+	{
+		File = "crew_highlight.png"
+		MipLevels = max
+		SampleMode = Linear
+	}
+	Size = [1, 1]
+	Shader = "crew_highlight.shader"
+	TargetBlendMode
+	{
+		SourceRgbFactor = Zero
+		DestRgbFactor = One
+		RgbOperator = Add
+		SourceAlphaFactor = One
+		DestAlphaFactor = One
+		AlphaOperator = Min
+	}
+}
+PartHighlightNineSlice
+{
+	TopLeftSprite
+	{
+		Texture
+		{
+			File = "../overlay_highlight.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		Source = [0, 0, 16, 16]
+		Shader = "crew_highlight.shader"
+		TargetBlendMode
+		{
+			SourceRgbFactor = Zero
+			DestRgbFactor = One
+			RgbOperator = Add
+			SourceAlphaFactor = One
+			DestAlphaFactor = One
+			AlphaOperator = Min
+		}
+	}
+	TopSprite : TopLeftSprite { Source=[16, 0, 32, 16]; }
+	TopRightSprite : TopLeftSprite { Source=[48, 0, 16, 16]; }
+	LeftSprite : TopLeftSprite { Source=[0, 16, 16, 32]; }
+	CenterSprite : TopLeftSprite { Source=[16, 16, 32, 32]; }
+	RightSprite : TopLeftSprite { Source=[48, 16, 16, 32]; }
+	BottomLeftSprite : TopLeftSprite { Source=[0, 48, 16, 16]; }
+	BottomSprite : TopLeftSprite { Source=[16, 48, 32, 16]; }
+	BottomRightSprite : TopLeftSprite { Source=[48, 48, 16, 16]; }
+	Borders = 12/64
+}
+PartHighlightTweenTime = .1
+
+SelectedPartNineSlice : <./Data/gui/game/sim_gui.rules>/SelectedPartNineSlice
+{
+	VertexColor = [10, 212, 98, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+SelectedMirroredPartNineSlice : <./Data/gui/game/sim_gui.rules>/SelectedPartNineSlice
+{
+	VertexColor = [10, 212, 98, 127]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+
+TentativePartNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+{
+	VertexColor = [10, 212, 98, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+TentativeMirroredPartNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+{
+	VertexColor = [10, 212, 98, 127]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+
+TentativeTargetNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+{
+	VertexColor = [0, 183, 255, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+
+SetCrewRoleNineSlice : SelectedSquadNineSlice
+{
+	VertexColor = [10, 212, 98, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+}
+AlreadySetCrewRoleNineSlice = &TentativeSquadNineSlice
+
+RandomizeCrewIcon
+{
+	Texture
+	{
+		File = "../randomize.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+FavoriteSprite
+{
+	Texture
+	{
+		File = "favorite.png"
+		MipLevels = max
+		SampleMode = Linear
+	}
+	Size = [20, 20]
+}
+
+FavoriteUnderlaySprite : FavoriteSprite
+{
+	Size = [1.5, 1.5]
+}
+
+TargetLineDim
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_arrow.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [0, 183, 255, 96]
+	}
+	LineThickness = .4
+	LineUPerLength = -2
+}
+TargetLineFull
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_arrow.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [0, 183, 255, 255]
+	}
+	LineThickness = .4
+	LineUPerLength = -2
+}
+TargetLineSelected
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_arrow.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [10, 212, 98, 255]
+	}
+	LineThickness = .4
+	LineUPerLength = -2
+}
+TentativeTargetLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_arrow.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [10, 212, 98, 127]
+	}
+	LineThickness = .4
+	LineUPerLength = -2
+}
+TargetLineUSpeed = 2
+
+CrewOverlayIcon
+{
+	Texture
+	{
+		File = "overlay_crew.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+CrewOverlayIconBackgroundSprite
+{
+	Texture
+	{
+		File = "./Data/gui/gradient_radial.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1.2, 1.2]
+	VertexColor = [0, 0, 0, 300]
+}
+
+SourceOverlayDimColor = [0, 183, 255, 127]
+SourceOverlayPulsingColorRange
+[
+	[0, 183, 255, 200]
+	[128, 219, 255, 255]
+]
+SourceOverlayPulseInterval = 1
+SourceOverlaySelectedColor = [10, 212, 98, 255]
+
+TargetOverlayDimColor = [255, 255, 255, 127]
+TargetOverlayPulsingColorRange
+[
+	[0, 183, 255, 200]
+	[128, 219, 255, 255]
+]
+TargetOverlayPulseInterval = 1
+TargetOverlaySelectedColor = [10, 212, 98, 255]

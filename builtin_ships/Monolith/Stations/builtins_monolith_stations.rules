@@ -1,0 +1,18 @@
+Faction = monolith
+Tags = [station]
+
+Ships
+[
+	// Civilian stations
+	:~{ File="Small Monolith Trade Station.ship.png"; Tier=4;  Tags : ~/Tags [trade_station];    StasisIcon="Small Monolith Trade Station.png" }
+	:~{ File="Small Monolith Trade Station II.ship.png"; Tier=4;  Tags : ~/Tags [trade_station];    StasisIcon="Small Monolith Trade Station II.png" }
+	:~{ File="Med Monolith Trade Station.ship.png";   Tier=10; Tags : ~/Tags [trade_station];    StasisIcon="Med Monolith Trade Station.png" }
+	:~{ File="Large Monolith Trade Station.ship.png"; Tier=16; Tags : ~/Tags [trade_station];    StasisIcon="Large Monolith Trade Station.png" }
+
+	// Military stations
+	:~{ File="Minor Monolith Arms Depot.ship.png";    Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station]; StasisIcon="Minor Monolith Arms Depot.png" }
+	:~{ File="Minor Monolith Arms Depot II.ship.png";    Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station]; StasisIcon="Minor Monolith Arms Depot II.png" }
+	:~{ File="Small Monolith Arms Depot.ship.png";    Tier=9;  SpawnTier=8;  Tags : ~/Tags [military_station]; StasisIcon="Small Monolith Arms Depot.png" }
+	:~{ File="Med Monolith Arms Depot.ship.png";      Tier=12; SpawnTier=12; Tags : ~/Tags [military_station]; StasisIcon="Med Monolith Arms Depot.png" }
+	:~{ File="Large Monolith Arms Depot.ship.png";    Tier=16; SpawnTier=16; Tags : ~/Tags [military_station]; StasisIcon="Large Monolith Arms Depot.png" }
+]

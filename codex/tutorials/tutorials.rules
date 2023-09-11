@@ -1,0 +1,92 @@
+CodexPages
+[
+	// On game start.
+	&<camera/tutorial_camera.rules>
+	&<movement/tutorial_movement.rules>
+	&<time/tutorial_time.rules>
+	&<comms/tutorial_comms.rules>
+	&<missions/tutorial_missions.rules>
+	&<missions/tutorial_missions2.rules>
+
+	// On first enemy detected.
+	&<combat/tutorial_combat.rules>
+	&<tactics/tutorial_tactics.rules>
+	&<salvaging/tutorial_salvaging.rules>
+	&<repairs/tutorial_repairs.rules>
+
+	// After completing first mission.
+	&<missions/tutorial_missions3.rules>
+
+	// Fame 10 (near station)
+	&<build/tutorial_build.rules>
+	&<build/tutorial_build2.rules>
+
+	// Fame 15
+	&<crew/tutorial_crew.rules>
+
+	// Fame 20 (near station)
+	&<fame/tutorial_fame.rules>
+	&<crew/tutorial_crew2.rules>
+	&<crew/tutorial_crew3.rules>
+
+	// Fame 25
+	&<thrusters/tutorial_thrusters.rules>
+
+	// Fame 30 (near station)
+	&<resources/tutorial_resources.rules>
+
+	// Near asteroid after resources tutorial.
+	&<mining/tutorial_mining.rules>
+
+	// Fame 35
+	&<power/tutorial_power.rules>
+
+	// Fame 40
+	&<techs/tutorial_techs.rules>
+	&<camera/tutorial_camera2.rules>
+
+	// Fame 46
+	&<paint/tutorial_paint.rules>
+
+	// Fame 52
+	&<ftl/tutorial_ftl.rules>
+
+	// Fame 58
+	&<micro/tutorial_micro.rules>
+
+	// Fame 64 (build UI open)
+	&<build/tutorial_build3.rules>
+
+	// Fame 70
+	&<movement/tutorial_movement2.rules>
+	&<tactics/tutorial_tactics2.rules>
+	&<advanced_commands/tutorial_advanced_commands.rules>
+
+	// Fame 76
+	&<crew/tutorial_crew4.rules>
+	&<crew/tutorial_crew5.rules>
+
+	// Fame 82
+	&<crew/tutorial_crew6.rules>
+
+	// Fame 88
+	&<resources/tutorial_resources2.rules>
+
+	// Fame 140 (end of first system)
+	&<ftl/tutorial_ftl2.rules>
+
+	// Context dependent:
+	&<command_points/tutorial_command_points.rules>
+	&<cannons/tutorial_cannons.rules>
+	&<missiles/tutorial_missiles.rules>
+	&<ion_beams/tutorial_ion_beams.rules>
+	&<railguns/tutorial_railguns.rules>
+	&<abandoned_ships/tutorial_abandoned_ships.rules>
+	&<fleets/tutorial_fleets.rules>
+	&<formations/tutorial_formations.rules>
+	&<fires/tutorial_fires.rules>
+	&<creative/tutorial_creative.rules>
+	&<direct_control/tutorial_direct_control.rules>
+	&<wanted/tutorial_wanted.rules>
+	&<reputation/tutorial_reputation.rules>
+]

@@ -1,0 +1,93 @@
+Type = Particles
+Def = &<../smoke_def.rules>
+EmitterDef
+{
+	EmitPerSecond = 0
+	EmitPerOneShot
+	{
+		Min = 18
+		Max = 24
+	}
+	PreInitializers
+	[
+		{
+			Type = SetRandomVelocity
+			VelocityOut = velocity
+			Speed
+			{
+				Min = 0.4
+				Max = 1.5
+			}
+			Direction
+			{
+				Min = 0d
+				Max = 360d
+			}
+			Name = "Initial velocity"
+			Enabled = true
+			UpdateAfterInit = false
+			DataOut = location
+			ValueType = Vector2D
+			Value
+			{
+				X = -0.5
+				Y = 0
+			}
+		}
+		{
+			Type = SetValue
+			DataOut = dist
+			ValueType = Float
+			Value = 1
+			Name = "Set Spawn Distance"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Float
+			AIn = velocity
+			BIn = dist
+			ResultOut = location
+			Operator = Multiply
+			Name = "Offset Position by Distance and Velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			LocationOut = location
+			Circle
+			{
+				Center
+				{
+					X = 0
+					Y = 0
+				}
+				Radius = 0.5
+			}
+			Perimeter = false
+			Name = "Random Base Scale"
+			Enabled = true
+			UpdateAfterInit = false
+			DataOut = base_scale
+			ValueType = Float
+			FromValue = 3
+			ToValue = 6
+		}
+	]
+	PostInitializers[]
+	UpdatedEmittedParticles = false
+}
+Bucket = Upper2
+Delay = 0
+IgnoreIntensity = false
+Sharing = Global
+MinIntensity = 0
+IsFancy = true
+DontEmitWhenOffScreen = true
+DontEmitWhenOffScreenSizeInflate = 3
+PenetratingBucket
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 3.40282347E+38
+ScaleEmissionWithIntensity = false

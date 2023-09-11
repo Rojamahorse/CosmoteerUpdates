@@ -1,0 +1,107 @@
+Faction = monolith
+Tags = [combat]
+
+Ships
+[
+	// Scouts
+	:~{ File="Cartridge.ship.png";   Tier=1;  Difficulty=1; }
+	:~{ File="Byte.ship.png";        Tier=1;  Difficulty=1; }
+	:~{ File="Toothpick.ship.png";   Tier=1;  Difficulty=1; }
+	:~{ File="Spotter.ship.png";     Tier=1;  Difficulty=1; }
+	:~{ File="Clink.ship.png";       Tier=1;  Difficulty=1; }
+	:~{ File="Iota.ship.png";        Tier=1;  Difficulty=1; }
+	:~{ File="Instigator.ship.png";  Tier=2;  Difficulty=1; }
+	:~{ File="Intrepid.ship.png";    Tier=2;  Difficulty=1; }
+	:~{ File="Contender.ship.png";   Tier=2;  Difficulty=1; }
+	:~{ File="Stiletto.ship.png";    Tier=2;  Difficulty=2; }
+	:~{ File="Knave.ship.png";       Tier=2;  Difficulty=2; }
+	:~{ File="Ordnance.ship.png";    Tier=3;  Difficulty=1; }
+	:~{ File="Sentinel.ship.png";    Tier=3;  Difficulty=1; }
+	:~{ File="Paladin.ship.png";     Tier=3;  Difficulty=1; OtherIDs=["Twinshot"];  }
+	:~{ File="Roughhouser.ship.png"; Tier=3;  Difficulty=1; }
+	:~{ File="Crown.ship.png";       Tier=3;  Difficulty=1; }
+	:~{ File="Bouncer.ship.png";     Tier=3;  Difficulty=2; }
+	:~{ File="Coutilier.ship.png";   Tier=3;  Difficulty=2; }
+	:~{ File="Accoster.ship.png";    Tier=3;  Difficulty=2; }
+	:~{ File="Ternion.ship.png";     Tier=3;  Difficulty=2; }
+
+	// Patrol ships
+	:~{ File="Triad.ship.png";       Tier=4;  Difficulty=1; }
+	:~{ File="Gunner.ship.png";      Tier=4;  Difficulty=1; }
+	:~{ File="Vindicator.ship.png";  Tier=4;  Difficulty=2; }
+	:~{ File="Bombardier.ship.png";  Tier=4;  Difficulty=2; }
+	:~{ File="Quad.ship.png";        Tier=4;  Difficulty=2; }
+	:~{ File="Hellion.ship.png";     Tier=5;  Difficulty=1; }
+	:~{ File="Cannoneer.ship.png";   Tier=5;  Difficulty=2; }
+	:~{ File="Dyad.ship.png";        Tier=5;  Difficulty=2; }
+	:~{ File="Rochre.ship.png";      Tier=5;  Difficulty=2; }
+	:~{ File="Gallant.ship.png";     Tier=5;  Difficulty=2; }
+	:~{ File="Journeyman.ship.png";  Tier=5;  Difficulty=2; }
+	:~{ File="Howitzer.ship.png";    Tier=6;  Difficulty=1; }
+	:~{ File="Ambuscader.ship.png";  Tier=6;  Difficulty=1; }
+	:~{ File="Sapper.ship.png";      Tier=6;  Difficulty=2; }
+	:~{ File="Valkyrie.ship.png";    Tier=6;  Difficulty=2; }
+	:~{ File="Spotlight.ship.png";   Tier=6;  Difficulty=2; }
+
+	// Corvettes
+	:~{ File="Onset.ship.png";       Tier=7;  Difficulty=1; }
+	:~{ File="Silencer.ship.png";    Tier=7;  Difficulty=1; }
+	:~{ File="Bastion.ship.png";     Tier=7;  Difficulty=2; }
+	:~{ File="Quickdraw.ship.png";   Tier=7;  Difficulty=2; }
+	:~{ File="Swiftwing.ship.png";   Tier=8;  Difficulty=1; }
+	:~{ File="Bulwark.ship.png";     Tier=8;  Difficulty=1; }
+	:~{ File="Echo.ship.png";        Tier=8;  Difficulty=2; }
+	:~{ File="Gunwing.ship.png";     Tier=9;  Difficulty=1; }
+	:~{ File="Skypiercer.ship.png";  Tier=9;  Difficulty=1; }
+	:~{ File="Rampart.ship.png";     Tier=9;  Difficulty=2; }
+	:~{ File="Balistraria.ship.png"; Tier=9;  Difficulty=2; }
+
+	// Frigates
+	:~{ File="Stalwart.ship.png";    Tier=10; Difficulty=1; }
+	:~{ File="Onrush.ship.png";      Tier=10; Difficulty=2; }
+	:~{ File="Iconoclast.ship.png";  Tier=10; Difficulty=2; }
+	:~{ File="Obviator.ship.png";    Tier=10; Difficulty=2; }
+	:~{ File="Aegis.ship.png";       Tier=10; Difficulty=2; }
+	:~{ File="Crossguard.ship.png";  Tier=11; Difficulty=2; }
+	:~{ File="Hullbreaker.ship.png"; Tier=11; Difficulty=2; }
+	:~{ File="Anvil.ship.png";       Tier=11; Difficulty=2; }
+	:~{ File="Gavel.ship.png";       Tier=11; Difficulty=2; }
+	:~{ File="Dispatcher.ship.png";  Tier=11; Difficulty=3; }
+	:~{ File="Ballista.ship.png";    Tier=12; Difficulty=2; }
+	:~{ File="Arquebus.ship.png";    Tier=12; Difficulty=3; }
+	:~{ File="Haymaker.ship.png";    Tier=12; Difficulty=3; }
+	:~{ File="Impaler.ship.png";     Tier=12; Difficulty=3; }
+
+	// Destroyers
+	:~{ File="Warden.ship.png";      Tier=13; Difficulty=2; }
+	:~{ File="Bandsaw.ship.png";     Tier=13; Difficulty=2; }
+	:~{ File="Mercygiver.ship.png";  Tier=13; Difficulty=3; }
+	:~{ File="Auditor.ship.png";     Tier=13; Difficulty=3; }
+	:~{ File="Sledgehammer.ship.png";Tier=13; Difficulty=3; }
+	:~{ File="Peacekeeper.ship.png"; Tier=14; Difficulty=2; }
+	:~{ File="Liberator.ship.png";   Tier=14; Difficulty=2; }
+	:~{ File="Onslaught.ship.png";   Tier=14; Difficulty=3; }
+	:~{ File="Magistrate.ship.png";  Tier=14; Difficulty=3; }
+	:~{ File="Smasher.ship.png";     Tier=14; Difficulty=3; }
+
+	// Cruisers
+	:~{ File="Enforcer.ship.png";    Tier=15; Difficulty=2; }
+	:~{ File="Khyber.ship.png";      Tier=15; Difficulty=2; }
+	:~{ File="Guardian.ship.png";    Tier=15; Difficulty=3; }
+	:~{ File="Project Mjolnir.ship.png"; Tier=15; Difficulty=3; }
+	:~{ File="Liquidator.ship.png";  Tier=15; Difficulty=3; }
+
+	// Battleships
+	:~{ File="Longspear.ship.png";   Tier=16; Difficulty=2; }
+	:~{ File="Interdictor.ship.png"; Tier=16; Difficulty=2; }
+	:~{ File="Mitigator.ship.png";   Tier=16; Difficulty=3; }
+	:~{ File="Onager.ship.png";      Tier=16; Difficulty=3; }
+
+	// Battlecruisers
+	:~{ File="Executor.ship.png";    Tier=17; Difficulty=3; }
+	:~{ File="Arbalest.ship.png";    Tier=17; Difficulty=3; }
+
+	// Flagships
+	:~{ File="Arbiter.ship.png";     Tier=18; Difficulty=3; }
+	:~{ File="Shestopyor.ship.png";  Tier=18; Difficulty=3; }
+]

@@ -1,0 +1,22 @@
+ID = cannons
+TitleKey = "Tutorials/Cannons/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.HasPartCategoryInHand('uses_ammo') or game.HasPartCategoryInHand('provides_ammo') or game.HasTechUnlocked('cosmoteer.cannon_med')"
+Entries
+[
+	{
+		Image { Texture { File="cannon.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Cannons/Cannon"
+	}
+	{
+		Image = &<./Data/resources/bullet/bullet.rules>/Icon
+		TextKey = "Tutorials/Cannons/Factory"
+	}
+	{
+		Image { Texture { File="crew.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Cannons/Crew"
+	}
+	{
+		TextKey = "Tutorials/Cannons/Tip"
+	}
+]

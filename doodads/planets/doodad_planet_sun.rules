@@ -1,0 +1,67 @@
+ID = cosmoteer.planet_sun
+Type = Planet
+DescriptionKey = "Doodads/PlanetSun"
+CategoryKey = "Doodads/Planets"
+Icon
+{
+	Texture
+	{
+		File = "planet_sun.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+StyleID = sun
+TextureSize = [512, 512]
+ScaleRange = [1250, 10000]
+RandomScaleRange = 3000
+DefaultScale = 3000
+RenderStage = Upper
+IsLightSource = true
+ShowInMinimap = true
+MinimapColorScale = [255, 255, 255, 255]
+
+ProximityDamage
+{
+	AvoidanceTags = [sun]
+	InstantKillRadius = 1
+	RaycastDamageRadius = 2.5
+	RaycastsPerDiameterPerSecond = 30
+	RaycastDamage = [100, 10]
+	RaycastDamageDistanceExponent = 0.5
+	IgnoreShipTypes = [cosmoteer.asteroid, cosmoteer.megaroid, cosmoteer.ancient]
+	RaycastDamageMediaEffects
+	[
+		&<particles/sun_damage.rules>
+	]
+	RaycastDamageCircle
+	{
+		Thickness = 8
+		QuadCount = 256
+		UVRect = [0, 1, .25, -1]
+		Color = [255, 255, 255, 127]
+		Texture
+		{
+			File = "./Data/modes/pvp/perimeter.png"
+			UMode = Wrap
+			SampleMode = Linear
+			MipLevels = max
+		}
+		Shader = "./Data/modes/pvp/perimeter.shader"
+		TargetBlendMode
+		{
+			SourceRgbFactor = SourceAlpha
+			DestRgbFactor = One
+			RgbOperator = Add
+			SourceAlphaFactor = Zero
+			DestAlphaFactor = One
+			AlphaOperator = Add
+		}
+	}
+	RaycastDamageCircleThicknessZoomExponent = .4
+	RaycastDamageMinimapCircle : RaycastDamageCircle
+	{
+		Thickness = 4
+		Color = [255, 255, 255, 255]
+	}
+}

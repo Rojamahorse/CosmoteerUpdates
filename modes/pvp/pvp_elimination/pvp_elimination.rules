@@ -1,0 +1,117 @@
+Mode : <../base_pvp.rules>
+{
+	Icon
+	{
+		Texture
+		{
+			File = "elimination.png"
+			SampleMode = Linear
+			MipLevels = 2
+		}
+	}
+
+	OfficialRulesets
+	[
+		// Team vs Team
+		{
+			NameKey = "EliminationModeConfig/Rulesets/TVT500K"
+			ShortNameKey = "EliminationModeConfig/Rulesets/TVT500KShort"
+			Options : ~/BaseTVTOptions
+			{
+				TeamFunds = 500000
+				MaxShipValue = 500000
+			}
+		}
+		{
+			NameKey = "EliminationModeConfig/Rulesets/TVT1500K"
+			ShortNameKey = "EliminationModeConfig/Rulesets/TVT1500KShort"
+			IsDefault = true
+			Options : ~/BaseTVTOptions
+			{
+				TeamFunds = 1500000
+				MaxShipValue = 1500000
+			}
+		}
+		{
+			NameKey = "EliminationModeConfig/Rulesets/TVT3000K"
+			ShortNameKey = "EliminationModeConfig/Rulesets/TVT3000KShort"
+			IsDefault = true
+			Options : ~/BaseTVTOptions
+			{
+				TeamFunds = 3000000
+				MaxShipValue = 3000000
+			}
+		}
+
+		// Battle Royale
+		{
+			NameKey = "EliminationModeConfig/Rulesets/BR500K"
+			ShortNameKey = "EliminationModeConfig/Rulesets/BR500KShort"
+			Options : ~/BaseBROptions
+			{
+				TeamFunds = 500000
+				MaxShipValue = 500000
+			}
+		}
+		{
+			NameKey = "EliminationModeConfig/Rulesets/BR1500K"
+			ShortNameKey = "EliminationModeConfig/Rulesets/BR1500KShort"
+			IsDefault = true
+			Options : ~/BaseBROptions
+			{
+				TeamFunds = 1500000
+				MaxShipValue = 1500000
+			}
+		}
+		{
+			NameKey = "EliminationModeConfig/Rulesets/BR3000K"
+			ShortNameKey = "EliminationModeConfig/Rulesets/BR3000KShort"
+			IsDefault = true
+			Options : ~/BaseBROptions
+			{
+				TeamFunds = 3000000
+				MaxShipValue = 3000000
+			}
+		}
+	]
+}
+
+BaseTVTOptions
+{
+	TeamCount = 0 // Index into list.
+	GameSpeed = 2 // Index into list.
+	MaxShips = 4 // Index into list.
+	TimeLimit = 2 // Index into list.
+	ShipAssignMode = 0 // Index into list.
+	ShipPreviewMode = 1 // Index into list.
+	FleetDistance = 1 // Index into list.
+	PerimeterDistance = 2 // Index into list.
+	ShrinkingPerimeter = 1 // true/false
+	ShareFunds = 0 // true/false
+	FogOfWar = 0 // true/false
+	AllowIllegalShips = 0 // true/false
+	FriendlyFire = 0 // true/false
+	VictoryCondition = 1 // Index into list.
+	ResourceDrops = 0 // true/false
+	ShipConstruction = 1 // true/false
+}
+
+BaseBROptions
+{
+	TeamCount = 3 // Index into list.
+	GameSpeed = 2 // Index into list.
+	MaxShips = 4 // Index into list.
+	TimeLimit = 2 // Index into list.
+	ShipAssignMode = 0 // Index into list.
+	ShipPreviewMode = 1 // Index into list.
+	FleetDistance = 0 // Index into list.
+	PerimeterDistance = 0 // Index into list.
+	ShrinkingPerimeter = 1 // true/false
+	ShareFunds = 0 // true/false
+	FogOfWar = 0 // true/false
+	AllowIllegalShips = 0 // true/false
+	FriendlyFire = 0 // true/false
+	VictoryCondition = 1 // Index into list.
+	ResourceDrops = 0 // true/false
+	ShipConstruction = 1 // true/false
+}

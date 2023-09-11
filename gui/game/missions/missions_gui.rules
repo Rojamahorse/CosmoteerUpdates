@@ -1,0 +1,210 @@
+LogIcon
+{
+	Texture
+	{
+	    File = "mission_log.png"
+	    MipLevels = 2
+	    SampleMode = Linear
+	}
+}
+ReputationIcon
+{
+	Texture
+	{
+	    File = "reputation.png"
+	    MipLevels = max
+	    SampleMode = Linear
+	}
+}
+
+TrackedIcon
+{
+	Texture
+	{
+		File = "tracked.png"
+		MipLevels = max
+		SampleMode = Linear
+	}
+}
+UntrackedIcon
+{
+	Texture
+	{
+		File = "untracked.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+NewMissionSound
+{
+	Sound = "new_mission.wav"
+}
+MissionCompletedSound
+{
+	Sound = "mission_completed.wav"
+}
+MissionFailedSound
+{
+	Sound = "mission_failed.wav"
+}
+
+FameLevelUpSound = &MissionCompletedSound
+ReputationLevelUpSound = &MissionCompletedSound
+ReputationLevelDownSound = &MissionFailedSound
+
+NewMissionColorAnim
+[
+	[0,    [255, 225, 127, 0]]
+	[.2,   [255, 225, 127, 255*2.5]]
+	[.7,   [255, 201, 14,  255]]
+	[1.7,  [255, 201, 14,  0]]
+]
+NewMissionNameColorAnim
+[
+	[0,    [255, 255, 255, 0]]
+	[.15,  [255, 255, 255, 0]]
+	[.35,  [255, 255, 255, 255*2.5]]
+	[.85,  [255, 255, 255, 255]]
+	[1.85, [255, 255, 255, 0]]
+]
+
+MissionCompletedColorAnimIn
+[
+	[0,    [127, 255, 180, 0]]
+	[.2,   [127, 255, 180, 255*2.5]]
+	[.7,   [12,  255, 117, 255]]
+]
+MissionCompletedNameColorAnimIn
+[
+	[0,    [255, 255, 255, 0]]
+	[.15,  [255, 255, 255, 0]]
+	[.35,  [255, 255, 255, 255*2.5]]
+	[.85,  [255, 255, 255, 255]]
+]
+MissionCompletedFirstRewardAnimDelayIn = .6
+MissionCompletedAdditionalRewardAnimDelayIn = .6
+MissionCompletedRewardColorAnimIn
+[
+	[0,   [255, 255, 255, 0]]
+	[.2,   [255, 255, 255, 255]]
+]
+MissionCompletedRewardTickDuration = .5
+MissionCompletedDelayAfterLastReward = 1.1
+MissionCompletedColorAnimOut
+[
+	[0,  [12,  255, 117, 255]]
+	[1,  [12,  255, 117, 0]]
+]
+MissionCompletedNameColorAnimOut
+[
+	[0.15, [255, 255, 255, 255]]
+	[1.15, [255, 255, 255, 0]]
+]
+MissionCompletedFirstRewardAnimDelayOut = .3
+MissionCompletedAdditionalRewardAnimDelayOut = .15
+MissionCompletedRewardColorAnimOut
+[
+	[0,  [255, 255, 255, 255]]
+	[1.5,  [255, 255, 255, 0]]
+]
+
+MissionFailedColorAnim
+[
+	[0,    [255, 127, 127, 0]]
+	[.2,   [255, 127, 127, 255*2.5]]
+	[.7,   [255, 4,   0,   255]]
+	[1.7,  [255, 4,   0,   255]]
+	[2.7,  [255, 4,   0,   0]]
+]
+MissionFailedNameColorAnim
+[
+	[0,    [255, 255, 255, 0]]
+	[.15,  [255, 255, 255, 0]]
+	[.35,  [255, 255, 255, 255*2.5]]
+	[.85,  [255, 255, 255, 255]]
+	[1.85, [255, 255, 255, 255]]
+	[2.85, [255, 255, 255, 0]]
+]
+
+FameLevelUpColorAnim
+[
+	[0,    [127, 170, 255, 0]]
+	[.2,   [127, 170, 255, 255*2.5]]
+	[.7,   [0,   183, 255, 255]]
+	[1.7,  [0,   183, 255, 255]]
+	[2.7,  [0,   183, 255, 0]]
+]
+FameLevelUpNameColorAnim
+[
+	[0,    [255, 255, 255, 0]]
+	[.15,  [255, 255, 255, 0]]
+	[.35,  [255, 255, 255, 255*2.5]]
+	[.85,  [255, 255, 255, 255]]
+	[1.85, [255, 255, 255, 255]]
+	[2.85, [255, 255, 255, 0]]
+]
+
+ReputationLevelUpColorAnim
+[
+	[0,    [127, 255, 180, 0]]
+	[.2,   [127, 255, 180, 255*2.5]]
+	[.7,   [12,  255, 117, 255]]
+	[1.7,  [12,  255, 117, 255]]
+	[2.7,  [12,  255, 117, 0]]
+]
+ReputationLevelUpNameColorAnim
+[
+	[0,    [255, 255, 255, 0]]
+	[.15,  [255, 255, 255, 0]]
+	[.35,  [255, 255, 255, 255*2.5]]
+	[.85,  [255, 255, 255, 255]]
+	[1.85, [255, 255, 255, 255]]
+	[2.85, [255, 255, 255, 0]]
+]
+
+ReputationLevelDownColorAnim
+[
+	[0,    [255, 127, 127, 0]]
+	[.2,   [255, 127, 127, 255*2.5]]
+	[.7,   [255, 4,   0,   255]]
+	[1.7,  [255, 4,   0,   255]]
+	[2.7,  [255, 4,   0,   0]]
+]
+ReputationLevelDownNameColorAnim
+[
+	[0,    [255, 255, 255, 0]]
+	[.15,  [255, 255, 255, 0]]
+	[.35,  [255, 255, 255, 255*2.5]]
+	[.85,  [255, 255, 255, 255]]
+	[1.85, [255, 255, 255, 255]]
+	[2.85, [255, 255, 255, 0]]
+]
+
+MaxTrackedMissions = 5
+
+TrackedMissionLandmarkIcon : TrackedIcon
+{
+	Size = [24, 24]
+}
+TrackedMissionLandmarkIconOffset = [0, -28]
+TrackedMissionPOIIcon = &TrackedMissionLandmarkIcon
+TrackedMissionPOIIconOffset = [0, -24]
+TrackedMissionNodeIcon : TrackedMissionLandmarkIcon
+{
+	Size = [32/64, 32/64]
+}
+TrackedMissionNodeIconOffset = [0, -40/64]
+
+UntrackedMissionLandmarkIcon : UntrackedIcon
+{
+	Size = [24, 24]
+}
+UntrackedMissionLandmarkIconOffset = [0, -28]
+UntrackedMissionPOIIcon = &UntrackedMissionLandmarkIcon
+UntrackedMissionPOIIconOffset = [0, -24]
+UntrackedMissionNodeIcon : UntrackedMissionLandmarkIcon
+{
+	Size = [32/64, 32/64]
+}
+UntrackedMissionNodeIconOffset = [0, -40/64]

@@ -1,0 +1,23 @@
+ID = paint
+TitleKey = "Tutorials/Paint/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 46"
+TempShowCondition = "? game.PaintUIOpen"
+Entries
+[
+	{
+		Image { Texture { File="paint_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Paint/Button"
+	}
+	{
+		Image { Texture { File="color_wheel.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Paint/ColorWheel"
+	}
+	{
+		Image { Texture { File="layers.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Paint/Decals"
+	}
+	{
+		TextKey = "Tutorials/Paint/Tip"
+	}
+]

@@ -1,0 +1,554 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/RailgunAccelerator"
+	IconNameKey = "Parts/RailgunAcceleratorIcon"
+	ID = cosmoteer.railgun_accelerator // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "WeaponsProjectile"
+	DescriptionKey = "Parts/RailgunAcceleratorDesc"
+	Resources
+	[
+		[steel, 76]
+		[coil2, 12]
+		[tristeel, 10]
+	]
+	Size = [2, 3]
+	Density = 6
+	SelectionTypeID = "railgun"
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	MaxHealth = 6000
+	Flammable = false
+	TypeCategories = [weapon, uses_power, railgun_ammo, railgun, railgun_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Railgun, RailgunOperation, RailgunReverseOperation]
+	AllowedDoorLocations
+	[
+		[-1, 2]
+		[2, 2]
+	]
+	HasNonContiguousPathing = true
+	BlockedTravelCells
+	[
+		[0, 0]
+		[1, 0]
+		[0, 1]
+		[1, 1]
+	]
+	BlockedTravelCellDirections
+	[
+		{
+			Key = [0, 2]
+			Value = [Right]
+		}
+		{
+			Key = [1, 2]
+			Value = [Left]
+		}
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [46, 69]
+	}
+	Components : ^/0/Components
+	{
+		BuffOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, RailgunOperationBuffToggle]
+			Mode = All
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [BuffOperational, RailgunReverseOperationBuffToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+
+		RailgunBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = Railgun
+		}
+
+		RailgunOperationBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = RailgunOperation
+		}
+
+		RailgunBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = Railgun
+			BuffAmount = { BaseValue=1; BuffType=Railgun; BuffMode=Add; }
+			BuffArea = [0, -1, 2, 1]
+			OperationalToggle = RailgunBuffToggle
+			ChainsFromBuffType = Railgun
+			Criteria
+			{
+				Rot = 0
+				Left = 0
+				Right = 2
+				Bottom = 0
+			}
+		}
+
+		RailgunOperationBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = RailgunOperation
+			BuffArea = [0, -1, 2, 1]
+			OperationalToggle = BuffOperational
+			ChainsFromBuffType = RailgunOperation
+			Criteria
+			{
+				Rot = 0
+				Left = 0
+				Right = 2
+				Bottom = 0
+			}
+		}
+
+		RailgunReverseOperationBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = RailgunReverseOperation
+		}
+
+		ReverseBuffOperationProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = RailgunReverseOperation
+			BuffArea = [0, 3, 2, 1]
+			OperationalToggle = RailgunReverseOperationBuffToggle
+			ChainsFromBuffType = RailgunReverseOperation
+			Criteria
+			{
+				Rot = 0
+				Left = 0
+				Right = 2
+				Top = 3
+			}
+		}
+
+		LoadedAmmo
+		{
+			Type = ResourceStorageProxy
+			ResourceType = bullet
+			PartLocation = [0, 3]
+			PartCriteria
+			{
+				Category = railgun_ammo
+				Rot = 0
+				Left = 0
+				Right = 2
+				Top = 3
+			}
+			ComponentID = LoadedAmmo
+		}
+
+		Weapon // This is called "Weapon" to allow chaining with the launcher.
+		{
+			Type = TriggerProxy
+			PartLocation = [0, -1]
+			PartCriteria
+			{
+				Category = railgun_power
+				Rot = 0
+				Left = 0
+				Right = 2
+				Bottom = 0
+			}
+			ComponentID = Weapon
+		}
+
+		BulletEmitter // This is called "BulletEmitter" to allow chaining with the launcher.
+		{
+			Type = TriggerProxy
+			PartLocation = [0, -1]
+			PartCriteria
+			{
+				Category = railgun_power
+				Rot = 0
+				Left = 0
+				Right = 2
+				Bottom = 0
+			}
+			ComponentID = BulletEmitter
+		}
+
+		PowerDrainOnShoot
+		{
+			Type = ResourceChange
+			Trigger = BulletEmitter
+			ResourceStorage = BatteryStorage
+			Amount = -500
+		}
+
+		StructureGraphics
+		{
+			Type = Graphics
+			Location = [1, 1.5]
+			Floor
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					{
+						File = "../railgun_launcher/structure.png"
+						NormalsFile = "../railgun_launcher/structure_normals.png"
+						Size = [1, 3]
+					}
+					{
+						File = "../railgun_launcher/structure_33.png"
+						NormalsFile = "../railgun_launcher/structure_normals_33.png"
+						Size = [1, 3]
+					}
+					{
+						File = "../railgun_launcher/structure_66.png"
+						NormalsFile = "../railgun_launcher/structure_normals_66.png"
+						Size = [1, 3]
+					}
+				]
+			}
+		}
+
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "../railgun_launcher/floor.png"
+						Size = [2, 3]
+					}
+					{
+						File = "../railgun_launcher/floor_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "../railgun_launcher/floor_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "weapons"
+				DamageLevels
+				[
+					{
+						File = "weapon.png"
+						NormalsFile = "weapon_normals.png"
+						Size = [2, 3]
+					}
+					{
+						File = "weapon_33.png"
+						NormalsFile = "weapon_normals_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "weapon_66.png"
+						NormalsFile = "weapon_normals_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "weapons"
+				DamageLevels
+				[
+					{
+						File = "weapon.png"
+						NormalsFile = "weapon_normals.png"
+						Size = [2, 3]
+					}
+					{
+						File = "weapon_33.png"
+						NormalsFile = "weapon_normals_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "weapon_66.png"
+						NormalsFile = "weapon_normals_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"lights1.png"
+							"lights2.png"
+							"lights3.png"
+							"lights4.png"
+							"lights5.png"
+							"lights6.png"
+						]
+						Size = [2, 3]
+						AnimationInterval = 0.1
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "../railgun_launcher/walls.png"
+						Size = [2, 3]
+					}
+					{
+						File = "../railgun_launcher/walls_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "../railgun_launcher/walls_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1, 2.5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "../railgun_launcher/batteries1.png"
+					Size = [1, 1]
+					Offset = [-0.5, 0]
+				}
+				{
+					File = "../railgun_launcher/batteries2.png"
+					Size = [2, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 2.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [1, 1.5]
+		}
+
+		RecursiveDeath1
+		{
+			Type = DeathEffects
+			Location = [1, -.5]
+
+			HitEffects
+			[
+				{
+					Type = AreaDamage
+					Damage = 3000
+					Radius = .6
+					Falloff = 0
+					Delay = .15
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+			]
+		}
+
+		RecursiveDeath2 : RecursiveDeath1
+		{
+			Location = [1, 3.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Missing component
+				{
+					Toggle = RailgunBuffToggle
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					Delay = &<../railgun_launcher/railgun_launcher.rules>/Part/Components/Weapon/FireInterval
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 3]
+		}
+	}
+
+	Stats
+	{
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		PowerPerShot = -(&~/Part/Components/PowerDrainOnShoot/Amount) / 1000
+		PowerPerSecond = (&PowerPerShot) / (&<../railgun_launcher/railgun_launcher.rules>/Part/Components/Weapon/FireInterval)
+		ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
+
+		RecPower = &PowerPerSecond
+		RecCrew = (&RecPower) * 4
+	}
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/RailgunBuff"
+			Stats
+			{
+				Multiplier = (&<./Data/buffs/buffs.rules>/RailgunShot/Multiplier) * 100
+				Exponent = (&<./Data/buffs/buffs.rules>/RailgunShot/Exponent)
+				BaseValue = ((&<./Data/buffs/buffs.rules>/RailgunShot/BaseValue) - 1) * 100
+				RailgunBuff
+				[
+					(&../BaseValue) + (&../Multiplier) * (1 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (2 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (3 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (4 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (5 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (6 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (7 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (8 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (9 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (10 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (11 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (12 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (13 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (14 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (15 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (16 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (17 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (18 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (19 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (20 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (21 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (22 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (23 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (24 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (25 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (26 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (27 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (28 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (29 ^ (&../Exponent))
+					(&../BaseValue) + (&../Multiplier) * (30 ^ (&../Exponent))
+				]
+			}
+		}
+	]
+}

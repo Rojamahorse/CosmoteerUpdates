@@ -1,0 +1,605 @@
+EditorGroups = &<editor_groups.rules>
+StatBars = &<stat_bars.rules>/StatBars
+
+MirrorLine
+{
+	MirrorLineColor = [10, 212, 98, 255]
+	HandleSprite
+	{
+		Texture
+		{
+			File = "mirror_drag_handle.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	HandleSize = [32, 32]
+}
+
+EditShipToolIcon
+{
+	Texture
+	{
+		File = "hud_build.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+ErrorFlashCount = 2
+ErrorFlashInterval = .1
+
+BlueprintUnderlayColor = [0, 0, 255, 38]
+
+AutoDoorValidColor = [255, 255, 255, 127]
+AutoDoorInvalidColor = [255, 127, 127, 76]
+AutoDoorInvalidCursorColor = [246, 49, 43, 76]
+
+LegalDoorLocationColor1 = [10, 212, 98, 25]
+LegalDoorLocationColor2 = [10, 212, 98, 229]
+LegalDoorLocationInterval = 1
+
+BlueprintsOffSprite
+{
+	Texture
+	{
+		File = "hud_blueprints.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+BlueprintsOnSprite
+{
+	Texture
+	{
+		File = "toggle_blueprints_on.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+RemovePartSprite
+{
+	Texture
+	{
+		File = "tool_delete.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+GrabPartSprite
+{
+	Texture
+	{
+		File = "../tool_grab.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+RepairToolSprite
+{
+	Texture
+	{
+		File = "tool_repair.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+ConstructionInProgressSprite
+{
+	VertexColor = [0, 183, 255, 127]
+	Shader = "./Data/gui/gui_in_progress.shader"
+	Texture = "./Data/gui/gui_in_progress_mask.png"
+	_rotSpeed = 1.0
+	TargetBlendMode
+	{
+		SourceRgbFactor = SourceAlpha
+		DestRgbFactor = One
+		RgbOperator = Add
+		SourceAlphaFactor = Zero
+		DestAlphaFactor = One
+		AlphaOperator = Add
+	}
+}
+
+SelectPartsSprite
+{
+	Texture
+	{
+		File = "../tool_select.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+MirrorOffSprite
+{
+	Texture
+	{
+		File = "toggle_mirror_off.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+MirrorOnSprite
+{
+	Texture
+	{
+		File = "toggle_mirror_on.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+SelectedPartNineSlice = & <./Data/gui/game/sim_gui.rules>/SelectedPartNineSlice
+SelectedMirroredPartNineSlice : SelectedPartNineSlice
+{
+	VertexColor = [255, 255, 255, 127]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+TentativeSelectedPartNineSlice = & <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+TentativeSelectedMirroredPartNineSlice : TentativeSelectedPartNineSlice
+{
+	VertexColor = [255, 255, 255, 127]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+PartSelectionOutlineSprite
+{
+	VertexColor = [255, 255, 255, 255]
+}
+PartSelectionFillSprite
+{
+	VertexColor = [255, 255, 255, 16]
+}
+
+RemovePartColor = [246, 49, 43, 63]
+RemovePartLineColor = [246, 49, 43, 255]
+
+RemovePartNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+{
+	VertexColor = [246, 49, 43, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+
+UnRemovePartNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+{
+	VertexColor = [127, 127, 127, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+
+RemovePartXLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/game/overlay_selection_dashed.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [246, 49, 43, 255]
+		UVRect = [.25, 0, .5, 1]
+	}
+	LineThickness = 1
+
+	BeginCapSprite : LineSprite
+	{
+		UVRect = [0, 0, .25, 1]
+	}
+	BeginCapSize = [.5, 1]
+
+	EndCapSprite : LineSprite
+	{
+		UVRect = [.75, 0, .25, 1]
+	}
+	EndCapSize = [.5, 1]
+}
+RemovePartXLineRectDeflate = .1
+
+GrabPartNineSlice = &TentativeSelectedPartNineSlice
+
+RepairPartNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+{
+	VertexColor = [10, 212, 98, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+
+GrabPartCursor
+{
+	File = "../cursor_grab.png"
+	HotSpot = [40, 40]
+	Scale = .5
+}
+RemovePartCursor
+{
+	File = "cursor_delete.png"
+	HotSpot = [8, 8]
+	Scale = .5
+}
+SelectPartsCursor = &<../sim_gui.rules>/PartModeCursor
+
+RepairCursor
+{
+	File = "cursor_repair.png"
+	HotSpot = [8, 8]
+	Scale = .5
+}
+
+ProhibitedZoneSprite
+{
+	Texture
+	{
+		File = "overlay_prohibited.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+	VertexColor = [255, 255, 255, 51]
+}
+
+DeletedTileSprite
+{
+	Texture
+	{
+		File = "overlay_deletion.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [80/64, 80/64]
+}
+DeletedHorizontalDoorSpriteSize = [(80/64)*(48/64), (80/64)*(14/64)]
+DeletedVerticalDoorSpriteSize = [(80/64)*(14/64), (80/64)*(48/64)]
+
+ConstructionBlockedSprite
+{
+	Texture
+	{
+		File = "overlay_blocked.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+	Shader = "./Data/gui/pulsing.shader"
+}
+
+RotateLeftSprite
+{
+	Texture
+	{
+		File = "tool_rotate_left.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+RotateRightSprite
+{
+	Texture
+	{
+		File = "tool_rotate_right.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+FlipHorizontalSprite
+{
+	Texture
+	{
+		File = "toggle_mirror_off.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+FlipVerticalSprite
+{
+	Texture
+	{
+		File = "tool_flip_vertical.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+TrashcanSprite
+{
+	Texture
+	{
+		File = "tool_delete_selected.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+DeletePartsSprite
+{
+	Texture
+	{
+		File = "tool_delete_selected.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+CopyPartsSprite
+{
+	Texture
+	{
+		File = "tool_copy.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+CutPartsSprite
+{
+	Texture
+	{
+		File = "tool_cut.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+PastePartsSprite
+{
+	Texture
+	{
+		File = "tool_paste.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+CancelPastePartsSprite
+{
+	Texture
+	{
+		File = "../../cancel.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+BuildSound
+{
+	Sound = "build.wav"
+	SpeedRange = [.8, 1.1]
+}
+MakeItSoSound
+{
+	Sound = "construct.wav"
+}
+BlueprintAddSound
+{
+	Sound = "blueprint_add.wav"
+}
+BlueprintDeleteSound
+{
+	Sound = "blueprint_delete.wav"
+}
+BlueprintMakeItSoSound
+{
+	Sound = "blueprint_construct.wav"
+}
+RepairSound = &BuildSound
+RepairAllSound = &MakeItSoSound
+
+CommandPointsSprite
+{
+	Texture
+	{
+		File = "group_flight.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+FtlStatSprite
+{
+	Texture
+	{
+		File = "./Data/resources/hyperium/icon.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+StatBlockSprite
+{
+	Texture
+	{
+		File = "../../stat_block.png"
+		UVMode = Wrap
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Shader = "stat_block.shader"
+}
+StatBlockColorLerp
+[
+	[255, 0, 0]
+	[0, 255, 0]
+]
+
+CommandPointsSufficientColor = [0, 183, 255]
+CommandPointsInsufficientColor = [255, 0, 0]
+
+FtlOverlayAlpha = .5
+FtlOverlayHueRange = [0, 120]
+
+CrewPathLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	LineThickness = .3
+	LineUPerLength = 1
+
+	BeginCapSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	BeginCapSize = [.3, .3]
+	BeginCapOverlap = .15
+
+	EndCapSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	EndCapSize = [.3, .3]
+	EndCapOverlap = .15
+}
+CrewPathWarningLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_warning.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	LineThickness = .3
+	LineUPerLength = 1
+
+	BeginCapSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_warning_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	BeginCapSize = [.3, .3]
+	BeginCapOverlap = .15
+
+	EndCapSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_warning_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	EndCapSize = [.3, .3]
+	EndCapOverlap = .15
+}
+CrewPathStrongWarningLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_strong_warning.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	LineThickness = .3
+	LineUPerLength = 1
+
+	BeginCapSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_strong_warning_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	BeginCapSize = [.3, .3]
+	BeginCapOverlap = .15
+
+	EndCapSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_strong_warning_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	EndCapSize = [.3, .3]
+	EndCapOverlap = .15
+}
+CrewPathLineWarningDist = 6
+CrewPathLineStrongWarningDist = 11
+CrewPathLineUSpeed = 4
+CrewPathOverlapSeparation = [.2, .2]

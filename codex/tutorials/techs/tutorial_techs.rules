@@ -1,0 +1,17 @@
+ID = techs
+TitleKey = "Tutorials/Techs/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 40 and sim.StationInSight and game.HasSeenCodexPage('build')"
+Entries
+[
+	{
+		TextKey = "Tutorials/Techs/Blueprints"
+	}
+	{
+		Image { Texture { File="tab.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Techs/Purchase"
+	}
+	{
+		TextKey = "Tutorials/Techs/Permanent"
+	}
+]

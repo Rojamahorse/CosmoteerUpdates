@@ -1,0 +1,252 @@
+WeaponsEnergy
+{
+	NameKey = "EditorGroups/WeaponsEnergy"
+	Icon
+	{
+		Texture
+		{
+			File = "group_weapons_energy.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = 100
+}
+
+WeaponsProjectile
+{
+	NameKey = "EditorGroups/WeaponsProjectile"
+	Icon
+	{
+		Texture
+		{
+			File = "group_weapons_projectile.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = 200
+}
+
+Defenses
+{
+	NameKey = "EditorGroups/Defenses"
+	Icon
+	{
+		Texture
+		{
+			File = "group_defenses.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = 300
+}
+
+Flight
+{
+	NameKey = "EditorGroups/Flight"
+	Icon
+	{
+		Texture
+		{
+			File = "group_flight.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = 400
+}
+
+Crew
+{
+	NameKey = "EditorGroups/Crew"
+	Icon
+	{
+		Texture
+		{
+			File = "group_crew.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = 500
+}
+
+Power
+{
+	NameKey = "EditorGroups/Power"
+	Icon
+	{
+		Texture
+		{
+			File = "group_power.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = 600
+}
+
+Production
+{
+	NameKey = "EditorGroups/Production"
+	Icon
+	{
+		Texture
+		{
+			File = "group_production.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = 700
+}
+
+Storage
+{
+	NameKey = "EditorGroups/Storage"
+	Icon
+	{
+		Texture
+		{
+			File = "../resources/hud_resources.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = 800
+}
+
+Utilities
+{
+	NameKey = "EditorGroups/Utilities"
+	Icon
+	{
+		Texture
+		{
+			File = "group_utilities.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = 900
+}
+
+Structure
+{
+	NameKey = "EditorGroups/Structure"
+	Icon
+	{
+		Texture
+		{
+			File = "group_structure.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = 1000
+}
+
+Rock
+{
+	NameKey = "EditorGroups/Rock"
+	Icon
+	{
+		Texture
+		{
+			File = "group_rock.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = 1100
+}
+
+Carbon
+{
+	NameKey = "Resource/Carbon"
+	Icon
+	{
+		Texture = &<./Data/resources/carbon/carbon.rules>/Overlay/Texture
+		VertexColor = [0, 183, 255]
+	}
+	SortOrder = 100
+}
+
+Copper
+{
+	NameKey = "Resource/Copper"
+	Icon
+	{
+		Texture = &<./Data/resources/copper/copper.rules>/Overlay/Texture
+		VertexColor = [0, 183, 255]
+	}
+		SortOrder = 200
+}
+
+Gold
+{
+	NameKey = "Resource/Gold"
+	Icon
+	{
+		Texture = &<./Data/resources/gold/gold.rules>/Overlay/Texture
+		VertexColor = [0, 183, 255]
+	}
+	SortOrder = 300
+}
+
+Hyperium
+{
+	NameKey = "Resource/Hyperium"
+	Icon
+	{
+		Texture = &<./Data/resources/hyperium/hyperium.rules>/Overlay/Texture
+		VertexColor = [0, 183, 255]
+	}
+	SortOrder = 400
+}
+
+Iron
+{
+	NameKey = "Resource/Iron"
+	Icon
+	{
+		Texture = &<./Data/resources/iron/iron.rules>/Overlay/Texture
+		VertexColor = [0, 183, 255]
+	}
+	SortOrder = 500
+}
+
+Sulfur
+{
+	NameKey = "Resource/Sulfur"
+	Icon
+	{
+		Texture = &<./Data/resources/sulfur/sulfur.rules>/Overlay/Texture
+		VertexColor = [0, 183, 255]
+	}
+	SortOrder = 600
+}
+
+Tritanium
+{
+	NameKey = "Resource/Tritanium"
+	Icon
+	{
+		Texture = &<./Data/resources/tritanium/tritanium.rules>/Overlay/Texture
+		VertexColor = [0, 183, 255]
+	}
+	SortOrder = 700
+}
+
+Uranium
+{
+	NameKey = "Resource/Uranium"
+	Icon
+	{
+		Texture = &<./Data/resources/uranium/uranium.rules>/Overlay/Texture
+		VertexColor = [0, 183, 255]
+	}
+	SortOrder = 800
+}

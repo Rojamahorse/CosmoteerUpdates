@@ -1,0 +1,19 @@
+ID = movement2
+TitleKey = "Tutorials/Movement2/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 70 and game.HasSeenCodexPage('movement')"
+Entries
+[
+	{
+		Image { Texture { File="drag.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Movement2/Drag"
+	}
+	{
+		Image { Texture { File="queue.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Movement2/Queue"
+	}
+	{
+		Image { Texture { File="handles.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Movement2/Handles"
+	}
+]

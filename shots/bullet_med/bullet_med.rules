@@ -1,0 +1,199 @@
+ID = "cosmoteer.bullet_med"
+OtherIDs = ["med_bullet", "bullet_med"]
+Range = 190
+IdealRange = [75, 190]
+IdealRadius = [5, 50]
+Speed = 200
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.15
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 175
+		TargetCategory = "bullet"
+
+		OnDeath
+		{
+			MediaEffects = &~/Components/Hit/HitOperational/MediaEffects
+		}
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = 5.0
+		PenetrationSpeed = 25
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		PenetratesCrew = true
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			ReduceEffectsByPenetration = true
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 750
+				}
+				{
+					Type = Impulse
+					Impulse = 20
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/bullet_hit_med.rules>
+				&<particles/bullet_hit_med_sparks.rules>
+				&<particles/bullet_smoke_med.rules>
+				&<particles/bullet_flash_med.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "bullet_med_hit.wav"
+					Volume = .4
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .05
+					Duration = .5
+				}
+			]
+		}
+		HitStructural
+		{
+			ReduceEffectsByPenetration = true
+			Offset = [0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 375
+				}
+				{
+					Type = Impulse
+					Impulse = 10
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/bullet_hit_med_struct.rules>
+				&<particles/bullet_hit_med_sparks.rules>
+				&<particles/bullet_flash_med_struct.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "bullet_med_hit_structure.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 750
+				}
+				{
+					Type = Fire
+					FireChance = .4
+				}
+				{
+					Type = Impulse
+					Impulse = 20
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/bullet_hit_med.rules>
+				&<particles/bullet_hit_med_sparks.rules>
+			]
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational = &PenetratingOperational
+		FinishedPenetratingStructural = &PenetratingStructural
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "bullet_med.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [0.35, 0.35]
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Offset = [-0.5, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [8, 4]
+			VertexColor = [255, 100, 0]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.125
+		}
+	}
+
+	MediaEffects
+	{
+		Type = MediaEffects
+		MediaEffects
+		[
+			&<particles/bullet_trail_med.rules>
+		]
+	}
+}

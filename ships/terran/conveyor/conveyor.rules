@@ -1,0 +1,120 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Conveyor"
+	IconNameKey = "Parts/ConveyorIcon"
+	ID = cosmoteer.conveyor // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [conveyor]
+	EditorGroup = "Crew"
+	DescriptionKey = "Parts/ConveyorDesc"
+	Resources
+	[
+		[steel, 4]
+		[coil, 1]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	MaxHealth = 1000
+	CrewSpeedFactor
+	{
+		Up = 2
+		Left = .75
+		Right = .75
+		Down = .25
+	}
+	CrewCongestedSpeedFactor
+	{
+		Up = 1.0
+		Left = .375
+		Right = .375
+		Down = .25
+	}
+	CrewFireSpeedFactor
+	{
+		Up = .4
+		Left = .2
+		Right = .2
+		Down = .2
+	}
+	TypeCategories = [corridor]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	IsRotateable = true
+	IsWalled = false
+	GeneratorRequiresDoor = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		WallsBlend : <../walls/walls.rules>
+		{
+			Type = BlendSprite
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor = &<../corridor/corridor.rules>/Part/Components/Graphics/Floor
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"conveyor1.png"
+							"conveyor2.png"
+							"conveyor3.png"
+							"conveyor4.png"
+							"conveyor5.png"
+							"conveyor6.png"
+							"conveyor7.png"
+							"conveyor8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = .0333
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			Roof = &<../corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+
+		BlueprintWalls : <../walls/blueprint_walls.rules>
+		{
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+	}
+
+	Stats
+	{
+		CrewSpeed = [] // Suppress display.
+		CrewSpeedFwd = (&~/Part/CrewSpeedFactor/Up) * 100
+		CrewSpeedAcr = (&~/Part/CrewSpeedFactor/Left) * 100
+		CrewSpeedRev = (&~/Part/CrewSpeedFactor/Down) * 100
+	}
+}

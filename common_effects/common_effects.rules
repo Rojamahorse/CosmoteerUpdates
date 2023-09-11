@@ -1,0 +1,294 @@
+PowerOn
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		Sound = "sounds/power_on.wav"
+		Volume = .5
+		SpeedVariation = .15
+	}
+]
+
+PowerOff
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		Sound = "sounds/power_off.wav"
+		Volume = .5
+		SpeedVariation = .15
+	}
+]
+
+MachinesOn
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		Sound = "sounds/machines_on.wav"
+		Volume = 1
+		SpeedVariation = .15
+	}
+]
+
+MachinesOff
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		Sound = "sounds/machines_off.wav"
+		Volume = 1
+		SpeedVariation = .15
+	}
+]
+
+AmmoDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "sounds/ammo_deliver.wav"
+		Volume = .75
+		SpeedVariation = .05
+	}
+]
+
+AmmoLoad
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "sounds/ammo_load.wav"
+		Volume = .75
+		SpeedVariation = .05
+	}
+]
+
+MissileDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "sounds/missile_deliver.wav"
+		Volume = 1.0
+		SpeedVariation = .05
+	}
+]
+
+MissileLoad
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "sounds/missile_load.wav"
+		Volume = .4
+		Speed = .5
+		SpeedVariation = .05
+	}
+]
+
+PowerDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "sounds/power_deliver.wav"
+		Volume = .75
+		SpeedVariation = .05
+	}
+]
+
+ResourcePickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "sounds/resource_pickup.wav"
+		Volume = 0.25
+		SpeedVariation = .05
+	}
+]
+
+NuggetPickup
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		Sound = "sounds/nugget_pickup.wav"
+		Volume = 0.35
+		SpeedVariation = .05
+	}
+]
+
+ElementDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "sounds/element_deliver.wav"
+		Volume = 1.0
+		SpeedVariation = .05
+	}
+]
+
+MetalDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "sounds/metal_deliver.wav"
+		Volume = 0.75
+		SpeedVariation = .05
+	}
+]
+
+HeavyDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "sounds/heavy_deliver.wav"
+		Volume = .75
+		SpeedVariation = .05
+	}
+]
+
+SmallPartDestroyed
+[
+	&<particles/explosions/small_part_explode_flash.rules>
+	&<particles/explosions/small_part_explode_sparks.rules>
+	&<particles/explosions/small_part_explode.rules>
+	&<particles/explosions/small_part_explode_shrapnel.rules>
+	&<particles/explosions/small_part_explode_debris.rules>
+	&<particles/explosions/small_part_explode_smoke.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/small_part_destroyed.wav"
+		Volume = .5
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .05
+		Duration = .5
+	}
+]
+
+SmallPartDestroyedDry
+[
+	&<particles/explosions/small_part_explode_dry_flash.rules>
+	&<particles/explosions/small_part_explode_dry_sparks.rules>
+	&<particles/explosions/small_part_explode_shrapnel.rules>
+	&<particles/explosions/small_part_explode_dry.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/small_part_destroyed.wav"
+		Volume = .5
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .05
+		Duration = .5
+	}
+]
+
+MedPartDestroyed
+[
+	&<particles/explosions/med_part_explode_flash.rules>
+	&<particles/explosions/med_part_explode_sparks.rules>
+	&<particles/explosions/med_part_explode.rules>
+	&<particles/explosions/med_part_explode_shrapnel.rules>
+	&<particles/explosions/med_part_explode_debris.rules>
+	&<particles/explosions/med_part_explode_smoke.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/med_part_destroyed.wav"
+		Volume = .75
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .1
+		Duration = .75
+	}
+]
+
+MedPartDestroyedDry
+[
+	&<particles/explosions/med_part_explode_dry.rules>
+	&<particles/explosions/med_part_explode_dry_flash.rules>
+	&<particles/explosions/med_part_explode_dry_sparks.rules>
+	&<particles/explosions/med_part_explode_shrapnel.rules>
+	&<particles/explosions/med_part_explode_debris.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/med_part_destroyed.wav"
+		Volume = .75
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .1
+		Duration = .75
+	}
+]
+
+BigPartDestroyed
+[
+	&<particles/explosions/big_part_explode.rules>
+	&<particles/explosions/big_part_explode_flash.rules>
+	&<particles/explosions/big_part_explode_sparks.rules>
+	&<particles/explosions/big_part_explode_shrapnel.rules>
+	&<particles/explosions/big_part_explode_debris.rules>
+	&<particles/explosions/big_part_explode_smoke.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/big_part_destroyed.wav"
+		Volume = 1
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .15
+		Duration = 1
+	}
+]
+
+HugePartDestroyed
+[
+	&<particles/explosions/huge_part_explode.rules>
+	&<particles/explosions/huge_part_explode_flash.rules>
+	&<particles/explosions/huge_part_explode_debris.rules>
+	&<particles/explosions/huge_part_explode_smoke.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/big_part_destroyed.wav"
+		Volume = 2
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .3
+		Duration = 1
+	}
+]
+
+StructureDestroyed
+[
+	&<particles/explosions/struct_explode_flash.rules>
+	&<particles/explosions/struct_explode_sparks.rules>
+	&<particles/explosions/struct_explode_shrapnel.rules>
+	&<particles/explosions/struct_explode_debris.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/small_part_destroyed.wav"
+		Volume = .3
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .03
+		Duration = .3
+	}
+]

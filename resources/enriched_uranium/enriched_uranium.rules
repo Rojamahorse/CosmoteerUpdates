@@ -1,0 +1,90 @@
+ID = enriched_uranium
+NameKey = "Resource/EnrichedUranium"
+PluralNameKey = "Resource/EnrichedUraniumPlural"
+DescriptionKey = "Resource/EnrichedUraniumDesc"
+BuyPrice = 2000
+MaxPerNugget = 1
+MaxStackSize = 10
+FlexGridPriorityKey = "flex_grid_enriched_uranium"
+FlexGridDefaultPriority = 1
+DropRates = &<../resources.rules>/RareMaterialDropRates
+
+Icon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = max
+	}
+	Size = [64, 64]
+}
+
+Overlay
+{
+	Texture
+	{
+		File = "overlay.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+DeathMediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+
+NuggetSprite
+{
+	File = "enriched_uranium.png"
+	NormalsFile = "enriched_uranium_normals.png"
+	Size = [1, 1]
+	Offset = [.25+1/64, 0]
+	UVRotation = 1
+}
+
+StackSprites
+[
+	{
+		File = "enriched_uranium_stack_1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "enriched_uranium_stack_2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "enriched_uranium_stack_3.png"
+		Size = [1, 1]
+	}
+	{
+		File = "enriched_uranium_stack_4.png"
+		Size = [1, 1]
+	}
+	{
+		File = "enriched_uranium_stack_5.png"
+		Size = [1, 1]
+	}
+	{
+		File = "enriched_uranium_stack_6.png"
+		Size = [1, 1]
+	}
+	{
+		File = "enriched_uranium_stack_7.png"
+		Size = [1, 1]
+	}
+	{
+		File = "enriched_uranium_stack_8.png"
+		Size = [1, 1]
+	}
+	{
+		File = "enriched_uranium_stack_9.png"
+		Size = [1, 1]
+	}
+	{
+		File = "enriched_uranium_stack_10.png"
+		Size = [1, 1]
+	}
+]
+
+StackReceiveMediaEffects = &/COMMON_EFFECTS/MissileDeliver // Yeah I know, not a missile, but it looks like a missile part!
+StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

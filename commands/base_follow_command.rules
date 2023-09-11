@@ -1,0 +1,37 @@
+BaseFollowCommand : <base_command.rules>/BaseCommand
+{
+	RightClickAdjustPixelThreshold = 32
+	RightClickSetsAngleThreshold = 0
+	MatchVelocityFactor = 1
+	CircleDuration = 0.25
+	CircleShrinkFromFactor = 2
+	MovePathLine = &<command_move.rules>/MoveCommand/PathLine
+	MovePathLineCamScaleExponent = &<command_move.rules>/MoveCommand/PathLineCamScaleExponent
+	MinMovePathLineSize = &<command_move.rules>/MoveCommand/MinPathLineSize
+	TargetPathLine = &MovePathLine
+	TargetPathLineCamScaleExponent = &MovePathLineCamScaleExponent
+	MinTargetPathLineSize = &MinMovePathLineSize
+	GhostColorFactor = &<command_move.rules>/MoveCommand/GhostColorFactor
+	GhostBlinkColorFactor = &<command_move.rules>/MoveCommand/GhostBlinkColorFactor
+	BlinkInterval = &<command_move.rules>/MoveCommand/BlinkInterval
+	BlinkCount = &<command_move.rules>/MoveCommand/BlinkCount
+	FadeMinDistance = &<command_move.rules>/MoveCommand/FadeMinDistance
+	FadeMaxDistance = &<command_move.rules>/MoveCommand/FadeMaxDistance
+	FadeMinAngle = &<command_move.rules>/MoveCommand/FadeMinAngle
+	FadeMaxAngle = &<command_move.rules>/MoveCommand/FadeMaxAngle
+
+	RadiusAngleCircle
+	{
+		Texture
+		{
+			File = "./Data/gui/game/overlay_selection.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 127]
+		Thickness = .5
+		QuadCount = 256
+	}
+	RadiusAngleLines = &<command_move.rules>/MoveCommand/RotationTargetLine
+	RotationTargetLine = &<command_move.rules>/MoveCommand/RotationTargetLine
+}

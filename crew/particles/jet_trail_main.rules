@@ -1,0 +1,102 @@
+Type = Particles
+Def = &<jet_trail_def.rules>
+EmitterDef
+{
+	EmitPerSecond = 40
+	EmitPerOneShot = 0
+	PreInitializers
+	[
+		{
+			Type = SetValue
+			VelocityOut = velocity
+			Speed
+			{
+				Min = 2
+				Max = 2
+			}
+			Direction
+			{
+				Min = -5d
+				Max = 5d
+			}
+			Name = "Initial location"
+			Enabled = true
+			DataOut = location
+			ValueType = Vector2
+			Value
+			{
+				X = -0.2
+				Y = 0
+			}
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandomVelocity
+			ScaleOut = scale
+			ScaleFactor = 1
+			Name = "Initial velocity"
+			Enabled = true
+			VelocityOut = velocity
+			Speed
+			{
+				Min = 1
+				Max = 1
+			}
+			Direction
+			{
+				Min = -1.0000001d
+				Max = 1.0000001d
+			}
+			UpdateAfterInit = false
+		}
+		{
+			Type = ScaleFromIntensity
+			ScaleOut = scale
+			ScaleFactor = 0.3
+			Name = "Scale from intensity"
+			Enabled = true
+			UpdateAfterInit = false
+			IntensityExponent = 1
+		}
+	]
+	PostInitializers[]
+	UpdatedEmittedParticles = false
+}
+Bucket = Lower1
+Delay = 0
+IgnoreIntensity = false
+Sharing = Global
+MinIntensity = 0.05
+IsFancy = true
+DontEmitWhenOffScreen = true
+DontEmitWhenOffScreenSizeInflate = 10
+PenetratingBucket
+UseCustomShapeForOffScreenCheck = false
+ScaleEmissionWithIntensity = false
+MaxEmissionZoom = 3.4028235E+38
+UseRealTime = false
+IsSimple = false
+UnsharedRenderInWorldSpace = false
+ScaleEmissionWithBeamLength = false
+CaptureBackBuffer = false
+Filter
+{
+	Ships = true
+	OperationalHealth = true
+	StructuralHealth = true
+	OnlyPartCategories
+	ExcludePartCategories
+	Shields = true
+	Bullets = true
+	OnlyBulletCategories
+	ExcludeBulletCategories
+	IgnoreInvulnerability = true
+	Self
+	TargetedSelf
+	Friendlies = true
+	TargetedFriendlies
+	Enemies = true
+	TargetedEnemies
+	Junk = true
+	TargetedJunk
+}

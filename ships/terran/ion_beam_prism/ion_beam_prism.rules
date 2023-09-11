@@ -1,0 +1,522 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/IonBeamPrism"
+	IconNameKey = "Parts/IonBeamPrismIcon"
+	ID = cosmoteer.ion_beam_prism // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [cosmoteer.ion_beam_prism_45]
+	SelectionTypeID = ion_beam_prism
+	EditorGroup = "WeaponsEnergy"
+	DescriptionKey = "Parts/IonBeamPrismDesc"
+	Resources
+	[
+		[steel, 16]
+		[coil2, 2]
+		[diamond, 1]
+	]
+	AIValueFactor = 5
+	Size = [2, 2]
+	SelectionPriority = 1
+	MaxHealth = 8000
+	TypeCategories = [weapon, ion, ion_beam_prism]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Flammable = false
+	InitialPenetrationResistance = 100
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	IsWalled = false
+	IgnoreRotationForMirroredSelection = true
+	CrewSpeedFactor = 0
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	NoAutoDoors = true
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	GenerateRectCollider = false
+	CreatePartPerTileWhenGrabbed = structure
+	EditorReplacementPartID = structure
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [48, 60]
+	}
+	Components : ^/0/Components
+	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+		TurretToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CommandToggle]
+			Mode = All
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 2
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+
+		Collider
+		{
+			Type = CircleCollider
+			Location = [1, 1]
+			Radius = .7
+			Density = 5
+		}
+
+		ToggledIonEnergyStorage
+		{
+			Type = ToggledComponents
+			Toggle = PowerToggle
+			Components
+			{
+				IonEnergyStorage
+				{
+					Type = IonEnergyStorage
+					ResourceType = ion_energy
+					ReductionFactorPerBeam = .75
+					IsDrainable = true
+				}
+			}
+		}
+
+		IonEnergy
+		{
+			Type = ResourceStorageProxy
+			ComponentID = IonEnergyStorage
+			ResourceType = ion_energy
+			ProvidedValueRange = 0
+			ProvidedValuePerResource = 1/1000
+			IsDrainable = false
+		}
+
+		BeamTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = IonEnergy
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+
+		Targeter
+		{
+			Type = UITargeter
+			TargeterID = prism_aim
+			Weapons = [Turret, IonBeamChainToggle]
+		}
+
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [1, 1] // Relative to upper-left corner of unrotated part.
+			Rotation = -90d // Relative to unrotated part.
+			OperationalToggle = TurretToggle
+			FireInterval = &<../ion_beam_emitter/ion_beam_emitter.rules>/Part/Components/Weapon/FireInterval
+			FiringArc = 360d
+			RotateSpeed = 20d
+			FireThresholdAngle = 1d
+			AIFirepowerRating = 0
+			AddAIFirepowerRatingsWhenTargetedByPartCategories = [ion_beam_emitter, ion_beam_prism]
+			TargetingEmitter = BeamEmitter
+			SuppressWholeShipTargetOverlaysForPartsFilter = &FriendlyPrismFilter
+			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &FriendlyPrismFilter
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SuppressDirectControlWhenTargetingPartsFilter = &FriendlyPrismFilter
+			SuppressDirectControlWhenTargetingShipRelativePoints = true
+			SuppressFirepowerEstimationWhenTargetingPartsFilter = &FriendlyPrismFilter
+			SuppressFirepowerEstimationWhenTargetingShipRelativePoints = true
+			SaveSelfTargetPartCategories = [ion_beam_prism]
+			SaveShipRelativeTargets = true
+			HoldTargetAfterCancel = 3.0
+			FirePermissionToggle = FireModeToggle
+
+			FriendlyPrismFilter
+			{
+				Enemies = false
+				Junk = false
+				OnlyPartCategories = [ion_beam_prism]
+			}
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		IonBeamChainToggle
+		{
+			Type = FixedWeapon
+			ChainedTo = Turret
+			OperationalToggle = PowerToggle
+			AutoFireToggle = AutoFireToggle
+			FireInterval = .2
+			AIFirepowerRating = 0
+			AddAIFirepowerRatingsWhenTargetedByPartCategories = [ion_beam_emitter, ion_beam_prism]
+			TargetingEmitter = BeamEmitter
+			ChainFireToggleComponent = IonBeamChainToggle
+			AllowEnemyStructureAutoTargeting = true
+			ProhibitTargetPartsFilter = &../Turret/FriendlyPrismFilter // Don't force fire on friendly ion prisms!
+			ProhibitShipRelativePointTargets = true
+			SuppressWholeShipTargetOverlaysForPartsFilter = &../Turret/FriendlyPrismFilter
+			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &../Turret/FriendlyPrismFilter
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SuppressDirectControlWhenTargetingPartsFilter = &../Turret/FriendlyPrismFilter
+			SuppressFirepowerEstimationWhenTargetingPartsFilter = &../Turret/FriendlyPrismFilter
+			SuppressFirepowerEstimationWhenNotTargetingShipRelativePoints = true
+			SaveSelfTargetPartCategories = [ion_beam_prism]
+			SaveShipRelativeTargets = true
+			DefaultDirectControlBinding = 0
+			FirePermissionToggle = FireModeToggle
+
+			AutoTarget
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+			}
+
+			CoverageLine
+			{
+				LineSprite
+				{
+					Texture = &/INDICATORS/RadialGradient
+					VertexColor = [255, 255, 255, 191]
+					UVRect = [.5, 0, 0, 1]
+				}
+				LineThickness = 2
+
+				BeginCapSprite : LineSprite
+				{
+					UVRect = [0, 0, .5, 1]
+				}
+				BeginCapSize = [1, 2]
+
+				EndCapSprite : LineSprite
+				{
+					UVRect = [.5, 0, .5, 1]
+				}
+				EndCapSize = [1, 2]
+			}
+		}
+
+		BeamEmitter : <./Data/shots/ion_beam/ion_beam.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = Turret
+			FireTrigger = BeamTrigger
+			GetTargetFrom = Turret
+			ResourceStorage = IonEnergy
+			ResourcesUsed = 1000
+			MinResourcesUsed = 1
+			FireDelay = &HitInterval // Needed to let multiple beams accumulate their energy.
+			Duration = &HitInterval // Can't be longer than HitInterval or it can create positive feedback loops.
+			EffectsScaleFactor = IonEnergy
+			ValueScaleFactor = IonEnergy
+			ResourceScaleFactor = IonEnergy
+			UpdateScaleFactorsPerEmit = true
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			Floor
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					{
+						File = "structure.png"
+						NormalsFile = "structure_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "structure_33.png"
+						NormalsFile = "structure_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "structure_66.png"
+						NormalsFile = "structure_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+
+		TurretGraphics
+		{
+			Type = Graphics
+			ChainedTo = Turret
+			Location = [.5, 0]
+			Rotation = 90d
+			OperationalToggle = BeamEmitter
+			Floor
+			{
+				Layer = "weapons"
+				DamageLevels
+				[
+					{
+						File = "prism.png"
+						NormalsFile = "prism_normals.png"
+						Size = [2, 3]
+					}
+					{
+						File = "prism_33.png"
+						NormalsFile = "prism_normals_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "prism_66.png"
+						NormalsFile = "prism_normals_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "lights_add"
+				Offset = [0, .25]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"energy1.png"
+							"energy2.png"
+							"energy3.png"
+							"energy4.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.0375
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"energy1_33.png"
+							"energy2_33.png"
+							"energy3_33.png"
+							"energy4_33.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.0375
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"energy1_66.png"
+							"energy2_66.png"
+							"energy3_66.png"
+							"energy4_66.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.0375
+						AnimationStartTime = Zero
+					}
+				]
+			}
+		}
+
+		DestroyedEffectsCold
+		{
+			Type = DeathEffects
+			Location = [1, 1]
+			OperationalToggle = BeamEmitter
+			InvertOperationalToggle = true
+			IncludeWhenUnderConstruction = false
+
+			MediaEffects
+			[
+				&<./Data/common_effects/particles/explosions/med_part_explode_dry.rules>
+				&<particles/prism_explode_shrapnel.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/common_effects/sounds/small_part_destroyed.wav"
+					Volume = .5
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .05
+					Duration = .5
+				}
+			]
+		}
+
+		DestroyedEffectsUnderConstruction : DestroyedEffectsCold
+		{
+			OperationalToggle // Null or else we'll crash when building.
+			IncludeWhenUnderConstruction = true
+		}
+
+		DestroyedEffectsHot
+		{
+			Type = DeathEffects
+			Location = [1, 1]
+			OperationalToggle = BeamEmitter
+			IncludeWhenUnderConstruction = false
+
+			MediaEffects
+			[
+				&<./Data/common_effects/particles/explosions/med_part_explode_smoke.rules>
+				&<particles/prism_explode_shockwave.rules>
+				&<particles/prism_explode_shrapnel.rules>
+				&<particles/prism_explode_flash.rules>
+				&<particles/prism_explode_flash_lines.rules>
+				&<particles/prism_explode_hot.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/common_effects/sounds/small_part_destroyed.wav"
+					Volume = .75
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .1
+					Duration = .75
+				}
+			]
+
+			FactorHitEffectsWith = BeamEmitter
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 45000
+					Radius = 5
+					Delay = .05
+					FireChancePerNDamage = 50%
+					ImpulsePerNDamage = 10
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 10000
+					Radius = 3
+					Delay = .05
+					ImpulsePerNDamage = 5
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+					}
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 2]
+		}
+	}
+
+	Stats
+	{
+
+	}
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/IonBeam"
+			Stats
+			{
+				Range = &~/Part/Components/BeamEmitter/Range
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				ShotSpeed = Infinity
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+
+				ReductionFactorPerBeam = &~/Part/Components/ToggledIonEnergyStorage/Components/IonEnergyStorage/ReductionFactorPerBeam
+				BeamDamageFalloff
+				[
+					(1 - (&../ReductionFactorPerBeam)) * 100
+					(&../ReductionFactorPerBeam)^0 * 100
+					(&../ReductionFactorPerBeam)^1 * 100
+					(&../ReductionFactorPerBeam)^2 * 100
+					(&../ReductionFactorPerBeam)^3 * 100
+					(&../ReductionFactorPerBeam)^4 * 100
+				]
+			}
+		}
+	]
+}

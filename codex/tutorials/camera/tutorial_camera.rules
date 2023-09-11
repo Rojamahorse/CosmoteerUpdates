@@ -1,0 +1,18 @@
+ID = camera
+TitleKey = "Tutorials/Camera/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? True"
+Entries
+[
+	{
+		Image { Texture { File="pan.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Camera/EdgePan"
+	}
+	{
+		Image { Texture { File="zoom.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Camera/Zoom"
+	}
+	{
+		TextKey = "Tutorials/Camera/Tip"
+	}
+]

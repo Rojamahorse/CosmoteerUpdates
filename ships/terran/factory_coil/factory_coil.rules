@@ -1,0 +1,747 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/FactoryCoil"
+	IconNameKey = "Parts/FactoryCoilIcon"
+	ID = cosmoteer.factory_coil // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Production"
+	DescriptionKey = "Parts/FactoryCoilDesc"
+	Resources
+	[
+		[steel, 80]
+		[coil, 80]
+		[processor, 8]
+	]
+	Size = [3, 3]
+	IsFlippable = true
+	SelectionPriority = 1
+	MaxHealth = 9000
+	TypeCategories = [provides_coils, uses_copper, uses_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
+	AllowedDoorLocations
+	[
+		[-1, 2]
+		[0, 3]
+		[1, 3]
+		[2, 3]
+		[3, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CopperStorage, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1
+		}
+
+		CopperStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = copper
+			GridRect = [0, 1, 1, 2]
+			Layer = "doodads_low"
+			SpriteInset = [15/64, 6/64, 2/64, 9/64]
+			RandomSpriteRotation = true
+		}
+		CopperConsumer
+		{
+			Type = TypedResourceGridConsumer
+			ResourceType = copper
+			Storage = CopperStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+
+		CoilStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = coil
+			GridRect = [1, 2, 2, 1]
+			Layer = "doodads_low"
+			SpriteInset = [3/64, 2/64, 10/64, 13/64]
+			SuppliesResources = true
+			SupplyToggleButtonOffset = [0, -.4]
+			RandomSpriteRotation = true
+			InitToMaxResources = 0
+			AllowExternalPickupAndDelivery = true
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+
+		ResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			From
+			[
+			    {
+			        Storage = CopperStorage
+			        Quantity = 1
+			    }
+			    {
+			        Storage = BatteryStorage
+			        Quantity = 80
+			        MinQuantityForConversion = 1
+			    }
+			]
+			ToStorage = CoilStorage
+			ToQuantity = 1
+			Interval = { BaseValue=1.5; BuffType=Factory; BuffMode=Divide; }
+			CheckResourceLimits = true
+		}
+
+		ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ResourceConverter
+			Location = [1.5, 1.5]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "../factory_ammo/bullet_create.wav"
+					Volume = .1
+					Speed = .5
+					SpeedVariation = .05
+				}
+			]
+		}
+
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = Factory
+			BuffAmount = 25%
+			GridDistance = 1
+			OperationalToggle = BatteryStorage
+		}
+
+		FloorSprite
+		{
+			Type = Sprite
+			OnlyWithFlip = false
+			Location = [1.5, 1.5]
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor.png"
+					Size = [3, 3]
+				}
+				{
+					File = "floor_33.png"
+					Size = [3, 3]
+				}
+				{
+					File = "floor_66.png"
+					Size = [3, 3]
+				}
+			]
+		}
+
+		FloorSpriteFlipped
+		{
+			Type = Sprite
+			OnlyWithFlip = true
+			Location = [1.5, 1.5]
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor_flipped.png"
+					Size = [3, 3]
+				}
+				{
+					File = "floor_flipped_33.png"
+					Size = [3, 3]
+				}
+				{
+					File = "floor_flipped_66.png"
+					Size = [3, 3]
+				}
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			OperationalToggle = IsOperational
+			DoodadToggle = ResourceConverter
+			ToggleOnDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -22/64]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -22/64]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_idle1.png"
+							"doodads_idle2.png"
+							"doodads_idle3.png"
+							"doodads_idle4.png"
+							"doodads_idle5.png"
+							"doodads_idle6.png"
+							"doodads_idle7.png"
+							"doodads_idle8.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_idle1_33.png"
+							"doodads_idle2_33.png"
+							"doodads_idle3_33.png"
+							"doodads_idle4_33.png"
+							"doodads_idle5_33.png"
+							"doodads_idle6_33.png"
+							"doodads_idle7_33.png"
+							"doodads_idle8_33.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_idle1_66.png"
+							"doodads_idle2_66.png"
+							"doodads_idle3_66.png"
+							"doodads_idle4_66.png"
+							"doodads_idle5_66.png"
+							"doodads_idle6_66.png"
+							"doodads_idle7_66.png"
+							"doodads_idle8_66.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = WhenSpawned
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -22/64]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [3, 2]
+					}
+					{
+						File = "doodads_off_33.png"
+						Size = [3, 2]
+					}
+					{
+						File = "doodads_off_66.png"
+						Size = [3, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [3, 3]
+					}
+					{
+						File = "walls_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "walls_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [-45/64, -43/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [4, 4]
+						Z = .5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.4, 0, 0]
+					}
+				]
+			}
+		}
+
+		NuggetGraphics
+		{
+			Type = Graphics
+			Location = [24/64, .5]
+			OperationalToggle = IsOperational
+			DoodadToggle = ResourceConverter
+			ToggleOnDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"./Data/ships/terran/factory_emp/copper20-1.png"
+							"./Data/ships/terran/factory_emp/copper18-2.png"
+							"./Data/ships/terran/factory_emp/copper16-1.png"
+							"./Data/ships/terran/factory_emp/copper13-2.png"
+							"./Data/ships/terran/factory_emp/copper10-1.png"
+							"./Data/ships/terran/factory_emp/copper7-2.png"
+							"./Data/ships/terran/factory_emp/copper4-1.png"
+							"./Data/ships/terran/factory_emp/copper1-2.png"
+							"./Data/ships/common/empty_sprite.png"
+							"./Data/ships/common/empty_sprite.png"
+							"./Data/ships/common/empty_sprite.png"
+							"./Data/ships/common/empty_sprite.png"
+						]
+						Size = [1, 1]
+						UVRotation = 1
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [109/64, 21/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [4, 4]
+						Z = .5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.4, 0, 0]
+					}
+				]
+			}
+		}
+
+		CoilGraphics
+		{
+			Type = Graphics
+			Location = [127/64, 119/64]
+			OperationalToggle = IsOperational
+			DoodadToggle = ResourceConverter
+			ToggleOnDoodad
+			{
+				Layer = "walls" //Wall layer so the coil is show on top of the exit belt which use the doodad_low layer and under the crew sprite
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"./Data/ships/common/empty_sprite.png"
+							"./Data/ships/common/empty_sprite.png"
+							"./Data/ships/common/empty_sprite.png"
+							"./Data/ships/common/empty_sprite.png"
+							"./Data/ships/common/empty_sprite.png"
+							"./Data/ships/common/empty_sprite.png"
+							"doodads_coil1.png"
+							"doodads_coil2.png"
+							"doodads_coil3.png"
+							"doodads_coil4.png"
+							"doodads_coil5.png"
+							"doodads_coil6.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+		}
+
+		RoofDoorOpenToggle
+		{
+			Type = CrewDestinationProximityToggle
+			Distance = 3
+		}
+		RoofDoorSprite
+		{
+			Type = OpenCloseSprite
+			Location = [1.5, 1.5]
+			OperationalToggle = RoofDoorOpenToggle
+			Layer = "roofs"
+			OpenDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"roof1.png"
+						"roof2.png"
+						"roof3.png"
+						"roof4.png"
+						"roof5.png"
+						"roof6.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals1.png"
+						"roof_normals2.png"
+						"roof_normals3.png"
+						"roof_normals4.png"
+						"roof_normals5.png"
+						"roof_normals6.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof1_33.png"
+						"roof2_33.png"
+						"roof3_33.png"
+						"roof4_33.png"
+						"roof5_33.png"
+						"roof6_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals1_33.png"
+						"roof_normals2_33.png"
+						"roof_normals3_33.png"
+						"roof_normals4_33.png"
+						"roof_normals5_33.png"
+						"roof_normals6_33.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof1_66.png"
+						"roof2_66.png"
+						"roof3_66.png"
+						"roof4_66.png"
+						"roof5_66.png"
+						"roof6_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals1_66.png"
+						"roof_normals2_66.png"
+						"roof_normals3_66.png"
+						"roof_normals4_66.png"
+						"roof_normals5_66.png"
+						"roof_normals6_66.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+			ClosedDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"roof6.png"
+						"roof5.png"
+						"roof4.png"
+						"roof3.png"
+						"roof2.png"
+						"roof1.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals6.png"
+						"roof_normals5.png"
+						"roof_normals4.png"
+						"roof_normals3.png"
+						"roof_normals2.png"
+						"roof_normals1.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof6_33.png"
+						"roof5_33.png"
+						"roof4_33.png"
+						"roof3_33.png"
+						"roof2_33.png"
+						"roof1_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals6_33.png"
+						"roof_normals5_33.png"
+						"roof_normals4_33.png"
+						"roof_normals3_33.png"
+						"roof_normals2_33.png"
+						"roof_normals1_33.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof6_66.png"
+						"roof5_66.png"
+						"roof4_66.png"
+						"roof3_66.png"
+						"roof2_66.png"
+						"roof1_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals6_66.png"
+						"roof_normals5_66.png"
+						"roof_normals4_66.png"
+						"roof_normals3_66.png"
+						"roof_normals2_66.png"
+						"roof_normals1_66.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [54/64, 78/64]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries4.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1.5, 1.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [1.5, 1.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1.5, 1.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// No copper.
+				{
+					Toggle = CopperStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoResource
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			OnlyWithFlip = false
+			File = "blueprints.png"
+			Size = [3, 3]
+		}
+		BlueprintsFlipped
+		{
+			Type = BlueprintSprite
+			OnlyWithFlip = true
+			File = "blueprints_flipped.png"
+			Size = [3, 3]
+		}
+	}
+
+	Stats
+	{
+		CoilProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
+		CoilCapacity = (&~/Part/Components/CoilStorage/GridRect/2) * (&~/Part/Components/CoilStorage/GridRect/3) * (&<./Data/resources/coil/coil.rules>/MaxStackSize)
+		CopperCapacity = (&~/Part/Components/CopperStorage/GridRect/2) * (&~/Part/Components/CopperStorage/GridRect/3) * (&<./Data/resources/copper/copper.rules>/MaxStackSize)
+		CopperPerCoil = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
+		CopperPerSecond = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
+		CoilCopperUsage = [&../CopperPerCoil, &../CopperPerSecond]
+		PowerPerCoil = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
+		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / 1000
+		CoilPowerUsage = [&../PowerPerCoil, &../PowerPerSecond]
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+
+		RecPower = &PowerPerSecond
+		RecCrew = (&RecPower) * 4
+	}
+}

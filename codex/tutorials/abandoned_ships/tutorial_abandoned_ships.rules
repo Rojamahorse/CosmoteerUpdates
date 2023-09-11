@@ -1,0 +1,23 @@
+ID = abandoned_ships
+TitleKey = "Tutorials/AbandonedShips/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? sim.HasShipWithLabelInSight('abandoned')"
+Entries
+[
+	{
+		Image { Texture { File="abandoned_ship.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/AbandonedShips/Discover"
+	}
+	{
+		Image { Texture { File="transfer_crew.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/AbandonedShips/Transfer"
+	}
+	{
+		Image { Texture { File="dialog.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/AbandonedShips/Dialog"
+	}
+	{
+		Image { Texture { File="start_transfer.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/AbandonedShips/StartTransfer"
+	}
+]

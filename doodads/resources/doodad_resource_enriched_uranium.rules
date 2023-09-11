@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_enriched_uranium
+Type = Resource
+DescriptionKey = "Resource/EnrichedUranium"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/enriched_uranium/enriched_uranium.png"
+		MipLevels = 2
+	}
+}
+ResourceType = enriched_uranium

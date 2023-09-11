@@ -1,0 +1,158 @@
+ID = steel
+NameKey = "Resource/Steel"
+PluralNameKey = "Resource/SteelPlural"
+DescriptionKey = "Resource/SteelDesc"
+BuyPrice = 25
+MaxPerNugget = 5
+MaxStackSize = 20
+FlexGridPriorityKey = "flex_grid_steel"
+FlexGridDefaultPriority = 1
+DropRates = &<../resources.rules>/VeryCommonMaterialDropRates
+
+Icon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = max
+	}
+	Size = [64, 64]
+}
+
+Overlay
+{
+	Texture
+	{
+		File = "overlay.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+NuggetSprites
+[
+	{
+		File = "steel1.png"
+		NormalsFile = "steel1_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "steel2.png"
+		NormalsFile = "steel2_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "steel3.png"
+		NormalsFile = "steel3_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "steel4.png"
+		NormalsFile = "steel4_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "steel5.png"
+		NormalsFile = "steel5_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+]
+
+StackSprites
+[
+	{
+		File = "steel_stack_1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_3.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_4.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_5.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_6.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_7.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_8.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_9.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_10.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_11.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_12.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_13.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_14.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_15.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_16.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_17.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_18.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_19.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_20.png"
+		Size = [1, 1]
+	}
+]
+
+StackReceiveMediaEffects = &/COMMON_EFFECTS/MetalDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

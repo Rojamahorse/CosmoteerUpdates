@@ -1,0 +1,22 @@
+ID = cosmoteer.planet_gas
+Type = Planet
+DescriptionKey = "Doodads/PlanetGas"
+CategoryKey = "Doodads/Planets"
+Icon
+{
+	Texture
+	{
+		File = "planet_gas.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+StyleID = gas
+TextureSize = [512, 512]
+ScaleRange = [1000, 3000]
+RandomScaleRange = [2000, 2500]
+DefaultScale = 2000
+DistanceRange = [50, 250]
+RandomDistanceRange = [100, 100]
+DefaultDistance = 150
+MinimapColorScale = [255, 255, 255, 127]

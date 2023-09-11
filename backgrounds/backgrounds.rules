@@ -1,0 +1,28 @@
+Styles
+[
+	&<bg_blue.rules>/Background
+	&<bg_red_blue.rules>/Background
+	&<bg_yellow_orange.rules>/Background
+	&<bg_tan_pink_silver.rules>/Background
+	&<bg_tan_teal_blue.rules>/Background
+	&<bg_black.rules>/Background
+	&<bg_galaxy.rules>/Background
+	&<bg_zero.rules>/Background
+]
+
+AtlasTextureParams
+{
+	SampleMode = Linear
+	MipLevels = 6 // Assumes 32x32 min sprite size.
+}
+
+ShroudMaterial
+{
+	Shader = "shroud.shader"
+	_dimColor = [.75, .75, .75, 1]
+	_borderAddColor = [.25, .25, .25, 0]
+}
+SightMaskScale = .2
+SightMaskEdgeSize = .25
+
+StaticBackgroundTextureSize = [512, 512]

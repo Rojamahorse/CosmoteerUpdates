@@ -1,0 +1,26 @@
+ID = ion_beams
+TitleKey = "Tutorials/IonBeams/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.HasPartCategoryInHand('ion') or game.HasTechUnlocked('cosmoteer.ion_beam_emitter')"
+Entries
+[
+	{
+		Image { Texture { File="ion_beam.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/IonBeams/IonBeams"
+	}
+	{
+		Image { Texture { File="ion_prism.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/IonBeams/IonPrisms"
+	}
+	{
+		Image { Texture { File="combine.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/IonBeams/Combining"
+	}
+	{
+		Image { Texture { File="aim_prism.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/IonBeams/Aiming"
+	}
+	{
+		TextKey = "Tutorials/IonBeams/Tip"
+	}
+]

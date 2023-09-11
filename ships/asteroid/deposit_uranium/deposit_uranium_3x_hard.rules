@@ -1,0 +1,99 @@
+Part : <../base_part_asteroid.rules>/Part
+{
+	NameKey = "Parts/DepositUranium3xHard"
+	IconNameKey = "Parts/DepositUranium3xHardIcon"
+	DescriptionKey = "Resource/UraniumHardDesc"
+	ID = cosmoteer.deposit_uranium_3x_hard // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	SelectionTypeID = "deposit_uranium"
+	EditorGroup = "Uranium"
+	IsFlippable = true
+	MaxHealth = 20000
+	IsCrewSalvageable = false
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Resources
+	[
+		[uranium, 3]
+	]
+	EditorIcon
+	{
+		Texture = "deposit_uranium_hard_3x_icon.png"
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor
+			{
+				Layer = "asteroid"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "deposit_uranium_hard_3x.png"
+						NormalsFile = "deposit_uranium_hard_3x_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "deposit_uranium_hard_3x_33.png"
+						NormalsFile = "deposit_uranium_hard_3x_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "deposit_uranium_hard_3x_66.png"
+						NormalsFile = "deposit_uranium_hard_3x_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "asteroid_roof_lights_fancy"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "deposit_uranium_hard_3x_lights.png"
+						Size = [1, 1]
+						Z = 1 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [185*3.5, 221*3.5, 92*3.5]
+					}
+					{
+						File = "deposit_uranium_hard_3x_lights_33.png"
+						Size = [1, 1]
+						Z = 1 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [185*3.5, 221*3.5, 92*3.5]
+					}
+					{
+						File = "deposit_uranium_hard_3x_lights_66.png"
+						Size = [1, 1]
+						Z = 1 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [185*3.5, 221*3.5, 92*3.5]
+					}
+				]
+			}
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "deposit_uranium_hard_3x_blueprints.png"
+			Size = [1, 1]
+		}
+
+		CustomShipIcon
+		{
+			Type = CustomShipIcon
+			Icon : <./Data/resources/uranium/uranium.rules>/Overlay
+			{
+				Size = [32, 32]
+			}
+			Weight = &~/Part/Resources/0/1
+			PulseInterval = 2
+			PulseColor = [255, 255, 255, 64]
+			ShowAtZoom = 5
+		}
+	}
+}

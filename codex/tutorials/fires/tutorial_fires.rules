@@ -1,0 +1,18 @@
+ID = fires
+TitleKey = "Tutorials/Fires/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.IsOnFire"
+Entries
+[
+	{
+		Image { Texture { File="fires.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Fires/Cause"
+	}
+	{
+		Image { Texture { File="extinguisher.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Fires/FireExtinguisher"
+	}
+	{
+		TextKey = "Tutorials/Fires/Spread"
+	}
+]

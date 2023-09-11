@@ -1,0 +1,15 @@
+Faction = cabal
+Tags = [civilian]
+
+Ships
+[
+	// Trade ships
+	:~{ File="Missionary.ship.png";  Tier=3;  Tags : ~/Tags [trade] }
+	:~{ File="Da'i.ship.png";        Tier=3;  Tags : ~/Tags [trade] }
+	:~{ File="Preacher.ship.png";    Tier=5;  Tags : ~/Tags [trade] }
+	:~{ File="Deliverance.ship.png"; Tier=5;  Tags : ~/Tags [trade] }
+	:~{ File="Advocate.ship.png";    Tier=7;  Tags : ~/Tags [trade] }
+	:~{ File="Acolyte.ship.png";     Tier=7;  Tags : ~/Tags [trade] }
+	:~{ File="Celebrant.ship.png";   Tier=10; Tags : ~/Tags [trade] }
+	:~{ File="Witness.ship.png";     Tier=10; Tags : ~/Tags [trade] }
+]

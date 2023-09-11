@@ -1,0 +1,31 @@
+Type = Multi
+SubGenerators
+[
+	{
+		Chance = .5
+		Type = NameList
+		Names
+		[
+			"New"
+			"Alpha"
+			"Beta"
+			"Gamma"
+			"Epsilon"
+			"Zeta"
+			"Eta"
+			"Theta"
+			"Kappa"
+			"Sigma"
+			"Tau"
+			"Phi"
+			"Omega"
+		]
+	}
+	{
+		Type = Markov
+		MarkovFile = "latin.markov"
+		MinLength = 6
+		MaxLength = 10
+		MaxConsecutiveConsonants = 3
+	}
+]

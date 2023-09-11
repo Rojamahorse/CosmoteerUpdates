@@ -1,0 +1,25 @@
+ID = railguns
+TitleKey = "Tutorials/Railguns/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.HasPartCategoryInHand('railgun') or game.HasTechUnlocked('cosmoteer.railgun')"
+Entries
+[
+	{
+		TextKey = "Tutorials/Railguns/Info"
+	}
+	{
+		Image { Texture { File="launcher.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Railguns/Launcher"
+	}
+	{
+		Image { Texture { File="accelerator.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Railguns/Accelerator"
+	}
+	{
+		Image { Texture { File="loader.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Railguns/Loader"
+	}
+	{
+		TextKey = "Tutorials/Railguns/Tip"
+	}
+]

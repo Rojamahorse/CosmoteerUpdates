@@ -1,0 +1,17 @@
+ID = cosmoteer.ftl_beacon_monolith
+Type = Landmark
+DescriptionKey = "Doodads/FTLBeacon"
+CategoryKey = "Doodads/Ftl"
+Icon
+{
+	Texture
+	{
+		File = "Monolith FTL Beacon.ship.png"
+		Resize = [128, 128]
+		MipLevels = max
+		SampleMode = Linear
+	}
+}
+Allegiance = -1 // Neutral
+Ship = "Monolith FTL Beacon.ship.png"
+IsFtlPoint = true

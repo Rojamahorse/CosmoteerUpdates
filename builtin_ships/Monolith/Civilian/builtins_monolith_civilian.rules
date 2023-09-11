@@ -1,0 +1,24 @@
+Faction = monolith
+Tags = [civilian]
+
+Ships
+[
+	// Trade ships
+	:~{ File="Package Distributor.ship.png"; Tier=3;  Tags : ~/Tags [trade] }
+	:~{ File="Minor Shipper.ship.png";       Tier=3;  Tags : ~/Tags [trade] }
+	:~{ File="Dwarf Freighter.ship.png";     Tier=3;  Tags : ~/Tags [trade] }
+	:~{ File="Porter.ship.png";              Tier=3;  Tags : ~/Tags [trade] }
+	:~{ File="Minor Transport.ship.png";     Tier=5;  Tags : ~/Tags [trade] }
+	:~{ File="Minor Modulus.ship.png";       Tier=5;  Tags : ~/Tags [trade] }
+	:~{ File="Minor Freighter.ship.png";     Tier=5;  Tags : ~/Tags [trade] }
+	:~{ File="Minor Hauler.ship.png";        Tier=5;  Tags : ~/Tags [trade] }
+	:~{ File="Bulk Transport.ship.png";      Tier=7;  Tags : ~/Tags [trade] }
+	:~{ File="Bulk Shipper.ship.png";        Tier=7;  Tags : ~/Tags [trade] }
+	:~{ File="Workhorse.ship.png";           Tier=7;  Tags : ~/Tags [trade] }
+	:~{ File="Factotum.ship.png";            Tier=7;  Tags : ~/Tags [trade] }
+	:~{ File="Bulk Modulus.ship.png";        Tier=10; Tags : ~/Tags [trade] }
+	:~{ File="Bulk Extractor.ship.png";      Tier=10; Tags : ~/Tags [trade] }
+	:~{ File="Mass Freighter.ship.png";      Tier=10; Tags : ~/Tags [trade] }
+	:~{ File="Bulk Hauler.ship.png";         Tier=10; Tags : ~/Tags [trade] }
+	:~{ File="Atlas Freighter.ship.png";     Tier=10; Tags : ~/Tags [trade] }
+]

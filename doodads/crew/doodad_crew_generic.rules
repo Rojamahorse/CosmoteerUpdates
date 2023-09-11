@@ -1,0 +1,16 @@
+ID = cosmoteer.crew_generic
+Type = Crew
+DescriptionKey = "Doodads/CrewGeneric"
+CategoryKey = "Doodads/Crew"
+Icon
+{
+	Texture
+	{
+		File = "./Data/crew/idle_a5.png"
+		MipLevels = 2
+	}
+	Shader = "./Data/crew/crew_icon.shader"
+	_shirtColor = White
+	_skinColor = White
+	_hairColor = White
+}

@@ -1,0 +1,58 @@
+IssueSound
+{
+	Sound = "weapon_target.wav"
+	Volume = .25
+}
+
+TargetNineSlice = &<./Data/gui/game/sim_gui.rules>/SelectedPartNineSlice
+TargetCircle : <./Data/gui/game/sim_gui.rules>/SelectedShipCircle
+{
+    Arc = [-11.25d, 360d]
+    VertexColor = [255, 255, 255, 127]
+    DashRepeat = 7
+}
+TentativeTargetNineSlice = &<./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+TentativeTargetCircle = &TargetCircle
+TargetLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/game/overlay_selection_dashed.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 191]
+		UVRect = [.25, 0, .5, 1]
+	}
+	LineThickness = 1
+
+	BeginCapSprite : LineSprite
+	{
+		UVRect = [0, 0, .25, 1]
+	}
+	BeginCapSize = [.5, 1]
+
+	EndCapSprite : LineSprite
+	{
+		UVRect = [.75, 0, .25, 1]
+	}
+	EndCapSize = [.5, 1]
+}
+TargetLineFadeOutDuration = 2
+TargetNineSliceShrinkDuration = .15
+TargetNineSliceShrinkFromInflate = .5
+TargetCircleShrinkDuration = .15
+TargetCircleShrinkFromInflate = 2
+ReticleSprite
+{
+	Texture
+	{
+		File = "reticle.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [2, 2]
+	VertexColor = [255, 255, 255, 255]
+}

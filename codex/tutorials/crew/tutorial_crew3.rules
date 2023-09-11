@@ -1,0 +1,28 @@
+ID = crew3
+TitleKey = "Tutorials/Crew3/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.HasSeenCodexPage('crew2')"
+Entries
+[
+	{
+		Image { Texture { File="hire_tab.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew3/Hail"
+	}
+	{
+		Image { Texture { File="../fame/crew.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew3/List"
+	}
+	{
+		Image { Texture { File="hire.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew3/Hire"
+	}
+	{
+		TextKey = "Tutorials/Crew3/Warning"
+	}
+	{
+		TextKey = "Tutorials/Crew3/Tip1"
+	}
+	{
+		TextKey = "Tutorials/Crew3/Tip2"
+	}
+]

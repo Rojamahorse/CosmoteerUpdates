@@ -1,0 +1,472 @@
+PartToggles
+[
+	// On/Off
+	{
+		ToggleID = "on_off"
+		Style = OffAlertSwitch
+		SortOrder = -1;
+		Choices
+		[
+			// Off
+			{
+				ChoiceID = "on_off_off"
+				ButtonToolTipKey = "PartToggles/OnOff_Off"
+				DefaultHotkey = [P]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_power_off.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// On
+			{
+				ChoiceID = "on_off_on"
+				ButtonToolTipKey = "PartToggles/OnOff_On"
+				DefaultHotkey = [P]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_power_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+
+	// Hold Fire / Fire at Will / Auto-Fire
+	{
+		ToggleID = "fire_mode"
+		Style = Popout
+		Choices
+		[
+			// Hold Fire
+			{
+				ChoiceID = "fire_mode_hold"
+				Mode = -1
+				ButtonToolTipKey = "PartToggles/FireMode_Hold"
+				DefaultHotkey = [O]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_fire_hold.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Fire at Target
+			{
+				ChoiceID = "fire_mode_at_target"
+				Mode = 0
+				ButtonToolTipKey = "PartToggles/FireMode_AtTarget"
+				DefaultHotkey = [O]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_fire_at_target.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Fire at Will
+			{
+				ChoiceID = "fire_mode_at_will"
+				Mode = 1
+				ButtonToolTipKey = "PartToggles/FireMode_AtWill"
+				DefaultHotkey = [O]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_fire_at_will.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Auto-Fire
+			{
+				ChoiceID = "fire_mode_auto"
+				Mode = 2
+				ButtonToolTipKey = "PartToggles/FireMode_Auto"
+				DefaultHotkey = [Alt, A]
+				AllowHotkeyRevert = true
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_fire_auto.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+
+	// Offense/Defense toggle
+	{
+		ToggleID = "fire_pref"
+		Style = Popout
+		Choices
+		[
+			// Attack
+			{
+				ChoiceID = "fire_pref_attack"
+				ButtonToolTipKey = "PartToggles/FirePref_Attack"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "fire_pref_attack.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Defend
+			{
+				ChoiceID = "fire_pref_defend"
+				ButtonToolTipKey = "PartToggles/FirePref_Defend"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "fire_pref_defend.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Both
+			{
+				ChoiceID = "fire_pref_both"
+				ButtonToolTipKey = "PartToggles/FirePref_Both"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "fire_pref_both.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+
+	// Alternating-Fire On/Off
+	{
+		ToggleID = "fire_alternating"
+		Style = Popout
+		Choices
+		[
+			// Synchronized
+			{
+				ChoiceID = "fire_alternating_off"
+				ButtonToolTipKey = "PartToggles/Fire_Synchronized"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_alternating_off.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Fire at Will
+			{
+				ChoiceID = "fire_alternating_on"
+				ButtonToolTipKey = "PartToggles/Fire_Alternating"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_alternating_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+
+	// Light strength.
+	{
+		ToggleID = "light_strength"
+		Style = Popout
+		SortOrder = 100
+		ShowInEditor = true
+		Choices
+		[
+			// Low
+			{
+				ChoiceID = "lights_low"
+				ButtonToolTipKey = "PartToggles/Lights_Low"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_lights_low.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Medium
+			{
+				ChoiceID = "lights_med"
+				ButtonToolTipKey = "PartToggles/Lights_Med"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_lights_med.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// High
+			{
+				ChoiceID = "lights_high"
+				ButtonToolTipKey = "PartToggles/Lights_High"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_lights_high.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+
+	// Boost mode On/Off
+	{
+		ToggleID = "thruster_boost"
+		Style = Switch
+		ShowWithShipCommands = true
+		MultipleModesDisplayOrder = Last
+		Choices
+		[
+			// Off
+			{
+				ChoiceID = "thruster_boost_off"
+				ButtonToolTipKey = "PartToggles/Boost_off"
+				DefaultHotkey = [PlatformCmdCtrl, B]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_boost_off.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// On
+			{
+				ChoiceID = "thruster_boost_on"
+				ButtonToolTipKey = "PartToggles/Boost_On"
+				DefaultHotkey = [PlatformCmdCtrl, B]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_boost_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+
+	// Missile type
+	{
+		ToggleID = "missile_type"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// High-Explosive.
+			{
+				ChoiceID = "missile_type_he"
+				ButtonToolTipKey = "PartToggles/MissileType_HE"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "missile_type_he.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// EMP.
+			{
+				ChoiceID = "missile_type_emp"
+				ButtonToolTipKey = "PartToggles/MissileType_EMP"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "missile_type_emp.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Nuke.
+			{
+				ChoiceID = "missile_type_nuke"
+				ButtonToolTipKey = "PartToggles/MissileType_Nuke"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "missile_type_nuke.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Mine.
+			{
+				ChoiceID = "missile_type_mine"
+				ButtonToolTipKey = "PartToggles/MissileType_Mine"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "missile_type_mine.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+
+	// Launch mines
+	{
+		ToggleID = "launch_mines"
+		Style = CycledButton
+		ShowWithShipCommands = true
+		MultipleModesDisplayOrder = Last
+		SortOrder = 1
+		Choices
+		[
+			// Off
+			{
+				ChoiceID = "launch_mines_off"
+				ButtonToolTipKey = "PartToggles/LaunchMines"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_launch_mines_off.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// On
+			{
+				ChoiceID = "launch_mines_on"
+				ButtonToolTipKey = "PartToggles/LaunchMines"
+				DefaultHotkey = [N]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_launch_mines_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+
+	// Tractor beam pull/push/auto.
+	{
+		ToggleID = "tractor_mode"
+		Style = Popout
+		Choices
+		[
+			// Tether.
+			{
+				ChoiceID = "tractor_mode_auto"
+				ButtonToolTipKey = "PartToggles/TractorMode_Auto"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tractor_beam_auto.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Pull.
+			{
+				ChoiceID = "tractor_mode_pull"
+				ButtonToolTipKey = "PartToggles/TractorMode_Pull"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tractor_beam_pull.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Push.
+			{
+				ChoiceID = "tractor_mode_push"
+				ButtonToolTipKey = "PartToggles/TractorMode_Push"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tractor_beam_push.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+]

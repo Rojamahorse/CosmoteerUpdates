@@ -1,0 +1,25 @@
+ID = crew6
+TitleKey = "Tutorials/Crew6/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 82 and game.HasSeenCodexPage('crew5')"
+TempShowCondition = "? game.CrewSquadAssignmentsOpen"
+Entries
+[
+	{
+		TextKey = "Tutorials/Crew6/Tell"
+	}
+	{
+		Image { Texture { File="orders_mode.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew6/OrdersMode"
+	}
+	{
+		Image { Texture { File="order.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew6/Order"
+	}
+	{
+		TextKey = "Tutorials/Crew6/Never"
+	}
+	{
+		TextKey = "Tutorials/Crew6/Tip"
+	}
+]

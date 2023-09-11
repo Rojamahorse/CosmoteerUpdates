@@ -1,0 +1,1025 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/FactoryProcessor"
+	IconNameKey = "Parts/FactoryProcessorIcon"
+	ID = cosmoteer.factory_processor // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Production"
+	DescriptionKey = "Parts/FactoryProcessorDesc"
+	Resources
+	[
+		[steel, 80]
+		[coil2, 100]
+		[diamond, 12]
+	]
+	Size = [3, 3]
+	IsFlippable = true
+	SelectionPriority = 1
+	MaxHealth = 9000
+	TypeCategories = [provides_processors, uses_coils, uses_gold, uses_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
+	AllowedDoorLocations
+	[
+		[-1, 2]
+		[0, 3]
+		[1, 3]
+		[2, 3]
+		[3, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CoilStorage, GoldPrereq, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1
+		}
+
+		CoilStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = coil
+			GridRect = [0, 1, 1, 2]
+			Layer = "doodads_low"
+			SpriteInset = [15/64, 6/64, 2/64, 9/64]
+			ToggleOnResources = &../ResourceConverter/From/0/Quantity
+			ToggleOffResources = (&ToggleOnResources) - 1
+			RandomSpriteRotation = true
+			AllowExternalPickupAndDelivery = true
+		}
+		CoilConsumer
+		{
+			Type = TypedResourceGridConsumer
+			ResourceType = coil
+			Storage = CoilStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+
+		GoldStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = gold
+			GridRect = [2, 1, 1, 2]
+			Layer = "doodads_low"
+			SpriteInset = [2/64, 6/64, 15/64, 9/64]
+			ToggleOnResources = &../GoldLoader/FromQuantity
+			ToggleOffResources = (&ToggleOnResources) - 1
+			RandomSpriteRotation = true
+		}
+
+		GoldConsumer
+		{
+			Type = TypedResourceGridConsumer
+			ResourceType = gold
+			Storage = GoldStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+
+		ProcessorStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = processor
+			GridRect = [1, 2, 1, 1]
+			Layer = "doodads_low"
+			SpriteInset = [8/64, 3/64, 8/64, 14/64]
+			SuppliesResources = true
+			SupplyToggleButtonOffset = [0, -.4]
+			RandomSpriteRotation = true
+			InitToMaxResources = 0
+			AllowExternalPickupAndDelivery = true
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+
+		GoldPrereq
+		{
+			Type = MultiToggle
+			Toggles = [GoldStorage, LoadedGold]
+			Mode = Any
+		}
+
+		LoadedGold
+		{
+			Type = ResourceStorage
+			OperationalToggle = IsOperational
+			ResourceType = fake
+			MaxResources = (&../ResourceConverter/From/1/Quantity) + 1		//Need to be +1 so the GoldLoader dont need to momentarily stop after loading the LoadedGold
+			StartingAmmo = 0
+			ToggleOnResources = &../ResourceConverter/From/1/Quantity
+			ToggleOffResources = (&ToggleOnResources) - 1
+		}
+
+		AnimationToggle
+		{
+			Type = MultiToggle
+			Toggles = [GoldLoader, ResourceConverter]
+			Mode = Any
+		}
+
+		GoldLoader
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = GoldStorage
+			FromQuantity = 1
+			ToStorage = LoadedGold
+			ToQuantity = 1
+			Interval = { BaseValue=1.666666; BuffType=Factory; BuffMode=Divide; }
+		}
+
+		ResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = LoadedGold
+			From
+			[
+			    {
+			        Storage = CoilStorage
+			        Quantity = 5
+			    }
+			    {
+			        Storage = LoadedGold
+			        Quantity = 3
+			    }
+			    {
+			        Storage = BatteryStorage
+			        Quantity = 500
+			        MinQuantityForConversion = 1
+			    }
+			]
+			ToStorage = ProcessorStorage
+			ToQuantity = 1
+			Interval = 0.75
+			CheckResourceLimits = true
+		}
+
+		ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ResourceConverter
+			Location = [1.5, 1.5]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "../factory_ammo/bullet_create.wav"
+					Volume = .1
+					Speed = .5
+					SpeedVariation = .05
+				}
+			]
+		}
+
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = Factory
+			BuffAmount = 25%
+			GridDistance = 1
+			OperationalToggle = BatteryStorage
+		}
+
+		FloorSprite
+		{
+			Type = Sprite
+			OnlyWithFlip = false
+			Location = [1.5, 1.5]
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor.png"
+					Size = [3, 3]
+				}
+				{
+					File = "floor_33.png"
+					Size = [3, 3]
+				}
+				{
+					File = "floor_66.png"
+					Size = [3, 3]
+				}
+			]
+		}
+
+		FloorSpriteFlipped
+		{
+			Type = Sprite
+			OnlyWithFlip = true
+			Location = [1.5, 1.5]
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor_flipped.png"
+					Size = [3, 3]
+				}
+				{
+					File = "floor_flipped_33.png"
+					Size = [3, 3]
+				}
+				{
+					File = "floor_flipped_66.png"
+					Size = [3, 3]
+				}
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			OperationalToggle = IsOperational
+			DoodadToggle = AnimationToggle
+			ToggleOnDoodad
+			{
+				Layer = "walls"		//walls layer so its over the batteries and under the crew layer
+				Offset = [0, -.5]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "walls"		//walls layer so its over the batteries and under the crew layer
+				Offset = [0, -.5]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_idle1.png"
+							"doodads_idle2.png"
+							"doodads_idle3.png"
+							"doodads_idle4.png"
+							"doodads_idle5.png"
+							"doodads_idle6.png"
+							"doodads_idle7.png"
+							"doodads_idle8.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_idle1_33.png"
+							"doodads_idle2_33.png"
+							"doodads_idle3_33.png"
+							"doodads_idle4_33.png"
+							"doodads_idle5_33.png"
+							"doodads_idle6_33.png"
+							"doodads_idle7_33.png"
+							"doodads_idle8_33.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_idle1_66.png"
+							"doodads_idle2_66.png"
+							"doodads_idle3_66.png"
+							"doodads_idle4_66.png"
+							"doodads_idle5_66.png"
+							"doodads_idle6_66.png"
+							"doodads_idle7_66.png"
+							"doodads_idle8_66.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = WhenSpawned
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "walls"		//walls layer so its over the batteries and under the crew layer
+				Offset = [0.5, -.5]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [2, 2]
+					}
+					{
+						File = "doodads_off_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "doodads_off_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [3, 3]
+					}
+					{
+						File = "walls_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "walls_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [-45/64, -43/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [4, 4]
+						Z = .5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.4, 0, 0]
+					}
+				]
+			}
+		}
+
+		CoilBeltAndRoboticArmGraphics
+		{
+			Type = Graphics
+			Location = [.5, 66/64]
+			DoodadToggle = AnimationToggle
+			ToggleOnDoodad
+			{
+				Layer = "doodads_high"	//doodads_high layer so the robotic arm sprites are draw over the resources sprites and crew
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on2.png"
+							"doodads_coilbelt_on3.png"
+							"doodads_coilbelt_on4.png"
+							"doodads_coilbelt_on5.png"
+							"doodads_coilbelt_on6.png"
+							"doodads_coilbelt_on7.png"
+							"doodads_coilbelt_on8.png"
+							"doodads_coilbelt_on9.png"
+							"doodads_coilbelt_on10.png"
+							"doodads_coilbelt_on11.png"
+							"doodads_coilbelt_on12.png"
+							"doodads_coilbelt_on13.png"
+							"doodads_coilbelt_on14.png"
+							"doodads_coilbelt_on15.png"
+							"doodads_coilbelt_on16.png"
+							"doodads_coilbelt_on17.png"
+							"doodads_coilbelt_on18.png"
+							"doodads_coilbelt_on19.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+							"doodads_coilbelt_on1.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on2_33.png"
+							"doodads_coilbelt_on3_33.png"
+							"doodads_coilbelt_on4_33.png"
+							"doodads_coilbelt_on5_33.png"
+							"doodads_coilbelt_on6_33.png"
+							"doodads_coilbelt_on7_33.png"
+							"doodads_coilbelt_on8_33.png"
+							"doodads_coilbelt_on9_33.png"
+							"doodads_coilbelt_on10_33.png"
+							"doodads_coilbelt_on11_33.png"
+							"doodads_coilbelt_on12_33.png"
+							"doodads_coilbelt_on13_33.png"
+							"doodads_coilbelt_on14_33.png"
+							"doodads_coilbelt_on15_33.png"
+							"doodads_coilbelt_on16_33.png"
+							"doodads_coilbelt_on17_33.png"
+							"doodads_coilbelt_on18_33.png"
+							"doodads_coilbelt_on19_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+							"doodads_coilbelt_on1_33.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on2_66.png"
+							"doodads_coilbelt_on3_66.png"
+							"doodads_coilbelt_on4_66.png"
+							"doodads_coilbelt_on5_66.png"
+							"doodads_coilbelt_on6_66.png"
+							"doodads_coilbelt_on7_66.png"
+							"doodads_coilbelt_on8_66.png"
+							"doodads_coilbelt_on9_66.png"
+							"doodads_coilbelt_on10_66.png"
+							"doodads_coilbelt_on11_66.png"
+							"doodads_coilbelt_on12_66.png"
+							"doodads_coilbelt_on13_66.png"
+							"doodads_coilbelt_on14_66.png"
+							"doodads_coilbelt_on15_66.png"
+							"doodads_coilbelt_on16_66.png"
+							"doodads_coilbelt_on17_66.png"
+							"doodads_coilbelt_on18_66.png"
+							"doodads_coilbelt_on19_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+							"doodads_coilbelt_on1_66.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doodads_high"	//doodads_high layer so the robotic arm sprites are draw over the resources sprites and crew
+				DamageLevels
+				[
+					{
+						File = "doodads_coilbelt_on1.png"
+						Size = [1, 2]
+					}
+					{
+						File = "doodads_coilbelt_on1_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "doodads_coilbelt_on1_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+
+		NuggetGraphics
+		{
+			Type = Graphics
+			Location = [171/64, 36/64]
+			OperationalToggle = IsOperational
+			DoodadToggle = GoldLoader
+			ToggleOnDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"gold12.png"
+							"gold11.png"
+							"gold10.png"
+							"gold9.png"
+							"gold8.png"
+							"gold7.png"
+							"gold6.png"
+							"gold5.png"
+							"gold4.png"
+							"gold3.png"
+							"gold2.png"
+							"gold1.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.138
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [-29/64, 19/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [4, 4]
+						Z = .5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.4, 0, 0]
+					}
+				]
+			}
+		}
+
+		LoadedGoldIndicatorSprites
+		{
+			Type = ResourceSprites
+			Location = [96/64, 117/64]
+			ResourceStorage = LoadedGold
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "loaded_gold_indicator1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "loaded_gold_indicator2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "loaded_gold_indicator3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "loaded_gold_indicator3.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		ProcessorGraphics
+		{
+			Type = Graphics
+			Location = [96/64, 118/64]
+			OperationalToggle = IsOperational
+			DoodadToggle = ResourceConverter
+			ToggleOnDoodad
+			{
+				Layer = "walls" //Wall layer so the processor is show on top of the exit belt which use the doodad_low layer and under the crew sprite
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"processor1.png"
+							"processor2.png"
+							"processor3.png"
+							"processor4.png"
+							"processor5.png"
+							"processor6.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+		}
+
+		RoofDoorOpenToggle
+		{
+			Type = CrewDestinationProximityToggle
+			Distance = 3
+		}
+		RoofDoorSprite
+		{
+			Type = OpenCloseSprite
+			Location = [1.5, 1.5]
+			OperationalToggle = RoofDoorOpenToggle
+			Layer = "roofs"
+			OpenDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"roof1.png"
+						"roof2.png"
+						"roof3.png"
+						"roof4.png"
+						"roof5.png"
+						"roof6.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals1.png"
+						"roof_normals2.png"
+						"roof_normals3.png"
+						"roof_normals4.png"
+						"roof_normals5.png"
+						"roof_normals6.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof1_33.png"
+						"roof2_33.png"
+						"roof3_33.png"
+						"roof4_33.png"
+						"roof5_33.png"
+						"roof6_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals1_33.png"
+						"roof_normals2_33.png"
+						"roof_normals3_33.png"
+						"roof_normals4_33.png"
+						"roof_normals5_33.png"
+						"roof_normals6_33.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof1_66.png"
+						"roof2_66.png"
+						"roof3_66.png"
+						"roof4_66.png"
+						"roof5_66.png"
+						"roof6_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals1_66.png"
+						"roof_normals2_66.png"
+						"roof_normals3_66.png"
+						"roof_normals4_66.png"
+						"roof_normals5_66.png"
+						"roof_normals6_66.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+			ClosedDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"roof6.png"
+						"roof5.png"
+						"roof4.png"
+						"roof3.png"
+						"roof2.png"
+						"roof1.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals6.png"
+						"roof_normals5.png"
+						"roof_normals4.png"
+						"roof_normals3.png"
+						"roof_normals2.png"
+						"roof_normals1.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof6_33.png"
+						"roof5_33.png"
+						"roof4_33.png"
+						"roof3_33.png"
+						"roof2_33.png"
+						"roof1_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals6_33.png"
+						"roof_normals5_33.png"
+						"roof_normals4_33.png"
+						"roof_normals3_33.png"
+						"roof_normals2_33.png"
+						"roof_normals1_33.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof6_66.png"
+						"roof5_66.png"
+						"roof4_66.png"
+						"roof3_66.png"
+						"roof2_66.png"
+						"roof1_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals6_66.png"
+						"roof_normals5_66.png"
+						"roof_normals4_66.png"
+						"roof_normals3_66.png"
+						"roof_normals2_66.png"
+						"roof_normals1_66.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1.5, 65/64]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+					OffSet = [-39/64, 0]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+					OffSet = [-39/64, 0]
+				}
+				{
+					File = "batteries3.png"
+					Size = [2, 1]
+					OffSet = [-7/64, 0]
+				}
+				{
+					File = "batteries4.png"
+					Size = [3, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1.5, 1.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [1.5, 1.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1.5, 1.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// No coils.
+				{
+					Toggle = CoilStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoResource
+						Size = [1, 1]
+					}
+				}
+
+				// No gold.
+				{
+					Toggle = GoldPrereq
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoResource
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			OnlyWithFlip = false
+			File = "blueprints.png"
+			Size = [3, 3]
+		}
+
+		BlueprintsFlipped
+		{
+			Type = BlueprintSprite
+			OnlyWithFlip = true
+			File = "blueprints_flipped.png"
+			Size = [3, 3]
+		}
+	}
+
+	Stats
+	{
+		Interval = (&~/Part/Components/GoldLoader/Interval/BaseValue) * (&~/Part/Components/ResourceConverter/From/1/Quantity)
+		ProcessorProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&Interval)
+		ProcessorCapacity = (&~/Part/Components/ProcessorStorage/GridRect/2) * (&~/Part/Components/ProcessorStorage/GridRect/3) * (&<./Data/resources/processor/processor.rules>/MaxStackSize)
+		CoilCapacity = (&~/Part/Components/CoilStorage/GridRect/2) * (&~/Part/Components/CoilStorage/GridRect/3) * (&<./Data/resources/coil/coil.rules>/MaxStackSize)
+		CoilPerProcessor = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
+		CoilPerSecond = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&Interval)
+		ProcessorCoilUsage = [&../CoilPerProcessor, &../CoilPerSecond]
+		GoldCapacity = (&~/Part/Components/GoldStorage/GridRect/2) * (&~/Part/Components/GoldStorage/GridRect/3) * (&<./Data/resources/gold/gold.rules>/MaxStackSize)
+		GoldPerProcessor = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
+		GoldPerSecond = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&Interval)
+		ProcessorGoldUsage = [&../GoldPerProcessor, &../GoldPerSecond]
+		PowerPerGold = (&~/Part/Components/ResourceConverter/From/2/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
+		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/2/Quantity) / (&Interval) / 1000
+		ProcessorPowerUsage = [&../PowerPerGold, &../PowerPerSecond]
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+
+		RecPower = &PowerPerSecond
+		RecCrew = (&RecPower) * 4
+	}
+}

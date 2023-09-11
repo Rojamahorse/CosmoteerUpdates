@@ -1,0 +1,679 @@
+ToolIcon
+{
+	Texture
+	{
+		File = "hud_resources.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+GrabToolIcon
+{
+	Texture
+	{
+		File = "../tool_grab.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+ClearToolIcon
+{
+	Texture
+	{
+		File = "tool_clear.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+SupplyChainToolOffIcon
+{
+	Texture
+	{
+		File = "tool_supply_chain_off.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+SupplyChainToolOnIcon
+{
+	Texture
+	{
+		File = "tool_supply_chain_on.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+MirrorLine = &<../designer/build_gui.rules>/MirrorLine
+MirrorOffSprite = &<../designer/build_gui.rules>/MirrorOffSprite
+MirrorOnSprite = &<../designer/build_gui.rules>/MirrorOnSprite
+
+StorageHighlightDimColor = [0, 0, 0, 127]
+
+StorageHighlightNineSlice
+{
+	TopLeftSprite
+	{
+		Texture
+		{
+			File = "../overlay_rect.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		Source = [0, 0, 64, 64]
+	}
+	TopSprite : TopLeftSprite { Source=[64, 0, 128, 64]; }
+	TopRightSprite : TopLeftSprite { Source=[192, 0, 64, 64]; }
+	LeftSprite : TopLeftSprite { Source=[0, 64, 64, 128]; }
+	RightSprite : TopLeftSprite { Source=[192, 64, 64, 128]; }
+	BottomLeftSprite : TopLeftSprite { Source=[0, 192, 64, 64]; }
+	BottomSprite : TopLeftSprite { Source=[64, 192, 128, 64]; }
+	BottomRightSprite : TopLeftSprite { Source=[192, 192, 64, 64]; }
+
+	Borders = 32/128
+	Bleed = 19/128
+}
+StorageHighlightConsumptionOnNineSlice : StorageHighlightNineSlice
+{
+	VertexColor = [10, 212, 98, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+StorageHighlightConsumptionOffNineSlice : StorageHighlightNineSlice
+{
+	VertexColor = [246, 49, 43, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+StorageHighlightSupplyOnNineSlice : StorageHighlightNineSlice
+{
+	VertexColor = [0, 183, 255, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+StorageHighlightSupplyOffNineSlice = &StorageHighlightConsumptionOffNineSlice
+StorageHighlightColorLerpRange
+[
+	[255, 255, 255, 255*.8]
+	[255, 255, 255, 255*1]
+]
+StorageHighlightColorLerpInterval = 2
+
+TypedStorageGridInset = 8/64
+FlexStorageGridInset = 4/64
+
+NuggetHighlightCircle
+{
+	Thickness = .4
+	QuadCount = 32
+}
+
+TileCountTextColor = [10, 212, 98, 255]
+TileCountTextFontSize = 16
+TileCountTextHAlignment = Left
+TileCountTextVAlignment = Bottom
+TileCountTextOffset = [-.35, .4]
+TileCountIncreaseFmt = "{0} <color r='196' g='255' b='255'>+{1}</color>"
+TileCountDecreaseFmt = "{0} <color r='246' g='49' b='43'>-{1}</color>"
+TileCountZeroIncreaseFmt = "<color r='196' g='255' b='255'>+{0}</color>"
+
+TileTypeOverlayUnselectedEmptyColor = [255, 255, 255, 255*.5]
+TileTypeOverlaySelectedPresentColor = [10, 212, 98, 255*.9]
+TileTypeOverlaySelectedEmptyColor = [255, 255, 255, 255*.9]
+TileTypeOverlayIncorrectColor = [246, 49, 43, 255*.75]
+TileTypeOverlayCursorColor = [10, 212, 98, 255]
+
+ResourceTransferLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_dotted.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+	}
+	LineThickness = .25
+	LineUPerLength = 4
+
+	BeginCapSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/arrow.png"
+			SampleMode = Linear
+			Miple = max
+		}
+		UVRect = [1, 0, -1, 1]
+	}
+	BeginCapSize = [.4, .4]
+	BeginCapOverlap = .2
+	LineBeginOverhang = -.1
+
+	EndCapSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/dot.png"
+			SampleMode = Linear
+			Miple = max
+		}
+	}
+	EndCapSize = [.4, .4]
+	EndCapOverlap = .2
+}
+
+ResourceTransferLineUnselectedSourceColor = [255, 255, 255, 255]
+ResourceTransferLineSelectedSourceColor = [10, 212, 98, 255]
+ResourceTransferLineUnselectedCrewColor = [255, 255, 255, 127]
+ResourceTransferLineSelectedCrewColor = [10, 212, 98, 127]
+
+SetResourceTypeCursor
+{
+	File = "../cursor_magic.png"
+	HotSpot = [22, 22]
+	Scale = .5
+}
+
+SetResourceTypeTileHoverSprite
+{
+	Texture
+	{
+		File = "overlay_tile_hover.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+	VertexColor = [10, 212, 98, 200]
+}
+
+ClearResourceTypeCursor
+{
+	File = "cursor_clear.png"
+	HotSpot = [8, 8]
+	Scale = .5
+}
+
+ClearResourceTypeTileHoverSprite
+{
+	Texture
+	{
+		File = "overlay_tile_hover_clear.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+	VertexColor = [246, 49, 43, 200]
+}
+
+SetResourceTypeSound = &<../designer/build_gui.rules>/BlueprintAddSound
+ClearResourceTypeSound = &<../designer/build_gui.rules>/BlueprintDeleteSound
+
+MoveResourcesPickUpCursor = &<../designer/build_gui.rules>/GrabPartCursor
+MoveResourcesPutDownCursor
+{
+	File = "cursor_drop.png"
+	HotSpot = [40, 40]
+	Scale = .5
+}
+
+MoveResourcesTileHoverPickUpSprite
+{
+	Texture
+	{
+		File = "overlay_tile_hover.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+	VertexColor = [255, 255, 255, 255]
+}
+MoveResourcesTileHoverPutDownSprite
+{
+	Texture
+	{
+		File = "overlay_tile_hover.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+	VertexColor = [10, 212, 98, 255]
+}
+MoveResourcesCursorLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_dotted.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [10, 212, 98, 255]
+	}
+	LineThickness = .25
+	LineUPerLength = 4
+
+	BeginCapSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/arrow.png"
+			SampleMode = Linear
+			Miple = max
+		}
+		UVRect = [1, 0, -1, 1]
+		VertexColor = [10, 212, 98, 255]
+	}
+	BeginCapSize = [.4, .4]
+	BeginCapOverlap = .2
+	LineBeginOverhang = -.1
+
+	EndCapSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/dot.png"
+			SampleMode = Linear
+			Miple = max
+		}
+		VertexColor = [10, 212, 98, 255]
+	}
+	EndCapSize = [.4, .4]
+	EndCapOverlap = .2
+}
+MoveResourcesCursorLineSpeed = 1
+
+PickUpResourcesSound = &<../sim_gui.rules>/PartSelectSound
+PutDownResourcesSound = &<./Data/commands/command_move.rules>/MoveCommand/IssueSound
+
+EjectResourcesSprite
+{
+	Texture
+	{
+		File = "hud_eject_resources.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+ConsumptionToggleButton : <./Data/gui/widgets.rules>/ToggledImageButton
+{
+	StateNormalNineSlice
+	{
+		Flags = Center
+		CenterSprite
+		{
+			Texture
+			{
+				File = "consumption_off.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+		}
+	}
+	StateHighlightedNineSlice : StateNormalNineSlice
+	{
+		CenterSprite : ^/0/CenterSprite
+		{
+			VertexColor = [300, 300, 300, 255]
+		}
+	}
+	StatePressedNineSlice : StateNormalNineSlice
+	{
+		CenterSprite : ^/0/CenterSprite
+		{
+			VertexColor = [350, 350, 350, 255]
+		}
+	}
+
+	StateNormalSelectedNineSlice
+	{
+		Flags = Center
+		CenterSprite
+		{
+			Texture
+			{
+				File = "consumption_on.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+		}
+	}
+	StateHighlightedSelectedNineSlice : StateNormalSelectedNineSlice
+	{
+		CenterSprite : ^/0/CenterSprite
+		{
+			VertexColor = [300, 300, 300, 255]
+		}
+	}
+	StatePressedSelectedNineSlice : StateNormalSelectedNineSlice
+	{
+		CenterSprite : ^/0/CenterSprite
+		{
+			VertexColor = [350, 350, 350, 255]
+		}
+	}
+}
+
+SupplyToggleButton : <./Data/gui/widgets.rules>/ToggledImageButton
+{
+	StateNormalNineSlice
+	{
+		Flags = Center
+		CenterSprite
+		{
+			Texture
+			{
+				File = "supply_off.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+		}
+	}
+	StateHighlightedNineSlice : StateNormalNineSlice
+	{
+		CenterSprite : ^/0/CenterSprite
+		{
+			VertexColor = [300, 300, 300, 255]
+		}
+	}
+	StatePressedNineSlice : StateNormalNineSlice
+	{
+		CenterSprite : ^/0/CenterSprite
+		{
+			VertexColor = [350, 350, 350, 255]
+		}
+	}
+
+	StateNormalSelectedNineSlice
+	{
+		Flags = Center
+		CenterSprite
+		{
+			Texture
+			{
+				File = "supply_on.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+		}
+	}
+	StateHighlightedSelectedNineSlice : StateNormalSelectedNineSlice
+	{
+		CenterSprite : ^/0/CenterSprite
+		{
+			VertexColor = [300, 300, 300, 255]
+		}
+	}
+	StatePressedSelectedNineSlice : StateNormalSelectedNineSlice
+	{
+		CenterSprite : ^/0/CenterSprite
+		{
+			VertexColor = [350, 350, 350, 255]
+		}
+	}
+}
+
+ClearSupplyTargetsIcon
+{
+	Texture
+	{
+		File = "../designer/tool_delete_selected.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+SupplierSelectionOutlineSprite
+{
+	VertexColor = [255, 255, 255, 255]
+}
+SupplierSelectionFillSprite
+{
+	VertexColor = [255, 255, 255, 16]
+}
+
+PartHighlightNineSlice
+{
+	TopLeftSprite
+	{
+		Texture
+		{
+			File = "../overlay_highlight.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		Source = [0, 0, 16, 16]
+		Shader = "../overlay_highlight.shader"
+		Color = &~/StorageHighlightDimColor
+	}
+	TopSprite : TopLeftSprite { Source=[16, 0, 32, 16]; }
+	TopRightSprite : TopLeftSprite { Source=[48, 0, 16, 16]; }
+	LeftSprite : TopLeftSprite { Source=[0, 16, 16, 32]; }
+	CenterSprite : TopLeftSprite { Source=[16, 16, 32, 32]; }
+	RightSprite : TopLeftSprite { Source=[48, 16, 16, 32]; }
+	BottomLeftSprite : TopLeftSprite { Source=[0, 48, 16, 16]; }
+	BottomSprite : TopLeftSprite { Source=[16, 48, 32, 16]; }
+	BottomRightSprite : TopLeftSprite { Source=[48, 48, 16, 16]; }
+	Borders = 12/64
+}
+PartHighlightTweenTime = .1
+
+SelectedPartNineSlice : <./Data/gui/game/sim_gui.rules>/SelectedPartNineSlice
+{
+	VertexColor = [10, 212, 98, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+SelectedMirroredPartNineSlice : <./Data/gui/game/sim_gui.rules>/SelectedPartNineSlice
+{
+	VertexColor = [10, 212, 98, 127]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+
+TentativePartNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+{
+	VertexColor = [10, 212, 98, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+TentativeMirroredPartNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+{
+	VertexColor = [10, 212, 98, 127]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+
+TentativeTargetNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+{
+	VertexColor = [0, 183, 255, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+
+ProducerOverlayDimColor = [0, 183, 255, 127]
+ProducerOverlayPulsingColorRange
+[
+	[0, 183, 255, 200]
+	[128, 219, 255, 255]
+]
+ProducerOverlayPulseInterval = 1
+ProducerOverlaySelectedColor = [10, 212, 98, 255]
+
+ConsumerOverlayDimColor = [255, 255, 255, 127]
+ConsumerOverlayPulsingColorRange
+[
+	[0, 183, 255, 200]
+	[128, 219, 255, 255]
+]
+ConsumerOverlayPulseInterval = 1
+ConsumerOverlaySelectedColor = [10, 212, 98, 255]
+
+OverlayBackgroundSprite
+{
+	Texture
+	{
+		File = "./Data/gui/gradient_radial.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1.2, 1.2]
+	VertexColor = [0, 0, 0, 300]
+}
+
+GenericTypeOverlay
+{
+	Texture
+	{
+		File = "./Data/resources/overlay_generic.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+SupplyLineDim
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_arrow.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [0, 183, 255, 96]
+	}
+	LineThickness = .4
+	LineUPerLength = -2
+}
+SupplyLineFull
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_arrow.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [0, 183, 255, 255]
+	}
+	LineThickness = .4
+	LineUPerLength = -2
+}
+SupplyLineSelected
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_arrow.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [10, 212, 98, 255]
+	}
+	LineThickness = .4
+	LineUPerLength = -2
+}
+TentativeSupplyLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/line_arrow.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [10, 212, 98, 127]
+	}
+	LineThickness = .4
+	LineUPerLength = -2
+}
+SupplyLineUSpeed = 2
+
+SupplyChainToolCursor = &<../sim_gui.rules>/PartModeCursor
+SupplyChainToolSelectionCursor
+{
+	File = "cursor_supplier_target.png"
+	HotSpot = [8, 8]
+	Scale = .5
+}
+
+SupplierSelectSound = &<../sim_gui.rules>/PartSelectSound
+SupplierDeselectSound = &<../sim_gui.rules>/PartDeselectSound
+AddSupplyTargetSound = &<../designer/build_gui.rules>/BlueprintAddSound
+RemoveSupplyTargetSound = &<../designer/build_gui.rules>/BlueprintDeleteSound
+
+ResourceTransferProgressAnimationSprite
+{
+	Shader = "progress_anim.shader"
+	Color = [10, 212, 98, 150]
+}

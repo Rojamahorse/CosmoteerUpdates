@@ -1,0 +1,244 @@
+Part : <../base_part_asteroid.rules>/Part
+{
+	NameKey = "Parts/Rock2x2"
+	DescriptionKey = "Parts/RockDesc"
+	ID = cosmoteer.rock_2x2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [cosmoteer.rubble_2x2]
+	SelectionTypeID = "rock"
+	EditorGroup = "Rock"
+	Resources = []
+	Size = [2, 2]
+	IsFlippable = true
+	MaxHealth = 40000
+	EditorReplacementPartID = cosmoteer.rock_1x1
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	EditorIcon
+	{
+		Texture = "rock_2x2_icon.png"
+		Size = [48, 48]
+	}
+	Components : ^/0/Components
+	{
+		Sprite
+		{
+			Type = Sprite
+			Location = [1, 1]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "rock_2x2.png"
+						NormalsFile = "rock_2x2_v1_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_33.png"
+						NormalsFile = "rock_2x2_v1_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_66.png"
+						NormalsFile = "rock_2x2_v1_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+				[
+					{
+						File = "rock_2x2.png"
+						NormalsFile = "rock_2x2_v2_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_33.png"
+						NormalsFile = "rock_2x2_v2_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_66.png"
+						NormalsFile = "rock_2x2_v2_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+				[
+					{
+						File = "rock_2x2.png"
+						NormalsFile = "rock_2x2_v3_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_33.png"
+						NormalsFile = "rock_2x2_v3_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_66.png"
+						NormalsFile = "rock_2x2_v3_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+				[
+					{
+						File = "rock_2x2.png"
+						NormalsFile = "rock_2x2_v4_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_33.png"
+						NormalsFile = "rock_2x2_v4_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_66.png"
+						NormalsFile = "rock_2x2_v4_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+				[
+					{
+						File = "rock_2x2.png"
+						NormalsFile = "rock_2x2_v5_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v2_33.png"
+						NormalsFile = "rock_2x2_v5_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v2_66.png"
+						NormalsFile = "rock_2x2_v5_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+				[
+					{
+						File = "rock_2x2.png"
+						NormalsFile = "rock_2x2_v6_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v2_33.png"
+						NormalsFile = "rock_2x2_v6_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v2_66.png"
+						NormalsFile = "rock_2x2_v6_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+				[
+					{
+						File = "rock_2x2.png"
+						NormalsFile = "rock_2x2_v7_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v2_33.png"
+						NormalsFile = "rock_2x2_v7_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v2_66.png"
+						NormalsFile = "rock_2x2_v7_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+				[
+					{
+						File = "rock_2x2.png"
+						NormalsFile = "rock_2x2_v8_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v2_33.png"
+						NormalsFile = "rock_2x2_v8_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v2_66.png"
+						NormalsFile = "rock_2x2_v8_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+				[
+					{
+						File = "rock_2x2.png"
+						NormalsFile = "rock_2x2_v9_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v3_33.png"
+						NormalsFile = "rock_2x2_v9_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v3_66.png"
+						NormalsFile = "rock_2x2_v9_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+				[
+					{
+						File = "rock_2x2.png"
+						NormalsFile = "rock_2x2_v10_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v3_33.png"
+						NormalsFile = "rock_2x2_v10_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v3_66.png"
+						NormalsFile = "rock_2x2_v10_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+				[
+					{
+						File = "rock_2x2.png"
+						NormalsFile = "rock_2x2_v11_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v3_33.png"
+						NormalsFile = "rock_2x2_v11_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v3_66.png"
+						NormalsFile = "rock_2x2_v11_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+				[
+					{
+						File = "rock_2x2.png"
+						NormalsFile = "rock_2x2_v12_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v3_33.png"
+						NormalsFile = "rock_2x2_v12_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "rock_2x2_v3_66.png"
+						NormalsFile = "rock_2x2_v12_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+			]
+			RandomUVRotation = true
+			Layer = "asteroid"
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "rock_2x2_blueprints.png"
+			Size = [2, 2]
+		}
+	}
+}

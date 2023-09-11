@@ -1,0 +1,2390 @@
+CostPerCrew = 500
+MaxHealth = 500
+BaseSpeed = 3.2
+DoorOpenDistance = .5
+DoorCloseDistance = .25
+JobAssignmentsPerSecond = 120
+LowPriorityJobAssignmentsPerSecond = 30
+ResourceSearchesPerSecond = 120
+ManualTransferJobExpensiveCheckInterval = 1.0
+SalvageJobExpensiveCheckInterval = 1.0
+MaxCrewSearchIterations = 50
+EqualPriorityJobDistanceThreshold = 10
+OffShipEqualPriorityJobDistanceThreshold = 3
+TotalPathTrafficIncrease = 2
+CrewUpdatesPerSecond = 6
+SourceRefreshesPerTick = 10
+FollowShipDistance = 2
+NewHomeSearchDistance = &LoseHomeShipWarningDistance
+NewHomeSearchInterval = [3, 5]
+LoseHomeShipDistance = 1200
+LoseHomeShipWarningDistance = 400
+HomelessWanderDistance = 50
+ExtraNuggetCollectDistance = 20
+MaxNuggetCollectSpeed = 0.1
+Radius = .25
+PathfindRadius = .25
+CollisionRadius = .25
+Density = 0.1
+Acceleration = 9
+RotSpeed = 5
+LinearDamping = 0.75
+AngularDamping = 0.75
+DesiredVelocityPerDistance = 2
+MinDesiredVelocity = 0.1
+MinDesiredVelocityEnteringAirlock = 2
+MinDesiredVelocityGrabbingNugget = 2
+SpaceDestinationArriveDistance = 0.5
+SpaceDestinationArriveAngle = 5d
+AirlockArriveDistance = 0.1
+AirlockExitOpenTime = 1
+AirlockEnterOpenTime = 0.35
+AirlockExitTime = .25
+OxygenSupply = 150
+OxygenWarningLevel = 60 / (&OxygenSupply)
+SalvageDistance = 0.6
+ConstructDistance = 0.6
+SalvageHitEffects
+[
+	{
+		Type = Damage
+		Damage = 150 // Per second.
+		DamageType = Salvage
+		Filter
+		{
+			ExcludePartCategories = [asteroid]
+			Deconstruction = false
+		}
+	}
+	{
+		Type = Damage
+		Damage = 300 // Per second.
+		DamageType = Salvage
+		Filter
+		{
+			ExcludePartCategories = [asteroid]
+			Deconstruction = true
+			TargetedFriendlies = true
+			IgnoreInvulnerability = true
+		}
+	}
+	{
+		Type = Damage
+		Damage = 600 // Per second.
+		DamageType = Salvage
+		Filter
+		{
+			OnlyPartCategories = [asteroid]
+		}
+	}
+]
+
+OxygenWarningSprite
+{
+	Texture
+	{
+		File = "o2_warning.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [64, 64]
+	Shader = "crew_warning.shader"
+}
+DistanceWarningSprite
+{
+	Texture
+	{
+		File = "distance_warning.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [64, 64]
+	Shader = "crew_warning.shader"
+}
+
+AtlasTextureParams
+{
+	MipLevels = 7 // Assumes 64x64 min sprite size.
+}
+ShipCrewAtlasMaterial
+{
+	Shader = "crew.shader"
+}
+SpaceCrewAtlasMaterial
+{
+	Shader = "crew_lit.shader"
+}
+SpaceCrewNormalsAtlasMaterial
+{
+	Shader = "crew_normals.shader"
+}
+SpaceCrewDiffuseAtlasMaterial = &ShipCrewAtlasMaterial
+
+BaseBodyType
+{
+	SkinColors
+	[
+		[48, 30, 16]
+		[98, 58, 23]
+		[128, 73, 42]
+		[178, 104, 75]
+		[118, 68, 31]
+		[136, 86, 51]
+		[148, 98, 61]
+		[171, 139, 100]
+		[204, 151, 99]
+		[208, 158, 125]
+		[237, 191, 132]
+		[231, 188, 145]
+		[240, 193, 137]
+		[240, 200, 139]
+		[247, 226, 171]
+		[247, 221, 196]
+		[239, 207, 184]
+		[233, 203, 169]
+	]
+
+	HairColors
+	[
+		[9, 8, 6]
+		[44, 34, 43]
+		[59, 48, 42]
+		[87, 67, 63]
+		[80, 68, 68]
+		[106, 78, 66]
+		[85, 72, 56]
+		[167, 133, 106]
+		[184, 151, 120]
+		[220, 208, 186]
+		[222, 188, 153]
+		[151, 121, 97]
+		[230, 206, 168]
+		[229, 200, 168]
+		[165, 107, 70]
+		[145, 85, 61]
+		[83, 61, 50]
+		[113, 99, 90]
+		[183, 166, 158]
+		[214, 196, 194]
+		//[255, 245, 225]
+		[203, 191, 177]
+		[141, 74, 66]
+		[182, 82, 58]
+	]
+}
+
+BodyTypes
+[
+	// Style a
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_a1.png"
+				"walk_a2.png"
+				"walk_a3.png"
+				"walk_a4.png"
+				"walk_a5.png"
+				"walk_a6.png"
+				"walk_a7.png"
+				"walk_a6.png"
+				"walk_a5.png"
+				"walk_a4.png"
+				"walk_a3.png"
+				"walk_a2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_a1.png"
+				"carry_a2.png"
+				"carry_a3.png"
+				"carry_a4.png"
+				"carry_a5.png"
+				"carry_a6.png"
+				"carry_a7.png"
+				"carry_a6.png"
+				"carry_a5.png"
+				"carry_a4.png"
+				"carry_a3.png"
+				"carry_a2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_a1.png"
+				"operate_a2.png"
+				"operate_a3.png"
+				"operate_a4.png"
+				"operate_a5.png"
+				"operate_a6.png"
+				"operate_a7.png"
+				"operate_a8.png"
+				"operate_a9.png"
+				"operate_a10.png"
+				"operate_a11.png"
+				"operate_a12.png"
+				"operate_a13.png"
+				"operate_a14.png"
+				"operate_a15.png"
+				"operate_a16.png"
+				"operate_a17.png"
+				"operate_a18.png"
+				"operate_a19.png"
+				"operate_a20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_a1.png"
+				"idle_a2.png"
+				"idle_a3.png"
+				"idle_a4.png"
+				"idle_a5.png"
+				"idle_a6.png"
+				"idle_a7.png"
+				"idle_a6.png"
+				"idle_a5.png"
+				"idle_a4.png"
+				"idle_a3.png"
+				"idle_a2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style b
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_b1.png"
+				"walk_b2.png"
+				"walk_b3.png"
+				"walk_b4.png"
+				"walk_b5.png"
+				"walk_b6.png"
+				"walk_b7.png"
+				"walk_b6.png"
+				"walk_b5.png"
+				"walk_b4.png"
+				"walk_b3.png"
+				"walk_b2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_b1.png"
+				"carry_b2.png"
+				"carry_b3.png"
+				"carry_b4.png"
+				"carry_b5.png"
+				"carry_b6.png"
+				"carry_b7.png"
+				"carry_b6.png"
+				"carry_b5.png"
+				"carry_b4.png"
+				"carry_b3.png"
+				"carry_b2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_b1.png"
+				"operate_b2.png"
+				"operate_b3.png"
+				"operate_b4.png"
+				"operate_b5.png"
+				"operate_b6.png"
+				"operate_b7.png"
+				"operate_b8.png"
+				"operate_b9.png"
+				"operate_b10.png"
+				"operate_b11.png"
+				"operate_b12.png"
+				"operate_b13.png"
+				"operate_b14.png"
+				"operate_b15.png"
+				"operate_b16.png"
+				"operate_b17.png"
+				"operate_b18.png"
+				"operate_b19.png"
+				"operate_b20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_b1.png"
+				"idle_b2.png"
+				"idle_b3.png"
+				"idle_b4.png"
+				"idle_b5.png"
+				"idle_b6.png"
+				"idle_b7.png"
+				"idle_b6.png"
+				"idle_b5.png"
+				"idle_b4.png"
+				"idle_b3.png"
+				"idle_b2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style c
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_c1.png"
+				"walk_c2.png"
+				"walk_c3.png"
+				"walk_c4.png"
+				"walk_c5.png"
+				"walk_c6.png"
+				"walk_c7.png"
+				"walk_c6.png"
+				"walk_c5.png"
+				"walk_c4.png"
+				"walk_c3.png"
+				"walk_c2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_c1.png"
+				"carry_c2.png"
+				"carry_c3.png"
+				"carry_c4.png"
+				"carry_c5.png"
+				"carry_c6.png"
+				"carry_c7.png"
+				"carry_c6.png"
+				"carry_c5.png"
+				"carry_c4.png"
+				"carry_c3.png"
+				"carry_c2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_c1.png"
+				"operate_c2.png"
+				"operate_c3.png"
+				"operate_c4.png"
+				"operate_c5.png"
+				"operate_c6.png"
+				"operate_c7.png"
+				"operate_c8.png"
+				"operate_c9.png"
+				"operate_c10.png"
+				"operate_c11.png"
+				"operate_c12.png"
+				"operate_c13.png"
+				"operate_c14.png"
+				"operate_c15.png"
+				"operate_c16.png"
+				"operate_c17.png"
+				"operate_c18.png"
+				"operate_c19.png"
+				"operate_c20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_c1.png"
+				"idle_c2.png"
+				"idle_c3.png"
+				"idle_c4.png"
+				"idle_c5.png"
+				"idle_c6.png"
+				"idle_c7.png"
+				"idle_c6.png"
+				"idle_c5.png"
+				"idle_c4.png"
+				"idle_c3.png"
+				"idle_c2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style d
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_d1.png"
+				"walk_d2.png"
+				"walk_d3.png"
+				"walk_d4.png"
+				"walk_d5.png"
+				"walk_d6.png"
+				"walk_d7.png"
+				"walk_d6.png"
+				"walk_d5.png"
+				"walk_d4.png"
+				"walk_d3.png"
+				"walk_d2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_d1.png"
+				"carry_d2.png"
+				"carry_d3.png"
+				"carry_d4.png"
+				"carry_d5.png"
+				"carry_d6.png"
+				"carry_d7.png"
+				"carry_d6.png"
+				"carry_d5.png"
+				"carry_d4.png"
+				"carry_d3.png"
+				"carry_d2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_d1.png"
+				"operate_d2.png"
+				"operate_d3.png"
+				"operate_d4.png"
+				"operate_d5.png"
+				"operate_d6.png"
+				"operate_d7.png"
+				"operate_d8.png"
+				"operate_d9.png"
+				"operate_d10.png"
+				"operate_d11.png"
+				"operate_d12.png"
+				"operate_d13.png"
+				"operate_d14.png"
+				"operate_d15.png"
+				"operate_d16.png"
+				"operate_d17.png"
+				"operate_d18.png"
+				"operate_d19.png"
+				"operate_d20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_d1.png"
+				"idle_d2.png"
+				"idle_d3.png"
+				"idle_d4.png"
+				"idle_d5.png"
+				"idle_d6.png"
+				"idle_d7.png"
+				"idle_d6.png"
+				"idle_d5.png"
+				"idle_d4.png"
+				"idle_d3.png"
+				"idle_d2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style e
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_e1.png"
+				"walk_e2.png"
+				"walk_e3.png"
+				"walk_e4.png"
+				"walk_e5.png"
+				"walk_e6.png"
+				"walk_e7.png"
+				"walk_e6.png"
+				"walk_e5.png"
+				"walk_e4.png"
+				"walk_e3.png"
+				"walk_e2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_e1.png"
+				"carry_e2.png"
+				"carry_e3.png"
+				"carry_e4.png"
+				"carry_e5.png"
+				"carry_e6.png"
+				"carry_e7.png"
+				"carry_e6.png"
+				"carry_e5.png"
+				"carry_e4.png"
+				"carry_e3.png"
+				"carry_e2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_e1.png"
+				"operate_e2.png"
+				"operate_e3.png"
+				"operate_e4.png"
+				"operate_e5.png"
+				"operate_e6.png"
+				"operate_e7.png"
+				"operate_e8.png"
+				"operate_e9.png"
+				"operate_e10.png"
+				"operate_e11.png"
+				"operate_e12.png"
+				"operate_e13.png"
+				"operate_e14.png"
+				"operate_e15.png"
+				"operate_e16.png"
+				"operate_e17.png"
+				"operate_e18.png"
+				"operate_e19.png"
+				"operate_e20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_e1.png"
+				"idle_e2.png"
+				"idle_e3.png"
+				"idle_e4.png"
+				"idle_e5.png"
+				"idle_e6.png"
+				"idle_e7.png"
+				"idle_e6.png"
+				"idle_e5.png"
+				"idle_e4.png"
+				"idle_e3.png"
+				"idle_e2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style f
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_f1.png"
+				"walk_f2.png"
+				"walk_f3.png"
+				"walk_f4.png"
+				"walk_f5.png"
+				"walk_f6.png"
+				"walk_f7.png"
+				"walk_f6.png"
+				"walk_f5.png"
+				"walk_f4.png"
+				"walk_f3.png"
+				"walk_f2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_f1.png"
+				"carry_f2.png"
+				"carry_f3.png"
+				"carry_f4.png"
+				"carry_f5.png"
+				"carry_f6.png"
+				"carry_f7.png"
+				"carry_f6.png"
+				"carry_f5.png"
+				"carry_f4.png"
+				"carry_f3.png"
+				"carry_f2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_f1.png"
+				"operate_f2.png"
+				"operate_f3.png"
+				"operate_f4.png"
+				"operate_f5.png"
+				"operate_f6.png"
+				"operate_f7.png"
+				"operate_f8.png"
+				"operate_f9.png"
+				"operate_f10.png"
+				"operate_f11.png"
+				"operate_f12.png"
+				"operate_f13.png"
+				"operate_f14.png"
+				"operate_f15.png"
+				"operate_f16.png"
+				"operate_f17.png"
+				"operate_f18.png"
+				"operate_f19.png"
+				"operate_f20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_f1.png"
+				"idle_f2.png"
+				"idle_f3.png"
+				"idle_f4.png"
+				"idle_f5.png"
+				"idle_f6.png"
+				"idle_f7.png"
+				"idle_f6.png"
+				"idle_f5.png"
+				"idle_f4.png"
+				"idle_f3.png"
+				"idle_f2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style g
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_g1.png"
+				"walk_g2.png"
+				"walk_g3.png"
+				"walk_g4.png"
+				"walk_g5.png"
+				"walk_g6.png"
+				"walk_g7.png"
+				"walk_g6.png"
+				"walk_g5.png"
+				"walk_g4.png"
+				"walk_g3.png"
+				"walk_g2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_g1.png"
+				"carry_g2.png"
+				"carry_g3.png"
+				"carry_g4.png"
+				"carry_g5.png"
+				"carry_g6.png"
+				"carry_g7.png"
+				"carry_g6.png"
+				"carry_g5.png"
+				"carry_g4.png"
+				"carry_g3.png"
+				"carry_g2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_g1.png"
+				"operate_g2.png"
+				"operate_g3.png"
+				"operate_g4.png"
+				"operate_g5.png"
+				"operate_g6.png"
+				"operate_g7.png"
+				"operate_g8.png"
+				"operate_g9.png"
+				"operate_g10.png"
+				"operate_g11.png"
+				"operate_g12.png"
+				"operate_g13.png"
+				"operate_g14.png"
+				"operate_g15.png"
+				"operate_g16.png"
+				"operate_g17.png"
+				"operate_g18.png"
+				"operate_g19.png"
+				"operate_g20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_g1.png"
+				"idle_g2.png"
+				"idle_g3.png"
+				"idle_g4.png"
+				"idle_g5.png"
+				"idle_g6.png"
+				"idle_g7.png"
+				"idle_g6.png"
+				"idle_g5.png"
+				"idle_g4.png"
+				"idle_g3.png"
+				"idle_g2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style h
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_h1.png"
+				"walk_h2.png"
+				"walk_h3.png"
+				"walk_h4.png"
+				"walk_h5.png"
+				"walk_h6.png"
+				"walk_h7.png"
+				"walk_h6.png"
+				"walk_h5.png"
+				"walk_h4.png"
+				"walk_h3.png"
+				"walk_h2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_h1.png"
+				"carry_h2.png"
+				"carry_h3.png"
+				"carry_h4.png"
+				"carry_h5.png"
+				"carry_h6.png"
+				"carry_h7.png"
+				"carry_h6.png"
+				"carry_h5.png"
+				"carry_h4.png"
+				"carry_h3.png"
+				"carry_h2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_h1.png"
+				"operate_h2.png"
+				"operate_h3.png"
+				"operate_h4.png"
+				"operate_h5.png"
+				"operate_h6.png"
+				"operate_h7.png"
+				"operate_h8.png"
+				"operate_h9.png"
+				"operate_h10.png"
+				"operate_h11.png"
+				"operate_h12.png"
+				"operate_h13.png"
+				"operate_h14.png"
+				"operate_h15.png"
+				"operate_h16.png"
+				"operate_h17.png"
+				"operate_h18.png"
+				"operate_h19.png"
+				"operate_h20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_h1.png"
+				"idle_h2.png"
+				"idle_h3.png"
+				"idle_h4.png"
+				"idle_h5.png"
+				"idle_h6.png"
+				"idle_h7.png"
+				"idle_h6.png"
+				"idle_h5.png"
+				"idle_h4.png"
+				"idle_h3.png"
+				"idle_h2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style i
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_i1.png"
+				"walk_i2.png"
+				"walk_i3.png"
+				"walk_i4.png"
+				"walk_i5.png"
+				"walk_i6.png"
+				"walk_i7.png"
+				"walk_i6.png"
+				"walk_i5.png"
+				"walk_i4.png"
+				"walk_i3.png"
+				"walk_i2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_i1.png"
+				"carry_i2.png"
+				"carry_i3.png"
+				"carry_i4.png"
+				"carry_i5.png"
+				"carry_i6.png"
+				"carry_i7.png"
+				"carry_i6.png"
+				"carry_i5.png"
+				"carry_i4.png"
+				"carry_i3.png"
+				"carry_i2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_i1.png"
+				"operate_i2.png"
+				"operate_i3.png"
+				"operate_i4.png"
+				"operate_i5.png"
+				"operate_i6.png"
+				"operate_i7.png"
+				"operate_i8.png"
+				"operate_i9.png"
+				"operate_i10.png"
+				"operate_i11.png"
+				"operate_i12.png"
+				"operate_i13.png"
+				"operate_i14.png"
+				"operate_i15.png"
+				"operate_i16.png"
+				"operate_i17.png"
+				"operate_i18.png"
+				"operate_i19.png"
+				"operate_i20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_i1.png"
+				"idle_i2.png"
+				"idle_i3.png"
+				"idle_i4.png"
+				"idle_i5.png"
+				"idle_i6.png"
+				"idle_i7.png"
+				"idle_i6.png"
+				"idle_i5.png"
+				"idle_i4.png"
+				"idle_i3.png"
+				"idle_i2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style j
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_j1.png"
+				"walk_j2.png"
+				"walk_j3.png"
+				"walk_j4.png"
+				"walk_j5.png"
+				"walk_j6.png"
+				"walk_j7.png"
+				"walk_j6.png"
+				"walk_j5.png"
+				"walk_j4.png"
+				"walk_j3.png"
+				"walk_j2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_j1.png"
+				"carry_j2.png"
+				"carry_j3.png"
+				"carry_j4.png"
+				"carry_j5.png"
+				"carry_j6.png"
+				"carry_j7.png"
+				"carry_j6.png"
+				"carry_j5.png"
+				"carry_j4.png"
+				"carry_j3.png"
+				"carry_j2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_j1.png"
+				"operate_j2.png"
+				"operate_j3.png"
+				"operate_j4.png"
+				"operate_j5.png"
+				"operate_j6.png"
+				"operate_j7.png"
+				"operate_j8.png"
+				"operate_j9.png"
+				"operate_j10.png"
+				"operate_j11.png"
+				"operate_j12.png"
+				"operate_j13.png"
+				"operate_j14.png"
+				"operate_j15.png"
+				"operate_j16.png"
+				"operate_j17.png"
+				"operate_j18.png"
+				"operate_j19.png"
+				"operate_j20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_j1.png"
+				"idle_j2.png"
+				"idle_j3.png"
+				"idle_j4.png"
+				"idle_j5.png"
+				"idle_j6.png"
+				"idle_j7.png"
+				"idle_j6.png"
+				"idle_j5.png"
+				"idle_j4.png"
+				"idle_j3.png"
+				"idle_j2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style k
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_k1.png"
+				"walk_k2.png"
+				"walk_k3.png"
+				"walk_k4.png"
+				"walk_k5.png"
+				"walk_k6.png"
+				"walk_k7.png"
+				"walk_k6.png"
+				"walk_k5.png"
+				"walk_k4.png"
+				"walk_k3.png"
+				"walk_k2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_k1.png"
+				"carry_k2.png"
+				"carry_k3.png"
+				"carry_k4.png"
+				"carry_k5.png"
+				"carry_k6.png"
+				"carry_k7.png"
+				"carry_k6.png"
+				"carry_k5.png"
+				"carry_k4.png"
+				"carry_k3.png"
+				"carry_k2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_k1.png"
+				"operate_k2.png"
+				"operate_k3.png"
+				"operate_k4.png"
+				"operate_k5.png"
+				"operate_k6.png"
+				"operate_k7.png"
+				"operate_k8.png"
+				"operate_k9.png"
+				"operate_k10.png"
+				"operate_k11.png"
+				"operate_k12.png"
+				"operate_k13.png"
+				"operate_k14.png"
+				"operate_k15.png"
+				"operate_k16.png"
+				"operate_k17.png"
+				"operate_k18.png"
+				"operate_k19.png"
+				"operate_k20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_k1.png"
+				"idle_k2.png"
+				"idle_k3.png"
+				"idle_k4.png"
+				"idle_k5.png"
+				"idle_k6.png"
+				"idle_k7.png"
+				"idle_k6.png"
+				"idle_k5.png"
+				"idle_k4.png"
+				"idle_k3.png"
+				"idle_k2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style l
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_l1.png"
+				"walk_l2.png"
+				"walk_l3.png"
+				"walk_l4.png"
+				"walk_l5.png"
+				"walk_l6.png"
+				"walk_l7.png"
+				"walk_l6.png"
+				"walk_l5.png"
+				"walk_l4.png"
+				"walk_l3.png"
+				"walk_l2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_l1.png"
+				"carry_l2.png"
+				"carry_l3.png"
+				"carry_l4.png"
+				"carry_l5.png"
+				"carry_l6.png"
+				"carry_l7.png"
+				"carry_l6.png"
+				"carry_l5.png"
+				"carry_l4.png"
+				"carry_l3.png"
+				"carry_l2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_l1.png"
+				"operate_l2.png"
+				"operate_l3.png"
+				"operate_l4.png"
+				"operate_l5.png"
+				"operate_l6.png"
+				"operate_l7.png"
+				"operate_l8.png"
+				"operate_l9.png"
+				"operate_l10.png"
+				"operate_l11.png"
+				"operate_l12.png"
+				"operate_l13.png"
+				"operate_l14.png"
+				"operate_l15.png"
+				"operate_l16.png"
+				"operate_l17.png"
+				"operate_l18.png"
+				"operate_l19.png"
+				"operate_l20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_l1.png"
+				"idle_l2.png"
+				"idle_l3.png"
+				"idle_l4.png"
+				"idle_l5.png"
+				"idle_l6.png"
+				"idle_l7.png"
+				"idle_l6.png"
+				"idle_l5.png"
+				"idle_l4.png"
+				"idle_l3.png"
+				"idle_l2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style m
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_m1.png"
+				"walk_m2.png"
+				"walk_m3.png"
+				"walk_m4.png"
+				"walk_m5.png"
+				"walk_m6.png"
+				"walk_m7.png"
+				"walk_m6.png"
+				"walk_m5.png"
+				"walk_m4.png"
+				"walk_m3.png"
+				"walk_m2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_m1.png"
+				"carry_m2.png"
+				"carry_m3.png"
+				"carry_m4.png"
+				"carry_m5.png"
+				"carry_m6.png"
+				"carry_m7.png"
+				"carry_m6.png"
+				"carry_m5.png"
+				"carry_m4.png"
+				"carry_m3.png"
+				"carry_m2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_m1.png"
+				"operate_m2.png"
+				"operate_m3.png"
+				"operate_m4.png"
+				"operate_m5.png"
+				"operate_m6.png"
+				"operate_m7.png"
+				"operate_m8.png"
+				"operate_m9.png"
+				"operate_m10.png"
+				"operate_m11.png"
+				"operate_m12.png"
+				"operate_m13.png"
+				"operate_m14.png"
+				"operate_m15.png"
+				"operate_m16.png"
+				"operate_m17.png"
+				"operate_m18.png"
+				"operate_m19.png"
+				"operate_m20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_m1.png"
+				"idle_m2.png"
+				"idle_m3.png"
+				"idle_m4.png"
+				"idle_m5.png"
+				"idle_m6.png"
+				"idle_m7.png"
+				"idle_m6.png"
+				"idle_m5.png"
+				"idle_m4.png"
+				"idle_m3.png"
+				"idle_m2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style n
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_n1.png"
+				"walk_n2.png"
+				"walk_n3.png"
+				"walk_n4.png"
+				"walk_n5.png"
+				"walk_n6.png"
+				"walk_n7.png"
+				"walk_n6.png"
+				"walk_n5.png"
+				"walk_n4.png"
+				"walk_n3.png"
+				"walk_n2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_n1.png"
+				"carry_n2.png"
+				"carry_n3.png"
+				"carry_n4.png"
+				"carry_n5.png"
+				"carry_n6.png"
+				"carry_n7.png"
+				"carry_n6.png"
+				"carry_n5.png"
+				"carry_n4.png"
+				"carry_n3.png"
+				"carry_n2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_n1.png"
+				"operate_n2.png"
+				"operate_n3.png"
+				"operate_n4.png"
+				"operate_n5.png"
+				"operate_n6.png"
+				"operate_n7.png"
+				"operate_n8.png"
+				"operate_n9.png"
+				"operate_n10.png"
+				"operate_n11.png"
+				"operate_n12.png"
+				"operate_n13.png"
+				"operate_n14.png"
+				"operate_n15.png"
+				"operate_n16.png"
+				"operate_n17.png"
+				"operate_n18.png"
+				"operate_n19.png"
+				"operate_n20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_n1.png"
+				"idle_n2.png"
+				"idle_n3.png"
+				"idle_n4.png"
+				"idle_n5.png"
+				"idle_n6.png"
+				"idle_n7.png"
+				"idle_n6.png"
+				"idle_n5.png"
+				"idle_n4.png"
+				"idle_n3.png"
+				"idle_n2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style o
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_o1.png"
+				"walk_o2.png"
+				"walk_o3.png"
+				"walk_o4.png"
+				"walk_o5.png"
+				"walk_o6.png"
+				"walk_o7.png"
+				"walk_o6.png"
+				"walk_o5.png"
+				"walk_o4.png"
+				"walk_o3.png"
+				"walk_o2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_o1.png"
+				"carry_o2.png"
+				"carry_o3.png"
+				"carry_o4.png"
+				"carry_o5.png"
+				"carry_o6.png"
+				"carry_o7.png"
+				"carry_o6.png"
+				"carry_o5.png"
+				"carry_o4.png"
+				"carry_o3.png"
+				"carry_o2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_o1.png"
+				"operate_o2.png"
+				"operate_o3.png"
+				"operate_o4.png"
+				"operate_o5.png"
+				"operate_o6.png"
+				"operate_o7.png"
+				"operate_o8.png"
+				"operate_o9.png"
+				"operate_o10.png"
+				"operate_o11.png"
+				"operate_o12.png"
+				"operate_o13.png"
+				"operate_o14.png"
+				"operate_o15.png"
+				"operate_o16.png"
+				"operate_o17.png"
+				"operate_o18.png"
+				"operate_o19.png"
+				"operate_o20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_o1.png"
+				"idle_o2.png"
+				"idle_o3.png"
+				"idle_o4.png"
+				"idle_o5.png"
+				"idle_o6.png"
+				"idle_o7.png"
+				"idle_o6.png"
+				"idle_o5.png"
+				"idle_o4.png"
+				"idle_o3.png"
+				"idle_o2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style p
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_p1.png"
+				"walk_p2.png"
+				"walk_p3.png"
+				"walk_p4.png"
+				"walk_p5.png"
+				"walk_p6.png"
+				"walk_p7.png"
+				"walk_p6.png"
+				"walk_p5.png"
+				"walk_p4.png"
+				"walk_p3.png"
+				"walk_p2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_p1.png"
+				"carry_p2.png"
+				"carry_p3.png"
+				"carry_p4.png"
+				"carry_p5.png"
+				"carry_p6.png"
+				"carry_p7.png"
+				"carry_p6.png"
+				"carry_p5.png"
+				"carry_p4.png"
+				"carry_p3.png"
+				"carry_p2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_p1.png"
+				"operate_p2.png"
+				"operate_p3.png"
+				"operate_p4.png"
+				"operate_p5.png"
+				"operate_p6.png"
+				"operate_p7.png"
+				"operate_p8.png"
+				"operate_p9.png"
+				"operate_p10.png"
+				"operate_p11.png"
+				"operate_p12.png"
+				"operate_p13.png"
+				"operate_p14.png"
+				"operate_p15.png"
+				"operate_p16.png"
+				"operate_p17.png"
+				"operate_p18.png"
+				"operate_p19.png"
+				"operate_p20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_p1.png"
+				"idle_p2.png"
+				"idle_p3.png"
+				"idle_p4.png"
+				"idle_p5.png"
+				"idle_p6.png"
+				"idle_p7.png"
+				"idle_p6.png"
+				"idle_p5.png"
+				"idle_p4.png"
+				"idle_p3.png"
+				"idle_p2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+/*
+	// Style q
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_q1.png"
+				"walk_q2.png"
+				"walk_q3.png"
+				"walk_q4.png"
+				"walk_q5.png"
+				"walk_q6.png"
+				"walk_q7.png"
+				"walk_q6.png"
+				"walk_q5.png"
+				"walk_q4.png"
+				"walk_q3.png"
+				"walk_q2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_q1.png"
+				"carry_q2.png"
+				"carry_q3.png"
+				"carry_q4.png"
+				"carry_q5.png"
+				"carry_q6.png"
+				"carry_q7.png"
+				"carry_q6.png"
+				"carry_q5.png"
+				"carry_q4.png"
+				"carry_q3.png"
+				"carry_q2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_q1.png"
+				"operate_q2.png"
+				"operate_q3.png"
+				"operate_q4.png"
+				"operate_q5.png"
+				"operate_q6.png"
+				"operate_q7.png"
+				"operate_q8.png"
+				"operate_q9.png"
+				"operate_q10.png"
+				"operate_q11.png"
+				"operate_q12.png"
+				"operate_q13.png"
+				"operate_q14.png"
+				"operate_q15.png"
+				"operate_q16.png"
+				"operate_q17.png"
+				"operate_q18.png"
+				"operate_q19.png"
+				"operate_q20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_q1.png"
+				"idle_q2.png"
+				"idle_q3.png"
+				"idle_q4.png"
+				"idle_q5.png"
+				"idle_q6.png"
+				"idle_q7.png"
+				"idle_q6.png"
+				"idle_q5.png"
+				"idle_q4.png"
+				"idle_q3.png"
+				"idle_q2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style r
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_r1.png"
+				"walk_r2.png"
+				"walk_r3.png"
+				"walk_r4.png"
+				"walk_r5.png"
+				"walk_r6.png"
+				"walk_r7.png"
+				"walk_r6.png"
+				"walk_r5.png"
+				"walk_r4.png"
+				"walk_r3.png"
+				"walk_r2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_r1.png"
+				"carry_r2.png"
+				"carry_r3.png"
+				"carry_r4.png"
+				"carry_r5.png"
+				"carry_r6.png"
+				"carry_r7.png"
+				"carry_r6.png"
+				"carry_r5.png"
+				"carry_r4.png"
+				"carry_r3.png"
+				"carry_r2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_r1.png"
+				"operate_r2.png"
+				"operate_r3.png"
+				"operate_r4.png"
+				"operate_r5.png"
+				"operate_r6.png"
+				"operate_r7.png"
+				"operate_r8.png"
+				"operate_r9.png"
+				"operate_r10.png"
+				"operate_r11.png"
+				"operate_r12.png"
+				"operate_r13.png"
+				"operate_r14.png"
+				"operate_r15.png"
+				"operate_r16.png"
+				"operate_r17.png"
+				"operate_r18.png"
+				"operate_r19.png"
+				"operate_r20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_r1.png"
+				"idle_r2.png"
+				"idle_r3.png"
+				"idle_r4.png"
+				"idle_r5.png"
+				"idle_r6.png"
+				"idle_r7.png"
+				"idle_r6.png"
+				"idle_r5.png"
+				"idle_r4.png"
+				"idle_r3.png"
+				"idle_r2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+
+	// Style s
+	: ~/BaseBodyType
+	{
+		WalkSprite
+		{
+			AnimationFiles
+			[
+				"walk_s1.png"
+				"walk_s2.png"
+				"walk_s3.png"
+				"walk_s4.png"
+				"walk_s5.png"
+				"walk_s6.png"
+				"walk_s7.png"
+				"walk_s6.png"
+				"walk_s5.png"
+				"walk_s4.png"
+				"walk_s3.png"
+				"walk_s2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		CarrySprite
+		{
+			AnimationFiles
+			[
+				"carry_s1.png"
+				"carry_s2.png"
+				"carry_s3.png"
+				"carry_s4.png"
+				"carry_s5.png"
+				"carry_s6.png"
+				"carry_s7.png"
+				"carry_s6.png"
+				"carry_s5.png"
+				"carry_s4.png"
+				"carry_s3.png"
+				"carry_s2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+		OperateSprite
+		{
+			AnimationFiles
+			[
+				"operate_s1.png"
+				"operate_s2.png"
+				"operate_s3.png"
+				"operate_s4.png"
+				"operate_s5.png"
+				"operate_s6.png"
+				"operate_s7.png"
+				"operate_s8.png"
+				"operate_s9.png"
+				"operate_s10.png"
+				"operate_s11.png"
+				"operate_s12.png"
+				"operate_s13.png"
+				"operate_s14.png"
+				"operate_s15.png"
+				"operate_s16.png"
+				"operate_s17.png"
+				"operate_s18.png"
+				"operate_s19.png"
+				"operate_s20.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+		IdleSprite
+		{
+			AnimationFiles
+			[
+				"idle_s1.png"
+				"idle_s2.png"
+				"idle_s3.png"
+				"idle_s4.png"
+				"idle_s5.png"
+				"idle_s6.png"
+				"idle_s7.png"
+				"idle_s6.png"
+				"idle_s5.png"
+				"idle_s4.png"
+				"idle_s3.png"
+				"idle_s2.png"
+			]
+			Size = [1, 1]
+			AnimationInterval = 0.1
+			UVRotation = 3
+		}
+	}
+*/
+]
+
+SuitTypes
+[
+	{
+		FlySprite
+		{
+			AnimationFiles
+			[
+				"suit.png"
+			]
+			NormalsAnimationFiles
+			[
+				"suit_normals.png"
+			]
+			Size = [1.1, 1.1]
+			AnimationInterval = 0.025
+			UVRotation = 3
+		}
+	}
+]
+
+LostInSpaceDeathMediaEffects
+[
+	&<particles/deadman.rules>
+]
+
+FireDeathMediaEffects
+[
+	&<particles/fire_death.rules>
+
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "scream.wav"
+		Volume = .5
+		SpeedVariation = .15
+	}
+]
+
+Jets
+[
+	// Main left.
+	{
+		Location = [-11/64, -.15]
+		Rotation = 180d
+		MediaEffects
+		[
+			&<particles/thruster_fire_crew.rules>
+			&<particles/thruster_plume_crew.rules>
+			&<particles/thruster_plume_light_crew.rules>
+			&<particles/thruster_smoke_crew.rules>
+		]
+	}
+
+	// Main right.
+	{
+		Location = [-11/64, .15]
+		Rotation = 180d
+		MediaEffects
+		[
+			&<particles/thruster_fire_crew.rules>
+			&<particles/thruster_plume_crew.rules>
+			&<particles/thruster_plume_light_crew.rules>
+			&<particles/thruster_smoke_crew.rules>
+		]
+	}
+
+	// RCS reverse left.
+	{
+		Location = [7/64, -15/64]
+		Rotation = -30d
+		MediaEffects
+		[
+			&<particles/thruster_fire_crew.rules>
+			&<particles/thruster_plume_crew.rules>
+			&<particles/thruster_plume_light_crew.rules>
+			&<particles/thruster_smoke_crew.rules>
+		]
+	}
+
+	// RCS reverse right.
+	{
+		Location = [7/64, 15/64]
+		Rotation = 30d
+		MediaEffects
+		[
+			&<particles/thruster_fire_crew.rules>
+			&<particles/thruster_plume_crew.rules>
+			&<particles/thruster_plume_light_crew.rules>
+			&<particles/thruster_smoke_crew.rules>
+		]
+	}
+]
+
+ConstructionBeams
+[
+	// Left hand.
+	{
+		Location = [.175, -.18]
+		Rotation = 26.7d
+		Length = 0.4
+		LengthOscillationAmount = -0.3
+		LengthOscillationInterval = 1
+		OscillationAmount = 12d
+		OscillationInterval = 1
+
+		BeamMediaEffects
+		[
+			// The beam itself.
+			{
+				Type = Beam
+				BeamSprite
+				{
+					Texture
+					{
+						File = "particles/construction_beam.png"
+						SampleMode = Linear
+						MipLevels = 1
+						UVMode = Clamp
+					}
+					Shader = "construction_beam.shader"
+					_gradientPow = 0.5
+					_gradientIntensity = 1
+					_endCapSize = .125
+					_startCapSize = .125
+					_hotColor = [0, 255, 255, 255]
+					_coldColor = [0, 31, 255, 255]
+					_gradientColor = [213, 255, 255, 255]
+					Size = [100%, .2]
+					VertexColor = [255, 255, 255, 255]
+					TargetBlendMode
+					{
+						SourceRgbFactor = SourceAlpha
+						DestRgbFactor = One
+						RgbOperator = Add
+						SourceAlphaFactor = InverseDestAlpha
+						DestAlphaFactor = One
+						AlphaOperator = Add
+					}
+				}
+				FadeInTime = .1
+				FadeOutTime = .1
+				RandomTimeOffset = [0, 0]
+				Bucket = Upper1
+			}
+
+			// Beam lighting.
+			{
+				Type = Beam
+				BeamSprite
+				{
+					Texture
+					{
+						File = "./Data/common_effects/particles/blob.png"
+						MipLevels = max
+						SampleMode = Linear
+					}
+					Shader = "./Data/common_effects/fancy_beam_light.shader"
+					Size = [100%, 0.3]
+					_extraBeginLength = (&Size/1) / 2
+					_extraEndLength = (&Size/1) / 2
+					VertexColor = [0, 94, 255, 255]
+					_z = 0.4
+					_litReflectiveStrength = 8
+					_litAdditiveStrength = 0
+					_unlitAdditiveStrength = 0.25
+					_nrmlStrengthLimit = 0.2
+					TargetBlendMode
+					{
+						SourceRgbFactor = InverseDestColor
+						DestRgbFactor = One
+						RgbOperator = Add
+						SourceAlphaFactor = Zero
+						DestAlphaFactor = One
+						AlphaOperator = Add
+					}
+				}
+				Bucket = Upper4
+				IsLight = true
+				FadeInTime = .1
+				FadeOutTime = .1
+			}
+		]
+
+		HitMediaEffects
+		[
+			&<particles/construction_beam_hit_sparks.rules>
+			&<particles/construction_beam_hit_smoke.rules>
+			&<particles/construction_beam_hit_flash.rules>
+		]
+	}
+
+	// Right hand.
+	: 0
+	{
+		Location = [.175, .18]
+		Rotation = -26.7d
+		OscillationAmount = -12d
+
+	}
+
+	// Audio
+	{
+		BeamMediaEffects
+		[
+			: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "construction.wav"
+				Volume = 0.75
+				//MaxConcurrentVolume = &Volume
+				MaxConcurrent = 1
+				//SpeedVariation = .25
+				RampUpTime = .5
+				RampDownTime = .5
+			}
+		]
+	}
+]
+
+SalvageBeams
+[
+	// Left hand.
+	{
+		Location = [.175, -.18]
+		Rotation = 0d
+		Length = 0.4
+		OscillationAmount = 10d
+		OscillationInterval = 2
+
+		BeamMediaEffects
+		[
+			// The beam itself.
+			{
+				Type = Beam
+				BeamSprite
+				{
+					Texture
+					{
+						File = "salvage_beam.png"
+						SampleMode = Linear
+						MipLevels = 1
+						UVMode = Clamp
+					}
+					_noiseTexture
+					{
+						File = ../common_effects/particles/noise_marble.png
+						SampleMode = Linear
+						MipLevels = max
+						UVMode = Wrap
+					}
+					Shader = "salvage_beam.shader"
+					_gradientPow = 0.5
+					_sineFreq = 6.64
+					_sineAmp = 0.06
+					_noiseAmp = 0.184
+					_gradientIntensity = 1
+					_endCapSize = .125
+					_startCapSize = .125
+					Size = [100%, .3]
+					VertexColor = [255, 255, 255, 255]
+					TargetBlendMode
+					{
+						SourceRgbFactor = SourceAlpha
+						DestRgbFactor = One
+						RgbOperator = Add
+						SourceAlphaFactor = InverseDestAlpha
+						DestAlphaFactor = One
+						AlphaOperator = Add
+					}
+				}
+				FadeInTime = .5
+				FadeOutTime = .1
+				RandomTimeOffset = [0, 1]
+				Bucket = Upper1
+			}
+
+			// Beam lighting.
+			{
+				Type = Beam
+				BeamSprite
+				{
+					Texture
+					{
+						File = "./Data/common_effects/particles/blob.png"
+						MipLevels = max
+						SampleMode = Linear
+					}
+					Shader = "./Data/common_effects/fancy_beam_light.shader"
+					Size = [100%, 6/10]
+					_extraBeginLength = (&Size/1) / 2
+					_extraEndLength = (&Size/1) / 2
+					VertexColor = [255, 127, 0, 255]
+					_z = 0.4
+					_litReflectiveStrength = 8
+					_litAdditiveStrength = 0
+					_unlitAdditiveStrength = 0.25
+					_nrmlStrengthLimit = 0.2
+					TargetBlendMode
+					{
+						SourceRgbFactor = InverseDestColor
+						DestRgbFactor = One
+						RgbOperator = Add
+						SourceAlphaFactor = Zero
+						DestAlphaFactor = One
+						AlphaOperator = Add
+					}
+				}
+				Bucket = Upper4
+				IsLight = true
+				FadeInTime = .5
+				FadeOutTime = .1
+			}
+		]
+
+		HitMediaEffects
+		[
+			&<particles/salvage_beam_hit_sparks.rules>
+		]
+	}
+
+	// Right hand.
+	: 0
+	{
+		Location = [.175, .18]
+		OscillationAmount = -10d
+	}
+
+	// Audio
+	{
+		BeamMediaEffects
+		[
+			: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "salvage.wav"
+				Volume = 0.3
+				//MaxConcurrentVolume = &Volume
+				MaxConcurrent = 1
+				//SpeedVariation = .25
+				RampUpTime = .5
+				RampDownTime = .5
+			}
+		]
+	}
+]
+
+CrewIconShader = "crew_icon.shader"
+
+NameGenerator
+{
+	Type = Multi
+	AddComma = true
+	SubGenerators
+	[
+		// Last name.
+		{
+			Type = Markov
+			MarkovFile = "last_name.markov"
+			MinLength = 2
+			MaxLength = 16
+		}
+
+		// First name.
+		{
+			Type = Markov
+			MarkovFile = "first_name.markov"
+			MinLength = 2
+			MaxLength = 12
+		}
+	]
+}

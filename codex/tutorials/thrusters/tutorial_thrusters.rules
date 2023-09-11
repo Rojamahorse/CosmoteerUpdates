@@ -1,0 +1,19 @@
+ID = thrusters
+TitleKey = "Tutorials/Thrusters/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 25"
+TempShowCondition = "? game.HasPartCategoryInHand('thruster')"
+Entries
+[
+	{
+		Image { Texture { File="thruster.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Thrusters/Thruster"
+	}
+	{
+		Image { Texture { File="thrusters.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Thrusters/Many"
+	}
+	{
+		TextKey = "Tutorials/Thrusters/Tip"
+	}
+]

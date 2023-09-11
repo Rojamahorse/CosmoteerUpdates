@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_coil2
+Type = Resource
+DescriptionKey = "Resource/Coil2"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/coil2/coil2_1.png"
+		MipLevels = 2
+	}
+}
+ResourceType = coil2

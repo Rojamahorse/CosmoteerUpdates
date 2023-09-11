@@ -1,0 +1,6 @@
+Move = &<command_move.rules>/MoveCommand
+Attack = &<command_attack.rules>/AttackCommand
+Follow = &<command_follow.rules>/FollowCommand
+FtlGateJump = &<command_ftl_gate_jump.rules>/FtlGateJumpCommand
+FtlLocalJump = &<command_ftl_local_jump.rules>/FtlLocalJumpCommand
+WeaponTarget = &<weapon_target.rules>

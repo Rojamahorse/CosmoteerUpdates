@@ -1,0 +1,31 @@
+ID = ftl2
+TitleKey = "Tutorials/Ftl2/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 140 and game.HasSeenCodexPage('ftl')"
+TempShowCondition = "? game.GalaxyMapOpen and game.HasSeenCodexPage('ftl')"
+Entries
+[
+	{
+		TextKey = "Tutorials/Ftl2/Relays"
+	}
+	{
+		Image { Texture { File="map_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Ftl2/GalaxyMap"
+	}
+	{
+		Image { Texture { File="map.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Ftl2/Numbers"
+	}
+	{
+		Image { Texture { File="plot_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Ftl2/PlotJump"
+	}
+	{
+		Image { Texture { File="gate.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Ftl2/ExitMap"
+	}
+	{
+		Image { Texture { File="engage.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Ftl2/Engage"
+	}
+]

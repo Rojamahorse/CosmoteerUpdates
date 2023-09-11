@@ -1,0 +1,243 @@
+Type = FSM
+DebugName = "Cluster 3"
+MaxConsecutivePlays = 1
+IntroTracks
+[
+	&~/Track3_1
+]
+
+FadeOutAfter = 18*60 // Twentytwo minutes.
+FadeOutDuration = 5
+FadeOutCondition = "? battle == False and wanted == False"
+FadeOutOnSimPop = true
+SilenceAfterFadeOut = 5
+
+Track3_1
+{
+	Type = Layers
+	DebugName = "Cluster 3.1"
+	MaxConsecutivePlays = 3
+	Layers
+	[
+		{
+			Type = File
+			File = "Cluster3.1_Ship_Interior.music"
+            DynamicCondition = "? (interior == True or battle == True or wanted == True) and paused == False"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [1, 90%]
+                [6, 0%]
+            ]
+            ZoomVolumeVelocityUp = 0.5
+            ZoomVolumeVelocityDown = 0.5
+		}
+		{
+			Type = File
+			File = "Cluster3.1_Main_Layer.music"
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+		}
+        {
+            Type = File
+            File = "Cluster3.1_Super_Zoom_Layer.music"
+            ZoomVolumes
+            [
+                [60, 0%]
+                [1000, 100%]
+            ]
+            ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+        }
+        {
+            Type = File
+            File = "Cluster3.1_Battle_Layer_1.music"
+            DynamicCondition = "? battle == True or wanted == True"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 75%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 0.5
+        }
+        {
+            Type = File
+            File = "Cluster3.1_Battle_Layer_2.music"
+            DynamicCondition = "? battle == True or wanted == True"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [10, 90%]
+                [80, 0%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 0.5
+        }
+	]
+	NextTracks
+	[
+		&~/Track3_1
+		&~/Track3_2
+	]
+}
+
+Track3_2
+{
+	Type = Layers
+	DebugName = "Cluster 3.2"
+	MaxConsecutivePlays = 3
+	Layers
+	[
+		{
+			Type = File
+			File = "Cluster3.2_Ship_Interior.music"
+            DynamicCondition = "? (interior == True or battle == True or wanted == True) and paused == False"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [1, 90%]
+                [6, 0%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 1
+		}
+		{
+			Type = File
+			File = "Cluster3.2_Main_Layer.music"
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 0%]
+            ]
+           ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+		}
+        {
+            Type = File
+            File = "Cluster3.2_Super_Zoom_Layer.music"
+            ZoomVolumes
+            [
+                [60, 0%]
+                [1000, 100%]
+            ]
+           ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+        }
+        {
+            Type = File
+            File = "Cluster3.2_Battle_Layer_1.music"
+            DynamicCondition = "? battle == True or wanted == True"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 75%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 0.5
+        }
+        {
+            Type = File
+            File = "Cluster3.2_Battle_Layer_2.music"
+            DynamicCondition = "? battle == True or wanted == True"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [10, 90%]
+                [80, 0%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 0.5
+        }
+	]
+	NextTracks
+	[
+		&~/Track3_1
+		&~/Track3_2
+		&~/Track3_3
+	]
+}
+
+Track3_3
+{
+	Type = Layers
+	DebugName = "Cluster 3.3"
+	MaxConsecutivePlays = 3
+	Layers
+	[
+		{
+			Type = File
+			File = "Cluster3.3_Ship_Interior.music"
+            DynamicCondition = "? (interior == True or battle == True or wanted == True) and paused == False"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [1, 90%]
+                [6, 0%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 1
+		}
+		{
+			Type = File
+			File = "Cluster3.3_Main_Layer.music"
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 0%]
+            ]
+           ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+		}
+        {
+            Type = File
+            File = "Cluster3.3_Super_Zoom_Layer.music"
+            ZoomVolumes
+            [
+                [60, 0%]
+                [1000, 100%]
+            ]
+           ZoomVolumeVelocityUp = 0.1
+            ZoomVolumeVelocityDown = 0.1
+        }
+        {
+            Type = File
+            File = "Cluster3.3_Battle_Layer_1.music"
+            DynamicCondition = "? battle == True or wanted == True"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 75%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 0.5
+        }
+        {
+            Type = File
+            File = "Cluster3.3_Battle_Layer_2.music"
+            DynamicCondition = "? battle == True or wanted == True"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [10, 90%]
+                [80, 0%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 0.5
+        }
+	]
+	NextTracks
+	[
+		&~/Track3_1
+		&~/Track3_2
+		&~/Track3_3
+	]
+}

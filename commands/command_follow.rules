@@ -1,0 +1,27 @@
+FollowCommand : <base_follow_command.rules>/BaseFollowCommand
+{
+	DefaultDistRadiusFactor = 2
+	JunkDistRadiusFactor = 1
+	StationFollowDistRadiusFactor = .25
+	AdHocFormationRadiusFactor = 6
+
+	IssueSound
+	{
+		Sound = "command_move.wav"
+		Volume = .25
+	}
+
+	Circle : <./Data/gui/game/sim_gui.rules>/SelectedShipCircle
+	{
+		Arc = [-11.25d, 360d]
+		VertexColor = [255, 255, 255, 127]
+		DashRepeat = 7
+	}
+	CircleAddedRadius = 1.5
+
+	FinalCircle = &<command_move.rules>/MoveCommand/Circle
+	FinalCircleDuration = &<command_move.rules>/MoveCommand/CircleDuration
+	FinalCircleGrowFactor = &<command_move.rules>/MoveCommand/CircleGrowFactor
+
+	DistIcon = &<./Data/gui/game/game_gui.rules>/FollowIcon
+}

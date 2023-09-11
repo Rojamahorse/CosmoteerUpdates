@@ -1,0 +1,34 @@
+// Atlased indicators.
+PowerOff = "indicator_powered_off.png"
+NoPower = "indicator_power.png"
+NoAmmo = "indicator_ammo.png"
+NoMissiles = "indicator_missile.png"
+NoNuke = "indicator_nuke.png"
+NoEmp = "indicator_emp.png"
+NoMines = "indicator_mine.png"
+NoCrew = "indicator_crew.png"
+NoResource = "indicator_resource.png"
+MissingComponent = "indicator_component.png"
+
+// Non-atlased indicators...
+
+VerticalGradient
+{
+	File = "../../gradient_vertical.png"
+	MipLevels = max
+	SampleMode = Linear
+}
+
+RadialGradient
+{
+	File = "../../gradient_radial.png"
+	MipLevels = max
+	SampleMode = Linear
+}
+
+WeaponArc
+{
+	File = "../../gradient_weapon_arc.png"
+	MipLevels = max
+	SampleMode = Linear
+}

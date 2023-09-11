@@ -1,0 +1,21 @@
+ID = direct_control
+TitleKey = "Tutorials/DirectControl/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.DirectControlEnabled"
+Entries
+[
+	{
+		TextKey = "Tutorials/DirectControl/Camera"
+	}
+	{
+		Image { Texture { File="flight.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/DirectControl/Flight"
+	}
+	{
+		Image { Texture { File="weapons.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/DirectControl/Weapons"
+	}
+	{
+		TextKey = "Tutorials/DirectControl/Tip"
+	}
+]
