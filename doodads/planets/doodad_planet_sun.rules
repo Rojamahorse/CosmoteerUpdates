@@ -29,6 +29,7 @@ ProximityDamage
 	RaycastsPerDiameterPerSecond = 30
 	RaycastDamage = [100, 10]
 	RaycastDamageDistanceExponent = 0.5
+	DamageType = heat
 	IgnoreShipTypes = [cosmoteer.asteroid, cosmoteer.megaroid, cosmoteer.ancient]
 	RaycastDamageMediaEffects
 	[

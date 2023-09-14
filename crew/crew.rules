@@ -49,7 +49,7 @@ SalvageHitEffects
 	{
 		Type = Damage
 		Damage = 150 // Per second.
-		DamageType = Salvage
+		DamageType = salvage
 		Filter
 		{
 			ExcludePartCategories = [asteroid]
@@ -71,7 +71,7 @@ SalvageHitEffects
 	{
 		Type = Damage
 		Damage = 600 // Per second.
-		DamageType = Salvage
+		DamageType = salvage
 		Filter
 		{
 			OnlyPartCategories = [asteroid]
