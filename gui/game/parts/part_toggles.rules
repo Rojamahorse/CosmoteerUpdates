@@ -421,7 +421,6 @@ PartToggles
 	{
 		ToggleID = "force_fire_chaingun"
 		Style = CycledButton
-		ShowWithShipCommands = true
 		MultipleModesDisplayOrder = Last
 		SortOrder = 1
 		Choices

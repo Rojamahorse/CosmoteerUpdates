@@ -4293,7 +4293,8 @@ Stats
 	                       "  ..."
 	ROFRangeFmt = "<white>Rate of Fire:</white> <good>{0:0.##}</good><white> - </white><good>{1:0.##}</good><gray> shots/sec</gray>"
 	ShotAmmoUsageRangeFmt = "<white>Ammo Use:</white> <good>{0:0.##}</good><gray>/shot (</gray><good>{1:0.##}</good><white> - </white><good>{2:0.##}</good><gray>/sec)</gray>"
-	ShellDamageResistFmt = "<white>Damage Resist When Closed:</white> <good>{0}%</good>"
+	ShellDamageResistFmt = "<white>Shell Damage Resist:</white> <good>{0}%</good>"
+	ShellPenResistFmt = "<white>Shell Penetration Resist:</white> <good>-{0}</good> <gray>meters</gray>"
 	RailgunNotes = "<gray>NOTE: Damage, Penetration, Range, Projectile Speed, and Power Usage are increased with each additional Railgun Accelerator.</gray>"
 	MissileLauncherNotes = "<gray>For munition statistics, refer to the corresponding factory for each type of munition.</gray>"
 }
@@ -4889,6 +4890,7 @@ Tutorials
 		Info = "Chainguns are rotary projectile weapons that <good>increase their rate of fire as they shoot</good>. The longer the Chaingun is firing, the faster it will shoot, up to a limit."
 		Shell = "While not shooting, Chainguns <good>hide behind a protective shell</good> that greatly reduces incoming damage."
 		Magazines = "<good>Ammunition Magazines</good> can be attached to expand their ammo storage, which will increase how long they can keep shooting at maximum speed. Magazines must be attached to the rear left or right sides of the chaingun. (See picture.)"
+		ForceFire = "Chainguns will normally <b>not</b> start shooting until the Chaingun itself and all of its magazines are full of ammo. To force a Chaingun to start firing before it's full, click the <white>Force Fire</white> button."
 	}
 
 	AbandonedShips

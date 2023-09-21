@@ -7,24 +7,19 @@ Part : <../base_part_terran.rules>/Part
 	DescriptionKey = "Parts/ChainGunDesc"
 	Resources
 	[
-		[steel, 128]
-		[coil2, 38]
+		[steel, 144]
+		[coil2, 20]
 		[tristeel, 12]
 	]
 	TypeCategories = [uses_ammo, is_crewed, chaingun, chaingun_ammo_requester]
-	ReceivableBuffs : ^/0/ReceivableBuffs [RateOfFire, DefensiveShell]
-	DamageResistances = 
-	{
-		default = {BaseValue=0%; BuffType=DefensiveShell; BuffMode=Add;},
-		explosive = &default
-	}
+	ReceivableBuffs : ^/0/ReceivableBuffs [RateOfFire]
 	Size = [3, 5]  //if you change this, need to also change TotalResourceStorage resource proxy checks.
 	PhysicalRect = [0, 1, 3, 4]
 	SaveRect = &PhysicalRect
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	MaxHealth = 18000
-	InitialPenetrationResistance = {BaseValue = 2; MinValue=&BaseValue; MaxValue = 12; BuffType=DefensiveShell; BuffMode=Lerp;}  //buff value only goes to 60%, 2 to 8 ((ExpectedMax - min) / 0.6) + min = SetMax
+	InitialPenetrationResistance = 3
 	PenetrationRectType = Normal
 	ProhibitAbove = 2
 	AllowedDoorLocations
@@ -127,7 +122,7 @@ Part : <../base_part_terran.rules>/Part
 			Mode = FireModeToggle
 			OnMode = 2
 		}
-		
+
 		GunIsFiringTimer //Is on if we have fired a shot
 		{
 			Type = Timer
@@ -142,7 +137,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = MultiToggle
 			Toggles = [GunIsFiringTimer, CombinedBulletSplitters]
 			Mode = All
-		}	
+		}
 		RateOfFireRampUpBuff
 		{
 			Type = SelfBuffProvider
@@ -175,13 +170,13 @@ Part : <../base_part_terran.rules>/Part
 		IsShellFullyOpen
 		{
 			Type = ThresholdToggle
-			ValueFrom = ShellChangingValueTween 
+			ValueFrom = ShellChangingValueTween
 			MinAmount = 100%
 		}
 		IsShellFullyClosed
 		{
 			Type = ThresholdToggle
-			ValueFrom = ShellChangingValueTween 
+			ValueFrom = ShellChangingValueTween
 			MaxAmount = 0%
 		}
 		GunShouldFire
@@ -190,27 +185,19 @@ Part : <../base_part_terran.rules>/Part
 			Toggles = [BeingToldToFire, IsShellFullyOpen]
 			Mode = All
 		}
-				
-		DefensiveShellBuffProvider
-		{
-			Type = SelfBuffProvider
-			BuffType = DefensiveShell
-			BuffAmount = 60%
-			OperationalToggle = IsShellFullyClosed
-		}
-		
+
 		AmmoStorageLeft
 		{
 			Type = ResourceStorage
 			ResourceType = bullet
-			MaxResources = 5
+			MaxResources = 6
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
-		}		
+		}
 		AmmoStorageRight
 		{
 			Type = ResourceStorage
-			ResourceType = bullet	
-			MaxResources = 5
+			ResourceType = bullet
+			MaxResources = 6
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
 		}
 		CombinedAmmoStorage
@@ -228,7 +215,7 @@ Part : <../base_part_terran.rules>/Part
 			FromStorage = AmmoStorageLeft
 			FromQuantity = 1
 			ToQuantity = 4
-		}	
+		}
 		BulletSplitterRight
 		{
 			Type = InlineResourceConverter
@@ -236,7 +223,7 @@ Part : <../base_part_terran.rules>/Part
 			FromStorage = AmmoStorageRight
 			FromQuantity = 1
 			ToQuantity = 4
-		}	
+		}
 		CombinedBulletSplitters
 		{
 			Type = MultiResourceStorage
@@ -244,28 +231,28 @@ Part : <../base_part_terran.rules>/Part
 			ResourceStorages = [BulletSplitterLeft, BulletSplitterRight]
 			RemoveMode = InOrder
 			CycleStorageOnRemove = true  //Will change the order of the storage list
-		}	
-		
+		}
+
 		StorageUIProxies
 		{
 			Type = ToggledComponents
 			Toggle = IsShellFullyClosed //if we are fully closed, turn on these proxies and consumers to allow ammo transfer to the belt
 			Components
 			{
-				AmmoUIStorageLeftProxy 
+				AmmoUIStorageLeftProxy
 				{
 					Type = ResourceStorageProxy
 					ResourceType = bullet
 					ComponentID = AmmoStorageLeft
 					UITileRect = [7/64, 3 + 7/64, 1 - 14/64, 1 - 14/64]
-				}	
-				AmmoUIStorageRightProxy 
+				}
+				AmmoUIStorageRightProxy
 				{
 					Type = ResourceStorageProxy
 					ResourceType = bullet
 					ComponentID = AmmoStorageRight
 					UITileRect = [2 + 7/64, 3 + 7/64, 1 - 14/64, 1 - 14/64]
-				}	
+				}
 				AmmoConsumerLeft //For the crew to fill
 				{
 					Type = ResourceConsumer
@@ -274,7 +261,7 @@ Part : <../base_part_terran.rules>/Part
 					DefaultPriority = &/PRIORITIES/Weapon_Supply
 					OperationalToggle = PowerToggle
 					ConsumptionToggleButtonOffset = [0, -.4]
-				}		
+				}
 				AmmoConsumerRight //For the crew to fill
 				{
 					Type = ResourceConsumer
@@ -286,40 +273,40 @@ Part : <../base_part_terran.rules>/Part
 				}
 			}
 		}
-		
+
 		IsRequestingRightToLeftAmmo //The belt only moves when we are firing, otherwise, it can be loaded
 		{
 			Type = ToggleProxy
-			ComponentID = ShellIsNotClosedAndRightMagNotPullingRight
-		}			
+			ComponentID = ShellIsFullyOpenedAndRightMagNotPullingRight
+		}
 		IsRequestingLeftToRightAmmo
 		{
 			Type = ToggleProxy
-			ComponentID = ShellIsNotClosedAndLeftMagNotPullingLeft
-		}		
-		ShellIsNotClosedAndLeftMagNotPullingLeft
+			ComponentID = ShellIsFullyOpenAndLeftMagNotPullingLeft
+		}
+		ShellIsFullyOpenAndLeftMagNotPullingLeft
 		{
 			Type = MultiToggle
-			Toggles = [{Toggle = IsShellFullyClosed, Invert = true}, {Toggle = IsLeftMagazineBeingPulledLeft, Invert = true}]
+			Toggles = [IsShellFullyOpen, {Toggle = IsLeftMagazineBeingPulledLeft, Invert = true}]
 			Mode = All
 		}
-		ShellIsNotClosedAndRightMagNotPullingRight
+		ShellIsFullyOpenedAndRightMagNotPullingRight
 		{
 			Type = MultiToggle
-			Toggles = [{Toggle = IsShellFullyClosed, Invert = true}, {Toggle = IsRightMagazineBeingPulledRight, Invert = true}]
+			Toggles = [IsShellFullyOpen, {Toggle = IsRightMagazineBeingPulledRight, Invert = true}]
 			Mode = All
 		}
-		
+
 		HasMaxAmmo
 		{
 			Type = ThresholdToggle
-			ValueFrom = TotalResourceStorage 
+			ValueFrom = TotalResourceStorage
 			MinAmount = 100%
 		}
 		TurretIsTargettingTimer //Is true if we have a target, and false if we have no target for the timer
 		{
 			Type = Timer
-			Duration = 1.6 //has to be high enough for a failed retargeting attempt to not close
+			Duration = 1.1 //has to be high enough for a failed retargeting attempt to not close
 			StartTrigger = Turret
 			ResetTrigger = Turret
 			StartExpired = true
@@ -336,7 +323,7 @@ Part : <../base_part_terran.rules>/Part
 		BeingToldToFire //Used by shell opening and closing
 		{
 			Type = MultiToggle
-			Toggles = [TurretIsTargetting, ForceFireToggle]  
+			Toggles = [TurretIsTargetting, ForceFireToggle]
 			Mode = Any
 		}
 		HasMaxAmmoOrIsAlreadyFiring
@@ -344,13 +331,13 @@ Part : <../base_part_terran.rules>/Part
 			Type = MultiToggle
 			Toggles = [HasMaxAmmo, GunIsFiring]  //Keep shooting if we are already shooting.
 			Mode = Any
-		}		
+		}
 		CanFire
 		{
 			Type = MultiToggle
 			Toggles = [HasMaxAmmoOrIsAlreadyFiring, FireModeToggle]
 			Mode = All
-		}	
+		}
 		ForceFireToggle
 		{
 			Type = UIToggle
@@ -358,6 +345,7 @@ Part : <../base_part_terran.rules>/Part
 			Default = 0
 			AutoOffTrigger = ShouldTurnOffForceFireTrigger
 			OperationalToggle = ForceFirePermission
+			RememberValue = false
 		}
 		ShouldTurnOffForceFireTrigger // For turning off force fire
 		{
@@ -365,26 +353,26 @@ Part : <../base_part_terran.rules>/Part
 			Toggle = ShouldTurnOffForceFire
 			TriggerWhenOn = true
 			TriggerWhenOff = false
-		}			
+		}
 		ShouldTurnOffForceFire  //if turret taking over, or out of ammo
 		{
 			Type = MultiToggle
 			Toggles = [Turret, {Toggle = CombinedAmmoStorage; Invert = true}, {Toggle = IsOperational; Invert = true}]
 			Mode = Any
-		}		
+		}
 		ForceFirePermission
 		{
 			Type = MultiToggle
 			Toggles = [IsOperational, {Toggle = ShouldTurnOffForceFire; Invert = true}]
 			Mode = All
 		}
-		
+
 		TotalResourceStorage //used for amount of ammo check
 		{
 			Type = MultiResourceStorage
 			ResourceType = bullet
 			ResourceStorages = [CombinedAmmoStorage, CombinedLeftBeltStoragesProxy, CombinedRightBeltStoragesProxy]
-		}		
+		}
 		CombinedLeftBeltStoragesProxy //used for amount of ammo check
 		{
 			Type = ResourceStorageProxy
@@ -400,7 +388,7 @@ Part : <../base_part_terran.rules>/Part
 				bottom = 5
 			}
 			ComponentID = CombinedLeftBeltStorages
-		}			
+		}
 		CombinedRightBeltStoragesProxy //used for amount of ammo check
 		{
 			Type = ResourceStorageProxy
@@ -416,7 +404,7 @@ Part : <../base_part_terran.rules>/Part
 				bottom = 5
 			}
 			ComponentID = CombinedRightBeltStorages
-		}	
+		}
 		IsLeftMagazineBeingPulledLeft
 		{
 			Type = ToggleProxy
@@ -429,7 +417,7 @@ Part : <../base_part_terran.rules>/Part
 				bottom = 5
 			}
 			ComponentID = IsRequestingRightToLeftAmmo
-		}	
+		}
 		IsRightMagazineBeingPulledRight
 		{
 			Type = ToggleProxy
@@ -443,15 +431,15 @@ Part : <../base_part_terran.rules>/Part
 			}
 			ComponentID = IsRequestingLeftToRightAmmo
 		}
-		
+
 		TurretSlider
 		{
 			Type = TransformLerp
 			ValueFrom = ShellChangingValueTween
 			StartLocation = [0, 0]
-			EndLocation = [0, -51/64]
+			EndLocation = [0, -(51+64)/64]
 		}
-		
+
 		IsOperationalOrNotClosed
 		{
 			Type = MultiToggle
@@ -467,16 +455,16 @@ Part : <../base_part_terran.rules>/Part
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperationalOrNotClosed  //If not closed, we need the turret to power down even if the part is not operational.
 			FirePermissionToggle = CanFire // Can't fire if not full.  Set it to can fire, which will include ammo check and fire mode toggle.
-			AutoFireToggle = AutoFireToggle 
+			AutoFireToggle = AutoFireToggle
 			FireInterval = &../FixedWeapon/FireInterval
-			FiringArc = 40d
-			RotateSpeed = 60d
-			FireThresholdAngle = 30d
+			FiringArc = 220d
+			RotateSpeed = 120d
+			FireThresholdAngle = (&FiringArc) / 2 // This is basically a hack to make this turret "trigger" and start the TurretIsTargettingTimer.
 			AIFirepowerRating = 10000 //Set to half the dps when its on, because of the down time.
 			TargetingEmitter = BulletEmitter
 			AllowRotationToggle = IsShellFullyOpen
 			ResetRotationIfNotAllowed = true
-			
+
 			AutoTargets
 			[
 				{
@@ -501,7 +489,7 @@ Part : <../base_part_terran.rules>/Part
 				QuadCount = 64
 			}
 		}
-		
+
 		FixedWeapon
 		{
 			Type = FixedWeapon
@@ -510,27 +498,20 @@ Part : <../base_part_terran.rules>/Part
 			AutoFireToggle = GunShouldFire //Force Fire or turret
 			FireInterval = { BaseValue=0.35; BuffType=RateOfFire; BuffMode=Divide;}
 			Emitter = BulletEmitter
-			
+
 			AutoTarget
 			{
 				TargetType = ShipParts
 				Toggle = False
-			}			
+			}
 		}
-		
+
 		False
 		{
 			Type = StaticToggle
 			ToggleOn = false
 		}
 
-		ReloadProgressBar
-		{
-			Type = ProgressBar
-			OperationalToggle = IsShellFullyOpen
-			ShowProgressFor = FixedWeapon
-		}
-		
 		ChaingunRampupProgressBar
 		{
 			Type = ProgressBar
@@ -539,21 +520,21 @@ Part : <../base_part_terran.rules>/Part
 			InvertOperationalToggle = true
 			ValueRange = [&~/Part/Components/RateOfFireTween/OffValue, &~/Part/Components/RateOfFireTween/OnValue]
 		}
-		
+
 		IsChaingunPoweredDown
 		{
 			Type = ThresholdToggle
-			ValueFrom = RateOfFireTween 
+			ValueFrom = RateOfFireTween
 			MaxAmount = &../RateOfFireTween/OffValue
 		}
-		
+
 		BulletEmitter : <./Data/shots/chaingun_shot/chaingun_shot.rules>
 		{
 			Type = BeamEmitter
 			ChainedTo = FixedWeapon
 			FireTrigger = FixedWeapon
 			GetTargetFrom = Turret
-			Location = [2, 0]
+			Location = [0, 0]
 			OperationalToggle = IsOperational
 			Duration = 0
 			ResourceStorage = CombinedBulletSplitters // Needed to prevent turret from trying to fire when out of ammo.
@@ -561,6 +542,7 @@ Part : <../base_part_terran.rules>/Part
 			Spread = [-1.5d, 1.5d]
 			Recoil = 1
 			Burst = 1
+			BeamMediaEffectsOffset = [2, 0]
 		}
 
 		FireEffect
@@ -568,7 +550,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = TriggeredEffects
 			ChainedTo = BulletEmitter
 			Trigger = BulletEmitter
-			Location = [0.2, 0]
+			Location = [2.2, 0]
 
 			MediaEffects
 			[
@@ -640,39 +622,23 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = Turret
 			Radius = 54/64
 			Density = 1
+			IncludeWhenUnderConstruction = false
 		}
 
-
-		DefensiveShellColliderChangingValueTween
-		{
-			Type = ValueTween
-			OnTweenDuration = 0.35
-			OffTweenDuration = 1.1
-			IsOnToggle = ShellShouldOpen
-		}
-		DefensiveShellSlider
-		{
-			Type = TransformLerp
-			ValueFrom = DefensiveShellColliderChangingValueTween
-			StartLocation = [96/64, 66/64]
-			EndLocation = [96/64, 117/64]
-		}
 		DefensiveShellCollider
 		{
 			Type = CircleCollider
-			ChainedTo = DefensiveShellSlider
-			Radius = 82/64
+			Location = [96/64, 74/64]
+			OperationalToggle = IsShellFullyClosed
+			Radius = 96/64
 			Density = 0.5
-		}
-
-		RateOfFireTweenForGraphics
-		{
-			Type = ValueTween
-			OffValue = 1
-			OnValue = 10
-			OnTweenDuration = 6
-			OffTweenDuration = 4
-			IsOnToggle = GunIsFiring
+			IncludeWhenUnderConstruction = false
+			InitialPenetrationResistance = 14
+			DamageResistances =
+			{
+				default = 70%,
+				explosive = &default
+			}
 		}
 		TurretWeaponShootingGraphics
 		{
@@ -681,7 +647,7 @@ Part : <../base_part_terran.rules>/Part
 			Rotation = 90d
 			OperationalToggle = IsShellFullyOpen
 			ResetAnimationTrigger = BulletEmitter
-			AnimationSpeedFactor = RateOfFireTweenForGraphics
+			AnimationSpeedFactor = RateOfFireTween
 
 			OperationalDoodad
 			{
@@ -707,7 +673,7 @@ Part : <../base_part_terran.rules>/Part
 							"turret_barrel_normals1.png"// Loop back to beginning and clamp there.
 						]
 						Size = [1, 2]
-						AnimationInterval = 0.0416 * 2
+						AnimationInterval = (&~/Part/Components/FixedWeapon/FireInterval/BaseValue) / 4
 						AnimationStartTime = MinValue
 						ClampAnimation = true
 					}
@@ -794,7 +760,7 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			Floor
 			{
-				Layer = "turrets"
+				Layer = "floors"
 				DamageLevels
 				[
 					{
@@ -1136,7 +1102,7 @@ Part : <../base_part_terran.rules>/Part
 				]
 			}
 		}
-		
+
 		Graphics
 		{
 			Type = Graphics
@@ -1344,7 +1310,7 @@ Part : <../base_part_terran.rules>/Part
 						"defensive_shell_normals12.png"
 					]
 					Size = [3, 4]
-					AnimationInterval = 0.05
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OnTweenDuration) / 12
 					AnimationStartTime = MinValue
 					ClampAnimation = true
 				}
@@ -1380,7 +1346,7 @@ Part : <../base_part_terran.rules>/Part
 						"defensive_shell_normals12_33.png"
 					]
 					Size = [3, 4]
-					AnimationInterval = 0.05
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OnTweenDuration) / 12
 					AnimationStartTime = MinValue
 					ClampAnimation = true
 				}
@@ -1416,7 +1382,7 @@ Part : <../base_part_terran.rules>/Part
 						"defensive_shell_normals12_66.png"
 					]
 					Size = [3, 4]
-					AnimationInterval = 0.05
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OnTweenDuration) / 12
 					AnimationStartTime = MinValue
 					ClampAnimation = true
 				}
@@ -1455,7 +1421,7 @@ Part : <../base_part_terran.rules>/Part
 						"defensive_shell_normals1.png"
 					]
 					Size = [3, 4]
-					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 8
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 12
 					AnimationStartTime = MinValue
 					ClampAnimation = true
 				}
@@ -1491,7 +1457,7 @@ Part : <../base_part_terran.rules>/Part
 						"defensive_shell_normals1_33.png"
 					]
 					Size = [3, 4]
-					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 8
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 12
 					AnimationStartTime = MinValue
 					ClampAnimation = true
 				}
@@ -1527,7 +1493,7 @@ Part : <../base_part_terran.rules>/Part
 						"defensive_shell_normals1_66.png"
 					]
 					Size = [3, 4]
-					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 8
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 12
 					AnimationStartTime = MinValue
 					ClampAnimation = true
 				}
@@ -1553,13 +1519,28 @@ Part : <../base_part_terran.rules>/Part
 						"internal_defensive_shell6.png"
 						"internal_defensive_shell7.png"
 						"internal_defensive_shell8.png"
-						"internal_defensive_shell8.png"
-						"internal_defensive_shell8.png"
-						"internal_defensive_shell8.png"
-						"internal_defensive_shell8.png"
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell9.png"
+					]
+					NormalsAnimationFiles
+					[
+						"internal_defensive_shell_normals1.png"
+						"internal_defensive_shell_normals2.png"
+						"internal_defensive_shell_normals3.png"
+						"internal_defensive_shell_normals4.png"
+						"internal_defensive_shell_normals5.png"
+						"internal_defensive_shell_normals6.png"
+						"internal_defensive_shell_normals7.png"
+						"internal_defensive_shell_normals8.png"
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals9.png"
 					]
 					Size = [3, 4]
-					AnimationInterval = 0.05
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OnTweenDuration) / 12
 					AnimationStartTime = MinValue
 					ClampAnimation = true
 				}
@@ -1574,13 +1555,28 @@ Part : <../base_part_terran.rules>/Part
 						"internal_defensive_shell6_33.png"
 						"internal_defensive_shell7_33.png"
 						"internal_defensive_shell8_33.png"
-						"internal_defensive_shell8_33.png"
-						"internal_defensive_shell8_33.png"
-						"internal_defensive_shell8_33.png"
-						"internal_defensive_shell8_33.png"
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell9_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"internal_defensive_shell_normals1_33.png"
+						"internal_defensive_shell_normals2_33.png"
+						"internal_defensive_shell_normals3_33.png"
+						"internal_defensive_shell_normals4_33.png"
+						"internal_defensive_shell_normals5_33.png"
+						"internal_defensive_shell_normals6_33.png"
+						"internal_defensive_shell_normals7_33.png"
+						"internal_defensive_shell_normals8_33.png"
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals9_33.png"
 					]
 					Size = [3, 4]
-					AnimationInterval = 0.05
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OnTweenDuration) / 12
 					AnimationStartTime = MinValue
 					ClampAnimation = true
 				}
@@ -1595,13 +1591,28 @@ Part : <../base_part_terran.rules>/Part
 						"internal_defensive_shell6_66.png"
 						"internal_defensive_shell7_66.png"
 						"internal_defensive_shell8_66.png"
-						"internal_defensive_shell8_66.png"
-						"internal_defensive_shell8_66.png"
-						"internal_defensive_shell8_66.png"
-						"internal_defensive_shell8_66.png"
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell9_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"internal_defensive_shell_normals1_66.png"
+						"internal_defensive_shell_normals2_66.png"
+						"internal_defensive_shell_normals3_66.png"
+						"internal_defensive_shell_normals4_66.png"
+						"internal_defensive_shell_normals5_66.png"
+						"internal_defensive_shell_normals6_66.png"
+						"internal_defensive_shell_normals7_66.png"
+						"internal_defensive_shell_normals8_66.png"
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals9_66.png"
 					]
 					Size = [3, 4]
-					AnimationInterval = 0.05
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OnTweenDuration) / 12
 					AnimationStartTime = MinValue
 					ClampAnimation = true
 				}
@@ -1611,10 +1622,10 @@ Part : <../base_part_terran.rules>/Part
 				{
 					AnimationFiles
 					[
-						"internal_defensive_shell8.png"
-						"internal_defensive_shell8.png"
-						"internal_defensive_shell8.png"
-						"internal_defensive_shell8.png"
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell9.png"
 						"internal_defensive_shell8.png"
 						"internal_defensive_shell7.png"
 						"internal_defensive_shell6.png"
@@ -1624,18 +1635,33 @@ Part : <../base_part_terran.rules>/Part
 						"internal_defensive_shell2.png"
 						"internal_defensive_shell1.png"
 					]
+					NormalsAnimationFiles
+					[
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals8.png"
+						"internal_defensive_shell_normals7.png"
+						"internal_defensive_shell_normals6.png"
+						"internal_defensive_shell_normals5.png"
+						"internal_defensive_shell_normals4.png"
+						"internal_defensive_shell_normals3.png"
+						"internal_defensive_shell_normals2.png"
+						"internal_defensive_shell_normals1.png"
+					]
 					Size = [3, 4]
-					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 8
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 12
 					AnimationStartTime = MinValue
 					ClampAnimation = true
 				}
 				{
 					AnimationFiles
 					[
-						"internal_defensive_shell8_33.png"
-						"internal_defensive_shell8_33.png"
-						"internal_defensive_shell8_33.png"
-						"internal_defensive_shell8_33.png"
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell9_33.png"
 						"internal_defensive_shell8_33.png"
 						"internal_defensive_shell7_33.png"
 						"internal_defensive_shell6_33.png"
@@ -1645,18 +1671,33 @@ Part : <../base_part_terran.rules>/Part
 						"internal_defensive_shell2_33.png"
 						"internal_defensive_shell1_33.png"
 					]
+					NormalsAnimationFiles
+					[
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals8_33.png"
+						"internal_defensive_shell_normals7_33.png"
+						"internal_defensive_shell_normals6_33.png"
+						"internal_defensive_shell_normals5_33.png"
+						"internal_defensive_shell_normals4_33.png"
+						"internal_defensive_shell_normals3_33.png"
+						"internal_defensive_shell_normals2_33.png"
+						"internal_defensive_shell_normals1_33.png"
+					]
 					Size = [3, 4]
-					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 8
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 12
 					AnimationStartTime = MinValue
 					ClampAnimation = true
 				}
 				{
 					AnimationFiles
 					[
-						"internal_defensive_shell8_66.png"
-						"internal_defensive_shell8_66.png"
-						"internal_defensive_shell8_66.png"
-						"internal_defensive_shell8_66.png"
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell9_66.png"
 						"internal_defensive_shell8_66.png"
 						"internal_defensive_shell7_66.png"
 						"internal_defensive_shell6_66.png"
@@ -1666,22 +1707,39 @@ Part : <../base_part_terran.rules>/Part
 						"internal_defensive_shell2_66.png"
 						"internal_defensive_shell1_66.png"
 					]
+					NormalsAnimationFiles
+					[
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals8_66.png"
+						"internal_defensive_shell_normals7_66.png"
+						"internal_defensive_shell_normals6_66.png"
+						"internal_defensive_shell_normals5_66.png"
+						"internal_defensive_shell_normals4_66.png"
+						"internal_defensive_shell_normals3_66.png"
+						"internal_defensive_shell_normals2_66.png"
+						"internal_defensive_shell_normals1_66.png"
+					]
 					Size = [3, 4]
-					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 8
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 12
 					AnimationStartTime = MinValue
 					ClampAnimation = true
 				}
 			]
 		}
-		
+
 		BeltAmmoSpritesLeft
 		{
 			Type = ResourceSprites
 			Location = [0.5, 1.5]
 			ResourceStorage = BulletSplitterLeft
 			Layer = "doodads_low"
-			RangeLow = 3 //Gives the actual gun some extra to keep firing after the belt runs dry, works with the extra 3 in the splitter
-			RangeHigh = 23
+			AnimationSpeedFactor = RateOfFireTween
+			AnimationSpeedFactorRenormalize = [0, 1 / (&~/Part/Components/RateOfFireTween/OnValue)]
+			RangeLow = 2 //Gives the actual gun some extra to keep firing after the belt runs dry, works with the extra 3 in the splitter
+			RangeHigh = 27
 			ResourceLevels
 			[
 				{
@@ -1691,7 +1749,7 @@ Part : <../base_part_terran.rules>/Part
 						"loaded_bullets1-2.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1701,7 +1759,7 @@ Part : <../base_part_terran.rules>/Part
 						"loaded_bullets2-2.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1711,7 +1769,7 @@ Part : <../base_part_terran.rules>/Part
 						"loaded_bullets3-2.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1721,7 +1779,7 @@ Part : <../base_part_terran.rules>/Part
 						"loaded_bullets4-2.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1731,7 +1789,7 @@ Part : <../base_part_terran.rules>/Part
 						"loaded_bullets5-2.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1742,7 +1800,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1753,7 +1811,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1764,7 +1822,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1775,7 +1833,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1786,7 +1844,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1797,7 +1855,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1808,7 +1866,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1819,7 +1877,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1830,7 +1888,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1841,7 +1899,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 3]
 					Offset = [0, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1852,7 +1910,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 3]
 					Offset = [0, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1863,7 +1921,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 3]
 					Offset = [0, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1874,7 +1932,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 3]
 					Offset = [0, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1885,7 +1943,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 3]
 					Offset = [0, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 				{
@@ -1896,20 +1954,77 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 3]
 					Offset = [0, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
 					ClampAnimation = true
 				}
 			]
 		}
-		
+
 		BeltAmmoSpritesRight
 		{
 			Type = ResourceSprites
 			Location = [2.5, 1.5]
 			ResourceStorage = BulletSplitterRight
 			Layer = "doodads_low"
-			RangeLow = 3 //Gives the actual gun some extra to keep firing after the belt runs dry, works with the extra 3 in the splitter
-    			RangeHigh = 23
+			AnimationSpeedFactor = RateOfFireTween
+			AnimationSpeedFactorRenormalize = [0, 1 / (&~/Part/Components/RateOfFireTween/OnValue)]
+			RangeLow = 2 //Gives the actual gun some extra to keep firing after the belt runs dry, works with the extra 3 in the splitter
+			RangeHigh = 27
 			ResourceLevels
 			[
 				{
@@ -1919,7 +2034,7 @@ Part : <../base_part_terran.rules>/Part
 						"loaded_bullets1-2.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -1930,7 +2045,7 @@ Part : <../base_part_terran.rules>/Part
 						"loaded_bullets2-2.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -1941,7 +2056,7 @@ Part : <../base_part_terran.rules>/Part
 						"loaded_bullets3-2.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -1952,7 +2067,7 @@ Part : <../base_part_terran.rules>/Part
 						"loaded_bullets4-2.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -1963,7 +2078,7 @@ Part : <../base_part_terran.rules>/Part
 						"loaded_bullets5-2.png"
 					]
 					Size = [1, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -1975,7 +2090,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -1987,7 +2102,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -1999,7 +2114,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2011,7 +2126,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2023,7 +2138,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2035,7 +2150,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2047,7 +2162,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2059,7 +2174,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2071,7 +2186,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 2]
 					Offset = [0, 0.5]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2083,7 +2198,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 3]
 					Offset = [0, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2095,7 +2210,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 3]
 					Offset = [0, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2107,7 +2222,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 3]
 					Offset = [0, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2119,7 +2234,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 3]
 					Offset = [0, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2131,7 +2246,7 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 3]
 					Offset = [0, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2143,7 +2258,67 @@ Part : <../base_part_terran.rules>/Part
 					]
 					Size = [1, 3]
 					Offset = [0, 1]
-					AnimationInterval = 1/30
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
 					ClampAnimation = true
 					MirrorU = true
 				}
@@ -2164,8 +2339,57 @@ Part : <../base_part_terran.rules>/Part
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
 			Location = [1.5, 3.5]
+			FactorHitEffectsWith = CombinedAmmoStorage
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 6000
+					Radius = 3
+					Delay = .05
+					FireChancePerNDamage = 50%
+					NDamage = 1000
+					CrewKillChance = 10%
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 1200
+					Radius = 2
+					Delay = .05
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+						Crew = false
+					}
+				}
+			]
 		}
-
+		HasEnoughAmmoForGraphics
+		{
+			Type = MultiToggle
+			Toggles = [OpenAndHasSomeAmmo, ClosedAndHasFullAmmo]
+			Mode = Any
+		}
+		OpenAndHasSomeAmmo
+		{
+			Type = MultiToggle
+			Toggles = [{Toggle = IsShellFullyClosed, Invert = true}, CombinedAmmoStorage]
+			Mode = All
+		}
+		ClosedAndHasFullAmmo  //Show ammo indicator if we aren't full
+		{
+			Type = MultiToggle
+			Toggles = [IsShellFullyClosed, HasMaxAmmo]
+			Mode = All
+		}
 		Indicators
 		{
 			Type = IndicatorSprites
@@ -2185,7 +2409,7 @@ Part : <../base_part_terran.rules>/Part
 
 				// Out of ammo.
 				{
-					Toggle = CombinedAmmoStorage
+					Toggle = HasEnoughAmmoForGraphics
 					Delay = 1//&~/Part/Components/Turret/FireInterval
 					AtlasSprite
 					{
@@ -2219,11 +2443,12 @@ Part : <../base_part_terran.rules>/Part
 	{
 		CrewRequired = &~/Part/Components/PartCrew/Crew
 		AmmoCapacity = (&~/Part/Components/AmmoStorageRight/MaxResources) + (&~/Part/Components/AmmoStorageLeft/MaxResources)
-	
-		RecAmmo = (&AmmoCapacity) / 2 
+
+		RecAmmo = (&AmmoCapacity) / 2
 		RecCrew = (&CrewRequired) + (&RecAmmo)
-		ShellDamageResist = (&~/Part/Components/DefensiveShellBuffProvider/BuffAmount) * 100
-	}	
+		ShellPenResist = (&~/Part/Components/DefensiveShellCollider/InitialPenetrationResistance) - 1
+		ShellDamageResist = (&~/Part/Components/DefensiveShellCollider/DamageResistances/default) * 100
+	}
 	StatsByCategory
 	[
 		{

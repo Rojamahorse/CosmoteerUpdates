@@ -7,12 +7,10 @@ Part : <../base_part_terran.rules>/Part
 	DescriptionKey = "Parts/ChaingunMagazineDesc"
 	Resources
 	[
-		[steel, 24]
-		[coil, 22]
-		[tristeel, 1]
+		[steel, 20]
+		[coil, 5]
 	]
 	Size = [1, 2]
-	IsFlippable = false
 	SelectionPriority = 1
 	MaxHealth = 2000
 	TypeCategories = [chaingun, chaingun_ammo_requester, chaingun_ammo_supplier]
@@ -20,6 +18,8 @@ Part : <../base_part_terran.rules>/Part
 	AllowedDoorLocations
 	[
 		[0, 2]
+		[-1,1]
+		[1,1]
 	]
 	EditorIcon
 	{
@@ -36,7 +36,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = bullet
-			MaxResources = 5
+			MaxResources = 6
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
 		}
 		AmmoStorageLeft //We need these because the chaingun has a left and right that we need to check for
@@ -200,12 +200,35 @@ Part : <../base_part_terran.rules>/Part
 			}
 			ComponentID = CombinedRightBeltStorages
 		}
-
+		HasMaxAmmo
+		{
+			Type = ThresholdToggle
+			ValueFrom = AmmoStorage 
+			MinAmount = 100%
+		}
+		HasAmmoForLights
+		{
+			Type = MultiToggle
+			Toggles = [ActiveAndHasSomeAmmo, LockedAndHasFullAmmo]
+			Mode = Any
+		}
+		ActiveAndHasSomeAmmo
+		{
+			Type = MultiToggle
+			Toggles = [{Toggle = CanFillAmmo, Invert = true}, AmmoStorage]
+			Mode = All
+		}
+		LockedAndHasFullAmmo  //Show ammo indicator if we aren't full
+		{
+			Type = MultiToggle
+			Toggles = [CanFillAmmo, HasMaxAmmo]
+			Mode = All
+		}
 		Graphics
 		{
 			Type = Graphics
 			Location = [.5, 1]
-			OperationalToggle = AmmoStorage
+			OperationalToggle = HasAmmoForLights
 			Floor
 			{
 				Layer = "floors"
@@ -347,6 +370,10 @@ Part : <../base_part_terran.rules>/Part
 							File = "bullets5.png"
 							Size = [1, 1]
 						}
+						{
+							File = "bullets6.png"
+							Size = [1, 1]
+						}
 					]
 				}
 			}
@@ -410,6 +437,16 @@ Part : <../base_part_terran.rules>/Part
 							[
 								"bullets_with_signal5.png"
 								"bullets_with_signal5-2.png"
+							]
+							Size = [1, 1]
+							AnimationInterval = 0.1
+							ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"bullets_with_signal6.png"
+								"bullets_with_signal6-2.png"
 							]
 							Size = [1, 1]
 							AnimationInterval = 0.1
@@ -488,7 +525,18 @@ Part : <../base_part_terran.rules>/Part
 							AnimationInterval = 0.1
 							ClampAnimation = true
 						}
-						]
+						{
+							AnimationFiles
+							[
+								"bullets_with_signal6.png"
+								"bullets_with_signal6-2.png"
+							]
+							Size = [1, 1]
+							MirrorU = true
+							AnimationInterval = 0.1
+							ClampAnimation = true
+						}
+					]
 				}
 			}
 		}
@@ -498,6 +546,38 @@ Part : <../base_part_terran.rules>/Part
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
 			Location = [0.5, 1]
+			FactorHitEffectsWith = AmmoStorage
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 6000
+					Radius = 3
+					Delay = .05
+					FireChancePerNDamage = 50%
+					NDamage = 1000
+					CrewKillChance = 10%
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 1200
+					Radius = 2
+					Delay = .05
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+						Crew = false
+					}
+				}
+			]
 		}
 
 		Blueprints

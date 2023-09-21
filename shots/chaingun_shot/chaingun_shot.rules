@@ -1,8 +1,4 @@
 Range = 240
-IdealRange = [60, 220]
-IdealRadius = [5, 50]
-Width = .5
-HitEffectsScaleOverRange = [1, 1]
 
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational

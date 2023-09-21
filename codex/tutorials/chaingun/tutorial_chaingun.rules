@@ -16,4 +16,8 @@ Entries
 	{
 		Image { Texture { File="chaingun.png"; SampleMode=Linear; } }
 	}
+	{
+		TextKey = "Tutorials/Chainguns/ForceFire"
+		Image { Texture { File="force_fire.png"; SampleMode=Linear; } }
+	}
 ]
