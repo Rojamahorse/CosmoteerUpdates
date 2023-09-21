@@ -19,7 +19,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeID = "armor"
 	MaxHealth = 6000
 	ExplosiveDamageAbsorption = 100%
-	ExplosiveDamageResistance = 50%
+	DamageResistances = {explosive = 50%}
 	TypeCategories = [armor]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Flammable = false
@@ -190,5 +190,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Stats
 	{
 		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+		AOEResist = (&~/Part/DamageResistances/explosive) * 100
 	}
 }

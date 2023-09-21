@@ -1,6 +1,7 @@
 UpdateInterval = .25
 SpreadChancePerUpdate = .015
 KillChancePerUpdate = .02
+DamageType = fire
 DamagePerUpdate = 10
 DefaultFireExtinguishPriority = &/PRIORITIES/ExtinguishFire
 FireExtinguishResource = fire_extinguisher

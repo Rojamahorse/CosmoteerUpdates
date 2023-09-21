@@ -103,6 +103,20 @@ Techs
 		Prerequisites = [cosmoteer.cannon_med]
 	}
 	{
+		ID = cosmoteer.chaingun
+		NameKey = &<./Data/ships/terran/chaingun/chaingun.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/chaingun/chaingun.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/chaingun/chaingun.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/chaingun/chaingun.rules>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<./Data/ships/terran/chaingun/chaingun.rules>/Part/ID
+			&<./Data/ships/terran/chaingun_magazine/chaingun_magazine.rules>/Part/ID
+		]
+		Cost = 8500
+		Prerequisites = [cosmoteer.cannon_med]
+	}
+	{
 		ID = cosmoteer.flak_cannon_large
 		NameKey = &<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/NameKey
 		DescriptionKey = &<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/DescriptionKey

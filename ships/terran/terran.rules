@@ -36,6 +36,8 @@ Terran : <../base_ship.rules>
 		&<railgun_loader/railgun_loader.rules>/Part
 		&<railgun_accelerator/railgun_accelerator.rules>/Part
 		&<railgun_launcher/railgun_launcher.rules>/Part
+		&<chaingun/chaingun.rules>/Part
+		&<chaingun_magazine/chaingun_magazine.rules>/Part
 
 		// Defenses.
 		&<shield_gen_small/shield_gen_small.rules>/Part

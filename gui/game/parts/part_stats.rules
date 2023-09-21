@@ -94,6 +94,10 @@ PartStats
 		FormatKey = "Stats/MaxDamageFmt"
 	}
 	{
+		ID = DamageRange
+		FormatKey = "Stats/DamageRangeFmt"
+	}
+	{
 		ID = SimpleDamage
 		FormatKey = "Stats/SimpleDamageFmt"
 	}
@@ -156,6 +160,14 @@ PartStats
 	{
 		ID = ROF
 		FormatKey = "Stats/ROFFmt"
+	}
+	{
+		ID = ROFRange
+		FormatKey = "Stats/ROFRangeFmt"
+	}
+	{
+		ID = RampUpTime
+		FormatKey = "Stats/ThrusterRampUpFmt"
 	}
 	{
 		ID = Range
@@ -284,6 +296,10 @@ PartStats
 	{
 		ID = ShotAmmoUsage
 		FormatKey = "Stats/ShotAmmoUsageFmt"
+	}	
+	{
+		ID = ShotAmmoUsageRange
+		FormatKey = "Stats/ShotAmmoUsageRangeFmt"
 	}
 	{
 		ID = AmmoSulfurUsage
@@ -535,9 +551,16 @@ PartStats
 		DefaultBuiltinStat = InitialPenetrationResistance
 	}
 	{
+		ID = ShellPenResist
+		FormatKey = "Stats/ShellPenResistFmt"
+	}
+	{
+		ID = ShellDamageResist
+		FormatKey = "Stats/ShellDamageResistFmt"
+	}
+	{
 		ID = AOEResist
 		FormatKey = "Stats/AOEResistFmt"
-		DefaultBuiltinStat = ExplosiveDamageResistance
 	}
 	{
 		ID = EMPResist

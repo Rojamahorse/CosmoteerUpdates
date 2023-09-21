@@ -1,0 +1,23 @@
+ID = chainguns
+TitleKey = "Tutorials/Chainguns/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.HasPartCategoryInHand('chaingun') or game.HasTechUnlocked('cosmoteer.chaingun')"
+Entries
+[
+	{
+		TextKey = "Tutorials/Chainguns/Info"
+	}
+	{
+		TextKey = "Tutorials/Chainguns/Shell"
+	}
+	{
+		TextKey = "Tutorials/Chainguns/Magazines"
+	}
+	{
+		Image { Texture { File="chaingun.png"; SampleMode=Linear; } }
+	}
+	{
+		TextKey = "Tutorials/Chainguns/ForceFire"
+		Image { Texture { File="force_fire.png"; SampleMode=Linear; } }
+	}
+]

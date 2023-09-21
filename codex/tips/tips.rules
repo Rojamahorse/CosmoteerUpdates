@@ -1,0 +1,1177 @@
+CodexPages
+[
+	// High-Priority
+	{
+		ID = Hamburgers
+		TitleKey = "Tips/Hamburgers/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/Hamburgers/Tip"
+				Image
+				{
+					Texture
+					{
+						File = "hamburger.png"
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				TextKey = "Tips/Hamburgers/FunFact"
+			}
+		]
+	}
+	{
+		ID = RightClickMenus
+		TitleKey = "Tips/RightClickMenus/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/RightClickMenus/Tip1"
+				Image
+				{
+					Texture
+					{
+						File = "./Data/gui/cursor_right_click.png"
+						SampleMode = Linear
+						MipLevels = 2
+					}
+					Size = [40, 42]
+				}
+			}
+			{
+				TextKey = "Tips/RightClickMenus/Tip2"
+			}
+		]
+	}
+	{
+		ID = Accessibility
+		TitleKey = "Tips/Accessibility/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/Accessibility/Tip"
+			}
+		]
+	}
+	{
+		ID = QuickSave
+		TitleKey = "Tips/QuickSave/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/QuickSave/Tip1"
+			}
+			{
+				TextKey = "Tips/QuickSave/Tip2"
+			}
+			{
+				TextKey = "Tips/QuickSave/Tip3"
+			}
+		]
+	}
+	{
+		ID = AutoSave
+		TitleKey = "Tips/AutoSave/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/AutoSave/Tip"
+			}
+		]
+	}
+	{
+		ID = Hotkeys
+		TitleKey = "Tips/Hotkeys/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/Hotkeys/Tip"
+			}
+		]
+	}
+	{
+		ID = RebindingControls
+		TitleKey = "Tips/RebindingControls/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/RebindingControls/Tip"
+			}
+		]
+	}
+	{
+		ID = Settings
+		TitleKey = "Tips/Settings/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/Settings/Tip"
+			}
+		]
+	}
+	{
+		ID = AdvancedCareerMode
+		TitleKey = "Tips/AdvancedCareerMode/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/AdvancedCareerMode/Tip"
+			}
+		]
+	}
+	{
+		ID = GameSpeedFramerate
+		TitleKey = "Tips/GameSpeedFramerate/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/GameSpeedFramerate/Tip"
+			}
+		]
+	}
+	{
+		ID = Feedback
+		TitleKey = "Tips/Feedback/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/Feedback/Tip"
+			}
+		]
+	}
+
+	// General ship UI.
+	{
+		ID = AdvancedCommands
+		TitleKey = "Tips/AdvancedCommands/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/AdvancedCommands/Tip"
+				Image
+				{
+					Texture
+					{
+						File = "advanced_commands.png"
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	{
+		ID = CtrlSelectsParts
+		TitleKey = "Tips/CtrlSelectsParts/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/CtrlSelectsParts/Tip"
+			}
+		]
+	}
+	{
+		ID = SelectSameType
+		TitleKey = "Tips/SelectSameType/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/SelectSameType/Tip"
+			}
+		]
+	}
+	{
+		ID = CtrlTargeting
+		TitleKey = "Tips/CtrlTargeting/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/CtrlTargeting/Tip1"
+			}
+			{
+				TextKey = "Tips/CtrlTargeting/Tip2"
+			}
+		]
+	}
+	{
+		ID = AttackDefaults
+		TitleKey = "Tips/AttackDefaults/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/AttackDefaults/Tip"
+			}
+		]
+	}
+	{
+		ID = ControlGroups
+		TitleKey = "Tips/ControlGroups/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/ControlGroups/Tip1"
+			}
+			{
+				TextKey = "Tips/ControlGroups/Tip2"
+			}
+		]
+	}
+	{
+		ID = CollisionAvoidance
+		TitleKey = "Tips/CollisionAvoidance/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/CollisionAvoidance/Tip"
+			}
+		]
+	}
+	{
+		ID = WorldRelativeAngles
+		TitleKey = "Tips/WorldRelativeAngles/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/WorldRelativeAngles/Tip"
+			}
+		]
+	}
+	{
+		ID = DirectControlSettings
+		TitleKey = "Tips/DirectControlSettings/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/DirectControlSettings/Tip"
+				Image
+				{
+					Texture
+					{
+						File = "./Data/gui/game/toggle_direct_control_off.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					Size = [48, 48]
+				}
+			}
+		]
+	}
+	{
+		ID = DirectControlBindings
+		TitleKey = "Tips/DirectControlBindings/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/DirectControlBindings/Tip1"
+			}
+			{
+				TextKey = "Tips/DirectControlBindings/Tip2"
+			}
+		]
+	}
+	{
+		ID = DirectControlSuppress
+		TitleKey = "Tips/DirectControlSuppress/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/DirectControlSuppress/Tip"
+			}
+		]
+	}
+
+	// Camera
+	{
+		ID = DisableEdgePan
+		TitleKey = "Tips/DisableEdgePan/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/DisableEdgePan/Tip"
+			}
+		]
+	}
+	{
+		ID = MidpointFocus
+		TitleKey = "Tips/MidpointFocus/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/MidpointFocus/Tip"
+				Image
+				{
+					Texture
+					{
+						File = "midpoint_focus.png"
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	{
+		ID = RotateCamera
+		TitleKey = "Tips/RotateCamera/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/RotateCamera/Tip1"
+			}
+			{
+				TextKey = "Tips/RotateCamera/Tip2"
+			}
+		]
+	}
+	{
+		ID = RotationFocus
+		TitleKey = "Tips/RotationFocus/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/RotationFocus/Tip1"
+			}
+			{
+				TextKey = "Tips/RotationFocus/Tip2"
+			}
+		]
+	}
+	{
+		ID = PipSettings
+		TitleKey = "Tips/PipSettings/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/PipSettings/Tip"
+			}
+		]
+	}
+
+	// General UI
+	{
+		ID = WhenEnemySpotted
+		TitleKey = "Tips/WhenEnemySpotted/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/WhenEnemySpotted/Tip"
+			}
+		]
+	}
+	{
+		ID = ScreenshotsAndGifs
+		TitleKey = "Tips/ScreenshotsAndGifs/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/ScreenshotsAndGifs/Tip1"
+			}
+			{
+				TextKey = "Tips/ScreenshotsAndGifs/Tip2"
+			}
+		]
+	}
+	{
+		ID = DisableUI
+		TitleKey = "Tips/DisableUI/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/DisableUI/Tip"
+			}
+		]
+	}
+	{
+		ID = AreYouSure
+		TitleKey = "Tips/AreYouSure/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/AreYouSure/Tip"
+			}
+		]
+	}
+
+	// Missions
+	{
+		ID = MissionsHUD
+		TitleKey = "Tips/MissionsHUD/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/MissionsHUD/Tip1"
+			}
+			{
+				TextKey = "Tips/MissionsHUD/Tip2"
+				Image
+				{
+					Texture
+					{
+						File = "./Data/gui/game/missions/tracked.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					Size = [40, 40]
+				}
+			}
+		]
+	}
+	{
+		ID = ObjectiveFocus
+		TitleKey = "Tips/ObjectiveFocus/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/ObjectiveFocus/Tip"
+				Image
+				{
+					Texture
+					{
+						File = "./Data/gui/game/cursor_focus.png"
+						SampleMode = Linear
+						MipLevels = 2
+					}
+					Size = [40, 44]
+				}
+			}
+		]
+	}
+	{
+		ID = FameLimit
+		TitleKey = "Tips/FameLimit/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/FameLimit/Tip"
+			}
+		]
+	}
+
+	// Ship Editor
+	{
+		ID = SavingShips
+		TitleKey = "Tips/SavingShips/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/SavingShips/Tip"
+			}
+		]
+	}
+	{
+		ID = SubFolders
+		TitleKey = "Tips/SubFolders/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/SubFolders/Tip"
+			}
+		]
+	}
+	{
+		ID = SavedShipFiles
+		TitleKey = "Tips/SavedShipFiles/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/SavedShipFiles/Tip1"
+			}
+			{
+				TextKey = "Tips/SavedShipFiles/Tip2"
+			}
+		]
+	}
+	{
+		ID = BlueprintMode
+		TitleKey = "Tips/BlueprintMode/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/BlueprintMode/Tip"
+				Image { Texture { File="../tutorials/build/blueprints_button.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+	{
+		ID = FlightDirection
+		TitleKey = "Tips/FlightDirection/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/FlightDirection/Tip"
+				Image { Texture { File="flight_direction.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+	{
+		ID = MirrorModeSettings
+		TitleKey = "Tips/MirrorModeSettings/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/MirrorModeSettings/Tip"
+				Image { Texture { File="../tutorials/build/mirror_mode.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+	{
+		ID = SymmetryLines
+		TitleKey = "Tips/SymmetryLines/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/SymmetryLines/Tip"
+				Image { Texture { File="mirror_handle.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+	{
+		ID = ForceStartConstruction
+		TitleKey = "Tips/ForceStartConstruction/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/ForceStartConstruction/Tip"
+			}
+		]
+	}
+	{
+		ID = RecommendationBars
+		TitleKey = "Tips/RecommendationBars/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/RecommendationBars/Tip"
+			}
+		]
+	}
+	{
+		ID = DeleteShortcut
+		TitleKey = "Tips/DeleteShortcut/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/DeleteShortcut/Tip"
+			}
+		]
+	}
+	{
+		ID = DisableAutoDoors
+		TitleKey = "Tips/DisableAutoDoors/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/DisableAutoDoors/Tip"
+			}
+		]
+	}
+	{
+		ID = FillDoors
+		TitleKey = "Tips/FillDoors/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/FillDoors/Tip"
+			}
+		]
+	}
+	{
+		ID = DeleteDoors
+		TitleKey = "Tips/DeleteDoors/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/DeleteDoors/Tip"
+				Image { Texture { File="../tutorials/build/select_tool.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+	{
+		ID = PartBrushes
+		TitleKey = "Tips/PartBrushes/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/PartBrushes/Tip"
+				Image { Texture { File="../tutorials/build/brush.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+	{
+		ID = LoadBlueprints
+		TitleKey = "Tips/LoadBlueprints/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/LoadBlueprints/Tip1"
+			}
+			{
+				TextKey = "Tips/LoadBlueprints/Tip2"
+			}
+			{
+				TextKey = "Tips/LoadBlueprints/Tip3"
+			}
+		]
+	}
+	{
+		ID = LoadShapeFromPNG
+		TitleKey = "Tips/LoadShapeFromPNG/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/LoadShapeFromPNG/Tip1"
+			}
+			{
+				TextKey = "Tips/LoadShapeFromPNG/Tip2"
+			}
+			{
+				TextKey = "Tips/LoadShapeFromPNG/Tip3"
+			}
+			{
+				TextKey = "Tips/LoadShapeFromPNG/Tip4"
+			}
+		]
+	}
+	{
+		ID = EditShipInfo
+		TitleKey = "Tips/EditShipInfo/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/EditShipInfo/Tip"
+			}
+		]
+	}
+	{
+		ID = PartRows
+		TitleKey = "Tips/PartRows/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/PartRows/Tip"
+			}
+		]
+	}
+
+	// Paint Editor
+	{
+		ID = DecalLayers
+		TitleKey = "Tips/DecalLayers/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/DecalLayers/Tip"
+				Image { Texture { File="../tutorials/paint/layers.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+	{
+		ID = LoadPaint
+		TitleKey = "Tips/LoadPaint/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/LoadPaint/Tip"
+			}
+		]
+	}
+	{
+		ID = PaintSchemes
+		TitleKey = "Tips/PaintSchemes/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/PaintSchemes/Tip1"
+				Image { Texture { File="paint_scheme.png"; SampleMode=Linear; } }
+			}
+			{
+				TextKey = "Tips/PaintSchemes/Tip2"
+			}
+		]
+	}
+
+	// Crew
+	{
+		ID = CrewCustomization
+		TitleKey = "Tips/CrewCustomization/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/CrewCustomization/Tip"
+			}
+		]
+	}
+	{
+		ID = CrewFavorite
+		TitleKey = "Tips/CrewFavorite/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/CrewFavorite/Tip"
+				Image { Texture { File="favorite_crew.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+	{
+		ID = RoleOrder
+		TitleKey = "Tips/RoleOrder/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/RoleOrder/Tip"
+			}
+		]
+	}
+	{
+		ID = SharingRoles
+		TitleKey = "Tips/SharingRoles/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/SharingRoles/Tip1"
+			}
+			{
+				TextKey = "Tips/SharingRoles/Tip2"
+			}
+			{
+				TextKey = "Tips/SharingRoles/Tip3"
+			}
+			{
+				TextKey = "Tips/SharingRoles/Tip4"
+			}
+		]
+	}
+	{
+		ID = HiringPriority
+		TitleKey = "Tips/HiringPriority/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/HiringPriority/Tip1"
+			}
+			{
+				TextKey = "Tips/HiringPriority/Tip2"
+			}
+		]
+	}
+	{
+		ID = CrewResourceTransfer
+		TitleKey = "Tips/CrewResourceTransfer/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/CrewResourceTransfer/Tip"
+			}
+		]
+	}
+
+	// Resources
+	{
+		ID = ResourceCollectionTypes
+		TitleKey = "Tips/ResourceCollectionTypes/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/ResourceCollectionTypes/Tip"
+				Image { Texture { File="../tutorials/salvaging/tool.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+	{
+		ID = ResourceLimits
+		TitleKey = "Tips/ResourceLimits/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/ResourceLimits/Tip1"
+			}
+			{
+				TextKey = "Tips/ResourceLimits/Tip2"
+			}
+		]
+	}
+	{
+		ID = MovingResources
+		TitleKey = "Tips/MovingResources/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/MovingResources/Tip"
+			}
+		]
+	}
+	{
+		ID = ResourceEjection
+		TitleKey = "Tips/ResourceEjection/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/ResourceEjection/Tip"
+				Image { Texture { File="../tutorials/resources/resource_button.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+
+	// Trade
+	{
+		ID = Trade5x
+		TitleKey = "Tips/Trade5x/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/Trade5x/Tip"
+				Image { Texture { File="trade_5x.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+	{
+		ID = TradeAmount
+		TitleKey = "Tips/TradeAmount/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/TradeAmount/Tip1"
+				Image { Texture { File="trade_amount.png"; SampleMode=Linear; } }
+			}
+			{
+				TextKey = "Tips/TradeAmount/Tip2"
+			}
+		]
+	}
+	{
+		ID = TradeSurplusNeeded
+		TitleKey = "Tips/TradeSurplusNeeded/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/TradeSurplusNeeded/Tip1"
+			}
+			{
+				TextKey = "Tips/TradeSurplusNeeded/Tip2"
+			}
+		]
+	}
+
+	// Parts
+	{
+		ID = EngineRoomDistribution
+		TitleKey = "Tips/EngineRoomDistribution/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/EngineRoomDistribution/Tip"
+			}
+		]
+	}
+	{
+		ID = LauncherTypes
+		TitleKey = "Tips/LauncherTypes/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/LauncherTypes/Tip"
+				Image { Texture { File="launcher_type.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+
+	// Creative Mode
+	{
+		ID = DesigningAsteroids
+		TitleKey = "Tips/DesigningAsteroids/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/DesigningAsteroids/Tip"
+				Image { Texture { File="new_ship_type.png"; SampleMode=Linear; } }
+			}
+		]
+	}
+	{
+		ID = TeleportShip
+		TitleKey = "Tips/TeleportShip/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/TeleportShip/Tip"
+			}
+		]
+	}
+	{
+		ID = SpawnNotReady
+		TitleKey = "Tips/SpawnNotReady/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/SpawnNotReady/Tip"
+			}
+		]
+	}
+	{
+		ID = BattleHelper
+		TitleKey = "Tips/BattleHelper/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/BattleHelper/Tip"
+			}
+		]
+	}
+
+	// Multiplayer
+	{
+		ID = TransferringShipsMoney
+		TitleKey = "Tips/TransferringShipsMoney/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/TransferringShipsMoney/Tip1"
+			}
+			{
+				TextKey = "Tips/TransferringShipsMoney/Tip2"
+			}
+		]
+	}
+	{
+		ID = Chatting
+		TitleKey = "Tips/Chatting/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/Chatting/Tip"
+			}
+		]
+	}
+	{
+		ID = Scoreboard
+		TitleKey = "Tips/Scoreboard/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/Scoreboard/Tip"
+			}
+		]
+	}
+	{
+		ID = DisplayName
+		TitleKey = "Tips/DisplayName/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/DisplayName/Tip"
+			}
+		]
+	}
+
+	// Misc
+	{
+		ID = ModAutoDisable
+		TitleKey = "Tips/ModAutoDisable/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/ModAutoDisable/Tip"
+			}
+		]
+	}
+	{
+		ID = PostShaders
+		TitleKey = "Tips/PostShaders/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/PostShaders/Tip1"
+			}
+			{
+				TextKey = "Tips/PostShaders/Tip2"
+			}
+		]
+	}
+	{
+		ID = Discord
+		TitleKey = "Tips/Discord/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/Discord/Tip"
+			}
+		]
+	}
+	{
+		ID = ReleaseCandidates
+		TitleKey = "Tips/ReleaseCandidates/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/ReleaseCandidates/Tip1"
+			}
+			{
+				TextKey = "Tips/ReleaseCandidates/Tip2"
+			}
+		]
+	}
+]

@@ -1,6 +1,14 @@
-CodexPages : <tutorials/tutorials.rules>/CodexPages, <lore/lore.rules>/CodexPages []
+CodexPages :
+	<tutorials/tutorials.rules>/CodexPages,
+	<lore/lore.rules>/CodexPages,
+	<tips/tips.rules>/CodexPages,
+[
+	// No additional pages.
+]
 
 NewTutorialSound
 {
 	Sound = "../gui/chat_notif.wav"
 }
+
+TipsRequiredTutorials = [ftl2]

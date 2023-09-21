@@ -4,7 +4,7 @@ Part
 	Density = 1
 	HealthType = Operational
 	ExplosiveDamageAbsorption = 50%
-	ExplosiveDamageResistance = 0%
+	DamageResistances = {} //Can add damage resistances by putting "default = 50%" in the curly with no quotations. ie. salvage, explosive, fire, heat
 	Flammable = true
 	UnderlyingPartPerTile = cosmoteer.structure
 	CreatePartPerTileWhenGrabbed = corridor

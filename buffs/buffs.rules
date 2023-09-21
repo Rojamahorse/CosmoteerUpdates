@@ -77,3 +77,8 @@ RailgunReverseOperation
 	RectBorderColor = [10, 212, 98, 160]
 	RectFillColor = [10, 212, 98, 64]
 }
+
+RateOfFire
+{
+	CombineMode = Add
+}

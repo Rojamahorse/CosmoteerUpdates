@@ -417,6 +417,48 @@ PartToggles
 		]
 	}
 
+	// Force Fire chaingun
+	{
+		ToggleID = "force_fire_chaingun"
+		Style = CycledButton
+		MultipleModesDisplayOrder = Last
+		SortOrder = 1
+		Choices
+		[
+			// Off
+			{
+				ChoiceID = "force_fire_chaingun_off"
+				ButtonToolTipKey = "PartToggles/ForceStartChaingun"
+				DefaultHotkey = [K]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_force_fire_off.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// On
+			{
+				ChoiceID = "force_fire_chaingun_on"
+				ButtonToolTipKey = "PartToggles/ForceStartChaingun"
+				DefaultHotkey = [K]
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_force_fire_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+
 	// Tractor beam pull/push/auto.
 	{
 		ToggleID = "tractor_mode"

@@ -706,6 +706,9 @@ Inputs
 		launch_mines_off = "Cancel Mine Launch"
 		launch_mines_on = "Launch Mines"
 		launch_mines = "Launch Mines"
+		force_fire_chaingun_off = "Cancel Force Fire Chaingun"
+		force_fire_chaingun_on = "Force Fire Chaingun"
+		force_fire_chaingun = "Force Fire Chaingun"
 		tractor_mode_auto = "Tractor Beam: Auto"
 		tractor_mode_pull = "Tractor Beam: Pull"
 		tractor_mode_push = "Tractor Beam: Push"
@@ -1280,7 +1283,7 @@ Settings
 		ShowDamagePoints = "Show Damage Points"
 		ShowDamagePointsTip = "If checked, then points earned from damaging enemy ships will be displayed over the enemy ship as the damage is done."
 
-		PlayerName = "Player Name"
+		PlayerName = "Display Name"
 		PlayerNameTip = "Name displayed in multiplayer."
 		PlayerNameDisabledTip =  "Cannot change your name while in a game."
 	}
@@ -1616,6 +1619,9 @@ Settings
 		ShowNews = "Show Unread News On Startup"
 		ShowNewsTip = "If checked, the game will automatically display any unread news articles on startup."
 
+		ShowTips = "Show Tips On Startup"
+		ShowTipsTip = "If checked and there is no news to display, a \"Did You Know?\" tip will be automatically displayed on startup."
+
 		ShowAlerts = "Show Alerts On Title Screen"
 		ShowAlertsTip = "If checked, \"alerts\" will be shown on the top-right corner of the title screen."
 
@@ -1642,8 +1648,8 @@ Settings
 
 		ShowTutorials = "Show Tutorials"
 		ShowTutorialsTip = "If checked, \"How to Play\" tutorials will be displayed during gameplay."
-		ResetTutorials = "Reset Tutorials"
-		ConfirmResetTutorials = "This will cause all tutorials to be displayed again."
+		ResetTutorials = "Reset Tutorials & Tips"
+		ConfirmResetTutorials = "This will cause all tutorials and tips to be displayed again."
 	}
 
 	SettingsChanged = "The display settings have been changed. Do you want to keep the new settings?"
@@ -1792,8 +1798,8 @@ Feedback
 	Title = "Send Feedback"
 	Desc = "Please describe your feedback or bug in as much detail as possible."
 	Submit = "Submit Feedback"
-	Email = "Your email address (optional):"
-	EmailTip = "Providing your email address will allow us to respond to you so that we can get more details about your feedback or bug report."
+	Email = "Your email (optional):"
+	EmailTip = "Providing your email address allows us to reply to your feedback. Without it we will not be able to provide solutions, offer suggestions, or ask for more information. We will not use your email for any purpose other than replying to your feedback."
 	AttachScreenshot = "Attach screenshot"
 	AttachScreenshotTip = "Takes a screenshot of the game and attaches it to the feedback. " \
 	                      "The screenshot will include everything you currently see except for the \"Send Feedback\" window. " \
@@ -1803,7 +1809,7 @@ Feedback
 	                     "This will make it easier for us to fix bugs."
 	AttachErrorLog = "Attach error log";
 	AttachErrorLogTip = "Attaches the program's error log. This will make it easier for us to fix bugs."
-	Hint = "Hint: You can send feedback at any time by pressing <btn id='General.SubmitFeedback'/>."
+	Hint = "Tip: You can send feedback at any time by pressing <btn id='General.SubmitFeedback'/>."
 	Sending = "Sending feedback..."
 	Error = "There was an error sending the feedback."
 	ConfirmNoEmail = "If you do not enter an email address, then we will have no way of responding to your message. "\
@@ -3257,9 +3263,9 @@ CrewBox
 	RoleTip = "When this button is selected, clicking on a crew room will instruct the crew assigned to that room's squad to use the priorities for this role.\n\nDrag-and-drop to rearrange, or <btn id='General.UIAltClick'/> to edit and delete."
 	Copy = "Copy Role"
 	Paste = "Paste"
-	PasteRole = "Replace Info & Priorities"
+	PasteRole = "Replace Info & Job Priorities"
 	PasteInfo = "Replace Info Only"
-	PastePriorities = "Replace Priorities Only"
+	PastePriorities = "Replace Job Priorities Only"
 	PasteInsertBefore = "Insert New Role Before"
 	PasteInsertAfter = "Insert New Role After"
 	Duplicate = "Duplicate"
@@ -3347,6 +3353,10 @@ RoleEditor
 	Info = "Basic Info"
 	Priorities = "Job Priorities"
 	Name = "Name:"
+	AssignmentPriority = "Hiring Priority:"
+	AssignmentPriorityTip = "Crew will be automatically assigned to higher-priority roles before lower-priority roles."
+	AutoFillFromLower = "Auto-Fill From Lower Priority Roles"
+	AutoFillFromLowerTip = "If checked, then any empty crew beds for this role will be automatically filled by transferring crew from other roles with lower assignment priority."
 	Color = "Shirt Color:"
 	PriorityTip = "Jobs with a higher priority number will be done before jobs with a lower priority number."
 	PriorityDisabledTip = "Disable this job completely. Crew with this role will not do this job."
@@ -3634,6 +3644,14 @@ Parts
 	CannonDeckIcon = &CannonDeck
 	CannonDeckDesc = "A huge double-barreled cannon that is mounted on top of the ship instead of the side for extra stability. Each barrel fuses together ten rounds of projectile ammunition and is so loud that it briefly stuns nearby crew.\n\n"\
 	                 "The front and sides cannot be within 2 tiles of other roof turrets or \"tall\" parts."
+
+	ChainGun = "Chaingun"
+	ChainGunIcon = &ChainGun
+	ChainGunDesc = "A powerful rotary cannon that increases its rate of fire the longer it shoots and hides behind a protective shell while not shooting. Additional ammunition magazines can be attached to increase its duration and rate of fire."
+
+	ChaingunMagazine = "Chaingun Magazine"
+	ChaingunMagazineIcon = &ChaingunMagazine
+	ChaingunMagazineDesc = "An extra ammunition storage for the Chaingun, increasing its duration and rate of fire. Must be attached to the lower left or right sides of the chaingun."
 
 	ControlRoomSmall = "Cockpit"
 	ControlRoomSmallIcon = &ControlRoomSmall
@@ -4073,6 +4091,7 @@ PartToggles
 	MissileType_Mine = "<b>Proximity Mines</b>\n\nStationary mines that detonate in proximity to enemy ships, shooting out damaging shrapnel. Requires a Mine Factory to manufacture.\n\nHotkey: <btn id='PartToggles.missile_type_mine'/>"
 
 	LaunchMines = "Launch Mines\n\nHotkey: <btn id='PartToggles.launch_mines_on'/>"
+	ForceStartChaingun = "Force Fire Chaingun\n\nHotkey: <btn id='PartToggles.force_fire_chaingun_on'/>"
 
 	TractorMode_Auto = "<b>Tractor Beam: Auto</b>\n\nThe Tractor Beam will automatically push or pull to keep the target at the current distance.\n\nHotkey: <btn id='PartToggles.tractor_mode_auto'/>"
 	TractorMode_Pull = "<b>Tractor Beam: Pull</b>\n\nThe Tractor Beam will pull the target as close as possible.\n\nHotkey: <btn id='PartToggles.tractor_mode_pull'/>"
@@ -4145,6 +4164,7 @@ Stats
 	FactoryBuffFmt = "<white>Adjacent Factories:</white> <good>+{0:0}%</good><gray> prod. rate</gray>"
 	DamageFmt = "<white>Damage:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
 	MaxDamageFmt = "<white>Max Damage:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
+	DamageRangeFmt = "<white>Damage:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/sec)</gray>"
 	SimpleDamageFmt = "<white>Damage:</white> <good>{0:n0}</good>"
 	SimpleMaxDamageFmt = "<white>Max Damage:</white> <good>{0:n0}</good>"
 	DamageAreaFmt = "<white>Damage Area:</white> <good>{0:0.#}</good><gray> meter radius</gray>"
@@ -4258,7 +4278,7 @@ Stats
 	FtlMaxEfficiencyRangeFmt = "<white>Optimal Efficiency:</white> <good>{0:0.##}</good><gray> meters</gray>"
 	FtlMinEfficiencyRangeFmt = "<white>Minimum Efficiency:</white> <good>{0:0.##}</good><gray> meters</gray>"
 	ThrusterForceFmt = "<white>Thrust:</white> <good>{0:#,0.#}</good><gray> kilonewtons</gray>"
-	ThrusterRampUpFmt = "<white>Ramp-Up Time:</white> <good>{0:0.##}</good><gray> seconds</gray>"
+	ThrusterRampUpFmt = "<white>Ramp-Up Time:</white> <good>{0:0.##}</good><gray> seconds</gray>" //used for chaingun as well, RampUpTime
 	TractorForceFmt = "<white>Tractor Force:</white> <good>{0:#,0.#}</good><gray> kilonewtons</gray>"
 	CrewSpeedFmt = "<white>Crew Speed:</white> <good>{0:0}%</good>"
 	CrewSpeedFwdFmt = "<white>Crew Speed (Forward):</white> <good>{0:0}%</good>"
@@ -4271,7 +4291,10 @@ Stats
 	                       "  <white>4th Beam:</white> <good>{4:0}%</good><gray> dmg</gray>\n"\
 	                       "  <white>5th Beam:</white> <good>{5:0}%</good><gray> dmg</gray>\n"\
 	                       "  ..."
-
+	ROFRangeFmt = "<white>Rate of Fire:</white> <good>{0:0.##}</good><white> - </white><good>{1:0.##}</good><gray> shots/sec</gray>"
+	ShotAmmoUsageRangeFmt = "<white>Ammo Use:</white> <good>{0:0.##}</good><gray>/shot (</gray><good>{1:0.##}</good><white> - </white><good>{2:0.##}</good><gray>/sec)</gray>"
+	ShellDamageResistFmt = "<white>Shell Damage Resist:</white> <good>{0}%</good>"
+	ShellPenResistFmt = "<white>Shell Penetration Resist:</white> <good>-{0}</good> <gray>meters</gray>"
 	RailgunNotes = "<gray>NOTE: Damage, Penetration, Range, Projectile Speed, and Power Usage are increased with each additional Railgun Accelerator.</gray>"
 	MissileLauncherNotes = "<gray>For munition statistics, refer to the corresponding factory for each type of munition.</gray>"
 }
@@ -4298,6 +4321,8 @@ StatCategories
 	TractorBeam = "Tractor Beam"
 	RailgunBuff = "Railgun Buff"
 	MiningBeam = "Mining Beam"
+	BulletChaingun = "Chaingun Round"
+	ChaingunShelled = "Shelled Chaingun"
 	CollectorBeam = "Collector Beam (x4)"
 }
 
@@ -4468,7 +4493,13 @@ Codex
 	CodexDialog = "Tutorials & Codex"
 	Tutorials = "Tutorials"
 	Lore = "Codex"
+	Tips = "Tips"
 	MarkUnread = "Mark As Unread"
+}
+
+TipsDialog
+{
+	Title = "Did You Know?"
 }
 
 Tutorials
@@ -4853,6 +4884,15 @@ Tutorials
 		Tip = "<good>TIP:</good> Each Launcher and Accelerator module must be individually powered by batteries delivered by crew. If a single Launcher or Accelerator module is not powered, the entire Railgun will be unable to fire. (The Loader module only requires standard cannon ammunition and does not need to be powered.)"
 	}
 
+	Chainguns
+	{
+		Title = "Chainguns"
+		Info = "Chainguns are rotary projectile weapons that <good>increase their rate of fire as they shoot</good>. The longer the Chaingun is firing, the faster it will shoot, up to a limit."
+		Shell = "While not shooting, Chainguns <good>hide behind a protective shell</good> that greatly reduces incoming damage."
+		Magazines = "<good>Ammunition Magazines</good> can be attached to expand their ammo storage, which will increase how long they can keep shooting at maximum speed. Magazines must be attached to the rear left or right sides of the chaingun. (See picture.)"
+		ForceFire = "Chainguns will normally <b>not</b> start shooting until the Chaingun itself and all of its magazines are full of ammo. To force a Chaingun to start firing before it's full, click the <white>Force Fire</white> button."
+	}
+
 	AbandonedShips
 	{
 		Title = "Abandoned Ships"
@@ -4973,5 +5013,474 @@ Lore
 		Lore1 = "The Fringe Systems Resistance is a loose conglomeration of independent star systems united only by the common desire to survive and remain independent."
 		Lore2 = "The \"Fringe\" star systems are those that lie on the edge of the known galaxy or between the territories of the major factions. They are generally sparsely populated and have a low standard of living. While there is a strong code of honor among inhabitants of the Fringe, there is no common government or system of laws beyond the borders that can be enforced by each individual settlement or station. As such, the Fringe systems tend to attract a \"rough and ready\" type of personality, and piracy runs rampant."
 		Lore3 = "There are no formal cooperation agreements between any of the Fringe systems, so the extent to which they can be called \"unified\" is based on a mutual hatred of the other major factions and an understanding that they can better defend their independence working (begrudgingly) together than apart. Despite this cooperation, the Fringe systems are no match for the full might of any of the major factions, and thus are fighting a doomed battle, losing their independence one-by-one."
+	}
+}
+
+Tips
+{
+	// High-Priority
+	Hamburgers
+	{
+		Title = "Hamburger Menus"
+		Tip = "Cosmoteer has many tiny <img name='hamburger_up'/> and <img name='hamburger_down'/> menus. Keep an eye out for these! Clicking them will give you access to many advanced or \"hidden\" features."
+		FunFact = "<gray>(Fun Fact: Game and app developers like to call these \"hamburger menus\".)</gray>"
+	}
+	RightClickMenus
+	{
+		Title = "Right-Click Menus"
+		Tip1 = "Keep an eye out for when the mouse cursor shows this icon!"
+		Tip2 = "This means that you can <btn id='General.UIAltClick'/> on this button or user interface element to access a popup menu containing advanced or \"hidden\" features. Many parts of the user interface have these hidden menus!"
+	}
+	Accessibility
+	{
+		Title = "Color-Blind & Accessibility Settings"
+		Tip = "If you're having trouble distinguishing between friendly and enemy ship icons, you can change their colors in <good>Settings -> Accessibility</good>. There are also additional settings to make Cosmoteer easier on the eyes for visually-sensitive players."
+	}
+	QuickSave
+	{
+		Title = "Quick-Saves"
+		Tip1 = "Press <btn id='Game.QuickSave'/> to quick-save your current game."
+		Tip2 = "Press <btn id='Game.QuickLoad'/> to load the last saved game of any type."
+		Tip3 = "By default, Cosmoteer will keep your last 10 quick-save files. Older quick-save files will be automatically deleted. You can change the number of quick-save files to keep in <good>Settings -> Auto-Save</good>."
+	}
+	AutoSave
+	{
+		Title = "Auto-Saves"
+		Tip = "By default, Cosmoteer will auto-save your current game every 10 minutes and will keep your last 10 auto-save files. Older auto-save files will be automatically deleted. You can change duration and number of auto-save files in <good>Settings -> Auto-Save</good>."
+	}
+	Hotkeys
+	{
+		Title = "Hotkeys"
+		Tip = "Many user interface buttons have \"hotkeys\" that you can press instead of clicking on the button. These hotkeys are almost always shown in the tooltip when hovering the mouse cursor over the button, and they can also be customized in <good>Settings -> Controls</good>."
+	}
+	RebindingControls
+	{
+		Title = "Rebinding Controls"
+		Tip = "Almost all of the controls and hotkeys can be changed in <good>Settings -> Controls</good>."
+	}
+	Settings
+	{
+		Title = "Settings"
+		Tip = "Cosmoteer is highly customizable and has <i>a lot</i> of settings. If you ever find yourself wishing you could change something about Cosmoteer, then take a look at the <good>Settings</good> -- there's a good chance there's already a setting for what you want!"
+	}
+	AdvancedCareerMode
+	{
+		Title = "Advanced Career Mode Options"
+		Tip = "Career Mode has a handful of advanced options you can change to tailor the game to your preferences, such as making ship construction instant or revealing the whole star system. You can turn these on by clicking <good>Advanced Game Options</good> when starting a new Career game or in <good>Settings -> Current Game -> Advanced Game Options</good> while playing."
+	}
+	GameSpeedFramerate
+	{
+		Title = "Game Speed & Framerate"
+		Tip = "Increasing the game speed to 8x means that your CPU has to do 8 times as much work as 1x speed. This can cause poor framerate (FPS), especially in the late-game. Consider reducing game speed to improve framerate."
+	}
+	Feedback
+	{
+		Title = "Sending Feedback"
+		Tip = "We'd love to get your feedback! Press <btn id='General.SubmitFeedback'/> at any time to send us your ideas, complaints, bug reports, or any kind of feedback. Thank you!"
+	}
+
+	// General Ship UI
+	AdvancedCommands
+	{
+		Title = "Advanced Ship Commands"
+		Tip = "If you can't see these advanced ship command buttons, then you can enable them at <good>Settings -> Gameplay -> Show Advanced Ship Commands</good>"
+	}
+	CtrlSelectsParts
+	{
+		Title = "Require Ctrl To Select Parts"
+		Tip = "If you can't select individual weapons and other ship parts simply by clicking on them, then you need to either hold <btn id='Game.SelectParts'/> or disable the <good>Settings -> Gameplay -> Require Ctrl To Select Parts</good> setting."
+	}
+	SelectSameType
+	{
+		Title = "Selecting Same-Typed Parts"
+		Tip = "You can <white>double-click</white> to select all ship parts of the same type. For directional parts such as weapons, thrusters, and shields, only the parts facing the same direction will be selected. <white>Triple-click</white> to select all regardless of direction."
+	}
+	CtrlTargeting
+	{
+		Title = "Ctrl Targeting"
+		Tip1 = "You can hold <btn id='Game.SelectParts'/> to target your weapons on enemy ships without having to attack them first."
+		Tip2 = "You can also hold <btn id='Game.SelectParts'/> to force-target your weapons on friendly ships."
+	}
+	AttackDefaults
+	{
+		Title = "Setting Attack Defaults"
+		Tip = "Are you tired of having to set your ship's distance and rotation every time you attack an enemy? Open the <img name='hamburger_up'/> menu next to your ship's name and click <good>Save Attack Defaults</good>. Your current distance, rotation, and angle of attack will be remembered the next time you attack something."
+	}
+	ControlGroups
+	{
+		Title = "Control Groups"
+		Tip1 = "You can put one or more of your ships into a \"control group\" by selecting them and then pressing <white>Ctrl + F1-F8</white>. Then you can select all ships in that group by pressing <white>F1-F8</white>."
+		Tip2 = "Likewise, you can put one or more individual weapons or other ship parts into control groups by selecting them and then pressing <white>Ctrl + 0-9</white>. Then you can select all parts in that group by pressing <white>0-9</white>."
+	}
+	CollisionAvoidance
+	{
+		Title = "Collision Avoidance"
+		Tip = "Ships will usually try to navigate around large obstacles to avoid colliding with them. If you don't like this, then you can hold <btn id='Game.InvertCollisionAvoidance'/> while giving a move order to disable collision avoidance, or stop it more permanently by turning off <good>Settings -> Gameplay -> Ship Commands -> Enable Collision Avoidance</good>."
+	}
+	WorldRelativeAngles
+	{
+		Title = "Grid Relative Attack/Follow Angles"
+		Tip = "Normally when you attack or follow another ship at a specific angle, that angle will change as the other ship rotates. Hold <btn id='Game.WorldRelativeFollowAngle'/> when issuing the attack or follow order to prevent this."
+	}
+	DirectControlBindings
+	{
+		Title = "Direct Control Weapon Bindings"
+		Tip1 = "For Direct Control Mode, you can customize what mouse button is used to fire each weapon. Select the weapon(s), open its <img name='hamburger_up'/> menu, and select <white>Direct Control Binding</white>."
+		Tip2 = "You can also set weapons to remain <white>A.I. Controlled</white> even when using Direct Control Mode."
+	}
+	DirectControlSettings
+	{
+		Title = "Direct Control Settings"
+		Tip = "Direct Control Mode has many settings that you can change to tailor the controls and camera to your preference. You can change these in <good>Settings -> Gameplay -> Direct Control Mode</good> and <good>Settings -> Camera -> Direct Control Mode</good>."
+	}
+	DirectControlSuppress
+	{
+		Title = "Suppressing Direct Control Mode"
+		Tip = "When in Direct Control Mode, you can <i>temporarily</i> disable it by holding <btn id='Game.SelectParts'/>, allowing you to command the ship and control your view normally. Releasing <btn id='Game.SelectParts'/> will then return you to Direct Control Mode."
+	}
+
+	// Camera
+	DisableEdgePan
+	{
+		Title = "Camera Edge Pan"
+		Tip = "Do you get annoyed when the mouse cursor accidentally touches the edges of the screen and causes the view to move? If so, you can turn that off at <good>Settings -> Camera -> Pan &amp; Rotate -> Edge Pan</good>."
+	}
+	MidpointFocus
+	{
+		Title = "Midpoint Focus Icon"
+		Tip = "After attacking an enemy ship, you can click the \"eye\" icon to focus your view on the point halfway between your ship and its target."
+	}
+	RotateCamera
+	{
+		Title = "Camera Rotation"
+		Tip1 = "You can press <btn id='View.RotateLeft'/> and <btn id='View.RotateRight'/> to rotate your view."
+		Tip2 = "To reset your view rotation back to the default, press <btn id='View.ResetRotation'/> or click the red \"Galactic North\" arrow on the minimap."
+	}
+	RotationFocus
+	{
+		Title = "Focus & Match Rotation"
+		Tip1 = "You probably already know that you can press <btn id='View.FocusSelected'/> to focus your view on your ship."
+		TIp2 = "You can also press <btn id='View.RotationFocusSelected'/> to focus on your ship <b>and</b> match its rotation."
+	}
+	PipSettings
+	{
+		Title = "Picture-In-Picture Settings"
+		Tip = "You can customize when and what the \"Picture-In-Picture\" view in the top-right displays by going to <good>Settings -> Camera -> Picture-In-Picture</good>."
+	}
+
+	// General UI
+	WhenEnemySpotted
+	{
+		Title = "When Enemy Spotted"
+		Tip = "Are you annoyed by the game slowing down whenever an enemy is detected? You can turn that off or pick a different game speed at <good>Settings -> Gameplay -> Informational Overlays -> When Enemy Spotted</good>."
+	}
+	ScreenshotsAndGifs
+	{
+		Title = "Screenshots & GIFs"
+		Tip1 = "You can take a screenshot anytime by pressing <btn id='General.TakeScreenshot'/>."
+		Tip2 = "You can also record and save recent gameplay as an animated GIF by pressing <btn id='General.CaptureGif'/>, but you'll need to turn that on first in <good>Settings -> GIF Recorder</good>."
+	}
+	DisableUI
+	{
+		Title = "Disabling the U.I."
+		Tip = "Do you think your screenshots and GIFs would be prettier without the user interface? Press <btn id='Game.ToggleUI'/> to hide it. Press again to show un-hide it."
+	}
+	AreYouSure
+	{
+		Title = "Are You Sure?"
+		Tip = "Many of the <i>\"Are you sure you want to... ?\"</i> style confirmation prompts can be skipped by holding <btn id='General.SuppressConfirmation'/>."
+	}
+
+	// Missions
+	MissionsHUD
+	{
+		Title = "Missions HUD"
+		Tip1 = "By default, only the 3 nearest missions will be displayed in the top-left of your screen. You can change that number at <good>Settings -> Gameplay -> Informational Overlays -> Show Nearby Missions On HUD</good>."
+		Tip2 = "You can also mark a mission as a \"favorite\" by <white>right-clicking</white> on it or pressing the \"Favorite\" button in the Career Log. This will cause the mission to always be displayed even if other missions are closer."
+	}
+	ObjectiveFocus
+	{
+		Title = "Focusing Objectives"
+		Tip = "You can click on most mission objectives to focus your view on the location where you'll need to fly to accomplish that objective."
+	}
+	FameLimit
+	{
+		Title = "Fame Limit"
+		Tip = "Most missions have a \"fame limit\". If you already have more <fame>Fame</fame> than the limit, the mission won't give you any more fame. Complete higher-level missions to continue earning fame."
+	}
+
+	// Ship Editor
+	SavingShips
+	{
+		Title = "Saving Ships"
+		Tip = "Your ship designs can be saved so that they can be reused in other game modes such as Creative Mode and multiplayer. To save your ship design, open the <img name='hamburger_up'/> menu next to your ship name or in the Ship Editor and then select <white>Save Ship Design</white>."
+	}
+	SubFolders
+	{
+		Title = "Ship Sub-Folders"
+		Tip = "You can organize your saved ship designs into sub-folders just like you can files and folders on your computer. To create a sub-folder, <btn id='General.UIAltClick'/> on \"My Ships\" in your Ship Library and select <white>New Folder</white>. Then simply drag-and-drop your ship designs into the new folder."
+	}
+	SavedShipFiles
+	{
+		Title = "Saved Ship Files"
+		Tip1 = "Ship designs are actually saved as regular PNG image files but with the extension <fame_color>.ship.png</fame_color>. You can share these files with your friends or on the Cosmoteer Discord just like you can any image file. These files are stored on your computer in a folder called \"Saved Ships\", which you can access by clicking the <img name='hamburger_down'/> menu in the Ship Library and then selecting <white>Open Folder</white>."
+		Tip2 = "You can load and play with anyone else's saved ship design simply by copying their ship file into your own Ship Library. As long as the image hasn't been modified in any way, it should instantly appear in your Ship Library and be fully playable. And if you're playing Cosmoteer in \"Resizable Window\" mode, you can just drag-and-drop the image directly into your Ship Library or an active Creative Mode game."
+	}
+	BlueprintMode
+	{
+		Title = "Blueprint Mode"
+		Tip = "You can use \"Blueprint Mode\" to make temporary, illegal, or unaffordable changes to your ship's design before actually committing to those changes. Click the <white>Blueprint Mode</white> button in the lower-left of the Ship Editor to enable Blueprint Mode."
+	}
+	FlightDirection
+	{
+		Title = "Flight Direction"
+		Tip = "By default, your ships will always fly as if \"up\" in the Ship Editor is the forward direction. You can change which direction is \"forward\" by opening the <img name='hamburger_up'/> menu next to your ship name or by clicking the little up arrow on the right side of the Ship Editor."
+	}
+	MirrorModeSettings
+	{
+		Title = "Mirror Mode Settings"
+		Tip = "You probably already know that you can enable \"Mirror Mode\" to make symmetrical changes to your ship's design. You can also <btn id='General.UIAltClick'/> on the Mirror Mode button to change the direction and number of symmetry lines."
+	}
+	SymmetryLines
+	{
+		Title = "Moving Symmetry Lines"
+		Tip = "When Mirror Mode is enabled, you can move the symmetry lines by clicking and dragging these green handles."
+	}
+	ForceStartConstruction
+	{
+		Title = "Force Start Construction"
+		Tip = "Normally you can't begin construction if you don't have enough resources to finish. However, you can hold <btn id='Design.ConfirmPartialBuild'/> to force construction to begin anyway. Your crew won't be able to finish but they'll do as much as they can."
+	}
+	RecommendationBars
+	{
+		Title = "Recommendation Bars"
+		Tip = "The bars showing <b>crew</b> and <b>power</b> on the right side of the Ship Editor are only <i>recommendations</i> for new players. Optimally-designed ships may not require as much crew or power. You can turn these bars off at <good>Settings -> Ship Editor -> Show Recommendation Bars</good>."
+	}
+	DeleteShortcut
+	{
+		Title = "Removing Parts & Decals"
+		Tip = "In the Ship Editor or Paint Editor, you can hold <btn id='Design.EraseCursorMode'/> to temporarily switch to deletion mode."
+	}
+	DisableAutoDoors
+	{
+		Title = "Disabling Auto-Doors"
+		Tip = "When adding new rooms to your ship, doors will be automatically added by default. If you don't like this, then you can hold <btn id='Design.NoAutoDoors'/> to temporarily stop them from being added, or you can turn off the feature altogether at <good>Settings -> Ship Editor -> Automatically Add Doors</good>."
+	}
+	FillDoors
+	{
+		Title = "Filling All Doors"
+		Tip = "Do you want a door in every possible location? Hold <btn id='Design.FillAllDoors'/> while adding a door to add doors <i>everywhere</i>."
+	}
+	DeleteDoors
+	{
+		Title = "Deleting Doors"
+		Tip = "If you want to delete many doors at once, use the Selection Tool to select all of the parts whose doors you want to delete, and then press <btn id='Design.DeleteDoors'/>."
+	}
+	PartBrushes
+	{
+		Title = "Part Brushes"
+		Tip = "Most 1x1 sized parts can be used with a variety of different \"brush\" sizes and shapes. Click the brush selection button when available to see all the options."
+	}
+	LoadBlueprints
+	{
+		Title = "Loading Blueprints"
+		Tip1 = "You can load the blueprints of another saved ship design into your current ship. In the Ship Editor, open the <img name='hamburger_up'/> menu and then click either:"
+		Tip2 = "<b>Load Ship (Replace Existing)</b> - This will completely replace your ship's existing blueprints with those of the saved ship design."
+		Tip3 = "<b>Load Ship (Paste Into Existing)</b> - This will add the saved ship's blueprints into your existing ship at a location of your choice."
+	}
+	LoadShapeFromPNG
+	{
+		Title = "Load Shape From PNG"
+		Tip1 = "You can use external art programs such as MS Paint, Paint.NET, Gimp, or Photoshop to create the basic shape outlines for your ships..."
+		Tip2 = "1. First, use any external art program of your choice to save a <b>white-on-black</b> PNG image file that represents the general shape of your ship. White pixels will be interpreted as corridor tiles, and black pixels will be interpreted as empty space."
+		Tip3 = "2. Then in the Ship Editor, open the <img name='hamburger_up'/> menu, and select <white>Load Shape From PNG</white>. Select the PNG image file that you saved."
+		Tip4 = "3. Your ship's current blueprints will be replaced with the blueprints created your PNG image file. Finish your ship by adding weapons, thrusters, defenses, and other parts as you see fit."
+	}
+	EditShipInfo
+	{
+		Title = "Editing Ship Info"
+		Tip = "You can edit your ship's name, designer (author), description, and lore. Open the <img name='hamburger_up'/> menu next to your ship's name and select <white>Edit Ship Name/Info</white>. <gray>(Or you can just click on the name itself!)</gray>"
+	}
+	PartRows
+	{
+		Title = "Ship Editor Rows"
+		Tip = "You can increase the number part types visible in the Ship Editor by changing <good>Settings -> Ship Editor -> Rows Of Parts</good>."
+	}
+
+	// Paint Editor
+	DecalLayers
+	{
+		Title = "Decal Layers"
+		Tip = "You can click on the \"eye\" icon to hide or un-hide decal layers. Drag-and-drop decal layers to change their order."
+	}
+	LoadPaint
+	{
+		Title = "Loading Paint"
+		Tip = "You can load the paint/decal design of another saved ship into your current ship. In the Paint Editor, open the <img name='hamburger_up'/> menu and then click <white>Load Paint Design</white>."
+	}
+	PaintSchemes
+	{
+		Title = "Paint Schemes"
+		Tip1 = "\"Paint Schemes\" are saved sets of paint colors and textures that can be shared between ships."
+		Tip2 = "To save a ship's current colors and texture, open the <img name='hamburger_up'/> menu in the Paint Editor and then select <white>Save Paint Scheme</white>. To load that paint scheme on a different ship, open its <img name='hamburger_up'/> menu and select <white>Load Paint Scheme</white>."
+	}
+
+	// Crew
+	CrewCustomization
+	{
+		Title = "Crew Customization"
+		Tip = "The names and appearances of all your crew can be customized! Open the Crew Roster and then <white>double-click</white> on the crew member who you wish to customize."
+	}
+	CrewFavorite
+	{
+		Title = "Favorite Crew"
+		Tip = "Do you care about some of your crew more than others? <white>Right-click</white> on them in the Crew Roster and mark them as a \"favorite\". That way you can always tell where they are!"
+	}
+	RoleOrder
+	{
+		Title = "Crew Role Order"
+		Tip = "You can change the order in which your crew roles are listed by dragging-and-dropping them. This has no effect on how your crew function but can be useful for organization."
+	}
+	SharingRoles
+	{
+		Title = "Sharing Roles"
+		Tip1 = "Once you have perfected your ship's crew roles, you may want to use those same roles with your other ships. There are several ways of doing that:"
+		Tip2 = "1. You can load the roles from any saved ship design by opening the <img name='hamburger_up'/> menu in the Crew Management screen and selecting <white>Load Ship Roles</white>."
+		Tip3 = "2. From that same <img name='hamburger_up'/> menu, you can also <white>Copy Roles</white> from one ship and then <white>Paste Roles</white> into another ship."
+		Tip4 = "3. And lastly, you can select <white>Save As My Default Roles</white>. Any new ship designs you start will use those roles by default."
+	}
+	HiringPriority
+	{
+		Title = "Hiring Priority"
+		Tip1 = "Every crew role has a \"Hiring Priority\" between <bad>1</bad> and <good>10</good>. When you hire or transfer new crew to your ship, they will automatically join the role with the highest Hiring Priority that has room."
+		Tip2 = "If you enable the <white>Auto-Fill From Lower Priority Roles</white> option, then any empty crew slots will be automatically filled by transferring crew from roles with a lower Hiring Priority."
+	}
+	CrewResourceTransfer
+	{
+		Title = "Crew & Resource Transfer"
+		Tip = "You can transfer crew and resources between your ships. Click the <img name='hamburger_up'/> menu next to your ship's name (or in the Crew or Resource Management screens) and then select <white>Transfer Crew / Resources</white>."
+	}
+
+	// Resources
+	ResourceCollectionTypes
+	{
+		Title = "Resource Collection Types"
+		Tip = "Do you already have enough of a certain kind of resource? <btn id='General.UIAltClick'/> on the Gather/Salvage/Mine button and unselect the resources that you no longer want. Your crew will no longer gather, salvage, or mine those types of resources."
+	}
+	ResourceLimits
+	{
+		Title = "Resource Limits"
+		Tip1 = "You can limit how many resources your ship will store of any specific type. <btn id='General.UIAltClick'/> on the Gather/Salvage/Mine button and select <white>Set Resource Limits</white>."
+		Tip2 = "When a limit has been set for a specific kind of resource, your crew won't gather, your factories won't produce, and you won't be able to buy, more than that limit."
+	}
+	MovingResources
+	{
+		Title = "Moving Resources"
+		Tip = "When using the Resource Management screen to move resources, you can hold <btn id='Resources.Move1'/> to pick up or drop 1 resource at a time instead of the whole stack. Hold <btn id='Resources.Move5'/> for 5 at a time."
+	}
+	ResourceEjection
+	{
+		Title = "Resource Ejection"
+		Tip = "To eject all or a specific number of resources, <btn id='General.UIAltClick'/> on its button along the bottom of the Resource Management screen and choose one of the <white>Eject</white> options."
+	}
+
+	// Trade
+	Trade5x
+	{
+		Title = "Trading 5x"
+		Tip = "While trading or transferring resources, you can hold <btn id='Resources.Transfer5'/> to move 5 times as many resources per click."
+	}
+	TradeAmount
+	{
+		Title = "Trading Exact Amounts"
+		Tip1 = "When trading or transferring resources, you can click on the number and type in the exact amount you wish to buy, sell, or transfer. A positive number means that you want to buy (or transfer left to right). A negative number means that you want to sell (or transfer from right to left)."
+		Tip2 = "You can also type in the total amount the you want stored on your ship, and the amount that you need to buy, sell, or transfer will be automatically calculated."
+	}
+	TradeSurplusNeeded
+	{
+		Title = "Sell Surplus / Buy Needed"
+		Tip1 = "When trading, you can sell your excess resources above a \"desired\" amount by <white>right-clicking</white> on a resource and choosing <white>Sell Surplus</white>. Or you can buy what you need to reach the \"desired\" amount by choosing <white>Buy Needed</white>. Open the <img name='hamburger_up'/> menu to Sell Excess or Buy Needed for all resources at once."
+		Tip2 = "If you have set a resource limit, then the \"desired\" amount will be that resource limit. If not, then the \"desired\" amount will be sum total of all resource tiles that have been designated to hold that resource."
+	}
+
+	// Parts
+	EngineRoomDistribution
+	{
+		Title = "Engine Room Power Distribution"
+		Tip = "Engine Rooms can receive and distribute power batteries for any connected thrusters, meaning your crew don't actually need to be able to reach your thrusters as long as your thrusters are connected to an engine room that <i>can</i> be reached."
+	}
+	LauncherTypes
+	{
+		Title = "Launcher Types"
+		Tip = "You can change what type of missile or mine a Launcher shoots at any time, including during battle. Use this to surprise your enemy with a few unexpected nukes!"
+	}
+
+	// Creative Mode
+	DesigningAsteroids
+	{
+		Title = "Designing Asteroids"
+		Tip = "In Creative Mode, you can design asteroids just like you can design ships. <btn id='General.UIAltClick'/> on the New Ship button and select Asteroid or Megaroid. <gray>(Megaroids are really big asteroids.)</gray>"
+	}
+	TeleportShip
+	{
+		Title = "Teleporting Ships"
+		Tip = "In Creative Mode, you can press <btn id='CreativeMode.MoveShip'/> to instantly teleport the selected ship to its destination."
+	}
+	SpawnNotReady
+	{
+		Title = "Spawn Without Ammo/Power"
+		Tip = "In Creative Mode, if you hold <btn id='CreativeMode.SpawnNotReady'/> while spawning in a ship then it will spawn without any power, munitions, or resources."
+	}
+	BattleHelper
+	{
+		Title = "Battle Helper"
+		Tip = "In Creative Mode, you can use the Battle Helper to setup and run battles between two opposing fleets of ships. You can access the Battle Helper from the <img name='hamburger_down'/> menu."
+	}
+
+	// Multiplayer
+	TransferringShipsMoney
+	{
+		Title = "Transferring Ships & Money"
+		Tip1 = "When playing multiplayer Career mode, you can transfer your ships to any of the other players. Click the <img name='hamburger_up'/> menu next to your ship's name and then select <white>Transfer Ship Control To</white>."
+		Tip2 = "You can also give <money_color><img name='money' colored='true'/></money_color> credits to the other players. <btn id='General.UIAltClick'/> on your <money_color><img name='money' colored='true'/></money_color> credits display in the top-right and then select <white>Transfer Credits To</white>."
+	}
+	Chatting
+	{
+		Title = "Multiplayer Chat"
+		Tip = "In multiplayer, you can send text chat messages to the other players by pressing <btn id='Game.Chat'/>."
+	}
+	Scoreboard
+	{
+		Title = "Multiplayer Scoreboard"
+		Tip = "In PvP multiplayer, press <btn id='Multiplayer.ShowScoreboard'/> to display the current scoreboard."
+	}
+	DisplayName
+	{
+		Title = "Multiplayer Display Name"
+		Tip = "By default, you will appear in multiplayer using your Steam account name, but you can change your display name at <good>Settings -> Misc -> Multiplayer -> Display Name</good>."
+	}
+
+	// Misc
+	ModAutoDisable
+	{
+		Title = "Auto-Disabling Mods"
+		Tip = "When updating Cosmoteer, any mods you have installed <b>may</b> be automatically disabled if they are not known to be compatible with the new Cosmoteer update. If you don't want mods to be automatically disabled, then turn off <good>Settings -> Misc -> Disable Mods When Updating</good>."
+	}
+	PostShaders
+	{
+		Title = "Post Shaders"
+		Tip1 = "Do you wish Cosmoteer looked like a black-and-white 1950s sci-fi movie? If so, then choose \"It Came From Outer Space\" in <good>Settings -> Graphics -> Preferences -> Post Shader</good>."
+		Tip2 = "There are also several other styles of fun \"post shaders\" for you to try out!"
+	}
+	Discord
+	{
+		Title = "Discord"
+		Tip = "Cosmoteer has a vibrant and welcoming community on Discord! To join, click <img name='hamburger_up'/>MORE on the title screen and then select <good>Community -> Discord</good>."
+	}
+	ReleaseCandidates
+	{
+		Title = "Release Candidates"
+		Tip1 = "You can help test pre-release Cosmoteer updates by switching to the \"unstable\" beta branch in Cosmoteer's Steam properties."
+		Tip2 = "<bad>WARNING:</bad> These \"release candidates\" may be more buggy than the official updates. Save often!"
 	}
 }
