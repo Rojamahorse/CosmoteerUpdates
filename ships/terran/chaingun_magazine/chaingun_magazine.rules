@@ -203,7 +203,7 @@ Part : <../base_part_terran.rules>/Part
 		HasMaxAmmo
 		{
 			Type = ThresholdToggle
-			ValueFrom = AmmoStorage 
+			ValueFrom = AmmoStorage
 			MinAmount = 100%
 		}
 		HasAmmoForLights
@@ -545,6 +545,12 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [0.5, 1]
+		}
+		DestroyedHitEffects
+		{
+			Type = DeathEffects
+			IncludeWhenUnderConstruction = false
 			Location = [0.5, 1]
 			FactorHitEffectsWith = AmmoStorage
 			HitEffects
