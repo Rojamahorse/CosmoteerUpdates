@@ -8,8 +8,8 @@ Part : <../base_part_terran.rules>/Part
 	Resources
 	[
 		[steel, 144]
-		[coil2, 20]
-		[tristeel, 12]
+		[coil2, 38]
+		[tristeel, 15]
 	]
 	TypeCategories = [uses_ammo, is_crewed, chaingun, chaingun_ammo_requester]
 	ReceivableBuffs : ^/0/ReceivableBuffs [RateOfFire]
@@ -164,7 +164,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ValueTween
 			OnTweenDuration = 1.2
-			OffTweenDuration = 0.7
+			OffTweenDuration = 1.2
 			IsOnToggle = ShellShouldOpen
 		}
 		IsShellFullyOpen
@@ -436,8 +436,16 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = TransformLerp
 			ValueFrom = ShellChangingValueTween
-			StartLocation = [0, 0]
-			EndLocation = [0, -(51+64)/64]
+			StartLocation = [96/64, 117/64]
+			EndLocation = [96/64, 2/64]
+		}
+		AimingTurretSlider
+		{
+			Type = ChainableProxy
+			ChainedTo = TurretSlider
+			ComponentID = Turret
+			MatchLocation = false
+			MatchRotation = true
 		}
 
 		IsOperationalOrNotClosed
@@ -450,8 +458,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret
 		{
 			Type = TurretWeapon
-			ChainedTo = TurretSlider
-			Location = [96/64, 117/64] // Relative to upper-left corner of unrotated part.
+			Location = &../TurretSlider/EndLocation
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperationalOrNotClosed  //If not closed, we need the turret to power down even if the part is not operational.
 			FirePermissionToggle = CanFire // Can't fire if not full.  Set it to can fire, which will include ammo check and fire mode toggle.
@@ -493,11 +500,12 @@ Part : <../base_part_terran.rules>/Part
 		FixedWeapon
 		{
 			Type = FixedWeapon
-			ChainedTo = Turret
+			ChainedTo = AimingTurretSlider
 			OperationalToggle = GunShouldFire //Force Fire or turret
 			AutoFireToggle = GunShouldFire //Force Fire or turret
 			FireInterval = { BaseValue=0.35; BuffType=RateOfFire; BuffMode=Divide;}
 			Emitter = BulletEmitter
+			CanBeGivenExplicitTarget = false
 
 			AutoTarget
 			{
@@ -579,7 +587,7 @@ Part : <../base_part_terran.rules>/Part
 		CrewLocation1
 		{
 			Type = CrewLocation
-			ChainedTo = Turret
+			ChainedTo = AimingTurretSlider
 			Location = [0, 0]
 			Rotation = 90d
 		}
@@ -619,7 +627,7 @@ Part : <../base_part_terran.rules>/Part
 		TurretCollider
 		{
 			Type = CircleCollider
-			ChainedTo = Turret
+			ChainedTo = AimingTurretSlider
 			Radius = 54/64
 			Density = 1
 			IncludeWhenUnderConstruction = false
@@ -643,7 +651,7 @@ Part : <../base_part_terran.rules>/Part
 		TurretWeaponShootingGraphics
 		{
 			Type = Graphics
-			ChainedTo = Turret
+			ChainedTo = AimingTurretSlider
 			Rotation = 90d
 			OperationalToggle = IsShellFullyOpen
 			ResetAnimationTrigger = BulletEmitter
@@ -684,7 +692,7 @@ Part : <../base_part_terran.rules>/Part
 		TurretWeaponExtendAndRetractGraphics
 		{
 			Type = Graphics
-			ChainedTo = Turret
+			ChainedTo = AimingTurretSlider
 			Rotation = 90d
 
 			OperationalToggle = IsShellFullyOpen
@@ -755,7 +763,7 @@ Part : <../base_part_terran.rules>/Part
 		TurretGraphics
 		{
 			Type = Graphics
-			ChainedTo = Turret
+			ChainedTo = AimingTurretSlider
 			Rotation = 90d
 			OperationalToggle = IsOperational
 			Floor
@@ -878,7 +886,7 @@ Part : <../base_part_terran.rules>/Part
 		TurretDoorGraphics
 		{
 			Type = Graphics
-			ChainedTo = Turret
+			ChainedTo = AimingTurretSlider
 			Location = [-35/64, 0]
 			Rotation = -90d
 			OperationalToggle = IsOperational
@@ -2339,6 +2347,12 @@ Part : <../base_part_terran.rules>/Part
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
 			Location = [1.5, 3.5]
+		}
+		DestroyedHitEffects
+		{
+			Type = DeathEffects
+			IncludeWhenUnderConstruction = false
+			Location = [1.5, 3.5]
 			FactorHitEffectsWith = CombinedAmmoStorage
 			HitEffects
 			[
@@ -2372,6 +2386,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
+
 		HasEnoughAmmoForGraphics
 		{
 			Type = MultiToggle
