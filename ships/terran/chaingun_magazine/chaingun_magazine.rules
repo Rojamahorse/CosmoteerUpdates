@@ -78,7 +78,7 @@ Part : <../base_part_terran.rules>/Part
 					ResourceType = bullet
 					Storage = AmmoUIStorageProxy
 					DefaultPriority = &/PRIORITIES/Weapon_Supply
-					ConsumptionToggleButtonOffset = [0, -.4]
+					ConsumptionToggleButtonOffset = [0, .4]
 				}
 			}
 		}
@@ -88,28 +88,58 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ToggleProxy
 			PartLocation = [-1, 0] //looking to the left
-			PartCriteria
-			{
-				Category = chaingun_ammo_requester //making sure they have the special category
-				Rot = 0 //is perfectly aligned
-				Right = 0
-				bottom = 2
-			}
-			ComponentID = IsRequestingRightToLeftAmmo //what component we are looking for.  Chain gun itself always has these components
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_requester //making sure they have the special category
+						Rot = 0 //is perfectly aligned
+						Right = 0
+						Bottom = 2
+					}
+					ComponentID = IsRequestingRightToLeftAmmo //what component we are looking for.  Chain gun itself always has these components
+				}
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_requester //making sure they have the special category
+						Rot = 2 //is perfectly aligned
+						Right = 0
+						Top = -1
+					}
+					ComponentID = IsRequestingLeftToRightAmmo //what component we are looking for.  Chain gun itself always has these components
+				}
+			]
 		}
 		AmmoStorageProxyLeft
 		{
 			Type = ResourceStorageProxy
 			ResourceType = bullet
 			PartLocation = [-1, 0]
-			PartCriteria
-			{
-				Category = chaingun_ammo_requester
-				Rot = 0 //is perfectly aligned
-				Right = 0
-				bottom = 2
-			}
-			ComponentID = AmmoStorageRight  //we grab right most storage
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_requester
+						Rot = 0 //is perfectly aligned
+						Right = 0
+						Bottom = 2
+					}
+					ComponentID = AmmoStorageRight  //we grab right most storage
+				}
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_requester
+						Rot = 2 //is perfectly aligned
+						Right = 0
+						Top = -1
+					}
+					ComponentID = AmmoStorageLeft  //we grab right most storage
+				}
+			]
 		}
 		AmmoLoaderLeft //push from our ammo to theirs
 		{
@@ -126,28 +156,58 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ToggleProxy
 			PartLocation = [1, 0] //looking to the right
-			PartCriteria
-			{
-				Category = chaingun_ammo_requester //making sure they have the special category
-				Rot = 0 //is perfectly aligned
-				left = 1
-				Bottom = 2
-			}
-			ComponentID = IsRequestingLeftToRightAmmo //what component we are looking for.  Chain gun itself always has these components
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_requester //making sure they have the special category
+						Rot = 0 //is perfectly aligned
+						Left = 1
+						Bottom = 2
+					}
+					ComponentID = IsRequestingLeftToRightAmmo //what component we are looking for.  Chain gun itself always has these components
+				}
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_requester //making sure they have the special category
+						Rot = 2 //is perfectly aligned
+						Left = 1
+						Top = -1
+					}
+					ComponentID = IsRequestingRightToLeftAmmo //what component we are looking for.  Chain gun itself always has these components
+				}
+			]
 		}
 		AmmoStorageProxyRight
 		{
 			Type = ResourceStorageProxy
 			ResourceType = bullet
 			PartLocation = [1, 0]
-			PartCriteria
-			{
-				Category = chaingun_ammo_requester
-				Rot = 0 //is perfectly aligned
-				Left = 1
-				Bottom = 2
-			}
-			ComponentID = AmmoStorageLeft //we grab left most storage
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_requester
+						Rot = 0 //is perfectly aligned
+						Left = 1
+						Bottom = 2
+					}
+					ComponentID = AmmoStorageLeft //we grab left most storage
+				}
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_requester
+						Rot = 2 //is perfectly aligned
+						Left = 1
+						Top = -1
+					}
+					ComponentID = AmmoStorageRight //we grab left most storage
+				}
+			]
 		}
 		AmmoLoaderRight //push from our ammo to theirs
 		{
@@ -171,14 +231,29 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceStorageProxy
 			ResourceType = bullet
 			PartLocation = [-1, 0]
-			PartCriteria
-			{
-				Category = chaingun_ammo_supplier
-				Rot = 0 //is perfectly aligned
-				Right = 0
-				bottom = 2
-			}
-			ComponentID = CombinedLeftBeltStorages
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_supplier
+						Rot = 0 //is perfectly aligned
+						Right = 0
+						Bottom = 2
+					}
+					ComponentID = CombinedLeftBeltStorages
+				}
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_supplier
+						Rot = 2 //is perfectly aligned
+						Right = 0
+						Top = -1
+					}
+					ComponentID = CombinedRightBeltStorages
+				}
+			]
 		}
 		CombinedRightBeltStorages //used for amount of ammo check
 		{
@@ -191,14 +266,29 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceStorageProxy
 			ResourceType = bullet
 			PartLocation = [1, 0]
-			PartCriteria
-			{
-				Category = chaingun_ammo_supplier
-				Rot = 0 //is perfectly aligned
-				Left = 1
-				Bottom = 2
-			}
-			ComponentID = CombinedRightBeltStorages
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_supplier
+						Rot = 0 //is perfectly aligned
+						Left = 1
+						Bottom = 2
+					}
+					ComponentID = CombinedRightBeltStorages
+				}
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_supplier
+						Rot = 2 //is perfectly aligned
+						Left = 1
+						Top = -1
+					}
+					ComponentID = CombinedLeftBeltStorages
+				}
+			]
 		}
 		HasMaxAmmo
 		{
