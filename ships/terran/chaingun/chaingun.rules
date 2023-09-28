@@ -14,6 +14,7 @@ Part : <../base_part_terran.rules>/Part
 	TypeCategories = [uses_ammo, is_crewed, chaingun, chaingun_ammo_requester]
 	ReceivableBuffs : ^/0/ReceivableBuffs [RateOfFire]
 	Size = [3, 5]  //if you change this, need to also change TotalResourceStorage resource proxy checks.
+	Density = 2
 	PhysicalRect = [0, 1, 3, 4]
 	SaveRect = &PhysicalRect
 	SelectionPriority = 1
@@ -150,7 +151,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ValueTween
 			OffValue = 1
 			OnValue = 10.5 //30 shots per second if base value 0.35
-			OnTweenDuration = 6
+			OnTweenDuration = 18
 			OffTweenDuration = 4
 			IsOnToggle = GunIsFiring
 		}
@@ -295,20 +296,14 @@ Part : <../base_part_terran.rules>/Part
 		EitherWeaponIsTargeting
 		{
 			Type = MultiToggle
-			Toggles = [Turret, FixedWeapon]
+			Toggles = [Turret, FixedWeaponAimer]
 			Mode = Any
 		}
 
-		Targeting
-		{
-			Type = MultiToggle
-			Toggles = [AutoFireToggle, EitherWeaponIsTargeting] //or DC, included naturally in the FixedWeapon check.
-			Mode = Any
-		}
 		TargetingAndCanShoot
 		{
 			Type = MultiToggle
-			Toggles = [Targeting, FireModeToggle, CombinedBulletSplitters, HasEnoughAmmoToStartShooting]
+			Toggles = [EitherWeaponIsTargeting, CombinedBulletSplitters, HasEnoughAmmoToStartShooting]
 			Mode = All
 		}
 		ShellShouldOpen //Used by shell opening and closing
@@ -347,13 +342,26 @@ Part : <../base_part_terran.rules>/Part
 		ShouldTurnOffForceFire  //if turret taking over, or out of ammo
 		{
 			Type = MultiToggle
-			Toggles = [FixedWeapon, {Toggle = CombinedAmmoStorage; Invert = true}, {Toggle = IsOperational; Invert = true}]
+			Toggles = [TargetingWithTurretAndCanShoot, {Toggle = CombinedAmmoStorage; Invert = true}, {Toggle = IsOperational; Invert = true}, AutoFireAndHasEnoughAmmoToStartShooting]
 			Mode = Any
 		}
+		AutoFireAndHasEnoughAmmoToStartShooting
+		{
+			Type = MultiToggle
+			Toggles = [AutoFireToggle, HasEnoughAmmoToStartShooting]
+			Mode = All
+		}
+
 		ForceFirePermission
 		{
 			Type = MultiToggle
 			Toggles = [IsOperational, {Toggle = ShouldTurnOffForceFire; Invert = true}]
+			Mode = All
+		}
+		TargetingWithTurretAndCanShoot //We need this check because we can't use the fixed weapon to determin targeting for the force fire toggle, as that is true when force firing
+		{
+			Type = MultiToggle
+			Toggles = [Turret, CombinedBulletSplitters, HasEnoughAmmoToStartShooting]
 			Mode = All
 		}
 
@@ -515,7 +523,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = UITargeter
 			TargeterID = chaingun_aim
-			Weapons = [Turret]
+			Weapons = [Turret, FixedWeaponAimer]
 		}
 
 		Turret
@@ -524,16 +532,18 @@ Part : <../base_part_terran.rules>/Part
 			Location = &../TurretSlider/EndLocation
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational //turret is always looking for targets
-			FirePermissionToggle = FireModeToggle // Always aiming if fire mode allows it
-			AutoFireToggle = AutoFireToggle
-			FireInterval = &../FixedWeapon/FireInterval
+			FireInterval = Infinity //only used in the fixed weapon
 			FiringArc = 220d
 			RotateSpeed = Infinity // AimingTurretSlider does the actual physical rotation.
-			FireThresholdAngle = (&FiringArc) / 2 // This is basically a hack to make this turret "trigger"
+			FireThresholdAngle = 0
 			AIFirepowerRating = 18300 //Set to half the dps when its on, because of the down time.
 			TargetingEmitter = BulletEmitter
 			InstantSearchesAfterTargetLost = 5
 			ToggleOnMode = HasTargetExceptShipRelative
+			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SuppressDirectControlWhenTargetingShipRelativePoints = true
+			SuppressFirepowerEstimationWhenTargetingShipRelativePoints = true
 
 			AutoTargets
 			[
@@ -560,24 +570,79 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
-		FixedWeapon
+		AutoFireOrForceFire
+		{
+			Type = MultiToggle
+			Toggles = [AutoFireToggle, ForceFireToggle]
+			Mode = Any
+		}
+
+		FixedWeaponShooter
+		{
+			Type = FixedWeapon
+			OperationalToggle = IsShellFullyOpen//
+			AutoFireToggle = IsShellFullyOpen //
+			FireInterval = { BaseValue=0.35; BuffType=RateOfFire; BuffMode=Divide;}
+			Emitter = BulletEmitter
+			DefaultDirectControlBinding = 0
+			CanBeGivenExplicitTarget = false
+
+			AutoTarget
+			{
+				TargetType = ShipParts
+				Toggle = False
+			}
+		}
+
+		False
+		{
+			Type = StaticToggle
+			ToggleOn = "false"
+		}
+
+		FixedWeaponAimer
 		{
 			Type = FixedWeapon
 			ChainedTo = Turret
 			OperationalToggle = IsOperational//Always checking for a target
-			FirePermissionToggle = IsShellFullyOpen // can only shoot if we are fully open.
 			AutoFireToggle = AutoFireToggle //
-			FireInterval = { BaseValue=0.35; BuffType=RateOfFire; BuffMode=Divide;}
+			FireInterval = Infinity //only used in the fixed weapon
 			Emitter = BulletEmitter
 			DefaultDirectControlBinding = 0
 			AllowEnemyStructureAutoTargeting = true
-			TargetingEmitter = BulletEmitter
 			ToggleOnMode = WantsToFire
+			AIFirepowerRating = &../Turret/AIFirepowerRating
+			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SuppressFirepowerEstimationWhenNotTargetingShipRelativePoints = true
 
 			AutoTarget
 			{
 				TargetType = ShipParts
 				Toggle = AutoTargetToggle
+			}
+
+			CoverageLine
+			{
+				LineSprite
+				{
+					Texture = &/INDICATORS/RadialGradient
+					VertexColor = [255, 255, 255, 191]
+					UVRect = [.5, 0, 0, 1]
+				}
+				LineThickness = 2
+
+				BeginCapSprite : LineSprite
+				{
+					UVRect = [0, 0, .5, 1]
+				}
+				BeginCapSize = [1, 2]
+
+				EndCapSprite : LineSprite
+				{
+					UVRect = [.5, 0, .5, 1]
+				}
+				EndCapSize = [1, 2]
 			}
 		}
 
@@ -608,14 +673,14 @@ Part : <../base_part_terran.rules>/Part
 			Type = BeamEmitter
 			OperationalToggle = CanEmit
 			ChainedTo = AimingTurretSlider
-			FireTrigger = FixedWeapon
+			FireTrigger = FixedWeaponShooter
 			GetTargetFrom = Turret
 			Location = [0, 0]
 			Duration = 0
 			ResourceStorage = CombinedBulletSplitters // Needed to prevent turret from trying to fire when out of ammo.
 			ResourcesUsed = 1
 			Spread = [-1.5d, 1.5d]
-			Recoil = 1
+			Recoil = 20
 			Burst = 1
 			BeamMediaEffectsOffset = [2, 0]
 			BeamMediaEffectsLengthOffset = -2
@@ -721,7 +786,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = CircleCollider
 			ChainedTo = DefensiveShellSlider
 			Radius = 94/64
-			Density = 0.5
+			Density = 2
 			IncludeWhenUnderConstruction = false
 			InitialPenetrationResistance = 14
 			DamageResistances =
@@ -764,7 +829,7 @@ Part : <../base_part_terran.rules>/Part
 							"turret_barrel_normals1.png"// Loop back to beginning and clamp there.
 						]
 						Size = [1, 2]
-						AnimationInterval = (&~/Part/Components/FixedWeapon/FireInterval/BaseValue) / 4
+						AnimationInterval = (&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue) / 4
 						AnimationStartTime = MinValue
 						ClampAnimation = true
 					}
@@ -2559,8 +2624,8 @@ Part : <../base_part_terran.rules>/Part
 				DamageRange = [&../DamagePerShot, &../DamagePerSecond/0, &../DamagePerSecond/1]
 				ROFRange
 				[
-					(&~/Part/Components/BulletEmitter/Burst) / (&~/Part/Components/FixedWeapon/FireInterval/BaseValue)
-					(&~/Part/Components/BulletEmitter/Burst) / ((&~/Part/Components/FixedWeapon/FireInterval/BaseValue) / (&~/Part/Components/RateOfFireTween/OnValue))
+					(&~/Part/Components/BulletEmitter/Burst) / (&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue)
+					(&~/Part/Components/BulletEmitter/Burst) / ((&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue) / (&~/Part/Components/RateOfFireTween/OnValue))
 				]
 				Range = &~/Part/Components/BulletEmitter/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)

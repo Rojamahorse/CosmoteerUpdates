@@ -127,7 +127,7 @@ PartTargeters
 	{
 		TargeterID = "chaingun_aim"
 		ButtonToolTipKey = "PartTargeters/ChaingunAim"
-		CancelButtonToolTipKey = "PartTargeters/ChaingunAimCancel"
+		HasCancelButton = false
 		TargetTypes = [ShipLocalPoint, Parts]
 		AllowSameShipTarget = false
 		SnapToAngles = [0d, 45d, 90d, 135d, 180d, 225d, 270d, 315d]
@@ -144,8 +144,6 @@ PartTargeters
 				SampleMode = Linear
 			}
 		}
-
-		CancelButtonSprite = &<../game_gui.rules>/HaltIcon
 
 		Cursor = &<../game_gui.rules>/TargetCursor
 		TargetObjectCursor

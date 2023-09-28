@@ -40,12 +40,12 @@ ArenaModeConfig: PvpModeConfig
 	Rulesets
 	{
 		
-		FFA1500K = "Gratis para todos - 1.5 M"
-		FFA1500KShort = "FFA\n1.5 M"
-		FFA3000K = "Gratis para todos - 3 M"
-		FFA3000KShort = "FFA\n3 M"
-		FFA500K = "Gratis para todos - 500 K"
-		FFA500KShort = "FFA\n500 K"
+		FFA1500K = "Batalla libre - 1.5 M"
+		FFA1500KShort = "BL\n1.5 M"
+		FFA3000K = "Batalla libre - 3 M"
+		FFA3000KShort = "BL\n3 M"
+		FFA500K = "Batalla libre - 500 K"
+		FFA500KShort = "BL\n500 K"
 	}
 	TimeLimitTip = "El tiempo máximo que puede durar el juego antes de que el equipo con más puntos sea declarado ganador."
 }
@@ -196,7 +196,7 @@ BuildBox
 	LoadBlueprintsAlsoFlightInfo = "Cargar también los valores predeterminados de ataque y la dirección de vuelo"
 	LoadBlueprintsAlsoPaint = "Cargar también la decoración"
 	LoadBlueprintsAlsoResourceAssignments = "Cargar también asignación de recursos"
-	LoadBlueprintsAlsoTextInfo = ""
+	LoadBlueprintsAlsoTextInfo = "Cargar también nombre, autor y descripción"
 	LoadBlueprintsOptionsPasteFmt = "Esto <b>pegará</b> los planos cargados desde <b>{0}</b> sobre los planos actuales."
 	LoadBlueprintsOptionsReplaceFmt = "Esto <b>cambiará</b> los planos actuales con otros cargados desde <b>{0}</b>."
 	LoadShipInto = "Cargar nave (pegar en la existente)"
@@ -355,6 +355,7 @@ Codex
 	Lore = Códex
 	MarkUnread = "Marcar como no leído"
 	Okay = "<s20>Ya está!</s20>\n <gray>(ocultar tutorial)</gray>"
+	Tips = Consejos
 	Tutorials = Tutoriales
 }
 ColorPicker
@@ -398,8 +399,8 @@ CommWindow
 	AutoHireNone = "Contratar como máximo (0)\n<img name='money' colored='true'/>0"
 	Balance = ""
 	Beds = CAMAS
-	BuyCapacity = "Compra a plena capacidad"
-	BuyCapacityTip = "Compra todos los recursos necesarios para llenar todos los mosaicos de almacenamiento designados."
+	BuyCapacity = "Comprar lo necesario"
+	BuyCapacityTip = "Compra los recursos necesarios para alcanzar el límite deseado. Si no se estableció un límite, compra los suficientes recursos para llenar todas las casillas de almacenamiento designadas."
 	BuyHeader = COMPRAR
 	BuyTechFmt = "DESBLOQUEAR\n{0}"
 	CancelTrade = "Cancelar intercambio"
@@ -424,7 +425,7 @@ CommWindow
 	RehireDebtFmt = "Contratar a una tripulación de reemplazo costará <ins_money>{0:n0}</ins_money>, pero solo tienes <money>{1:n0}</money>. Puedes endeudarte para contratar una tripulación de reemplazo, pero mientras tengas deuda no podrás hacer compras de la mayoría de los tipos hasta que la liquides."
 	Reset = Restablecer
 	SellExcess = "Vender excedentes"
-	SellExcessTip = "Vende todos los recursos cuyas cantidades sobrepasen la capacidad de los mosaicos de almacenamiento designados."
+	SellExcessTip = "Vende todos los recursos que excedan el límite deseado. Si no se estableció un límite, vende todos los recursos que excedan aquellos que entran en las casillas de almacenamiento designadas."
 	SellHeader = VENDER
 	ShipsTooFar = "LAS NAVES ESTÁN DEMASIADO SEPARADAS\nPARA LA TRANSFERENCIA"
 	Techs = "Comprar planos"
@@ -441,9 +442,9 @@ CommsBox
 	HailingFailedFmt = "<bad>SALUDO RECHAZADO</bad>\n{0}"
 	HailingFmt = "<good>SALUDANDO…</good>\n{0}"
 	IffAlly = "I.F.F.: <ally>ALIADO</ally>"
-	IffEnemy = "IFF: <bad>ENEMIGO</bad>"
+	IffEnemy = "I.F.F.: <enemy>ENEMIGO</enemy>"
 	IffNeutral = ""
-	IffPlayer = "I.F.F.: <ally>PROPIOS</ally>"
+	IffPlayer = "I.F.F.: <player>PROPIOS</player>"
 	NoShips = "No hay naves dentro del\nrango de alcance del saludo"
 	Title = Comunicaciones
 }
@@ -712,8 +713,8 @@ CrewBox
 	PasteInfo = "Sustitución solo información"
 	PasteInsertAfter = "Insertar nuevo rol después"
 	PasteInsertBefore = "Insertar nuevo rol antes"
-	PastePriorities = "Sustituir solo prioridades"
-	PasteRole = "Sustituir información y prioridades"
+	PastePriorities = "Sustituir solo prioridades de trabajo"
+	PasteRole = "Sustituir información y prioridades de trabajo"
 	PasteRoles = "Pegar roles"
 	PasteRolesAdd = "Agregar a los roles existentes"
 	PasteRolesReplace = "Reemplazar los roles existentes"
@@ -1025,11 +1026,11 @@ EliminationModeConfig: PvpModeConfig
 		BR500K = "Battle Royale - 500 K"
 		BR500KShort = "BR\n500 K"
 		TVT1500K = "Equipo vs. Equipo - 1.5 M"
-		TVT1500KShort = "TvT\n1.5 M"
+		TVT1500KShort = "EvE\n1.5 M"
 		TVT3000K = "Equipo vs. Equipo - 3 M"
-		TVT3000KShort = "TvT\n3 M"
+		TVT3000KShort = "EvE\n3 M"
 		TVT500K = "Equipo vs. Equipo - 500 K"
-		TVT500KShort = "TvT\n500 K"
+		TVT500KShort = "EvE\n500 K"
 	}
 	TimeLimitTip = "El tiempo máximo que puede durar el juego antes de que el equipo con la mayor fuerza restante sea declarado ganador."
 }
@@ -1082,10 +1083,10 @@ Feedback
 	AttachScreenshotTip = "Toma una captura de pantalla del juego y adjúntala a los comentarios. La captura de pantalla incluirá todo lo que ves actualmente, excepto la ventana de envío de comentarios. Esto nos facilitará la corrección de errores."
 	ConfirmNoEmail = "Si no introduces una dirección de correo electrónico, no tendremos forma de responder a tu mensaje. ¿Estás seguro de que deseas enviar tu mensaje sin introducir una dirección de correo electrónico? (No utilizaremos tu correo electrónico para algo que no sea responder a tu mensaje.)"
 	Desc = "Describe tus comentarios o errores con el mayor detalle posible."
-	Email = "Tu dirección de correo electrónico (opcional):"
-	EmailTip = "Si proporcionas tu dirección de correo electrónico, podremos responderte para que podamos obtener más información sobre tus comentarios o informe de error."
+	Email = "Tu correo (opcional):"
+	EmailTip = "Al brindar tu dirección de correo electrónico nos permites responder a tus comentarios. Sin ella, no podremos brindarte soluciones, ofrecerte sugerencias o pedirte más información. No usaremos tu correo para ningún otro propósito que no sea responder a tus comentarios."
 	Error = "Ocurrió un error al enviar los comentarios."
-	Hint = "Sugerencia: Puedes enviar comentarios en cualquier momento presionando <btn id='General.SubmitFeedback'/>."
+	Hint = "Consejo: Puedes enviar comentarios en cualquier momento presionando <btn id='General.SubmitFeedback'/>."
 	SendAnyway = "Enviar de todos modos"
 	Sending = "Enviando comentarios…"
 	Submit = "Enviar comentarios"
@@ -1736,6 +1737,9 @@ Inputs
 		fire_pref_attack = "Restricción del fuego: Ataque"
 		fire_pref_both = "Restricción del fuego: Ataque + Defensa"
 		fire_pref_defend = "Restricción del fuego: Defensa"
+		force_fire_chaingun = "Forzar disparo del cañón de cadena"
+		force_fire_chaingun_off = "Cancelar forzar disparo del cañón de cadena"
+		force_fire_chaingun_on = "Forzar disparo del cañón de cadena"
 		launch_mines = "Lanzar minas"
 		launch_mines_off = "Cancelar lanzamiento de mina"
 		launch_mines_on = "Lanzar minas"
@@ -1870,10 +1874,12 @@ LoadSaveGame
 	OpenFolder = "Abrir carpeta"
 	Quick = "Nombres guardados rápidamente"
 	QuickSave = "Guardar rápidamente"
+	QuickSaveTip = "Presiona <btn id='Game.QuickSave'/> para hacer un guardado rápido.\nPresiona <btn id='Game.QuickLoad'/> para cargar la última partida guardada de cualquier tipo."
 	QuickSaving = "Guardando rápidamente…"
 	Saving = "Guardando juego…"
 	TitleLoad = "Cargar juego"
 	TitleSave = "Guardar juego"
+	UsesMods = "Usa mods"
 }
 LobbyScreen
 {
@@ -1972,6 +1978,8 @@ LobbyScreen
 	SortRuleset = "<img name='sort'/> Conjunto de reglas"
 	SortStatus = "<img name='sort'/> Estado"
 	SortTeams = "<img name='sort'/> Equipos"
+	SyncMods = "Sincronizar mods"
+	SyncModsTip = "Sincroniza tus mods con el anfitrión de la partida para que puedas unirte a su juego."
 	TimeRemainingFmt = "<bad>TIEMPO RESTANTE: {0:m\\:ss}</bad>"
 	TimedOut = "Tiempo de espera de solicitud agotado."
 }
@@ -2176,6 +2184,7 @@ Mods
 	AuthorFmt = "Creado por {0}"
 	AutoDisabled = "Algunos mods pueden no ser compatibles con esta versión de Cosmoteer y se han desactivado automáticamente."
 	BuiltInFolder = "Mods integrados"
+	BuiltInMod = "Mod integrado"
 	CreatePackage = "Crear paquete de mods"
 	CreatePackageSuccessful = "¡Paquete de mods guardado!"
 	Deactivate = Desactivar
@@ -2187,6 +2196,11 @@ Mods
 	ModLoadError = "Error al cargar el mod {0}: {1}"
 	ModOffFmt = "{0} <bad>(DESACTIVADO)</bad>"
 	ModOnFmt = "{0} <good>(ACTIVADO)</good>"
+	ModsDisabledFmt = "Se desactivaron con éxito <b>{0}</b> mods. (Es necesario reiniciar)."
+	ModsDownloadingFmt = "Se están descargando <good><b>{0}</b> mods de Steam Workshop. Se activarán de forma automática cuando se terminen de descargar. (Es necesario reiniciar).</good>"
+	ModsEnabledFmt = "Se activaron con éxito <b>{0}</b> mods. (Es necesario reiniciar)."
+	ModsFailedFmt = "Hubo un error al activar o descargar <bad><b>{0}</b> mods. Es probable que el motivo sea que los mods no están instalados en la computadora o no están disponibles en Steam Workshop.</bad>"
+	NoChanges = "No se realizaron cambios en los mods."
 	NoModRulesFile = "El mod seleccionado no tiene archivo mod.rules."
 	NoModsMode = "<bad>Cosmoteer se está ejecutando actualmente en modo sin mods, lo que significa que no se cargará ningún mod (aunque estén activados) a continuación.</bad>"
 	OverwriteConfirm = "Ya hay instalado un mod con ese nombre. ¿Deseas sobrescribirlo?"
@@ -2199,11 +2213,29 @@ Mods
 	UninstallConfirm = "¿Estás seguro de que deseas desinstalar este mod?"
 	UninstallMod = "Desinstalar mod"
 	UninstallingMod = "Desinstalando mod…\nEsto puede tomar un poco de tiempo, dependiendo del tamaño del mod."
+	Unsubscribe = "Cancelar suscripción"
 	UserFolder = "Mods del usuario"
+	UserMod = "Mod del usuario"
 	VersionFmt = "Versión {0}"
 	ViewInWorkshop = "Ver en Workshop"
 	WorkshopItemsDownloadingFmt = "Se están descargando {0} elementos de Steam Workshop. Estos aparecerán en esta lista una vez descargados."
+	WorkshopModIDFmt = "ID de Steam Workshop: {0}"
 	WorkshopUpload = "Cargar en Steam Workshop"
+}
+ModsSync
+{
+	
+	DialogName = "Sincronizar mods"
+	MissingMods = "Se usaron los siguientes mods al jugar con esta partida guardada, pero no están activos en este momento. ¿Quieres suscribirte y activar esos mods de forma automática? Puedes intentar jugar sin ellos, pero podrías encontrar errores."
+	MissingModsNoSync = "Se usaron los siguientes mods al jugar con esta partida guardada, pero no están activos en este momento. Puedes intentar jugar sin ellos, pero podrías encontrar errores."
+	NotEnabled = " \n<s14>Inactivo</s14>"
+	NotInstalled = " \n<s14><bad>No se encuentra</bad></s14>"
+	NotOnHost = " \n<s14><yellow>El anfitrión no lo usa</yellow></s14>"
+	NotSubscribed = "<transparentwhite>A</transparentwhite>\n<s14>Sin suscripción</s14>"
+	Skip = Omitir
+	SyncWithHost = "El anfitrión de la partida y tú usan mods incompatibles. ¿Quieres sincronizar tus mods con los del anfitrión de la partida? No podrás unirte a la partida si no sincronizas."
+	Synchronize = Sincronizar
+	WrongVersion = " \n<s14><bad>Versión incorrecta\n{0} (tú) contra {1} (anfitrión)</bad></s14>"
 }
 ModsWorkshop: Workshop
 {
@@ -2353,8 +2385,8 @@ PartColors
 PartTargeters
 {
 	
-	HeadlightAim = "<b>Apuntar Foco</b>\n\nApunta el o los Focos seleccionados hacia el lugar deseado.\n\nCombinación de teclas: <btn id='PartTargeters.headlight_aim'/>"
-	HeadlightAimCancel = ""
+	HeadlightAim = "<b>Apuntar foco</b>\n\nApunta el o los Focos seleccionados hacia el lugar deseado.\n\nCombinación de teclas: <btn id='PartTargeters.headlight_aim'/>"
+	HeadlightAimCancel = "<b>Restaurar objetivo del foco</b>\n\nTecla de acceso rápido: <btn id='PartTargetCancelers.headlight_aim'/>"
 	PrismAim = "<b>Apuntar prisma iónico</b>\n\nApunta los prismas para rayo de iones seleccionados hacia la ubicación deseada o los vincula para que el disparo salga por otro prisma de rayo de iones.\n\nTecla de acceso rápido: <btn id='PartTargeters.prism_aim'/>"
 	TractorBeam = "<b>Apuntar el rayo tractor</b>\n\nMantén <btn id='Game.SelectParts'/> para apuntar a partes específicas.\n\nTecla de acceso rápido: <btn id='PartTargeters.tractor_beam'/>"
 	TractorBeamCancel = "<b>Cancelar rayo tractor</b>\n\n Tecla de acceso rápido: <btn id='PartTargetCancelers.tractor_beam'/>"
@@ -2373,6 +2405,7 @@ PartToggles
 	FirePref_Defend = "<b>Defender</b>\nSolamente disparar contra proyectiles entrantes. Esto también hará que el arma ignore cualquier comando de ataque general a la nave.\n\nTecla de acceso rápido: <btn id='PartToggles.fire_pref_defend'/>"
 	Fire_Alternating = "<b>Fuego: Alternado</b>\n\nTecla de acceso rápido: <btn id='PartToggles.fire_alternating_on'/>"
 	Fire_Synchronized = "<b>Fuego: Sincronizado</b>\n\nTecla de acceso rápido: <btn id='PartToggles.fire_alternating_off'/>"
+	ForceStartChaingun = "Forzar disparo del cañón de cadena\n\nTecla de acceso rápido: <btn id='PartToggles.force_fire_chaingun_on'/>"
 	LaunchMines = "Lanzamiento de minas\n\nTecla de acceso rápido: <btn id='PartToggles.launch_mines_on'/>"
 	Lights_High = "<b>Luminosidad: Alta</b>\n\nCombinación de teclas: <btn id='PartToggles.lights_high'/>"
 	Lights_Low = "<b>Luminosidad: Baja</b>\n\nCombinación de teclas: <btn id='PartToggles.lights_low'/>"
@@ -2397,103 +2430,109 @@ PartTriggers
 Parts
 {
 	
-	Airlock = "Trampilla de aire de esclusa"
+	Airlock = "Trampilla de Aire de Esclusa"
 	AirlockDesc = "Permite a la tripulación entrar y salir de la nave, por ejemplo, para recoger recursos o trasladarse entre naves."
-	AirlockIcon = "Trampilla de aire de esclusa"
+	AirlockIcon = "Trampilla de Aire de Esclusa"
 	Armor = Blindaje
-	Armor1x2Wedge = "Cuña de blindaje 1x2"
+	Armor1x2Wedge = "Cuña de Blindaje 1x2"
 	Armor1x2WedgeDesc = "Absorbe una gran cantidad del fuego de las armas enemigas, protegiendo el centro líquido de la nave. También actúa como \"pararrayos\" para el efecto de los EMP."
-	Armor1x2WedgeIcon = "Cuña de blindaje 1x2"
-	Armor1x3Wedge = "Cuña de blindaje 1x3"
+	Armor1x2WedgeIcon = "Cuña de Blindaje 1x2"
+	Armor1x3Wedge = "Cuña de Blindaje 1x3"
 	Armor1x3WedgeDesc = "Absorbe una gran cantidad del fuego de las armas enemigas, protegiendo el centro líquido de la nave. También actúa como \"pararrayos\" para el efecto de los EMP."
-	Armor1x3WedgeIcon = "Cuña de blindaje 1x3"
+	Armor1x3WedgeIcon = "Cuña de Blindaje 1x3"
 	Armor2x1 = "Blindaje 2x1"
 	Armor2x1Desc = "Absorbe una gran cantidad del fuego de las armas enemigas, protegiendo el centro líquido de la nave. También actúa como \"pararrayos\" para el efecto de los EMP."
 	Armor2x1Icon = "Blindaje 2x1"
 	ArmorDesc = "Absorbe una gran cantidad del fuego de las armas enemigas, protegiendo el centro líquido de la nave. También actúa como \"pararrayos\" para el efecto de los EMP."
 	ArmorIcon = Blindaje
-	ArmorStructureHybrid1x1 = "Armadura + Cuña de la estructura"
+	ArmorStructureHybrid1x1 = "Blindaje + Cuña de la Estructura"
 	ArmorStructureHybrid1x1Desc = "Absorbe una gran cantidad del fuego de las armas enemigas, protegiendo el centro líquido de la nave. También actúa como \"pararrayos\" para el efecto de los EMP."
-	ArmorStructureHybrid1x1Icon = "Arm. + Cuña\nde la estructura"
-	ArmorStructureHybrid1x2 = "Armadura + Cuña de la estructura 1x2"
+	ArmorStructureHybrid1x1Icon = "Arm. + Cuña\nde la Estructura"
+	ArmorStructureHybrid1x2 = "Blindaje + Cuña de la Estructura 1x2"
 	ArmorStructureHybrid1x2Desc = "Absorbe una gran cantidad del fuego de las armas enemigas, protegiendo el centro líquido de la nave. También actúa como \"pararrayos\" para el efecto de los EMP."
-	ArmorStructureHybrid1x2Icon = "Arm. + Cuña\nde la estr. 1x2"
-	ArmorStructureHybrid1x3 = "Armadura + Cuña de la estructura 1x3"
+	ArmorStructureHybrid1x2Icon = "Arm. + Cuña\nde la Estr. 1x2"
+	ArmorStructureHybrid1x3 = "Blindaje + Cuña de la Estructura 1x3"
 	ArmorStructureHybrid1x3Desc = "Absorbe una gran cantidad del fuego de las armas enemigas, protegiendo el centro líquido de la nave. También actúa como \"pararrayos\" para el efecto de los EMP."
-	ArmorStructureHybrid1x3Icon = "Arm. + Cuña\nde la estr. 1x3"
-	ArmorStructureHybridTri = "Armadura + Triángulo de la estructura"
+	ArmorStructureHybrid1x3Icon = "Arm. + Cuña\nde la Estr. 1x3"
+	ArmorStructureHybridTri = "Blindaje + Triángulo de la Estructura"
 	ArmorStructureHybridTriDesc = "Absorbe una gran cantidad del fuego de las armas enemigas, protegiendo el centro líquido de la nave. También actúa como \"pararrayos\" para el efecto de los EMP."
-	ArmorStructureHybridTriIcon = "Arm. + Triáng.\nde la estructura"
-	ArmorTri = "Triángulo de blindaje"
+	ArmorStructureHybridTriIcon = "Arm. + Triáng.\nde la Estructura"
+	ArmorTri = "Triángulo de Blindaje"
 	ArmorTriDesc = "Absorbe una gran cantidad del fuego de las armas enemigas, protegiendo el centro líquido de la nave. También actúa como \"pararrayos\" para el efecto de los EMP."
-	ArmorTriIcon = "Triángulo de blindaje"
-	ArmorWedge = "Cuña de blindaje"
+	ArmorTriIcon = "Triángulo de Blindaje"
+	ArmorWedge = "Cuña de Blindaje"
 	ArmorWedgeDesc = "Absorbe una gran cantidad del fuego de las armas enemigas, protegiendo el centro líquido de la nave. También actúa como \"pararrayos\" para el efecto de los EMP."
-	ArmorWedgeIcon = "Cuña de blindaje"
-	CannonDeck = "Cañón de cubierta"
+	ArmorWedgeIcon = "Cuña de Blindaje"
+	CannonDeck = "Cañón de Cubierta"
 	CannonDeckDesc = "Un enorme cañón doble que se monta en la parte superior de la nave en lugar de en el lateral para lograr una mayor estabilidad. Cada cañón fusiona diez rondas de municiones de proyectil y es tan estruendoso que aturde brevemente a los tripulantes cercanos.\n\nEl frente y los lados no pueden estar dentro de un radio de 2 tejas alrededor de otras torretas de techo o partes “altas”."
-	CannonDeckIcon = "Cañón de cubierta"
-	CannonLarge = "Cañón grande"
+	CannonDeckIcon = "Cañón de Cubierta"
+	CannonLarge = "Cañón Grande"
 	CannonLargeDesc = "Fusiona cuatro rondas de municiones de proyectil para mejorar considerablemente la profundidad de los daños y la penetración en comparación con el cañón estándar."
-	CannonLargeIcon = "Cañón grande"
-	CannonMed = "Cañón estándar"
+	CannonLargeIcon = "Cañón Grande"
+	CannonMed = "Cañón Estándar"
 	CannonMedDesc = "Dispara rondas individuales de municiones de proyectil que pueden perforar las naves enemigas, a veces iniciando incendios."
 	CannonMedIcon = Cañón
+	ChainGun = "Cañón de cadena"
+	ChainGunDesc = "Un poderoso cañón giratorio que aumenta su cadencia de tiro mientras más tiempo dispare y se esconde detrás de una carcasa protectora cuando no está disparando. Se pueden adjuntar cargadores de munición adicionales para aumentar la duración y la cadencia de tiro."
+	ChainGunIcon = "Cañón de cadena"
+	ChaingunMagazine = "Cargador de cañón de cadena"
+	ChaingunMagazineDesc = "Un almacenamiento adicional de munición para el cañón de cadena que aumenta su duración y cadencia de tiro. Se debe adjuntar a la parte lateral inferior izquierda o derecha del cañón de cadena."
+	ChaingunMagazineIcon = "Cargador de cañón de cadena"
 	ControlRoomLarge = Puente
 	ControlRoomLargeDesc = "Permite a la nave volar y coordinar sus armas proporcionando <good>+1000<image name='command_points' colored='true'/></good> puntos de comando. Una nave no puede ser controlada si sus armas, propulsores y otros sistemas utilizan más puntos de comando de los que tiene disponibles."
 	ControlRoomLargeIcon = Puente
-	ControlRoomMed = "Sala de control"
+	ControlRoomMed = "Sala de Control"
 	ControlRoomMedDesc = "Permite a la nave volar y coordinar sus armas proporcionando <good>+250<image name='command_points' colored='true'/></good> puntos de comando. Una nave no puede ser controlada si sus armas, propulsores y otros sistemas utilizan más puntos de comando de los que tiene disponibles."
-	ControlRoomMedIcon = "Sala de control"
+	ControlRoomMedIcon = "Sala de Control"
 	ControlRoomSmall = Cabina
 	ControlRoomSmallDesc = "Permite a la nave volar y coordinar sus armas proporcionando <good>+50<image name='command_points' colored='true'/></good> puntos de comando. Una nave no puede ser controlada si sus armas, propulsores y otros sistemas utilizan más puntos de comando de los que tiene disponibles."
 	ControlRoomSmallIcon = Cabina
-	Conveyor = "Pasarela móvil"
+	Conveyor = "Pasarela Móvil"
 	ConveyorDesc = "Permite que la tripulación se traslade más rápido, pero solo en una dirección."
-	ConveyorIcon = "Pasarela móvil"
+	ConveyorIcon = "Pasarela Móvil"
 	Corridor = Pasillo
 	CorridorDesc = "Un pasillo a través del cual la tripulación se traslada rápidamente."
 	CorridorIcon = Corr.
-	CrewQuartersMed = "Alojamientos de la tripulación"
+	CrewQuartersMed = "Alojamientos de la Tripulación"
 	CrewQuartersMedDesc = "Proporcionan camas para 6 personas."
 	CrewQuartersMedIcon = Alojamientos
-	CrewQuartersSmall = "Literas para la tripulación"
+	CrewQuartersSmall = "Literas para la Tripulación"
 	CrewQuartersSmallDesc = "Proporcionan camas para 2 personas."
 	CrewQuartersSmallIcon = Literas
-	DepositCarbon1x = "Depósito de carbono (1x, blando)"
-	DepositCarbon1xHard = "Depósito de carbono (1x, duro)"
+	DepositCarbon1x = "Depósito de Carbono (1x, blando)"
+	DepositCarbon1xHard = "Depósito de Carbono (1x, duro)"
 	DepositCarbon1xHardIcon = "Carbono (1x, duro)"
 	DepositCarbon1xIcon = "Carbono (1x, blando)"
-	DepositCarbon2x = "Depósito de carbono (2x, blando)"
-	DepositCarbon2xHard = "Depósito de carbono (2x, duro)"
+	DepositCarbon2x = "Depósito de Carbono (2x, blando)"
+	DepositCarbon2xHard = "Depósito de Carbono (2x, duro)"
 	DepositCarbon2xHardIcon = "Carbono (2x, duro)"
 	DepositCarbon2xIcon = "Carbono (2x, blando)"
-	DepositCarbon3x = "Depósito de carbono (3x, blando)"
-	DepositCarbon3xHard = "Depósito de carbono (3x, duro)"
+	DepositCarbon3x = "Depósito de Carbono (3x, blando)"
+	DepositCarbon3xHard = "Depósito de Carbono (3x, duro)"
 	DepositCarbon3xHardIcon = "Carbono (3x, duro)"
 	DepositCarbon3xIcon = "Carbono (3x, blando)"
-	DepositCopper1x = "Depósito de cobre (1x, blando)"
-	DepositCopper1xHard = "Depósito de cobre (1x, duro)"
+	DepositCopper1x = "Depósito de Cobre (1x, blando)"
+	DepositCopper1xHard = "Depósito de Cobre (1x, duro)"
 	DepositCopper1xHardIcon = "Cobre (1x, duro)"
 	DepositCopper1xIcon = "Cobre (1x, blando)"
-	DepositCopper2x = "Depósito de cobre (2x, blando)"
-	DepositCopper2xHard = "Depósito de cobre (2x, duro)"
+	DepositCopper2x = "Depósito de Cobre (2x, blando)"
+	DepositCopper2xHard = "Depósito de Cobre (2x, duro)"
 	DepositCopper2xHardIcon = "Cobre (2x, duro)"
 	DepositCopper2xIcon = "Cobre (2x, blando)"
-	DepositCopper3x = "Depósito de cobre (3x, blando)"
-	DepositCopper3xHard = "Depósito de cobre (3x, duro)"
+	DepositCopper3x = "Depósito de Cobre (3x, blando)"
+	DepositCopper3xHard = "Depósito de Cobre (3x, duro)"
 	DepositCopper3xHardIcon = "Cobre (3x, duro)"
 	DepositCopper3xIcon = "Cobre (3x, blando)"
-	DepositGold1x = "Depósito de oro (1x, blando)"
-	DepositGold1xHard = "Depósito de oro (1x, duro)"
+	DepositGold1x = "Depósito de Oro (1x, blando)"
+	DepositGold1xHard = "Depósito de Oro (1x, duro)"
 	DepositGold1xHardIcon = "Oro (1x, duro)"
 	DepositGold1xIcon = "Oro (1x, blando)"
-	DepositGold2x = "Depósito de oro (2x, blando)"
-	DepositGold2xHard = "Depósito de oro (2x, duro)"
+	DepositGold2x = "Depósito de Oro (2x, blando)"
+	DepositGold2xHard = "Depósito de Oro (2x, duro)"
 	DepositGold2xHardIcon = "Oro (2x, duro)"
 	DepositGold2xIcon = "Oro (2x, blando)"
-	DepositGold3x = "Depósito de oro (3x, blando)"
-	DepositGold3xHard = "Depósito de oro (3x, duro)"
+	DepositGold3x = "Depósito de Oro (3x, blando)"
+	DepositGold3xHard = "Depósito de Oro (3x, duro)"
 	DepositGold3xHardIcon = "Oro (3x, duro)"
 	DepositGold3xIcon = "Oro (3x, blando)"
 	DepositHyperium1x = "Depósito de Hiperio (1x, blando)"
@@ -2508,28 +2547,28 @@ Parts
 	DepositHyperium3xHard = "Depósito de Hiperio (3x, duro)"
 	DepositHyperium3xHardIcon = "Hiperio (3x, duro)"
 	DepositHyperium3xIcon = "Hiperio (3x, blando)"
-	DepositIron1x = "Depósito de hierro (1x, blando)"
-	DepositIron1xHard = "Depósito de hierro (1x, duro)"
+	DepositIron1x = "Depósito de Hierro (1x, blando)"
+	DepositIron1xHard = "Depósito de Hierro (1x, duro)"
 	DepositIron1xHardIcon = "Hierro (1x, duro)"
 	DepositIron1xIcon = "Hierro (1x, blando)"
-	DepositIron2x = "Depósito de hierro (2x, blando)"
-	DepositIron2xHard = "Depósito de hierro (2x, duro)"
+	DepositIron2x = "Depósito de Hierro (2x, blando)"
+	DepositIron2xHard = "Depósito de Hierro (2x, duro)"
 	DepositIron2xHardIcon = "Hierro (2x, duro)"
 	DepositIron2xIcon = "Hierro (2x, blando)"
-	DepositIron3x = "Depósito de hierro (3x, blando)"
-	DepositIron3xHard = "Depósito de hierro (3x, duro)"
+	DepositIron3x = "Depósito de Hierro (3x, blando)"
+	DepositIron3xHard = "Depósito de Hierro (3x, duro)"
 	DepositIron3xHardIcon = "Hierro (3x, duro)"
 	DepositIron3xIcon = "Hierro (3x, blando)"
-	DepositSulfur1x = "Depósito de azufre (1x, blando)"
-	DepositSulfur1xHard = "Depósito de azufre (1x, duro)"
+	DepositSulfur1x = "Depósito de Azufre (1x, blando)"
+	DepositSulfur1xHard = "Depósito de Azufre (1x, duro)"
 	DepositSulfur1xHardIcon = "Azufre (1x, duro)"
 	DepositSulfur1xIcon = "Azufre (1x, blando)"
-	DepositSulfur2x = "Depósito de azufre (2x, blando)"
-	DepositSulfur2xHard = "Depósito de azufre (2x, duro)"
+	DepositSulfur2x = "Depósito de Azufre (2x, blando)"
+	DepositSulfur2xHard = "Depósito de Azufre (2x, duro)"
 	DepositSulfur2xHardIcon = "Azufre (2x, duro)"
 	DepositSulfur2xIcon = "Azufre (2x, blando)"
-	DepositSulfur3x = "Depósito de azufre (3x, blando)"
-	DepositSulfur3xHard = "Depósito de azufre (3x, duro)"
+	DepositSulfur3x = "Depósito de Azufre (3x, blando)"
+	DepositSulfur3xHard = "Depósito de Azufre (3x, duro)"
 	DepositSulfur3xHardIcon = "Azufre (3x, duro)"
 	DepositSulfur3xIcon = "Azufre (3x, blando)"
 	DepositTritanium1x = "Depósito de Tritanio (1x, blando)"
@@ -2544,16 +2583,16 @@ Parts
 	DepositTritanium3xHard = "Depósito de Tritanio (3x, duro)"
 	DepositTritanium3xHardIcon = "Tritanio (3x, duro)"
 	DepositTritanium3xIcon = "Tritanio (3x, blando)"
-	DepositUranium1x = "Depósito de uranio (1x, blando)"
-	DepositUranium1xHard = "Depósito de uranio (1x, duro)"
+	DepositUranium1x = "Depósito de Uranio (1x, blando)"
+	DepositUranium1xHard = "Depósito de Uranio (1x, duro)"
 	DepositUranium1xHardIcon = "Uranio (1x, duro)"
 	DepositUranium1xIcon = "Uranio (1x, blando)"
-	DepositUranium2x = "Depósito de uranio (2x, blando)"
-	DepositUranium2xHard = "Depósito de uranio (2x, duro)"
+	DepositUranium2x = "Depósito de Uranio (2x, blando)"
+	DepositUranium2xHard = "Depósito de Uranio (2x, duro)"
 	DepositUranium2xHardIcon = "Uranio (2x, duro)"
 	DepositUranium2xIcon = "Uranio (2x, blando)"
-	DepositUranium3x = "Depósito de uranio (3x, blando)"
-	DepositUranium3xHard = "Depósito de uranio (3x, duro)"
+	DepositUranium3x = "Depósito de Uranio (3x, blando)"
+	DepositUranium3xHard = "Depósito de Uranio (3x, duro)"
 	DepositUranium3xHardIcon = "Uranio (3x, duro)"
 	DepositUranium3xIcon = "Uranio (3x, blando)"
 	Disruptor = ""
@@ -2562,113 +2601,113 @@ Parts
 	Door = Puerta
 	DoorDesc = "Permite a la tripulación (¡y al fuego!) trasladarse entre habitaciones."
 	DoorIcon = Puerta
-	EngineRoom = "Sala de máquinas"
+	EngineRoom = "Sala de Máquinas"
 	EngineRoomDesc = "Aumenta la potencia de los propulsores adyacentes en un 50 %. También actúa como punto de entrega central para los propulsores adyacentes a los que la tripulación puede entregar baterías sin tener que ir a cada uno de ellos individualmente."
-	EngineRoomIcon = "Sala de máquinas"
-	ExplosiveCharge = "Carga explosiva"
+	EngineRoomIcon = "Sala de Máquinas"
+	ExplosiveCharge = "Carga Explosiva"
 	ExplosiveChargeDesc = "Dispositivo explosivo pequeño que se puede detonar manualmente. Se utiliza principalmente para dividir naves en varias partes deliberadamente."
-	ExplosiveChargeIcon = "Carga explosiva"
-	FactoryAmmo = "Fábrica de municiones de cañón"
+	ExplosiveChargeIcon = "Carga Explosiva"
+	FactoryAmmo = "Fábrica de Municiones de Cañón"
 	FactoryAmmoDesc = "Fabrica municiones de proyectil utilizadas por cañones convencionales y de riel. Consume azufre. Gana +25 % en velocidad de producción por cada fábrica adyacente de cualquier tipo."
 	FactoryAmmoIcon = Municiones
-	FactoryCoil = "Fábrica de bobinas"
+	FactoryCoil = "Fábrica de Bobinas"
 	FactoryCoil2 = "Fábrica de Hiperbobinas"
 	FactoryCoil2Desc = "Fabrica Hiperbobinas, que se utilizan para construir muchas partes avanzadas de las naves. Consume cobre y bobinas. Gana +25 % en velocidad de producción por cada fábrica adyacente de cualquier tipo."
 	FactoryCoil2Icon = Hiperbobinas
 	FactoryCoilDesc = "Fabrica bobinas, que se utilizan para construir muchas partes de las naves. Consume cobre. Gana +25 % en velocidad de producción por cada fábrica adyacente de cualquier tipo."
 	FactoryCoilIcon = Bobinas
-	FactoryDiamond = "Fundición de diamantes"
+	FactoryDiamond = "Fundición de Diamantes"
 	FactoryDiamondDesc = "Fabrica diamantes, que se utilizan para construir algunas partes avanzadas de las naves. Consume carbono."
 	FactoryDiamondIcon = Diamantes
-	FactoryEMP = "Fábrica de misiles EMP"
+	FactoryEMP = "Fábrica de Misiles EMP"
 	FactoryEMPDesc = "Fabrica misiles guiados de pulso electromagnético que agotan la energía de los sistemas enemigos en un área muy grande. Consume hierro y cobre. Gana +25 % en velocidad de producción por cada fábrica adyacente de cualquier tipo."
 	FactoryEMPIcon = "Misiles EMP"
-	FactoryHE = "Fábrica de misiles altamente explosivos"
+	FactoryHE = "Fábrica de Misiles Altamente Explosivos"
 	FactoryHEDesc = "Fabrica misiles guiados altamente explosivos que causan daños significativos en una zona pequeña. Consume hierro y azufre. Gana +25 % en velocidad de producción por cada fábrica adyacente de cualquier tipo."
-	FactoryHEIcon = "HE Misiles"
-	FactoryMine = "Fábrica de minas"
+	FactoryHEIcon = "Misiles HE"
+	FactoryMine = "Fábrica de Minas"
 	FactoryMineDesc = "Fabrica minas que explotan cuando están cerca de naves enemigas, lanzando metralla que provoca daños. Consume hierro y municiones. Gana +25 % en velocidad de producción por cada fábrica adyacente de cualquier tipo."
 	FactoryMineIcon = Minas
-	FactoryNuke = "Fábrica de misiles nucleares"
+	FactoryNuke = "Fábrica de Misiles Nucleares"
 	FactoryNukeDesc = "Fabrica misiles nucleares tácticos que causan daños masivos en una zona muy amplia. Consume hierro y uranio. Gana +25 % en velocidad de producción por cada fábrica adyacente de cualquier tipo."
-	FactoryNukeIcon = "Armas nucleares"
-	FactoryProcessor = "Fabricante de procesadores"
+	FactoryNukeIcon = "Armas Nucleares"
+	FactoryProcessor = "Fabricante de Procesadores"
 	FactoryProcessorDesc = "Fabrica procesadores, que se utilizan para construir algunas partes avanzadas de las naves. Consume oro y bobinas. Gana +25 % en velocidad de producción por cada fábrica adyacente de cualquier tipo."
 	FactoryProcessorIcon = Procesadores
-	FactorySteel = "Fundición de acero"
+	FactorySteel = "Fundición de Acero"
 	FactorySteelDesc = "Fabrica placas de acero que se utilizan para construir casi todas las partes de las naves. Consume hierro. Gana +25 % en velocidad de producción por cada fábrica adyacente de cualquier tipo."
 	FactorySteelIcon = Acero
 	FactoryTristeel = "Fundición de Triacero"
 	FactoryTristeelDesc = "Fabrica placas de Triacero, que se utilizan para construir algunas partes avanzadas de las naves. Consume Tritanio. Gana +25 % en velocidad de producción por cada fábrica adyacente de cualquier tipo."
 	FactoryTristeelIcon = Triacero
-	FactoryUranium = "Enriquecedor de uranio"
+	FactoryUranium = "Enriquecedor de Uranio"
 	FactoryUraniumDesc = "Enriquece el uranio que se necesita para construir reactores y otras partes avanzadas de las naves. Consume uranio no enriquecido. Gana +25 % en velocidad de producción por cada fábrica adyacente de cualquier tipo."
-	FactoryUraniumIcon = "Uranio enr."
-	FireExtinguisher = "Extintor de incendios"
+	FactoryUraniumIcon = "Uranio Enr."
+	FireExtinguisher = "Extintor de Incendios"
 	FireExtinguisherDesc = "Almacena un extintor de incendios que la tripulación puede usar para apagar incendios."
-	FireExtinguisherIcon = "Extintor de incendios"
+	FireExtinguisherIcon = "Extintor de Incendios"
 	FlakCannonLarge = "Batería FLAK"
 	FlakCannonLargeDesc = "Un poderoso sistema defensivo que puede destruir misiles, láseres y proyectiles enemigos. También puede causar daños moderados a las naves enemigas."
 	FlakCannonLargeIcon = "Batería FLAK"
-	HyperdriveBeacon = ""
-	HyperdriveBeaconDesc = ""
-	HyperdriveBeaconIcon = ""
-	HyperdriveSmall = "Hiperimpulsor pequeño"
-	HyperdriveSmallDesc = "Permite a la nave viajar instantáneamente a otros destinos dentro del sistema solar o, cuando se cuenta con la ayuda de un retransmisor de Hipersalto, a otros sistemas solares."
-	HyperdriveSmallIcon = "Hiperimpulsor pequeño"
-	IonBeamEmitter = "Emisor de rayo de iones"
+	HyperdriveBeacon = "Baliza de Hiperimpulsores"
+	HyperdriveBeaconDesc = "Las naves que tienen Hiperimpulsores pueden saltar hasta las naves con Balizas de Hiperimpulsores."
+	HyperdriveBeaconIcon = "Baliza de Hiperimpulsores"
+	HyperdriveSmall = "Hiperimpulsor Pequeño"
+	HyperdriveSmallDesc = "Permite a la nave viajar instantáneamente a otros destinos dentro del sistema solar o, a naves aliadas que tienen Balizas de Hiperimpulsores o cuando se cuenta con la ayuda de un retransmisor de Hipersalto, a otros sistemas solares."
+	HyperdriveSmallIcon = "Hiperimpulsor Pequeño"
+	IonBeamEmitter = "Emisor de Rayo de Iones"
 	IonBeamEmitterDesc = "Dispara un potente rayo de energía iónica en una dirección fija. El daño es menor a una distancia mayor. Se puede disparar hacia un prisma para rayo de iones para redirigir su ángulo."
-	IonBeamEmitterIcon = "Rayo de iones"
-	IonBeamPrism = "Prisma para rayo de iones"
+	IonBeamEmitterIcon = "Rayo de Iones"
+	IonBeamPrism = "Prisma para Rayo de Iones"
 	IonBeamPrismDesc = "Redirige los ángulos de los rayos de iones entrantes, dirigiéndolos hacia naves enemigas u otros prismas de rayo de iones."
-	IonBeamPrismIcon = "Prisma de iones"
-	LaserBlasterLarge = "Bláster láser pesado"
+	IonBeamPrismIcon = "Prisma de Iones"
+	LaserBlasterLarge = "Bláster Láser Pesado"
 	LaserBlasterLargeDesc = "Combina dos grandes armas láser en una sola torreta. Estas se combinan para producir daños mucho mayores a costa de cierta precisión y versatilidad."
-	LaserBlasterLargeIcon = "Láser pesado"
-	LaserBlasterSmall = "Bláster láser"
+	LaserBlasterLargeIcon = "Láser Pesado"
+	LaserBlasterSmall = "Bláster Láser"
 	LaserBlasterSmallDesc = "Un arma muy precisa y versátil que dispara explosiones de energía que causan daños moderados a las naves enemigas."
 	LaserBlasterSmallIcon = Láser
 	MegaRock1x1 = "Megarroca (1x1)"
 	MegaRock2x2 = "Megarroca (2x2)"
 	MegaRock3x3 = "Megarroca (3x3)"
 	MegaRock4x4 = "Megarroca (4x4)"
-	MegaRockWedge1x1 = "Cuña de megarroca"
-	MegaRockWedge1x2 = "Cuña de megarroca 1x2"
-	MiningLaserSmall = "Láser para extracción"
+	MegaRockWedge1x1 = "Cuña de Megarroca"
+	MegaRockWedge1x2 = "Cuña de Megarroca 1x2"
+	MiningLaserSmall = "Láser para Extracción"
 	MiningLaserSmallDesc = "Dispara un par de rayos láser de precisión que pueden extraer rápidamente recursos incluso de los asteroides más duros. También es eficaz en el rescate de naves y, en un apuro, puede usarse como arma de corto alcance."
-	MiningLaserSmallIcon = "Láser para extracción"
-	MissileLauncher = "Lanzador de misiles y minas"
+	MiningLaserSmallIcon = "Láser para Extracción"
+	MissileLauncher = "Lanzador de Misiles y Minas"
 	MissileLauncherDesc = "Lanza misiles o minas de cualquier tipo.\n\nEl tipo de municiones lanzadas puede cambiarse en cualquier momento durante o después de la construcción, incluso durante la batalla."
 	MissileLauncherIcon = Lanzador
-	PointDefense = "Sistema de defensa puntual"
+	PointDefense = "Sistema de Defensa Puntual"
 	PointDefenseDesc = "Un sistema defensivo automatizado que derriba misiles y proyectiles enemigos mediante rondas de plasma supercalentado. También puede causar daños ligeros a las naves enemigas."
-	PointDefenseIcon = "Defensa puntual"
-	PowerStorage = "Condensador de potencia"
+	PointDefenseIcon = "Defensa Puntual"
+	PowerStorage = "Condensador de Potencia"
 	PowerStorageDesc = "Almacena una cantidad limitada de baterías de plasma que pueden utilizarse en los sistemas de naves cercanas."
 	PowerStorageIcon = Condensador
-	Railgun = "Cañón de riel"
-	RailgunAccelerator = "Módulo acelerador de cañón de riel"
+	Railgun = "Cañón de Riel"
+	RailgunAccelerator = "Módulo Acelerador de Cañón de Riel"
 	RailgunAcceleratorDesc = "Componente opcional situado entre el lanzador y el cargador de un cañón de riel. Cada uno de los aceleradores aumenta la velocidad, el daño y la profundidad de penetración del proyectil.\n\nLos cañones de riel disparan proyectiles acelerados magnéticamente que pueden penetrar profundamente en las naves enemigas, y provocar daños importantes. Cada cañón de riel requiere un cargador y un lanzador, además de cualquier cantidad de aceleradores opcionales.\n\nLa tripulación no puede caminar de un lado del acelerador o del lanzador de cañón de riel al otro."
-	RailgunAcceleratorIcon = "Acelerador de cañón de riel"
+	RailgunAcceleratorIcon = "Acelerador de Cañón de Riel"
 	RailgunDesc = "Arma modular que dispara proyectiles acelerados magnéticamente que pueden penetrar profundamente en las naves enemigas, y provocar daños importantes."
-	RailgunLauncher = "Módulo lanzador de cañón de riel"
+	RailgunLauncher = "Módulo Lanzador de Cañón de Riel"
 	RailgunLauncherDesc = "Un componente necesario de todos los cañones de riel. Debe estar complementarse con un cargador y cero o más aceleradores.\n\nEstos cañones disparan proyectiles acelerados magnéticamente que pueden penetrar profundamente en las naves enemigas, y provocar daños importantes. Cada cañón de riel requiere un cargador y un lanzador, además de cualquier cantidad de aceleradores opcionales.\n\nLa tripulación no puede caminar de un lado del acelerador o del lanzador de cañón de riel al otro."
-	RailgunLauncherIcon = "Lanzador de cañón de riel"
-	RailgunLoader = "Módulo cargador de cañón de riel"
+	RailgunLauncherIcon = "Lanzador de Cañón de Riel"
+	RailgunLoader = "Módulo Cargador de Cañón de Riel"
 	RailgunLoaderDesc = "Un componente necesario de todos los cañones de riel. Debe estar complementarse con un lanzador y cero o más aceleradores.\n\nLos cañones de riel disparan proyectiles acelerados magnéticamente que pueden penetrar profundamente en las naves enemigas, y provocar daños importantes. Cada cañón de riel requiere un cargador y un lanzador, además de cualquier número de aceleradores opcionales."
-	RailgunLoaderIcon = "Cargador de cañón de riel"
-	ReactorLarge = "Núcleo de reactor grande"
+	RailgunLoaderIcon = "Cargador de Cañón de Riel"
+	ReactorLarge = "Núcleo de Reactor Grande"
 	ReactorLargeDesc = "Un generador de energía que produce baterías de plasma de triple capacidad necesarias para alimentar muchos de los sistemas de la nave."
-	ReactorLargeIcon = "Reactor grande"
-	ReactorMed = "Núcleo de reactor mediano"
+	ReactorLargeIcon = "Reactor Grande"
+	ReactorMed = "Núcleo de Reactor Mediano"
 	ReactorMedDesc = "Un generador de energía que produce baterías de plasma de doble capacidad necesarias para alimentar muchos de los sistemas de la nave."
-	ReactorMedIcon = "Reactor med."
-	ReactorSmall = "Núcleo de reactor pequeño"
+	ReactorMedIcon = "Reactor Med."
+	ReactorSmall = "Núcleo de Reactor Pequeño"
 	ReactorSmallDesc = "Un generador de energía que produce baterías de plasma necesarias para alimentar muchos de los sistemas de la nave."
-	ReactorSmallIcon = "Reactor pequeño"
-	ResourceCollector = "Recolector de recursos"
+	ReactorSmallIcon = "Reactor Pequeño"
+	ResourceCollector = "Recolector de Recursos"
 	ResourceCollectorDesc = "Proporciona cuatro rayos tractores pequeños montados en la cubierta que pueden recolectar recursos y entregarlos a cualquier centro de almacenamiento en la nave que tenga una trampilla exterior.\n\nLa tripulación solo operará el recolector de recursos cuando haya recursos marcados para ser recuperados."
-	ResourceCollectorIcon = "Recolector de recursos"
+	ResourceCollectorIcon = "Recolector de Recursos"
 	Rock1x1 = "Roca (1x1, blanda)"
 	Rock1x1Hard = "Roca (1x1, dura)"
 	Rock2x2 = "Roca (2x2, blanda)"
@@ -2679,77 +2718,77 @@ Parts
 	Rock4x4Hard = "Roca (4x4, dura)"
 	RockDesc = "Roca simple de asteroide que no contiene recursos útiles. La tripulación puede extraerla con facilidad."
 	RockHardDesc = "Roca simple de asteroide que no contiene recursos útiles. Requiere láser para minería."
-	RockWedge1x1 = "Cuña de roca"
-	RockWedge1x2 = "Cuña de roca 1x2"
+	RockWedge1x1 = "Cuña de Roca"
+	RockWedge1x2 = "Cuña de Roca 1x2"
 	RoofHeadlight = "Foco Exterior"
 	RoofHeadlightDesc = "Un foco exterior que se puede apuntar. No provee ningún beneficio práctico."
 	RoofHeadlightIcon = "Foco Exterior"
 	RoofLight = "Luz Exterior"
 	RoofLightDesc = "Una pequeña luz exterior. No provee ningún beneficio práctico."
 	RoofLightIcon = "Luz Exterior"
-	SensorArray = "Matriz de sensores"
+	SensorArray = "Matriz de Sensores"
 	SensorArrayDesc = "Amplía el alcance de los sensores de tu nave."
 	SensorArrayIcon = Sensores
-	ShieldGenLarge = "Generador de escudo grande"
+	ShieldGenLarge = "Generador de Escudo Grande"
 	ShieldGenLargeDesc = "Proyecta un gran escudo de energía defensivo con forma de arco por fuera de la nave que bloquea la mayoría del fuego entrante. Vulnerable a disruptores y EMP.\n\nDebido a su gran tamaño, el escudo de energía no puede proyectarse a través de elementos de la nave que no sean estructurales, lo que hace necesario que el generador de escudo grande se incorpore al exterior de la nave y sea vulnerable a ataques."
-	ShieldGenLargeIcon = "Escudo grande"
-	ShieldGenSmall = "Generador de escudo pequeño"
+	ShieldGenLargeIcon = "Escudo Grande"
+	ShieldGenSmall = "Generador de Escudo Pequeño"
 	ShieldGenSmallDesc = "Proyecta un pequeño escudo de energía defensivo con forma de arco por fuera de la nave que bloquea la mayoría del fuego entrante. Vulnerable a disruptores y EMP.\n\nDebido a su pequeño tamaño, el escudo de energía se puede proyectar a través de la propia nave, permitiendo que el generador de escudo pequeño se incorpore al interior protegido de la nave."
-	ShieldGenSmallIcon = "Escudo pequeño"
-	Storage2x2 = "Compartimento de almacenamiento (4)"
+	ShieldGenSmallIcon = "Escudo Pequeño"
+	Storage2x2 = "Compartimento de Almacenamiento (4)"
 	Storage2x2Desc = "Almacena 4 pilas de recursos de cualquier tipo."
 	Storage2x2Icon = "Almacenamiento (4)"
-	Storage3x2 = "Compartimento de almacenamiento(6)"
+	Storage3x2 = "Compartimento de Almacenamiento (6)"
 	Storage3x2Desc = "Almacena 6 pilas de recursos de cualquier tipo."
 	Storage3x2Icon = "Almacenamiento (6)"
-	Storage3x3 = "Compartimento de almacenamiento (9)"
+	Storage3x3 = "Compartimento de Almacenamiento (9)"
 	Storage3x3Desc = "Almacena 9 pilas de recursos de cualquier tipo."
 	Storage3x3Icon = "Almacenamiento (9)"
-	Storage4x3 = "Compartimento de almacenamiento (12)"
+	Storage4x3 = "Compartimento de Almacenamiento (12)"
 	Storage4x3Desc = "Almacena 12 pilas de recursos de cualquier tipo."
 	Storage4x3Icon = "Almacenamiento (12)"
-	Storage4x4 = "Compartimento de almacenamiento (16)"
+	Storage4x4 = "Compartimento de Almacenamiento (16)"
 	Storage4x4Desc = "Almacena 16 pilas de recursos de cualquier tipo."
 	Storage4x4Icon = "Almacenamiento (16)"
 	Structure = Estructura
-	Structure1x2Wedge = "Cuña de estructura 1x2"
+	Structure1x2Wedge = "Cuña de Estructura 1x2"
 	Structure1x2WedgeDesc = "Construcción estructural subyacente que mantiene unida una nave. La estructura se incluye automáticamente en todas las habitaciones y pasillos."
-	Structure1x2WedgeIcon = "Cuña de estructura 1x2"
-	Structure1x3Wedge = "Cuña de estructura 1x3"
+	Structure1x2WedgeIcon = "Cuña de Estructura 1x2"
+	Structure1x3Wedge = "Cuña de Estructura 1x3"
 	Structure1x3WedgeDesc = "Construcción estructural subyacente que mantiene unida una nave. La estructura se incluye automáticamente en todas las habitaciones y pasillos."
-	Structure1x3WedgeIcon = "Cuña de estructura 1x3"
+	Structure1x3WedgeIcon = "Cuña de Estructura 1x3"
 	StructureDesc = "Construcción estructural subyacente que mantiene unida una nave. La estructura se incluye automáticamente en todas las habitaciones y pasillos."
 	StructureIcon = Estructura
-	StructureTri = "Triángulo de la estructura"
+	StructureTri = "Triángulo de la Estructura"
 	StructureTriDesc = "Construcción estructural subyacente que mantiene unida una nave. La estructura se incluye automáticamente en todas las habitaciones y pasillos."
-	StructureTriIcon = "Triángulo de la estructura"
-	StructureWedge = "Cuña de estructura"
+	StructureTriIcon = "Triángulo de la Estructura"
+	StructureWedge = "Cuña de Estructura"
 	StructureWedgeDesc = "Construcción estructural subyacente que mantiene unida una nave. La estructura se incluye automáticamente en todas las habitaciones y pasillos."
-	StructureWedgeIcon = "Cuña de estructura"
-	ThrusterBoost = "Propulsor de refuerzo"
+	StructureWedgeIcon = "Cuña de Estructura"
+	ThrusterBoost = "Propulsor de Refuerzo"
 	ThrusterBoostDesc = "Una variante del propulsor grande que puede inyectar plasma crudo directamente en sus combustores para ejercer un impulso poderoso, pero de corta duración."
-	ThrusterBoostIcon = "Propulsor de refuerzo"
-	ThrusterHuge = "Propulsor enorme"
+	ThrusterBoostIcon = "Propulsor de Refuerzo"
+	ThrusterHuge = "Propulsor Enorme"
 	ThrusterHugeDesc = "Un motor de propulsión enorme, capaz de impulsar la nave con más del doble de la fuerza del propulsor grande. Requiere mucho tiempo para alcanzar el empuje completo."
-	ThrusterHugeIcon = "Propulsor enorme"
-	ThrusterLarge = "Propulsor grande"
+	ThrusterHugeIcon = "Propulsor Enorme"
+	ThrusterLarge = "Propulsor Grande"
 	ThrusterLargeDesc = "Un motor de propulsión de dobles proporciones, capaz de impulsar la nave con más del doble de la fuerza del propulsor grande. Requiere una cantidad de tiempo mediana para alcanzar el empuje completo."
-	ThrusterLargeIcon = "Propulsor grande"
-	ThrusterMed = "Propulsor estándar"
+	ThrusterLargeIcon = "Propulsor Grande"
+	ThrusterMed = "Propulsor Estándar"
 	ThrusterMedDesc = "Un motor de propulsión de tamaño estándar capaz de impulsar la nave con una fuerza modesta. Requiere poco tiempo para alcanzar el empuje completo."
-	ThrusterMedIcon = "Propulsor estándar"
-	ThrusterSmall = "Propulsor pequeño"
-	ThrusterSmall2Way = "Propulsor pequeño de 2 vías"
+	ThrusterMedIcon = "Propulsor Estándar"
+	ThrusterSmall = "Propulsor Pequeño"
+	ThrusterSmall2Way = "Propulsor Pequeño de 2 Vías"
 	ThrusterSmall2WayDesc = "Un motor de propulsión débil bidireccional utilizado principalmente para maniobrar."
-	ThrusterSmall2WayIcon = "Propulsor pequeño de 2 vías"
-	ThrusterSmall3Way = "Propulsor pequeño de 3 vías"
+	ThrusterSmall2WayIcon = "Propulsor Pequeño de 2 Vías"
+	ThrusterSmall3Way = "Propulsor Pequeño de 3 Vías"
 	ThrusterSmall3WayDesc = "Un motor de propulsión débil tridireccional utilizado principalmente para maniobrar."
-	ThrusterSmall3WayIcon = "Propulsor pequeño de 3 vías"
+	ThrusterSmall3WayIcon = "Propulsor Pequeño de 3 Vías"
 	ThrusterSmallDesc = "Un motor de propulsión débil utilizado principalmente para maniobrar."
-	ThrusterSmallIcon = "Propulsor pequeño"
-	TractorBeamEmitter = "Emisor del rayo tractor"
+	ThrusterSmallIcon = "Propulsor Pequeño"
+	TractorBeamEmitter = "Emisor del Rayo Tractor"
 	TractorBeamEmitterDesc = "Emite un rayo de gravitación que jala y empuja otras naves y objetos."
-	TractorBeamEmitterIcon = "Rayo tractor"
+	TractorBeamEmitterIcon = "Rayo Tractor"
 	WallHole = Orificio
 	WallHoleDesc = "Un orificio perforado a través de una pared"
 }
@@ -2888,7 +2927,7 @@ PvpModeConfig
 	ShrinkingPerimeter = "Anillo de muerte decreciente"
 	ShrinkingPerimeterTip = "Si esta casilla está marcada, el tamaño del anillo de muerte se reducirá gradualmente con el tiempo."
 	Teams = Equipos
-	TeamsFfa = "Gratis para todos"
+	TeamsFfa = "Batalla libre"
 	TeamsFmt = "{0} equipos"
 	TeamsTip = "Si participarán equipos en la batalla, y cuántos serán."
 	TimeLimit = "Límite de tiempo"
@@ -3008,6 +3047,16 @@ Resource
 	UraniumHardDesc = ""
 	UraniumPlural = Uranio
 }
+ResourceLimits
+{
+	
+	HeaderCount = Almacenados
+	HeaderLimit = Límite
+	RemoveAll = "Eliminar todos los límites"
+	SetToDesignatedFmt = "Colocar en designados ({0})"
+	SetToStoredFmt = "Colocar en almacenados ({0})"
+	Title = "Límites de almacenamiento de recursos"
+}
 ResourcesBox
 {
 	
@@ -3022,7 +3071,15 @@ ResourcesBox
 	ClearToolTip = "<b>Eliminar recursos designados</b>\n\nSi está seleccionada, hacer clic en un mosaico de almacenamiento eliminará el tipo de recurso designado para esta. (Mantén presionado <btn id='Resources.SetAllToolMode'/> para que la acción tenga efecto en todos los mosaicos de la sala o <btn id='Resources.SetAllSameToolMode'/> para que la acción tenga efecto en todos los mosaicos coincidentes de la sala).\n\nTecla de acceso rápido: <btn id='Resources.ClearTool'/>"
 	ConsumptionOffTipFmt = "Entregar automáticamente\n{0}: <bad>DESACTIVADO</bad>"
 	ConsumptionOnTipFmt = "Entregar automáticamente\n{0}: <good>ACTIVADO</good>"
+	EjectAll = "Expulsar todo"
+	EjectAllTip = "Expulsa todos los recursos de este tipo de la nave."
+	EjectExcess = "Expulsar exceso"
+	EjectExcessTip = "Expulsa todos los recursos de este tipo que excedan el límite de recursos o, si no hay límite establecido, expulsa la cantidad que excede lo que puedes almacenar en las casillas asignadas a este tipo."
+	EjectFailed = "No todos los recursos se pudieron expulsar porque no había una ruta hacia una esclusa."
 	EjectResourcesTip = "Expulsar los recursos seleccionados por la esclusa más cercana.\n\nTecla de acceso rápido: <btn id='Resources.Eject'/>"
+	EjectSome = "Expulsar algunos..."
+	EjectSomeDialogFmt = "¿Qué cantidad de {0}<b>{1}</b> deberíamos expulsar?\nTienes: <b>{2}/{3}</b>"
+	EjectSomeTip = "Escribe la cantidad específica de recursos que quieras expulsar de la nave."
 	GrabToolTip = "<b>Mover recursos</b>\n\nMover recursos de un mosaico de almacenamiento a otro.\n\nMantén presionado <btn id='Resources.Move1'/> para mover 1 recurso a la vez, o <btn id='Resources.Move5'/> para mover 5 a la vez.\n\nTecla de acceso rápido: <btn id='Resources.GrabTool'/>"
 	MirrorToggleTip = "<b>Modo de espejo</b>\n\nSi está activado, los cambios en la organización de recursos de la nave se reflejarán usando como eje la línea central de la nave.\n\nTecla de acceso rápido: <btn id='Design.ToggleMirrorMode'/>\n\n<btn id='General.UIAltClick'/> Para modificar la configuración de reflexión en espejo."
 	NothingToRedo = "No hay nada que rehacer."
@@ -3033,7 +3090,8 @@ ResourcesBox
 	ResetMirrorLines = "Restablecer ejes de reflexión"
 	ResetMirrorLinesTip = "Restablece los ejes de reflexión horizontal y vertical en el centro de la nave."
 	RestockResources = ""
-	RestockResourcesTip = "Rellena todos los recursos, las municiones y las baterías de energía de la nave al máximo.\n\nTecla de acceso rápido: <btn id='CreativeMode.RestockResources'/>"
+	RestockResourcesTip = "Rellena todos los recursos, las municiones y las baterías de energía de la nave al máximo.\n\nTecla de acceso rápido: <btn id='Resources.RestockResources'/>"
+	SetResourceLimits = "Establecer límites de recursos..."
 	SetTypeTipFmt = "<b>{0}</b>\n{3}\n\n{1}\n\nCuando está seleccionado este botón, hacer clic en un mosaico de almacenamiento lo designará para la entrega y el almacenamiento automáticos de {2}. (Mantén presionado <btn id='Resources.SetAllToolMode'/> para que la acción tenga efecto en todos los mosaicos de la sala o <btn id='Resources.SetAllSameToolMode'/> para que la acción tenga efecto en todos los mosaicos coincidentes de la sala)."
 	ShowAllResources = "Mostrar todos los tipos de recursos"
 	ShowAllResourcesTip = "Si esta casilla está marcada, se mostrarán todos los tipos de recursos, incluso si tu nave no tiene recursos de un tipo determinado."
@@ -3060,6 +3118,10 @@ Rewards
 RoleEditor
 {
 	
+	AssignmentPriority = "Prioridad de contratación:"
+	AssignmentPriorityTip = "De forma automática, primero se asignará a la tripulación a los roles de alta prioridad en lugar de a los de baja prioridad."
+	AutoFillFromLower = "Autocompletar desde los roles de menor prioridad"
+	AutoFillFromLowerTip = "Si esta casilla está marcada, entonces cualquier cama para la tripulación que esté vacía para este rol se llenará de forma automática, transfiriendo a tripulantes de otros roles con tareas de menor prioridad."
 	Color = "Color de la camisa:"
 	Info = "Información básica"
 	Name = "Nombre:"
@@ -3248,7 +3310,7 @@ Settings
 		MiniviewNonCombatModeLblTip = "Elige si se mostrará la imagen dentro de la imagen cuando no haya un combate activo."
 		PanLbl = "Rotación y giro"
 		RestoreZoomOnToolboxExit = "Restaurar Enfoque al salir de los Editores"
-		RestoreZoomOnToolboxExitTip = "Si esta casilla está marcada, el nivel de enfoque de la cámara se restaurará al salir del Editor de Naves, el Editor de Pintura, el Gestor de Tripulación, o el Gestor de Recursos."
+		RestoreZoomOnToolboxExitTip = "Si esta casilla está marcada, el nivel de enfoque de la cámara se restaurará al salir de las pantallas de Editor de Naves, Editor de Pintura, de Gestión de Tripulantes, o de Gestión de recursos."
 		RotateMinimap = "Hacer coincidir rotación de cámara"
 		RotateMinimapTip = "Si esta casilla está marcada, el minimapa girará para coincidir con la rotación de la vista."
 		ShowMidpointFocusWidget = "Mostrar ícono del ojo en punto medio del enfoque"
@@ -3401,7 +3463,7 @@ Settings
 		OverlaysLbl = "Superposiciones informativas"
 		PartToolTips = "Mostrar información emergente sobre partes de la nave"
 		PartToolTipsTip = "Si esta casilla está marcada, se mostrará información después de hacer una pausa breve con el cursor del mouse sobre una pieza de la nave."
-		PlayerName = ""
+		PlayerName = "Nombre para mostrar"
 		PlayerNameDisabledTip = "No puedes cambiar tu nombre durante un juego."
 		PlayerNameTip = "El nombre se muestra en el modo multijugador."
 		PreferWorldRelativeAttackAngle = "Preferir ángulos de ataque relativos a la cuadrícula"
@@ -3550,7 +3612,7 @@ Settings
 		BmpTip = "El tamaño de archivo más grande, calidad de imagen perfecta. (Estamos en el siglo XXI y no puedo imaginar por qué querrías usar BMP en lugar de PNG, pero bueno, es una opción si realmente lo quieres)."
 		CheckForUpdate = "Buscar actualización"
 		CheckForUpdateTip = "Haz clic para buscar inmediatamente si hay actualizaciones nuevas del juego."
-		ConfirmResetTutorials = "Esto hará que todos los tutoriales se muestren de nuevo."
+		ConfirmResetTutorials = "Esto hará que todos los tutoriales y consejos se muestren de nuevo."
 		CycleMenuBackground = "Cambiar automáticamente el fondo del menú"
 		CycleMenuBackgroundTip = "Si esta casilla está marcada, el fondo de la pantalla de título cambiará cada vez que se inicie la aplicación. Para cambiar manualmente el fondo, presiona las teclas <btn id='View.PanLeft'/> o <btn id='View.PanRight'/> mientras estás en la pantalla de título."
 		DesyncDebugging = "Habilitar depuración desincronizada"
@@ -3571,7 +3633,7 @@ Settings
 		OtherLbl = Otros
 		Png = ""
 		PngTip = "Tamaño de archivo mediano, calidad de imagen perfecta."
-		ResetTutorials = "Restablecer tutoriales"
+		ResetTutorials = "Restablecer tutoriales y consejos"
 		ScreenshotFormat = "Tipo predeterminado de las capturas de pantalla"
 		ScreenshotFormatTip = "El tipo de archivo que se utilizará de forma predeterminada al guardar capturas de pantalla. (Siempre puedes elegir un tipo diferente seleccionando \"Guardar como…\" al realizar una captura de pantalla)."
 		ShowAlerts = "Mostrar alertas en la pantalla de título"
@@ -3580,6 +3642,8 @@ Settings
 		ShowFpsTip = "Si se deben o no mostrar los cuadros por segundo y dónde."
 		ShowNews = "Mostrar noticias sin leer al inicio"
 		ShowNewsTip = "Si esta casilla está marcada, el juego mostrará automáticamente cualquier artículo de noticias no leído al inicio."
+		ShowTips = "Mostrar consejos al iniciar"
+		ShowTipsTip = "Si la casilla está marcada y no hay noticias que mostrar, se mostrará un consejo de \"¿Sabías que...?\", de forma automática al iniciar."
 		ShowTutorials = "Mostrar los tutoriales"
 		ShowTutorialsTip = "Si esta casilla está marcada, se mostrarán tutoriales de cómo jugar durante el juego."
 		TabName = Varios
@@ -3731,10 +3795,12 @@ StatCategories
 	
 	BoostOff = "Impulso: Desactivado"
 	BoostOn = "Impulso: Activado"
+	BulletChaingun = "Ronda de cañón de cadena"
 	BulletDeck = "Ronda de cañón de cubierta"
 	BulletLarge = "Ronda de cañón grande"
 	BulletMed = "Ronda de cañón estándar"
 	BulletRailgun = "Ronda de cañón de riel"
+	ChaingunShelled = "Cañón de cadena blindado"
 	CollectorBeam = "Rayo de arrastre (x4)"
 	DisruptorBolt = "Descarga disruptora"
 	Flak = FLAK
@@ -3795,6 +3861,7 @@ Stats
 	DamageContinuousFmt = "<white>Daño:</white> <good>{0:n0}</good><gray>/s</gray>"
 	DamageContinuousNearFmt = "<white>Daño (cercano):</white> <good>{0:n0}</good><gray>/s</gray>"
 	DamageFmt = "<white>Daño:</white> <good>{0:n0}</good><gray>/disparo (</gray><good>{1:n0}</good><gray>/s)</gray>"
+	DamageRangeFmt = "<white>Daño:</white> <good>{0:n0}</good><gray>/disparo (</gray><good>{1:n0}</good><white> a </white><good>{2:n0}</good><gray>/s)</gray>"
 	DetonationRangeFmt = "<white>Rango de detonación:</white> <good>{0:0}</good> <gray>m</gray>"
 	DiamondCapacityFmt = "<white>Capacidad de diamantes:</white> <good>{0}</good>"
 	DiamondCarbonUsageFmt = "<white>Uso de carbono:</white> <good>{0:0.##}</good><gray>/diamante (</gray><good>{1:0.##}</good><gray>/s)</gray>"
@@ -3846,6 +3913,7 @@ Stats
 	ProcessorPowerUsageFmt = "<white>Uso de energía:</white> <good>{0:0.##}</good><gray>/procesador (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	ProcessorProductionFmt = "<white>Tasa de producción:</white> <good>{0:0.##}</good><gray> procesadores/s</gray>"
 	ROFFmt = "<white>Tasa de fuego:</white> <good>{0:0.##}</good><gray>disparos/s</gray>"
+	ROFRangeFmt = "<white>Cadencia de tiro:</white> <good>{0:0.##}</good><white> a </white><good>{1:0.##}</good><gray> disparos/s</gray>"
 	RadarRangeFmt = "<white>Rango de sensor (radar):</white> <good>{0:0}</good><gray> m</gray>"
 	RailgunBuffFmt = "<gray>Aumento del daño, la penetración, el alcance y la velocidad del proyectil (por número de aceleradores) de los cañones de riel:</gray>\n <TransparentWhite>0</TransparentWhite><white>1: </white><good>+{0:000} %</good>   <white>11: </white><good>+{10:000} %</good>   <white>21: </white><good>+{20:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>2: </white><good>+{1:000} %</good>   <white>12: </white><good>+{11:000} %</good>   <white>22: </white><good>+{21:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>3: </white><good>+{2:000} %</good>   <white>13: </white><good>+{12:000} %</good>   <white>23: </white><good>+{22:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>4: </white><good>+{3:000} %</good>   <white>14: </white><good>+{13:000} %</good>   <white>24: </white><good>+{23:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>5: </white><good>+{4:000} %</good>   <white>15: </white><good>+{14:000} %</good>   <white>25: </white><good>+{24:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>6: </white><good>+{5:000} %</good>   <white>16: </white><good>+{15:000} %</good>   <white>26: </white><good>+{25:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>7: </white><good>+{6:000} %</good>   <white>17: </white><good>+{16:000} %</good>   <white>27: </white><good>+{26:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>8: </white><good>+{7:000} %</good>   <white>18: </white><good>+{17:000} %</good>   <white>28: </white><good>+{27:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>9: </white><good>+{8:000} %</good>   <white>19: </white><good>+{18:000} %</good>   <white>29: </white><good>+{28:000}%</good>\n  <white>10: </white><good>+{9:000} %</good>   <white>20: </white><good>+{19:000} %</good>   <white>30: </white><good>+{29:000} %</good>"
 	RailgunNotes = "<gray>NOTA: El daño, la penetración, el alcance, la velocidad del proyectil y el uso de energía se incrementan con cada acelerador de cañón de riel adicional.</gray>"
@@ -3854,6 +3922,7 @@ Stats
 	Resources = "<white>Recursos:</white> "
 	SalvoFmt = "<white>Salva:</white> <good>{0:0.##}</good> <gray>disparos/</gray><good>{1:0.##}</good> <gray>s</gray>"
 	SeparationRangeFmt = "<white>Separación:</white> <good>{0:0}</good> <gray>m</gray>"
+	ShellDamageResistFmt = "<white>Resistencia al daño al estar cerrado:</white> <good>{0} %</good>"
 	ShieldArcFmt = "<white>Arco de escudo:</white> <good>{0:0}°</good>"
 	ShieldDamageFmt = "<white>Daño vs. escudos:</white> <good>{0:n0}</good><gray>/disparo (</gray><good>{1:n0}</good><gray>/s)</gray>"
 	ShieldDistFmt = "<white>Distancia de escudo:</white> <good>{0}</good><gray> m</gray>"
@@ -3861,6 +3930,7 @@ Stats
 	ShieldPenResistFmt = "<white>Resistencia a la penetración de escudo:</white> <good>-{0}</good> <gray>m</gray>"
 	ShieldPenetrationFmt = "<white>Penetración de escudo:</white> <good>{0:.##}</good> <gray>escudos</gray>"
 	ShotAmmoUsageFmt = "<white>Uso de municiones:</white> <good>{0:0.##}</good><gray>/disparo (</gray><good>{1:0.##}</good><gray>/s)</gray>"
+	ShotAmmoUsageRangeFmt = "<white>Uso de munición:</white> <good>{0:0.##}</good><gray>/disparo (</gray><good>{1:0.##}</good><white> a </white><good>{2:0.##}</good><gray>/s)</gray>"
 	ShotDamageFmt = "<white>Daño vs. disparos:</white> <good>{0:n0}</good><gray>/disparo (</gray><good>{1:n0}</good><gray>/s)</gray>"
 	ShotDeploySpeedFmt = "<white>Velocidad de despliegue:</white> <gray>&lt;</gray> <good>{0:0}</good> <gray>m/s</gray>"
 	ShotGuidanceFmt = "<white>Orientación:</white> <good>{0:0.#}°</good><gray>/s</gray>"
@@ -3894,6 +3964,535 @@ Stats
 	TurretSpeedFmt = "<white>Velocidad de torreta:</white> <good>{0:0}°</good><gray>/s</gray>"
 	UraniumCapacityFmt = "<white>Capacidad de uranio:</white> <good>{0}</good>"
 	WeightFmt = "<white>Peso:</white> <good>{0:0.0#}</good><gray> toneladas</gray>"
+}
+Tips
+{
+	
+	Accessibility
+	{
+		
+		Tip = "Si tienes problemas para distinguir entre los íconos de las naves aliadas y enemigas, puedes cambiarles los colores en <good>Ajustes -> Accesibilidad</good>. Allí también encontrarás ajustes adicionales para que Cosmoteer sea más ameno con quienes tengan una vista sensible."
+		Title = "Ajustes de accesibilidad y daltonismo"
+	}
+	AdvancedCareerMode
+	{
+		
+		Tip = "El modo de carreras tiene un puñado de opciones avanzadas que puedes modificar para ajustar el juego a tus preferencias, como hacer que la construcción de naves sea instantánea o revelar todo el sistema estelar. Puedes activar estas opciones haciendo clic en <good>Opciones avanzadas del juego</good> al iniciar una nueva partida de carrera o en <good>Ajustes -> Partida actual -> Opciones avanzadas del juego</good> mientras juegas."
+		Title = "Opciones avanzadas del modo de carrera"
+	}
+	AdvancedCommands
+	{
+		
+		Tip = "Si no puedes ver estos botones de comandos avanzados de la nave, entonces puedes activarlos en <good>Ajustes -> Experiencia de juego -> Mostrar comandos avanzados de la nave</good>."
+		Title = "Comandos avanzados de la nave"
+	}
+	AreYouSure
+	{
+		
+		Tip = "Muchas de las ventanas de confirmación emergentes del estilo <i>\"¿De verdad quieres...?\"</i> se pueden omitir manteniendo <btn id='General.SuppressConfirmation'/>."
+		Title = "¿De verdad?"
+	}
+	AttackDefaults
+	{
+		
+		Tip = "¿Te cansa tener que establecer la distancia y rotación de la nave cada vez que atacas un enemigo? Abre el menú <img name='hamburger_up'/> junto al nombre de tu nave y haz clic en <good>Guardar valores predeterminados de ataque</good>. El juego recordará la distancia, rotación y ángulo del ataque actual la próxima vez que ataques algo."
+		Title = "Establecer valores predeterminados de ataque"
+	}
+	AutoSave
+	{
+		
+		Tip = "Por defecto, Cosmoteer guardará la partida actual de forma automática cada 10 minutos y guardará los últimos 10 archivos de guardado automático. Los archivos de guardado automático más viejos se borrarán de forma automática. Puedes cambiar la duración y la cantidad de archivos de guardado automático en <good>Ajustes -> Guardado automático</good>."
+		Title = "Guardado automático"
+	}
+	BattleHelper
+	{
+		
+		Tip = "En el modo creativo, puedes usar el Ayudante de batalla para configurar y ejecutar batallas entre dos flotas de naves opositoras. Puedes acceder al Ayudante de batalla desde el menú <img name='hamburger_down'/>."
+		Title = "Ayudante de batalla"
+	}
+	BlueprintMode
+	{
+		
+		Tip = "Puedes usar el \"Modo de plano\" para realizar cambios temporales, ilegales o carísimos al diseño de la nave antes de comprometerte de verdad a dichos cambios. Haz clic en el botón del <white>Modo de plano</white> en la parte inferior izquierda del Editor de naves para activar el Modo de plano."
+		Title = "Modo de plano"
+	}
+	Chatting
+	{
+		
+		Tip = "En el modo multijugador, puedes enviar mensajes en el chat a otras personas presionando <btn id='Game.Chat'/>."
+		Title = "Chat multijugador"
+	}
+	CollisionAvoidance
+	{
+		
+		Tip = "A menudo, las naves intentarán navegar alrededor de los obstáculos grandes para evitar chocarlos. Si no te gusta, entonces puedes mantener presionado <btn id='Game.InvertCollisionAvoidance'/> mientras das una orden de movimiento para desactivar la prevención de colisiones o puedes detenerla de forma más permanente si desactivas <good>Ajustes -> Experiencia de juego -> Comandos de la nave -> Activar prevención de colisiones</good>."
+		Title = "Prevención de colisiones"
+	}
+	ControlGroups
+	{
+		
+		Tip1 = "Puedes colocar una o más de tus naves en un \"grupo de control\" seleccionándolas y luego presionando <white>Ctrl + F1-F8</white>. Luego puedes seleccionar todas las naves de ese grupo presionando <white>F1-F8</white>."
+		Tip2 = "Así mismo, puedes colocar una o más armas individuales u otras piezas de la nave en grupos de control seleccionándolas y luego presionando <white>Ctrl + 0-9</white>. Luego puedes seleccionar todas las piezas del grupo presionando <white>0-9</white>."
+		Title = "Grupos de control"
+	}
+	CrewCustomization
+	{
+		
+		Tip = "¡Puedes personalizar los nombres y las apariencias de todos tus tripulantes! Abre la Lista de tripulación y luego <white>haz doble clic</white> sobre el tripulante que quieras personalizar."
+		Title = "Personalización de tripulación"
+	}
+	CrewFavorite
+	{
+		
+		Tip = "¿Algunos de tus tripulantes te importan más que los demás? Haz <white>clic derecho</white> sobre ellos en la Lista de tripulación y márcalos como \"favoritos\". ¡De esa forma podrás saber siempre dónde están!"
+		Title = "Tripulantes favoritos"
+	}
+	CrewResourceTransfer
+	{
+		
+		Tip = "Puedes transferir tripulantes y recursos entre las naves. Haz clic sobre el menú <img name='hamburger_up'/> junto al nombre de la nave (o en las pantallas de Gestión de tripulantes o recursos) y luego selecciona <white>Transferir tripulantes/recursos</white>."
+		Title = "Transferencia de tripulantes y recursos"
+	}
+	CtrlSelectsParts
+	{
+		
+		Tip = "Si no puedes seleccionar armas individuales y otras piezas de la nave al clic en ellas, entonces debes mantener <btn id='Game.SelectParts'/> o desactivar el ajuste en <good>Ajustes -> Experiencia de juego -> Solicitar Ctrl para seleccionar las piezas</good>."
+		Title = "Solicitar Ctrl para seleccionar las piezas"
+	}
+	CtrlTargeting
+	{
+		
+		Tip1 = "Puedes mantener presionado <btn id='Game.SelectParts'/> para enfocar tus armas sobre las naves enemigas sin tener que atacarlas primero."
+		Tip2 = "También puedes mantener <btn id='Game.SelectParts'/> para forzar el enfoque de tus armas sobre las naves aliadas."
+		Title = "Puntería con Ctrl"
+	}
+	DecalLayers
+	{
+		
+		Tip = "Puedes hacer clic sobre el ícono del \"ojo\" para mostrar u ocultar las capas de calcomanías. Arrastra y suelta las capas de calcomanías para cambiar el orden de estas."
+		Title = "Capas de calcomanías"
+	}
+	DeleteDoors
+	{
+		
+		Tip = "Si quieres borrar muchas puertas al mismo tiempo, usa la herramienta de selección para seleccionar todas las partes cuyas puertas quieras borrar y luego presiona <btn id='Design.DeleteDoors'/>."
+		Title = "Borrar puertas"
+	}
+	DeleteShortcut
+	{
+		
+		Tip = "En el Editor de naves o el Editor de pintura, puedes mantener presionado <btn id='Design.EraseCursorMode'/> para cambiar de forma temporal al modo de borrado."
+		Title = "Eliminar piezas y calcomanías"
+	}
+	DesigningAsteroids
+	{
+		
+		Tip = "En el modo creativo, puedes diseñar asteroides al igual que puedes diseñar naves. <btn id='General.UIAltClick'/> sobre el botón de Nueva nave y selecciona Asteroide o Megaroide. <gray>(Los megaroides son asteroides muy grandes).</gray>"
+		Title = "Diseñar asteroides"
+	}
+	DirectControlBindings
+	{
+		
+		Tip1 = "Para el modo de control directo, puedes personalizar qué botón del mouse se usa para disparar cada arma. Selecciona la/s arma/s, abre su menú <img name='hamburger_up'/> y selecciona <white>Enlace de control directo</white>."
+		Tip2 = "También puedes elegir que las armas sigan <white>controladas por la IA</white> incluso al usar el modo de control directo."
+		Title = "Enlaces de control directo de armas"
+	}
+	DirectControlSettings
+	{
+		
+		Tip = "El modo de control directo tiene muchos ajustes que puedes modificar para que los controles y la cámara se ajusten a tus preferencias. Puedes cambiarlos en <good>Ajustes -> Experiencia de juego -> Modo de control directo</good> y <good>Ajustes -> Cámara -> Modo de control directo</good>."
+		Title = "Ajustes del control directo"
+	}
+	DirectControlSuppress
+	{
+		
+		Tip = "Cuando estás en el modo de control directo, puedes desactivarlo <i>temporalmente</i> al mantener presionado <btn id='Game.SelectParts'/>, esto te permite comandar la nave y controlar la vista de forma normal. Al soltar <btn id='Game.SelectParts'/> volverás al modo de control directo."
+		Title = "Suprimir el modo de control directo"
+	}
+	DisableAutoDoors
+	{
+		
+		Tip = "Al agregar nuevas habitaciones a la nave, las puertas se agregarán de forma automática por defecto. Si no te gusta, entonces puedes mantener presionado <btn id='Design.NoAutoDoors'/> para evitar de forma temporal que se agreguen o puedes desactivar la función por completo en <good>Ajustes -> Editor de naves -> Agregar puertas automáticamente</good>."
+		Title = "Desactivar las puertas automáticas"
+	}
+	DisableEdgePan
+	{
+		
+		Tip = "¿Te molesta cuando el cursor del mouse toca accidentalmente los bordes de la pantalla y se mueve la vista? Si es así, puedes desactivar eso en <good>Ajustes -> Cámara -> Ampliación de avance; rotar -> Avance por los bordes</good>."
+		Title = "Avance por los bordes de cámara"
+	}
+	DisableUI
+	{
+		
+		Tip = "¿Crees que las capturas de pantalla y GIFs serían más lindos sin la interfaz de usuario? Presiona <btn id='Game.ToggleUI'/> para ocultarla. Vuelve a presionar para mostrarla."
+		Title = "Desactivar la IU"
+	}
+	Discord
+	{
+		
+		Tip = "¡Cosmoteer tiene una comunidad dinámica y acogedora en Discord! Para unirte, haz clic en <img name='hamburger_up'/>MÁS en la pantalla de inicio y luego selecciona <good>Comunidad -> Discord</good>."
+		Title = ""
+	}
+	DisplayName
+	{
+		
+		Tip = "Por defecto, aparecerás en el modo multijugador con tu nombre de cuenta de Steam, pero puedes cambiar el nombre para mostrar en <good>Ajustes -> Varios -> Multijugador -> Nombre para mostrar</good>."
+		Title = "Nombre para mostrar en multijugador"
+	}
+	EditShipInfo
+	{
+		
+		Tip = "Puedes editar el nombre, el diseñador (autor), la descripción y conocimiento popular de la nave. Abre el menú <img name='hamburger_up'/> junto al nombre de la nave y selecciona <white>Editar nombre/información de la nave</white>. <gray>(¡O puedes solo hacer clic sobre el nombre!)</gray>"
+		Title = "Editar la información de la nave"
+	}
+	EngineRoomDistribution
+	{
+		
+		Tip = "Las salas de máquinas pueden recibir y distribuir baterías de energía a los propulsores conectados, lo que significa que la tripulación no necesita acceder a los propulsores mientras estén conectados a una sala de máquinas que <i>sea</i> accesible."
+		Title = "Distribución de energía de la sala de máquinas"
+	}
+	FameLimit
+	{
+		
+		Tip = "La mayoría de las misiones tienen un \"límite de fama\". Si ya tienes más <fame>fama</fame> que el límite, la misión no te dará más fama. Completa misiones de mayor nivel para seguir consiguiendo fama."
+		Title = "Límite de fama"
+	}
+	Feedback
+	{
+		
+		Tip = "¡Nos encantaría recibir tus comentarios! Presiona <btn id='General.SubmitFeedback'/> en cualquier momento para enviarnos ideas, quejas, informes de errores o cualquier tipo de comentarios. ¡Gracias!"
+		Title = "Enviar comentarios"
+	}
+	FillDoors
+	{
+		
+		Tip = "¿Quieres que haya una puerta en cada ubicación posible? Mantén presionado <btn id='Design.FillAllDoors'/> mientras agregas una puerta para agregar puertas <i>en todos lados</i>."
+		Title = "Colocar todas las puertas"
+	}
+	FlightDirection
+	{
+		
+		Tip = "Por defecto, tus naves vuelan siempre como si \"arriba\" en el Editor de naves fuera la dirección de avance. Puedes cambiar en qué dirección se \"avanza\" abriendo el menú <img name='hamburger_up'/> junto al nombre de la nave o haciendo clic sobre la pequeña flecha hacia arriba en la parte derecha del Editor de naves."
+		Title = "Dirección de vuelo"
+	}
+	ForceStartConstruction
+	{
+		
+		Tip = "Normalmente, no puedes comenzar una construcción si no tienes los recursos suficientes para terminarla. Sin embargo, puedes mantener presionado <btn id='Design.ConfirmPartialBuild'/> para forzar el comienzo de la construcción de todos modos. La tripulación no podrá terminarla, pero hará todo lo que pueda."
+		Title = "Forzar el comienzo de la construcción"
+	}
+	GameSpeedFramerate
+	{
+		
+		Tip = "Aumentar la velocidad del juego a x8 significa que tu CPU tiene que hacer 8 veces más trabajo que en la velocidad x1. Esto puedes causar pocos cuadros por segundos (FPS), más que nada en la parte final del juego. Considera reducir la velocidad del juego para mejorar los cuadros por segundo."
+		Title = "Velocidad del juego y cuadros por segundo"
+	}
+	Hamburgers
+	{
+		
+		FunFact = "<gray>(Dato curioso: A los desarrolladores de juegos y aplicaciones les gusta llamarlos \"menús de hamburguesa\").</gray>"
+		Tip = "Cosmoteer tiene muchos pequeños menús <img name='hamburger_up'/> y <img name='hamburger_down'/>. ¡No los pierdas de vista! Si haces clic sobre ellos tendrás acceso a varias funciones avanzadas u \"ocultas\"."
+		Title = "Menús de hamburguesa"
+	}
+	HiringPriority
+	{
+		
+		Tip1 = "Cada rol de la tripulación tiene una \"prioridad de contratación\" entre <bad>1</bad> y <good>10</good>. Cuando contratas o transfieres nuevos tripulantes a la nave, se unirán de forma automática al rol con la mayor prioridad de contratación que tenga espacio."
+		Tip2 = "Si activas la opción de <white>Autocompletar desde los roles de menor prioridad</white>, entonces cualquier espacio de tripulación vacío se completará de forma automática, transfiriendo tripulantes desde los roles con una menor prioridad de contratación."
+		Title = "Prioridad de contratación"
+	}
+	Hotkeys
+	{
+		
+		Tip = "Muchos botones de la interfaz de usuario tienen \"teclas de acceso rápido\" que puedes presionar en vez de hacer clic sobre el botón. Estas teclas de acceso rápido casi siempre se muestran en la descripción emergente al pasar el cursor del mouse por encima del botón y además se pueden personalizar en <good>Ajustes -> Controles</good>."
+		Title = "Teclas de acceso rápido"
+	}
+	LauncherTypes
+	{
+		
+		Tip = "Puedes cambiar el tipo de misil o mina que dispara un lanzador en cualquier momento, incluyendo durante la batalla. ¡Úsalo para sorprender a tus enemigos con algunos misiles nucleares inesperados!"
+		Title = "Tipos de lanzadores"
+	}
+	LoadBlueprints
+	{
+		
+		Tip1 = "Puedes cargarle los planos de otro diseño de nave guardado a tu nave actual. En el Editor de naves, abre el menú <img name='hamburger_up'/> y luego haz clic sobre alguna de las siguientes opciones:"
+		Tip2 = "<b>Cargar nave (reemplazar la existente)</b>: Esto reemplazará por completo los planos de la nave existente con los del diseño de la nave guardado."
+		Tip3 = "<b>Cargar nave (pegar sobre la existente)</b>: Esto agregará los planos de la nave guardados a la nave existente en la ubicación que elijas."
+		Title = "Cargar planos"
+	}
+	LoadPaint
+	{
+		
+		Tip = "Puedes cargarle el diseño de la pintura/calcomanía de otra nave guardada a tu nave actual. En el Editor de pintura, abre el menú <img name='hamburger_up'/> y luego haz clic sobre <white>Cargar diseño de pintura</white>."
+		Title = "Cargar pintura"
+	}
+	LoadShapeFromPNG
+	{
+		
+		Tip1 = "Puedes usar programas de arte externos como MS Paint, Paint.NET, Gimp o Photoshop para crear los contornos básicos de las formas de las naves..."
+		Tip2 = "1. Primero, usa cualquier programa de arte externo que te guste para guardar un archivo de imagen PNG <b>blanco sobre negro</b> que represente la forma general de la nave. Los píxeles blancos se interpretarán como casillas de pasillos y los píxeles negros se interpretarán como espacios vacíos."
+		Tip3 = "2. Luego, en el Editor de naves, abre el menú <img name='hamburger_up'/> y selecciona <white>Cargar forma desde PNG</white>. Selecciona el archivo de imagen PNG que guardaste."
+		Tip4 = "3. Los planos de la nave actual serán reemplazados con los planos creados con el archivo de imagen PNG. Finaliza la nave agregando armas, propulsores, defensas y otras piezas que creas conveniente."
+		Title = "Cargar forma desde PNG"
+	}
+	MidpointFocus
+	{
+		
+		Tip = "Luego de atacar una nave enemiga, puedes hacer clic sobre el ícono del \"ojo\" para enfocar la vista en el punto medio entre tu nave y el objetivo."
+		Title = "Ícono del punto medio de enfoque"
+	}
+	MirrorModeSettings
+	{
+		
+		Tip = "Es probable que ya sepas que puedes activar el \"modo espejo\" para realizar cambios simétricos al diseño de la nave. También puedes <btn id='General.UIAltClick'/> sobre el botón del modo espejo para cambiar la dirección y cantidad de líneas simétricas."
+		Title = "Ajustes del modo espejo"
+	}
+	MissionsHUD
+	{
+		
+		Tip1 = "Por defecto, solo se muestran las 3 misiones más cercanas en la parte superior izquierda de la pantalla. Puedes cambiar esa cantidad en <good>Ajustes -> Experiencia de juego -> Superposiciones informativas -> Mostrar las misiones cercanas en la HUD</good>."
+		Tip2 = "También puedes marcar una misión como \"favorita\" <white>haciendo clic derecho</white> sobre la misma o presionando el botón \"Favorita\" en la bitácora de carrera. Esto hará que la misión se muestre siempre, incluso si hay otras misiones más cerca."
+		Title = "HUD de misiones"
+	}
+	ModAutoDisable
+	{
+		
+		Tip = "Al actualizar Cosmoteer, todos los mods que hayas instalado <b>podrían</b> desactivarse de forma automática si no se sabe si son compatibles con la nueva versión de Cosmoteer. Si no quieres que los mods se desactiven de forma automática, entonces desactiva <good>Ajustes -> Varios -> Desactivar mods al actualizar</good>."
+		Title = "Autodesactivar mods"
+	}
+	MovingResources
+	{
+		
+		Tip = "Al usar la pantalla de Gestión de recursos para mover recursos, puedes mantener <btn id='Resources.Move1'/> para recoger o soltar 1 recurso a la vez en vez de toda la pila. Mantén <btn id='Resources.Move5'/> para que sean 5 a la vez."
+		Title = "Mover recursos"
+	}
+	ObjectiveFocus
+	{
+		
+		Tip = "Puedes hacer clic sobre la mayoría de los objetivos de las misiones para enfocar la vista sobre la ubicación a la que tendrás que volar para cumplir con ese objetivo."
+		Title = "Enfocar objetivos"
+	}
+	PaintSchemes
+	{
+		
+		Tip1 = "Los \"esquemas de pintura\" son conjuntos guardados de colores y texturas de pinturas que puedes compartir entre las naves."
+		Tip2 = "Para guardar los colores y la textura de la nave actual, abre el menú <img name='hamburger_up'/> en el Editor de pintura y luego selecciona <white>Guardar esquema de pintura</white>. Para cargar ese esquema de pintura en una nave diferente, abre su menú <img name='hamburger_up'/> y selecciona <white>Cargar esquema de pintura</white>."
+		Title = "Esquemas de pintura"
+	}
+	PartBrushes
+	{
+		
+		Tip = "La mayoría de las piezas de tamaño 1x1 se pueden utilizar con una variedad de diferentes tamaños y formas de \"pinceles\". Haz clic en el botón de selección de pincel cuando esté disponible para ver todas las opciones."
+		Title = "Pinceles de piezas"
+	}
+	PartRows
+	{
+		
+		Tip = "Puedes aumentar la cantidad de tipos de piezas visibles en el Editor de naves cambiando <good>Ajustes -> Editor de naves -> Filas de piezas</good>."
+		Title = "Filas del editor de naves"
+	}
+	PipSettings
+	{
+		
+		Tip = "Puedes personalizar cuándo y qué muestra la vista de \"Imagen en imagen\" que aparece en la parte superior derecha de la pantalla en <good>Ajustes -> Cámara -> Imagen en imagen</good>."
+		Title = "Ajustes de imagen en imagen"
+	}
+	PostShaders
+	{
+		
+		Tip1 = "¿Quieres que Cosmoteer parezca una película de ciencia ficción en blanco y negro de los años 50? Si es así, entonces elige \"Vinieron del espacio\" en <good>Ajustes -> Gráficos -> Preferencias -> Postsombreado</good>."
+		Tip2 = "¡También puedes probar varios estilos diferentes de divertidos \"postsombreados\"!"
+		Title = Postsombreados
+	}
+	QuickSave
+	{
+		
+		Tip1 = "Presiona <btn id='Game.QuickSave'/> para usar el guardado rápido sobre la partida actual."
+		Tip2 = "Presiona <btn id='Game.QuickLoad'/> para cargar la última partida guardada de cualquier tipo."
+		Tip3 = "Por defecto, Cosmoteer almacena los últimos 10 archivos de guardado rápido. Los archivos de guardado rápido más viejos se borrarán de forma automática. Puedes cambiar la cantidad de archivos de guardado rápido que se almacenan en <good>Ajustes -> Guardado automático</good>."
+		Title = "Guardado rápido"
+	}
+	RebindingControls
+	{
+		
+		Tip = "Casi todos los controles y teclas de acceso rápido se pueden cambiar en <good>Ajustes -> Controles</good>."
+		Title = "Reasignar controles"
+	}
+	RecommendationBars
+	{
+		
+		Tip = "Las barras que muestran la <b>tripulación</b> y la <b>energía</b> en la parte derecha del Editor de naves son solo <i>recomendaciones</i> para los nuevos jugadores. Las naves diseñadas de forma óptima podrían no requerir tanta tripulación o energía. Puedes desactivar estas barras en <good>Ajustes -> Editor de naves -> Mostrar barras de recomendaciones</good>."
+		Title = "Barras de recomendaciones"
+	}
+	ReleaseCandidates
+	{
+		
+		Tip1 = "Puedes ayudar a probar las actualizaciones preliminares de Cosmoteer si cambias a la versión beta \"inestable\" en las propiedades de Steam de Cosmoteer."
+		Tip2 = "<bad>ADVERTENCIA:</bad> Estos \"aspirantes de lanzamiento\" podrían tener más errores que las actualizaciones oficiales. ¡Guarda la partida a menudo!"
+		Title = "Aspirantes de lanzamiento"
+	}
+	ResourceCollectionTypes
+	{
+		
+		Tip = "¿Ya tienes suficientes recursos de un tipo específico? <btn id='General.UIAltClick'/> sobre el botón de Recoger/Recuperar/Minar y deselecciona los recursos que ya no quieres. La tripulación ya no recogerá, recuperará ni minará esos tipos de recursos."
+		Title = "Tipos de recolección de recursos"
+	}
+	ResourceEjection
+	{
+		
+		Tip = "Para expulsar todos o una cantidad específica de recursos, <btn id='General.UIAltClick'/> sobre el botón en la parte inferior de la pantalla de Gestión de recursos y elige una de las opciones de <white>expulsión</white>."
+		Title = "Expulsión de recursos"
+	}
+	ResourceLimits
+	{
+		
+		Tip1 = "Puedes limitar la cantidad de recursos que almacena la nave de cualquier tipo específico. <btn id='General.UIAltClick'/> sobre el botón de Recoger/Recuperar/Minar y selecciona <white>Establecer límites de recursos</white>."
+		Tip2 = "Cuando se establece un límite para un tipo específico de recurso, la tripulación no recogerá, las fábricas no producirán y no podrás comprar más de que ese límite."
+		Title = "Límites de recursos"
+	}
+	RightClickMenus
+	{
+		
+		Tip1 = "¡No pierdas de vista cuando el cursor del mouse muestra este ícono!"
+		Tip2 = "Esto significa que puedes <btn id='General.UIAltClick'/> sobre este botón o elemento de la interfaz de usuario para acceder a un menú emergente que contiene funciones avanzadas u \"ocultas\". ¡Muchas partes de la interfaz de usuario tienen estos menús escondidos!"
+		Title = "Menús de clic derecho"
+	}
+	RoleOrder
+	{
+		
+		Tip = "Puedes cambiar el orden en el que se listan los roles de la tripulación arrastrándolos y soltándolos. Esto no afecta cómo funciona la tripulación, pero puede ser útil para la organización."
+		Title = "Orden de los roles de la tripulación"
+	}
+	RotateCamera
+	{
+		
+		Tip1 = "Puedes presionar <btn id='View.RotateLeft'/> y <btn id='View.RotateRight'/> para rotar la vista."
+		Tip2 = "Para restablecer la rotación de la vista a la configuración predeterminada, presiona <btn id='View.ResetRotation'/> o haz clic en la flecha roja \"Norte galáctico\" del minimapa."
+		Title = "Rotación de la cámara"
+	}
+	RotationFocus
+	{
+		
+		TIp2 = "También puedes presionar <btn id='View.RotationFocusSelected'/> para enfocar la nave <b>e</b> igualar su rotación."
+		Tip1 = "Es probable que ya sepas que puedes presionar <btn id='View.FocusSelected'/> para enfocar la vista sobre tu nave."
+		Title = "Enfocar e igualar la rotación"
+	}
+	SavedShipFiles
+	{
+		
+		Tip1 = "Los diseños de naves se guardan como archivos imágenes PNG comunes con la extensión <fame_color>.ship.png</fame_color>. Puedes compartir estos archivos con tus amistades o en el Discord de Cosmoteer al igual que cualquier otro archivo de imagen. Estos archivos se almacenan en tu computadora en una carpeta llamada \"Saved Ships\" a la cual puedes acceder haciendo clic en el menú <img name='hamburger_down'/> de la Biblioteca de naves y luego seleccionando <white>Abrir carpeta</white>."
+		Tip2 = "Puedes cargar y jugar con los diseños de naves guardados de cualquier persona solo copiando el archivo de la nave en tu propia Biblioteca de naves. Mientras la imagen no se haya modificado de ninguna manera, debería aparecer de forma instantánea en la Biblioteca de naves y ya la podrás usar para jugar. Y, si estás jugando a Cosmoteer en el modo de \"Ventana redimensionable\", puedes arrastrar y soltar la imagen directamente en la Biblioteca de naves o en una partida de modo creativo activa."
+		Title = "Archivos de naves guardados"
+	}
+	SavingShips
+	{
+		
+		Tip = "Puedes guardar los diseños de tus naves para que puedas volver a usarlos en otros modos de juego como el modo creativo y el multijugador. Para guardar el diseño de la nave, abre el menú <img name='hamburger_up'/> junto al nombre de la nave o en el editor de naves, selecciona <white>Guardar diseño de nave</white>."
+		Title = "Guardar las naves"
+	}
+	Scoreboard
+	{
+		
+		Tip = "En el JcJ del multijugador, presiona <btn id='Multiplayer.ShowScoreboard'/> para mostrar el marcador actual."
+		Title = "Marcador multijugador"
+	}
+	ScreenshotsAndGifs
+	{
+		
+		Tip1 = "Puedes tomar una captura de pantalla en cualquier momento presionando <btn id='General.TakeScreenshot'/>."
+		Tip2 = "También puedes grabar y guardar una jugada reciente como un GIF animado al presionar <btn id='General.CaptureGif'/>, pero primero tendrás que activarlo en <good>Ajustes -> Grabadora de GIF</good>."
+		Title = "Capturas de pantalla y GIFs"
+	}
+	SelectSameType
+	{
+		
+		Tip = "Puedes <white>hacer doble clic</white> para seleccionar todas las piezas de la nave del mismo tipo. Para las piezas direccionales, como las armas, propulsores y escudos, solo se seleccionarán las piezas que apunten en la misma dirección. <white>Haz triple clic</white> para seleccionarlas a todas sin importar la dirección."
+		Title = "Seleccionar las piezas del mismo tipo"
+	}
+	Settings
+	{
+		
+		Tip = "Cosmoteer es personalizable en gran medida y tiene <i>un montón</i> de ajustes. Si alguna vez deseas cambiar algo sobre Cosmoteer, echa un vistazo a los <good>Ajustes</good>: ¡existe una gran posibilidad de que ya exista un ajuste para lo que quieres!"
+		Title = Ajustes
+	}
+	SharingRoles
+	{
+		
+		Tip1 = "Una vez que hayas perfeccionado los roles de la tripulación de la nave, quizás quieras usar esos mismos roles con otras naves. Hay varias formas de hacerlo:"
+		Tip2 = "1. Puedes cargar los roles de cualquier diseño de nave guardado abriendo el menú <img name='hamburger_up'/> en la pantalla de Gestión de tripulantes y seleccionando <white>Cargar roles de la nave</white>."
+		Tip3 = "2. Desde ese mismo menú <img name='hamburger_up'/>, también puedes <white>Copiar roles</white> de una nave y luego <white>Pegar roles</white> en otra nave."
+		Tip4 = "3. Y por último, puedes seleccionar <white>Guardar como mis roles predeterminados</white>. Cualquier diseño de nave nuevo comenzará con esos roles por defecto."
+		Title = "Compartir roles"
+	}
+	SpawnNotReady
+	{
+		
+		Tip = "En el modo creativo, si mantienes <btn id='CreativeMode.SpawnNotReady'/> mientras apareces dentro de una nave, entonces aparecerá sin energía, municiones ni recursos."
+		Title = "Emerger sin municiones/potencia"
+	}
+	SubFolders
+	{
+		
+		Tip = "Puedes organizar los diseños de naves guardados en subcarpetas del mismo modo que lo haces con archivos y carpetas en tu computadora. Para crear una subcarpeta, <btn id='General.UIAltClick'/> en \"Mis naves\" en la Biblioteca de naves y selecciona <white>Nueva carpeta</white>. Luego solo debes arrastrar y soltar los diseños de naves a la nueva carpeta."
+		Title = "Subcarpetas de la nave"
+	}
+	SymmetryLines
+	{
+		
+		Tip = "Cuando está activo el modo espejo, puedes mover las líneas simétricas haciendo clic y arrastrando estas manivelas verdes."
+		Title = "Mover líneas simétricas"
+	}
+	TeleportShip
+	{
+		
+		Tip = "En el modo creativo, puedes presionar <btn id='CreativeMode.MoveShip'/> para teletransportar la nave seleccionada de forma instantánea a su destino."
+		Title = "Teletransportar naves"
+	}
+	Trade5x
+	{
+		
+		Tip = "Al intercambiar o transferir recursos, puedes mantener <btn id='Resources.Transfer5'/> para mover 5 veces más de recursos por clic."
+		Title = "Intercambiar x5"
+	}
+	TradeAmount
+	{
+		
+		Tip1 = "Al intercambiar o transferir recursos, puedes hacer clic sobre la cantidad y escribir la cantidad exacta que desees comprar, vender o transferir. Un número positivo significa que deseas comprar (o transferir de izquierda a derecha). Un número negativo significa que quieres vender (o transferir de derecha a izquierda)."
+		Tip2 = "También puedes escribir la cantidad total que quieres mantener en la nave y la cantidad que necesitas comprar, vender o transferir se calculará de forma automática."
+		Title = "Intercambiar cantidades exactas"
+	}
+	TradeSurplusNeeded
+	{
+		
+		Tip1 = "Al intercambiar, puedes vender los recursos que excedan la cantidad \"deseada\" haciendo <white>clic derecho</white> sobre un recurso y seleccionando <white>Vender excedentes</white>. O puedes comprar los que necesites para alcanzar la cantidad \"deseada\" seleccionando <white>Comprar lo necesario</white>. Abre el menú <img name='hamburger_up'/> para Vender excedentes o Comprar lo necesario de todos los recursos al mismo tiempo."
+		Tip2 = "Si tienes un límite de recursos establecido, entonces la cantidad \"deseada\" será el límite de ese recurso. En caso contrario, la cantidad \"deseada\" será la suma total de todas las casillas de recursos que se hayan designado para almacenar ese recurso."
+		Title = "Vender excedentes / Comprar lo necesario"
+	}
+	TransferringShipsMoney
+	{
+		
+		Tip1 = "Al jugar el modo de carrera multijugador, puedes transferir tus naves a cualquier otro jugador. Haz clic sobre el menú <img name='hamburger_up'/> junto al nombre de la nave y luego selecciona <white>Transferir el control de la nave a</white>."
+		Tip2 = "También puedes darles <money_color><img name='money' colored='true'/></money_color> créditos a los demás jugadores. <btn id='General.UIAltClick'/> sobre la pantalla de <money_color><img name='money' colored='true'/></money_color> créditos en la parte superior derecha y selecciona <white>Transferir créditos a</white>."
+		Title = "Transferir naves y dinero"
+	}
+	WhenEnemySpotted
+	{
+		
+		Tip = "¿Te molesta que el juego se ralentice al detectar a un enemigo? Puedes desactivar eso o elegir una velocidad diferente de juego en <good>Ajustes -> Experiencia de juego -> Superposiciones informativas -> Al detectar un enemigo</good>."
+		Title = "Al detectar un enemigo"
+	}
+	WorldRelativeAngles
+	{
+		
+		Tip = "Es normal que, cuando atacas o sigues a otra nave en un ángulo específico, ese ángulo cambie a medida que la otra nave rota. Mantén presionado <btn id='Game.WorldRelativeFollowAngle'/> al dar la orden de ataque o seguimiento para evitarlo."
+		Title = "Ángulo de ataque/seguimiento relativo a la cuadrícula"
+	}
+}
+TipsDialog
+{
+	
+	Title = "¿Sabías que...?"
 }
 TitleScreen
 {
@@ -4002,6 +4601,14 @@ Tutorials
 		Tip = "<good>CONSEJO:</good> La frecuencia con la que un cañón puede disparar depende de la rapidez con la que la tripulación pueda proporcionarle municiones."
 		Title = "Cañones y municiones"
 	}
+	Chainguns
+	{
+		
+		Info = "Los cañones de cadena son armas de proyectiles giratorios que <good>aumentan la cadencia de tiro mientras disparan</good>. Mientras más tiempo dispare el cañón de cadena, más rápido disparará, hasta cierto límite."
+		Magazines = "Los <good>cargadores de munición</good> se pueden adjuntar para expandir el almacenamiento de munición, lo que aumentará el tiempo por el cual se puede disparar a máxima velocidad. Los cargadores se deben adjuntar a las partes laterales traseras izquierda o derecha del cañón de cadena. (Ver imagen)."
+		Shell = "Mientras no disparan, los cañones de cadena <good>se esconden detrás de una carcasa protectora</good> que reduce en gran medida el daño entrante."
+		Title = "Cañones de cadena"
+	}
 	Combat
 	{
 		
@@ -4096,7 +4703,7 @@ Tutorials
 		
 		Never = "<bad>¡Pero ten cuidado! Si un escuadrón tiene órdenes, ¡NUNCA hará trabajos para ninguna otra parte!</bad>"
 		Order = "<white>Haz clic con el botón izquierdo del mouse</white> o arrastra para dibujar un cuadro alrededor de las habitaciones de los escuadrones a los que desees dar la orden y, a continuación, <white>haz clic con el botón derecho</white> en las armas u otras partes a las que desee asignarlos."
-		OrdersMode = "Abre la pantalla <white>Administración de tripulantes</white> y, a continuación, activa el <white>Modo de órdenes a escuadrones</white>."
+		OrdersMode = "Abre la pantalla de <white>Gestión de tripulantes</white> y, a continuación, activa el <white>Modo de órdenes a escuadrones</white>."
 		Tell = "También puedes decirles a escuadrones específicos de la tripulación que <good>solo realicen trabajos para armas u otras partes específicas</good>."
 		Tip = "<good>CONSEJO:</good> Si observas que algún tripulante no hace nada cuando crees que debería hacerlo, ¡revisa las órdenes de su escuadrón!"
 		Title = "Órdenes de los escuadrones de la tripulación"
@@ -4309,6 +4916,7 @@ Tutorials
 	{
 		
 		Designate = "También puedes decirle a tu equipo que almacene <good>solo un recurso específico</good> en mosaicos específicos. Haz clic en el botón del recurso deseado y, a continuación, haz clic en los mosaicos en los que solo se debe almacenar ese recurso. Tu tripulación tratará de almacenar ese recurso en esos mosaicos siempre que sea posible y no almacenará automáticamente otros recursos en ellos."
+		Limits = "Para <good>limitar la cantidad</good> de un recurso almacenado en la nave, abre el menú <img name='hamburger_up'/> y luego elige <white>Establecer límites de recursos</white>."
 		Manage = "Para administrar los recursos de tu nave, haz clic en el botón <white>Administrar recursos</white>."
 		Move = "Para decirle a tu tripulación que <good>mueva recursos</good> de un mosaico a otro, selecciona la herramienta <white>Mover recursos</white>, haz clic en la pila de recursos que desees mover y, a continuación, haz clic en el mosaico a donde se deben mover."
 		Stacks = "La mayoría de los recursos se almacenan en <good>pilas</good> dentro de <good>mosaicos de almacenamiento</good>. Los compartimientos de almacenamiento pueden contener pilas de cualquier tipo. Las armas, las fábricas y otras partes especializadas solo pueden contener recursos como los que realmente utilizan o producen."
@@ -4386,13 +4994,13 @@ VersionCheck
 VitalCategories
 {
 	
-	Airlock = "⚠ Faltan esclusas"
-	Command = "⚠ Faltan salas de mando"
-	Crew = "⚠ Faltan alojamientos para la tripulación"
+	Airlock = "⚠ Falta esclusa"
+	Command = "⚠ Falta sala de mando"
+	Crew = "⚠ Falta alojamiento para la tripulación"
 	ExistingAirlock = "⚠ No hay esclusas. La tripulación no podrá salir de la nave para construir."
-	FireExtinguisher = "⚠ Faltan extintores de incendios"
+	FireExtinguisher = "⚠ Falta extintor"
 	Header = <b>ADVERTENCIA</b>
-	Reactor = "⚠ Faltan reactores"
+	Reactor = "⚠ Falta reactor"
 }
 Wishlist
 {

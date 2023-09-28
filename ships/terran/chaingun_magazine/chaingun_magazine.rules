@@ -11,6 +11,7 @@ Part : <../base_part_terran.rules>/Part
 		[coil, 5]
 	]
 	Size = [1, 2]
+	Density = 2
 	SelectionPriority = 1
 	MaxHealth = 2000
 	TypeCategories = [chaingun, chaingun_ammo_requester, chaingun_ammo_supplier]
