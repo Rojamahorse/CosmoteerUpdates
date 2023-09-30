@@ -51,10 +51,12 @@ Ships
 	:~{ File="Swiftwing.ship.png";   Tier=8;  Difficulty=1; }
 	:~{ File="Bulwark.ship.png";     Tier=8;  Difficulty=1; }
 	:~{ File="Echo.ship.png";        Tier=8;  Difficulty=2; }
+	:~{ File="Sentry.ship.png";      Tier=8;  Difficulty=2; }
 	:~{ File="Gunwing.ship.png";     Tier=9;  Difficulty=1; }
 	:~{ File="Skypiercer.ship.png";  Tier=9;  Difficulty=1; }
 	:~{ File="Rampart.ship.png";     Tier=9;  Difficulty=2; }
 	:~{ File="Balistraria.ship.png"; Tier=9;  Difficulty=2; }
+	:~{ File="Juridical.ship.png";   Tier=9;  Difficulty=2; }
 
 	// Frigates
 	:~{ File="Stalwart.ship.png";    Tier=10; Difficulty=1; }
@@ -67,6 +69,7 @@ Ships
 	:~{ File="Anvil.ship.png";       Tier=11; Difficulty=2; }
 	:~{ File="Gavel.ship.png";       Tier=11; Difficulty=2; }
 	:~{ File="Dispatcher.ship.png";  Tier=11; Difficulty=3; }
+	:~{ File="Aspis.ship.png";       Tier=11; Difficulty=3; }
 	:~{ File="Ballista.ship.png";    Tier=12; Difficulty=2; }
 	:~{ File="Arquebus.ship.png";    Tier=12; Difficulty=3; }
 	:~{ File="Haymaker.ship.png";    Tier=12; Difficulty=3; }
@@ -87,6 +90,7 @@ Ships
 	// Cruisers
 	:~{ File="Enforcer.ship.png";    Tier=15; Difficulty=2; }
 	:~{ File="Khyber.ship.png";      Tier=15; Difficulty=2; }
+	:~{ File="Negotiator.ship.png";  Tier=15; Difficulty=2; }
 	:~{ File="Guardian.ship.png";    Tier=15; Difficulty=3; }
 	:~{ File="Project Mjolnir.ship.png"; Tier=15; Difficulty=3; }
 	:~{ File="Liquidator.ship.png";  Tier=15; Difficulty=3; }

@@ -13,61 +13,61 @@ Part : <../base_part_terran.rules>/Part
 	]
 	TypeCategories = [uses_ammo, is_crewed, chaingun, chaingun_ammo_requester]
 	ReceivableBuffs : ^/0/ReceivableBuffs [RateOfFire]
-	Size = [3, 5]  //if you change this, need to also change TotalResourceStorage resource proxy checks.
-	Density = 2
-	PhysicalRect = [0, 1, 3, 4]
+	Size = [3, 6]  //if you change this, need to also change TotalResourceStorage resource proxy checks.
+	PhysicalRect = [0, 2, 3, 4]
 	SaveRect = &PhysicalRect
+	Density = 2
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	MaxHealth = 18000
 	InitialPenetrationResistance = 3
 	PenetrationRectType = Normal
-	ProhibitAbove = 2
+	ProhibitAbove = 1
 	AllowedDoorLocations
 	[
-		[-1, 4]
-		[0, 5]
-		[1, 5]
-		[2, 5]
-		[3, 4]
+		[-1, 5]
+		[0, 6]
+		[1, 6]
+		[2, 6]
+		[3, 5]
 	]
 	BlockedTravelCells
 	[
-		[0, 1]
 		[0, 2]
 		[0, 3]
-		[2, 1]
+		[0, 4]
 		[2, 2]
 		[2, 3]
+		[2, 4]
 	]
 	ForceManhattanPathInPart = true
 	ExternalWallsByCell
 	[
 		{
-			Key = [0, 1]
+			Key = [0, 2]
 			Value = [TopLeft, Left]
 		}
 		{
-			Key = [1, 1]
+			Key = [1, 2]
 			Value = None
 		}
 		{
-			Key = [2, 1]
+			Key = [2, 2]
 			Value = [TopRight, Right]
 		}
 	]
 	InternalWallsByCell
 	[
 		{
-			Key = [0, 0]
+			Key = [0, 1]
 			Value = [Left, TopLeft, Top, TopRight]
 		}
 		{
-			Key = [1, 0]
+			Key = [1, 1]
 			Value = [TopLeft, Top, TopRight]
 		}
 		{
-			Key = [2, 0]
+			Key = [2, 1]
 			Value = [Right, TopRight, Top, TopLeft]
 		}
 	]
@@ -151,8 +151,8 @@ Part : <../base_part_terran.rules>/Part
 			Type = ValueTween
 			OffValue = 1
 			OnValue = 10.5 //30 shots per second if base value 0.35
-			OnTweenDuration = 18
-			OffTweenDuration = 4
+			OnTweenDuration = 10
+			OffTweenDuration = (&OnTweenDuration) / 2 //cooldown is half the ramp up
 			IsOnToggle = GunIsFiring
 		}
 		ShellChangingValueTween
@@ -181,6 +181,8 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = bullet
 			MaxResources = 6
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			UITileRect = [7/64, 4 + 7/64, 1 - 14/64, 1 - 14/64]
+			AllowManualReceiveToggle = IsShellFullyClosed
 		}
 		AmmoStorageRight
 		{
@@ -188,6 +190,8 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = bullet
 			MaxResources = 6
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			UITileRect = [2 + 7/64, 4 + 7/64, 1 - 14/64, 1 - 14/64]
+			AllowManualReceiveToggle = IsShellFullyClosed
 		}
 		CombinedAmmoStorage
 		{
@@ -222,43 +226,62 @@ Part : <../base_part_terran.rules>/Part
 			CycleStorageOnRemove = true  //Will change the order of the storage list
 		}
 
-		StorageUIProxies
+		ToggledOnAmmoConsumers
 		{
 			Type = ToggledComponents
-			Toggle = IsShellFullyClosed //if we are fully closed, turn on these proxies and consumers to allow ammo transfer to the belt
+			Toggle = IsShellFullyClosed //if we are fully closed, turn on these consumers to allow ammo transfer to the belt
 			Components
 			{
-				AmmoUIStorageLeftProxy
-				{
-					Type = ResourceStorageProxy
-					ResourceType = bullet
-					ComponentID = AmmoStorageLeft
-					UITileRect = [7/64, 3 + 7/64, 1 - 14/64, 1 - 14/64]
-				}
-				AmmoUIStorageRightProxy
-				{
-					Type = ResourceStorageProxy
-					ResourceType = bullet
-					ComponentID = AmmoStorageRight
-					UITileRect = [2 + 7/64, 3 + 7/64, 1 - 14/64, 1 - 14/64]
-				}
 				AmmoConsumerLeft //For the crew to fill
 				{
 					Type = ResourceConsumer
 					ResourceType = bullet
-					Storage = AmmoUIStorageLeftProxy
+					Storage = AmmoStorageLeft
 					DefaultPriority = &/PRIORITIES/Weapon_Supply
 					OperationalToggle = PowerToggle
-					ConsumptionToggleButtonOffset = [0, -.4]
+					ConsumptionToggleButtonOffset = [0, .4]
 				}
 				AmmoConsumerRight //For the crew to fill
 				{
 					Type = ResourceConsumer
 					ResourceType = bullet
-					Storage = AmmoUIStorageRightProxy
+					Storage = AmmoStorageRight
 					DefaultPriority = &/PRIORITIES/Weapon_Supply
 					OperationalToggle = PowerToggle
-					ConsumptionToggleButtonOffset = [0, -.4]
+					ConsumptionToggleButtonOffset = [0, .4]
+				}
+			}
+		}
+		ToggledOffAmmoConsumers
+		{
+			Type = ToggledComponents
+			Toggle = IsShellFullyClosed //if we are fully closed, turn on these consumers to allow ammo transfer to the belt
+			Invert = true
+			Components
+			{
+				// We need these resource consumers to always exist even though they don't do anything,
+				// because they are what keep resource assignments alive. If storage assignments thrash,
+				// then that causes resource AI issues.
+
+				AmmoConsumerLeft //For the crew to fill
+				{
+					Type = ResourceConsumer
+					ResourceType = bullet
+					Storage = AmmoStorageLeft
+					DefaultPriority = &/PRIORITIES/Weapon_Supply
+					OperationalToggle = IsShellFullyClosed // Will always be off!
+					ConsumptionToggleButtonOffset = [0, .4]
+					AllowNonOperationalMinPriorityDelivery = false
+				}
+				AmmoConsumerRight //For the crew to fill
+				{
+					Type = ResourceConsumer
+					ResourceType = bullet
+					Storage = AmmoStorageRight
+					DefaultPriority = &/PRIORITIES/Weapon_Supply
+					OperationalToggle = IsShellFullyClosed // Will always be off!
+					ConsumptionToggleButtonOffset = [0, .4]
+					AllowNonOperationalMinPriorityDelivery = false
 				}
 			}
 		}
@@ -303,8 +326,14 @@ Part : <../base_part_terran.rules>/Part
 		TargetingAndCanShoot
 		{
 			Type = MultiToggle
-			Toggles = [EitherWeaponIsTargeting, CombinedBulletSplitters, HasEnoughAmmoToStartShooting]
+			Toggles = [CanFire, EitherWeaponIsTargeting, CombinedBulletSplitters, HasEnoughAmmoToStartShooting]
 			Mode = All
+		}
+		CanFire
+		{
+			Type = MultiToggle
+			Toggles = [FireModeToggle, IsInDCMode]
+			Mode = Any
 		}
 		ShellShouldOpen //Used by shell opening and closing
 		{
@@ -322,6 +351,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = DirectControlToggle
 			Weapon = Turret
+			RequireWeaponBindingPressed = true
 		}
 		ForceFireToggle
 		{
@@ -377,7 +407,7 @@ Part : <../base_part_terran.rules>/Part
 			ProxyToggle = IsLeftMagazineBeingPulledLeft //Do not look left if left mag is turned the other way. (After invert)
 			InvertProxyToggle = true
 			ResourceType = bullet
-			PartLocation = [-1, 3]
+			PartLocation = [-1, 4]
 			ProxyableComponents
 			[
 				{
@@ -386,7 +416,7 @@ Part : <../base_part_terran.rules>/Part
 						Category = chaingun_ammo_supplier
 						Rot = 0 //is perfectly aligned
 						Right = 0
-						Bottom = 5
+						Bottom = 6
 					}
 					ComponentID = CombinedLeftBeltStorages
 				}
@@ -396,7 +426,7 @@ Part : <../base_part_terran.rules>/Part
 						Category = chaingun_ammo_supplier
 						Rot = 2 //is perfectly aligned
 						Right = 0
-						Bottom = 4
+						Bottom = 5
 					}
 					ComponentID = CombinedRightBeltStorages
 				}
@@ -408,7 +438,7 @@ Part : <../base_part_terran.rules>/Part
 			ProxyToggle = IsRightMagazineBeingPulledRight //Do not look right if right mag is turned the other way. (After Invert)
 			InvertProxyToggle = true
 			ResourceType = bullet
-			PartLocation = [3, 3]
+			PartLocation = [3, 4]
 			ProxyableComponents
 			[
 				{
@@ -417,7 +447,7 @@ Part : <../base_part_terran.rules>/Part
 						Category = chaingun_ammo_supplier
 						Rot = 0 //is perfectly aligned
 						Left = 3
-						bottom = 5
+						bottom = 6
 					}
 					ComponentID = CombinedRightBeltStorages
 				}
@@ -427,7 +457,7 @@ Part : <../base_part_terran.rules>/Part
 						Category = chaingun_ammo_supplier
 						Rot = 2 //is perfectly aligned
 						Left = 3
-						Bottom = 4
+						Bottom = 5
 					}
 					ComponentID = CombinedLeftBeltStorages
 				}
@@ -436,7 +466,7 @@ Part : <../base_part_terran.rules>/Part
 		IsLeftMagazineBeingPulledLeft
 		{
 			Type = ToggleProxy
-			PartLocation = [-1, 3] //looking to the left
+			PartLocation = [-1, 4] //looking to the left
 			ProxyableComponents
 			[
 				{
@@ -445,7 +475,7 @@ Part : <../base_part_terran.rules>/Part
 						Category = chaingun_ammo_supplier
 						Rot = 0 //is perfectly aligned
 						Right = 0
-						Bottom = 5
+						Bottom = 6
 					}
 					ComponentID = IsRequestingRightToLeftAmmo
 				}
@@ -455,7 +485,7 @@ Part : <../base_part_terran.rules>/Part
 						Category = chaingun_ammo_supplier
 						Rot = 2 //is perfectly aligned
 						Right = 0
-						Bottom = 4
+						Bottom = 5
 					}
 					ComponentID = IsRequestingLeftToRightAmmo
 				}
@@ -464,7 +494,7 @@ Part : <../base_part_terran.rules>/Part
 		IsRightMagazineBeingPulledRight
 		{
 			Type = ToggleProxy
-			PartLocation = [3, 3] //looking to the right
+			PartLocation = [3, 4] //looking to the right
 			ProxyableComponents
 			[
 				{
@@ -473,7 +503,7 @@ Part : <../base_part_terran.rules>/Part
 						Category = chaingun_ammo_supplier //making sure they have the special category
 						Rot = 0 //is perfectly aligned
 						Left = 3
-						Bottom = 5
+						Bottom = 6
 					}
 					ComponentID = IsRequestingLeftToRightAmmo
 				}
@@ -483,7 +513,7 @@ Part : <../base_part_terran.rules>/Part
 						Category = chaingun_ammo_supplier //making sure they have the special category
 						Rot = 2 //is perfectly aligned
 						Left = 3
-						Bottom = 4
+						Bottom = 5
 					}
 					ComponentID = IsRequestingRightToLeftAmmo
 				}
@@ -494,8 +524,8 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = TransformLerp
 			ValueFrom = ShellChangingValueTween
-			StartLocation = [96/64, 117/64]
-			EndLocation = [96/64, 2/64]
+			StartLocation = [96/64, 181/64]
+			EndLocation = [96/64, 66/64]
 		}
 		AimingTurretSlider
 		{
@@ -540,6 +570,8 @@ Part : <../base_part_terran.rules>/Part
 			TargetingEmitter = BulletEmitter
 			InstantSearchesAfterTargetLost = 5
 			ToggleOnMode = HasTargetExceptShipRelative
+			SaveShipRelativeTargets = true
+			AimIncludesEmitterOffset = false
 			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
 			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
 			SuppressDirectControlWhenTargetingShipRelativePoints = true
@@ -680,7 +712,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceStorage = CombinedBulletSplitters // Needed to prevent turret from trying to fire when out of ammo.
 			ResourcesUsed = 1
 			Spread = [-1.5d, 1.5d]
-			Recoil = 20
+			Recoil = 10
 			Burst = 1
 			BeamMediaEffectsOffset = [2, 0]
 			BeamMediaEffectsLengthOffset = -2
@@ -727,13 +759,13 @@ Part : <../base_part_terran.rules>/Part
 		CrewLocation2
 		{
 			Type = CrewLocation
-			Location = [55/64, 258/64]
+			Location = [55/64, 322/64]
 			Rotation = -21d
 		}
 		CrewLocation3
 		{
 			Type = CrewLocation
-			Location = [137/64, 258/64]
+			Location = [137/64, 322/64]
 			Rotation = 21d
 		}
 		PartCrew
@@ -745,9 +777,9 @@ Part : <../base_part_terran.rules>/Part
 			HighPriorityPrerequisites = [CombinedAmmoStorage]
 			CrewDestinations //where the crew actually go
 			[
-				[1.5, 128/64]
-				[55/64, 258/64]
-				[137/64, 258/64]
+				[1.5, 192/64]
+				[55/64, 322/64]
+				[137/64, 322/64]
 			]
 			CrewLocations
 			[
@@ -777,8 +809,8 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = TransformLerp
 			ValueFrom = DefensiveShellColliderChangingValueTween
-			StartLocation = [96/64, 72/64]
-			EndLocation = [96/64, 180/64] //Fully Closed Position
+			StartLocation = [96/64, 136/64]
+			EndLocation = [96/64, 244/64] //Fully Closed Position
 		}
 
 		DefensiveShellCollider
@@ -1135,7 +1167,7 @@ Part : <../base_part_terran.rules>/Part
 		TurretAccessDoorGraphics
 		{
 			Type = Graphics
-			Location = [1.5, 3]
+			Location = [1.5, 4]
 			OperationalToggle = IsOperational
 			OperationalDoodad
 			{
@@ -1234,7 +1266,7 @@ Part : <../base_part_terran.rules>/Part
 		External_Walls_Graphics
 		{
 			Type = Graphics
-			Location = [1.5, 0.5]
+			Location = [1.5, 1.5]
 			Walls
 			{
 				Layer = "external_walls"
@@ -1262,7 +1294,7 @@ Part : <../base_part_terran.rules>/Part
 		Graphics
 		{
 			Type = Graphics
-			Location = [1.5, 3]
+			Location = [1.5, 4]
 			OperationalToggle = IsOperational
 
 			Floor
@@ -1426,10 +1458,55 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
+		BulletDoorGraphics
+		{
+			Type = Graphics
+			Location = [1.5, 4.75]
+			OperationalToggle = IsShellFullyClosed
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "bullet_door_on.png"
+						Size = [3, 1]
+					}
+					{
+						File = "bullet_door_on_33.png"
+						Size = [3, 1]
+					}
+					{
+						File = "bullet_door_on_66.png"
+						Size = [3, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "bullet_door_off.png"
+						Size = [3, 1]
+					}
+					{
+						File = "bullet_door_off_33.png"
+						Size = [3, 1]
+					}
+					{
+						File = "bullet_door_off_66.png"
+						Size = [3, 1]
+					}
+				]
+			}
+		}
+
 		DefensiveShellSprite
 		{
 			Type = OpenCloseSprite
-			Location = [1.5, 1]
+			Location = [1.5, 2]
 			OperationalToggle = ShellShouldOpen
 			Layer = "roof_doodads"
 			OpenDamageLevels
@@ -1659,7 +1736,7 @@ Part : <../base_part_terran.rules>/Part
 		InternalDefensiveShellSprite
 		{
 			Type = OpenCloseSprite
-			Location = [1.5, 1]
+			Location = [1.5, 2]
 			OperationalToggle = ShellShouldOpen
 			Layer = "structure"
 			OpenDamageLevels
@@ -1889,7 +1966,7 @@ Part : <../base_part_terran.rules>/Part
 		BeltAmmoSpritesLeft
 		{
 			Type = ResourceSprites
-			Location = [32/64, 99/64]
+			Location = [32/64, 163/64]
 			ResourceStorage = BulletSplitterLeft
 			Layer = "doodads_low"
 			AnimationSpeedFactor = RateOfFireTween
@@ -2174,7 +2251,7 @@ Part : <../base_part_terran.rules>/Part
 		BeltAmmoSpritesRight
 		{
 			Type = ResourceSprites
-			Location = [160/64, 99/64]
+			Location = [160/64, 163/64]
 			ResourceStorage = BulletSplitterRight
 			Layer = "doodads_low"
 			AnimationSpeedFactor = RateOfFireTween
@@ -2484,7 +2561,7 @@ Part : <../base_part_terran.rules>/Part
 		OperationEffects
 		{
 			Type = ToggleEffects
-			Location = [1.5, 3.5]
+			Location = [1.5, 4.5]
 			Toggle = IsOperational
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
@@ -2494,13 +2571,13 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
-			Location = [1.5, 3.5]
+			Location = [1.5, 4.5]
 		}
 		DestroyedHitEffects
 		{
 			Type = DeathEffects
 			IncludeWhenUnderConstruction = false
-			Location = [1.5, 3.5]
+			Location = [1.5, 4.5]
 			FactorHitEffectsWith = CombinedAmmoStorage
 			HitEffects
 			[
@@ -2556,7 +2633,7 @@ Part : <../base_part_terran.rules>/Part
 		Indicators
 		{
 			Type = IndicatorSprites
-			Location = [1.5, 2.5]
+			Location = [1.5, 3.5]
 			Layer = "indicators"
 			Indicators
 			[
@@ -2598,7 +2675,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = BlueprintSprite
 			File = "blueprints.png"
 			Size = [3, 6]
-			Offset = [0, -0.5]
+			Offset = [0, 0]
 		}
 	}
 
