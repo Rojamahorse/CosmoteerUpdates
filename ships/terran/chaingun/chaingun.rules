@@ -249,6 +249,7 @@ Part : <../base_part_terran.rules>/Part
 					DefaultPriority = &/PRIORITIES/Weapon_Supply
 					OperationalToggle = PowerToggle
 					ConsumptionToggleButtonOffset = [0, .4]
+					OverridePriorityKey = AmmoConsumerLeft
 				}
 			}
 		}
@@ -282,6 +283,7 @@ Part : <../base_part_terran.rules>/Part
 					OperationalToggle = IsShellFullyClosed // Will always be off!
 					ConsumptionToggleButtonOffset = [0, .4]
 					AllowNonOperationalMinPriorityDelivery = false
+					OverridePriorityKey = AmmoConsumerLeft
 				}
 			}
 		}
