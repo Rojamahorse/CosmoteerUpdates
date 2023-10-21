@@ -6,6 +6,7 @@ Part : <../base_part_terran.rules>/Part
 	OtherIDs = [ammo_storage, cosmoteer.ammo_storage]
 	EditorGroup = "Storage"
 	DescriptionKey = "Parts/Storage2x2Desc"
+	JobsNameKey = "Parts/StorageGeneric"
 	SelectionTypeID = "storage"
 	Resources
 	[

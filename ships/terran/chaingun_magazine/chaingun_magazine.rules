@@ -471,7 +471,7 @@ Part : <../base_part_terran.rules>/Part
 					Type = ResourceSprites
 					Location = [0.5, 0.5]
 					ResourceStorage = AmmoStorage
-					Layer = "doodads_high"
+					Layer = "doodads_low"
 					ResourceLevels
 					[
 						{
@@ -505,7 +505,7 @@ Part : <../base_part_terran.rules>/Part
 					Type = ResourceSprites
 					Location = [0.5, 0.5]
 					ResourceStorage = AmmoStorage
-					Layer = "doodads_high"
+					Layer = "doodads_low"
 					ResourceLevels
 					[
 						{
@@ -563,7 +563,7 @@ Part : <../base_part_terran.rules>/Part
 					Type = ResourceSprites
 					Location = [0.5, 0.5]
 					ResourceStorage = AmmoStorage
-					Layer = "doodads_high"
+					Layer = "doodads_low"
 					ResourceLevels
 					[
 						{

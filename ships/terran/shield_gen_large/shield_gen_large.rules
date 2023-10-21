@@ -20,7 +20,6 @@ Part : <../base_part_terran.rules>/Part
 	MaxHealth = 12000
 	TypeCategories = [defense, uses_power]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
-	PenetrationRectType = Normal
 	AllowedDoorLocations
 	[
 		[-1, 5]

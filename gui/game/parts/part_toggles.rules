@@ -403,7 +403,7 @@ PartToggles
 			{
 				ChoiceID = "launch_mines_on"
 				ButtonToolTipKey = "PartToggles/LaunchMines"
-				DefaultHotkey = [N]
+				DefaultHotkey = [Control, N]
 				ButtonSprite
 				{
 					Texture

@@ -2186,7 +2186,7 @@ ReputationLog
 Missions
 {
 	ResourceDelivery = "{resource_type} Delivery"
-	ResourceDeliveryDesc = "{to_ship} is requesting an emergency delivery of {target_count} {resource_icon} {resource_type_plural} within {time_limit_minutes} minutes. "\
+	ResourceDeliveryDesc = "{to_ship} is requesting an emergency supply of {target_count} {resource_icon} {resource_type_plural} within {time_limit_minutes} minutes. "\
 	                       "In addition to standard payment for each {resource_type} delivered, an extra bonus of {money} will be paid once the entire delivery has been completed."
 	Bounty = "Fugitive Bounty"
 	BountyDesc = "A fugitive <b>{target_ship}</b> class vessel is wanted for illegal activities within the {mission_location} system. Authorities from the {faction_name} have posted a bounty of {money} to be paid to any Cosmoteer that can eliminate it."
@@ -2377,6 +2377,7 @@ CreativeMode
 		Player1 = "PLAYER 1"
 		Player2 = "PLAYER 2"
 		ShipFmt = " {0} ({1} {2} crew)"
+		TotalFmt = "Total: {0} ({1} crew)"
 		AddShip = "Add Ship"
 		Go = "GO!"
 		Reset = "Restart Battle"
@@ -3573,6 +3574,8 @@ Parts
 {
 	// Terran
 
+	StorageGeneric = "Storage Bay"
+
 	Storage2x2 = "Storage Bay (4)"
 	Storage2x2Icon = "Storage (4)"
 	Storage2x2Desc = "Stores 4 stacks of resources of any types."
@@ -3755,7 +3758,7 @@ Parts
 
 	FireExtinguisher = "Fire Extinguisher"
 	FireExtinguisherIcon = &FireExtinguisher
-	FireExtinguisherDesc = "Stores a fire extinguisher that crew can use to put out fires."
+	FireExtinguisherDesc = "Stores a fire extinguisher that crew can use to put out fires. Fire extinguishers have a limited capacity but will respawn after 15 seconds."
 
 	ResourceCollector = "Resource Collector"
 	ResourceCollectorIcon = &ResourceCollector
@@ -4124,8 +4127,8 @@ Stats
 	SizeFmt = "<white>Size:</white> <good>{0}x{1}</good> <gray>meters</gray>"
 	WeightFmt = "<white>Mass:</white> <good>{0:0.0#}</good> <gray>tonnes</gray>"
 	HPFmt = "<white>Hit Points:</white> <good>{0:n0}</good>"
-	PenResistFmt = "<white>Penetration Resist:</white> <good>-{0}</good> <gray>meters</gray>"
-	AOEResistFmt = "<white>Area Damage Resist:</white> <good>{0}%</good>"
+	PenResistFmt = "<white>Penetration Resist:</white> <good>-{0:0.##}</good> <gray>meters</gray>"
+	AOEResistFmt = "<white>Area Damage Resist:</white> <good>{0:0.##}%</good>"
 	EMPResistFmt = "<white>E.M.P Resist:</white> <good>-{0:0.##}</good> <gray>power drain</gray>"
 	CrewCapacityFmt = "<white>Crew Beds:</white> <good>{0}</good>"
 	CrewRequiredFmt = "<white>Crew Required:</white> <good>{0}</good>"
@@ -4929,7 +4932,7 @@ Tutorials
 		Cause = "<red>Fires</red> can break out when hit by certain weapons and when volatile parts explode. Left unattended, "\
 		        "fires will quickly spread, causing damage and killing crew."
 		FireExtinguisher = "Add <good>fire extinguishers</good> to your ship to help fight fires. Your crew will pick up "\
-		                   "fire extinguishers and use them to put out fires."
+		                   "fire extinguishers and use them to put out fires. Each fire extinguisher has a limited capacity, so multiple extinguishers may be required to put out large fires."
 		Spread = "<good>TIP:</good> Fires can spread through open areas and through doors, but not through walls. "\
 		         "Adding a lot of doors to your ship will make it more vulnerable to fires."
 	}

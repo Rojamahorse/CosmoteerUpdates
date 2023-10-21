@@ -19,7 +19,6 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 5000
 	InitialPenetrationResistance = 3
-	PenetrationRectType = Normal
 	ProhibitAbove = 1
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	AllowedDoorLocations

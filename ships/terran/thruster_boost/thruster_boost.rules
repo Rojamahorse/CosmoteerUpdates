@@ -19,7 +19,6 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	SelectionTypeID = "thrusters"
 	MaxHealth = 6000
-	PenetrationRectType = Normal
 	ProhibitBelow = 18
 	ThrusterForce = 3200
 	ThrustIncreaseTime = { BaseValue=2; BuffType=Engine; BuffMode=Divide; }

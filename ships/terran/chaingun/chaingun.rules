@@ -21,7 +21,6 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 18000
 	InitialPenetrationResistance = 3
-	PenetrationRectType = Normal
 	ProhibitAbove = 1
 	AllowedDoorLocations
 	[
@@ -31,14 +30,46 @@ Part : <../base_part_terran.rules>/Part
 		[2, 6]
 		[3, 5]
 	]
-	BlockedTravelCells
+	BlockedTravelCellDirections
 	[
-		[0, 2]
-		[0, 3]
-		[0, 4]
-		[2, 2]
-		[2, 3]
-		[2, 4]
+		{
+			Key = [0, 2]
+			Value = [Right]
+		}
+		{
+			Key = [0, 3]
+			Value = [Right]
+		}
+		{
+			Key = [0, 4]
+			Value = [Right]
+		}
+
+		{
+			Key = [1, 2]
+			Value = [Left, Right]
+		}
+		{
+			Key = [1, 3]
+			Value = [Left, Right]
+		}
+		{
+			Key = [1, 4]
+			Value = [Left, Right]
+		}
+
+		{
+			Key = [2, 2]
+			Value = [Left]
+		}
+		{
+			Key = [2, 3]
+			Value = [Left]
+		}
+		{
+			Key = [2, 4]
+			Value = [Left]
+		}
 	]
 	ForceManhattanPathInPart = true
 	ExternalWallsByCell

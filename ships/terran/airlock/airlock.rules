@@ -13,7 +13,6 @@ Part : <../base_part_terran.rules>/Part
 	TypeCategories = [airlock]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Size = [1, 1]
-	SelectionTypeByRotation = true
 	MaxHealth = 1000
 	IsLowPriorityDeconstruction = true
 	AllowedDoorLocations
