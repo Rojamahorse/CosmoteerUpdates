@@ -73,6 +73,7 @@ Components
             Enemies = true
             Junk = true
             Friendlies = true
+            Neutrals = true
             OnlyBulletCategories = [missile, mine, bullet]
         }
 		HitBullet

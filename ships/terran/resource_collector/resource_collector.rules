@@ -467,7 +467,7 @@ Part : <../base_part_terran.rules>/Part
 
 			ToggleOnDoodad
 			{
-				Layer = "roof_turrets"
+				Layer = "roof_doodads"
 				DamageLevels
 				[
 					{
@@ -543,7 +543,7 @@ Part : <../base_part_terran.rules>/Part
 			}
 			ToggleOffDoodad
 			{
-				Layer = "roof_turrets"
+				Layer = "roof_doodads"
 				DamageLevels
 				[
 					{
@@ -568,7 +568,7 @@ Part : <../base_part_terran.rules>/Part
 			}
 			NonOperationalDoodad
 			{
-				Layer = "roof_turrets"
+				Layer = "roof_doodads"
 				DamageLevels
 				[
 					{

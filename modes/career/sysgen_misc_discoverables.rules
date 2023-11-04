@@ -126,6 +126,8 @@ SubSpawners
 		Tags = [storage_pod]
 		Count = 1
      	Allegiance = Junk
+     	RememberPhysicalState = true
+     	RememberResourcesAndCrew = true
 		ShipCriteria
 		{
 			Tags = [storage_pod]

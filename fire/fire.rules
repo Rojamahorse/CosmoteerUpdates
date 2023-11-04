@@ -7,7 +7,7 @@ DefaultFireExtinguishPriority = &/PRIORITIES/ExtinguishFire
 FireExtinguishResource = fire_extinguisher
 ImmuneWhenCarryingExtinguisher = true
 FireExtinguishTime = [1, 2]
-NearbyFireSearchIterations = 10
+NearbyFireSearchIterations = 100
 ParticleCellSize = [0.25, 0.25]
 
 FireSprite

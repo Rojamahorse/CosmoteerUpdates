@@ -332,7 +332,7 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = Turret
 			OperationalToggle = BeamEmitterLeft
 			Location = [59/64, -14/64]
-			Angle = -0.5d
+			Angle = -0.3333333333d
 			Interval = 4.0
 			ResetWhenOperational = true
 		}

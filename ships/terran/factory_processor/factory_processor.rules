@@ -90,6 +90,7 @@ Part : <../base_part_terran.rules>/Part
 			ToggleOnResources = &../GoldLoader/FromQuantity
 			ToggleOffResources = (&ToggleOnResources) - 1
 			RandomSpriteRotation = true
+			AllowExternalPickupAndDelivery = true
 		}
 
 		GoldConsumer

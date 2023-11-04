@@ -2380,9 +2380,9 @@ CreativeMode
 		TotalFmt = "Total: {0} ({1} crew)"
 		AddShip = "Add Ship"
 		Go = "GO!"
-		Reset = "Restart Battle"
+		Reset = "Restart\nBattle"
 		ResetSwap = "Restart\n+ Swap"
-		Clear = "Clear Players"
+		Clear = "Clear\nPlayers"
 		AI = "A.I."
 		AutoCamera = "Automate Camera"
 		AutoCameraLbl = "(<btn id='CreativeMode.AutoBattleCamera'/> to toggle automate camera)"
@@ -4349,6 +4349,7 @@ GalaxyMap
 	TotalFuelCostFmt = "TOTAL: {0}"
 	JumpDistanceFmt = "{0:0.0} L.Y."
 	Loading = "LOADING..."
+	LoadingError = "There was an error loading the star system. It will be regenerated from scratch."
 }
 
 AI
@@ -5067,6 +5068,11 @@ Tips
 	{
 		Title = "Settings"
 		Tip = "Cosmoteer is highly customizable and has <i>a lot</i> of settings. If you ever find yourself wishing you could change something about Cosmoteer, then take a look at the <good>Settings</good> -- there's a good chance there's already a setting for what you want!"
+	}
+	ChangingDifficulty
+	{
+		Title = "Changing Difficulty"
+		Tip = "You can change the difficulty level in Career mode at any time while playing, not just when starting a new game. To change the difficulty, go to <good>Settings -> Current Game</good>."
 	}
 	AdvancedCareerMode
 	{

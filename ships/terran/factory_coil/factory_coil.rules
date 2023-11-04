@@ -66,6 +66,7 @@ Part : <../base_part_terran.rules>/Part
 			Layer = "doodads_low"
 			SpriteInset = [15/64, 6/64, 2/64, 9/64]
 			RandomSpriteRotation = true
+			AllowExternalPickupAndDelivery = true
 		}
 		CopperConsumer
 		{
