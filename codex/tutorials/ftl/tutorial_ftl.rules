@@ -1,7 +1,7 @@
 ID = ftl
 TitleKey = "Tutorials/Ftl/Title"
 TabNameKey = "Codex/Tutorials"
-ShowCondition = "? game.Fame >= 52 or game.HasTechUnlocked('cosmoteer.hyperdrive_small')"
+ShowCondition = "? game.Fame >= 52 or (game.HasTechUnlocked('cosmoteer.hyperdrive_small') and game.Fame > 0)"
 TempShowCondition = "? game.HasPartCategoryInHand('ftl')"
 Entries
 [

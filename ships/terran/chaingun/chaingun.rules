@@ -674,7 +674,6 @@ Part : <../base_part_terran.rules>/Part
 			FireInterval = Infinity //only used in the fixed weapon
 			Emitter = BulletEmitter
 			DefaultDirectControlBinding = 0
-			AllowEnemyStructureAutoTargeting = true
 			ToggleOnMode = WantsToFire
 			AIFirepowerRating = &../Turret/AIFirepowerRating
 			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true

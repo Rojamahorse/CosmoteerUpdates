@@ -9,6 +9,7 @@ Ships
 	:~{ File="Med Imperium Trade Station.ship.png";   Tier=10; Tags : ~/Tags [trade_station];    StasisIcon="Med Imperium Trade Station.png" }
 	:~{ File="Med Imperium Trade Station II.ship.png";   Tier=10; Tags : ~/Tags [trade_station]; StasisIcon="Med Imperium Trade Station II.png" }
 	:~{ File="Large Imperium Trade Station.ship.png"; Tier=16; Tags : ~/Tags [trade_station];    StasisIcon="Large Imperium Trade Station.png" }
+	:~{ File="Large Imperium Trade Station II.ship.png"; Tier=16; Tags : ~/Tags [trade_station]; StasisIcon="Large Imperium Trade Station II.png" }
 
 	// Military stations
 	:~{ File="Tiny Imperium Arms Depot.ship.png";     Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station]; StasisIcon="Tiny Imperium Arms Depot.png";  FlightDirection=UpLeft }

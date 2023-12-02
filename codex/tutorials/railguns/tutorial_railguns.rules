@@ -1,7 +1,7 @@
 ID = railguns
 TitleKey = "Tutorials/Railguns/Title"
 TabNameKey = "Codex/Tutorials"
-TempShowCondition = "? game.HasPartCategoryInHand('railgun') or game.HasTechUnlocked('cosmoteer.railgun')"
+TempShowCondition = "? game.HasPartCategoryInHand('railgun') or (game.HasTechUnlocked('cosmoteer.railgun') and game.Fame > 0)"
 Entries
 [
 	{

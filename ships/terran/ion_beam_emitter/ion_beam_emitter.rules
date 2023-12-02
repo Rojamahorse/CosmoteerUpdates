@@ -135,7 +135,6 @@ Part : <../base_part_terran.rules>/Part
 			AIFirepowerRating = 3000
 			Emitter = BeamEmitter
 			ChainFireToggleComponent = IonBeamChainToggle
-			AllowEnemyStructureAutoTargeting = true
 			ProhibitTargetPartsFilter = &FriendlyPrismFilter // Don't force fire on friendly ion prisms!
 			SuppressWholeShipTargetOverlaysForPartsFilter = &FriendlyPrismFilter
 			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &FriendlyPrismFilter

@@ -101,6 +101,7 @@ TitleScreen
 	Settings = "SETTINGS"
 	More = "MORE"
 	Mods = "MODS"
+	ModsFmt = "MODS <bad>({0})</bad>"
 	ShipLibrary = "SHIP LIBRARY"
 	Codex = "CODEX"
 	Credits = "CREDITS"
@@ -294,6 +295,7 @@ GameSetupScreen
 	MatchResults = "Match Results"
 	CancelConfirm = "Are you sure you want to cancel this game? You and all players in it will return to the lobby."
 	LeaveConfirm = "Are you sure you want to leave this game?"
+	GameDoesntExist = "The selected saved game file does not exist."
 
 	HostDisconnectReason
 	{
@@ -509,6 +511,7 @@ LoadSaveGame
 	QuickSaving = "Quick Saving..."
 
 	Manual = "Named Saves"
+	ManualSave = "Named Save"
 	Auto = "Auto Saves"
 	AutoSave = "Auto Save"
 	Quick = "Quick Saves"
@@ -2737,9 +2740,15 @@ GameMenu
 	QuitTip = "Quit the current in-progress game."
 	Resume = "Resume"
 	ResumeTip = "Close this menu."
-	ConfirmNewGame = "Start a new game? Any unsaved progress in the current game will be lost."
-	ConfirmLoadGame = "Load a saved game? Any unsaved progress in the current game will be lost."
-	ConfirmQuit = "Quit the game? Any unsaved progress will be lost."
+	ConfirmNewGame = "Start a new game?"
+	ConfirmLoadGame = "Load a saved game?"
+	ConfirmQuit = "Quit the game?"
+	ConfirmEndFmt = " Any unsaved progress in the current game will be lost.\n\n"\
+	                "<b>Last Save: {0}</b>\n\n"\
+	                "<s14>Auto Save and Quick Save slots are shared between all game modes, are not synced to Steam Cloud, and will eventually be overwritten. Creating a manual \"Named Save\" is strongly recommended.\n</s14>"
+	LastSaveMinutesFmt = "<yellow>{0} Minutes Ago</yellow> ({1})"
+	LastSaveSecondsFmt = "<good>{0} Seconds Ago</good> ({1})"
+	LastSaveNever = "<bad>NEVER</bad>"
 	ConfirmQuitHost = "Cancel this multiplayer game? Because you are the host, the game will be canceled for all players."
 	ConfirmQuitClient = "Leave this multiplayer game? The other players may continue playing."
 	QuitToMenu = "Quit to Menu"

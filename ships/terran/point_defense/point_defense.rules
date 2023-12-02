@@ -306,6 +306,14 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
+		TurretCollider
+		{
+			Type = CircleCollider
+			Location = &../Turret/Location
+			Radius = 0.35
+			Density = 0.5
+		}
+
 		ReloadProgressBar
 		{
 			Type = ProgressBar

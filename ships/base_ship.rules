@@ -50,6 +50,7 @@ SupplierSearchInterval = 1
 SelfDestructForce = 10
 BaseSightRadius = 25
 BaseRadarRadius = &BaseSightRadius
+MinCommsRadius = &<terran/control_room_small/control_room_small.rules>/Part/Components/Sensor/SightRadius
 DefaultTargetingRangeFactor = 4.0
 
 MapJumpFuelCostPerMass = 0
