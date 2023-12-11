@@ -512,17 +512,18 @@ CreativeMode
 		AddShip = "Adicionar nave"
 		AutoCamera = "Câmera automatizada"
 		AutoCameraLbl = "(<btn id='CreativeMode.AutoBattleCamera'/> para ligar/desligar a câmera automatizada)"
-		Clear = "Eliminar jogadores"
+		Clear = "Eliminar\njogadores"
 		Go = VAMOS!
 		Player1 = "JOGADOR 1"
 		Player2 = "JOGADOR 2"
 		PlayerDistance = "Distância entre jogadores: "
-		Reset = "Reiniciar batalha"
+		Reset = "Reiniciar\nbatalha"
 		ResetSwap = "Reiniciar\n+ trocar"
 		ShipDistance = "Distância entre naves da mesma frota: "
 		ShipFmt = " {0} ({1}, {2} tripulantes)"
 		SpawnBlocked = "Há pelo menos uma nave ou destroço evitando o surgimento da nave. Você quer removê-los?"
 		Title = "Ajudante de batalha"
+		TotalFmt = "Total: {0} ({1} tripulantes)"
 	}
 	BenchmarkHelper
 	{
@@ -1140,6 +1141,7 @@ GalaxyMap
 	JumpDistanceFmt = "{0:0.0} ANOS-LUZ"
 	JumpFuelFmt = ""
 	Loading = CARREGANDO...
+	LoadingError = "Ocorreu um erro ao carregar o sistema estelar. Ele será refeito do zero."
 	PlotCourse = "Planejar hipersalto"
 	PlotCourseTip = "Planeja uma rota de hipersalto para outro sistema estelar.\n\nAtalho: <btn id='Game.MapFtlJump'/>"
 	TotalFuelCostFmt = ""
@@ -1163,13 +1165,17 @@ GameMenu
 	CantSaveGameTip = "O jogo não pode ser salvo no momento."
 	Codex = "Tutoriais e Códice"
 	CodexTip = "Ver os tutoriais e o códice da tradição."
-	ConfirmLoadGame = "Carregar um jogo salvo? Todo o progresso não salvo no jogo atual será perdido."
-	ConfirmNewGame = "Começar um novo jogo? Todo o progresso não salvo no jogo atual será perdido."
-	ConfirmQuit = "Sair do jogo? Todo o progresso não salvo será perdido."
+	ConfirmEndFmt = " Todo progresso não salvo no jogo atual será perdido.\n\n<b>Último salvamento: {0}</b>\n\n<s14>Os espaços de salvamento automático e de salvamento rápido são compartilhados entre todos os modos de jogo. Eles não são sincronizados com a Steam Cloud e, cedo ou tarde, serão sobrescritos. Recomenda-se criar um “Jogo salvo com nome”.\n</s14>"
+	ConfirmLoadGame = "Carregar um jogo salvo?"
+	ConfirmNewGame = "Começar um novo jogo?"
+	ConfirmQuit = "Sair do jogo?"
 	ConfirmQuitClient = "Sair deste jogo do modo multijogador? Os outros jogadores podem continuar jogando."
 	ConfirmQuitHost = "Cancelar este jogo do modo multijogador? Como você é o anfitrião, o jogo será cancelado para todos os jogadores."
 	Feedback = "Enviar comentário"
 	FeedbackTip = "Enviar comentário por escrito ao desenvolvedor do jogo."
+	LastSaveMinutesFmt = "<yellow>{0} minutos atrás</yellow> ({1})"
+	LastSaveNever = <bad>NUNCA</bad>
+	LastSaveSecondsFmt = "<good>{0} segundos atrás</good> ({1})"
 	LoadGame = "Carregar jogo"
 	LoadgameTip = "Carregar um jogo em andamento a partir de um arquivo."
 	NewGame = "Novo jogo"
@@ -1226,6 +1232,7 @@ GameSetupScreen
 	FundsRemainingTip = "A quantidade de créditos restantes (<img name='money' colored='true'/>) que este jogador tem disponível para gastar."
 	GameChat = "Chat do jogo"
 	GameClosed = "O jogo está <bad>FECHADO</bad>\n<s12>Nenhum outro jogador pode entrar.</s12>"
+	GameDoesntExist = "O arquivo do jogo salvo selecionado não existe."
 	GameMode = "Modo de jogo"
 	GameModeTip = "O tipo de jogo multijogador que será jogado."
 	GameOpen = "O jogo está <good>ABERTO</good>\n<s12>Outros jogadores podem entrar se o jogo não estiver cheio.</s12>"
@@ -1717,6 +1724,7 @@ Inputs
 	PartTargeters
 	{
 		
+		chaingun_aim = "Mirar Canhão de Repetição"
 		headlight_aim = "Mirar farol"
 		prism_aim = "Mirar Prisma de Íons"
 		tractor_beam = "Mirar Raio Trator"
@@ -1869,6 +1877,7 @@ LoadSaveGame
 	Delete = Apagar
 	Loading = "Carregando jogo..."
 	Manual = "Jogos salvos com nome"
+	ManualSave = "Jogo salvo com nome"
 	OkayLoad = "Carregar jogo"
 	OkaySave = "Salvar jogo"
 	OpenFolder = "Abrir pasta"
@@ -2169,7 +2178,7 @@ Missions
 	PirateHunt = "Caçador de piratas"
 	PirateHuntDesc = "Piratas itinerantes têm atacado naves comerciais civis no sistema {mission_location}, atrapalhando os lucros das empresas locais. Os donos das empresas anunciaram um prêmio de {money}, que será pago a qualquer Cosmoteer que possa destruir {target_count} deles."
 	ResourceDelivery = "Entrega de {resource_type}"
-	ResourceDeliveryDesc = "{to_ship} está solicitando uma entrega de emergência de {target_count} {resource_icon} {resource_type_plural} dentro de {time_limit_minutes} minutos. Além do pagamento padrão para cada {resource_type} entregue, um bônus extra de {money} será pago assim que toda a entrega for concluída."
+	ResourceDeliveryDesc = "{to_ship} está solicitando um fornecimento de emergência de {target_count} {resource_icon} {resource_type_plural} dentro de {time_limit_minutes} minutos. Além do pagamento padrão para cada {resource_type} entregue, um bônus extra de {money} será pago assim que toda a entrega for concluída."
 	StationContact = "Contatar {contact_ship}"
 	StationContactDesc = "{contact_ship} está pedindo auxílio de qualquer Cosmoteer disponível para ajudar em diversas missões. Como incentivo adicional, o Departamento do Quadro de Missões da estação está oferecendo um bônus de {money} ao primeiro Cosmoteer que visitar a estação."
 	StationRescue = "Resgatar {contact_ship}"
@@ -2385,6 +2394,7 @@ PartColors
 PartTargeters
 {
 	
+	ChaingunAim = "<b>Mirar Canhão de Repetição</b>\n\nMira os canhões de repetição selecionados para o local desejado.\n\nAtalho: <btn id='PartTargeters.chaingun_aim'/>"
 	HeadlightAim = "<b>Mirar farol</b>\n\nMira os faróis selecionados para o local desejado.\n\nAtalho: <btn id='PartTargeters.headlight_aim'/>"
 	HeadlightAimCancel = "<b>Redefinir mira de farol</b>\n\nAtalho: <btn id='PartTargetCancelers.headlight_aim'/>"
 	PrismAim = "<b>Mirar Prisma de Íons</b>\n\nMira os Prismas de Feixe de Íons selecionados para o local desejado ou para outro prisma.\n\nAtalho: <btn id='PartTargeters.prism_aim'/>"
@@ -2644,7 +2654,7 @@ Parts
 	FactoryUraniumDesc = "Enriquece urânio, que é necessário para construir reatores e outras peças avançadas de naves. Consome urânio não enriquecido. Ganha +25% de velocidade de produção para cada fábrica adjacente de qualquer tipo."
 	FactoryUraniumIcon = "Enr. de Urânio"
 	FireExtinguisher = "Extintor de incêndio"
-	FireExtinguisherDesc = "Armazena um extintor de incêndio que a tripulação pode usar para apagar incêndios."
+	FireExtinguisherDesc = "Armazena um extintor de incêndio que a tripulação pode usar para apagar incêndios. Os extintores de incêndio têm capacidade limitada, mas reaparecem após 15 segundos."
 	FireExtinguisherIcon = "Extintor de incêndio"
 	FlakCannonLarge = "Bateria flak"
 	FlakCannonLargeDesc = "Um poderoso sistema defensivo que pode destruir mísseis, lasers e projéteis inimigos. Também pode causar dano moderado a naves inimigas."
@@ -2750,6 +2760,7 @@ Parts
 	Storage4x4 = "Baia de armazenamento (16)"
 	Storage4x4Desc = "Armazena 16 pilhas de recursos de qualquer tipo."
 	Storage4x4Icon = "Armazém (16)"
+	StorageGeneric = "Baia de armazenamento"
 	Structure = Estrutura
 	Structure1x2Wedge = "Estrutura 1x2 em Cunha"
 	Structure1x2WedgeDesc = "O arcabouço estrutural subjacente que mantém a unidade da nave. A estrutura é incluída automaticamente em todas as salas e corredores."
@@ -3800,7 +3811,6 @@ StatCategories
 	BulletLarge = "Projétil de canhão grande"
 	BulletMed = "Projétil de canhão padrão"
 	BulletRailgun = "Projétil de canhão eletromagnético"
-	ChaingunShelled = "Canhão de repetição protegido"
 	CollectorBeam = "Raio coletor (x4)"
 	DisruptorBolt = "Raio disruptor"
 	Flak = ""
@@ -3820,7 +3830,7 @@ StatCategories
 Stats
 {
 	
-	AOEResistFmt = "<white>Resistência a dano de área:</white> <good>{0}%</good>"
+	AOEResistFmt = "<white>Resistência a dano de área:</white> <good>{0:0.##}%</good>"
 	AbilityCooldownFmt = "<white>Reativação da hab.:</white> <good>{0:0.#}</good><gray> segundos</gray>"
 	AccelerationDelayFmt = "<white>Atraso de aceleração:</white> <good>{0:0.0#}</good> <gray>segundos</gray>"
 	AccelerationFmt = "<white>Aceleração:</white> <good>{0:0}</good> <gray>m/s²</gray>"
@@ -3899,7 +3909,7 @@ Stats
 	MissileSulfurUsageFmt = "<white>Uso de enxofre:</white> <good>{0:0.##}</good><gray>/míssil (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	MissileUraniumUsageFmt = "<white>Uso de urânio:</white> <good>{0:0.##}</good><gray>/míssil (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	NukeMissileCapacityFmt = "<white>Capacidade de armas nucleares:</white> <good>{0}</good>"
-	PenResistFmt = "<white>Resistência a penetração:</white> <good>-{0}</good> <gray>metros</gray>"
+	PenResistFmt = "<white>Resistência a penetração:</white> <good>-{0:0.##}</good> <gray>metros</gray>"
 	PenetrationFmt = "<white>Penetração:</white> <good>{0:0.##}</good> <gray>metros</gray>"
 	PowerCapacityFmt = "<white>Capacidade de energia:</white> <good>{0:0.##}</good>"
 	PowerDrainAreaFmt = "<white>Área de perda de energia:</white> <good>{0:0.#}</good><gray> metros de raio</gray>"
@@ -3922,7 +3932,8 @@ Stats
 	Resources = "<white>Recursos:</white> "
 	SalvoFmt = "<white>Saraivada:</white> <good>{0:0.##}</good> <gray>disparos/</gray><good>{1:0.##}</good> <gray>s</gray>"
 	SeparationRangeFmt = "<white>Separação:</white> <good>{0:0}</good> <gray>metros</gray>"
-	ShellDamageResistFmt = "<white>Resistência a dano quando fechado:</white> <good>{0}%</good>"
+	ShellDamageResistFmt = "<white>Resistência a dano da proteção:</white> <good>{0}%</good>"
+	ShellPenResistFmt = "<white>Resistência à penetração da proteção:</white> <good>-{0}</good> <gray>metros</gray>"
 	ShieldArcFmt = "<white>Arco do escudo:</white> <good>{0:0}°</good>"
 	ShieldDamageFmt = "<white>Dano x escudos:</white> <good>{0:n0}</good><gray>/disparo (</gray><good>{1:n0}</good><gray>/s)</gray>"
 	ShieldDistFmt = "<white>Distância do escudo:</white> <good>{0}</good><gray> metros</gray>"
@@ -4015,6 +4026,12 @@ Tips
 		
 		Tip = "Você pode usar o \"Modo Planta\" para fazer alterações temporárias, ilegais ou fora do orçamento na sua nave antes de realmente executar tais mudanças. Clique no botão <white>Modo Planta</white> no canto inferior esquerdo no Editor de Naves para habilitar o modo Planta."
 		Title = "Modo Planta"
+	}
+	ChangingDifficulty
+	{
+		
+		Tip = "Você pode alterar o nível de dificuldade no modo Carreira a qualquer momento, não apenas no começo de um novo jogo. Para alterar a dificuldade, vá para <good>Configurações -> Jogo Atual</good>."
+		Title = "Alterando a dificuldade"
 	}
 	Chatting
 	{
@@ -4508,6 +4525,7 @@ TitleScreen
 	Feedback = "ENVIAR COMENTÁRIO"
 	LoadGame = "CARREGAR JOGO"
 	Mods = ""
+	ModsFmt = ""
 	More = MAIS
 	Multiplayer = MULTIJOGADOR
 	NewGame = "NOVO JOGO"
@@ -4604,6 +4622,7 @@ Tutorials
 	Chainguns
 	{
 		
+		ForceFire = "Canhões de repetição normalmente <b>não</b> começam a disparar até que o canhão e todos os seus carregadores estejam cheios de munição. Para forçar um canhão a disparar antes de ficar cheio, clique no botão <white>Fogo Forçado</white>."
 		Info = "Canhões de repetição são armas rotativas cuja <good>taxa de disparo aumenta conforme atira</good>. Quanto mais tempo atirando, mais rápido o canhão atira (até um limite)."
 		Magazines = "<good>Carregadores de munição</good> podem ser anexados para expandir o armazenamento de munição, que aumenta a duração dos disparos à velocidade máxima. Os carregadores devem ser anexados na parte traseira esquerda ou direita do canhão (ver imagem)."
 		Shell = "Quando não estão atirando, os canhões de repetição <good>ativam uma proteção</good> que reduz bastante o dano recebido."
@@ -4730,7 +4749,7 @@ Tutorials
 	{
 		
 		Cause = "<red>Incêndios</red> podem irromper quando sua nave é atingida por certas armas ou quando peças voláteis explodem. Se não forem apagados, os incêndios se espalharão rapidamente, causando dano e matando tripulantes."
-		FireExtinguisher = "Adicione <good>extintores de incêndio</good> à sua nave para que a tripulação possa usá-los para combater incêndios."
+		FireExtinguisher = "Adicione <good>extintores de incêndio</good> à sua nave para que a tripulação possa usá-los para combater incêndios. Cada extintor de incêndio tem uma capacidade limitada, então diversos extintores podem ser necessários para apagar grandes incêndios."
 		Spread = "<good>DICA:</good> os incêndios podem se espalhar em áreas abertas e através de portas, mas não através de paredes. Adicionar muitas portas à sua nave a tornará mais vulnerável a incêndios."
 		Title = Incêndios
 	}

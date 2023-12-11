@@ -512,17 +512,18 @@ CreativeMode
 		AddShip = "Ajouter un vaisseau"
 		AutoCamera = "Caméra automatique"
 		AutoCameraLbl = "(<btn id='CreativeMode.AutoBattleCamera'/> pour activer/désactiver la caméra automatique)"
-		Clear = "Retirer les joueurs"
+		Clear = "Retirer\nles joueurs"
 		Go = "C'EST PARTI !"
 		Player1 = "JOUEUR 1"
 		Player2 = "JOUEUR 2"
 		PlayerDistance = "Distance entre les joueurs : "
-		Reset = "Recommencer le combat"
+		Reset = "Recommencer\nle combat"
 		ResetSwap = "Recommencer\n+ échanger"
 		ShipDistance = "Distance entre les vaisseaux de la même flotte : "
 		ShipFmt = " {0} ({1} {2} membres d'équipage)"
 		SpawnBlocked = "Au moins un vaisseau ou débris empêche le vaisseau d'apparaître. Souhaitez-vous éliminer cet obstacle ?"
 		Title = "Soutien de combat"
+		TotalFmt = "Total : {0} ({1} membres d'équipage)"
 	}
 	BenchmarkHelper
 	{
@@ -1140,6 +1141,7 @@ GalaxyMap
 	JumpDistanceFmt = "{0:0.0} A.L."
 	JumpFuelFmt = ""
 	Loading = CHARGEMENT...
+	LoadingError = "Une erreur s'est produite lors du chargement du système stellaire. Il va être entièrement généré à nouveau."
 	PlotCourse = "Tracer un itinéraire de saut en hyperespace"
 	PlotCourseTip = "Tracer un itinéraire de saut en hyperespace vers un autre système stellaire.\n\nRaccourci : <btn id='Game.MapFtlJump'/>"
 	TotalFuelCostFmt = "TOTAL : {0}"
@@ -1163,13 +1165,17 @@ GameMenu
 	CantSaveGameTip = "La partie ne peut pas être sauvegardée pour l'instant."
 	Codex = "Tutoriels et codex"
 	CodexTip = "Afficher les tutoriels et le codex."
-	ConfirmLoadGame = "Charger une partie sauvegardée ? Toute progression non sauvegardée de la partie en cours sera perdue."
-	ConfirmNewGame = "Commencer une nouvelle partie ? Toute progression non sauvegardée sera perdue."
-	ConfirmQuit = "Quitter la partie ? Toute progression non sauvegardée sera perdue."
+	ConfirmEndFmt = " Toute progression non sauvegardée de la partie en cours sera perdue.\n\n<b>Dernière sauvegarde : {0}</b>\n\n<s14>Les sauvegardes automatiques et les sauvegardes rapides utilisent les mêmes emplacements de sauvegarde dans tous les modes de jeu. Elles ne sont pas synchronisées sur Cloud Steam et sont vouées à être écrasées. Nous vous recommandons fortement de créer une \"sauvegarde nommée\" manuellement.\n</s14>"
+	ConfirmLoadGame = "Charger une partie sauvegardée ?"
+	ConfirmNewGame = "Commencer une nouvelle partie ?"
+	ConfirmQuit = "Quitter le jeu ?"
 	ConfirmQuitClient = "Quitter cette partie multijoueur ? Les autres joueurs pourront continuer à jouer sans vous."
 	ConfirmQuitHost = "Annuler cette partie multijoueur ? Vous êtes l'hôte, la partie sera donc annulée pour tous les joueurs."
 	Feedback = "Envoyer un commentaire"
 	FeedbackTip = "Contacter l'équipe de développement du jeu pour donner un avis ou signaler un problème."
+	LastSaveMinutesFmt = "<yellow>Il y a {0} minutes</yellow> ({1})"
+	LastSaveNever = <bad>JAMAIS</bad>
+	LastSaveSecondsFmt = "<good>Il y a {0} secondes</good> ({1})"
 	LoadGame = "Charger une partie"
 	LoadgameTip = "Charger le fichier d'une partie en cours."
 	NewGame = "Nouvelle partie"
@@ -1226,6 +1232,7 @@ GameSetupScreen
 	FundsRemainingTip = "Le nombre de crédits restants (<img name='money' colored='true'/>) correspond à ce que ce joueur peut dépenser."
 	GameChat = "Chat de la partie"
 	GameClosed = "La partie est <bad>FERMÉE</bad>.\n<s12>Aucun autre joueur ne peut la rejoindre.</s12>"
+	GameDoesntExist = "Le fichier de la sauvegarde sélectionnée n'existe pas."
 	GameMode = "Mode de jeu"
 	GameModeTip = "Le type de partie multijoueur."
 	GameOpen = "La partie est <good>OUVERTE</good>.\n<s12>D'autres joueurs peuvent la rejoindre tant qu'elle n'est pas pleine.</s12>"
@@ -1717,6 +1724,7 @@ Inputs
 	PartTargeters
 	{
 		
+		chaingun_aim = "Orienter la mitrailleuse"
 		headlight_aim = "Orienter le phare"
 		prism_aim = "Orienter le prisme ionique"
 		tractor_beam = "Orienter le rayon tracteur"
@@ -1869,6 +1877,7 @@ LoadSaveGame
 	Delete = Supprimer
 	Loading = "Chargement de la partie..."
 	Manual = "Sauvegardes nommées"
+	ManualSave = "Sauvegarde nommée"
 	OkayLoad = "Charger une partie"
 	OkaySave = "Sauvegarder la partie"
 	OpenFolder = "Ouvrir le répertoire"
@@ -2169,7 +2178,7 @@ Missions
 	PirateHunt = "Traque de pirates"
 	PirateHuntDesc = "Des pirates en maraude attaquent des vaisseaux commerciaux civils dans le système {mission_location}, ce qui perturbe les revenus des entreprises locales. Les entrepreneurs offrent une prime de {money} à tout Cosmoteer qui en détruira {target_count}."
 	ResourceDelivery = "Livraison : {resource_type}"
-	ResourceDeliveryDesc = "{to_ship} a un besoin urgent de {target_count} {resource_icon} {resource_type_plural} sous {time_limit_minutes} minutes. Outre le paiement standard pour chaque unité en {resource_type} livrée, une prime de {money} sera payée une fois que toute la livraison aura été effectuée."
+	ResourceDeliveryDesc = "{to_ship} a un besoin urgent de {target_count} {resource_icon} {resource_type_plural} sous {time_limit_minutes} minutes. Outre le paiement standard pour chaque unité livrée ({resource_type}), une prime de {money} sera payée une fois toute la livraison effectuée."
 	StationContact = "Contacter {contact_ship}"
 	StationContactDesc = "{contact_ship} demande à tout Cosmoteer disponible de lui porter assistance pour différentes missions. Pour encourager les éventuels candidats, le Département du Tableau de missions de la station offre une prime de {money} au premier Cosmoteer qui s'y rendra."
 	StationRescue = "Sauver {contact_ship}"
@@ -2385,6 +2394,7 @@ PartColors
 PartTargeters
 {
 	
+	ChaingunAim = "<b>Orienter la mitrailleuse</b>\n\nOriente toutes les mitrailleuses sélectionnées vers l'endroit voulu.\n\nRaccourci : <btn id='PartTargeters.chaingun_aim'/>"
 	HeadlightAim = "<b>Orienter le phare</b>\n\nOriente le ou les phare(s) sélectionné(s) vers l'endroit voulu.\n\nRaccourci : <btn id='PartTargeters.headlight_aim'/>"
 	HeadlightAimCancel = "<b>Réinitialiser l'orientation du phare</b>\n\nRaccourci : <btn id='PartTargetCancelers.headlight_aim'/>"
 	PrismAim = "<b>Orienter le prisme ionique</b>\n\nOriente le ou les prismes à faisceau ionique vers l'endroit de votre choix, ou les combine pour tirer au travers d'un autre prisme à faisceau ionique.\n\nRaccourci : <btn id='PartTargeters.prism_aim'/>"
@@ -2644,7 +2654,7 @@ Parts
 	FactoryUraniumDesc = "Enrichit l'uranium pour créer la ressource nécessaire à la construction de réacteurs et d'autres composants avancés de vaisseau. Consomme de l'uranium non enrichi. Toute usine adjacente (quel que soit son type) augmente de 25 % la vitesse de production."
 	FactoryUraniumIcon = "Ura. enrichi"
 	FireExtinguisher = Extincteur
-	FireExtinguisherDesc = "Contient un extincteur dont l'équipage peut se servir pour éteindre des incendies."
+	FireExtinguisherDesc = "Contient un extincteur dont l'équipage peut se servir pour éteindre des incendies. Les extincteurs ont une capacité limitée, mais réapparaissent au bout de 15 secondes."
 	FireExtinguisherIcon = Extincteur
 	FlakCannonLarge = "Batterie de défense"
 	FlakCannonLargeDesc = "Un puissant système de défense capable de détruire les missiles, lasers et projectiles ennemis. Peut aussi infliger des dégâts modérés aux vaisseaux ennemis."
@@ -2750,6 +2760,7 @@ Parts
 	Storage4x4 = "Soute (16)"
 	Storage4x4Desc = "Permet de stocker 16 unités de n'importe quelle ressource."
 	Storage4x4Icon = "Soute (16)"
+	StorageGeneric = Soute
 	Structure = ""
 	Structure1x2Wedge = "Structure en coin 1x2"
 	Structure1x2WedgeDesc = "L'ossature structurelle, véritable charpente du vaisseau. La structure est automatiquement incluse dans toutes les salles et les couloirs."
@@ -3800,7 +3811,6 @@ StatCategories
 	BulletLarge = "Munition du grand canon"
 	BulletMed = "Munition du canon standard"
 	BulletRailgun = "Munition du canon électromagnétique"
-	ChaingunShelled = "Mitrailleuse sous coque"
 	CollectorBeam = "Rayon récupérateur (x4)"
 	DisruptorBolt = "Rayon disrupteur"
 	Flak = "Munition de la batterie de défense"
@@ -3820,7 +3830,7 @@ StatCategories
 Stats
 {
 	
-	AOEResistFmt = "<white>Résistance aux dégâts de zone :</white> <good>{0} %</good>"
+	AOEResistFmt = "<white>Résistance aux dégâts de zone :</white> <good>{0:0.##} %</good>"
 	AbilityCooldownFmt = "<white>Temps de rechargement :</white> <good>{0:0.#}</good><gray> s</gray>"
 	AccelerationDelayFmt = "<white>Délai d'accélération :</white> <good>{0:0.0#}</good> <gray>s</gray>"
 	AccelerationFmt = "<white>Accélération :</white> <good>{0:0}</good> <gray>mètres/s²</gray>"
@@ -3899,7 +3909,7 @@ Stats
 	MissileSulfurUsageFmt = "<white>Consommation de soufre :</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	MissileUraniumUsageFmt = "<white>Consommation d'uranium :</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	NukeMissileCapacityFmt = "<white>Capacité en ogives nucléaires :</white> <good>{0}</good>"
-	PenResistFmt = "<white>Résistance à la pénétration :</white> <good>-{0}</good> <gray>mètres</gray>"
+	PenResistFmt = "<white>Résistance à la pénétration :</white> <good>-{0:0.##}</good> <gray>mètres</gray>"
 	PenetrationFmt = "<white>Pénétration :</white> <good>{0:0.##}</good> <gray>mètres</gray>"
 	PowerCapacityFmt = "<white>Capacité énergétique :</white> <good>{0:0.##}</good>"
 	PowerDrainAreaFmt = "<white>Zone de drain d'énergie :</white> <good>rayon de {0:0.#}</good><gray> mètres</gray>"
@@ -3922,7 +3932,8 @@ Stats
 	Resources = "<white>Ressources :</white> "
 	SalvoFmt = "<white>Salve :</white> <good>{0:0.##}</good> <gray>tirs/</gray><good>{1:0.##}</good> <gray>s</gray>"
 	SeparationRangeFmt = "<white>Distance :</white> <good>{0:0}</good> <gray>mètres</gray>"
-	ShellDamageResistFmt = "<white>Résistance aux dégâts avec la coque de protection :</white> <good>{0} %</good>"
+	ShellDamageResistFmt = "<white>Résistance aux dégâts de la coque :</white> <good>{0} %</good>"
+	ShellPenResistFmt = "<white>Résistance à la pénétration de la coque :</white> <good>-{0}</good> <gray>mètres</gray>"
 	ShieldArcFmt = "<white>Arc du bouclier :</white> <good>{0:0}°</good>"
 	ShieldDamageFmt = "<white>Dég. vs boucliers :</white> <good>{0:n0}</good><gray>/tir (</gray><good>{1:n0}</good><gray>/s)</gray>"
 	ShieldDistFmt = "<white>Distance du bouclier :</white> <good>{0}</good><gray> mètres</gray>"
@@ -4015,6 +4026,12 @@ Tips
 		
 		Tip = "Vous pouvez utiliser le mode Plans pour apporter des modifications temporaires, invalides ou hors de prix au plan de votre vaisseau avant de réellement valider ces changements. Cliquez sur le bouton <white>Mode Plans</white> dans le coin inférieur droit de l'éditeur de vaisseaux pour activer le mode Plans."
 		Title = "Mode Plans"
+	}
+	ChangingDifficulty
+	{
+		
+		Tip = "Vous pouvez changer le niveau de difficulté en mode Carrière à tout moment, et pas seulement au lancement d'une nouvelle partie. Pour changer la difficulté, accédez à <good>Paramètres -> Partie actuelle</good>."
+		Title = "Changer la difficulté"
 	}
 	Chatting
 	{
@@ -4508,6 +4525,7 @@ TitleScreen
 	Feedback = "ENVOYER UN COMMENTAIRE"
 	LoadGame = "CHARGER UNE PARTIE"
 	Mods = ""
+	ModsFmt = ""
 	More = PLUS
 	Multiplayer = MULTIJOUEUR
 	NewGame = "NOUVELLE PARTIE"
@@ -4604,6 +4622,7 @@ Tutorials
 	Chainguns
 	{
 		
+		ForceFire = "Les mitrailleuses ne commencent normalement <b>pas</b> à tirer tant qu'elles ne disposent pas du plein de munitions (chargeurs supplémentaires compris). Pour forcer une mitrailleuse à ouvrir le feu malgré tout, cliquez sur le bouton <white>Tir de mitrailleuse forcé</white>."
 		Info = "Les mitrailleuses sont des canons rotatifs qui <good>tirent de plus en plus vite</good>. Plus la mitrailleuse tire longtemps, plus elle tire rapidement (jusqu'à une certaine limite)."
 		Magazines = "Des <good>chargeurs</good> peuvent être ajoutés afin d'accroître le nombre de munitions stockées, ce qui prolonge la durée de tir une fois la cadence maximale atteinte. Les chargeurs doivent être fixés à l'arrière de la mitrailleuse, à gauche ou à droite (voir l'image)."
 		Shell = "Lorsqu'elles ne tirent pas, les mitrailleuses <good>bénéficient d'une coque de protection</good> qui réduit fortement les dégâts subis."
@@ -4730,7 +4749,7 @@ Tutorials
 	{
 		
 		Cause = "Des <red>incendies</red> peuvent se déclarer lorsque certaines armes touchent votre vaisseau et que des éléments instables explosent. Si rien n'est fait, les incendies se propagent rapidement, causant des dégâts et tuant l'équipage."
-		FireExtinguisher = "Ajoutez des <good>extincteurs</good> à votre vaisseau afin de pouvoir combattre les incendies. Votre équipage s'en munira afin d'aller éteindre les départs de feu."
+		FireExtinguisher = "Ajoutez des <good>extincteurs</good> à votre vaisseau afin de combattre les incendies. Votre équipage s'en munira pour éteindre les départs de feu. Les extincteurs ont des capacités limitées, il vous en faudra peut-être donc plusieurs pour venir à bout d'un grand incendie."
 		Spread = "<good>CONSEIL :</good> les incendies se propagent dans les espaces ouverts et à travers les portes, mais ne peuvent pas passer les murs. Ajouter beaucoup de portes à votre vaisseau le rendra donc plus vulnérable en cas d'incendie."
 		Title = Incendies
 	}
