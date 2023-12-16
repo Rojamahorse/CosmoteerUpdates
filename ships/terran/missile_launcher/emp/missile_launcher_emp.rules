@@ -1,3 +1,13 @@
+EditorIcon
+{
+	Texture
+	{
+		File = "icon_emp.png"
+		SampleMode = Linear
+	}
+	Size = [40, 100]
+}
+
 Components
 {
 	MissileStorage

@@ -79,13 +79,48 @@ Techs
 		Prerequisites = [cosmoteer.cannon_large]
 	}
 	{
-		ID = cosmoteer.missile_launcher
-		NameKey = &<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/NameKey
-		DescriptionKey = &<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/DescriptionKey
-		Icon = &<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/EditorIcon
+		ID = cosmoteer.missile_launcher_he
+		NameKey = "MissileTypes/HE"
+		DescriptionKey = "MissileTypes/HEDesc"
+		Icon = &<./Data/ships/terran/missile_launcher/he/missile_launcher_he.rules>/EditorIcon
 		EditorGroup = &<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/EditorGroup
 		PartsUnlocked = [&<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/ID]
+		ToggleChoicesUnlocked = [[missile_type, 0]]
 		Cost = 5000
+		UpgradedFrom = [cosmoteer.missile_launcher]
+	}
+	{
+		ID = cosmoteer.missile_launcher_emp
+		NameKey = "MissileTypes/EMP"
+		DescriptionKey = "MissileTypes/EMPDesc"
+		Icon = &<./Data/ships/terran/missile_launcher/emp/missile_launcher_emp.rules>/EditorIcon
+		EditorGroup = &<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/ID]
+		ToggleChoicesUnlocked = [[missile_type, 1]]
+		Cost = 10000
+		UpgradedFrom = [cosmoteer.missile_launcher]
+	}
+	{
+		ID = cosmoteer.missile_launcher_nuke
+		NameKey = "MissileTypes/Nuke"
+		DescriptionKey = "MissileTypes/NukeDesc"
+		Icon = &<./Data/ships/terran/missile_launcher/nuke/missile_launcher_nuke.rules>/EditorIcon
+		EditorGroup = &<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/ID]
+		ToggleChoicesUnlocked = [[missile_type, 2]]
+		Cost = 20000
+		UpgradedFrom = [cosmoteer.missile_launcher]
+	}
+	{
+		ID = cosmoteer.missile_launcher_mine
+		NameKey = "MissileTypes/Mine"
+		DescriptionKey = "MissileTypes/MineDesc"
+		Icon = &<./Data/ships/terran/missile_launcher/mine/missile_launcher_mine.rules>/EditorIcon
+		EditorGroup = &<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/ID]
+		ToggleChoicesUnlocked = [[missile_type, 3]]
+		Cost = 10000
+		UpgradedFrom = [cosmoteer.missile_launcher]
 	}
 	{
 		ID = cosmoteer.railgun
@@ -153,6 +188,26 @@ Techs
 		EditorGroup = &<./Data/ships/terran/hyperdrive_small/hyperdrive_small.rules>/Part/EditorGroup
 		PartsUnlocked = [&<./Data/ships/terran/hyperdrive_small/hyperdrive_small.rules>/Part/ID]
 		Cost = 1000
+	}
+	{
+		ID = cosmoteer.hyperdrive_med
+		NameKey = &<./Data/ships/terran/hyperdrive_med/hyperdrive_med.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/hyperdrive_med/hyperdrive_med.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/hyperdrive_med/hyperdrive_med.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/hyperdrive_med/hyperdrive_med.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/hyperdrive_med/hyperdrive_med.rules>/Part/ID]
+		Cost = 10000
+		Prerequisites = [cosmoteer.hyperdrive_small]
+	}
+	{
+		ID = cosmoteer.hyperdrive_large
+		NameKey = &<./Data/ships/terran/hyperdrive_large/hyperdrive_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/hyperdrive_large/hyperdrive_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/hyperdrive_large/hyperdrive_large.rules>/Part/EditorIcon
+		EditorGroup = &<./Data/ships/terran/hyperdrive_large/hyperdrive_large.rules>/Part/EditorGroup
+		PartsUnlocked = [&<./Data/ships/terran/hyperdrive_large/hyperdrive_large.rules>/Part/ID]
+		Cost = 20000
+		Prerequisites = [cosmoteer.hyperdrive_med]
 	}
 	{
 		ID = cosmoteer.control_room_med
@@ -258,7 +313,7 @@ Techs
 		EditorGroup = &<./Data/ships/terran/factory_he/factory_he.rules>/Part/EditorGroup
 		PartsUnlocked = [&<./Data/ships/terran/factory_he/factory_he.rules>/Part/ID]
 		Cost = 7500
-		Prerequisites = [cosmoteer.missile_launcher]
+		Prerequisites = [cosmoteer.missile_launcher_he]
 	}
 	{
 		ID = cosmoteer.factory_emp
@@ -268,7 +323,7 @@ Techs
 		EditorGroup = &<./Data/ships/terran/factory_emp/factory_emp.rules>/Part/EditorGroup
 		PartsUnlocked = [&<./Data/ships/terran/factory_emp/factory_emp.rules>/Part/ID]
 		Cost = 10000
-		Prerequisites = [cosmoteer.factory_he]
+		Prerequisites = [cosmoteer.missile_launcher_emp]
 	}
 	{
 		ID = cosmoteer.factory_mine
@@ -278,7 +333,7 @@ Techs
 		EditorGroup = &<./Data/ships/terran/factory_mine/factory_mine.rules>/Part/EditorGroup
 		PartsUnlocked = [&<./Data/ships/terran/factory_mine/factory_mine.rules>/Part/ID]
 		Cost = 10000
-		Prerequisites = [cosmoteer.factory_ammo, cosmoteer.factory_he]
+		Prerequisites = [cosmoteer.factory_ammo, cosmoteer.missile_launcher_mine]
 	}
 	{
 		ID = cosmoteer.factory_steel
@@ -357,7 +412,7 @@ Techs
 		EditorGroup = &<./Data/ships/terran/factory_nuke/factory_nuke.rules>/Part/EditorGroup
 		PartsUnlocked = [&<./Data/ships/terran/factory_nuke/factory_nuke.rules>/Part/ID]
 		Cost = 15000
-		Prerequisites = [cosmoteer.factory_he, cosmoteer.factory_uranium]
+		Prerequisites = [cosmoteer.missile_launcher_nuke, cosmoteer.factory_uranium]
 	}
 	{
 		ID = cosmoteer.resource_collector

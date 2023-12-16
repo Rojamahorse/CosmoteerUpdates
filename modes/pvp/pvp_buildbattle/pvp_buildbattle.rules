@@ -1,0 +1,387 @@
+Mode : <../base_pvp.rules>
+{
+	Icon
+	{
+		Texture
+		{
+			File = "buildbattle.png"
+			SampleMode = Linear
+			MipLevels = 2
+		}
+	}
+
+	VictoryPointIcon
+	{
+		Texture
+		{
+			File = "../icon_cp_neutral.png"
+			SampleMode = Linear
+			MipLevels = 2
+		}
+	}
+
+	VictoryPointWonIcon
+	{
+		Texture
+		{
+			File = "../icon_cp_owned.png"
+			SampleMode = Linear
+			MipLevels = 2
+		}
+	}
+
+	RefundIcon
+	{
+		Texture
+		{
+			File = "./Data/gui/icon_refund.png"
+			SampleMode = Linear
+			MipLevels = 2
+		}
+	}
+
+	StashIcon
+	{
+		Texture
+		{
+			File = "icon_stash.png"
+			SampleMode = Linear
+			MipLevels = 2
+		}
+		Size = [64, 64]
+	}
+
+	SendToStashIcon
+	{
+		Texture
+		{
+			File = "icon_stash_arrow.png"
+			SampleMode = Linear
+			MipLevels = 2
+		}
+	}
+
+
+	ShipSaleRefund = 100%
+
+	BuildGameSpeed = 1
+	CapturePointIncomeInterval = 5
+	BaseCountdownInterval = 60
+	FastCountdownStart = 30
+	FastCountdownInterval = 5
+	FastestCountdownStart = 10 //Fastest countdown interval is every second
+
+	ShipRules = "cosmoteer.terran"
+	AIRules = "BuildBattle"
+
+	TechOfferingsPerRound
+	[
+		[weapons, 1],
+		[defenses, 1],
+		[thrusters, 1]
+	]
+	RandomOfferingsPerRound = 2 //Additional Offerings from any category or uncategorized
+
+	TimeLimits
+	[
+		{ Seconds=60; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+		{ Seconds=120; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+		{ Seconds=180; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+		{ Seconds=240; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+		{ Seconds=300; NameFmtKey="PvpModeConfig/TimeLimitFmt"; IsDefault=true; }
+		{ Seconds=420; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+		{ Seconds=600; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+		{ Seconds=900; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+		{ Seconds=1200; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+		{ Seconds=1500; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+		{ Seconds=1800; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+		{ Seconds=7200; NameFmtKey="PvpModeConfig/TimeLimitFmt"; }
+	]
+
+
+	Techs = &<techs_buildbattle.rules>/Techs
+
+	OfficialRulesets
+	[
+		{
+			NameKey = "BuildBattleModeConfig/Rulesets/Small100K"
+			ShortNameKey = "BuildBattleModeConfig/Rulesets/Small100KShort"
+			Options : ~/BaseOptions
+			{
+				VictoryPointLimit = 3
+				CapturePointIncome = 2000
+				MirrorTechOfferings = 0 //false
+				AIControlledBattles = 0 //false
+				StartingFunds = 100000
+				FundsInRound0 = 100000
+				FundsInRound1 = 100000
+				FundsInRound2 = 100000
+				FundsInRound3 = 100000
+				FundsInRound4 = 100000
+				AdditionalUnlockCost = 5000
+				BuildTimeLimit0 = 4
+				BuildTimeLimit1 = 4
+				BuildTimeLimit2 = 4
+				BuildTimeLimit3 = 4
+				BuildTimeLimit4 = 4
+				BuildTimeLimit5 = 4
+				BuildTimeLimit6 = 4
+				BattleTimeLimit = 4 //index into list
+				PerimeterDistance = 2 //index into list
+			}
+		}
+		{
+			NameKey = "BuildBattleModeConfig/Rulesets/Ai100K"
+			ShortNameKey = "BuildBattleModeConfig/Rulesets/Ai100KShort"
+			Options : ~/BaseOptions
+			{
+				VictoryPointLimit = 3
+				CapturePointIncome = 2000
+				GameSpeed = 3 // Index into list.
+				MirrorTechOfferings = 0 //false
+				AIControlledBattles = 1 //true
+				StartingFunds = 100000
+				FundsInRound0 = 100000
+				FundsInRound1 = 100000
+				FundsInRound2 = 100000
+				FundsInRound3 = 100000
+				FundsInRound4 = 100000
+				AdditionalUnlockCost = 5000
+				BuildTimeLimit0 = 4
+				BuildTimeLimit1 = 4
+				BuildTimeLimit2 = 4
+				BuildTimeLimit3 = 4
+				BuildTimeLimit4 = 4
+				BuildTimeLimit5 = 4
+				BuildTimeLimit6 = 4
+				BattleTimeLimit = 4 //index into list
+				PerimeterDistance = 2 //index into list
+				FogOfWar = 0 // false/true
+			}
+		}
+		{
+			NameKey = "BuildBattleModeConfig/Rulesets/Blitz"
+			ShortNameKey = "BuildBattleModeConfig/Rulesets/BlitzShort"
+			Options : ~/BaseOptions
+			{
+				VictoryPointLimit = 4
+				CapturePointIncome = 2000
+				MirrorTechOfferings = 0 //false
+				AIControlledBattles = 0 //false
+				FundsInRound0 = 100000
+				FundsInRound1 = 40000
+				FundsInRound2 = 40000
+				FundsInRound3 = 100000
+				FundsInRound4 = 40000
+				FundsInRound5 = 40000
+				FundsInRound6 = 40000
+				AdditionalUnlockCost = 5000
+				BuildTimeLimit0 = 2
+				BuildTimeLimit1 = 1
+				BuildTimeLimit2 = 1
+				BuildTimeLimit3 = 4
+				BuildTimeLimit4 = 1
+				BuildTimeLimit5 = 1
+				BuildTimeLimit6 = 1
+				BattleTimeLimit = 4 //index into list
+				PerimeterDistance = 2 //index into list
+			}
+		}
+		{
+			NameKey = "BuildBattleModeConfig/Rulesets/AiBlitz"
+			ShortNameKey = "BuildBattleModeConfig/Rulesets/AiBlitzShort"
+			Options : ~/BaseOptions
+			{
+				VictoryPointLimit = 4
+				CapturePointIncome = 2000
+				GameSpeed = 3 // Index into list.
+				MirrorTechOfferings = 0 //false
+				AIControlledBattles = 1 //true
+				FundsInRound0 = 100000
+				FundsInRound1 = 40000
+				FundsInRound2 = 40000
+				FundsInRound3 = 100000
+				FundsInRound4 = 40000
+				FundsInRound5 = 40000
+				FundsInRound6 = 40000
+				AdditionalUnlockCost = 5000
+				BuildTimeLimit0 = 2
+				BuildTimeLimit1 = 1
+				BuildTimeLimit2 = 1
+				BuildTimeLimit3 = 4
+				BuildTimeLimit4 = 1
+				BuildTimeLimit5 = 1
+				BuildTimeLimit6 = 1
+				BattleTimeLimit = 4 //index into list
+				PerimeterDistance = 2 //index into list
+				FogOfWar = 0 // false/true
+			}
+		}
+		{
+			NameKey = "BuildBattleModeConfig/Rulesets/Med"
+			ShortNameKey = "BuildBattleModeConfig/Rulesets/MedShort"
+			Options : ~/BaseOptions
+			{
+				VictoryPointLimit = 2
+				CapturePointIncome = 5000
+				MirrorTechOfferings = 0 //false
+				AIControlledBattles = 0 //false
+				FundsInRound0 = 250000
+				FundsInRound1 = 250000
+				FundsInRound2 = 250000
+				AdditionalUnlockCost = 12500
+				BuildTimeLimit0 = 5
+				BuildTimeLimit1 = 5
+				BuildTimeLimit2 = 5
+				BattleTimeLimit = 4 //index into list
+				PerimeterDistance = 2 //index into list
+			}
+		}
+		{
+			NameKey = "BuildBattleModeConfig/Rulesets/AiMed"
+			ShortNameKey = "BuildBattleModeConfig/Rulesets/AiMedShort"
+			Options : ~/BaseOptions
+			{
+				VictoryPointLimit = 2
+				CapturePointIncome = 5000
+				GameSpeed = 3 // Index into list.
+				MirrorTechOfferings = 0 //false
+				AIControlledBattles = 1 //true
+				FundsInRound0 = 250000
+				FundsInRound1 = 250000
+				FundsInRound2 = 250000
+				AdditionalUnlockCost = 12500
+				BuildTimeLimit0 = 5
+				BuildTimeLimit1 = 5
+				BuildTimeLimit2 = 5
+				BattleTimeLimit = 4 //index into list
+				PerimeterDistance = 2 //index into list
+				FogOfWar = 0 // false/true
+			}
+		}
+		{
+			NameKey = "BuildBattleModeConfig/Rulesets/Large"
+			ShortNameKey = "BuildBattleModeConfig/Rulesets/LargeShort"
+			Options : ~/BaseOptions
+			{
+				VictoryPointLimit = 2
+				CapturePointIncome = 10000
+				MirrorTechOfferings = 0 //false
+				AIControlledBattles = 0 //false
+				FundsInRound0 = 500000
+				FundsInRound1 = 500000
+				FundsInRound2 = 500000
+				AdditionalUnlockCost = 25000
+				BuildTimeLimit0 = 6
+				BuildTimeLimit1 = 6
+				BuildTimeLimit2 = 6
+				BattleTimeLimit = 4 //index into list
+				PerimeterDistance = 2 //index into list
+			}
+		}
+		{
+			NameKey = "BuildBattleModeConfig/Rulesets/AiLarge"
+			ShortNameKey = "BuildBattleModeConfig/Rulesets/AiLargeShort"
+			Options : ~/BaseOptions
+			{
+				VictoryPointLimit = 2
+				CapturePointIncome = 10000
+				GameSpeed = 3 // Index into list.
+				MirrorTechOfferings = 0 //false
+				AIControlledBattles = 1 //true
+				FundsInRound0 = 500000
+				FundsInRound1 = 500000
+				FundsInRound2 = 500000
+				AdditionalUnlockCost = 25000
+				BuildTimeLimit0 = 6
+				BuildTimeLimit1 = 6
+				BuildTimeLimit2 = 6
+				BattleTimeLimit = 4 //index into list
+				PerimeterDistance = 2 //index into list
+				FogOfWar = 0 // false/true
+			}
+		}
+	]
+
+	CapturePointRules
+	{
+		TimeToCapture = 10
+		TimeToUncapture = 5
+		Radius = 100
+		MinDistanceBuffer = 200
+		IncomeRate = 100%
+		AreaExpand = pi * ((&Radius) + (&MinDistanceBuffer))^2 * 2
+
+		Circle
+		{
+			Thickness = .25
+			QuadCount = 256
+			Texture
+			{
+				File = "../capture_point.png"
+				UMode = Wrap
+				VMode = Clamp
+				SampleMode = Linear
+				MipLevels = max
+			}
+		}
+		ProgressCircle
+		{
+			QuadCount = 256
+			Color = [255, 255, 255, 50]
+		}
+		MinimapThicknessScale = 5
+		ProgressCircleTransitionDuration = .25
+		ColorTransitionDuration = .25
+		TransitionColorMultiply = [255, 255, 255, 510]
+		TextYOffset = 0.25
+		TextFadeZoomRange = [600, 300]
+
+		AlertSound
+		{
+			Sound = "../cp_alert.wav"
+		}
+		ActivateSound
+		{
+			Sound = "../cp_activate.wav"
+		}
+		DeactivateSound
+		{
+			Sound = "../cp_deactivate.wav"
+		}
+	}
+
+	BuildAreaRules
+	{
+		Radius = 1000
+		SightRadius = 1200
+		MinDistanceBuffer = 200
+		TargetingAsteroidDistance = 800
+		TargetingAsteroidRules = cosmoteer.asteroid_m
+		AreaExpand = pi * ((&Radius) + (&MinDistanceBuffer))^2 * 2
+
+		Circle: <./Data/gui/game/sim_gui.rules>/SelectedShipCircle
+		{
+			Arc = [-11.25d, 360d]
+			VertexColor = [255, 255, 255, 127]
+			DashRepeat = 7
+		}
+		MinimapThicknessScale = 20
+	}
+}
+
+BaseOptions
+{
+	TeamCount = 0 //index into list
+	GameSpeed = 2 // Index into list.
+	TimeLimit = 2 // Index into list.
+	ShipAssignMode = 0 // Index into list.
+	ShipPreviewMode = 1 // Index into list.
+	ShareFunds = 0 // false/true
+	FogOfWar = 1 // false/true
+	AllowIllegalShips = 0 // false/true
+	FriendlyFire = 0 // false/true
+	AllowChangeShips = 1 // false/true
+	ResourceDrops = 0 // false/true
+	ShipConstruction = 1 // false/true
+}

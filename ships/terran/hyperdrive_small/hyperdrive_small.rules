@@ -13,6 +13,7 @@ Part : <../base_part_terran.rules>/Part
 	]
 	Size = [2, 2]
 	SelectionPriority = 0
+	SelectionTypeID = "hyperdrives"
 	MaxHealth = 4000
 	AutoDoorMaxPathLength = 5
 	TypeCategories = [ftl, uses_power] // 'ftl' is a magic category that allows the FTL overlay to efficiently find FTL drives.
@@ -25,7 +26,7 @@ Part : <../base_part_terran.rules>/Part
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [64, 64]
+		Size = [56, 56]
 	}
 	Components : ^/0/Components
 	{
@@ -148,8 +149,8 @@ Part : <../base_part_terran.rules>/Part
 			Type = MultiResourceStorage
 			ResourceType = battery
 			ResourceStorages = [BatteryStorage]
-			ToggleOnResources = 16000
-			ToggleOffResource = 15999
+			ToggleOnResources = &../BatteryStorage/MaxResources
+			ToggleOffResource = (&../BatteryStorage/MaxResources) - 1
 		}
 
 		Graphics
@@ -522,27 +523,33 @@ Part : <../base_part_terran.rules>/Part
 			[
 				{
 					File = "power1.png"
-					Size = [2, 2]
+					Offset = [0, -.5]
+					Size = [1, 1]
 				}
 				{
 					File = "power2.png"
-					Size = [2, 2]
+					Offset = [0, -.5]
+					Size = [1, 1]
 				}
 				{
 					File = "power3.png"
-					Size = [2, 2]
+					Offset = [0, -.5]
+					Size = [1, 1]
 				}
 				{
 					File = "power4.png"
-					Size = [2, 2]
+					Offset = [0, -.5]
+					Size = [1, 1]
 				}
 				{
 					File = "power5.png"
-					Size = [2, 2]
+					Offset = [0, -.5]
+					Size = [2, 1]
 				}
 				{
 					File = "power6.png"
-					Size = [2, 2]
+					Offset = [0, -.5]
+					Size = [2, 1]
 				}
 				{
 					File = "power7.png"
@@ -589,12 +596,14 @@ Part : <../base_part_terran.rules>/Part
 
 
 
-		HyperiumCrystalsSprites
+		HyperiumCrystalsSprites1
 		{
 			Type = ResourceSprites
 			Location = [1, 1]
 			ResourceStorage = HyperiumStorage
 			Layer = "doodads_low"
+			RangeLow = 0
+			RangeHigh = 5
 			ResourceLevels
 			[
 				{
@@ -602,10 +611,8 @@ Part : <../base_part_terran.rules>/Part
 					[
 						"hyperium_crystals1-1.png"
 						"hyperium_crystals1-2.png"
-						"hyperium_crystals1-3.png"
-						"hyperium_crystals1-4.png"
 					]
-					AnimationInterval = 0.1
+					AnimationInterval = 0.15
 					Size = [1, 1]
 					Offset = [17/64, -17/64]
 				}
@@ -614,10 +621,8 @@ Part : <../base_part_terran.rules>/Part
 					[
 						"hyperium_crystals2-1.png"
 						"hyperium_crystals2-2.png"
-						"hyperium_crystals2-3.png"
-						"hyperium_crystals2-4.png"
 					]
-					AnimationInterval = 0.1
+					AnimationInterval = 0.15
 					Size = [1, 1]
 					Offset = [17/64, -17/64]
 				}
@@ -626,10 +631,8 @@ Part : <../base_part_terran.rules>/Part
 					[
 						"hyperium_crystals3-1.png"
 						"hyperium_crystals3-2.png"
-						"hyperium_crystals3-3.png"
-						"hyperium_crystals3-4.png"
 					]
-					AnimationInterval = 0.1
+					AnimationInterval = 0.15
 					Size = [1, 1]
 					Offset = [17/64, -17/64]
 				}
@@ -638,10 +641,8 @@ Part : <../base_part_terran.rules>/Part
 					[
 						"hyperium_crystals4-1.png"
 						"hyperium_crystals4-2.png"
-						"hyperium_crystals4-3.png"
-						"hyperium_crystals4-4.png"
 					]
-					AnimationInterval = 0.1
+					AnimationInterval = 0.15
 					Size = [1, 1]
 					Offset = [17/64, -17/64]
 				}
@@ -650,186 +651,31 @@ Part : <../base_part_terran.rules>/Part
 					[
 						"hyperium_crystals5-1.png"
 						"hyperium_crystals5-2.png"
-						"hyperium_crystals5-3.png"
-						"hyperium_crystals5-4.png"
 					]
-					AnimationInterval = 0.1
+					AnimationInterval = 0.15
 					Size = [1, 1]
 					Offset = [17/64, -17/64]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals6-1.png"
-						"hyperium_crystals6-2.png"
-						"hyperium_crystals6-3.png"
-						"hyperium_crystals6-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [1, 1]
-					Offset = [17/64, -17/64]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals7-1.png"
-						"hyperium_crystals7-2.png"
-						"hyperium_crystals7-3.png"
-						"hyperium_crystals7-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [1, 2]
-					Offset = [17/64, 0]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals8-1.png"
-						"hyperium_crystals8-2.png"
-						"hyperium_crystals8-3.png"
-						"hyperium_crystals8-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [1, 2]
-					Offset = [17/64, 0]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals9-1.png"
-						"hyperium_crystals9-2.png"
-						"hyperium_crystals9-3.png"
-						"hyperium_crystals9-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [1, 2]
-					Offset = [17/64, 0]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals10-1.png"
-						"hyperium_crystals10-2.png"
-						"hyperium_crystals10-3.png"
-						"hyperium_crystals10-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [1, 2]
-					Offset = [17/64, 0]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals11-1.png"
-						"hyperium_crystals11-2.png"
-						"hyperium_crystals11-3.png"
-						"hyperium_crystals11-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [1, 2]
-					Offset = [17/64, 0]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals12-1.png"
-						"hyperium_crystals12-2.png"
-						"hyperium_crystals12-3.png"
-						"hyperium_crystals12-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [2, 2]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals13-1.png"
-						"hyperium_crystals13-2.png"
-						"hyperium_crystals13-3.png"
-						"hyperium_crystals13-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [2, 2]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals14-1.png"
-						"hyperium_crystals14-2.png"
-						"hyperium_crystals14-3.png"
-						"hyperium_crystals14-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [2, 2]
-				}
-
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals15-1.png"
-						"hyperium_crystals15-2.png"
-						"hyperium_crystals15-3.png"
-						"hyperium_crystals15-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [2, 2]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals16-1.png"
-						"hyperium_crystals16-2.png"
-						"hyperium_crystals16-3.png"
-						"hyperium_crystals16-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [2, 2]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals17-1.png"
-						"hyperium_crystals17-2.png"
-						"hyperium_crystals17-3.png"
-						"hyperium_crystals17-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [2, 2]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals18-1.png"
-						"hyperium_crystals18-2.png"
-						"hyperium_crystals18-3.png"
-						"hyperium_crystals18-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [2, 2]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals19-1.png"
-						"hyperium_crystals19-2.png"
-						"hyperium_crystals19-3.png"
-						"hyperium_crystals19-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [2, 2]
-				}
-				{
-					AnimationFiles
-					[
-						"hyperium_crystals20-1.png"
-						"hyperium_crystals20-2.png"
-						"hyperium_crystals20-3.png"
-						"hyperium_crystals20-4.png"
-					]
-					AnimationInterval = 0.1
-					Size = [2, 2]
 				}
 			]
+		}
+
+		HyperiumCrystalsSprites2 : HyperiumCrystalsSprites1
+		{
+			Rotation = 90d
+			RangeLow = 5
+			RangeHigh = 10
+		}
+		HyperiumCrystalsSprites3 : HyperiumCrystalsSprites1
+		{
+			Rotation = 180d
+			RangeLow = 10
+			RangeHigh = 15
+		}
+		HyperiumCrystalsSprites4 : HyperiumCrystalsSprites1
+		{
+			Rotation = 270d
+			RangeLow = 15
+			RangeHigh = 20
 		}
 
 		OperationEffects

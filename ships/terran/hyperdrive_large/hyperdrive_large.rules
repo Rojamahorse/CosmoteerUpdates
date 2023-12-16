@@ -1,0 +1,957 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/HyperdriveLarge"
+	IconNameKey = "Parts/HyperdriveLargeIcon"
+	ID = cosmoteer.hyperdrive_large // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Flight"
+	DescriptionKey = "Parts/HyperdriveLargeDesc"
+	Resources
+	[
+		[steel, 156]
+		[coil2, 67]
+		[processor, 4]
+	]
+	Size = [4, 4]
+	SelectionPriority = 0
+	SelectionTypeID = "hyperdrives"
+	MaxHealth = 16000
+	AutoDoorMaxPathLength = 5
+	TypeCategories = [ftl, uses_power] // 'ftl' is a magic category that allows the FTL overlay to efficiently find FTL drives.
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	IgnoreRotationForMirroredSelection = true
+	BlockedTravelCells
+	[
+		[1, 1]
+		[2, 1]
+		[1, 2]
+		[2, 2]
+	]
+	ForceManhattanPathInPart = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [72, 72]
+	}
+	Components : ^/0/Components
+	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 32000
+			InitToMaxResources = 0
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Ftl_Supply
+			OperationalToggle = FtlDrive
+			AllowNonOperationalMinPriorityDelivery = false
+			OverrideExclusiveCrewAssignment = true
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = FtlDrive
+			ShowProgressFor = BatteryStorage
+		}
+
+		HyperiumStorage
+		{
+			Type = ResourceStorage
+			ResourceType = hyperium
+			MaxResources = 80
+			UITileRect = [2 + 7/64, 2 + 7/64, 1 - 14/64, 1 - 14/64]
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+			DropResourcesWhenDestroyed = true
+		}
+		HyperiumConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = hyperium
+			Storage = HyperiumStorage
+			DefaultPriority = &/PRIORITIES/Utility_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+
+		FtlDrive
+		{
+			Type = FtlDrive
+			OperationalToggle = PowerToggle
+			PowerStorage = BatteryStorage
+			FuelStorage = HyperiumStorage
+			SpinDownDuration = 5
+			JumpEfficiency = 50%
+			JumpEfficiencyDistanceRange = [20, 120]
+
+			JumpOutMediaEffects
+			[
+				&<../../common/particles/ftl_lightning.rules>
+			]
+			JumpOutGateMediaEffects
+			[
+				&<../../common/particles/ftl_gate_lightning_out.rules>
+
+				: /BASE_SOUNDS/AudioExteriorZoomless
+				{
+					Sound = "../../common/ftl_zap_out.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 3
+				}
+			]
+			JumpInMediaEffects
+			[
+				: <../../common/particles/ftl_lightning.rules>
+				{
+					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .4
+				}
+			]
+			JumpInGateMediaEffects
+			[
+				: <../../common/particles/ftl_gate_lightning_in.rules>
+				{
+					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .4
+				}
+
+				: /BASE_SOUNDS/AudioExteriorZoomless
+				{
+					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .8
+					Sound = "../../common/ftl_zap_in.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 3
+				}
+			]
+		}
+
+		BatteryStorageCharging
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [BatteryStorage]
+			ToggleOnResources = 1
+			ToggleOffResources = 0
+		}
+		BatteryStorageFull
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [BatteryStorage]
+			ToggleOnResources = &../BatteryStorage/MaxResources
+			ToggleOffResource = (&../BatteryStorage/MaxResources) - 1
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = PowerToggle
+			AnimationSpeedFactor = FtlDrive
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [4, 4]
+					}
+					{
+						File = "floor_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "floor_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.015
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.015
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.015
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [4, 4]
+					}
+					{
+						File = "doodads_off_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "doodads_off_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			OperationalLighting //repeated three times to synchronize with the Doodad when it gets damaged
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"lights1.png"
+							"lights2.png"
+							"lights3.png"
+							"lights4.png"
+							"lights5.png"
+							"lights6.png"
+							"lights7.png"
+							"lights8.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.015
+					}
+					{
+						AnimationFiles
+						[
+							"lights1.png"
+							"lights2.png"
+							"lights3.png"
+							"lights4.png"
+							"lights5.png"
+							"lights6.png"
+							"lights7.png"
+							"lights8.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.015
+					}
+					{
+						AnimationFiles
+						[
+							"lights1.png"
+							"lights2.png"
+							"lights3.png"
+							"lights4.png"
+							"lights5.png"
+							"lights6.png"
+							"lights7.png"
+							"lights8.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.015
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [4, 4]
+					}
+					{
+						File = "walls_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "walls_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+		}
+
+		FTLCharging_RoofGraphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = BatteryStorageCharging
+			AnimationSpeedFactor = FtlDrive
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"roof_doodads_on1.png"
+							"roof_doodads_on2.png"
+							"roof_doodads_on3.png"
+							"roof_doodads_on4.png"
+							"roof_doodads_on5.png"
+							"roof_doodads_on6.png"
+							"roof_doodads_on7.png"
+							"roof_doodads_on8.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.03
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "light_blob.png"
+						Size = [8, 8]
+						Z = 1.5 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [0*2.0,255*2.0, 255*2.0]
+					}
+				]
+			}
+		}
+
+		FTLFullCharge_InternalGraphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = BatteryStorageFull
+			AnimationSpeedFactor = FtlDrive
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"lights_full00-04-08-12.png"
+							"lights_full01.png"
+							"lights_full02.png"
+							"lights_full03.png"
+							"lights_full00-04-08-12.png"
+							"lights_full05.png"
+							"lights_full06.png"
+							"lights_full07.png"
+							"lights_full00-04-08-12.png"
+							"lights_full09.png"
+							"lights_full10.png"
+							"lights_full11.png"
+							"lights_full00-04-08-12.png"
+							"lights_full13.png"
+							"lights_full14.png"
+							"lights_full15.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.15
+					}
+					{
+						AnimationFiles
+						[
+							"lights_full00-04-08-12.png"
+							"lights_full01.png"
+							"lights_full02.png"
+							"lights_full03_33.png"
+							"lights_full04_33.png"
+							"lights_full05_33.png"
+							"lights_full06_33.png"
+							"lights_full07_33.png"
+							"lights_full08_33.png"
+							"lights_full09.png"
+							"lights_full10.png"
+							"lights_full11.png"
+							"lights_full00-04-08-12.png"
+							"lights_full13.png"
+							"lights_full14.png"
+							"lights_full15.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.15
+					}
+					{
+						AnimationFiles
+						[
+							"lights_full00-04-08-12.png"
+							"lights_full01.png"
+							"lights_full02.png"
+							"lights_full03_33.png"
+							"lights_full04_33.png"
+							"lights_full05_33.png"
+							"lights_full06_33.png"
+							"lights_full07_33.png"
+							"lights_full08_33.png"
+							"lights_full09.png"
+							"lights_full10_66.png"
+							"lights_full11_66.png"
+							"lights_full12_66.png"
+							"lights_full13_66.png"
+							"lights_full14_66.png"
+							"lights_full15_66.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.15
+					}
+				]
+			}
+		}
+
+		FtlSpin
+		{
+			Type = ContinuousEffects
+			Location = [2, 2]
+			FactorMediaEffectsIntensityWith = FtlDrive
+			OperationalToggle = PowerToggle
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "spin.wav"
+					Volume = .5
+					Speed = 2.5
+					MaxConcurrent = 0
+					VolumeOverIntensity = 1
+					SpeedOverIntensity = [0, 1]
+				}
+			]
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [2, 2]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "power1.png"
+					Size = [1, 1]
+					Offset = [-.5, -1]
+				}
+				{
+					File = "power2.png"
+					Size = [1, 1]
+					Offset = [-.5, -1]
+				}
+				{
+					File = "power3.png"
+					Size = [1, 1]
+					Offset = [-.5, -1]
+				}
+				{
+					File = "power4.png"
+					Size = [1, 1]
+					Offset = [-.5, -1]
+				}
+				{
+					File = "power5.png"
+					Size = [2, 1]
+					Offset = [0, -1]
+				}
+				{
+					File = "power6.png"
+					Size = [2, 1]
+					Offset = [0, -1]
+				}
+				{
+					File = "power7.png"
+					Size = [2, 1]
+					Offset = [0, -1]
+				}
+				{
+					File = "power8.png"
+					Size = [2, 1]
+					Offset = [0, -1]
+				}
+				{
+					File = "power9.png"
+					Size = [3, 1]
+					Offset = [0, -1]
+				}
+				{
+					File = "power10.png"
+					Size = [3, 1]
+					Offset = [0, -1]
+				}
+				{
+					File = "power11.png"
+					Size = [3, 2]
+					Offset = [0, -.5]
+				}
+				{
+					File = "power12.png"
+					Size = [3, 2]
+					Offset = [0, -.5]
+				}
+				{
+					File = "power13.png"
+					Size = [3, 2]
+					Offset = [0, -.5]
+				}
+				{
+					File = "power14.png"
+					Size = [3, 2]
+					Offset = [0, -.5]
+				}
+				{
+					File = "power15.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power16.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power17.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power18.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power19.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power20.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power21.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power22.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power23.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power24.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power25.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power26.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power27.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power28.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power29.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power30.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power31.png"
+					Size = [3, 3]
+				}
+				{
+					File = "power32.png"
+					Size = [3, 3]
+				}
+			]
+		}
+
+		HyperiumCrystalsSprites1
+		{
+			Type = ResourceSprites
+			Location = [2, 2]
+			ResourceStorage = HyperiumStorage
+			Layer = "doodads_low"
+			RangeLow = 0
+			RangeHigh = 20
+			ResourceLevels
+			[
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals1-1.png"
+						"hyperium_crystals1-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [1, 1]
+					Offset = [14/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals2-1.png"
+						"hyperium_crystals2-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [1, 1]
+					Offset = [14/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals3-1.png"
+						"hyperium_crystals3-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [1, 1]
+					Offset = [14/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals4-1.png"
+						"hyperium_crystals4-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [1, 1]
+					Offset = [14/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals5-1.png"
+						"hyperium_crystals5-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [1, 1]
+					Offset = [14/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals6-1.png"
+						"hyperium_crystals6-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [1, 1]
+					Offset = [14/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals7-1.png"
+						"hyperium_crystals7-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [1, 1]
+					Offset = [14/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals8-1.png"
+						"hyperium_crystals8-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [1, 1]
+					Offset = [14/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals9-1.png"
+						"hyperium_crystals9-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [2, 1]
+					Offset = [46/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals10-1.png"
+						"hyperium_crystals10-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [2, 1]
+					Offset = [46/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals11-1.png"
+						"hyperium_crystals11-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [2, 1]
+					Offset = [46/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals12-1.png"
+						"hyperium_crystals12-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [2, 1]
+					Offset = [46/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals13-1.png"
+						"hyperium_crystals13-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [2, 1]
+					Offset = [46/64, -54/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals14-1.png"
+						"hyperium_crystals14-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [2, 2]
+					Offset = [46/64, -22/64]
+				}
+
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals15-1.png"
+						"hyperium_crystals15-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [2, 2]
+					Offset = [46/64, -22/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals16-1.png"
+						"hyperium_crystals16-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [2, 2]
+					Offset = [46/64, -22/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals17-1.png"
+						"hyperium_crystals17-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [2, 2]
+					Offset = [46/64, -22/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals18-1.png"
+						"hyperium_crystals18-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [2, 2]
+					Offset = [46/64, -22/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals19-1.png"
+						"hyperium_crystals19-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [2, 2]
+					Offset = [46/64, -22/64]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_crystals20-1.png"
+						"hyperium_crystals20-2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [2, 2]
+					Offset = [46/64, -22/64]
+				}
+			]
+		}
+
+		HyperiumCrystalsSprites2 : HyperiumCrystalsSprites1
+		{
+			Rotation = 90d
+			RangeLow = 20
+			RangeHigh = 40
+		}
+		HyperiumCrystalsSprites3 : HyperiumCrystalsSprites1
+		{
+			Rotation = 180d
+			RangeLow = 40
+			RangeHigh = 60
+		}
+		HyperiumCrystalsSprites4 : HyperiumCrystalsSprites1
+		{
+			Rotation = 270d
+			RangeLow = 60
+			RangeHigh = 80
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [2, 2]
+			Toggle = PowerToggle
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed
+			Location = [2, 2]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [2, 2]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [4, 4]
+		}
+	}
+
+	Stats
+	{
+		FtlMaxEfficiencyRange = &~/Part/Components/FtlDrive/JumpEfficiencyDistanceRange/0
+		FtlMinEfficiencyRange = &~/Part/Components/FtlDrive/JumpEfficiencyDistanceRange/1
+		HyperiumCapacity = &~/Part/Components/HyperiumStorage/MaxResources
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+	}
+}

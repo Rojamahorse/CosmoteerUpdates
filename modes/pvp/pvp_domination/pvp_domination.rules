@@ -265,7 +265,7 @@ BaseCapturePoint
 		QuadCount = 256
 		Texture
 		{
-			File = "capture_point.png"
+			File = "../capture_point.png"
 			UMode = Wrap
 			VMode = Clamp
 			SampleMode = Linear
@@ -286,22 +286,22 @@ BaseCapturePoint
 
 	AlertSound
 	{
-		Sound = "cp_alert.wav"
+		Sound = "../cp_alert.wav"
 	}
 	ActivateSound
 	{
-		Sound = "cp_activate.wav"
+		Sound = "../cp_activate.wav"
 	}
 	DeactivateSound
 	{
-		Sound = "cp_deactivate.wav"
+		Sound = "../cp_deactivate.wav"
 	}
 
 	NeutralIcon
 	{
 		Texture
 		{
-			File = "icon_cp_neutral.png"
+			File = "../icon_cp_neutral.png"
 			MipLevels = 3
 			SampleMode = Linear
 		}
@@ -311,7 +311,7 @@ BaseCapturePoint
 	{
 		Texture
 		{
-			File = "icon_cp_owned.png"
+			File = "../icon_cp_owned.png"
 			MipLevels = 3
 			SampleMode = Linear
 		}

@@ -1,0 +1,50 @@
+UpdateInterval = [.25, .75] // A random range.
+IsAvailableInCreativeMode = false
+IsCreativeModeDefault = false
+IsAvailableInMultiplayer = false
+IsMultiplayerDefault = false
+
+StrategyModules
+[
+	{
+		// Makes the AI go to the capture point.
+		Type = AreaPatrol
+		DefaultPatrolRadius = 50
+		AvoidableDoodadTags = [sun, station]
+		AvoidableDoodadBuffer = 100
+	}
+	{
+		Type = AggroEnemies
+		TargetSwitchThresholdFactor = 2
+		TargetDistanceFactorExponent = 0.5
+		TargetFirepowerCacheTime = 10
+		AcquireAggroWithinRadar = true
+		ReleaseAggroWithinRadar = true
+	}
+]
+
+TacticsModules
+[
+	{
+		Type = DefaultAttackRadiusAndRotation
+		AttackRotationSwitchThresholdFactor = 1.25
+		AttackRotationsToCheck = 8
+		UseSavedAboveHealth = 50%
+	}
+	{
+		Type = RandomAttackAngle
+		AttackAngleChangeInterval = [5, 10]
+		AttackAngleChangeDelta = [-30d, 30d]
+		CoordinateFlanking = true
+	}
+]
+
+TargetingModules
+[
+	{
+		Type = ValueTargeter
+		TargetChecksPerUpdate = 10
+		TargetSwitchThresholdFactor = 2
+		TargetValueFactorPerPenetrationDist = .75
+	}
+]
