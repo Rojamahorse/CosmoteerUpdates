@@ -77,7 +77,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = hyperium
 			MaxResources = 80
-			UITileRect = [2 + 7/64, 2 + 7/64, 1 - 14/64, 1 - 14/64]
+			UITileRect = [1.5 + 7/64, 1.5 + 7/64, 1 - 14/64, 1 - 14/64]
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
 			DropResourcesWhenDestroyed = true
 		}
