@@ -15,7 +15,7 @@ Techs
 		NameKey = "MissileTypes/EMP"
 		DescriptionKey = "MissileTypes/EMPDesc"
 		Icon = &<./Data/ships/terran/missile_launcher/emp/missile_launcher_emp.rules>/EditorIcon
-		PartsUnlocked 
+		PartsUnlocked
 		[
 			&<./Data/ships/terran/factory_emp/factory_emp.rules>/Part/ID
 			&<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/ID
@@ -307,4 +307,57 @@ Techs
 		Cost = 5000
 		FundsThresholdBeforeOffered = 0
 	}
+]
+PartsWhitelist
+[
+	cosmoteer.airlock
+	cosmoteer.armor
+	cosmoteer.armor_1x2_wedge
+	cosmoteer.armor_1x2_wedge
+	cosmoteer.armor_2x1
+	cosmoteer.armor_structure_hybrid_1x1
+	cosmoteer.armor_structure_hybrid_1x2
+	cosmoteer.armor_structure_hybrid_1x3
+	cosmoteer.armor_structure_hybrid_tri
+	cosmoteer.armor_tri
+	cosmoteer.armor_wedge
+	cosmoteer.control_room_small
+	cosmoteer.conveyor
+	cosmoteer.corridor
+	cosmoteer.crew_quarters_med
+	cosmoteer.crew_quarters_small
+	cosmoteer.explosive_charge
+	cosmoteer.factory_ammo
+	cosmoteer.factory_coil
+	cosmoteer.factory_coil2
+	cosmoteer.factory_diamond
+	cosmoteer.factory_emp
+	cosmoteer.factory_he
+	cosmoteer.factory_mine
+	cosmoteer.factory_nuke
+	cosmoteer.factory_processor
+	cosmoteer.factory_steel
+	cosmoteer.factory_tristeel
+	cosmoteer.factory_uranium
+	cosmoteer.fire_extinguisher
+	cosmoteer.hyperdrive_beacon
+	cosmoteer.hyperdrive_large
+	cosmoteer.hyperdrive_med
+	cosmoteer.hyperdrive_small
+	cosmoteer.reactor_small
+	cosmoteer.roof_light
+	cosmoteer.storage_2x2
+	cosmoteer.storage_3x2
+	cosmoteer.storage_3x3
+	cosmoteer.storage_4x3
+	cosmoteer.storage_4x4
+	cosmoteer.structure
+	cosmoteer.structure_1x2_wedge
+	cosmoteer.structure_1x3_wedge
+	cosmoteer.structure_tri
+	cosmoteer.structure_wedge
+	cosmoteer.thruster_med
+	cosmoteer.thruster_small
+	cosmoteer.thruster_small_2way
+	cosmoteer.thruster_small_3way
 ]

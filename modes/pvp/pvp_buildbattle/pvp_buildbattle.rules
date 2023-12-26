@@ -81,6 +81,7 @@ Mode : <../base_pvp.rules>
 		[thrusters, 1]
 	]
 	RandomOfferingsPerRound = 2 //Additional Offerings from any category or uncategorized
+	ExtraFirstRoundOfferings = 1 ////Extra random Offerings in round 1
 
 	TimeLimits
 	[
@@ -100,6 +101,7 @@ Mode : <../base_pvp.rules>
 
 
 	Techs = &<techs_buildbattle.rules>/Techs
+	PartsWhitelist = &<techs_buildbattle.rules>/PartsWhitelist
 
 	OfficialRulesets
 	[
@@ -112,12 +114,11 @@ Mode : <../base_pvp.rules>
 				CapturePointIncome = 2000
 				MirrorTechOfferings = 0 //false
 				AIControlledBattles = 0 //false
-				StartingFunds = 100000
 				FundsInRound0 = 100000
-				FundsInRound1 = 100000
-				FundsInRound2 = 100000
-				FundsInRound3 = 100000
-				FundsInRound4 = 100000
+				FundsInRound1 = 50000
+				FundsInRound2 = 75000
+				FundsInRound3 = 125000
+				FundsInRound4 = 150000
 				AdditionalUnlockCost = 5000
 				BuildTimeLimit0 = 4
 				BuildTimeLimit1 = 4
@@ -140,12 +141,11 @@ Mode : <../base_pvp.rules>
 				GameSpeed = 3 // Index into list.
 				MirrorTechOfferings = 0 //false
 				AIControlledBattles = 1 //true
-				StartingFunds = 100000
 				FundsInRound0 = 100000
-				FundsInRound1 = 100000
-				FundsInRound2 = 100000
-				FundsInRound3 = 100000
-				FundsInRound4 = 100000
+				FundsInRound1 = 50000
+				FundsInRound2 = 75000
+				FundsInRound3 = 125000
+				FundsInRound4 = 150000
 				AdditionalUnlockCost = 5000
 				BuildTimeLimit0 = 4
 				BuildTimeLimit1 = 4
@@ -226,9 +226,9 @@ Mode : <../base_pvp.rules>
 				CapturePointIncome = 5000
 				MirrorTechOfferings = 0 //false
 				AIControlledBattles = 0 //false
-				FundsInRound0 = 250000
-				FundsInRound1 = 250000
-				FundsInRound2 = 250000
+				FundsInRound0 = 500000
+				FundsInRound1 = 150000
+				FundsInRound2 = 350000
 				AdditionalUnlockCost = 12500
 				BuildTimeLimit0 = 5
 				BuildTimeLimit1 = 5
@@ -247,9 +247,9 @@ Mode : <../base_pvp.rules>
 				GameSpeed = 3 // Index into list.
 				MirrorTechOfferings = 0 //false
 				AIControlledBattles = 1 //true
-				FundsInRound0 = 250000
-				FundsInRound1 = 250000
-				FundsInRound2 = 250000
+				FundsInRound0 = 500000
+				FundsInRound1 = 150000
+				FundsInRound2 = 350000
 				AdditionalUnlockCost = 12500
 				BuildTimeLimit0 = 5
 				BuildTimeLimit1 = 5
@@ -268,8 +268,8 @@ Mode : <../base_pvp.rules>
 				CapturePointIncome = 10000
 				MirrorTechOfferings = 0 //false
 				AIControlledBattles = 0 //false
-				FundsInRound0 = 500000
-				FundsInRound1 = 500000
+				FundsInRound0 = 750000
+				FundsInRound1 = 250000
 				FundsInRound2 = 500000
 				AdditionalUnlockCost = 25000
 				BuildTimeLimit0 = 6
@@ -289,8 +289,8 @@ Mode : <../base_pvp.rules>
 				GameSpeed = 3 // Index into list.
 				MirrorTechOfferings = 0 //false
 				AIControlledBattles = 1 //true
-				FundsInRound0 = 500000
-				FundsInRound1 = 500000
+				FundsInRound0 = 750000
+				FundsInRound1 = 250000
 				FundsInRound2 = 500000
 				AdditionalUnlockCost = 25000
 				BuildTimeLimit0 = 6
@@ -384,4 +384,5 @@ BaseOptions
 	AllowChangeShips = 1 // false/true
 	ResourceDrops = 0 // false/true
 	ShipConstruction = 1 // false/true
+	AllowShipLoading = 0
 }

@@ -2726,7 +2726,7 @@ DominationModeConfig : PvpModeConfig
 BuildBattleModeConfig : PvpModeConfig
 {
 	Name = "Build & Battle"
-	Description = "Capture control points to earn credits and use those credits to warp in new ships. Achieve victory by capturing all control points!"
+	Description = "Played over several rounds, competitors build or upgrade their ship using a randomly limited selection of parts and then battle against the other players."
 
 	MapStyle = "Map Type"
 	MapStyleTip = "The size of the map setup and number of teams it supports."
@@ -2756,25 +2756,27 @@ BuildBattleModeConfig : PvpModeConfig
     FundsPerRoundTip = "The number of credits (<img name='money' colored='true'/>) each player will receive in round {0}."
     AdditionalUnlockCost = "Additional Unlock Cost"
     AdditionalUnlockCostTip = "The extra cost added for each additional unlock past the first during each build phase."
+    AllowShipLoading = "Allow Loading Saved Ship Designs"
+    AllowShipLoadingTip = "Allow players to load their previously-saved ship designs during the build phase."
 
 	Rulesets
 	{
-		Small100K = "100K"
-		Small100KShort = "100K"
-		Ai100K = "100K (A.I. Controlled)"
-		Ai100KShort = "100K\nA.I."
-		Blitz = "100K (Blitz)"
-        BlitzShort = "100K\nBLTZ"
-		AiBlitz = "100K (Blitz + A.I. Controlled)"
-		AiBlitzShort = "A.I.\nBLTZ"
-		Med = "250K"
-		MedShort = "250K"
-		AiMed = "250K (A.I. Controlled)"
-		AiMedShort = "250K\nA.I."
-		Large = "500K"
-		LargeShort = "500K"
-		AiLarge = "500K (A.I. Controlled)"
-		AiLargeShort = "500K\nA.I."
+		Small100K = "Small Ships (500K Max)"
+		Small100KShort = "SML"
+		Ai100K = "Small Ships - A.I. Pilots"
+		Ai100KShort = "SML\nA.I."
+		Blitz = "Small Ships - Blitz"
+        BlitzShort = "BLTZ"
+		AiBlitz = "Small Ships - Blitz + A.I."
+		AiBlitzShort = "BLTZ\nA.I."
+		Med = "Medium Ships (1M Max)"
+		MedShort = "MED"
+		AiMed = "Medium Ships - A.I. Pilots"
+		AiMedShort = "MED\nA.I."
+		Large = "Large Ships (1.5M Max)"
+		LargeShort = "LRG"
+		AiLarge = "Large Ships - A.I. Pilots"
+		AiLargeShort = "LRG\nA.I."
 	}
 }
 
