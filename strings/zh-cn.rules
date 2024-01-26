@@ -2,13 +2,13 @@ __Name = "简体中文"
 __DebugOnly = false
 AI
 {
-
+	
 	Easy = "简单 AI"
 	Normal = "普通 AI"
 }
 ArenaMode: Pvp
 {
-
+	
 	AtFirstPlaceFmt = "领先第 2 名 {0} 分（{1}）"
 	BehindFirstPlaceFmt = "距离第 1 名落后 {0} 分（{1}）"
 	CanRespawnCountdownFmt = "可在 {0} 后复活……"
@@ -25,7 +25,7 @@ ArenaMode: Pvp
 	RespawnCountdownFmt = "{0} 后复活……"
 	Scoreboard: ^/0/Scoreboard
 	{
-
+		
 		DamageReceived = "承受\n伤害"
 		Points = "伤害\n分"
 	}
@@ -34,12 +34,12 @@ ArenaMode: Pvp
 }
 ArenaModeConfig: PvpModeConfig
 {
-
+	
 	Description = 伤害、击溃其他玩家，以此赚取分数！星舰被摧毁后可以重生。
 	Name = 竞技场
 	Rulesets
 	{
-
+		
 		FFA1500K = "各自为战- 1.5M"
 		FFA1500KShort = "混战\n1.5M"
 		FFA3000K = "各自为战- 3M"
@@ -51,7 +51,7 @@ ArenaModeConfig: PvpModeConfig
 }
 Backgrounds
 {
-
+	
 	Black = 黑色
 	Blue = 蓝色
 	Galaxy = 银河系地图
@@ -63,7 +63,7 @@ Backgrounds
 }
 BillOfSale
 {
-
+	
 	ConstructionExpenses = <u>建造费用：</u>
 	DeconstructionRefunds = <u>拆解退款：</u>
 	ExpensesSubtotalFmt = "费用小计：{0}"
@@ -79,7 +79,7 @@ BillOfSale
 }
 Brushes
 {
-
+	
 	Block10x10 = "10x10 区块"
 	Block10x10Icon = ""
 	Block1x1 = "1x1 区块"
@@ -115,9 +115,105 @@ Brushes
 	TriangleIcon = 三角
 	TriangleTip = "按住 <btn id='Design.RestrictShapeMode'/> 可绘制完美等腰三角形。"
 }
+BuildBattleMode: Pvp
+{
+	
+	BattleWinnerFmt = "{0}在第 {1} 轮中获胜！"
+	BuyTechFmt = ""
+	CapturePointFmt = "<b>{0}</b>\n<add_money>{1:n0}</add_money><gray>/{2} 秒</gray>"
+	CapturePointNames
+	[
+		
+		占领点数
+	]
+	FleetValueFmt = "<s12>舰队价值\n</s12><money_color>{0}</money_color>/<money_color>{1}</money_color>"
+	ForfeitConfirm = 确定要放弃吗？
+	ForfeitGame = 放弃本局
+	ForfeitRound = 放弃本轮
+	HomeCircleRequiredTip = 必须在船员自身的生成区内。
+	IncomeFmt = "<add_money>{0:n0}</add_money><gray>/{1} 秒</gray>"
+	NoMissingCrew = 无船员缺失
+	NothingToRestock = 没有需要补给的项目
+	RestockCrewFmt = "重新雇用缺少的船员：{0}"
+	RestockCrewTip = 重新雇用缺少的船员，以可用床位数为限。
+	RestockResourcesFmt = "资源补给：{0}"
+	RestockResourcesTip = 补满本星舰的弹药与资源。
+	Scoreboard: ^/0/Scoreboard
+	{
+		
+		CapturePoints = 控制点数
+		Credits = 信用点
+		CurrentIncome = 当前收入
+		FleetValue = 舰队价值
+		ReadyCheck = 准备出发？
+		RoundLost = 失败
+		RoundTie = 平局
+		RoundWon = 胜利
+		RoundsFmt = "第 {0} 轮"
+		TotalIncome = 总收入
+	}
+	TieRound = 平局
+	TimeRemainingTip = 距离游戏结束、伤害分最高的战队获胜所剩的时间。
+}
+BuildBattleModeConfig: PvpModeConfig
+{
+	
+	AIControlledBattles = "AI 控制战斗"
+	AIControlledBattlesTip = "勾选后，战斗阶段星舰将由 AI 控制自动战斗。"
+	AdditionalUnlockCost = 额外解锁费用
+	AdditionalUnlockCostTip = 每次建造阶段解锁额外科技时，需要额外的费用。
+	AllowShipLoading = 允许使用已保存星舰设计
+	AllowShipLoadingTip = 允许玩家在建造阶段中加载事先保存的星舰设计图。
+	BasicIncome = 基础收入
+	BasicIncomeTip = "战队除控制点外每 10 秒（以 1/2 的速度）获得的信用点数（<img name='money' colored='true'/>）。"
+	BattleTimeLimit = 战斗时限
+	BattleTimeLimitTip = 在一轮战斗中，限制圈闭合至最小所需时间。
+	BuildTimeLimit = "建造轮数时限{0}"
+	BuildTimeLimitTip = "玩家必须在第 {0} 轮的建造阶段内构建好星舰。"
+	CapturePointIncome = 控制点收入
+	CapturePointIncomeTip = "中央控制点每 10 秒（以 1/2 的速度）所产生的信用点数（<img name='money' colored='true'/>）。"
+	Description = 在随机部件数量限制下搭建并升级星舰，并与其他玩家对抗，持续数个回合。
+	Funds = 起始信用点
+	FundsPerRound = "第 {0} 轮资金"
+	FundsPerRoundTip = "每名玩家进入第 {0} 轮时获得的信用点数（<img name='money' colored='true'/>）。"
+	FundsTip = "比赛开始时每个战队所拥有的起始信用点数（<img name='money' colored='true'/>）。"
+	MapStyle = 地图类型
+	MapStyleTip = 设置地图大小和支持的战队数量。
+	MaxFleetValue = 最高舰队价值
+	MaxFleetValueTip = 战队所拥有舰队在任何情况下的最大总价值。
+	MinShipValue = 最低星舰价值
+	MinShipValueTip = 战斗中可购买任意星舰的最低价值。
+	MirrorTechOfferings = 科技镜像开局
+	MirrorTechOfferingsTip = 勾选后，所有玩家会以同样科技进度进入建造阶段；若未勾选，玩家则会随机获得科技进度。
+	Name = 建造与战斗
+	Rulesets
+	{
+		
+		Ai100K = "小型星舰 - AI控制"
+		Ai100KShort = "小型\nAI"
+		AiBlitz = "小型星舰 - AI控制 + 速攻"
+		AiBlitzShort = "速攻\nAI"
+		AiLarge = "大型星舰 - AI控制"
+		AiLargeShort = "大型\nAI"
+		AiMed = "中型星舰 - AI控制"
+		AiMedShort = "中型\nAI"
+		Blitz = "小型星舰 - 速攻"
+		BlitzShort = 速攻
+		Large = "大型星舰（上限 1.5M）"
+		LargeShort = 大型
+		Med = "中型星舰（上限 1M）"
+		MedShort = 中型
+		Small100K = "小型星舰（上限 500K）"
+		Small100KShort = 小型
+	}
+	StartingFundsFmt = "<s14>起始信用点：</s14> <money>{0:n0}</money>"
+	StartingFundsTip = "每名玩家在游戏开始时可用于构建星舰的信用点数（<img name='money' colored='true'/>）。"
+	VictoryPointLimit = 获胜轮数
+	VictoryPointLimitTip = 获胜需要赢得的战斗轮数。
+}
 BuildBox
 {
-
+	
 	BlueprintsInvalid = 无效蓝图
 	BrushDisabledTip = 所选部件或工具不支持不同的“笔刷”形状或尺寸。
 	BrushHotkeyFmt = "热键：<b>{0}</b>"
@@ -181,7 +277,7 @@ BuildBox
 	InsufficientResourcesFmt = "{0}不足"
 	InvalidReasons
 	{
-
+		
 		Blocked = <bad>建造受阻</bad>
 		CategorySlotsExceeded = <bad>此类型部件过多</bad>
 		ExistingPart = <bad>现有部件</bad>
@@ -255,12 +351,12 @@ BuildBox
 }
 CareerLog
 {
-
+	
 	Title = 生涯日志
 }
 CareerMode
 {
-
+	
 	CommsTip = "<b>通信</b>\n\n打开与附近其他星舰的通讯链接。\n\n热键：<btn id='Comms.OpenClose'/>"
 	CreateCustomMarker = "使用 <btn id='General.UIClick'/> 键可在这里添加自定义标记。"
 	CustomMarkerName = 为该自定义标记输入名称：
@@ -294,7 +390,7 @@ CareerMode
 }
 CareerModeConfig
 {
-
+	
 	Advanced = 高级游戏选项
 	AdvancedInfo = 更改这些选项将改变游戏原有的模式，但只要能玩得更尽兴，你大可随意修改。
 	CantDisableSalvagingTip = 必须同时开启“我讨厌建造”。
@@ -327,13 +423,13 @@ CareerModeConfig
 }
 CategoryNouns
 {
-
+	
 	ThrusterPlural = 推进器
 	ThrusterSingular = 推进器
 }
 ChatBox
 {
-
+	
 	ChatFmt = "<good>{0}：</good>{1}"
 	Send = 发送
 	SendingTooFast = 哇哦，别急！你消息发送得太频繁了！
@@ -343,13 +439,13 @@ ChatBox
 }
 CloudStorage
 {
-
+	
 	UsedFmt = "Steam 云存档：已使用 <good>{0:0.0}%</good>"
 	UsedTipFmt = "已使用：{0} / {1}\n可用：{2}"
 }
 Codex
 {
-
+	
 	CodexDialog = 教程和百科
 	HowToPlay = 游戏教程：
 	Lore = 百科
@@ -360,7 +456,7 @@ Codex
 }
 ColorPicker
 {
-
+	
 	Copy = 复制颜色
 	Hex = ""
 	Hsv = ""
@@ -369,7 +465,7 @@ ColorPicker
 }
 Colorblind
 {
-
+	
 	Achromatopsia = 全色盲
 	Deuteranopia = 绿色盲
 	Normal = 正常
@@ -378,7 +474,7 @@ Colorblind
 }
 CombatDifficulty
 {
-
+	
 	Easy = 少尉
 	EasyTip = "● 敌人造成的伤害减少 30%。\n● 对敌人造成的伤害增加 40%。"
 	Hard = 上将
@@ -392,7 +488,7 @@ CombatDifficulty
 }
 CommWindow
 {
-
+	
 	AcceptMission = 接受
 	AcceptMissionTip = 接受这项任务并将其加入任务日志，达成目标后便可获得奖励。
 	AutoHireFmt = "最多雇佣（{0}）\n{1}"
@@ -436,7 +532,7 @@ CommWindow
 }
 CommsBox
 {
-
+	
 	DistFmt = "{0:0.00}公里"
 	Hail = 呼叫
 	HailingFailedFmt = "<bad>呼叫被拒</bad>\n{0}"
@@ -450,7 +546,7 @@ CommsBox
 }
 ConstructionLegality
 {
-
+	
 	IllegalInCombat = 在战斗中不能改装或修理星舰。
 	IllegalOutsideSpawnArea = 在生成区外不能改装或修理星舰。
 	IllegalSelfDestructing = 无法改装或修理正在自毁的星舰。
@@ -458,18 +554,18 @@ ConstructionLegality
 }
 CreativeMode
 {
-
+	
 	AddConnectionHover = "按住 <btn id='Game.UseTool'/> 拖动，即可在两个星系之间建立超空间跳跃连接。"
 	Ai
 	{
-
+		
 		None = 无
 		TipFmt = "将“{0}”AI 分配给选定的星舰。"
 		Title = AI
 	}
 	Allegiance
 	{
-
+		
 		Barbarian = 海贼
 		BarbarianTip = “海贼”星舰和其他星舰都是敌人，包括海贼星舰，但废弃星舰除外。
 		Junk = 废舰
@@ -482,7 +578,7 @@ CreativeMode
 	}
 	AutoBuilder: CameraHelper
 	{
-
+		
 		BottomToTop = 从下到上
 		BuildOrder = 建造顺序
 		Cheap = 优先最便宜
@@ -507,7 +603,7 @@ CreativeMode
 	}
 	BattleHelper
 	{
-
+		
 		AI = AI
 		AddShip = 添加星舰
 		AutoCamera = 自动镜头
@@ -527,7 +623,7 @@ CreativeMode
 	}
 	BenchmarkHelper
 	{
-
+		
 		Duration = 持续时间
 		FpsFmt = "帧/秒：{0:.0}"
 		FramesFmt = "帧数：{0}"
@@ -542,7 +638,7 @@ CreativeMode
 	}
 	CameraHelper
 	{
-
+		
 		Buffer = 缓冲（米）
 		Delay = 延迟：
 		Duration = 持续时间：
@@ -565,7 +661,7 @@ CreativeMode
 		Tween = 补间：
 		TweenMode
 		{
-
+			
 			EaseIn = 淡入
 			EaseInOut = 淡入/淡出
 			EaseOut = 淡出
@@ -603,7 +699,7 @@ CreativeMode
 	InvulnerableTip = 如果勾选，该星舰将免疫所有伤害。
 	POIConfig
 	{
-
+		
 		CustomName = 自定义名称
 		ShowOnlyInFog = 仅在迷雾中显示
 		Title = 兴趣点选项
@@ -614,7 +710,7 @@ CreativeMode
 	PartDestructTip = 摧毁所选的部件。
 	PlanetConfig
 	{
-
+		
 		Distance = 距离
 		Random = 随机
 		Seed = 种子
@@ -623,7 +719,7 @@ CreativeMode
 	}
 	PlayAs
 	{
-
+		
 		AllPlayers = 所有玩家
 		AllPlayersTipFmt = "使你能够控制所有玩家的星舰。\n\n新放置的星舰将被交给玩家 1。"
 		PlayerIndexFmt = "玩家 {0}"
@@ -640,13 +736,13 @@ CreativeMode
 	ResetCrewTip = 将所有船员传送回最初的空间站。
 	SavedShips
 	{
-
+		
 		CrewCountFmt = "{0} 名船员"
 	}
 	SelectObjectsTip = "<b>选择工具</b>\n\n选择、移动、旋转和删除星舰等对象。\n\n热键：<btn id='CreativeMode.SelectTool'/>"
 	SetBackground
 	{
-
+		
 		Tip = 改变太空背景的外观。
 		Title = 更改背景……
 	}
@@ -655,7 +751,7 @@ CreativeMode
 }
 CreativeModeConfig
 {
-
+	
 	Description = 信用点无限且蓝图全部解锁。
 	GenerateFtlGates = 创建超空间跳跃中继站
 	GenerateFtlGatesTip = 如果勾选，将在相邻星系自动添加超空间跳跃中继站。
@@ -670,7 +766,7 @@ CreativeModeConfig
 }
 CrewAndResourceTransfer
 {
-
+	
 	CancelTransfer = 取消转移
 	Crew = 船员
 	CrewFailure = 部分选定船员无法被转移。通常是由于没有气闸可供他们前往新星舰的。
@@ -686,7 +782,7 @@ CrewAndResourceTransfer
 }
 CrewBox
 {
-
+	
 	AddCrew = 添加更多船员……
 	AddRole = 新岗位
 	AddRoleDisabledTip = 岗位数已达上限。
@@ -744,7 +840,7 @@ CrewBox
 }
 CrewEditor
 {
-
+	
 	BodyType = 发型
 	Copy = 复制
 	HairColor = 发色
@@ -759,7 +855,7 @@ CrewEditor
 }
 CrewScarcity
 {
-
+	
 	Max = 最大
 	MaxTip = "无论玩家的名望如何，最多可雇佣 2000 名船员。这样玩家可以无限地提升战斗力，不必与更强的敌人死磕，游戏将变得更加容易。"
 	Plentiful = 充足
@@ -771,7 +867,7 @@ CrewScarcity
 }
 DecalGroups
 {
-
+	
 	Shapes = 形状
 	Symbols = 符号
 	TextLarge = 文本（2x2）
@@ -779,7 +875,7 @@ DecalGroups
 }
 DominationMapStyles
 {
-
+	
 	Large2T = "2 战队 - 大"
 	Large2TTip = 两支战队、六个小控制点、两个大控制点，一个超大控制点。
 	Large3T = "3 战队 - 大"
@@ -801,11 +897,11 @@ DominationMapStyles
 }
 DominationMode: Pvp
 {
-
+	
 	CapturePointFmt = "<b>{0}</b>\n<add_money>{1:n0}</add_money><gray>/{2} 秒</gray>"
 	CapturePointNames
 	[
-
+		
 		"A 点"
 		"B 点"
 		"C 点"
@@ -843,7 +939,7 @@ DominationMode: Pvp
 	RestockResourcesTip = 补满本星舰的弹药与资源。
 	Scoreboard: ^/0/Scoreboard
 	{
-
+		
 		CapturePoints = 控制点数
 		Credits = 信用点
 		CurrentIncome = 当前收入
@@ -854,7 +950,7 @@ DominationMode: Pvp
 }
 DominationModeConfig: PvpModeConfig
 {
-
+	
 	BasicIncome = 基础收入
 	BasicIncomeTip = "战队除控制点外每 10 秒（以 1/2 的速度）获得的信用点数（<img name='money' colored='true'/>）。"
 	CapturePointIncome = 控制点收入
@@ -871,7 +967,7 @@ DominationModeConfig: PvpModeConfig
 	Name = 统治赛
 	Rulesets
 	{
-
+		
 		Large1500K = "大地图 - 1.5M"
 		Large1500KShort = "大图\n1.5M"
 		Large3000K = "大地图 - 3M"
@@ -897,7 +993,7 @@ DominationModeConfig: PvpModeConfig
 }
 Doodads
 {
-
+	
 	AsteroidCarbon_L = 碳矿小行星（L）
 	AsteroidCarbon_M = 碳矿小行星（M）
 	AsteroidCarbon_S = 碳矿小行星（S）
@@ -973,7 +1069,7 @@ Doodads
 }
 EconDifficulty
 {
-
+	
 	Fast = 建造工
 	FastTip = "● 资源掉落率提高 100%。\n● 金钱奖励提高 100%。\n● 名声/声誉奖励提高 50%。"
 	FreeBuild = 狂想者（自由建造）
@@ -985,7 +1081,7 @@ EconDifficulty
 }
 EditorGroups
 {
-
+	
 	Crew = 船员
 	Defenses = 防御
 	Flight = 飞行
@@ -1003,10 +1099,10 @@ EditorGroups
 }
 EliminationMode: Pvp
 {
-
+	
 	Scoreboard: ^/0/Scoreboard
 	{
-
+		
 		Health = 血量
 	}
 	TeamStrengthTip = 此玩家或战队的剩余战力。如果此槽为空，该战队战败。
@@ -1014,12 +1110,12 @@ EliminationMode: Pvp
 }
 EliminationModeConfig: PvpModeConfig
 {
-
+	
 	Description = 一场生死之战！最后存活的玩家或战队获胜！
 	Name = 淘汰赛
 	Rulesets
 	{
-
+		
 		BR1500K = "大逃杀 - 1.5M"
 		BR1500KShort = "大逃杀\n1.5M"
 		BR3000K = "大逃杀 - 3M"
@@ -1037,13 +1133,13 @@ EliminationModeConfig: PvpModeConfig
 }
 Errors
 {
-
+	
 	GpuCrash = 图形驱动程序似乎崩溃了。如果问题无改善，请尝试更新图形驱动；或者，如果你最近更新过驱动，请降级到以前的版本。
 	HasMods = "有 Mod 在启用中。此次崩溃可能由 Mod 引起。\n请向 Mod 作者反馈该问题。"
 }
 Factions
 {
-
+	
 	Cabal = 拜日教
 	Fringe = 边缘星系抵抗军
 	Imperium = 半人马座帝国
@@ -1052,7 +1148,7 @@ Factions
 }
 FameTitles
 [
-
+	
 	“不为人知”
 	“默默无闻”
 	“不甚起眼”
@@ -1075,7 +1171,7 @@ FameTitles
 ]
 Feedback
 {
-
+	
 	AttachErrorLog = 附加错误日志
 	AttachErrorLogTip = "附上程序的错误日志。这将方便我们修复 bug。"
 	AttachSavedGame = 附上当前游戏的存档
@@ -1095,7 +1191,7 @@ Feedback
 }
 FleetsWorkshop: Workshop
 {
-
+	
 	DialogName = 创意工坊星舰系列加载器
 	Folder = 星舰系列文件夹：
 	Name = 星舰系列名称：
@@ -1105,7 +1201,7 @@ FleetsWorkshop: Workshop
 }
 Formations
 {
-
+	
 	A = ""
 	Alpha = "A 编队"
 	B = ""
@@ -1134,7 +1230,7 @@ Formations
 }
 GalaxyMap
 {
-
+	
 	CancelJump = 取消超空间跳跃
 	CantPlotCourseTip = 你必须至少有一艘搭载正常运转超空间驱动器的星舰。
 	InsufficientFuel = "麾下一些星舰的<u>超空间驱动器</u>中缺少超光素（<img name='resource.hyperium'/>），无法跳跃到这个星系。仍要规划路线吗？"
@@ -1148,7 +1244,7 @@ GalaxyMap
 }
 GameLaunchFlow
 {
-
+	
 	ClientInitializing = "正在启动游戏……\n（初始化）"
 	ClientReceivingFmt = "正在启动游戏……\n（数据接收中：{0:0}%）"
 	ClientStarting = 正在启动游戏！
@@ -1160,7 +1256,7 @@ GameLaunchFlow
 }
 GameMenu
 {
-
+	
 	Abort = 返回设置
 	CantSaveGameTip = 游戏目前无法保存。
 	Codex = 教程和百科
@@ -1193,7 +1289,7 @@ GameMenu
 }
 GameResyncFlow
 {
-
+	
 	ClientInitializing = "游戏未同步，正在重新同步……\n（初始化）"
 	ClientReceivingFmt = "游戏未同步，正在重新同步……\n（正在接收游戏状态：{0:0}%）"
 	ClientResuming = 即将回到游戏！
@@ -1206,7 +1302,7 @@ GameResyncFlow
 }
 GameSetupScreen
 {
-
+	
 	AddAI = "添加 AI 玩家"
 	AddShip = ""
 	AddShipTip = 将一艘舰船添加进舰队。
@@ -1238,7 +1334,7 @@ GameSetupScreen
 	GameOpen = "游戏已<good>开启</good>\n<s12>如果人数未满，其他玩家可以加入。</s12>"
 	HostDisconnectReason
 	{
-
+		
 		Canceled = 主机已取消游戏。
 		ConnectionLost = 与主机失去连接。
 		Kicked = 主机已将你踢出游戏。
@@ -1278,7 +1374,7 @@ GameSetupScreen
 }
 Hud
 {
-
+	
 	AbandonShip = 放弃星舰
 	AbandonShipTip = 指示所有船员尽快离开星舰。
 	AttackTip = "<b>攻击</b>\n\n攻击另一艘星舰。也可攻击自己的星舰。（按住 <btn id='Game.InvertCollisionAvoidance'/> 可开/关防撞功能。）\n\n热键：<btn id='Game.Attack'/>"
@@ -1413,22 +1509,22 @@ Hud
 }
 Inputs
 {
-
+	
 	Brushes
 	{
-
+		
 		Name = 星舰编辑器（刷子）
 	}
 	Clear = 清除
 	Comms
 	{
-
+		
 		Name = 通信
 		OpenClose = 打开/关闭通信面板
 	}
 	ControlGroups
 	{
-
+		
 		CreatePartGroupFmt = "创建部件组{0}"
 		CreateShipGroupFmt = "创建星舰组{0}"
 		Name = 控制组
@@ -1439,7 +1535,7 @@ Inputs
 	}
 	CreativeMode
 	{
-
+		
 		AutoBattleCamera = 切换战斗镜头自动化
 		Delete = 删除已选对象
 		DeleteNode = 删除星系
@@ -1461,7 +1557,7 @@ Inputs
 	}
 	Crew
 	{
-
+		
 		AddToSelection = 添加单个船员至选择
 		Name = 船员管理
 		OpenClose = 打开/关闭船员面板
@@ -1475,7 +1571,7 @@ Inputs
 	Defaults = 默认
 	Design
 	{
-
+		
 		AppendShapeMode = 附加形状模式
 		BuildClose = 关闭建造面板
 		BuildOpen = 打开建造面板
@@ -1514,13 +1610,13 @@ Inputs
 	}
 	Formations
 	{
-
+		
 		MakeFormationFmt = "使用编队{0}"
 		Name = 编队
 	}
 	Game
 	{
-
+		
 		AllowSalvageOwnShip = 允许拆解回收本舰
 		AppendSelection = 挂件选择
 		Attack = 攻击
@@ -1575,7 +1671,7 @@ Inputs
 	}
 	General
 	{
-
+		
 		Cancel = 取消/返回/菜单
 		CaptureGif = "截取 GIF 动图"
 		Confirm = 好的/接受/确认
@@ -1592,7 +1688,7 @@ Inputs
 	}
 	KeyNames
 	{
-
+		
 		A = ""
 		Alt = ""
 		Apps = 应用
@@ -1699,7 +1795,7 @@ Inputs
 	}
 	MouseButtonNames
 	{
-
+		
 		Button4 = "鼠标键 4"
 		Button5 = "鼠标键 5"
 		Left = 左键单击
@@ -1708,7 +1804,7 @@ Inputs
 	}
 	Multiplayer
 	{
-
+		
 		Name = 多人游戏
 		SendChat = 发送聊天消息
 		ShowScoreboard = 显示记分牌
@@ -1717,13 +1813,13 @@ Inputs
 	None = 无
 	PartTargetCancelers
 	{
-
+		
 		headlight_aim = 重置探照灯
 		tractor_beam = 取消牵引光束
 	}
 	PartTargeters
 	{
-
+		
 		chaingun_aim = 瞄准链炮
 		headlight_aim = 探照灯瞄准
 		prism_aim = 离子棱镜瞄准
@@ -1731,7 +1827,7 @@ Inputs
 	}
 	PartToggles
 	{
-
+		
 		airlock_type_both = 气闸：自由通行
 		airlock_type_closed = 气闸：关闭
 		airlock_type_entry = 气闸：只可进入
@@ -1770,12 +1866,12 @@ Inputs
 	}
 	PartTriggers
 	{
-
+		
 		detonate = 引爆炸弹
 	}
 	Parts
 	{
-
+		
 		Name = 星舰编辑器（部件）
 		SelectPartFmt = "在类别中选择部件{0}"
 		SelectPartGroupFmt = "选择部件类别{0}"
@@ -1783,7 +1879,7 @@ Inputs
 	PressKeyOrClick = 按下你想使用的按键，或点击此框内部：
 	Resources
 	{
-
+		
 		ClearTool = 清除指定资源工具
 		ClearToolMode = 清除指定资源模式
 		Eject = 弹射资源
@@ -1800,7 +1896,7 @@ Inputs
 	}
 	View
 	{
-
+		
 		DragFocus = 拖动/聚焦视角
 		FocusCursorMode = 聚焦光标模式
 		FocusMidpoint = 聚焦已选/目标中点
@@ -1826,7 +1922,7 @@ Inputs
 }
 JobNames
 {
-
+	
 	CollectNuggets = 收集资源
 	Construct = 建造
 	Deconstruct = 拆解
@@ -1840,7 +1936,7 @@ JobNames
 }
 Jobs
 {
-
+	
 	ConstructFmt = "建造{0}"
 	DeconstructFmt = "拆解{0}"
 	FireExtinguishGetFmt = "捡起{0}"
@@ -1860,7 +1956,7 @@ Jobs
 }
 LoadPaintScheme
 {
-
+	
 	ConfirmDelete = 确定要删除这个涂装方案吗？
 	Delete = 删除
 	Okay = 加载
@@ -1868,7 +1964,7 @@ LoadPaintScheme
 }
 LoadSaveGame
 {
-
+	
 	Auto = 自动存档
 	AutoSave = 自动存档
 	AutoSaving = 正在自动保存……
@@ -1892,7 +1988,7 @@ LoadSaveGame
 }
 LobbyScreen
 {
-
+	
 	Ban = 拉黑
 	BanTip = 勾选后，此玩家将无法加入你主持的任何游戏。
 	ClearFilters = 清除筛选条件
@@ -1916,7 +2012,7 @@ LobbyScreen
 	Full = <bad>已满</bad>
 	GameInfo
 	{
-
+		
 		Closed = <bad>游戏已关闭</bad>
 		CustomRuleset = <b>规则集：</b>自定义
 		Full = <bad>游戏人数已满</bad>
@@ -1937,7 +2033,7 @@ LobbyScreen
 	}
 	GameJoinDenyReason
 	{
-
+		
 		Banned = 主机已禁止你加入游戏。
 		DataIncompatible = "你的游戏数据与主机的游戏数据不兼容。这可能是 Mod 所致。"
 		GameClosed = 该主机已关闭游戏，因此无法加入。
@@ -1965,7 +2061,7 @@ LobbyScreen
 	LobbyTypeTip = 只显示该类型大厅。
 	LobbyTypes
 	{
-
+		
 		Coop = 多人合作
 		PVP = 多人竞技
 	}
@@ -1994,10 +2090,10 @@ LobbyScreen
 }
 Lore
 {
-
+	
 	Cabal
 	{
-
+		
 		Lore1 = 拜日教是一个崇拜太阳（地球的恒星，于50年前毁灭）的宗教科研组织，现在致力于通过科学研究使他们的神，也就是那颗死亡的恒星“转世重生”。
 		Lore2 = 虽然没人知道拜日教成立的具体时间，但可以确信的是，它已经以某种形式存在了至少上百年。它从最初的秘密邪教，发展为现在信众遍地的主流宗教，甚至建立起了一个强大的银河系国家。它的信徒们相信，每颗恒星实际上都是一位神祇，祂们创造了行星与卫星，也为生命提供在星海间繁衍壮大的能量。但在这些神祇，也就是恒星中，有一颗是拜日教所特别崇拜的——太阳，他们认为祂不仅创造了人类，也创造了那个建造超空间跳跃星门并留下阿姆斯特朗巨石的古代文明。
 		Lore3 = 拜日教是一个高度组织化的宗教，它宣称治下星区已经超过了银河系五分之一的已知区域，因而位列银河系的大国之一。在教国中，宗教与政府密不可分。一个由十二名拜日教大祭司组成的世袭教廷理事会负责制定法律，他们建立起了由祭司等神职人员组成的复杂而森严的等级制度，以超乎寻常的严苛律法管理着政府的各项职能。但对于那些愿意接受理事会律法的人来说，由于教国可以为教民提供广泛的社会服务和基本收入，他们生活还算不错。银河系内不少人远道而来，勇敢地前往拜日教国，只为享受这些社会福利，而他们之所以能这样做，都要归功于教国开放的移民政策，任何人只要宣称信仰并赞美太阳，且背弃所有其他宗教，教国的大门便向他敞开。
@@ -2008,7 +2104,7 @@ Lore
 	}
 	Fringe
 	{
-
+		
 		Lore1 = 边缘星系抵抗军是一个由独立星系组成的松散联合体，其存在仅仅是出于生存和保持独立的共同愿望。
 		Lore2 = “边缘”星系是指位于已知银河系边缘或主要派系领地之间的星系。它们通常人口稀少，生活水平低下。虽然边缘星系的居民有很强的荣誉感，但边缘星系的定居点或空间站往往缺乏统一的政府或法律体系。因此，边缘星系容易吸引装备精良且不怀好意之人，海贼活动极为猖獗。
 		Lore3 = 边缘星系两两之间不存在任何正式的合作协议，因此他们所谓的“统一”完全是基于对其他主要派系的同仇敌忾，而且他们也心知肚明，相比于孤军奋战，携手抗敌更有利于（勉强）捍卫自己的独立。尽管能够通力合作，但边缘星系依然无法与任何主要派系的实力相抗衡，因此注定了战败并逐一失去独立地位的命运。
@@ -2016,7 +2112,7 @@ Lore
 	}
 	Imperium
 	{
-
+		
 		Lore1 = 发源于半人马座的半人马座帝国是一个年轻的军事帝国，冷酷无情，野心勃勃。
 		Lore2 = "半人马座帝国的各个星系最初由总部位于地球的泰拉联盟管理，但随着 50 年前整个太阳系的毁灭，半人马座帝国发现自己突然摆脱了桎梏，而此时恰巧银河系的权力真空需要填补。在一场席卷整个半人马座的意识形态内战爆发并很快结束后，新成立的半人马座帝国取得了最终胜利，并通过征服和威慑迅速将其疆域扩大到周围的星系。在短短的50年内，半人马座帝国已经一举成为银河系中最强大的军事力量，掌控几近一半的已知星系，并已经开始为其他区域的征服枕戈待旦。"
 		Lore3 = "无论是民事还是军事方面，半人马座帝国的组织结构都呈现独特的扁平化。作为一个拥有真正的直接民主制度的政权，半人马座核心星系每一位公民在 12 岁以后都有权提出法律建议，并对每一项立法进行投票，而超光速通信与分散式公共区块链使得这一过程成为可能。即使是最重要的决定，如是否接受新征服星系的投降条件，也可以即时通知全体公民即将进行投票，并在几分钟内迅速完成投票。因此，大多数半人马座帝国公民都认为自己有极大的职责去了解帝国面临的各种问题，这也导致了极高的公民参与度。帝国不需要某位“国家元首”来领导，如果说真的存在任何权力的集中，那应该就是那些社会名流，他们能够影响其广大追随者，诱导他们按某种方式来投票。"
@@ -2026,7 +2122,7 @@ Lore
 	}
 	Monolith
 	{
-
+		
 		Lore1 = 巨石合作社是一家专营采矿、制造和运输的巨型企业，以近乎垄断的实力主导着银河系的贸易与经济。
 		Lore2 = 在超空间时代来临前，该企业起初名为“阿姆斯特朗开采合作社”。它非常幸运地率先发现了埋藏在太阳系小行星带深处的神秘物体，该物体即为现在人们所知的“阿姆斯特朗巨石”。阿姆斯特朗巨石是一个古老文明的最后遗物，该文明所在的星球原本在火星和木星之间的轨道上绕太阳公转，但后来却不幸毁灭，成为了小行星带。阿姆斯特朗巨石本身是一个技术档案库，人们对其进行破译后，在其中发现了超空间驱动技术的蓝图，人类因此也能够探测并使用该文明很久以前建造的巨大超空间跳跃中继网络。虽然目前仍存在争议，但人们普遍认为，古代文明的星球正是由于滥用超空间跳跃技术而招致了毁灭，而这恰巧与人类自己失手毁灭了整个太阳系的狂妄傲慢行为类似。人们尚未找到任何能够证明古代文明形态的遗迹或遗骸，这也导致人们对他们到底是天外来客还是人类祖先抱有诸多猜测。
 		Lore3 = 在发现巨石后，阿姆斯特朗开采合作社只用了两年时间就复现出了原始的超空间驱动技术，然后又用了五年时间，使其可堪商业用途。该技术是有史以来最重大的商业机密，尽管一开始公司成功地保守了这个秘密，但几年后，超空间驱动技术的基本原理还是遭到泄露，并迅速传遍了整个太阳系。即使如此，这几年的时间还是给了该公司（现在被称为巨石合作社）足够的先机，使其在竞争对手面前手握主导优势，并最终成为人类历史上最大的工业巨头。
@@ -2037,7 +2133,7 @@ Lore
 }
 MapSizes
 {
-
+	
 	Huge = 巨大
 	HugeTip = "160-200 个恒星系。"
 	Large = 大
@@ -2053,7 +2149,7 @@ MapSizes
 }
 MirrorAxis
 {
-
+	
 	All = "镜像：8 向"
 	Both = 镜像：纵向+横向
 	BothDiagonal = 镜像：对角东北/西南+西北/东南
@@ -2064,7 +2160,7 @@ MirrorAxis
 }
 Misc
 {
-
+	
 	Apply = 应用
 	Cancel = 取消
 	ClassicDowngrade = "<halign value='Left'>嗨，看来你之前玩过《Cosmoteer》的“经典”版本！你现在正在游玩的是“现代”升级版的试玩。\n\n虽然该试玩版与经典版本相比有很多改进，但你仍可决定是否回去继续游玩经典版本。你可以按照以下步骤进行操作：\n\n\t1、在 Steam 上打开《Cosmoteer》试玩版的“属性”。\n\t2、点击测试版选项卡。\n\t3、从下拉列表中选择“经典（classic）”。\n\n如此一来，《Cosmoteer》试玩版就会自动“更新”为经典旧版。尽情享受吧！</halign>"
@@ -2093,9 +2189,21 @@ Misc
 	Unknown = 未知
 	Yes = 是
 }
+MissileTypes
+{
+	
+	EMP = "EMP 导弹"
+	EMPDesc = "命中后释放电磁脉冲的大型导弹，可大范围耗尽敌方系统的能源。需要 EMP 导弹工厂生产。"
+	HE = 高爆导弹
+	HEDesc = 可在小范围内造成高伤害的导弹。需要高爆导弹工厂生产。
+	Mine = 近炸空雷
+	MineDesc = 固定空雷，敌舰靠近时引爆，射出杀伤性弹片。需要空雷工厂生产。
+	Nuke = 战术核导弹
+	NukeDesc = 巨型慢速导弹，可在很大区域内引发猛烈核爆炸，杀伤力巨大。需要核导弹工厂生产。
+}
 MissionCategories
 {
-
+	
 	Bounties = 赏金
 	Debug = 调试
 	Deliveries = 货运（重复）
@@ -2106,7 +2214,7 @@ MissionCategories
 }
 MissionLog
 {
-
+	
 	Abandon = 放弃
 	AbandonTip = 放弃这项任务，将其从任务日志中永久删除，无法获得任何奖励。
 	CategorizeByFaction = "<image name='categorize'/>派系"
@@ -2157,7 +2265,7 @@ MissionLog
 }
 Missions
 {
-
+	
 	Bounty = 通缉犯赏金
 	BountyDesc = "一艘在逃的<b>{target_ship}</b>级星舰因在{mission_location}星系内从事非法活动而遭到通缉。{faction_name}当局将向消灭该通缉犯的 Cosmoteer 支付 {money} 赏金。"
 	ClearAsteroidField = 清理小行星带
@@ -2188,7 +2296,7 @@ Missions
 }
 Mods
 {
-
+	
 	Activate = 激活
 	AuthorFmt = "发布者：{0}"
 	AutoDisabled = "某些 Mod 可能与当前版本的 Cosmoteer 不兼容，已被自动禁用。"
@@ -2233,7 +2341,7 @@ Mods
 }
 ModsSync
 {
-
+	
 	DialogName = "同步 Mod"
 	MissingMods = "该存档创建时使用了如下 Mod，但这些 Mod 当前并未启用。是否自动订阅并启用这些 Mod？您可以不启用它们直接进行游戏，但游戏可能会出现问题。"
 	MissingModsNoSync = "该存档创建时使用了如下 Mod，但这些 Mod 当前并未启用。您可以不启用它们直接进行游戏，但游戏可能会出现问题。"
@@ -2248,7 +2356,7 @@ ModsSync
 }
 ModsWorkshop: Workshop
 {
-
+	
 	DialogName = "创意工坊 Mod 上传工具"
 	Folder = "Mod 文件夹："
 	Name = "Mod 名称："
@@ -2258,7 +2366,7 @@ ModsWorkshop: Workshop
 }
 Multiplayer
 {
-
+	
 	AI = AI
 	AINameFmt = "AI 玩家{0}"
 	AddressAlreadyInUseFmt = "另一程序正在使用 UDP 端口{0}，必须将其关闭才能游玩多人模式。"
@@ -2270,7 +2378,7 @@ Multiplayer
 	ErrorInitializingFmt = "初始化多人游戏时出错：{0}"
 	GameEndReason
 	{
-
+		
 		ConnectionLost = 连接丢失
 		Deliberate = 主机已结束游戏。
 		Kicked = 主机已将你踢出游戏。
@@ -2296,21 +2404,21 @@ Multiplayer
 }
 NewGame
 {
-
+	
 	SelectMode = 选择游戏模式
 	StartNewGame = 开始新游戏
 	Starting = 正在启动游戏……
 }
 News
 {
-
+	
 	Next = "下一个 ⮞"
 	Previous = "⮜ 上一个"
 	TitleFmt = "新闻（{0}/{1}）"
 }
 Objectives
 {
-
+	
 	CompletedFmt = ""
 	CountableFmt = ""
 	DebugEvent = 调试事件
@@ -2339,7 +2447,7 @@ Objectives
 }
 PaintBox
 {
-
+	
 	BrushDisabledTip = 所选贴花或工具不支持不同的“笔刷”形状或尺寸。
 	BrushTip = 更改“笔刷”的形状或尺寸，以用于选定的贴花或工具。
 	CancelPasteTip = "取消并返回选择模式。\n\n热键：<btn id='General.Cancel'/>"
@@ -2388,12 +2496,12 @@ PaintBox
 }
 PartColors
 {
-
+	
 	RoofLight = 灯光颜色/亮度
 }
 PartTargeters
 {
-
+	
 	ChaingunAim = "<b>瞄准链炮</b>\n\n将选定的链炮对准目标\n\n热键：<btn id='PartTargeters.chaingun_aim'/>"
 	HeadlightAim = "<b>探照灯瞄准</b>\n\n将选定的探照灯对准目标\n\n热键：<btn id='PartTargeters.headlight_aim'/>"
 	HeadlightAimCancel = "<b>重置探照灯瞄准</b>\n\n热键：<btn id='PartTargetCancelers.headlight_aim'/>"
@@ -2403,7 +2511,7 @@ PartTargeters
 }
 PartToggles
 {
-
+	
 	Boost_Off = "<b>加速：<bad>关</bad></b>\n\n热键：<btn id='PartToggles.thruster_boost_off'/>"
 	Boost_On = "<b>加速：<good>开</good></b>\n\n热键：<btn id='PartToggles.thruster_boost_on'/>"
 	FireMode_AtTarget = "<b>对目标开火</b>\n只在获知目标后开火。\n\n热键：<btn id='PartToggles.fire_mode_at_target'/>"
@@ -2420,10 +2528,10 @@ PartToggles
 	Lights_High = "<b>灯光亮度：高</b>\n\n热键：<btn id='PartToggles.lights_high'/>"
 	Lights_Low = "<b>灯光亮度：低</b>\n\n热键：<btn id='PartToggles.lights_low'/>"
 	Lights_Med = "<b>灯光亮度：中</b>\n\n热键：<btn id='PartToggles.lights_med'/>"
-	MissileType_EMP = "<b>EMP 导弹</b>\n\n命中后释放电磁脉冲的大型导弹，可大范围耗尽敌方系统的能源。需要 EMP 导弹工厂生产。\n\n热键：<btn id='PartToggles.missile_type_emp'/>"
-	MissileType_HE = "<b>高爆导弹</b>\n\n可在小范围内造成高伤害的导弹。需要高爆导弹工厂生产。\n\n热键：<btn id='PartToggles.missile_type_he'/>"
-	MissileType_Mine = "<b>近炸空雷</b>\n\n固定空雷，敌舰靠近时引爆，射出杀伤性弹片。需要空雷工厂生产。\n\n热键：<btn id='PartToggles.missile_type_mine'/>"
-	MissileType_Nuke = "<b>战术核导弹</b>\n\n巨型慢速导弹，可在很大区域内引发猛烈核爆炸，杀伤力巨大。需要核导弹工厂生产。\n\n热键：<btn id='PartToggles.missile_type_nuke'/>"
+	MissileType_EMP = "<b><string id='MissileTypes/EMP'/></b>\n\n<string id='MissileTypes/EMPDesc'/>\n\n热键：<btn id='PartToggles.missile_type_emp'/>"
+	MissileType_HE = "<b><string id='MissileTypes/HE'/></b>\n\n<string id='MissileTypes/HEDesc'/>\n\n热键：<btn id='PartToggles.missile_type_he'/>"
+	MissileType_Mine = "<b><string id='MissileTypes/Mine'/></b>\n\n<string id='MissileTypes/Mine'/>\n\n热键：<btn id='PartToggles.missile_type_mine'/>"
+	MissileType_Nuke = "<b><string id='MissileTypes/Nuke'/></b>\n\n<string id='MissileTypes/NukeDesc'/>\n\n热键：<btn id='PartToggles.missile_type_nuke'/>"
 	OnOff_Off = "<b>能源：<bad>关</bad></b>\n\n热键：<btn id='PartToggles.on_off_off'/>"
 	OnOff_On = "<b>能源：<good>开</good></b>\n\n热键：<btn id='PartToggles.on_off_on'/>"
 	Rotate_Off = "<b>旋转：<bad>关</bad></b>\n\n热键：<btn id='PartToggles.rotate_off'/>"
@@ -2434,12 +2542,12 @@ PartToggles
 }
 PartTriggers
 {
-
+	
 	Detonate = "引爆炸弹\n\n热键：<btn id='PartTriggers.detonate'/>"
 }
 Parts
 {
-
+	
 	Airlock = 气闸舱门
 	AirlockDesc = 允许船员进出星舰，如拾取资源或在星舰之间移动。
 	AirlockIcon = 气闸舱门
@@ -2662,6 +2770,12 @@ Parts
 	HyperdriveBeacon = 超空间驱动信标
 	HyperdriveBeaconDesc = 配备超空间驱动器的星舰可以跳跃至配备有超空间驱动信标的星舰附近。
 	HyperdriveBeaconIcon = 超空间驱动信标
+	HyperdriveLarge = 大型超空间驱动器
+	HyperdriveLargeDesc = "允许星舰瞬间跳跃至恒星系内的其他目的地，或者在超空间跳跃中继站的帮助下，前往其他恒星系。\n\n空间跳跃能力更加优越，比小型或中型驱动器有效距离更远。"
+	HyperdriveLargeIcon = 大型超空间驱动器
+	HyperdriveMed = 中型超空间驱动器
+	HyperdriveMedDesc = "允许星舰瞬间跳跃至恒星系内的其他目的地，或者在超空间跳跃中继站的帮助下，前往其他恒星系。\n\n空间跳跃能力更加优越，比小型驱动器有效距离更远。"
+	HyperdriveMedIcon = 中型超空间驱动器
 	HyperdriveSmall = 小型超空间驱动器
 	HyperdriveSmallDesc = 允许星舰瞬间跳跃至恒星系内的其他目的地，或者在超空间跳跃中继站的帮助下，前往其他恒星系。
 	HyperdriveSmallIcon = 小型超空间驱动器
@@ -2805,7 +2919,7 @@ Parts
 }
 PostShaders
 {
-
+	
 	Apple2 = 老爷机
 	BlackAndWhite = 低成本科幻电影
 	Inversion = 反色
@@ -2814,12 +2928,12 @@ PostShaders
 }
 Pvp: Multiplayer
 {
-
+	
 	ForfeitConfirm = 确定放弃战斗吗？
 	ForfeitTip = 弃权
 	Ranks
 	[
-
+		
 		"第 1 名"
 		"第 2 名"
 		"第 3 名"
@@ -2831,7 +2945,7 @@ Pvp: Multiplayer
 	]
 	Scoreboard
 	{
-
+		
 		Place = 排名
 		PlayerName = 玩家
 	}
@@ -2839,7 +2953,7 @@ Pvp: Multiplayer
 }
 PvpModeConfig
 {
-
+	
 	AllowChangeShips = 允许更改星舰配装
 	AllowChangeShipsTip = 勾选后玩家便能在战斗中改变可购买星舰的配装。
 	AllowIllegalShips = 允许非法星舰
@@ -2848,7 +2962,7 @@ PvpModeConfig
 	AllowObserversTip = 勾选后本次游戏玩家将可以观战，而无需选择或指挥任何星舰。
 	AsteroidDensities
 	{
-
+		
 		High = 高
 		Low = 低
 		None = 无
@@ -2864,7 +2978,7 @@ PvpModeConfig
 	FleetDistanceTip = 游戏开始时，每个玩家或战队舰队间的距离。
 	FleetDistances
 	{
-
+		
 		LongFmt = "长（{0}米）"
 		NormalFmt = "标准（{0}米）"
 		ShortFmt = "短（{0}米）"
@@ -2880,7 +2994,7 @@ PvpModeConfig
 	GameSpeedControlTip = 哪些玩家可以在战斗中改变游戏速度（如果允许）。
 	GameSpeedControls
 	{
-
+		
 		Disabled = 禁用
 		Everyone = 所有人
 		HostOnly = 仅主机
@@ -2900,7 +3014,7 @@ PvpModeConfig
 	PerimeterDistanceTip = 以此为半径的圆圈外，星舰将迅速受到伤害。
 	PerimeterDistances
 	{
-
+		
 		FarFmt = "遥远（{0}米）"
 		NearFmt = "临近（{0}米）"
 		NormalFmt = "标准（{0}米）"
@@ -2918,7 +3032,7 @@ PvpModeConfig
 	ShipAssignModeTip = 规定谁可以把星舰分配给哪些玩家。
 	ShipAssignModes
 	{
-
+		
 		All = 所有人
 		Host = 仅主机
 		Self = 每个玩家
@@ -2930,7 +3044,7 @@ PvpModeConfig
 	ShipPreviewModeTip = 规定玩家是否能在游戏开始前看到其他玩家所选择的星舰。
 	ShipPreviewModes
 	{
-
+		
 		All = 所有人
 		Off = 关
 		Team = 同战队
@@ -2949,7 +3063,7 @@ PvpModeConfig
 }
 ReputationLog
 {
-
+	
 	Fame = 星系名望
 	MaxCrewFmt = "最大船员数：{0}"
 	MilestoneFmt = ""
@@ -2957,7 +3071,7 @@ ReputationLog
 }
 ReputationTitleTips
 [
-
+	
 	"任务信用点奖励 -40%。\n资源、船员、蓝图价格 +100%。\n通缉时间 +100%。\n追缉舰船数：7"
 	"任务信用点奖励 -30%。\n资源、船员、蓝图价格 +75%。\n通缉时间 +75%。\n追缉舰船数：6"
 	"任务信用点奖励 -20%。\n资源、船员、蓝图价格 +50%。\n通缉时间 +50%。\n追缉舰船数：5"
@@ -2970,7 +3084,7 @@ ReputationTitleTips
 ]
 ReputationTitles
 [
-
+	
 	宿敌
 	仇视
 	敌人
@@ -2983,7 +3097,7 @@ ReputationTitles
 ]
 Resource
 {
-
+	
 	Battery = 电池
 	BatteryDesc = "为各种星舰系统提供能源的电池。\n\n与其他资源不同，电池无法存储在储存坞内。"
 	BatteryPlural = 能源
@@ -3060,7 +3174,7 @@ Resource
 }
 ResourceLimits
 {
-
+	
 	HeaderCount = 已储存
 	HeaderLimit = 上限
 	RemoveAll = 清除所有上限
@@ -3070,7 +3184,7 @@ ResourceLimits
 }
 ResourcesBox
 {
-
+	
 	AddSupplyLineTip = "<color r='50' g='149' b='255'>添加供应链\n（<btn id='Game.Command'/>）</color>"
 	BuySellCostFmt = "{0}<gray>（购买）</gray>/{1}<gray>（出售）</gray>"
 	CancelTransfers = 取消所有资源转移
@@ -3123,12 +3237,12 @@ ResourcesBox
 }
 Rewards
 {
-
+	
 	FameWithLimitFmt = "{0} <gray>（上限{1}）</gray>"
 }
 RoleEditor
 {
-
+	
 	AssignmentPriority = 雇佣优先级：
 	AssignmentPriorityTip = 船员会自动分配到高优先级的岗位上。
 	AutoFillFromLower = 船员自动填充高优先级岗位
@@ -3149,14 +3263,14 @@ RoleEditor
 }
 Roles
 {
-
+	
 	DefaultExistingShipRoleName = 船员
 	DefaultNewShipRoleName = 红衣
 	NewRoleName = 未命名岗位
 }
 Roster
 {
-
+	
 	ClearFilters = 清除筛选条件
 	ConstructBeds = 建造更多住所，为船员们提供空间。
 	CopyAll = 复制姓名和外貌
@@ -3182,7 +3296,7 @@ Roster
 	RosterSearchCountFmt = "<s20><white>{0}</white><gray>匹配船员</gray></s20>"
 	SortMode
 	{
-
+		
 		Favorite = "<img name='sort'/>收藏"
 		Job = "<img name='sort'/>当前工作"
 		Name = "<img name='sort'/>名字"
@@ -3193,7 +3307,7 @@ Roster
 }
 SaveMedia
 {
-
+	
 	CalculateSize = "计算\n文件大小"
 	Copy = 复制
 	CopyTip = 将图像复制到你的操作系统的剪贴板上，以便你可以将其粘贴到其他应用程序中。
@@ -3215,10 +3329,10 @@ SaveMedia
 }
 Settings
 {
-
+	
 	Accessibility
 	{
-
+		
 		Ally = 友军
 		ColorBlindLbl = 色盲
 		CustomPreset = 自定义
@@ -3237,7 +3351,7 @@ Settings
 	}
 	Audio
 	{
-
+		
 		EffectsVol = 效果音量
 		EffectsVolTip = 控制所有游戏音效效果的总体音量。
 		InterfaceVol = "UI 音量"
@@ -3256,7 +3370,7 @@ Settings
 	}
 	Camera
 	{
-
+		
 		AutoTrack = 自动跟踪屏幕上的星舰
 		AutoTrackTip = 如果勾选，镜头将自动匹配屏幕上所显示星舰的移动。
 		DirectControlAutoRotate = 匹配星舰旋转
@@ -3292,7 +3406,7 @@ Settings
 		MinimapLbl = 小地图
 		MiniviewCombatMode
 		{
-
+			
 			Auto = 自动
 			AutoTip = 在战斗中，显示主镜头未聚焦的星舰。
 			DontShow = 不显示
@@ -3309,7 +3423,7 @@ Settings
 		MiniviewLockRotationTip = 如果勾选，画中画将随所显示的星舰旋转而旋转。
 		MiniviewNonCombatMode
 		{
-
+			
 			Auto = 自动
 			AutoTip = 在非战斗状态下，若主镜头未聚焦玩家的星舰，将显示玩家星舰。
 			DontShow = 不显示
@@ -3339,7 +3453,7 @@ Settings
 	}
 	Controls
 	{
-
+		
 		ConfirmDefaults = 确定要把所有的控制重置为默认设置吗？
 		ConflictsFmt = "<bad>❗ {0}键位冲突❗</bad>"
 		Defaults = 恢复默认值
@@ -3348,7 +3462,7 @@ Settings
 	}
 	CurrentGame
 	{
-
+		
 		CopyGalaxySeed = 复制银河系种子
 		DifficultyLbl = 难度
 		GalaxySeedFmt = "银河系种子：<b>{0}</b>"
@@ -3357,7 +3471,7 @@ Settings
 	}
 	Designer
 	{
-
+		
 		BlueprintAutoPause = 蓝图模式下自动暂停
 		BlueprintAutoPauseTip = 如果勾选，打开蓝图编辑器将自动暂停游戏。
 		BuildAllowInsufficientCommand = 允许指挥点数不足
@@ -3425,7 +3539,7 @@ Settings
 	DialogName = 设置
 	Gameplay
 	{
-
+		
 		AllowShipDeselection = 允许取消选择星舰
 		AllowShipDeselectionTip = 如果勾选，左键点击空白处将取消选择当前勾选的星舰。
 		AlwaysShowCommandWidgets = 始终显示调整手柄
@@ -3515,7 +3629,7 @@ Settings
 	}
 	GifRecorder
 	{
-
+		
 		Enable = "启用 GIF 录制器"
 		EnableTip = "勾选后，将启用连续 GIF 录制。"
 		Framerate1 = "帧率： "
@@ -3533,7 +3647,7 @@ Settings
 	}
 	Graphics
 	{
-
+		
 		AnimateBackgrounds = 动画背景
 		AnimateBackgroundsTip = 如果启用，游戏背景将变为动态。关掉它可以显著提高性能。
 		BackgroundGrid = 背景网格
@@ -3616,7 +3730,7 @@ Settings
 	KeepSettings = 保留
 	Misc
 	{
-
+		
 		AutoDisableMods = "更新时禁用 Mod"
 		AutoDisableModsTip = "如果勾选，在更新游戏时，如果 Mod 可能与游戏更新不兼容，将会被自动禁用。"
 		Bmp = ""
@@ -3662,7 +3776,7 @@ Settings
 		UpdatesLbl = 更新与动态
 		VersionCheckMode
 		{
-
+			
 			Off = 关
 			OffTip = 游戏将不会检查更新。
 			Stable = 开（稳定）
@@ -3679,7 +3793,7 @@ Settings
 	RevertSettings = 还原
 	Saves
 	{
-
+		
 		AutoSave = 自动保存
 		AutoSaveEvery = "每 "
 		AutoSaveEveryMinutes = " 分钟"
@@ -3707,14 +3821,14 @@ Settings
 }
 ShipClasses
 {
-
+	
 	Asteroid = 小行星
 	Megaroid = 大行星
 	Terran = 类地球
 }
 ShipInfoDialog
 {
-
+	
 	Author = 设计者：
 	Description = 描述/背景：
 	Name = 星舰名称：
@@ -3723,7 +3837,7 @@ ShipInfoDialog
 }
 ShipLibraries
 {
-
+	
 	BuiltIn = 自带星舰
 	BuiltInTip = 《Cosmoteer》自带的星舰设计。
 	Classic = 我的经典星舰
@@ -3737,7 +3851,7 @@ ShipLibraries
 }
 ShipLibrary
 {
-
+	
 	AuthorFmt = "设计者：{0}"
 	BrowseWorkshop = 浏览创意工坊
 	BudgetFmt = "预算：\n<s24>{0}</s24>"
@@ -3769,7 +3883,7 @@ ShipLibrary
 	SmallIcons = 小图标
 	SortMode
 	{
-
+		
 		CostHigh = "<img name='sort'/>成本（高）"
 		CostHighTip = 按成本降序排序。
 		CostLow = "<img name='sort'/>成本（低）"
@@ -3796,14 +3910,14 @@ ShipLibrary
 }
 StarterShips
 {
-
+	
 	ModelC = "C 型星舰速度慢，装甲坚固，携带两门加农炮，虽然准头一般，但可以穿透敌舰。"
 	ModelL = "L 型星舰具有极强的机动性，携带三门激光炮，可有效地摧毁敌舰子系统。该型号星舰缺乏有效的防御。"
 	ModelS = "S 型星舰牺牲速度以及火力，换来了可以阻挡敌方火力的防御性护盾发生器。"
 }
 StatCategories
 {
-
+	
 	BoostOff = 加速：关
 	BoostOn = 加速：开
 	BulletChaingun = 链炮炮弹
@@ -3829,7 +3943,7 @@ StatCategories
 }
 Stats
 {
-
+	
 	AOEResistFmt = "<white>抗 AOE：</white><good>{0:0.##}%</good>"
 	AbilityCooldownFmt = "<white>能力冷却：</white><good>{0:0.#}</good><gray>秒</gray>"
 	AccelerationDelayFmt = "<white>加速延迟：</white><good>{0:0.0#}</good> <gray>秒</gray>"
@@ -3978,261 +4092,261 @@ Stats
 }
 Tips
 {
-
+	
 	Accessibility
 	{
-
+		
 		Tip = "如果您在识别敌我星舰图标上遇到了困难，可以在<good>设置 -> 无障碍</good>中更改它们的识别颜色。我们同时还为视觉敏感的玩家提供了额外选项，使他们在游玩游戏时眼睛能够舒服一点。"
 		Title = 色盲与无障碍设置
 	}
 	AdvancedCareerMode
 	{
-
+		
 		Tip = "生涯模式有一些高级选项，您可以根据自己的喜好进行更改，例如瞬间建造星舰、星图全开等等。可以在开始生涯模式新游戏时点击<good>高级游戏选项</good>进行选择，或是在游玩过程中在<good>设置 -> 当前游戏 -> 高级游戏选项</good>中进行选择。"
 		Title = 高级生涯模式选项
 	}
 	AdvancedCommands
 	{
-
+		
 		Tip = "如果找不到这些高级星舰命令按钮，则可以在<good>设置 -> 游戏玩法 -> 显示高级星舰命令</good>中将其启用。"
 		Title = 高级星舰命令
 	}
 	AreYouSure
 	{
-
+		
 		Tip = "很多类似<i>“确认要……？”</i>这样的确认弹窗都可以通过长按<btn id='General.SuppressConfirmation'/>直接跳过。"
 		Title = “确认要……？”
 	}
 	AttackDefaults
 	{
-
+		
 		Tip = "受够了每次攻击敌人的时候都要手动调整距离和攻击角度？打开舰名旁边的<img name='hamburger_up'/>菜单，点击<good>保存默认攻击</good>。你发动攻击时的距离、朝向以及攻击角度都会被保存下来。"
 		Title = 设置攻击默认
 	}
 	AutoSave
 	{
-
+		
 		Tip = "游戏默认每隔 10 分钟自动保存一次，能同时存在 10 个自动存档文件。超出 10 个的旧自动存档将被自动删除。可以在<good>设置 -> 自动保存</good>中设置自动保存的时间间隔以及自动存档的数量上限。"
 		Title = 自动保存
 	}
 	BattleHelper
 	{
-
+		
 		Tip = "在创意模式中，可以使用战斗助手来设置并运行两支敌对舰队之间的战斗。可以从<img name='hamburger_down'/>菜单打开战斗助手。"
 		Title = 战斗助手
 	}
 	BlueprintMode
 	{
-
+		
 		Tip = 在开始改装星舰前，您可以使用“蓝图模式”对星舰设计做出临时的、不合规的、或是金额不足的改动。点击星舰编辑器左下角的<white>蓝图模式</white>按钮来启用蓝图模式。
 		Title = 蓝图模式
 	}
 	ChangingDifficulty
 	{
-
+		
 		Tip = "游玩生涯模式时，你可以在任何时候更改游戏难度，而非在一开始指定好便无法更改。若要更改难度，请前往<good>设置 -> 当前游戏</good>"
 		Title = 更改难度
 	}
 	Chatting
 	{
-
+		
 		Tip = "多人游戏中，可以按<btn id='Game.Chat'/>向其他玩家发送文字信息。"
 		Title = 多人游戏聊天
 	}
 	CollisionAvoidance
 	{
-
+		
 		Tip = "星舰通常会试图绕过大型障碍物，避免与它们相撞。如果不喜欢这一点，可以在发出移动命令时按住<btn id='Game.InvertCollisionAvoidance'/>禁用防撞功能，或者通过关闭<good>设置 -> 游戏玩法 -> 星舰命令 -> 启用防撞功能</good>来永久将其关闭。"
 		Title = 防撞功能
 	}
 	ControlGroups
 	{
-
+		
 		Tip1 = "提示：选择一艘或多艘星舰，然后按 <white>Ctrl + F1-F8</white> 可以创建控制组。按 <white>F1-F8</white> 即可选择该组。"
 		Tip2 = "同样的，可以选择一个或多个武器或部件，然后按 <white>Ctrl + 0-9</white> 可以创建控制组。按 <white>0-9</white> 即可选择该组。"
 		Title = 控制组
 	}
 	CrewCustomization
 	{
-
+		
 		Tip = 所有船员的名字和外观都可以进行自定义！打开船员名册，然后<white>双击</white>您想要自定义的船员。
 		Title = 船员自定义
 	}
 	CrewFavorite
 	{
-
+		
 		Tip = 有几位你最喜欢的船员？在船员名册中<white>右键点击</white>他们并将他们标记为“收藏”。这样你可以一直追踪他们的位置！
 		Title = 收藏船员
 	}
 	CrewResourceTransfer
 	{
-
+		
 		Tip = "您可以在星舰之间转移船员和资源。点击舰名旁边（或在船员或资源管理界面）的<img name='hamburger_up'/>菜单，然后选择<white>转移船员/资源</white>。"
 		Title = 船员与资源转移
 	}
 	CtrlSelectsParts
 	{
-
+		
 		Tip = "若无法通过点击单独的武器或任何星舰部件将其选中，您可以按住 <btn id='Game.SelectParts'/> 或去关闭<good>设置 -> 游戏玩法 -> 需要 Ctrl 键选中部件</good>选项。"
 		Title = "需要 Ctrl 键选中部件"
 	}
 	CtrlTargeting
 	{
-
+		
 		Tip1 = "可以按住 <btn id='Game.SelectParts'/>，在攻击敌人前就将武器瞄准它们。"
 		Tip2 = "可以按住 <btn id='Game.SelectParts'/> 强行将武器对准友方星舰。"
 		Title = "Ctrl 键瞄准"
 	}
 	DecalLayers
 	{
-
+		
 		Tip = 可以通过点击“眼睛”图标来隐藏或显示贴花涂层。拖放贴花涂层来改变它们的顺序。
 		Title = 贴花涂层
 	}
 	DeleteDoors
 	{
-
+		
 		Tip = "想要一次性删除多个门，可以用选择工具选中你想删除门的部件，然后按<btn id='Design.DeleteDoors'/>。"
 		Title = 删除门
 	}
 	DeleteShortcut
 	{
-
+		
 		Tip = "在星舰编辑器或涂装编辑器中，可以长按<btn id='Design.EraseCursorMode'/>以暂时切换到删除模式。"
 		Title = 移除部件和贴花
 	}
 	DesigningAsteroids
 	{
-
+		
 		Tip = "在创意模式中，您可以像设计星舰一样设计小行星。<btn id='General.UIAltClick'/>新星舰按钮，选择小行星或大行星。<gray>（大行星指的是非常巨大的小行星。）</gray>"
 		Title = 设计小行星
 	}
 	DirectControlBindings
 	{
-
+		
 		Tip1 = "对于直接控制模式，可以自定义使用哪个鼠标按键来发射每种武器。选择武器，打开其<img name='hamburger_up'/>菜单，选择<white>直接控制绑定</white>。"
 		Tip2 = "也可以选择在直接控制模式下，依然<white>由AI 操控</white>武器。"
 		Title = 直接控制：武器绑定
 	}
 	DirectControlSettings
 	{
-
+		
 		Tip = "直接控制模式有很多设置，可以根据自己的喜好调整控制和镜头。在<good>设置 -> 游戏玩法 -> 直接控制模式</good>以及<good>设置 -> 镜头 -> 直接控制模式</good>中更改这些。"
 		Title = 直接控制设置
 	}
 	DirectControlSuppress
 	{
-
+		
 		Tip = "在直接控制模式下，可以通过长按<btn id='Game.SelectParts'/><i>暂时</i>禁用它，这样就能够正常指挥飞船并控制镜头。松开<btn id='Game.SelectParts'/>回到直接控制模式。"
 		Title = 暂停直接控制模式
 	}
 	DisableAutoDoors
 	{
-
+		
 		Tip = "默认情况下，星舰增添新舱室时会自动添加门。如果您不喜欢这个功能，可以长按<btn id='Design.NoAutoDoors'/>暂时禁止这项功能，也可以在<good>设置 -> 星舰编辑器 -> 自动添加门</good>中直接将其永久关闭。"
 		Title = 禁止自动添加门
 	}
 	DisableEdgePan
 	{
-
+		
 		Tip = "鼠标指针不小心碰到屏幕边缘，镜头就一下飞出去了，会不会很不爽？如果确实是这样，可以在<good>设置 -> 镜头 -> 平移和旋转 -> 边缘平移</good>中将该功能关闭。"
 		Title = 镜头边缘平移
 	}
 	DisableUI
 	{
-
+		
 		Tip = "在截屏或制作Gif时嫌UI太碍事了？按<btn id='Game.ToggleUI'/>即可隐藏UI，再按一次重新显示UI。"
 		Title = 隐藏UI
 	}
 	Discord
 	{
-
+		
 		Tip = "Cosmoteer拥有一个充满活力与激情的Discord社区！要加入的话，请在标题界面单击<img name='hamburger_up'/>更多，然后选择<good>社区 -> Discord</good>。"
 		Title = ""
 	}
 	DisplayName
 	{
-
+		
 		Tip = "默认情况下，您在多人游戏中将使用您的Steam帐户名称，但也可以在<good>设置 -> 杂项 -> 多人游戏 -> 显示名称</good>中更改显示的名称。"
 		Title = 多人游戏显示名称
 	}
 	EditShipInfo
 	{
-
+		
 		Tip = "您可以编辑自己星舰的名字、设计师（作者）、描述以及背景故事。打开舰名旁边的<img name='hamburger_up'/>菜单，选择<white>编辑星舰名称/信息</white>。<gray>（直接点击舰名也行！）</gray>"
 		Title = 编辑星舰信息
 	}
 	EngineRoomDistribution
 	{
-
+		
 		Tip = 引擎室可以接收并分配任何与其连接的推进器所需的能源电池，这意味着船员实际上不需要接触到推进器，只要推进器连接到一个<i>可以</i>到达的引擎室即可。
 		Title = 引擎室能源分配
 	}
 	FameLimit
 	{
-
+		
 		Tip = 大多数任务都有“名望上限”。如果当前<fame>名望</fame>超过了该任务的上限，即使完成任务也得不到任何名望。想要继续赚取名望，只能通过完成更高等级的任务。
 		Title = 名望上限
 	}
 	Feedback
 	{
-
+		
 		Tip = "我们乐于收到玩家的反馈！您可以随时按<btn id='General.SubmitFeedback'/>，向我们提出任何形式的反馈，包括但不限于新点子、对游戏的不满、汇报bug等等。感谢您的支持！"
 		Title = 发送反馈信息
 	}
 	FillDoors
 	{
-
+		
 		Tip = "想要整艘星舰都装满门？在添加门的时候长按<btn id='Design.FillAllDoors'/>即可在舱壁<i>每个位置</i>都填满门。"
 		Title = 填满所有门
 	}
 	FlightDirection
 	{
-
+		
 		Tip = "默认情况下，星舰将始终按星舰编辑器中“朝上”的方向前进。可以通过打开星舰名称旁边的<img name='hamburger_up'/>菜单或点击星舰编辑器右侧的向上小箭头来改变什么方向才算“前进”。"
 		Title = 飞行方向
 	}
 	ForceStartConstruction
 	{
-
+		
 		Tip = "通常情况下，如果缺少足够的资源，就无法开始建造星舰。但您可以按住<btn id='Design.ConfirmPartialBuild'/>强制开始建造。船员即使无法完成全部建造，但他们也会尽力去建造部分舰体。"
 		Title = 强制开始建造
 	}
 	GameSpeedFramerate
 	{
-
+		
 		Tip = "游戏速度 x8，也就意味着CPU的运算量要 x8。这可能会降低游戏运行的帧数，特别是在游戏后期。建议降低游戏速度以提高帧数。"
 		Title = 游戏速度与帧数
 	}
 	Hamburgers
 	{
-
+		
 		FunFact = <gray>（冷知识：国外app和游戏喜欢管它叫“汉堡菜单”，国内没有固定称呼，一般就叫“三横杠菜单”。）</gray>
 		Tip = "《Cosmoteer》中有很多小型<img name='hamburger_up'/>以及<img name='hamburger_down'/>菜单。注意这些菜单图标！点击它们可以打开一些高级选项或是“隐藏”选项。"
 		Title = 三横杠菜单
 	}
 	HiringPriority
 	{
-
+		
 		Tip1 = "每个船员岗位都有 <bad>1</bad> 到 <good>10</good> 之间的“雇佣优先级”。当你雇佣或转移新船员到星舰上时，他们将自动前往具有最高雇佣优先级的岗位。"
 		Tip2 = 如果启用了<white>船员自动填充高优先级岗位</white>，则该岗位的空缺位置将会自动被较低优先级岗位的船员所填充。
 		Title = 雇佣优先级
 	}
 	Hotkeys
 	{
-
+		
 		Tip = "很多UI按钮都有对应的“热键”，这样就可以直接按键操作，而不用点击按钮。鼠标指针停在那些按钮上时，往往都会出现提示浮窗，显示按钮对应的热键。可以在<good>设置 -> 控制</good>中自定义热键。"
 		Title = 热键
 	}
 	LauncherTypes
 	{
-
+		
 		Tip = 可以随时更改发射器的导弹或空雷类型，在战斗中也一样。试试在战斗中用几发突然发射的核弹给敌人来点惊喜吧！
 		Title = 发射器类型
 	}
 	LoadBlueprints
 	{
-
+		
 		Tip1 = "您可以将另一个保存的星舰设计的蓝图加载到当前的星舰中。在星舰编辑器中，打开<img name='hamburger_up'/>菜单，然后单击："
 		Tip2 = <b>加载星舰（取代现有）</b>——该选项将用保存的星舰设计完全替换当前星舰的蓝图。
 		Tip3 = <b>加载星舰（粘贴至现有）</b>——该选项将把保存的星舰蓝图添加到你选定的位置。
@@ -4240,13 +4354,13 @@ Tips
 	}
 	LoadPaint
 	{
-
+		
 		Tip = "您可以将另一个保存星舰的涂装/贴花设计加载到当前的星舰中。在涂装编辑器中，打开<img name='hamburger_up'/>菜单，然后单击<white>加载涂装设计</white>。"
 		Title = 加载涂装
 	}
 	LoadShapeFromPNG
 	{
-
+		
 		Tip1 = "您可以使用外部美术程序，如MS Paint、Paint.NET、Gimp或PS来创建自己星舰的基本形状轮廓……"
 		Tip2 = 1、使用您选择的任何外部美术程序来保存代表自己星舰形状的<b>黑底白色</b>PNG图片文件。白色像素将被视为走廊单元，黑色像素将被视为空白。
 		Tip3 = "2、在星舰编辑器中，打开<img name='hamburger_up'/>菜单，选择<white>从 PNG 图片加载形状</white>。然后选择您保存的PNG图片文件。"
@@ -4255,76 +4369,76 @@ Tips
 	}
 	MidpointFocus
 	{
-
+		
 		Tip = 对一艘星舰发起攻击后，可以点击“眼睛”图标，将镜头聚焦于本舰与目标之间的中点上。
 		Title = 中点聚焦图标
 	}
 	MirrorModeSettings
 	{
-
+		
 		Tip = "大家应该都知道可以启用“镜像模式”来对星舰设计进行对称修改。也可以<btn id='General.UIAltClick'/>镜像模式按钮来改变对称轴线的方向和数量。"
 		Title = 镜像模式设置
 	}
 	MissionsHUD
 	{
-
+		
 		Tip1 = "默认情况下，左上角只会显示 3 个最近的任务点。可以在<good>设置 -> 游戏玩法 -> 信息覆载 -> 在 HUD 上显示附近的任务</good>中改变显示任务的数量。"
 		Tip2 = 也可以把一个任务标记为“收藏”，<white>右键单击</white>它或按下生涯日志中的“收藏”按钮。收藏后任务将始终显示，即使附近有更近的任务。
 		Title = 任务HUD
 	}
 	ModAutoDisable
 	{
-
+		
 		Tip = "更新Cosmoteer时，如果您安装的任何 Mod 可能与游戏不兼容时，它们<b>可能</b>会被自动禁用。如果您不希望 Mod 被自动禁用，可以在<good>设置 -> 杂项 -> 更新时禁用 Mod</good>中将其关闭。"
 		Title = "自动禁用 Mod"
 	}
 	MovingResources
 	{
-
+		
 		Tip = "使用资源管理界面移动资源时，可以按住<btn id='Resources.Move1'/>一次拿起或放下 1 个资源，而不是整组资源。按住<btn id='Resources.Move5'/>可以每次移动 5 个资源。"
 		Title = 移动资源
 	}
 	ObjectiveFocus
 	{
-
+		
 		Tip = 大多数任务目标都可以点击，镜头会聚焦到目标位置。
 		Title = 聚焦目标
 	}
 	PaintSchemes
 	{
-
+		
 		Tip1 = “涂装方案”是保存的一套涂装颜色和纹理，可以在星舰之间共享。
 		Tip2 = "要保存星舰的当前颜色和纹理，请打开涂装编辑器中的<img name='hamburger_up'/>菜单，然后选择<white>保存涂装方案</white>。要将该涂装方案加载到另一艘星舰上，打开其<img name='hamburger_up'/>菜单并选择<white>加载涂装方案</white>。"
 		Title = 涂装方案
 	}
 	PartBrushes
 	{
-
+		
 		Tip = "大多数 1x1 尺寸的部件都可以用不同的“刷子”尺寸和形状进行改变。点击刷子选择按钮查看所有选项。"
 		Title = 部件刷
 	}
 	PartRows
 	{
-
+		
 		Tip = "您可以在<good>设置 -> 星舰编辑器 -> 部件行数</good>改变星舰编辑器中显示部件的行数。"
 		Title = 星舰编辑器行数
 	}
 	PipSettings
 	{
-
+		
 		Tip = "可以进入<good>设置 -> 镜头 -> 画中画</good>，自定义右上角画中画出现的时间及其显示的内容。"
 		Title = 画中画设置
 	}
 	PostShaders
 	{
-
+		
 		Tip1 = "想让自己的游戏看起来像是1950年的老式科幻电影？可以在<good>设置 -> 图形 -> 偏好 -> 后处理着色器</good>中选择“低成本科幻电影”。"
 		Tip2 = 还有其他几款有意思的“后处理着色器”等待着您去发掘！
 		Title = 后处理着色器
 	}
 	QuickSave
 	{
-
+		
 		Tip1 = "按 <btn id='Game.QuickSave'/> 进行快速保存。"
 		Tip2 = "按 <btn id='Game.QuickLoad'/> 加载上个存档。"
 		Tip3 = "游戏默认能同时存在 10 个快速存档文件。超出 10 个的旧快速存档将被自动删除。可以在<good>设置 -> 自动保存</good>中设置快速存档的数量上限。"
@@ -4332,110 +4446,110 @@ Tips
 	}
 	RebindingControls
 	{
-
+		
 		Tip = "几乎所有控制与热键都可以在<good>设置 -> 控制</good>中进行更改。"
 		Title = 更改控制
 	}
 	RecommendationBars
 	{
-
+		
 		Tip = "星舰编辑器右侧显示<b>船员数</b>和<b>能源量</b>的推荐栏只是对新手的大致<i>推荐</i>量。一艘设计合理的星舰可能用不着那么多船员或能源。可以在<good>设置-> 星舰编辑器-> 显示推荐栏</good>中将推荐栏关闭。"
 		Title = 推荐栏
 	}
 	ReleaseCandidates
 	{
-
+		
 		Tip1 = 您可以通过切换到Cosmoteer的Steam属性中的“不稳定”beta分支来帮助测试预发布的Cosmoteer更新。
 		Tip2 = <bad>警告：</bad>这些“发布测试”里的bug可能比正式版多得多。记得多存档！
 		Title = 参加发布测试
 	}
 	ResourceCollectionTypes
 	{
-
+		
 		Tip = "某种资源已经够多了？<btn id='General.UIAltClick'/>收集/回收/开采按钮并取消勾选不再收集的资源。船员将不再收集、回收或开采这些类型的资源。"
 		Title = 资源收集类型
 	}
 	ResourceEjection
 	{
-
+		
 		Tip = "要丢弃所有或特定数量的资源，请<btn id='General.UIAltClick'/>资源管理界面底部的按钮，并选择<white>丢弃</white>选项之一。"
 		Title = 丢弃资源
 	}
 	ResourceLimits
 	{
-
+		
 		Tip1 = "可以限制星舰存储任何特定类型的资源上限。<btn id='General.UIAltClick'/>收集/回收/开采按钮并选择<white>设置资源上限</white>。"
 		Tip2 = 某种特定的资源达到上限时，船员将无法收集，工厂也将无法生产，您也将无法购买超过该上限的资源。
 		Title = 资源上限
 	}
 	RightClickMenus
 	{
-
+		
 		Tip1 = 鼠标指针显示这个图标时可要注意了！
 		Tip2 = "这意味着您可以<btn id='General.UIAltClick'/>这个按钮或UI来打开一个弹出菜单，里面包含一些高级选项或是“隐藏”选项。UI界面的很多地方都有这种隐藏菜单！"
 		Title = 右键菜单
 	}
 	RoleOrder
 	{
-
+		
 		Tip = 您可以通过拖放船员岗位来更改他们的顺序。这不会对船员的工作造成任何影响，但能够提高管理的效率。
 		Title = 船员岗位命令
 	}
 	RotateCamera
 	{
-
+		
 		Tip1 = "可以按<btn id='View.RotateLeft'/>和<btn id='View.RotateRight'/>旋转镜头。"
 		Tip2 = "按<btn id='View.ResetRotation'/>或点击小地图上红色的“星际指北”箭头，即可将镜头重置为默认视角。"
 		Title = 镜头旋转
 	}
 	RotationFocus
 	{
-
+		
 		TIp2 = "但您也可以按<btn id='View.RotationFocusSelected'/>将镜头聚焦于本舰<b>并</b>匹配其旋转。"
 		Tip1 = "大家都知道，按<btn id='View.FocusSelected'/>可以将镜头聚焦于本舰上。"
 		Title = 聚焦并匹配旋转
 	}
 	SavedShipFiles
 	{
-
+		
 		Tip1 = "星舰设计实际上保存为常规的PNG图片文件，只是加上了<fame_color>.ship.png</fame_color>的扩展名。您可以与好友或在Cosmoteer Discord上分享这些文件，就像分享任何图片文件一样。这些文件存储在电脑上一个名为“Saved Ships”的文件夹中，可以通过单击星舰库中的<img name='hamburger_down'/>菜单，然后选择<white>打开文件夹</white>来访问该文件夹。"
 		Tip2 = 您可以加载并游玩其他人保存的星舰设计，只需将他们的星舰文件复制到自己的星舰库中即可。只要图片文件没有经过改动，它应该立即出现在星舰库中并完全可玩。如果在“可调整窗口”模式下游玩Cosmoteer，可以直接把图片文件拖放到星舰库或一个进行中的创造模式游戏中。
 		Title = 舰船存档文件
 	}
 	SavingShips
 	{
-
+		
 		Tip = "将星舰设计保存下来，这样就可以在其他游戏模式中重复使用，比如创意模式和多人模式。要保存星舰设计，打开星舰名称旁的<img name='hamburger_up'/>菜单或是星舰编辑器，然后选择<white>保存星舰设计</white>。"
 		Title = 保存星舰
 	}
 	Scoreboard
 	{
-
+		
 		Tip = "在PvP多人游戏中，按<btn id='Multiplayer.ShowScoreboard'/>显示当前记分牌。"
 		Title = 多人游戏记分牌
 	}
 	ScreenshotsAndGifs
 	{
-
+		
 		Tip1 = "可以随时按<btn id='General.TakeScreenshot'/>进行截屏。"
 		Tip2 = "也可以按<btn id='General.CaptureGif'/>，录制最近的游玩过程并将其制作为Gif动图。但需要先在<good>设置 -> GIF 录制器</good>中开启该功能。"
 		Title = 截图与Gif
 	}
 	SelectSameType
 	{
-
+		
 		Tip = 您可以<white>双击</white>一个部件来选中所有同类型部件。对于有朝向的部件，例如武器、推进器以及护盾，此时只有同一朝向的才会被选中。<white>三击</white>一个部件即可选中不同朝向的所有同类型部件。
 		Title = 选中同类型部件
 	}
 	Settings
 	{
-
+		
 		Tip = 《Cosmoteer》自定义程度很高，有<i>超多</i>设置。要是觉得游戏哪方面不称心如意，可以去<good>设置</good>里看看，在那里没准你就能找到自己想要的选项！
 		Title = 设置
 	}
 	SharingRoles
 	{
-
+		
 		Tip1 = 一旦完善了舰上的船员岗位，您可能想在其他星舰上使用同样的岗位分配。有几种方法可以做到这点：
 		Tip2 = "1、通过打开船员管理界面中的<img name='hamburger_up'/>菜单并选择<white>加载星舰岗位</white>，从任何保存的星舰设计中加载岗位分配。"
 		Tip3 = "2、还是打开<img name='hamburger_up'/>菜单，也可以从一艘星舰上<white>复制岗位</white>并在另一艘星舰上<white>粘贴岗位</white>。"
@@ -4444,76 +4558,76 @@ Tips
 	}
 	SpawnNotReady
 	{
-
+		
 		Tip = "在创意模式中，在生成星舰时按住<btn id='CreativeMode.SpawnNotReady'/>，即可使其在生成时无任何弹药、能源或资源。"
 		Title = 生成时无弹药/能量
 	}
 	SubFolders
 	{
-
+		
 		Tip = "可以将保存的星舰设计放到到子文件夹中，操作跟电脑上将文件放入文件夹一样。要创建一个子文件夹，在星舰库中<btn id='General.UIAltClick'/>“我的星舰”并选择<white>新建文件夹</white>。然后简单地把星舰设计拖到新建文件夹中即可。"
 		Title = 星舰子文件夹
 	}
 	SymmetryLines
 	{
-
+		
 		Tip = 启用镜像模式后，可以点击并拖动绿色按钮来移动对称轴线。
 		Title = 移动对称轴线
 	}
 	TeleportShip
 	{
-
+		
 		Tip = "在创意模式中，可以按<btn id='CreativeMode.MoveShip'/>把选中的星舰瞬间传送到目的地。"
 		Title = 传送星舰
 	}
 	Trade5x
 	{
-
+		
 		Tip = "在交易或转移资源时，可以按住<btn id='Resources.Transfer5'/>来每次移动 5 倍的资源。"
 		Title = "交易 x5"
 	}
 	TradeAmount
 	{
-
+		
 		Tip1 = 当交易或转移资源时，可以点击数字并输入想要购买、出售或转移的确切数量。正数表示您想购买（或从左向右转移）。负数表示您想要出售（或从右向左转移）。
 		Tip2 = 您也可以输入想要储存在舰上的总数量，需要购买、出售或转移的数量将自动计算出来。
 		Title = 交易确切数量
 	}
 	TradeSurplusNeeded
 	{
-
+		
 		Tip1 = "交易时，可以通过<white>右键单击</white>资源并选择<white>出售盈余</white>来出售多余的资源。也可以通过选择<white>购买缺额</white>来购买所需要的资源。打开<img name='hamburger_up'/>菜单一次性出售盈余或购买缺额的所有资源。"
 		Tip2 = 如果您设置了资源上限，那么将按照该上限来进行。如果未设置，将按照该资源指定的单元所能容纳的资源上限来进行。
 		Title = 出售盈余/购买缺额
 	}
 	TransferringShipsMoney
 	{
-
+		
 		Tip1 = "在游玩生涯模式的多人游戏时，您可以向其他玩家转移星舰。点击舰名旁边的<img name='hamburger_up'/>菜单，然后选择<white>将星舰控制权转移到</white>。"
 		Tip2 = "也可以将<money_color><img name='money' colored='true'/></money_color>信用点给予其他玩家。<btn id='General.UIAltClick'/>右上角的<money_color><img name='money' colored='true'/></money_color>信用点，然后选择<white>将信用点转移到</white>。"
 		Title = 转移星舰和金钱
 	}
 	WhenEnemySpotted
 	{
-
+		
 		Tip = "受够了附近一出现敌人，时间就减速吗？可以在<good>设置 -> 游戏玩法 -> 信息覆载 -> 发现敌舰</good>中将减速功能关闭，或选择一个不同的游戏速度。"
 		Title = 发现敌舰
 	}
 	WorldRelativeAngles
 	{
-
+		
 		Tip = "通常情况下，以特定角度攻击或跟随另一艘星舰时，该角度会随着那艘星舰的旋转而改变。发起攻击或跟随命令时按住<btn id='Game.WorldRelativeFollowAngle'/>防止这种情况发生。"
 		Title = 网格参照攻击/跟随角度
 	}
 }
 TipsDialog
 {
-
+	
 	Title = 你知道吗？
 }
 TitleScreen
 {
-
+	
 	Codex = 百科
 	Community = 社区
 	ConfirmExitGame = 确定要退出游戏？
@@ -4540,10 +4654,10 @@ TitleScreen
 }
 Tutorials
 {
-
+	
 	AbandonedShips
 	{
-
+		
 		Dialog = 然后，<good>选择转移的船员数量</good>。（如果你已经拥有不止一艘星舰，或者附近有多艘弃舰，可能需要从右边的下拉菜单中选择指定的星舰）
 		Discover = "偶尔你会发现被船员<good>遗弃</good>的星舰。\n\n这些弃舰可以像其他废料一样被<good>回收拆解为资源</good>，但你也可以<good>控制</good>它们并将其纳入自己麾下。"
 		StartTransfer = 点击<white>启动转移</white>按钮派出船员。一旦这些船员到达该星舰，他们将控制该星舰！
@@ -4552,7 +4666,7 @@ Tutorials
 	}
 	AdvancedCommands
 	{
-
+		
 		Attack = "<good>攻击命令</good>（<btn id='Game.Attack'/>）对几乎所有星舰有效，包括你自己或友军的星舰。你还可以用它来快速调整现有攻击命令的角度和距离。"
 		DirectControl = 如果你喜欢使用键盘和鼠标<good>手动驾驶星舰</good>，请点击<white>直接控制模式</white>按钮。
 		Halt = "<good>停止命令</good>（<btn id='Game.Halt'/>）用于取消所有当前命令。"
@@ -4564,7 +4678,7 @@ Tutorials
 	}
 	Build
 	{
-
+		
 		Button = 要<good>升级星舰</good>，请点击左下方的<white>建造</white>按钮。（有敌舰对你开火时无法升级星舰。）
 		Caution = <bad>注意：</bad>船员出舱进行改装时非常容易遭受攻击！请勿在不安全的地方进行升级改装！
 		Crew = 船员会自动出舱对星舰进行改装。
@@ -4574,7 +4688,7 @@ Tutorials
 	}
 	Build2
 	{
-
+		
 		Close = "升级完星舰后，点击红色的 <bad>X</bad> 按钮或按 <btn id='General.Cancel'/> 即可退出建造模式。"
 		Delete = 要<good>从星舰上拆除部件</good>，请使用<white>删除</white>工具。用于建造该部件的所有材料将全部退还给你。
 		Grab = 要<good>抓起部件</good>并把它移到别的地方，请使用<white>抓取</white>工具。
@@ -4584,7 +4698,7 @@ Tutorials
 	}
 	Build3
 	{
-
+		
 		Brush = "选择了一个 1 单元的部件后，你可以选择各种形状和大小的<good>刷子</good>。"
 		Button = 要修改星舰的<good>蓝图</good>，请点击<white>切换蓝图</white>按钮。
 		Commit = 做出满意的设计后，即可点击<white>按图造舰</white>按钮。这样星舰将会更新，费用直接从当前资源和<money>信用点</money>中扣除。
@@ -4595,7 +4709,7 @@ Tutorials
 	}
 	Camera
 	{
-
+		
 		EdgePan = 要<good>平移镜头</good>，请将<white>鼠标光标</white>移动到屏幕边缘，或按<white>箭头键</white>。
 		Tip = "<good>提示：</good>找不到自己的星舰了？点击左下角的图标或按下 <btn id='View.FocusSelected'/>（聚焦）键即可。"
 		Title = 控制镜头
@@ -4603,7 +4717,7 @@ Tutorials
 	}
 	Camera2
 	{
-
+		
 		AltDrag = "要<good>聚焦于多艘星舰</good>，按住 <btn id='View.FocusCursorMode'/>，<white>左键单击</white>，并在星舰周围拖出方框。"
 		Drag = 要<good>拖动镜头</good>，请点击、按住，然后拖动<white>鼠标中键</white>。
 		FocusClick = "要<good>将镜头</good>对准任何一艘星舰，请点击<white>鼠标中键</white>。\n\n你也可以用<white>鼠标中键</white>点击空白处，将镜头对准该处。"
@@ -4612,7 +4726,7 @@ Tutorials
 	}
 	Cannons
 	{
-
+		
 		Cannon = <good>加农炮</good>（和<good>轨道炮</good>）是使用<good>炮弹</good>而非能量的实弹武器。
 		Crew = <good>船员</good>将从存储室或工厂为加农炮运送炮弹。
 		Factory = "炮弹可以在空间站低价<good>购买</good>或在<img name='resource.sulfur'/>炮弹工厂中用硫磺<good>制造</good>。"
@@ -4621,7 +4735,7 @@ Tutorials
 	}
 	Chainguns
 	{
-
+		
 		ForceFire = 除非所有弹夹及其本身装满弹药，链炮<b>不会</b>自动开始射击。若想强制链炮在弹药未满的情况下开火，点击<white>强制开火</white>。
 		Info = 链炮是通过旋转炮管<good>逐渐加快射速</good>的实弹武器。持续开火时，射速会逐渐提升至一个上限。
 		Magazines = 链炮能够连接<good>弹药架</good>，增加一次射击的发射数，从而延长最高射速下的射击时间。弹药架必须连接至链炮的左下或右下。（详见示意图）
@@ -4630,7 +4744,7 @@ Tutorials
 	}
 	Combat
 	{
-
+		
 		Attack = "要<good>攻击一艘敌舰</good>，<white>右键</white>点击该舰或其雷达光点。你的星舰将飞向它展开攻击。（此时游戏可能为了展示教程已经自动暂停。按 <btn id='Game.PauseToggle'/> 可以取消暂停）。"
 		Blips = 当敌舰进入雷达范围内，但尚未进入目视范围内时，将显示为闪烁的<red>雷达光点</red>。
 		Detected = 探测到附近有一艘敌舰！
@@ -4639,7 +4753,7 @@ Tutorials
 	}
 	CommandPoints
 	{
-
+		
 		CommandRooms = "<white>驾驶舱</white>、<white>控制室</white>和<white>舰桥</white>分别提供一定数量的<good><img name='command_points' colored='true'/>指挥点数</good>，如每个舱室图标的右上角所示。"
 		PointsRemaining = <good>剩余指挥点数</good>的数量会在右边显示。一旦用完，你将无法添加新的武器或其他系统，除非添加或升级指挥室。
 		Tip = <good>提示：</good>如果指挥室被摧毁或失去动力，你将失去它提供的指挥点数，而如果星舰指挥点数不足，你将完全失去对星舰的控制。为了重新获得控制权，请修复指挥室或关闭各个系统的电源，直到重获足够的指挥点数。
@@ -4648,7 +4762,7 @@ Tutorials
 	}
 	Comms
 	{
-
+		
 		CommsButton = 要<good>呼叫一艘星舰或空间站</good>，首先点击左下方附近的<white>通信</white>按钮。
 		HailButton = 然后点击你想呼叫的星舰或空间站旁边的<white>呼叫</white>按钮，或者，如果在目视范围内，可以直接<white>点击</white>。<bad>试着呼叫附近的友好空间站吧。</bad>
 		Interact = 你可以<good>呼叫</good>其他星舰和空间站，与之互动。
@@ -4658,7 +4772,7 @@ Tutorials
 	}
 	Creative
 	{
-
+		
 		AddShip = 要<good>将已保存的星舰</good>添加到游戏中，请点击<white>星舰库</white>按钮。
 		Allegiance = "要想<good>让星舰交战</good>，请点击星舰名称旁边的小<img name='hamburger_up'/>按钮，选择<white>阵营</white>，然后为每艘星舰挑选不同的玩家。可以命令分配给不同玩家的星舰互相攻击，它们将在进入射程后自动开火。"
 		NewShip = 要从头<good>设计新星舰</good>，请点击<white>新星舰</white>按钮。
@@ -4669,7 +4783,7 @@ Tutorials
 	}
 	Crew
 	{
-
+		
 		Crew = <good>船员</good>通过操作武器、驾驶和运送补给来维持星舰的运转。船员越多，星舰就越能有效地发挥功能！
 		Indicator = 没有船员操作的部件会显示一个<red>红色船员图标</red>。
 		InteriorButton = 要<good>查看星舰的内装</good>，请点击<white>显示/隐藏内装</white>按钮。
@@ -4678,7 +4792,7 @@ Tutorials
 	}
 	Crew2
 	{
-
+		
 		Airlock = <white>气闸</white>允许船员在回收、开采和转移资源时，<good>进入或离开</good>你的星舰。
 		Button = 要想雇佣更多船员，你需要<good>建造更多的床位</good>。首先，再次点击<white>建造</white>按钮。
 		Door = 你还需要<white>门</white>，以便船员<good>在舱室之间穿行</good>。
@@ -4688,7 +4802,7 @@ Tutorials
 	}
 	Crew3
 	{
-
+		
 		Hail = 要<good>雇佣更多船员</good>，请呼叫附近的空间站，然后点击<white>雇佣船员</white>选项卡。
 		Hire = 要<good>雇用某个人</good>，请点击其<white>雇用</white>按钮，或者点击<white>雇用全部</white>按钮来雇佣<good>尽可能多的人</good>。雇佣每名船员只需支付一次<money>信用点</money>。
 		List = 你会看到<good>愿意加入</good>的人员名单。提升<fame>名望</fame>即可吸引更多的人加入。
@@ -4699,7 +4813,7 @@ Tutorials
 	}
 	Crew4
 	{
-
+		
 		AddRole = 要<good>添加新的岗位</good>，点击大的<white>新岗位</white>按钮。
 		Autonomous = <good>船员大多自主行动</good>，他们会自主操作星舰，但如有需要，仍可以自定义船员的行为模式。
 		Button = 要<good>自定义船员的行为模式</good>，请点击<white>管理船员</white>按钮。
@@ -4711,7 +4825,7 @@ Tutorials
 	}
 	Crew5
 	{
-
+		
 		AssigningCrew = 要<good>将船员分配到一个班组</good>，<white>左键单击</white>船员或在船员周围拖框，然后<white>右键单击</white>所需的班组卧室。
 		SquadRoles = <good>每个班组都分配了一个岗位。</good>要给班组分配岗位，请点击所需岗位的按钮，然后点击该岗位班组的卧室。
 		Squads = <good>船员会被编入“班组”。</good>每个班组都有自己的卧室，其成员无事可做时会回到这里。
@@ -4719,7 +4833,7 @@ Tutorials
 	}
 	Crew6
 	{
-
+		
 		Never = <bad>注意！身负命令的班组是不会执行其他部件相关的工作的！</bad>。
 		Order = <white>左键单击</white>你想命令的班组的卧室或在卧室周围拖动方框，然后<white>右键单击</white>你想分配给他们的武器等部件。
 		OrdersMode = 打开<white>船员管理</white>界面，然后打开<white>命令班组模式</white>。
@@ -4729,7 +4843,7 @@ Tutorials
 	}
 	DirectControl
 	{
-
+		
 		Camera = 在使用直接控制模式时，镜头将被锁定在你的星舰上。
 		Flight = "要想让你的星舰<good>向前或向后飞行</good>，请按 <btn id='Game.DirectControlForward'/> 或 <btn id='Game.DirectControlReverse'/>。\n\n要<good>向左或向右旋转</good>，请按 <btn id='Game.DirectControlRotateLeft'/> 或 <btn id='Game.DirectControlRotateRight'/>。\n\n要<good>向左或向右“平移”</good>，请按 <btn id='Game.DirectControlStrafeLeft'/> 或 <btn id='Game.DirectControlStrafeRight'/>。"
 		Tip = <good>提示：</good>在游戏设置中，有许多选项可以定制直接控制模式的飞行和镜头操作。
@@ -4738,7 +4852,7 @@ Tutorials
 	}
 	Fame
 	{
-
+		
 		Fame = 你当前的<fame>名望</fame>显示在右上角，<money>信用点</money>下面。
 		FameCrew = 随着<fame>名望</fame>的增加，会有更多人愿意加入你的队伍！船员永远不嫌多！
 		IncreasingFame = <good>击败敌人</good>、<good>完成任务</good>时，<fame>名望</fame>便会提升。名望值是永远不会下降的。
@@ -4747,7 +4861,7 @@ Tutorials
 	}
 	Fires
 	{
-
+		
 		Cause = 在被某些武器击中或易燃易爆部件爆炸时，舰内可能会<red>起火</red>。如果不加处理，火势会迅速蔓延，造成损失并烧死船员。
 		FireExtinguisher = 在星舰上加装<good>灭火器</good>可以帮助灭火。船员会拿起灭火器来扑灭火势。可部署灭火器数量有一定上限，较大火势需使用多个灭火器才能扑灭。
 		Spread = <good>提示：</good>火势会通过开放区域以及舱门蔓延，但无法穿过墙壁。星舰上舱门数量越多，火势就越容易蔓延。
@@ -4755,7 +4869,7 @@ Tutorials
 	}
 	Fleets
 	{
-
+		
 		BoxSelect = "要<good>同时控制多艘星舰</good>，可<b>使用左键</b>并在星舰周围拖框。\n\n或者，按住 <btn id='Game.AppendSelection'/> 并<b>左键单击</b>每艘星舰也可。"
 		ControlGroups = "<good>提示：</good>选择一艘或多艘星舰，然后按 <b>Ctrl + F1-F8</b> 可以创建<good>控制组</good>。按 <b>F1-F8</b> 即可选择该组。"
 		Selected = "当麾下拥有多艘星舰时，<b>左键点击</b>你想<good>控制</good>的星舰。\n\n被控制的星舰周围有一圈<good>绿色指示环</good>。"
@@ -4764,7 +4878,7 @@ Tutorials
 	}
 	Formations
 	{
-
+		
 		BasicFormations = 要命令麾下星舰<good>编队飞行</good>，至少选择两艘星舰，点击<white>编队</white>按钮，然后选择一种想要使用的队形。
 		CustomFormations = 要创建<good>自定义编队</good>，请选择一艘星舰，并将其置于另一艘星舰附近，具体操作为<white>右键点击</white>另一艘星舰，按住鼠标按钮，并<white>向相应方向拖动</white>。
 		SavingFormations = 要<good>保存自定义编队</good>，请点击小箭头，然后点击<white>保存</white>按钮，将编队保存在空的编队槽中。
@@ -4772,7 +4886,7 @@ Tutorials
 	}
 	Ftl
 	{
-
+		
 		BuildFtl = 建造一个<good>超空间驱动器</good>即可在星系内实现超空间跳跃，甚至可以跳跃到其他星系。（首先需要从空间站购买其蓝图）
 		Hyperium = 跳跃需要使用一定数量的<good>超光素</good>晶体，具体取决于跳跃的距离、星舰的大小和超空间驱动器的效率。超光素可以从小行星上开采，从敌方弃舰回收，或者从空间站购买。
 		PlotJump = 一旦建成，点击<white>超空间跳跃</white>按钮，选择一个目的地。船员将为超空间驱动器提供动力，然后星舰将完成跳跃。
@@ -4782,7 +4896,7 @@ Tutorials
 	}
 	Ftl2
 	{
-
+		
 		Engage = 准备好超空间跳跃后，只需点击<white>起航</white>按钮即可。
 		ExitMap = 退出银河系地图，此时你应该使用的超空间跳跃中继站会<good>高亮显示</good>。<white>右键点击</white>中继站以飞往该中继站。到达之后，船员会自动为超空间驱动器充能。
 		GalaxyMap = 点击<white>银河系地图</white>按钮，查看整个银河系的地图。
@@ -4793,7 +4907,7 @@ Tutorials
 	}
 	IonBeams
 	{
-
+		
 		Aiming = 要<good>瞄准一个棱镜</good>，首先退出建造模式，选择棱镜，然后点击<white>瞄准离子棱镜</white>按钮。
 		Combining = 射入单个棱镜的<good>光束可以合并</good>，形成一道更大、更强的光束。
 		IonBeams = <good>离子光束</good>是方向固定的能量束武器，不能瞄准，但能在一段时间内造成持续的高伤害。
@@ -4803,7 +4917,7 @@ Tutorials
 	}
 	Micro
 	{
-
+		
 		ControlGroups = "<good>提示：</good>选择一个或多个部件，然后按 <white>Ctrl + 0-9</white>，可以创建一个<good>控制组</good>。按 <white>0-9</white> 即可选择该组。"
 		FireMode = 按下<white>开火模式</white>按钮，可以命令武器<good>停火</good>、<good>只向指定目标开火</good>或者<good>不停开火</good>，视你的需要而定。
 		Power = 按下<white>电源</white>按钮，<good>将其关闭</good>。所有操作该部件的船员都会离开，到其他地方帮忙。
@@ -4813,7 +4927,7 @@ Tutorials
 	}
 	Mining
 	{
-
+		
 		Asteroids = 在探索过程中，你经常会发现小行星含有宝贵的<good>资源矿藏</good>。
 		Icon = <good>拉远后</good>，含有未开采资源矿藏的小行星上会显示相应的化学元素符号。
 		Mine = 要<good>开采这些小行星</good>，请点击<white>收集/回收/开采</white>按钮，然后在要开采的小行星的资源矿藏周围拖动方框。星舰上的船员会自动开采资源，并将其储存在星舰中。
@@ -4822,7 +4936,7 @@ Tutorials
 	}
 	Missiles
 	{
-
+		
 		ChangeType = 要<good>改变其发射的弹药类型</good>，请选择发射器，然后点击<white>弹药类型</white>按钮。
 		Launcher = <good>发射器</good>是一种多用途的武器，可以发射<good>各种类型的弹药</good>，如导弹和空雷。
 		Tip = <good>提示：</good>发射器的弹药类型可以在任何时候更改，哪怕是在战斗中。
@@ -4830,7 +4944,7 @@ Tutorials
 	}
 	Missions
 	{
-
+		
 		Accept = 要<good>接受任务</good>，请从左边的列表中选择，然后点击<white>接受</white>按钮。
 		DangerLevel = "大多数任务都有一个<good>“危险等级”</good>，如<gray>[</gray><good>1</good><gray>]</gray>，表明它的难度水平。在接受高级别的任务之前，最好先升级你的星舰。"
 		Info = 任务是你赚取<money>信用点</money>和<fame>名望</fame>的主要方式。
@@ -4840,7 +4954,7 @@ Tutorials
 	}
 	Missions2
 	{
-
+		
 		Location = 许多任务也会<good>显示任务的目标地点</good>。（可能需要放大才能看到）<white>点击目标</white>，将镜头对准其位置。
 		MissionLog = 可以通过点击屏幕左上方的<white>生涯日志</white>按钮，<good>查看当前所有承接的任务</good>。
 		Title = 任务（续）
@@ -4849,7 +4963,7 @@ Tutorials
 	}
 	Missions3
 	{
-
+		
 		Hail = 回到空间站后，请<good>再次呼叫它</good>。
 		ReceiveRewards = 然后你应该会看到一个可领取报酬的完工任务列表。<good>要领取报酬</good>，请点击任务，然后点击<white>接收奖励</white>按钮。
 		Return = 在完成所有任务目标后，通常需要<good>返回原站点</good>领取报酬。
@@ -4857,14 +4971,14 @@ Tutorials
 	}
 	Movement
 	{
-
+		
 		Codex = <good>提示：</good>从暂停菜单中选择<white>“教程和百科”</white>，可随时重新阅读所有教程。
 		Move = 要<good>使星舰移动</good>，请<white>右键点击</white>任意空白处。星舰会自动飞到那里。
 		Title = 星舰移动
 	}
 	Movement2
 	{
-
+		
 		Drag = 要<good>调整星舰的方向</good>，<white>右击</white>和<white>拖动</white>即可。
 		Handles = "要<good>移动或旋转</good>现有的航点，按住 <btn id='Game.AppendSelection'/>，然后拖动出现的手柄之一。\n\n要<good>删除</good>航点，请点击<white>垃圾桶</white>图标。"
 		Queue = "要<good>添加航点</good>，请按住 <btn id='Game.AppendSelection'/> 的同时单击右键。"
@@ -4873,7 +4987,7 @@ Tutorials
 	NotInDemo = <bad>以下功能在《Cosmoteer》试玩版中不可用。</bad>
 	Paint
 	{
-
+		
 		Button = 要<good>给星舰外部进行涂装</good>，请点击左下方的<white>涂装</white>按钮。
 		ColorWheel = 在这里，你可以更改星舰的<good>底漆颜色</good>和<good>图案</good>。
 		Decals = "你也可以把<good>贴花</good>喷涂在你的星舰上。\n\n一艘星舰最多可以有三层贴花。每一层都可以有不同的颜色，而且一层中的所有贴花都是该种颜色。"
@@ -4882,7 +4996,7 @@ Tutorials
 	}
 	Power
 	{
-
+		
 		Crew = 你的<good>船员</good>将把等离子电池从<white>反应堆</white>或<white>能源电容器</white>搬运到各个星舰部件处。
 		Indicator = 如果部件的电力供给不足，则会显示一个<red>红色的图标</red>。这通常是因为没有足够的船员来运送电池，或者离电源太远，但如果星舰的反应堆无法生产足够的电池，也可能发生这种情况。
 		Meter = <good>电力表</good>显示反应堆产生的总电力，而<good>绿色竖条</good>显示的是推荐量。
@@ -4892,7 +5006,7 @@ Tutorials
 	}
 	Railguns
 	{
-
+		
 		Accelerator = 轨道炮也可以安装任意数量的<good>加速器</good>模块。每个加速器都会增加射程、伤害和穿深。
 		Info = 轨道炮是能够<good>模块化</good>并<good>自定义长度</good>的实弹武器，由多个部件组成。轨道炮越长，它的伤害就越高，射程就越远。
 		Launcher = 每门轨道炮前端都需要一个<good>发射器</good>模块，以高速射出弹丸。
@@ -4902,7 +5016,7 @@ Tutorials
 	}
 	Repairs
 	{
-
+		
 		Button = 当星舰需要修理时，左下方会出现红色的<white>修理</white>按钮。点击该按钮可以<good>打开建造/修理模式</good>。
 		Caution = <bad>注意：</bad>船员出舱进行维修时非常容易遭受攻击！请勿在不安全的地方进行维修！
 		Exit = "完成修理后，点击红色的 <bad>X</bad> 按钮或按 <btn id='General.Cancel'/> 都可以退出建造/修理模式。"
@@ -4913,7 +5027,7 @@ Tutorials
 	}
 	Reputation
 	{
-
+		
 		Negative = 同样地，攻击各派系会导致你的声誉降低。<bad>负数</bad>声誉分数将提高购买价格，并使你在被通缉时更难逃脱。
 		Positive = 完成各派系的任务可提高你的声誉。若派系声誉分数为<good>正值</good>，对应空间站商品的售价将会降低。
 		ReputationScore = 每个派系对你都有自己的看法，通过<good>声誉分数</good>体现，可能是正数，也可能是负数。
@@ -4922,7 +5036,7 @@ Tutorials
 	}
 	Resources
 	{
-
+		
 		Elements = <good>元素矿物</good>，如<white>铁</white>和<white>铜</white>，用于在工厂生产建筑材料和弹药。通常从小行星上开采而来。
 		Materials = <good>建筑材料</good>，如<white>钢板</white>和<white>线圈</white>，用于修理和升级星舰。它们通常是从被击沉的敌舰上回收出来，或者在空间站购买而来。
 		Munitions = <good>弹药</good>，如<white>加农炮弹</white>，由某些武器使用。通常由工厂生产或从空间站购买得来。
@@ -4933,7 +5047,7 @@ Tutorials
 	}
 	Resources2
 	{
-
+		
 		Designate = 你也可以命令船员<good>只将特定的资源</good>储存在特定的单元上。点击所需资源的按钮，然后点击专门储存该资源的单元。你的船员会尽可能地将该资源储存在这些单元中，而不会自动在上面存储其他资源。
 		Limits = "要设置舰上某种资源的<good>数量上限</good>，打开<img name='hamburger_up'/>菜单并选择<white>设置资源上限</white>。"
 		Manage = 如需管理你的星舰资源，请点击<white>管理资源</white>按钮。
@@ -4944,7 +5058,7 @@ Tutorials
 	}
 	Salvaging
 	{
-
+		
 		DestroyedShips = 被摧毁的星舰会掉落<good>有价值的材料</good>，你可以用它们来<good>修理和升级</good>自己的星舰。被摧毁星舰的剩余部分也可以回收，以获得更多的材料。
 		GatherSalvage = 要<good>回收</good>这些材料，请点击左下方的<white>收集/回收/开采</white>按钮，然后在你想回收的东西周围拖出一个方框。你的船员会自动收集这些材料，并把它们储存在你的星舰上。
 		RecallCrew = 遇到紧急情况，请按下<white>召回船员</white>按钮，取消所有出舱船员的命令，并<good>召唤他们回到星舰</good>。
@@ -4953,14 +5067,14 @@ Tutorials
 	}
 	Tactics
 	{
-
+		
 		Reactor = <good>提示：</good>摧毁敌舰的<good>反应堆或指挥室</good>，可直接将其炸成一艘幽灵船！
 		Target = 发动攻击后，<white>右键</white>再次点击敌舰的某一特定部位，用你的武器<good>瞄准</good>那里。
 		Title = 战斗技巧
 	}
 	Tactics2
 	{
-
+		
 		Drag = 要选择攻击的<good>距离</good>和<good>方向</good>，请<white>右键点击</white>敌舰并相应<white>拖动</white>。
 		Handles = "要在下达攻击指令后调整<good>距离</good>、<good>方向</good>或<good>旋转角度</good>，请按住 <btn id='Game.AppendSelection'/>，然后拖动出现的手柄之一。"
 		TargetQueue = "要<good>依次攻击多个目标</good>，请在按住 <btn id='Game.AppendSelection'/> 的同时右击接下来想攻击的目标。"
@@ -4968,7 +5082,7 @@ Tutorials
 	}
 	Techs
 	{
-
+		
 		Blueprints = 没有必需的蓝图，就<good>无法建造</good>许多武器等其他星舰部件。
 		Permanent = 购买蓝图能够<good>永久解锁</good>建造该类型部件的能力。
 		Purchase = 要购买蓝图，需要呼叫空间站并选择<white>购买蓝图</white>选项卡。
@@ -4976,7 +5090,7 @@ Tutorials
 	}
 	Thrusters
 	{
-
+		
 		Many = "推进器会将星舰推向与之相反的方向。\n\n星舰的速度和机动性取决于其推进器的数量、位置、方向和大小。"
 		Thruster = 添加<good>推进器</good>可以提高星舰的速度和机动性。推进器太少的星舰无法飞行。
 		Tip = <good>提示：</good>想要速度又快，机动性又强，就得在不同位置和方向上都布置许多推进器。
@@ -4984,7 +5098,7 @@ Tutorials
 	}
 	Time
 	{
-
+		
 		Buttons = "要想随时<good>暂停游戏</good>，请点击屏幕中央上方附近的<white>||</white>按钮，或者按下 <btn id='Game.PauseToggle'/> 键。"
 		Faster = "要<good>加快</good>或<good>放慢</good>时间流速，请点击<white>&gt;&gt;</white>或<white>&lt;&lt;</white>按钮。"
 		Tip = "<good>提示：</good>如果某样东西移动得太快而，令你难以点选，只要按下 <btn id='Game.PauseToggle'/> 就可以暂停游戏。"
@@ -4992,7 +5106,7 @@ Tutorials
 	}
 	Wanted
 	{
-
+		
 		Attacking = 攻击属于某个派系（或与之交好）的星舰或空间站会使你<bad>遭到通缉</bad>。
 		Evade = 如果能坚持<good>躲避追捕</good>一定时间，他们就会放弃追捕。
 		Hunted = 被通缉时，该派系会在你最后出现的已知位置附近<bad>追捕你</bad>，一旦发现你，他们会立即攻击。
@@ -5001,7 +5115,7 @@ Tutorials
 }
 VersionCheck
 {
-
+	
 	ConfirmInstall = 下载完成。关闭《Cosmoteer》并安装更新？
 	DownloadInstall = 下载并安装
 	DownloadProgressFmt = "正在下载更新…… <good>{0}%</good>\n<gray>{1:0.0}MB / {2:0.0}MB</gray>"
@@ -5012,7 +5126,7 @@ VersionCheck
 }
 VitalCategories
 {
-
+	
 	Airlock = "⚠ 缺少气闸"
 	Command = "⚠ 缺少控制室"
 	Crew = "⚠ 缺少船员舱"
@@ -5023,7 +5137,7 @@ VitalCategories
 }
 Wishlist
 {
-
+	
 	Caption = 立即购买！
 	ExitMsg = 感谢您体验《Cosmoteer》试玩版！
 	FameLimitReached = "恭喜你！！！\n你已经达到了试玩版的最高<fame>名望</fame>值，但离成为“星海传奇”还有很长的路要走。你可以继续游玩试玩版，但将无法赚取更多名望值，也无法前往其他星系。快快购买完整版，继续你的旅程吧！"
@@ -5037,7 +5151,7 @@ Wishlist
 }
 Workshop
 {
-
+	
 	Changes = 更改备注：
 	Description = 描述：
 	FirstVersion = 第一版

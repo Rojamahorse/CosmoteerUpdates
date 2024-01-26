@@ -153,6 +153,7 @@ LobbyScreen
 	Full = "<bad>FULL</bad>"
 	InProgress = "<bad>IN PROGRESS</bad>"
 	TimeRemainingFmt = "<bad>{0:m\\:ss} REMAINING</bad>"
+	RoundsRemainingFmt = "<bad>ROUND {0}/{1}</bad>"
 	Closed = "<bad>CLOSED</bad>"
 	PlayerName = "Your Name: "
 	Lobby = "Lobby: "
@@ -194,6 +195,7 @@ LobbyScreen
 	{
 		InProgress = "<bad>GAME IN PROGRESS</bad>"
 		TimeRemainingFmt = "<bad>{0:m\\:ss} REMAINING</bad>"
+		RoundsRemainingFmt = "<bad>ROUND {0}/{1}</bad>"
 		Incompatible = "<bad>INCOMPATIBLE</bad>"
 		Closed = "<bad>GAME IS CLOSED</bad>"
 		Full = "<bad>GAME IS FULL</bad>"
@@ -513,6 +515,12 @@ BuildBattleMode : Pvp
 	ForfeitRound = "Forfeit Round"
 	ForfeitGame = "Forfeit Game"
 	TieRound = "TIE ROUND"
+	SaveToStashTip = "Stash this unlock so that you may purchase it in a future round."
+	RefundTip = "Refund"
+	UnstashTip = "Remove from stash."
+	RoundAnnouncementFmt = "ROUND {0}:"
+	BuildPhaseAnnouncement = "BUILD!"
+	BattlePhaseAnnouncement = "BATTLE!"
 
 	Scoreboard : ^/0/Scoreboard
 	{
@@ -4176,13 +4184,13 @@ VitalCategories
 MissileTypes
 {
 	HE = "High-Explosive Missiles"
-	HEDesc = "Guided missiles that cause significant damage in a small area. Requires a High-Explosive Missile Factory to manufacture."
+	HEDesc = "Guided missiles that cause significant damage in a small area."
 	EMP = "E.M.P. Missile"
-	EMPDesc = "A large, guided missile that emits an electromagnetic pulse upon impact, draining power from enemy systems in a very large area. Requires an E.M.P. Missile Factory to manufacture."
+	EMPDesc = "A large, guided missile that emits an electromagnetic pulse upon impact, draining power from enemy systems in a very large area."
 	Nuke = "Tactical Nuclear Missile"
-	NukeDesc = "A huge, slow missile that causes a powerful nuclear explosion and massive damage in a very large area. Requires a Nuclear Missile Factory to manufacture."
+	NukeDesc = "A huge, slow missile that causes a powerful nuclear explosion and massive damage in a very large area."
 	Mine = "Proximity Mines"
-	MineDesc = "Stationary mines that detonate in proximity to enemy ships, shooting out damaging shrapnel. Requires a Mine Factory to manufacture."
+	MineDesc = "Stationary mines that detonate in proximity to enemy ships, shooting out damaging shrapnel."
 }
 
 PartTriggers

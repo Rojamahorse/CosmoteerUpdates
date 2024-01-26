@@ -115,6 +115,102 @@ Brushes
 	TriangleIcon = ""
 	TriangleTip = "Segure <btn id='Design.RestrictShapeMode'/> para criar um triângulo isósceles perfeito."
 }
+BuildBattleMode: Pvp
+{
+	
+	BattleWinnerFmt = "{0} venceu a rodada {1}!"
+	BuyTechFmt = ""
+	CapturePointFmt = "<b>{0}</b>\n<add_money>{1:n0}</add_money><gray>/{2} s</gray>"
+	CapturePointNames
+	[
+		
+		"Ponto de captura"
+	]
+	FleetValueFmt = "<s12>VALOR DA FROTA\n</s12><money_color>{0}</money_color>/<money_color>{1}</money_color>"
+	ForfeitConfirm = "Quer mesmo desistir?"
+	ForfeitGame = "Desistir da partida"
+	ForfeitRound = "Desistir da rodada"
+	HomeCircleRequiredTip = "Deve estar dentro da área inicial de surgimento."
+	IncomeFmt = "<add_money>{0:n0}</add_money><gray>/{1} s</gray>"
+	NoMissingCrew = "Nenhuma tripulação faltando"
+	NothingToRestock = "Não há nada a recarregar"
+	RestockCrewFmt = "Recontratar tripulação que falta: {0}"
+	RestockCrewTip = "Recontrata os tripulantes que estão faltando, até o número de camas disponíveis."
+	RestockResourcesFmt = "Recarregar recursos: {0}"
+	RestockResourcesTip = "Recarrega as munições e recursos desta nave até o limite da capacidade."
+	Scoreboard: ^/0/Scoreboard
+	{
+		
+		CapturePoints = "Pontos de controle"
+		Credits = Créditos
+		CurrentIncome = "Renda atual"
+		FleetValue = "Valor da frota"
+		ReadyCheck = "Tudo pronto?"
+		RoundLost = PERDEU
+		RoundTie = EMPATE
+		RoundWon = VENCEU
+		RoundsFmt = "Rodada {0}"
+		TotalIncome = "Renda total"
+	}
+	TieRound = "EMPATE NA RODADA"
+	TimeRemainingTip = "O tempo restante até o fim do jogo. A equipe com o maior número de pontos vence."
+}
+BuildBattleModeConfig: PvpModeConfig
+{
+	
+	AIControlledBattles = "Batalhas controladas por IA"
+	AIControlledBattlesTip = "Caso ativado, as naves serão controladas por IA durante a fase de batalha."
+	AdditionalUnlockCost = "Custo extra de desbloqueio"
+	AdditionalUnlockCostTip = "O custo extra para cada desbloqueio adicional além do primeiro numa fase de construção."
+	AllowShipLoading = "Permitir carregamento de naves salvas"
+	AllowShipLoadingTip = "Permite que os jogadores carreguem suas próprias naves salvas durante a fase de batalha."
+	BasicIncome = "Renda básica"
+	BasicIncomeTip = "A quantidade de créditos (<img name='money' colored='true'/>) que cada equipe ganha a cada 10 segundos (na velocidade ½) em adição aos seus pontos de controle."
+	BattleTimeLimit = "Limite de tempo da rodada de batalha"
+	BattleTimeLimitTip = "O tempo de fechamento completo do círculo na fase de batalha."
+	BuildTimeLimit = "Limite de Tempo da rodada de construção {0}"
+	BuildTimeLimitTip = "O tempo limite que os jogadores têm para construir as naves na fase de construção da rodada {0}."
+	CapturePointIncome = "Renda de ponto de controle"
+	CapturePointIncomeTip = "A quantidade de créditos (<img name='money' colored='true'/>) gerados pelo ponto de controle central de tamanho pequeno a cada 10 segundos (na velocidade ½)."
+	Description = "Uma disputa de várias rodadas: os competidores constroem e aprimoram suas naves com uma seleção limitada de peças, depois batalham contra os outros jogadores."
+	Funds = "Créditos iniciais"
+	FundsPerRound = "Fundos da rodada {0}"
+	FundsPerRoundTip = "O número de créditos (<img name='money' colored='true'/>) que cada jogador receberá na rodada {0}."
+	FundsTip = "O número inicial de créditos (<img name='money' colored='true'/>) que cada equipe tem no início da partida."
+	MapStyle = "Tipo de mapa"
+	MapStyleTip = "O tamanho da configuração do mapa e o número de equipes que ele suporta."
+	MaxFleetValue = "Valor máx. de frota"
+	MaxFleetValueTip = "O valor total máximo da frota de qualquer equipe a qualquer momento."
+	MinShipValue = "Valor mín. de nave"
+	MinShipValueTip = "O valor mínimo de qualquer nave individual que pode ser comprada durante a batalha."
+	MirrorTechOfferings = "Espelhar tecnologias"
+	MirrorTechOfferingsTip = "Caso ativado, todos os jogadores terão as mesmas tecnologias no início da fase de construção. Caso desativado, cada jogador receberá uma seleção aleatória."
+	Name = "Construir e Batalhar"
+	Rulesets
+	{
+		
+		Ai100K = "Naves pequenas - Pilotos de I.A."
+		Ai100KShort = "PEQ\nI.A."
+		AiBlitz = "Naves pequenas - Blitz + I.A."
+		AiBlitzShort = "BLTZ\nI.A."
+		AiLarge = "Naves grandes - Pilotos de I.A."
+		AiLargeShort = "GDE\nI.A."
+		AiMed = "Naves médias - Pilotos de I.A."
+		AiMedShort = "MÉD\nI.A."
+		Blitz = "Naves pequenas - Blitz"
+		BlitzShort = ""
+		Large = "Naves grandes (máx. 1,5 Mi)"
+		LargeShort = GDE
+		Med = "Naves médias (máx. 1 Mi)"
+		MedShort = MÉD
+		Small100K = "Naves pequenas (máx. 500 mil)"
+		Small100KShort = PEQ
+	}
+	StartingFundsFmt = "<s14>Créditos iniciais:</s14> <money>{0:n0}</money>"
+	StartingFundsTip = "O número de créditos (<img name='money' colored='true'/>) que cada jogador terá no início da partida para construir a nave inicial."
+	VictoryPointLimit = "Limite de pontos de vitória"
+	VictoryPointLimitTip = "A quantidade necessária de vitórias em fase de batalha para declarar um vencedor."
+}
 BuildBox
 {
 	
@@ -2093,6 +2189,18 @@ Misc
 	Unknown = Desconhecido
 	Yes = Sim
 }
+MissileTypes
+{
+	
+	EMP = "Mísseis P.E.M."
+	EMPDesc = "Um míssil guiado e grande que emite um pulso eletromagnético no impacto, roubando energia de sistemas inimigos em uma área muito grande. Requer uma Fábrica de Mísseis P.E.M. para serem fabricados."
+	HE = "Mísseis alto explosivos"
+	HEDesc = "Mísseis guiados que causam danos significativos em uma área pequena. Requer uma Fábrica de Mísseis Alto Explosivos para serem fabricados."
+	Mine = "Minas de proximidade"
+	MineDesc = "Minas estacionárias que explodem em proximidade com naves inimigas, lançando estilhaços que causam dano. Requer uma Fábrica de Minas para serem fabricadas."
+	Nuke = "Míssil nuclear tático"
+	NukeDesc = "Um míssil enorme e lento que causa uma poderosa explosão nuclear e dano enorme em uma área muito grande. Requer uma Fábrica de Mísseis Nucleares para serem fabricados."
+}
 MissionCategories
 {
 	
@@ -2420,10 +2528,10 @@ PartToggles
 	Lights_High = "<b>Iluminação: forte</b>\n\nAtalho: <btn id='PartToggles.lights_high'/>"
 	Lights_Low = "<b>Iluminação: fraca</b>\n\nAtalho: <btn id='PartToggles.lights_low'/>"
 	Lights_Med = "<b>Iluminação: moderada</b>\n\nAtalho: <btn id='PartToggles.lights_med'/>"
-	MissileType_EMP = "<b>Míssil P.E.M.</b>\n\nUm míssil guiado e grande que emite um pulso eletromagnético no impacto, roubando energia de sistemas inimigos em uma área muito grande. Requer uma Fábrica de Mísseis P.E.M. para serem fabricados.\n\nAtalho: <btn id='PartToggles.missile_type_emp'/>"
-	MissileType_HE = "<b>Mísseis alto explosivos</b>\n\nMísseis guiados que causam danos significativos em uma área pequena. Requer uma Fábrica de Mísseis Alto Explosivos para serem fabricados.\n\nAtalho: <btn id='PartToggles.missile_type_he'/>"
-	MissileType_Mine = "<b>Minas de proximidade</b>\n\nMinas estacionárias que explodem em proximidade com naves inimigas, lançando estilhaços que causam dano. Requer uma Fábrica de Minas para serem fabricadas.\n\nAtalho: <btn id='PartToggles.missile_type_mine'/>"
-	MissileType_Nuke = "<b>Míssil nuclear tático</b>\n\nUm míssil enorme e lento que causa uma poderosa explosão nuclear e dano enorme em uma área muito grande. Requer uma Fábrica de Mísseis Nucleares para serem fabricados.\n\nAtalho: <btn id='PartToggles.missile_type_nuke'/>"
+	MissileType_EMP = "<b><string id='MissileTypes/EMP'/></b>\n\n<string id='MissileTypes/EMPDesc'/>\n\nAtalho: <btn id='PartToggles.missile_type_emp'/>"
+	MissileType_HE = "<b><string id='MissileTypes/HE'/></b>\n\n<string id='MissileTypes/HEDesc'/>\n\nAtalho: <btn id='PartToggles.missile_type_he'/>"
+	MissileType_Mine = "<b><string id='MissileTypes/Mine'/></b>\n\n<string id='MissileTypes/Mine'/>\n\nAtalho: <btn id='PartToggles.missile_type_mine'/>"
+	MissileType_Nuke = "<b><string id='MissileTypes/Nuke'/></b>\n\n<string id='MissileTypes/NukeDesc'/>\n\nAtalho: <btn id='PartToggles.missile_type_nuke'/>"
 	OnOff_Off = "<b>Energia: <bad>desligada</bad></b>\n\nAtalho: <btn id='PartToggles.on_off_off'/>"
 	OnOff_On = "<b>Energia: <good>ligada</good></b>\n\nAtalho: <btn id='PartToggles.on_off_on'/>"
 	Rotate_Off = "<b>Girar: <bad>desligado</bad></b>\n\nAtalho: <btn id='PartToggles.rotate_off'/>"
@@ -2662,6 +2770,12 @@ Parts
 	HyperdriveBeacon = "Sinal de hipersalto"
 	HyperdriveBeaconDesc = "Naves com hiperpropulsores podem viajar até outras naves com Sinais de Hipersalto."
 	HyperdriveBeaconIcon = "Sinal de hipersalto"
+	HyperdriveLarge = "Hiperpropulsor grande"
+	HyperdriveLargeDesc = "Permite que a nave viaje instantaneamente para outros destinos dentro do sistema solar, para naves aliadas com Sinal de Hipersalto ou, quando auxiliada por um Retransmissor de Hipersalto, para outros sistemas solares.\n\nMaior capacidade de hipério e maior raio de eficácia do que a versão média."
+	HyperdriveLargeIcon = "Hiperpropulsor grande"
+	HyperdriveMed = "Hiperpropulsor médio"
+	HyperdriveMedDesc = "Permite que a nave viaje instantaneamente para outros destinos dentro do sistema solar, para naves aliadas com Sinal de Hipersalto ou, quando auxiliada por um Retransmissor de Hipersalto, para outros sistemas solares.\n\nMaior capacidade de hipério e maior raio de eficácia do que a versão pequena."
+	HyperdriveMedIcon = "Hiperpropulsor méd."
 	HyperdriveSmall = "Pequeno hiperpropulsor"
 	HyperdriveSmallDesc = "Permite que a nave viaje instantaneamente para outros destinos dentro do sistema solar, para naves aliadas com Sinal de Hipersalto ou, quando auxiliado por um retransmissor de Hipersalto, para outros sistemas solares."
 	HyperdriveSmallIcon = "Pequeno hiperpropulsor"

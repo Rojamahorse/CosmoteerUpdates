@@ -115,6 +115,102 @@ Brushes
 	TriangleIcon = ""
 	TriangleTip = "Maintenez <btn id='Design.RestrictShapeMode'/> pour tracer un triangle parfaitement isocèle."
 }
+BuildBattleMode: Pvp
+{
+	
+	BattleWinnerFmt = "{0} remporte la manche {1} !"
+	BuyTechFmt = ""
+	CapturePointFmt = "<b>{0}</b>\n<add_money>{1:n0}</add_money><gray>/{2} s</gray>"
+	CapturePointNames
+	[
+		
+		"Point de capture"
+	]
+	FleetValueFmt = "<s12>VALEUR DE LA FLOTTE\n</s12><money_color>{0}</money_color>/<money_color>{1}</money_color>"
+	ForfeitConfirm = "Abandonner ?"
+	ForfeitGame = "Abandon de la partie"
+	ForfeitRound = "Abandon de la manche"
+	HomeCircleRequiredTip = "Doit se trouver dans la zone d'apparition de départ."
+	IncomeFmt = "<add_money>{0:n0}</add_money><gray>/{1} s</gray>"
+	NoMissingCrew = "Aucun membre d'équipage perdu"
+	NothingToRestock = "Rien à ravitailler"
+	RestockCrewFmt = "Réengager l'équipage perdu : {0}"
+	RestockCrewTip = "Engage à nouveau tout membre d'équipage perdu si les quartiers disponibles le permettent."
+	RestockResourcesFmt = "Ravitaillement : {0}"
+	RestockResourcesTip = "Ravitaille au maximum le vaisseau en munitions et en ressources."
+	Scoreboard: ^/0/Scoreboard
+	{
+		
+		CapturePoints = "Points de contrôle"
+		Credits = Crédits
+		CurrentIncome = "Revenu actuel"
+		FleetValue = "Valeur de la flotte"
+		ReadyCheck = "Prêt ?"
+		RoundLost = DÉFAITE
+		RoundTie = "MATCH NUL"
+		RoundWon = VICTOIRE
+		RoundsFmt = "Manche {0}"
+		TotalIncome = "Revenu total"
+	}
+	TieRound = "MATCH NUL"
+	TimeRemainingTip = "Le temps restant avant la fin de la partie, où l'équipe ayant le plus de points sera déclarée victorieuse."
+}
+BuildBattleModeConfig: PvpModeConfig
+{
+	
+	AIControlledBattles = "Batailles contrôlées par l'IA"
+	AIControlledBattlesTip = "Permet le contrôle des vaisseaux par l'IA lors de la phase de bataille."
+	AdditionalUnlockCost = "Coût de déverrouillage supplémentaire"
+	AdditionalUnlockCostTip = "Le coût ajouté à chaque déverrouillage supplémentaire après le premier, lors de chaque phase de construction."
+	AllowShipLoading = "Autoriser le chargement de plans de vaisseaux"
+	AllowShipLoadingTip = "Permet aux joueurs de charger les plans de vaisseaux précédemment sauvegardés lors de la phase de construction."
+	BasicIncome = "Revenu de base"
+	BasicIncomeTip = "Le nombre de crédits (<img name='money' colored='true'/>) reçus toutes les 10 secondes par chaque équipe (pour une vitesse ½) en plus des crédits reçus des points contrôlés."
+	BattleTimeLimit = "Limite de temps de la manche de bataille"
+	BattleTimeLimitTip = "Le temps pris par le cercle pour se refermer complètement lors de la phase de bataille."
+	BuildTimeLimit = "Limite de temps de la manche de construction {0}"
+	BuildTimeLimitTip = "Le temps maximum alloué aux joueurs pour la phase de construction de leurs vaisseaux lors de la manche {0}."
+	CapturePointIncome = "Revenu des points de contrôle"
+	CapturePointIncomeTip = "Le nombre de crédits (<img name='money' colored='true'/>) généré par le point de contrôle central toutes les 10 secondes (pour une vitesse ½)."
+	Description = "Les joueurs construisent et améliorent leurs vaisseaux en utilisant un choix limité et aléatoire de pièces, avant de disputer plusieurs manches contre leurs adversaires."
+	Funds = "Crédits de départ"
+	FundsPerRound = "Fonds de la manche {0}"
+	FundsPerRoundTip = "Le nombre de crédits (<img name='money' colored='true'/>) dont dispose chaque joueur lors de la manche {0}."
+	FundsTip = "Le nombre de crédits (<img name='money' colored='true'/>) dont dispose chaque équipe au début de la partie."
+	MapStyle = "Type de carte"
+	MapStyleTip = "La taille de la carte et le nombre d'équipes qu'elle peut accueillir."
+	MaxFleetValue = "Valeur max de la flotte"
+	MaxFleetValueTip = "La valeur maximale que la flotte d'une équipe peut atteindre pendant la partie."
+	MinShipValue = "Valeur de vaisseau minimale"
+	MinShipValueTip = "La valeur minimale de chaque vaisseau pouvant être acheté en cours de partie."
+	MirrorTechOfferings = "Technologies identiques"
+	MirrorTechOfferingsTip = "Avec cette option, les mêmes technologies sont proposées à tous les joueurs au début de chaque phase de construction. Autrement, elles sont déterminées aléatoirement."
+	Name = "Construction et combat"
+	Rulesets
+	{
+		
+		Ai100K = "Petits vaisseaux - pilotes IA"
+		Ai100KShort = "PTT\nIA"
+		AiBlitz = "Petits vaisseaux - Blitz + IA"
+		AiBlitzShort = "BLTZ\nIA"
+		AiLarge = "Grands vaisseaux - pilotes IA"
+		AiLargeShort = "GRD\nIA"
+		AiMed = "Vaisseaux moyens - pilotes IA"
+		AiMedShort = "MOY\nIA"
+		Blitz = "Petits vaisseaux - Blitz"
+		BlitzShort = ""
+		Large = "Grands vaisseaux (1 500 000 max)"
+		LargeShort = GRD
+		Med = "Vaisseaux moyens (1 000 000 max)"
+		MedShort = MOY
+		Small100K = "Petits vaisseaux (500 000 max)"
+		Small100KShort = PTT
+	}
+	StartingFundsFmt = "<s14>Crédits de départ :</s14> <money>{0:n0}</money>"
+	StartingFundsTip = "Le nombre de crédits (<img name='money' colored='true'/>) dont dispose chaque joueur pour construire son vaisseau de départ au début de la partie."
+	VictoryPointLimit = "Limite de points de victoire"
+	VictoryPointLimitTip = "Le nombre de phases de bataille victorieuses requises pour déclarer un vainqueur."
+}
 BuildBox
 {
 	
@@ -2093,6 +2189,18 @@ Misc
 	Unknown = Inconnu
 	Yes = Oui
 }
+MissileTypes
+{
+	
+	EMP = "Missile à IEM"
+	EMPDesc = "Grand missile autoguidé à impulsion électromagnétique qui, à l'impact, draine l'énergie des systèmes ennemis dans une très grande surface. Sa fabrication nécessite l'usine de missiles à IEM."
+	HE = "Missiles hautement explosifs"
+	HEDesc = "Missiles guidés hautement explosifs qui infligent des dégâts considérables sur une petite surface. Leur fabrication nécessite l'usine de missiles hautement explosifs."
+	Mine = "Mines de proximité"
+	MineDesc = "Mines stationnaires qui explosent en expulsant du shrapnel lorsque des vaisseaux ennemis s'en approchent. Sa fabrication nécessite l'usine de mines."
+	Nuke = "Ogive nucléaire tactique"
+	NukeDesc = "Imposant missile lent qui provoque une puissante explosion nucléaire et des dégâts colossaux sur une très grande zone. Sa fabrication nécessite l'usine de missiles nucléaires."
+}
 MissionCategories
 {
 	
@@ -2420,10 +2528,10 @@ PartToggles
 	Lights_High = "<b>Luminosité : Forte</b>\n\nRaccourci : <btn id='PartToggles.lights_high'/>"
 	Lights_Low = "<b>Luminosité : Faible</b>\n\nRaccourci : <btn id='PartToggles.lights_low'/>"
 	Lights_Med = "<b>Luminosité : Moyenne</b>\n\nRaccourci : <btn id='PartToggles.lights_med'/>"
-	MissileType_EMP = "<b>Missile à IEM</b>\n\nGrand missile autoguidé à impulsion électromagnétique qui, à l'impact, draine l'énergie des systèmes ennemis dans une très grande surface. Sa fabrication nécessite l'usine de missiles à IEM.\n\nRaccourci : <btn id='PartToggles.missile_type_emp'/>"
-	MissileType_HE = "<b>Missiles hautement explosifs</b>\n\nMissiles guidés hautement explosifs qui infligent des dégâts considérables sur une petite surface. Leur fabrication nécessite l'usine de missiles hautement explosifs.\n\nRaccourci : <btn id='PartToggles.missile_type_he'/>"
-	MissileType_Mine = "<b>Mines de proximité</b>\n\nMines stationnaires qui explosent en expulsant du shrapnel lorsque des vaisseaux ennemis s'en approchent. Sa fabrication nécessite l'usine de mines.\n\nRaccourci : <btn id='PartToggles.missile_type_mine'/>"
-	MissileType_Nuke = "<b>Missile nucléaire tactique</b>\n\nImposant missile lent qui provoque une puissante explosion nucléaire et des dégâts colossaux sur une très grande zone. Sa fabrication nécessite l'usine de missiles nucléaires.\n\nRaccourci : <btn id='PartToggles.missile_type_nuke'/>"
+	MissileType_EMP = "<b><string id='MissileTypes/EMP'/></b>\n\n<string id='MissileTypes/EMPDesc'/>\n\nRaccourci : <btn id='PartToggles.missile_type_emp'/>"
+	MissileType_HE = "<b><string id='MissileTypes/HE'/></b>\n\n<string id='MissileTypes/HEDesc'/>\n\nRaccourci : <btn id='PartToggles.missile_type_he'/>"
+	MissileType_Mine = "<b><string id='MissileTypes/Mine'/></b>\n\n<string id='MissileTypes/Mine'/>\n\nRaccourci : <btn id='PartToggles.missile_type_mine'/>"
+	MissileType_Nuke = "<b><string id='MissileTypes/Nuke'/></b>\n\n<string id='MissileTypes/NukeDesc'/>\n\nRaccourci : <btn id='PartToggles.missile_type_nuke'/>"
 	OnOff_Off = "<b>Alimentation : <bad>désactivée</bad></b>\n\nRaccourci : <btn id='PartToggles.on_off_off'/>"
 	OnOff_On = "<b>Alimentation : <good>activée</good></b>\n\nRaccourci : <btn id='PartToggles.on_off_on'/>"
 	Rotate_Off = "<b>Tourner : <bad>désactivé</bad></b>\n\nRaccourci : <btn id='PartToggles.rotate_off'/>"
@@ -2639,7 +2747,7 @@ Parts
 	FactoryMineDesc = "Fabrique des mines qui explosent en expulsant du shrapnel lorsque des vaisseaux ennemis s'en approchent. Consomme du fer et des munitions. Toute usine adjacente (quel que soit son type) augmente de 25 % la vitesse de production."
 	FactoryMineIcon = ""
 	FactoryNuke = "Usine d'ogives nucléaires"
-	FactoryNukeDesc = "Fabrique des missiles nucléaires tactiques qui infligent des dégâts considérables sur une très grande surface. Consomme du fer et de l'uranium. Toute usine adjacente (quel que soit son type) augmente de 25 % la vitesse de production."
+	FactoryNukeDesc = "Fabrique des ogives nucléaires tactiques qui infligent des dégâts considérables sur une très grande surface. Consomme du fer et de l'uranium. Toute usine adjacente (quel que soit son type) augmente de 25 % la vitesse de production."
 	FactoryNukeIcon = "Ogives nucléaires"
 	FactoryProcessor = "Usine de processeurs"
 	FactoryProcessorDesc = "Fabrique des processeurs servant à construire certains composants avancés de vaisseau. Consomme de l'or et des bobines. Toute usine adjacente (quel que soit son type) augmente de 25 % la vitesse de production."
@@ -2662,6 +2770,12 @@ Parts
 	HyperdriveBeacon = "Balise de saut en hyperespace"
 	HyperdriveBeaconDesc = "Les vaisseaux dotés d'hyper-réacteurs peuvent sauter vers des appareils ayant des balises de saut en hyperespace."
 	HyperdriveBeaconIcon = "Balise de saut en hyperespace"
+	HyperdriveLarge = "Grand hyper-réacteur"
+	HyperdriveLargeDesc = "Permet au vaisseau de se rendre instantanément à un autre endroit du système solaire, jusqu'à des vaisseaux alliés dotés de balises de saut en hyperespace ou, avec l'aide d'un relais de saut en hyperespace, vers d'autres systèmes stellaires.\n\nDispose d'une capacité en hyperium et d'un rayon d'action plus importants que l'hyper-réacteur moyen."
+	HyperdriveLargeIcon = "Grand hyper-réacteur"
+	HyperdriveMed = "Hyper-réacteur moyen"
+	HyperdriveMedDesc = "Permet au vaisseau de se rendre instantanément à un autre endroit du système solaire, jusqu'à des vaisseaux alliés dotés de balises de saut en hyperespace ou, avec l'aide d'un relais de saut en hyperespace, vers d'autres systèmes stellaires.\n\nDispose d'une capacité en hyperium et d'un rayon d'action plus importants que le petit hyper-réacteur."
+	HyperdriveMedIcon = "Hyper-réacteur moy."
 	HyperdriveSmall = "Petit hyper-réacteur"
 	HyperdriveSmallDesc = "Permet au vaisseau de se rendre instantanément à un autre endroit du système solaire, jusqu'à des vaisseaux alliés dotés à de balises de saut en hyperespace ou, avec l'aide d'un relais de saut en hyperespace, vers d'autres systèmes stellaires."
 	HyperdriveSmallIcon = "Petit hyper-réacteur"
