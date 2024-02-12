@@ -61,10 +61,12 @@ Ships
 	:~{ File="Luminary.ship.png";                Tier=10;  Difficulty=2; }
 	:~{ File="Rasalhague.ship.png";              Tier=11;  Difficulty=2; }
 	:~{ File="Icarus.ship.png";                  Tier=11;  Difficulty=2; OtherIDs=["Icarus' Pride"]; }
+	:~{ File="Nashira.ship.png";                 Tier=11;  Difficulty=2; }
 	:~{ File="Shaula's Sacrament.ship.png";      Tier=12;  Difficulty=2; }
 	:~{ File="Stella Matutina.ship.png";         Tier=12;  Difficulty=2; }
 	:~{ File="Flaming Spire.ship.png";           Tier=12;  Difficulty=2; }
 	:~{ File="Maia.ship.png";                    Tier=12;  Difficulty=2; }
+	:~{ File="Gienah.ship.png";                  Tier=12;  Difficulty=2; }
 
 	// Destroyers
 	:~{ File="Acolyte of Adhara.ship.png";       Tier=13;  Difficulty=2; }
@@ -88,10 +90,12 @@ Ships
 	:~{ File="Ipsissimus.ship.png";              Tier=16;  Difficulty=2; }
 	:~{ File="Sol Renatus.ship.png";             Tier=16;  Difficulty=3; }
 	:~{ File="Sol Calidus.ship.png";             Tier=16;  Difficulty=3; }
+	:~{ File="Cassiopeia.ship.png";              Tier=16;  Difficulty=3; }
 
 	// Battlecruisers
 	:~{ File="Atlas.ship.png";                   Tier=17;  Difficulty=2; }
 	:~{ File="Sol Invictus.ship.png";            Tier=17;  Difficulty=3; }
+	:~{ File="Eclipse.ship.png";                 Tier=17;  Difficulty=3; }
 
 	// Flagships
 	:~{ File="Apotheosis.ship.png";              Tier=18;  Difficulty=2; }

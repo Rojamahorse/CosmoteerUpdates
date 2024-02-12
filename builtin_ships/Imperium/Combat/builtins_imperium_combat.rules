@@ -19,7 +19,7 @@ Ships
 	:~{ File="Serpent Eagle.ship.png"; Tier=3;  Difficulty=2; }
 	:~{ File="Gonolek.ship.png";       Tier=3;  Difficulty=2; }
 	:~{ File="Pardalote.ship.png";     Tier=3;  Difficulty=2; }
-	:~{ File="Elanine.ship.png";       Tier=3;  Difficulty=2; }
+	:~{ File="Robin.ship.png";       Tier=3;  Difficulty=2; OtherIDs=["Elanine"]; }
 	:~{ File="Hummingbird.ship.png";   Tier=3;  Difficulty=2; }
 	:~{ File="Osprey.ship.png";        Tier=3;  Difficulty=3; }
 	:~{ File="Avicida.ship.png";       Tier=3;  Difficulty=3; }
@@ -106,4 +106,6 @@ Ships
 	// Flagships
 	:~{ File="Voluntas.ship.png";      Tier=18;  Difficulty=3; }
 	:~{ File="Odysseus.ship.png";      Tier=18;  Difficulty=3; }
+	:~{ File="Thunderbird.ship.png";   Tier=18;  Difficulty=3; }
+	:~{ File="Augustus.ship.png";      Tier=18;  Difficulty=3; }
 ]

@@ -1,7 +1,6 @@
 #define USE_DEFAULT_VERT_ATLAS
 #define USE_DEFAULT_PIX_ATLAS
 #define DISABLE_ROTATION
-#define DISABLE_ANIMATION
 #define ENABLE_CUSTOM_VERTEX_COLOR
 #include "../../base_atlas.shader"
 

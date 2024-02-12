@@ -15,7 +15,7 @@ Part : <../base_part_terran.rules>/Part
 	SelectionPriority = 1
 	MaxHealth = 2000
 	TypeCategories = [chaingun, chaingun_ammo_requester, chaingun_ammo_supplier]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ChaingunMagConnectionLeft, ChaingunMagConnectionRight]
 	AllowedDoorLocations
 	[
 		[0, 2]
@@ -33,6 +33,37 @@ Part : <../base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		LeftMagConnectionProvider
+		{
+			Type = AreaBuffProvider
+			BlueprintsOnly = true // Only for display purposes.
+			BuffType = ChaingunMagConnectionLeft
+			BuffArea = [-1, 1, 1, 1]
+			ChainsFromBuffType = ChaingunMagConnectionLeft
+			Criteria
+			{
+				IDs = [cosmoteer.chaingun, cosmoteer.chaingun_magazine]
+				Rot = 0
+				Right = 0
+				Bottom = 2
+			}
+		}
+		RightMagConnectionProvider
+		{
+			Type = AreaBuffProvider
+			BlueprintsOnly = true // Only for display purposes.
+			BuffType = ChaingunMagConnectionRight
+			BuffArea = [1, 1, 1, 1]
+			ChainsFromBuffType = ChaingunMagConnectionRight
+			Criteria
+			{
+				IDs = [cosmoteer.chaingun, cosmoteer.chaingun_magazine]
+				Rot = 0
+				Left = 1
+				Bottom = 2
+			}
+		}
+
 		AmmoStorage
 		{
 			Type = ResourceStorage

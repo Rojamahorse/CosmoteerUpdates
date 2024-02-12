@@ -57,7 +57,7 @@ Ships
 	:~{ File="Incursor.ship.png";         Tier=8;  Difficulty=1; }
 	:~{ File="Sarro.ship.png";            Tier=8;  Difficulty=1; }
 	:~{ File="Toadvine.ship.png";         Tier=8;  Difficulty=1; }
-	:~{ File="Can Opener.ship.png";       Tier=8;  Difficulty=1; }
+	:~{ File="Desperado.ship.png";        Tier=8;  Difficulty=1; OtherIDs=["Can Opener"]; }
 	:~{ File="Phalanx III Heavy Escort.ship.png"; Tier=8; Difficulty=2; }
 	:~{ File="Blacksmith.ship.png";       Tier=9;  Difficulty=1; }
 	:~{ File="Sepa.ship.png";             Tier=9;  Difficulty=1; }
@@ -74,6 +74,8 @@ Ships
 	:~{ File="Graverobber.ship.png";      Tier=10;  Difficulty=1; }
 	:~{ File="Raptor.ship.png";           Tier=10;  Difficulty=2; }
 	:~{ File="Crankshaft.ship.png";       Tier=10;  Difficulty=2; }
+	:~{ File="Hentzau.ship.png";          Tier=10;  Difficulty=2; }
+	:~{ File="Sicario.ship.png";          Tier=10;  Difficulty=2; }
 	:~{ File="Cantiloupe.ship.png";       Tier=11;  Difficulty=1; }
 	:~{ File="Roko's Vengeance.ship.png"; Tier=11;  Difficulty=2; }
 	:~{ File="Hydra.ship.png";            Tier=11;  Difficulty=2; }
@@ -90,6 +92,7 @@ Ships
 	:~{ File="Banshee.ship.png";           Tier=14;  Difficulty=2; }
 	:~{ File="Hellfire.ship.png";          Tier=14;  Difficulty=2; }
 	:~{ File="Hecatoncheires.ship.png";    Tier=14;  Difficulty=2; }
+	:~{ File="Desolator.ship.png";         Tier=14;  Difficulty=2; }
 
 	// Cruisers
 	:~{ File="Roko's Revenge.ship.png"; Tier=15;  Difficulty=1; }
@@ -101,6 +104,7 @@ Ships
 	// Battleships
 	:~{ File="Ba'al.ship.png";          Tier=16;  Difficulty=2; }
 	:~{ File="Valira's Pride.ship.png"; Tier=16;  Difficulty=2; }
+	:~{ File="Desecrator.ship.png";     Tier=16;  Difficulty=2; }
 
 	// Battlecruisers
 	:~{ File="Nemesis.ship.png";        Tier=17;  Difficulty=2; }
