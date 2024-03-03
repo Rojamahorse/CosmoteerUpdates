@@ -38,5 +38,6 @@ RandomTimeOffset = [0, 1]
 IntensitySmoothSpeed = 10
 RotationSmoothSpeed = 15
 SpeedOverIntensity = 0
+LengthOverIntensity = [0, 1]
 MaxRotationSmoothDelta = 30d
 RotationSmoothSkewMode = true

@@ -18,7 +18,6 @@ float _additionalBuffedIntensity;
 VERT_OUTPUT_BEAM vert(in VERT_INPUT_BEAM input)
 {
     input.intensity *= input.fadeAlpha;
-	input.length *= input.intensity;
 	float additionalBuffedIntensity = max(_additionalBuffedIntensity, 0.00000001);
 	float buff = max(input.intensity - 1, 0) * (1 / additionalBuffedIntensity);
 	float buffThickness = lerp(0, _additionalBuffedThickness, max(input.intensity - 1, 0) * (1 / additionalBuffedIntensity));

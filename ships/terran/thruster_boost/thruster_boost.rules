@@ -30,7 +30,7 @@ Part : <../base_part_terran.rules>/Part
 	BoostedFuelUsage = 600
 	BoostedPowerDrain = { BaseValue=-30; BuffType=Engine; BuffMode=Multiply; }
 	BoostedPowerDrainInterval = 0.1
-	ReceivableBuffs : ^/0/ReceivableBuffs [Engine]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
 	AllowedDoorLocations
 	[
 		[-1, 0]
@@ -349,12 +349,11 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
-		EngineBuffToggle
+		PowerDistributionBuffToggle
 		{
 			Type = BuffToggle
-			BuffType = Engine
+			BuffType = EnginePowerDistribution
 		}
-
 		BoostOffComponents
 		{
 			Type = ToggledComponents
@@ -372,9 +371,8 @@ Part : <../base_part_terran.rules>/Part
 				ToggledBatteryConsumer
 				{
 					Type = ToggledComponents
-					Toggle = EngineBuffToggle
+					Toggle = PowerDistributionBuffToggle
 					Invert = true
-					IncludeInBlueprints = true
 					Components
 					{
 						BatteryConsumer

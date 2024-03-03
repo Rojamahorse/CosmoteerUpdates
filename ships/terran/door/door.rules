@@ -2,6 +2,7 @@ NameKey = "Parts/Door"
 IconNameKey = "Parts/DoorIcon"
 ID = cosmoteer.door // Door IDs must always be in the form of "author_name.door_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla doors.
 OtherIDs = [door]
+FractionalNonPlayerRefund = 25%
 Resources
 [
 	[coil, 1]

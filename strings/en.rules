@@ -2346,12 +2346,20 @@ CreativeMode
 	RemoveObjectOkay = "Remove"
 	IllegalShipWarning = "That ship design is illegal. Are you sure you wish to use it?"
 
-	ClearEverything = "Clear Everything"
-	ClearEverythingConfirm = "Are you sure you wish to remove all ships and doodads from the game? This cannot be undone."
-	ClearDebris = "Clear Debris"
-	ClearDebrisConfirm = "This will remove all ships that either have no command room or have no crew, as well as any resources floating in space. This cannot be undone."
-	ClearProjectiles = "Clear Weapon Projectiles"
-	ClearProjectilesConfirm = "This will remove all in-flight weapon projectiles. This cannot be undone."
+	ClearObjects = "Clear Objects..."
+	ClearObjectsHeader = "Select the types of objects to remove from the game.\n<b>This cannot be undone.</b>"
+	ClearSelected = "Clear Selected"
+	ClearSelectAll = "Select All"
+	ClearSelectNone = "Select None"
+	ClearJunkShips = "Ship Junk"
+	ClearAsteroids = "Asteroids"
+	ClearNonJunk = "Non-Junk Ships"
+	ClearStrandedCrew = "Stranded Crew"
+	ClearResources = "Floating Resources"
+	ClearBullets = "Weapon Projectiles"
+	ClearPlanets = "Planets, Moons, & Suns"
+	ClearPOIs = "Area-of-Interest Icons"
+	ClearParticles = "Dead Crew & Particle VFX"
 
 	FreeBuild = "Free Build Mode"
 	FogOfWar = "Fog Of War"
@@ -2523,7 +2531,7 @@ CreativeMode
 		Style = "Style"
 		Seed = "Seed"
 		Random = "Random"
-		Distance = "Distance"
+		Distance = "Depth"
 	}
 
 	POIConfig
@@ -3934,27 +3942,27 @@ Parts
 	PowerStorageDesc = "Stores a limited cache of plasma batteries that may be used by nearby ship's systems."
 
 	Railgun = "Railgun"
-	RailgunDesc = "A modular weapon that fires magnetically accelerated projectiles that can penetrate deep into enemy ships, causing great damage."
+	RailgunDesc = "A variable-length modular weapon that fires magnetically accelerated projectiles that can penetrate deep into enemy ships, causing great damage."
+
+	RailgunBaseDesc = "Railguns fire magnetically accelerated projectiles that can penetrate deep into enemy ships, causing great damage. "\
+	                  "Each Railgun requires both a Loader and a Launcher, plus any number of optional Accelerators."
 
 	RailgunLauncher = "Railgun Launcher Module"
 	RailgunLauncherIcon = "Railgun Launcher"
 	RailgunLauncherDesc = "A required component of all railguns. Must be paired with a Loader and zero or more Accelerators.\n\n"\
-	                      "Railguns fire magnetically accelerated projectiles that can penetrate deep into enemy ships, causing great damage. "\
-	                      "Each Railgun requires both a Loader and a Launcher, plus any number of optional Accelerators.\n\n"\
+	                      "<string id='Parts/RailgunBaseDesc'/>\n\n"\
 	                      "Crew cannot walk from one side of a Railgun Launcher or Accelerator to the other."
 
 	RailgunLoader = "Railgun Loader Module"
 	RailgunLoaderIcon = "Railgun Loader"
 	RailgunLoaderDesc = "A required component of all railguns. Must be paired with a Launcher and zero or more Accelerators.\n\n"\
-	                      "Railguns fire magnetically accelerated projectiles that can penetrate deep into enemy ships, causing great damage. "\
-	                      "Each Railgun requires both a Loader and a Launcher, plus any number of optional Accelerators."
+	                    "<string id='Parts/RailgunBaseDesc'/>"
 
 	RailgunAccelerator = "Railgun Accelerator Module"
 	RailgunAcceleratorIcon = "Railgun Accelerator"
 	RailgunAcceleratorDesc = "An optional component placed between a railgun's Launcher and Loader. Each accelerator increases the projectile's velocity, damage, and penetration depth.\n\n"\
-	                      "Railguns fire magnetically accelerated projectiles that can penetrate deep into enemy ships, causing great damage. "\
-	                      "Each Railgun requires both a Loader and a Launcher, plus any number of optional Accelerators.\n\n"\
-	                      "Crew cannot walk from one side of a Railgun Launcher or Accelerator to the other."
+	                         "<string id='Parts/RailgunBaseDesc'/>"\
+	                         "Crew cannot walk from one side of a Railgun Launcher or Accelerator to the other."
 
 	ReactorSmall = "Small Reactor Core"
 	ReactorSmallIcon = "Small Reactor"
@@ -4033,6 +4041,27 @@ Parts
 	ThrusterSmall3Way = "3-Way Small Thruster"
 	ThrusterSmall3WayIcon = &ThrusterSmall3Way
 	ThrusterSmall3WayDesc = "A weak, tri-directional propulsion engine used mainly for maneuvering."
+
+	ThrusterRocket = "Modular Rocket System (M.R.S.)"
+	ThrusterRocketDesc = "A variable-length modular thruster that can accelerate ships up to very high speeds but takes a long time to ramp up to its full power, making it ineffective at maneuvering."
+
+	ThrusterRocketBaseDesc = "Modular Rocket Systems (M.R.S.) can accelerate ships up to very high speeds but take a long time to ramp up to their full power, making them ineffective at maneuvering. "\
+	                         "Each M.R.S. requires a Nozzle plus zero or more optional Extenders and Fuel Pods."
+
+	ThrusterRocketNozzle = "M.R.S. Nozzle Module"
+	ThrusterRocketNozzleIcon = "M.R.S. Nozzle"
+	ThrusterRocketNozzleDesc = "A required component of all Modular Rocket Systems. May be combined with zero or more Extender modules and up to two Fuel Pods per Nozzle or Extender.\n\n"\
+	                           "<string id='Parts/ThrusterRocketBaseDesc'/>"
+
+	ThrusterRocketExtender = "M.R.S. Extender Module"
+	ThrusterRocketExtenderIcon = "M.R.S. Extender"
+	ThrusterRocketExtenderDesc = "An optional component placed behind a Modular Rocket System's Nozzle or other Extender. Each extender increases its maximum thrust, power usage, and ramp-up time. Battery fuel capacity may be extended with up to two Fuel Pods.\n\n"\
+	                             "<string id='Parts/ThrusterRocketBaseDesc'/>"
+
+	ThrusterRocketBattery = "M.R.S. Fuel Pod"
+	ThrusterRocketBatteryIcon = &ThrusterRocketBattery
+	ThrusterRocketBatteryDesc = "Extends the battery fuel capacity of an attached M.R.S. Nozzle or Extender by four batteries.\n\n"\
+	                            "<string id='Parts/ThrusterRocketBaseDesc'/>"
 
 	MiningLaserSmall = "Mining Laser"
 	MiningLaserSmallIcon = &MiningLaserSmall
@@ -4218,6 +4247,9 @@ PartToggles
 
 	Fire_Synchronized = "<b>Fire: Synchronized</b>\n\nHotkey: <btn id='PartToggles.fire_alternating_off'/>"
 	Fire_Alternating = "<b>Fire: Alternating</b>\n\nHotkey: <btn id='PartToggles.fire_alternating_on'/>"
+
+	DistributePower_Off = "<b>Thruster Power Distribution: <bad>Off</bad></b>\n\nHotkey: <btn id='PartToggles.distribute_power_off'/>"
+	DistributePower_On = "<b>Thruster Power Distribution: <good>On</good></b>\n\nHotkey: <btn id='PartToggles.distribute_power_on'/>"
 
 	Lights_Low = "<b>Lights: Low</b>\n\nHotkey: <btn id='PartToggles.lights_low'/>"
 	Lights_Med = "<b>Lights: Medium</b>\n\nHotkey: <btn id='PartToggles.lights_med'/>"
@@ -4439,6 +4471,7 @@ Stats
 	ShellDamageResistFmt = "<white>Shell Damage Resist:</white> <good>{0}%</good>"
 	ShellPenResistFmt = "<white>Shell Penetration Resist:</white> <good>-{0}</good> <gray>meters</gray>"
 	RailgunNotes = "<gray>NOTE: Damage, Penetration, Range, Projectile Speed, and Power Usage are increased with each additional Railgun Accelerator.</gray>"
+	RocketNotes = "<gray>NOTE: Thrust, Ramp-Up Time, and Power Use are increased with each additional Extender Module.</gray>"
 	MissileLauncherNotes = "<gray>For munition statistics, refer to the corresponding factory for each type of munition.</gray>"
 }
 

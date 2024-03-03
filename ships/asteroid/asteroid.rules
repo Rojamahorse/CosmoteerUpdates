@@ -5,6 +5,7 @@ Asteroid : <../base_ship.rules>
 	NameKey = "ShipClasses/Asteroid"
 	DefaultPartID = cosmoteer.rock_1x1
 	ImmuneToEnvDamage = true
+	IsAsteroid = true
 	JunkBlocksWeaponLOS = true
 	ExternalWalls = &<asteroid_walls/external_walls.rules>
 	OverrideConstructionMode = InstantCredits

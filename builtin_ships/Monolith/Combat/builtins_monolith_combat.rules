@@ -48,13 +48,13 @@ Ships
 	:~{ File="Silencer.ship.png";    Tier=7;  Difficulty=1; }
 	:~{ File="Bastion.ship.png";     Tier=7;  Difficulty=2; }
 	:~{ File="Quickdraw.ship.png";   Tier=7;  Difficulty=2; }
-	:~{ File="Almogavar.ship.png";   Tier=7;  Difficulty=2; }
+	:~{ File="Suppressor.ship.png";   Tier=7; Difficulty=2; OtherIDs=["Almogavar"]; }
 	:~{ File="Swiftwing.ship.png";   Tier=8;  Difficulty=1; }
 	:~{ File="Bulwark.ship.png";     Tier=8;  Difficulty=1; }
 	:~{ File="Intercessor.ship.png"; Tier=8;  Difficulty=1; }
 	:~{ File="Echo.ship.png";        Tier=8;  Difficulty=2; }
 	:~{ File="Sentry.ship.png";      Tier=8;  Difficulty=2; }
-	:~{ File="Almocaden.ship.png";   Tier=8;  Difficulty=2; }
+	:~{ File="Successor.ship.png";   Tier=8;  Difficulty=2; OtherIDs=["Almocaden"]; }
 	:~{ File="Gunwing.ship.png";     Tier=9;  Difficulty=1; }
 	:~{ File="Skypiercer.ship.png";  Tier=9;  Difficulty=1; }
 	:~{ File="Rampart.ship.png";     Tier=9;  Difficulty=2; }
@@ -106,6 +106,7 @@ Ships
 	:~{ File="Interdictor.ship.png"; Tier=16; Difficulty=2; }
 	:~{ File="Mitigator.ship.png";   Tier=16; Difficulty=3; }
 	:~{ File="Onager.ship.png";      Tier=16; Difficulty=3; }
+	:~{ File="Eradicator.ship.png";  Tier=16; Difficulty=3; }
 
 	// Battlecruisers
 	:~{ File="Executor.ship.png";    Tier=17; Difficulty=3; }

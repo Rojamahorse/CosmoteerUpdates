@@ -243,6 +243,21 @@ Techs
 		FundsThresholdBeforeOffered = 200000
 	}
 	{
+		ID = cosmoteer.thruster_rocket
+		NameKey = "Parts/ThrusterRocket"
+		DescriptionKey = "Parts/ThrusterRocketDesc"
+		Icon = &<./Data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/EditorIcon
+		Category = [thrusters]
+		PartsUnlocked
+		[
+			&<./Data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/ID
+			&<./Data/ships/terran/thruster_rocket_extender/thruster_rocket_extender.rules>/Part/ID
+			&<./Data/ships/terran/thruster_rocket_battery/thruster_rocket_battery.rules>/Part/ID
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 300000
+	}
+	{
 		ID = cosmoteer.thruster_boost
 		NameKey = &<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/NameKey
 		DescriptionKey = &<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/DescriptionKey

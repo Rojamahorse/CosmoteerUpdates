@@ -16,9 +16,15 @@ Engine
 	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
 	IconTextMultiply = 100
 	IconTextAdd = -100
+	ShowIconTextForZeroValue = false
 
 	RectBorderColor = [10, 212, 98, 160]
 	RectFillColor = [10, 212, 98, 64]
+}
+
+EnginePowerDistribution
+{
+	// Only exists to piggyback engine room power distribution off the buff system.
 }
 
 Factory
@@ -73,6 +79,74 @@ RailgunOperation
 RailgunReverseOperation
 {
 	CombineMode = Add
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+Rocket
+{
+	CombineMode = Add
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+RocketThrust
+{
+	CombineMode = Add
+	Exponent = 1.0
+	BaseValue = 0%
+
+	Icon
+	{
+		Texture
+		{
+			File = "buff_engine.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+	IconPriority = 1 // Override engine room buff icon.
+	ShowIconTextForZeroValue = false
+}
+
+RocketRampUp
+{
+	CombineMode = Add
+	Exponent = 0.5
+	BaseValue = 0%
+}
+RocketRampUpFinal
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
+
+RocketOperation
+{
+	CombineMode = Add
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+RocketBatteryConnection // Only used to show connection in blueprints.
+{
+	Icon
+	{
+		Texture
+		{
+			File = "buff_power.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
 
 	RectBorderColor = [10, 212, 98, 160]
 	RectFillColor = [10, 212, 98, 64]
