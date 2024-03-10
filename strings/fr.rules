@@ -118,7 +118,9 @@ Brushes
 BuildBattleMode: Pvp
 {
 	
+	BattlePhaseAnnouncement = "COMBAT !"
 	BattleWinnerFmt = "{0} remporte la manche {1} !"
+	BuildPhaseAnnouncement = "CONSTRUCTION !"
 	BuyTechFmt = ""
 	CapturePointFmt = "<b>{0}</b>\n<add_money>{1:n0}</add_money><gray>/{2} s</gray>"
 	CapturePointNames
@@ -134,10 +136,13 @@ BuildBattleMode: Pvp
 	IncomeFmt = "<add_money>{0:n0}</add_money><gray>/{1} s</gray>"
 	NoMissingCrew = "Aucun membre d'équipage perdu"
 	NothingToRestock = "Rien à ravitailler"
+	RefundTip = Remboursement
 	RestockCrewFmt = "Réengager l'équipage perdu : {0}"
 	RestockCrewTip = "Engage à nouveau tout membre d'équipage perdu si les quartiers disponibles le permettent."
 	RestockResourcesFmt = "Ravitaillement : {0}"
 	RestockResourcesTip = "Ravitaille au maximum le vaisseau en munitions et en ressources."
+	RoundAnnouncementFmt = "MANCHE {0} :"
+	SaveToStashTip = "Entreposez cette amélioration afin de pouvoir l'acheter au cours d'une prochaine manche."
 	Scoreboard: ^/0/Scoreboard
 	{
 		
@@ -151,9 +156,11 @@ BuildBattleMode: Pvp
 		RoundWon = VICTOIRE
 		RoundsFmt = "Manche {0}"
 		TotalIncome = "Revenu total"
+		VictoryPoints = "Points de victoire"
 	}
 	TieRound = "MATCH NUL"
 	TimeRemainingTip = "Le temps restant avant la fin de la partie, où l'équipe ayant le plus de points sera déclarée victorieuse."
+	UnstashTip = "Retirer de l'entrepôt."
 }
 BuildBattleModeConfig: PvpModeConfig
 {
@@ -670,12 +677,20 @@ CreativeMode
 		View = Afficher
 		ZoomSpeed = "Vitesse de zoom"
 	}
-	ClearDebris = "Supprimer les débris"
-	ClearDebrisConfirm = "Retire tous les vaisseaux n'ayant aucune salle de commandement ou aucun équipage, ainsi que les ressources flottant dans l'espace. Cette opération ne pourra pas être annulée."
-	ClearEverything = "Tout retirer"
-	ClearEverythingConfirm = "Retirer tous les vaisseaux et objets de la partie ? Cette opération ne pourra pas être annulée."
-	ClearProjectiles = "Supprimer les projectiles d'armes"
-	ClearProjectilesConfirm = "Retire tous les projectiles d'armes tirés. Cette opération ne pourra pas être annulée."
+	ClearAsteroids = Astéroïdes
+	ClearBullets = "Projectiles d'armes"
+	ClearJunkShips = Épaves
+	ClearNonJunk = "Vaisseaux opérationnels"
+	ClearObjects = "Suppression d'éléments..."
+	ClearObjectsHeader = "Sélectionnez le type d'éléments à retirer de la partie.\n<b>Cette opération ne pourra pas être annulée.</b>"
+	ClearPOIs = "Icônes de lieux d'intérêt"
+	ClearParticles = "Membres d'équipage morts et particules des effets visuels"
+	ClearPlanets = "Planètes, lunes et soleils"
+	ClearResources = "Ressources flottantes"
+	ClearSelectAll = "Tout sélectionner"
+	ClearSelectNone = "Ne rien sélectionner"
+	ClearSelected = "Suppression de la sélection"
+	ClearStrandedCrew = "Membres d'équipage bloqués"
 	ConfirmPartDestruct = "Détruire le ou les composant(s) sélectionné(s) ? Cette opération est irréversible et susceptible de provoquer des dommages collatéraux !"
 	ConfirmRemoveObject = "Retirer de la partie le ou les vaisseau(s) ou objet(s) de la sélection ? Cette opération ne pourra pas être annulée."
 	DeleteConnectionHover = "<btn id='Game.UseTool'/> pour supprimer l'itinéraire de saut en hyperespace mis en évidence."
@@ -711,7 +726,7 @@ CreativeMode
 	PlanetConfig
 	{
 		
-		Distance = ""
+		Distance = Éloignement
 		Random = Aléatoire
 		Seed = ""
 		Style = Type
@@ -2024,6 +2039,7 @@ LobbyScreen
 		PasswordNo = "<b>Mot de passe requis :</b> NON"
 		PasswordYes = "<b>Mot de passe requis :</b> <bad>OUI</bad>"
 		PlayersFmt = "<b>Joueurs :</b> {0}/{1}"
+		RoundsRemainingFmt = "<bad>MANCHE {0}/{1}</bad>"
 		RulesetFmt = "<b>Règles :</b> <b>{0}</b>"
 		SettingFmt = ""
 		SettingNo = NON
@@ -2074,6 +2090,7 @@ LobbyScreen
 	PlayersFmt = ""
 	RefreshTip = "Actualise la liste des salons d'accueil."
 	ReverseSort = Inverser
+	RoundsRemainingFmt = "<bad>MANCHE {0}/{1}</bad>"
 	SortCurPlayers = "<img name='sort'/> Joueurs"
 	SortFunds = "<img name='sort'/> Crédits"
 	SortMaxPlayers = "<img name='sort'/> Joueurs max"
@@ -2193,13 +2210,13 @@ MissileTypes
 {
 	
 	EMP = "Missile à IEM"
-	EMPDesc = "Grand missile autoguidé à impulsion électromagnétique qui, à l'impact, draine l'énergie des systèmes ennemis dans une très grande surface. Sa fabrication nécessite l'usine de missiles à IEM."
+	EMPDesc = "Grand missile autoguidé à impulsion électromagnétique qui, à l'impact, draine l'énergie des systèmes ennemis dans une très grande surface."
 	HE = "Missiles hautement explosifs"
-	HEDesc = "Missiles guidés hautement explosifs qui infligent des dégâts considérables sur une petite surface. Leur fabrication nécessite l'usine de missiles hautement explosifs."
+	HEDesc = "Missiles guidés hautement explosifs qui infligent des dégâts considérables sur une petite surface."
 	Mine = "Mines de proximité"
-	MineDesc = "Mines stationnaires qui explosent en expulsant du shrapnel lorsque des vaisseaux ennemis s'en approchent. Sa fabrication nécessite l'usine de mines."
+	MineDesc = "Mines stationnaires qui explosent en expulsant du shrapnel lorsque des vaisseaux ennemis s'en approchent."
 	Nuke = "Ogive nucléaire tactique"
-	NukeDesc = "Imposant missile lent qui provoque une puissante explosion nucléaire et des dégâts colossaux sur une très grande zone. Sa fabrication nécessite l'usine de missiles nucléaires."
+	NukeDesc = "Imposant missile lent qui provoque une puissante explosion nucléaire et des dégâts colossaux sur une très grande zone."
 }
 MissionCategories
 {
@@ -2514,6 +2531,8 @@ PartToggles
 	
 	Boost_Off = "<b>Turbo : <bad>non</bad></b>\n\nRaccourci : <btn id='PartToggles.thruster_boost_off'/>"
 	Boost_On = "<b>Turbo : <good>oui</good></b>\n\nRaccourci : <btn id='PartToggles.thruster_boost_on'/>"
+	DistributePower_Off = "<b>Alimentation en énergie du propulseur : <bad>non</bad></b>\n\nRaccourci : <btn id='PartToggles.distribute_power_off'/>"
+	DistributePower_On = "<b>Alimentation en énergie du propulseur : <good>oui</good></b>\n\nRaccourci : <btn id='PartToggles.distribute_power_on'/>"
 	FireMode_AtTarget = "<b>Tirer sur les cibles</b>\nNe tirer que sur les cibles désignées.\n\nRaccourci : <btn id='PartToggles.fire_mode_at_target'/>"
 	FireMode_AtWill = "<b>Feu à volonté</b>\nTirer sur tous les ennemis à portée.\n\nRaccourci : <btn id='PartToggles.fire_mode_at_will'/>"
 	FireMode_Auto = "<b>Tire automatique</b>\nTirer continuellement, même s'il n'y a rien sur quoi tirer.\n\nRaccourci : <btn id='PartToggles.fire_mode_auto'/>"
@@ -2811,14 +2830,15 @@ Parts
 	PowerStorageIcon = Condensateur
 	Railgun = "Canon électromagnétique"
 	RailgunAccelerator = "Module accélérateur pour canon électromagnétique"
-	RailgunAcceleratorDesc = "Un composant optionnel à placer entre le lanceur et le chargeur d'un canon électromagnétique. Chaque accélérateur augmente la vélocité, les dégâts et la pénétration du projectile.\n\nCes canons tirent des projectiles magnétiquement accélérés capables de pénétrer la coque des vaisseaux ennemis et d'infliger ainsi d'importants dégâts. Chaque canon électromagnétique doit être composé d'un chargeur et d'un lanceur, et peut également être doté d'un certain nombre d'accélérateurs.\n\nL'équipage ne peut pas marcher d'un côté à l'autre d'un lanceur ou d'un accélérateur."
+	RailgunAcceleratorDesc = "Un composant optionnel à placer entre le lanceur et le chargeur d'un canon électromagnétique. Chaque accélérateur augmente la vélocité, les dégâts et la pénétration du projectile.\n\n<string id='Parts/RailgunBaseDesc'/>L'équipage ne peut pas marcher d'un côté à l'autre d'un lanceur ou d'un accélérateur."
 	RailgunAcceleratorIcon = "Accélérateur pour canon électromagnétique"
-	RailgunDesc = "Une arme modulaire qui tire des projectiles magnétiquement accélérés, capables de pénétrer la coque des vaisseaux ennemis et d'infliger ainsi d'importants dégâts."
+	RailgunBaseDesc = "Ces canons tirent des projectiles magnétiquement accélérés, capables de pénétrer la coque des vaisseaux ennemis et d'infliger ainsi d'importants dégâts. Chaque canon électromagnétique doit être composé d'un chargeur et d'un lanceur, et peut également être doté d'un certain nombre d'accélérateurs."
+	RailgunDesc = "Une arme modulaire de longueur variable qui tire des projectiles magnétiquement accélérés, capables de pénétrer la coque des vaisseaux ennemis et d'infliger ainsi d'importants dégâts."
 	RailgunLauncher = "Module lanceur pour canon électromagnétique"
-	RailgunLauncherDesc = "Un composant nécessaire à tous les canons électromagnétiques. Doit être associé à un chargeur et éventuellement à un ou plusieurs accélérateurs.\n\nCes canons tirent des projectiles magnétiquement accélérés, capables de pénétrer la coque des vaisseaux ennemis et d'infliger ainsi d'importants dégâts. Chaque canon électromagnétique doit être composé d'un chargeur et d'un lanceur, et peut également être doté d'un certain nombre d'accélérateurs.\n\nL'équipage ne peut pas marcher d'un côté à l'autre d'un lanceur ou d'un accélérateur."
+	RailgunLauncherDesc = "Un composant nécessaire à tous les canons électromagnétiques. Doit être associé à un chargeur et éventuellement à un ou plusieurs accélérateurs.\n\n<string id='Parts/RailgunBaseDesc'/>\n\nL'équipage ne peut pas marcher d'un côté à l'autre d'un lanceur ou d'un accélérateur."
 	RailgunLauncherIcon = "Lanceur pour canon électromagnétique"
 	RailgunLoader = "Module chargeur pour canon électromagnétique"
-	RailgunLoaderDesc = "Un composant nécessaire à tous les canons électromagnétiques. Doit être associé à un lanceur et éventuellement à un ou plusieurs accélérateurs.\n\nCes canons tirent des projectiles magnétiquement accélérés, capables de pénétrer la coque des vaisseaux ennemis et d'infliger ainsi d'importants dégâts. Chaque canon électromagnétique doit être composé d'un chargeur et d'un lanceur, et peut également être doté d'un certain nombre d'accélérateurs."
+	RailgunLoaderDesc = "Un composant nécessaire à tous les canons électromagnétiques. Doit être associé à un lanceur et éventuellement à un ou plusieurs accélérateurs.\n\n<string id='Parts/RailgunBaseDesc'/>"
 	RailgunLoaderIcon = "Chargeur pour canon électromagnétique"
 	ReactorLarge = "Grand cœur de réacteur"
 	ReactorLargeDesc = "Un générateur qui produit trois fois plus de batteries de plasma nécessaires à l'alimentation de nombreux systèmes du vaisseau."
@@ -2902,6 +2922,18 @@ Parts
 	ThrusterMed = "Propulseur standard"
 	ThrusterMedDesc = "Un moteur de propulsion standard capable de pousser le vaisseau avec une force limitée. Le temps nécessaire pour obtenir la puissance de propulsion maximale est relativement court."
 	ThrusterMedIcon = "Propulseur standard"
+	ThrusterRocket = "Système de moteur-fusée modulaire (SMFM)"
+	ThrusterRocketBaseDesc = "Un système de moteur-fusée modulaire (SMFM) peut fournir une accélération au vaisseau jusqu'à lui permettre d'atteindre des vitesses très élevées. En revanche, il met longtemps à charger pour arriver à pleine puissance, ce qui le rend peu adapté aux manœuvres agiles. Chaque SFM doit être composé d'une tuyère et peut également être doté d'un certain nombre d'extensions et de réservoirs de carburant."
+	ThrusterRocketBattery = "Réservoir de carburant SMFM"
+	ThrusterRocketBatteryDesc = "Augmente la capacité en carburant de la tuyère ou de l'extension SMFM à laquelle il est attaché de quatre batteries.\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
+	ThrusterRocketBatteryIcon = "Réservoir de carburant SMFM"
+	ThrusterRocketDesc = "Un propulseur de longueur variable qui fournit une accélération au vaisseau jusqu'à lui permettre d'atteindre des vitesses très élevées. En revanche, le système met longtemps à charger pour arriver à pleine puissance, ce qui le rend peu adapté aux manœuvres agiles."
+	ThrusterRocketExtender = "Module d'extension SMFM"
+	ThrusterRocketExtenderDesc = "Un composant optionnel à placer derrière la tuyère d'un système de moteur-fusée modulaire ou une autre extension. Chaque extension augmente la propulsion maximale, mais aussi la consommation d’énergie et le temps de chargement. La capacité de la batterie peut être augmentée en ajoutant un ou deux réservoirs de carburant.\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
+	ThrusterRocketExtenderIcon = "Extension SMFM"
+	ThrusterRocketNozzle = "Module de tuyère SMFM"
+	ThrusterRocketNozzleDesc = "Un composant nécessaire à tous les systèmes de moteur-fusée modulaire. Peut être associé à des modules d'extension et à jusqu'à deux réservoirs de carburant par tuyère ou extension.\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
+	ThrusterRocketNozzleIcon = "Tuyère SMFM"
 	ThrusterSmall = "Propulseur léger"
 	ThrusterSmall2Way = "Propulseur léger bidirectionnel"
 	ThrusterSmall2WayDesc = "Un moteur de propulsion faible bidirectionnel servant principalement aux manœuvres."
@@ -4044,6 +4076,7 @@ Stats
 	RangeFmt = "<white>Portée :</white> <good>{0:0}</good> <gray>mètres</gray>"
 	RangeLimitedFmt = "<white>Portée :</white> <good>{0:0}</good> <gray>mètres (</gray><good>{1:0}</good><gray> mètres max)</gray>"
 	Resources = "<white>Ressources :</white> "
+	RocketNotes = "<gray>ATTENTION : La propulsion, le temps de chargement et la consommation d'énergie augmentent pour chaque module d'extension.</gray>"
 	SalvoFmt = "<white>Salve :</white> <good>{0:0.##}</good> <gray>tirs/</gray><good>{1:0.##}</good> <gray>s</gray>"
 	SeparationRangeFmt = "<white>Distance :</white> <good>{0:0}</good> <gray>mètres</gray>"
 	ShellDamageResistFmt = "<white>Résistance aux dégâts de la coque :</white> <good>{0} %</good>"

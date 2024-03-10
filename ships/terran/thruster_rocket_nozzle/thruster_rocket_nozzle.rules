@@ -27,7 +27,7 @@ Part : <../base_part_terran.rules>/Part
 	]
 	ThrusterForce = 8000
 	ThrustIncreaseTime = { BaseValue=6; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
-	ThrustRecoveryTime = { BaseValue=1; BuffType=RocketThrust; BuffMode=Divide; }
+	ThrustRecoveryTime = { BaseValue=2; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
 	FuelUsage = 400
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, Rocket, RocketThrust, RocketRampUp, RocketRampUpFinal, RocketOperation, RocketBatteryConnection]
 	HasNonContiguousPathing = true
@@ -590,8 +590,8 @@ Part : <../base_part_terran.rules>/Part
 			[
 				[2/3, 4]
 				[7/3, 4]
-				[8/3, 5]
-				[1/3, 5]
+				[8/3, 5.2]
+				[1/3, 5.2]
 			]
 			Density = 1
 		}

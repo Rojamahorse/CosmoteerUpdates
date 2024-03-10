@@ -118,7 +118,9 @@ Brushes
 BuildBattleMode: Pvp
 {
 	
+	BattlePhaseAnnouncement = 开始战斗！
 	BattleWinnerFmt = "{0}在第 {1} 轮中获胜！"
+	BuildPhaseAnnouncement = 开始造舰！
 	BuyTechFmt = ""
 	CapturePointFmt = "<b>{0}</b>\n<add_money>{1:n0}</add_money><gray>/{2} 秒</gray>"
 	CapturePointNames
@@ -134,10 +136,13 @@ BuildBattleMode: Pvp
 	IncomeFmt = "<add_money>{0:n0}</add_money><gray>/{1} 秒</gray>"
 	NoMissingCrew = 无船员缺失
 	NothingToRestock = 没有需要补给的项目
+	RefundTip = 退款
 	RestockCrewFmt = "重新雇用缺少的船员：{0}"
 	RestockCrewTip = 重新雇用缺少的船员，以可用床位数为限。
 	RestockResourcesFmt = "资源补给：{0}"
 	RestockResourcesTip = 补满本星舰的弹药与资源。
+	RoundAnnouncementFmt = "第 {0} 轮："
+	SaveToStashTip = 存储此解锁项，以便在之后购买。
 	Scoreboard: ^/0/Scoreboard
 	{
 		
@@ -151,9 +156,11 @@ BuildBattleMode: Pvp
 		RoundWon = 胜利
 		RoundsFmt = "第 {0} 轮"
 		TotalIncome = 总收入
+		VictoryPoints = 获胜点数
 	}
 	TieRound = 平局
 	TimeRemainingTip = 距离游戏结束、伤害分最高的战队获胜所剩的时间。
+	UnstashTip = 从存储中移除。
 }
 BuildBattleModeConfig: PvpModeConfig
 {
@@ -670,12 +677,20 @@ CreativeMode
 		View = 视图
 		ZoomSpeed = 缩放速度
 	}
-	ClearDebris = 清除碎片
-	ClearDebrisConfirm = 此操作将删除所有没有控制室或没有船员的星舰，以及所有漂浮在太空中的资源。此操作不可撤销。
-	ClearEverything = 清除所有
-	ClearEverythingConfirm = 确定要删除游戏中所有的星舰和物件吗？此操作不可撤销。
-	ClearProjectiles = 清除武器炮弹
-	ClearProjectilesConfirm = 此操作将删除所有飞行中的武器炮弹。此操作不可撤销。
+	ClearAsteroids = 小行星
+	ClearBullets = 武器炮弹
+	ClearJunkShips = 报废星舰
+	ClearNonJunk = 非报废星舰
+	ClearObjects = 清除物体……
+	ClearObjectsHeader = "选择要从游戏中删除物体的种类。\n<b>此操作不能撤销。</b>"
+	ClearPOIs = 兴趣区域图标
+	ClearParticles = 死亡船员与粒子特效
+	ClearPlanets = 行星、卫星与恒星
+	ClearResources = 飘浮资源
+	ClearSelectAll = 选择所有
+	ClearSelectNone = 全不选
+	ClearSelected = 清除已选
+	ClearStrandedCrew = 漂浮船员
 	ConfirmPartDestruct = 是否摧毁所选择的部件？该操作不可逆，且可能会造成额外的附带损害！
 	ConfirmRemoveObject = 从游戏中删除选定的星舰和/或物体？此操作不能撤销。
 	DeleteConnectionHover = "按 <btn id='Game.UseTool'/> 删除突出显示的超空间跳跃连接。"
@@ -711,7 +726,7 @@ CreativeMode
 	PlanetConfig
 	{
 		
-		Distance = 距离
+		Distance = 大小
 		Random = 随机
 		Seed = 种子
 		Style = 风格
@@ -2024,6 +2039,7 @@ LobbyScreen
 		PasswordNo = <b>需要密码：</b>否
 		PasswordYes = "<b>需要密码：</b> <bad>是</bad>"
 		PlayersFmt = "<b>玩家：</b> {0}/{1}"
+		RoundsRemainingFmt = "<bad>第 {0}/{1} 轮</bad>"
 		RulesetFmt = "<b>规则集：</b> <b>{0}</b>"
 		SettingFmt = ""
 		SettingNo = 否
@@ -2074,6 +2090,7 @@ LobbyScreen
 	PlayersFmt = ""
 	RefreshTip = 刷新大厅列表。
 	ReverseSort = 倒序
+	RoundsRemainingFmt = "<bad>第 {0}/{1} 轮</bad>"
 	SortCurPlayers = "<img name='sort'/>玩家数"
 	SortFunds = "<img name='sort'/>信用点"
 	SortMaxPlayers = "<img name='sort'/>最大玩家数"
@@ -2193,13 +2210,13 @@ MissileTypes
 {
 	
 	EMP = "EMP 导弹"
-	EMPDesc = "命中后释放电磁脉冲的大型导弹，可大范围耗尽敌方系统的能源。需要 EMP 导弹工厂生产。"
+	EMPDesc = 命中后释放电磁脉冲的大型导弹，可大范围耗尽敌方系统的能源。
 	HE = 高爆导弹
-	HEDesc = 可在小范围内造成高伤害的导弹。需要高爆导弹工厂生产。
+	HEDesc = 可在小范围内造成高伤害的导弹。
 	Mine = 近炸空雷
-	MineDesc = 固定空雷，敌舰靠近时引爆，射出杀伤性弹片。需要空雷工厂生产。
+	MineDesc = 固定空雷，敌舰靠近时引爆，射出杀伤性弹片。
 	Nuke = 战术核导弹
-	NukeDesc = 巨型慢速导弹，可在很大区域内引发猛烈核爆炸，杀伤力巨大。需要核导弹工厂生产。
+	NukeDesc = 巨型慢速导弹，可在很大区域内引发猛烈核爆炸，杀伤力巨大。
 }
 MissionCategories
 {
@@ -2514,6 +2531,8 @@ PartToggles
 	
 	Boost_Off = "<b>加速：<bad>关</bad></b>\n\n热键：<btn id='PartToggles.thruster_boost_off'/>"
 	Boost_On = "<b>加速：<good>开</good></b>\n\n热键：<btn id='PartToggles.thruster_boost_on'/>"
+	DistributePower_Off = "<b>推进器能源分配：<bad>关</bad></b>\n\n热键：<btn id='PartToggles.distribute_power_off'/>"
+	DistributePower_On = "<b>推进器能源分配：<good>开</good></b>\n\n热键：<btn id='PartToggles.distribute_power_on'/>"
 	FireMode_AtTarget = "<b>对目标开火</b>\n只在获知目标后开火。\n\n热键：<btn id='PartToggles.fire_mode_at_target'/>"
 	FireMode_AtWill = "<b>随意开火</b>\n对范围内的所有敌人开火。\n\n热键：<btn id='PartToggles.fire_mode_at_will'/>"
 	FireMode_Auto = "<b>自动开火</b>\n没有目标也会持续开火。\n\n热键：<btn id='PartToggles.fire_mode_auto'/>"
@@ -2811,14 +2830,15 @@ Parts
 	PowerStorageIcon = 电容器
 	Railgun = 轨道炮
 	RailgunAccelerator = 轨道炮加速器模块
-	RailgunAcceleratorDesc = "可选组件，布置在轨道炮发射器与装填器之间。每一个加速器都会增加弹丸的速度、伤害和穿深。\n\n轨道炮可发射磁力加速弹丸，穿透至敌舰内部，造成巨大伤害。每门轨道炮都需要一个装填器和一个发射器，外加任意数量的加速器。\n\n轨道炮发射器以及加速器无法供船员通行。"
+	RailgunAcceleratorDesc = "可选组件，布置在轨道炮发射器与装填器之间。每一个加速器都会增加弹丸的速度、伤害和穿深。\n\n<string id='Parts/RailgunBaseDesc'/>轨道炮发射器以及加速器无法供船员通行。"
 	RailgunAcceleratorIcon = 轨道炮加速器
-	RailgunDesc = 模块化的武器，发射磁力加速弹丸，可以穿透至敌舰内部，造成巨大伤害。
+	RailgunBaseDesc = 轨道炮可发射磁力加速弹丸，穿透至敌舰内部，造成巨大伤害。每门轨道炮都需要一个装填器和一个发射器，外加任意数量的加速器。
+	RailgunDesc = 模块化的武器，长度可以调整，发射磁力加速弹丸，可以穿透至敌舰内部，造成巨大伤害。
 	RailgunLauncher = 轨道炮发射器模块
-	RailgunLauncherDesc = "所有轨道炮的必要组成部分。必须与一个装填器配对，还可酌情安装任意数量的加速器。\n\n轨道炮可发射磁力加速弹丸，穿透至敌舰内部，造成巨大伤害。每门轨道炮都需要一个装填器和一个发射器，外加任意数量的加速器。\n\n轨道炮发射器以及加速器无法供船员通行。"
+	RailgunLauncherDesc = "所有轨道炮的必要组成部分。必须与一个装填器配对，还可酌情安装任意数量的加速器。\n\n<string id='Parts/RailgunBaseDesc'/>\n\n轨道炮发射器以及加速器无法供船员通行。"
 	RailgunLauncherIcon = 轨道炮发射器
 	RailgunLoader = 轨道炮装填器模块
-	RailgunLoaderDesc = "所有轨道炮的必要组成部分。必须与一个发射器配对，还可酌情安装任意数量的加速器。\n\n轨道炮可发射磁力加速弹丸，穿透至敌舰内部，造成巨大伤害。每门轨道炮都需要一个装填器和一个发射器，外加任意数量的加速器。"
+	RailgunLoaderDesc = "所有轨道炮的必要组成部分。必须与一个发射器配对，还可酌情安装任意数量的加速器。\n\n<string id='Parts/RailgunBaseDesc'/>"
 	RailgunLoaderIcon = 轨道炮装填器
 	ReactorLarge = 大型反应堆芯
 	ReactorLargeDesc = 发电装置，可为星舰各种系统生产三倍的供电等离子电池。
@@ -2902,6 +2922,18 @@ Parts
 	ThrusterMed = 标准推进器
 	ThrusterMedDesc = 标准大小的推进引擎，能够以适度的动力推动星舰。只需很短时间即可达到最高推进力。
 	ThrusterMedIcon = 标准推进器
+	ThrusterRocket = 模块化火箭推进系统（MRS）
+	ThrusterRocketBaseDesc = 模块化火箭推进系统（MRS）可将星舰加速到极高的速度，但加速所需时间较长，不适合进行机动。每套MRS都需要一个喷口，还可酌情安装多个拓展器以及燃料罐。
+	ThrusterRocketBattery = MRS燃料罐
+	ThrusterRocketBatteryDesc = "为与其连接的MRS喷口或拓展器增加 4 个电池容量。\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
+	ThrusterRocketBatteryIcon = MRS燃料罐
+	ThrusterRocketDesc = 模块化推进器，长度可以调整，可将星舰加速到极高的速度，但加速所需时间较长，不适合进行机动。
+	ThrusterRocketExtender = MRS拓展器模块
+	ThrusterRocketExtenderDesc = "可选组件，布置在模块化火箭推进系统的喷口或其他拓展器后面。每一个拓展器都会增加推进器的最大推力、能耗以及加速时间。可以安装燃料罐来增加电池燃料容量，每个拓展器最多安装 2 个燃料罐。\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
+	ThrusterRocketExtenderIcon = MRS拓展器
+	ThrusterRocketNozzle = MRS喷口模块
+	ThrusterRocketNozzleDesc = "所有模块化火箭推进系统的必要组成部分。可酌情安装任意数量的拓展器以及燃料罐，每个喷口或拓展器最多安装 2 个燃料罐。\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
+	ThrusterRocketNozzleIcon = MRS喷口
 	ThrusterSmall = 小型推进器
 	ThrusterSmall2Way = 双向小型推进器
 	ThrusterSmall2WayDesc = 动力孱弱的双向推进引擎，主要用于机动与转向。
@@ -4044,6 +4076,7 @@ Stats
 	RangeFmt = "<white>射程：</white><good>{0:0}</good> <gray>米</gray>"
 	RangeLimitedFmt = "<white>射程：</white><good>{0:0}</good> <gray>米（最大 </gray><good>{1:0}</good><gray>米）</gray>"
 	Resources = "<white>资源：</white> "
+	RocketNotes = <gray>注意：每个拓展器都会增加推进器的最大推力、能耗以及加速时间。</gray>
 	SalvoFmt = "<white>齐射：</white><good>{0:0.##}</good> <gray>发/</gray><good>{1:0.##}</good> <gray>秒</gray>"
 	SeparationRangeFmt = "<white>分离：</white><good>{0:0}</good> <gray>米</gray>"
 	ShellDamageResistFmt = "<white>装甲外壳伤害抵抗：</white><good>{0}%</good>"

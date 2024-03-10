@@ -2582,7 +2582,7 @@ PvpModeConfig
 	AllowIllegalShips = "Allow Illegal Ships"
 	AllowIllegalShipsTip = "If checked, then players will be able to play using ship designs that would otherwise be illegal."
 	FriendlyFire = "Friendly Fire"
-	FriendlyFireTip = "If checked, then ships will be able accidentally and intentionally attack and damage themselves and other allied ships."
+	FriendlyFireTip = "If checked, then ships will be able to accidentally and intentionally attack and damage themselves and other allied ships."
 	ShipConstruction = "Allow Ship Construction"
 	ShipConstructionTip = "If checked, then players will be allowed to make changes to their ships' designs during the battle. Crew will attempt to use any resources brought or scavenged to make the desired changes."
 	ResourceDrops =  "Resource Loot Drops"
@@ -4042,25 +4042,25 @@ Parts
 	ThrusterSmall3WayIcon = &ThrusterSmall3Way
 	ThrusterSmall3WayDesc = "A weak, tri-directional propulsion engine used mainly for maneuvering."
 
-	ThrusterRocket = "Modular Rocket System (M.R.S.)"
+	ThrusterRocket = "Modular Rocket Thruster (M.R.T.)"
 	ThrusterRocketDesc = "A variable-length modular thruster that can accelerate ships up to very high speeds but takes a long time to ramp up to its full power, making it ineffective at maneuvering."
 
-	ThrusterRocketBaseDesc = "Modular Rocket Systems (M.R.S.) can accelerate ships up to very high speeds but take a long time to ramp up to their full power, making them ineffective at maneuvering. "\
-	                         "Each M.R.S. requires a Nozzle plus zero or more optional Extenders and Fuel Pods."
+	ThrusterRocketBaseDesc = "Modular Rocket Thrusters (M.R.T.) can accelerate ships up to very high speeds but take a long time to ramp up to their full power, making them ineffective at maneuvering. "\
+	                         "Each M.R.T. requires a Nozzle plus zero or more optional Extenders and Fuel Pods."
 
-	ThrusterRocketNozzle = "M.R.S. Nozzle Module"
-	ThrusterRocketNozzleIcon = "M.R.S. Nozzle"
-	ThrusterRocketNozzleDesc = "A required component of all Modular Rocket Systems. May be combined with zero or more Extender modules and up to two Fuel Pods per Nozzle or Extender.\n\n"\
+	ThrusterRocketNozzle = "M.R.T. Nozzle Module"
+	ThrusterRocketNozzleIcon = "M.R.T. Nozzle"
+	ThrusterRocketNozzleDesc = "A required component of all Modular Rocket Thrusters. May be combined with zero or more Extender modules and up to two Fuel Pods per Nozzle or Extender.\n\n"\
 	                           "<string id='Parts/ThrusterRocketBaseDesc'/>"
 
-	ThrusterRocketExtender = "M.R.S. Extender Module"
-	ThrusterRocketExtenderIcon = "M.R.S. Extender"
-	ThrusterRocketExtenderDesc = "An optional component placed behind a Modular Rocket System's Nozzle or other Extender. Each extender increases its maximum thrust, power usage, and ramp-up time. Battery fuel capacity may be extended with up to two Fuel Pods.\n\n"\
+	ThrusterRocketExtender = "M.R.T. Extender Module"
+	ThrusterRocketExtenderIcon = "M.R.T. Extender"
+	ThrusterRocketExtenderDesc = "An optional component placed behind a Modular Rocket Thruster's Nozzle or other Extender. Each extender increases its maximum thrust, power usage, and ramp-up time. Battery fuel capacity may be extended with up to two Fuel Pods.\n\n"\
 	                             "<string id='Parts/ThrusterRocketBaseDesc'/>"
 
-	ThrusterRocketBattery = "M.R.S. Fuel Pod"
+	ThrusterRocketBattery = "M.R.T. Fuel Pod"
 	ThrusterRocketBatteryIcon = &ThrusterRocketBattery
-	ThrusterRocketBatteryDesc = "Extends the battery fuel capacity of an attached M.R.S. Nozzle or Extender by four batteries.\n\n"\
+	ThrusterRocketBatteryDesc = "Extends the battery fuel capacity of an attached M.R.T. Nozzle or Extender by four batteries.\n\n"\
 	                            "<string id='Parts/ThrusterRocketBaseDesc'/>"
 
 	MiningLaserSmall = "Mining Laser"

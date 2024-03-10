@@ -15,7 +15,7 @@ Part : <../base_part_terran.rules>/Part
 	SelectionPriority = 1
 	MaxHealth = 2000
 	TypeCategories = [chaingun, chaingun_ammo_requester, chaingun_ammo_supplier]
-	ReceivableBuffs : ^/0/ReceivableBuffs [ChaingunMagConnectionLeft, ChaingunMagConnectionRight]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ChaingunMagConnection]
 	AllowedDoorLocations
 	[
 		[0, 2]
@@ -37,31 +37,59 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = AreaBuffProvider
 			BlueprintsOnly = true // Only for display purposes.
-			BuffType = ChaingunMagConnectionLeft
-			BuffArea = [-1, 1, 1, 1]
-			ChainsFromBuffType = ChaingunMagConnectionLeft
-			Criteria
-			{
-				IDs = [cosmoteer.chaingun, cosmoteer.chaingun_magazine]
-				Rot = 0
-				Right = 0
-				Bottom = 2
-			}
+			BuffType = ChaingunMagConnection
+			BuffArea = [-1, 0, 1, 1]
+			ChainsFromBuffType = ChaingunMagConnection
+			Criterias
+			[
+				{
+					IDs = [cosmoteer.chaingun, cosmoteer.chaingun_magazine]
+					Rot = 0
+					Right = 0
+					Bottom = 2
+				}
+				{
+					IDs = [cosmoteer.chaingun]
+					Rot = 2
+					Right = 0
+					Top = -1
+				}
+				{
+					IDs = [cosmoteer.chaingun_magazine]
+					Rot = 2
+					Right = 0
+					Bottom = 1
+				}
+			]
 		}
 		RightMagConnectionProvider
 		{
 			Type = AreaBuffProvider
 			BlueprintsOnly = true // Only for display purposes.
-			BuffType = ChaingunMagConnectionRight
-			BuffArea = [1, 1, 1, 1]
-			ChainsFromBuffType = ChaingunMagConnectionRight
-			Criteria
-			{
-				IDs = [cosmoteer.chaingun, cosmoteer.chaingun_magazine]
-				Rot = 0
-				Left = 1
-				Bottom = 2
-			}
+			BuffType = ChaingunMagConnection
+			BuffArea = [1, 0, 1, 1]
+			ChainsFromBuffType = ChaingunMagConnection
+			Criterias
+			[
+				{
+					IDs = [cosmoteer.chaingun, cosmoteer.chaingun_magazine]
+					Rot = 0
+					Left = 1
+					Bottom = 2
+				}
+				{
+					IDs = [cosmoteer.chaingun]
+					Rot = 2
+					Left = 1
+					Top = -1
+				}
+				{
+					IDs = [cosmoteer.chaingun_magazine]
+					Rot = 2
+					Left = 1
+					Bottom = 1
+				}
+			]
 		}
 
 		AmmoStorage

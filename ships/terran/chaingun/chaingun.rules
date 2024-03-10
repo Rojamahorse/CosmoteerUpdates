@@ -12,7 +12,7 @@ Part : <../base_part_terran.rules>/Part
 		[tristeel, 45]
 	]
 	TypeCategories = [uses_ammo, is_crewed, chaingun, chaingun_ammo_requester]
-	ReceivableBuffs : ^/0/ReceivableBuffs [RateOfFire, ChaingunMagConnectionLeft, ChaingunMagConnectionRight]
+	ReceivableBuffs : ^/0/ReceivableBuffs [RateOfFire, ChaingunMagConnection]
 	Size = [3, 6]  //if you change this, need to also change TotalResourceStorage resource proxy checks.
 	PhysicalRect = [0, 2, 3, 4]
 	SaveRect = &PhysicalRect

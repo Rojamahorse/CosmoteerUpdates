@@ -8,7 +8,7 @@ BeamSprite
 		MipLevels = 1
 		UVMode = Clamp
 	}
-	Shader = "../../thruster_small/particles/thruster_plume_light.shader"
+	Shader = "thruster_plume_light_rocket.shader"
 	_z = 0.6
 	_litReflectiveStrength = 32
 	_litAdditiveStrength = 0 //0.8
@@ -36,3 +36,4 @@ IntensitySmoothSpeed = 10
 RotationSmoothSpeed = 15
 MaxRotationSmoothDelta = 30d
 RotationSmoothSkewMode = true
+LengthMultipliedByIntensity = true

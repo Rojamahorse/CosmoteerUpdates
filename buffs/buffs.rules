@@ -157,7 +157,7 @@ RateOfFire
 	CombineMode = Add
 }
 
-ChaingunMagConnectionLeft // Only used to show connection in blueprints.
+ChaingunMagConnection // Only used to show connection in blueprints.
 {
 	Icon
 	{
@@ -173,5 +173,3 @@ ChaingunMagConnectionLeft // Only used to show connection in blueprints.
 	RectBorderColor = [10, 212, 98, 160]
 	RectFillColor = [10, 212, 98, 64]
 }
-
-ChaingunMagConnectionRight = &ChaingunMagConnectionLeft

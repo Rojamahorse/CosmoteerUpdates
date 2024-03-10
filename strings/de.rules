@@ -118,7 +118,9 @@ Brushes
 BuildBattleMode: Pvp
 {
 	
+	BattlePhaseAnnouncement = KÄMPFEN!
 	BattleWinnerFmt = "{0} gewinnt Runde {1}!"
+	BuildPhaseAnnouncement = BAUEN!
 	BuyTechFmt = ""
 	CapturePointFmt = "<b>{0}</b>\n<add_money>{1:n0}</add_money><gray>/{2} Sek.</gray>"
 	CapturePointNames
@@ -134,10 +136,13 @@ BuildBattleMode: Pvp
 	IncomeFmt = "<add_money>{0:n0}</add_money><gray>/{1} Sek.</gray>"
 	NoMissingCrew = "Kein fehlendes Crewmitglied"
 	NothingToRestock = "Es gibt nichts, das aufgefüllt werden könnte."
+	RefundTip = Rückerstattung
 	RestockCrewFmt = "Fehlende Crew erneut anheuern: {0}"
 	RestockCrewTip = "Heuert alle Crewmitglieder wieder an, die verloren gegangen sind (bis zu der verfügbaren Anzahl an Betten)."
 	RestockResourcesFmt = "Ressourcen auffüllen: {0}"
 	RestockResourcesTip = "Füllt die Munition und die Ressourcen des Schiffs vollständig wieder auf."
+	RoundAnnouncementFmt = "RUNDE {0}:"
+	SaveToStashTip = "Reserviere diese Freischaltung, um sie in einer künftigen Runde kaufen zu können."
 	Scoreboard: ^/0/Scoreboard
 	{
 		
@@ -151,9 +156,11 @@ BuildBattleMode: Pvp
 		RoundWon = GEWONNEN
 		RoundsFmt = "Runde {0}"
 		TotalIncome = Gesamteinkommen
+		VictoryPoints = Siegpunkte
 	}
 	TieRound = "RUNDE UNENTSCHIEDEN"
 	TimeRemainingTip = "Die verbleibende Zeit, bis das Spiel endet oder das Team mit den meisten Punkten zum Sieger erklärt wird."
+	UnstashTip = "Aus der Reserve entfernen."
 }
 BuildBattleModeConfig: PvpModeConfig
 {
@@ -670,12 +677,20 @@ CreativeMode
 		View = Ansicht
 		ZoomSpeed = Zoomgeschwindigkeit
 	}
-	ClearDebris = "Trümmer entfernen"
-	ClearDebrisConfirm = "Hiermit werden alle Schiffe ohne Kommandoraum oder ohne Crew sowie alle im All herumfliegenden Ressourcen entfernt. Kann nicht rückgängig gemacht werden."
-	ClearEverything = "Alles löschen"
-	ClearEverythingConfirm = "Bist du sicher, dass du alle Schiffe und Doodads aus dem Spiel entfernen möchtest? Diese Aktion kann nicht rückgängig gemacht werden."
-	ClearProjectiles = "Waffenprojektile entfernen"
-	ClearProjectilesConfirm = "Hiermit werden alle Flug-Waffenprojektile entfernt. Kann nicht rückgängig gemacht werden."
+	ClearAsteroids = Asteroiden
+	ClearBullets = Waffenprojektile
+	ClearJunkShips = Schiffsschrott
+	ClearNonJunk = Nicht-Schrottschiffe
+	ClearObjects = "Objekte entfernen ..."
+	ClearObjectsHeader = "Wähle aus, welche Arten von Objekten aus dem Spiel entfernt werden sollen.\n<b>Das kann nicht rückgängig gemacht werden.</b>"
+	ClearPOIs = "Symbole für interessante Orte"
+	ClearParticles = "Tote Crewmitglieder & Partikeleffekte"
+	ClearPlanets = "Planeten, Monde & Sonnen"
+	ClearResources = "Schwebende Ressourcen"
+	ClearSelectAll = "Alle auswählen"
+	ClearSelectNone = "Keine auswählen"
+	ClearSelected = "Ausgewählte entfernen"
+	ClearStrandedCrew = "Gestrandete Crewmitglieder"
 	ConfirmPartDestruct = "Ausgewählte(s) Teil(e) zerstören? Dies kann nicht rückgängig gemacht werden und verursacht möglicherweise zusätzlichen Kollateralschaden."
 	ConfirmRemoveObject = "Ausgewählte(s) Schiff(e) und/oder Objekt(e) aus dem Spiel entfernen? Diese Aktion kann nicht rückgängig gemacht werden."
 	DeleteConnectionHover = "<btn id='Game.UseTool'/>, um die hervorgehobene Hypersprung-Verbindung zu löschen."
@@ -711,7 +726,7 @@ CreativeMode
 	PlanetConfig
 	{
 		
-		Distance = Entfernung
+		Distance = Tiefe
 		Random = Zufällig
 		Seed = ""
 		Style = Stil
@@ -2024,6 +2039,7 @@ LobbyScreen
 		PasswordNo = "<b>Passwort erforderlich:</b> NEIN"
 		PasswordYes = "<b>Passwort erforderlich:</b> <bad>JA</bad>"
 		PlayersFmt = "<b>Spieler:</b> {0}/{1}"
+		RoundsRemainingFmt = "<bad>RUNDE {0}/{1}</bad>"
 		RulesetFmt = "<b>Regeln:</b> <b>{0}</b>"
 		SettingFmt = ""
 		SettingNo = NEIN
@@ -2074,6 +2090,7 @@ LobbyScreen
 	PlayersFmt = ""
 	RefreshTip = "Liste der Lobbys aktualisieren."
 	ReverseSort = Umkehren
+	RoundsRemainingFmt = "<bad>RUNDE {0}/{1}</bad>"
 	SortCurPlayers = "<img name='sort'/> Spieler"
 	SortFunds = ""
 	SortMaxPlayers = "<img name='sort'/> Max. Spieler"
@@ -2193,13 +2210,13 @@ MissileTypes
 {
 	
 	EMP = EMP-Rakete
-	EMPDesc = "Eine große Lenkrakete, die beim Aufprall einen elektromagnetischen Impuls ausstößt, der elektrischen Systemen in einem großen Gebiet die Energie entzieht. Erfordert zur Herstellung eine Fabrik für EMP-Raketen."
+	EMPDesc = "Eine große Lenkrakete, die beim Aufprall einen elektromagnetischen Impuls ausstößt, der elektrischen Systemen in einem großen Gebiet die Energie entzieht."
 	HE = "Hochexplosive Raketen"
-	HEDesc = "Lenkraketen, die enormen Schaden in einem kleinen Gebiet verursachen. Erfordert zur Herstellung eine Fabrik für hochexplosive Raketen."
+	HEDesc = "Lenkraketen, die enormen Schaden in einem kleinen Gebiet verursachen."
 	Mine = Annäherungsminen
-	MineDesc = "Stationäre Minen, die in der Nähe von feindlichen Schiffen explodieren und dabei Splitter ausstoßen, die Schaden verursachen. Erfordert zur Herstellung eine Minenfabrik."
+	MineDesc = "Stationäre Minen, die in der Nähe von feindlichen Schiffen explodieren und dabei Splitter ausstoßen, die Schaden verursachen."
 	Nuke = "Taktische Nuklearrakete"
-	NukeDesc = "Eine riesige, langsame Rakete, die eine mächtige nukleare Explosion hervorruft und enormen Schaden in einem sehr großen Gebiet verursacht. Erfordert zur Herstellung eine Fabrik für Nuklearraketen."
+	NukeDesc = "Eine riesige, langsame Rakete, die eine mächtige nukleare Explosion hervorruft und enormen Schaden in einem sehr großen Gebiet verursacht."
 }
 MissionCategories
 {
@@ -2514,6 +2531,8 @@ PartToggles
 	
 	Boost_Off = "<b>Boost: <bad>Aus</bad></b>\n\nSchnelltaste: <btn id='PartToggles.thruster_boost_off'/>"
 	Boost_On = "<b>Boost: <good>Ein</good></b>\n\nSchnelltaste: <btn id='PartToggles.thruster_boost_on'/>"
+	DistributePower_Off = "<b>Schubdüsen-Energieverteilung: <bad>Aus</bad></b>\n\nSchnelltaste: <btn id='PartToggles.distribute_power_off'/>"
+	DistributePower_On = "<b>Schubdüsen-Energieverteilung: <good>Ein</good></b>\n\nSchnelltaste: <btn id='PartToggles.distribute_power_on'/>"
 	FireMode_AtTarget = "<b>Aufs Ziel feuern</b>\nNur schießen, wenn ein Ziel zugewiesen wurde.\n\nSchnelltaste: <btn id='PartToggles.fire_mode_at_target'/>"
 	FireMode_AtWill = "<b>Feuern nach eigenem Ermessen</b>\nAuf alle Feinde in Reichweite schießen.\n\nSchnelltaste: <btn id='PartToggles.fire_mode_at_will'/>"
 	FireMode_Auto = "<b>Autom. Feuern</b>\nSchießt ständig, auch wenn es nichts gibt, auf das geschossen werden kann.\n\nSchnelltaste: <btn id='PartToggles.fire_mode_auto'/>"
@@ -2811,14 +2830,15 @@ Parts
 	PowerStorageIcon = Kondensator
 	Railgun = ""
 	RailgunAccelerator = Railgun-Beschleuniger-Modul
-	RailgunAcceleratorDesc = "Eine optionale Komponente, die zwischen dem Werfer und der Ladeeinheit einer Railgun platziert wird. Jeder Beschleuniger erhöht die Geschwindigkeit, den Schaden und die Durchdringungstiefe des Projektils.\n\nRailguns feuern magnetisch angetriebene Projektile, die tief in feindliche Schiffe eindringen und dabei großen Schaden verursachen können. Jede Railgun benötigt eine Ladeeinheit und einen Werfer sowie eine beliebige Anzahl an optionalen Beschleunigern.\n\nDie Crew kann nicht von einer Seite eines Railgun-Werfers oder -Beschleunigers auf die andere laufen."
+	RailgunAcceleratorDesc = "Eine optionale Komponente, die zwischen dem Werfer und der Ladeeinheit einer Railgun platziert wird. Jeder Beschleuniger erhöht die Geschwindigkeit, den Schaden und die Durchdringungstiefe des Projektils.\n\n<string id='Parts/RailgunBaseDesc'/>Die Crew kann nicht von einer Seite eines Railgun-Werfers oder -Beschleunigers auf die andere laufen."
 	RailgunAcceleratorIcon = Railgun-Beschleuniger
-	RailgunDesc = "Eine Modulwaffe, die magnetisch beschleunigte Projektile abfeuert, die tief in feindliche Schiffe eindringen und dabei großen Schaden verursachen können."
+	RailgunBaseDesc = "Railguns feuern magnetisch angetriebene Projektile, die tief in feindliche Schiffe eindringen und dabei großen Schaden verursachen können. Jede Railgun benötigt eine Ladeeinheit und einen Werfer sowie eine beliebige Anzahl an optionalen Beschleunigern."
+	RailgunDesc = "Eine Modulwaffe mit variabler Länge, die magnetisch beschleunigte Projektile abfeuert, die tief in feindliche Schiffe eindringen und dabei großen Schaden verursachen können."
 	RailgunLauncher = Railgun-Werfer-Modul
-	RailgunLauncherDesc = "Eine erforderliche Komponente aller Railguns. Muss mit einer Ladeeinheit und keinem oder mehreren Beschleunigern gepaart werden.\n\nRailguns feuern magnetisch angetriebene Projektile, die tief in feindliche Schiffe eindringen und dabei großen Schaden verursachen können. Jede Railgun benötigt eine Ladeeinheit und einen Werfer sowie eine beliebige Anzahl an optionalen Beschleunigern.\n\nDie Crew kann nicht von einer Seite eines Railgun-Werfers oder -Beschleunigers auf die andere laufen."
+	RailgunLauncherDesc = "Eine erforderliche Komponente aller Railguns. Muss mit einer Ladeeinheit und keinem oder mehreren Beschleunigern gepaart werden.\n\n<string id='Parts/RailgunBaseDesc'/>\n\nDie Crew kann nicht von einer Seite eines Railgun-Werfers oder -Beschleunigers auf die andere laufen."
 	RailgunLauncherIcon = Railgun-Werfer
 	RailgunLoader = Railgun-Ladeeinheit-Modul
-	RailgunLoaderDesc = "Eine erforderliche Komponente aller Railguns. Muss mit einem Werfer und keinem oder mehreren Beschleunigern gepaart werden.\n\nRailguns feuern magnetisch angetriebene Projektile, die tief in feindliche Schiffe eindringen und dabei großen Schaden verursachen können. Jede Railgun benötigt eine Ladeeinheit und einen Werfer sowie eine beliebige Anzahl an optionalen Beschleunigern."
+	RailgunLoaderDesc = "Eine erforderliche Komponente aller Railguns. Muss mit einem Werfer und keinem oder mehreren Beschleunigern gepaart werden.\n\n<string id='Parts/RailgunBaseDesc'/>"
 	RailgunLoaderIcon = Railgun-Ladeeinheit
 	ReactorLarge = "Großer Reaktorkern"
 	ReactorLargeDesc = "Ein Energiegenerator, der Plasmabatterien mit dreifacher Kapazität produziert, die zum Betreiben vieler Schiffssysteme erforderlich sind."
@@ -2902,6 +2922,18 @@ Parts
 	ThrusterMed = Standardschubdüse
 	ThrusterMedDesc = "Ein Schubtriebwerk der Standardgröße, das das Schiff mit einer moderaten Schubkraft antreiben kann. Braucht eine kurze Zeit, bis die volle Schubkraft erreicht ist."
 	ThrusterMedIcon = Standardschubdüse
+	ThrusterRocket = "Modulares Raketensystem (MRS)"
+	ThrusterRocketBaseDesc = "Modulare Raketensysteme (MRS) können Schiffe auf sehr hohe Geschwindigkeiten beschleunigen. Allerdings brauchen sie eine Weile, um ihre volle Leistung zu erreichen, wodurch sie beim Manövrieren ineffizient sind. Jedes MRS erfordert eine Düse sowie keine oder mehrere optionale Erweiterungen und Treibstoffkapseln."
+	ThrusterRocketBattery = MRS-Treibstoffkapsel
+	ThrusterRocketBatteryDesc = "Erhöht die Batterie-Treibstoffkapazität einer verbundenen MRS-Düse oder -Erweiterung um vier Batterien.\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
+	ThrusterRocketBatteryIcon = MRS-Treibstoffkapsel
+	ThrusterRocketDesc = "Eine modulare Schubdüse mit variabler Länge, die Schiffe auf sehr hohe Geschwindigkeiten beschleunigen kann. Allerdings braucht sie eine Weile, um ihre volle Leistung zu erreichen, wodurch sie beim Manövrieren ineffizient ist."
+	ThrusterRocketExtender = MRS-Erweiterungsmodul
+	ThrusterRocketExtenderDesc = "Eine optionale Komponente, die hinter der Düse oder einer anderen Erweiterung eines modularen Raketensystems platziert wird. Jede Erweiterung erhöht die maximale Schubkraft, den Energieverbrauch und die Anlaufzeit. Die Batterie-Treibstoffkapazität kann mit bis zu zwei Treibstoffkapseln erhöht werden.\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
+	ThrusterRocketExtenderIcon = MRS-Erweiterung
+	ThrusterRocketNozzle = MRS-Düsenmodul
+	ThrusterRocketNozzleDesc = "Eine erforderliche Komponente aller modularen Raketensysteme. Kann mit keinen oder mehreren Erweiterungsmodulen und bis zu zwei Treibstoffkapseln pro Düse oder Verlängerung kombiniert werden.\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
+	ThrusterRocketNozzleIcon = MRS-Düse
 	ThrusterSmall = "Kleine Schubdüse"
 	ThrusterSmall2Way = "Kleine 2-Weg-Schubdüse"
 	ThrusterSmall2WayDesc = "Ein schwaches 2-Weg-Schubtriebwerk, das hauptsächlich zum Manövrieren verwendet wird."
@@ -4044,6 +4076,7 @@ Stats
 	RangeFmt = "<white>Reichweite:</white> <good>{0:0}</good> <gray>Meter</gray>"
 	RangeLimitedFmt = "<white>Reichweite:</white> <good>{0:0}</good> <gray>Meter (max. </gray><good>{1:0}</good><gray> Meter)</gray>"
 	Resources = "<white>Ressourcen:</white> "
+	RocketNotes = "<gray>HINWEIS: Schubkraft, Anlaufzeit und Energieverbrauch steigen mit jedem zusätzlichen Erweiterungsmodul an.</gray>"
 	SalvoFmt = "<white>Salve:</white> <good>{0:0.##}</good> <gray>Schüsse/</gray><good>{1:0.##}</good> <gray>Sek.</gray>"
 	SeparationRangeFmt = "<white>Abstand:</white> <good>{0:0}</good> <gray>Meter</gray>"
 	ShellDamageResistFmt = "<white>Schutzhüllenwiderstand gegen Schaden:</white> <good>{0} %</good>"
