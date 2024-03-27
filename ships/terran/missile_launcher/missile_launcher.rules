@@ -61,15 +61,7 @@ Part : <../base_part_terran.rules>/Part
 			Value = [Right, TopRight, Top, TopLeft]
 		}
 	]
-	EditorIcon
-	{
-		Texture
-		{
-			File = "icon.png"
-			SampleMode = Linear
-		}
-		Size = [40, 80]
-	}
+	EditorIcon = &<he/missile_launcher_he.rules>/EditorIcon
 	Components : ^/0/Components
 	{
 		IsOperational

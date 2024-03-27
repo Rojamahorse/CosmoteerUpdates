@@ -2105,6 +2105,29 @@ ProgressBar : StaticWidget
 	}
 }
 
+ProgressBarWhite : ProgressBar
+{
+	ProgressNineSlice
+	{
+		Flags = All
+		Bleed = 8
+		Borders = 11
+		ProvidedRectPadding = -7
+
+		_X = 512
+		_Y = 1280
+		TopLeftSprite     : ~/HighlightSprite { Source=[(&../../_X)+0,   (&../../_Y)+0,   22, 22]; }
+		TopSprite         : ~/HighlightSprite { Source=[(&../../_X)+22,  (&../../_Y)+0,   84, 22]; }
+		TopRightSprite    : ~/HighlightSprite { Source=[(&../../_X)+106, (&../../_Y)+0,   22, 22]; }
+		LeftSprite        : ~/HighlightSprite { Source=[(&../../_X)+0,   (&../../_Y)+22,  22, 84]; }
+		CenterSprite      : ~/HighlightSprite { Source=[(&../../_X)+22,  (&../../_Y)+22,  84, 84]; }
+		RightSprite       : ~/HighlightSprite { Source=[(&../../_X)+106, (&../../_Y)+22,  22, 84]; }
+		BottomLeftSprite  : ~/HighlightSprite { Source=[(&../../_X)+0,   (&../../_Y)+106, 22, 22]; }
+		BottomSprite      : ~/HighlightSprite { Source=[(&../../_X)+22,  (&../../_Y)+106, 84, 22]; }
+		BottomRightSprite : ~/HighlightSprite { Source=[(&../../_X)+106, (&../../_Y)+106, 22, 22]; }
+	}
+}
+
 ThinProgressBarGood : StaticWidget
 {
 	Height = 32

@@ -20,7 +20,6 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 3000
 	InitialPenetrationResistance = 3
-	PenetrationRectType = Normal
 	ProhibitAbove = 1
 	AllowedDoorLocations
 	[
@@ -305,6 +304,14 @@ Part : <../base_part_terran.rules>/Part
 				VertexColor = [255, 255, 255, 51]
 				QuadCount = 64
 			}
+		}
+
+		TurretCollider
+		{
+			Type = CircleCollider
+			Location = &../Turret/Location
+			Radius = 0.35
+			Density = 0.5
 		}
 
 		ReloadProgressBar

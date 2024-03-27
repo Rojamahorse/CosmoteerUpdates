@@ -5,8 +5,11 @@ Tags = [defense]
 Ships
 [
 	// Platforms
-	:~{ File="Small Laser Platform.ship.png";     Tier=2; Difficulty=2; }
-	:~{ File="Small Disruptor Platform.ship.png"; Tier=2; Difficulty=2; }
-	:~{ File="Small EMP Platform.ship.png";       Tier=2; Difficulty=2; }
-	:~{ File="Small Ion Platform.ship.png";       Tier=2; Difficulty=2; }
+	:~{ File="Small Laser Platform.ship.png";         Tier=2; Difficulty=2; }
+	:~{ File="Small Disruptor Platform.ship.png";     Tier=2; Difficulty=2; }
+	:~{ File="Small EMP Platform.ship.png";           Tier=2; Difficulty=2; }
+	:~{ File="Small Ion Platform.ship.png";           Tier=2; Difficulty=2; }
+	:~{ File="Small Heavy Laser Platform.ship.png";   Tier=4; Difficulty=2; }
+	:~{ File="Small Dual Ion Platform.ship.png";      Tier=4; Difficulty=2; }
+	:~{ File="Small Point Defense Platform.ship.png"; Tier=5; Difficulty=2; }
 ]

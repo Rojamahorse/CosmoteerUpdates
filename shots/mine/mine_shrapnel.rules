@@ -156,6 +156,7 @@ Components
             Enemies = true
             Junk = true
             Friendlies = true
+            Neutrals = true
             OnlyBulletCategories = [mine]
         }
 		PenetratesBullets = true

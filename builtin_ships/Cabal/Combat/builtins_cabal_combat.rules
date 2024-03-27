@@ -28,6 +28,7 @@ Ships
 	:~{ File="Whisp.ship.png";                   Tier=4;  Difficulty=2; }
 	:~{ File="Stargazer.ship.png";               Tier=4;  Difficulty=2; }
 	:~{ File="Apostle's Dawn.ship.png";          Tier=5;  Difficulty=1; }
+	:~{ File="Mebsuta.ship.png";                 Tier=5;  Difficulty=1; }
 	:~{ File="Aludra.ship.png";                  Tier=5;  Difficulty=2; }
 	:~{ File="Enif.ship.png";                    Tier=5;  Difficulty=2; }
 	:~{ File="Starmolt.ship.png";                Tier=6;  Difficulty=1; }
@@ -57,12 +58,15 @@ Ships
 	:~{ File="Aurelian.ship.png";                Tier=10;  Difficulty=1; }
 	:~{ File="Firesteel.ship.png";               Tier=10;  Difficulty=2; }
 	:~{ File="Andrade.ship.png";                 Tier=10;  Difficulty=2; }
+	:~{ File="Luminary.ship.png";                Tier=10;  Difficulty=2; }
 	:~{ File="Rasalhague.ship.png";              Tier=11;  Difficulty=2; }
 	:~{ File="Icarus.ship.png";                  Tier=11;  Difficulty=2; OtherIDs=["Icarus' Pride"]; }
+	:~{ File="Nashira.ship.png";                 Tier=11;  Difficulty=2; }
 	:~{ File="Shaula's Sacrament.ship.png";      Tier=12;  Difficulty=2; }
 	:~{ File="Stella Matutina.ship.png";         Tier=12;  Difficulty=2; }
 	:~{ File="Flaming Spire.ship.png";           Tier=12;  Difficulty=2; }
 	:~{ File="Maia.ship.png";                    Tier=12;  Difficulty=2; }
+	:~{ File="Gienah.ship.png";                  Tier=12;  Difficulty=2; }
 
 	// Destroyers
 	:~{ File="Acolyte of Adhara.ship.png";       Tier=13;  Difficulty=2; }
@@ -79,6 +83,7 @@ Ships
 	:~{ File="Merope.ship.png";                  Tier=15;  Difficulty=2; }
 	:~{ File="Canopus.ship.png";                 Tier=15;  Difficulty=2; }
 	:~{ File="Auriga.ship.png";                  Tier=15;  Difficulty=2; }
+	:~{ File="Sol Regius.ship.png";              Tier=15;  Difficulty=2; }
 	:~{ File="Sol Absentia.ship.png";            Tier=15;  Difficulty=3; }
 
 	// Battleships
@@ -86,10 +91,12 @@ Ships
 	:~{ File="Ipsissimus.ship.png";              Tier=16;  Difficulty=2; }
 	:~{ File="Sol Renatus.ship.png";             Tier=16;  Difficulty=3; }
 	:~{ File="Sol Calidus.ship.png";             Tier=16;  Difficulty=3; }
+	:~{ File="Cassiopeia.ship.png";              Tier=16;  Difficulty=3; }
 
 	// Battlecruisers
 	:~{ File="Atlas.ship.png";                   Tier=17;  Difficulty=2; }
 	:~{ File="Sol Invictus.ship.png";            Tier=17;  Difficulty=3; }
+	:~{ File="Eclipse.ship.png";                 Tier=17;  Difficulty=3; }
 
 	// Flagships
 	:~{ File="Apotheosis.ship.png";              Tier=18;  Difficulty=2; }

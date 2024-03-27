@@ -65,6 +65,11 @@ Part : <../base_part_terran.rules>/Part
 			UITileRect = [.5 + 7/64, .4 + 7/64, 1 - 14/64, 1 - 14/64]
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
 			DropResourcesWhenDestroyed = true
+			AllowExternalPickupAndDelivery = true
+			DeliveryLocation = [1, 2.2]
+			PickUpLocation = [1, 2.2]
+			ExternalDeliveryLocation = [64/64, 53/64]
+			ExternalPickUpLocation = [64/64, 53/64]
 		}
 		CarbonConsumer
 		{
@@ -289,7 +294,7 @@ Part : <../base_part_terran.rules>/Part
 			OperationalRoofLighting
 			{
 				Layer = "roof_lights_fancy"
-				Offset = [0, -29/64]
+				Offset = [0, -8/64]//-29/64]
 				DamageLevels
 				[
 					{

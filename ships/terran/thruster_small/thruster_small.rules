@@ -25,7 +25,7 @@ Part : <../base_part_terran.rules>/Part
 	ThrustIncreaseTime = 0
 	ThrustRecoveryTime = 0
 	FuelUsage = 30
-	ReceivableBuffs : ^/0/ReceivableBuffs [Engine]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
 	AllowedDoorLocations
 	[
 		[0, -1]
@@ -73,17 +73,16 @@ Part : <../base_part_terran.rules>/Part
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 
-		EngineBuffToggle
+		PowerDistributionBuffToggle
 		{
 			Type = BuffToggle
-			BuffType = Engine
+			BuffType = EnginePowerDistribution
 		}
 		ToggledBatteryConsumer
 		{
 			Type = ToggledComponents
-			Toggle = EngineBuffToggle
+			Toggle = PowerDistributionBuffToggle
 			Invert = true
-			IncludeInBlueprints = true
 			Components
 			{
 				BatteryConsumer

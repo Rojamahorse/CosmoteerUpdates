@@ -1,7 +1,7 @@
 ID = ion_beams
 TitleKey = "Tutorials/IonBeams/Title"
 TabNameKey = "Codex/Tutorials"
-TempShowCondition = "? game.HasPartCategoryInHand('ion') or game.HasTechUnlocked('cosmoteer.ion_beam_emitter')"
+TempShowCondition = "? game.HasPartCategoryInHand('ion') or (game.HasTechUnlocked('cosmoteer.ion_beam_emitter') and game.Fame > 0)"
 Entries
 [
 	{

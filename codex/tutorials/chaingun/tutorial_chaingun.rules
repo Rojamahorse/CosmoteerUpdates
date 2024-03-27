@@ -1,7 +1,7 @@
 ID = chainguns
 TitleKey = "Tutorials/Chainguns/Title"
 TabNameKey = "Codex/Tutorials"
-TempShowCondition = "? game.HasPartCategoryInHand('chaingun') or game.HasTechUnlocked('cosmoteer.chaingun')"
+TempShowCondition = "? game.HasPartCategoryInHand('chaingun') or (game.HasTechUnlocked('cosmoteer.chaingun') and game.Fame > 0)"
 Entries
 [
 	{

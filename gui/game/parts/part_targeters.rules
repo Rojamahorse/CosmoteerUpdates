@@ -122,4 +122,35 @@ PartTargeters
 			Scale = .5
 		}
 	}
+
+	// Chaingun.
+	{
+		TargeterID = "chaingun_aim"
+		ButtonToolTipKey = "PartTargeters/ChaingunAim"
+		HasCancelButton = false
+		TargetTypes = [ShipLocalPoint, Parts]
+		AllowSameShipTarget = false
+		SnapToAngles = [0d, 45d, 90d, 135d, 180d, 225d, 270d, 315d]
+		SnapToAngleDistance = 1
+		TentativeTargetLine = &<./Data/commands/weapon_target.rules>/TargetLine
+		SortOrder = 1
+
+		ButtonSprite
+		{
+			Texture
+			{
+				File = "target_chaingun.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+
+		Cursor = &<../game_gui.rules>/TargetCursor
+		TargetObjectCursor
+		{
+			File = "cursor_link_target.png"
+			HotSpot = [8, 8]
+			Scale = .5
+		}
+	}
 ]

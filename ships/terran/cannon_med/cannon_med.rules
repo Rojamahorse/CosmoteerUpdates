@@ -20,7 +20,6 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeID = "cannons"
 	MaxHealth = 12000
 	InitialPenetrationResistance = 5
-	PenetrationRectType = Normal
 	ProhibitAbove = 1
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	AllowedDoorLocations

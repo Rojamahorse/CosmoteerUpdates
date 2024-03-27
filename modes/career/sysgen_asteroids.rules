@@ -48,7 +48,7 @@ SubSpawners
 			[rare_asteroid, 500]
 		]
 		SuppressLocationAssertions = true
-		DoodadTypes = &~/RareAsteroidTypes
+		DoodadTypes = &~/SunAsteroidTypes
 	}
 
 	// Misc assorted asteroids randomly scattered around the system.

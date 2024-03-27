@@ -128,6 +128,18 @@ CodexPages
 		]
 	}
 	{
+		ID = ChangingDifficulty
+		TitleKey = "Tips/ChangingDifficulty/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				TextKey = "Tips/ChangingDifficulty/Tip"
+			}
+		]
+	}
+	{
 		ID = AdvancedCareerMode
 		TitleKey = "Tips/AdvancedCareerMode/Title"
 		TabNameKey = "Codex/Tips"

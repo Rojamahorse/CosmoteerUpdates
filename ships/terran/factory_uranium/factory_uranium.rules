@@ -70,6 +70,7 @@ Part : <../base_part_terran.rules>/Part
 			ToggleOnResources = &../UraniumLoader/FromQuantity
 			ToggleOffResources = (&ToggleOnResources) - 1
 			RandomSpriteRotation = true
+			AllowExternalPickupAndDelivery = true
 		}
 		UraniumConsumer
 		{

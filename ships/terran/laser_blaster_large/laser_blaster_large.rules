@@ -19,7 +19,6 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 12000
 	InitialPenetrationResistance = 3
-	PenetrationRectType = Normal
 	ProhibitAbove = 2
 	AllowedDoorLocations
 	[

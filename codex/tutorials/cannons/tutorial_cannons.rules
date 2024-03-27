@@ -1,7 +1,7 @@
 ID = cannons
 TitleKey = "Tutorials/Cannons/Title"
 TabNameKey = "Codex/Tutorials"
-TempShowCondition = "? game.HasPartCategoryInHand('uses_ammo') or game.HasPartCategoryInHand('provides_ammo') or game.HasTechUnlocked('cosmoteer.cannon_med')"
+TempShowCondition = "? game.HasPartCategoryInHand('uses_ammo') or game.HasPartCategoryInHand('provides_ammo') or (game.HasTechUnlocked('cosmoteer.cannon_med') and game.Fame > 0)"
 Entries
 [
 	{

@@ -122,7 +122,11 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 500
+			Damage = 600
+		}
+		{
+			Type = Impulse;
+			Impulse = 10;
 		}
 	]
 	MediaEffects

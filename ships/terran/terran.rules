@@ -56,7 +56,6 @@ Terran : <../base_ship.rules>
 		&<control_room_small/control_room_small.rules>/Part
 		&<control_room_med/control_room_med.rules>/Part
 		&<control_room_large/control_room_large.rules>/Part
-		&<hyperdrive_small/hyperdrive_small.rules>/Part
 		&<thruster_small/thruster_small.rules>/Part
 		&<thruster_small_2way/thruster_small_2way.rules>/Part
 		&<thruster_small_3way/thruster_small_3way.rules>/Part
@@ -64,7 +63,13 @@ Terran : <../base_ship.rules>
 		&<thruster_large/thruster_large.rules>/Part
 		&<thruster_huge/thruster_huge.rules>/Part
 		&<thruster_boost/thruster_boost.rules>/Part
+		&<thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part
+		&<thruster_rocket_extender/thruster_rocket_extender.rules>/Part
+		&<thruster_rocket_battery/thruster_rocket_battery.rules>/Part
 		&<engine_room/engine_room.rules>/Part
+		&<hyperdrive_small/hyperdrive_small.rules>/Part
+		&<hyperdrive_med/hyperdrive_med.rules>/Part
+		&<hyperdrive_large/hyperdrive_large.rules>/Part
 
 		// Crew.
 		&<crew_quarters_small/crew_quarters_small.rules>/Part

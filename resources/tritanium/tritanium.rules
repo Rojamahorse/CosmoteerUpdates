@@ -6,7 +6,7 @@ BuyPrice = 160
 AsteroidDensity = 40 / (&BuyPrice)
 MaxPerNugget = 1
 MaxStackSize = 5
-FlexGridPriorityKey = "flex_grid_iron"
+FlexGridPriorityKey = "flex_grid_tritanium"
 FlexGridDefaultPriority = 1
 DropRates = &<../resources.rules>/ElementDropRates
 
