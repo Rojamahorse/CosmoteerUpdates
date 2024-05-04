@@ -152,8 +152,6 @@ Part : <../base_part_terran.rules>/Part
 			AIFirepowerRating = 0
 			AddAIFirepowerRatingsWhenTargetedByPartCategories = [ion_beam_emitter, ion_beam_prism]
 			TargetingEmitter = BeamEmitter
-			SuppressWholeShipTargetOverlaysForPartsFilter = &FriendlyPrismFilter
-			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
 			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &FriendlyPrismFilter
 			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
 			SuppressDirectControlWhenTargetingPartsFilter = &FriendlyPrismFilter
@@ -201,8 +199,6 @@ Part : <../base_part_terran.rules>/Part
 			ChainFireToggleComponent = IonBeamChainToggle
 			ProhibitTargetPartsFilter = &../Turret/FriendlyPrismFilter // Don't force fire on friendly ion prisms!
 			ProhibitShipRelativePointTargets = true
-			SuppressWholeShipTargetOverlaysForPartsFilter = &../Turret/FriendlyPrismFilter
-			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
 			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &../Turret/FriendlyPrismFilter
 			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
 			SuppressDirectControlWhenTargetingPartsFilter = &../Turret/FriendlyPrismFilter

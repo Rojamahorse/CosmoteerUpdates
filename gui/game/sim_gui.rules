@@ -50,6 +50,7 @@ TentativeScheduledNuggetCollectSprite
 	}
 	Size = [1.5, 1.5]
 	VertexColor = [255, 200, 0, 153]
+	Shader = "./Data/pivot.shader"
 }
 TentativeNuggetCollectSprite = &TentativeScheduledNuggetCollectSprite
 TentativeNuggetCantCollectSprite
@@ -62,6 +63,7 @@ TentativeNuggetCantCollectSprite
 	}
 	Size = [1.5, 1.5]
 	VertexColor = [246, 49, 43, 153]
+	Shader = "./Data/pivot.shader"
 }
 NuggetCancelCollectSprite : TentativeNuggetCantCollectSprite
 {
@@ -134,6 +136,7 @@ SelectedScheduledNuggetCollectSprite
 	}
 	Size = [1.5, 1.5]
 	VertexColor = [255, 200, 0, 255]
+	Shader = "./Data/pivot.shader"
 }
 ScheduledNuggetCollectTweenDuration = .2
 ScheduledNuggetCollectTweenFromScale = 2
@@ -231,6 +234,7 @@ NuggetLocationOverlaySprite
 	}
 	Size = [1.5, 1.5]
 	VertexColor = [255, 255, 255, 255*3/8]
+	Shader = "./Data/pivot.shader"
 }
 
 BlueprintTransitionDuration = 0.15
@@ -366,6 +370,7 @@ ScheduledSalvageReticleSprite
 	}
 	VertexColor = [255, 170, 0, 400]
 	Size = [1, 1]
+	Shader = "./Data/pivot.shader"
 }
 TentativeScheduledSalvageReticleSprite
 {
@@ -377,6 +382,7 @@ TentativeScheduledSalvageReticleSprite
 	}
 	VertexColor = [255, 170, 0, 153]
 	Size = [1, 1]
+	Shader = "./Data/pivot.shader"
 }
 ScheduledSalvageProgressFadeRange = [0, .5]
 SalvageCursor

@@ -79,7 +79,7 @@ float4 calculateWorldVertexLocProjZ(in VERT_INPUT_BEAM input, float extraBeginLe
     float2 dir;
     float2 beamEnd = calculateWorldBeamEnd(input, dir);
     float4 currentVertPos = calculateWorldVertexLoc(input, extraBeginLength, extraEndLength, extraBeginArc, extraEndArc);
-    float2 diagonalVertPos = calculateWorldVertexLoc(input.beamStart, beamEnd, dir, input.length, float2(-input.vertexOffset.x, -input.vertexOffset.y), extraBeginLength, extraEndLength, extraBeginArc, extraEndArc);
+    float2 diagonalVertPos = calculateWorldVertexLoc(input.beamStart.xy, beamEnd, dir, input.length, float2(-input.vertexOffset.x, -input.vertexOffset.y), extraBeginLength, extraEndLength, extraBeginArc, extraEndArc);
     
     float beginWidth = (abs(input.vertexOffset.y) + input.length * extraBeginArc * 0.5) * 2;
     float endWidth = (abs(input.vertexOffset.y) + input.length * extraEndArc * 0.5) * 2;
@@ -89,7 +89,7 @@ float4 calculateWorldVertexLocProjZ(in VERT_INPUT_BEAM input, float extraBeginLe
     if (beginWidth > endWidth) //determining which end is the base
     {
         distFromBase = (beginWidth * fullLength) / (beginWidth + endWidth);
-        intersection = input.beamStart + (dir * (distFromBase - extraBeginLength));
+        intersection = input.beamStart.xy + (dir * (distFromBase - extraBeginLength));
     }
     else 
     {

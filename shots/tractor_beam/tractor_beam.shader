@@ -95,7 +95,7 @@ PIX_OUTPUT pix(in VERT_OUTPUT_BEAM input) : SV_TARGET
 
 	float4 baseColor;
 	baseColor.a = noise * baseGradient * 0.25;
-	baseColor.rgb = lerp(_color1, _color2, displacementLines * noise) * _additiveStrength;
+	baseColor.rgb = lerp(_color1.rgb, _color2.rgb, displacementLines * noise) * _additiveStrength;
 	baseColor.rgb *= input.color.rgb;
 	baseColor.rgb *= saturate(baseGradient * 2);
 	return baseColor;

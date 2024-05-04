@@ -344,15 +344,6 @@ Part : <../base_part_terran.rules>/Part
 			FuelStorage = BatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
 		}
-		LateralThruster : MainThruster
-		{
-			Rotation = 0d
-			MinActivation = -0.05
-			MaxActivation = 0.05
-			MinUncommandedActivation = &MinActivation
-			MaxUncommandedActivation = &MaxActivation
-			AllowAutoFire = false
-		}
 
 		NozzleCollider
 		{
@@ -373,6 +364,8 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = MainThruster
 			Location = [6/64, 0]
 			FactorMediaEffectsIntensityWith = MainThruster
+			IntensityTweenSpeed = 4
+			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
 				&<particles/thruster_plume_med.rules>
@@ -403,6 +396,7 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = MainThruster
 			Trigger = BurstTrigger
 			FactorMediaEffectsIntensityWith = MainThruster
+			MinMediaEffectsIntensity = 1%
 			AnchorMediaEffects = true
 			MediaEffects
 			[
@@ -438,6 +432,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ContinuousEffects
 			Location = [.5, 1]
 			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
 			MediaEffects
 			[
 				: /COMMON_SOUNDS/ThrusterHum

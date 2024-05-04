@@ -395,7 +395,6 @@ Part : <../base_part_terran.rules>/Part
 			RotateSpeed = 120d
 			FireThresholdAngle = 1d
 			AIFirepowerRating = 0
-			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
 			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
 			SuppressDirectControlWhenTargetingShipRelativePoints = true
 			SuppressFirepowerEstimationWhenTargetingShipRelativePoints = true

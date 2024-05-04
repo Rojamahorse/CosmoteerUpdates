@@ -136,7 +136,6 @@ Part : <../base_part_terran.rules>/Part
 			Emitter = BeamEmitter
 			ChainFireToggleComponent = IonBeamChainToggle
 			ProhibitTargetPartsFilter = &FriendlyPrismFilter // Don't force fire on friendly ion prisms!
-			SuppressWholeShipTargetOverlaysForPartsFilter = &FriendlyPrismFilter
 			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &FriendlyPrismFilter
 			SuppressDirectControlWhenTargetingPartsFilter = &FriendlyPrismFilter
 			SuppressFirepowerEstimationWhenTargetingPartsFilter = &FriendlyPrismFilter
@@ -545,6 +544,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ContinuousEffects
 			Location = [1, 2.5]
 			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
 			MediaEffects
 			[
 				: /BASE_SOUNDS/AudioInterior

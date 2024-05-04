@@ -97,12 +97,14 @@ Ships
 	// Battleships
 	:~{ File="Stygil.ship.png";        Tier=16;  Difficulty=2; }
 	:~{ File="Alamgir.ship.png";       Tier=16;  Difficulty=2; }
+	:~{ File="Slipstream.ship.png";    Tier=16;  Difficulty=2; }
 	:~{ File="Achaemenes.ship.png";    Tier=16;  Difficulty=3; }
 	:~{ File="Bonaparte.ship.png";     Tier=16;  Difficulty=3; }
 
 	// Battlecruisers
 	:~{ File="Anzu.ship.png";          Tier=17;  Difficulty=3; }
 	:~{ File="Alexander.ship.png";     Tier=17;  Difficulty=3; }
+	:~{ File="Qin Shi Huang.ship.png"; Tier=17;  Difficulty=3; }
 
 	// Flagships
 	:~{ File="Voluntas.ship.png";      Tier=18;  Difficulty=3; }

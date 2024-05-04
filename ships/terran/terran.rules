@@ -15,6 +15,7 @@ Terran : <../base_ship.rules>
 	AssociateDeconstructJobWithPart = general_jobs
 	AssociateRepairJobWithPart = general_jobs
 	SalvagingDisabledSuppressesResourceDrops = true
+	MaxLinearMagicAcceleration = 2
 
 	Parts
 	[

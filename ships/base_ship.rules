@@ -29,6 +29,7 @@ AngularDampingFactorPerSpeedExponent = 0
 MinAngularDamping = 0.4
 Restitution = 0
 RotationalInertiaFactor = 1
+ThrusterUpdateInterval = [1/10, 1/9] // Random range so that ships don't all update their thrusters on the same tick.
 ThrusterSolverIterations = 3
 ThrusterSRFFactors = [1, 2, 1]
 UncommandedThrusterShutdownDelay = 2
@@ -53,6 +54,7 @@ SelfDestructForce = 10
 BaseSightRadius = 25
 BaseRadarRadius = &BaseSightRadius
 MinCommsRadius = &<terran/control_room_small/control_room_small.rules>/Part/Components/Sensor/SightRadius
+WeaponActivationEnemyCheckRadius = &<terran/sensor_array/sensor_array.rules>/Part/Components/Sensor/SightRadius
 DefaultTargetingRangeFactor = 4.0
 
 MapJumpFuelCostPerMass = 0

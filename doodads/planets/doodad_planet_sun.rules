@@ -26,8 +26,8 @@ ProximityDamage
 	AvoidanceTags = [sun]
 	InstantKillRadius = 1
 	RaycastDamageRadius = 2.5
-	RaycastsPerDiameterPerSecond = 30
-	RaycastDamage = [100, 10]
+	RaycastsPerDiameterPerSecond = 5
+	RaycastDamage = [600, 60]
 	RaycastDamageDistanceExponent = 0.5
 	DamageType = heat
 	IgnoreShipTypes = [cosmoteer.asteroid, cosmoteer.megaroid, cosmoteer.ancient]

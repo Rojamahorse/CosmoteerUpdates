@@ -199,11 +199,10 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = TypedResourceGrid
 			ResourceType = bullet
-			GridRect = [0, 4, 3, 2]
+			GridRect = [0, 4, 3, 1]
 			DisableCells
 			[
-				[0, 1]
-				[2, 1]
+				[1, 0]
 			]
 			Layer = "doodads_low"
 			SpriteInset = [11/64, 8/64, 11/64, 8/64]
@@ -1018,7 +1017,7 @@ Part : <../base_part_terran.rules>/Part
 	Stats
 	{
 		CrewRequired = &~/Part/Components/PartCrew/Crew
-		AmmoCapacity = ((&~/Part/Components/AmmoStorage/GridRect/2) * (&~/Part/Components/AmmoStorage/GridRect/3) - 2) * (&<./Data/resources/bullet/bullet.rules>/MaxStackSize) + (&~/Part/Components/LoadedAmmo1/MaxResources) + (&~/Part/Components/LoadedAmmo2/MaxResources)
+		AmmoCapacity = ((&~/Part/Components/AmmoStorage/GridRect/2) * (&~/Part/Components/AmmoStorage/GridRect/3) - 1) * (&<./Data/resources/bullet/bullet.rules>/MaxStackSize) + (&~/Part/Components/LoadedAmmo1/MaxResources) + (&~/Part/Components/LoadedAmmo2/MaxResources)
 
 		RecAmmo = &../StatsByCategory/0/Stats/AmmoPerSecond
 		RecCrew = (&CrewRequired) + (&RecAmmo) * 2
@@ -1030,10 +1029,12 @@ Part : <../base_part_terran.rules>/Part
 			NameKey = "StatCategories/Flak"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/0/TotalDamage
+				DamagePerShot = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/1/TotalDamage
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				MaxDamage = [&../DamagePerShot, &../DamagePerSecond]
-				ShotDamage = &MaxDamage
+				ShotDamagePerShot = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/0/TotalDamage
+				ShotDamagePerSecond = (&ShotDamagePerShot) * (&ROF)
+				ShotDamage = [&../ShotDamagePerShot, &../ShotDamagePerSecond]
 				DamageArea = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/0/Radius
 				Salvo = [(&~/Part/Components/BaseFlakEmitter/Burst), (&~/Part/Components/Turret/FireInterval)]
 				ROF = (&~/Part/Components/BaseFlakEmitter/Burst) / (&~/Part/Components/Turret/FireInterval)

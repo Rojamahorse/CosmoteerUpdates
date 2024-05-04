@@ -289,6 +289,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ContinuousEffects
 			Location = [2, 2]
+			MaxMediaEffectsZoom = 4
 			MediaEffects
 			[
 				: /BASE_SOUNDS/AudioInterior

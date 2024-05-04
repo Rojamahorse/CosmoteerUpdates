@@ -9,7 +9,7 @@ HitNothing
 	[
 		{
 			Type = ExplosiveDamage
-			TotalDamage = 2250
+			TotalDamage = 2500
 			Radius = 4
             Slices = 1
 			Filter
@@ -23,7 +23,7 @@ HitNothing
 		}
 		{
 			Type = ExplosiveDamage
-			TotalDamage = 2250
+			TotalDamage = 1750
 			Radius = 4
 			Filter
 			{

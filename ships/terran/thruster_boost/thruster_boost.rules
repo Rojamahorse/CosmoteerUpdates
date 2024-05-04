@@ -573,15 +573,6 @@ Part : <../base_part_terran.rules>/Part
 					FuelStorage = RealBatteryStorage
 					FuelUsagePerSecond = &~/Part/FuelUsage
 				}
-				LateralThruster : MainThruster
-				{
-					Rotation = 0d
-					MinActivation = -0.05
-					MaxActivation = 0.05
-					MinUncommandedActivation = &MinActivation
-					MaxUncommandedActivation = &MaxActivation
-					AllowAutoFire = false
-				}
 
 				BurstTrigger
 				{
@@ -596,6 +587,7 @@ Part : <../base_part_terran.rules>/Part
 					ChainedTo = MainThruster
 					Trigger = BurstTrigger
 					FactorMediaEffectsIntensityWith = MainThruster
+					MinMediaEffectsIntensity = 1%
 					AnchorMediaEffects = true
 					MediaEffects
 					[
@@ -806,15 +798,6 @@ Part : <../base_part_terran.rules>/Part
 					FuelUsagePerSecond = &~/Part/BoostedFuelUsage
 					ValueOutputSmoothing = 1
 				}
-				LateralThrusterBoosted : MainThrusterBoosted
-				{
-					Rotation = 0d
-					MinActivation = -0.05
-					MaxActivation = 0.05
-					MinUncommandedActivation = &MinActivation
-					MaxUncommandedActivation = &MaxActivation
-					AllowAutoFire = false
-				}
 
 				BurstTriggerBoosted
 				{
@@ -829,6 +812,7 @@ Part : <../base_part_terran.rules>/Part
 					ChainedTo = MainThrusterBoosted
 					Trigger = BurstTriggerBoosted
 					FactorMediaEffectsIntensityWith = MainThrusterBoosted
+					MinMediaEffectsIntensity = 1%
 					AnchorMediaEffects = true
 					MediaEffects
 					[
@@ -873,6 +857,8 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 4.5+14/64]
 			Rotation = 90d
 			FactorMediaEffectsIntensityWith = MainThrusterProxy
+			IntensityTweenSpeed = 4
+			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
 				&<../thruster_large/particles/thruster_plume_large.rules>
@@ -902,6 +888,8 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 4.5+14/64]
 			Rotation = 90d
 			FactorMediaEffectsIntensityWith = MainThrusterBoostedProxy
+			IntensityTweenSpeed = 4
+			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
 				&<particles/thruster_plume_boost.rules>
@@ -972,6 +960,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ContinuousEffects
 			Location = [1, 1.5]
 			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
 			MediaEffects
 			[
 				: /COMMON_SOUNDS/ThrusterHum

@@ -375,6 +375,8 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = MainThrusterBottom
 			Location = [-2/64, 0]
 			FactorMediaEffectsIntensityWith = MainThrusterBottom
+			IntensityTweenSpeed = 4
+			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
 				&<../thruster_small/particles/thruster_plume_small.rules>
@@ -405,6 +407,7 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = MainThrusterBottom
 			Trigger = BurstTriggerBottom
 			FactorMediaEffectsIntensityWith = MainThrusterBottom
+			MinMediaEffectsIntensity = 1%
 			AnchorMediaEffects = true
 			MediaEffects
 			[
@@ -453,6 +456,8 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = MainThrusterRight
 			Location = [-2/64, 0]
 			FactorMediaEffectsIntensityWith = MainThrusterRight
+			IntensityTweenSpeed = 4
+			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
 				&<../thruster_small/particles/thruster_plume_small.rules>
@@ -483,6 +488,7 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = MainThrusterRight
 			Trigger = BurstTriggerRight
 			FactorMediaEffectsIntensityWith = MainThrusterRight
+			MinMediaEffectsIntensity = 1%
 			AnchorMediaEffects = true
 			MediaEffects
 			[
@@ -531,6 +537,8 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = MainThrusterLeft
 			Location = [-2/64, 0]
 			FactorMediaEffectsIntensityWith = MainThrusterLeft
+			IntensityTweenSpeed = 4
+			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
 				&<../thruster_small/particles/thruster_plume_small.rules>
@@ -561,6 +569,7 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = MainThrusterLeft
 			Trigger = BurstTriggerLeft
 			FactorMediaEffectsIntensityWith = MainThrusterLeft
+			MinMediaEffectsIntensity = 1%
 			AnchorMediaEffects = true
 			MediaEffects
 			[
@@ -594,6 +603,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ContinuousEffects
 			Location = [1.5, .5]
 			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
 			MediaEffects
 			[
 				: /COMMON_SOUNDS/ThrusterHum

@@ -28,6 +28,14 @@ Def
 			Enabled = true
 			UpdateAfterInit = false
 		}
+		{
+			Type = RotationToWorldSpace
+			RotationIn = rot
+			RotationOut = rot
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
 	]
 	Updaters
 	[
@@ -92,7 +100,7 @@ Def
 		LocationIn = location
 		ScaleIn = scale
 		Scale2In
-		RotationIn
+		RotationIn = rot
 		ColorIn = color
 		UvRectIn
 		BaseSize
@@ -134,6 +142,8 @@ Def
 		}
 	}
 	DeleteMode = Fast
+	FpsCompensation = None
+	FpsCompensationStrength = 1
 	EnableMultithreading = false
 	InitCapacity = 256
 }
@@ -180,6 +190,7 @@ PenetratingBucket
 MinIntensity = 0
 IsFancy = true
 IsFancyLight = false
+IsSimpleLight = false
 IsSimple = false
 Sharing = Global
 UnsharedRenderInWorldSpace = false
@@ -187,6 +198,7 @@ DontEmitWhenOffScreen = true
 DontEmitWhenOffScreenSizeInflate = 5
 UseCustomShapeForOffScreenCheck = false
 MaxEmissionZoom = 3.4028235E+38
+MaxParticleCount = 2147483647
 ScaleEmissionWithIntensity = false
 ScaleEmissionWithBeamLength = false
 ScaleEmissionWithWorldVelocity = false
@@ -213,8 +225,11 @@ Filter
 	TargetedFriendlies
 	Enemies = true
 	TargetedEnemies
+	Neutrals = true
+	TargetedNeutrals
 	Junk = true
 	TargetedJunk
+	Deconstruction
 }
 Delay = 0
 IgnoreIntensity = false

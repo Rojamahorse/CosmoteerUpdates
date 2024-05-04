@@ -551,6 +551,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ContinuousEffects
 			Location = [1.5, 1]
 			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
 			MediaEffects
 			[
 				: /COMMON_SOUNDS/ThrusterHum

@@ -44,11 +44,12 @@ OxygenSupply = 150
 OxygenWarningLevel = 60 / (&OxygenSupply)
 SalvageDistance = 0.6
 ConstructDistance = 0.6
+SalvageHitEffectsInterval = 0.2
 SalvageHitEffects
 [
 	{
 		Type = Damage
-		Damage = 150 // Per second.
+		Damage = 30
 		DamageType = salvage
 		Filter
 		{
@@ -58,7 +59,7 @@ SalvageHitEffects
 	}
 	{
 		Type = Damage
-		Damage = 300 // Per second.
+		Damage = 60
 		DamageType = Salvage
 		Filter
 		{
@@ -70,7 +71,7 @@ SalvageHitEffects
 	}
 	{
 		Type = Damage
-		Damage = 600 // Per second.
+		Damage = 120
 		DamageType = salvage
 		Filter
 		{
@@ -2129,7 +2130,7 @@ ConstructionBeams
 			// The beam itself.
 			{
 				Type = Beam
-				BeamSprite
+				Sprite
 				{
 					Texture
 					{
@@ -2167,7 +2168,7 @@ ConstructionBeams
 			// Beam lighting.
 			{
 				Type = Beam
-				BeamSprite
+				Sprite
 				{
 					Texture
 					{
@@ -2252,7 +2253,7 @@ SalvageBeams
 			// The beam itself.
 			{
 				Type = Beam
-				BeamSprite
+				Sprite
 				{
 					Texture
 					{
@@ -2297,7 +2298,7 @@ SalvageBeams
 			// Beam lighting.
 			{
 				Type = Beam
-				BeamSprite
+				Sprite
 				{
 					Texture
 					{

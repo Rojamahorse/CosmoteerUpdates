@@ -411,7 +411,7 @@ CancelPastePartsSprite
 BuildSound
 {
 	Sound = "build.wav"
-	SpeedRange = [.8, 1.1]
+	Speed = [.8, 1.1]
 }
 MakeItSoSound
 {

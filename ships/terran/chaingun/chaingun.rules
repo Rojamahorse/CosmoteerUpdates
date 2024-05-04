@@ -605,7 +605,6 @@ Part : <../base_part_terran.rules>/Part
 			ToggleOnMode = HasTargetExceptShipRelative
 			SaveShipRelativeTargets = true
 			AimIncludesEmitterOffset = false
-			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
 			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
 			SuppressDirectControlWhenTargetingShipRelativePoints = true
 			SuppressFirepowerEstimationWhenTargetingShipRelativePoints = true
@@ -676,7 +675,6 @@ Part : <../base_part_terran.rules>/Part
 			DefaultDirectControlBinding = 0
 			ToggleOnMode = WantsToFire
 			AIFirepowerRating = &../Turret/AIFirepowerRating
-			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
 			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
 			SuppressFirepowerEstimationWhenNotTargetingShipRelativePoints = true
 			SaveShipRelativeTargets = true
@@ -981,7 +979,7 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			Floor
 			{
-				Layer = "floors"
+				Layer = "turrets"
 				DamageLevels
 				[
 					{

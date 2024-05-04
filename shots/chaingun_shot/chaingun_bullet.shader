@@ -9,10 +9,9 @@ struct VERT_OUTPUT_CHAINGUN
 	float progress : TEXCOORD2;
 	float invProgress : TEXCOORD3;
 	float horizontalWipe : TEXCOORD4;
-	float horizontalWipe2 : TEXCOORD5;
-	float bulletGradient : TEXCOORD6;
+	float bulletGradient : TEXCOORD5;
 	float length : POSITION1;
-	float bulletProgress : TEXCOORD7;
+	float bulletProgress : TEXCOORD6;
 	float2 trailUVs : TEXCOORD8;
 	float2 noiseUVs : TEXCOORD9;
 };

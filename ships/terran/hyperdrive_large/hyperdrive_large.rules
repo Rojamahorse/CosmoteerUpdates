@@ -503,6 +503,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ContinuousEffects
 			Location = [2, 2]
 			FactorMediaEffectsIntensityWith = FtlDrive
+			MinMediaEffectsIntensity = 1%
 			OperationalToggle = PowerToggle
 			MediaEffects
 			[

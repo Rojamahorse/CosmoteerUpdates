@@ -44,7 +44,7 @@ PIX_OUTPUT pix(in VERT_OUTPUT_BEAM input) : SV_TARGET
 	float gradientWidth = 4 * (1/saturate(input.color.a));
 	float gradient =  1 - pow(abs((input.uv.y - 0.5) * 2 * gradientWidth), _gradientPow);
 
-	float3 gradientColor = _gradientColor * gradient * _gradientIntensity;
+	float3 gradientColor = _gradientColor.rgb * gradient * _gradientIntensity;
 	float4 tex = _texture.Sample(_texture_SS, input.uv);
 	float3 col = lerp(_coldColor.rgb, _hotColor.rgb, tex.a) * endCap * startCap * input.color.a;
 	col = saturate(col + gradientColor);

@@ -269,6 +269,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ContinuousEffects
 			ChainedTo = ArcShield
 			FactorMediaEffectsIntensityWith = BatteryStorage
+			MaxMediaEffectsZoom = 12
 			Location = [2.2, 0]
 			OperationalToggle = IsOperational
 			ParentToShip = true

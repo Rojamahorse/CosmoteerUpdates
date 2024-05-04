@@ -768,6 +768,8 @@ Inputs
 		airlock_type_entry = "Airlock: Enter Only"
 		airlock_type_exit = "Airlock: Exit Only"
 		airlock_type_closed = "Airlock: Closed"
+		distribute_power_off = "Distribute Power: Off"
+		distribute_power_on = "Distribute Power: On"
 	}
 
 	PartTargeters
@@ -2451,45 +2453,13 @@ CreativeMode
 		SpawnBlocked = "There is at least one ship or piece of debris blocking the ship from spawning. Do you want to remove them?"
 	}
 
-	CameraHelper
-	{
-		Title = "Camera Helper"
-		Mode = "Mode"
-		PanAndZoom = "Pan & Zoom"
-		FrameShips = "Frame Ships"
-		StartFmt = "Start: X={0:.0}, Y={1:.0}, R={2:0}°, Z={3:.0}"
-		StartNone = "Start: Not Set"
-		EndFmt = "End: X={0:.0}, Y={1:.0}, R={2:0}°, Z={3:.0}"
-		EndNone = "End: Not Set"
-		Set = "Set"
-		View = "View"
-		Delay = "Delay:"
-		Duration = "Duration:"
-		ToggleInteriorDelay = "Toggle Interiors At:"
-		Tween = "Tween:"
-		FramedShipsFmt = "Framed Ships: {0}"
-		FrameSelectedShips = "Frame Selected Ships"
-		Buffer = "Buffer (Meters)"
-		PanSpeed = "Pan Speed"
-		ZoomSpeed = "Zoom Speed"
-		GoWhenUnpaused = "Go When Unpaused"
-		Start = "GO"
-		Stop = "STOP"
-
-		TweenMode
-		{
-			Linear = "Linear"
-			EaseIn = "Ease In"
-			EaseOut = "Ease Out"
-			EaseInOut = "Ease In/Out"
-		}
-	}
-
-	AutoBuilder : CameraHelper
+	AutoBuilder
 	{
 		Title = "Auto-Builder"
 		StartingPartFmt = "Starting Part: {0}"
 		SetStartingPart = "Set Starting Part"
+		Delay = "Delay:"
+		Duration = "Duration:"
 		BuildOrder = "Build Order"
 		Random = "Random"
 		Nearest = "Nearest First"
@@ -2508,21 +2478,8 @@ CreativeMode
 		SelfDestructDelay = "Self Destruct Delay:"
 		SelfDestructDuration = "Self Destruct Duration:"
 		SelfDestructAllParts = "Self Destruct All Parts"
-	}
-
-	BenchmarkHelper
-	{
-		Title = "Benchmark Helper"
-		TimeFmt = "Time: {0:.00}"
-		FramesFmt = "Frames: {0}"
-		FpsFmt = "FPS: {0:.0}"
-		TicksFmt = "Ticks: {0}"
-		TpsFmt = "TPS: {0:.0}"
-		Duration = "Duration"
 		GoWhenUnpaused = "Go When Unpaused"
-		FullThrottle = "Run Full Throttle"
 		Start = "GO"
-		Stop = "STOP"
 	}
 
 	PlanetConfig
@@ -3961,7 +3918,7 @@ Parts
 	RailgunAccelerator = "Railgun Accelerator Module"
 	RailgunAcceleratorIcon = "Railgun Accelerator"
 	RailgunAcceleratorDesc = "An optional component placed between a railgun's Launcher and Loader. Each accelerator increases the projectile's velocity, damage, and penetration depth.\n\n"\
-	                         "<string id='Parts/RailgunBaseDesc'/>"\
+	                         "<string id='Parts/RailgunBaseDesc'/>\n\n"\
 	                         "Crew cannot walk from one side of a Railgun Launcher or Accelerator to the other."
 
 	ReactorSmall = "Small Reactor Core"

@@ -8,7 +8,7 @@ BeamMediaEffects
 	// The bullet beam effect.
 	{
 		Type = Beam
-		BeamSprite
+		Sprite
 		{
 			Texture
 			{
@@ -43,7 +43,7 @@ BeamMediaEffects
 	//The distortion effect.
 	{
 		Type = Beam
-		BeamSprite
+		Sprite
 		{
 			Texture
 			{
@@ -80,7 +80,7 @@ BeamMediaEffects
 	// Beam lighting.
 	{
 		Type = Beam
-		BeamSprite
+		Sprite
 		{
 			Texture
 			{

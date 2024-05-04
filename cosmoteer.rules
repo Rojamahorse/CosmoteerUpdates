@@ -67,6 +67,7 @@ Simulation
 	StasisCellSize = 2500
 	StasisLiveRange = &StasisCellSize
 	StasisPreloadRange = (&StasisLiveRange) * 1.5
+	StasisUpdateInterval = 1.0
 	StandardLightHeight = .3275
 
 	Network
