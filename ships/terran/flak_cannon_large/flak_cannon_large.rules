@@ -199,11 +199,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = TypedResourceGrid
 			ResourceType = bullet
-			GridRect = [0, 4, 3, 1]
-			DisableCells
-			[
-				[1, 0]
-			]
+			GridRect = [1, 4, 1, 2]
 			Layer = "doodads_low"
 			SpriteInset = [11/64, 8/64, 11/64, 8/64]
 		}
