@@ -979,7 +979,7 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			Floor
 			{
-				Layer = "turrets"
+				Layer = "floors"
 				DamageLevels
 				[
 					{
