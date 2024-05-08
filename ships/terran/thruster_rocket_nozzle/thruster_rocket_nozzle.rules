@@ -591,7 +591,7 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = MainThruster
 			Location = [47/64, 0]
 			FactorMediaEffectsIntensityWith = MainThruster
-			IntensityTweenSpeed = 4
+			IntensityTweenSpeed = { BaseValue=1/(&~/Part/ThrustIncreaseTime/BaseValue); BuffType=RocketRampUpFinal; BuffMode=Divide; }
 			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[

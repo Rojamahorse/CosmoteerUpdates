@@ -857,7 +857,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 4.5+14/64]
 			Rotation = 90d
 			FactorMediaEffectsIntensityWith = MainThrusterProxy
-			IntensityTweenSpeed = 4
+			IntensityTweenSpeed = { BaseValue=1/(&~/Part/ThrustIncreaseTime/BaseValue); BuffType=Engine; BuffMode=Multiply; }
 			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
@@ -888,7 +888,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 4.5+14/64]
 			Rotation = 90d
 			FactorMediaEffectsIntensityWith = MainThrusterBoostedProxy
-			IntensityTweenSpeed = 4
+			IntensityTweenSpeed = 2
 			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
