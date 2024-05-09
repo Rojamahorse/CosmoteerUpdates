@@ -366,7 +366,7 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = MainThruster
 			Location = [-2/64, 0]
 			FactorMediaEffectsIntensityWith = MainThruster
-			IntensityTweenSpeed = 2
+			IntensityTweenDuration = 0.1
 			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[

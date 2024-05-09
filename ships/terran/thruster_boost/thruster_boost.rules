@@ -796,7 +796,6 @@ Part : <../base_part_terran.rules>/Part
 					ActivationRecoveryTime = &~/Part/BoostedThrustRecoveryTime
 					FuelStorage = RealBatteryStorage
 					FuelUsagePerSecond = &~/Part/BoostedFuelUsage
-					ValueOutputSmoothing = 1
 				}
 
 				BurstTriggerBoosted
@@ -857,7 +856,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 4.5+14/64]
 			Rotation = 90d
 			FactorMediaEffectsIntensityWith = MainThrusterProxy
-			IntensityTweenSpeed = { BaseValue=1/(&~/Part/ThrustIncreaseTime/BaseValue); BuffType=Engine; BuffMode=Multiply; }
+			IntensityTweenDuration = 0.1
 			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
@@ -888,7 +887,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 4.5+14/64]
 			Rotation = 90d
 			FactorMediaEffectsIntensityWith = MainThrusterBoostedProxy
-			IntensityTweenSpeed = 2
+			IntensityTweenDuration = 0.2
 			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
