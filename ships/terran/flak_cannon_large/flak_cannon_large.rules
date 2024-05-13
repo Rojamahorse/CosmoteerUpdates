@@ -1013,7 +1013,7 @@ Part : <../base_part_terran.rules>/Part
 	Stats
 	{
 		CrewRequired = &~/Part/Components/PartCrew/Crew
-		AmmoCapacity = ((&~/Part/Components/AmmoStorage/GridRect/2) * (&~/Part/Components/AmmoStorage/GridRect/3) - 1) * (&<./Data/resources/bullet/bullet.rules>/MaxStackSize) + (&~/Part/Components/LoadedAmmo1/MaxResources) + (&~/Part/Components/LoadedAmmo2/MaxResources)
+		AmmoCapacity = (&~/Part/Components/AmmoStorage/GridRect/2) * (&~/Part/Components/AmmoStorage/GridRect/3) * (&<./Data/resources/bullet/bullet.rules>/MaxStackSize) + (&~/Part/Components/LoadedAmmo1/MaxResources) + (&~/Part/Components/LoadedAmmo2/MaxResources)
 
 		RecAmmo = &../StatsByCategory/0/Stats/AmmoPerSecond
 		RecCrew = (&CrewRequired) + (&RecAmmo) * 2
