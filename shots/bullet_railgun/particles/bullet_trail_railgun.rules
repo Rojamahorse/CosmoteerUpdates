@@ -449,7 +449,6 @@ UnsharedRenderInWorldSpace = false
 DontEmitWhenOffScreen = false
 DontEmitWhenOffScreenSizeInflate = 1
 UseCustomShapeForOffScreenCheck = false
-MaxEmissionZoom = 30
 ScaleEmissionWithIntensity = true
 ScaleEmissionWithBeamLength = false
 ScaleEmissionWithWorldVelocity = false
