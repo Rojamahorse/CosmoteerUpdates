@@ -94,3 +94,10 @@ Debug
 	DescriptionKey = "Missions/DebugDesc"
 	CategoryID = debug
 }
+
+Ambush
+{
+	NameKey = "Missions/Ambush"
+	DescriptionKey = "Missions/AmbushDesc"
+	CategoryID = encounter
+}

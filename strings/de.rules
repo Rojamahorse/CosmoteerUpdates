@@ -2,13 +2,13 @@ __Name = "Deutsch"
 __DebugOnly = false
 AI
 {
-	
+
 	Easy = "KI Einfach"
 	Normal = "KI Normal"
 }
 ArenaMode: Pvp
 {
-	
+
 	AtFirstPlaceFmt = "{0} Punkte vor Platz 2 ({1})"
 	BehindFirstPlaceFmt = "{0} Punkte hinter Platz 1 ({1})"
 	CanRespawnCountdownFmt = "Kann in {0} neu spawnen ..."
@@ -25,7 +25,7 @@ ArenaMode: Pvp
 	RespawnCountdownFmt = "Neu spawnen in {0} ..."
 	Scoreboard: ^/0/Scoreboard
 	{
-		
+
 		DamageReceived = "ERLITTENER\nSCHADEN"
 		Points = "SCHADENS-\nPUNKTE"
 	}
@@ -34,12 +34,12 @@ ArenaMode: Pvp
 }
 ArenaModeConfig: PvpModeConfig
 {
-	
+
 	Description = "Verdiene Punkte, indem du anderen Spielern Schaden zufügst und sie zerstörst! Wenn du zerstört wurdest, spawnst du neu."
 	Name = ""
 	Rulesets
 	{
-		
+
 		FFA1500K = "Free For All – 1,5 M"
 		FFA1500KShort = "FFA\n1,5 M"
 		FFA3000K = "Free For All – 3 M"
@@ -51,7 +51,7 @@ ArenaModeConfig: PvpModeConfig
 }
 Backgrounds
 {
-	
+
 	Black = Schwarz
 	Blue = Blau
 	Galaxy = Galaxiekarte
@@ -63,7 +63,7 @@ Backgrounds
 }
 BillOfSale
 {
-	
+
 	ConstructionExpenses = "<u>Bauausgaben:</u>"
 	DeconstructionRefunds = "<u>Rückerstattung für Zerlegung:</u>"
 	ExpensesSubtotalFmt = "Ausgaben-Zwischensumme: {0}"
@@ -79,7 +79,7 @@ BillOfSale
 }
 Brushes
 {
-	
+
 	Block10x10 = 10x10-Block
 	Block10x10Icon = ""
 	Block1x1 = 1x1-Block
@@ -117,7 +117,7 @@ Brushes
 }
 BuildBattleMode: Pvp
 {
-	
+
 	BattlePhaseAnnouncement = KÄMPFEN!
 	BattleWinnerFmt = "{0} gewinnt Runde {1}!"
 	BuildPhaseAnnouncement = BAUEN!
@@ -125,7 +125,7 @@ BuildBattleMode: Pvp
 	CapturePointFmt = "<b>{0}</b>\n<add_money>{1:n0}</add_money><gray>/{2} Sek.</gray>"
 	CapturePointNames
 	[
-		
+
 		"Punkt sichern"
 	]
 	FleetValueFmt = "<s12>FLOTTENWERT\n</s12><money_color>{0}</money_color>/<money_color>{1}</money_color>"
@@ -145,7 +145,7 @@ BuildBattleMode: Pvp
 	SaveToStashTip = "Reserviere diese Freischaltung, um sie in einer künftigen Runde kaufen zu können."
 	Scoreboard: ^/0/Scoreboard
 	{
-		
+
 		CapturePoints = Kontrollpunkte
 		Credits = ""
 		CurrentIncome = "Aktuelles Einkommen"
@@ -164,7 +164,7 @@ BuildBattleMode: Pvp
 }
 BuildBattleModeConfig: PvpModeConfig
 {
-	
+
 	AIControlledBattles = "KI-gesteuerte Kämpfe"
 	AIControlledBattlesTip = "Bei Auswahl der Option werden die Schiffe in der Kampfphase von der KI gesteuert."
 	AdditionalUnlockCost = "Zusätzliche Freischaltungskosten"
@@ -195,7 +195,7 @@ BuildBattleModeConfig: PvpModeConfig
 	Name = "Bauen & kämpfen"
 	Rulesets
 	{
-		
+
 		Ai100K = "Kleine Schiffe – KI-Piloten"
 		Ai100KShort = "KL\nKI"
 		AiBlitz = "Kleine Schiffe – Blitz + KI"
@@ -220,7 +220,7 @@ BuildBattleModeConfig: PvpModeConfig
 }
 BuildBox
 {
-	
+
 	BlueprintsInvalid = "UNGÜLTIGE BAUPLÄNE"
 	BrushDisabledTip = "Das ausgewählte Teil oder Werkzeug unterstützt keine unterschiedlichen Formen und Größen von „Pinseln“."
 	BrushHotkeyFmt = "Schnelltaste: <b>{0}</b>"
@@ -284,7 +284,7 @@ BuildBox
 	InsufficientResourcesFmt = "NICHT GENÜGEND {0}"
 	InvalidReasons
 	{
-		
+
 		Blocked = "<bad>Bau blockiert</bad>"
 		CategorySlotsExceeded = "<bad>Zu viele Teile dieses Typs</bad>"
 		ExistingPart = "<bad>Bestehendes Teil</bad>"
@@ -358,12 +358,12 @@ BuildBox
 }
 CareerLog
 {
-	
+
 	Title = Karriereprotokoll
 }
 CareerMode
 {
-	
+
 	CommsTip = "<b>Kommunikation</b>\n\nÖffne einen Kommunikationslink zu anderen Schiffen in der Nähe.\n\nSchnelltaste: <btn id='Comms.OpenClose'/>"
 	CreateCustomMarker = "<btn id='General.UIClick'/>, um hier eine Benutzermarkierung hinzuzufügen."
 	CustomMarkerName = "Gib einen Namen für diese Benutzermarkierung ein:"
@@ -397,7 +397,7 @@ CareerMode
 }
 CareerModeConfig
 {
-	
+
 	Advanced = "Erweiterte Spieloptionen"
 	AdvancedInfo = "Wenn du diese Optionen änderst, ändert das die angedachte Spielweise des Spiels, aber du kannst sie gerne ändern, wenn dir das Spielen dadurch mehr Spaß macht."
 	CantDisableSalvagingTip = "„Ich hasse Crew-Bau“ muss ebenfalls aktiviert sein."
@@ -430,13 +430,13 @@ CareerModeConfig
 }
 CategoryNouns
 {
-	
+
 	ThrusterPlural = Schubdüsen
 	ThrusterSingular = Schubdüse
 }
 ChatBox
 {
-	
+
 	ChatFmt = ""
 	Send = Senden
 	SendingTooFast = "Woah, nicht so schnell! Du sendest zu schnell Nachrichten!"
@@ -446,13 +446,13 @@ ChatBox
 }
 CloudStorage
 {
-	
+
 	UsedFmt = "Steam-Cloud: <good>{0:0.0} %</good> verwendet"
 	UsedTipFmt = "Verwendet: {0}/{1}\nVerfügbar: {2}"
 }
 Codex
 {
-	
+
 	CodexDialog = "Tutorials & Kodex"
 	HowToPlay = "So wird gespielt:"
 	Lore = Kodex
@@ -463,7 +463,7 @@ Codex
 }
 ColorPicker
 {
-	
+
 	Copy = "Farbe kopieren"
 	Hex = ""
 	Hsv = ""
@@ -472,7 +472,7 @@ ColorPicker
 }
 Colorblind
 {
-	
+
 	Achromatopsia = Achromatopsie
 	Deuteranopia = Deuteranopie
 	Normal = ""
@@ -481,7 +481,7 @@ Colorblind
 }
 CombatDifficulty
 {
-	
+
 	Easy = Fähnrich
 	EasyTip = "● Erleide 30 % weniger Schaden von Feinden.\n● Verursache 40 % mehr Schaden bei Feinden."
 	Hard = ""
@@ -495,7 +495,7 @@ CombatDifficulty
 }
 CommWindow
 {
-	
+
 	AcceptMission = Akzeptieren
 	AcceptMissionTip = "Akzeptiert diese Mission, fügt sie zu deinem Missionsprotokoll hinzu und erlaubt es dir, die Ziele der Mission abzuschließen und deren Belohnungen zu erhalten."
 	AutoHireFmt = "Max. anheuern ({0})\n{1}"
@@ -539,7 +539,7 @@ CommWindow
 }
 CommsBox
 {
-	
+
 	DistFmt = ""
 	Hail = RUFEN
 	HailingFailedFmt = "<bad>RUF ABGEWIESEN</bad>\n{0}"
@@ -553,7 +553,7 @@ CommsBox
 }
 ConstructionLegality
 {
-	
+
 	IllegalInCombat = "Du kannst im Kampf keine Schiffe modifizieren oder reparieren."
 	IllegalOutsideSpawnArea = "Du kannst außerhalb des Spawn-Bereichs keine Schiffe modifizieren oder reparieren."
 	IllegalSelfDestructing = "Du kannst keine Schiffe modifizieren oder reparieren, die sich selbst zerstören."
@@ -561,18 +561,18 @@ ConstructionLegality
 }
 CreativeMode
 {
-	
+
 	AddConnectionHover = "<btn id='Game.UseTool'/> und ziehen, um eine Hypersprung-Verbindung zwischen zwei Sternensystemen zu erstellen."
 	Ai
 	{
-		
+
 		None = Keine
 		TipFmt = "Weise die KI „{0}“ den/dem ausgewählten Schiff(en) zu."
 		Title = KI
 	}
 	Allegiance
 	{
-		
+
 		Barbarian = Pirat
 		BarbarianTip = "Schiffe von Piraten sind mit allen anderen Schiffen verfeindet, sogar mit anderen Piratenschiffen – bis auf Schrottschiffe."
 		Junk = Schrott
@@ -585,7 +585,7 @@ CreativeMode
 	}
 	AutoBuilder: CameraHelper
 	{
-		
+
 		BottomToTop = "Von unten nach oben"
 		BuildOrder = Baureihenfolge
 		Cheap = "Günstigstes zuerst"
@@ -610,7 +610,7 @@ CreativeMode
 	}
 	BattleHelper
 	{
-		
+
 		AI = KI
 		AddShip = "Schiff hinzufügen"
 		AutoCamera = "Kamera automatisieren"
@@ -630,7 +630,7 @@ CreativeMode
 	}
 	BenchmarkHelper
 	{
-		
+
 		Duration = Dauer
 		FpsFmt = ""
 		FramesFmt = "Bilder: {0}"
@@ -645,7 +645,7 @@ CreativeMode
 	}
 	CameraHelper
 	{
-		
+
 		Buffer = "Puffer (Meter)"
 		Delay = "Verzögerung:"
 		Duration = "Dauer:"
@@ -668,7 +668,7 @@ CreativeMode
 		Tween = "Zwischen:"
 		TweenMode
 		{
-			
+
 			EaseIn = Hineingleiten
 			EaseInOut = Hinein-/Herausgleiten
 			EaseOut = Herausgleiten
@@ -714,7 +714,7 @@ CreativeMode
 	InvulnerableTip = "Bei Auswahl der Option wird das Schiff immun gegen jede Art von Schaden."
 	POIConfig
 	{
-		
+
 		CustomName = "Benutzerdefinierter Name"
 		ShowOnlyInFog = "Nur in Nebel anzeigen"
 		Title = "Optionen für interessante Orte"
@@ -725,7 +725,7 @@ CreativeMode
 	PartDestructTip = "Zerstört ausgewählte(s) Teil(e)."
 	PlanetConfig
 	{
-		
+
 		Distance = Tiefe
 		Random = Zufällig
 		Seed = ""
@@ -734,7 +734,7 @@ CreativeMode
 	}
 	PlayAs
 	{
-		
+
 		AllPlayers = "Alle Spieler"
 		AllPlayersTipFmt = "Ermöglicht es dir, die Schiffe aller Spieler zu steuern.\n\nNeu platzierte Schiffe werden Spieler 1 gegeben."
 		PlayerIndexFmt = "Spieler {0}"
@@ -751,13 +751,13 @@ CreativeMode
 	ResetCrewTip = "Teleportiert alle Crewmitglieder zurück auf ihre ursprünglichen Stationen."
 	SavedShips
 	{
-		
+
 		CrewCountFmt = "{0} Crewmitglieder"
 	}
 	SelectObjectsTip = "<b>Auswahlwerkzeug</b>\n\nMit diesem Werkzeug kannst du Schiffe und andere Objekte auswählen, bewegen, drehen und löschen.\n\nSchnelltaste: <btn id='CreativeMode.SelectTool'/>"
 	SetBackground
 	{
-		
+
 		Tip = "Verändert das Aussehen des Weltallhintergrunds."
 		Title = "Hintergrund ändern ..."
 	}
@@ -766,7 +766,7 @@ CreativeMode
 }
 CreativeModeConfig
 {
-	
+
 	Description = "Entwirf Schiffe mit unendlich vielen Credits, wobei alle Baupläne freigeschaltet sind."
 	GenerateFtlGates = "Hypersprung-Relais erstellen"
 	GenerateFtlGatesTip = "Bei Auswahl der Option werden zu allen Sternensystemen automatisch Hypersprung-Relais hinzugefügt, die eine Verbindung zu angrenzenden Systemen herstellen."
@@ -781,7 +781,7 @@ CreativeModeConfig
 }
 CrewAndResourceTransfer
 {
-	
+
 	CancelTransfer = "Transfer abbrechen"
 	Crew = ""
 	CrewFailure = "Nicht alle gewünschten Crewmitglieder konnten transferiert werden. Das liegt für gewöhnlich daran, dass es keine Luftschleusen gibt, durch die die Crewmitglieder von ihrem aktuellen zum neuen Schiff gehen können."
@@ -797,7 +797,7 @@ CrewAndResourceTransfer
 }
 CrewBox
 {
-	
+
 	AddCrew = "Mehr Crewmitglieder hinzufügen ..."
 	AddRole = "Neue Rolle"
 	AddRoleDisabledTip = "Maximale Anzahl an Rollen erreicht."
@@ -855,7 +855,7 @@ CrewBox
 }
 CrewEditor
 {
-	
+
 	BodyType = Frisur
 	Copy = Kopieren
 	HairColor = Haarfarbe
@@ -870,7 +870,7 @@ CrewEditor
 }
 CrewScarcity
 {
-	
+
 	Max = Max.
 	MaxTip = "Es stehen bis zu 2.000 Crewmitglieder zum Anheuern zur Verfügung, unabhängig vom Ruhm des Spielers. Durch diese Option kannst du unbegrenzt grinden, ohne jemals gegen härtere Gegner kämpfen zu müssen, wodurch das Spiel viel einfacher wird."
 	Plentiful = Reichlich
@@ -882,7 +882,7 @@ CrewScarcity
 }
 DecalGroups
 {
-	
+
 	Shapes = Formen
 	Symbols = Symbole
 	TextLarge = ""
@@ -890,7 +890,7 @@ DecalGroups
 }
 DominationMapStyles
 {
-	
+
 	Large2T = "2 Teams – Groß"
 	Large2TTip = "Zwei Teams, sechs kleine Kontrollpunkte, zwei große Kontrollpunkte und ein riesiger Kontrollpunkt."
 	Large3T = "3 Teams – Groß"
@@ -912,11 +912,11 @@ DominationMapStyles
 }
 DominationMode: Pvp
 {
-	
+
 	CapturePointFmt = "<b>{0}</b>\n<add_money>{1:n0}</add_money><gray>/{2} Sek.</gray>"
 	CapturePointNames
 	[
-		
+
 		""
 		""
 		""
@@ -954,7 +954,7 @@ DominationMode: Pvp
 	RestockResourcesTip = "Füllt die Munition und die Ressourcen des Schiffs vollständig wieder auf."
 	Scoreboard: ^/0/Scoreboard
 	{
-		
+
 		CapturePoints = Kontrollpunkte
 		Credits = ""
 		CurrentIncome = "Aktuelles Einkommen"
@@ -965,7 +965,7 @@ DominationMode: Pvp
 }
 DominationModeConfig: PvpModeConfig
 {
-	
+
 	BasicIncome = Grundeinkommen
 	BasicIncomeTip = "Die Anzahl der Credits (<img name='money' colored='true'/>), die jedes Team alle 10 Sekunden (bei ½ Geschwindigkeit) zusätzlich zu seinen Kontrollpunkten verdient."
 	CapturePointIncome = Kontrollpunkt-Einkommen
@@ -982,7 +982,7 @@ DominationModeConfig: PvpModeConfig
 	Name = Herrschaft
 	Rulesets
 	{
-		
+
 		Large1500K = "Große Karte – 1,5 M"
 		Large1500KShort = "GRO\n1,5 M"
 		Large3000K = "Große Karte – 3 M"
@@ -1008,7 +1008,7 @@ DominationModeConfig: PvpModeConfig
 }
 Doodads
 {
-	
+
 	AsteroidCarbon_L = "Kohlenstoff-Asteroid (L)"
 	AsteroidCarbon_M = "Kohlenstoff-Asteroid (M)"
 	AsteroidCarbon_S = "Kohlenstoff-Asteroid (S)"
@@ -1084,7 +1084,7 @@ Doodads
 }
 EconDifficulty
 {
-	
+
 	Fast = Baumeister
 	FastTip = "● Fundrate von Ressourcen um 100 % erhöht.\n● Geldbelohnungen um 100 % erhöht.\n● Ruhm-/Rufbelohnungen um 50 % erhöht."
 	FreeBuild = "Freiwerker (Bau ohne Grenzen)"
@@ -1096,7 +1096,7 @@ EconDifficulty
 }
 EditorGroups
 {
-	
+
 	Crew = ""
 	Defenses = Verteidigungsanlagen
 	Flight = Flug
@@ -1114,10 +1114,10 @@ EditorGroups
 }
 EliminationMode: Pvp
 {
-	
+
 	Scoreboard: ^/0/Scoreboard
 	{
-		
+
 		Health = TP
 	}
 	TeamStrengthTip = "Die Stärke dieses Spielers oder Teams. Sie sind besiegt, sobald dieser Balken leer ist."
@@ -1125,12 +1125,12 @@ EliminationMode: Pvp
 }
 EliminationModeConfig: PvpModeConfig
 {
-	
+
 	Description = "Ein Kampf bis zum Tod! Letzte überlebende Spieler oder Teams gewinnen!"
 	Name = Eliminierung
 	Rulesets
 	{
-		
+
 		BR1500K = "Battle Royale – 1,5 M"
 		BR1500KShort = "BR\n1,5 M"
 		BR3000K = "Battle Royale – 3 M"
@@ -1148,13 +1148,13 @@ EliminationModeConfig: PvpModeConfig
 }
 Errors
 {
-	
+
 	GpuCrash = "DER TREIBER DEINER GRAFIKKARTE SCHEINT ABGESTÜRZT ZU SEIN. FALLS DIESES PROBLEM WEITERHIN BESTEHT, AKTUALISIERE DEINE GRAFIKKARTENTREIBER ODER, FALLS DU SIE VOR KURZEM AKTUALISIERT HAST, STELLE DIE VORHERIGE VERSION WIEDER HER."
 	HasMods = "MODS AKTIVIERT. DIESER CRASH KANN VON EINER MOD VERURSACHT WORDEN SEIN.\nBITTE MELDE DEN CRASH BEIM HERSTELLER DES MODS."
 }
 Factions
 {
-	
+
 	Cabal = "Brut von Sol"
 	Fringe = "Widerstand der Randsysteme"
 	Imperium = Centauri-Imperium
@@ -1163,7 +1163,7 @@ Factions
 }
 FameTitles
 [
-	
+
 	"„WER??“"
 	„SCHLEIERHAFT“
 	„UNSCHEINBAR“
@@ -1186,7 +1186,7 @@ FameTitles
 ]
 Feedback
 {
-	
+
 	AttachErrorLog = "Fehlerprotokoll anhängen"
 	AttachErrorLogTip = "Hängt das Fehlerprotokoll des Programms an. Das macht es für uns leichter, Fehler zu beheben."
 	AttachSavedGame = "Spielstand des aktuellen Spiels anhängen"
@@ -1206,7 +1206,7 @@ Feedback
 }
 FleetsWorkshop: Workshop
 {
-	
+
 	DialogName = "„Steam Workshop“-Schiffsammlung-Uploader"
 	Folder = "Ordner Schiffsammlung:"
 	Name = "Name Schiffsammlung:"
@@ -1216,7 +1216,7 @@ FleetsWorkshop: Workshop
 }
 Formations
 {
-	
+
 	A = ""
 	Alpha = Alpha-Formation
 	B = ""
@@ -1245,7 +1245,7 @@ Formations
 }
 GalaxyMap
 {
-	
+
 	CancelJump = "Hypersprung abbrechen"
 	CantPlotCourseTip = "Du musst mindestens ein Schiff mit einem funktionierenden Hyperantrieb haben."
 	InsufficientFuel = "Einige deiner Schiffe haben nicht genügend Hyperiumtreibstoff (<img name='resource.hyperium'/>) <u>in ihren Hyperantrieben</u>, um in dieses Sternensystem zu springen. Möchtest du trotzdem einen Kurs planen?"
@@ -1259,7 +1259,7 @@ GalaxyMap
 }
 GameLaunchFlow
 {
-	
+
 	ClientInitializing = "Spiel wird gestartet ...\n(Initialisierung)"
 	ClientReceivingFmt = "Spiel wird gestartet ...\n(Daten erhalten: {0:0} %)"
 	ClientStarting = "Spiel wird gestartet!"
@@ -1271,7 +1271,7 @@ GameLaunchFlow
 }
 GameMenu
 {
-	
+
 	Abort = "Zum Setup zurückkehren"
 	CantSaveGameTip = "Das Spiel kann derzeit nicht gespeichert werden."
 	Codex = "Tutorials & Kodex"
@@ -1304,7 +1304,7 @@ GameMenu
 }
 GameResyncFlow
 {
-	
+
 	ClientInitializing = "Spiel nicht synchron, erneute Synchronisierung ...\n(Initialisieren)"
 	ClientReceivingFmt = "Spiel nicht synchron, erneute Synchronisierung ...\n(Spielstatus erhalten: {0:0} %)"
 	ClientResuming = "Spiel wird fortgesetzt!"
@@ -1317,7 +1317,7 @@ GameResyncFlow
 }
 GameSetupScreen
 {
-	
+
 	AddAI = "KI-Spieler hinzufügen"
 	AddShip = ""
 	AddShipTip = "Füge ein Schiff zu deiner Flotte hinzu."
@@ -1349,7 +1349,7 @@ GameSetupScreen
 	GameOpen = "Spiel ist <good>OFFEN</good>\n<s12>Andere Spieler können beitreten, sofern das Spiel nicht voll ist.</s12>"
 	HostDisconnectReason
 	{
-		
+
 		Canceled = "Der Host hat das Spiel abgebrochen."
 		ConnectionLost = "Verbindung zum Host verloren."
 		Kicked = "Der Host hat dich aus dem Spiel geworfen."
@@ -1389,7 +1389,7 @@ GameSetupScreen
 }
 Hud
 {
-	
+
 	AbandonShip = "Schiff verlassen"
 	AbandonShipTip = "Weist alle Crewmitglieder an, das Schiff zu verlassen (wenn möglich)."
 	AttackTip = "<b>Angreifen</b>\n\nGreife ein anderes Schiff an. Kann auch verwendet werden, um dein eigenes Schiff anzugreifen. (Halte <btn id='Game.InvertCollisionAvoidance'/> gedrückt, um die Kollisionsvermeidung ein- oder auszuschalten.)\n\nSchnelltaste: <btn id='Game.Attack'/>"
@@ -1524,22 +1524,22 @@ Hud
 }
 Inputs
 {
-	
+
 	Brushes
 	{
-		
+
 		Name = "Schiffseditor (Pinsel)"
 	}
 	Clear = Löschen
 	Comms
 	{
-		
+
 		Name = Kommunikation
 		OpenClose = "Kommunikationstafel öffnen/schließen"
 	}
 	ControlGroups
 	{
-		
+
 		CreatePartGroupFmt = "Teilegruppe „{0}“ erstellen"
 		CreateShipGroupFmt = "Schiffsgruppe „{0}“ erstellen"
 		Name = Steuerungsgruppen
@@ -1550,7 +1550,7 @@ Inputs
 	}
 	CreativeMode
 	{
-		
+
 		AutoBattleCamera = "Automatisierte Schlachtkamera ein-/ausschalten"
 		Delete = "Ausgewählte Objekte löschen"
 		DeleteNode = "Sternensystem löschen"
@@ -1572,7 +1572,7 @@ Inputs
 	}
 	Crew
 	{
-		
+
 		AddToSelection = "Einzelnes Crewmitglied zu Auswahl hinzufügen"
 		Name = Crew-Verwaltung
 		OpenClose = "Crew-Tafel öffnen/schließen"
@@ -1586,7 +1586,7 @@ Inputs
 	Defaults = Standardwerte
 	Design
 	{
-		
+
 		AppendShapeMode = "Formmodus hinzufügen"
 		BuildClose = "Bautafel schließen"
 		BuildOpen = "Bautafel öffnen"
@@ -1625,13 +1625,13 @@ Inputs
 	}
 	Formations
 	{
-		
+
 		MakeFormationFmt = "Formation „{0}“ verwenden"
 		Name = Formationen
 	}
 	Game
 	{
-		
+
 		AllowSalvageOwnShip = "„Eigenes Schiff wiederverwerten“ erlauben"
 		AppendSelection = "Zu Auswahl hinzufügen"
 		Attack = Angreifen
@@ -1686,7 +1686,7 @@ Inputs
 	}
 	General
 	{
-		
+
 		Cancel = Abbrechen/Zurück/Menü
 		CaptureGif = "Animiertes GIF aufnehmen"
 		Confirm = "O. K./Akzeptieren/Bestätigen"
@@ -1703,7 +1703,7 @@ Inputs
 	}
 	KeyNames
 	{
-		
+
 		A = ""
 		Alt = ""
 		Apps = ""
@@ -1810,7 +1810,7 @@ Inputs
 	}
 	MouseButtonNames
 	{
-		
+
 		Button4 = "Maustaste 4"
 		Button5 = "Maustaste 5"
 		Left = Linksklick
@@ -1819,7 +1819,7 @@ Inputs
 	}
 	Multiplayer
 	{
-		
+
 		Name = ""
 		SendChat = "Chatnachricht senden"
 		ShowScoreboard = "Anzeigetafel anzeigen"
@@ -1828,13 +1828,13 @@ Inputs
 	None = Keine
 	PartTargetCancelers
 	{
-		
+
 		headlight_aim = "Scheinwerferausrichtung zurücksetzen"
 		tractor_beam = "Traktorstrahl abbrechen"
 	}
 	PartTargeters
 	{
-		
+
 		chaingun_aim = "Chain Gun ausrichten"
 		headlight_aim = "Scheinwerfer ausrichten"
 		prism_aim = "Ionen-Prisma ausrichten"
@@ -1842,7 +1842,7 @@ Inputs
 	}
 	PartToggles
 	{
-		
+
 		airlock_type_both = "Luftschleuse: Eingang & Ausgang"
 		airlock_type_closed = "Luftschleuse: Geschlossen"
 		airlock_type_entry = "Luftschleuse: Nur Eingang"
@@ -1881,12 +1881,12 @@ Inputs
 	}
 	PartTriggers
 	{
-		
+
 		detonate = "Sprengladung detonieren"
 	}
 	Parts
 	{
-		
+
 		Name = "Schiffseditor (Teile)"
 		SelectPartFmt = "Teil {0} in Kategorie auswählen"
 		SelectPartGroupFmt = "Teilekategorie {0} auswählen"
@@ -1894,7 +1894,7 @@ Inputs
 	PressKeyOrClick = "Drücke die Taste, die du verwenden möchtest, oder klicke in dieses Feld:"
 	Resources
 	{
-		
+
 		ClearTool = "„Festgelegte Ressourcen löschen“-Werkzeug"
 		ClearToolMode = "„Festgelegte Ressourcen löschen“-Modus"
 		Eject = "Ressourcen abwerfen"
@@ -1911,7 +1911,7 @@ Inputs
 	}
 	View
 	{
-		
+
 		DragFocus = "Ansicht ziehen/fokussieren"
 		FocusCursorMode = "Zeigermodus: Fokus"
 		FocusMidpoint = "Fokus auf ausgewählten/anvisierten Mittelpunkt"
@@ -1937,7 +1937,7 @@ Inputs
 }
 JobNames
 {
-	
+
 	CollectNuggets = "Ressourcen sammeln"
 	Construct = Bauen
 	Deconstruct = Zerlegen
@@ -1951,7 +1951,7 @@ JobNames
 }
 Jobs
 {
-	
+
 	ConstructFmt = "Baut {0}"
 	DeconstructFmt = "Zerlegt {0}"
 	FireExtinguishGetFmt = "Holt {0}"
@@ -1971,7 +1971,7 @@ Jobs
 }
 LoadPaintScheme
 {
-	
+
 	ConfirmDelete = "Möchtest du dieses Lackierungsschema wirklich löschen?"
 	Delete = Entfernen
 	Okay = Laden
@@ -1979,7 +1979,7 @@ LoadPaintScheme
 }
 LoadSaveGame
 {
-	
+
 	Auto = "Automatisch gespeicherte Spiele"
 	AutoSave = "Automatisch gespeichertes Spiel"
 	AutoSaving = "Automatisches Speichern ..."
@@ -2003,7 +2003,7 @@ LoadSaveGame
 }
 LobbyScreen
 {
-	
+
 	Ban = "Aus meinen Spielen verbannen"
 	BanTip = "Wenn du hier ein Häkchen setzt, kann dieser Spieler keinen Spielen beitreten, die du ausrichtest."
 	ClearFilters = "Filter löschen"
@@ -2027,7 +2027,7 @@ LobbyScreen
 	Full = <bad>VOLL</bad>
 	GameInfo
 	{
-		
+
 		Closed = "<bad>SPIEL IST GESCHLOSSEN</bad>"
 		CustomRuleset = "<b>Regeln:</b> Benutzerdefiniert"
 		Full = "<bad>SPIEL IST VOLL</bad>"
@@ -2049,7 +2049,7 @@ LobbyScreen
 	}
 	GameJoinDenyReason
 	{
-		
+
 		Banned = "Der Host hat dich aus seinen Spielen verbannt."
 		DataIncompatible = "Deine Spieldaten sind mit den Spieldaten des Hosts nicht kompatibel. Dies kann durch Mods verursacht werden."
 		GameClosed = "Der Host hat das Spiel geschlossen und keine weiteren Spieler können beitreten."
@@ -2077,7 +2077,7 @@ LobbyScreen
 	LobbyTypeTip = "Nur Lobbys anzeigen, die diesem Typ entsprechen."
 	LobbyTypes
 	{
-		
+
 		Coop = Koop
 		PVP = ""
 	}
@@ -2107,10 +2107,10 @@ LobbyScreen
 }
 Lore
 {
-	
+
 	Cabal
 	{
-		
+
 		Lore1 = "Die Brut von Sol ist eine religiöse und wissenschaftliche Organisation, die Sol (dem Stern des Sonnensystems der Erde) huldigte, bis dieser vor 50 Jahren zerstört wurde. Jetzt will die Organisation ihren toten Gott durch wissenschaftliche Forschungen „wieder zum Leben erwecken“."
 		Lore2 = "Auch wenn nicht genau bekannt ist, wann die Brut gegründet wurde, so gibt es sie doch seit mehreren Hundert Jahren. Ursprünglich war sie eine geheime Sekte, hat sich inzwischen aber zu einer riesigen Mainstream-Religion und einem mächtigen galaktischen Nationalstaat entwickelt. Ihre Anhänger glauben, dass jeder Stern im Prinzip ein Gott ist – ein Schöpfer von Planeten und Monden und Spender von Energien, die das Leben erhalten. Obwohl sie glauben, dass jeder Stern ein Gott ist, betet die Brut von Sol besonders den Stern der Erde, Sol, an, da er nicht nur der Schöpfer der Menschheit sondern auch der antiken Zivilisation war, die die Hypersprungtore erschaffen und den Armstrong-Monolithen zurückgelassen hat."
 		Lore3 = "Die Brut von Sol ist eine enorm organisierte Religion, die mehr als ein Fünftel der bekannten Galaxie als ihr eignes Territorium ansieht, weshalb es sich bei der Brut von Sol um einen der größten Nationalstaaten der Galaxie handelt. Innerhalb des Territoriums der Brut sind Religion und Regierung untrennbar ineinander verwoben. Ein Rat mit zwölf Hohepriestern von Sol, dessen Positionen vererbt werden, macht die Gesetze, und eine komplexe Hierarchie aus Priestern und anderen Geistlichen nimmt die Regierungsfunktionen wahr und geht dabei mit ungewöhnlicher Strenge und Härte vor. Aber jene, die bereit sind, unter den Erlässen des Rats zu leben, können ein gutes Leben haben, denn die Brut bietet umfassende Sozialleistungen und ein universelles Grundeinkommen. Und viele Menschen aus allen Ecken der Galaxie nehmen tatsächlich ihren Mut für die Reise in den Raum der Brut zusammen, um das auszunutzen, was vor allem der offenen Einwanderungspolitik der Brut zu verdanken ist. Die einzige Bedingung: Entsage allen anderen Religionen und bekenne dich ganz zum Glauben an Sol."
@@ -2121,7 +2121,7 @@ Lore
 	}
 	Fringe
 	{
-		
+
 		Lore1 = "Der Widerstand der Randsysteme ist eine Ansammlung von unabhängigen Sternensystemen, die nur ihr gemeinsames Verlangen nach Unabhängigkeit und ihr Überlebenswille vereint."
 		Lore2 = "Die „Rand“-Sternensysteme sind jene, die am Rande der bekannten Galaxie oder zwischen den Territorien der großen Fraktionen liegen. Sie sind für gewöhnlich kaum bewohnt und bieten nur einen niedrigen Lebensstandard. Es gibt zwar einen starken Ehrenkodex unter den Randbewohnern, aber es gibt keine gemeinsame Regierung und auch kein grenzüberschreitendes Rechtssystem, das von den einzelnen Siedlungen oder Stationen durchgesetzt werden könnte. Dementsprechend ziehen die Randsysteme etwas gröbere Charaktere an und die Piraterie ist weit verbreitet."
 		Lore3 = "Es gibt keine formellen Kooperationsabkommen zwischen den Randsystemen, deshalb basiert ihre „Vereinigung“ auf ihrem gemeinsamen Hass auf die anderen großen Fraktionen und der Erkenntnis, dass sie ihre Unabhängigkeit besser verteidigen können, wenn sie (widerwillig) zusammenarbeiten. Trotz dieser Kooperation können es die Randsysteme nicht mit der Macht auch nur einer der großen Fraktionen aufnehmen und kämpfen daher einen verlorene Kampf, in dem sie ihre Unabhängigkeit Stück für Stück verlieren."
@@ -2129,7 +2129,7 @@ Lore
 	}
 	Imperium
 	{
-		
+
 		Lore1 = "Das Centauri-Imperium ist ein junges aber sehr ehrgeiziges und rücksichtsloses Militärimperium, das seinen Ursprung im Sternbild Centaurus hat."
 		Lore2 = "Die Systeme des Sternbilds Centaurus wurden ursprünglich von der Terran Union regiert, die ihr Hauptquartier auf der Erde hatte. Nach der Zerstörung des gesamten Sol-Systems vor 50 Jahren war das Sternbild Centaurus plötzlich unabhängig und ein riesiges galaktisches Machtvakuum musste gefüllt werden. Aus einem kurzen ideologisch begründeten Bürgerkrieg innerhalb des Sternbilds Centaurus ging triumphal das neue Centauri-Imperium hervor und erweiterte sein Reich durch Eroberungen und Einschüchterung schnell in die umgebenden Systeme. In gerade einmal 50 Jahren ist das Centauri-Imperium zur mächtigsten Militärkraft der Galaxie geworden, kontrolliert fast die Hälfte aller bekannten Systeme und hat die restlichen Systeme bereits ins Visier genommen."
 		Lore3 = "Das Centauri-Imperium ist in seiner Organisationsstruktur ungewöhnlich flach, nicht nur im zivilen Bereich, sondern auch im militärischen. Als wahre direkte Demokratie bietet das Imperium jedem Bürger des Haupt-Centaurus-Systems, der das Alter von 12 EJ erreicht hat, das Recht, Gesetzesvorschläge einzureichen und über jeden Bestandteil der Gesetzgebung abzustimmen. Dieser Vorgang wird über überlichtschnelle Kommunikation und eine öffentliche Blockchain durchgeführt. Sogar die wichtigsten Entscheidungen, wie zum Beispiel die Anerkennung der Kapitulationsbedingungen des jüngsten eroberten Sternensystems kann innerhalb von Minuten getroffen werden, indem die gesamte Bürgerschaft sofort über eine anstehende Abstimmung informiert wird. Dadurch sehen sich die meisten Centauri-Bürger in der Verantwortung, immer über die diversen Probleme des Imperiums informiert zu sein, und das zivile Engagement ist besonders ausgeprägt. Es gibt kein einzelnes „Staatsoberhaupt“, und wenn es darum geht, wer die Macht hat, dann liegt der Großteil davon bei den Prominenten, die ihre Anhänger dahingehend beeinflussen, wie sie bei der nächsten Wahl abstimmen sollen."
@@ -2139,7 +2139,7 @@ Lore
 	}
 	Monolith
 	{
-		
+
 		Lore1 = "Die Monolith-Kooperative ist ein gigantisches Bergbau-, Produktions- und Transportunternehmen, das den galaktischen Handel und die Wirtschaft mit fast schon monopolistischer Macht dominiert."
 		Lore2 = "Als es noch keinen Hyperantrieb gab, hieß sie noch „Armstrong-Bergbau-Kooperative“. Das Unternehmen hatte enormes Glück, denn sie waren die Ersten, die tief im Asteroidengürtel des Sol-Systems der Erde das fanden, was inzwischen als „Armstrong-Monolith“ bekannt ist. Der Armstrong-Monolith war das letzte Überbleibsel einer alten Zivilisation, die vor seiner Zerstörung auf dem Planeten lebte, der zwischen Mars und Jupiter unsere Sonne umkreiste. Der Monolith selbst war ein technologisches Archiv, das nach seiner Dekodierung die Baupläne für die Hyperantriebstechnologie preisgab und uns die Fähigkeit bescherte, ein riesiges Netzwerk aus Hypersprung-Relais zu finden und zu nutzen, das vor langer Zeit von dieser Zivilisation aufgebaut worden war. Auch wenn es unterschiedliche Meinungen dazu gibt, so wird im Allgemeinen doch angenommen, dass die Zerstörung ihres Planeten durch einen Missbrauch der Hypersprungtechnologie verursacht wurde – hervorgerufen von der gleichen Überheblichkeit, die schließlich dazu führte, dass die Menschheit ihr eigenes Sol-System zerstörte. Es wurden nie biologische Überbleibsel oder irgendwelche Hinweise auf ihre physische Form gefunden, weshalb es viele Spekulationen dazu gibt, ob sie in Wahrheit Außerirdische oder Vorfahren der Menschen waren."
 		Lore3 = "Nach der Entdeckung des Armstrong-Monoliths dauerte es nur zwei Jahre, bis die Armstrong-Bergbau-Kooperative die grundlegende Hyperantriebstechnologie nachgebaut hatte, und danach nur weitere fünf Jahre, um sie zuverlässig genug für die kommerzielle Nutzung zu machen. Obwohl das Unternehmen die Technologie zunächst als das wichtigste Handelsgeheimnis aller Zeiten behandelte, gelangten die Grundlagen der Hyperantriebstechnologie mit den Jahren an die Öffentlichkeit und verbreiteten sich schnell im ganzen Sonnensystem. Trotzdem gaben diese paar Jahre dem Unternehmen (inzwischen als Monolith-Kooperative bekannt) genug Vorsprung, um seine Konkurrenten zu übertrumpfen und schließlich das größte Industrie-Unternehmen in der Geschichte der Menschheit zu werden."
@@ -2150,7 +2150,7 @@ Lore
 }
 MapSizes
 {
-	
+
 	Huge = Riesig
 	HugeTip = "160 bis 200 Sonnensysteme."
 	Large = Groß
@@ -2166,7 +2166,7 @@ MapSizes
 }
 MirrorAxis
 {
-	
+
 	All = "Spiegel: 8 Richtungen"
 	Both = "Spiegel: Vertikal + Horizontal"
 	BothDiagonal = "Spiegel: Diagonal NO/SW + NW/SO"
@@ -2177,7 +2177,7 @@ MirrorAxis
 }
 Misc
 {
-	
+
 	Apply = Anwenden
 	Cancel = Abbrechen
 	ClassicDowngrade = "<halign value='Left'>Hi, es sieht so aus, als ob du bereits die „klassische“ Version von Cosmoteer gespielt hast! Du spielst jetzt die aktualisierte Demo der neuen „modernen“ Version.\n\nAuch wenn es viele Verbesserungen in dieser Demo gibt, entscheidest du dich vielleicht dafür, dass du lieber die alte klassische Version spielen möchtest. Dafür brauchst du nur die folgenden Schritte befolgen:\n\n\t1. Öffne die Eigenschaften für die Cosmoteer-Demo auf Steam.\n\t2. Klicke auf den Betas-Tab.\n\t3. Wähle im Dropdown-Menü „Klassisch“ aus.\n\nDie Cosmoteer-Demo sollte sich automatisch auf die alte klassische Version „aktualisieren“. Viel Spaß!</halign>"
@@ -2208,7 +2208,7 @@ Misc
 }
 MissileTypes
 {
-	
+
 	EMP = EMP-Rakete
 	EMPDesc = "Eine große Lenkrakete, die beim Aufprall einen elektromagnetischen Impuls ausstößt, der elektrischen Systemen in einem großen Gebiet die Energie entzieht."
 	HE = "Hochexplosive Raketen"
@@ -2220,7 +2220,7 @@ MissileTypes
 }
 MissionCategories
 {
-	
+
 	Bounties = Kopfgelder
 	Debug = ""
 	Deliveries = "Lieferungen (wiederkehrend)"
@@ -2231,7 +2231,7 @@ MissionCategories
 }
 MissionLog
 {
-	
+
 	Abandon = Aufgeben
 	AbandonTip = "Gib diese Mission auf und entferne sie dauerhaft aus dem Missionsprotokoll, woraufhin du keine Belohnungen mehr für sie erhältst."
 	CategorizeByFaction = "<image name='categorize'/> Fraktion"
@@ -2282,7 +2282,7 @@ MissionLog
 }
 Missions
 {
-	
+
 	Bounty = Kopfgeld
 	BountyDesc = "Ein entflohenes Schiff (<b>{target_ship}</b>) wird wegen illegaler Aktivitäten im System {mission_location} gesucht. Die Behörden von „{faction_name}“ haben ein Kopfgeld in Höhe von {money} für den Cosmoteer ausgelobt, der das Schiff eliminieren kann."
 	ClearAsteroidField = "Asteroidenfeld räumen"
@@ -2313,7 +2313,7 @@ Missions
 }
 Mods
 {
-	
+
 	Activate = Aktivieren
 	AuthorFmt = "Von {0}"
 	AutoDisabled = "Einige Mods sind mit dieser Version von Cosmoteer vielleicht nicht kompatibel und wurden automatisch deaktiviert."
@@ -2358,7 +2358,7 @@ Mods
 }
 ModsSync
 {
-	
+
 	DialogName = "Mods synchronisieren"
 	MissingMods = "Die folgenden Mods wurden beim Spielen dieses gespeicherten Spiels verwendet, sind aber derzeit nicht aktiv. Möchtest du diese Mods automatisch abonnieren und aktivieren? Du kannst versuchen, ohne sie zu spielen, dies kann jedoch zu Problemen führen."
 	MissingModsNoSync = "Die folgenden Mods wurden beim Spielen dieses gespeicherten Spiels verwendet, sind aber derzeit nicht aktiv. Du kannst versuchen, ohne sie zu spielen, dies kann jedoch zu Problemen führen."
@@ -2373,7 +2373,7 @@ ModsSync
 }
 ModsWorkshop: Workshop
 {
-	
+
 	DialogName = "„Steam Workshop“-Mod-Uploader"
 	Folder = "Mod-Ordner:"
 	Name = "Mod-Name:"
@@ -2383,7 +2383,7 @@ ModsWorkshop: Workshop
 }
 Multiplayer
 {
-	
+
 	AI = KI
 	AINameFmt = "KI-Spieler {0}"
 	AddressAlreadyInUseFmt = "Ein anderes Programm verwendet bereits den UDP-Port {0} und muss geschlossen werden, bevor du Multiplayer spielen kannst."
@@ -2395,7 +2395,7 @@ Multiplayer
 	ErrorInitializingFmt = "Fehler beim Initialisieren des Multiplayer-Modus: {0}"
 	GameEndReason
 	{
-		
+
 		ConnectionLost = "Verbindung verloren"
 		Deliberate = "Der Host hat das Spiel beendet."
 		Kicked = "Der Host hat dich aus dem Spiel geworfen."
@@ -2421,21 +2421,21 @@ Multiplayer
 }
 NewGame
 {
-	
+
 	SelectMode = "Spielmodus auswählen"
 	StartNewGame = "Neues Spiel starten"
 	Starting = "Spiel wird gestartet ..."
 }
 News
 {
-	
+
 	Next = "Weiter ⮞"
 	Previous = "⮜ Zurück"
 	TitleFmt = "Neuigkeiten ({0}/{1})"
 }
 Objectives
 {
-	
+
 	CompletedFmt = ""
 	CountableFmt = ""
 	DebugEvent = ""
@@ -2464,7 +2464,7 @@ Objectives
 }
 PaintBox
 {
-	
+
 	BrushDisabledTip = "Der ausgewählte Aufkleber oder das Werkzeug unterstützt nicht verschiedene Formen und Größen von „Pinseln“."
 	BrushTip = "Ändert die Form oder die Größe des „Pinsels“, der für den ausgewählten Aufkleber oder das Werkzeug verwendet wird."
 	CancelPasteTip = "Abbrechen und zum Auswahlmodus zurückkehren.\n\nSchnelltaste: <btn id='General.Cancel'/>"
@@ -2513,12 +2513,12 @@ PaintBox
 }
 PartColors
 {
-	
+
 	RoofLight = Lichtfarbe/Helligkeit
 }
 PartTargeters
 {
-	
+
 	ChaingunAim = "<b>Chain Gun ausrichten</b>\n\nRichtet eine oder mehrere ausgewählte Chain Gun(s) auf eine gewünschte Position aus.\n\nSchnelltaste: <btn id='PartTargeters.chaingun_aim'/>"
 	HeadlightAim = "<b>Scheinwerfer ausrichten</b>\n\nRichtet einen oder mehrere ausgewählte Scheinwerfer auf eine gewünschte Position aus.\n\nSchnelltaste: <btn id='PartTargeters.headlight_aim'/>"
 	HeadlightAimCancel = "<b>Scheinwerferausrichtung zurücksetzen</b>\n\nSchnelltaste: <btn id='PartTargetCancelers.headlight_aim'/>"
@@ -2528,7 +2528,7 @@ PartTargeters
 }
 PartToggles
 {
-	
+
 	Boost_Off = "<b>Boost: <bad>Aus</bad></b>\n\nSchnelltaste: <btn id='PartToggles.thruster_boost_off'/>"
 	Boost_On = "<b>Boost: <good>Ein</good></b>\n\nSchnelltaste: <btn id='PartToggles.thruster_boost_on'/>"
 	DistributePower_Off = "<b>Schubdüsen-Energieverteilung: <bad>Aus</bad></b>\n\nSchnelltaste: <btn id='PartToggles.distribute_power_off'/>"
@@ -2561,12 +2561,12 @@ PartToggles
 }
 PartTriggers
 {
-	
+
 	Detonate = "Sprengladung detonieren\n\nSchnelltaste: <btn id='PartTriggers.detonate'/>"
 }
 Parts
 {
-	
+
 	Airlock = Luftschleuse
 	AirlockDesc = "Erlaubt es der Crew, das Schiff zu betreten und zu verlassen, etwa um Ressourcen zu sammeln oder um zwischen Schiffen transferiert zu werden."
 	AirlockIcon = Luftschleuse
@@ -2951,7 +2951,7 @@ Parts
 }
 PostShaders
 {
-	
+
 	Apple2 = ""
 	BlackAndWhite = "Es kam aus dem All"
 	Inversion = Umkehrung
@@ -2960,12 +2960,12 @@ PostShaders
 }
 Pvp: Multiplayer
 {
-	
+
 	ForfeitConfirm = "Bist du sicher, dass du aufgeben willst?"
 	ForfeitTip = Aufgeben
 	Ranks
 	[
-		
+
 		1.
 		2.
 		3.
@@ -2977,7 +2977,7 @@ Pvp: Multiplayer
 	]
 	Scoreboard
 	{
-		
+
 		Place = PLATZ
 		PlayerName = SPIELER
 	}
@@ -2985,7 +2985,7 @@ Pvp: Multiplayer
 }
 PvpModeConfig
 {
-	
+
 	AllowChangeShips = "Ändern der Flottenausrüstung erlauben"
 	AllowChangeShipsTip = "Bei Auswahl der Option können die Spieler während des Kampfes ihre Optionen für käufliche Schiffe ändern."
 	AllowIllegalShips = "Illegale Schiffe erlauben"
@@ -2994,7 +2994,7 @@ PvpModeConfig
 	AllowObserversTip = "Bei Auswahl der Option ist es Spielern in diesem Spiel erlaubt, den Kampf zu beobachten, ohne eines der Schiffe zu wählen oder zu kommandieren."
 	AsteroidDensities
 	{
-		
+
 		High = Hoch
 		Low = Niedrig
 		None = Keine
@@ -3010,7 +3010,7 @@ PvpModeConfig
 	FleetDistanceTip = "Die Entfernung zwischen den Flotten der einzelnen Spielers oder Teams zu Beginn des Spiels."
 	FleetDistances
 	{
-		
+
 		LongFmt = "Lang ({0} Meter)"
 		NormalFmt = "Normal ({0} Meter)"
 		ShortFmt = "Kurz ({0} Meter)"
@@ -3026,7 +3026,7 @@ PvpModeConfig
 	GameSpeedControlTip = "Welcher Spieler (sofern möglich) die Geschwindigkeit des Spiels während des Kampfes ändern kann."
 	GameSpeedControls
 	{
-		
+
 		Disabled = Deaktiviert
 		Everyone = Alle
 		HostOnly = "Nur Host"
@@ -3046,7 +3046,7 @@ PvpModeConfig
 	PerimeterDistanceTip = "Der Radius des Kreises, außerhalb dessen die Schiffe schnell Schaden erleiden."
 	PerimeterDistances
 	{
-		
+
 		FarFmt = "Weit weg ({0} Meter)"
 		NearFmt = "Nah ({0} Meter)"
 		NormalFmt = "Normal ({0} Meter)"
@@ -3064,7 +3064,7 @@ PvpModeConfig
 	ShipAssignModeTip = "Legt fest, wer welchen Spielern Schiffe zuweisen kann."
 	ShipAssignModes
 	{
-		
+
 		All = Alle
 		Host = "Nur Host"
 		Self = "Jeder einzelne Spieler"
@@ -3076,7 +3076,7 @@ PvpModeConfig
 	ShipPreviewModeTip = "Legt fest, welcher Spieler die Schiffe vor Beginn des Spiels sehen kann, die andere Spieler gewählt haben."
 	ShipPreviewModes
 	{
-		
+
 		All = Alle
 		Off = Aus
 		Team = "Gleiches Team"
@@ -3095,7 +3095,7 @@ PvpModeConfig
 }
 ReputationLog
 {
-	
+
 	Fame = "Galaktischer Ruhm"
 	MaxCrewFmt = "Max. Crewmitglieder: {0}"
 	MilestoneFmt = ""
@@ -3103,7 +3103,7 @@ ReputationLog
 }
 ReputationTitleTips
 [
-	
+
 	"Credit-Belohnungen für Missionen um -40 % verringert.\nPreise für Ressourcen, Crew und Baupläne um +100 % erhöht.\nDauer von „Gesucht“ um +100 % erhöht.\nGesuchte Verfolgungsschiffe: 7"
 	"Credit-Belohnungen für Missionen um -30 % verringert.\nPreise für Ressourcen, Crew und Baupläne um +75 % erhöht.\nDauer von „Gesucht“ um +75 % erhöht.\nGesuchte Verfolgungsschiffe: 6"
 	"Credit-Belohnungen für Missionen um -20 % verringert.\nPreise für Ressourcen, Crew und Baupläne um +50 % erhöht.\nDauer von „Gesucht“ um +50 % erhöht.\nGesuchte Verfolgungsschiffe: 5"
@@ -3116,7 +3116,7 @@ ReputationTitleTips
 ]
 ReputationTitles
 [
-	
+
 	Erzfeind
 	Rivale
 	Feind
@@ -3129,7 +3129,7 @@ ReputationTitles
 ]
 Resource
 {
-	
+
 	Battery = Batterie
 	BatteryDesc = "Batterien werden verwendet, um verschiedene Schiffssysteme mit Energie zu versorgen.\n\nIm Gegensatz zu anderen Ressourcen können Batterien nicht in Lagerhallen gelagert werden."
 	BatteryPlural = Energie
@@ -3206,7 +3206,7 @@ Resource
 }
 ResourceLimits
 {
-	
+
 	HeaderCount = Gelagert
 	HeaderLimit = ""
 	RemoveAll = "Alle Limits entfernen"
@@ -3216,7 +3216,7 @@ ResourceLimits
 }
 ResourcesBox
 {
-	
+
 	AddSupplyLineTip = "<color r='50' g='149' b='255'>Versorgungslink hinzufügen\n(<btn id='Game.Command'/>)</color>"
 	BuySellCostFmt = "{0} <gray>(Kaufen)</gray>/{1} <gray>(Verkaufen)</gray>"
 	CancelTransfers = "Alle Ressourcentransfers abbrechen"
@@ -3269,12 +3269,12 @@ ResourcesBox
 }
 Rewards
 {
-	
+
 	FameWithLimitFmt = "{0} <gray>(Max. {1})</gray>"
 }
 RoleEditor
 {
-	
+
 	AssignmentPriority = "Einstellungspriorität:"
 	AssignmentPriorityTip = "Die Crew wird automatisch zuerst Rollen mit einer höheren Priorität zugewiesen und dann Rollen mit geringerer Priorität."
 	AutoFillFromLower = "Automatisch aus Rollen mit geringerer Priorität auffüllen."
@@ -3295,14 +3295,14 @@ RoleEditor
 }
 Roles
 {
-	
+
 	DefaultExistingShipRoleName = ""
 	DefaultNewShipRoleName = Rothemd
 	NewRoleName = "Unbenannte Rolle"
 }
 Roster
 {
-	
+
 	ClearFilters = "Filter löschen"
 	ConstructBeds = "Baue mehr Quartiere, um Platz für mehr Crewmitglieder zu machen."
 	CopyAll = "Namen & Aussehen kopieren"
@@ -3328,7 +3328,7 @@ Roster
 	RosterSearchCountFmt = "<s20><white>{0}</white><gray> passende/s Crewmitglied(er)</gray></s20>"
 	SortMode
 	{
-		
+
 		Favorite = "<img name='sort'/> Favoriten"
 		Job = "<img name='sort'/> Aktueller Job"
 		Name = ""
@@ -3339,7 +3339,7 @@ Roster
 }
 SaveMedia
 {
-	
+
 	CalculateSize = "Dateigröße\nberechnen"
 	Copy = Kopieren
 	CopyTip = "Kopiert das Bild in die Zwischenablage deines Betriebssystems, damit du es in andere Anwendungen kopieren kannst."
@@ -3361,10 +3361,10 @@ SaveMedia
 }
 Settings
 {
-	
+
 	Accessibility
 	{
-		
+
 		Ally = Verbündeter
 		ColorBlindLbl = Farbenblind
 		CustomPreset = Benutzerdefiniert
@@ -3383,7 +3383,7 @@ Settings
 	}
 	Audio
 	{
-		
+
 		EffectsVol = Effektlautstärke
 		EffectsVolTip = "Regelt die Gesamtlautstärke aller Effekte im Spiel."
 		InterfaceVol = UI-Lautstärke
@@ -3402,7 +3402,7 @@ Settings
 	}
 	Camera
 	{
-		
+
 		AutoTrack = "Schiffe auf Bildschirm automatisch verfolgen"
 		AutoTrackTip = "Bei Auswahl der Option folgt die Kamera automatisch den Bewegungen jedes Schiffs, das sich auf dem Bildschirm befindet."
 		DirectControlAutoRotate = "Schiffsdrehung anpassen"
@@ -3438,7 +3438,7 @@ Settings
 		MinimapLbl = Minikarte
 		MiniviewCombatMode
 		{
-			
+
 			Auto = ""
 			AutoTip = "Wenn du dich im Kampf befindest, wird immer das Schiff angezeigt, auf das die Hauptansicht gerade nicht gerichtet ist."
 			DontShow = "Nicht anzeigen"
@@ -3455,7 +3455,7 @@ Settings
 		MiniviewLockRotationTip = "Bei Auswahl der Option dreht sich das Bild-in-Bild, um zum angezeigten Schiff zu passen."
 		MiniviewNonCombatMode
 		{
-			
+
 			Auto = ""
 			AutoTip = "Wenn du dich nicht im Kampf befindest, wird das Schiff des Spielers angezeigt, wenn die Haupansicht nicht darauf gerichtet ist."
 			DontShow = "Nicht anzeigen"
@@ -3485,7 +3485,7 @@ Settings
 	}
 	Controls
 	{
-		
+
 		ConfirmDefaults = "Bist du sicher, dass du die Werte aller Steuerungsoptionen auf den Standardwert zurücksetzen willst?"
 		ConflictsFmt = "<bad>❗ {0} Konflikte erkannt ❗</bad>"
 		Defaults = "Standard wiederherstellen"
@@ -3494,7 +3494,7 @@ Settings
 	}
 	CurrentGame
 	{
-		
+
 		CopyGalaxySeed = "Galaxie-Seed kopieren"
 		DifficultyLbl = Schwierigkeitsgrad
 		GalaxySeedFmt = "Galaxie-Seed: <b>{0}</b>"
@@ -3503,7 +3503,7 @@ Settings
 	}
 	Designer
 	{
-		
+
 		BlueprintAutoPause = "Automatische Pause im Bauplanmodus"
 		BlueprintAutoPauseTip = "Bei Auswahl der Option pausiert das Spiel automatisch, wenn der Bauplaneditor geöffnet wird."
 		BuildAllowInsufficientCommand = "Unzureichende Kommandopunkte erlauben"
@@ -3571,7 +3571,7 @@ Settings
 	DialogName = Einstellungen
 	Gameplay
 	{
-		
+
 		AllowShipDeselection = "Schiffauswahl aufheben erlauben"
 		AllowShipDeselectionTip = "Bei Auswahl der Option wird durch einen Klick mit der linken Maustaste in einen leeren Raum die Auswahl aller ausgewählten Schiffe aufgehoben."
 		AlwaysShowCommandWidgets = "Steuerungswerkzeuge immer anzeigen"
@@ -3661,7 +3661,7 @@ Settings
 	}
 	GifRecorder
 	{
-		
+
 		Enable = "GIF-Rekorder aktivieren"
 		EnableTip = "Bei Auswahl der Option werden durchgehende GIF-Aufzeichnungen aktiviert."
 		Framerate1 = "Bildfrequenz: "
@@ -3679,7 +3679,7 @@ Settings
 	}
 	Graphics
 	{
-		
+
 		AnimateBackgrounds = "Animierte Hintergründe"
 		AnimateBackgroundsTip = "Bei Auswahl der Option werden Hintergründe im Spiel animiert. Das Deaktivieren dieser Option kann die Leistung enorm verbessern."
 		BackgroundGrid = Hintergrundraster
@@ -3762,7 +3762,7 @@ Settings
 	KeepSettings = Beibehalten
 	Misc
 	{
-		
+
 		AutoDisableMods = "Mods beim Aktualisieren deaktivieren"
 		AutoDisableModsTip = "Bei Auswahl der Option werden Mods automatisch deaktiviert, wenn das Spiel aktualisiert wird, falls sie nicht mit dem Update kompatibel sein könnten."
 		Bmp = ""
@@ -3808,7 +3808,7 @@ Settings
 		UpdatesLbl = "Updates & Neuigkeiten"
 		VersionCheckMode
 		{
-			
+
 			Off = Aus
 			OffTip = "Das Spiel sucht nicht nach Updates."
 			Stable = "Ein (stabil)"
@@ -3825,7 +3825,7 @@ Settings
 	RevertSettings = Verwerfen
 	Saves
 	{
-		
+
 		AutoSave = "Autom. Speichern"
 		AutoSaveEvery = "Alle "
 		AutoSaveEveryMinutes = " Minuten"
@@ -3853,14 +3853,14 @@ Settings
 }
 ShipClasses
 {
-	
+
 	Asteroid = ""
 	Megaroid = ""
 	Terran = Terra
 }
 ShipInfoDialog
 {
-	
+
 	Author = "Entworfen von:"
 	Description = "Beschreibung/Wissen:"
 	Name = "Schiffsname:"
@@ -3869,7 +3869,7 @@ ShipInfoDialog
 }
 ShipLibraries
 {
-	
+
 	BuiltIn = "Eingebaute Schiffe"
 	BuiltInTip = "Schiffsdesigns, die in Cosmoteer enthalten waren."
 	Classic = "Meine klassischen Schiffe"
@@ -3883,7 +3883,7 @@ ShipLibraries
 }
 ShipLibrary
 {
-	
+
 	AuthorFmt = "Entworfen von: {0}"
 	BrowseWorkshop = "Steam Workshop durchsuchen"
 	BudgetFmt = ""
@@ -3915,7 +3915,7 @@ ShipLibrary
 	SmallIcons = "Kleine Symbole"
 	SortMode
 	{
-		
+
 		CostHigh = "<img name='sort'/> Kosten (Hoch)"
 		CostHighTip = "Sortiert die Schiffe nach ihren Kosten von hoch nach niedrig."
 		CostLow = "<img name='sort'/> Kosten (Niedrig)"
@@ -3942,14 +3942,14 @@ ShipLibrary
 }
 StarterShips
 {
-	
+
 	ModelC = "Das Modell C ist langsam und gut gepanzert und hat zwei Kanonen, die zwar nicht besonders präzise sind, aber gegnerische Schiffe durchdringen können."
 	ModelL = "Das Modell L ist sehr beweglich und verfügt über drei Laserblaster, die gegnerische Subsysteme effektiv zerstören. Es verfügt über keinerlei nennenswerte Verteidigungsanlagen."
 	ModelS = "Das Modell S tauscht Geschwindigkeit und offensive Feuerkraft gegen einen Verteidigungsschildgenerator ein, der feindlichen Beschuss blocken kann."
 }
 StatCategories
 {
-	
+
 	BoostOff = "Boost: Aus"
 	BoostOn = "Boost: Ein"
 	BulletChaingun = Chain-Gun-Projektil
@@ -3975,7 +3975,7 @@ StatCategories
 }
 Stats
 {
-	
+
 	AOEResistFmt = "<white>Widerstand gegen Flächenschaden:</white> <good>{0:0.##} %</good>"
 	AbilityCooldownFmt = "<white>Fähigkeiten-Abklingzeit:</white> <good>{0:0.#}</good><gray> Sekunden</gray>"
 	AccelerationDelayFmt = "<white>Beschleunigungsverzögerung:</white> <good>{0:0.0#}</good> <gray>Sekunden</gray>"
@@ -4125,261 +4125,261 @@ Stats
 }
 Tips
 {
-	
+
 	Accessibility
 	{
-		
+
 		Tip = "Wenn du Schwierigkeiten hast, zwischen den Symbolen für befreundete und feindliche Schiffe zu unterscheiden, kannst du ihre Farben unter <good>Einstellungen -> Barrierefreiheit</good> verändern. Außerdem gibt es noch weitere Einstellungen, um Cosmoteer für sehbehinderte Spieler leichter zugänglich zu machen."
 		Title = "Einstellungen für Farbenblindheit & Barrierefreiheit"
 	}
 	AdvancedCareerMode
 	{
-		
+
 		Tip = "Im Karrieremodus gibt es eine Handvoll erweiterter Optionen, die du ändern kannst, um das Spiel nach deinen Vorlieben anzupassen, etwa den sofortigen Bau von Schiffen oder die Enthüllung des gesamten Sternensystems. Du kannst diese Optionen aktivieren, indem du beim Start eines neuen Spiels im Karrieremodus die <good>Erweiterten Spieloptionen</good> anklickst, oder während eines Spiels <good>Einstellungen -> Aktuelles Spiel -> Erweiterte Spieloptionen</good> aufrufst."
 		Title = "Erweiterte Karrieremodus-Optionen"
 	}
 	AdvancedCommands
 	{
-		
+
 		Tip = "Wenn du die Schaltflächen für erweiterte Schiffsbefehle nicht sehen kannst, kannst du sie unter <good>Einstellungen -> Spiel -> Erweiterte Schiffsbefehle anzeigen</good> aktivieren."
 		Title = "Erweiterte Schiffsbefehle"
 	}
 	AreYouSure
 	{
-		
+
 		Tip = "Zahlreiche der Bestätigungsaufforderungen im Stile von <i>„Bist du sicher, dass du ...“</i> können durch Gedrückthalten von <btn id='General.SuppressConfirmation'/> übersprungen werden."
 		Title = "Bist du sicher?"
 	}
 	AttackDefaults
 	{
-		
+
 		Tip = "Bist du es leid, jedes Mal, wenn du einen Feind angreifst, die Entfernung und die Drehung deines Schiffes einzustellen? Öffne das <img name='hamburger_up'/>-Menü neben dem Namen deines Schiffes und klicke auf <good>Standardangriffswerte speichern</good>. Deine aktuelle Entfernung, deine Drehung und dein Angriffswinkel werden gespeichert, bis du das nächste Mal etwas angreifst."
 		Title = "Standardangriffswerte einstellen"
 	}
 	AutoSave
 	{
-		
+
 		Tip = "Cosmoteer speichert dein Spiel standardmäßig alle 10 Minuten und bewahrt die letzten 10 automatischen Speicherstände auf. Ältere automatische Speicherungen werden automatisch gelöscht. Die Dauer und die Anzahl der aufbewahrten automatischen Speicherstände kannst du unter <good>Einstellungen -> Autom. Speichern</good> verändern."
 		Title = "Automatische Speicherungen"
 	}
 	BattleHelper
 	{
-		
+
 		Tip = "Im Kreativmodus kannst du den Kampfhelfer einsetzen, um Kämpfe zwischen zwei verfeindeten Schiffsflotten zu organisieren und durchzuführen. Du kannst den Kampfhelfer über das <img name='hamburger_down'/>-Menü aufrufen."
 		Title = Kampfhelfer
 	}
 	BlueprintMode
 	{
-		
+
 		Tip = "Mithilfe des „Bauplanmodus“ kannst du vorübergehende, illegale oder unbezahlbare Änderungen am Design deines Schiffes vornehmen, bevor du diese Änderungen tatsächlich festlegst. Klicke auf die <white>Bauplanmodus</white>-Schaltfläche unten links im Schiffseditor, um den Bauplanmodus zu aktivieren."
 		Title = Bauplanmodus
 	}
 	ChangingDifficulty
 	{
-		
+
 		Tip = "Du kannst den Schwierigkeitsgrad im Karrieremodus jederzeit während des Spielens ändern – und nicht nur beim Start eines neuen Spiels. Um den Schwierigkeitsgrad zu ändern, gehe zu <good>Einstellungen -> Aktuelles Spiel</good>."
 		Title = "Wechselnde Schwierigkeit"
 	}
 	Chatting
 	{
-		
+
 		Tip = "Im Multiplayer-Modus kannst du durch Drücken von <btn id='Game.Chat'/> den anderen Spielern Textchat-Nachrichten schicken."
 		Title = Multiplayer-Chat
 	}
 	CollisionAvoidance
 	{
-		
+
 		Tip = "Schiffe werden in der Regel versuchen, um große Hindernisse herum zu navigieren und eine Kollision mit ihnen zu vermeiden. Wenn dir das nicht zusagt, kannst du <btn id='Game.InvertCollisionAvoidance'/> gedrückt halten, während du einen Bewegungsbefehl gibst, um die Kollisionsvermeidung zu deaktivieren, oder sie unter <good>Einstellungen -> Spiel -> Schiffsbefehle -> Kollisionsvermeidung aktivieren</good> dauerhaft ausschalten."
 		Title = Kollisionsvermeidung
 	}
 	ControlGroups
 	{
-		
+
 		Tip1 = "Du kannst eins oder mehrere deiner Schiffe zu einer „Steuerungsgruppe“ hinzufügen, indem du sie auswählst und dann <white>Strg + F1 bis F8</white> drückst. Anschließend kannst du alle Schiffe in dieser Gruppe durch Drücken von <white>F1 bis F8</white> auswählen."
 		Tip2 = "Entsprechend kannst du eine oder mehrere deiner einzelnen Waffen oder anderen Schiffsteile zu Steuerungsgruppen hinzufügen, indem du sie auswählst und dann <white>Strg + 0 bis 9</white> drückst. Anschließend kannst du alle Teile in dieser Gruppe durch Drücken von <white>0 bis 9</white> auswählen."
 		Title = Steuerungsgruppen
 	}
 	CrewCustomization
 	{
-		
+
 		Tip = "Die Namen und das Aussehen deiner gesamten Crew können angepasst werden! Öffne die Crew-Aufstellung und <white>klicke doppelt</white> auf das Crewmitglied, das du anpassen möchtest."
 		Title = Crew-Anpassung
 	}
 	CrewFavorite
 	{
-		
+
 		Tip = "Liegen dir einige deiner Crewmitglieder mehr am Herzen als andere? <white>Klicke sie mit der rechten Maustaste</white> in der Crew-Aufstellung an und markiere sie als „Favoriten“. Auf diese Weise weißt du immer, wo sie sind!"
 		Title = Crew-Favoriten
 	}
 	CrewResourceTransfer
 	{
-		
+
 		Tip = "Du kannst Crew und Ressourcen zwischen deinen Schiffen transferieren. Klicke auf das <img name='hamburger_up'/>-Menü neben dem Namen deines Schiffes (oder in den Bildschirmen für Crew- oder Ressourcenmanagement) und wähle dann <white>Crewmitglieder/Ressourcen transferieren</white>."
 		Title = "Crew- & Ressourcentransfer"
 	}
 	CtrlSelectsParts
 	{
-		
+
 		Tip = "Wenn du einzelne Waffen und andere Schiffsteile nicht einfach durch Anklicken auswählen kannst, musst du entweder <btn id='Game.SelectParts'/> gedrückt halten oder die Option <good>Einstellungen -> Spiel -> Strg erforderlich zum Auswählen von Teilen</good> deaktivieren."
 		Title = "Strg erforderlich zum Auswählen von Teilen"
 	}
 	CtrlTargeting
 	{
-		
+
 		Tip1 = "Du kannst <btn id='Game.SelectParts'/> gedrückt halten, um deine Waffen auf gegnerische Schiffe zu richten, ohne sie zuerst angreifen zu müssen."
 		Tip2 = "Du kannst auch <btn id='Game.SelectParts'/> gedrückt halten, um deine Waffen bewusst auf befreundete Schiffe zu richten."
 		Title = Strg-Zielen
 	}
 	DecalLayers
 	{
-		
+
 		Tip = "Klicke das „Auge“-Symbol an, um Aufkleber-Schichten ein- oder auszublenden. Ziehe die Aufkleber-Schichten, um ihre Reihenfolge zu ändern."
 		Title = Aufkleber-Schichten
 	}
 	DeleteDoors
 	{
-		
+
 		Tip = "Möchtest du mehrere Türen auf einmal löschen, wähle mit dem Auswahlwerkzeug alle Teile aus, deren Türen du löschen möchtest, und drücke dann <btn id='Design.DeleteDoors'/>."
 		Title = "Türen löschen"
 	}
 	DeleteShortcut
 	{
-		
+
 		Tip = "Im Schiffs- oder im Lackierungseditor kannst du <btn id='Design.EraseCursorMode'/> gedrückt halten, um vorübergehend in den Löschmodus zu wechseln."
 		Title = "Teile und Aufkleber entfernen"
 	}
 	DesigningAsteroids
 	{
-		
+
 		Tip = "Im Kreativmodus kannst du Asteroiden genauso entwerfen wie Schiffe. <btn id='General.UIAltClick'/> auf die „Neues Schiff“-Schaltfläche und wähle „Asteroid“ oder „Megaroid“ aus. <gray>(Megaroiden sind wirklich große Asteroiden.)</gray>"
 		Title = "Asteroiden gestalten"
 	}
 	DirectControlBindings
 	{
-		
+
 		Tip1 = "Für den „Direkte Steuerung“-Modus kannst du anpassen, welche Maustaste verwendet wird, um die einzelnen Waffen abzufeuern. Wähle die Waffe(n), öffne ihr <img name='hamburger_up'/>-Menü und wähle <white>Tastenbelegung für direkte Steuerung</white>."
 		Tip2 = "Du kannst Waffen auch so einrichten, dass sie <white>Von KI gesteuert</white> bleiben, selbst wenn du den „Direkte Steuerung“-Modus verwendest."
 		Title = "Direkte Steuerung: Waffen-Tastenbelegungen"
 	}
 	DirectControlSettings
 	{
-		
+
 		Tip = "Der „Direkte Steuerung“-Modus verfügt über zahlreiche Einstellungen, die du anpassen kannst, um die Steuerung und die Kamera auf deine Bedürfnisse anzupassen. Du kannst diese unter <good>Einstellungen -> Spiel -> „Direkte Steuerung“-Modus</good> und <good>Einstellungen -> Kamera -> „Direkte Steuerung“-Modus</good> verändern."
 		Title = "Einstellungen für die direkte Steuerung"
 	}
 	DirectControlSuppress
 	{
-		
+
 		Tip = "Wenn du dich im „Direkte Steuerung“-Modus befindest, kannst du diesen <i>vorübergehend</i> deaktivieren, indem du <btn id='Game.SelectParts'/> gedrückt hältst. Auf diese Weise hast du die Möglichkeit, das Schiff und deine Ansicht normal zu steuern. Wenn du <btn id='Game.SelectParts'/> wieder loslässt, kehrst du zurück in den „Direkte Steuerung“-Modus."
 		Title = "„Direkte Steuerung“-Modus unterdrücken"
 	}
 	DisableAutoDoors
 	{
-		
+
 		Tip = "Sobald du neue Räume zu deinem Schiff hinzufügst, werden standardmäßig automatisch Türen hinzugefügt. Wenn du das nicht möchtest, kannst du <btn id='Design.NoAutoDoors'/> gedrückt halten, um das Hinzufügen von Türen vorübergehend zu verhindern. Unter <good>Einstellungen -> Schiffseditor -> Türen automatisch hinzufügen</good> kannst du die Funktion auch komplett deaktivieren."
 		Title = "Automatische Türen deaktivieren"
 	}
 	DisableEdgePan
 	{
-		
+
 		Tip = "Ärgert es dich, wenn der Mauszeiger versehentlich den Rand des Bildschirms berührt, und die Ansicht dadurch verschoben wird? Wenn ja, kannst du das unter <good>Einstellungen -> Kamera -> Schwenken &amp; Drehen -> Randscrollen</good> deaktivieren."
 		Title = Kamera-Randscrollen
 	}
 	DisableUI
 	{
-		
+
 		Tip = "Du findest, dass deine Bildschirmfotos und GIFs ohne die Benutzeroberfläche schöner wären? Drücke <btn id='Game.ToggleUI'/>, um sie auszublenden. Durch erneutes Drücken kannst du sie wieder einblenden."
 		Title = "UI deaktivieren"
 	}
 	Discord
 	{
-		
+
 		Tip = "Cosmoteer besitzt eine lebendige und offene Community auf Discord! Um ihr beizutreten, klicke innerhalb des Titelmenüs auf<img name='hamburger_up'/>MEHR und wähle anschließend <good>Community -> Discord</good>."
 		Title = ""
 	}
 	DisplayName
 	{
-		
+
 		Tip = "In der Grundeinstellung erscheinst du im Multiplayer-Modus mit deinem Steam-Kontonamen. Aber unter <good>Einstellungen -> Verschiedenes -> Multiplayer -> Anzeigename</good> kannst du deinen Anzeigenamen ändern."
 		Title = Multiplayer-Anzeigename
 	}
 	EditShipInfo
 	{
-		
+
 		Tip = "Du kannst den Namen, den Designer (Autor), die Beschreibung und die Geschichte deines Schiffes bearbeiten. Öffne das <img name='hamburger_up'/>-Menü neben dem Namen deines Schiffes und wähle <white>Schiffsname/-informationen bearbeiten</white>. <gray>(Oder du klickst einfach den Namen selbst an!)</gray>"
 		Title = "Schiffsinfo bearbeiten"
 	}
 	EngineRoomDistribution
 	{
-		
+
 		Tip = "Maschinenräume können Batterien für angeschlossene Schubdüsen erhalten und verteilen. Das bedeutet, dass deine Crew deine Schubdüsen nicht wirklich erreichen können muss, solange deine Schubdüsen mit einem Maschinenraum verbunden sind, der erreicht werden <i>kann</i>."
 		Title = "Energieverteilung über Maschinenraum"
 	}
 	FameLimit
 	{
-		
+
 		Tip = "In den meisten Missionen gibt es ein „Ruhmlimit“. Wenn du bereits mehr <fame>Ruhm</fame> hast, als im Limit angegeben, erhältst du in der Mission keinen weiteren Ruhm. Absolviere Missionen auf höheren Ebenen, um weiter Ruhm zu verdienen."
 		Title = Ruhmlimit
 	}
 	Feedback
 	{
-		
+
 		Tip = "Wir freuen uns sehr über dein Feedback! Drücke jederzeit auf <btn id='General.SubmitFeedback'/>, um uns deine Ideen, Beschwerden, Fehlermeldungen oder jede Art von Feedback zu schicken. Vielen Dank!"
 		Title = "Feedback senden"
 	}
 	FillDoors
 	{
-		
+
 		Tip = "Möchtest du an jeder möglichen Stelle eine Tür einbauen? Halte <btn id='Design.FillAllDoors'/> gedrückt, während du eine Tür hinzufügst, um <i>überall</i> Türen hinzuzufügen."
 		Title = "Alle Türen ausfüllen"
 	}
 	FlightDirection
 	{
-		
+
 		Tip = "In der Grundeinstellung fliegen deine Schiffe immer so, als ob „Oben“ im Schiffseditor die Vorwärtsrichtung wäre. Du kannst die Vorwärtsrichtung ändern, indem du das <img name='hamburger_up'/>-Menü neben dem Namen deines Schiffs öffnest oder auf der rechten Seite des Schiffseditors auf die kleine Nach-Oben-Taste klickst."
 		Title = Flugrichtung
 	}
 	ForceStartConstruction
 	{
-		
+
 		Tip = "Normalerweise kannst du einen Bauvorgang nicht beginnen, wenn du nicht genug Ressourcen hast, um ihn auch zu beenden. Du kannst aber <btn id='Design.ConfirmPartialBuild'/> gedrückt halten, um den Baustart trotzdem zu erzwingen. Deine Crew kann die Konstruktion dann zwar nicht abschließen, aber sie wird so viel bauen wie möglich."
 		Title = "Baustart erzwingen"
 	}
 	GameSpeedFramerate
 	{
-		
+
 		Tip = "Wenn du die Spielgeschwindigkeit auf 8x erhöhst, bedeutet das, dass deine CPU 8-mal so viel Arbeit leisten muss wie bei 1-facher Geschwindigkeit. Das kann zu einer schlechten Bildfrequenz (FPS) führen, vor allem im späteren Spielverlauf. Du solltest in Betracht ziehen, die Spielgeschwindigkeit zu verringern, um die Bildfrequenz zu verbessern."
 		Title = "Spielgeschwindigkeit & Bildfrequenz"
 	}
 	Hamburgers
 	{
-		
+
 		FunFact = "<gray>(Fun Fact: Entwickler von Spielen und Apps nennen diese Art der Menüs gerne „Hamburger-Menüs“.)</gray>"
 		Tip = "Cosmoteer verfügt über zahlreiche kleine <img name='hamburger_up'/> und <img name='hamburger_down'/>-Menüs. Halte Ausschau nach ihnen! Wenn du sie anklickst, erhältst du Zugriff auf viele erweiterte oder „versteckte“ Funktionen."
 		Title = Hamburger-Menüs
 	}
 	HiringPriority
 	{
-		
+
 		Tip1 = "Jede Crewrolle verfügt über eine „Einstellungspriorität“ zwischen <bad>1</bad> und <good>10</good>. Wenn du neue Crewmitglieder anheuerst oder auf dein Schiff transferierst, werden sie automatisch in die Rolle mit der höchsten Einstellungspriorität aufgenommen, in der noch Platz ist."
 		Tip2 = "Wenn du die Option <white>Automatisch aus Rollen mit geringerer Priorität auffüllen</white> aktivierst, werden leere Crewplätze automatisch mit Crewmitgliedern aus anderen Rollen mit geringerer Einstellungspriorität gefüllt."
 		Title = Einstellungspriorität
 	}
 	Hotkeys
 	{
-		
+
 		Tip = "Zahlreiche Schaltflächen der Benutzeroberfläche verfügen über „Schnelltasten“, die du drücken kannst, anstatt die Schaltfläche anzuklicken. Diese Schnelltasten werden fast immer im Tooltip angezeigt, wenn du mit dem Mauszeiger über die Schaltfläche fährst, und sie können auch unter <good>Einstellungen -> Steuerung</good> angepasst werden."
 		Title = Schnelltasten
 	}
 	LauncherTypes
 	{
-		
+
 		Tip = "Den Raketen- oder Minentyp, den ein Werfer verschießt, kannst du jederzeit ändern – auch während eines Kampfes. Nutze dies, um deinen Feind mit ein paar unerwarteten Nuklearwaffen zu überraschen!"
 		Title = Werfertypen
 	}
 	LoadBlueprints
 	{
-		
+
 		Tip1 = "Du kannst die Baupläne eines anderen gespeicherten Schiffsdesigns in dein aktuelles Schiff laden. Öffne im Schiffseditor das <img name='hamburger_up'/>-Menü und klicke dann entweder:"
 		Tip2 = "<b>Schiff laden (bestehendes ersetzen)</b> – hiermit werden die bestehenden Baupläne deines Schiffs vollständig durch die des gespeicherten Schiffsdesigns ersetzt."
 		Tip3 = "<b>Schiff laden (in bestehendes einfügen)</b> – hiermit fügst du die Baupläne des gespeicherten Schiffs an einem Ort deiner Wahl in dein bestehendes Schiff ein."
@@ -4387,13 +4387,13 @@ Tips
 	}
 	LoadPaint
 	{
-		
+
 		Tip = "Du kannst das Lackierungs-/Aufkleberdesign eines anderen gespeicherten Schiffs in dein aktuelles Schiff laden. Öffne im Lackierungseditor das <img name='hamburger_up'/>-Menü und klicke anschließend auf <white>Lackierungsdesign laden</white>."
 		Title = "Lackierung laden"
 	}
 	LoadShapeFromPNG
 	{
-		
+
 		Tip1 = "Du kannst externe Grafikprogramme wie MS Paint, Paint.NET, Gimp oder Photoshop verwenden, um die Umrisse der Basisform für deine Schiffe zu erstellen ..."
 		Tip2 = "1. Speichere zunächst mithilfe eines externen Grafikprogramms deiner Wahl eine <b>weiß-auf-schwarz</b>-PNG-Bilddatei, die die allgemeine Form deines Schiffs darstellt. Weiße Pixel werden als Korridorkacheln interpretiert und schwarze Pixel als leerer Raum."
 		Tip3 = "2. Öffne dann im Schiffseditor das <img name='hamburger_up'/>-Menü und wähle <white>Form von PNG laden</white>. Wähle die PNG-Bilddatei aus, die du gespeichert hast."
@@ -4402,76 +4402,76 @@ Tips
 	}
 	MidpointFocus
 	{
-		
+
 		Tip = "Nachdem du ein gegnerisches Schiff angegriffen hast, kannst du das „Auge“-Symbol anklicken, um deinen Blick auf den Punkt in der Mitte zwischen deinem Schiff und seinem Ziel zu richten."
 		Title = "Symbol für Mittelpunktfokus"
 	}
 	MirrorModeSettings
 	{
-		
+
 		Tip = "Wahrscheinlich weißt du schon, dass du mithilfe des „Spiegelmodus“ symmetrische Änderungen am Design deines Schiffs vornehmen kannst. Du kannst auch auf die Spiegelmodus-Schaltfläche <btn id='General.UIAltClick'/>, um die Richtung und Anzahl der Symmetrielinien zu ändern."
 		Title = Spiegelmodus-Einstellungen
 	}
 	MissionsHUD
 	{
-		
+
 		Tip1 = "In der Grundeinstellung werden nur die 3 nächstgelegenen Missionen oben links auf deinem Bildschirm angezeigt. Diese Anzahl kannst du unter <good>Einstellungen -> Spiel -> Informative Einblendungen -> Zeige Missionen in der Nähe im HUD</good> ändern."
 		Tip2 = "Du kannst eine Mission auch als „Favorit“ markieren, indem du sie mit der <white>rechten Maustaste anklickst</white> oder auf die „Favorit“-Schaltfläche im Karriereprotokoll klickst. Dadurch wird die Mission immer angezeigt, auch wenn andere Missionen näher gelegen sind."
 		Title = Missionen-HUD
 	}
 	ModAutoDisable
 	{
-		
+
 		Tip = "Wenn du Cosmoteer aktualisierst, <b>können</b> Mods, die du installiert hast, automatisch deaktiviert werden, wenn sie nicht mit dem neuen Cosmoteer-Update kompatibel sind. Wenn du nicht möchtest, dass die Mods automatisch deaktiviert werden, schalte die Funktion <good>Einstellungen -> Verschiedenes -> Mods beim Aktualisieren deaktivieren</good> aus."
 		Title = "Mods automatisch deaktivieren"
 	}
 	MovingResources
 	{
-		
+
 		Tip = "Wenn du den Bildschirm zur Ressourcenverwaltungs zum Verschieben von Ressourcen verwendest, kannst du <btn id='Resources.Move1'/> gedrückt halten, um jeweils 1 Ressource aufzunehmen oder abzulegen, anstatt den ganzen Stapel. Halte für jeweils 5 auf einmal <btn id='Resources.Move5'/> gedrückt."
 		Title = "Ressourcen verschieben"
 	}
 	ObjectiveFocus
 	{
-		
+
 		Tip = "Die meisten Missionsziele kannst du anklicken, um deine Ansicht auf den Ort zu fokussieren, an den du fliegen musst, um das jeweilige Ziel zu erfüllen."
 		Title = "Ziele fokussieren"
 	}
 	PaintSchemes
 	{
-		
+
 		Tip1 = "„Lackierungsschemata“ sind gespeicherte Sets mit Farben und Texturen, die zwischen den Schiffen ausgetauscht werden können."
 		Tip2 = "Um die aktuellen Farben und Texturen eines Schiffes zu speichern, öffne das <img name='hamburger_up'/>-Menü im Lackierungseditor und wähle dann <white>Lackierungsschema speichern</white>. Um dieses Lackierungsschema auf ein anderes Schiff zu laden, öffne das <img name='hamburger_up'/>-Menü und wähle <white>Lackierungsschema laden</white>."
 		Title = Lackierungsschemata
 	}
 	PartBrushes
 	{
-		
+
 		Tip = "Die meisten 1x1 großen Teile können mit einer Vielzahl an verschiedenen „Pinsel“-Größen und -Formen verwendet werden. Klicke auf die Pinselauswahl-Schaltfläche, sobald sie verfügbar ist, um alle Optionen zu sehen."
 		Title = Teilepinsel
 	}
 	PartRows
 	{
-		
+
 		Tip = "Unter <good>Einstellungen -> Schiffseditor -> Reihe von Teilen</good> kannst du die Anzahl der im Schiffseditor sichtbaren Teiletypen erhöhen."
 		Title = Schiffseditor-Reihen
 	}
 	PipSettings
 	{
-		
+
 		Tip = "Du kannst anpassen, wann die „Bild-im-Bild“-Ansicht oben rechts angezeigt wird und was sie anzeigt, indem du zu <good>Einstellungen -> Kamera -> Bild-im-Bild</good> gehst."
 		Title = Bild-in-Bild-Einstellungen
 	}
 	PostShaders
 	{
-		
+
 		Tip1 = "Du möchtest, dass Cosmoteer aussieht wie ein Sci-Fi-Schwarz-Weiß-Film aus den 1950er-Jahren? Dann wähle unter <good>Einstellungen -> Grafik -> Voreinstellungen -> Post-Shader</good> den Eintrag „Es kam aus dem All“."
 		Tip2 = "Es gibt aber noch zahlreiche andere unterhaltsame „Post-Shader“-Stile, die du ausprobieren kannst!"
 		Title = Post-Shader
 	}
 	QuickSave
 	{
-		
+
 		Tip1 = "Drücke <btn id='Game.QuickSave'/>, um dein aktuelles Spiel schnell zu speichern."
 		Tip2 = "Mit <btn id='Game.QuickLoad'/> kannst du die letzte Speicherung eines beliebigen Typs laden."
 		Tip3 = "Cosmoteer bewahrt standardmäßig deine letzten 10 Schnellspeicherungen auf. Ältere Schnellspeicherungen werden automatisch gelöscht. Die Anzahl an aufbewahrten Schnellspeicher-Dateien kannst du unter <good>Einstellungen -> Autom. Speichern</good> ändern."
@@ -4479,110 +4479,110 @@ Tips
 	}
 	RebindingControls
 	{
-		
+
 		Tip = "Fast alle Steuerungen und Schnelltasten können unter <good>Einstellungen -> Steuerung</good> geändert werden."
 		Title = "Steuerung neu zuweisen"
 	}
 	RecommendationBars
 	{
-		
+
 		Tip = "Die Leisten für <b>Crew</b> und <b>Energie</b> auf der rechten Seite des Schiffseditors sind nur <i>Empfehlungen</i> für neue Spieler. Optimal gestaltete Schiffe brauchen möglicherweise nicht so viel Crew oder Energie. Du kannst diese Leisten unter <good>Einstellungen -> Schiffseditor -> Empfehlungsleisten anzeigen</good> deaktivieren."
 		Title = Empfehlungsleisten
 	}
 	ReleaseCandidates
 	{
-		
+
 		Tip1 = "Du kannst dabei helfen, Cosmoteer-Updates vor ihrer Veröffentlichung zu testen, indem du in den Steam-Eigenschaften von Cosmoteer zum „instabilen“-Betazweig wechselst."
 		Tip2 = "<bad>WARNUNG:</bad> Diese „Release-Kandidaten“ enthalten möglicherweise mehr Fehler als die offiziellen Updates. Speichere häufig!"
 		Title = Release-Kandidaten
 	}
 	ResourceCollectionTypes
 	{
-		
+
 		Tip = "Hast du bereits genug von einer bestimmten Art Ressource? <btn id='General.UIAltClick'/> auf die Schaltfläche „Sammeln/Wiederverwerten/Abbauen“ und hebe die Auswahl der Ressourcen auf, die du nicht mehr benötigst. Deine Crew wird diese Rohstoffe nicht mehr sammeln, wiederverwerten oder abbauen."
 		Title = Ressourcensammlungstypen
 	}
 	ResourceEjection
 	{
-		
+
 		Tip = "Um alle oder eine bestimmte Anzahl an Ressourcen abzuwerfen, <btn id='General.UIAltClick'/> auf die Schaltfläche am unteren Rand des Ressourcenverwaltung-Bildschirms und wähle eine der <white>Abwerfen</white>-Optionen."
 		Title = Ressourcenabwurf
 	}
 	ResourceLimits
 	{
-		
+
 		Tip1 = "Du kannst einschränken, wie viele Ressourcen eines bestimmten Typs dein Schiff speichern kann. <btn id='General.UIAltClick'/> auf die Schaltfläche „Sammeln/Wiederverwerten/Abbauen“ und wähle <white>Ressourcenlimits festlegen</white>."
 		Tip2 = "Sofern für einen bestimmten Ressourcentyp ein Limit festgelegt wurde, sammelt deine Crew nicht mehr davon ein, deine Fabriken produzieren nicht mehr und du kannst auch nicht mehr kaufen, als durch dieses Limit bestimmt wird."
 		Title = Ressourcenlimits
 	}
 	RightClickMenus
 	{
-		
+
 		Tip1 = "Halte Ausschau nach ihnen, wenn der Mauszeiger dieses Symbol anzeigt!"
 		Tip2 = "Das bedeutet, dass du auf diese Schaltfläche oder dieses Element der Benutzeroberfläche <btn id='General.UIAltClick'/> kannst, um ein Popup-Menü mit erweiterten oder „versteckten“ Funktionen aufzurufen. Viele Bereiche der Benutzeroberfläche verfügen über diese versteckten Menüs!"
 		Title = Rechtsklick-Menüs
 	}
 	RoleOrder
 	{
-		
+
 		Tip = "Du kannst die Reihenfolge, in der deine Crewrollen aufgelistet sind, durch Ziehen und Ablegen ändern. Dies hat keinerlei Einfluss auf die Funktion deiner Crew, kann aber für die Organisation nützlich sein."
 		Title = Crewrollen-Reihenfolge
 	}
 	RotateCamera
 	{
-		
+
 		Tip1 = "Drücke <btn id='View.RotateLeft'/> und <btn id='View.RotateRight'/>, um deine Ansicht zu drehen."
 		Tip2 = "Um die Drehung deiner Ansicht wieder auf den Standardwert zurückzusetzen, drücke <btn id='View.ResetRotation'/> oder klicke auf den roten „Galaktischer Norden“-Pfeil auf der Minikarte."
 		Title = Kameradrehung
 	}
 	RotationFocus
 	{
-		
+
 		TIp2 = "Durch Drücken von <btn id='View.RotationFocusSelected'/> kannst du dich auf dein Schiff konzentrieren <b>und</b> dich an seine Drehung anpassen."
 		Tip1 = "Du weißt wahrscheinlich schon, dass du <btn id='View.FocusSelected'/> drücken kannst, um deine Ansicht auf dein Schiff zu konzentrieren."
 		Title = "Fokus & Rotation anpassen"
 	}
 	SavedShipFiles
 	{
-		
+
 		Tip1 = "Die Schiffsdesigns werden als normale PNG-Bilddateien gespeichert, allerdings mit der Erweiterung <fame_color>.ship.png</fame_color>. Diese Dateien kannst du mit deinen Freunden oder im Cosmoteer-Discord teilen – wie jede andere Bilddatei auch. Sie werden auf deinem Computer in einem Ordner namens „Gespeicherte Schiffe“ gespeichert, auf den du zugreifen kannst, indem du in der Schiffsbibliothek das <img name='hamburger_down'/>-Menü anklickst und dann <white>Ordner öffnen</white> auswählst."
 		Tip2 = "Du kannst das gespeicherte Schiffsdesign eines anderen Spielers laden und damit spielen, indem du die entsprechende Schiffsdatei in deine eigene Schiffsbibliothek kopierst. Solange das Bild in keiner Weise verändert wurde, sollte es sofort in deiner Schiffsbibliothek erscheinen und voll spielbar sein. Und wenn du Cosmoteer im Modus „Größenveränderbares Fenster“ spielst, kannst du das Bild einfach direkt in deine Schiffsbibliothek oder in ein aktives Kreativmodus-Spiel ziehen."
 		Title = "Gespeicherte Schiffsdateien"
 	}
 	SavingShips
 	{
-		
+
 		Tip = "Deine Schiffsdesigns können gespeichert werden, damit sie in anderen Spielmodi wie dem Kreativ- und dem Multiplayer-Modus wiederverwendet werden können. Um dein Schiffsdesign zu speichern, öffne das <img name='hamburger_up'/>-Menü neben dem Namen deines Schiffes oder innerhalb des Schiffseditors und wähle anschließend <white>Schiffsdesign speichern</white>."
 		Title = "Schiffe speichern"
 	}
 	Scoreboard
 	{
-		
+
 		Tip = "Im PvP-Multiplayer kannst du durch Drücken von <btn id='Multiplayer.ShowScoreboard'/> die aktuelle Anzeigetafel einblenden."
 		Title = Multiplayer-Anzeigetafel
 	}
 	ScreenshotsAndGifs
 	{
-		
+
 		Tip1 = "Durch Drücken von <btn id='General.TakeScreenshot'/> kannst du jederzeit einen Screenshot machen."
 		Tip2 = "Du kannst dein aktuelles Gameplay auch als animiertes GIF aufzeichnen und speichern, indem du <btn id='General.CaptureGif'/> drückst. Dies musst du jedoch zuerst unter <good>Einstellungen -> GIF-Rekorder</good> aktivieren."
 		Title = ""
 	}
 	SelectSameType
 	{
-		
+
 		Tip = "Mithilfe eines <white>Doppelklicks</white> kannst du alle Schiffsteile des gleichen Typs auswählen. Bei ausgerichteten Teilen wie Waffen, Schubdüsen und Schilden werden nur die Teile ausgewählt, die in die gleiche Richtung zeigen. Mit einem <white>Dreifachklick</white> kannst du alle Teile ungeachtet ihrer jeweiligen Ausrichtung auswählen."
 		Title = "Teile des gleichen Typs auswählen"
 	}
 	Settings
 	{
-		
+
 		Tip = "Cosmoteer ist enorm anpassbar und bietet <i>eine Menge</i> an Einstellungen. Solltest du einmal den Wunsch haben, etwas an Cosmoteer zu ändern, dann wirf einen Blick in die <good>Einstellungen</good> – es ist gut möglich, dass es bereits eine Einstellungsmöglichkeit für das gibt, was du suchst!"
 		Title = Einstellungen
 	}
 	SharingRoles
 	{
-		
+
 		Tip1 = "Sobald du die Crewrollen deines Schiffs perfektioniert hast, willst du vielleicht die gleichen Rollen auf anderen Schiffen verwenden. Dazu gibt es verschiedene Möglichkeiten:"
 		Tip2 = "1. Du kannst die Rollen aus jedem gespeicherten Schiffsdesign laden, indem du das <img name='hamburger_up'/>-Menü in der Anzeige der Crew-Verwaltung öffnest und anschließend <white>Schiffsrollen laden</white> auswählst."
 		Tip3 = "2. Über dasselbe <img name='hamburger_up'/>-Menü kannst du auch <white>Rollen kopieren</white> (von einem Schiff) und <white>Rollen einfügen</white> (in ein anderes Schiff)."
@@ -4591,80 +4591,79 @@ Tips
 	}
 	SpawnNotReady
 	{
-		
+
 		Tip = "Wenn du im Kreativmodus <btn id='CreativeMode.SpawnNotReady'/> gedrückt hältst, während du in einem Schiff spawnst, spawnt es ohne Energie, Munition oder Ressourcen."
 		Title = "Ohne Munition/Energie spawnen"
 	}
 	SubFolders
 	{
-		
+
 		Tip = "Du kannst deine gespeicherten Schiffsdesigns in Unterordnern organisieren, so wie du es mit Dateien und Ordnern auf deinem Computer machst. Um einen Unterordner zu erstellen, <btn id='General.UIAltClick'/> in deiner Schiffsbibliothek auf „Meine Schiffe“ und wähle <white>Neuer Ordner</white>. Ziehe deine Schiffsdesigns dann einfach in den neuen Ordner und lass sie los."
 		Title = Schiffs-Unterordner
 	}
 	SymmetryLines
 	{
-		
+
 		Tip = "Wenn der Spiegelmodus aktiviert ist, kannst du die Symmetrielinien bewegen, indem du diese grünen Werkzeuge anklickst und ziehst."
 		Title = "Symmetrielinien verlegen"
 	}
 	TeleportShip
 	{
-		
+
 		Tip = "Drücke im Kreativmodus <btn id='CreativeMode.MoveShip'/>, um das ausgewählte Schiff sofort an sein Ziel zu teleportieren."
 		Title = "Schiffe teleportieren"
 	}
 	Trade5x
 	{
-		
+
 		Tip = "Wenn du beim Handeln oder Transferieren von Ressourcen <btn id='Resources.Transfer5'/> gedrückt hältst, kannst du die 5-fache Menge Ressourcen pro Klick bewegen."
 		Title = "5x handeln"
 	}
 	TradeAmount
 	{
-		
+
 		Tip1 = "Beim Handel oder Transfer von Ressourcen kannst du die Nummer anklicken und die genaue Menge eingeben, die du kaufen, verkaufen oder transferieren möchtest. Eine positive Zahl bedeutet, dass du kaufen (oder von links nach rechts transferieren) möchtest. Eine negative Zahl bedeutet, dass du verkaufen (oder von rechts nach links transferieren) möchtest."
 		Tip2 = "Du kannst auch die Gesamtmenge eingeben, die du auf deinem Schiff lagern möchtest, und die Menge, die du dafür kaufen, verkaufen oder transferieren musst, wird automatisch berechnet."
 		Title = "Exakte Mengen handeln"
 	}
 	TradeSurplusNeeded
 	{
-		
+
 		Tip1 = "Beim Handeln kannst du deine über eine „gewünschte“ Menge hinausgehenden, überschüssigen Ressourcen verkaufen, indem du einen <white>Rechtsklick</white> auf eine Ressource ausführst und <white>Überschuss verkaufen</white> auswählst. Durch die Auswahl von <white>Benötigte kaufen</white> kannst du kaufen, was du brauchst, um die „gewünschte“ Menge zu erreichen. Öffne das <img name='hamburger_up'/>-Menü, um für alle Ressourcen gleichzeitig den Überschuss zu verkaufen oder das Benötigte zu kaufen."
 		Tip2 = "Hast du ein Ressourcenlimit festgelegt, entspricht die „gewünschte“ Menge diesem Ressourcenlimit. Falls nicht, setzt sich die „gewünschte“ Menge aus der Gesamtsumme aller Ressourcenkacheln, die für die Lagerung dieser Ressource vorgesehen sind, zusammen."
 		Title = "Überschuss verkaufen/Benötigte kaufen"
 	}
 	TransferringShipsMoney
 	{
-		
+
 		Tip1 = "Bei Spielen im Multiplayer-Karrieremodus kannst du deine Schiffe an beliebige andere Spieler übertragen. Klicke auf das <img name='hamburger_up'/>-Menü neben dem Namen deines Schiffs und wähle anschließend <white>Schiffssteuerung übertragen an ...</white>."
 		Tip2 = "Du kannst auch <money_color><img name='money' colored='true'/></money_color> Credits an andere Spieler geben. <btn id='General.UIAltClick'/> auf deine <money_color><img name='money' colored='true'/></money_color> Credits-Anzeige oben rechts und wähle dann <white>Sende Credits an ...</white>."
 		Title = "Schiffe und Geld transferieren"
 	}
 	WhenEnemySpotted
 	{
-		
+
 		Tip = "Nervt es dich, dass das Spiel immer dann langsamer wird, sobald ein Feind entdeckt wird? Dies kannst du unter <good>Einstellungen -> Spiel -> Informative Einblendungen -> Bei Sichtung von Gegner</good> ausschalten oder eine andere Spielgeschwindigkeit wählen."
 		Title = "Bei Sichtung von Gegner"
 	}
 	WorldRelativeAngles
 	{
-		
+
 		Tip = "Wenn du ein anderes Schiff in einem bestimmten Winkel angreifst oder ihm folgst, ändert sich dieser Winkel normalerweise, sobald sich das andere Schiff dreht. Halte <btn id='Game.WorldRelativeFollowAngle'/> gedrückt, wenn du den Befehl zum Angriff oder zur Verfolgung gibst, um dies zu verhindern."
 		Title = "Angriffs-/Folgewinkel in Relation zum Raster"
 	}
 }
 TipsDialog
 {
-	
+
 	Title = "Wusstest du ...?"
 }
 TitleScreen
 {
-	
+
 	Codex = KODEX
 	Community = ""
 	ConfirmExitGame = "Bist du sicher, dass du das Spiel schließen möchtest?"
-	ConfirmHideAlert = "Bist du sicher, dass du diese Warnmeldung ausblenden möchtest?"
 	Continue = FORTFAHREN
 	Credits = MITWIRKENDE
 	Discord = ""
@@ -4687,10 +4686,10 @@ TitleScreen
 }
 Tutorials
 {
-	
+
 	AbandonedShips
 	{
-		
+
 		Dialog = "Wähle anschließend, <good>wie viele Crewmitglieder</good> du auf das verlassene Schiff transferieren möchtest. (Möglicherweise musst du das gewünschte Schiff aus dem Drop-down-Menü auf der rechten Seite auswählen, wenn du bereits mehr als ein Schiff hast oder mehrere verlassene Schiffe in der Nähe sind.)"
 		Discover = "Gelegentlich wirst du Schiffe entdecken, die von ihren Crews <good>verlassen</good> wurden.\n\nAuf diesen Schiffen kannst du <good>Ressourcen wiederverwerten</good> wie bei jedem anderen Schrott, aber du kannst auch <good>die Kontrolle über sie übernehmen</good> und sie zu deiner Flotte hinzufügen."
 		StartTransfer = "Klicke auf die Schaltfläche <white>Transfer initiieren</white>, um deine Crew zu entsenden. Wenn deine Crew auf dem anderen Schiff eintrifft, übernimmt sie die Kontrolle über das Schiff."
@@ -4699,7 +4698,7 @@ Tutorials
 	}
 	AdvancedCommands
 	{
-		
+
 		Attack = "Der <good>Angreifen-Befehl</good> (<btn id='Game.Attack'/>) erlaubt es dir, fast jedes Schiff anzugreifen, selbst dein eigenes oder andere befreundete Schiffe. Du kannst den Befehl auch verwenden, um den Winkel und die Entfernung eines bestehenden Angriffsbefehls schnell anzupassen."
 		DirectControl = "Wenn du <good>dein Schiff lieber manuell mit Tastatur und Maus fliegst</good>, klicke auf den <white>„Direkte Steuerung“-Modus</white>."
 		Halt = "Der <good>Halt-Befehl</good> (<btn id='Game.Halt'/>) widerruft alle aktuellen Befehle."
@@ -4711,7 +4710,7 @@ Tutorials
 	}
 	Build
 	{
-		
+
 		Button = "Um <good>dein Schiff zu verbessern</good>, klicke auf die Schaltfläche <white>Bauen</white> in der linken unteren Ecke. (Du kannst dein Schiff nicht verbessern, während du unter feindlichem Beschuss stehst.)"
 		Caution = "<bad>ACHTUNG:</bad> Deine Crew ist außerhalb des Schiffs äußerst verwundbar! Lass sie nur verbessern, wenn es sicher ist!"
 		Crew = "Deine Crew wird das Schiff automatisch verlassen, um die Modifikationen durchzuführen."
@@ -4721,7 +4720,7 @@ Tutorials
 	}
 	Build2
 	{
-		
+
 		Close = "Wenn du dein Schiff fertig verbessert hast, klicke auf die rote Schaltfläche <bad>X</bad> oder drücke <btn id='General.Cancel'/>, um den Baumodus zu verlassen."
 		Delete = "Wenn du <good>ein Teil von deinem Schiff entfernen</good> möchtest, nutze das <white>Löschen</white>-Werkzeug. Du erhältst eine vollständige Rückerstattung aller Materialien, die für den Bau verwendet wurden."
 		Grab = "Wenn du <good>ein Teil mitnehmen</good> und an einem anderen Ort platzieren möchtest, nutze das <white>Greifen</white>-Werkzeug."
@@ -4731,7 +4730,7 @@ Tutorials
 	}
 	Build3
 	{
-		
+
 		Brush = "Wenn du ein Teil, das aus einer Kachel besteht, ausgewählt hast, kannst du aus <good>verschiedenen Pinseln</good> mit verschiedenen Formen und Größen auswählen."
 		Button = "Um die <good>Baupläne</good> deines Schiffs zu verändern, klicke auf die Schaltfläche <white>Baupläne umschalten</white>."
 		Commit = "Wenn du mit dem Design deines Schiffs zufrieden bist, klicke auf die Schaltfläche <white>MACH ES SO</white>. Dein Schiff wird aktualisiert und die Kosten werden von deinen Ressourcen und <money>CREDITS</money> abgezogen."
@@ -4742,7 +4741,7 @@ Tutorials
 	}
 	Camera
 	{
-		
+
 		EdgePan = "Um <good>die Kamera zu schwenken</good>, bewege den <white>Mauszeiger</white> an den Rand des Bildschirms oder drücke die <white>Pfeiltasten</white>."
 		Tip = "<good>TIPP:</good> Du findest dein Schiff nicht? Klicke auf sein Symbol in der linken unteren Ecke oder drücke die Taste <btn id='View.FocusSelected'/> (Fokus)."
 		Title = "Die Kamera steuern"
@@ -4750,7 +4749,7 @@ Tutorials
 	}
 	Camera2
 	{
-		
+
 		AltDrag = "Wenn du die Kamera <good>auf mehrere Schiffe fokussieren</good> möchtest, halte <btn id='View.FocusCursorMode'/> gedrückt, <white>klicke mit der linken Maustaste</white> und ziehe eine Box um die Schiffe."
 		Drag = "Um <good>die Kamera zu ziehen</good>, klicke, halte und ziehe die <white>mittlere Maustaste</white>."
 		FocusClick = "Um <good>die Kamera auf ein Schiff zu fokussieren</good>, klicke mit der <white>mittleren Maustaste</white> auf dieses Schiff.\n\nDu kannst auch mit <white>der mittleren Maustaste</white> auf einen leeren Bereich klicken, um die Kamera dort zu zentrieren."
@@ -4759,7 +4758,7 @@ Tutorials
 	}
 	Cannons
 	{
-		
+
 		Cannon = "<good>Kanonen</good> (und <good>Railguns</good>) sind Projektilwaffen, die <good>Munition</good> statt Energie verwenden."
 		Crew = "Deine <good>Crew</good> trägt die Munition von deinen Lagerräumen oder Fabriken zu deinen Kanonen."
 		Factory = "Munition kann von Stationen günstig <good>gekauft</good> oder mithilfe von <img name='resource.sulfur'/>Schwefel in Munitionsfabriken <good>hergestellt</good> werden."
@@ -4768,7 +4767,7 @@ Tutorials
 	}
 	Chainguns
 	{
-		
+
 		ForceFire = "Chain Guns beginnen normalerweise <b>nicht</b> zu schießen, bis die Chain Gun selbst und alle ihre Magazine mit Munition gefüllt sind. Um zu erzwingen, dass eine Chain Gun schießt, bevor sie voll ist, klicke auf die Schaltfläche <white>Chain-Gun-Feuer erzwingen</white>."
 		Info = "Chain Guns sind rotierende Projektilwaffen, die <good>ihre Feuerrate mit zunehmender Feuerdauer erhöhen</good>. Je länger die Chain Gun feuert, desto schneller schießt sie – bis zu einem bestimmten Limit."
 		Magazines = "<good>Munitionsmagazine</good> können angebracht werden, um den Munitionsvorrat zu erweitern und so die Zeit, in der sie mit maximaler Geschwindigkeit schießen können, zu verlängern. Die Magazine müssen hinten links oder rechts an der Chain Gun montiert werden. (Siehe Bild.)"
@@ -4777,7 +4776,7 @@ Tutorials
 	}
 	Combat
 	{
-		
+
 		Attack = "Um <good>ein feindliches Raumschiff anzugreifen</good>, <white>klicke mit der rechten Maustaste</white> auf das Schiff oder dessen Radarzeichen. Dein Schiff fliegt automatisch dorthin und greift es an. (Das Spiel wurde möglicherweise automatisch angehalten, um dir dieses Tutorial zu zeigen. Drücke <btn id='Game.PauseToggle'/>, um die Pause zu beenden.)"
 		Blips = "Feindliche Schiffe, die nah genug sind, um von deinem Radar erkannt zu werden, aber zu weit entfernt sind, um sie zu sehen, werden als pulsierende <red>Radarzeichen</red> angezeigt."
 		Detected = "Ein feindliches Schiff wurde in der Nähe geortet."
@@ -4786,7 +4785,7 @@ Tutorials
 	}
 	CommandPoints
 	{
-		
+
 		CommandRooms = "Das <white>Cockpit</white>, der <white>Kontrollraum</white> und die <white>Brücke</white> stellen jeweils eine bestimmte Anzahl an <good><img name='command_points' colored='true'/>Kommandopunkten</good> zur Verfügung. Die genaue Anzahl wird in der rechten oberen Ecke jedes Raums angezeigt."
 		PointsRemaining = "Die Anzahl der <good>verbleibenden Kommandopunkte</good> wird rechts angezeigt. Wenn du keine Kommandopunkte mehr hast, kannst du keine neuen Waffen oder andere Systeme hinzufügen, ehe du neue Kommandoräume hinzufügst oder verbesserst."
 		Tip = "<good>TIPP:</good> Wenn ein Kommandoraum zerstört wird oder keine Energie mehr bekommt, verlierst du die von ihm zur Verfügung gestellten Kommandopunkte, und wenn dein Schiff nicht mehr genügend Kommandopunkte hat, verlierst du die Kontrolle über das Schiff. Um die Kontrolle zurückzuerlangen, musst du den Kommandoraum reparieren oder die einzelnen Systeme herunterfahren, bis du wieder genügend Kommandopunkte hast."
@@ -4795,7 +4794,7 @@ Tutorials
 	}
 	Comms
 	{
-		
+
 		CommsButton = "Wenn du <good>ein Schiff oder eine Station rufen möchtest</good>, klicke zuerst auf die Schaltfläche des <white>Kommunikation</white> in der linken unteren Ecke."
 		HailButton = "Klicke danach auf die Schaltfläche <white>RUFEN</white> neben dem Schiff oder der Station, die du rufen möchtest, oder <white>klicke auf sie</white>, wenn du sie sehen kannst. <bad>Versuche, die befreundete Station in der Nähe zu rufen.</bad>"
 		Interact = "Du kannst mit einigen anderen Schiffen und Stationen interagieren, indem du sie <good>rufst</good>."
@@ -4805,7 +4804,7 @@ Tutorials
 	}
 	Creative
 	{
-		
+
 		AddShip = "Wenn du <good>ein gespeichertes Schiff</good> zum Spiel hinzufügen möchtest, klicke auf die Schaltfläche <white>Schiffsbibliothek</white>."
 		Allegiance = "Wenn <good>Schiffe gegeneinander kämpfen sollen</good>, klicke auf die Schaltfläche <img name='hamburger_up'/> neben dem Namen des Schiffs, wähle <white>Zugehörigkeit</white> und dann einen anderen Spieler für jedes Schiff aus. Schiffen, die verschiedenen Spielern zugewiesen wurden, kann befohlen werden, einander anzugreifen, und sie feuern automatisch, sobald sie in Reichweite sind."
 		NewShip = "Wenn du ein <good>neues Schiff erschaffen möchtest</good>, klicke auf die Schaltfläche <white>Neues Schiff</white>."
@@ -4816,7 +4815,7 @@ Tutorials
 	}
 	Crew
 	{
-		
+
 		Crew = "Deine <good>Crew</good> bedient dein Schiff, indem sie die Waffen besetzt, das Schiff steuert und Versorgungsgüter trägt. Je mehr Crewmitglieder ein Schiff hat, desto effektiver funktioniert es!"
 		Indicator = "Wenn ein Teil von keinem Crewmitglied betrieben wird, ist dort ein <red>rotes Crewsymbol</red> zu sehen."
 		InteriorButton = "Wenn du dir <good>den Innenbereich deines Schiffs ansehen</good> möchtest, klicke auf die Schaltfläche <white>Innenbereich</white>."
@@ -4825,7 +4824,7 @@ Tutorials
 	}
 	Crew2
 	{
-		
+
 		Airlock = "<white>Luftschleusen</white> ermöglichen es deiner Crew, dein Schiff <good>zu betreten und zu verlassen</good>, wenn sie Ressourcen wiederverwertet, abbaut und transferiert."
 		Button = "Bevor du weitere Crewmitglieder anheuern kannst, musst du <good>mehr Betten bauen</good>. Klicke dazu zunächst wieder auf die Schaltfläche <white>Bauen</white>."
 		Door = "Außerdem solltest du <white>Türen</white> einbauen, damit deine Crew <good>von einem in den anderen Raum gehen kann</good>."
@@ -4835,7 +4834,7 @@ Tutorials
 	}
 	Crew3
 	{
-		
+
 		Hail = "Wenn du <good>mehr Crewmitglieder anheuern möchtest</good>, rufe eine Station in der Nähe und klicke dann auf den Tab <white>Crew anheuern</white>."
 		Hire = "Wenn du <good>eine Person anheuern</good> möchtest, klicke auf die Schaltfläche <white>Anheuern</white> oder die Schaltfläche <white>Max. anheuern</white>, um <good>so viele wie möglich</good> anzuheuern. Du musst für jedes angeheuerte Crewmitglied eine einmalige Gebühr in Form von <money>CREDITS</money> bezahlen."
 		List = "Es wird eine Liste mit allen Personen angezeigt, die sich deiner Crew <good>anschließen wollen</good>. Erhöhe deinen <fame>RUHM</fame>, um noch mehr zu überzeugen."
@@ -4846,7 +4845,7 @@ Tutorials
 	}
 	Crew4
 	{
-		
+
 		AddRole = "Wenn du <good>eine neue Rolle hinzufügen</good> möchtest, klicke auf die große Schaltfläche <white>Neue Rolle</white>."
 		Autonomous = "<good>Die Crew funktioniert hauptsächlich autonom</good> und betreibt dein Schiff alleine, aber du kannst ihr Verhalten dennoch anpassen, wenn du das möchtest."
 		Button = "Um <good>das Verhalten deiner Crew anzupassen</good>, klicke auf die Schaltfläche <white>Crew verwalten</white>."
@@ -4858,7 +4857,7 @@ Tutorials
 	}
 	Crew5
 	{
-		
+
 		AssigningCrew = "Wenn du <good>Crewmitglieder zu einer Gruppe hinzufügen möchtest</good>, <white>klicke mit der linken Maustaste</white> auf oder ziehe eine Box um die Crewmitglieder und <white>klicke mit der rechten Maustaste</white> auf das gewünschte Gruppenschlafzimmer."
 		SquadRoles = "<good>Jeder Gruppe ist eine Rolle zugewiesen.</good> Wenn du einer Gruppe eine Rolle zuweisen möchtest, klicke auf die Schaltfläche für die gewünschte Rolle und anschließend auf das Schlafzimmer einer beliebigen Gruppe, die diese Rolle verwenden soll."
 		Squads = "<good>Die Crew wird in „Gruppen“ eingeteilt.</good> Jede Gruppe hat ihr eigenes Schlafzimmer, in das die Crewmitglieder zurückkehren, wenn sie nichts zu tun haben."
@@ -4866,7 +4865,7 @@ Tutorials
 	}
 	Crew6
 	{
-		
+
 		Never = "<bad>Sei vorsichtig! Wenn eine Gruppe Befehle hat, wird sie NIE Jobs für andere Teile machen!</bad>"
 		Order = "<white>Klicke mit der linken Maustaste</white> auf oder ziehe eine Box um jedes Gruppenschlafzimmer, dem du Befehle geben möchtest, und <white>klicke anschließend mit der rechten Maustaste</white> auf die Waffen oder Teile, die du diesen Gruppen zuweisen möchtest."
 		OrdersMode = "Öffne den Bildschirm <white>Crew-Verwaltung</white> und schalte dann den <white>„Gruppen befehligen“-Modus</white> ein."
@@ -4876,7 +4875,7 @@ Tutorials
 	}
 	DirectControl
 	{
-		
+
 		Camera = "Wenn du den „Direkte Steuerung“-Modus verwendest, ist die Kamera auf dein Schiff fixiert."
 		Flight = "Wenn du mit deinem Schiff <good>vorwärts oder rückwärts</good> fliegen möchtest, drücke die Tasten <btn id='Game.DirectControlForward'/> oder <btn id='Game.DirectControlReverse'/>.\n\nUm dein Schiff <good>nach links oder rechts zu drehen</good>, drücke die Tasten <btn id='Game.DirectControlRotateLeft'/> oder <btn id='Game.DirectControlRotateRight'/>.\n\nWenn dein Schiff <good>sich seitwärts nach links oder rechts bewegen soll</good>, drücke die Tasten <btn id='Game.DirectControlStrafeLeft'/> oder <btn id='Game.DirectControlStrafeRight'/>."
 		Tip = "<good>TIPP:</good> Es gibt viele Optionen, um die Flug- und Kameraeinstellungen für den „Direkte Steuerung“-Modus in den Spieleinstellungen anzupassen."
@@ -4885,7 +4884,7 @@ Tutorials
 	}
 	Fame
 	{
-		
+
 		Fame = "Dein aktueller <fame>RUHM</fame> wird in der rechten oberen Ecke unter deinen <money>CREDITS</money> angezeigt."
 		FameCrew = "Und mit steigendem <fame>RUHM</fame> wollen sich auch mehr Menschen deiner Crew anschließen! Mehr Crewmitglieder sind immer gut!"
 		IncreasingFame = "Wenn du <good>Feinde besiegst</good> und <good>Missionen abschließt</good>, steigt dein <fame>RUHM</fame>. Er wird sich nie verringern."
@@ -4894,7 +4893,7 @@ Tutorials
 	}
 	Fires
 	{
-		
+
 		Cause = "<red>Brände</red> können ausbrechen, wenn das Schiff von bestimmten Waffen getroffen wird und wenn flüchtige Teile explodieren. Wenn die Crew sich nicht um Brände kümmert, können sich diese schnell ausbreiten, Schaden verursachen und Crewmitglieder töten."
 		FireExtinguisher = "Füge <good>Feuerlöscher</good> zu deinem Schiff hinzu, um Brände zu bekämpfen. Deine Crew schnappt sich die Feuerlöscher und nutzt sie, um die Brände zu löschen. Jeder Feuerlöscher hat eine begrenzte Kapazität, weshalb es mehrere Feuerlöscher brauchen kann, um große Brände zu löschen."
 		Spread = "<good>TIPP:</good> Brände können sich in offenen Bereichen und durch Türen ausbreiten, nicht aber durch Wände. Wenn du deinem Schiff viele Türen hinzufügst, machst du es anfälliger für Brände."
@@ -4902,7 +4901,7 @@ Tutorials
 	}
 	Fleets
 	{
-		
+
 		BoxSelect = "Wenn du <good>mehrere Schiffe gleichzeitig steuern möchtest</good>, <b>klicke mit der linken Maustaste und ziehe</b> eine Box um die Schiffe.\n\nOder halte <btn id='Game.AppendSelection'/> gedrückt und <b>klicke mit der linken Maustaste</b> auf jedes Schiff."
 		ControlGroups = "<good>TIPP:</good> Erstelle eine <good>Steuerungsgruppe</good>, indem du ein oder mehrere Schiffe auswählst und <b>Strg + F1 bis F8</b> drückst. Wähle diese Gruppe aus, indem du <b>F1 bis F8</b> drückst."
 		Selected = "Wenn du mehr als ein Schiff hast, <b>klicke mit der linken Maustaste</b> auf das Schiff, das du <good>steuern</good> möchtest.\n\nDas gesteuerte Schiff wird von einem <good>grünen Rahmen</good> umgeben."
@@ -4911,7 +4910,7 @@ Tutorials
 	}
 	Formations
 	{
-		
+
 		BasicFormations = "Wenn deine Schiffe <good>in Formation fliegen sollen</good>, wähle mindestens zwei Schiffe aus und klicke auf die Schaltfläche <white>Formationen</white>, und wähle dann die Formation, die verwendet werden soll."
 		CustomFormations = "Wenn du eine <good>benutzerdefinierte Formation</good> erstellen möchtest, wähle ein Schiff und positioniere es neben einem anderen Schiff, indem du mit <white>der rechten Maustaste</white> auf das andere Schiff klickst, die Maustaste gedrückt hältst und <white>von dem Schiff wegziehst</white>."
 		SavingFormations = "Wenn du <good>eine benutzerdefinierte Formation speichern möchtest</good>, klicke auf den kleinen Pfeil und dann auf <white>SPEICHERN</white>, um die Formation in einem leeren Formationsspeicherplatz zu speichern."
@@ -4919,7 +4918,7 @@ Tutorials
 	}
 	Ftl
 	{
-		
+
 		BuildFtl = "Baue einen <good>Hyperantrieb</good>, um Hyperraumsprünge innerhalb des Sternensystems und sogar in andere Sternensysteme durchzuführen. (Zuerst musst du die entsprechenden Baupläne in einer Raumstation kaufen.)"
 		Hyperium = "Bei einem Sprung verbrauchst du eine bestimmte Anzahl an <good>Hyperium-</good>Kristallen. Diese Anzahl hängt von der Weite des Sprungs, der Größe deines Schiffs und seiner Hyperantriebeffizienz ab. Hyperium kann auf Asteroiden abgebaut, von Feinden wiederverwertet und in Stationen gekauft werden."
 		PlotJump = "Nachdem der Antrieb gebaut wurde, klicke auf die Schaltfläche <white>Hypersprung</white> und wähle einen Zielort. Deine Crew wird deinen Hyperantrieb hochfahren, und danach führt dein Schiff den Sprung aus."
@@ -4929,7 +4928,7 @@ Tutorials
 	}
 	Ftl2
 	{
-		
+
 		Engage = "Wenn du bereit für den Sprung bist, klicke einfach auf die Schaltfläche <white>STARTEN</white>."
 		ExitMap = "Wenn du die Galaxiekarte verlässt, wird das Hypersprung-Relais, das du verwenden sollst, für dich <good>hervorgehoben</good>. <white>Klicke mit der rechten Maustaste</white> darauf, um dorthin zu fliegen. Wenn du dort bist, fährt deine Crew automatisch deinen Hyperantrieb hoch."
 		GalaxyMap = "Klicke auf die Schaltfläche <white>„Galaxiekarte“</white>, um dir eine Karte der gesamten Galaxie anzusehen."
@@ -4940,7 +4939,7 @@ Tutorials
 	}
 	IonBeams
 	{
-		
+
 		Aiming = "Wenn du mit <good>einem Prisma zielen</good> möchtest, verlasse zunächst den Baumodus, wähle das Prisma und klicke dann auf die Schaltfläche <white>Ionen-Prisma ausrichten</white>."
 		Combining = "Du kannst mehrere <good>Strahlen zu einem Prisma kombinieren</good>, um einen einzigen großen und mächtigeren Strahl zu erschaffen."
 		IonBeams = "<good>Ionenstrahlen</good> sind Energiestrahlwaffen mit einer festgelegten Richtung, die nicht zielen können, aber hohen andauernden Schaden über Zeit verursachen."
@@ -4950,7 +4949,7 @@ Tutorials
 	}
 	Micro
 	{
-		
+
 		ControlGroups = "<good>TIPP:</good> Erstelle eine <good>Steuerungsgruppe</good>, indem du ein oder mehrere Teile auswählst und <white>Strg + 0 bis 9</white> drückst. Du kannst die Gruppe auswählen, indem du entsprechend <white>0 bis 9</white> drückst."
 		FireMode = "Drücke die Schaltfläche <white>Feuermodus</white>, um einer Waffe den Befehl zu geben, <good>nicht zu feuern</good>, <good>nur auf festgelegte Ziele zu feuern</good>, oder <good>unendlich zu feuern</good> – ganz wie es dir beliebt."
 		Power = "Klicke auf die Schaltfläche <white>Energie</white>, um <good>es auszuschalten</good>. Jedes Crewmitglied, das dieses Teil betreibt, geht dann fort und hilft an einem anderen Ort."
@@ -4960,7 +4959,7 @@ Tutorials
 	}
 	Mining
 	{
-		
+
 		Asteroids = "Während du das Weltall erkundest, wirst du häufig Asteroiden mit wertvollen <good>Ressourcenablagerungen</good> finden."
 		Icon = "<good>Wenn du herauszoomst</good>, wird das entsprechende Symbol für das chemische Element über Asteroiden angezeigt, auf denen Ressourcenablagerungen vorhanden sind."
 		Mine = "Wenn du Ressourcen von <good>den Asteroiden abbauen</good> möchtest, klicke auf die Schaltfläche <white>„Sammeln/Wiederverwerten/Abbauen“</white> und ziehe eine Box um die Ressourcenablagerungen auf dem Asteroiden, die du abbauen möchtest. Die Crew deines Schiffs baut die Ressourcen automatisch ab und lagert sie auf deinem Schiff."
@@ -4969,7 +4968,7 @@ Tutorials
 	}
 	Missiles
 	{
-		
+
 		ChangeType = "Wenn du <good>die Art der Munition ändern</good> möchtest, die der Werfer abfeuert, dann wähle den Werfer aus und klicke auf die Schaltfläche <white>Munitionstyp</white>."
 		Launcher = "Der <good>Werfer</good> ist eine vielseitige Waffe, die <good>Munition</good> verschiedener Art (z. B. Raketen und Minen) abfeuern kann."
 		Tip = "<good>TIPP:</good> Der Munitionstyp des Werfers kann jederzeit beim oder nach dem Bau geändert werden, sogar während des Kampfes."
@@ -4977,7 +4976,7 @@ Tutorials
 	}
 	Missions
 	{
-		
+
 		Accept = "Wenn du <good>eine Mission akzeptieren willst</good>, wähle sie aus der Liste auf der linken Seite aus und klicke auf die Schaltfläche <white>„Akzeptieren“</white>."
 		DangerLevel = "Bei den meisten Missionen steht eine <good>„Gefahrenstufe“</good>, wie zum Beispiel <gray>[</gray><good>1</good><gray>]</gray>, die dir anzeigt, wie schwierig diese Mission ungefähr sein wird. Du solltest dein Schiff verbessern, bevor du Missionen mit einer höheren Stufe annimmst."
 		Info = "Missionen sind deine vorrangige Quelle für <money>CREDITS</money> und <fame>RUHM</fame>."
@@ -4987,7 +4986,7 @@ Tutorials
 	}
 	Missions2
 	{
-		
+
 		Location = "Viele Missionen <good>zeigen die Position an</good>, zu der du fliegen musst, um die Ziele zu erfüllen. (Du musst eventuell herauszoomen, um das zu sehen.) <white>Klicke auf ein Ziel</white>, um die Kamera auf seine Position zu zentrieren."
 		MissionLog = "Du kannst dir <good>alle deine aktuellen Missionen ansehen</good>, indem du auf die Schaltfläche <white>Karriereprotokoll</white> in der linken oberen Ecke klickst."
 		Title = "Missionen (Fortsetzung)"
@@ -4996,7 +4995,7 @@ Tutorials
 	}
 	Missions3
 	{
-		
+
 		Hail = "Wenn du wieder bei der Station angekommen bist, <good>rufe sie erneut</good>."
 		ReceiveRewards = "Dann solltest du eine Liste der abgeschlossenen Missionen sehen, für die du bezahlt werden kannst. <good>Um deine Bezahlung zu erhalten</good>, klicke auf die Mission und dann auf die Schaltfläche <white>Bezahlung erhalten</white>."
 		Return = "Nachdem du alle Missionsziele abgeschlossen hast, musst du für gewöhnlich <good>zur ursprünglichen Station zurückkehren</good>, um bezahlt zu werden."
@@ -5004,14 +5003,14 @@ Tutorials
 	}
 	Movement
 	{
-		
+
 		Codex = "<good>TIPP:</good> Du kannst jederzeit alle Tutorials erneut lesen, indem du im Pause-Menü <white>„Tutorials &amp; Kodex“</white> auswählst."
 		Move = "Um <good>dein Raumschiff zu fliegen</good>, <white>klicke mit der rechten Maustaste</white> irgendwo ins All. Dein Schiff fliegt automatisch dorthin."
 		Title = "Dein Schiff fliegen"
 	}
 	Movement2
 	{
-		
+
 		Drag = "Um die <good>Ausrichtung deines Schiffs anzupassen</good>, <white>klicke mit der rechten Maustaste</white> und <white>ziehe</white>."
 		Handles = "Um bestehende Wegpunkte <good>zu verschieben oder zu drehen</good>, halte <btn id='Game.AppendSelection'/> gedrückt und ziehe an einem der Werkzeuge, die erscheinen.\n\nUm einen Wegpunkt <good>zu löschen</good>, klicke auf das <white>Mülleimer</white>-Symbol."
 		Queue = "Um <good>Wegpunkte hinzuzufügen</good>, halte <btn id='Game.AppendSelection'/> gedrückt, während du mit der rechten Maustaste klickst."
@@ -5020,7 +5019,7 @@ Tutorials
 	NotInDemo = "<bad>Die folgende Funktion ist in der Cosmoteer-Demo nicht verfügbar.</bad>"
 	Paint
 	{
-		
+
 		Button = "Um <good>das Äußere deines Schiffs zu lackieren</good>, klicke auf die Schaltfläche <white>Lackierung</white> in der linken unteren Ecke."
 		ColorWheel = "Hier kannst du die <good>Basislackierungsfarbe</good> und <good>-muster</good> deines Schiffs ändern."
 		Decals = "Außerdem kannst du <good>Aufkleber</good> an deinem Schiff anbringen.\n\nEin Schiff kann bis zu drei Aufkleber-Schichten haben. Jede Schicht kann eine andere Farbe haben, und alle Aufkleber innerhalb einer Schicht teilen sich diese Farbe."
@@ -5029,7 +5028,7 @@ Tutorials
 	}
 	Power
 	{
-		
+
 		Crew = "Deine <good>Crew</good> trägt die Plasmabatterien vom <white>Reaktor</white> oder dem <white>Energiekondensator</white> zu den Teilen deines Schiffs."
 		Indicator = "Wenn ein Teil nicht genug Energie hat, wird dort ein <red>rotes Symbol</red> angezeigt. Meistens ist das der Fall, wenn nicht genügend Crewmitglieder vorhanden sind, um die Batterien zu tragen, oder wenn das Teil zu weit von einer Energiequelle entfernt ist. Es kann aber auch sein, dass die Reaktoren deines Schiffs nicht genug Batterien erzeugen."
 		Meter = "Die <good>Energieanzeige</good> zeigt die Gesamtmenge an Energie an, die deine Reaktoren erzeugen, und der <good>vertikale grüne Strich</good> zeigt die empfohlene Menge an."
@@ -5039,7 +5038,7 @@ Tutorials
 	}
 	Railguns
 	{
-		
+
 		Accelerator = "Railguns können außerdem eine beliebige Anzahl an <good>Beschleuniger</good>-Modulen besitzen. Jeder Beschleuniger erhöht die Reichweite, den Schaden und die Durchdringungstiefe des Projektils."
 		Info = "Railguns sind <good>modulare</good> Projektilwaffen, die aus mehreren Teilen bestehen und in ihrer <good>Länge angepasst werden können</good>. Je länger die Railgun, desto mehr Schaden verursacht sie und desto größer ist ihre Reichweite."
 		Launcher = "Für jede Railgun ist ein <good>Werfer</good>-Modul am vorderen Ende erforderlich, das Projektile mit hoher Geschwindigkeit abfeuert."
@@ -5049,7 +5048,7 @@ Tutorials
 	}
 	Repairs
 	{
-		
+
 		Button = "Wenn dein Schiff repariert werden muss, erscheint links unten die rote Schaltfläche <white>Reparieren</white>. Klicke darauf, um den Modus <good>Bauen/Reparieren</good> zu öffnen."
 		Caution = "<bad>ACHTUNG:</bad> Deine Crew ist außerhalb des Schiffs äußerst verwundbar! Lass sie nur reparieren, wenn es sicher ist!"
 		Exit = "Wenn du mit den Reparaturen fertig bist, klicke auf die rote Schaltfläche <bad>X</bad> oder drücke <btn id='General.Cancel'/>, um den Modus „Bauen/Reparieren“ zu verlassen."
@@ -5060,7 +5059,7 @@ Tutorials
 	}
 	Reputation
 	{
-		
+
 		Negative = "Wenn du Fraktionen angreifst, sinkt dein Ruf entsprechend. Ein <bad>negativer</bad> Ruf sorgt für höhere Preise und erschwert dir die Flucht, wenn du gesucht wirst."
 		Positive = "Schließe Missionen für Fraktionen ab, um deinen Ruf zu verbessern. Ein <good>positiver</good> Ruf reduziert die Preise in ihren Stationen."
 		ReputationScore = "Jede Fraktion bildet sich eine eigene Meinung von dir, die sich in deinem <good>Ruf</good> widerspiegelt, der entweder positiv oder negativ sein kann."
@@ -5069,7 +5068,7 @@ Tutorials
 	}
 	Resources
 	{
-		
+
 		Elements = "<good>Rohe Elemente</good> wie <white>Eisen</white> und <white>Kupfer</white> werden in Fabriken verwendet, um Baumaterialien und Munition zu produzieren. Sie werden meistens auf Asteroiden abgebaut."
 		Materials = "<good>Baumaterial</good> wie <white>Stahl</white> und <white>Spulen</white> wird verwendet, um deine Schiffe zu reparieren und zu verbessern. Es wird zumeist aus besiegten feindlichen Schiffen wiederverwertet oder an Stationen gekauft."
 		Munitions = "<good>Munition</good>, wie zum Beispiel <white>Kanonenmunition</white>, wird von bestimmten Waffen verwendet. Sie wird meistens in Fabriken produziert oder von Stationen gekauft."
@@ -5080,7 +5079,7 @@ Tutorials
 	}
 	Resources2
 	{
-		
+
 		Designate = "Du kannst deiner Crew auch sagen, dass sie <good>nur eine bestimmte Ressource</good> in bestimmten Kacheln lagern soll. Klicke auf die Schaltfläche für die gewünschte Ressource und danach auf die Kachel, die nur diese Ressource lagern soll. Deine Crew wird versuchen, diese Ressource in diesen Kacheln zu lagern, sofern das möglich ist, und nicht automatisch andere Ressourcen darin lagern."
 		Limits = "Um die Menge einer auf deinem Schiff gespeicherten Ressource zu <good>limitieren</good>, öffne das <img name='hamburger_up'/>-Menü und wähle <white>Ressourcenlimits festlegen</white>."
 		Manage = "Wenn du die Ressourcen deines Schiffs verwalten möchtest, klicke auf die Schaltfläche <white>Ressourcen verwalten</white>."
@@ -5091,7 +5090,7 @@ Tutorials
 	}
 	Salvaging
 	{
-		
+
 		DestroyedShips = "Zerstörte Schiffe lassen <good>wertvolle Materialien</good> fallen, die du nutzen kannst, um dein eigenes Schiff <good>zu reparieren und zu verbessern</good>. Alle zurückbleibenden Teile zerstörter Schiffe können wiederverwertet werden, um zusätzliches Material zu erhalten."
 		GatherSalvage = "Um diese Materialien <good>einzusammeln und wiederzuverwerten</good>, klicke auf die Schaltfläche <white>„Sammeln/Wiederverwerten/Abbauen“</white> in der linken unteren Ecke und ziehe anschließend eine Box um alles, was du einsammeln und wiederverwerten möchtest. Die Crew deines Schiffs sammelt die Materialien automatisch ein und lagert sie auf deinem Schiff."
 		RecallCrew = "Klicke im Notfall auf die Schaltfläche <white>„Crew zurückrufen“</white>, um alle Befehle an die Crew zu widerrufen und <good>alle zurück auf dein Schiff zu holen</good>."
@@ -5100,14 +5099,14 @@ Tutorials
 	}
 	Tactics
 	{
-		
+
 		Reactor = "<good>TIPP:</good> Zerstöre den <good>Reaktor oder den Kommandoraum</good> des feindlichen Schiffes, um es in eine leblose Hülle zu verwandeln!"
 		Target = "Nachdem du einen Feind angegriffen hast, <white>klicke mit der rechten Maustaste</white> erneut auf ein bestimmtes Teil des feindlichen Schiffs, um mit deinen Waffen <good>darauf zu zielen</good>."
 		Title = Kampftaktik
 	}
 	Tactics2
 	{
-		
+
 		Drag = "Wenn du die <good>Entfernung</good> und <good>Richtung</good>, aus der dein Schiff angreift, wählen möchtest, <white>klicke mit der rechten Maustaste</white> auf das feindliche Schiff und <white>ziehe</white> von ihm weg."
 		Handles = "Um die <good>Entfernung</good>, <good>Richtung</good> oder <good>Drehung</good> nach dem Angriff anzupassen, halte <btn id='Game.AppendSelection'/> gedrückt und ziehe anschließend einem der Werkzeuge, die erscheinen."
 		TargetQueue = "Wenn du <good>zusätzliche Ziele vorgeben möchtest</good>, halte <btn id='Game.AppendSelection'/> gedrückt, während du mit der rechten Maustaste auf die Teile klickst."
@@ -5115,7 +5114,7 @@ Tutorials
 	}
 	Techs
 	{
-		
+
 		Blueprints = "Viele Waffen und andere Schiffsteile <good>können erst gebaut werden</good>, wenn du die erforderlichen Baupläne hast."
 		Permanent = "Durch den Kauf eines Bauplans wird die Fähigkeit, diese Art von Teil zu bauen, <good>dauerhaft freigeschaltet</good>."
 		Purchase = "Um Baupläne zu kaufen, rufe eine Raumstation und wähle den Tab <white>Baupläne kaufen</white>."
@@ -5123,7 +5122,7 @@ Tutorials
 	}
 	Thrusters
 	{
-		
+
 		Many = "Schubdüsen treiben dein Schiff in die ihnen entgegengesetzte Richtung an.\n\nDie Geschwindigkeit und Manövrierfähigkeit deines Schiffes hängen von der Anzahl, der Platzierung, der Ausrichtung und der Größe seiner Schubdüsen ab."
 		Thruster = "Füge <good>Schubdüsen</good> hinzu, um die Geschwindigkeit und Manövrierfähigkeit zu verbessern. Ein Schiff mit zu wenig Schubdüsen kann nicht fliegen."
 		Tip = "<good>TIPP:</good> Ein schnelles und gut zu manövrierendes Raumschiff hat viele Schubdüsen an verschiedenen Orten und mit verschiedenen Ausrichtungen."
@@ -5131,7 +5130,7 @@ Tutorials
 	}
 	Time
 	{
-		
+
 		Buttons = "Du kannst das <good>Spiel jederzeit anhalten</good>. Klicke dazu oben in der Mitte des Bildschirms auf die Schaltfläche <white>||</white> oder drücke die Taste <btn id='Game.PauseToggle'/>."
 		Faster = "Wenn du willst, dass die Zeit <good>schneller</good> oder <good>langsamer</good> vergeht, klicke auf die Schaltflächen <white>&gt;&gt;</white> oder die Tasten <white>&lt;&lt;</white>."
 		Tip = "<good>TIPP:</good> Wenn du Probleme hast, auf etwas zu klicken, weil es sich zu schnell bewegt, drücke einfach <btn id='Game.PauseToggle'/>, um das Spiel anzuhalten."
@@ -5139,7 +5138,7 @@ Tutorials
 	}
 	Wanted
 	{
-		
+
 		Attacking = "Wenn du Schiffe oder Stationen angreifst, die einer Fraktion angehören (oder mit einer befreundet sind), wirst du <bad>GESUCHT</bad>."
 		Evade = "<good>Vermeide lange genug, entdeckt zu werden</good>, dann geben sie die Suche auf."
 		Hunted = "Während du GESUCHT wirst, wird die Fraktion dich in der Nähe deiner letzten bekannten Position <bad>jagen</bad> und dich angreifen, sobald sie dich sieht."
@@ -5148,7 +5147,7 @@ Tutorials
 }
 VersionCheck
 {
-	
+
 	ConfirmInstall = "Der Download wurde abgeschlossen. Cosmoteer schließen und Update installieren?"
 	DownloadInstall = "Herunterladen &amp; installieren"
 	DownloadProgressFmt = "Update wird heruntergeladen ... <good>{0} %</good>\n<gray>{1:0.0} MB / {2:0.0} MB</gray>"
@@ -5159,7 +5158,7 @@ VersionCheck
 }
 VitalCategories
 {
-	
+
 	Airlock = "⚠ Fehlende Luftschleuse"
 	Command = "⚠ Fehlender Kommandoraum"
 	Crew = "⚠ Fehlende Crewquartiere"
@@ -5170,7 +5169,7 @@ VitalCategories
 }
 Wishlist
 {
-	
+
 	Caption = "JETZT KAUFEN!"
 	ExitMsg = "Danke, dass du die Cosmoteer-Demo gespielt hast!"
 	FameLimitReached = "HERZLICHEN GLÜCKWUNSCH!!!\nDu hast in der Demo den maximalen <fame>Ruhm</fame> erreicht, aber du bist auf dem besten Wege „legendär“ zu werden. Du kannst weiterspielen, aber du kannst keinen weiteren Ruhm verdienen und auch nicht in andere Sternensysteme reisen. Kaufe das Spiel jetzt, um deine Reise fortzusetzen!"
@@ -5184,7 +5183,7 @@ Wishlist
 }
 Workshop
 {
-	
+
 	Changes = "Änderungshinweise:"
 	Description = "Beschreibung:"
 	FirstVersion = "Erste Version"

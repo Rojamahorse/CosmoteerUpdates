@@ -129,7 +129,7 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 1200/10/2
+			Damage = { BaseValue=1200/10/2; BuffType=ElectronBuff; BuffMode=Multiply; }
 			DamageType = salvage
 			SpawnUnderlying = false
 			Filter
@@ -139,7 +139,7 @@ HitOperational
 		}
 		{
 			Type = Damage
-			Damage = 64000/10/2
+			Damage = { BaseValue=64000/10/2; BuffType=ElectronBuff; BuffMode=Multiply; }
 			DamageType = salvage
 			SpawnUnderlying = false
 			Filter

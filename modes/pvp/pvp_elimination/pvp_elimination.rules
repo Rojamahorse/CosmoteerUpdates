@@ -94,6 +94,8 @@ BaseTVTOptions
 	VictoryCondition = 1 // Index into list.
 	ResourceDrops = 0 // true/false
 	ShipConstruction = 1 // true/false
+	AsteroidDensity = 2 // Index into list.
+	NebulasType = 1 // Index into list.
 }
 
 BaseBROptions
@@ -114,4 +116,6 @@ BaseBROptions
 	VictoryCondition = 1 // Index into list.
 	ResourceDrops = 0 // true/false
 	ShipConstruction = 1 // true/false
+	AsteroidDensity = 2 // Index into list.
+	NebulasType = 1 // Index into list.
 }

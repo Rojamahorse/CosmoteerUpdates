@@ -1,0 +1,418 @@
+Type = None
+SubSpawners
+[
+	// Pirate hunter mission.
+	{
+		Type = Mission
+		Metatype = PirateHunt
+		SpawnAt = SimGlobal
+		Faction = SystemController
+		Objectives
+		[
+			{
+				Type = Sequential
+				SubObjectives
+				[
+					{
+						Type = DefeatShips
+						TargetsTag = { Tag=pirate; }
+						TargetCountFraction = 50%
+						MissionInvalidIfZeroTargets = true
+						AllowNpcKills = false
+						OverrideDisplayFormatKey = "Objectives/DefeatRovingPirates"
+					}
+					{
+						Type = ReceiveRewards
+					}
+				]
+			}
+		]
+		Rewards
+		[
+			{
+				Type = Money
+				MoneyPerHighTier = &/TIER_TABLES/StandardMoneyPerTier
+				MoneyPerTierMultiplier = 2
+				RoundToMultiple = 500
+			}
+			{
+				Type = Fame
+				FamePerHighTier = &/TIER_TABLES/StandardFamePerTier
+				FamePerTierMultiplier = 2
+				MaxFamePerHighTier = &/TIER_TABLES/StandardMaxFamePerTier
+			}
+            {
+                Type = Reputation
+                ReputationPerHighTier = &/TIER_TABLES/StandardReputationPerTier
+                ReputationPerTierMultiplier = 2
+            }
+		]
+	}
+
+	// Faction hunter missions.
+	{
+		Type = Mission
+		Metatype = FactionHunt
+		SpawnAt = Tag
+		SpawnAtTag = { Mode=Random; Tag=trade_station; OnlyOpposingFactions=true; }
+		OkayIfSpawnAtTagNotFound = true
+		Faction = OwnerOfTag
+		FactionTag = &SpawnAtTag
+		OkayIfFactionTagNotFound = true
+		Objectives
+		[
+			{
+				Type = Sequential
+				SubObjectives
+				[
+					{
+						Type = DefeatShips
+						TargetsTag = { Tag=faction_wanderer; OnlyFactions=[fringe]; }
+						TargetCountFraction = 50%
+						MissionInvalidIfZeroTargets = true
+						AllowNpcKills = false
+						OverrideDisplayFormatKey = "Objectives/DefeatFactionShips"
+					}
+					{
+						Type = ReceiveRewards
+					}
+				]
+			}
+		]
+		Rewards
+		[
+			{
+				Type = Money
+				MoneyPerHighTier = &/TIER_TABLES/StandardMoneyPerTier
+				MoneyPerTierMultiplier = 2
+				RoundToMultiple = 500
+			}
+			{
+				Type = Fame
+				FamePerHighTier = &/TIER_TABLES/StandardFamePerTier
+				FamePerTierMultiplier = 2
+				MaxFamePerHighTier = &/TIER_TABLES/StandardMaxFamePerTier
+			}
+            {
+                Type = Reputation
+                ReputationPerHighTier = &/TIER_TABLES/StandardReputationPerTier
+                ReputationPerTierMultiplier = 2
+            }
+		]
+	}
+	{
+		Type = Mission
+		Metatype = FactionHunt
+		SpawnAt = Tag
+		SpawnAtTag = { Mode=Random; Tag=trade_station; OnlyOpposingFactions=true; }
+		OkayIfSpawnAtTagNotFound = true
+		Faction = OwnerOfTag
+		FactionTag = &SpawnAtTag
+		OkayIfFactionTagNotFound = true
+		Objectives
+		[
+			{
+				Type = Sequential
+				SubObjectives
+				[
+					{
+						Type = DefeatShips
+						TargetsTag = { Tag=faction_wanderer; OnlyFactions=[monolith]; }
+						TargetCountFraction = 50%
+						MissionInvalidIfZeroTargets = true
+						AllowNpcKills = false
+						OverrideDisplayFormatKey = "Objectives/DefeatFactionShips"
+					}
+					{
+						Type = ReceiveRewards
+					}
+				]
+			}
+		]
+		Rewards
+		[
+			{
+				Type = Money
+				MoneyPerHighTier = &/TIER_TABLES/StandardMoneyPerTier
+				MoneyPerTierMultiplier = 2
+				RoundToMultiple = 500
+			}
+			{
+				Type = Fame
+				FamePerHighTier = &/TIER_TABLES/StandardFamePerTier
+				FamePerTierMultiplier = 2
+				MaxFamePerHighTier = &/TIER_TABLES/StandardMaxFamePerTier
+			}
+            {
+                Type = Reputation
+                ReputationPerHighTier = &/TIER_TABLES/StandardReputationPerTier
+                ReputationPerTierMultiplier = 2
+            }
+		]
+	}
+	{
+		Type = Mission
+		Metatype = FactionHunt
+		SpawnAt = Tag
+		SpawnAtTag = { Mode=Random; Tag=trade_station; OnlyOpposingFactions=true; }
+		OkayIfSpawnAtTagNotFound = true
+		Faction = OwnerOfTag
+		FactionTag = &SpawnAtTag
+		OkayIfFactionTagNotFound = true
+		Objectives
+		[
+			{
+				Type = Sequential
+				SubObjectives
+				[
+					{
+						Type = DefeatShips
+						TargetsTag = { Tag=faction_wanderer; OnlyFactions=[cabal]; }
+						TargetCountFraction = 50%
+						MissionInvalidIfZeroTargets = true
+						AllowNpcKills = false
+						OverrideDisplayFormatKey = "Objectives/DefeatFactionShips"
+					}
+					{
+						Type = ReceiveRewards
+					}
+				]
+			}
+		]
+		Rewards
+		[
+			{
+				Type = Money
+				MoneyPerHighTier = &/TIER_TABLES/StandardMoneyPerTier
+				MoneyPerTierMultiplier = 2
+				RoundToMultiple = 500
+			}
+			{
+				Type = Fame
+				FamePerHighTier = &/TIER_TABLES/StandardFamePerTier
+				FamePerTierMultiplier = 2
+				MaxFamePerHighTier = &/TIER_TABLES/StandardMaxFamePerTier
+			}
+            {
+                Type = Reputation
+                ReputationPerHighTier = &/TIER_TABLES/StandardReputationPerTier
+                ReputationPerTierMultiplier = 2
+            }
+		]
+	}
+	{
+		Type = Mission
+		Metatype = FactionHunt
+		SpawnAt = Tag
+		SpawnAtTag = { Mode=Random; Tag=trade_station; OnlyOpposingFactions=true; }
+		OkayIfSpawnAtTagNotFound = true
+		Faction = OwnerOfTag
+		FactionTag = &SpawnAtTag
+		OkayIfFactionTagNotFound = true
+		Objectives
+		[
+			{
+				Type = Sequential
+				SubObjectives
+				[
+					{
+						Type = DefeatShips
+						TargetsTag = { Tag=faction_wanderer; OnlyFactions=[imperium]; }
+						TargetCountFraction = 50%
+						MissionInvalidIfZeroTargets = true
+						AllowNpcKills = false
+						OverrideDisplayFormatKey = "Objectives/DefeatFactionShips"
+					}
+					{
+						Type = ReceiveRewards
+					}
+				]
+			}
+		]
+		Rewards
+		[
+			{
+				Type = Money
+				MoneyPerHighTier = &/TIER_TABLES/StandardMoneyPerTier
+				MoneyPerTierMultiplier = 2
+				RoundToMultiple = 500
+			}
+			{
+				Type = Fame
+				FamePerHighTier = &/TIER_TABLES/StandardFamePerTier
+				FamePerTierMultiplier = 2
+				MaxFamePerHighTier = &/TIER_TABLES/StandardMaxFamePerTier
+			}
+            {
+                Type = Reputation
+                ReputationPerHighTier = &/TIER_TABLES/StandardReputationPerTier
+                ReputationPerTierMultiplier = 2
+            }
+		]
+	}
+
+	// Exploration missions.
+	{
+		Type = Mission
+		Metatype = Explore
+		SpawnAt = SimGlobal
+		Faction = SystemController
+		Objectives
+		[
+			{
+				Type = Sequential
+				SubObjectives
+				[
+					{
+						Type = DiscoverPOIs
+						POITags = [poi_unknown]
+						DiscoverCountFraction = 25%
+					}
+					{
+						Type = ReceiveRewards
+					}
+				]
+			}
+		]
+		Rewards
+		[
+			{
+				Type = Money
+				MoneyPerHighTier = &/TIER_TABLES/StandardMoneyPerTier
+				RoundToMultiple = 500
+			}
+			{
+				Type = Fame
+				FamePerHighTier = &/TIER_TABLES/StandardFamePerTier
+				MaxFamePerHighTier = &/TIER_TABLES/StandardMaxFamePerTier
+			}
+            {
+                Type = Reputation
+                ReputationPerHighTier = &/TIER_TABLES/StandardReputationPerTier
+            }
+		]
+	}
+	{
+		Type = Mission
+		Metatype = Explore
+		SpawnAt = SimGlobal
+		Faction = SystemController
+		RequirePreviousMission = true
+		Objectives
+		[
+			{
+				Type = Sequential
+				SubObjectives
+				[
+					{
+						Type = DiscoverPOIs
+						POITags = [poi_unknown]
+						DiscoverCountFraction = 50%
+					}
+					{
+						Type = ReceiveRewards
+					}
+				]
+			}
+		]
+		Rewards
+		[
+			{
+				Type = Money
+				MoneyPerHighTier = &/TIER_TABLES/StandardMoneyPerTier
+				RoundToMultiple = 500
+			}
+			{
+				Type = Fame
+				FamePerHighTier = &/TIER_TABLES/StandardFamePerTier
+				MaxFamePerHighTier = &/TIER_TABLES/StandardMaxFamePerTier
+			}
+            {
+                Type = Reputation
+                ReputationPerHighTier = &/TIER_TABLES/StandardReputationPerTier
+            }
+		]
+	}
+	{
+		Type = Mission
+		Metatype = Explore
+		SpawnAt = SimGlobal
+		Faction = SystemController
+		RequirePreviousMission = true
+		Objectives
+		[
+			{
+				Type = Sequential
+				SubObjectives
+				[
+					{
+						Type = DiscoverPOIs
+						POITags = [poi_unknown]
+						DiscoverCountFraction = 75%
+					}
+					{
+						Type = ReceiveRewards
+					}
+				]
+			}
+		]
+		Rewards
+		[
+			{
+				Type = Money
+				MoneyPerHighTier = &/TIER_TABLES/StandardMoneyPerTier
+				RoundToMultiple = 500
+			}
+			{
+				Type = Fame
+				FamePerHighTier = &/TIER_TABLES/StandardFamePerTier
+				MaxFamePerHighTier = &/TIER_TABLES/StandardMaxFamePerTier
+			}
+            {
+                Type = Reputation
+                ReputationPerHighTier = &/TIER_TABLES/StandardReputationPerTier
+            }
+		]
+	}
+	{
+		Type = Mission
+		Metatype = Explore
+		SpawnAt = SimGlobal
+		Faction = SystemController
+		RequirePreviousMission = true
+		Objectives
+		[
+			{
+				Type = Sequential
+				SubObjectives
+				[
+					{
+						Type = DiscoverPOIs
+						POITags = [poi_unknown]
+						DiscoverCountFraction = 100%
+					}
+					{
+						Type = ReceiveRewards
+					}
+				]
+			}
+		]
+		Rewards
+		[
+			{
+				Type = Money
+				MoneyPerHighTier = &/TIER_TABLES/StandardMoneyPerTier
+				RoundToMultiple = 500
+			}
+			{
+				Type = Fame
+				FamePerHighTier = &/TIER_TABLES/StandardFamePerTier
+				MaxFamePerHighTier = &/TIER_TABLES/StandardMaxFamePerTier
+			}
+            {
+                Type = Reputation
+                ReputationPerHighTier = &/TIER_TABLES/StandardReputationPerTier
+            }
+		]
+	}
+]

@@ -32,9 +32,9 @@ ErrorFlashInterval = .1
 
 BlueprintUnderlayColor = [0, 0, 255, 38]
 
-AutoDoorValidColor = [255, 255, 255, 127]
-AutoDoorInvalidColor = [255, 127, 127, 76]
-AutoDoorInvalidCursorColor = [246, 49, 43, 76]
+AutoDoorValidColor = [10, 212, 98, 255]
+AutoDoorInvalidColor = [246, 49, 43, 255]
+AutoDoorInvalidCursorColor = [255, 255, 255, 255]
 
 LegalDoorLocationColor1 = [10, 212, 98, 25]
 LegalDoorLocationColor2 = [10, 212, 98, 229]

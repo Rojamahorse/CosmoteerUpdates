@@ -1,0 +1,224 @@
+ID = electron
+ToolTipKey = "Nebulas/Electron"
+DefaultLogicalFeather = 150
+DefaultVisualFeather = 500
+SharpCurveEdges = 8
+DullCurveEdges = 4
+DefaultAvoidDistance = 300
+ProhibitFtlJumpIn = true
+ProhibitFtlJumpOut = true
+PathfindTravelCost = 100*100
+LodBias = 0.9
+
+Buffs
+[
+	// Reduce reactor production and disable shields.
+	{
+		BuffType = ElectronDebuff
+		BuffAmount = 10%
+	}
+
+	// Buff energy weapon damage.
+	{
+		BuffType = ElectronBuff
+		BuffAmount = 175%
+	}
+]
+
+MaterialLow
+{
+	Color = [255, 255, 255, 200]
+	Shader = "nebula_electron.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_04X.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_05C.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01F.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex2
+	{
+		File = ./Data/common_effects/particles/noise_distorted_voronoi.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	
+	_color1 = [41, 81, 53, 255]
+	_color2 = [249, 255, 105, 255]
+	_color3 = [189, 218, 87, 255]
+	_color4 = [95, 255, 195, 255]
+	_color5 = [250,209,107, 255]
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+	_midTexScale = 0.00033
+	_noiseScaleFactor = 2.3
+	_microTexScale = 0.0074
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.05
+	_parallaxIntensity = -0.75
+}
+SimpleMaterialLow : MaterialLow 
+{
+	shader = "../nebula_simple.shader"
+}
+DiffuseMaterialLow
+{
+	Color = [255, 255, 255, 200]
+	Shader = "../nebula_diffuse.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_04X.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_05C.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01F.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_color1 = [41, 81, 53, 255]
+	_color2 = [249, 255, 105, 255]
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+	_midTexScale = 0.00033
+	_noiseScaleFactor = 2.3
+	_microTexScale = 0.0074
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.05
+	_parallaxIntensity = -0.75
+}
+NormalsMaterialLow
+{
+	Color = [255, 255, 255, 200]
+	Shader = "../nebula_normals.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_04X.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_05C.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01F.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+	_midTexScale = 0.00033
+	_noiseScaleFactor = 2.3
+	_microTexScale = 0.0074
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.25
+	_parallaxIntensity = -0.75
+}
+
+MaterialHigh
+{
+	Color = [255, 255, 255, 200]
+	Shader = "../nebula.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_04X.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_05C.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01F.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex2
+	{
+		File = ./Data/common_effects/particles/noise_distorted_voronoi.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	
+	_color1 = [41, 81, 53, 255]
+	_color2 = [249, 255, 105, 255]
+	_color3 = [189, 218, 87, 255]
+	_color4 = [95, 255, 195, 255]
+	_color5 = [250,209,107, 255]
+	
+	_worldUVOffset = [0.6, 0.35]
+	_worldUVScale = 1.5
+	_midTexScale = 0.00033
+	_noiseScaleFactor = 2.3
+	_microTexScale = 0.0074
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.05
+	_parallaxIntensity = 1.5
+}
+SimpleMaterialHigh : MaterialHigh
+{
+	shader = "../nebula_simple.shader"
+}
+
+MaterialMinimap = &MaterialLow

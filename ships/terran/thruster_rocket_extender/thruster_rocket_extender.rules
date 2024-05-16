@@ -614,6 +614,7 @@ Part : <../base_part_terran.rules>/Part
 	Stats
 	{
 		PowerCapacity = (&~/Part/Components/LocalBatteryStorage/MaxResources) / 1000
+		ThrusterBuff = (&~/Part/Components/EngineBuffProvider/BuffAmount/BaseValue) * 100
 
 		RecPower = &<../thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/Stats/RecPower
 		RecCrew = &<../thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/Stats/RecCrew

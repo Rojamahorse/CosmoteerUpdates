@@ -20,10 +20,10 @@ RenderStage = Upper
 IsLightSource = true
 ShowInMinimap = true
 MinimapColorScale = [255, 255, 255, 255]
+Tags = [sun]
 
 ProximityDamage
 {
-	AvoidanceTags = [sun]
 	InstantKillRadius = 1
 	RaycastDamageRadius = 2.5
 	RaycastsPerDiameterPerSecond = 5

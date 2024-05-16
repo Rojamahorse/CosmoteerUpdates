@@ -9,6 +9,7 @@ Megaroid : <../base_ship.rules>
 	JunkBlocksWeaponLOS = true
 	ExternalWalls = &<megaroid_walls/external_walls.rules>
 	OverrideConstructionMode = InstantCredits
+	IgnoreNebulas = true // Megaroids are too big to nebulas in PVP.
 
 	Blueprints : <../base_ship.rules>/Blueprints
 	{

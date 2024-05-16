@@ -1,0 +1,190 @@
+ID = cloudy
+ToolTipKey = "Nebulas/Cloudy"
+DefaultLogicalFeather = 150
+DefaultVisualFeather = 500
+SharpCurveEdges = 8
+DullCurveEdges = 4
+SightRangeFactor = 30%
+RadarRangeFactor = 50%
+HidesToOutsideObservers = true
+HidesRadarToOutsideObservers = true
+LinearDampingFactor = 200%
+AngularDampingFactor = 200%
+DefaultAvoidDistance = 300
+PathfindTravelCost = 100
+
+MaterialLow
+{
+	Color = [255, 255, 255, 127]
+	Shader = "../nebula.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_color1 = [98, 150, 214, 255]
+	_color2 = [160, 233, 209, 255]
+	_color3 = [216, 140, 155, 255]
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+	_midTexScale = 0.0005
+	_noiseScaleFactor = 0.15
+	_microTexScale = 0.0035
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = -0.75
+}
+SimpleMaterialLow : MaterialLow 
+{
+	shader = "../nebula_simple.shader"
+}
+DiffuseMaterialLow
+{
+	Color = [255, 255, 255, 127]
+	Shader = "../nebula_diffuse.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_color1 = [98, 150, 214, 255]
+	_color2 = [160, 233, 209, 255]
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+	_midTexScale = 0.0005
+	_noiseScaleFactor = 0.15
+	_microTexScale = 0.0035
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = -0.75
+}
+NormalsMaterialLow
+{
+	Color = [255, 255, 255, 127]
+	Shader = "../nebula_normals.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+	_midTexScale = 0.0005
+	_noiseScaleFactor = 0.15
+	_microTexScale = 0.0035
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = -0.75
+}
+
+MaterialHigh
+{
+	Color = [255, 255, 255, 100]
+	Shader = "../nebula.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_color1 = [172, 199, 200, 255]
+	_color2 = [233, 203, 160, 255]
+	_color3 = [216, 140, 155, 255]
+
+	_worldUVOffset = [0.6, 0.35]
+	_worldUVScale = 1.5
+	_midTexScale = 0.0005
+	_noiseScaleFactor = 0.15
+	_microTexScale = 0.0035
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = 1.5
+}
+SimpleMaterialHigh : MaterialHigh
+{
+	shader = "../nebula_simple.shader"
+}
+
+MaterialMinimap = &MaterialLow

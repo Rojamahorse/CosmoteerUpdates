@@ -732,12 +732,19 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
+		BeltSpeedFactor
+        {
+        	Type = BuffableValue
+        	Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
+        }
+
 		Graphics
 		{
 			Type = Graphics
 			Location = [1.5, 1.5]
 			OperationalToggle = IsOperational
 			AnimationToggle = ResourceConverter
+			AnimationSpeedFactor = BeltSpeedFactor
 			OperationalDoodad
 			{
 				Layer = "doodads_low"

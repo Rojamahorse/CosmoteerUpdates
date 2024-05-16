@@ -16,11 +16,22 @@ HailIcon
 		SampleMode = Linear
 	}
 }
+AcceptHailIcon = &HailIcon
+DeclineHailIcon =  &HailingFailedIcon
 HailingIcon
 {
 	Texture
 	{
 		File = "hud_hailing.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+AIHailingIcon
+{
+	Texture
+	{
+		File = "hud_ai_hailing.png"
 		MipLevels = 2
 		SampleMode = Linear
 	}
@@ -91,8 +102,27 @@ RadioUnderlayTargetedMaterial
         AlphaOperator = Add
     }
 }
+HailUnderlayDecliningMaterial
+{
+    Shader = "radio_underlay.shader"
+    Color = [219, 72, 61, 255]
+    _radioSpeed = 10
+    TargetBlendMode
+    {
+        SourceRgbFactor = SourceAlpha
+        DestRgbFactor = One
+        RgbOperator = Add
+        SourceAlphaFactor = InverseDestAlpha
+        DestAlphaFactor = One
+        AlphaOperator = Add
+    }
+}
+HailUnderlayUntargetedMaterial = &RadioUnderlayUntargetedMaterial
+HailUnderlayTargetedMaterial = &RadioUnderlayTargetedMaterial
+
 
 MissionsTabIcon = &<../missions/missions_gui.rules>/LogIcon
 HireTabIcon = &<../crew/crew_gui.rules>/ToolIcon
 TradeTabIcon = &<../resources/resources_gui.rules>/ToolIcon
 TechsTabIcon = &<../designer/build_gui.rules>/BlueprintsOffSprite
+DialogueTabIcon = &<../designer/build_gui.rules>/BlueprintsOffSprite

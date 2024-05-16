@@ -126,7 +126,6 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			ResourceType = fake
 			MaxResources = (&../ResourceConverter/From/0/Quantity) + 1		//Need to be +1 so the UraniumLoader dont need to momentarily stop after loading the LoadedUranium
-			StartingAmmo = 0
 			ToggleOnResources = &../ResourceConverter/From/0/Quantity
 			ToggleOffResources = (&ToggleOnResources) - 1
 		}
@@ -197,12 +196,19 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = BatteryStorage
 		}
 
+		BeltSpeedFactor
+        {
+        	Type = BuffableValue
+        	Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
+        }
+
 		Graphics
 		{
 			Type = Graphics
 			Location = [1.5, 2]
 			OperationalToggle = IsOperational
 			DoodadToggle = AnimationToggle
+			AnimationSpeedFactor = BeltSpeedFactor
 			Floor
 			{
 				Layer = "floors"

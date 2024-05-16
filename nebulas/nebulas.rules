@@ -1,0 +1,12 @@
+DefaultTriangleSize = 2000
+RegionSize = [10, 6]
+MaxPathfindIterations = 500
+MaxStasisPathfindsPerTick = 1
+StasisIgnoredNebulaTypes = [cloudy, electron]
+
+NebulaTypes
+[
+	&<cloudy/nebula_cloudy.rules>
+	&<electron/nebula_electron.rules>
+	&<ion_storm/nebula_ion_storm.rules>
+]

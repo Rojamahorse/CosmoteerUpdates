@@ -147,7 +147,6 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			ResourceType = fake
 			MaxResources = (&../ResourceConverter/From/1/Quantity) + 1		//Need to be +1 so the GoldLoader dont need to momentarily stop after loading the LoadedGold
-			StartingAmmo = 0
 			ToggleOnResources = &../ResourceConverter/From/1/Quantity
 			ToggleOffResources = (&ToggleOnResources) - 1
 		}
@@ -268,12 +267,19 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
+		BeltSpeedFactor
+        {
+        	Type = BuffableValue
+        	Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
+        }
+
 		Graphics
 		{
 			Type = Graphics
 			Location = [1.5, 1.5]
 			OperationalToggle = IsOperational
 			DoodadToggle = AnimationToggle
+			AnimationSpeedFactor = BeltSpeedFactor
 			ToggleOnDoodad
 			{
 				Layer = "walls"		//walls layer so its over the batteries and under the crew layer

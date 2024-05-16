@@ -35,7 +35,7 @@ TargetingModules
 	}
 ]
 
-CommsModules
+CommsModules : <ai_common.rules>/CommsModulesDefault
 [
 	{
 		Type = Trade

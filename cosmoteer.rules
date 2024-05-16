@@ -4,6 +4,7 @@ Buffs = &<buffs/buffs.rules>
 Resources = &<resources/resources.rules>/Resources
 FtlFuelResource = hyperium
 Nuggets = &<resources/resources.rules>/Nuggets
+Nebulas = &<nebulas/nebulas.rules>
 Doodads = &<doodads/doodads.rules>/Doodads
 Factions = &<factions/factions.rules>/Factions
 Commands = &<commands/commands.rules>
@@ -64,11 +65,13 @@ Simulation
 	PhysicsUpdatesPerSecond = 30
 	CCDThresholdVelocity = (&PhysicsUpdatesPerSecond) * 0.75
 	SightCircleFadeDuration = .5
+	SightCircleSizeTweenSpeed = 2
 	StasisCellSize = 2500
 	StasisLiveRange = &StasisCellSize
 	StasisPreloadRange = (&StasisLiveRange) * 1.5
 	StasisUpdateInterval = 1.0
 	StandardLightHeight = .3275
+	ShipHideAlphaTweenDuration = 0.25
 
 	Network
 	{
@@ -151,3 +154,5 @@ BASE_SOUNDS = &<common_effects/sounds/base_sounds.rules>
 BASE_SHAKE = &<common_effects/base_shake.rules>
 INDICATORS = &<gui/game/indicators/indicators.rules>
 PRIORITIES = &<ships/priorities.rules>
+TIER_TABLES = &<modes/career/tier_tables.rules>
+FLEET_TIER_REMAP_TABLE = &<modes/career/fleet_tier_remap_table.rules>

@@ -19,7 +19,7 @@ Part : <../base_part_terran.rules>/Part
 	MaxHealth = 4000 // Deliberately not increasing this for med/large reactors to make them extra-fragile.
 	AutoDoorMaxPathLength = 5
 	TypeCategories = [reactor, provides_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff]
 	CreateUnderlyingWhenDestroyed = false
 	IgnoreRotationForMirroredSelection = true
 	BlockedTravelCells
@@ -52,7 +52,7 @@ Part : <../base_part_terran.rules>/Part
 			MaxResourcesPickUp = 3000
 			InitPickUp = 2001
 			PickUpRate = 1000 / 1.0
-			ExpectedResourceGenerationRate = (&../BatteryProducer/ToQuantity) / (&../BatteryProducer/Interval)
+			ExpectedResourceGenerationRate = { BaseValue = (&../../BatteryProducer/ToQuantity) / (&../../BatteryProducer/Interval/BaseValue); BuffType=ElectronDebuff; BuffMode=Multiply; }
 			ToggleOnResources = 6001
 			ToggleOffResources = 6000
 		}
@@ -61,7 +61,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceConverter
 			ToStorage = BatteryStorage
 			ToQuantity = 1000
-			Interval = .2222 / 3
+			Interval = { BaseValue=0.2222/3; BuffType=ElectronDebuff; BuffMode=Divide; }
 		}
 
 		Graphics
@@ -451,7 +451,7 @@ Part : <../base_part_terran.rules>/Part
 
 	Stats
 	{
-		PowerGeneration = (&~/Part/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/BatteryProducer/Interval) / 1000
+		PowerGeneration = (&~/Part/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
 		BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
 		BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000

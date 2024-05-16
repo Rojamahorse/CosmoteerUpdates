@@ -2,6 +2,7 @@ ID = "cosmoteer.missile_emp"
 Range = 700
 IdealRange = 700
 Speed = 45
+ReceivableBuffs = [ElectronBuff]
 
 Components
 {
@@ -158,7 +159,7 @@ Components
 				{
 					Type = ExplosiveResourceDrain
 					ResourceType = battery
-					TotalDrain = 18000
+					TotalDrain = { BaseValue=18000; BuffType=ElectronBuff; BuffMode=Multiply; }
 					Radius = 18
 					Slices = 1
 					Filter

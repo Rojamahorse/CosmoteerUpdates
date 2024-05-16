@@ -110,7 +110,6 @@ TitleScreen
 	Steam = "Steam Community"
 	Reddit = "Reddit"
 	Feedback = "SEND FEEDBACK"
-	ConfirmHideAlert = "Are you sure you want to hide this alert?"
 	NextUpdateFmt = "Next update in approximately {0} days, {1} hours."
 	WishlistNow = "<s24>BUY NOW!</s24>\n<regular>Don't miss the launch discount!</regular>"
 	ConfirmExitGame = "Are you sure you wish to close the game?"
@@ -669,6 +668,8 @@ Inputs
 		SubmitFeedback = "Send Feedback"
 		EmulateRightClick = "Emulate Right Click"
 		RestartApp = "Restart Application"
+		IncreaseUIScale = "Increase U.I. Scaling"
+		DecreaseUIScale = "Decrease U.I. Scaling"
 	}
 
 	Game
@@ -925,6 +926,7 @@ Inputs
 		AutoBattleCamera = "Toggle Battle Camera Automation"
 		ZeroPlanetCoordinates = "Force Planet To Zero Coordinates"
 		NoDefaultConnections = "Disable Automatic Hyper-Jump Connections"
+		RemoveNebula = "Remove Nebula"
 	}
 
 	Formations
@@ -1169,6 +1171,9 @@ Settings
 		FancyUIEffects = "Fancy U.I. Effects"
 		FancyUIEffectsTip = "if enabled, additional user interface effects such as the \"glass\" blur will be rendered. Turning this off can improve performance."
 
+		FancyNebulas = "Fancy Nebulas & Storms"
+		FancyNebulasTip = "If enabled, nebulas and storms will have lighting and animation. Turning this off can improve performance."
+
 		UncompressedTextures = "Use Uncompressed Textures"
 		UncompressedTexturesTip = "If enabled, textures will not be compressed. Enabling this option will very slightly improve visual quality and greatly increase RAM/VRAM usage. "\
 		                          "Changing this option requires the game to be restarted."
@@ -1239,6 +1244,12 @@ Settings
 
 		ShowResourcePickupLines = "Show Floating Resource Lines"
 		ShowResourcePickupLinesTip = "If checked, lines from floating resource to ship will be shown."
+
+		PauseOnOpenDialogueWithEnemy = "Pause On Dialogue With Enemy"
+		PauseOnOpenDialogueWithEnemyTip = "If checked, the game will automatically pause when opening dialogue with an enemy ship."
+
+		PauseWhenHailedByEnemy = "Pause When Hailed By Enemy"
+		PauseWhenHailedByEnemyTip = "If checked, the game will automatically pause when an enemy ship hails you."
 
 		OffScreenBlips = "Show Blips For Off-Screen Ships"
 		OffScreenBlipsTip = "If checked, colored \"blips\" will be displayed for ships that are located past the edge of the screen."
@@ -1905,6 +1916,13 @@ ShipClasses
 	Megaroid = "Megaroid"
 }
 
+Nebulas
+{
+	Cloudy = "<b>Gaseous Nebula</b>\nShip inside the nebula have reduced speed and sensor range but are hidden to ships outside, except when firing weapons."
+	Electron = "<b>Electron Cloud</b>\nShip reactor output will be reduced by 90% and shields won't function, but energy weapons will do 75% more damage. Ships cannot hyper-jump in or out."
+	IonStorm = "<b>Ion Storm</b>\nShips inside will continuously take damage."
+}
+
 Doodads
 {
 	Planets = "Solar System"
@@ -1918,6 +1936,9 @@ Doodads
 	PlanetSand = "Desert"
 	PlanetWater = "Aquatic"
 	PlanetMiniSun = "Miniature Star"
+
+	Nebulas = "Nebulas & Storms"
+	NebulaClear = "Clear"
 
 	Asteroids = "Asteroids"
 	Asteroid_S = "Asteroid (S)"
@@ -2092,6 +2113,7 @@ CareerMode
 	ReputationLevelTitleFmt = "{0} {1} - {2} {0}"
 	MissionLogTip = "Career Log\n\nHotkey: <btn id='Game.MissionLog'/>"
 	StarSystemFmt = "<b>{0} System</b><s6>\n \n</s6>"
+	StarSystemTypeFmt = "{0}"
 	StarSystemTierFmt = "Danger Level: {0}"
 	StarSystemFactionLineFmt = "{0}<good>{2:0}%</good> {1}"
 	TierFmt = "<gray>[</gray><b>{0}</b><gray>]</gray>"
@@ -2123,6 +2145,14 @@ Factions
 	Cabal = "Cabal of Sol"
 	Imperium = "Centauri Imperium"
 	Fringe = "Fringe Systems Resistance"
+}
+
+SectorTypes
+{
+	Basic = "Unary Star"
+	Binary = "Binary Star"
+	HighDensityNebula = "Unary Star (High Nebula Density)"
+	Supernova = "Supernova Aftermath"
 }
 
 FameTitles
@@ -2259,12 +2289,14 @@ Missions
 	StationRescueDesc = "A distress signal has been received from {contact_ship}! Bandits are attacking the station in overwhelming numbers! The station's governor is promising {money} to any Cosmoteer who can destroy the bandits and rescue the station."
 	PirateBaseDestruction = "Destroy Pirate Base"
 	PirateBaseDestructionDesc = "The location of a local pirate fleet's home base has been discovered! These pirates have been brazenly preying on {faction_name} patrol ships within the system and must be eliminated. Authorities from the {faction_name} have posted a considerable bounty of {money} to be paid to any Cosmoteer brave and competent enough to destroy it."
-	FactionBaseDestruction = "Destroy {target_faction} Base"
+	FactionBaseDestruction = "Eliminate {target_faction} Base"
 	FactionBaseDestructionDesc = "The {faction_name} is at war with the {target_faction} and is offering payment of {money} to any private contractor who can eliminate one of its munitions supply bases in the {mission_location} System."
 	Explore = "Explore {mission_location} ({discover_perc:0}%)"
 	ExploreDesc = "Cosmotographers from the {faction_name} are requesting data about various locations of interest within the {mission_location} System."
 	VisitSystem = "Visit {mission_location}"
 	VisitSystemDesc = "A prominent cosmotographer is requesting data about solar activity in the {mission_location} System."
+	Ambush = "Survive The Ambush"
+	AmbushDesc = "A pirate has ambushed you, survive the encounter."
 	Debug = "Debug Mission"
 	DebugDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales rutrum eros. Fusce non eros a lacus luctus auctor sit amet at mi. In ac fermentum est. Nam viverra lectus eu turpis cursus vestibulum."
 }
@@ -2277,6 +2309,7 @@ MissionCategories
 	FactionWars = "Faction Conflicts"
 	Exploration = "Exploration"
 	FameLevels = "Fame Levels"
+	Encounter = "Encounter"
 	Debug = "Debug"
 }
 
@@ -2290,18 +2323,28 @@ Objectives
 	GatherResourcesFmt = "Acquire {0} {1} {2}"
 	DeliverResourcesFmt = "Deliver {0} {1} {2} to {3}"
 	DestroyShipFmt = "Eliminate {0}"
+	DefeatShipFmt = "Defeat {0}"
 	DestroyShips = "Eliminate Targets"
-	DestroyPirates = "Eliminate Pirates"
-	DestroyRovingPirates = "Eliminate Roving Pirates"
-	DestroyFactionShips = "Eliminate {target_faction} Patrol Ships"
+	DefeatShips = "Defeat Targets"
+	DefeatPirates = "Defeat Pirates"
+	DestroyPirates = "Destroy Pirates"
+	DefeatRovingPirates = "Defeat Roving Pirates"
+	DestroyRovingPirates = "Destroy Roving Pirates"
+	DefeatFactionShips = "Defeat {target_faction} Patrol Ships"
+	DestroyFactionShips = "Destroy {target_faction} Patrol Ships"
 	DestroyPlatforms = "Destroy Defense Platforms"
-	DestroyCaptors = "Eliminate Captors"
+	DefeatCaptors = "Defeat Captors"
+	DestroyCaptors = "Destroy Captors"
+	EncounterAmbush = "Defeat or escape from ambushers"
 	ProtectShipFmt = "{0} Must Survive"
 	ProtectShips = "Targets Must Survive"
+	DontSurrenderToFmt = "Do not surrender to {0}"
+	DontSurrenderToShips = "Do not surrender to ships"
 	ReceiveRewardsFromShipFmt = "Receive payment from {0}"
 	ReceiveRewardsInSystemFmt = "Receive payment from any station in the {0} System"
 	ReceiveRewardsAnywhere = "Receive payment from any station in the galaxy."
 	GotoShipFmt = "Reach {0}"
+	GotoShipInvertedFmt = "Escape from {0}"
 	GotoNodeFmt = "Travel to the {0} System"
 	TimeLimitFmt = "Time Remaining: <bad>{0}:{1:00}</bad>"
 	DiscoverFmt = "Discover {0}"
@@ -2322,6 +2365,8 @@ CreativeModeConfig
 	MapSizeTip = "The approximate number of star systems in the galaxy map."
 	GeneratePlanets = "Create Suns, Planets, & Moons"
 	GeneratePlanetsTip = "If checked, suns, planets, and moons will be automatically added to all star systems."
+	GenerateNebulas = "Create Nebulas & Storms"
+	GenerateNebulasTip = "If checked, nebulas and storms will be automatically added to all star systems."
 	GenerateFtlGates = "Create Hyper-Jump Relays"
 	GenerateFtlGatesTip = "If checked, Hyper-Jump Relays will be automatically added to all star systems connecting to each adjacent system."
 	MaxPlayers = &~/PvpModeConfig/MaxPlayers
@@ -2360,6 +2405,7 @@ CreativeMode
 	ClearResources = "Floating Resources"
 	ClearBullets = "Weapon Projectiles"
 	ClearPlanets = "Planets, Moons, & Suns"
+	ClearNebulas = "Nebulas & Storms"
 	ClearPOIs = "Area-of-Interest Icons"
 	ClearParticles = "Dead Crew & Particle VFX"
 
@@ -2546,6 +2592,8 @@ PvpModeConfig
 	ResourceDropsTip = "If checked, then resources will drop from ships when their parts are destroyed. May impact performance."
 	AsteroidDensity = "Asteroid Density"
 	AsteroidDensityTip = "The density of asteroids within the battle area."
+	NebulasType = "Nebulas & Storms"
+	NebulasTypeTip = "The types and density of nebulas and storms within the battle area."
 	FleetDistance = "Starting Distance"
 	FleetDistanceTip = "The distance between each player or team's fleet at the start of the game."
 	PerimeterDistance = "Ring of Death"
@@ -2592,6 +2640,19 @@ PvpModeConfig
 		Low = "Low"
 		Normal = "Normal"
 		High = "High"
+	}
+
+	NebulasTypes
+	{
+		None = "None"
+		CloudySparse = "Gaseous Nebulas (Sparse)"
+		CloudyDense = "Gaseous Nebulas (Dense)"
+		ElectronSparse = "Electron Clouds (Sparse)"
+		ElectronDense = "Electron Clouds (Dense)"
+		IonStormSparse = "Ion Storms (Sparse)"
+		IonStormDense = "Ion Storms (Dense)"
+		VariedSparse = "Varied (Sparse)"
+		VariedDense = "Varied (Dense)"
 	}
 
 	PerimeterDistances
@@ -2891,6 +2952,7 @@ Hud
 	            "Hotkey: <btn id='Game.Attack'/>"
 	SalvageTip = "<b>Gather/Salvage/Mine Resources</b>\n\nWith this button selected, click on or drag a box around floating resources, ships, or asteroids to gather, salvage, or mine them.\n\nHold <btn id='Game.CancelSalvageCollect'/> for cancellation mode.\n\n<btn id='General.UIAltClick'/> this button to filter resource types.\n\nHotkey: <btn id='Game.Salvage'/>"
 	FtlJumpTip = "<b>Hyper-Jump</b>\n\nQuickly teleport to another location within the solar system.\n\nHotkey: <btn id='Game.LocalFtlJump'/>"
+	FtlJumpDisabledTip = "The selected ship(s) are currently unable to make hyper-jumps."
 	FormationTip = "<b>Formations</b>\n\nOrganize your ships into a flight formation."
 	HaltTip = "<b>Halt</b>\n\nCancel all current orders.\n\nHotkey: <btn id='Game.Halt'/>"
 	SummonCrewTip = "<b>Recall Crew</b>\n\nImmediately summons all crew back to your ship.\n\nHotkey: <btn id='Game.Halt'/>"
@@ -3535,12 +3597,16 @@ CommsBox
 {
 	Title = "Comms"
 	Hail = "HAIL"
+	AcceptHail = "ACCEPT"
+	DeclineHail = "DECLINE"
 	IffNeutral = "I.F.F.: <neutral_bright>NEUTRAL</neutral_bright>"
 	IffEnemy = "I.F.F.: <enemy>ENEMY</enemy>"
 	IffAlly = "I.F.F.: <ally>ALLY</ally>"
 	IffPlayer = "I.F.F.: <player>OWNED</player>"
 	DistFmt = "{0:0.00} km"
+	IffTextHailing = "<neutral_bright>Incoming Hail...</neutral_bright>"
 	HailingFmt = "<good>HAILING...</good>\n{0}"
+	AIHailingFmt = "<good>HAILED BY...</good>\n{0}"
 	HailingFailedFmt = "<bad>HAIL REJECTED</bad>\n{0}"
 	NoShips = "No Ships Within\nHailing Range"
 }
@@ -3591,6 +3657,26 @@ CommWindow
 	TechsInfo = "Purchase ship part blueprints to permanently unlock them for construction."
 	BuyTechFmt = "UNLOCK\n{0}"
 	PrerequisitesFmt = "Requires: {0}"
+	Dialogue = "Exchange Dialogue"
+}
+
+Dialogue
+{
+	Surrender
+	{
+		PlayerSurrenderDialogue = "{0} is willing to let you surrender for <ins_money>{1:n0}</ins_money>."
+		AISurrenderDialogue = "{0} is requesting to surrender to you for <money>{1:n0}</money>."
+		PlayerSurrenderPayBountyDialogue = "{0} is willing to let you surrender for <ins_money>{1:n0}</ins_money>, paying off your bounty to {2}"
+		PlayerSurrender = "Surrender"
+		PlayerSurrenderTip = "Surrender to the enemy ship.  You will pay <ins_money>{0:n0}</ins_money> and the ship will stop attacking you for a while."
+		PlayerSurrenderPayBountyTip = "Surrender to the enemy ship.  You will pay <ins_money>{0:n0}</ins_money> and bounty from {1} will be paid off."
+		DeclinePlayerSurrender = "Fight On"
+		DeclinePlayerSurrenderTip = "Decline to surrender to the enemy ship.  You will continue to fight."
+		AISurrender = "Accept Surrender"
+		AISurrenderTip = "Accept the enemy ship's surrender.  You will receive <money>{0:n0}</money> and the ship will become neutral to you."
+		DeclineAISurrender = "Fight On"
+		DeclineAISurrenderTip = "Reject the enemy ship's surrender.  You will continue to fight."
+	}
 }
 
 ColorPicker

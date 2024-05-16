@@ -162,6 +162,8 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = BatteryStorage
 		}
 
+		//BeltSpeedFactor not using this component for because diamond is so fast it doesn't use a factory buff
+
 		Graphics
 		{
 			Type = Graphics

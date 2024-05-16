@@ -30,7 +30,6 @@ Part : <../base_part_terran.rules>/Part
 	ThrustRecoveryTime = { BaseValue=2; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
 	FuelUsage = 400
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, Rocket, RocketThrust, RocketRampUp, RocketRampUpFinal, RocketOperation, RocketBatteryConnection]
-	HasNonContiguousPathing = true
 	BlockedTravelCells
 	[
 		[1, 1]

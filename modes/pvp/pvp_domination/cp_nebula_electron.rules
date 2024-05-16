@@ -1,0 +1,9 @@
+Spawners
+[
+	{
+		Type = Nebula
+		NebulaType = electron
+		NebulaRadius = 2000
+		MultiplyNebulaRadius = AreaRadiusKM
+	}
+]
