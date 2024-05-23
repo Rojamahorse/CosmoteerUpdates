@@ -926,7 +926,7 @@ Inputs
 		AutoBattleCamera = "Toggle Battle Camera Automation"
 		ZeroPlanetCoordinates = "Force Planet To Zero Coordinates"
 		NoDefaultConnections = "Disable Automatic Hyper-Jump Connections"
-		RemoveNebula = "Remove Nebula"
+		RemoveNebula = "Remove Cloud/Storm"
 	}
 
 	Formations
@@ -1171,8 +1171,8 @@ Settings
 		FancyUIEffects = "Fancy U.I. Effects"
 		FancyUIEffectsTip = "if enabled, additional user interface effects such as the \"glass\" blur will be rendered. Turning this off can improve performance."
 
-		FancyNebulas = "Fancy Nebulas & Storms"
-		FancyNebulasTip = "If enabled, nebulas and storms will have lighting and animation. Turning this off can improve performance."
+		FancyNebulas = "Fancy Clouds & Storms"
+		FancyNebulasTip = "If enabled, clouds and storms will have lighting and animation. Turning this off can improve performance."
 
 		UncompressedTextures = "Use Uncompressed Textures"
 		UncompressedTexturesTip = "If enabled, textures will not be compressed. Enabling this option will very slightly improve visual quality and greatly increase RAM/VRAM usage. "\
@@ -1918,8 +1918,8 @@ ShipClasses
 
 Nebulas
 {
-	Cloudy = "<b>Gaseous Nebula</b>\nShip inside the nebula have reduced speed and sensor range but are hidden to ships outside, except when firing weapons."
-	Electron = "<b>Electron Cloud</b>\nShip reactor output will be reduced by 90% and shields won't function, but energy weapons will do 75% more damage. Ships cannot hyper-jump in or out."
+	Cloudy = "<b>Gaseous Cloud</b>\nShips inside the cloud have reduced speed and sensor range but are hidden to ships outside, except when firing weapons."
+	Electron = "<b>Electron Cloud</b>\nShip reactor output will be reduced by 80% and shields won't function, but energy weapons will do 75% more damage. Ships cannot hyper-jump in or out and radar range is reduced due to electromagnetic interference."
 	IonStorm = "<b>Ion Storm</b>\nShips inside will continuously take damage."
 }
 
@@ -1937,7 +1937,7 @@ Doodads
 	PlanetWater = "Aquatic"
 	PlanetMiniSun = "Miniature Star"
 
-	Nebulas = "Nebulas & Storms"
+	Nebulas = "Clouds & Storms"
 	NebulaClear = "Clear"
 
 	Asteroids = "Asteroids"
@@ -2151,7 +2151,7 @@ SectorTypes
 {
 	Basic = "Unary Star"
 	Binary = "Binary Star"
-	HighDensityNebula = "Unary Star (High Nebula Density)"
+	HighDensityNebula = "Unary Star (High Cloud Density)"
 	Supernova = "Supernova Aftermath"
 }
 
@@ -2365,8 +2365,8 @@ CreativeModeConfig
 	MapSizeTip = "The approximate number of star systems in the galaxy map."
 	GeneratePlanets = "Create Suns, Planets, & Moons"
 	GeneratePlanetsTip = "If checked, suns, planets, and moons will be automatically added to all star systems."
-	GenerateNebulas = "Create Nebulas & Storms"
-	GenerateNebulasTip = "If checked, nebulas and storms will be automatically added to all star systems."
+	GenerateNebulas = "Create Clouds & Storms"
+	GenerateNebulasTip = "If checked, clouds and storms will be automatically added to all star systems."
 	GenerateFtlGates = "Create Hyper-Jump Relays"
 	GenerateFtlGatesTip = "If checked, Hyper-Jump Relays will be automatically added to all star systems connecting to each adjacent system."
 	MaxPlayers = &~/PvpModeConfig/MaxPlayers
@@ -2405,7 +2405,7 @@ CreativeMode
 	ClearResources = "Floating Resources"
 	ClearBullets = "Weapon Projectiles"
 	ClearPlanets = "Planets, Moons, & Suns"
-	ClearNebulas = "Nebulas & Storms"
+	ClearNebulas = "Clouds & Storms"
 	ClearPOIs = "Area-of-Interest Icons"
 	ClearParticles = "Dead Crew & Particle VFX"
 
@@ -2592,8 +2592,8 @@ PvpModeConfig
 	ResourceDropsTip = "If checked, then resources will drop from ships when their parts are destroyed. May impact performance."
 	AsteroidDensity = "Asteroid Density"
 	AsteroidDensityTip = "The density of asteroids within the battle area."
-	NebulasType = "Nebulas & Storms"
-	NebulasTypeTip = "The types and density of nebulas and storms within the battle area."
+	NebulasType = "Clouds & Storms"
+	NebulasTypeTip = "The types and density of clouds and storms within the battle area."
 	FleetDistance = "Starting Distance"
 	FleetDistanceTip = "The distance between each player or team's fleet at the start of the game."
 	PerimeterDistance = "Ring of Death"
@@ -2645,8 +2645,8 @@ PvpModeConfig
 	NebulasTypes
 	{
 		None = "None"
-		CloudySparse = "Gaseous Nebulas (Sparse)"
-		CloudyDense = "Gaseous Nebulas (Dense)"
+		CloudySparse = "Gaseous Clouds (Sparse)"
+		CloudyDense = "Gaseous Clouds (Dense)"
 		ElectronSparse = "Electron Clouds (Sparse)"
 		ElectronDense = "Electron Clouds (Dense)"
 		IonStormSparse = "Ion Storms (Sparse)"

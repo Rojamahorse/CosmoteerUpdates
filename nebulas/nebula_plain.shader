@@ -1,4 +1,4 @@
-#include "nebula_base.shader"
+#include "./Data/base.shader"
 
 struct VERT_INPUT_NEBULA
 {
@@ -12,12 +12,9 @@ struct VERT_OUTPUT_NEBULA
 	float4 location : SV_POSITION;
 	float2 worldLoc : POSITION0;
 	float4 color : COLOR0;
-	float fadeAlpha : COLOR1;
-	float2 unexploredUV : POSITION1;
 	float4 tangent : TANGENT0;
 };
 
-float4x4 _unexploredWorldToUVTransform;
 float _zoomT;
 
 VERT_OUTPUT_NEBULA vert(in VERT_INPUT_NEBULA input)
@@ -26,26 +23,31 @@ VERT_OUTPUT_NEBULA vert(in VERT_INPUT_NEBULA input)
 	float4 loc = lerp(input.locationMin, input.locationMax, _zoomT);
 	output.location = mul(loc, _transform);
 	output.worldLoc = loc.xy;
-	output.color = _color;
+	output.color = input.color * _color;
 	output.tangent.xy = normalize(mul(float4(1, 0, 0, 0), _transform).xy * _viewportScale);
 	output.tangent.zw = float2(1, 1);
-	output.fadeAlpha = input.color.a;
-	output.unexploredUV = mul(float4(loc.xy, 0, 1), _unexploredWorldToUVTransform).xy;
 	return output;
 }
 
 float2 _worldUVOffset;
+float _worldUVScale;
+
+Texture2D _unexploredTexture;
+SamplerState _unexploredTexture_SS;
+float4x4 _unexploredWorldToUVTransform;
 
 PIX_OUTPUT pix(in VERT_OUTPUT_NEBULA input) : SV_TARGET
 {
-	float4 unpackedNormal;
-	float detailNoise;
+	float2 uv = (input.worldLoc + _worldUVOffset) * _worldUVScale;
+	float4 ret = _texture.Sample(_texture_SS, uv) * input.color;
 
-	CreateNebulaBase(input.worldLoc, _worldUVOffset, input.unexploredUV, input.fadeAlpha, unpackedNormal, detailNoise);
+	float2 unexploredUV = mul(float4(input.worldLoc.x, input.worldLoc.y, 0, 1), _unexploredWorldToUVTransform);
+	ret.a *= 1 - _unexploredTexture.Sample(_unexploredTexture_SS, unexploredUV).a;
 
-	unpackedNormal.rg = -unpackedNormal.rg;
-	unpackedNormal.rg = rotateFlipNormals(unpackedNormal.rg, input.tangent);
-	float3 nrml = normalsToColor(unpackedNormal.rgb);
-	float a = pow(unpackedNormal.a, 0.3) * input.fadeAlpha;
-	return float4(nrml, a);
+	if (ret.a <= 0)
+		discard;
+
+	ret.a *= applyGlobalLightingInferredRetAlpha(ret, uv, input.tangent, _lightNormal);
+
+	return ret;
 }

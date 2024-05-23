@@ -2,6 +2,7 @@ DefaultTriangleSize = 2000
 RegionSize = [10, 6]
 MaxPathfindIterations = 500
 MaxStasisPathfindsPerTick = 1
+MinToolTipZoom = 500
 StasisIgnoredNebulaTypes = [cloudy, electron]
 
 NebulaTypes

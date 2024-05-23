@@ -1,7 +1,9 @@
 ID = ion_storm
 ToolTipKey = "Nebulas/IonStorm"
-DefaultLogicalFeather = 150
-DefaultVisualFeather = 500
+DefaultLogicalFeather = 100
+DefaultVisualFeather = [200, 1700]
+DefaultVisualFeatherOverZoom = [1, 2000]
+DefaultVisualFeatherOverZoomExponent = 0.5
 SharpCurveEdges = 8
 DullCurveEdges = 4
 DefaultAvoidDistance = 300
@@ -11,7 +13,7 @@ ShipDamageFractionPerTick = 10%
 CrewDamageChancePerTick = 1%
 CrewDamagePerTick = &<./Data/crew/crew.rules>/MaxHealth
 ShipDamageMediaEffects = &<./Data/modes/pvp/base_pvp.rules>/PerimeterDamageMediaEffects
-PathfindTravelCost = 100*100*100
+PathfindTravelCost = 100*100
 
 MaterialLow
 {
@@ -45,7 +47,7 @@ MaterialLow
 	_color1 = [210, 69, 69, 255]
 	_color2 = [130, 0, 0, 255]
 	_color3 = [43, 42, 76, 255]
-	
+
 	_worldUVOffset = [0, 0]
 	_worldUVScale = 1
 	_midTexScale = 0.0005
@@ -55,7 +57,7 @@ MaterialLow
 	_lodMaxBlend = 0.1
 	_parallaxIntensity = -0.75
 }
-SimpleMaterialLow : MaterialLow 
+SimpleMaterialLow : MaterialLow
 {
 	shader = "../nebula_simple.shader"
 }
@@ -66,7 +68,7 @@ DiffuseMaterialLow
 
 	Texture
 	{
-		File = ../nebula_normals_03D.png 
+		File = ../nebula_normals_03D.png
 		SampleMode = Linear
 		MipLevels = max
 		UMode = Wrap
@@ -108,7 +110,7 @@ NormalsMaterialLow
 
 	Texture
 	{
-		File = ../nebula_normals_03D.png 
+		File = ../nebula_normals_03D.png
 		SampleMode = Linear
 		MipLevels = max
 		UMode = Wrap

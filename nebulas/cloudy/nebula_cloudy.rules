@@ -1,17 +1,17 @@
 ID = cloudy
 ToolTipKey = "Nebulas/Cloudy"
-DefaultLogicalFeather = 150
-DefaultVisualFeather = 500
+DefaultLogicalFeather = 100
+DefaultVisualFeather = [200, 1700]
+DefaultVisualFeatherOverZoom = [1, 2000]
+DefaultVisualFeatherOverZoomExponent = 0.5
 SharpCurveEdges = 8
 DullCurveEdges = 4
 SightRangeFactor = 30%
-RadarRangeFactor = 50%
+RadarRangeFactor = 75%
 HidesToOutsideObservers = true
 HidesRadarToOutsideObservers = true
-LinearDampingFactor = 200%
-AngularDampingFactor = 200%
-DefaultAvoidDistance = 300
-PathfindTravelCost = 100
+LinearDampingFactor = 250%
+AngularDampingFactor = 250%
 
 MaterialLow
 {
@@ -55,7 +55,7 @@ MaterialLow
 	_lodMaxBlend = 0.1
 	_parallaxIntensity = -0.75
 }
-SimpleMaterialLow : MaterialLow 
+SimpleMaterialLow : MaterialLow
 {
 	shader = "../nebula_simple.shader"
 }

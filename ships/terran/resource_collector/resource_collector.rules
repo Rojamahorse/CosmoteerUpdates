@@ -433,7 +433,6 @@ Part : <../base_part_terran.rules>/Part
 			MinResourcesUsed = 1
 			OperationalToggle = IsBeam1Operational
 			Location = [15/64, 0]
-			RevealsShip = false
 		}
 		BeamEmitter2 : BeamEmitter1
 		{

@@ -573,7 +573,6 @@ Part : <../base_part_terran.rules>/Part
 			EffectsScaleFactor = BeamRegulatorProxy
 			ResourceScaleFactor = AbsBeamRegulator
 			ValueScaleFactor = BeamRegulatorProxy
-			RevealsShip = false
 		}
 
 		// Note: When adding or removing emitters, make sure to update BeamCount at the top of this file as well.

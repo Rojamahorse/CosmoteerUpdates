@@ -1,13 +1,18 @@
 ID = electron
 ToolTipKey = "Nebulas/Electron"
-DefaultLogicalFeather = 150
-DefaultVisualFeather = 500
+DefaultLogicalFeather = 100
+DefaultVisualFeather = [200, 1700]
+DefaultVisualFeatherOverZoom = [1, 2000]
+DefaultVisualFeatherOverZoomExponent = 0.5
 SharpCurveEdges = 8
 DullCurveEdges = 4
+RadarRangeFactor = 50%
+LinearDampingFactor = 150%
+AngularDampingFactor = 150%
 DefaultAvoidDistance = 300
 ProhibitFtlJumpIn = true
 ProhibitFtlJumpOut = true
-PathfindTravelCost = 100*100
+PathfindTravelCost = 100
 LodBias = 0.9
 
 Buffs
@@ -15,7 +20,7 @@ Buffs
 	// Reduce reactor production and disable shields.
 	{
 		BuffType = ElectronDebuff
-		BuffAmount = 10%
+		BuffAmount = 20%
 	}
 
 	// Buff energy weapon damage.
@@ -62,11 +67,11 @@ MaterialLow
 		UMode = Wrap
 		VMode = Wrap
 	}
-	
-	_color1 = [41, 81, 53, 255]
+
+	_color1 = [89, 126, 0, 255] //dark electric green
 	_color2 = [249, 255, 105, 255]
 	_color3 = [189, 218, 87, 255]
-	_color4 = [95, 255, 195, 255]
+	_color4 = [95, 255, 195, 255] //sky blue
 	_color5 = [250,209,107, 255]
 
 	_worldUVOffset = [0, 0]
@@ -78,7 +83,7 @@ MaterialLow
 	_lodMaxBlend = 0.05
 	_parallaxIntensity = -0.75
 }
-SimpleMaterialLow : MaterialLow 
+SimpleMaterialLow : MaterialLow
 {
 	shader = "../nebula_simple.shader"
 }
@@ -111,7 +116,8 @@ DiffuseMaterialLow
 		UMode = Wrap
 		VMode = Wrap
 	}
-	_color1 = [41, 81, 53, 255]
+
+	_color1 = [89, 126, 0, 255] //dark electric green
 	_color2 = [249, 255, 105, 255]
 
 	_worldUVOffset = [0, 0]
@@ -165,7 +171,7 @@ NormalsMaterialLow
 
 MaterialHigh
 {
-	Color = [255, 255, 255, 200]
+	Color = [255, 255, 255, 150]
 	Shader = "../nebula.shader"
 
 	Texture
@@ -200,13 +206,13 @@ MaterialHigh
 		UMode = Wrap
 		VMode = Wrap
 	}
-	
-	_color1 = [41, 81, 53, 255]
+
+	_color1 = [168, 208, 10, 255] //electric green
 	_color2 = [249, 255, 105, 255]
 	_color3 = [189, 218, 87, 255]
 	_color4 = [95, 255, 195, 255]
 	_color5 = [250,209,107, 255]
-	
+
 	_worldUVOffset = [0.6, 0.35]
 	_worldUVScale = 1.5
 	_midTexScale = 0.00033

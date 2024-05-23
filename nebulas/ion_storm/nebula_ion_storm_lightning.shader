@@ -45,10 +45,10 @@ PIX_OUTPUT pix(in VERT_OUTPUT_NEBULA input) : SV_TARGET
 {
 #ifdef GTE_PS_4_0_level_9_3
 	float unexplored = 1 - _unexploredTexture.Sample(_unexploredTexture_SS, input.unexploredUV).a;
-	
+
 	if (unexplored <= 0)
 		discard;
-	
+
 	float2 scrollingWorldLoc = input.worldLoc + float2(_gameTime * 500, _gameTime * 500);
 	float2 scrollingWorldLoc2 = input.worldLoc - float2(_gameTime * 550, _gameTime * 550);
 	float2 parallaxOffset = ((_parallaxLoc - input.worldLoc) * _parallaxIntensity) / (_camScale + max(0, _parallaxIntensity));
@@ -65,7 +65,7 @@ PIX_OUTPUT pix(in VERT_OUTPUT_NEBULA input) : SV_TARGET
 	float cosine = cos(_gameTime * 0.27);
 	float2 waveUVs = float2(sine * 500 + input.worldLoc.x, cosine * 500 + input.worldLoc.y);
 	float vTex4 = 1 - _noiseTex1.Sample(_noiseTex1_SS, waveUVs * 0.000452).r;
-	
+
 	float voronoiNoise = (1 - vTex1) * (1 - vTex2) * vTex3;
 
 	float mask = 1 - tex.a;
@@ -79,7 +79,7 @@ PIX_OUTPUT pix(in VERT_OUTPUT_NEBULA input) : SV_TARGET
 	float arc = min(forwards, backwards);
 
 	float3 col = lerp(_color1.rgb, float3(1,1,1), arc);
-	return float4(col, arc * input.fadeAlpha);
+	return float4(col, arc * input.fadeAlpha * unexplored);
 #endif
 	return float4(0,0,0,0);
 }

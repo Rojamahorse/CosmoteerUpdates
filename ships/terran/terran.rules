@@ -494,7 +494,7 @@ Terran : <../base_ship.rules>
 				}
 				NormalsMaterial
 				{
-					Shader = "../common/normals.shader"
+					Shader = "../common/roof_normals.shader"
 				}
 			}
 		}
@@ -523,7 +523,7 @@ Terran : <../base_ship.rules>
 				}
 				NormalsMaterial
 				{
-					Shader = "../common/normals.shader"
+					Shader = "../common/roof_normals.shader"
 				}
 			}
 		}
@@ -633,7 +633,7 @@ Terran : <../base_ship.rules>
 				}
 				NormalsMaterial
 				{
-					Shader = "../common/normals.shader"
+					Shader = "../common/roof_normals.shader"
 				}
 			}
 		}
