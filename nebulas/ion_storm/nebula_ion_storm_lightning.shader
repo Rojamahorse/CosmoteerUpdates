@@ -2,7 +2,8 @@
 
 struct VERT_INPUT_NEBULA
 {
-	float4 location : POSITION;
+	float4 locationMin : POSITION;
+	float4 locationMax : POSITION1;
 	float4 color : COLOR0;
 };
 
@@ -20,22 +21,24 @@ float4 _color1 = 255;
 
 float3 _worldLightSource;
 float4x4 _unexploredWorldToUVTransform;
+float _zoomT;
 
 VERT_OUTPUT_NEBULA vert(in VERT_INPUT_NEBULA input)
 {
 	VERT_OUTPUT_NEBULA output;
-	output.location = mul(input.location, _transform);
-	output.worldLoc = input.location.xy;
+	float4 loc = lerp(input.locationMin, input.locationMax, _zoomT);
+	output.location = mul(loc, _transform);
+	output.worldLoc = loc.xy;
 	output.color = _color;
 	output.fadeAlpha = input.color.a;
 	float4 tangent;
 	tangent.xy = normalize(mul(float4(1, 0, 0, 0), _transform).xy * _viewportScale);
 	tangent.zw = float2(1, 1);
-	float3 lightNormal = float3(input.location.xy, 0) - _worldLightSource;
+	float3 lightNormal = float3(loc.xy, 0) - _worldLightSource;
 	lightNormal = normalize(lightNormal);
 	lightNormal.y = -lightNormal.y;
 	output.lightNormal = lightNormal;
-	output.unexploredUV = mul(float4(input.location.xy, 0, 1), _unexploredWorldToUVTransform).xy;
+	output.unexploredUV = mul(float4(loc.xy, 0, 1), _unexploredWorldToUVTransform).xy;
 	return output;
 }
 

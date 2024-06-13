@@ -120,9 +120,16 @@ HailUnderlayDecliningMaterial
 HailUnderlayUntargetedMaterial = &RadioUnderlayUntargetedMaterial
 HailUnderlayTargetedMaterial = &RadioUnderlayTargetedMaterial
 
-
 MissionsTabIcon = &<../missions/missions_gui.rules>/LogIcon
 HireTabIcon = &<../crew/crew_gui.rules>/ToolIcon
 TradeTabIcon = &<../resources/resources_gui.rules>/ToolIcon
 TechsTabIcon = &<../designer/build_gui.rules>/BlueprintsOffSprite
-DialogueTabIcon = &<../designer/build_gui.rules>/BlueprintsOffSprite
+DialogueTabIcon
+{
+	Texture
+	{
+	    File = "dialogue.png"
+	    MipLevels = 2
+	    SampleMode = Linear
+	}
+}

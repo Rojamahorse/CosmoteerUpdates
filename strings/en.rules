@@ -1307,6 +1307,9 @@ Settings
 		EnableCollisionAvoidanceTip = "If checked, then your ships will attempt to avoid collisions with other ships by default. "\
 		                              "Hold <btn id='Game.InvertCollisionAvoidance'/> to use the other mode."
 
+		EnableNebulaAvoidance = "Navigate Around Clouds & Storms"
+		EnableNebulaAvoidanceTip = "If checked and Collision Avoidance is also enabled, then your ships will navigate around hazardous electron clouds and ion storms."
+
 		EnableArrivalMatching = "Enable Speed Synchronization"
 		EnableArrivalMatchingTip = "If checked, then commanding multiple ships simultaneously will instruct them to synchronize their speeds so that they arrive at approximately the same time. "\
 		                           "Double-right-click to disable speed synchronization for that specific command (or enable it if this option is unchecked)."
@@ -1919,8 +1922,11 @@ ShipClasses
 Nebulas
 {
 	Cloudy = "<b>Gaseous Cloud</b>\nShips inside the cloud have reduced speed and sensor range but are hidden to ships outside, except when firing weapons."
-	Electron = "<b>Electron Cloud</b>\nShip reactor output will be reduced by 80% and shields won't function, but energy weapons will do 75% more damage. Ships cannot hyper-jump in or out and radar range is reduced due to electromagnetic interference."
+	CloudyHudFmt = "<s14>{0:0.}%</s14>\n<s12><gray>gaseous</gray></s12>"
+	Electron = "<b>Electron Cloud</b>\nShip reactor output will be reduced by 80%, but energy weapons will do 75% more damage. Ships cannot hyper-jump in or out and radar range is reduced due to electromagnetic interference."
+	ElectronHudFmt = "<s14><color r='180' g='255' b='77'>{0:0.}%</color></s14>\n<s12><gray>electron</gray></s12>"
 	IonStorm = "<b>Ion Storm</b>\nShips inside will continuously take damage."
+	IonStormHudFmt = "<s14><bad>{0:0.}%</bad></s14>\n<s12><gray>storm</gray></s12>"
 }
 
 Doodads
@@ -3846,6 +3852,10 @@ Parts
 	CorridorIcon = "Cor."
 	CorridorDesc = "A hallway through which crew quickly travel."
 
+	CrewQuartersLarge = "Crew's Barracks"
+	CrewQuartersLargeIcon = "Barracks"
+	CrewQuartersLargeDesc = "Provides beds for 24 crew."
+
 	CrewQuartersMed = "Crew's Quarters"
 	CrewQuartersMedIcon = "Quarters"
 	CrewQuartersMedDesc = "Provides beds for 6 crew."
@@ -3982,7 +3992,7 @@ Parts
 
 	PowerStorage = "Power Capacitor"
 	PowerStorageIcon = "Capacitor"
-	PowerStorageDesc = "Stores a limited cache of plasma batteries that may be used by nearby ship's systems."
+	PowerStorageDesc = "Stores a limited cache of plasma batteries that may be delivered by crew to nearby ship's systems."
 
 	Railgun = "Railgun"
 	RailgunDesc = "A variable-length modular weapon that fires magnetically accelerated projectiles that can penetrate deep into enemy ships, causing great damage."

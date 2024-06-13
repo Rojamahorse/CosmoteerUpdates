@@ -1,32 +1,43 @@
 ID = electron
 ToolTipKey = "Nebulas/Electron"
-DefaultLogicalFeather = 100
-DefaultVisualFeather = [200, 1700]
-DefaultVisualFeatherOverZoom = [1, 2000]
+DefaultLogicalFeather = 300
+DefaultVisualFeather = [400, 1400]
+DefaultVisualFeatherOverZoom = [100, 4000]
 DefaultVisualFeatherOverZoomExponent = 0.5
 SharpCurveEdges = 8
 DullCurveEdges = 4
 RadarRangeFactor = 50%
 LinearDampingFactor = 150%
 AngularDampingFactor = 150%
-DefaultAvoidDistance = 300
-ProhibitFtlJumpIn = true
-ProhibitFtlJumpOut = true
+DefaultAvoidDistance = 600
+ProhibitFtlJumpInThreshold = 50%
+ProhibitFtlJumpOutThreshold = 50%
 PathfindTravelCost = 100
 LodBias = 0.9
+
+HudTextKey = "Nebulas/ElectronHudFmt"
+HudIcon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
 
 Buffs
 [
 	// Reduce reactor production and disable shields.
 	{
 		BuffType = ElectronDebuff
-		BuffAmount = 20%
+		BuffAmount = -80%
 	}
 
 	// Buff energy weapon damage.
 	{
 		BuffType = ElectronBuff
-		BuffAmount = 175%
+		BuffAmount = 75%
 	}
 ]
 

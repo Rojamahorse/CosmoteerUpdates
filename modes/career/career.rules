@@ -438,141 +438,141 @@ NpcSpawnedResourceFractions
 {
 	hyperium = [25%, 75%]
 }
-
+_surrenderCostMultiplier = 2
 FameTitles
 [
 	{
 		Fame = 0
 		NameKey = "FameTitles/0"
 		WantedPoliceTier = 1
-		PlayerSurrenderBaseCost = 2000
-		PlayerWantedPayoffCost = 3000
+		PlayerSurrenderBaseCost = 2000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 3000 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/0/MaxFame
 		NameKey = "FameTitles/1"
 		WantedPoliceTier = 2
-		PlayerSurrenderBaseCost = 2500
-		PlayerWantedPayoffCost = 3750
+		PlayerSurrenderBaseCost = 2500 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 3750 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/1/MaxFame
 		NameKey = "FameTitles/2"
 		WantedPoliceTier = 3
-		PlayerSurrenderBaseCost = 3000
-		PlayerWantedPayoffCost = 4500
+		PlayerSurrenderBaseCost = 3000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 4500 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/2/MaxFame
 		NameKey = "FameTitles/3"
 		WantedPoliceTier = 4
-		PlayerSurrenderBaseCost = 4000
-		PlayerWantedPayoffCost = 6000
+		PlayerSurrenderBaseCost = 4000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 6000 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/3/MaxFame
 		NameKey = "FameTitles/4"
 		WantedPoliceTier = 5
-		PlayerSurrenderBaseCost = 5000
-		PlayerWantedPayoffCost = 7500
+		PlayerSurrenderBaseCost = 5000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 7500 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/4/MaxFame
 		NameKey = "FameTitles/5"
 		WantedPoliceTier = 6
-		PlayerSurrenderBaseCost = 6000
-		PlayerWantedPayoffCost = 9000
+		PlayerSurrenderBaseCost = 6000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 9000 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/5/MaxFame
 		NameKey = "FameTitles/6"
 		WantedPoliceTier = 7
-		PlayerSurrenderBaseCost = 8000
-		PlayerWantedPayoffCost = 12000
+		PlayerSurrenderBaseCost = 8000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 12000 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/6/MaxFame
 		NameKey = "FameTitles/7"
 		WantedPoliceTier = 8
-		PlayerSurrenderBaseCost = 10000
-		PlayerWantedPayoffCost = 15000
+		PlayerSurrenderBaseCost = 10000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 15000 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/7/MaxFame
 		NameKey = "FameTitles/8"
 		WantedPoliceTier = 9
-		PlayerSurrenderBaseCost = 13000
-		PlayerWantedPayoffCost = 19500
+		PlayerSurrenderBaseCost = 13000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 19500 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/8/MaxFame
 		NameKey = "FameTitles/9"
 		WantedPoliceTier = 10
-		PlayerSurrenderBaseCost = 17000
-		PlayerWantedPayoffCost = 25500
+		PlayerSurrenderBaseCost = 17000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 25500 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/9/MaxFame
 		NameKey = "FameTitles/10"
 		WantedPoliceTier = 11
-		PlayerSurrenderBaseCost = 20000
-		PlayerWantedPayoffCost = 30000
+		PlayerSurrenderBaseCost = 20000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 30000 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/10/MaxFame
 		NameKey = "FameTitles/11"
 		WantedPoliceTier = 12
-		PlayerSurrenderBaseCost = 25000
-		PlayerWantedPayoffCost = 37500
+		PlayerSurrenderBaseCost = 25000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 37500 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/11/MaxFame
 		NameKey = "FameTitles/12"
 		WantedPoliceTier = 13
-		PlayerSurrenderBaseCost = 30000
-		PlayerWantedPayoffCost = 45000
+		PlayerSurrenderBaseCost = 30000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 45000 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/12/MaxFame
 		NameKey = "FameTitles/13"
 		WantedPoliceTier = 14
-		PlayerSurrenderBaseCost = 40000
-		PlayerWantedPayoffCost = 60000
+		PlayerSurrenderBaseCost = 40000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 60000 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/13/MaxFame
 		NameKey = "FameTitles/14"
 		WantedPoliceTier = 15
-		PlayerSurrenderBaseCost = 50000
-		PlayerWantedPayoffCost = 75000
+		PlayerSurrenderBaseCost = 50000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 75000 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/14/MaxFame
 		NameKey = "FameTitles/15"
 		WantedPoliceTier = 16
-		PlayerSurrenderBaseCost = 65000
-		PlayerWantedPayoffCost = 97500
+		PlayerSurrenderBaseCost = 65000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 97500 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/15/MaxFame
 		NameKey = "FameTitles/16"
 		WantedPoliceTier = 17
-		PlayerSurrenderBaseCost = 80000
-		PlayerWantedPayoffCost = 120000
+		PlayerSurrenderBaseCost = 80000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 120000 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/16/MaxFame
 		NameKey = "FameTitles/17"
 		WantedPoliceTier = 18
-		PlayerSurrenderBaseCost = 100000
-		PlayerWantedPayoffCost = 150000
+		PlayerSurrenderBaseCost = 100000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 150000 * (&~/_surrenderCostMultiplier)
 	}
 	{
 		Fame = &/TIER_TABLES/StandardMaxFamePerTier/17/MaxFame
 		NameKey = "FameTitles/18"
 		WantedPoliceTier = 18
-		PlayerSurrenderBaseCost = 150000
-		PlayerWantedPayoffCost = 225000
+		PlayerSurrenderBaseCost = 150000 * (&~/_surrenderCostMultiplier)
+		PlayerWantedPayoffCost = 225000 * (&~/_surrenderCostMultiplier)
 		IsVictory = true
 	}
 ]

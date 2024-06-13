@@ -177,9 +177,11 @@ ChaingunMagConnection // Only used to show connection in blueprints.
 ElectronBuff
 {
 	CombineMode = Max
+	BaseValue = 100%
 }
 
 ElectronDebuff
 {
 	CombineMode = Min
+	BaseValue = 100%
 }

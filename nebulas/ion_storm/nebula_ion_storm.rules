@@ -1,19 +1,47 @@
 ID = ion_storm
 ToolTipKey = "Nebulas/IonStorm"
-DefaultLogicalFeather = 100
-DefaultVisualFeather = [200, 1700]
-DefaultVisualFeatherOverZoom = [1, 2000]
+DefaultLogicalFeather = 300
+DefaultVisualFeather = [400, 1400]
+DefaultVisualFeatherOverZoom = [100, 4000]
 DefaultVisualFeatherOverZoomExponent = 0.5
 SharpCurveEdges = 8
 DullCurveEdges = 4
-DefaultAvoidDistance = 300
+DefaultAvoidDistance = 600
 AIShouldAvoid = true
-ShipDamageChancePerTick = 1%
-ShipDamageFractionPerTick = 10%
-CrewDamageChancePerTick = 1%
-CrewDamagePerTick = &<./Data/crew/crew.rules>/MaxHealth
-ShipDamageMediaEffects = &<./Data/modes/pvp/base_pvp.rules>/PerimeterDamageMediaEffects
 PathfindTravelCost = 100*100
+
+ActiveEffects
+[
+	{
+		Type = LightningStrikes
+		LightningChancePerTilePerTick = 0.01%
+		OriginDistanceFromShip = [50, 100]
+
+		HitEffects
+		[
+			{
+				Type = Damage
+				Damage = 10000
+			}
+		]
+
+		MediaEffects
+		[
+			&<particles/ion_storm_hit_lightning.rules>
+		]
+	}
+]
+
+HudTextKey = "Nebulas/IonStormHudFmt"
+HudIcon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
 
 MaterialLow
 {

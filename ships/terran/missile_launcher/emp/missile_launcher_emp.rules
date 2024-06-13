@@ -362,7 +362,7 @@ MissileStats
 		DamagePerShot = &~/Components/Emitter/Bullet/Components/Hit/HitOperational/HitEffects/1/Damage
 		DamagePerSecond = (&DamagePerShot) * (&ROF)
 		Damage = [&../DamagePerShot, &../DamagePerSecond]
-		PowerDrainPerShot = (&~/Components/Emitter/Bullet/Components/Hit/HitShield/HitEffects/0/TotalDrain/BaseValue) / 1000
+		PowerDrainPerShot = (&~/Components/Emitter/Bullet/Components/Hit/HitShield/HitEffects/0/TotalDrain) / 1000
 		PowerDrainPerSecond = (&PowerDrainPerShot) * (&ROF)
 		PowerDrain = [&../PowerDrainPerShot, &../PowerDrainPerSecond]
 		PowerDrainArea = &~/Components/Emitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius

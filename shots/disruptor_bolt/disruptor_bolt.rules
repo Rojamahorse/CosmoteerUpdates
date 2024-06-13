@@ -4,7 +4,6 @@ Range = 180
 IdealRange = [60, 180]
 IdealRadius = [5, 50]
 Speed = 180
-ReceivableBuffs = [ElectronBuff]
 
 Components
 {
@@ -47,7 +46,7 @@ Components
 			[
 				: ../../HitOperational/HitEffects/0
 				{
-					Amount = { BaseValue=900; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Amount = 900
 					TreatShieldAsPart = true
 				}
 			]
@@ -64,7 +63,7 @@ Components
 				{
 					Type = ResourceDrain
 					ResourceType = battery
-					Amount = { BaseValue=600; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Amount = 600
 
 					MediaEffectsOnDrain
 					[
@@ -83,7 +82,7 @@ Components
 				}
 				{
 					Type = Damage
-					Damage = { BaseValue=100; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = 100
 				}
 			]
 
@@ -110,7 +109,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=75; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = 75
 				}
 			]
 

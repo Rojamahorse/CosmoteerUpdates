@@ -20,6 +20,10 @@ TentativeShipCircle : SelectedShipCircle
 {
 	VertexColor = [255, 255, 255, 153]
 }
+HiddenTentativeShipCircle : HiddenSelectedShipCircle
+{
+	VertexColor = [255, 255, 255, 153]
+}
 TentativeShipCrewCircle : SelectedShipCrewCircle
 {
 	VertexColor = [255, 255, 255, 127]
@@ -95,6 +99,11 @@ SelectedShipCircle
 		}
 	]
 	DashRepeat = 3
+}
+HiddenSelectedShipCircle : SelectedShipCircle
+{
+	Arc = [-11.25d, 360d]
+	DashRepeat = 7
 }
 SelectedShipCircleTweenTime = .15
 SelectedShipCircleTweenFromColor = [255, 255, 255, 255*3]

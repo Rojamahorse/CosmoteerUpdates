@@ -1,17 +1,28 @@
 ID = cloudy
 ToolTipKey = "Nebulas/Cloudy"
-DefaultLogicalFeather = 100
-DefaultVisualFeather = [200, 1700]
-DefaultVisualFeatherOverZoom = [1, 2000]
+DefaultLogicalFeather = 400
+DefaultVisualFeather = [400, 1400]
+DefaultVisualFeatherOverZoom = [100, 4000]
 DefaultVisualFeatherOverZoomExponent = 0.5
 SharpCurveEdges = 8
 DullCurveEdges = 4
 SightRangeFactor = 30%
 RadarRangeFactor = 75%
-HidesToOutsideObservers = true
-HidesRadarToOutsideObservers = true
+HidesToOutsideObserversThreshold = 100%
+HidesRadarToOutsideObserversThreshold = 100%
 LinearDampingFactor = 250%
 AngularDampingFactor = 250%
+
+HudTextKey = "Nebulas/CloudyHudFmt"
+HudIcon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
 
 MaterialLow
 {

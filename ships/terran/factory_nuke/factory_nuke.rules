@@ -8,9 +8,9 @@ Part : <../base_part_terran.rules>/Part
 	DescriptionKey = "Parts/FactoryNukeDesc"
 	Resources
 	[
-		[steel, 136]
-		[coil2, 62]
-		[enriched_uranium, 4]
+		[steel, 120]
+		[coil2, 60]
+		[enriched_uranium, 2]
 	]
 	Size = [4, 4]
 	IsFlippable = true
@@ -143,7 +143,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 4000
+			MaxResources = 6000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
@@ -172,13 +172,13 @@ Part : <../base_part_terran.rules>/Part
 			    }
 			    {
 			        Storage = BatteryStorage
-			        Quantity = 500
+			        Quantity = 333
 			        MinQuantityForConversion = 1
 			    }
 			]
 			ToStorage = MissileStorage
 			ToQuantity = 1
-			Interval = { BaseValue=.75; BuffType=Factory; BuffMode=Divide; }
+			Interval = { BaseValue=.5; BuffType=Factory; BuffMode=Divide; }
 			CheckResourceLimits = true
 		}
 
@@ -864,7 +864,7 @@ Part : <../base_part_terran.rules>/Part
 		BatterySprites
 		{
 			Type = ResourceSprites
-			Location = [2, 2.5]
+			Location = [128/64, 165/64]
 			ResourceStorage = BatteryStorage
 			Layer = "doodads_high"
 			ResourceLevels
@@ -881,10 +881,19 @@ Part : <../base_part_terran.rules>/Part
 				}
 				{
 					File = "batteries3.png"
-					Size = [3, 1]
+					Size = [1, 1]
+					OffSet = [-1, 0]
 				}
 				{
 					File = "batteries4.png"
+					Size = [3, 1]
+				}
+				{
+					File = "batteries5.png"
+					Size = [3, 1]
+				}
+				{
+					File = "batteries6.png"
 					Size = [3, 1]
 				}
 			]

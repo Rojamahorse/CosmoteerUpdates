@@ -20,7 +20,6 @@ Part : <../base_part_terran.rules>/Part
 	MaxHealth = 5000
 	InitialPenetrationResistance = 3
 	ProhibitAbove = 1
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	AllowedDoorLocations
 	[
 		[-1, 3]
@@ -620,13 +619,13 @@ Part : <../base_part_terran.rules>/Part
 			NameKey = "StatCategories/DisruptorBolt"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/1/Damage/BaseValue
+				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/1/Damage
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				ShieldDamagePerShot = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitShield/HitEffects/0/Amount/BaseValue) / (&<../shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/ResourceDrainPerDamage)
+				ShieldDamagePerShot = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitShield/HitEffects/0/Amount) / (&<../shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/ResourceDrainPerDamage)
 				ShieldDamagePerSecond = (&ShieldDamagePerShot) * (&ROF)
 				ShieldDamage = [&../ShieldDamagePerShot, &../ShieldDamagePerSecond]
-				PowerDrainPerShot = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Amount/BaseValue) / 1000
+				PowerDrainPerShot = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Amount) / 1000
 				PowerDrainPerSecond = (&PowerDrainPerShot) * (&ROF)
 				PowerDrain = [&../PowerDrainPerShot, &../PowerDrainPerSecond]
 				ShieldPenetration = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/Penetration) / (&<../shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/PenetrationResistance/0)

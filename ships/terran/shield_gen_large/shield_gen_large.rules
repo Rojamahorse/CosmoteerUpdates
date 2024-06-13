@@ -19,7 +19,6 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 12000
 	TypeCategories = [defense, uses_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff]
 	AllowedDoorLocations
 	[
 		[-1, 5]
@@ -42,7 +41,7 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, ElectronDebuffToggle]
+			Toggles = [PowerToggle, BatteryStorage]
 			Mode = All
 		}
 
@@ -52,13 +51,6 @@ Part : <../base_part_terran.rules>/Part
 			ToggleID = "on_off"
 			Default = 1
 			RequiresCommand = false
-		}
-
-		ElectronDebuffToggle
-		{
-			Type = BuffToggle
-			BuffType = ElectronDebuff
-			Invert = true
 		}
 
 		CommandConsumer

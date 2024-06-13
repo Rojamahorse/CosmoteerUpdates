@@ -1357,7 +1357,7 @@ EmitterDef
 			LocationOut = location
 			RectType = Normal
 			Inflate = -0.2
-			RestrictToPartColliders = true
+			RestrictToPartColliders = false
 			Name = ""
 			Enabled = true
 			UpdateAfterInit = false
