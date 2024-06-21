@@ -14,7 +14,7 @@ SubSpawners
 	{
 		Conditions { RequireSpawnFlags = [multiple_asteroid_belts] }
 		Count = [1, 3]
-		Distance = [0, 20000]
+		Distance = [5000, 20000]
 		MinDistanceFromSiblingOrbits = 2000
 	}
 
@@ -24,24 +24,6 @@ SubSpawners
 		Count = [4, 6]
 		Distance = [0, 15000]
 		MinDistanceFromTags = [[sun, 6000], [station, 3000], [asteroid_field, 600]]
-	}
-
-	// Rare asteroids within sun damage zone.
-	{
-		Type = Doodads
-		Count = [25, 50]
-		Distance = [1875, 3375]
-		Tags = [rare_asteroid]
-		RootLocation = Tag
-		RootLocationTag = sun
-		ForEachRootMax = 999
-		MinDistanceFromTags
-		[
-			[sun, 1875]
-			[rare_asteroid, 500]
-		]
-		SuppressLocationAssertions = true
-		DoodadTypes = &~/SunAsteroidTypes
 	}
 
 	// Misc assorted asteroids randomly scattered around the system.
@@ -365,20 +347,4 @@ RareAsteroidTypes
 	{ Type=cosmoteer.asteroid_gold_xxl;       ChanceWeight=1/2; }
 	{ Type=cosmoteer.asteroid_tritanium_xxl;  ChanceWeight=1/2; }
 	{ Type=cosmoteer.asteroid_uranium_xxl;    ChanceWeight=1/2; }
-]
-
-SunAsteroidTypes
-[
-	{ Type=cosmoteer.asteroid_carbon_l;     ChanceWeight=1; }
-	{ Type=cosmoteer.asteroid_gold_l;       ChanceWeight=1; }
-	{ Type=cosmoteer.asteroid_tritanium_l;  ChanceWeight=1; }
-	{ Type=cosmoteer.asteroid_uranium_l;    ChanceWeight=1; }
-	{ Type=cosmoteer.asteroid_carbon_xl;     ChanceWeight=1/2; }
-	{ Type=cosmoteer.asteroid_gold_xl;       ChanceWeight=1/2; }
-	{ Type=cosmoteer.asteroid_tritanium_xl;  ChanceWeight=1/2; }
-	{ Type=cosmoteer.asteroid_uranium_xl;    ChanceWeight=1/2; }
-	{ Type=cosmoteer.asteroid_carbon_xxl;     ChanceWeight=1/4; }
-	{ Type=cosmoteer.asteroid_gold_xxl;       ChanceWeight=1/4; }
-	{ Type=cosmoteer.asteroid_tritanium_xxl;  ChanceWeight=1/4; }
-	{ Type=cosmoteer.asteroid_uranium_xxl;    ChanceWeight=1/4; }
 ]

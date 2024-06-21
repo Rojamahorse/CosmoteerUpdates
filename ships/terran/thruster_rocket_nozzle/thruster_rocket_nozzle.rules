@@ -26,9 +26,9 @@ Part : <../base_part_terran.rules>/Part
 		[default, [-1, 6, 5, 200]]
 	]
 	ThrusterForce = 8000
-	ThrustIncreaseTime = { BaseValue=6; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
+	ThrustIncreaseTime = { BaseValue=4; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
 	ThrustRecoveryTime = { BaseValue=2; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
-	FuelUsage = 400
+	FuelUsage = 300
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, Rocket, RocketThrust, RocketRampUp, RocketRampUpFinal, RocketOperation, RocketBatteryConnection]
 	BlockedTravelCells
 	[

@@ -1,6 +1,6 @@
 ID = cloudy
 ToolTipKey = "Nebulas/Cloudy"
-DefaultLogicalFeather = 400
+DefaultLogicalFeather = 300
 DefaultVisualFeather = [400, 1400]
 DefaultVisualFeatherOverZoom = [100, 4000]
 DefaultVisualFeatherOverZoomExponent = 0.5
@@ -19,6 +19,15 @@ HudIcon
 	Texture
 	{
 		File = "icon.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+HudHiddenIcon
+{
+	Texture
+	{
+		File = "icon_hidden.png"
 		MipLevels = 2
 		SampleMode = Linear
 	}

@@ -3148,6 +3148,7 @@ BuildBox
 	CoordsFmt = "Loc: {0}, {1}"
 	Construct = "<s20>MAKE IT SO</s20><s4>\n \n</s4>"
 	RepairAll = "<s20>REPAIR ALL</s20><s4>\n \n</s4>"
+	PartiallyRepairAll = "<s20>REPAIR MAX</s20><s4>\n \n</s4>"
 	CancelAll = "<s20>CANCEL ALL</s20><s4>\n \n</s4>"
 	CancelAllTip = "Cancels all construction, deconstruction, and repair activities.\n\nHotkey: <btn id='Design.CancelAll'/>"
 	Discard = "Revert Modifications"
@@ -3936,9 +3937,9 @@ Parts
 	FireExtinguisherIcon = &FireExtinguisher
 	FireExtinguisherDesc = "Stores a fire extinguisher that crew can use to put out fires. Fire extinguishers have a limited capacity but will respawn after 15 seconds."
 
-	ResourceCollector = "Resource Collector"
-	ResourceCollectorIcon = &ResourceCollector
-	ResourceCollectorDesc = "Provides four small roof-mounted tractor beams that can collect resources and deliver them to any storage on the ship that has an exterior hatch.\n\nCrew will only operate the Resource Collector when there are resources marked for retrieval."
+	ManipulatorBeam = "Manipulator Beam Emitter"
+	ManipulatorBeamIcon = "Manipulator Beam"
+	ManipulatorBeamDesc = "Projects up to 16 small, roof-mounted tractor beams that will help collect resources and boost flying crew. A single crew can control up to four beams, and they will only go to the Manipulator Beam Emitter when there are tasks to help with."
 
 	RoofLight = "Exterior Light"
 	RoofLightIcon = &RoofLight
@@ -4354,6 +4355,7 @@ Stats
 	EMPResistFmt = "<white>E.M.P Resist:</white> <good>-{0:0.##}</good> <gray>power drain</gray>"
 	CrewCapacityFmt = "<white>Crew Beds:</white> <good>{0}</good>"
 	CrewRequiredFmt = "<white>Crew Required:</white> <good>{0}</good>"
+	CrewRequiredBeamsFmt = "<white>Crew Required:</white> <good>{0}-{1}</good> <gray>({0} per {2} beams)</gray>"
 	CommandPointsProvidedFmt = "<white>Command Points:</white> <good>+{0}<image name='command_points' colored='true'/></good> <gray>(provided)</gray>"
 	CommandPointsUsedFmt = "<white>Command Points:</white> <good>-{0}<image name='command_points' colored='true'/></good> <gray>(used)</gray>"
 	StorageTilesFmt = "<white>Storage:</white> <good>{0}</good> <gray>stacks</gray>"
@@ -4399,6 +4401,8 @@ Stats
 	DamageContinuousFmt = "<white>Damage:</white> <good>{0:n0}</good><gray>/sec</gray>"
 	DamageContinuousNearFmt = "<white>Damage (Near):</white> <good>{0:n0}</good><gray>/sec</gray>"
 	DamageContinuousFarFmt = "<white>Damage (Far):</white> <good>{0:n0}</good><gray>/sec</gray>"
+	DamageContinuousEnemiesFmt = "<white>Dmg vs Enemies:</white> <good>{0:n0}</good><gray>/sec</gray>"
+	DamageContinuousJunkFmt = "<white>Dmg vs Junk:</white> <good>{0:n0}</good><gray>/sec</gray>"
 	DamageContinuousAsteroidsFmt = "<white>Dmg vs Asteroids:</white> <good>{0:n0}</good><gray>/sec</gray>"
 	ShieldDamageFmt = "<white>Dmg vs Shields:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
 	ShotDamageFmt = "<white>Dmg vs Shots:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
@@ -4551,7 +4555,7 @@ StatCategories
 	RailgunBuff = "Railgun Buff"
 	MiningBeam = "Mining Beam"
 	BulletChaingun = "Chaingun Round"
-	CollectorBeam = "Collector Beam (x4)"
+	ManipulatorBeam = "Manipulator Beam"
 }
 
 Roles

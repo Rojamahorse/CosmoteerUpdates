@@ -8,8 +8,8 @@ Part : <../base_part_terran.rules>/Part
 	DescriptionKey = "Parts/ExplosiveChargeDesc"
 	Resources
 	[
-		[steel, 16]
-		[coil, 6]
+		[steel, 12]
+		[coil, 3]
 	]
 	TypeCategories = [explosives]
 	ReceivableBuffs : ^/0/ReceivableBuffs []

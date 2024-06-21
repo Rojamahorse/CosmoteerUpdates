@@ -263,8 +263,8 @@ Part : <../base_part_terran.rules>/Part
 			AutoFireToggle = AutoFireToggle
 			FireInterval = .2
 			FiringArc = 270d
-			RotateSpeed = 30d
-			FireThresholdAngle = 0.25d
+			RotateSpeed = 20d
+			FireThresholdAngle = 20d
 			AIFirepowerRating = 800
 			CanSalvage = true
 			IncludeInFirepowerEstimation = false
@@ -273,7 +273,6 @@ Part : <../base_part_terran.rules>/Part
 			AutoTargetCrewSafetyDist = 8
 			IgnoreFriendlyShipLowLOSChecks = true
 			IgnoreJunkLOSChecks = true
-			HoldTargetWhileFiring = 0.5
 
 			AutoTargets
 			[
@@ -322,7 +321,7 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			Duration = .2
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 120
+			ResourcesUsed = 60
 			MinResourcesUsed = 1
 			Width = abs((&../BeamEmitterLeft/Location/1) - (&../BeamEmitterRight/Location/1)) + (&^/0/Width) / 2
 		}
@@ -698,8 +697,10 @@ Part : <../base_part_terran.rules>/Part
 			{
 				DamagePerShot = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/0/Damage/BaseValue) * 2
 				HitInterval = &~/Part/Components/BeamEmitterBase/HitInterval
-				DamageContinuous = (&DamagePerShot) / (&HitInterval)
-				DamagePerShotAsteroids = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/1/Damage/BaseValue) * 2
+				DamageContinuousEnemies = (&DamagePerShot) / (&HitInterval)
+				DamagePerShotJunk = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/1/Damage/BaseValue) * 2
+				DamageContinuousJunk = (&DamagePerShotJunk) / (&HitInterval)
+				DamagePerShotAsteroids = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/3/Damage/BaseValue) * 2
 				DamageContinuousAsteroids = (&DamagePerShotAsteroids) / (&HitInterval)
 				Range = &~/Part/Components/BeamEmitterBase/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)

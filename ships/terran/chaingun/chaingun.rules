@@ -189,8 +189,8 @@ Part : <../base_part_terran.rules>/Part
 		ShellChangingValueTween
 		{
 			Type = ValueTween
-			OnTweenDuration = 1.2
-			OffTweenDuration = 1.2
+			OnTweenDuration = 0.6
+			OffTweenDuration = 0.6
 			IsOnToggle = ShellShouldOpen
 		}
 		IsShellFullyOpen
@@ -832,7 +832,7 @@ Part : <../base_part_terran.rules>/Part
 		DefensiveShellColliderChangingValueTween
 		{
 			Type = ValueTween
-			OnTweenDuration = 0.7
+			OnTweenDuration = 0.35
 			OffTweenDuration = &../ShellChangingValueTween/OffTweenDuration
 			IsOnToggle = ShellShouldOpen
 		}

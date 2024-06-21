@@ -430,12 +430,13 @@ Techs
 		Prerequisites = [cosmoteer.missile_launcher_nuke, cosmoteer.factory_uranium]
 	}
 	{
-		ID = cosmoteer.resource_collector
-		NameKey = &<./Data/ships/terran/resource_collector/resource_collector.rules>/Part/NameKey
-		DescriptionKey = &<./Data/ships/terran/resource_collector/resource_collector.rules>/Part/DescriptionKey
-		Icon = &<./Data/ships/terran/resource_collector/resource_collector.rules>/Part/EditorIcon
-		EditorGroups = &<./Data/ships/terran/resource_collector/resource_collector.rules>/Part/EditorGroups
-		PartsUnlocked = [&<./Data/ships/terran/resource_collector/resource_collector.rules>/Part/ID]
+		ID = cosmoteer.manipulator_beam_emitter
+		OtherIDs = [cosmoteer.resource_collector]
+		NameKey = &<./Data/ships/terran/manipulator_beam_emitter/manipulator_beam_emitter.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/manipulator_beam_emitter/manipulator_beam_emitter.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/manipulator_beam_emitter/manipulator_beam_emitter.rules>/Part/EditorIcon
+		EditorGroups = &<./Data/ships/terran/manipulator_beam_emitter/manipulator_beam_emitter.rules>/Part/EditorGroups
+		PartsUnlocked = [&<./Data/ships/terran/manipulator_beam_emitter/manipulator_beam_emitter.rules>/Part/ID]
 		Cost = 1500
 	}
 	{

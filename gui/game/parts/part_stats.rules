@@ -16,6 +16,10 @@ PartStats
 		FormatKey = "Stats/CrewRequiredFmt"
 	}
 	{
+		ID = CrewRequiredBeams
+		FormatKey = "Stats/CrewRequiredBeamsFmt"
+	}
+	{
 		ID = CommandPointsProvided
 		FormatKey = "Stats/CommandPointsProvidedFmt"
 		DefaultBuiltinStat = CommandPointsProvided
@@ -116,6 +120,14 @@ PartStats
 	{
 		ID = DamageContinuousFar
 		FormatKey = "Stats/DamageContinuousFarFmt"
+	}
+	{
+		ID = DamageContinuousEnemies
+		FormatKey = "Stats/DamageContinuousEnemiesFmt"
+	}
+	{
+		ID = DamageContinuousJunk
+		FormatKey = "Stats/DamageContinuousJunkFmt"
 	}
 	{
 		ID = DamageContinuousAsteroids
@@ -296,7 +308,7 @@ PartStats
 	{
 		ID = ShotAmmoUsage
 		FormatKey = "Stats/ShotAmmoUsageFmt"
-	}	
+	}
 	{
 		ID = ShotAmmoUsageRange
 		FormatKey = "Stats/ShotAmmoUsageRangeFmt"

@@ -1,12 +1,12 @@
 ID = ion_storm
 ToolTipKey = "Nebulas/IonStorm"
-DefaultLogicalFeather = 300
+DefaultLogicalFeather = 200
 DefaultVisualFeather = [400, 1400]
 DefaultVisualFeatherOverZoom = [100, 4000]
 DefaultVisualFeatherOverZoomExponent = 0.5
 SharpCurveEdges = 8
 DullCurveEdges = 4
-DefaultAvoidDistance = 600
+DefaultAvoidDistance = 300
 AIShouldAvoid = true
 PathfindTravelCost = 100*100
 
@@ -14,14 +14,14 @@ ActiveEffects
 [
 	{
 		Type = LightningStrikes
-		LightningChancePerTilePerTick = 0.01%
-		OriginDistanceFromShip = [50, 100]
+		LightningChancePerTilePerTick = 0.02%
+		OriginDistanceFromShip = [50, 200]
 
 		HitEffects
 		[
 			{
 				Type = Damage
-				Damage = 10000
+				Damage = 5000
 			}
 		]
 

@@ -5,6 +5,7 @@ Spawners
 		NebulaType = ion_storm
 		NebulaRadius = 1000
 		MultiplyNebulaRadius = AreaRadiusKM
+		ContiguousPathCheckSearchIterations = 20
 
 		PerlinNoise
 		{

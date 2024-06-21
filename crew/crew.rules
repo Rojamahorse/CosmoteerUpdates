@@ -47,29 +47,72 @@ ConstructDistance = 0.6
 SalvageHitEffectsInterval = 0.2
 SalvageHitEffects
 [
-	{
+	{ //Damage to salvaging own ship and other
 		Type = Damage
-		Damage = 30
+		Damage = 60
 		DamageType = salvage
 		Filter
 		{
 			ExcludePartCategories = [asteroid]
 			Deconstruction = false
+			junk = false
 		}
 	}
-	{
+	{ //Damage to junk
+		Type = Damage
+		Damage = 60
+		DamageType = salvage
+		Filter
+		{
+			ExcludePartCategories = [asteroid, armor]
+			Deconstruction = false
+			junk = true
+			Enemies = false
+			Friendlies = false
+			Neutrals = false
+		}
+	}
+	{ //Damage to armored junk
+		Type = Damage
+		Damage = 120
+		DamageType = salvage
+		Filter
+		{
+			ExcludePartCategories = [asteroid]
+			OnlyPartCategories = [armor]
+			Deconstruction = false
+			junk = true
+			Enemies = false
+			Friendlies = false
+			Neutrals = false
+		}
+	}
+	{ //Taking apart own ship
 		Type = Damage
 		Damage = 60
 		DamageType = Salvage
 		Filter
 		{
-			ExcludePartCategories = [asteroid]
+			ExcludePartCategories = [asteroid, armor]
 			Deconstruction = true
 			TargetedFriendlies = true
 			IgnoreInvulnerability = true
 		}
 	}
-	{
+	{ //Taking apart own ship armored
+		Type = Damage
+		Damage = 120
+		DamageType = Salvage
+		Filter
+		{
+			ExcludePartCategories = [asteroid]
+			OnlyPartCategories = [armor]
+			Deconstruction = true
+			TargetedFriendlies = true
+			IgnoreInvulnerability = true
+		}
+	}
+	{ //Asteroids
 		Type = Damage
 		Damage = 120
 		DamageType = salvage

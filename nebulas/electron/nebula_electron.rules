@@ -1,6 +1,6 @@
 ID = electron
 ToolTipKey = "Nebulas/Electron"
-DefaultLogicalFeather = 300
+DefaultLogicalFeather = 200
 DefaultVisualFeather = [400, 1400]
 DefaultVisualFeatherOverZoom = [100, 4000]
 DefaultVisualFeatherOverZoomExponent = 0.5
@@ -9,7 +9,7 @@ DullCurveEdges = 4
 RadarRangeFactor = 50%
 LinearDampingFactor = 150%
 AngularDampingFactor = 150%
-DefaultAvoidDistance = 600
+DefaultAvoidDistance = 300
 ProhibitFtlJumpInThreshold = 50%
 ProhibitFtlJumpOutThreshold = 50%
 PathfindTravelCost = 100
