@@ -352,11 +352,16 @@ TradeShips
 
 	// Cabal
 	cabal_3a  : ~/BaseTradeShip { ShipID="Missionary";              Faction=cabal;    TierRange=[1, 9];   StasisSpeed=77; StasisTradeTime=40; }
-	cabal_3b  : ~/BaseTradeShip { ShipID="Da'i";                    Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
+	cabal_3b  : ~/BaseTradeShip { ShipID="Dia";                     Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
+	cabal_3c  : ~/BaseTradeShip { ShipID="Supplicant";              Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
+	cabal_3d  : ~/BaseTradeShip { ShipID="Seeker";                  Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
 	cabal_5a  : ~/BaseTradeShip { ShipID="Preacher";                Faction=cabal;    TierRange=[3, 12];  StasisSpeed=55; StasisTradeTime=60; }
 	cabal_5b  : ~/BaseTradeShip { ShipID="Deliverance";             Faction=cabal;    TierRange=[3, 12];  StasisSpeed=86; StasisTradeTime=60; }
+	cabal_5c  : ~/BaseTradeShip { ShipID="Pilgrim";                 Faction=cabal;    TierRange=[3, 12];  StasisSpeed=86; StasisTradeTime=60; }
+	cabal_5d  : ~/BaseTradeShip { ShipID="Trinity";                 Faction=cabal;    TierRange=[3, 12];  StasisSpeed=86; StasisTradeTime=60; }
 	cabal_7a  : ~/BaseTradeShip { ShipID="Advocate";                Faction=cabal;    TierRange=[6, 18];  StasisSpeed=35; StasisTradeTime=80; }
 	cabal_7b  : ~/BaseTradeShip { ShipID="Acolyte";                 Faction=cabal;    TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	cabal_7c  : ~/BaseTradeShip { ShipID="Ascetic";                 Faction=cabal;    TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
 	cabal_10a : ~/BaseTradeShip { ShipID="Celebrant";               Faction=cabal;    TierRange=[12, 18]; StasisSpeed=31; StasisTradeTime=100; }
 	cabal_10b : ~/BaseTradeShip { ShipID="Witness";                 Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
 

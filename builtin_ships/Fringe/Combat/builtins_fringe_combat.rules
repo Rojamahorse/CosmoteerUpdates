@@ -81,6 +81,7 @@ Ships
 	:~{ File="Hydra.ship.png";            Tier=11;  Difficulty=2; }
 	:~{ File="Deathrito.ship.png";        Tier=12;  Difficulty=1; }
 	:~{ File="Staccato.ship.png";         Tier=12;  Difficulty=1; }
+	:~{ File="Bomb Anchor.ship.png";      Tier=12;  Difficulty=1; }
 	:~{ File="Hereafter.ship.png";        Tier=12;  Difficulty=2; }
 	:~{ File="Nutcracker.ship.png";       Tier=12;  Difficulty=2; }
 
@@ -88,12 +89,13 @@ Ships
 	:~{ File="Two For Flinching.ship.png"; Tier=13;  Difficulty=1; }
 	:~{ File="Eviscerator.ship.png";       Tier=13;  Difficulty=1; }
 	:~{ File="Hanabi.ship.png";            Tier=13;  Difficulty=1; }
-	:~{ File="Umbrage.ship.png";           Tier=14;  Difficulty=1; }
 	:~{ File="Eviscerator Reborn.ship.png";Tier=13;  Difficulty=2; }
+	:~{ File="Umbrage.ship.png";           Tier=14;  Difficulty=1; }
 	:~{ File="Banshee.ship.png";           Tier=14;  Difficulty=2; }
 	:~{ File="Hellfire.ship.png";          Tier=14;  Difficulty=2; }
 	:~{ File="Hecatoncheires.ship.png";    Tier=14;  Difficulty=2; }
 	:~{ File="Desolator.ship.png";         Tier=14;  Difficulty=2; }
+	:~{ File="Shin Hanabi.ship.png";       Tier=14;  Difficulty=2; }
 
 	// Cruisers
 	:~{ File="Roko's Revenge.ship.png"; Tier=15;  Difficulty=1; }
@@ -115,4 +117,5 @@ Ships
 
 	// Flagships
 	:~{ File="All For Now.ship.png";    Tier=18;  Difficulty=2; }
+	:~{ File="Master of None.ship.png"; Tier=18;  Difficulty=2; }
 ]

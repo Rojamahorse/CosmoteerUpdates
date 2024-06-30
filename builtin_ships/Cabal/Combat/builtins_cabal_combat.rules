@@ -13,6 +13,7 @@ Ships
 	:~{ File="Candlewick.ship.png";              Tier=2;  Difficulty=1; }
 	:~{ File="Fervent Spark.ship.png";           Tier=2;  Difficulty=1; }
 	:~{ File="Scintillator.ship.png";            Tier=2;  Difficulty=1; }
+	:~{ File="Glare.ship.png";                   Tier=2;  Difficulty=1; }
 	:~{ File="Sirius.ship.png";                  Tier=2;  Difficulty=2; }
 	:~{ File="Flicker Flare.ship.png";           Tier=2;  Difficulty=2; }
 	:~{ File="Kindling.ship.png";                Tier=3;  Difficulty=1; }
@@ -27,10 +28,12 @@ Ships
 	:~{ File="Sainted Pyre.ship.png";            Tier=4;  Difficulty=1; }
 	:~{ File="Whisp.ship.png";                   Tier=4;  Difficulty=2; }
 	:~{ File="Stargazer.ship.png";               Tier=4;  Difficulty=2; }
+	:~{ File="Gaze.ship.png";                    Tier=4;  Difficulty=2; }
 	:~{ File="Apostle's Dawn.ship.png";          Tier=5;  Difficulty=1; }
 	:~{ File="Mebsuta.ship.png";                 Tier=5;  Difficulty=1; }
 	:~{ File="Aludra.ship.png";                  Tier=5;  Difficulty=2; }
 	:~{ File="Enif.ship.png";                    Tier=5;  Difficulty=2; }
+	:~{ File="Grus.ship.png";                    Tier=5;  Difficulty=2; }
 	:~{ File="Starmolt.ship.png";                Tier=6;  Difficulty=1; }
 	:~{ File="Bellatrix.ship.png";               Tier=6;  Difficulty=1; }
 	:~{ File="Lyra.ship.png";                    Tier=6;  Difficulty=1; }
@@ -47,6 +50,7 @@ Ships
 	:~{ File="Suhail.ship.png";                  Tier=8;  Difficulty=1; }
 	:~{ File="Blinding Light.ship.png";          Tier=8;  Difficulty=2; }
 	:~{ File="Starblessed Vow.ship.png";         Tier=8;  Difficulty=2; }
+	:~{ File="Jabbah.ship.png";                  Tier=8;  Difficulty=2; }
 	:~{ File="Undying Ember.ship.png";           Tier=9;  Difficulty=1; }
 	:~{ File="Astraeus.ship.png";                Tier=9;  Difficulty=1; }
 	:~{ File="Inquisitor.ship.png";              Tier=9;  Difficulty=2; }
@@ -68,6 +72,7 @@ Ships
 	:~{ File="Flaming Spire.ship.png";           Tier=12;  Difficulty=2; }
 	:~{ File="Maia.ship.png";                    Tier=12;  Difficulty=2; }
 	:~{ File="Gienah.ship.png";                  Tier=12;  Difficulty=2; }
+	:~{ File="Elagabalus.ship.png";              Tier=12;  Difficulty=2; }
 
 	// Destroyers
 	:~{ File="Acolyte of Adhara.ship.png";       Tier=13;  Difficulty=2; }
@@ -99,6 +104,7 @@ Ships
 	:~{ File="Atlas.ship.png";                   Tier=17;  Difficulty=2; }
 	:~{ File="Sol Invictus.ship.png";            Tier=17;  Difficulty=3; }
 	:~{ File="Eclipse.ship.png";                 Tier=17;  Difficulty=3; }
+	:~{ File="Sadalmelik.ship.png";              Tier=17;  Difficulty=3; }
 
 	// Flagships
 	:~{ File="Apotheosis.ship.png";              Tier=18;  Difficulty=2; }

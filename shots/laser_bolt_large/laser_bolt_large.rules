@@ -4,7 +4,6 @@ Range = 260
 IdealRange = [60, 260]
 IdealRadius = [5, 50]
 Speed = 300
-ReceivableBuffs = [ElectronBuff]
 
 Components
 {
@@ -45,7 +44,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=1200; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = 1200
 				}
 				{
 					Type = Impulse;
@@ -80,7 +79,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=600; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = 600
 				}
 				{
 					Type = Impulse;

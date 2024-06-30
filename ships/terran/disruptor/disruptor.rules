@@ -20,6 +20,7 @@ Part : <../base_part_terran.rules>/Part
 	MaxHealth = 5000
 	InitialPenetrationResistance = 3
 	ProhibitAbove = 1
+	ReceivableBuffs : ^/0/ReceivableBuffs []
 	AllowedDoorLocations
 	[
 		[-1, 3]

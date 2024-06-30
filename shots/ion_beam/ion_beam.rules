@@ -1,8 +1,8 @@
-Range = 300
-IdealRange = 190
+Range = 350
+IdealRange = 300
 Width = .5
 HitInterval = .1
-HitEffectsScaleOverRange = [1, 1 - (&../Range) / 1000]
+HitEffectsScaleOverRange = [1, 80%]
 MediaEffectsScaleOverRange = &HitEffectsScaleOverRange
 
 CrewCollisions = {Enemies=true; Junk=true}
@@ -127,7 +127,7 @@ HitOperational
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=250; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = 250
 					Filter
 					{
 						Enemies = false
@@ -149,7 +149,7 @@ HitOperational
 		}
 		{
 			Type = Damage
-			Damage = { BaseValue=250; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = 250
 			Filter
 			{
 				Friendlies = false
@@ -247,7 +247,7 @@ HitStructural
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=200; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = 200
 					Filter
 					{
 						Enemies = false
@@ -267,7 +267,7 @@ HitStructural
 		}
 		{
 			Type = Damage
-			Damage = { BaseValue=200; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = 200
 			Filter
 			{
 				Friendlies = false

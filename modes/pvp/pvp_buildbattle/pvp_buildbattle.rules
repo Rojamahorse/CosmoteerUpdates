@@ -384,7 +384,5 @@ BaseOptions
 	AllowChangeShips = 1 // false/true
 	ResourceDrops = 0 // false/true
 	ShipConstruction = 1 // false/true
-	AllowShipLoading = 0 // false/true
-	AsteroidDensity = 2 // Index into list.
-	NebulasType = 1 // Index into list.
+	AllowShipLoading = 0
 }

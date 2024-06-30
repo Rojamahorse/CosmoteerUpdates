@@ -7,9 +7,8 @@ SubSpawners
 		Type = None
 		Tags = [station_loc]
 		Count = 3 // Always 3 stations in the starting system.
-		Distance = [4000, 11000]
+		Distance = [0, 11000]
 		MinDistanceFromTags = [[sun, 7500]]
-		MinDistanceFromNebulas = [[ion_storm, 1000]]
 		SpawnsPerSlice = 1
 		SpawnSlicePadding = 35%
 	}
@@ -18,7 +17,7 @@ SubSpawners
 		Type = None
 		Tags = [station_loc]
 		Count = [2, 4]
-		Distance = [4000, 11000]
+		Distance = [0, 11000]
 		MinDistanceFromTags = [[sun, 7500]]
 		SpawnsPerSlice = 1
 		SpawnSlicePadding = 35%
@@ -247,13 +246,6 @@ BaseStation
 			Conditions { IsInitNode=false; }
 			SpawnChance = 75% // Stations not in the first system don't always have planets.
 			Distance = [0, 500]
-		}
-
-		// Prevent nebulas from spawning near stations.
-		{
-			Type = Nebula
-			NebulaType = ""
-			NebulaRadius = 2000
 		}
 	]
 }

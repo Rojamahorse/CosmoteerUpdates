@@ -22,8 +22,6 @@ SubSpawners
 		RandomWeight = 2
 		Tags = [graveyard]
 		Radius = 500
-		MinDistanceFromNebulas = [[ion_storm, 1000]]
-		SuppressLocationAssertions = true // Might not be able to spawn due to nebula distance requirement.
 		SubSpawners
 		[
 			{
@@ -107,8 +105,6 @@ SubSpawners
 		Type = Doodads
 		RandomWeight = 5
 		Tags = [rare_asteroid]
-		MinDistanceFromNebulas = [[ion_storm, 200]]
-		SuppressLocationAssertions = true
 		DoodadTypes = &<sysgen_asteroids.rules>/RareAsteroidTypes
 
 		SubSpawners
@@ -130,8 +126,6 @@ SubSpawners
 		RandomWeight = 3
 		Tags = [storage_pod]
 		Count = 1
-		MinDistanceFromNebulas = [[ion_storm, 200]]
-		SuppressLocationAssertions = true
      	Allegiance = Junk
      	RememberPhysicalState = true
      	RememberResourcesAndCrew = true
@@ -207,8 +201,6 @@ SubSpawners
 		Type = Ships
 		RandomWeight = 2
 		Count = 1
-		MinDistanceFromNebulas = [[ion_storm, 200]]
-		SuppressLocationAssertions = true
 		Allegiance = Junk
 		InitToMax = false
 		SpawnCrew = false
