@@ -442,7 +442,7 @@ Terran : <../base_ship.rules>
 					Shader = "../common/parts.shader"
 					TargetBlendMode
 					{
-						SourceRgbFactor = SourceAlpha
+						SourceRgbFactor = One
 						DestRgbFactor = One
 						RgbOperator = Add
 						SourceAlphaFactor = Zero
@@ -495,7 +495,7 @@ Terran : <../base_ship.rules>
 				}
 				NormalsMaterial
 				{
-					Shader = "../common/roof_normals.shader"
+					Shader = "../common/normals.shader"
 				}
 			}
 		}
@@ -524,7 +524,7 @@ Terran : <../base_ship.rules>
 				}
 				NormalsMaterial
 				{
-					Shader = "../common/roof_normals.shader"
+					Shader = "../common/normals.shader"
 				}
 			}
 		}
@@ -634,7 +634,7 @@ Terran : <../base_ship.rules>
 				}
 				NormalsMaterial
 				{
-					Shader = "../common/roof_normals.shader"
+					Shader = "../common/normals.shader"
 				}
 			}
 		}

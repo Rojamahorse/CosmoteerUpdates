@@ -4,7 +4,6 @@ Buffs = &<buffs/buffs.rules>
 Resources = &<resources/resources.rules>/Resources
 FtlFuelResource = hyperium
 Nuggets = &<resources/resources.rules>/Nuggets
-Nebulas = &<nebulas/nebulas.rules>
 Doodads = &<doodads/doodads.rules>/Doodads
 Factions = &<factions/factions.rules>/Factions
 Commands = &<commands/commands.rules>
@@ -65,13 +64,11 @@ Simulation
 	PhysicsUpdatesPerSecond = 30
 	CCDThresholdVelocity = (&PhysicsUpdatesPerSecond) * 0.75
 	SightCircleFadeDuration = .5
-	SightCircleSizeTweenSpeed = 2
 	StasisCellSize = 2500
 	StasisLiveRange = &StasisCellSize
 	StasisPreloadRange = (&StasisLiveRange) * 1.5
 	StasisUpdateInterval = 1.0
 	StandardLightHeight = .3275
-	ShipHideAlphaTweenDuration = 0.25
 
 	Network
 	{

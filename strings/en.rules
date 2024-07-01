@@ -926,7 +926,6 @@ Inputs
 		AutoBattleCamera = "Toggle Battle Camera Automation"
 		ZeroPlanetCoordinates = "Force Planet To Zero Coordinates"
 		NoDefaultConnections = "Disable Automatic Hyper-Jump Connections"
-		RemoveNebula = "Remove Cloud/Storm"
 	}
 
 	Formations
@@ -1171,9 +1170,6 @@ Settings
 		FancyUIEffects = "Fancy U.I. Effects"
 		FancyUIEffectsTip = "if enabled, additional user interface effects such as the \"glass\" blur will be rendered. Turning this off can improve performance."
 
-		FancyNebulas = "Fancy Clouds & Storms"
-		FancyNebulasTip = "If enabled, clouds and storms will have lighting and animation. Turning this off can improve performance."
-
 		UncompressedTextures = "Use Uncompressed Textures"
 		UncompressedTexturesTip = "If enabled, textures will not be compressed. Enabling this option will very slightly improve visual quality and greatly increase RAM/VRAM usage. "\
 		                          "Changing this option requires the game to be restarted."
@@ -1306,9 +1302,6 @@ Settings
 		EnableCollisionAvoidance = "Enable Collision Avoidance"
 		EnableCollisionAvoidanceTip = "If checked, then your ships will attempt to avoid collisions with other ships by default. "\
 		                              "Hold <btn id='Game.InvertCollisionAvoidance'/> to use the other mode."
-
-		EnableNebulaAvoidance = "Navigate Around Clouds & Storms"
-		EnableNebulaAvoidanceTip = "If checked and Collision Avoidance is also enabled, then your ships will navigate around hazardous electron clouds and ion storms."
 
 		EnableArrivalMatching = "Enable Speed Synchronization"
 		EnableArrivalMatchingTip = "If checked, then commanding multiple ships simultaneously will instruct them to synchronize their speeds so that they arrive at approximately the same time. "\
@@ -1919,16 +1912,6 @@ ShipClasses
 	Megaroid = "Megaroid"
 }
 
-Nebulas
-{
-	Cloudy = "<b>Gaseous Cloud</b>\nShips inside the cloud have reduced speed and sensor range but are hidden to ships outside, except when firing weapons."
-	CloudyHudFmt = "<s14>{0:0.}%</s14>\n<s12><gray>gaseous</gray></s12>"
-	Electron = "<b>Electron Cloud</b>\nShip reactor output will be reduced by 80%, but energy weapons will do 75% more damage. Ships cannot hyper-jump in or out and radar range is reduced due to electromagnetic interference."
-	ElectronHudFmt = "<s14><color r='180' g='255' b='77'>{0:0.}%</color></s14>\n<s12><gray>electron</gray></s12>"
-	IonStorm = "<b>Ion Storm</b>\nShips inside will continuously take damage."
-	IonStormHudFmt = "<s14><bad>{0:0.}%</bad></s14>\n<s12><gray>storm</gray></s12>"
-}
-
 Doodads
 {
 	Planets = "Solar System"
@@ -1942,9 +1925,6 @@ Doodads
 	PlanetSand = "Desert"
 	PlanetWater = "Aquatic"
 	PlanetMiniSun = "Miniature Star"
-
-	Nebulas = "Clouds & Storms"
-	NebulaClear = "Clear"
 
 	Asteroids = "Asteroids"
 	Asteroid_S = "Asteroid (S)"
@@ -2155,10 +2135,8 @@ Factions
 
 SectorTypes
 {
-	Basic = "Unary Star"
-	Binary = "Binary Star"
-	HighDensityNebula = "Unary Star (High Cloud Density)"
-	Supernova = "Supernova Aftermath"
+	Basic = "Unary Star System"
+	Binary = "Binary Star System"
 }
 
 FameTitles
@@ -2371,8 +2349,6 @@ CreativeModeConfig
 	MapSizeTip = "The approximate number of star systems in the galaxy map."
 	GeneratePlanets = "Create Suns, Planets, & Moons"
 	GeneratePlanetsTip = "If checked, suns, planets, and moons will be automatically added to all star systems."
-	GenerateNebulas = "Create Clouds & Storms"
-	GenerateNebulasTip = "If checked, clouds and storms will be automatically added to all star systems."
 	GenerateFtlGates = "Create Hyper-Jump Relays"
 	GenerateFtlGatesTip = "If checked, Hyper-Jump Relays will be automatically added to all star systems connecting to each adjacent system."
 	MaxPlayers = &~/PvpModeConfig/MaxPlayers
@@ -2411,7 +2387,6 @@ CreativeMode
 	ClearResources = "Floating Resources"
 	ClearBullets = "Weapon Projectiles"
 	ClearPlanets = "Planets, Moons, & Suns"
-	ClearNebulas = "Clouds & Storms"
 	ClearPOIs = "Area-of-Interest Icons"
 	ClearParticles = "Dead Crew & Particle VFX"
 
@@ -2598,8 +2573,6 @@ PvpModeConfig
 	ResourceDropsTip = "If checked, then resources will drop from ships when their parts are destroyed. May impact performance."
 	AsteroidDensity = "Asteroid Density"
 	AsteroidDensityTip = "The density of asteroids within the battle area."
-	NebulasType = "Clouds & Storms"
-	NebulasTypeTip = "The types and density of clouds and storms within the battle area."
 	FleetDistance = "Starting Distance"
 	FleetDistanceTip = "The distance between each player or team's fleet at the start of the game."
 	PerimeterDistance = "Ring of Death"
@@ -2646,19 +2619,6 @@ PvpModeConfig
 		Low = "Low"
 		Normal = "Normal"
 		High = "High"
-	}
-
-	NebulasTypes
-	{
-		None = "None"
-		CloudySparse = "Gaseous Clouds (Sparse)"
-		CloudyDense = "Gaseous Clouds (Dense)"
-		ElectronSparse = "Electron Clouds (Sparse)"
-		ElectronDense = "Electron Clouds (Dense)"
-		IonStormSparse = "Ion Storms (Sparse)"
-		IonStormDense = "Ion Storms (Dense)"
-		VariedSparse = "Varied (Sparse)"
-		VariedDense = "Varied (Dense)"
 	}
 
 	PerimeterDistances
@@ -2958,7 +2918,6 @@ Hud
 	            "Hotkey: <btn id='Game.Attack'/>"
 	SalvageTip = "<b>Gather/Salvage/Mine Resources</b>\n\nWith this button selected, click on or drag a box around floating resources, ships, or asteroids to gather, salvage, or mine them.\n\nHold <btn id='Game.CancelSalvageCollect'/> for cancellation mode.\n\n<btn id='General.UIAltClick'/> this button to filter resource types.\n\nHotkey: <btn id='Game.Salvage'/>"
 	FtlJumpTip = "<b>Hyper-Jump</b>\n\nQuickly teleport to another location within the solar system.\n\nHotkey: <btn id='Game.LocalFtlJump'/>"
-	FtlJumpDisabledTip = "The selected ship(s) are currently unable to make hyper-jumps."
 	FormationTip = "<b>Formations</b>\n\nOrganize your ships into a flight formation."
 	HaltTip = "<b>Halt</b>\n\nCancel all current orders.\n\nHotkey: <btn id='Game.Halt'/>"
 	SummonCrewTip = "<b>Recall Crew</b>\n\nImmediately summons all crew back to your ship.\n\nHotkey: <btn id='Game.Halt'/>"
@@ -4553,7 +4512,7 @@ StatCategories
 	BoostOn = "Boost: On"
 	TractorBeam = "Tractor Beam"
 	RailgunBuff = "Railgun Buff"
-	MiningBeam = "Mining Beam"
+	MiningBeam = "Double Mining Beams"
 	BulletChaingun = "Chaingun Round"
 	ManipulatorBeam = "Manipulator Beam"
 }

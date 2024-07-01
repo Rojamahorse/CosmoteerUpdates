@@ -190,7 +190,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ValueTween
 			OnTweenDuration = 0.6
-			OffTweenDuration = 0.6
+			OffTweenDuration = 1.2
 			IsOnToggle = ShellShouldOpen
 		}
 		IsShellFullyOpen

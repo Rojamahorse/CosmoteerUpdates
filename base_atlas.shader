@@ -129,12 +129,11 @@ float2 getAnimatedUVs(VERT_ANIMATION_INFO animInfo)
 }
 
 float4 _shipBounds;
-float _roofOpacity;
 void modifyRoofAlpha(inout float a, float2 localLoc)
 {
 	float alphaLow = 1 - inverseLerp(_shipBounds.x + _shipBounds.y, _shipBounds.z + _shipBounds.w, localLoc.x + localLoc.y);
 	float alphaHigh = alphaLow + .5;
-	a *= inverseLerp(alphaLow, alphaHigh, _roofOpacity * 1.5);
+	a = inverseLerp(alphaLow, alphaHigh, a * 1.5);
 }
 
 float _roofBaseAlpha;

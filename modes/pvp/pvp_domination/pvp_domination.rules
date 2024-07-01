@@ -328,16 +328,6 @@ CapturePointSmall : BaseCapturePoint
 	IncomeRate = 100%
 	CaptureBonus = 100%
 	AreaExpand = pi * ((&Radius) + (&MinDistanceBuffer))^2 * 2
-
-	RandomGenerators
-	[
-		&<cp_empty.rules>
-		&<cp_empty.rules>
-		&<cp_empty.rules>
-		&<cp_nebula_cloudy.rules>
-		&<cp_nebula_cloudy.rules>
-		&<cp_nebula_electron.rules>
-	]
 }
 
 CapturePointLarge : BaseCapturePoint
@@ -352,18 +342,6 @@ CapturePointLarge : BaseCapturePoint
 
 	NeutralIcon : ^/0/NeutralIcon { Size=[24, 24]; }
 	OwnedIcon   : ^/0/OwnedIcon   { Size=[24, 24]; }
-
-	RandomGenerators
-	[
-		&<cp_empty.rules>
-		&<cp_empty.rules>
-		&<cp_empty.rules>
-		&<cp_nebula_cloudy.rules>
-		&<cp_nebula_cloudy.rules>
-		&<cp_nebula_electron.rules>
-		&<cp_asteroid.rules>
-		&<cp_asteroid.rules>
-	]
 }
 
 CapturePointHuge : BaseCapturePoint
@@ -378,18 +356,6 @@ CapturePointHuge : BaseCapturePoint
 
 	NeutralIcon : ^/0/NeutralIcon { Size=[32, 32]; }
 	OwnedIcon   : ^/0/OwnedIcon   { Size=[32, 32]; }
-
-	RandomGenerators
-	[
-		&<cp_empty.rules>
-		&<cp_empty.rules>
-		&<cp_empty.rules>
-		&<cp_nebula_cloudy.rules>
-		&<cp_nebula_cloudy.rules>
-		&<cp_nebula_electron.rules>
-		&<cp_asteroid.rules>
-		&<cp_asteroid.rules>
-	]
 }
 
 SpawnPoint

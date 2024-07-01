@@ -18,7 +18,7 @@ Part : <../base_part_terran.rules>/Part
 	SelectionPriority = 1
 	MaxHealth = 8000
 	TypeCategories = [weapon, ion, ion_beam_prism]
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Flammable = false
 	InitialPenetrationResistance = 100
 	ContinuingPenetrationResistance = &InitialPenetrationResistance

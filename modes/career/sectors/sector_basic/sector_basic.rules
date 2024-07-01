@@ -3,19 +3,12 @@ Sector
 	ID = basic
 	NameKey = "SectorTypes/Basic"
 
-	// Rule: Since this basic sector type is used as a base for other sector types, it
-	// doesn't define any spawn flags. Any basic spawns that need to get removed from sub-types
-	// should define their own flags to disable them.
-
 	SystemGenerator
 	{
 		Spawners
 		[
 			&<../sysgen_suns.rules>
 			&<../sysgen_planets.rules>
-			&<../sysgen_standard_nebulas.rules>
-			&<../sysgen_high_density_nebulas.rules>
-			&<../sysgen_supernova_nebulas.rules>
 			&<../sysgen_ftl_gates.rules>
 			&<../sysgen_trade_stations.rules>
 			&<../sysgen_military_stations.rules>

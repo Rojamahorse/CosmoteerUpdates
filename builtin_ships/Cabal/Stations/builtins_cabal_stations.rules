@@ -10,6 +10,7 @@ Ships
 
 	// Military stations
 	:~{ File="Tiny Cabal Arms Depot.ship.png";     Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station]; StasisIcon="Tiny Cabal Arms Depot.png";  FlightDirection=DownRight }
+	:~{ File="Tiny Cabal Arms Depot II.ship.png";  Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station]; StasisIcon="Tiny Cabal Arms Depot II.png";  FlightDirection=DownRight }
 	:~{ File="Small Cabal Arms Depot.ship.png";    Tier=9;  SpawnTier=7;  Tags : ~/Tags [military_station]; StasisIcon="Small Cabal Arms Depot.png"; FlightDirection=UpRight }
 	:~{ File="Med Cabal Arms Depot.ship.png";      Tier=12; SpawnTier=11; Tags : ~/Tags [military_station]; StasisIcon="Med Cabal Arms Depot.png";   FlightDirection=UpRight }
 	:~{ File="Large Cabal Arms Depot.ship.png";    Tier=16; SpawnTier=15; Tags : ~/Tags [military_station]; StasisIcon="Large Cabal Arms Depot.png"; FlightDirection=UpRight }

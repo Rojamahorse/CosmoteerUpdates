@@ -265,22 +265,7 @@ void applyGlobalLightingAlphaInferred(inout float4 color, float2 uv, float4 vert
 	color.rgb += _globalDiffuseLight * original * d;
 	color.rgb += _globalSpecularLight * getSpecular(d);
 }
-float applyGlobalLightingInferredRetAlpha(inout float4 color, float2 uv, float4 vertexTangent, float3 lightNormal)
-{
-	float3 original = color.rgb;
 
-	// Ambient light.
-	color.rgb *= _globalAmbientLight;
-
-	// Diffuse & specular light.
-	float4 nrmlA = loadNormalsAlphaInferred(uv);
-	float3 nrml = nrmlA.rgb;
-	nrml.rg = rotateFlipNormals(nrml.rg, vertexTangent);
-	float d = max(dot(float3(-lightNormal.x, lightNormal.yz), nrml), 0);
-	color.rgb += _globalDiffuseLight * original * d;
-	color.rgb += _globalSpecularLight * getSpecular(d);
-	return nrmlA.a;
-}
 void applyGlobalLightingAlphaInferredAdditive(inout float4 color, float2 uv, float4 vertexTangent, float3 lightNormal)
 {
 	float3 original = color.rgb;
@@ -290,20 +275,6 @@ void applyGlobalLightingAlphaInferredAdditive(inout float4 color, float2 uv, flo
 	float3 nrml = nrmlA.rgb * nrmlA.a;
 	nrml.rg = rotateFlipNormals(nrml.rg, vertexTangent);
 	float d = max(dot(float3(-lightNormal.x, lightNormal.yz), nrml), 0);
-	color.rgb += _globalDiffuseLight * original * d;
-	color.rgb += _globalSpecularLight * getSpecular(d);
-}
-void applyGlobalLightingGeneratedNormals(inout float3 color, float4 unpackedNormal, float3 lightNormal)
-{
-	float3 original = color.rgb;
-	
-	// Ambient light.
-	//color.rgb *= _globalAmbientLight;
-
-	// Diffuse & specular light.
-	//float4 nrmlA = loadNormalsAlphaInferred(uv);
-	
-	float d = max(dot(lightNormal, unpackedNormal.rgb), 0);
 	color.rgb += _globalDiffuseLight * original * d;
 	color.rgb += _globalSpecularLight * getSpecular(d);
 }
