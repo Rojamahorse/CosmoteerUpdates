@@ -35,6 +35,7 @@ SubSpawners
 				ShipCriteria { Tags = [wreckage] }
 				RandomHealthRange = [10%, 75%]
 				NameGenerator = { Type=None; }
+				RememberPhysicalState = true
 			}
 			{
 				Type = None

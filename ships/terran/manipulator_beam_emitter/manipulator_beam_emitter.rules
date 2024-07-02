@@ -8,8 +8,8 @@ Part : <../base_part_terran.rules>/Part
 	DescriptionKey = "Parts/ManipulatorBeamDesc"
 	Resources
 	[
-		[steel, 40]
-		[coil, 20]
+		[steel, 36]
+		[coil2, 7]
 	]
 	Size = [2, 2]
 	IsRotateable = false
