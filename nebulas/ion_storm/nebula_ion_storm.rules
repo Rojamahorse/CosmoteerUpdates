@@ -1,0 +1,336 @@
+ID = ion_storm
+ToolTipKey = "Nebulas/IonStorm"
+DefaultLogicalFeather = 150
+DefaultVisualFeather = [400, 1400]
+DefaultVisualFeatherOverZoom = [100, 4000]
+DefaultVisualFeatherOverZoomExponent = 0.5
+SharpCurveEdges = 8
+DullCurveEdges = 4
+DefaultAvoidDistance = 150
+AIShouldAvoid = true
+PathfindTravelCost = 100*100
+
+ActiveEffects
+[
+	{
+		Type = LightningStrikes
+		LightningChancePerTilePerTick = 0.02%
+		OriginDistanceFromShip = [50, 200]
+
+		HitEffects
+		[
+			{
+				Type = Damage
+				Damage = 5000
+			}
+		]
+
+		MediaEffects
+		[
+			&<particles/ion_storm_hit_lightning.rules>
+			&<particles/ion_storm_lightning_flash.rules>
+			&<particles/ion_storm_lightning_hit_flash.rules>
+
+			: /BASE_SOUNDS/AudioExterior
+			{
+				RandomSounds = ["thunder1.wav", "thunder2.wav", "thunder3.wav"]
+				SpeedVariation = .5
+				MaxConcurrent = 20
+			}
+		]
+	}
+]
+
+HudTextKey = "Nebulas/IonStormHudFmt"
+HudIcon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+MaterialLow
+{
+	Color = [255, 255, 255, 200]
+	Shader = "../nebula.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_03D.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_03D.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_02B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_color1 = [210, 69, 69, 255]
+	_color2 = [130, 0, 0, 255]
+	_color3 = [43, 42, 76, 255]
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+
+	_midTexScale = 0.0005
+	_midWaveScale = 3000
+	_midWaveStrength = 0.1
+	_midWaveSpeed = 100
+	_midScrollSpeed = 20
+	_noiseScaleFactor = 0.15
+
+	_microTexScale = 0.0035
+	_microWaveScale = 200
+	_microWaveStrength = 0.02
+	_microWaveSpeed = 40
+	_microScrollSpeed = 8
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = -0.75
+}
+SimpleMaterialLow : MaterialLow
+{
+	shader = "../nebula_simple.shader"
+}
+DiffuseMaterialLow
+{
+	Color = [255, 255, 255, 255]
+	Shader = "../nebula_diffuse.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_03D.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_03D.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_02B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_color1 = [210, 69, 69, 255]
+	_color2 = [130, 0, 0, 255]
+	_color3 = [43, 42, 76, 255]
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+
+	_midTexScale = 0.0005
+	_midWaveScale = 3000
+	_midWaveStrength = 0.1
+	_midWaveSpeed = 100
+	_midScrollSpeed = 20
+	_noiseScaleFactor = 0.15
+
+	_microTexScale = 0.0035
+	_microWaveScale = 200
+	_microWaveStrength = 0.02
+	_microWaveSpeed = 40
+	_microScrollSpeed = 8
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = -0.75
+}
+NormalsMaterialLow
+{
+	Color = [255, 255, 255, 255]
+	Shader = "../nebula_normals.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_03D.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_03D.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_02B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+
+	_midTexScale = 0.0005
+	_midWaveScale = 3000
+	_midWaveStrength = 0.1
+	_midWaveSpeed = 100
+	_midScrollSpeed = 20
+	_noiseScaleFactor = 0.15
+
+	_microTexScale = 0.0035
+	_microWaveScale = 200
+	_microWaveStrength = 0.02
+	_microWaveSpeed = 40
+	_microScrollSpeed = 8
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = -0.75
+}
+
+MaterialMiddle
+{
+	Color = [255, 255, 255, 255]
+	Shader = "nebula_ion_storm_lightning.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_03D.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_03D.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_02B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex2
+	{
+		File = ./Data/common_effects/particles/noise_distorted_voronoi.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+
+	_color1 = [210, 0, 0, 255] //rusty red
+
+	_worldUVOffset = [0.6, 0.35]
+	_worldUVScale = 1.5
+
+	_midTexScale = 0.0005
+	_midWaveScale = 3000
+	_midWaveStrength = 0.1
+	_midWaveSpeed = 100
+	_midScrollSpeed = 20
+	_noiseScaleFactor = 0.15
+
+	_microTexScale = 0.0035
+	_microWaveScale = 200
+	_microWaveStrength = 0.02
+	_microWaveSpeed = 40
+	_microScrollSpeed = 8
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = 1.5
+}
+
+MaterialHigh
+{
+	Color = [255, 255, 255, 220]
+	Shader = "../nebula.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_03D.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_03D.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_02B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+
+	_color1 = [210, 0, 0, 255]
+	_color2 = [169, 68, 56, 255]
+	_color3 = [43, 42, 76, 255]
+
+	_worldUVOffset = [0.6, 0.35]
+	_worldUVScale = 1.5
+
+	_midTexScale = 0.0005
+	_midWaveScale = 3000
+	_midWaveStrength = 0.1
+	_midWaveSpeed = 100
+	_midScrollSpeed = 20
+	_noiseScaleFactor = 0.15
+
+	_microTexScale = 0.0035
+	_microWaveScale = 200
+	_microWaveStrength = 0.02
+	_microWaveSpeed = 40
+	_microScrollSpeed = 8
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = 1.5
+}
+SimpleMaterialHigh : MaterialHigh
+{
+	shader = "../nebula_simple.shader"
+}
+
+MaterialMinimap = &MaterialLow

@@ -20,7 +20,6 @@ Part : <../base_part_terran.rules>/Part
 	MaxHealth = 5000
 	InitialPenetrationResistance = 3
 	ProhibitAbove = 1
-	ReceivableBuffs : ^/0/ReceivableBuffs []
 	AllowedDoorLocations
 	[
 		[-1, 3]
@@ -571,6 +570,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [1,2]
 				}
 
 				// Out of power.

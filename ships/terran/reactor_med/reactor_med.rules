@@ -19,7 +19,7 @@ Part : <../base_part_terran.rules>/Part
 	MaxHealth = 4000 // Deliberately not increasing this for med/large reactors to make them extra-fragile.
 	AutoDoorMaxPathLength = 5
 	TypeCategories = [reactor, provides_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff, ElectronNebula]
 	CreateUnderlyingWhenDestroyed = false
 	IgnoreRotationForMirroredSelection = true
 	BlockedTravelCells
@@ -49,7 +49,7 @@ Part : <../base_part_terran.rules>/Part
 			MaxResourcesPickUp = 2000
 			InitPickUp = 1001
 			PickUpRate = 1000 / 0.5
-			ExpectedResourceGenerationRate = (&../BatteryProducer/ToQuantity) / (&../BatteryProducer/Interval)
+			ExpectedResourceGenerationRate = { BaseValue = (&../../BatteryProducer/ToQuantity) / (&../../BatteryProducer/Interval/BaseValue); BuffType=ElectronDebuff; BuffMode=Multiply; }
 			ToggleOnResources = 4001
 			ToggleOffResources = 4000
 		}
@@ -58,7 +58,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceConverter
 			ToStorage = BatteryStorage
 			ToQuantity = 1000
-			Interval = .4444 / 2
+			Interval = { BaseValue=0.2222; BuffType=ElectronDebuff; BuffMode=Divide; }
 		}
 
 		Graphics
@@ -303,6 +303,33 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
+		ElectronDebuffToggle
+		{
+			Type = BuffToggle
+			BuffType = ElectronDebuff
+		}
+
+		ElectronNebulaEffects
+		{
+			Type = ContinuousEffects
+			OperationalToggle = ElectronDebuffToggle
+			Location = [1.5, 1.5]
+			MediaEffectsIntensityFactor = { BaseValue=1; BuffType=ElectronNebula; BuffMode=Multiply; }
+			MediaEffects
+			[
+				&<./Data/nebulas/electron/particles/electron_reactor_sizzle.rules>
+				&<./Data/nebulas/electron/particles/electron_reactor_light.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/nebulas/electron/reactor_drain.wav"
+					Volume = 50%
+					MaxConcurrentVolume = &Volume
+					MaxConcurrent = 1
+				}
+			]
+		}
+
 		BatterySprites
 		{
 			Type = ResourceSprites
@@ -448,7 +475,7 @@ Part : <../base_part_terran.rules>/Part
 
 	Stats
 	{
-		PowerGeneration = (&~/Part/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/BatteryProducer/Interval) / 1000
+		PowerGeneration = (&~/Part/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
 		BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
 		BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000

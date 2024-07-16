@@ -57,6 +57,7 @@ BaseRadarRadius = &BaseSightRadius
 MinCommsRadius = &<terran/control_room_small/control_room_small.rules>/Part/Components/Sensor/SightRadius
 WeaponActivationEnemyCheckRadius = &<terran/sensor_array/sensor_array.rules>/Part/Components/Sensor/SightRadius
 DefaultTargetingRangeFactor = 4.0
+WeaponFireRevealDuration = 3
 
 MapJumpFuelCostPerMass = 0
 MapJumpFuelCostPerMassDistance = 1 / 100 / 10 // 1 fuel per 100 mass to jump 10 LY at 100% efficiency
@@ -80,6 +81,11 @@ ConstructionNuggetSinkSearchesPerTick = 5
 MaxConstructionShipSpeed = 1
 
 Fire = &<./Data/fire/fire.rules>
+
+IndicatorAtlasParams
+{
+	MipLevels = 7 // Assumes 64x64 min sprite size.
+}
 
 ExternalWalls
 {

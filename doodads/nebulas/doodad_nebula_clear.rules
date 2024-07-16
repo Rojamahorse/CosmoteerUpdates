@@ -1,0 +1,14 @@
+ID = cosmoteer.nebula_clear
+Type = Nebula
+NebulaID = ""
+DescriptionKey = "Doodads/NebulaClear"
+CategoryKey = "Doodads/Nebulas"
+Icon
+{
+	Texture
+	{
+		File = "nebula_clear.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}

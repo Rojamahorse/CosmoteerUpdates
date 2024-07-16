@@ -1,0 +1,44 @@
+Spawners
+[
+	{
+		Type = Nebula
+		NebulaType = cloudy
+		NebulaRadius = 1000
+		MultiplyNebulaRadius = AreaRadiusKM
+
+		PerlinNoise
+		{
+			GridSize = [4, 4]
+			Octaves = 2
+			OutputShift = -0.35
+		}
+		MinPerlinNebulaTris = 3
+		UsePolarPerlinCoordinates = false
+	}
+
+	// No nebulas near players.
+	{
+		Type = Nebula
+		RootLocation = Tag
+		RootLocationTag = player
+		ForEachRootMax = 999
+		NebulaType = ""
+		NebulaRadius = 300
+	}
+	{
+		Type = Nebula
+		RootLocation = Tag
+		RootLocationTag = capture_point
+		ForEachRootMax = 999
+		NebulaType = ""
+		NebulaRadius = 300
+	}
+	{
+		Type = Nebula
+		RootLocation = Tag
+		RootLocationTag = spawn_point
+		ForEachRootMax = 999
+		NebulaType = ""
+		NebulaRadius = 300
+	}
+]

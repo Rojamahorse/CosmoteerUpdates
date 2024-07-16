@@ -11,7 +11,7 @@ Part : <../base_part_terran.rules>/Part
 		[coil, 36]
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	Size = [2, 5]
 	PhysicalRect = [0, 2, 2, 3]
 	SaveRect = &PhysicalRect
@@ -784,6 +784,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [1,2]
 				}
 
 				// Out of power.
@@ -833,7 +834,7 @@ Part : <../base_part_terran.rules>/Part
 			NameKey = "StatCategories/LaserBoltLarge"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage
+				DamagePerShot = &~/Part/Components/BulletEmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
 				ROF = 1 / (&~/Part/Components/ShootAlternatingComponents/Components/FireTimer/Duration)

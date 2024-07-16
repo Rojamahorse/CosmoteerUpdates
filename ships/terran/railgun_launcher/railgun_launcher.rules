@@ -662,6 +662,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [2]
 				}
 
 				// Out of power.

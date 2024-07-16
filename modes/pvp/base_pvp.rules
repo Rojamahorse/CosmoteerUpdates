@@ -129,6 +129,20 @@ AsteroidDensities
 	{ Generator=&<asteroids_high.rules>; NameKey="PvpModeConfig/AsteroidDensities/High"; }
 ]
 
+NebulaSizeFactor = 0.2
+NebulasTypes
+[
+	{ Generator={Spawners=[]}; NameKey="PvpModeConfig/NebulasTypes/None"; }
+	{ Generator=&<nebulas_varied_sparse.rules>; NameKey="PvpModeConfig/NebulasTypes/VariedSparse"; IsDefault=true; }
+	{ Generator=&<nebulas_varied_dense.rules>; NameKey="PvpModeConfig/NebulasTypes/VariedDense"; }
+	{ Generator=&<nebulas_cloudy_sparse.rules>; NameKey="PvpModeConfig/NebulasTypes/CloudySparse"; }
+	{ Generator=&<nebulas_cloudy_dense.rules>; NameKey="PvpModeConfig/NebulasTypes/CloudyDense"; }
+	{ Generator=&<nebulas_electron_sparse.rules>; NameKey="PvpModeConfig/NebulasTypes/ElectronSparse"; }
+	{ Generator=&<nebulas_electron_dense.rules>; NameKey="PvpModeConfig/NebulasTypes/ElectronDense"; }
+	{ Generator=&<nebulas_ion_storm_sparse.rules>; NameKey="PvpModeConfig/NebulasTypes/IonStormSparse"; }
+	{ Generator=&<nebulas_ion_storm_dense.rules>; NameKey="PvpModeConfig/NebulasTypes/IonStormDense"; }
+]
+
 FleetDistances
 [
 	{ Distance=750; NameFmtKey="PvpModeConfig/FleetDistances/ShortFmt"; }

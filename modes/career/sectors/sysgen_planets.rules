@@ -4,6 +4,7 @@ SubSpawners
 	// Inner planets.
 	: ~/InnerPlanet
 	{
+		Conditions { ProhibitSpawnFlags = [no_inner_planets] }
 		Count = [1, 2]
 		Distance = [0, 6000]
 		MinDistanceFromTags = [[sun, 3000]]
@@ -14,6 +15,7 @@ SubSpawners
 	// Outer planets.
 	: ~/OuterPlanet
 	{
+		Conditions { ProhibitSpawnFlags = [no_outer_planets] }
 		Count = [3, 4]
 		Distance = [15000, 30000]
 		SpawnsPerSlice = 1

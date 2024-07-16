@@ -313,7 +313,7 @@ Part : <../base_part_terran.rules>/Part
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 1.2
+			FireInterval = 1.35
 			FiringArc = 115d
 			RotateSpeed = 30d
 			FireThresholdAngle = 1d
@@ -739,6 +739,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [1,2]
 				}
 
 				// Out of ammo.

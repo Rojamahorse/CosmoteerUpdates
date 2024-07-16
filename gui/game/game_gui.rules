@@ -656,6 +656,15 @@ PauseSprite
 		SampleMode = Linear
 	}
 }
+UnpauseSprite
+{
+	Texture
+	{
+		File = "speed_unpause.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
 IncreaseSpeedSprite
 {
 	Texture

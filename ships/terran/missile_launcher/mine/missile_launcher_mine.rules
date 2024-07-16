@@ -245,7 +245,6 @@ Components
 			{
 				File = "mine4.png"
 				NormalsFile = "mine_normals4.png"
-				Offset = [0, 0.5]
 				Size = [2, 2]
 			}
 			{
@@ -269,7 +268,6 @@ Components
 			{
 				File = "mine8.png"
 				NormalsFile = "mine_normals8.png"
-				Offset = [0, 0.5]
 				Size = [2, 2]
 			}
 			{
@@ -290,7 +288,7 @@ Components
 			{
 				File = "mine12.png"
 				NormalsFile = "mine_normals12.png"
-				Size = [2, 3]
+				Size = [2, 2]
 			}
 			{
 				File = "mine13.png"
@@ -310,7 +308,7 @@ Components
 			{
 				File = "mine16.png"
 				NormalsFile = "mine_normals16.png"
-				Size = [2, 3]
+				Size = [2, 2]
 			}
 			{
 				File = "mine17.png"
@@ -334,7 +332,7 @@ Components
 				File = "mine20.png"
 				NormalsFile = "mine_normals20.png"
 				Offset = [0, -0.5]
-				Size = [2, 4]
+				Size = [2, 3]
 			}
 			{
 				File = "mine21.png"
@@ -423,6 +421,7 @@ Components
 					File = &/INDICATORS/PowerOff
 					Size = [1, 1]
 				}
+				HidesIndicators = [1,2]
 			}
 
 			// Out of missiles.

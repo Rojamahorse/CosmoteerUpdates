@@ -14,7 +14,7 @@ Part : <../base_part_terran.rules>/Part
 	MaxHealth = 6000
 	SelectionPriority = 1
 	TypeCategories = [weapon, uses_power, is_crewed, mining]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	ProhibitedBy : ^/0/ProhibitedBy [tall]
 	AllowedDoorLocations
 	[
@@ -647,6 +647,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [1,2]
 				}
 
 				// Out of power.
@@ -695,12 +696,12 @@ Part : <../base_part_terran.rules>/Part
 			NameKey = "StatCategories/MiningBeam"
 			Stats
 			{
-				DamagePerShot = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/0/Damage) * 2
+				DamagePerShot = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/0/Damage/BaseValue) * 2
 				HitInterval = &~/Part/Components/BeamEmitterBase/HitInterval
 				DamageContinuousEnemies = (&DamagePerShot) / (&HitInterval)
-				DamagePerShotJunk = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/1/Damage) * 2
+				DamagePerShotJunk = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/1/Damage/BaseValue) * 2
 				DamageContinuousJunk = (&DamagePerShotJunk) / (&HitInterval)
-				DamagePerShotAsteroids = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/3/Damage) * 2
+				DamagePerShotAsteroids = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/3/Damage/BaseValue) * 2
 				DamageContinuousAsteroids = (&DamagePerShotAsteroids) / (&HitInterval)
 				Range = &~/Part/Components/BeamEmitterBase/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)

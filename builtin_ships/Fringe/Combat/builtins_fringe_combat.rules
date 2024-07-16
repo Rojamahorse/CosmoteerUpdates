@@ -11,19 +11,23 @@ Ships
 	:~{ File="Fanged Fighter.ship.png";   Tier=1;  Difficulty=1; }
 	:~{ File="Voltage.ship.png";          Tier=1;  Difficulty=1; }
 	:~{ File="Pinion.ship.png";           Tier=1;  Difficulty=1; }
+	:~{ File="Pogoo.ship.png";            Tier=1;  Difficulty=1; }
+	:~{ File="Nettlesome.ship.png";       Tier=1;  Difficulty=1; }
 	:~{ File="Horsefly.ship.png";         Tier=2;  Difficulty=1; }
 	:~{ File="Effigy.ship.png";           Tier=2;  Difficulty=1; }
 	:~{ File="Backburner.ship.png";       Tier=2;  Difficulty=2; }
-	:~{ File="Junk Carver.ship.png";      Tier=2;  Difficulty=2; }
 	:~{ File="Phalanx Light Escort.ship.png"; Tier=2; Difficulty=1; }
 	:~{ File="Argonaut.ship.png";         Tier=2;  Difficulty=1; }
 	:~{ File="Klepht.ship.png";           Tier=2;  Difficulty=1; }
+	:~{ File="Junk Carver.ship.png";      Tier=2;  Difficulty=2; }
+	:~{ File="Glisterling.ship.png";      Tier=2;  Difficulty=3; }
 	:~{ File="Duster.ship.png";           Tier=3;  Difficulty=1; }
 	:~{ File="Thrasher.ship.png";         Tier=3;  Difficulty=1; }
 	:~{ File="Cutthroat.ship.png";        Tier=3;  Difficulty=1; }
 	:~{ File="Recusant.ship.png";         Tier=3;  Difficulty=1; OtherIDs=["Renegade"]; }
 	:~{ File="Chimney Slug.ship.png";     Tier=3;  Difficulty=1; }
 	:~{ File="Axlerod.ship.png";          Tier=3;  Difficulty=1; }
+	:~{ File="Liability.ship.png";        Tier=3;  Difficulty=1; }
 
 	// Patrol ships
 	:~{ File="Hardhat.ship.png";          Tier=4;  Difficulty=1; }
@@ -46,12 +50,14 @@ Ships
 	:~{ File="Retrograde.ship.png";       Tier=6;  Difficulty=1; }
 	:~{ File="Raghdirst.ship.png";        Tier=6;  Difficulty=1; }
 	:~{ File="Thornlark.ship.png";        Tier=6;  Difficulty=1; }
+	:~{ File="Ossipon.ship.png";          Tier=6;  Difficulty=3; }
 
 	// Corvettes
 	:~{ File="Dread.ship.png";            Tier=7;  Difficulty=1; }
 	:~{ File="Rising Star.ship.png";      Tier=7;  Difficulty=1; }
 	:~{ File="Crucible.ship.png";         Tier=7;  Difficulty=2; }
 	:~{ File="Porca Miseria.ship.png";    Tier=7;  Difficulty=2; }
+	:~{ File="Black and Bruised.ship.png";Tier=7;  Difficulty=2; }
 	:~{ File="Avalanche.ship.png";        Tier=8;  Difficulty=1; }
 	:~{ File="Buscador.ship.png";         Tier=8;  Difficulty=1; }
 	:~{ File="Incursor.ship.png";         Tier=8;  Difficulty=1; }
@@ -66,6 +72,7 @@ Ships
 	:~{ File="Quicksilver Interceptor.ship.png"; Tier=9; Difficulty=1; }
 	:~{ File="Splinetooth.ship.png";      Tier=9; Difficulty=1; }
 	:~{ File="Unclassified Misdemeanor.ship.png"; Tier=9; Difficulty=1; }
+	:~{ File="Opponent of Commerce.ship.png"; Tier=9; Difficulty=2; }
 
 	// Frigates
 	:~{ File="Loomer.ship.png";           Tier=10;  Difficulty=1; }
