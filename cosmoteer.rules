@@ -32,6 +32,10 @@ IndicatorMaterial
 {
 	Shader = "indicators_cycle.shader"
 	_cycleInterval = 0.5
+	_maxScale = 2
+	_colorFluctuateLow = [255, 255, 255, 255*.7]
+	_colorFluctuateHigh = [255, 255, 255, 255*.9]
+	_fluctuateInterval = 1
 }
 
 BuiltInShipsFolder = "builtin_ships"

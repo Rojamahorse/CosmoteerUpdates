@@ -563,6 +563,10 @@ PartStats
 		DefaultBuiltinStat = InitialPenetrationResistance
 	}
 	{
+		ID = TurretPenResist
+		FormatKey = "Stats/TurretPenResistFmt"
+	}
+	{
 		ID = ShellPenResist
 		FormatKey = "Stats/ShellPenResistFmt"
 	}

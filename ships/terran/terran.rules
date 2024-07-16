@@ -690,36 +690,6 @@ Terran : <../base_ship.rules>
 				}
 			}
 		}
-
-		// Indicators
-		{
-			Key = "indicators"// Ship bucket layer.
-			Value // The actual material.
-			{
-				UniqueBucket = 2000
-				RenderStage = Highest
-				DrawForLocalPlayerOnly = true
-				IsIndicators = true
-				AtlasTextureParams
-				{
-					MipLevels = 7 // Assumes 64x64 min part sprite size.
-				}
-				Material
-				{
-					Shader = "../common/indicators.shader"
-					_colorFluctuateLow = [255, 255, 255, 255*.7]
-					_colorFluctuateHigh = [255, 255, 255, 255*.9]
-					_fluctuateInterval = 1
-					_maxScale = 2
-					_background
-					{
-						File = "./Data/gui/game/indicators/indicator_background.png"
-						SampleMode = Linear
-						MipLevels = max
-					}
-				}
-			}
-		}
 	]
 
 	Blueprints : <../base_ship.rules>/Blueprints

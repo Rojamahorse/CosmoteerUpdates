@@ -684,6 +684,7 @@ Inputs
 		MapFtlJump = "Galaxy Map Hyper-Jump"
 		Halt = "Halt"
 		InvertCollisionAvoidance = "Invert Collision Avoidance"
+		InvertHazardAvoidance = "Invert Hazard Avoidance"
 		DirectControlToggle = "Toggle Direct Control Mode"
 		DirectControlToggleWeapons = "Direct Control: Toggle Weapons Control"
 		DirectControlToggleFaceCursor = "Direct Control: Toggle Auto Face Cursor"
@@ -926,6 +927,7 @@ Inputs
 		AutoBattleCamera = "Toggle Battle Camera Automation"
 		ZeroPlanetCoordinates = "Force Planet To Zero Coordinates"
 		NoDefaultConnections = "Disable Automatic Hyper-Jump Connections"
+		RemoveNebula = "Remove Cloud/Storm"
 	}
 
 	Formations
@@ -1170,6 +1172,9 @@ Settings
 		FancyUIEffects = "Fancy U.I. Effects"
 		FancyUIEffectsTip = "if enabled, additional user interface effects such as the \"glass\" blur will be rendered. Turning this off can improve performance."
 
+		FancyNebulas = "Fancy Clouds & Storms"
+		FancyNebulasTip = "If enabled, clouds and storms will have lighting and animation. Turning this off can improve performance."
+
 		UncompressedTextures = "Use Uncompressed Textures"
 		UncompressedTexturesTip = "If enabled, textures will not be compressed. Enabling this option will very slightly improve visual quality and greatly increase RAM/VRAM usage. "\
 		                          "Changing this option requires the game to be restarted."
@@ -1302,6 +1307,10 @@ Settings
 		EnableCollisionAvoidance = "Enable Collision Avoidance"
 		EnableCollisionAvoidanceTip = "If checked, then your ships will attempt to avoid collisions with other ships by default. "\
 		                              "Hold <btn id='Game.InvertCollisionAvoidance'/> to use the other mode."
+
+		EnableHazardAvoidance = "Navigate Around Environmental Hazards"
+		EnableHazardAvoidanceTip = "If checked, then your ships will navigate around hazardous stars, electron clouds, and ion storms. "\
+		                           "Hold <btn id='Game.InvertHazardAvoidance'/> to use the other mode."
 
 		EnableArrivalMatching = "Enable Speed Synchronization"
 		EnableArrivalMatchingTip = "If checked, then commanding multiple ships simultaneously will instruct them to synchronize their speeds so that they arrive at approximately the same time. "\
@@ -1912,6 +1921,16 @@ ShipClasses
 	Megaroid = "Megaroid"
 }
 
+Nebulas
+{
+	Cloudy = "<b>Gaseous Cloud</b>\nShips inside the cloud have reduced sensor range but are hidden to ships outside, except when firing weapons."
+	CloudyHudFmt = "<s14>{0:0.}%</s14>\n<s12><gray>gaseous</gray></s12>"
+	Electron = "<b>Electron Cloud</b>\nShip reactor output will be reduced by 80%, but energy weapons will do 75% more damage and thrusters are more powerful. Ships cannot hyper-jump in or out and radar range is reduced due to electromagnetic interference."
+	ElectronHudFmt = "<s14><color r='180' g='255' b='77'>{0:0.}%</color></s14>\n<s12><gray>electron</gray></s12>"
+	IonStorm = "<b>Ion Storm</b>\nShips inside will be frequently struck by powerful bolts of ion-lightning."
+	IonStormHudFmt = "<s14><bad>{0:0.}%</bad></s14>\n<s12><gray>storm</gray></s12>"
+}
+
 Doodads
 {
 	Planets = "Solar System"
@@ -1925,6 +1944,9 @@ Doodads
 	PlanetSand = "Desert"
 	PlanetWater = "Aquatic"
 	PlanetMiniSun = "Miniature Star"
+
+	Nebulas = "Clouds & Storms"
+	NebulaClear = "Clear"
 
 	Asteroids = "Asteroids"
 	Asteroid_S = "Asteroid (S)"
@@ -2135,8 +2157,10 @@ Factions
 
 SectorTypes
 {
-	Basic = "Unary Star System"
-	Binary = "Binary Star System"
+	Basic = "Unary Star"
+	Binary = "Binary Star"
+	HighDensityNebula = "Unary Star (High Cloud Density)"
+	Supernova = "Supernova Aftermath"
 }
 
 FameTitles
@@ -2349,6 +2373,8 @@ CreativeModeConfig
 	MapSizeTip = "The approximate number of star systems in the galaxy map."
 	GeneratePlanets = "Create Suns, Planets, & Moons"
 	GeneratePlanetsTip = "If checked, suns, planets, and moons will be automatically added to all star systems."
+	GenerateNebulas = "Create Clouds & Storms"
+	GenerateNebulasTip = "If checked, clouds and storms will be automatically added to all star systems."
 	GenerateFtlGates = "Create Hyper-Jump Relays"
 	GenerateFtlGatesTip = "If checked, Hyper-Jump Relays will be automatically added to all star systems connecting to each adjacent system."
 	MaxPlayers = &~/PvpModeConfig/MaxPlayers
@@ -2387,6 +2413,7 @@ CreativeMode
 	ClearResources = "Floating Resources"
 	ClearBullets = "Weapon Projectiles"
 	ClearPlanets = "Planets, Moons, & Suns"
+	ClearNebulas = "Clouds & Storms"
 	ClearPOIs = "Area-of-Interest Icons"
 	ClearParticles = "Dead Crew & Particle VFX"
 
@@ -2573,6 +2600,8 @@ PvpModeConfig
 	ResourceDropsTip = "If checked, then resources will drop from ships when their parts are destroyed. May impact performance."
 	AsteroidDensity = "Asteroid Density"
 	AsteroidDensityTip = "The density of asteroids within the battle area."
+	NebulasType = "Clouds & Storms"
+	NebulasTypeTip = "The types and density of clouds and storms within the battle area."
 	FleetDistance = "Starting Distance"
 	FleetDistanceTip = "The distance between each player or team's fleet at the start of the game."
 	PerimeterDistance = "Ring of Death"
@@ -2619,6 +2648,19 @@ PvpModeConfig
 		Low = "Low"
 		Normal = "Normal"
 		High = "High"
+	}
+
+	NebulasTypes
+	{
+		None = "None"
+		CloudySparse = "Gaseous Clouds (Sparse)"
+		CloudyDense = "Gaseous Clouds (Dense)"
+		ElectronSparse = "Electron Clouds (Sparse)"
+		ElectronDense = "Electron Clouds (Dense)"
+		IonStormSparse = "Ion Storms (Sparse)"
+		IonStormDense = "Ion Storms (Dense)"
+		VariedSparse = "Varied (Sparse)"
+		VariedDense = "Varied (Dense)"
 	}
 
 	PerimeterDistances
@@ -2861,6 +2903,7 @@ Hud
 
 	Paused = "PAUSED"
 	PauseTip = "Pause\n\nHotkey: <btn id='Game.PauseToggle'/>"
+	UnpauseTip = "Unpause\n\nHotkey: <btn id='Game.PauseToggle'/>"
 	DecreaseSpeedTip = "Decrease Game Speed\n\nHotkey: <btn id='Game.DecreaseSpeed'/>"
 	IncreaseSpeedTip = "Increase Game Speed\n\nHotkey: <btn id='Game.IncreaseSpeed'/>"
 	SpeedPaused = "--"
@@ -2918,6 +2961,7 @@ Hud
 	            "Hotkey: <btn id='Game.Attack'/>"
 	SalvageTip = "<b>Gather/Salvage/Mine Resources</b>\n\nWith this button selected, click on or drag a box around floating resources, ships, or asteroids to gather, salvage, or mine them.\n\nHold <btn id='Game.CancelSalvageCollect'/> for cancellation mode.\n\n<btn id='General.UIAltClick'/> this button to filter resource types.\n\nHotkey: <btn id='Game.Salvage'/>"
 	FtlJumpTip = "<b>Hyper-Jump</b>\n\nQuickly teleport to another location within the solar system.\n\nHotkey: <btn id='Game.LocalFtlJump'/>"
+	FtlJumpDisabledTip = "The selected ship(s) are currently unable to make hyper-jumps."
 	FormationTip = "<b>Formations</b>\n\nOrganize your ships into a flight formation."
 	HaltTip = "<b>Halt</b>\n\nCancel all current orders.\n\nHotkey: <btn id='Game.Halt'/>"
 	SummonCrewTip = "<b>Recall Crew</b>\n\nImmediately summons all crew back to your ship.\n\nHotkey: <btn id='Game.Halt'/>"
@@ -3017,6 +3061,8 @@ Hud
 	NuggetCollectNoPath = "NO PATH TO STORAGE"
 	NuggetCollectTooFar = "TOO FAR"
 	NuggetCollectAlreadyClaimed = "ALREADY CLAIMED"
+
+	ResourceCountStorageFullFmt = "{0} <bad>(Storage Full)</bad>"
 
 	EnableAll = "Enable All"
 	DisableAll = "Disable All"
@@ -3151,8 +3197,9 @@ BuildBox
 	BrushDisabledTip = "The selected part or tool does not support different \"brush\" shapes or sizes."
 	HireCrewTip = "Hire crew to fill empty beds. If you have more crew than beds, the extra crew will always be fired."
 	NumCrewTip = "The number of crew to hire."
-	UncomittedModifications = "There are uncomitted modifications to this ship's blueprints. Are you sure you wish to discard these modifications?"
+	UncomittedModifications = "There are uncommitted modifications to this ship's blueprints. Are you sure you wish to discard these modifications?"
 	DiscardModifications = "Discard Modifications"
+	SaveDiscardModifications = "Save &amp; Discard"
 	NothingToUndo = "Nothing to undo."
 	NothingToRedo = "Nothing to redo."
 	NoWorkNeeded = "NO WORK NEEDED"
@@ -3193,8 +3240,10 @@ BuildBox
 	NearestResourceFmt = "<good>✓ Nearest {0}: {1}m</good>"
 	NearestResourceWarningFmt = "<yellow>⚠️ Nearest {0}: {1}m</yellow>"
 	NearestResourceStrongWarningFmt = "<bad>⚠️ Nearest {0}: {1}m</bad>"
-	NoCrewAccess = "<bad>✘ No Crew Access</bad>"
-	NoResourceAccessFmt = "<bad>✘ No {0} Access</bad>"
+	NoDoorAccess = "<bad>✘ No Door Access</bad>"
+	HasDoorAccess = "<good>✓ Has Door Access</good>"
+	NoCrewAccess = "<bad>✘ No Crew</bad>"
+	NoResourceAccessFmt = "<bad>✘ No {0}</bad>"
 	Indent = "<yellow> ⮡ </yellow>"
 	IndentTransparent = "<color a='0'> ⮡ </color>"
 
@@ -3838,7 +3887,7 @@ Parts
 
 	EngineRoom = "Engine Room"
 	EngineRoomIcon = &EngineRoom
-	EngineRoomDesc = "Increases the power of adjacent thrusters by 50%. Also acts as a central delivery point for adjacent thrusters to which crew can deliver batteries without having to travel to each one individually."
+	EngineRoomDesc = "Increases the thrust and power usage of adjacent thrusters by 50%. Also acts as a central delivery point for adjacent thrusters to which crew can deliver batteries without having to travel to each one individually."
 
 	ExplosiveCharge = "Explosive Charge"
 	ExplosiveChargeIcon = &ExplosiveCharge
@@ -4486,6 +4535,7 @@ Stats
 	ShotAmmoUsageRangeFmt = "<white>Ammo Use:</white> <good>{0:0.##}</good><gray>/shot (</gray><good>{1:0.##}</good><white> - </white><good>{2:0.##}</good><gray>/sec)</gray>"
 	ShellDamageResistFmt = "<white>Shell Damage Resist:</white> <good>{0}%</good>"
 	ShellPenResistFmt = "<white>Shell Penetration Resist:</white> <good>-{0}</good> <gray>meters</gray>"
+	TurretPenResistFmt = "<white>Turret Penetration Resist:</white> <good>-{0}</good> <gray>meters</gray>"
 	RailgunNotes = "<gray>NOTE: Damage, Penetration, Range, Projectile Speed, and Power Usage are increased with each additional Railgun Accelerator.</gray>"
 	RocketNotes = "<gray>NOTE: Thrust, Ramp-Up Time, and Power Use are increased with each additional Extender Module.</gray>"
 	MissileLauncherNotes = "<gray>For munition statistics, refer to the corresponding factory for each type of munition.</gray>"
@@ -5233,12 +5283,12 @@ Tips
 		Title = "Quick-Saves"
 		Tip1 = "Press <btn id='Game.QuickSave'/> to quick-save your current game."
 		Tip2 = "Press <btn id='Game.QuickLoad'/> to load the last saved game of any type."
-		Tip3 = "By default, Cosmoteer will keep your last 10 quick-save files. Older quick-save files will be automatically deleted. You can change the number of quick-save files to keep in <good>Settings -> Auto-Save</good>."
+		Tip3 = "By default, Cosmoteer will keep your last 25 quick-save files. Older quick-save files will be automatically deleted. You can change the number of quick-save files to keep in <good>Settings -> Auto-Save</good>."
 	}
 	AutoSave
 	{
 		Title = "Auto-Saves"
-		Tip = "By default, Cosmoteer will auto-save your current game every 10 minutes and will keep your last 10 auto-save files. Older auto-save files will be automatically deleted. You can change duration and number of auto-save files in <good>Settings -> Auto-Save</good>."
+		Tip = "By default, Cosmoteer will auto-save your current game every 10 minutes and will keep your last 25 auto-save files. Older auto-save files will be automatically deleted. You can change duration and number of auto-save files in <good>Settings -> Auto-Save</good>."
 	}
 	Hotkeys
 	{

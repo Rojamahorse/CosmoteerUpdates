@@ -247,6 +247,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ToggledComponents
 			Toggle = ExtendablePowerDistributionBuffToggle
 			Invert = true
+			IncludeInBlueprints = true
 			Components
 			{
 				BatteryConsumer
@@ -674,7 +675,6 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = IndicatorSprites
 			Location = [1.5, 2]
-			Layer = "indicators"
 			Indicators
 			[
 				// Turned off.
@@ -685,6 +685,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [1,2]
 				}
 
 				// Out of power.
