@@ -33,8 +33,11 @@ ActiveEffects
 
 			: /BASE_SOUNDS/AudioExterior
 			{
-				RandomSounds = ["thunder1.wav", "thunder2.wav", "thunder3.wav"]
-				SpeedVariation = .5
+				RandomSounds = ["sounds/ion_lightning_strike_01.wav",
+								"sounds/ion_lightning_strike_02.wav",
+								"sounds/ion_lightning_strike_03.wav",
+								"sounds/ion_lightning_strike_04.wav"]
+				SpeedVariation = .2
 				MaxConcurrent = 20
 			}
 		]
@@ -334,3 +337,12 @@ SimpleMaterialHigh : MaterialHigh
 }
 
 MaterialMinimap = &MaterialLow
+
+AmbientMediaEffects
+[
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/ion_ambient.wav"
+		Volume = 1
+	}
+]

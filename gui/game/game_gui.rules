@@ -789,3 +789,14 @@ MPPlayerColors
 		Bf = 0.9091723
 	}
 ]
+
+ShipHiddenSound
+{
+	Sound = "ship_hidden.wav"
+	Volume = 50%
+}
+ShipRevealedSound
+{
+	Sound = "ship_revealed.wav"
+	Volume = 50%
+}

@@ -32,6 +32,7 @@ Spawners
 		ForEachRootMax = 999
 		NebulaType = ""
 		NebulaRadius = 300
+		OnlyReplaceNebulaTypes = [ion_storm]
 	}
 	{
 		Type = Nebula

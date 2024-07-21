@@ -266,6 +266,7 @@ BuildBox
 	ForgetDestroyedTip = "Se olvidan todas las piezas que hayan sido destruidas, pero que aún no se hayan reconstruido."
 	FtlEfficiency = "Eficiencia del Hiperimpulsor"
 	GrabTip = "<b>Herramienta Agarrar</b>\n\nSi está seleccionada, al hacer clic en una parte de una nave, esta será tomada y se pondrá a la mano para que puedas colocarla en otro lugar. Mantén presionada la tecla <btn id='Game.AppendSelection'/> para duplicar la parte en lugar de moverla.\n\n<btn id='General.UIAltClick'/> para seleccionar ese tipo de parte como si hubieras hecho clic en su botón.\n\nTecla de acceso rápido: <btn id='Design.GrabTool'/>"
+	HasDoorAccess = "<good>✘ Hay acceso a puertas</good>"
 	HireCrewFmt = " Contratar a {0} tripulantes: {1}"
 	HireCrewTip = "Contrata tripulantes para llenar las camas vacías. Si tienes más tripulantes que camas, la tripulación adicional siempre será despedida."
 	ImportPng = "Cargar forma desde PNG"
@@ -313,10 +314,11 @@ BuildBox
 	NearestResourceFmt = "<good>✓ {0} más cercano: {1} m</good>"
 	NearestResourceStrongWarningFmt = "<bad>⚠️ {0} más cercano: {1} m</bad>"
 	NearestResourceWarningFmt = "<yellow>⚠️ {0} más cercano: {1} m</yellow>"
-	NoCrewAccess = "<bad>✘ Sin acceso a la tripulación</bad>"
+	NoCrewAccess = "<bad>✘ Sin tripulación</bad>"
+	NoDoorAccess = "<bad>✘ Sin acceso de puertas</bad>"
 	NoPartsCopied = "Aún no se copió ninguna pieza."
 	NoPartsSelected = "No se han seleccionado partes."
-	NoResourceAccessFmt = "<bad>✘ No hay acceso a {0}</bad>"
+	NoResourceAccessFmt = "<bad>✘ Sin {0}</bad>"
 	NoWorkNeeded = "NO REQUIERE TRABAJO"
 	NothingToForget = "No hay nada que olvidar."
 	NothingToRedo = "No hay nada que rehacer."
@@ -341,6 +343,7 @@ BuildBox
 	ResetMirrorLinesTip = "Restablece los ejes de reflexión horizontal y vertical en el centro de la nave."
 	RotateLeftTip = "Girar hacia la izquierda.\n\nTecla de acceso rápido: <btn id='Design.RotateLeft'/>"
 	RotateRightTip = "Girar hacia la derecha.\n\nTecla de acceso rápido: <btn id='Design.RotateRight'/>"
+	SaveDiscardModifications = "Guardar y descartar"
 	SaveSelected = "Guardar las partes seleccionadas"
 	SaveSelectedTip = "Guarda las partes seleccionadas como un diseño de nave."
 	SelectTip = "<b>Herramienta Seleccionar</b>\n\nSi está seleccionada, arrastra para dibujar un cuadro alrededor de las partes que desees copiar, cortar, pegar, reflejar por un eje, girar, o eliminar.\n\nTecla de acceso rápido: <btn id='Design.SelectionTool'/>\n\nMantén presionada la tecla <btn id='Design.ContiguousSelectionMode'/> para hacer una selección continua con \"varita mágica\"."
@@ -354,7 +357,7 @@ BuildBox
 	TotalBlueprintValueFmt = "Valor de diseño de la nave:\n<b>{0}</b>"
 	TotalMassFmt = "Masa:\n<b>{0:0.0} Toneladas</b>"
 	TotalShipValueFmt = "Valor actual:\n<b>{0}</b>"
-	UncomittedModifications = "Hay modificaciones no aplicadas a los planos de esta nave. ¿Estás seguro de que deseas descartar estas modificaciones?"
+	UncomittedModifications = "Hay modificaciones no aplicadas a los planos de esta nave. ¿Seguro que deseas descartar estas modificaciones?"
 	UndoTip = "Deshace el último cambio realizado en la nave.\n\nTecla de acceso rápido: <btn id='Design.Undo'/>"
 }
 CareerLog
@@ -642,6 +645,7 @@ CreativeMode
 	ClearAsteroids = Asteroides
 	ClearBullets = "Proyectiles de las armas"
 	ClearJunkShips = "Chatarra de nave"
+	ClearNebulas = "Nubes y tormentas"
 	ClearNonJunk = "Naves no chatarreras"
 	ClearObjects = "Eliminar objetivos..."
 	ClearObjectsHeader = "Selecciona los tipos de objetos que se eliminarán del juego.\n<b>Esto no se puede deshacer.</b>"
@@ -732,6 +736,8 @@ CreativeModeConfig
 	Description = "Diseñar naves con créditos ilimitados y todos los planos desbloqueados."
 	GenerateFtlGates = "Crear retransmisores de Hipersalto"
 	GenerateFtlGatesTip = "Si esta casilla está marcada, se añadirán automáticamente retransmisores de Hipersalto a todos los sistemas estelares que se conecten a cada sistema adyacente."
+	GenerateNebulas = "Crear nubes y tormentas"
+	GenerateNebulasTip = "Si esta casilla está marcada, se agregarán automáticamente nubes y tormentas a todos los sistemas estelares."
 	GeneratePlanets = "Crear soles, planetas y lunas"
 	GeneratePlanetsTip = "Si esta casilla está marcada, se agregarán automáticamente soles, planetas y lunas a todos los sistemas estelares."
 	LoadGame = "Cargar juego"
@@ -1044,6 +1050,8 @@ Doodads
 	Ftl = Hiperespacio
 	Megaroid_L = "Megaroide (G)"
 	Megaroid_XL = "Megaroide (XG)"
+	NebulaClear = Eliminar
+	Nebulas = "Nubes y tormentas"
 	POI = "Puntos de interés"
 	POIAsteroidField = "Campo de asteroides"
 	POICustom = "Marcador personalizado"
@@ -1412,6 +1420,7 @@ Hud
 	FtlDoJumpTip = "Todas las naves que están <good>LISTAS</good> saltarán al sector de destino.\n\nTecla de acceso rápido: <btn id='Game.DoFtlJump'/>"
 	FtlGateFmt = "Retransmisión por Hipersalto a {0}"
 	FtlGuiTitle = "Poniendo a girar los Hiperimpulsores…"
+	FtlJumpDisabledTip = "Las naves seleccionadas de momento no pueden realizar hipersaltos."
 	FtlJumpTip = "<b>Hipersalto</b>\n\nTeletransportación rápida a otra ubicación dentro del sistema solar.\n\nTecla de acceso rápido: <btn id='Game.LocalFtlJump'/>"
 	FtlShipsNotReady = "No todas las naves están listas para hacer un Hipersalto. ¿Saltar de todos modos y dejar atrás a las naves que no están listas?"
 	FtlStatusCanceled = "<bad><s12>EN ESPERA</s12></bad>"
@@ -1450,6 +1459,7 @@ Hud
 	ReputationTipFmt = "Reputación con {0}"
 	ResetDefaults = "Restablecer valores predeterminados de ataque"
 	ResetDefaultsTip = "Restablece la distancia de ataque y la orientación guardadas a sus valores originales."
+	ResourceCountStorageFullFmt = "{0} <bad>(Almacenamiento lleno)</bad>"
 	ResourcesTip = "<b>Administrar recursos</b>\n\nAdministre los recursos, materiales de construcción y municiones almacenados en tu nave.\n\nTecla de acceso rápido: <btn id='Resources.OpenClose'/>"
 	RotateTip = "<b>Rotar</b>\n\nGirar hacia un objetivo o dirección general.\n\nTecla de acceso rápido: <btn id='Game.Rotate'/>"
 	SalvageTip = "<b>Recolectar/Rescatar/Minar recursos</b>\n\nCon este botón seleccionado, haz clic o arrastra para dibujar un cuadro alrededor de los recursos, naves o asteroides flotantes para recogerlos, rescatarlos o minarlos.\n\nMantén presionado <btn id='Game.CancelSalvageCollect'/> para activar el modo de cancelación.\n\n<btn id='General.UIAltClick'/> este botón permite filtrar los tipos de recursos.\n\nTecla de acceso rápido: <btn id='Game.Salvage'/>"
@@ -1500,6 +1510,7 @@ Hud
 	TargetTip = "<b>Apuntar a las armas</b>\n\nApuntar a las armas seleccionadas de una parte enemiga específica. También se puede usar para apuntar a tus propias partes.\n\nTecla de acceso rápido: <btn id='Game.TargetWeapon'/>"
 	UnderConstructionTip = "Actualmente tu nave se encuentra en construcción y tu tripulación puede abandonarla para realizar tareas de construcción. Si vuelas demasiado lejos de tu tripulación, la perderás."
 	UnknownContact = "Contacto desconocido"
+	UnpauseTip = "Reanudar\n\nTecla de acceso rápido: <btn id='Game.PauseToggle'/>"
 	WeaponBindingFmt = ""
 	WeaponBindingNone = "Ninguno (control por IA)"
 	WeaponBindings = "Enlace de control directo"
@@ -1544,6 +1555,7 @@ Inputs
 		PlayAsAllPlayers = "Jugar como: Todos los jugadores"
 		PlayAsFmt = "Jugar como: Jugador {0}"
 		Randomize = "Aleatorizar nave/objeto"
+		RemoveNebula = "Eliminar nube/tormenta"
 		RenameNode = "Renombrar el sistema estelar"
 		RotateFtlGate = "Girar el retransmisor de Hipersalto"
 		SelectTool = "Herramienta Seleccionar"
@@ -1641,6 +1653,7 @@ Inputs
 		Halt = Detener
 		IncreaseSpeed = "Aumentar la velocidad"
 		InvertCollisionAvoidance = "Invertir prevención de colisión"
+		InvertHazardAvoidance = "Invertir prevención de riesgos"
 		Load = "Cargar juego"
 		LocalFtlJump = "Hipersalto local"
 		MapFtlJump = "Hipersalto a mapa de la galaxia"
@@ -2408,6 +2421,16 @@ Multiplayer
 	VoteYesFmt = "<good>VOTAR POR SÍ</good>\n{0} votos"
 	Waiting = "Este jugador está haciendo más lento el juego."
 }
+Nebulas
+{
+	
+	Cloudy = "<b>Nube gaseosa</b>\nDisminuye el rango de los sensores de las naves que se adentran a la nube, pero les sirve para ocultarse de las naves del exterior, excepto al disparar."
+	CloudyHudFmt = "<s14>{0:0.} %</s14>\n<s12><gray>gaseosa</gray></s12>"
+	Electron = "<b>Nube de electrones</b>\nEl generador del reactor de la nave se reduce un 80 %, pero las armas de energía infligen 75 % más de daño y los propulsores son más potentes. Las naves no pueden realizar un hipersalto y el rango del radar disminuye debido a la interferencia electromagnética."
+	ElectronHudFmt = "<s14><color r='180' g='255' b='77'>{0:0.} %</color></s14>\n<s12><gray>electrones</gray></s12>"
+	IonStorm = "<b>Tormenta de iones</b>\nLas naves dentro de la tormenta frecuentemente reciben impactos de los rayos de iones."
+	IonStormHudFmt = "<s14><bad>{0:0.} %</bad></s14>\n<s12><gray>tormenta</gray></s12>"
+}
 NewGame
 {
 	
@@ -2741,7 +2764,7 @@ Parts
 	DoorDesc = "Permite a la tripulación (¡y al fuego!) trasladarse entre habitaciones."
 	DoorIcon = Puerta
 	EngineRoom = "Sala de Máquinas"
-	EngineRoomDesc = "Aumenta la potencia de los propulsores adyacentes en un 50 %. También actúa como punto de entrega central para los propulsores adyacentes a los que la tripulación puede entregar baterías sin tener que ir a cada uno de ellos individualmente."
+	EngineRoomDesc = "Aumenta la propulsión y la potencia de uso de los propulsores adyacentes en un 50 %. También actúa como punto de entrega central para los propulsores adyacentes a los que la tripulación puede entregar baterías sin tener que ir a cada uno de ellos individualmente."
 	EngineRoomIcon = "Sala de Máquinas"
 	ExplosiveCharge = "Carga Explosiva"
 	ExplosiveChargeDesc = "Dispositivo explosivo pequeño que se puede detonar manualmente. Se utiliza principalmente para dividir naves en varias partes deliberadamente."
@@ -3044,6 +3067,21 @@ PvpModeConfig
 	MaxShipValueTip = "El valor máximo en créditos (<img name='money' colored='true'/>) de una sola nave."
 	MaxShips = "Naves por jugador"
 	MaxShipsTip = "El número máximo de naves que cada jugador puede tener en su flota."
+	NebulasType = "Nubes y tormentas"
+	NebulasTypeTip = "Los tipos y las densidades de nubes y tormentas dentro del área de batalla."
+	NebulasTypes
+	{
+		
+		CloudyDense = "Nubes gaseosas (densas)"
+		CloudySparse = "Nubes gaseosas (escasas)"
+		ElectronDense = "Nubes de electrones (densas)"
+		ElectronSparse = "Nubes de electrones (escasas)"
+		IonStormDense = "Nubes de iones (densas)"
+		IonStormSparse = "Nubes de iones (escasas)"
+		None = Ninguna
+		VariedDense = "Diversas (densas)"
+		VariedSparse = "Diversas (escasas)"
+	}
 	PerimeterDistance = "Anillo de muerte"
 	PerimeterDistanceTip = "El radio del círculo fuera del cual las naves rápidamente sufrirán daños."
 	PerimeterDistances
@@ -3364,8 +3402,10 @@ SaveMedia
 SectorTypes
 {
 	
-	Basic = "Sistema estelar unario"
-	Binary = "Sistema estelar binario"
+	Basic = "Estrella unaria"
+	Binary = "Estrella binaria"
+	HighDensityNebula = "Estrella unaria (alta densidad de nubes)"
+	Supernova = "Secuelas de supernova"
 }
 Settings
 {
@@ -3617,6 +3657,8 @@ Settings
 		EnableArrivalMatchingTip = "Si esta casilla está marcada, al comandar varias naves al mismo tiempo, se les indicará que sincronicen sus velocidades para que lleguen aproximadamente al mismo tiempo. Haz doble clic con el botón derecho del mouse para desactivar la sincronización de velocidad para ese comando específico (o actívala si esta opción no está seleccionada)."
 		EnableCollisionAvoidance = "Activar prevención de colisiones"
 		EnableCollisionAvoidanceTip = "Si esta casilla está marcada, tus naves intentarán evitar colisiones con otras naves por defecto. Mantén presionado <btn id='Game.InvertCollisionAvoidance'/> para utilizar el otro modo."
+		EnableHazardAvoidance = "Navegar a través de riesgos medioambientales"
+		EnableHazardAvoidanceTip = "Si esta casilla está marcada, tus naves navegarán a través de estrellas peligrosas, nubes de electrones y tormentas de iones. Mantén presionado <btn id='Game.InvertHazardAvoidance'/> para utilizar el otro modo."
 		FriendAndFoe = "Amigos y enemigos"
 		FriendAndFoeTip = "Las naves que controles serán verdes, las naves de otros jugadores del mismo equipo serán amarillas y las naves del equipo enemigo serán rojas."
 		InterfaceLbl = Interfaz
@@ -3716,6 +3758,8 @@ Settings
 		ExclusiveFullScreenTip = "El juego utilizará todo el monitor y te permitirá seleccionar la resolución de pantalla. Podrías necesitar este modo para utilizar algunas funciones avanzadas de la GPU como G-SYNC y FreeSync."
 		FancyLighting = "Efectos de iluminación de lujo"
 		FancyLightingTip = "Si esta opción está activada, se procesarán efectos de iluminación adicionales. Desactivar esta opción puede mejorar el desempeño."
+		FancyNebulas = "Nubes y tormentas de lujo"
+		FancyNebulasTip = "Si está activada, las nubes y las tormentas tendrán efectos de luz y de animación. Desactivar esta opción puede mejorar el desempeño."
 		FancyParticles = "Partículas y VFX de lujo"
 		FancyParticlesTip = "Si esta opción está activada, se representarán efectos visuales y de partículas adicionales. Desactivar esta opción puede mejorar el desempeño."
 		FancyUIEffects = "IU con efectos de lujo"
@@ -3977,7 +4021,7 @@ StatCategories
 	ManipulatorBeam = "Rayo Manipulador"
 	Mine = Mina
 	MineShrapnel = Esquirlas
-	MiningBeam = "Rayo extractor"
+	MiningBeam = "Rayo extractor doble"
 	MissileEMP = "Misil de pulso electromagnético"
 	MissileHE = "Misil altamente explosivo"
 	MissileNuke = "Misil nuclear táctico"
@@ -4174,7 +4218,7 @@ Tips
 	AutoSave
 	{
 		
-		Tip = "Por defecto, Cosmoteer guardará la partida actual de forma automática cada 10 minutos y guardará los últimos 10 archivos de guardado automático. Los archivos de guardado automático más viejos se borrarán de forma automática. Puedes cambiar la duración y la cantidad de archivos de guardado automático en <good>Ajustes -> Guardado automático</good>."
+		Tip = "Por defecto, Cosmoteer guardará la partida actual de forma automática cada 10 minutos y guardará los últimos 25 archivos de guardado automático. Los archivos de guardado automático más viejos se borrarán de forma automática. Puedes cambiar la duración y la cantidad de archivos de guardado automático en <good>Ajustes -> Guardado automático</good>."
 		Title = "Guardado automático"
 	}
 	BattleHelper
@@ -4489,7 +4533,7 @@ Tips
 		
 		Tip1 = "Presiona <btn id='Game.QuickSave'/> para usar el guardado rápido sobre la partida actual."
 		Tip2 = "Presiona <btn id='Game.QuickLoad'/> para cargar la última partida guardada de cualquier tipo."
-		Tip3 = "Por defecto, Cosmoteer almacena los últimos 10 archivos de guardado rápido. Los archivos de guardado rápido más viejos se borrarán de forma automática. Puedes cambiar la cantidad de archivos de guardado rápido que se almacenan en <good>Ajustes -> Guardado automático</good>."
+		Tip3 = "Por defecto, Cosmoteer almacena los últimos 25 archivos de guardado rápido. Los archivos de guardado rápido más viejos se borrarán de forma automática. Puedes cambiar la cantidad de archivos de guardado rápido que se almacenan en <good>Ajustes -> Guardado automático</good>."
 		Title = "Guardado rápido"
 	}
 	RebindingControls

@@ -6,40 +6,9 @@ Def
 	Initializers
 	[
 		{
-			Type = LocationToWorldSpace
-			LocationIn = location
-			LocationOut = location
-			Name = ""
-			Enabled = false
-			UpdateAfterInit = false
-		}
-		{
-			Type = RotationToWorldSpace
-			RotationIn = rot
-			RotationOut = rot
-			Name = ""
-			Enabled = false
-			UpdateAfterInit = false
-		}
-		{
-			Type = VelocityToWorldSpace
-			VelocityIn = velocity
-			VelocityOut = velocity
-			Name = ""
-			Enabled = false
-			UpdateAfterInit = false
-		}
-		{
 			Type = ScaleToWorldSpace
 			ScaleIn = scale
 			ScaleOut = baseScale
-			Name = ""
-			Enabled = true
-			UpdateAfterInit = false
-		}
-		{
-			Type = AddFrameOfReference
-			VelocityInOut = velocity
 			Name = ""
 			Enabled = true
 			UpdateAfterInit = false
@@ -190,17 +159,6 @@ Def
 			UpdateAfterInit = false
 		}
 		{
-			Type = Operator
-			DataType = Vector2
-			AIn = location
-			BIn = velocity
-			ResultOut = location
-			Operator = AddDt
-			Name = "apply velocity"
-			Enabled = true
-			UpdateAfterInit = false
-		}
-		{
 			Type = ColorRamp
 			LerpIn = life
 			ColorOut = color
@@ -335,7 +293,7 @@ EmitterDef
 			LocationOut = center
 			CenterType = Physical
 			Name = ""
-			Enabled = true
+			Enabled = false
 			UpdateAfterInit = false
 		}
 		{
@@ -345,12 +303,36 @@ EmitterDef
 			Inflate = -0.1
 			RestrictToPartColliders = false
 			Name = ""
+			Enabled = false
+			UpdateAfterInit = false
+		}
+		{
+			Type = LocationFromSource
+			LocationOut = location
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandomCircle
+			LocationOut = offset
+			Circle
+			{
+				Center
+				{
+					X = 0
+					Y = 0
+				}
+				Radius = 0.75
+			}
+			Perimeter = true
+			Name = ""
 			Enabled = true
 			UpdateAfterInit = false
 		}
 		{
 			Type = SetRandomVelocityFromPoint
-			LocationIn = location
+			LocationIn = offset
 			VelocityOut = velocity
 			Speed
 			{
@@ -362,7 +344,7 @@ EmitterDef
 				X = 0
 				Y = 0
 			}
-			ConvertPointToWorldSpace = true
+			ConvertPointToWorldSpace = false
 			Name = ""
 			Enabled = true
 			UpdateAfterInit = false
@@ -386,6 +368,17 @@ EmitterDef
 			Enabled = true
 			UpdateAfterInit = false
 		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = offset
+			BIn = location
+			ResultOut = location
+			Operator = Add
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
 	]
 	PostInitializers[]
 }
@@ -397,7 +390,7 @@ IsFancy = false
 IsFancyLight = false
 IsSimpleLight = false
 IsSimple = false
-Sharing = Global
+Sharing = None
 UnsharedRenderInWorldSpace = false
 DontEmitWhenOffScreen = true
 DontEmitWhenOffScreenSizeInflate = 5

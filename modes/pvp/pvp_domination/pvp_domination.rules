@@ -38,6 +38,10 @@ Mode : <../base_pvp.rules>
 				[cosmoteer.megaroid_l, 8]
 				[cosmoteer.megaroid_xl, 4]
 			]
+			RandomGenerators
+			[
+				&<nebulas_domination.rules>
+			]
 		}
 		{
 			NameKey = "DominationMapStyles/Med2T"
@@ -49,6 +53,10 @@ Mode : <../base_pvp.rules>
 			[
 				[cosmoteer.megaroid_l, 16]
 				[cosmoteer.megaroid_xl, 4]
+			]
+			RandomGenerators
+			[
+				&<nebulas_domination.rules>
 			]
 		}
 		{
@@ -62,6 +70,10 @@ Mode : <../base_pvp.rules>
 				[cosmoteer.megaroid_l, 24]
 				[cosmoteer.megaroid_xl, 8]
 			]
+			RandomGenerators
+			[
+				&<nebulas_domination.rules>
+			]
 		}
 		{
 			NameKey = "DominationMapStyles/Small3T"
@@ -73,6 +85,10 @@ Mode : <../base_pvp.rules>
 			[
 				[cosmoteer.megaroid_l, 12]
 				[cosmoteer.megaroid_xl, 4]
+			]
+			RandomGenerators
+			[
+				&<nebulas_domination.rules>
 			]
 		}
 		{
@@ -86,6 +102,10 @@ Mode : <../base_pvp.rules>
 				[cosmoteer.megaroid_l, 24]
 				[cosmoteer.megaroid_xl, 4]
 			]
+			RandomGenerators
+			[
+				&<nebulas_domination.rules>
+			]
 		}
 		{
 			NameKey = "DominationMapStyles/Large3T"
@@ -97,6 +117,10 @@ Mode : <../base_pvp.rules>
 			[
 				[cosmoteer.megaroid_l, 36]
 				[cosmoteer.megaroid_xl, 12]
+			]
+			RandomGenerators
+			[
+				&<nebulas_domination.rules>
 			]
 		}
 		{
@@ -110,6 +134,10 @@ Mode : <../base_pvp.rules>
 				[cosmoteer.megaroid_l, 16]
 				[cosmoteer.megaroid_xl, 4]
 			]
+			RandomGenerators
+			[
+				&<nebulas_domination.rules>
+			]
 		}
 		{
 			NameKey = "DominationMapStyles/Med4T"
@@ -122,6 +150,10 @@ Mode : <../base_pvp.rules>
 				[cosmoteer.megaroid_l, 32]
 				[cosmoteer.megaroid_xl, 4]
 			]
+			RandomGenerators
+			[
+				&<nebulas_domination.rules>
+			]
 		}
 		{
 			NameKey = "DominationMapStyles/Large4T"
@@ -133,6 +165,10 @@ Mode : <../base_pvp.rules>
 			[
 				[cosmoteer.megaroid_l, 48]
 				[cosmoteer.megaroid_xl, 16]
+			]
+			RandomGenerators
+			[
+				&<nebulas_domination.rules>
 			]
 		}
 	]
@@ -328,16 +364,6 @@ CapturePointSmall : BaseCapturePoint
 	IncomeRate = 100%
 	CaptureBonus = 100%
 	AreaExpand = pi * ((&Radius) + (&MinDistanceBuffer))^2 * 2
-
-	RandomGenerators
-	[
-		&<cp_empty.rules>
-		&<cp_empty.rules>
-		&<cp_empty.rules>
-		&<cp_nebula_cloudy.rules>
-		&<cp_nebula_cloudy.rules>
-		&<cp_nebula_electron.rules>
-	]
 }
 
 CapturePointLarge : BaseCapturePoint
@@ -356,12 +382,6 @@ CapturePointLarge : BaseCapturePoint
 	RandomGenerators
 	[
 		&<cp_empty.rules>
-		&<cp_empty.rules>
-		&<cp_empty.rules>
-		&<cp_nebula_cloudy.rules>
-		&<cp_nebula_cloudy.rules>
-		&<cp_nebula_electron.rules>
-		&<cp_asteroid.rules>
 		&<cp_asteroid.rules>
 	]
 }
@@ -382,12 +402,6 @@ CapturePointHuge : BaseCapturePoint
 	RandomGenerators
 	[
 		&<cp_empty.rules>
-		&<cp_empty.rules>
-		&<cp_empty.rules>
-		&<cp_nebula_cloudy.rules>
-		&<cp_nebula_cloudy.rules>
-		&<cp_nebula_electron.rules>
-		&<cp_asteroid.rules>
 		&<cp_asteroid.rules>
 	]
 }

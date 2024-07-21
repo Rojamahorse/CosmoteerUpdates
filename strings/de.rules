@@ -266,6 +266,7 @@ BuildBox
 	ForgetDestroyedTip = "Vergisst die Teile, die zerstört, aber noch nicht wiederaufgebaut wurden."
 	FtlEfficiency = Hyperantriebseffizienz
 	GrabTip = "<b>Greifen-Werkzeug</b>\n\nWenn dieses Werkzeug ausgewählt ist, kannst du ein Schiffsteil greifen und in die Hand nehmen, indem du auf dieses Teil klickst, um es woanders zu platzieren. Halte <btn id='Game.AppendSelection'/> gedrückt, um das Teil zu duplizieren, anstatt es zu bewegen.\n\nMit <btn id='General.UIAltClick'/> wählst du den Teiletyp aus, als ob du auf dessen Schaltfläche geklickt hättest.\n\nSchnelltaste: <btn id='Design.GrabTool'/>"
+	HasDoorAccess = "<good>✘ Hat Türzugang</good>"
 	HireCrewFmt = " Heuere {0} Crewmitglieder an: {1}"
 	HireCrewTip = "Heuere Crewmitglieder an, um leere Betten zu füllen. Wenn du mehr Crewmitglieder als Betten hast, werden die überschüssigen Crewmitglieder gefeuert."
 	ImportPng = "Form von PNG laden"
@@ -313,10 +314,11 @@ BuildBox
 	NearestResourceFmt = "<good>✓ {0}: {1} m</good>"
 	NearestResourceStrongWarningFmt = "<bad>⚠ {0}: {1} m</bad>"
 	NearestResourceWarningFmt = "<yellow>⚠ {0}: {1} m</yellow>"
-	NoCrewAccess = "<bad>✘ Kein Zugang für Crew</bad>"
+	NoCrewAccess = "<bad>✘ Keine Crew</bad>"
+	NoDoorAccess = "<bad>✘ Kein Türzugang</bad>"
 	NoPartsCopied = "Es wurden noch keine Teile kopiert."
 	NoPartsSelected = "Keine Teile ausgewählt."
-	NoResourceAccessFmt = "<bad>✘ Kein Zugang zu {0}</bad>"
+	NoResourceAccessFmt = "<bad>✘ Ohne {0}</bad>"
 	NoWorkNeeded = "KEINE ARBEIT ERFORDERLICH"
 	NothingToForget = "Es kann nichts vergessen werden."
 	NothingToRedo = "Es gibt nichts, das wiederholt werden könnte."
@@ -341,6 +343,7 @@ BuildBox
 	ResetMirrorLinesTip = "Setzt die horizontalen und vertikalen Spiegellinien zurück in die Mitte des Schiffs."
 	RotateLeftTip = "Gegen den Uhrzeigersinn drehen.\n\nSchnelltaste: <btn id='Design.RotateLeft'/>"
 	RotateRightTip = "Im Uhrzeigersinn drehen.\n\nSchnelltaste: <btn id='Design.RotateRight'/>"
+	SaveDiscardModifications = "Speichern & verwerfen"
 	SaveSelected = "Ausgewählte Teile speichern"
 	SaveSelectedTip = "Speichert die ausgewählten Teile als Schiffsdesign."
 	SelectTip = "<b>Auswahlwerkzeug</b>\n\nWenn dieses Werkzeug ausgewählt ist, kannst du eine Box um die Teile ziehen, die du kopieren, ausschneiden, einfügen, spiegeln, drehen oder entfernen möchtest.\n\nSchnelltaste: <btn id='Design.SelectionTool'/>\n\nHalte <btn id='Design.ContiguousSelectionMode'/> gedrückt, um die „Angrenzender Zauberstab“-Auswahl zu nutzen."
@@ -642,6 +645,7 @@ CreativeMode
 	ClearAsteroids = Asteroiden
 	ClearBullets = Waffenprojektile
 	ClearJunkShips = Schiffsschrott
+	ClearNebulas = "Wolken & Stürme"
 	ClearNonJunk = Nicht-Schrottschiffe
 	ClearObjects = "Objekte entfernen ..."
 	ClearObjectsHeader = "Wähle aus, welche Arten von Objekten aus dem Spiel entfernt werden sollen.\n<b>Dies kann nicht rückgängig gemacht werden.</b>"
@@ -732,6 +736,8 @@ CreativeModeConfig
 	Description = "Entwirf Schiffe mit unendlich vielen Credits, wobei alle Baupläne freigeschaltet sind."
 	GenerateFtlGates = "Hypersprung-Relais erstellen"
 	GenerateFtlGatesTip = "Bei Auswahl der Option werden zu allen Sternensystemen automatisch Hypersprung-Relais hinzugefügt, die eine Verbindung zu angrenzenden Systemen herstellen."
+	GenerateNebulas = "Wolken & Stürme erstellen"
+	GenerateNebulasTip = "Bei Auswahl der Option werden zu allen Sternensystemen automatisch Wolken und Stürme hinzugefügt."
 	GeneratePlanets = "Sonnen, Planeten & Monde erstellen"
 	GeneratePlanetsTip = "Bei Auswahl der Option werden zu allen Sternensystemen automatisch Sonnen, Planeten und Monde hinzugefügt."
 	LoadGame = "Spiel laden"
@@ -1044,6 +1050,8 @@ Doodads
 	Ftl = Hyperraum
 	Megaroid_L = ""
 	Megaroid_XL = ""
+	NebulaClear = Löschen
+	Nebulas = "Wolken & Stürme"
 	POI = "Interessante Orte"
 	POIAsteroidField = Asteroidenfeld
 	POICustom = Benutzermarkierung
@@ -1412,6 +1420,7 @@ Hud
 	FtlDoJumpTip = "Alle Schiffe, die <good>BEREIT</good> sind, springen an den Zielsektor.\n\nSchnelltaste: <btn id='Game.DoFtlJump'/>"
 	FtlGateFmt = "Hypersprung-Relais nach: {0}"
 	FtlGuiTitle = "Hyperantrieb fährt hoch ..."
+	FtlJumpDisabledTip = "Mit dem/den ausgewählten Schiff(en) können momentan keine Hypersprünge ausgeführt werden."
 	FtlJumpTip = "<b>Hypersprung</b>\n\nTeleportiere dich schnell an einen anderen Ort innerhalb des Sonnensystems.\n\nSchnelltaste: <btn id='Game.LocalFtlJump'/>"
 	FtlShipsNotReady = "Es sind nicht alle Schiffe bereit für einen Hypersprung. Möchtest du trotzdem einen Hypersprung ausführen und diese Schiffe zurücklassen?"
 	FtlStatusCanceled = <bad><s12>BLEIBEN</s12></bad>
@@ -1450,6 +1459,7 @@ Hud
 	ReputationTipFmt = "{0} – Ruf"
 	ResetDefaults = "Standardangriffswerte zurücksetzen"
 	ResetDefaultsTip = "Setze die gespeicherte Angriffsentfernung und -ausrichtung auf ihre ursprünglichen Werte zurück."
+	ResourceCountStorageFullFmt = "{0} <bad>(Lager voll)</bad>"
 	ResourcesTip = "<b>Ressourcen verwalten</b>\n\nVerwalte die Ressourcen, das Baumaterial und die Munition, die in deinem Schiff gelagert werden.\n\nSchnelltaste: <btn id='Resources.OpenClose'/>"
 	RotateTip = "<b>Drehen</b>\n\nDrehe das Schiff, um es auf ein Ziel oder in eine bestimmte Richtung auszurichten.\n\nSchnelltaste: <btn id='Game.Rotate'/>"
 	SalvageTip = "<b>Ressourcen sammeln/wiederverwerten/abbauen</b>\n\nWenn diese Schaltfläche ausgewählt ist, klicke auf oder ziehe eine Box um schwebende Ressourcen, Schiffe oder Asteroiden, um diese einzusammeln, wiederzuverwerten oder abzubauen.\n\nHalte <btn id='Game.CancelSalvageCollect'/> zum Abbrechen gedrückt.\n\n<btn id='General.UIAltClick'/> diese Schaltfläche, um Ressourcenarten zu filtern.\n\nSchnelltaste: <btn id='Game.Salvage'/>"
@@ -1500,6 +1510,7 @@ Hud
 	TargetTip = "<b>Waffen anvisieren</b>\n\nZielt auf die ausgewählten Waffen eines bestimmten Teils des Feindes. Kann auch verwendet werden, um deine eigenen Teile anzugreifen.\n\nSchnelltaste: <btn id='Game.TargetWeapon'/>"
 	UnderConstructionTip = "An deinem Schiff wird gebaut und deine Crewmitglieder kann es verlassen, um Arbeiten durchzuführen. Wenn du zu weit von deiner Crew wegfliegst, verlierst du sie."
 	UnknownContact = "Unbekannter Kontakt"
+	UnpauseTip = "Pause beenden\n\nSchnelltaste: <btn id='Game.PauseToggle'/>"
 	WeaponBindingFmt = ""
 	WeaponBindingNone = "Von KI gesteuert"
 	WeaponBindings = "Tastenbelegung für direkte Steuerung"
@@ -1544,6 +1555,7 @@ Inputs
 		PlayAsAllPlayers = "Spielen als: Alle Spieler"
 		PlayAsFmt = "Spielen als: Spieler {0}"
 		Randomize = "Schiff/Objekt zufällig anordnen"
+		RemoveNebula = "Wolke/Sturm entfernen"
 		RenameNode = "Sternensystem umbenennen"
 		RotateFtlGate = "Hypersprung-Relais drehen"
 		SelectTool = Auswahlwerkzeug
@@ -1641,6 +1653,7 @@ Inputs
 		Halt = ""
 		IncreaseSpeed = "Geschwindigkeit erhöhen"
 		InvertCollisionAvoidance = "Kollisionsvermeidung umkehren"
+		InvertHazardAvoidance = "Gefahrenvermeidung umkehren"
 		Load = "Spiel laden"
 		LocalFtlJump = "Lokaler Hypersprung"
 		MapFtlJump = "Hypersprung auf Galaxiekarte"
@@ -2408,6 +2421,16 @@ Multiplayer
 	VoteYesFmt = "<good>MIT JA STIMMEN</good>\n{0} Stimmen"
 	Waiting = "Dieser Spieler verlangsamt das Spiel."
 }
+Nebulas
+{
+	
+	Cloudy = "<b>Gaswolke</b>\nSchiffe in der Wolke haben eine verringerte Sensorenreichweite, sind aber vor Schiffen außerhalb der Wolke versteckt, sofern sie nicht gerade Waffen abfeuern."
+	CloudyHudFmt = "<s14>{0:0.} %</s14>\n<s12><gray>Gas</gray></s12>"
+	Electron = "<b>Elektronenwolke</b>\nDie Reaktorleistung von Schiffen wird um 80 % verringert, aber Energiewaffen richten 75 % mehr Schaden an und die Schubdüsen bringen mehr Leistung. Schiffe können nicht per Hypersprung hinein- oder herausfliegen und die Radarreichweite ist aufgrund von elektromagnetischen Interferenzen verringert."
+	ElectronHudFmt = "<s14><color r='180' g='255' b='77'>{0:0.} %</color></s14>\n<s12><gray>Elektronen</gray></s12>"
+	IonStorm = "<b>Ionensturm</b>\nSchiffe im Innern werden regelmäßig von starken Ionenblitzen getroffen."
+	IonStormHudFmt = "<s14><bad>{0:0.} %</bad></s14>\n<s12><gray>Sturm</gray></s12>"
+}
 NewGame
 {
 	
@@ -2741,7 +2764,7 @@ Parts
 	DoorDesc = "Ermöglicht der Crew (und Feuer!), von einem Raum in den nächsten zu kommen."
 	DoorIcon = Tür
 	EngineRoom = Maschinenraum
-	EngineRoomDesc = "Erhöht die Energie angrenzender Schubdüsen um 50 %. Fungiert außerdem als zentraler Verteiler für angrenzende Schubdüsen, an die Crewmitglieder Batterien liefern können, ohne einzeln zu jeder Schubdüse laufen zu müssen."
+	EngineRoomDesc = "Erhöht die Schubkraft und den Energieverbrauch angrenzender Schubdüsen um 50 %. Fungiert außerdem als zentraler Verteiler für angrenzende Schubdüsen, an die Crewmitglieder Batterien liefern können, ohne einzeln zu jeder Schubdüse laufen zu müssen."
 	EngineRoomIcon = Maschinenraum
 	ExplosiveCharge = Sprengladung
 	ExplosiveChargeDesc = "Ein kleines explosives Gerät, das manuell gesprengt werden kann. Wird hauptsächlich dazu verwendet, Schiffe absichtlich in mehrere Teile zu zerteilen."
@@ -3044,6 +3067,21 @@ PvpModeConfig
 	MaxShipValueTip = "Der maximale Wert in Credits (<img name='money' colored='true'/>), den jedes einzelne Schiff haben darf."
 	MaxShips = "Schiffe pro Spieler"
 	MaxShipsTip = "Die maximale Anzahl an Schiffen, die jeder Spieler in seiner Flotte haben kann."
+	NebulasType = "Wolken & Stürme"
+	NebulasTypeTip = "Die Typen und die Dichte von Wolken und Stürmen innerhalb des Kampfbereichs."
+	NebulasTypes
+	{
+		
+		CloudyDense = "Gaswolken (dicht)"
+		CloudySparse = "Gaswolken (wenig)"
+		ElectronDense = "Elektronenwolken (dicht)"
+		ElectronSparse = "Elektronenwolken (wenig)"
+		IonStormDense = "Ionenstürme (dicht)"
+		IonStormSparse = "Ionenstürme (wenig)"
+		None = Keine
+		VariedDense = "Gemischt (dicht)"
+		VariedSparse = "Gemischt (wenig)"
+	}
 	PerimeterDistance = "Ring des Todes"
 	PerimeterDistanceTip = "Der Radius des Kreises, außerhalb dessen die Schiffe schnell Schaden erleiden."
 	PerimeterDistances
@@ -3364,8 +3402,10 @@ SaveMedia
 SectorTypes
 {
 	
-	Basic = "Unäres Sternensystem"
-	Binary = "Binäres Sternensystem"
+	Basic = "Unärer Stern"
+	Binary = "Binärer Stern"
+	HighDensityNebula = "Unärer Stern (Hohe Wolkendichte)"
+	Supernova = Supernova-Nachwirkungen
 }
 Settings
 {
@@ -3617,6 +3657,8 @@ Settings
 		EnableArrivalMatchingTip = "Bei Auswahl der Option wird Schiffen befohlen, ihre Geschwindigkeiten zu synchronisieren, wenn du mehrere Schiffe gleichzeitig kommandierst, damit sie in etwa zur selben Zeit am Ziel ankommen. Führe einen Doppelklick mit der rechten Maustaste aus, um die Synchronisation der Geschwindigkeit für den entsprechenden Befehl zu deaktivieren (oder zu aktivieren, wenn die Option nicht aktiviert ist)."
 		EnableCollisionAvoidance = "Kollisionsvermeidung aktivieren"
 		EnableCollisionAvoidanceTip = "Bei Auswahl der Option wird dein Schiff standardmäßig versuchen, eine Kollision mit anderen Schiffen zu vermeiden. Halte <btn id='Game.InvertCollisionAvoidance'/> gedrückt, um den anderen Modus zu verwenden."
+		EnableHazardAvoidance = "Um Umweltgefährdungen herum navigieren"
+		EnableHazardAvoidanceTip = "Bei Auswahl der Option wird dein Schiff um gefährliche Sterne, Elektronenwolken und Ionenstürme herum navigieren. Halte <btn id='Game.InvertHazardAvoidance'/> gedrückt, um den anderen Modus zu verwenden."
 		FriendAndFoe = "Freund & Feind"
 		FriendAndFoeTip = "Von dir kontrollierte Schiffe werden grün angezeigt, Schiffe von anderen Spielern in deinem Team werden gelb angezeigt und Schiffe des gegnerischen Teams werden rot angezeigt."
 		InterfaceLbl = Benutzeroberfläche
@@ -3716,6 +3758,8 @@ Settings
 		ExclusiveFullScreenTip = "Das Spiel verwendet deinen ganzen Monitor und erlaubt es dir, die Auflösung auszuwählen. Für diesen Modus kann es erforderlich sein, dass moderne GPU-Funktionen wie G-SYNC und FreeSync verwendet werden."
 		FancyLighting = "Ausgefallene Lichteffekte"
 		FancyLightingTip = "Bei Auswahl der Option werden zusätzliche Lichteffekte gerendert. Das Deaktivieren dieser Option kann die Leistung verbessern."
+		FancyNebulas = "Schöne Wolken & Stürme"
+		FancyNebulasTip = "Bei Auswahl der Option erhalten Wolken & Stürme Licht und Animationen. Das Deaktivieren dieser Option kann die Leistung verbessern."
 		FancyParticles = "Ausgefallene Partikel & Grafikeffekte"
 		FancyParticlesTip = "Bei Auswahl der Option werden zusätzliche Partikel und Grafikeffekte gerendert. Das Deaktivieren dieser Option kann die Leistung verbessern."
 		FancyUIEffects = "Ausgefallene UI-Effekte"
@@ -3977,7 +4021,7 @@ StatCategories
 	ManipulatorBeam = Manipulationsstrahl
 	Mine = ""
 	MineShrapnel = Splitter
-	MiningBeam = Bergbaustrahl
+	MiningBeam = "Doppelte Bergbaustrahlen"
 	MissileEMP = "Elektromagnetischen Impulsrakete"
 	MissileHE = "Hochexplosive Rakete"
 	MissileNuke = "Taktische Nuklearrakete"
@@ -4174,7 +4218,7 @@ Tips
 	AutoSave
 	{
 		
-		Tip = "Cosmoteer speichert dein Spiel standardmäßig alle 10 Minuten und bewahrt die letzten 10 automatischen Speicherstände auf. Ältere automatische Speicherungen werden automatisch gelöscht. Die Dauer und die Anzahl der aufbewahrten automatischen Speicherstände kannst du unter <good>Einstellungen -> Autom. Speichern</good> verändern."
+		Tip = "Cosmoteer speichert dein Spiel standardmäßig alle 10 Minuten und bewahrt die letzten 25 automatischen Speicherstände auf. Ältere automatische Speicherungen werden automatisch gelöscht. Die Dauer und die Anzahl der aufbewahrten automatischen Speicherstände kannst du unter <good>Einstellungen -> Autom. Speichern</good> verändern."
 		Title = "Automatische Speicherungen"
 	}
 	BattleHelper
@@ -4489,7 +4533,7 @@ Tips
 		
 		Tip1 = "Drücke <btn id='Game.QuickSave'/>, um dein aktuelles Spiel schnell zu speichern."
 		Tip2 = "Mit <btn id='Game.QuickLoad'/> kannst du die letzte Speicherung eines beliebigen Typs laden."
-		Tip3 = "Cosmoteer bewahrt standardmäßig deine letzten 10 Schnellspeicherungen auf. Ältere Schnellspeicherungen werden automatisch gelöscht. Die Anzahl an aufbewahrten Schnellspeicher-Dateien kannst du unter <good>Einstellungen -> Autom. Speichern</good> ändern."
+		Tip3 = "Cosmoteer bewahrt standardmäßig deine letzten 25 Schnellspeicherungen auf. Ältere Schnellspeicherungen werden automatisch gelöscht. Die Anzahl an aufbewahrten Schnellspeicher-Dateien kannst du unter <good>Einstellungen -> Autom. Speichern</good> ändern."
 		Title = Schnellspeicherungen
 	}
 	RebindingControls

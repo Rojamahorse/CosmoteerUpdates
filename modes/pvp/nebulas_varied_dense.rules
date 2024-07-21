@@ -39,12 +39,13 @@ Spawners
 
 		PerlinNoise
 		{
-			GridSize = [8, 8]
+			GridSize = [1, 16]
 			Octaves = 2
-			OutputShift = -0.1
+			OutputShift = 0
+			Repeat = [&../GridSize/0, 0]
 		}
 		MinPerlinNebulaTris = 3
-		UsePolarPerlinCoordinates = false
+		UsePolarPerlinCoordinates = true
 	}
 
 	// No nebulas near players.
@@ -63,6 +64,7 @@ Spawners
 		ForEachRootMax = 999
 		NebulaType = ""
 		NebulaRadius = 300
+		OnlyReplaceNebulaTypes = [ion_storm]
 	}
 	{
 		Type = Nebula
