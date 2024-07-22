@@ -335,7 +335,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ContinuousEffects
 			OperationalToggle = ElectronDebuffToggle
-			Location = [1.5, 1.5]
+			Location = [2, 2]
 			ParentToShip = true
 			MediaEffectsIntensityFactor = { BaseValue=1; BuffType=ElectronNebula; BuffMode=Multiply; }
 			MediaEffects

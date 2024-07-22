@@ -38,10 +38,6 @@ Mode : <../base_pvp.rules>
 				[cosmoteer.megaroid_l, 8]
 				[cosmoteer.megaroid_xl, 4]
 			]
-			RandomGenerators
-			[
-				&<nebulas_domination.rules>
-			]
 		}
 		{
 			NameKey = "DominationMapStyles/Med2T"
@@ -53,10 +49,6 @@ Mode : <../base_pvp.rules>
 			[
 				[cosmoteer.megaroid_l, 16]
 				[cosmoteer.megaroid_xl, 4]
-			]
-			RandomGenerators
-			[
-				&<nebulas_domination.rules>
 			]
 		}
 		{
@@ -70,10 +62,6 @@ Mode : <../base_pvp.rules>
 				[cosmoteer.megaroid_l, 24]
 				[cosmoteer.megaroid_xl, 8]
 			]
-			RandomGenerators
-			[
-				&<nebulas_domination.rules>
-			]
 		}
 		{
 			NameKey = "DominationMapStyles/Small3T"
@@ -85,10 +73,6 @@ Mode : <../base_pvp.rules>
 			[
 				[cosmoteer.megaroid_l, 12]
 				[cosmoteer.megaroid_xl, 4]
-			]
-			RandomGenerators
-			[
-				&<nebulas_domination.rules>
 			]
 		}
 		{
@@ -102,10 +86,6 @@ Mode : <../base_pvp.rules>
 				[cosmoteer.megaroid_l, 24]
 				[cosmoteer.megaroid_xl, 4]
 			]
-			RandomGenerators
-			[
-				&<nebulas_domination.rules>
-			]
 		}
 		{
 			NameKey = "DominationMapStyles/Large3T"
@@ -117,10 +97,6 @@ Mode : <../base_pvp.rules>
 			[
 				[cosmoteer.megaroid_l, 36]
 				[cosmoteer.megaroid_xl, 12]
-			]
-			RandomGenerators
-			[
-				&<nebulas_domination.rules>
 			]
 		}
 		{
@@ -134,10 +110,6 @@ Mode : <../base_pvp.rules>
 				[cosmoteer.megaroid_l, 16]
 				[cosmoteer.megaroid_xl, 4]
 			]
-			RandomGenerators
-			[
-				&<nebulas_domination.rules>
-			]
 		}
 		{
 			NameKey = "DominationMapStyles/Med4T"
@@ -150,10 +122,6 @@ Mode : <../base_pvp.rules>
 				[cosmoteer.megaroid_l, 32]
 				[cosmoteer.megaroid_xl, 4]
 			]
-			RandomGenerators
-			[
-				&<nebulas_domination.rules>
-			]
 		}
 		{
 			NameKey = "DominationMapStyles/Large4T"
@@ -165,10 +133,6 @@ Mode : <../base_pvp.rules>
 			[
 				[cosmoteer.megaroid_l, 48]
 				[cosmoteer.megaroid_xl, 16]
-			]
-			RandomGenerators
-			[
-				&<nebulas_domination.rules>
 			]
 		}
 	]
@@ -437,4 +401,5 @@ BaseOptions
 	AllowChangeShips = 1 // true/false
 	ResourceDrops = 0 // true/false
 	ShipConstruction = 1 // true/false
+	NebulasType = 1 // Index into list.
 }

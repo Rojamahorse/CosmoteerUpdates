@@ -8,11 +8,10 @@ Spawners
 
 		PerlinNoise
 		{
-			GridSize = [4, 4]
+			GridSize = [2, 2]
 			Octaves = 2
 			OutputShift = -0.35
 		}
-		MinPerlinNebulaTris = 3
 		UsePolarPerlinCoordinates = false
 	}
 	{
@@ -27,7 +26,6 @@ Spawners
 			Octaves = 1
 			OutputShift = -0.35
 		}
-		MinPerlinNebulaTris = 3
 		UsePolarPerlinCoordinates = false
 	}
 	{
@@ -44,7 +42,6 @@ Spawners
 			OutputShift = -0.2
 			Repeat = [&../GridSize/0, 0]
 		}
-		MinPerlinNebulaTris = 3
 		UsePolarPerlinCoordinates = true
 	}
 
