@@ -1,5 +1,5 @@
 Type = None
-Conditions { RequireSpawnFlags = [high_density_nebulas] }
+Conditions { RequireSpawnFlags = [high_density_nebulas]; ProhibitSpawnFlags = [disable_nebulas] }
 
 SubSpawners
 [

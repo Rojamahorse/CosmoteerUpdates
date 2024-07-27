@@ -1,5 +1,5 @@
 Type = None
-Conditions { RequireSpawnFlags = [supernova_nebulas] }
+Conditions { RequireSpawnFlags = [supernova_nebulas]; ProhibitSpawnFlags = [disable_nebulas] }
 
 SubSpawners
 [

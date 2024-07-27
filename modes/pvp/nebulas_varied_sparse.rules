@@ -5,6 +5,7 @@ Spawners
 		NebulaType = cloudy
 		NebulaRadius = 1000
 		MultiplyNebulaRadius = AreaRadiusKM
+		MinPerlinNebulaTris = 2
 
 		PerlinNoise
 		{
@@ -27,6 +28,7 @@ Spawners
 			OutputShift = -0.35
 		}
 		UsePolarPerlinCoordinates = false
+		MinPerlinNebulaTris = 2
 	}
 	{
 		Type = Nebula
@@ -34,6 +36,7 @@ Spawners
 		NebulaRadius = 1000
 		MultiplyNebulaRadius = AreaRadiusKM
 		ContiguousPathCheckSearchIterations = 20
+		MinPerlinNebulaTris = 2
 
 		PerlinNoise
 		{

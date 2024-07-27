@@ -2051,6 +2051,8 @@ CareerModeConfig
 	DisableCrewConstructionTip = "If checked, then ship modifications will be made instantly instead of by the crew."
 	DisableExploration = "I Hate Exploration"
 	DisableExplorationTip = "Reveals all <b>?</b> icons on the map without having to first uncover them in the fog of war."
+	DisableNebulas = "I Hate Clouds & Storms"
+	DisableNebulasTip = "Clouds and storms will not appear in Career mode. (If changed after starting a new game, this will only affect unvisited star systems.)"
 	DisableSalvaging = "I Hate Salvaging"
 	DisableSalvagingTip = "● Missions give 2X credits.\n"\
 	                      "● Ships cannot be salvaged for resources.\n"\

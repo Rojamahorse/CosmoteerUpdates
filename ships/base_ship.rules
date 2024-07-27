@@ -78,7 +78,7 @@ DefaultConstructionDurationPerHealth = 1 / 1000 // 1 second per corridor tile (+
 DefaultRepairDurationPerHealth = 1 / 1000 // 1 second per corridor tile (+0.5 for the structure makes 1.5 total)
 ConstructionResourceSearchesPerTick = 1
 ConstructionNuggetSinkSearchesPerTick = 5
-MaxConstructionShipSpeed = 1
+MaxCrewExitShipSpeed = 1
 
 Fire = &<./Data/fire/fire.rules>
 

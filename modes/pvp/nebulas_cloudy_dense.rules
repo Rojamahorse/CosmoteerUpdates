@@ -5,6 +5,7 @@ Spawners
 		NebulaType = cloudy
 		NebulaRadius = 1000
 		MultiplyNebulaRadius = AreaRadiusKM
+		MinPerlinNebulaTris = 2
 
 		PerlinNoise
 		{

@@ -1,5 +1,5 @@
 Type = None
-Conditions { ProhibitSpawnFlags = [no_standard_nebulas] }
+Conditions { ProhibitSpawnFlags = [no_standard_nebulas, disable_nebulas] }
 
 SubSpawners
 [

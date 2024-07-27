@@ -6,6 +6,7 @@ Spawners
 		NebulaRadius = 1000
 		MultiplyNebulaRadius = AreaRadiusKM
 		ContiguousPathCheckSearchIterations = 20
+		MinPerlinNebulaTris = 2
 
 		PerlinNoise
 		{
