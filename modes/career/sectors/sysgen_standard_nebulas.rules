@@ -28,11 +28,11 @@ SubSpawners
 		Conditions { IsInitNode=false }
 		Type = Nebula
 		SpawnChance = 50%
-		Count = [1, 2]
+		Count = 1
 		Distance = [5000, 25000]
 		NebulaType = electron
 		NebulaRadius = 100000
-		NebulaSplatTriCount = [120, 240]
+		NebulaSplatTriCount = [80, 160]
 		MaxDistanceFromWorldOrigin = &<../career.rules>/Exploration/UnexploredRadius
 	}
 
