@@ -692,7 +692,7 @@ Part : <../base_part_terran.rules>/Part
 			NameKey = "StatCategories/IonBeam"
 			Stats
 			{
-				BaseDamage = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/HitEffects/0/Damage/BaseValue
+				BaseDamage = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage/BaseValue
 				DamagePerShotNear = (&BaseDamage) * (&~/Part/Components/BeamEmitter/HitEffectsScaleOverRange/0)
 				DamagePerShotFar = (&BaseDamage) * (&~/Part/Components/BeamEmitter/HitEffectsScaleOverRange/1)
 				HitInterval = &~/Part/Components/BeamEmitter/HitInterval

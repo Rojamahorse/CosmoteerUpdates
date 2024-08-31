@@ -9,7 +9,8 @@ Part : <../base_part_terran.rules>/Part
 	Resources
 	[
 		[steel, 40]
-		[coil, 20]
+		[coil, 8]
+		[coil2, 4]
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
 	Size = [1, 4]

@@ -117,35 +117,24 @@ HitOperational
 	HitEffects
 	[
 		{
-			Type = TargetFilter
+			Type = Damage
+			Damage = { BaseValue=250; BuffType=ElectronBuff; BuffMode=Multiply; }
 			Filter
 			{
+				Enemies = false
+				Junk = false
 				ExcludePartCategories = [ion_beam_prism]
 			}
-			AllowNoTarget = true
-			HitEffects
-			[
-				{
-					Type = Damage
-					Damage = { BaseValue=250; BuffType=ElectronBuff; BuffMode=Multiply; }
-					Filter
-					{
-						Enemies = false
-						Junk = false
-						ExcludePartCategories = [ion_beam_prism]
-					}
-				}
-				{
-					Type = Impulse
-					Impulse = 2
-					Filter
-					{
-						Enemies = false
-						Junk = false
-						ExcludePartCategories = [ion_beam_prism]
-					}
-				}
-			]
+		}
+		{
+			Type = Impulse
+			Impulse = 2
+			Filter
+			{
+				Enemies = false
+				Junk = false
+				ExcludePartCategories = [ion_beam_prism]
+			}
 		}
 		{
 			Type = Damage
@@ -237,33 +226,22 @@ HitStructural
 	HitEffects
 	[
 		{
-			Type = TargetFilter
+			Type = Damage
+			Damage = { BaseValue=200; BuffType=ElectronBuff; BuffMode=Multiply; }
 			Filter
 			{
-				ExcludePartCategories = [ion_beam_prism]
+				Enemies = false
+				Junk = false
 			}
-			AllowNoTarget = true
-			HitEffects
-			[
-				{
-					Type = Damage
-					Damage = { BaseValue=200; BuffType=ElectronBuff; BuffMode=Multiply; }
-					Filter
-					{
-						Enemies = false
-						Junk = false
-					}
-				}
-				{
-					Type = Impulse
-					Impulse = 1
-					Filter
-					{
-						Enemies = false
-						Junk = false
-					}
-				}
-			]
+		}
+		{
+			Type = Impulse
+			Impulse = 1
+			Filter
+			{
+				Enemies = false
+				Junk = false
+			}
 		}
 		{
 			Type = Damage

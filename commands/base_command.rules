@@ -1,5 +1,6 @@
 BaseCommand
 {
+	ThrusterSRFFactors = [1, 2, 1]
 	AvoidRadiusBuffer = 5
 	AvoidSlowdownAroundRadiusFactor = 1
 	AvoidSlowdownAroundRadiusAngleRange = [0d, 5d]

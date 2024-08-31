@@ -1,0 +1,4 @@
+DirectControlCommand : <base_command.rules>/BaseCommand
+{
+	ThrusterSRFFactors = [1, 2, 100] // Much more emphasis on rotation than with RTS commands.
+}

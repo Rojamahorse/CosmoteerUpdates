@@ -44,6 +44,9 @@ OxygenSupply = 150
 OxygenWarningLevel = 60 / (&OxygenSupply)
 SalvageDistance = 0.6
 ConstructDistance = 0.6
+ManipulatorBeamDistToAsteroid = 0.7
+ManipulatorBeamVelocityToAsteroid = 5
+AvoidableDoodadTags = [sun]
 SalvageHitEffectsInterval = 0.2
 SalvageHitEffects
 [

@@ -24,7 +24,7 @@ Ships
 	:~{ File="Helioblade.ship.png";              Tier=3;  Difficulty=2; }
 
 	// Patrol ships
-	:~{ File="Flamepincer.ship.png";             Tier=4;  Difficulty=1; }
+	:~{ File="Flamelicker.ship.png";             Tier=4;  Difficulty=1; OtherIDs=["Flamepincer"]; }
 	:~{ File="Sainted Pyre.ship.png";            Tier=4;  Difficulty=1; }
 	:~{ File="Whisp.ship.png";                   Tier=4;  Difficulty=2; }
 	:~{ File="Stargazer.ship.png";               Tier=4;  Difficulty=2; }
@@ -40,6 +40,7 @@ Ships
 	:~{ File="Ardent Piety.ship.png";            Tier=6;  Difficulty=2; }
 	:~{ File="Dschubba.ship.png";                Tier=6;  Difficulty=2; }
 	:~{ File="Eltanin.ship.png";                 Tier=6;  Difficulty=2; }
+	:~{ File="Risha.ship.png";                   Tier=6;  Difficulty=2; }
 
 	// Corvettes
 	:~{ File="Alsephina.ship.png";               Tier=7;  Difficulty=1; OtherIDs=["Lightbringer"]; }

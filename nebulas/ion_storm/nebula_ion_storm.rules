@@ -105,7 +105,7 @@ MaterialLow
 	_microScrollSpeed = 8
 
 	_macroTexScale = 0.00006
-	_lodMaxBlend = 0.1
+	_lodMaxBlend = 0.4
 	_parallaxIntensity = -0.75
 }
 SimpleMaterialLow : MaterialLow
@@ -162,7 +162,7 @@ DiffuseMaterialLow
 	_microScrollSpeed = 8
 
 	_macroTexScale = 0.00006
-	_lodMaxBlend = 0.1
+	_lodMaxBlend = 0.4
 	_parallaxIntensity = -0.75
 }
 NormalsMaterialLow
@@ -212,7 +212,7 @@ NormalsMaterialLow
 	_microScrollSpeed = 8
 
 	_macroTexScale = 0.00006
-	_lodMaxBlend = 0.1
+	_lodMaxBlend = 0.4
 	_parallaxIntensity = -0.75
 }
 
@@ -273,7 +273,7 @@ MaterialMiddle
 	_microScrollSpeed = 8
 
 	_macroTexScale = 0.00006
-	_lodMaxBlend = 0.1
+	_lodMaxBlend = 0.4
 	_parallaxIntensity = 1.5
 }
 

@@ -1765,6 +1765,10 @@ Mods
 	RestartNow = "Restart Now"
 	RestartLater = "Restart Later"
 	InstallMod = "Install Mod..."
+	ActivateAll = "Activate All"
+	DeactivateAll = "Deactivate All"
+	UninstallAll = "Uninstall/Unsubscribe All"
+	UninstallAllConfirm = "Are you sure you want to uninstall and unsubscribe from all mods?"
 	OverwriteConfirm = "A mod with that name is already installed. Do you want to overwrite it?"
 	InstallingMod = "Installing mod...\nThis may take a little while depending on the size of the mod."
 	ModInstalled = "Mod successfully installed! You must turn it on before it will take effect."
@@ -1772,8 +1776,8 @@ Mods
 	ShowFolder = "Show Folder"
 	UninstallMod = "Uninstall Mod"
 	UninstallConfirm = "Are you sure you wish to uninstall this mod?"
-	UninstallingMod = "Uninstalling mod...\nThis may take a little while depending on the size of the mod."
-	UninstallComplete = "Mod successfully uninstalled."
+	UninstallingMod = "Uninstalling mod(s)...\nThis may take a little while depending on the size of the mod(s)."
+	UninstallComplete = "Mod(s) successfully uninstalled."
 	CreatePackage = "Create Mod Package";
 	CreatePackageSuccessful = "Mod package saved!";
 	IncompatibleWarning = "That mod may be incompatible with this version of Cosmoteer and might cause errors. Are you sure you want to enable it?"
@@ -2033,6 +2037,7 @@ StarterShips
 	         "It lacks any significant defenses."
 	ModelC = "The Model-C is slow and well-armored with two cannons that are inaccurate but can penetrate into enemy ships."
 	ModelS = "The Model-S trades speed and offensive firepower for a defensive shield generator that can block incoming enemy fire."
+	ModelM = "The Model-M eschews traditional weapons in favor of a mining laser that is effective at extracting resources from asteroids and debris while still being a capable armament versus enemy ships."
 }
 
 CareerModeConfig
@@ -3036,7 +3041,7 @@ Hud
 
 	FlightDirection = "Flight Direction"
 
-	FormationOrder = "Formation Order"
+	FormationOrder = "Formation Priority"
 	FormationOrderFmt = "#{0}"
 
 	HelpsWithConstruction = "Assists With Construction"
@@ -3594,10 +3599,14 @@ CrewAndResourceTransfer
 	CrewFailure = "Not all of the requested crew could be transferred. This is usually because there are no airlocks allowing those crew to move from their current ship to their new ship."
 	ResourceFailure = "Not all of the requested resources could be transferred. This is usually because there are no airlocks allowing crew access to the resources being transfered or their destination."
 	ShipsTooFar = "SHIPS TOO FAR APART\nFOR TRANSFER"
-	RestockResourcesLeft = "Restocks Left Ship Resources"
-	RestockResourcesRight = "Restocks Right Ship Resources"
+	RestockResourcesLeft = "Restock Left Ship Resources"
+	RestockResourcesRight = "Restock Right Ship Resources"
 	RestockResourcesTip = "Restocks the resources to capacity from one ship to another"
 	RestockResourcesDisabledTip = "Ship resources are at capacity"
+	TransferExcessLeft = "Transfer Excess Resources From Left Ship"
+	TransferExcessRight = "Transfer Excess Resources From Right Ship"
+	TransferExcessTip = "Transfers all resources beyond the desired limit. If no limit is set, transfers all resources beyond those that can fit in the designated storage tiles."
+	TransferExcessDisabledTip = "No excess resources, or the other ship is at capacity."
 }
 
 ResourceLimits
@@ -3949,7 +3958,7 @@ Parts
 
 	ManipulatorBeam = "Manipulator Beam Emitter"
 	ManipulatorBeamIcon = "Manipulator Beam"
-	ManipulatorBeamDesc = "Projects up to 16 small, roof-mounted tractor beams that will help collect resources and boost flying crew. A single crew can control up to four beams, and they will only go to the Manipulator Beam Emitter when there are tasks to help with."
+	ManipulatorBeamDesc = "Projects up to 16 small, roof-mounted tractor beams that can collect resources and boost flying crew. A single crew can control up to four beams, and they will only go to the Manipulator Beam Emitter when there are tasks to help with."
 
 	RoofLight = "Exterior Light"
 	RoofLightIcon = &RoofLight
@@ -4129,7 +4138,7 @@ Parts
 
 	MiningLaserSmall = "Mining Laser"
 	MiningLaserSmallIcon = &MiningLaserSmall
-	MiningLaserSmallDesc = "Shoots a pair of precision laser beams that can quickly extract resources from even the toughest asteroids. Also effective at salvaging ships, and in a pinch can be used as a short-range weapon."
+	MiningLaserSmallDesc = "A pair of roof-mounted precision laser beams that can quickly extract resources from even the toughest asteroids. Also effective at salvaging ships, and in a pinch can be used as a short-range weapon."
 
 	TractorBeamEmitter = "Tractor Beam Emitter"
 	TractorBeamEmitterIcon = "Tractor Beam"

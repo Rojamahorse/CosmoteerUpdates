@@ -1,9 +1,6 @@
 #define USE_DEFAULT_VERT
 #include "./Data/base.shader"
 
-Texture2D _unexploredTex;
-SamplerState _unexploredTex_SS;
-
 PIX_OUTPUT pix(in VERT_OUTPUT input) : SV_TARGET
 {
 	float u = input.uv.x * 2 - 1;
@@ -18,7 +15,6 @@ PIX_OUTPUT pix(in VERT_OUTPUT input) : SV_TARGET
 
 	c.a *= inverseLerp(1.0, 0.65, dd);
 
-	c *= _unexploredTex.Sample(_unexploredTex_SS, input.uv);
 	c.rgb *= c.a;
 	return c;
 }

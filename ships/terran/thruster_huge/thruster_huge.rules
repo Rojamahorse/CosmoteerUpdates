@@ -7,9 +7,8 @@ Part : <../base_part_terran.rules>/Part
 	DescriptionKey = "Parts/ThrusterHugeDesc"
 	Resources
 	[
-		[steel, 80]
-		[coil2, 20]
-		[tristeel, 10]
+		[steel, 124]
+		[coil2, 23]
 	]
 	TypeCategories = [thruster, uses_power]
 	Size = [3, 4]

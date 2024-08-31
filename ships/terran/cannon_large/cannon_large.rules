@@ -8,8 +8,9 @@ Part : <../base_part_terran.rules>/Part
 	DescriptionKey = "Parts/CannonLargeDesc"
 	Resources
 	[
-		[steel, 84]
-		[coil, 29]
+		[steel, 100]
+		[coil, 10]
+		[coil2, 5]
 	]
 	TypeCategories = [weapon, uses_ammo, is_crewed]
 	Size = [3, 3]
