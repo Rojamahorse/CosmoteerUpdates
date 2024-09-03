@@ -206,6 +206,17 @@ CodexIcon
 	Size = [48, 48]
 }
 
+RoadmapIcon
+{
+	Texture
+	{
+		File = "icon_roadmap.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+	Size = [48, 48]
+}
+
 CommunityIcon
 {
 	Texture

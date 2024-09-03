@@ -153,6 +153,7 @@ Part : <../base_part_terran.rules>/Part
 			AddAIFirepowerRatingsWhenTargetedByPartCategories = [ion_beam_emitter, ion_beam_prism]
 			TargetingEmitter = BeamEmitter
 			ProhibitTargetPartsFilter = &FriendlyPrismFilter
+			AllowAimAtProhibitedTarget = true
 			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &FriendlyPrismFilter
 			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
 			SuppressDirectControlWhenTargetingPartsFilter = &FriendlyPrismFilter
