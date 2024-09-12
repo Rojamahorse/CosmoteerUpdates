@@ -4,6 +4,7 @@ Buffs = &<buffs/buffs.rules>
 Resources = &<resources/resources.rules>/Resources
 FtlFuelResource = hyperium
 Nuggets = &<resources/resources.rules>/Nuggets
+Nebulas = &<nebulas/nebulas.rules>
 Doodads = &<doodads/doodads.rules>/Doodads
 Factions = &<factions/factions.rules>/Factions
 Commands = &<commands/commands.rules>
@@ -27,6 +28,15 @@ PostShaders = &<post_shaders/post_shaders.rules>/Shaders
 Music = &<music/music.rules>
 LitSpriteShader = "sprite_lit.shader"
 SpriteNormalsShader = "sprite_normals.shader"
+IndicatorMaterial
+{
+	Shader = "indicators_cycle.shader"
+	_cycleInterval = 0.5
+	_maxScale = 2
+	_colorFluctuateLow = [255, 255, 255, 255*.7]
+	_colorFluctuateHigh = [255, 255, 255, 255*.9]
+	_fluctuateInterval = 1
+}
 
 BuiltInShipsFolder = "builtin_ships"
 
@@ -64,11 +74,13 @@ Simulation
 	PhysicsUpdatesPerSecond = 30
 	CCDThresholdVelocity = (&PhysicsUpdatesPerSecond) * 0.75
 	SightCircleFadeDuration = .5
+	SightCircleSizeTweenSpeed = 2
 	StasisCellSize = 2500
 	StasisLiveRange = &StasisCellSize
 	StasisPreloadRange = (&StasisLiveRange) * 1.5
 	StasisUpdateInterval = 1.0
 	StandardLightHeight = .3275
+	ShipHideAlphaTweenDuration = 0.25
 
 	Network
 	{

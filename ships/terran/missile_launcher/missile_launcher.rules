@@ -20,7 +20,7 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 6000
 	TypeCategories = [weapon, uses_missiles, uses_emps, uses_nukes, uses_mines, uses_launcher_parts, is_crewed]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	ProhibitAbove = 2
 	AllowedDoorLocations
 	[
@@ -124,7 +124,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = HEMissilesToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = dynamic
 			Components = &<he/missile_launcher_he.rules>/Components
 		}
 
@@ -138,7 +138,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = EMPMissilesToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = dynamic
 			Components = &<emp/missile_launcher_emp.rules>/Components
 		}
 
@@ -152,7 +152,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = NukeMissilesToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = dynamic
 			Components = &<nuke/missile_launcher_nuke.rules>/Components
 		}
 
@@ -166,7 +166,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = MinesToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = dynamic
 			Components = &<mine/missile_launcher_mine.rules>/Components
 		}
 

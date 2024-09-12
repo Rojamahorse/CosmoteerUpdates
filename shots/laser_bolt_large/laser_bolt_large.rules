@@ -1,9 +1,10 @@
 ID = "cosmoteer.laser_bolt_large"
 OtherIDs = ["laser_bolt_large"]
 Range = 260
-IdealRange = [60, 260]
+IdealRange = [90, 260]
 IdealRadius = [5, 50]
 Speed = 300
+ReceivableBuffs = [ElectronBuff]
 
 Components
 {
@@ -44,7 +45,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 1000
+					Damage = { BaseValue=1000; BuffType=ElectronBuff; BuffMode=Multiply; }
 				}
 				{
 					Type = Impulse;
@@ -79,7 +80,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 500
+					Damage = { BaseValue=500; BuffType=ElectronBuff; BuffMode=Multiply; }
 				}
 				{
 					Type = Impulse;

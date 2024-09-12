@@ -12,6 +12,8 @@ Part : <../base_part_terran.rules>/Part
 		[steel, 144]
 	]
 	Size = [3, 4]
+	FlipHRotate = [0, 1, 2, 3] // Disable flipping UI.
+	FlipVRotate = [0, 1, 2, 3] // Disable flipping UI.
 	SelectionTypeID = "quarters"
 	MaxHealth = 12000
 	TypeCategories = [provides_crew]

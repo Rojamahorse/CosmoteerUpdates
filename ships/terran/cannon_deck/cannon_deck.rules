@@ -1283,7 +1283,6 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = IndicatorSprites
 			Location = [2, 2.5]
-			Layer = "indicators"
 			Indicators
 			[
 				// Turned off.
@@ -1294,6 +1293,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [1,2]
 				}
 
 				// Out of ammo.

@@ -20,7 +20,7 @@ Part : <../base_part_terran.rules>/Part
 	MaxHealth = 4000
 	AutoDoorMaxPathLength = 5
 	TypeCategories = [reactor, provides_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff, ElectronNebula]
 	CreateUnderlyingWhenDestroyed = false
 	IgnoreRotationForMirroredSelection = true
 	EditorIcon
@@ -43,7 +43,7 @@ Part : <../base_part_terran.rules>/Part
 			SuppliesResources = true
 			MinResourcesPickUp = 1000
 			MaxResourcesPickUp = 1000
-			ExpectedResourceGenerationRate = (&../BatteryProducer/ToQuantity) / (&../BatteryProducer/Interval)
+			ExpectedResourceGenerationRate = { BaseValue = (&../../BatteryProducer/ToQuantity) / (&../../BatteryProducer/Interval/BaseValue); BuffType=ElectronDebuff; BuffMode=Multiply; }
 			ToggleOnResources = 1001
 			ToggleOffResources = 1000
 		}
@@ -52,7 +52,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceConverter
 			ToStorage = BatteryStorage
 			ToQuantity = 1000
-			Interval = .6666
+			Interval = { BaseValue=0.6666; BuffType=ElectronDebuff; BuffMode=Divide; }
 		}
 
 		Graphics
@@ -279,6 +279,46 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
+		ElectronDebuffToggle
+		{
+			Type = BuffToggle
+			BuffType = ElectronDebuff
+		}
+
+		ElectronNebulaEffects
+		{
+			Type = ContinuousEffects
+			OperationalToggle = ElectronDebuffToggle
+			Location = [1, 1]
+			MediaEffectsIntensityFactor = { BaseValue=1; BuffType=ElectronNebula; BuffMode=Multiply; }
+			MediaEffects
+			[
+				&<./Data/nebulas/electron/particles/electron_reactor_light.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/nebulas/electron/sounds/electron_cloud_reactor_weaken.wav"
+					Volume = 1
+					MaxConcurrentVolume = &Volume
+					MaxConcurrent = 1
+				}
+			]
+		}
+		
+		ElectronNebulaShipEffects
+		{
+			Type = ContinuousEffects
+			OperationalToggle = ElectronDebuffToggle
+			Location = [1, 1]
+			ParentToShip = true
+			MediaEffectsIntensityFactor = { BaseValue=1; BuffType=ElectronNebula; BuffMode=Multiply; }
+			MediaEffects
+			[
+				&<./Data/nebulas/electron/particles/electron_reactor_sizzle.rules>
+			]
+		}
+
+
 		BatterySprites
 		{
 			Type = ResourceSprites
@@ -396,7 +436,6 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = IndicatorSprites
 			Location = [1, 1]
-			Layer = "indicators"
 			Indicators
 			[
 				// Out of power.
@@ -421,7 +460,7 @@ Part : <../base_part_terran.rules>/Part
 
 	Stats
 	{
-		PowerGeneration = (&~/Part/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/BatteryProducer/Interval) / 1000
+		PowerGeneration = (&~/Part/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
 		BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
 		BatteryFillTime = 0
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000

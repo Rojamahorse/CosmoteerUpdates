@@ -342,6 +342,12 @@ CapturePointLarge : BaseCapturePoint
 
 	NeutralIcon : ^/0/NeutralIcon { Size=[24, 24]; }
 	OwnedIcon   : ^/0/OwnedIcon   { Size=[24, 24]; }
+
+	RandomGenerators
+	[
+		&<cp_empty.rules>
+		&<cp_asteroid.rules>
+	]
 }
 
 CapturePointHuge : BaseCapturePoint
@@ -356,6 +362,12 @@ CapturePointHuge : BaseCapturePoint
 
 	NeutralIcon : ^/0/NeutralIcon { Size=[32, 32]; }
 	OwnedIcon   : ^/0/OwnedIcon   { Size=[32, 32]; }
+
+	RandomGenerators
+	[
+		&<cp_empty.rules>
+		&<cp_asteroid.rules>
+	]
 }
 
 SpawnPoint
@@ -389,4 +401,5 @@ BaseOptions
 	AllowChangeShips = 1 // true/false
 	ResourceDrops = 0 // true/false
 	ShipConstruction = 1 // true/false
+	NebulasType = 1 // Index into list.
 }

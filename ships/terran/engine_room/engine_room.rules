@@ -7,9 +7,8 @@ Part : <../base_part_terran.rules>/Part
 	DescriptionKey = "Parts/EngineRoomDesc"
 	Resources
 	[
-		[steel, 72]
-		[coil2, 28]
-		[tristeel, 9]
+		[steel, 96]
+		[coil2, 32]
 	]
 	Size = [3, 3]
 	IsRotateable = false
@@ -475,7 +474,6 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = IndicatorSprites
 			Location = [1.5, 1.5]
-			Layer = "indicators"
 			Indicators
 			[
 				// Turned off.
@@ -486,6 +484,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [1,2]
 				}
 
 				// Out of power.

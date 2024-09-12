@@ -9,7 +9,8 @@ Part : <../base_part_terran.rules>/Part
 	Resources
 	[
 		[steel, 40]
-		[coil, 20]
+		[coil, 8]
+		[coil2, 4]
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
 	Size = [1, 4]
@@ -20,7 +21,6 @@ Part : <../base_part_terran.rules>/Part
 	MaxHealth = 5000
 	InitialPenetrationResistance = 3
 	ProhibitAbove = 1
-	ReceivableBuffs : ^/0/ReceivableBuffs []
 	AllowedDoorLocations
 	[
 		[-1, 3]
@@ -560,7 +560,6 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = IndicatorSprites
 			Location = [.5, 2]
-			Layer = "indicators"
 			Indicators
 			[
 				// Turned off.
@@ -571,6 +570,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [1,2]
 				}
 
 				// Out of power.

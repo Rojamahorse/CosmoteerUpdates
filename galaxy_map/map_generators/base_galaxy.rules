@@ -6,22 +6,6 @@ MapNodes
 	NameGenerator = &<./Data/name_generators/name_celestial.rules>
 }
 
-SectorTypes
-{
-	Type = RandomSectorTypes
-	SectorTypes
-	[
-		{
-			Type = basic
-			RandomWeight = 1
-		}
-		{
-			Type = binary
-			RandomWeight = 0.5
-		}
-	]
-}
-
 Factions
 {
 	Type = Factions
@@ -145,6 +129,32 @@ ProgressionTiers
 			SourceLowTierDelta = -1
 			Priority = 4
 			HighTierSpread = &~/TierSpread
+		}
+	]
+}
+
+SectorTypes
+{
+	Type = RandomSectorTypes
+	SectorTypes
+	[
+		{
+			Type = basic
+			RandomWeight = 1
+		}
+		{
+			Type = binary
+			RandomWeight = 0.5
+		}
+		{
+			Type = high_density_nebula
+			RandomWeight = 0.5
+			MinTier = 5
+		}
+		{
+			Type = supernova
+			RandomWeight = 0.25
+			MinTier = 5
 		}
 	]
 }

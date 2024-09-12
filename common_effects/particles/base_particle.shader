@@ -32,6 +32,10 @@ struct VERT_OUTPUT_PARTICLE
 	float4 screenCenter : POSITION2;
 #endif
 
+#ifdef ENABLE_WORLD_LOC
+float4 worldLoc : POSITION3;
+#endif
+
 #ifdef ENABLE_SCREEN_UV
 	float2 screenUV : TEXCOORD1;
 #endif
@@ -70,6 +74,10 @@ VERT_OUTPUT_PARTICLE vert(in VERT_INPUT_PARTICLE input)
 
 #ifdef ENABLE_SCREEN_CENTER
 	output.screenCenter = mul(float4(input.center, 0, 1), _transform);
+#endif
+
+#ifdef ENABLE_WORLD_LOC
+	output.worldLoc = loc;
 #endif
 
 #ifdef ENABLE_SCREEN_UV

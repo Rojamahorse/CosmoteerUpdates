@@ -266,6 +266,7 @@ BuildBox
 	ForgetDestroyedTip = 遗忘所有已被摧毁而尚未重建的部件。
 	FtlEfficiency = 超空间驱动效率
 	GrabTip = "<b>抓取工具</b>\n\n选择后，点击一个星舰部件后会将其抓取，随后可以将其放置于其他位置。按住 <btn id='Game.AppendSelection'/> 可复制该部件，而非移动。\n\n<btn id='General.UIAltClick'/> 可选择该类型的部件，效果等同于点击其按键。\n\n热键：<btn id='Design.GrabTool'/>"
+	HasDoorAccess = <good>✘有舱门连接</good>
 	HireCrewFmt = " 雇佣 {0} 名船员：{1}"
 	HireCrewTip = 雇佣船员来填补床位。若船员多于床位，则多余的船员将被解雇。
 	ImportPng = "从 PNG 图片加载形状"
@@ -313,10 +314,11 @@ BuildBox
 	NearestResourceFmt = "<good>✓最近的{0}：{1} 米</good>"
 	NearestResourceStrongWarningFmt = "<bad>⚠️最近的{0}：{1} 米</bad>"
 	NearestResourceWarningFmt = "<yellow>⚠️最近的{0}：{1} 米</yellow>"
-	NoCrewAccess = <bad>✘无船员权限</bad>
+	NoCrewAccess = <bad>✘无船员</bad>
+	NoDoorAccess = <bad>✘无舱门连接</bad>
 	NoPartsCopied = 还没有复制过部件。
 	NoPartsSelected = 无已选部件。
-	NoResourceAccessFmt = "<bad>✘无{0}权限</bad>"
+	NoResourceAccessFmt = "<bad>✘无{0}</bad>"
 	NoWorkNeeded = 无需工作
 	NothingToForget = 无可遗忘。
 	NothingToRedo = 无可重做。
@@ -341,6 +343,7 @@ BuildBox
 	ResetMirrorLinesTip = 将水平、垂直镜像线重置到星舰中心。
 	RotateLeftTip = "逆时针旋转。\n\n热键：<btn id='Design.RotateLeft'/>"
 	RotateRightTip = "顺时针旋转。\n\n热键：<btn id='Design.RotateRight'/>"
+	SaveDiscardModifications = "保存&amp;放弃"
 	SaveSelected = 保存选定部件
 	SaveSelectedTip = 将选定部件保存为星舰设计。
 	SelectTip = "<b>选择工具</b>\n\n选定后，可以拖动方框来选中想要复制、剪切、粘贴、镜像、旋转或删除的部分。\n\n热键：<btn id='Design.SelectionTool'/>\n\n按住 <btn id='Design.ContiguousSelectionMode'/> 可以使用选定邻接范围的“魔杖”。"
@@ -414,6 +417,8 @@ CareerModeConfig
 	DisableCrewConstructionTip = 勾选后，星舰的任何改动将瞬间生效，无需船员慢慢建造。
 	DisableExploration = 我讨厌探索
 	DisableExplorationTip = "自动揭示地图上的所有 <b>?</b> 图标，不必通过探索战争迷雾揭示。"
+	DisableNebulas = 我讨厌星云与风暴
+	DisableNebulasTip = 生涯模式中将不会出现星云与风暴。（若在游戏进行中更改此选项，则仅对未造访过的星系生效。）
 	DisableSalvaging = 我讨厌回收
 	DisableSalvagingTip = "● 任务给予双倍信用点。\n● 不能回收星舰以获得资源。\n● 可以在任何地方只用信用点进行星舰改装。"
 	EconDifficulty = 经济难度
@@ -642,6 +647,7 @@ CreativeMode
 	ClearAsteroids = 小行星
 	ClearBullets = 武器炮弹
 	ClearJunkShips = 报废星舰
+	ClearNebulas = 星云与风暴
 	ClearNonJunk = 非报废星舰
 	ClearObjects = 清除物体……
 	ClearObjectsHeader = "选择要从游戏中删除物体的种类。\n<b>此操作不能撤销。</b>"
@@ -732,6 +738,8 @@ CreativeModeConfig
 	Description = 信用点无限且蓝图全部解锁。
 	GenerateFtlGates = 创建超空间跳跃中继站
 	GenerateFtlGatesTip = 如果勾选，将在相邻星系自动添加超空间跳跃中继站。
+	GenerateNebulas = 生成星云与风暴
+	GenerateNebulasTip = 如果勾选，将在所有星系中自动添加星云与风暴。
 	GeneratePlanets = 创建恒星、行星与卫星
 	GeneratePlanetsTip = 如果勾选，将在所有星系中自动添加恒星、行星与卫星。
 	LoadGame = 加载游戏
@@ -751,11 +759,15 @@ CrewAndResourceTransfer
 	Reset = 重置
 	ResourceFailure = 部分选定资源无法被转移。通常是由于没有气闸可供船员将资源转移至新星舰的。
 	RestockResourcesDisabledTip = 星舰资源已达上限
-	RestockResourcesLeft = 资源转移至左舰
-	RestockResourcesRight = 资源转移至右舰
+	RestockResourcesLeft = 补给左侧星舰的资源
+	RestockResourcesRight = 补给右侧星舰的资源
 	RestockResourcesTip = 两舰之间转移资源至上限
 	ShipsTooFar = "星舰相距太远\n无法转移"
 	Title = 转移船员/资源
+	TransferExcessDisabledTip = 无余裕资源，或另一艘星舰资源已达上限。
+	TransferExcessLeft = 转移左侧星舰的余裕资源
+	TransferExcessRight = 转移右侧星舰的余裕资源
+	TransferExcessTip = 转移所有超出上限的资源。若未设定上限，则转移所有超出指定储存单元容纳量的资源。
 }
 CrewBox
 {
@@ -1044,6 +1056,8 @@ Doodads
 	Ftl = 超空间
 	Megaroid_L = 大行星（L）
 	Megaroid_XL = 大行星（XL）
+	NebulaClear = 清除
+	Nebulas = 星云与风暴
 	POI = 兴趣点
 	POIAsteroidField = 小行星带
 	POICustom = 自定义标记
@@ -1403,7 +1417,7 @@ Hud
 	EnableAll = 全部启用
 	FameTip = 名望
 	FlightDirection = 飞行方向
-	FormationOrder = 编队顺序
+	FormationOrder = 编队优先
 	FormationOrderFmt = ""
 	FormationTip = "<b>编队</b>\n\n将星舰组成一个飞行编队。"
 	FtlCancelJump = 取消
@@ -1412,6 +1426,7 @@ Hud
 	FtlDoJumpTip = "所有<good>待命</good>的星舰都会跃迁进目标区域。\n\n热键：<btn id='Game.DoFtlJump'/>"
 	FtlGateFmt = "超空间跳跃至{0}"
 	FtlGuiTitle = 正在启动超空间驱动……
+	FtlJumpDisabledTip = 选中的星舰当前无法进行超空间跳跃。
 	FtlJumpTip = "<b>超空间跳跃</b>\n\n快速传送到恒星系内的另一个位置。\n\n热键：<btn id='Game.LocalFtlJump'/>"
 	FtlShipsNotReady = 部分星舰无法进行超空间跳跃。是否继续，并留下无法超空间跳跃的星舰？
 	FtlStatusCanceled = <bad><s12>停留</s12></bad>
@@ -1450,6 +1465,7 @@ Hud
 	ReputationTipFmt = "{0}声誉"
 	ResetDefaults = 重置默认攻击
 	ResetDefaultsTip = 将保存的攻击距离和方向重置为初始值。
+	ResourceCountStorageFullFmt = "{0}<bad>（存储已满）</bad>"
 	ResourcesTip = "<b>管理资源</b>\n\n管理星舰上的资源、建造材料和武器。\n\n热键：<btn id='Resources.OpenClose'/>"
 	RotateTip = "<b>旋转</b>\n\n旋转可面对目标或改变方向。\n\n热键：<btn id='Game.Rotate'/>"
 	SalvageTip = "<b>收集/回收/开采资源</b>\n\n选中该按键后，点击或框选漂浮的资源、星舰或小行星来收集、回收或开采。\n\n按住 <btn id='Game.CancelSalvageCollect'/> 进入取消模式。\n\n<btn id='General.UIAltClick'/>可筛选资源类型。\n\n热键：<btn id='Game.Salvage'/>"
@@ -1500,6 +1516,7 @@ Hud
 	TargetTip = "<b>武器瞄准</b>\n\n将选定的武器瞄准敌方特定部件。也可瞄准自身部件。\n\n热键：<btn id='Game.TargetWeapon'/>"
 	UnderConstructionTip = 您的星舰正在建造中，船员可能离舰执行建造任务。如果飞离太远，将会与其失去联络。
 	UnknownContact = 未知联系人
+	UnpauseTip = "恢复游戏\n\n热键：<btn id='Game.PauseToggle'/>"
 	WeaponBindingFmt = ""
 	WeaponBindingNone = "AI 控制"
 	WeaponBindings = 直接控制绑定
@@ -1544,6 +1561,7 @@ Inputs
 		PlayAsAllPlayers = 游戏身份：所有玩家
 		PlayAsFmt = "游戏身份：玩家{0}"
 		Randomize = 随机选择星舰/物体
+		RemoveNebula = 移除星云/风暴
 		RenameNode = 重命名星系
 		RotateFtlGate = 旋转超空间跳跃中继站
 		SelectTool = 选择工具
@@ -1641,6 +1659,7 @@ Inputs
 		Halt = 停止
 		IncreaseSpeed = 提速
 		InvertCollisionAvoidance = 反转防撞
+		InvertHazardAvoidance = 反转灾害规避
 		Load = 加载游戏
 		LocalFtlJump = 星系内超空间跳跃
 		MapFtlJump = 银河系地图超空间跳跃
@@ -2304,6 +2323,7 @@ Mods
 {
 	
 	Activate = 激活
+	ActivateAll = 全部启用
 	AuthorFmt = "发布者：{0}"
 	AutoDisabled = "某些 Mod 可能与当前版本的 Cosmoteer 不兼容，已被自动禁用。"
 	BuiltInFolder = "内置 Mod"
@@ -2311,6 +2331,7 @@ Mods
 	CreatePackage = "创建 Mod 包"
 	CreatePackageSuccessful = "Mod 包已保存！"
 	Deactivate = 停用
+	DeactivateAll = 全部禁用
 	DialogName = "Mod 管理器"
 	IncompatibleWarning = "该 Mod 可能与当前版本的 Cosmoteer 不兼容，可能会导致错误。确定要启用它吗？"
 	InstallMod = "安装 Mod……"
@@ -2332,6 +2353,8 @@ Mods
 	RestartNow = 马上重启
 	ShowFolder = 显示文件夹
 	SteamWorkshop = 浏览创意工坊
+	UninstallAll = 全部卸载/取消订阅
+	UninstallAllConfirm = "确定要卸载并取消订阅全部 Mod？"
 	UninstallComplete = "Mod 成功卸载。"
 	UninstallConfirm = "确定要卸载该 Mod 吗？"
 	UninstallMod = "卸载 Mod"
@@ -2407,6 +2430,16 @@ Multiplayer
 	VoteWaitingFmt = "正在等待{0}票……"
 	VoteYesFmt = "<good>支持</good>\n{0} 票"
 	Waiting = 该玩家拖慢了游戏进程。
+}
+Nebulas
+{
+	
+	Cloudy = "<b>气态星云</b>\n在气态星云内，星舰的传感器范围会缩小，但无法被星云外的星舰所侦测到，一旦开火则隐匿效果失效。"
+	CloudyHudFmt = "<s14>{0:0.}%</s14>\n<s12><gray>气态</gray></s12>"
+	Electron = "<b>电离星云</b>\n星舰反应堆能量输出降低 80%，但能量武器伤害提升 75%，推进器的推力也会提升。星舰无法通过超空间跳跃进入或驶出电离星云，且由于星云内部的电磁干扰，雷达范围会大大降低。"
+	ElectronHudFmt = "<s14><color r='180' g='255' b='77'>{0:0.}%</color></s14>\n<s12><gray>电离</gray></s12>"
+	IonStorm = "<b>离子风暴</b>\n风暴内部的星舰会持续遭到离子闪电的攻击。"
+	IonStormHudFmt = "<s14><bad>{0:0.}%</bad></s14>\n<s12><gray>风暴</gray></s12>"
 }
 NewGame
 {
@@ -2741,7 +2774,7 @@ Parts
 	DoorDesc = 允许船员（以及火焰！）在舱室间移动。
 	DoorIcon = 舱门
 	EngineRoom = 引擎室
-	EngineRoomDesc = "使相邻推进器的功率增加 50%。也可作为相邻推进器的中央输送点，船员可向其输送电池，而不必单独前往各个推进器。"
+	EngineRoomDesc = "使相邻推进器的推力以及能量消耗增加 50%。也可作为相邻推进器的中央输送点，船员可向其输送电池，而不必单独前往各个推进器。"
 	EngineRoomIcon = 引擎室
 	ExplosiveCharge = 炸弹
 	ExplosiveChargeDesc = 一种可以手动引爆的小型爆炸装置。主要用于主动将本舰分割成多块。
@@ -2813,7 +2846,7 @@ Parts
 	LaserBlasterSmallDesc = 一种高精度多用途武器，发射单发爆能束，对敌舰造成中等程度的伤害。
 	LaserBlasterSmallIcon = 激光
 	ManipulatorBeam = 工程光束发射器
-	ManipulatorBeamDesc = "安装在星舰顶部的发射器最多可投射 16 根小型牵引光束，可协助收集资源并为出舱船员加速。一名船员最多可以控制四根光束，船员只在有任务需要协助时才会使用工程光束发射器。"
+	ManipulatorBeamDesc = "安装在星舰顶部的发射器最多可投射 16 根小型牵引光束，可收集资源并为出舱船员加速。一名船员最多可以控制四根光束，船员只在有任务需要协助时才会使用工程光束发射器。"
 	ManipulatorBeamIcon = 工程光束
 	MegaRock1x1 = 巨型岩石（1x1）
 	MegaRock2x2 = 巨型岩石（2x2）
@@ -2822,7 +2855,7 @@ Parts
 	MegaRockWedge1x1 = 巨型岩石（楔形）
 	MegaRockWedge1x2 = "巨型岩石（1x2 楔形）"
 	MiningLaserSmall = 开采激光
-	MiningLaserSmallDesc = 射出一对精确的激光束，迅速切割哪怕最为坚硬的小行星，从中提取资源。在回收弃舰方面也很有效，在紧要关头还可作为短程武器使用。
+	MiningLaserSmallDesc = 安装在星舰顶部的双联装精准激光，能够迅速切割哪怕最为坚硬的小行星，从中提取资源。在回收弃舰方面也很有效，在紧要关头还可作为短程武器使用。
 	MiningLaserSmallIcon = 开采激光
 	MissileLauncher = 导弹与空雷发射器
 	MissileLauncherDesc = "可发射任意类型的导弹或空雷。\n\n哪怕在战斗中，也可以随时更换其发射的弹药类型。"
@@ -3044,6 +3077,21 @@ PvpModeConfig
 	MaxShipValueTip = "单艘星舰的最大信用点（<img name='money' colored='true'/>）价值。"
 	MaxShips = 每位玩家的星舰数
 	MaxShipsTip = 每个玩家舰队中的最大星舰数量。
+	NebulasType = 星云与风暴
+	NebulasTypeTip = 战斗区域内星云与风暴的密度。
+	NebulasTypes
+	{
+		
+		CloudyDense = 气态星云（密集）
+		CloudySparse = 气态星云（稀疏）
+		ElectronDense = 电离星云（密集）
+		ElectronSparse = 电离星云（稀疏）
+		IonStormDense = 离子风暴（密集）
+		IonStormSparse = 离子风暴（稀疏）
+		None = 无
+		VariedDense = 混合（密集）
+		VariedSparse = 混合（稀疏）
+	}
 	PerimeterDistance = 死亡之环
 	PerimeterDistanceTip = 以此为半径的圆圈外，星舰将迅速受到伤害。
 	PerimeterDistances
@@ -3364,8 +3412,10 @@ SaveMedia
 SectorTypes
 {
 	
-	Basic = 单恒星星系
-	Binary = 双恒星星系
+	Basic = 单恒星
+	Binary = 双恒星
+	HighDensityNebula = 单恒星（高星云密度）
+	Supernova = 超新星爆发后
 }
 Settings
 {
@@ -3617,6 +3667,8 @@ Settings
 		EnableArrivalMatchingTip = 如果勾选，同时指挥多艘星舰时将指示它们同步速度，以便它们在大约同一时间到达。双击右键可以禁用该特定命令的速度同步（如果该选项未被勾选，则将其启用）。
 		EnableCollisionAvoidance = 启用防撞功能
 		EnableCollisionAvoidanceTip = "如果勾选，己方星舰将默认尝试避免与其他星舰相撞。按住 <btn id='Game.InvertCollisionAvoidance'/> 可使用其他模式。"
+		EnableHazardAvoidance = 规避环境灾害
+		EnableHazardAvoidanceTip = "如果勾选，己方星舰将自动规避灾害恒星、电离星云以及离子风暴。按住 <btn id='Game.InvertHazardAvoidance'/> 可使用其他模式。"
 		FriendAndFoe = 按敌我
 		FriendAndFoeTip = 本舰为绿色，同战队其他玩家的星舰为黄色，敌队的星舰为红色。
 		InterfaceLbl = UI
@@ -3716,6 +3768,8 @@ Settings
 		ExclusiveFullScreenTip = "游戏将占用整个显示屏，并允许选择显示分辨率。有些高级 GPU 功能可能仅在此模式下生效，如 G-SYNC 和 FreeSync。"
 		FancyLighting = 高级灯光效果
 		FancyLightingTip = 如果启用，将渲染额外的灯光效果。关掉它可以提高性能。
+		FancyNebulas = 星云与风暴特效
+		FancyNebulasTip = 如果启用，星云与风暴会显示光照以及动画特效。关掉该选项可以提高性能。
 		FancyParticles = 高级粒子和视觉效果
 		FancyParticlesTip = 如果启用，将渲染额外的粒子和视觉效果将被渲染。关掉它可以提高性能。
 		FancyUIEffects = "高级 UI 效果"
@@ -3957,6 +4011,7 @@ StarterShips
 	
 	ModelC = "C 型星舰速度慢，装甲坚固，携带两门加农炮，虽然准头一般，但可以穿透敌舰。"
 	ModelL = "L 型星舰具有极强的机动性，携带三门激光炮，可有效地摧毁敌舰子系统。该型号星舰缺乏有效的防御。"
+	ModelM = "M 型星舰并未配备传统武器，其使用的武器是采矿激光，不仅可有效地从小行星和废舰中获取资源，同时仍然能对敌舰造成不小的威胁。"
 	ModelS = "S 型星舰牺牲速度以及火力，换来了可以阻挡敌方火力的防御性护盾发生器。"
 }
 StatCategories
@@ -3977,7 +4032,7 @@ StatCategories
 	ManipulatorBeam = 工程光束
 	Mine = 空雷
 	MineShrapnel = 弹片
-	MiningBeam = 开采光束
+	MiningBeam = 双联装开采光束
 	MissileEMP = "EMP 导弹"
 	MissileHE = 高爆导弹
 	MissileNuke = 战术核导弹
@@ -4134,6 +4189,7 @@ Stats
 	TristeelProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>三钛钢板/秒</gray>"
 	TristeelTritaniumUsageFmt = "<white>三钛原矿消耗：</white><good>{0:0.##}</good><gray>/三钛钢板（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	TritaniumCapacityFmt = "<white>三钛原矿容量：</white><good>{0}</good>"
+	TurretPenResistFmt = "<white>炮塔装甲抗穿：</white><good>-{0}</good> <gray>米</gray>"
 	TurretSpeedFmt = "<white>炮塔旋转速度：</white><good>{0:0}°</good><gray>/秒</gray>"
 	UraniumCapacityFmt = "<white>铀容量：</white><good>{0}</good>"
 	WeightFmt = "<white>重量：</white><good>{0:0.0#}</good> <gray>吨</gray>"
@@ -4174,7 +4230,7 @@ Tips
 	AutoSave
 	{
 		
-		Tip = "游戏默认每隔 10 分钟自动保存一次，能同时存在 10 个自动存档文件。超出 10 个的旧自动存档将被自动删除。可以在<good>设置 -> 自动保存</good>中设置自动保存的时间间隔以及自动存档的数量上限。"
+		Tip = "游戏默认每隔 10 分钟自动保存一次，能同时存在 25 个自动存档文件。超出 25 个的旧自动存档将被自动删除。可以在<good>设置 -> 自动保存</good>中设置自动保存的时间间隔以及自动存档的数量上限。"
 		Title = 自动保存
 	}
 	BattleHelper
@@ -4489,7 +4545,7 @@ Tips
 		
 		Tip1 = "按 <btn id='Game.QuickSave'/> 进行快速保存。"
 		Tip2 = "按 <btn id='Game.QuickLoad'/> 加载上个存档。"
-		Tip3 = "游戏默认能同时存在 10 个快速存档文件。超出 10 个的旧快速存档将被自动删除。可以在<good>设置 -> 自动保存</good>中设置快速存档的数量上限。"
+		Tip3 = "游戏默认能同时存在 25 个快速存档文件。超出 25 个的旧快速存档将被自动删除。可以在<good>设置 -> 自动保存</good>中设置快速存档的数量上限。"
 		Title = 快速保存
 	}
 	RebindingControls

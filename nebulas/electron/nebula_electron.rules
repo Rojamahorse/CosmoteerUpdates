@@ -1,0 +1,289 @@
+ID = electron
+ToolTipKey = "Nebulas/Electron"
+DefaultLogicalFeather = 150
+DefaultVisualFeather = [400, 1400]
+DefaultVisualFeatherOverZoom = [100, 4000]
+DefaultVisualFeatherOverZoomExponent = 0.5
+SharpCurveEdges = 8
+DullCurveEdges = 4
+RadarRangeFactor = 50%
+LinearDampingFactor = 50%
+AngularDampingFactor = 50%
+DefaultAvoidDistance = 150
+ProhibitFtlJumpInThreshold = 50%
+ProhibitFtlJumpOutThreshold = 50%
+PathfindTravelCost = 100
+LodBias = 0.9
+
+HudTextKey = "Nebulas/ElectronHudFmt"
+HudIcon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+Buffs
+[
+	// A buff value between 0.0 and 1.0 to control effects.
+	{
+		BuffType = ElectronNebula
+		BuffAmount = 100%
+	}
+
+	// Reduce reactor production and disable shields.
+	{
+		BuffType = ElectronDebuff
+		BuffAmount = -80%
+	}
+
+	// Buff energy weapon damage.
+	{
+		BuffType = ElectronBuff
+		BuffAmount = 75%
+	}
+]
+
+MaterialLow
+{
+	Color = [255, 255, 255, 255]
+	Shader = "nebula_electron.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_04X.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_05C.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01F.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex2
+	{
+		File = ./Data/common_effects/particles/noise_distorted_voronoi.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+
+	_color1 = [89, 126, 0, 255] //dark electric green
+	_color2 = [249, 255, 105, 255]
+	_color3 = [189, 218, 87, 255]
+	_color4 = [95, 255, 195, 255] //sky blue
+	_color5 = [250,209,107, 255]
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+
+	_midTexScale = 0.00033
+	_midWaveScale = 5000
+	_midWaveStrength = 0.1
+	_midWaveSpeed = 50
+	_midScrollSpeed = 10
+	_noiseScaleFactor = 2.3
+
+	_microTexScale = 0.0074
+	_microWaveScale = 150
+	_microWaveStrength = 0.025
+	_microWaveSpeed = 20
+	_microScrollSpeed = 3
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.05
+	_parallaxIntensity = -0.75
+}
+SimpleMaterialLow : MaterialLow
+{
+	shader = "../nebula_simple.shader"
+}
+DiffuseMaterialLow
+{
+	Color = [255, 255, 255, 255]
+	Shader = "../nebula_diffuse.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_04X.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_05C.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01F.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+
+	_color1 = [89, 126, 0, 255] //dark electric green
+	_color2 = [249, 255, 105, 255]
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+	_midTexScale = 0.00033
+	_midWaveScale = 5000
+	_midWaveStrength = 0.1
+	_midWaveSpeed = 50
+	_midScrollSpeed = 10
+	_noiseScaleFactor = 2.3
+
+	_microTexScale = 0.0074
+	_microWaveScale = 150
+	_microWaveStrength = 0.025
+	_microWaveSpeed = 20
+	_microScrollSpeed = 3
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.05
+	_parallaxIntensity = -0.75
+}
+NormalsMaterialLow
+{
+	Color = [255, 255, 255, 255]
+	Shader = "../nebula_normals.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_04X.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_05C.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01F.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+	_midTexScale = 0.00033
+	_midWaveScale = 5000
+	_midWaveStrength = 0.1
+	_midWaveSpeed = 50
+	_midScrollSpeed = 10
+	_noiseScaleFactor = 2.3
+
+	_microTexScale = 0.0074
+	_microWaveScale = 150
+	_microWaveStrength = 0.025
+	_microWaveSpeed = 20
+	_microScrollSpeed = 3
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.25
+	_parallaxIntensity = -0.75
+}
+
+MaterialHigh
+{
+	Color = [255, 255, 255, 220]
+	Shader = "../nebula.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_04X.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_05C.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01F.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex2
+	{
+		File = ./Data/common_effects/particles/noise_distorted_voronoi.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+
+	_color1 = [168, 208, 10, 255] //electric green
+	_color2 = [249, 255, 105, 255]
+	_color3 = [189, 218, 87, 255]
+	_color4 = [95, 255, 195, 255]
+	_color5 = [250,209,107, 255]
+
+	_worldUVOffset = [0.6, 0.35]
+	_worldUVScale = 1.5
+
+	_midTexScale = 0.00033
+	_midWaveScale = 5000
+	_midWaveStrength = 0.1
+	_midWaveSpeed = 50
+	_midScrollSpeed = 10
+	_noiseScaleFactor = 2.3
+
+	_microTexScale = 0.0074
+	_microWaveScale = 150
+	_microWaveStrength = 0.025
+	_microWaveSpeed = 20
+	_microScrollSpeed = 3
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.05
+	_parallaxIntensity = 1.5
+}
+SimpleMaterialHigh : MaterialHigh
+{
+	shader = "../nebula_simple.shader"
+}
+
+MaterialMinimap = &MaterialLow

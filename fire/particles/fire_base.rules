@@ -19,94 +19,8 @@ Def
 		{
 			Type = Lifetime
 			LifeInOut = life
-			Lifetime = 1.5
+			Lifetime = 0.75
 			Name = Lifetime
-			Enabled = true
-			UpdateAfterInit = false
-		}
-		{
-			Type = ColorRamp
-			LerpIn = life
-			ColorOut = color
-			Invert = false
-			Colors
-			[
-				{
-					Rf = 0
-					Gf = 0
-					Bf = 0
-					Af = 0
-				}
-				{
-					Rf = 0.49803922
-					Gf = 0.49803922
-					Bf = 0.49803922
-					Af = 0.49803922
-				}
-				{
-					Rf = 0.29411766
-					Gf = 0.19607843
-					Bf = 0
-					Af = 0.29411766
-				}
-				{
-					Rf = 0.29411766
-					Gf = 0.15686275
-					Bf = 0
-					Af = 0.29411766
-				}
-				{
-					Rf = 0.078431375
-					Gf = 0
-					Bf = 0
-					Af = 0.19607843
-				}
-				{
-					Rf = 0
-					Gf = 0
-					Bf = 0
-					Af = 0
-				}
-			]
-			Name = "Alpha ramp"
-			Enabled = true
-			UpdateAfterInit = false
-		}
-		{
-			Type = Operator
-			DataType = Float
-			AIn = life
-			BIn = time_offset
-			ResultOut = time
-			Operator = Add
-			Name = "Offset time"
-			Enabled = true
-			UpdateAfterInit = false
-		}
-		{
-			Type = UvAnimation
-			TimeIn = time
-			UvRectOut = uv_rect
-			Framerate = 24
-			TextureSize
-			{
-				X = 1024
-				Y = 2048
-			}
-			FrameSize
-			{
-				X = 256
-				Y = 256
-			}
-			FrameCount = 32
-			FramesPerRow = 4
-			PixelOffset
-			{
-				X = 0
-				Y = 0
-			}
-			Looping = true
-			Name = ""
 			Enabled = true
 			UpdateAfterInit = false
 		}
@@ -116,8 +30,8 @@ Def
 			DataOut = scale
 			Invert = false
 			ValueType = Float
-			FromValue = 1.7
-			ToValue = 2
+			FromValue = 1.1
+			ToValue = 1.2
 			Name = "Scale lerp"
 			Enabled = true
 			UpdateAfterInit = true
@@ -134,10 +48,73 @@ Def
 			UpdateAfterInit = true
 		}
 		{
-			Type = UvFlip
-			FlipXYIn = flip
-			UvRectInOut = uv_rect
-			Name = ""
+			Type = ColorRamp
+			LerpIn = life
+			ColorOut = color
+			Invert = false
+			Colors
+			[
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 0
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 0.78431374
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 1
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 1
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 1
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 1
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 0.78431374
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 0
+				}
+			]
+			Name = "Alpha Ramp"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Color
+			AIn = color
+			BIn = baseColor
+			ResultOut = color
+			Operator = Multiply
+			Name = "Combine Final Colors"
 			Enabled = true
 			UpdateAfterInit = false
 		}
@@ -169,21 +146,30 @@ Def
 		{
 			File = fire.shader
 		}
-		Texture
+		_noiseTex
 		{
-			File = fire.png
-			MipLevels = 8
+			File = fire_noise.png
+			MipLevels = max
 			SampleMode = Linear
+			UMode = Wrap
+			VMode = Wrap
 		}
+		_rampTex
+		{
+			File = fire_ramp.png
+		}
+		Texture = &~/Def/Material/_noiseTex
 		TargetBlendMode = Add
 	}
 	DeleteMode = Fast
+	FpsCompensation = None
+	FpsCompensationStrength = 1
 	EnableMultithreading = false
 	InitCapacity = 256
 }
 EmitterDef
 {
-	EmitPerSecond = 6
+	EmitPerSecond = 16
 	EmitPerOneShot
 	{
 		Min = 0
@@ -212,7 +198,7 @@ EmitterDef
 			Type = SetValue
 			DataOut = base_scale
 			ValueType = Float
-			Value = 0.9
+			Value = 0.2
 			Name = "Base scale"
 			Enabled = true
 			UpdateAfterInit = false
@@ -227,6 +213,14 @@ EmitterDef
 		{
 			Type = LocationFromCustomShape
 			LocationOut = location
+			Name = ""
+			Enabled = false
+			UpdateAfterInit = false
+		}
+		{
+			Type = LocationAndValueFromCustomShape
+			LocationOut = location
+			ValueOut = fireSize
 			Name = ""
 			Enabled = true
 			UpdateAfterInit = false
@@ -259,6 +253,159 @@ EmitterDef
 			Enabled = true
 			UpdateAfterInit = false
 		}
+		{
+			Type = ColorRamp
+			LerpIn = fireSize
+			ColorOut = baseColor
+			Invert = false
+			Colors
+			[
+				{
+					Rf = 0
+					Gf = 1
+					Bf = 1
+					Af = 1.9607843
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 1
+				}
+			]
+			Name = "fire size to red color channel"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetValue
+			DataOut = uv_rect
+			ValueType = Vector4
+			Value
+			{
+				X = 0
+				Y = 0
+				Z = 1
+				W = 1
+			}
+			Name = "create uv rect"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = UvFlip
+			FlipXYIn = flip_xy
+			UvRectInOut = uv_rect
+			Name = "apply random flip to uv rect"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = baseColor2
+			ValueType = Color
+			FromValue
+			{
+				Rf = 1
+				Gf = 0
+				Bf = 0
+				Af = 1
+			}
+			ToValue
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 1
+			}
+			Name = "random blue and green for tex offset"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Color
+			AIn = baseColor
+			BIn = baseColor2
+			ResultOut = baseColor
+			Operator = Multiply
+			Name = "combine base colors"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = OperatorConst
+			AIn = fireSize
+			ResultOut = clampedFireSize
+			Operator = Max
+			ValueType = Float
+			Value = 0.25
+			Name = "create clamped fire size"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Float
+			AIn = base_scale
+			BIn = clampedFireSize
+			ResultOut = base_scale
+			Operator = Add
+			Name = "add clamped fire size to base scale"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = scaleOffset
+			ValueType = Vector2
+			FromValue
+			{
+				X = -0.5
+				Y = -0.5
+			}
+			ToValue
+			{
+				X = 0.5
+				Y = 0.5
+			}
+			Name = "create random offset"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = OperatorConst
+			AIn = clampedFireSize
+			ResultOut = inverseFireSize
+			Operator = Subtract
+			ValueType = Float
+			Value = 1
+			Name = "create inverse fire size"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ScalarOperator
+			AIn = inverseFireSize
+			DataType = Vector2
+			BIn = scaleOffset
+			ResultOut = scaleOffset
+			Operator = Multiply
+			Name = "scale offset by inverse fire size"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = scaleOffset
+			BIn = location
+			ResultOut = location
+			Operator = Add
+			Name = "add offset to location"
+			Enabled = true
+			UpdateAfterInit = false
+		}
 	]
 	PostInitializers[]
 }
@@ -267,7 +414,7 @@ UseRealTime = false
 PenetratingBucket
 MinIntensity = 0
 IsFancy = false
-IsFancyLight = true
+IsFancyLight = false
 IsSimpleLight = false
 IsSimple = false
 Sharing = None
@@ -276,6 +423,7 @@ DontEmitWhenOffScreen = true
 DontEmitWhenOffScreenSizeInflate = 3
 UseCustomShapeForOffScreenCheck = true
 MaxEmissionZoom = 15
+MaxParticleCount = 10000
 ScaleEmissionWithIntensity = true
 ScaleEmissionWithBeamLength = false
 ScaleEmissionWithWorldVelocity = false
@@ -296,14 +444,19 @@ Filter
 	Crew = true
 	Nuggets = true
 	IgnoreInvulnerability = true
+	Flammable = true
+	NonFlammable = true
 	Self
 	TargetedSelf
 	Friendlies = true
 	TargetedFriendlies
 	Enemies = true
 	TargetedEnemies
+	Neutrals = true
+	TargetedNeutrals
 	Junk = true
 	TargetedJunk
+	Deconstruction
 }
 Delay = 0
 IgnoreIntensity = false

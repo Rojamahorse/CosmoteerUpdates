@@ -1,0 +1,242 @@
+ID = cloudy
+ToolTipKey = "Nebulas/Cloudy"
+DefaultLogicalFeather = 150
+DefaultVisualFeather = [400, 1400]
+DefaultVisualFeatherOverZoom = [100, 4000]
+DefaultVisualFeatherOverZoomExponent = 0.5
+SharpCurveEdges = 8
+DullCurveEdges = 4
+SightRangeFactor = 30%
+RadarRangeFactor = 75%
+HidesToOutsideObserversThreshold = 0%
+HidesRadarToOutsideObserversThreshold = 0%
+
+HudTextKey = "Nebulas/CloudyHudFmt"
+HudIcon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+MaterialLow
+{
+	Color = [255, 255, 255, 255]
+	Shader = "../nebula.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_color1 = [98, 150, 214, 255]
+	_color2 = [160, 233, 209, 255]
+	_color3 = [216, 140, 155, 255]
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+	_midTexScale = 0.0005
+	_midWaveScale = 10000
+	_midWaveStrength = 0.2
+	_midWaveSpeed = 50
+	_midScrollSpeed = 5
+	_noiseScaleFactor = 0.15
+
+	_microTexScale = 0.0035
+	_microWaveScale = 150
+	_microWaveStrength = 0.02
+	_microWaveSpeed = 2.5
+	_microScrollSpeed = 1
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = -0.75
+}
+SimpleMaterialLow : MaterialLow
+{
+	shader = "../nebula_simple.shader"
+}
+DiffuseMaterialLow
+{
+	Color = [255, 255, 255, 255]
+	Shader = "../nebula_diffuse.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_color1 = [98, 150, 214, 255]
+	_color2 = [160, 233, 209, 255]
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+
+	_midTexScale = 0.0005
+	_midWaveScale = 10000
+	_midWaveStrength = 0.2
+	_midWaveSpeed = 50
+	_midScrollSpeed = 5
+	_noiseScaleFactor = 0.15
+
+	_microTexScale = 0.0035
+	_microWaveScale = 150
+	_microWaveStrength = 0.02
+	_microWaveSpeed = 2.5
+	_microScrollSpeed = 1
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = -0.75
+}
+NormalsMaterialLow
+{
+	Color = [255, 255, 255, 255]
+	Shader = "../nebula_normals.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+
+	_worldUVOffset = [0, 0]
+	_worldUVScale = 1
+
+	_midTexScale = 0.0005
+	_midWaveScale = 10000
+	_midWaveStrength = 0.2
+	_midWaveSpeed = 50
+	_midScrollSpeed = 5
+	_noiseScaleFactor = 0.15
+
+	_microTexScale = 0.0035
+	_microWaveScale = 150
+	_microWaveStrength = 0.02
+	_microWaveSpeed = 2.5
+	_microScrollSpeed = 1
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = -0.75
+}
+
+MaterialHigh
+{
+	Color = [255, 255, 255, 220]
+	Shader = "../nebula.shader"
+
+	Texture
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_lodNoise
+	{
+		File = ../nebula_normals_01A.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_noiseTex1
+	{
+		File = ../nebula_normals_01B.png
+		SampleMode = Linear
+		MipLevels = max
+		UMode = Wrap
+		VMode = Wrap
+	}
+	_color1 = [172, 199, 200, 255]
+	_color2 = [233, 203, 160, 255]
+	_color3 = [216, 140, 155, 255]
+
+	_worldUVOffset = [0.6, 0.35]
+	_worldUVScale = 1.5
+
+	_midTexScale = 0.0005
+	_midWaveScale = 10000
+	_midWaveStrength = 0.2
+	_midWaveSpeed = 50
+	_midScrollSpeed = 5
+	_noiseScaleFactor = 0.15
+
+	_microTexScale = 0.0035
+	_microWaveScale = 150
+	_microWaveStrength = 0.02
+	_microWaveSpeed = 2.5
+	_microScrollSpeed = 1
+
+	_macroTexScale = 0.00006
+	_lodMaxBlend = 0.1
+	_parallaxIntensity = 1.5
+}
+SimpleMaterialHigh : MaterialHigh
+{
+	shader = "../nebula_simple.shader"
+}
+
+MaterialMinimap = &MaterialLow

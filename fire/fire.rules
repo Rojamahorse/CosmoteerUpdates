@@ -1,14 +1,32 @@
 UpdateInterval = .25
-SpreadChancePerUpdate = .015
+SpreadChancePerUpdate = .05
+ScaleSpreadChanceBySize = true
+SpreadChanceMinimumSize = 0
+SpreadSelfSizeFraction = 0.125
+SpreadInverseSizeExponent = 2.5
 KillChancePerUpdate = .02
+ScaleKillChanceBySize = true
+KillChanceMinimumSize = 0.2
 DamageType = fire
 DamagePerUpdate = 10
+ScaleDamageBySize = true
+DamageMinimumSize = 0.3
 DefaultFireExtinguishPriority = &/PRIORITIES/ExtinguishFire
 FireExtinguishResource = fire_extinguisher
 ImmuneWhenCarryingExtinguisher = true
-FireExtinguishTime = [1, 2]
+FireMaxHealth = 75
 NearbyFireSearchIterations = 100
 ParticleCellSize = [0.25, 0.25]
+GrowthProvider {
+	Type = ShrinkAndGrowSine
+	ShrinkSteepness = 1.5
+	ShrinkAtZero = 0.005
+	ShrinkAtTransition = 0.025
+	ShrinkTransitionThreshold = 0.1
+	ShrinkToGrowthThreshold = 0.15
+	MaximumGrowth = 0.1
+}
+
 
 FireSprite
 {
@@ -20,7 +38,6 @@ FireSpriteLayer = "fire_indicators"
 FireEffects
 [
 	&<particles/fire_base.rules>
-	&<particles/fire_base_simple.rules>
 	&<particles/fire_smoke.rules>
 	&<particles/fire_sparks.rules>
 

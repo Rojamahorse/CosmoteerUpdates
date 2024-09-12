@@ -8,8 +8,9 @@ Part : <../base_part_terran.rules>/Part
 	DescriptionKey = "Parts/CannonLargeDesc"
 	Resources
 	[
-		[steel, 84]
-		[coil, 29]
+		[steel, 100]
+		[coil, 10]
+		[coil2, 5]
 	]
 	TypeCategories = [weapon, uses_ammo, is_crewed]
 	Size = [3, 3]
@@ -313,7 +314,7 @@ Part : <../base_part_terran.rules>/Part
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 1.2
+			FireInterval = 1.35
 			FiringArc = 115d
 			RotateSpeed = 30d
 			FireThresholdAngle = 1d
@@ -728,7 +729,6 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = IndicatorSprites
 			Location = [1.5, 1.5]
-			Layer = "indicators"
 			Indicators
 			[
 				// Turned off.
@@ -739,6 +739,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [1,2]
 				}
 
 				// Out of ammo.

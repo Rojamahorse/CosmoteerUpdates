@@ -12,14 +12,14 @@ Part : <../base_part_terran.rules>/Part
 		[coil, 12]
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	Size = [1, 3]
 	PhysicalRect = [0, 1, 1, 2]
 	SaveRect = &PhysicalRect
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	MaxHealth = 4000
-	InitialPenetrationResistance = 3
+	InitialPenetrationResistance = 1
 	ProhibitAbove = 1
 	AllowedDoorLocations
 	[
@@ -412,6 +412,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = &../Turret/Location
 			Radius = .46
 			Density = .75
+			InitialPenetrationResistance = 5
 		}
 
 		TurretGraphics
@@ -578,7 +579,6 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = IndicatorSprites
 			Location = [.5, 1.5]
-			Layer = "indicators"
 			Indicators
 			[
 				// Turned off.
@@ -589,6 +589,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [1,2]
 				}
 
 				// Out of power.
@@ -627,6 +628,7 @@ Part : <../base_part_terran.rules>/Part
 	{
 		CrewRequired = &~/Part/Components/PartCrew/Crew
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		TurretPenResist = &~/Part/Components/TurretCollider/InitialPenetrationResistance
 
 		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
 		RecCrew = (&CrewRequired) + (&RecPower) * 4
@@ -638,7 +640,7 @@ Part : <../base_part_terran.rules>/Part
 			NameKey = "StatCategories/LaserBoltSmall"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage
+				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)

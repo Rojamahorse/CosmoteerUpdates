@@ -18,7 +18,7 @@ Part : <../base_part_terran.rules>/Part
 	SelectionPriority = 1
 	MaxHealth = 8000
 	TypeCategories = [weapon, ion, ion_beam_prism]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	Flammable = false
 	InitialPenetrationResistance = 100
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
@@ -152,6 +152,8 @@ Part : <../base_part_terran.rules>/Part
 			AIFirepowerRating = 0
 			AddAIFirepowerRatingsWhenTargetedByPartCategories = [ion_beam_emitter, ion_beam_prism]
 			TargetingEmitter = BeamEmitter
+			ProhibitTargetPartsFilter = &FriendlyPrismFilter
+			AllowAimAtProhibitedTarget = true
 			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &FriendlyPrismFilter
 			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
 			SuppressDirectControlWhenTargetingPartsFilter = &FriendlyPrismFilter
@@ -462,7 +464,6 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = IndicatorSprites
 			Location = [1, 1]
-			Layer = "indicators"
 			Indicators
 			[
 				// Turned off.

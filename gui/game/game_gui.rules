@@ -656,6 +656,15 @@ PauseSprite
 		SampleMode = Linear
 	}
 }
+UnpauseSprite
+{
+	Texture
+	{
+		File = "speed_unpause.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
 IncreaseSpeedSprite
 {
 	Texture
@@ -780,3 +789,14 @@ MPPlayerColors
 		Bf = 0.9091723
 	}
 ]
+
+ShipHiddenSound
+{
+	Sound = "ship_hidden.wav"
+	Volume = 50%
+}
+ShipRevealedSound
+{
+	Sound = "ship_revealed.wav"
+	Volume = 50%
+}

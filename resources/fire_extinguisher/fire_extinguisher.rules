@@ -1,6 +1,7 @@
 ID = fire_extinguisher
 NameKey = "Resource/FireExtinguisher"
-MaxPerNugget = (&<./Data/cosmoteer.rules>/Simulation/PhysicsUpdatesPerSecond) * 10 // 10 seconds of extinguishing.
+// dividing by (&<./Data/cosmoteer.rules>/Simulation/PhysicsUpdatesPerSecond) gives the extinguishing time in seconds
+MaxPerNugget = 300
 ReturnToStorage = false
 
 NuggetSprite

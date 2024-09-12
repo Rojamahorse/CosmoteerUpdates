@@ -1,0 +1,47 @@
+Spawners
+[
+	{
+		Type = Nebula
+		NebulaType = ion_storm
+		NebulaRadius = 1000
+		MultiplyNebulaRadius = AreaRadiusKM
+		ContiguousPathCheckSearchIterations = 20
+		MinPerlinNebulaTris = 2
+
+		PerlinNoise
+		{
+			GridSize = [4, 16]
+			Octaves = 2
+			OutputShift = -0.2
+			Repeat = [&../GridSize/0, 0]
+		}
+		UsePolarPerlinCoordinates = true
+	}
+
+	// No nebulas near players.
+	{
+		Type = Nebula
+		RootLocation = Tag
+		RootLocationTag = player
+		ForEachRootMax = 999
+		NebulaType = ""
+		NebulaRadius = 300
+	}
+	{
+		Type = Nebula
+		RootLocation = Tag
+		RootLocationTag = capture_point
+		ForEachRootMax = 999
+		NebulaType = ""
+		NebulaRadius = 300
+		OnlyReplaceNebulaTypes = [ion_storm]
+	}
+	{
+		Type = Nebula
+		RootLocation = Tag
+		RootLocationTag = spawn_point
+		ForEachRootMax = 999
+		NebulaType = ""
+		NebulaRadius = 300
+	}
+]

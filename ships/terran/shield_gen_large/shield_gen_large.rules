@@ -19,7 +19,6 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 12000
 	TypeCategories = [defense, uses_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
 	AllowedDoorLocations
 	[
 		[-1, 5]
@@ -723,7 +722,6 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = IndicatorSprites
 			Location = [1.5, 4]
-			Layer = "indicators"
 			Indicators
 			[
 				// Turned off.
@@ -734,6 +732,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [1]
 				}
 
 				// Out of power.

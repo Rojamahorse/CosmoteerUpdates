@@ -5,8 +5,11 @@ Ships
 [
 	// Civilian stations
 	:~{ File="Small Cabal Trade Station.ship.png"; Tier=4;  Tags : ~/Tags [trade_station]; StasisIcon="Small Cabal Trade Station.png" }
+	:~{ File="Small Cabal Trade Station II.ship.png"; Tier=4;  Tags : ~/Tags [trade_station]; StasisIcon="Small Cabal Trade Station II.png" }
 	:~{ File="Med Cabal Trade Station.ship.png";   Tier=10; Tags : ~/Tags [trade_station]; StasisIcon="Med Cabal Trade Station.png" }
+	:~{ File="Med Cabal Trade Station II.ship.png";   Tier=10; Tags : ~/Tags [trade_station]; StasisIcon="Med Cabal Trade Station II.png" }
 	:~{ File="Large Cabal Trade Station.ship.png"; Tier=16; Tags : ~/Tags [trade_station]; StasisIcon="Large Cabal Trade Station.png" }
+	:~{ File="Large Cabal Trade Station II.ship.png"; Tier=16; Tags : ~/Tags [trade_station]; StasisIcon="Large Cabal Trade Station II.png" }
 
 	// Military stations
 	:~{ File="Tiny Cabal Arms Depot.ship.png";     Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station]; StasisIcon="Tiny Cabal Arms Depot.png";  FlightDirection=DownRight }
