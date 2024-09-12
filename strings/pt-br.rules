@@ -417,6 +417,8 @@ CareerModeConfig
 	DisableCrewConstructionTip = "Se marcado, as modificações da nave serão construídas instantaneamente em vez de pela tripulação."
 	DisableExploration = "Detesto exploração"
 	DisableExplorationTip = "Revela todos os ícones <b>?</b> no mapa sem ter que descobri-los primeiro na névoa da guerra."
+	DisableNebulas = "Odeio nuvens e tempestades"
+	DisableNebulasTip = "Nuvens e tempestades não vão aparecer no modo Carreira (se esta opção for ativada no meio de um jogo, ela afetará apenas sistemas estelares ainda não visitados)."
 	DisableSalvaging = "Detesto recuperação"
 	DisableSalvagingTip = "● Missões dão 2X créditos.\n● Não é possível recuperar recursos das naves.\n● É possível fazer modificações na nave em qualquer lugar usando apenas créditos."
 	EconDifficulty = "Dificuldade econômica"
@@ -757,11 +759,15 @@ CrewAndResourceTransfer
 	Reset = Redefinir
 	ResourceFailure = "Não foi possível transferir todos os recursos solicitados. Talvez falte escotilhas que permitam que a tripulação possa transferir os recursos em questão para o destino."
 	RestockResourcesDisabledTip = "Limite de recursos da nave atingido"
-	RestockResourcesLeft = "Reabastece recursos da nave esquerda"
-	RestockResourcesRight = "Reabastece recursos da nave direita"
+	RestockResourcesLeft = "Reabastecer recursos da nave esquerda"
+	RestockResourcesRight = "Reabastecer recursos da nave direita"
 	RestockResourcesTip = "Reabastece completamente recursos de uma nave a outra"
 	ShipsTooFar = "AS NAVES ESTÃO MUITO LONGE\nPARA TRANSFERIR"
 	Title = "Transferir tripulação / recursos"
+	TransferExcessDisabledTip = "Nenhum recurso excedente, ou a outra nave já está na capacidade máxima."
+	TransferExcessLeft = "Transferir recursos excedentes da nave esquerda"
+	TransferExcessRight = "Transferir recursos excedentes da nave direita"
+	TransferExcessTip = "Transfere todos os recursos acima do limite desejado. Caso não exista um limite definido, transfere o excesso do que pode ser armazenado nos quadros designados."
 }
 CrewBox
 {
@@ -1411,7 +1417,7 @@ Hud
 	EnableAll = "Habilitar todos"
 	FameTip = Fama
 	FlightDirection = "Direção do voo"
-	FormationOrder = "Ordem de formação"
+	FormationOrder = "Prioridade de formação"
 	FormationOrderFmt = ""
 	FormationTip = "<b>Formações</b>\n\nOrganize suas naves em uma formação de voo."
 	FtlCancelJump = Cancelar
@@ -2317,6 +2323,7 @@ Mods
 {
 	
 	Activate = Ativar
+	ActivateAll = "Ativar todos"
 	AuthorFmt = "Criado por: {0}"
 	AutoDisabled = "Alguns mods podem não ser compatíveis com esta versão de Cosmoteer e foram desabilitados automaticamente."
 	BuiltInFolder = "Mods integrados"
@@ -2324,6 +2331,7 @@ Mods
 	CreatePackage = "Criar pacote de mod"
 	CreatePackageSuccessful = "O pacote de mod foi salvo."
 	Deactivate = Desativar
+	DeactivateAll = "Desativar todos"
 	DialogName = "Gerenciador de mods"
 	IncompatibleWarning = "O mod em questão pode não ser compatível com esta versão de Cosmoteer e pode causar erros. Você quer mesmo habilitá-lo?"
 	InstallMod = "Instalar mod..."
@@ -2345,10 +2353,12 @@ Mods
 	RestartNow = "Reiniciar agora"
 	ShowFolder = "Mostrar pasta"
 	SteamWorkshop = "Navegar pelo Steam Workshop"
-	UninstallComplete = "Mod desinstalado com sucesso."
+	UninstallAll = "Desinstalar/cancelar todos"
+	UninstallAllConfirm = "Deseja mesmo desinstalar e cancelar a inscrição de todos os mods?"
+	UninstallComplete = "Mod(s) desinstalado(s) com sucesso."
 	UninstallConfirm = "Você quer mesmo desinstalar este mod?"
 	UninstallMod = "Desinstalar mod"
-	UninstallingMod = "Desinstalando mod...\nIsso pode demorar um pouco, dependendo do tamanho do mod."
+	UninstallingMod = "Desinstalando mod(s)...\nIsso pode demorar um pouco, dependendo do tamanho do mod."
 	Unsubscribe = "Cancelar inscrição"
 	UserFolder = "Mods do usuário"
 	UserMod = "Mod do usuário"
@@ -2428,7 +2438,7 @@ Nebulas
 	CloudyHudFmt = "<s14>{0:0.}%</s14>\n<s12><gray>gasoso</gray></s12>"
 	Electron = "<b>Nuvem de Elétrons</b>\nA produção de energia do reator da nave cairá em 80%, mas armas de energia causam 75% mais dano e os propulsores ficam mais potentes. Naves não podem usar o hipersalto para entrar ou sair e a interferência eletromagnética reduz o alcance do radar."
 	ElectronHudFmt = "<s14><color r='180' g='255' b='77'>{0:0.}%</color></s14>\n<s12><gray>elétron</gray></s12>"
-	IonStorm = "<b>Tempestade Iônica</b>\nNaves dentro da tempestade são atingidas frequentemente por poderosos relâmpagos."
+	IonStorm = "<b>Tempestade Iônica</b>\nNaves dentro da tempestade são atingidas frequentemente por relâmpagos potentes."
 	IonStormHudFmt = "<s14><bad>{0:0.}%</bad></s14>\n<s12><gray>tempestade</gray></s12>"
 }
 NewGame
@@ -2836,7 +2846,7 @@ Parts
 	LaserBlasterSmallDesc = "Uma arma muito precisa e versátil que dispara rajadas individuais de energia, causando dano moderado a naves inimigas."
 	LaserBlasterSmallIcon = ""
 	ManipulatorBeam = "Emissor de raio manipulador"
-	ManipulatorBeamDesc = "Projeta até 16 pequenos raios tratores montados no teto que ajudam a coletar recursos e a impulsionar tripulantes em voo. Um só tripulante consegue controlar até quatro raios, e eles só vão até o Emissor de Raio Manipulador quando houver tarefas a realizar."
+	ManipulatorBeamDesc = "Projeta até 16 pequenos raios tratores montados no teto, que coletam recursos e impulsionam tripulantes em voo. Um único tripulante consegue controlar até quatro raios, e ele vai até o Emissor de Raio Manipulador apenas quando houver tarefas a realizar."
 	ManipulatorBeamIcon = "Raio manipulador"
 	MegaRock1x1 = "Megarrocha (1x1)"
 	MegaRock2x2 = "Megarrocha (2x2)"
@@ -2845,7 +2855,7 @@ Parts
 	MegaRockWedge1x1 = "Megarrocha em cunha"
 	MegaRockWedge1x2 = "Megarrocha 1x2 em cunha"
 	MiningLaserSmall = "Laser de mineração"
-	MiningLaserSmallDesc = "Dispara um par de raios laser de precisão que podem extrair rapidamente recursos até dos asteroides mais resistentes. Também é eficaz ao recuperar naves, e pode ser usado como arma de curto alcance improvisada."
+	MiningLaserSmallDesc = "Um par de raios laser de precisão montado no teto, capaz de extrair recursos rapidamente até dos asteroides mais resistentes. Também é eficaz ao recuperar naves e pode ser usado como arma de curto alcance improvisada."
 	MiningLaserSmallIcon = "Laser de mineração"
 	MissileLauncher = "Lançador de míssil e mina"
 	MissileLauncherDesc = "Lança mísseis e minas de quaisquer tipos.\n\nO tipo de munição lançada pode ser mudado a qualquer momento durante ou depois da construção, até mesmo durante a batalha."
@@ -4001,6 +4011,7 @@ StarterShips
 	
 	ModelC = "O Modelo-C é lento e tem boa blindagem, com dois canhões que não são precisos, mas podem penetrar naves inimigas."
 	ModelL = "O Modelo-L tem grande manobrabilidade e três detonadores laser que são eficientes para destruir subsistemas inimigos. Ele não tem nenhuma defesa significativa."
+	ModelM = "O Modelo M deixa de lado as armas tradicionais em favor de um laser de mineração eficaz para extrair recursos de asteroides e destroços, sem deixar de ser um armamento capaz contra naves inimigas."
 	ModelS = "O Modelo-S troca velocidade e poder de fogo ofensivo em favor de um gerador de escudo defensivo, capaz de bloquear a artilharia inimiga."
 }
 StatCategories
@@ -4178,6 +4189,7 @@ Stats
 	TristeelProductionFmt = "<white>Taxa de produção:</white> <good>{0:0.##}</good><gray> triaço/s</gray>"
 	TristeelTritaniumUsageFmt = "<white>Uso de tritânio:</white> <good>{0:0.##}</good><gray>/triaço (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	TritaniumCapacityFmt = "<white>Capacidade de tritânio:</white> <good>{0}</good>"
+	TurretPenResistFmt = "<white>Resistência à penetração da torre:</white> <good>-{0}</good> <gray>metros</gray>"
 	TurretSpeedFmt = "<white>Velocidade da torreta:</white> <good>{0:0}°</good><gray>/s</gray>"
 	UraniumCapacityFmt = "<white>Capacidade de urânio:</white> <good>{0}</good>"
 	WeightFmt = "<white>Peso:</white> <good>{0:0.0#}</good> <gray>toneladas</gray>"

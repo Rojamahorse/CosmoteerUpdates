@@ -417,6 +417,8 @@ CareerModeConfig
 	DisableCrewConstructionTip = "Si cette option est activée, toute modification apportée à un vaisseau est effectuée immédiatement au lieu d'être réalisée par l'équipage."
 	DisableExploration = "Je déteste l'exploration"
 	DisableExplorationTip = "Révèle toutes les icônes <b>?</b> de la carte sans que vous ayez à les découvrir dans le brouillard de guerre."
+	DisableNebulas = "Je déteste les nuages et les tempêtes"
+	DisableNebulasTip = "Les nuages et les tempêtes n'apparaissent pas en mode Carrière. Si cette option est modifiée après le lancement d'une partie, elle n'affecte que les systèmes stellaires encore non visités."
 	DisableSalvaging = "Je déteste la récup'"
 	DisableSalvagingTip = "● Les missions confèrent 2 fois plus de crédits.\n● Il n'est pas possible de récupérer des ressources sur les épaves.\n● Les vaisseaux peuvent être modifiés n'importe où en utilisant uniquement des crédits."
 	EconDifficulty = "Difficulté économique"
@@ -757,11 +759,15 @@ CrewAndResourceTransfer
 	Reset = Réinitialiser
 	ResourceFailure = "Toutes les ressources demandées n'ont pas pu être transférées. Le plus souvent, ce problème est dû à l'absence de sas permettant à l'équipage d'accéder à ces ressources ou à leur destination."
 	RestockResourcesDisabledTip = "Ressources du vaisseau au max"
-	RestockResourcesLeft = "Réapprovisionne les ressources du vaisseau à gauche"
-	RestockResourcesRight = "Réapprovisionne les ressources du vaisseau à droite"
+	RestockResourcesLeft = "Réapprovisionnement des ressources du vaisseau à gauche"
+	RestockResourcesRight = "Réapprovisionnement des ressources du vaisseau à droite"
 	RestockResourcesTip = "Réapprovisionne les ressources d'un vaisseau à un autre"
 	ShipsTooFar = "VAISSEAUX TROP ÉLOIGNÉS\nPOUR UN TRANSFERT"
 	Title = "Transférer équipage/ressources"
+	TransferExcessDisabledTip = "Aucune ressource en surplus, ou la capacité de stockage de l'autre vaisseau est atteinte."
+	TransferExcessLeft = "Transfert des ressources en surplus du vaisseau à gauche"
+	TransferExcessRight = "Transfert des ressources en surplus du vaisseau à droite"
+	TransferExcessTip = "Transfère toutes les ressources dépassant la limite choisie. Si aucune limite n'a été définie, transfère toutes les ressources excédant la capacité des cases de stockages affectées."
 }
 CrewBox
 {
@@ -1411,7 +1417,7 @@ Hud
 	EnableAll = "Tout activer"
 	FameTip = Renom
 	FlightDirection = "Direction de vol"
-	FormationOrder = "Ordre de formation"
+	FormationOrder = "Formation prioritaire"
 	FormationOrderFmt = "N° {0}"
 	FormationTip = "<b>Formations</b>\n\nDisposer les vaisseaux en formation de vol."
 	FtlCancelJump = Annuler
@@ -2317,6 +2323,7 @@ Mods
 {
 	
 	Activate = Activer
+	ActivateAll = "Tout activer"
 	AuthorFmt = "Par {0}"
 	AutoDisabled = "Certains mods peuvent ne pas être compatibles avec cette version de Cosmoteer et ont été automatiquement désactivés."
 	BuiltInFolder = "Mods prédéfinis"
@@ -2324,6 +2331,7 @@ Mods
 	CreatePackage = "Créer un pack de mods"
 	CreatePackageSuccessful = "Pack de mods enregistré !"
 	Deactivate = Désactiver
+	DeactivateAll = "Tout désactiver"
 	DialogName = "Gestionnaire de mods"
 	IncompatibleWarning = "Ce mod peut ne pas être compatible avec cette version de Cosmoteer et risque d'entraîner des erreurs. Voulez-vous tout de même l'activer ?"
 	InstallMod = "Installer le mod..."
@@ -2345,10 +2353,12 @@ Mods
 	RestartNow = "Redémarrer maintenant"
 	ShowFolder = "Afficher le répertoire"
 	SteamWorkshop = "Parcourir le Workshop Steam"
-	UninstallComplete = "Mod désinstallé."
+	UninstallAll = "Désinstallation/désabonnement intégral"
+	UninstallAllConfirm = "Voulez-vous désinstaller tous les mods et vous désabonner de chacun d'entre eux ?"
+	UninstallComplete = "Mod(s) désinstallé(s)."
 	UninstallConfirm = "Désinstaller ce mod ?"
 	UninstallMod = "Désinstaller le mod"
-	UninstallingMod = "Désinstallation du mod...\nLe temps nécessaire à l'opération dépend de la taille du mod..."
+	UninstallingMod = "Désinstallation de la totalité des mods...\nLe temps nécessaire à l'opération dépend de la taille des mods concernés..."
 	Unsubscribe = "Se désabonner"
 	UserFolder = "Mods des utilisateurs"
 	UserMod = "Mod d'utilisateur"
@@ -2836,7 +2846,7 @@ Parts
 	LaserBlasterSmallDesc = "Une arme très précise et polyvalente qui tire un rayon énergétique et inflige des dégâts modérés aux vaisseaux ennemis."
 	LaserBlasterSmallIcon = ""
 	ManipulatorBeam = "Émetteur de rayon manipulateur"
-	ManipulatorBeamDesc = "Projette jusqu'à 16 petits rayons tracteurs montés sur le toit qui aident les manœuvres des membres d'équipage en vol et permettent de récupérer des ressources. Chaque membre peut contrôler jusqu'à 4 rayons. L'équipage ne s'intéresse à l'émetteur de rayon manipulateur que s'il y a des tâches à accomplir."
+	ManipulatorBeamDesc = "Projette jusqu'à 16 petits rayons tracteurs montés sur le toit, qui peuvent aider les manœuvres des membres d'équipage en vol et permettent de récupérer des ressources. Chaque membre peut contrôler jusqu'à 4 rayons. L'équipage ne s'intéresse à l'émetteur de rayon manipulateur que s'il y a des tâches à accomplir."
 	ManipulatorBeamIcon = "Rayon manipulateur"
 	MegaRock1x1 = "Méga-roche (1x1)"
 	MegaRock2x2 = "Méga-roche (2x2)"
@@ -2845,7 +2855,7 @@ Parts
 	MegaRockWedge1x1 = "Méga-roche triangulaire"
 	MegaRockWedge1x2 = "Méga-roche triangulaire 1x2"
 	MiningLaserSmall = "Laser de forage"
-	MiningLaserSmallDesc = "Tire deux rayons lasers précis, capables de rapidement extraire les ressources des astéroïdes les plus résistants. Également efficace pour exploiter des épaves, et en cas de coup dur, peut servir d'arme courte portée."
+	MiningLaserSmallDesc = "Une paire de deux rayons lasers de précision montés sur le toit, capables de rapidement extraire des ressources des astéroïdes les plus résistants. Également efficaces pour exploiter des épaves, et en cas de coup dur, peuvent servir d'arme courte portée."
 	MiningLaserSmallIcon = "Laser de forage"
 	MissileLauncher = "Lance-missiles et mines"
 	MissileLauncherDesc = "Lance des missiles ou des mines de tous types.\n\nLe type de munitions lancées peut être modifié à tout moment pendant ou après la construction, voire au combat."
@@ -4001,6 +4011,7 @@ StarterShips
 	
 	ModelC = "Lent et doté d'un blindage efficace, le Model-C dispose de deux canons dont la précision laisse à désirer, mais qui restent capables de pénétrer la coque des vaisseaux ennemis."
 	ModelL = "Très maniable, le Model-L dispose de trois canons laser particulièrement efficaces pour détruire les sous-systèmes ennemis. Il ne bénéficie toutefois d'aucune défense digne de ce nom."
+	ModelM = "Le Model-M est dépourvu des armes traditionnelles et dispose à la place d'un laser de forage. Ce dernier permet d'extraire de manière efficace des ressources des astéroïdes et des débris, tout en étant capable d'infliger des dégâts corrects aux vaisseaux ennemis."
 	ModelS = "Le Model-S sacrifie la vitesse et la puissance de feu, au profit d'un générateur de bouclier capable de bloquer les tirs ennemis."
 }
 StatCategories
@@ -4178,6 +4189,7 @@ Stats
 	TristeelProductionFmt = "<white>Taux de production :</white> <good>{0:0.##}</good><gray> tri-acier/s</gray>"
 	TristeelTritaniumUsageFmt = "<white>Consommation de tritanium :</white> <good>{0:0.##}</good><gray>/tri-acier (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	TritaniumCapacityFmt = "<white>Capacité en tritanium :</white> <good>{0}</good>"
+	TurretPenResistFmt = "<white>Résistance à la pénétration de la tourelle :</white> <good>-{0}</good> <gray>mètres</gray>"
 	TurretSpeedFmt = "<white>Vitesse de la tourelle :</white> <good>{0:0}°</good><gray>/s</gray>"
 	UraniumCapacityFmt = "<white>Capacité en uranium :</white> <good>{0}</good>"
 	WeightFmt = "<white>Masse :</white> <good>{0:0.0#}</good> <gray>tonnes</gray>"

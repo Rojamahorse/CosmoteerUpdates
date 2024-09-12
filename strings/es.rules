@@ -417,6 +417,8 @@ CareerModeConfig
 	DisableCrewConstructionTip = "Si esta opción está activada, las modificaciones a la nave se realizarán instantáneamente y no por la tripulación."
 	DisableExploration = "Odio la exploración"
 	DisableExplorationTip = "Muestra todos los iconos <b>?</b> del mapa sin tener que descubrirlos primero en la niebla de guerra."
+	DisableNebulas = "Odio las nubes y tormentas"
+	DisableNebulasTip = "Las nubes y tormentas no aparecerán en el modo Carrera. (Si se cambia después de comenzar un nuevo juego, esto solo afectará a los sistemas estelares no visitados)."
 	DisableSalvaging = "Odio Rescatar"
 	DisableSalvagingTip = "● Las misiones dan 2X créditos.\n● No es posible rescatar las naves para extraer recursos.\n● Es posible hacer modificaciones a la nave desde cualquier lugar usando solamente créditos."
 	EconDifficulty = "Dificultad económica"
@@ -762,6 +764,10 @@ CrewAndResourceTransfer
 	RestockResourcesTip = "Repone los recursos a toda su capacidad de una nave a otra"
 	ShipsTooFar = "LAS NAVES ESTÁN DEMASIADO SEPARADAS\nPARA LA TRANSFERENCIA"
 	Title = "Transferir Tripulantes / Recursos"
+	TransferExcessDisabledTip = "No hay recursos excedentes o la otra nave está a plena capacidad."
+	TransferExcessLeft = "Transfiere recursos excedentes desde la nave a la izquierda"
+	TransferExcessRight = "Transfiere recursos excedentes desde la nave a la derecha"
+	TransferExcessTip = "Transfiere todos los recursos que exceden el límite deseado. Si no se estableció un límite, transfiere todos los recursos que exceden aquellos que entran en las casillas de almacenamiento designadas."
 }
 CrewBox
 {
@@ -1411,7 +1417,7 @@ Hud
 	EnableAll = "Activar todo"
 	FameTip = Fama
 	FlightDirection = "Dirección de vuelo"
-	FormationOrder = "Orden de formación"
+	FormationOrder = "Prioridad de formación"
 	FormationOrderFmt = "n.º {0}"
 	FormationTip = "<b>Formaciones</b>\n\nOrganiza tus naves en una formación de vuelo."
 	FtlCancelJump = Cancelar
@@ -2317,6 +2323,7 @@ Mods
 {
 	
 	Activate = Activar
+	ActivateAll = "Activar todo"
 	AuthorFmt = "Creado por {0}"
 	AutoDisabled = "Algunos mods pueden no ser compatibles con esta versión de Cosmoteer y se han desactivado automáticamente."
 	BuiltInFolder = "Mods integrados"
@@ -2324,6 +2331,7 @@ Mods
 	CreatePackage = "Crear paquete de mods"
 	CreatePackageSuccessful = "¡Paquete de mods guardado!"
 	Deactivate = Desactivar
+	DeactivateAll = "Desactivar todo"
 	DialogName = "Administrador de mods"
 	IncompatibleWarning = "Ese mod puede ser incompatible con esta versión de Cosmoteer y puede causar errores. ¿Estás seguro de que deseas activarla?"
 	InstallMod = "Instalar Mod…"
@@ -2345,10 +2353,12 @@ Mods
 	RestartNow = "Reiniciar ahora"
 	ShowFolder = "Mostrar carpeta"
 	SteamWorkshop = "Explorar Steam Workshop"
-	UninstallComplete = "Mod desinstalado correctamente."
+	UninstallAll = "Desinstalar/Cancelar suscripción a todo"
+	UninstallAllConfirm = "¿Estás seguro de que deseas desinstalar y cancelar la suscripción a todos los mods?"
+	UninstallComplete = "Mod(s) desinstalado(s) correctamente."
 	UninstallConfirm = "¿Estás seguro de que deseas desinstalar este mod?"
 	UninstallMod = "Desinstalar mod"
-	UninstallingMod = "Desinstalando mod…\nEsto puede tomar un poco de tiempo, dependiendo del tamaño del mod."
+	UninstallingMod = "Desinstalando mod(s)…\nEsto puede tomar un poco de tiempo, dependiendo del tamaño de los mods."
 	Unsubscribe = "Cancelar suscripción"
 	UserFolder = "Mods del usuario"
 	UserMod = "Mod del usuario"
@@ -2428,7 +2438,7 @@ Nebulas
 	CloudyHudFmt = "<s14>{0:0.} %</s14>\n<s12><gray>gaseosa</gray></s12>"
 	Electron = "<b>Nube de electrones</b>\nEl generador del reactor de la nave se reduce un 80 %, pero las armas de energía infligen 75 % más de daño y los propulsores son más potentes. Las naves no pueden realizar un hipersalto y el rango del radar disminuye debido a la interferencia electromagnética."
 	ElectronHudFmt = "<s14><color r='180' g='255' b='77'>{0:0.} %</color></s14>\n<s12><gray>electrones</gray></s12>"
-	IonStorm = "<b>Tormenta de iones</b>\nLas naves dentro de la tormenta frecuentemente reciben impactos de los rayos de iones."
+	IonStorm = "<b>Tormenta de iones</b>\nLas naves dentro de la tormenta frecuentemente recibirán impactos de los rayos de iones."
 	IonStormHudFmt = "<s14><bad>{0:0.} %</bad></s14>\n<s12><gray>tormenta</gray></s12>"
 }
 NewGame
@@ -2836,7 +2846,7 @@ Parts
 	LaserBlasterSmallDesc = "Un arma muy precisa y versátil que dispara explosiones de energía que causan daños moderados a las naves enemigas."
 	LaserBlasterSmallIcon = Láser
 	ManipulatorBeam = "Emisor del Rayo Manipulador"
-	ManipulatorBeamDesc = "Proyecta hasta 16 rayos de arrastre pequeños montados en el techo que te ayudan a recoger recursos y aumentar la tripulación voladora. Un solo tripulante puede controlar hasta cuatro rayos, y solo irán al Emisor del Rayo Manipulador cuando haya tareas con las que ayudar."
+	ManipulatorBeamDesc = "Proyecta hasta 16 rayos tractores pequeños montados en el techo que pueden recoger recursos y aumentar la tripulación voladora. Un solo tripulante puede controlar hasta cuatro rayos, y solo irán al Emisor del Rayo Manipulador cuando haya tareas con las que ayudar."
 	ManipulatorBeamIcon = "Rayo Manipulador"
 	MegaRock1x1 = "Megarroca (1x1)"
 	MegaRock2x2 = "Megarroca (2x2)"
@@ -2845,7 +2855,7 @@ Parts
 	MegaRockWedge1x1 = "Cuña de Megarroca"
 	MegaRockWedge1x2 = "Cuña de Megarroca 1x2"
 	MiningLaserSmall = "Láser para Extracción"
-	MiningLaserSmallDesc = "Dispara un par de rayos láser de precisión que pueden extraer rápidamente recursos incluso de los asteroides más duros. También es eficaz en el rescate de naves y, en un apuro, puede usarse como arma de corto alcance."
+	MiningLaserSmallDesc = "Un par de rayos láser de precisión montados en el techo que pueden extraer rápidamente recursos incluso de los asteroides más duros. También es eficaz en el rescate de naves y, en un apuro, puede usarse como arma de corto alcance."
 	MiningLaserSmallIcon = "Láser para Extracción"
 	MissileLauncher = "Lanzador de Misiles y Minas"
 	MissileLauncherDesc = "Lanza misiles o minas de cualquier tipo.\n\nEl tipo de municiones lanzadas puede cambiarse en cualquier momento durante o después de la construcción, incluso durante la batalla."
@@ -4001,6 +4011,7 @@ StarterShips
 	
 	ModelC = "La Model-C es lenta y está bien blindada y equipada con dos cañones que son inexactos, pero pueden penetrar en las naves enemigas."
 	ModelL = "La Model-L es altamente maniobrable y cuenta con tres rayos láser que son eficaces para destruir subsistemas enemigos. Carece de defensas importantes."
+	ModelM = "El Model-M deja de lado las armas tradicionales y opta por un láser de minería que es eficaz para extraer recursos de asteroides y escombros, a la vez que sigue siendo un armamento capaz contra las naves enemigas."
 	ModelS = "La Model-S cede en velocidad y potencia de fuego ofensiva en favor de un generador de escudo defensivo que puede bloquear el fuego enemigo entrante."
 }
 StatCategories
@@ -4140,10 +4151,10 @@ Stats
 	SeparationRangeFmt = "<white>Separación:</white> <good>{0:0}</good> <gray>m</gray>"
 	ShellDamageResistFmt = "<white>Resistencia a daños en carcasa:</white> <good>{0}%</good>"
 	ShellPenResistFmt = "<white>Resistencia a la penetración en carcasa:</white> <good>-{0}</good> <gray>metros</gray>"
-	ShieldArcFmt = "<white>Arco de escudo:</white> <good>{0:0}°</good>"
+	ShieldArcFmt = "<white>Arco del escudo:</white> <good>{0:0}°</good>"
 	ShieldDamageFmt = "<white>Daño vs. escudos:</white> <good>{0:n0}</good><gray>/disparo (</gray><good>{1:n0}</good><gray>/s)</gray>"
-	ShieldDistFmt = "<white>Distancia de escudo:</white> <good>{0}</good><gray> m</gray>"
-	ShieldHPFmt = "<white>Resistencia de escudo:</white> <good>{0:n0}</good>"
+	ShieldDistFmt = "<white>Distancia del escudo:</white> <good>{0}</good><gray> m</gray>"
+	ShieldHPFmt = "<white>Resistencia del escudo:</white> <good>{0:n0}</good>"
 	ShieldPenResistFmt = "<white>Resistencia a la penetración de escudo:</white> <good>-{0}</good> <gray>m</gray>"
 	ShieldPenetrationFmt = "<white>Penetración de escudo:</white> <good>{0:.##}</good> <gray>escudos</gray>"
 	ShotAmmoUsageFmt = "<white>Uso de municiones:</white> <good>{0:0.##}</good><gray>/disparo (</gray><good>{1:0.##}</good><gray>/s)</gray>"
@@ -4178,6 +4189,7 @@ Stats
 	TristeelProductionFmt = "<white>Tasa de producción:</white> <good>{0:0.##}</good><gray> Triacero/s</gray>"
 	TristeelTritaniumUsageFmt = "<white>Uso de Tritanio:</white> <good>{0:0.##}</good><gray>/Triacero (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	TritaniumCapacityFmt = "<white>Capacidad de Tritanio:</white> <good>{0}</good>"
+	TurretPenResistFmt = "<white>Resistencia a la penetración de torretas:</white> <good>-{0}</good> <gray>metros</gray>"
 	TurretSpeedFmt = "<white>Velocidad de torreta:</white> <good>{0:0}°</good><gray>/s</gray>"
 	UraniumCapacityFmt = "<white>Capacidad de uranio:</white> <good>{0}</good>"
 	WeightFmt = "<white>Peso:</white> <good>{0:0.0#}</good><gray> toneladas</gray>"
