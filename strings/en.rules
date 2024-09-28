@@ -1158,6 +1158,8 @@ Settings
 
 		LimitFps = "Limit Framerate"
 		LimitFpsTip = "If checked, the game will not run any faster than a particular framerate."
+		LimitFpsUnfocused = "Limit Framerate (In Background)"
+		LimitFpsUnfocusedTip = "If checked, the game will not run any faster than a particular framerate while running in the background."
 		LimitFpsNumber = " Frames Per Second"
 		LimitFpsNumberTip = "The maximum number of frames to render per second."
 
@@ -1242,10 +1244,13 @@ Settings
 		SelectedPartStatusBarsTip = "If checked, health and status bars will be displayed for any selected parts."
 
 		ShowSpaceCrewLines = "Show Flying Crew Lines"
-		ShowSpaceCrewLinesTip = "If checked, lines from flying crew to ship will be shown."
+		ShowSpaceCrewLinesTip = "If checked, dotted lines will be displayed connecting flying crew to their ships."
 
 		ShowResourcePickupLines = "Show Floating Resource Lines"
-		ShowResourcePickupLinesTip = "If checked, lines from floating resource to ship will be shown."
+		ShowResourcePickupLinesTip = "If checked, dotted lines will be displayed connecting floating resources to their intended storages."
+
+		NuggetsDots = "Show Floating Resource Dots"
+		NuggetsDotsTip = "If enabled, the locations of previously-detected resources will be indicated with small dots."
 
 		PauseOnOpenDialogueWithEnemy = "Pause On Dialogue With Enemy"
 		PauseOnOpenDialogueWithEnemyTip = "If checked, the game will automatically pause when opening dialogue with an enemy ship."
@@ -2124,6 +2129,7 @@ CareerMode
 	MissionCompleted = "MISSION COMPLETED"
 	MissionFailed = "MISSION FAILED"
 	FameLevelUp = "FAME LEVEL UP"
+	FameLevelUpCrewGained = "+{0} crew"
 	ReputationLevelUp = "REPUTATION LEVEL UP"
 	ReputationLevelDown = "REPUTATION LEVEL DOWN"
 	ReputationLevelTitleFmt = "{0} {1} - {2} {0}"
@@ -2618,6 +2624,8 @@ PvpModeConfig
 	ShrinkingPerimeterTip = "If checked, the Ring of Death will gradually shrink over time."
 	AllowChangeShips = "Allow Changing Fleet Loadout"
 	AllowChangeShipsTip = "If checked, then during the battle players will be able to change their loadout of buyable ships."
+	SpawnAsteroids = "Asteroids"
+	SpawnAsteroidsTip = "If checked, asteroids will be added to the battle area."
 	ShareFunds = "Share Team Credits"
 	ShareFundsTip = "If checked, the credits for each player on a team will be pooled together."
 	LockTeams = "Only Host Can Assign Teams"
@@ -3045,8 +3053,13 @@ Hud
 	FormationOrder = "Formation Priority"
 	FormationOrderFmt = "#{0}"
 
-	HelpsWithConstruction = "Assists With Construction"
-	HelpsWithConstructionTip = "If checked, then the selected ship(s) will assist other nearby friendly ships with construction, deconstruction, and repairs."
+	ConstructionAssistance = "Construction Assistance"
+	ConstructionAssistanceOff = "Off"
+	ConstructionAssistanceOffTip = "The ship will not help any other ships with construction, deconstruction, or repairs."
+	ConstructionAssistanceOwned = "My Ships Only"
+	ConstructionAssistanceOwnedTip = "The ship will help any other ships owned by the same player with construction, deconstruction, and repairs."
+	ConstructionAssistanceAllied = "All Allied Ships"
+	ConstructionAssistanceAlliedTip = "The ship will help all allied ships with construction, deconstruction, and repairs."
 
 	SaveDefaults = "Save Attack Defaults"
 	SaveDefaultsTip = "Saves the current attack distance, orientation, and angle as the new defaults to use for the selected ship(s)."
@@ -3146,6 +3159,7 @@ BuildBox
 	InsufficientBeds = "NOT ENOUGH BEDS"
 	Crew = "Crew/Beds"
 	CrewFmt = "{0}/{3}"
+	CrewOperatorsFmt = "Operator Seats: <b>{0}</b>"
 	Power = "Power"
 	CommandPoints = "Command Points"
 	CommandPointsFmt = "{3}"
@@ -3579,7 +3593,7 @@ ResourcesBox
 	ClearAllSupplyTargets = "Clear All Supply Links"
 	ClearAllSupplyTargetsTip = "Removes all supply links across the entire ship."
 	EjectResourcesTip = "Eject the selected resources out the nearest airlock.\n\nHotkey: <btn id='Resources.Eject'/>"
-	SetResourceLimits = "Set Resource Limits..."
+	SetResourceLimits = "Resource Desires & Limits..."
 	EjectSome = "Eject Some..."
 	EjectSomeTip = "Type in a specific number of resources to eject from the ship."
 	EjectSomeDialogFmt = "How many {0}<b>{1}</b> should be ejected?\nHave: <b>{2}/{3}</b>"
@@ -3612,12 +3626,16 @@ CrewAndResourceTransfer
 
 ResourceLimits
 {
-	Title = "Resource Storage Limits"
-	RemoveAll = "Remove All Limits"
+	Title = "Resource Desires & Limits"
+	RemoveAllLimits = "Remove All Limits"
+	RemoveAllDesires = "Remove All Desires"
 	HeaderLimit = "Limit"
+	HeaderDesired = "Desired"
 	HeaderCount = "Stored"
-	SetToStoredFmt = "Set To Stored ({0})"
-	SetToDesignatedFmt = "Set To Designated ({0})"
+	SetDesiredToStoredFmt = "Set Desired To Stored ({0})"
+	SetDesiredToDesignatedFmt = "Set Desired To Designated ({0})"
+	SetLimitToStoredFmt = "Set Limit To Stored ({0})"
+	SetLimitToDesignatedFmt = "Set Limit To Designated ({0})"
 }
 
 CommsBox
@@ -3660,10 +3678,10 @@ CommWindow
 	Hire = "Hire"
 	AutoHireFmt = "Hire Max ({0})\n{1}"
 	AutoHireNone = "Hire Max (0)\n<img name='money' colored='true'/>0"
-	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} souls</b> on {2} want to join your crew.\nIncrease your <fame>FAME</fame> to persuade more.</s12>"
+	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} souls</b> on {2} want to join your crew.\nIncrease your <fame>FAME</fame> to {3} to persuade more.</s12>"
 	Crew = "CREW"
 	Beds = "BEDS"
-	InsufficientFame = "Increase your <fame>FAME</fame> to persuade this person to join your crew."
+	InsufficientFame = "Increase your <fame>FAME</fame> to {0} to persuade this person to join your crew."
 	InsufficientBeds = "All of the beds on your ship are occupied. Build more crew quarters to hire more crew."
 	RehireDebtFmt = "Hiring replacement crew will cost <ins_money>{0:n0}</ins_money> but you only have <money>{1:n0}</money>. "\
 	                "You can go into debt to hire replacement crew, but while in debt you will not be able to make most kinds of purchases until you pay back the debt."
@@ -3691,18 +3709,14 @@ Dialogue
 {
 	Surrender
 	{
-		PlayerSurrenderDialogue = "{0} is willing to let you surrender for <ins_money>{1:n0}</ins_money>."
-		AISurrenderDialogue = "{0} is requesting to surrender to you for <money>{1:n0}</money>."
-		PlayerSurrenderPayBountyDialogue = "{0} is willing to let you surrender for <ins_money>{1:n0}</ins_money>, paying off your bounty to {2}"
-		PlayerSurrender = "Surrender"
-		PlayerSurrenderTip = "Surrender to the enemy ship.  You will pay <ins_money>{0:n0}</ins_money> and the ship will stop attacking you for a while."
-		PlayerSurrenderPayBountyTip = "Surrender to the enemy ship.  You will pay <ins_money>{0:n0}</ins_money> and bounty from {1} will be paid off."
-		DeclinePlayerSurrender = "Fight On"
-		DeclinePlayerSurrenderTip = "Decline to surrender to the enemy ship.  You will continue to fight."
-		AISurrender = "Accept Surrender"
-		AISurrenderTip = "Accept the enemy ship's surrender.  You will receive <money>{0:n0}</money> and the ship will become neutral to you."
-		DeclineAISurrender = "Fight On"
-		DeclineAISurrenderTip = "Reject the enemy ship's surrender.  You will continue to fight."
+		PlayerSurrenderDialogue = "<b>{0}:</b> <i>\"You are outmatched! Surrender now and pay us <money>{1:n0}</money>... or die!\"</i>"
+		AISurrenderDialogue = "<b>{0}:</b> <i>\"We surrender! If you promise not to destroy us, we'll pay you <money>{1:n0}</money>!\"</i>"
+		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>\"Fugitive, the {2} has issued a bounty of <money>{1:n0}</money> for your destruction. Pay it now, or prepare to be destroyed.\"</i>"
+		PlayerSurrender = "<i>\"We surrender!\"</i> (Pay <money>{0:n0}</money>)"
+		PlayerSurrenderPayBounty = "<i>\"We'll pay the bounty.\"</i> (Pay <money>{0:n0}</money>)"
+		DeclinePlayerSurrender = "<i>\"Never!\"</i>"
+		AISurrender = "<i>\"We accept your surrender.\"</i>"
+		DeclineAISurrender = "[Terminate Connection]"
 	}
 }
 
@@ -4519,6 +4533,7 @@ Stats
 	MinePartCapacityFmt = "<white>Capacity:</white> <good>{0}</good><gray> parts (</gray><good>{1:0.##}</good><gray> mines)</gray>"
 	MineCapacityFmt = "<white>Mine Capacity:</white> <good>{0}</good>"
 	MissilePartsFmt = "<white>Assembled From:</white> <good>{0}</good><gray> parts/missile</gray>"
+	MinePartsFmt = "<white>Assembled From:</white> <good>{0}</good><gray> parts/mine</gray>"
 	ShrapnelFmt = "<white>Shrapnel:</white> <good>{0}</good>"
 	ShieldHPFmt = "<white>Shield Strength:</white> <good>{0:n0}</good>"
 	ShieldPenResistFmt = "<white>Shield Pen. Resist:</white> <good>-{0}</good> <gray>meters</gray>"
@@ -5077,7 +5092,7 @@ Tutorials
 		Stacks = "Most resources are stored in <good>stacks</good> on <good>storage tiles</good>. Storage Bays can hold stacks of any type. Weapons, factories, and other specialized parts can only hold resources that they actually use or produce."
 		Move = "To tell your crew to <good>move resources</good> from one tile to another, select the <white>Move Resources</white> tool, click the stack of resources you want to move, and then click the tile where they should be moved."
 		Designate = "You can also tell your crew to store <good>only a specific resource</good> in specific tiles. Click the button for the desired resource and then click on the tiles that should only store that resource. Your crew will try to store that resource in those tiles whenever possible and will not automatically store other resources in them."
-		Limits = "To <good>limit the quantity</good> of a resource stored on your ship, open the <img name='hamburger_up'/> menu and then select <white>Set Resource Limits</white>."
+		Limits = "To <good>limit the quantity</good> of a resource stored on your ship, open the <img name='hamburger_up'/> menu and then select <white>Resource Desires &amp; Limits</white>."
 		SupplyChains = "Lastly, you can also set up <good>supply chains</good> between storages, factories, reactors, weapons, and other parts. This works very similarly to crew squad orders: When a supply link is added, the supplier and receiver will never send resources to or receive resources from any other parts."
 	}
 
@@ -5629,7 +5644,7 @@ Tips
 	ResourceLimits
 	{
 		Title = "Resource Limits"
-		Tip1 = "You can limit how many resources your ship will store of any specific type. <btn id='General.UIAltClick'/> on the Gather/Salvage/Mine button and select <white>Set Resource Limits</white>."
+		Tip1 = "You can limit how many resources your ship will store of any specific type. <btn id='General.UIAltClick'/> on the Gather/Salvage/Mine button and select <white>Resource Desires &amp; Limits</white>."
 		Tip2 = "When a limit has been set for a specific kind of resource, your crew won't gather, your factories won't produce, and you won't be able to buy, more than that limit."
 	}
 	MovingResources

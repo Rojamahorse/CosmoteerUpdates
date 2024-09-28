@@ -462,6 +462,7 @@ MineStats
 		SeparationRange = &<./Data/shots/mine/mine_deployed.rules>/Components/Repulsion/Range
 		DetonationRange = &<./Data/shots/mine/mine_deployed.rules>/Components/DeathByEnemyProximity/Range
 		Shrapnel = &<./Data/shots/mine/mine_deployed.rules>/Components/DeathByEnemyProximity/OnDeath/HitEffects/0/Count
+		MineParts = &~/Components/Emitter1/ResourcesUsed
 	}
 }
 

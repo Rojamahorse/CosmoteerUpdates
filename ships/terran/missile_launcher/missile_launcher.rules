@@ -20,7 +20,7 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 6000
 	TypeCategories = [weapon, uses_missiles, uses_emps, uses_nukes, uses_mines, uses_launcher_parts, is_crewed]
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
 	ProhibitAbove = 2
 	AllowedDoorLocations
 	[
