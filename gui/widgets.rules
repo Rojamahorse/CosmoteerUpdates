@@ -126,6 +126,7 @@ FuelTextColor = [0, 188, 255]
 InsufficientFuelTextColor = [246, 49, 43]
 FameTextColor = [0, 183, 255]
 InsufficientFameTextColor = &BadTextColor
+LimitedTextColor = Orange
 
 DefaultCursor          { File="cursor_arrow.png"; HotSpot=[8,8]; Scale=.5; }
 RightClickCursor       { File="cursor_right_click.png"; HotSpot=[8,8]; Scale=.5; }

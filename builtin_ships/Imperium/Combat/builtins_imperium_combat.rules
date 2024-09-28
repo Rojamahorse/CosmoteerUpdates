@@ -8,18 +8,18 @@ Ships
 	:~{ File="Merlin.ship.png";        Tier=1;  Difficulty=2; }
 	:~{ File="Kestral.ship.png";       Tier=1;  Difficulty=2; }
 	:~{ File="Swift.ship.png";         Tier=1;  Difficulty=2; }
-	:~{ File="Fantail.ship.png";       Tier=1;  Difficulty=2; }
+	:~{ File="Fantail.ship.png";       Tier=1;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Milvus.ship.png";        Tier=1;  Difficulty=2; }
 	:~{ File="Sparrowhawk.ship.png";   Tier=2;  Difficulty=2; }
 	:~{ File="Greyskull.ship.png";     Tier=2;  Difficulty=2; }
-	:~{ File="Erponis.ship.png";       Tier=2;  Difficulty=2; }
+	:~{ File="Erponis.ship.png";       Tier=2;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Yuhina.ship.png";        Tier=2;  Difficulty=2; }
 	:~{ File="Harrier.ship.png";       Tier=2;  Difficulty=3; }
 	:~{ File="Longspur.ship.png";      Tier=2;  Difficulty=3; }
 	:~{ File="Serpent Eagle.ship.png"; Tier=3;  Difficulty=2; }
 	:~{ File="Gonolek.ship.png";       Tier=3;  Difficulty=2; }
 	:~{ File="Pardalote.ship.png";     Tier=3;  Difficulty=2; }
-	:~{ File="Robin.ship.png";       Tier=3;  Difficulty=2; OtherIDs=["Elanine"]; }
+	:~{ File="Robin.ship.png";         Tier=3;  Difficulty=2; OtherIDs=["Elanine"]; }
 	:~{ File="Hummingbird.ship.png";   Tier=3;  Difficulty=2; }
 	:~{ File="Osprey.ship.png";        Tier=3;  Difficulty=3; }
 	:~{ File="Avicida.ship.png";       Tier=3;  Difficulty=3; }
@@ -28,7 +28,7 @@ Ships
 	:~{ File="Asio.ship.png";          Tier=4;  Difficulty=2; }
 	:~{ File="Black Knight.ship.png";  Tier=4;  Difficulty=2; }
 	:~{ File="Torgos.ship.png";        Tier=4;  Difficulty=2; }
-	:~{ File="Condor.ship.png";        Tier=4;  Difficulty=3; }
+	:~{ File="Condor.ship.png";        Tier=4;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ninox.ship.png";         Tier=4;  Difficulty=3; }
 	:~{ File="Kite.ship.png";          Tier=5;  Difficulty=2; }
 	:~{ File="Skirath.ship.png";       Tier=5;  Difficulty=2; }
@@ -39,25 +39,25 @@ Ships
 	:~{ File="Kingfisher.ship.png";    Tier=6;  Difficulty=2; }
 	:~{ File="Pandion.ship.png";       Tier=6;  Difficulty=3; }
 	:~{ File="Selim.ship.png";         Tier=6;  Difficulty=3; }
-	:~{ File="Saker.ship.png";         Tier=6;  Difficulty=3; }
+	:~{ File="Saker.ship.png";         Tier=6;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Corvettes
 	:~{ File="Shikra.ship.png";        Tier=7;  Difficulty=2; }
 	:~{ File="Lanius.ship.png";        Tier=7;  Difficulty=2; }
-	:~{ File="Sittella.ship.png";      Tier=7;  Difficulty=2; }
+	:~{ File="Sittella.ship.png";      Tier=7;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Spectre.ship.png";       Tier=7;  Difficulty=2; }
 	:~{ File="Lanner.ship.png";        Tier=7;  Difficulty=3; }
-	:~{ File="Cooper Hawk.ship.png";    Tier=7;  Difficulty=3; }
+	:~{ File="Cooper Hawk.ship.png";   Tier=7;  Difficulty=3; }
 	:~{ File="Sharpshinned.ship.png";  Tier=7;  Difficulty=3; }
 	:~{ File="Tyto.ship.png";          Tier=8;  Difficulty=2; }
-	:~{ File="Arokotka.ship.png";      Tier=8;  Difficulty=2; }
+	:~{ File="Arokotka.ship.png";      Tier=8;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Caracara.ship.png";      Tier=8;  Difficulty=3; }
 	:~{ File="Neophron.ship.png";      Tier=8;  Difficulty=3; }
 	:~{ File="Rain Crow.ship.png";     Tier=8;  Difficulty=3; }
 	:~{ File="Taita.ship.png";         Tier=9;  Difficulty=2; }
-	:~{ File="Hercinia.ship.png";      Tier=9;  Difficulty=2; }
+	:~{ File="Hercinia.ship.png";      Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Buzzard.ship.png";       Tier=9;  Difficulty=3; }
-	:~{ File="Strix.ship.png";         Tier=9;  Difficulty=3; }
+	:~{ File="Strix.ship.png";         Tier=9;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Nighthawk.ship.png";     Tier=9;  Difficulty=3; }
 
 	// Frigates
@@ -67,7 +67,7 @@ Ships
 	:~{ File="Goshawk.ship.png";       Tier=10;  Difficulty=3; }
 	:~{ File="Skein.ship.png";         Tier=10;  Difficulty=3; }
 	:~{ File="Ostrich.ship.png";       Tier=11;  Difficulty=2; }
-	:~{ File="Ceyx.ship.png";          Tier=11;  Difficulty=2; }
+	:~{ File="Ceyx.ship.png";          Tier=11;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Cyrus.ship.png";         Tier=11;  Difficulty=3; }
 	:~{ File="Jackdaw.ship.png";       Tier=11;  Difficulty=3; }
 	:~{ File="Besra.ship.png";         Tier=12;  Difficulty=2; }
@@ -82,18 +82,18 @@ Ships
 	:~{ File="Kiriyus.ship.png";       Tier=13;  Difficulty=3; }
 	:~{ File="Rufescent.ship.png";     Tier=13;  Difficulty=3; }
 	:~{ File="Tytonidae.ship.png";     Tier=13;  Difficulty=3; }
-	:~{ File="Kanishka.ship.png";      Tier=13;  Difficulty=3; }
+	:~{ File="Kanishka.ship.png";      Tier=13;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Raven.ship.png";         Tier=13;  Difficulty=3; }
 	:~{ File="Ictinia.ship.png";       Tier=14;  Difficulty=2; }
 	:~{ File="Elanus.ship.png";        Tier=14;  Difficulty=2; }
-	:~{ File="Harpy.ship.png";         Tier=14;  Difficulty=2; }
+	:~{ File="Harpy.ship.png";         Tier=14;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Xerxes.ship.png";        Tier=14;  Difficulty=3; }
-	:~{ File="Semiramis.ship.png";     Tier=14;  Difficulty=3; }
+	:~{ File="Semiramis.ship.png";     Tier=14;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Cruisers
 	:~{ File="Griffin.ship.png";       Tier=15;  Difficulty=2; }
 	:~{ File="Zeno.ship.png";          Tier=15;  Difficulty=2; }
-	:~{ File="Lancea Libertatis.ship.png"; Tier=15;  Difficulty=2; }
+	:~{ File="Lancea Libertatis.ship.png"; Tier=15;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Temujin.ship.png";       Tier=15;  Difficulty=3; OtherIDs=["Temüjin"]; }
 	:~{ File="Shrike.ship.png";        Tier=15;  Difficulty=3; }
 	:~{ File="Daedalus.ship.png";      Tier=15;  Difficulty=3; }
@@ -101,7 +101,7 @@ Ships
 
 	// Battleships
 	:~{ File="Stygil.ship.png";        Tier=16;  Difficulty=2; }
-	:~{ File="Alamgir.ship.png";       Tier=16;  Difficulty=2; }
+	:~{ File="Alamgir.ship.png";       Tier=16;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Slipstream.ship.png";    Tier=16;  Difficulty=2; }
 	:~{ File="Damocles.ship.png";      Tier=16;  Difficulty=2; }
 	:~{ File="Achaemenes.ship.png";    Tier=16;  Difficulty=3; }
@@ -110,7 +110,7 @@ Ships
 	// Battlecruisers
 	:~{ File="Anzu.ship.png";          Tier=17;  Difficulty=3; }
 	:~{ File="Alexander.ship.png";     Tier=17;  Difficulty=3; }
-	:~{ File="Qin Shi Huang.ship.png"; Tier=17;  Difficulty=3; }
+	:~{ File="Qin Shi Huang.ship.png"; Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Saladin.ship.png";       Tier=17;  Difficulty=3; }
 
 	// Flagships
@@ -118,5 +118,5 @@ Ships
 	:~{ File="Odysseus.ship.png";      Tier=18;  Difficulty=3; }
 	:~{ File="Thunderbird.ship.png";   Tier=18;  Difficulty=3; }
 	:~{ File="Augustus.ship.png";      Tier=18;  Difficulty=3; }
-	:~{ File="Vajra's Valor.ship.png"; Tier=18;  Difficulty=3; }
+	:~{ File="Vajra's Valor.ship.png"; Tier=18;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 ]

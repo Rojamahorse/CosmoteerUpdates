@@ -3,5 +3,9 @@ Spawners
 	{
 		Type = Doodads
 		DoodadType = cosmoteer.megaroid_l
+		Conditions
+        {
+        	ProhibitSpawnFlags = [ disable_asteroids ]
+        }
 	}
 ]

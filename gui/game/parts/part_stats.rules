@@ -456,6 +456,10 @@ PartStats
 		FormatKey = "Stats/MissilePartsFmt"
 	}
 	{
+		ID = MineParts
+		FormatKey = "Stats/MinePartsFmt"
+	}
+	{
 		ID = HEMissileCapacity
 		FormatKey = "Stats/HEMissileCapacityFmt"
 	}

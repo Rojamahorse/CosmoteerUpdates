@@ -124,6 +124,7 @@ MissionsTabIcon = &<../missions/missions_gui.rules>/LogIcon
 HireTabIcon = &<../crew/crew_gui.rules>/ToolIcon
 TradeTabIcon = &<../resources/resources_gui.rules>/ToolIcon
 TechsTabIcon = &<../designer/build_gui.rules>/BlueprintsOffSprite
+
 DialogueTabIcon
 {
 	Texture
@@ -132,4 +133,45 @@ DialogueTabIcon
 	    MipLevels = 2
 	    SampleMode = Linear
 	}
+}
+
+DefaultDialogueLineIcon
+{
+	Texture
+	{
+	    File = "default_dialogue_line.png"
+	    MipLevels = 2
+	    SampleMode = Linear
+	}
+	Size = [40, 40]
+}
+AcceptSurrenderIcon
+{
+	Texture
+	{
+	    File = "accept_surrender.png"
+	    MipLevels = 2
+	    SampleMode = Linear
+	}
+	Size = [40, 40]
+}
+RejectSurrenderIcon
+{
+	Texture
+	{
+	    File = "reject_surrender.png"
+	    MipLevels = 2
+	    SampleMode = Linear
+	}
+	Size = [40, 40]
+}
+OfferSurrenderIcon
+{
+	Texture
+	{
+	    File = "offer_surrender.png"
+	    MipLevels = 2
+	    SampleMode = Linear
+	}
+	Size = [40, 40]
 }

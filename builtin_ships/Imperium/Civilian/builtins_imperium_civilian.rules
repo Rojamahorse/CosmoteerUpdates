@@ -4,20 +4,20 @@ Tags = [civilian]
 Ships
 [
 	// Trade ships
-	:~{ File="Auklet.ship.png";     Tier=3;  Tags : ~/Tags [trade] }
-	:~{ File="Dovekie.ship.png";    Tier=3;  Tags : ~/Tags [trade] }
-	:~{ File="Skua.ship.png";       Tier=3;  Tags : ~/Tags [trade] }
-	:~{ File="Gannet.ship.png";     Tier=3;  Tags : ~/Tags [trade] }
-	:~{ File="Cormorant.ship.png";  Tier=5;  Tags : ~/Tags [trade] }
-	:~{ File="Fulmar.ship.png";     Tier=5;  Tags : ~/Tags [trade] }
-	:~{ File="Murrelet.ship.png";   Tier=5;  Tags : ~/Tags [trade] }
-	:~{ File="Gull.ship.png";       Tier=5;  Tags : ~/Tags [trade] }
-	:~{ File="Pelican.ship.png";    Tier=7;  Tags : ~/Tags [trade] }
-	:~{ File="Petrel.ship.png";     Tier=7;  Tags : ~/Tags [trade] }
-	:~{ File="Guillemot.ship.png";  Tier=7;  Tags : ~/Tags [trade] }
-	:~{ File="Cygnus.ship.png";     Tier=7;  Tags : ~/Tags [trade] }
-	:~{ File="Albatross.ship.png";  Tier=10; Tags : ~/Tags [trade] }
-	:~{ File="Shearwater.ship.png"; Tier=10; Tags : ~/Tags [trade] }
-	:~{ File="Thalassarche.ship.png"; Tier=10; Tags : ~/Tags [trade] }
-	:~{ File="Stenidae.ship.png";   Tier=10; Tags : ~/Tags [trade] }
+	:~{ File="Auklet.ship.png";       Tier=3;  Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Dovekie.ship.png";      Tier=3;  Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Skua.ship.png";         Tier=3;  Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Gannet.ship.png";       Tier=3;  Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Cormorant.ship.png";    Tier=5;  Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Fulmar.ship.png";       Tier=5;  Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Murrelet.ship.png";     Tier=5;  Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Gull.ship.png";         Tier=5;  Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Pelican.ship.png";      Tier=7;  Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Petrel.ship.png";       Tier=7;  Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Guillemot.ship.png";    Tier=7;  Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Cygnus.ship.png";       Tier=7;  Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Albatross.ship.png";    Tier=10; Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Shearwater.ship.png";   Tier=10; Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Thalassarche.ship.png"; Tier=10; Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Stenidae.ship.png";     Tier=10; Tags : ~/Tags [trade, empty_storage] }
 ]

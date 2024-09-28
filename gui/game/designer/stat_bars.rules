@@ -15,6 +15,15 @@ StatBars
 		AddCrewToProvidedStat = true
 		RoundUp = true
 		CustomValueTextKey = "BuildBox/CrewFmt"
+		AdditionalStatMarkers
+		[
+			{
+				TooltipKey = "BuildBox/CrewOperatorsFmt"
+				Stat = CrewRequired
+				StatColor = &<./Data/gui/widgets.rules>/GoodTextColor
+				ShowOnTooltipOnly = true 
+			}
+		]
 	}
 	{
 		NameKey = "BuildBox/Power"

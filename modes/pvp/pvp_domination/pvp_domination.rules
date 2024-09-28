@@ -25,6 +25,11 @@ Mode : <../base_pvp.rules>
 
 	SpawnPointType = &~/SpawnPoint
 
+	_AsteroidSpawnConditions
+    {
+    	ProhibitSpawnFlags = [ disable_asteroids ]
+    }
+
 	MapStyles
 	[
 		{
@@ -35,8 +40,8 @@ Mode : <../base_pvp.rules>
 			StartingCapturePointTypeCountsPerTeam = [1, 0, 0]
 			DoodadTypeCounts
 			[
-				[cosmoteer.megaroid_l, 8]
-				[cosmoteer.megaroid_xl, 4]
+				[cosmoteer.megaroid_l, 8, &~/Mode/_AsteroidSpawnConditions]
+				[cosmoteer.megaroid_xl, 4, &~/Mode/_AsteroidSpawnConditions]
 			]
 		}
 		{
@@ -47,8 +52,8 @@ Mode : <../base_pvp.rules>
 			StartingCapturePointTypeCountsPerTeam = [2, 0, 0]
 			DoodadTypeCounts
 			[
-				[cosmoteer.megaroid_l, 16]
-				[cosmoteer.megaroid_xl, 4]
+				[cosmoteer.megaroid_l, 16, &~/Mode/_AsteroidSpawnConditions]
+				[cosmoteer.megaroid_xl, 4, &~/Mode/_AsteroidSpawnConditions]
 			]
 		}
 		{
@@ -59,8 +64,8 @@ Mode : <../base_pvp.rules>
 			StartingCapturePointTypeCountsPerTeam = [3, 1, 0]
 			DoodadTypeCounts
 			[
-				[cosmoteer.megaroid_l, 24]
-				[cosmoteer.megaroid_xl, 8]
+				[cosmoteer.megaroid_l, 24, &~/Mode/_AsteroidSpawnConditions]
+				[cosmoteer.megaroid_xl, 8, &~/Mode/_AsteroidSpawnConditions]
 			]
 		}
 		{
@@ -71,8 +76,8 @@ Mode : <../base_pvp.rules>
 			StartingCapturePointTypeCountsPerTeam = [1, 0, 0]
 			DoodadTypeCounts
 			[
-				[cosmoteer.megaroid_l, 12]
-				[cosmoteer.megaroid_xl, 4]
+				[cosmoteer.megaroid_l, 12, &~/Mode/_AsteroidSpawnConditions]
+				[cosmoteer.megaroid_xl, 4, &~/Mode/_AsteroidSpawnConditions]
 			]
 		}
 		{
@@ -83,8 +88,8 @@ Mode : <../base_pvp.rules>
 			StartingCapturePointTypeCountsPerTeam = [2, 0, 0]
 			DoodadTypeCounts
 			[
-				[cosmoteer.megaroid_l, 24]
-				[cosmoteer.megaroid_xl, 4]
+				[cosmoteer.megaroid_l, 24, &~/Mode/_AsteroidSpawnConditions]
+				[cosmoteer.megaroid_xl, 4, &~/Mode/_AsteroidSpawnConditions]
 			]
 		}
 		{
@@ -95,8 +100,8 @@ Mode : <../base_pvp.rules>
 			StartingCapturePointTypeCountsPerTeam = [3, 1, 0]
 			DoodadTypeCounts
 			[
-				[cosmoteer.megaroid_l, 36]
-				[cosmoteer.megaroid_xl, 12]
+				[cosmoteer.megaroid_l, 36, &~/Mode/_AsteroidSpawnConditions]
+				[cosmoteer.megaroid_xl, 12, &~/Mode/_AsteroidSpawnConditions]
 			]
 		}
 		{
@@ -107,8 +112,8 @@ Mode : <../base_pvp.rules>
 			StartingCapturePointTypeCountsPerTeam = [1, 0, 0]
 			DoodadTypeCounts
 			[
-				[cosmoteer.megaroid_l, 16]
-				[cosmoteer.megaroid_xl, 4]
+				[cosmoteer.megaroid_l, 16, &~/Mode/_AsteroidSpawnConditions]
+				[cosmoteer.megaroid_xl, 4, &~/Mode/_AsteroidSpawnConditions]
 			]
 		}
 		{
@@ -119,8 +124,8 @@ Mode : <../base_pvp.rules>
 			StartingCapturePointTypeCountsPerTeam = [2, 0, 0]
 			DoodadTypeCounts
 			[
-				[cosmoteer.megaroid_l, 32]
-				[cosmoteer.megaroid_xl, 4]
+				[cosmoteer.megaroid_l, 32, &~/Mode/_AsteroidSpawnConditions]
+				[cosmoteer.megaroid_xl, 4, &~/Mode/_AsteroidSpawnConditions]
 			]
 		}
 		{
@@ -131,8 +136,8 @@ Mode : <../base_pvp.rules>
 			StartingCapturePointTypeCountsPerTeam = [3, 1, 0]
 			DoodadTypeCounts
 			[
-				[cosmoteer.megaroid_l, 48]
-				[cosmoteer.megaroid_xl, 16]
+				[cosmoteer.megaroid_l, 48, &~/Mode/_AsteroidSpawnConditions]
+				[cosmoteer.megaroid_xl, 16, &~/Mode/_AsteroidSpawnConditions]
 			]
 		}
 	]

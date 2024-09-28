@@ -283,12 +283,15 @@ Wanted
 Dialogue
 {
 	SurrenderAreaCheckRadius = 1500
-	PlayerSurrenderDuration = 180 //Player has 3 minutes to leave.
+	PlayerSurrenderCancelDistance = 3000
+	PlayerSurrenderDuration = 1200 //20 min or when players leaves radius
 	AISurrenderDuration = Infinity
 	AIHailDuration = 10
 	SurrenderValidCheckBufferMult = 5%
 	SurrenderPayoutRoundToMultiple = 100
 	LastFireTimeToBeConsideredAttacking = 5
+	SurrenderFirepowerWeightExponent = 0.6
+	SurrenderShipCostWeightExponent = 0.4
 }
 
 SystemVisitMissions
