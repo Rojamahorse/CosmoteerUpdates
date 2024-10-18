@@ -87,6 +87,7 @@ Ships
 	:~{ File="Cantiloupe.ship.png";       Tier=11;  Difficulty=1; }
 	:~{ File="Roko's Vengeance.ship.png"; Tier=11;  Difficulty=2; }
 	:~{ File="Hydra.ship.png";            Tier=11;  Difficulty=2; }
+	:~{ File="Poor Yorick.ship.png";      Tier=11;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Deathrito.ship.png";        Tier=12;  Difficulty=1; }
 	:~{ File="Staccato.ship.png";         Tier=12;  Difficulty=1; }
 	:~{ File="Bomb Anchor.ship.png";      Tier=12;  Difficulty=1; Tags:~/Tags[empty_storage]; }
@@ -112,19 +113,24 @@ Ships
 	:~{ File="Monarch.ship.png";        Tier=15;  Difficulty=2; }
 	:~{ File="Clockwork.ship.png";      Tier=15;  Difficulty=2; }
 	:~{ File="Streamliner.ship.png";    Tier=15;  Difficulty=2; }
-	:~{ File="Shredder.ship.png";       Tier=15;  Difficulty=2; }
+	:~{ File="Shredder.ship.png";       Tier=15;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Jaws.ship.png";           Tier=15;  Difficulty=3; }
 
 	// Battleships
 	:~{ File="Ba'al.ship.png";          Tier=16;  Difficulty=2; }
 	:~{ File="Valira's Pride.ship.png"; Tier=16;  Difficulty=2; }
 	:~{ File="Desecrator.ship.png";     Tier=16;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Brutalizer.ship.png";     Tier=16;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Ice Cutter.ship.png";     Tier=16;  Difficulty=2; }
+	:~{ File="Blood Reaper.ship.png";   Tier=16;  Difficulty=3; }
+	:~{ File="Brave One.ship.png";      Tier=16;  Difficulty=3; }
 
 	// Battlecruisers
 	:~{ File="Nemesis.ship.png";        Tier=17;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Beluga.ship.png";         Tier=17;  Difficulty=2; }
 	:~{ File="Kingslayer.ship.png";     Tier=17;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Big Iron.ship.png";       Tier=17;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Vulcan.ship.png";         Tier=17;  Difficulty=3; }
 
 	// Flagships
 	:~{ File="All For Now.ship.png";    Tier=18;  Difficulty=2; }

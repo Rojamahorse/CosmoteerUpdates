@@ -251,6 +251,7 @@ BuildBox
 	CopyTip = "复制所选部件。\n\n热键：<btn id='Design.CopySelected'/>"
 	Crew = 船员/床位
 	CrewFmt = ""
+	CrewOperatorsFmt = "操作员席位：<b>{0}</b>"
 	CutTip = "剪切（复制并删除）选定部件。\n\n热键：<btn id='Design.CutSelected'/>"
 	DeletePartTip = "删除所持部件。\n\n热键：<btn id='Design.Delete'/>"
 	DeleteTip = "删除所选部件。\n\n热键：<btn id='Design.Delete'/>（或<btn id='Design.DeleteDoors'/>，只删除门）"
@@ -1400,6 +1401,13 @@ Hud
 	ClickToSelect = 点击选择。
 	ConfirmAbandonShip = 确定要放弃所选的星舰吗？
 	ConfirmSelfDestruct = 是否摧毁所选星舰？此操作不可逆！
+	ConstructionAssistance = 建造辅助
+	ConstructionAssistanceAllied = 所有友方星舰
+	ConstructionAssistanceAlliedTip = 该星舰会辅助所有友方星舰建造、拆除和修理。
+	ConstructionAssistanceOff = 关
+	ConstructionAssistanceOffTip = 该星舰不会辅助其他星舰建造、拆除和修理。
+	ConstructionAssistanceOwned = 仅自身星舰
+	ConstructionAssistanceOwnedTip = 该星舰会辅助相同玩家的其他星舰建造、拆除和修理。
 	ConstructionBlockedTip = 有其他物体位于建造区域，建造无法继续。
 	CrewEvaFmt = "<s16><bad>{0}</bad></s16>\n<s12><gray>舱外活动</gray></s12>"
 	CrewEvaTip = 目前在星舰外的船员数量。如果飞离太远，将会与其失去联络。
@@ -1437,8 +1445,6 @@ Hud
 	FtlWaitingCountFmt = "等待{0}玩家接战……"
 	FtlWaitingYou = 等待你的接战……
 	HaltTip = "<b>停止</b>\n\n取消所有当前命令。\n\n热键：<btn id='Game.Halt'/>"
-	HelpsWithConstruction = 辅助建造
-	HelpsWithConstructionTip = 勾选后，选定的星舰会辅助其他附近友方星舰建造、拆除和修理。
 	IncreaseSpeedTip = "提高游戏速度\n\n热键：<btn id='Game.IncreaseSpeed'/>"
 	IndicatorDistFmt = "<s15>{0:0.00}</s15><s12>\n公里</s12>"
 	InteriorTip = "显示星舰内装。\n\n热键：<btn id='View.ToggleInteriors'/>"
@@ -3133,6 +3139,8 @@ PvpModeConfig
 	}
 	ShrinkingPerimeter = 死亡之环缩圈
 	ShrinkingPerimeterTip = 勾选后死亡之环将随着时间的推移而逐渐缩小。
+	SpawnAsteroids = 小行星
+	SpawnAsteroidsTip = 如果勾选，战斗区域将出现小行星。
 	Teams = 战队
 	TeamsFfa = 各自为战
 	TeamsFmt = "{0}战队"
@@ -3258,11 +3266,15 @@ ResourceLimits
 {
 	
 	HeaderCount = 已储存
+	HeaderDesired = 下限
 	HeaderLimit = 上限
-	RemoveAll = 清除所有上限
-	SetToDesignatedFmt = "设为指定（{0}）"
-	SetToStoredFmt = "设为已储存（{0}）"
-	Title = 资源储存上限
+	RemoveAllDesires = 清除所有下限
+	RemoveAllLimits = 清除所有上限
+	SetDesiredToDesignatedFmt = "设置指定数量下限（{0}）"
+	SetDesiredToStoredFmt = "设置已储存数量下限（{0}）"
+	SetLimitToDesignatedFmt = "设置指定数量上限（{0}）"
+	SetLimitToStoredFmt = "设置已储存数量上限（{0}）"
+	Title = 资源下限与上限
 }
 ResourcesBox
 {
@@ -3298,7 +3310,7 @@ ResourcesBox
 	ResetMirrorLinesTip = 将水平、垂直镜像线重置到星舰中心。
 	RestockResources = 补给所有资源
 	RestockResourcesTip = "补满星舰的所有资源、军需品以及能量电池。\n\n热键：<btn id='CreativeMode.RestockResources'/>"
-	SetResourceLimits = 设置资源上限……
+	SetResourceLimits = 资源下限与上限…
 	SetTypeTipFmt = "<b>{0}</b>\n{3}\n\n{1}\n\n选择此按钮并点击储存单元后，所有{2}将自动运往此处并存放在此。（按住 <btn id='Resources.SetAllToolMode'/> 可应用于房间里的所有单元，或按 <btn id='Resources.SetAllSameToolMode'/> 应用于房间里所有匹配的单元。）"
 	ShowAllResources = 显示所有资源类型
 	ShowAllResourcesTip = 勾选后会显示所有的资源类型（即便星舰没有任何特定类型的资源）。
@@ -3716,9 +3728,9 @@ Settings
 		ShowNearbyMissions = "在 HUD 上显示附近的任务"
 		ShowNearbyMissionsTip = "当前附近的任务将自动显示在 HUD 左上角。"
 		ShowResourcePickupLines = 显示飘浮资源连线
-		ShowResourcePickupLinesTip = 如果勾选，将显示飘浮资源与本舰之间的连线。
+		ShowResourcePickupLinesTip = 如果勾选，飘浮资源与计划储存设施间将以虚线相连。
 		ShowSpaceCrewLines = 显示出舱活动船员连线
-		ShowSpaceCrewLinesTip = 如果勾选，将显示出舱活动船员与本舰之间的连线。
+		ShowSpaceCrewLinesTip = 如果勾选，出舱活动船员与所属星舰间将以虚线相连。
 		TabName = 游戏玩法
 		ZoomedOutBlips = 显示拉远光点
 		ZoomedOutBlipsTip = 如果勾选，小型星舰在镜头拉远时将以彩色“光点”进行显示。
@@ -3786,6 +3798,8 @@ Settings
 		LimitFpsNumber = " 每秒帧数"
 		LimitFpsNumberTip = 每秒钟要渲染的最大帧数。
 		LimitFpsTip = 如果勾选，游戏的运行速度将不会超过特定的帧率。
+		LimitFpsUnfocused = 限制帧率（后台运行时）
+		LimitFpsUnfocusedTip = 如果勾选，游戏在后台的运行速度将不会超过特定的帧率。
 		LockCursor = 圈定光标
 		LockCursorTip = 勾选后，在游戏过程中，鼠标光标无法离开游戏窗口。如果在专属全屏窗口中游戏，那么无论是否勾选该选项，光标都无法离开窗口。
 		Monitor = 显示器
@@ -4113,6 +4127,7 @@ Stats
 	MineCapacityFmt = "<white>空雷容量：</white><good>{0}</good>"
 	MineIronUsageFmt = "<white>铁消耗：</white><good>{0:0.##}</good><gray>/空雷（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MinePartCapacityFmt = "<white>容量：</white><good>{0}</good><gray> 部件（</gray><good>{1:0.##}</good><gray> 空雷）</gray>"
+	MinePartsFmt = "<white>组装自：</white><good>{0}</good><gray>部件/空雷</gray>"
 	MinePowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/空雷（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MineProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>空雷/秒</gray>"
 	MissileCopperUsageFmt = "<white>铜消耗：</white><good>{0:0.##}</good><gray>/导弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
@@ -4582,7 +4597,7 @@ Tips
 	ResourceLimits
 	{
 		
-		Tip1 = "可以限制星舰存储任何特定类型的资源上限。<btn id='General.UIAltClick'/>收集/回收/开采按钮并选择<white>设置资源上限</white>。"
+		Tip1 = "可以限制星舰存储任何特定类型的资源上限。<btn id='General.UIAltClick'/>收集/回收/开采按钮并设置<white>资源下限与上限</white>。"
 		Tip2 = 某种特定的资源达到上限时，船员将无法收集，工厂也将无法生产，您也将无法购买超过该上限的资源。
 		Title = 资源上限
 	}
@@ -4750,6 +4765,7 @@ TitleScreen
 	NewsFmt = "新闻<bad>（{0}）</bad>"
 	NextUpdateFmt = "下次更新大约在 {0} 天 {1} 小时后。"
 	Reddit = ""
+	Roadmap = 抢先体验版更新路线图
 	Settings = 设置
 	ShipLibrary = 星舰库
 	Steam = "Steam 社区"
@@ -5152,7 +5168,7 @@ Tutorials
 	{
 		
 		Designate = 你也可以命令船员<good>只将特定的资源</good>储存在特定的单元上。点击所需资源的按钮，然后点击专门储存该资源的单元。你的船员会尽可能地将该资源储存在这些单元中，而不会自动在上面存储其他资源。
-		Limits = "要设置舰上某种资源的<good>数量上限</good>，打开<img name='hamburger_up'/>菜单并选择<white>设置资源上限</white>。"
+		Limits = "要设置舰上某种资源的<good>数量上限</good>，打开<img name='hamburger_up'/>菜单并设置<white>资源下限与上限</white>。"
 		Manage = 如需管理你的星舰资源，请点击<white>管理资源</white>按钮。
 		Move = 要命令你的船员<good>将资源从一个单元移到另一个单元</good>，请选择<white>移动资源</white>工具，点击你要移动的资源组，然后点击目标单元。
 		Stacks = 大多数资源都按<good>组</good>储存在<good>存储单元</good>中。储存坞可以存放任何类型的资源组。武器、工厂等特殊部件只能存放其实际使用或生产的资源。

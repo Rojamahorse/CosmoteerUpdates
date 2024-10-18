@@ -95,7 +95,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceConsumer
 			ResourceType = battery
 			Storage = BatteryStorage
-			DefaultPriority = &/PRIORITIES/ManipulatorBeam_Supply
+			DefaultPriority = &/PRIORITIES/PriorityUtility_Supply
 			ResupplyThreshold = 500
 			OperationalToggle = PowerToggle
 		}
@@ -127,7 +127,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = PartCrew
 			Crew = 1
-			DefaultPriority = &/PRIORITIES/ManipulatorBeam_Crew
+			DefaultPriority = &/PRIORITIES/PriorityUtility_Crew
 			PrerequisitesBeforeCrewing = [PowerToggle, PartCrew1Prereq]
 			HighPriorityPrerequisites = [BatteryStorage]
 			CrewDestinations [ &../../CrewLocation1/Location ]

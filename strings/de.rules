@@ -108,8 +108,8 @@ Brushes
 	Line = Linie
 	LineIcon = Linie
 	LineTip = "Halte <btn id='Design.RestrictShapeMode'/> gedrückt, um eine gerade Linie zu machen."
-	Oval = ""
-	OvalIcon = ""
+	Oval = Oval
+	OvalIcon = Oval
 	OvalTip = "Halte <btn id='Design.RestrictShapeMode'/> gedrückt, um einen perfekten Kreis zu machen."
 	Triangle = Dreieck
 	TriangleIcon = Drei.
@@ -251,6 +251,7 @@ BuildBox
 	CopyTip = "Kopiert die ausgewählten Teile.\n\nSchnelltaste: <btn id='Design.CopySelected'/>"
 	Crew = Crew/Betten
 	CrewFmt = ""
+	CrewOperatorsFmt = "Operator-Sitze: <b>{0}</b>"
 	CutTip = "Schneide die ausgewählten Teile aus (kopieren und entfernen).\n\nSchnelltaste: <btn id='Design.CutSelected'/>"
 	DeletePartTip = "Löscht das Teil in deiner Hand.\n\nSchnelltaste: <btn id='Design.Delete'/>"
 	DeleteTip = "Lösche die ausgewählten Teile.\n\nSchnelltaste: <btn id='Design.Delete'/> (oder mit <btn id='Design.DeleteDoors'/> nur die Türen löschen)"
@@ -1400,6 +1401,13 @@ Hud
 	ClickToSelect = "Zum Auswählen klicken."
 	ConfirmAbandonShip = "Bist du sicher, dass du das/die ausgewählte(n) Schiff(e) verlassen möchtest?"
 	ConfirmSelfDestruct = "Ausgewählte(s) Schiff(e) zerstören? Dies kann nicht rückgängig gemacht werden!"
+	ConstructionAssistance = Bauunterstützung
+	ConstructionAssistanceAllied = "Alle verbündeten Schiffe"
+	ConstructionAssistanceAlliedTip = "Das Schiff hilft allen verbündeten Schiffen beim Bauen, Zerlegen und Reparieren."
+	ConstructionAssistanceOff = Aus
+	ConstructionAssistanceOffTip = "Das Schiff hilft anderen Schiffen nicht beim Bauen, Zerlegen oder Reparieren."
+	ConstructionAssistanceOwned = "Nur meine Schiffe"
+	ConstructionAssistanceOwnedTip = "Das Schiff hilft anderen Schiffen desselben Spielers beim Bauen, Zerlegen und Reparieren."
 	ConstructionBlockedTip = "Der Bau ist derzeit blockiert, da sich ein anderes Objekt im Baubereich befindet."
 	CrewEvaFmt = "<s16><bad>{0}</bad></s16>\n<s12><gray> A.B.E.</gray></s12>"
 	CrewEvaTip = "Die Anzahl der Crewmitglieder, die sich außerhalb des Schiffs befindet. Wenn du zu weit von ihnen wegfliegst, verlierst du sie."
@@ -1437,8 +1445,6 @@ Hud
 	FtlWaitingCountFmt = "Wartet auf STARTEN von {0} Spielern ..."
 	FtlWaitingYou = "Wartet auf DEIN STARTEN ..."
 	HaltTip = "<b>Halt</b>\n\nWiderruft alle aktuellen Befehle.\n\nSchnelltaste: <btn id='Game.Halt'/>"
-	HelpsWithConstruction = "Hilfe beim Bauen"
-	HelpsWithConstructionTip = "Bei Auswahl der Option helfen die ausgewählten Schiffe anderen befreundeten Schiffen in der Nähe bei Bau, Zerlegung und Reparaturen."
 	IncreaseSpeedTip = "Spielgeschwindigkeit erhöhen\n\nSchnelltaste: <btn id='Game.IncreaseSpeed'/>"
 	IndicatorDistFmt = "<s15>{0:0.00}</s15><s12>\n km</s12>"
 	InteriorTip = "Innenbereich des Schiffs anzeigen.\n\nSchnelltaste: <btn id='View.ToggleInteriors'/>"
@@ -2353,8 +2359,8 @@ Mods
 	RestartNow = "Jetzt neu starten"
 	ShowFolder = "Ordner anzeigen"
 	SteamWorkshop = "Steam Workshop durchsuchen"
-	UninstallAll = "Deinstallieren/Alle abbestellen"
-	UninstallAllConfirm = "Bist du sicher, dass du deinstallieren und dich von allen Mods abmelden möchtest?"
+	UninstallAll = "Alle deinstallieren/abbestellen"
+	UninstallAllConfirm = "Bist du sicher, dass du alle Mods deinstallieren und abbestellen möchtest?"
 	UninstallComplete = "Mod(s) erfolgreich deinstalliert!"
 	UninstallConfirm = "Bist du sicher, dass du diese Mod deinstallieren möchtest?"
 	UninstallMod = "Mod deinstallieren"
@@ -3133,6 +3139,8 @@ PvpModeConfig
 	}
 	ShrinkingPerimeter = "Schrumpfender Ring des Todes"
 	ShrinkingPerimeterTip = "Bei Auswahl der Option schrumpft der Ring des Todes mit der Zeit stetig."
+	SpawnAsteroids = Asteroiden
+	SpawnAsteroidsTip = "Bei Auswahl der Option werden Asteroiden zum Kampfbereich hinzugefügt."
 	Teams = ""
 	TeamsFfa = ""
 	TeamsFmt = ""
@@ -3258,11 +3266,15 @@ ResourceLimits
 {
 	
 	HeaderCount = Gelagert
+	HeaderDesired = Gewünscht
 	HeaderLimit = ""
-	RemoveAll = "Alle Limits entfernen"
-	SetToDesignatedFmt = "Auf „Festgelegt“ setzen ({0})"
-	SetToStoredFmt = "Auf „Gelagert“ setzen ({0})"
-	Title = "Lagerlimits für Ressourcen"
+	RemoveAllDesires = "Alle Wünsche entfernen"
+	RemoveAllLimits = "Alle Limits entfernen"
+	SetDesiredToDesignatedFmt = "„Gewünscht“ auf „Festgelegt“ setzen ({0})"
+	SetDesiredToStoredFmt = "„Gewünscht“ auf „Gelagert“ setzen ({0})"
+	SetLimitToDesignatedFmt = "Limit auf „Festgelegt“ setzen ({0})"
+	SetLimitToStoredFmt = "Limit auf „Gelagert“ setzen ({0})"
+	Title = "Ressourcenwünsche & -limits"
 }
 ResourcesBox
 {
@@ -3298,7 +3310,7 @@ ResourcesBox
 	ResetMirrorLinesTip = "Setzt die horizontalen und vertikalen Spiegellinien zurück in die Mitte des Schiffs."
 	RestockResources = "Alle Ressourcen auffüllen"
 	RestockResourcesTip = "Füllt alle Ressourcen, die Munition und Batterien des Schiffs aufs Maximum auf.\n\nSchnelltaste: <btn id='Resources.RestockResources'/>"
-	SetResourceLimits = "Ressourcenlimits festlegen ..."
+	SetResourceLimits = "Ressourcenwünsche & -limits ..."
 	SetTypeTipFmt = "<b>{0}</b>\n{3}\n\n{1}\n\nWenn diese Schaltfläche ausgewählt ist, kannst du auf eine Lagerkachel klicken und so automatische Liefer- und Lageranweisungen für {2} festlegen. (Halte <btn id='Resources.SetAllToolMode'/> gedrückt, um alle Kacheln in dem Raum auszuwählen, oder <btn id='Resources.SetAllSameToolMode'/>, um alle identischen Kacheln in dem Raum auszuwählen.)"
 	ShowAllResources = "Alle Ressourcenarten anzeigen"
 	ShowAllResourcesTip = "Bei Auswahl der Option werden alle Ressourcenarten angezeigt, selbst wenn eine bestimmte Ressource nicht auf deinem Schiff vorhanden ist."
@@ -3716,9 +3728,9 @@ Settings
 		ShowNearbyMissions = "Zeige Missionen in der Nähe im HUD"
 		ShowNearbyMissionsTip = "Die Zahl bestimmt, bis zu wie viele der am nächsten gelegenen Missionen automatisch links oben im HUD angezeigt werden."
 		ShowResourcePickupLines = "Linien der schwebenden Ressourcen anzeigen"
-		ShowResourcePickupLinesTip = "Bei Auswahl der Option werden Linien zwischen schwebenden Ressourcen und dem Schiff angezeigt."
+		ShowResourcePickupLinesTip = "Bei Auswahl der Option werden gepunktete Linien angezeigt, die schwebende Ressourcen mit ihren beabsichtigten Lagern verbinden."
 		ShowSpaceCrewLines = "Flugcrew-Linien anzeigen"
-		ShowSpaceCrewLinesTip = "Bei Auswahl der Option werden Linien zwischen fliegenden Crewmitgliedern und Schiff angezeigt."
+		ShowSpaceCrewLinesTip = "Bei Auswahl der Option werden gepunktete Linien angezeigt, die Flugcrews mit ihren Schiffen verbinden."
 		TabName = Spiel
 		ZoomedOutBlips = "Radarzeichen anzeigen, wenn herausgezoomt"
 		ZoomedOutBlipsTip = "Bei Auswahl der Option werden farbige Radarzeichen für kleine Schiffe angezeigt, wenn herausgezoomt wurde."
@@ -3786,6 +3798,8 @@ Settings
 		LimitFpsNumber = " Bilder pro Sekunde"
 		LimitFpsNumberTip = "Die maximale Anzahl an Bildern, die pro Sekunde gerendert wird."
 		LimitFpsTip = "Bei Auswahl der Option läuft das Spiel nicht schneller als eine bestimmte Bildfrequenz."
+		LimitFpsUnfocused = "Bildfrequenz begrenzen (im Hintergrund)"
+		LimitFpsUnfocusedTip = "Bei Auswahl der Option läuft das Spiel nicht schneller als eine bestimmte Bildfrequenz, wenn es im Hintergrund ausgeführt wird."
 		LockCursor = "Mauszeiger einschränken"
 		LockCursorTip = "Bei Auswahl der Option kann der Mauszeiger während des Spiels das Spielfenster nicht verlassen. Wenn du die Option „Nur Vollbild“ verwendest, kann der Mauszeiger das Fenster nicht verlassen, unabhängig davon, ob diese Option aktiviert ist oder nicht."
 		Monitor = ""
@@ -4113,6 +4127,7 @@ Stats
 	MineCapacityFmt = "<white>Minenkapazität:</white> <good>{0}</good>"
 	MineIronUsageFmt = "<white>Eisenverbrauch:</white> <good>{0:0.##}</good><gray>/Mine (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	MinePartCapacityFmt = "<white>Kapazität:</white> <good>{0}</good><gray> Teile (</gray><good>{1:0.##}</good><gray> Minen)</gray>"
+	MinePartsFmt = "<white>Gebaut aus:</white> <good>{0}</good><gray> Teilen/Mine</gray>"
 	MinePowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Mine (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	MineProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> Minen/Sek.</gray>"
 	MissileCopperUsageFmt = "<white>Kupferverbrauch:</white> <good>{0:0.##}</good><gray>/Rakete (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
@@ -4582,7 +4597,7 @@ Tips
 	ResourceLimits
 	{
 		
-		Tip1 = "Du kannst einschränken, wie viele Ressourcen eines bestimmten Typs dein Schiff speichern kann. <btn id='General.UIAltClick'/> auf die Schaltfläche „Sammeln/Wiederverwerten/Abbauen“ und wähle <white>Ressourcenlimits festlegen</white>."
+		Tip1 = "Du kannst einschränken, wie viele Ressourcen eines bestimmten Typs dein Schiff speichern kann. <btn id='General.UIAltClick'/> auf die Schaltfläche „Sammeln/Wiederverwerten/Abbauen“ und wähle <white>Ressourcenwünsche &amp; -limits</white>."
 		Tip2 = "Sofern für einen bestimmten Ressourcentyp ein Limit festgelegt wurde, sammelt deine Crew nicht mehr davon ein, deine Fabriken produzieren nicht mehr und du kannst auch nicht mehr kaufen, als durch dieses Limit bestimmt wird."
 		Title = Ressourcenlimits
 	}
@@ -4750,6 +4765,7 @@ TitleScreen
 	NewsFmt = "NEUIGKEITEN <bad>({0})</bad>"
 	NextUpdateFmt = "Das nächste Update erfolgt in etwa {0} Tagen, {1} Stunden."
 	Reddit = ""
+	Roadmap = EARLY-ACCESS-ROADMAP
 	Settings = EINSTELLUNGEN
 	ShipLibrary = SCHIFFSBIBLIOTHEK
 	Steam = Steam-Community
@@ -5152,7 +5168,7 @@ Tutorials
 	{
 		
 		Designate = "Du kannst deiner Crew auch sagen, dass sie <good>nur eine bestimmte Ressource</good> in bestimmten Kacheln lagern soll. Klicke auf die Schaltfläche für die gewünschte Ressource und danach auf die Kachel, die nur diese Ressource lagern soll. Deine Crew wird versuchen, diese Ressource in diesen Kacheln zu lagern, sofern das möglich ist, und nicht automatisch andere Ressourcen darin lagern."
-		Limits = "Um die Menge einer auf deinem Schiff gespeicherten Ressource zu <good>limitieren</good>, öffne das <img name='hamburger_up'/>-Menü und wähle <white>Ressourcenlimits festlegen</white>."
+		Limits = "Um die Menge einer auf deinem Schiff gespeicherten Ressource zu <good>limitieren</good>, öffne das <img name='hamburger_up'/>-Menü und wähle <white>Ressourcenwünsche &amp; -limits</white>."
 		Manage = "Wenn du die Ressourcen deines Schiffs verwalten möchtest, klicke auf die Schaltfläche <white>Ressourcen verwalten</white>."
 		Move = "Um deiner Crew zu sagen, dass sie <good>Ressourcen von einer Kachel zur anderen verschieben soll</good>, wähle das <white>„Ressourcen verschieben“</white>-Werkzeug, klicke auf den Ressourcenstapel, den du verschieben möchtest, und klicke auf die Kachel, auf die der Stapel verschoben werden soll."
 		Stacks = "Die meisten Ressourcen werden in <good>Stapeln</good> auf <good>Lagerkacheln</good> gelagert. In Lagerhallen können Stapel aller Art lagern. Waffen, Fabriken und andere Spezialteile können nur Ressourcen aufbewahren, die sie verwenden oder produzieren."

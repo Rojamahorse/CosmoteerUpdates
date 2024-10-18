@@ -251,6 +251,7 @@ BuildBox
 	CopyTip = "Copier les composants sélectionnés.\n\nRaccourci : <btn id='Design.CopySelected'/>"
 	Crew = Équipage/couchettes
 	CrewFmt = ""
+	CrewOperatorsFmt = "Postes d'opérateur : <b>{0}</b>"
 	CutTip = "Couper (copier et retirer) les composants sélectionnés.\n\nRaccourci : <btn id='Design.CutSelected'/>"
 	DeletePartTip = "Effacer le composant tenu.\n\nRaccourci : <btn id='Design.Delete'/>"
 	DeleteTip = "Supprimer les composants sélectionnés.\n\nRaccourci : <btn id='Design.Delete'/> (ou <btn id='Design.DeleteDoors'/> pour supprimer uniquement les portes.)"
@@ -1400,6 +1401,13 @@ Hud
 	ClickToSelect = "Cliquer pour sélectionner."
 	ConfirmAbandonShip = "Abandonner le ou les vaisseau(x) de la sélection ?"
 	ConfirmSelfDestruct = "Détruire le ou les vaisseau(s) de la sélection ? Cette opération est irréversible !"
+	ConstructionAssistance = "Aide à la construction"
+	ConstructionAssistanceAllied = "Tous les vaisseaux alliés"
+	ConstructionAssistanceAlliedTip = "Le vaisseau aidera les autres navires alliés à effectuer des opérations de construction, de démantèlement ou de réparation."
+	ConstructionAssistanceOff = Désactivé
+	ConstructionAssistanceOffTip = "Le vaisseau n'aidera aucun autre navire à effectuer des opérations de construction, de démantèlement ou de réparation."
+	ConstructionAssistanceOwned = "Mes vaisseaux uniquement"
+	ConstructionAssistanceOwnedTip = "Le vaisseau aidera les autres navires du même joueur à effectuer des opérations de construction, de démantèlement ou de réparation."
 	ConstructionBlockedTip = "La construction est bloquée par la présence d'un autre objet dans la zone du chantier."
 	CrewEvaFmt = ""
 	CrewEvaTip = "Le nombre de membres d'équipage actuellement en dehors du vaisseau. Ils seront perdus si le vaisseau s'éloigne trop."
@@ -1437,8 +1445,6 @@ Hud
 	FtlWaitingCountFmt = "En attente de l'ACTIVATION de {0} joueurs..."
 	FtlWaitingYou = "En attente de VOTRE ACTIVATION..."
 	HaltTip = "<b>Interrompre</b>\n\nAnnuler tous les ordres donnés.\n\nRaccourci : <btn id='Game.Halt'/>"
-	HelpsWithConstruction = "Aides à la construction"
-	HelpsWithConstructionTip = "Lorsque cette option est activée, les vaisseaux sélectionnés aident les appareils alliés à proximité pour la construction, le démantèlement et les réparations."
 	IncreaseSpeedTip = "Accélérer la vitesse de jeu\n\nRaccourci : <btn id='Game.IncreaseSpeed'/>"
 	IndicatorDistFmt = "<s15>{0:0.00}</s15><s12>\n km</s12>"
 	InteriorTip = "Afficher l'intérieur des vaisseaux.\n\nRaccourci : <btn id='View.ToggleInteriors'/>"
@@ -3133,6 +3139,8 @@ PvpModeConfig
 	}
 	ShrinkingPerimeter = "Cercle mortel rétrécissant"
 	ShrinkingPerimeterTip = "Permet de réduire petit à petit le rayon du cercle mortel."
+	SpawnAsteroids = Astéroïdes
+	SpawnAsteroidsTip = "Permet de faire apparaître des astéroïdes dans la zone de combat."
 	Teams = Équipes
 	TeamsFfa = "Chacun pour soi"
 	TeamsFmt = "{0} équipes"
@@ -3258,11 +3266,15 @@ ResourceLimits
 {
 	
 	HeaderCount = "En stock"
+	HeaderDesired = Désirée
 	HeaderLimit = Limite
-	RemoveAll = "Supprimer toutes les limites"
-	SetToDesignatedFmt = "Affectation ({0})"
-	SetToStoredFmt = "En stock ({0})"
-	Title = "Limites de stockage de ressources"
+	RemoveAllDesires = "Supprimer toutes les quantités désirées"
+	RemoveAllLimits = "Supprimer toutes les limites"
+	SetDesiredToDesignatedFmt = "Définir la quantité désirée à la capacité des cases de stockages affectées ({0})"
+	SetDesiredToStoredFmt = "Définir la quantité désirée au stock actuel ({0})"
+	SetLimitToDesignatedFmt = "Définir la limite à la capacité des cases de stockages affectées ({0})"
+	SetLimitToStoredFmt = "Définir la limite au stock actuel ({0})"
+	Title = "Quantités désirées et limites de ressources"
 }
 ResourcesBox
 {
@@ -3298,7 +3310,7 @@ ResourcesBox
 	ResetMirrorLinesTip = "Réinitialise les lignes de miroir verticales et horizontales au centre du vaisseau."
 	RestockResources = "Refaire le plein de toutes les ressources"
 	RestockResourcesTip = "Refait le plus de toutes les ressources, munitions et batteries de votre vaisseau.\n\nRaccourci : <btn id='Resources.RestockResources'/>"
-	SetResourceLimits = "Définir des limites de ressources..."
+	SetResourceLimits = "Quantités désirées et limites de ressources..."
 	SetTypeTipFmt = "<b>{0}</b>\n{3}\n\n{1}\n\nCe bouton permet de cliquer sur une case de stockage afin de la désigner pour livraison automatiquement en {2}. (Maintenez <btn id='Resources.SetAllToolMode'/> pour désigner toutes les cases d'une soute, ou <btn id='Resources.SetAllSameToolMode'/> pour toutes les cases identiques d'une soute.)"
 	ShowAllResources = "Afficher tous les types de ressources"
 	ShowAllResourcesTip = "Permet d'afficher tous les types de ressources, même si votre vaisseau ne dispose pas de certaines d'entre elles."
@@ -3716,9 +3728,9 @@ Settings
 		ShowNearbyMissions = "Afficher les missions proches sur l'IU"
 		ShowNearbyMissionsTip = "Nombre max. de missions proches qui seront automatiquement affichées dans le coin supérieur gauche de l'IU."
 		ShowResourcePickupLines = "Afficher les lignes de ressources flottantes"
-		ShowResourcePickupLinesTip = "Permet d'afficher des lignes reliant des ressources flottantes au vaisseau."
+		ShowResourcePickupLinesTip = "Permet d'afficher des lignes pointillées reliant les ressources flottantes à leurs espaces de stockage théoriques."
 		ShowSpaceCrewLines = "Afficher les lignes d'équipage en vol"
-		ShowSpaceCrewLinesTip = "Permet d'afficher des lignes reliant l'équipage au vaisseau."
+		ShowSpaceCrewLinesTip = "Permet d'afficher des lignes pointillées reliant les équipages en vol à leurs vaisseaux."
 		TabName = Jeu
 		ZoomedOutBlips = "Afficher les points de radar lors du zoom arrière"
 		ZoomedOutBlipsTip = "Permet d'afficher des points de couleur pour représenter les petits vaisseaux lors d'un zoom arrière."
@@ -3786,6 +3798,8 @@ Settings
 		LimitFpsNumber = " Images par seconde"
 		LimitFpsNumberTip = "Le nombre maximum d'images affichées par seconde."
 		LimitFpsTip = "Permet de limiter la fréquence d'images maximale du jeu à une valeur donnée."
+		LimitFpsUnfocused = "Limite de fréquence d'images (en arrière-plan)"
+		LimitFpsUnfocusedTip = "Permet de limiter la fréquence d'images maximale du jeu à une valeur donnée lorsqu'il tourne en arrière-plan."
 		LockCursor = "Bloquer le curseur de la souris"
 		LockCursorTip = "Empêche le curseur de la souris de quitter la fenêtre de jeu en cours de partie. Si vous jouez en mode Plein écran exclusif, le curseur ne peut pas quitter la fenêtre, que cette option soit activée ou non."
 		Monitor = Écran
@@ -4113,6 +4127,7 @@ Stats
 	MineCapacityFmt = "<white>Capacité en mine :</white> <good>{0}</good>"
 	MineIronUsageFmt = "<white>Consommation de fer :</white> <good>{0:0.##}</good><gray>/mine (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	MinePartCapacityFmt = "<white>Capacité :</white> <good>{0}</good><gray> composants (</gray><good>{1:0.##}</good><gray> mines)</gray>"
+	MinePartsFmt = "<white>Assemblage :</white> <good>{0}</good><gray> composants/mine</gray>"
 	MinePowerUsageFmt = "<white>Consommation d'énergie :</white> <good>{0:0.##}</good><gray>/mine (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	MineProductionFmt = "<white>Taux de production :</white> <good>{0:0.##}</good><gray> mines/s</gray>"
 	MissileCopperUsageFmt = "<white>Consommation de cuivre :</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/s)</gray>"
@@ -4582,7 +4597,7 @@ Tips
 	ResourceLimits
 	{
 		
-		Tip1 = "Vous pouvez limiter les quantités de ressources de différents types stockées sur votre vaisseau. Faites un <btn id='General.UIAltClick'/> sur le bouton Ramasser/Récupérer/Extraire des ressources et sélectionnez <white>Définir des limites de ressources...</white>"
+		Tip1 = "Vous pouvez limiter les quantités de ressources de différents types stockées sur votre vaisseau. Faites un <btn id='General.UIAltClick'/> sur le bouton Ramasser/Récupérer/Extraire des ressources et sélectionnez <white>Quantités désirées et limites de ressources</white>."
 		Tip2 = "Quand une limite a été définie pour un type de ressource particulier, votre équipage n'en ramassera pas, vos usines n'en produiront pas, et vous ne pourrez pas en acheter une fois cette limite atteinte."
 		Title = "Limites de ressources"
 	}
@@ -4750,6 +4765,7 @@ TitleScreen
 	NewsFmt = "ACTUALITÉS <bad>({0})</bad>"
 	NextUpdateFmt = "La prochaine mise à jour sera disponible dans environ {0} jours, {1} heures."
 	Reddit = ""
+	Roadmap = "FEUILLE DE ROUTE DE L'ACCÈS ANTICIPÉ"
 	Settings = PARAMÈTRES
 	ShipLibrary = "BIBLIOTHÈQUE DES VAISSEAUX"
 	Steam = "Communauté Steam"
@@ -5152,7 +5168,7 @@ Tutorials
 	{
 		
 		Designate = "Vous pouvez aussi indiquer à votre équipage de stocker <good>uniquement une ressource précise</good> sur certaines cases. Cliquez sur le bouton de la ressource désirée, puis sur les cases qui ne doivent contenir que cette ressource. Votre équipage tentera d'entreposer cette ressource sur ces cases lorsque cela sera possible et n'y placera plus automatiquement d'autres ressources."
-		Limits = "Pour <good>limiter la quantité</good> d'une ressource stockée dans votre vaisseau, ouvrez le menu <img name='hamburger_up'/>, puis sélectionnez <white>Définir des limites de ressources...</white>"
+		Limits = "Pour <good>limiter la quantité</good> stockée à bord de votre vaisseau d'une ressource, ouvrez le <img name='hamburger_up'/> menu et sélectionnez <white>Quantités désirées et limites de ressources</white>."
 		Manage = "Pour gérer les ressources de votre vaisseau, cliquez sur le bouton <white>Gérer les ressources</white>."
 		Move = "Pour ordonner à votre équipage de <good>déplacer des ressources</good> d'une case à une autre, sélectionnez l'outil de <white>déplacement des ressources</white>, cliquez sur l'unité de ressources à déplacer, puis sur la case de destination."
 		Stacks = "La plupart des ressources sont entreposées en <good>unités</good> sur les <good>cases des soutes</good>. Les soutes peuvent contenir des ressources de tous types. Les armes, usines et autres composants spécialisés ne peuvent recevoir que les ressources qu'ils utilisent ou produisent."

@@ -44,87 +44,35 @@ Nuggets
 	DropLinearVelocity = [1, 5]
 	DropAngularVelocity = [-360d, 360d]
 	SelectionRadius = .4
-
-	ResourceRarityRules
-	{
-		Common
-		{
-			BucketOrder = 0
-			FogDotSprite
-			{
-				Shader = "./Data/pivot.shader"
-				Texture = "./Data/gui/dot.png"
-				VertexColor = [128, 128, 128, 128] // gray
-				Size = [0.2, 0.2]
-			}
-			FogDotSizeExponent = 0.8
-		}
-		Rare
-		{
-			BucketOrder = 1
-			FogDotSprite
-			{
-				Shader = "./Data/pivot.shader"
-				Texture = "./Data/gui/dot.png"
-				VertexColor = [255, 255, 191, 200] // yellow
-				Size = [0.2, 0.2]
-			}
-			FogDotSizeExponent = 0.8
-		}
-		Unique
-		{
-			BucketOrder = 2
-			FogDotSprite
-			{
-				Shader = "./Data/pivot.shader"
-				Texture = "./Data/gui/dot.png"
-				VertexColor = [255, 63, 63, 255] // red
-				Size = [0.2, 0.2]
-			}
-			FogDotSizeExponent = 0.8
-		}
-		Trade
-		{
-			BucketOrder = 3
-			FogDotSprite
-			{
-				Shader = "./Data/pivot.shader"
-				Texture = "./Data/gui/dot.png"
-				VertexColor = [127, 221, 255, 200] // blue
-				Size = [0.2, 0.2]
-			}
-			FogDotSizeExponent = 0.8
-		}
-	}
 }
 
 VeryCommonMaterialDropRates
 {
 	PartDestroyed = 15%
 	PartSalvaged = 20%
-	PlayerPartDestroyed = 85%
+	PlayerPartDestroyed = 50%
 	PlayerPartSalvaged = 100%
 	StorageDestroyed = 50%
 	StorageSalvaged = 100%
-	PartRepairCost = 1 - (&PlayerPartDestroyed) / 2
+	PartRepairCost = 50%
 }
 
 CommonMaterialDropRates
 {
 	PartDestroyed = 10%
 	PartSalvaged = 15%
-	PlayerPartDestroyed = 85%
+	PlayerPartDestroyed = 50%
 	PlayerPartSalvaged = 100%
 	StorageDestroyed = 50%
 	StorageSalvaged = 100%
-	PartRepairCost = 1 - (&PlayerPartDestroyed) / 2
+	PartRepairCost = 50%
 }
 
 RareMaterialDropRates
 {
 	PartDestroyed = 10%
 	PartSalvaged = 15%
-	PlayerPartDestroyed = 85%
+	PlayerPartDestroyed = 50%
 	PlayerPartSalvaged = 100%
 	StorageDestroyed = 50%
 	StorageSalvaged = 100%

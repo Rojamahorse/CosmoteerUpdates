@@ -76,8 +76,8 @@ Ships
 	:~{ File="Gavel.ship.png";       Tier=11; Difficulty=2; }
 	:~{ File="Dispatcher.ship.png";  Tier=11; Difficulty=3; }
 	:~{ File="Aspis.ship.png";       Tier=11; Difficulty=3; }
-	:~{ File="Saber.ship.png";       Tier=11; Difficulty=3; }
-	:~{ File="Validator.ship.png";   Tier=11; Difficulty=3; }
+	:~{ File="Saber.ship.png";       Tier=11; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Validator.ship.png";   Tier=11; Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Collider.ship.png";    Tier=11; Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ballista.ship.png";    Tier=12; Difficulty=2; }
 	:~{ File="Conciliator.ship.png"; Tier=12; Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -91,7 +91,7 @@ Ships
 	:~{ File="Mercygiver.ship.png";  Tier=13; Difficulty=3; }
 	:~{ File="Auditor.ship.png";     Tier=13; Difficulty=3; }
 	:~{ File="Sledgehammer.ship.png";Tier=13; Difficulty=3; }
-	:~{ File="Glaive.ship.png";      Tier=13; Difficulty=3; }
+	:~{ File="Glaive.ship.png";      Tier=13; Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Peacekeeper.ship.png"; Tier=14; Difficulty=2; }
 	:~{ File="Liberator.ship.png";   Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Onslaught.ship.png";   Tier=14; Difficulty=3; }
@@ -115,14 +115,15 @@ Ships
 	:~{ File="Mitigator.ship.png";   Tier=16; Difficulty=3; }
 	:~{ File="Onager.ship.png";      Tier=16; Difficulty=3; }
 	:~{ File="Emancipator.ship.png"; Tier=16; Difficulty=3; Tags:~/Tags[empty_storage]; OtherIDs=["Eradicator"]; }
-	:~{ File="Verificator.ship.png"; Tier=16; Difficulty=3; }
+	:~{ File="Verificator.ship.png"; Tier=16; Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Battlecruisers
 	:~{ File="Executor.ship.png";    Tier=17; Difficulty=3; }
 	:~{ File="Arbalest.ship.png";    Tier=17; Difficulty=3; }
 	:~{ File="Project Mistilteinn.ship.png"; Tier=17; Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Vanquisher.ship.png";  Tier=17; Difficulty=3; Tags:~/Tags[empty_storage]; }
-	:~{ File="Sovnya.ship.png";      Tier=17; Difficulty=3; }
+	:~{ File="Sovnya.ship.png";      Tier=17; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Tempest.ship.png";     Tier=17; Difficulty=3; }
 
 	// Flagships
 	:~{ File="Arbiter.ship.png";     Tier=18; Difficulty=3; }

@@ -1249,9 +1249,6 @@ Settings
 		ShowResourcePickupLines = "Show Floating Resource Lines"
 		ShowResourcePickupLinesTip = "If checked, dotted lines will be displayed connecting floating resources to their intended storages."
 
-		NuggetsDots = "Show Floating Resource Dots"
-		NuggetsDotsTip = "If enabled, the locations of previously-detected resources will be indicated with small dots."
-
 		PauseOnOpenDialogueWithEnemy = "Pause On Dialogue With Enemy"
 		PauseOnOpenDialogueWithEnemyTip = "If checked, the game will automatically pause when opening dialogue with an enemy ship."
 
@@ -2129,7 +2126,6 @@ CareerMode
 	MissionCompleted = "MISSION COMPLETED"
 	MissionFailed = "MISSION FAILED"
 	FameLevelUp = "FAME LEVEL UP"
-	FameLevelUpCrewGained = "+{0} crew"
 	ReputationLevelUp = "REPUTATION LEVEL UP"
 	ReputationLevelDown = "REPUTATION LEVEL DOWN"
 	ReputationLevelTitleFmt = "{0} {1} - {2} {0}"
@@ -3678,10 +3674,10 @@ CommWindow
 	Hire = "Hire"
 	AutoHireFmt = "Hire Max ({0})\n{1}"
 	AutoHireNone = "Hire Max (0)\n<img name='money' colored='true'/>0"
-	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} souls</b> on {2} want to join your crew.\nIncrease your <fame>FAME</fame> to {3} to persuade more.</s12>"
+	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} souls</b> on {2} want to join your crew.\nIncrease your <fame>FAME</fame> to persuade more.</s12>"
 	Crew = "CREW"
 	Beds = "BEDS"
-	InsufficientFame = "Increase your <fame>FAME</fame> to {0} to persuade this person to join your crew."
+	InsufficientFame = "Increase your <fame>FAME</fame> to persuade this person to join your crew."
 	InsufficientBeds = "All of the beds on your ship are occupied. Build more crew quarters to hire more crew."
 	RehireDebtFmt = "Hiring replacement crew will cost <ins_money>{0:n0}</ins_money> but you only have <money>{1:n0}</money>. "\
 	                "You can go into debt to hire replacement crew, but while in debt you will not be able to make most kinds of purchases until you pay back the debt."
@@ -3709,14 +3705,18 @@ Dialogue
 {
 	Surrender
 	{
-		PlayerSurrenderDialogue = "<b>{0}:</b> <i>\"You are outmatched! Surrender now and pay us <money>{1:n0}</money>... or die!\"</i>"
-		AISurrenderDialogue = "<b>{0}:</b> <i>\"We surrender! If you promise not to destroy us, we'll pay you <money>{1:n0}</money>!\"</i>"
-		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>\"Fugitive, the {2} has issued a bounty of <money>{1:n0}</money> for your destruction. Pay it now, or prepare to be destroyed.\"</i>"
-		PlayerSurrender = "<i>\"We surrender!\"</i> (Pay <money>{0:n0}</money>)"
-		PlayerSurrenderPayBounty = "<i>\"We'll pay the bounty.\"</i> (Pay <money>{0:n0}</money>)"
-		DeclinePlayerSurrender = "<i>\"Never!\"</i>"
-		AISurrender = "<i>\"We accept your surrender.\"</i>"
-		DeclineAISurrender = "[Terminate Connection]"
+		PlayerSurrenderDialogue = "{0} is willing to let you surrender for <ins_money>{1:n0}</ins_money>."
+		AISurrenderDialogue = "{0} is requesting to surrender to you for <money>{1:n0}</money>."
+		PlayerSurrenderPayBountyDialogue = "{0} is willing to let you surrender for <ins_money>{1:n0}</ins_money>, paying off your bounty to {2}"
+		PlayerSurrender = "Surrender"
+		PlayerSurrenderTip = "Surrender to the enemy ship.  You will pay <ins_money>{0:n0}</ins_money> and the ship will stop attacking you for a while."
+		PlayerSurrenderPayBountyTip = "Surrender to the enemy ship.  You will pay <ins_money>{0:n0}</ins_money> and bounty from {1} will be paid off."
+		DeclinePlayerSurrender = "Fight On"
+		DeclinePlayerSurrenderTip = "Decline to surrender to the enemy ship.  You will continue to fight."
+		AISurrender = "Accept Surrender"
+		AISurrenderTip = "Accept the enemy ship's surrender.  You will receive <money>{0:n0}</money> and the ship will become neutral to you."
+		DeclineAISurrender = "Fight On"
+		DeclineAISurrenderTip = "Reject the enemy ship's surrender.  You will continue to fight."
 	}
 }
 

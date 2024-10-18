@@ -195,6 +195,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = battery
 			ComponentID = ExtendableBatteryStorage
 			ProxyToggle = ExtendableBatteryStorage
+			LimitMaxResources = &../LocalBatteryStorage/MaxResources
 		}
 		CombinedBatteryStorage
 		{

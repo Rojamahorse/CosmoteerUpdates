@@ -3,12 +3,11 @@ NameKey = "Resource/Tristeel"
 PluralNameKey = "Resource/TristeelPlural"
 DescriptionKey = "Resource/TristeelDesc"
 BuyPrice = 200
-MaxPerNugget = 10
-MaxStackSize = 40
+MaxPerNugget = 5
+MaxStackSize = 20
 FlexGridPriorityKey = "flex_grid_tristeel"
 FlexGridDefaultPriority = 1
 DropRates = &<../resources.rules>/RareMaterialDropRates
-Rarity = Rare
 
 Icon
 {

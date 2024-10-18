@@ -251,6 +251,7 @@ BuildBox
 	CopyTip = "Copiar las partes seleccionadas.\n\nTecla de acceso rápido: <btn id='Design.CopySelected'/>"
 	Crew = Tripulantes/Camas
 	CrewFmt = ""
+	CrewOperatorsFmt = "Asientos del operador: <b>{0}</b>"
 	CutTip = "Cortar (copiar y eliminar) las partes seleccionadas.\n\nTecla de acceso rápido: <btn id='Design.CutSelected'/>"
 	DeletePartTip = "Borra la parte retenida.\n\nTecla de acceso rápido: <btn id='Design.Delete'/>"
 	DeleteTip = "Borrar las piezas seleccionadas.\n\nTecla de acceso rápido: <btn id='Design.Delete'/> (o <btn id='Design.DeleteDoors'/> para borrar solo las puertas)"
@@ -1400,6 +1401,13 @@ Hud
 	ClickToSelect = "Haz clic para seleccionar."
 	ConfirmAbandonShip = "¿Estás seguro de que deseas abandonar las naves seleccionadas?"
 	ConfirmSelfDestruct = "¿Destruir las naves seleccionadas? ¡Esto es irreversible!"
+	ConstructionAssistance = "Ayuda en la construcción"
+	ConstructionAssistanceAllied = "Todas las naves aliadas"
+	ConstructionAssistanceAlliedTip = "La nave ayudará a todas las naves aliadas con la construcción, la deconstrucción y las reparaciones."
+	ConstructionAssistanceOff = Desactivada
+	ConstructionAssistanceOffTip = "La nave no ayudará a otras naves con la construcción, deconstrucción o reparaciones."
+	ConstructionAssistanceOwned = "Solo mis naves"
+	ConstructionAssistanceOwnedTip = "La nave ayudará a otras naves del mismo jugador con la construcción, la deconstrucción y las reparaciones."
 	ConstructionBlockedTip = "La construcción está bloqueada porque hay otro objeto en la zona de construcción."
 	CrewEvaFmt = "<s16><bad>{0}</bad></s16>\n<s12><gray> AEV</gray></s12>"
 	CrewEvaTip = "El número de tripulantes que se encuentran actualmente fuera de la nave. Volar demasiado lejos de ellos hará que los pierdas."
@@ -1437,8 +1445,6 @@ Hud
 	FtlWaitingCountFmt = "Esperando a {0} jugadores para la ACTIVACIÓN…"
 	FtlWaitingYou = "Esperándote a TI para la ACTIVACIÓN…"
 	HaltTip = "<b>Detener</b>\n\nCancelar todas las órdenes en vigor.\n\nTecla de acceso rápido: <btn id='Game.Halt'/>"
-	HelpsWithConstruction = "Ayuda con la construcción"
-	HelpsWithConstructionTip = "Si esta casilla está marcada, la(s) nave(es) seleccionada(s) ayudará(n) a otras naves aliadas cercanas en la construcción, deconstrucción y reparaciones."
 	IncreaseSpeedTip = "Aumentar la velocidad del juego\n\nTecla de acceso rápido: <btn id='Game.IncreaseSpeed'/>"
 	IndicatorDistFmt = "<s15>{0:0.00} </s15><s12>\nkm</s12>"
 	InteriorTip = "Muestra los interiores de la nave.\n\nTecla de acceso rápido: <btn id='View.ToggleInteriors'/>"
@@ -3133,6 +3139,8 @@ PvpModeConfig
 	}
 	ShrinkingPerimeter = "Anillo de muerte decreciente"
 	ShrinkingPerimeterTip = "Si esta casilla está marcada, el tamaño del anillo de muerte se reducirá gradualmente con el tiempo."
+	SpawnAsteroids = Asteroides
+	SpawnAsteroidsTip = "Si esta casilla está marcada, se agregarán asteroides al área de batalla."
 	Teams = Equipos
 	TeamsFfa = "Batalla libre"
 	TeamsFmt = "{0} equipos"
@@ -3258,11 +3266,15 @@ ResourceLimits
 {
 	
 	HeaderCount = Almacenados
+	HeaderDesired = Deseado
 	HeaderLimit = Límite
-	RemoveAll = "Eliminar todos los límites"
-	SetToDesignatedFmt = "Colocar en designados ({0})"
-	SetToStoredFmt = "Colocar en almacenados ({0})"
-	Title = "Límites de almacenamiento de recursos"
+	RemoveAllDesires = "Eliminar todos los deseos"
+	RemoveAllLimits = "Eliminar todos los límites"
+	SetDesiredToDesignatedFmt = "Establecer deseado a designado ({0})"
+	SetDesiredToStoredFmt = "Establecer deseado a almacenado ({0})"
+	SetLimitToDesignatedFmt = "Establecer el límite a designado ({0})"
+	SetLimitToStoredFmt = "Establecer el límite a almacenado ({0})"
+	Title = "Deseos y límites de recursos"
 }
 ResourcesBox
 {
@@ -3298,7 +3310,7 @@ ResourcesBox
 	ResetMirrorLinesTip = "Restablece los ejes de reflexión horizontal y vertical en el centro de la nave."
 	RestockResources = ""
 	RestockResourcesTip = "Rellena todos los recursos, las municiones y las baterías de energía de la nave al máximo.\n\nTecla de acceso rápido: <btn id='Resources.RestockResources'/>"
-	SetResourceLimits = "Establecer límites de recursos..."
+	SetResourceLimits = "Deseos y límites de recursos…"
 	SetTypeTipFmt = "<b>{0}</b>\n{3}\n\n{1}\n\nCuando está seleccionado este botón, hacer clic en un mosaico de almacenamiento lo designará para la entrega y el almacenamiento automáticos de {2}. (Mantén presionado <btn id='Resources.SetAllToolMode'/> para que la acción tenga efecto en todos los mosaicos de la sala o <btn id='Resources.SetAllSameToolMode'/> para que la acción tenga efecto en todos los mosaicos coincidentes de la sala)."
 	ShowAllResources = "Mostrar todos los tipos de recursos"
 	ShowAllResourcesTip = "Si esta casilla está marcada, se mostrarán todos los tipos de recursos, incluso si tu nave no tiene recursos de un tipo determinado."
@@ -3716,9 +3728,9 @@ Settings
 		ShowNearbyMissions = "Mostrar las misiones cercanas en la HUD"
 		ShowNearbyMissionsTip = "Con esta opción activada, muchas de las misiones más cercanas se mostrarán automáticamente en la esquina superior izquierda de la HUD."
 		ShowResourcePickupLines = ""
-		ShowResourcePickupLinesTip = "Si esta casilla está marcada, se mostrarán líneas desde los recursos flotantes a la nave."
+		ShowResourcePickupLinesTip = "Si esta casilla está marcada, se mostrarán líneas punteadas que conectan los recursos flotantes con sus almacenes previstos."
 		ShowSpaceCrewLines = ""
-		ShowSpaceCrewLinesTip = "Si esta casilla está marcada, se mostrarán líneas desde los tripulantes flotantes a la nave."
+		ShowSpaceCrewLinesTip = "Si esta casilla está marcada, se mostrarán líneas punteadas que conectan a la tripulación voladora con sus naves."
 		TabName = "Experiencia de juego"
 		ZoomedOutBlips = "Mostrar trazadores con alejamiento"
 		ZoomedOutBlipsTip = "Si esta casilla está marcada, se mostrarán trazadores de colores correspondientes a las naves pequeñas cuando se aleje el zoom."
@@ -3786,6 +3798,8 @@ Settings
 		LimitFpsNumber = " Cuadros por segundo"
 		LimitFpsNumberTip = "Número máximo de cuadros que se procesarán por segundo."
 		LimitFpsTip = "Si esta casilla está marcada, el juego no se ejecutará a una velocidad de cuadros mayor que un límite establecido."
+		LimitFpsUnfocused = "Limitar velocidad de cuadros (en segundo plano)"
+		LimitFpsUnfocusedTip = "Si esta casilla está marcada, el juego no se ejecutará a una velocidad de cuadros mayor que un límite establecido mientras se ejecute en segundo plano."
 		LockCursor = "Cursor del mouse cautivo"
 		LockCursorTip = "Si esta casilla está marcada, el cursor del mouse no podrá salir de la ventana del juego durante el juego. Si juegas en una ventana de pantalla completa exclusiva, el cursor no saldrá de la ventana independientemente de si esta opción está seleccionada."
 		Monitor = ""
@@ -4113,6 +4127,7 @@ Stats
 	MineCapacityFmt = "<white>Capacidad de minas:</white> <good>{0}</good>"
 	MineIronUsageFmt = "<white>Uso de hierro:</white> <good>{0:0.##}</good><gray>/mina (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	MinePartCapacityFmt = "<white>Capacidad:</white> <good>{0}</good><gray> partes (</gray><good>{1:0.##}</good><gray> minas)</gray>"
+	MinePartsFmt = "<white>Se ensamblan a partir de:</white> <good>{0}</good><gray> partes/minas</gray>"
 	MinePowerUsageFmt = "<white>Uso de energía:</white> <good>{0:0.##}</good><gray>/mina (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	MineProductionFmt = "<white>Tasa de producción:</white> <good>{0:0.##}</good><gray> minas/s</gray>"
 	MissileCopperUsageFmt = "<white>Uso de cobre:</white> <good>{0:0.##}</good><gray>/misil (</gray><good>{1:0.##}</good><gray>/s)</gray>"
@@ -4582,7 +4597,7 @@ Tips
 	ResourceLimits
 	{
 		
-		Tip1 = "Puedes limitar la cantidad de recursos que almacena la nave de cualquier tipo específico. <btn id='General.UIAltClick'/> sobre el botón de Recoger/Recuperar/Minar y selecciona <white>Establecer límites de recursos</white>."
+		Tip1 = "Puedes limitar la cantidad de recursos que almacena la nave de cualquier tipo específico. <btn id='General.UIAltClick'/> sobre el botón de Recoger/Recuperar/Minar y selecciona <white>Deseos y límites de recursos</white>."
 		Tip2 = "Cuando se establece un límite para un tipo específico de recurso, la tripulación no recogerá, las fábricas no producirán y no podrás comprar más de que ese límite."
 		Title = "Límites de recursos"
 	}
@@ -4750,6 +4765,7 @@ TitleScreen
 	NewsFmt = "NOTICIAS <bad>({0})</bad>"
 	NextUpdateFmt = "Próxima actualización en aproximadamente {0} días, {1} horas."
 	Reddit = ""
+	Roadmap = "HOJA DE RUTA DEL ACCESO ANTICIPADO"
 	Settings = AJUSTES
 	ShipLibrary = "BIBLIOTECA DE NAVES"
 	Steam = "Comunidad de Steam"
@@ -5152,7 +5168,7 @@ Tutorials
 	{
 		
 		Designate = "También puedes decirle a tu equipo que almacene <good>solo un recurso específico</good> en mosaicos específicos. Haz clic en el botón del recurso deseado y, a continuación, haz clic en los mosaicos en los que solo se debe almacenar ese recurso. Tu tripulación tratará de almacenar ese recurso en esos mosaicos siempre que sea posible y no almacenará automáticamente otros recursos en ellos."
-		Limits = "Para <good>limitar la cantidad</good> de un recurso almacenado en la nave, abre el menú <img name='hamburger_up'/> y luego elige <white>Establecer límites de recursos</white>."
+		Limits = "Para <good>limitar la cantidad</good> de un recurso almacenado en la nave, abre el menú <img name='hamburger_up'/> y luego elige <white>Deseos y límites de recursos</white>."
 		Manage = "Para administrar los recursos de tu nave, haz clic en el botón <white>Administrar recursos</white>."
 		Move = "Para decirle a tu tripulación que <good>mueva recursos</good> de un mosaico a otro, selecciona la herramienta <white>Mover recursos</white>, haz clic en la pila de recursos que desees mover y, a continuación, haz clic en el mosaico a donde se deben mover."
 		Stacks = "La mayoría de los recursos se almacenan en <good>pilas</good> dentro de <good>mosaicos de almacenamiento</good>. Los compartimientos de almacenamiento pueden contener pilas de cualquier tipo. Las armas, las fábricas y otras partes especializadas solo pueden contener recursos como los que realmente utilizan o producen."

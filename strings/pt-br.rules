@@ -108,8 +108,8 @@ Brushes
 	Line = Linha
 	LineIcon = Linha
 	LineTip = "Segure <btn id='Design.RestrictShapeMode'/> para fazer uma linha reta."
-	Oval = ""
-	OvalIcon = ""
+	Oval = Oval
+	OvalIcon = Oval
 	OvalTip = "Segure <btn id='Design.RestrictShapeMode'/> para fazer um círculo perfeito."
 	Triangle = Triângulo
 	TriangleIcon = ""
@@ -251,6 +251,7 @@ BuildBox
 	CopyTip = "Copia as peças selecionadas.\n\nAtalho: <btn id='Design.CopySelected'/>"
 	Crew = Tripulação/camas
 	CrewFmt = ""
+	CrewOperatorsFmt = "Vagas para operadores: <b>{0}</b>"
 	CutTip = "Corta (copia e remove) as peças selecionadas.\n\nAtalho: <btn id='Design.CutSelected'/>"
 	DeletePartTip = "Apaga a peça segurada.\n\nAtalho: <btn id='Design.Delete'/>"
 	DeleteTip = "Apaga as peças selecionadas.\n\nAtalho: <btn id='Design.Delete'/> (ou <btn id='Design.DeleteDoors'/> para apagar apenas as portas)"
@@ -1400,6 +1401,13 @@ Hud
 	ClickToSelect = "Clique para selecionar."
 	ConfirmAbandonShip = "Você quer mesmo abandonar as naves selecionadas?"
 	ConfirmSelfDestruct = "Destruir as naves selecionadas? Isto é irreversível!"
+	ConstructionAssistance = "Auxílio de construção"
+	ConstructionAssistanceAllied = "Todas as naves aliadas"
+	ConstructionAssistanceAlliedTip = "Esta nave ajudará todas as naves aliadas com a construção, desconstrução e reparos."
+	ConstructionAssistanceOff = Desligado
+	ConstructionAssistanceOffTip = "Esta nave não ajudará outras naves com a construção, desconstrução ou reparos."
+	ConstructionAssistanceOwned = "Apenas minhas naves"
+	ConstructionAssistanceOwnedTip = "Esta nave ajudará outras naves do mesmo dono com a construção, desconstrução e reparos."
 	ConstructionBlockedTip = "A construção foi interrompida por outro objeto na área de construção."
 	CrewEvaFmt = "<s16><bad>{0}</bad></s16>\n<s12><gray>A.E.V.</gray></s12>"
 	CrewEvaTip = "O número de tripulantes fora da nave no momento. Se você voar para muito longe deles, poderá perdê-los."
@@ -1437,8 +1445,6 @@ Hud
 	FtlWaitingCountFmt = "Aguardando {0} jogadores para ENGAJAR..."
 	FtlWaitingYou = "Aguardando VOCÊ para ENGAJAR..."
 	HaltTip = "<b>Parar</b>\n\nCancele todas as ordens atuais.\n\nAtalho: <btn id='Game.Halt'/>"
-	HelpsWithConstruction = "Assistência de construção"
-	HelpsWithConstructionTip = "Se marcado, as naves selecionadas auxiliam outras naves aliadas em construções, desconstruções e reparos."
 	IncreaseSpeedTip = "Aumentar velocidade do jogo\n\nAtalho: <btn id='Game.IncreaseSpeed'/>"
 	IndicatorDistFmt = ""
 	InteriorTip = "Exibe o interior da nave.\n\nAtalho: <btn id='View.ToggleInteriors'/>"
@@ -3133,6 +3139,8 @@ PvpModeConfig
 	}
 	ShrinkingPerimeter = "Encolher Anel da Morte"
 	ShrinkingPerimeterTip = "Se marcado, o Anel da Morte encolherá gradualmente com o tempo."
+	SpawnAsteroids = Asteroides
+	SpawnAsteroidsTip = "Se marcado, asteroides aparecerão na área de batalha."
 	Teams = Equipes
 	TeamsFfa = Mata-mata
 	TeamsFmt = "{0} equipes"
@@ -3258,11 +3266,15 @@ ResourceLimits
 {
 	
 	HeaderCount = Armazenado
+	HeaderDesired = Desejado(s)
 	HeaderLimit = Limite
-	RemoveAll = "Remover todos os limites"
-	SetToDesignatedFmt = "Definir como designado ({0})"
-	SetToStoredFmt = "Definir como armazenado ({0})"
-	Title = "Limites de armazenagem de recursos"
+	RemoveAllDesires = "Remover todos os desejos"
+	RemoveAllLimits = "Remover todos os limites"
+	SetDesiredToDesignatedFmt = "Definir desejado para designado ({0})"
+	SetDesiredToStoredFmt = "Definir desejado para armazenado ({0})"
+	SetLimitToDesignatedFmt = "Definir limite para designado ({0})"
+	SetLimitToStoredFmt = "Definir limite para armazenado ({0})"
+	Title = "Recursos desejados e limites"
 }
 ResourcesBox
 {
@@ -3298,7 +3310,7 @@ ResourcesBox
 	ResetMirrorLinesTip = "Redefine as linhas de espelhamento horizontais e verticais de volta ao centro da nave."
 	RestockResources = "Reabastecer todos os recursos"
 	RestockResourcesTip = "Reabastece todos os recursos, munições e baterias da nave ao máximo.\n\nAtalho: <btn id='Resources.RestockResources'/>"
-	SetResourceLimits = "Definir limites para os recursos..."
+	SetResourceLimits = "Recursos desejados e limites..."
 	SetTypeTipFmt = "<b>{0}</b>\n{3}\n\n{1}\n\nQuando este botão está selecionado, clicar em um quadro de armazenamento vai designá-lo para a entrega e armazenamento automáticos de {2}. Segure <btn id='Resources.SetAllToolMode'/> para todos os quadros na sala, ou <btn id='Resources.SetAllSameToolMode'/> para todos os quadros correspondentes na sala."
 	ShowAllResources = "Mostrar todos os tipos de recursos"
 	ShowAllResourcesTip = "Se marcado, todos os tipos de recursos serão mostrados, mesmo se sua nave não tiver recursos de um tipo em particular."
@@ -3716,9 +3728,9 @@ Settings
 		ShowNearbyMissions = "Mostrar missões próximas no HUD"
 		ShowNearbyMissionsTip = "Muitas das missões mais próximas serão exibidas automaticamente no canto superior esquerdo do HUD."
 		ShowResourcePickupLines = "Exibir linhas de recursos flutuantes"
-		ShowResourcePickupLinesTip = "Se marcado, exibe linhas de recursos flutuantes até a nave."
+		ShowResourcePickupLinesTip = "Se marcado, linhas pontilhadas demonstrarão a conexão entre recursos flutuantes e os armazéns designados."
 		ShowSpaceCrewLines = "Exibir linhas de tripulação voadora"
-		ShowSpaceCrewLinesTip = "Se marcado, exibe linhas de tripulação voadoras até a nave."
+		ShowSpaceCrewLinesTip = "Se marcado, linhas pontilhadas demonstrarão a conexão dos tripulantes em voo com as naves."
 		TabName = Jogabilidade
 		ZoomedOutBlips = "Mostrar “blips” quando usar Afastar Zoom"
 		ZoomedOutBlipsTip = "Se marcado, “blips” coloridos serão exibidos para naves pequenas quando usar Afastar Zoom."
@@ -3786,6 +3798,8 @@ Settings
 		LimitFpsNumber = " Quadros por segundo"
 		LimitFpsNumberTip = "O número máximo de quadros que serão renderizados por segundo."
 		LimitFpsTip = "Se marcado, o jogo não vai rodar mais rápido do que uma determinada taxa de quadros."
+		LimitFpsUnfocused = "Limitar taxa de quadros (em plano de fundo)"
+		LimitFpsUnfocusedTip = "Se marcado, o jogo não vai rodar mais rápido do que uma determinada taxa de quadros quando estiver em plano de fundo."
 		LockCursor = "Aprisionar o cursor do mouse"
 		LockCursorTip = "Se marcado, o cursor do mouse não poderá sair da janela do jogo durante o jogo. Se estiver jogando em uma janela Tela Cheia Exclusiva, o cursor não sairá da janela, independentemente de esta opção estar selecionada."
 		Monitor = ""
@@ -4113,6 +4127,7 @@ Stats
 	MineCapacityFmt = "<white>Capacidade da mina:</white> <good>{0}</good>"
 	MineIronUsageFmt = "<white>Uso de ferro:</white> <good>{0:0.##}</good><gray>/mina (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	MinePartCapacityFmt = "<white>Capacidade:</white> <good>{0}</good><gray> peças (</gray><good>{1:0.##}</good><gray> minas)</gray>"
+	MinePartsFmt = "<white>Montado a partir de:</white> <good>{0}</good><gray> peças/mina</gray>"
 	MinePowerUsageFmt = "<white>Uso de energia:</white> <good>{0:0.##}</good><gray>/mina (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	MineProductionFmt = "<white>Taxa de produção:</white> <good>{0:0.##}</good><gray> minas/s</gray>"
 	MissileCopperUsageFmt = "<white>Uso de cobre:</white> <good>{0:0.##}</good><gray>/míssil (</gray><good>{1:0.##}</good><gray>/s)</gray>"
@@ -4582,7 +4597,7 @@ Tips
 	ResourceLimits
 	{
 		
-		Tip1 = "Você pode limitar a quantidade de recursos de qualquer tipo que a sua nave vai armazenar. <btn id='General.UIAltClick'/> no botão Coletar/Recuperar/Minerar e selecione <white>Definir Limites para os Recursos</white>."
+		Tip1 = "Você pode limitar a quantidade de recursos de qualquer tipo que a sua nave vai armazenar. <btn id='General.UIAltClick'/> no botão Coletar/Recuperar/Minerar e selecione <white>Recursos desejados &amp; Limites</white>."
 		Tip2 = "Quando um limite for definido para algum tipo de recurso, sua tripulação não vai mais coletar, suas fábricas não vão mais produzir, e você não poderá comprar mais do que esse limite."
 		Title = "Limites de recursos"
 	}
@@ -4750,6 +4765,7 @@ TitleScreen
 	NewsFmt = "NOTÍCIAS <bad>({0})</bad>"
 	NextUpdateFmt = "A próxima atualização será em aproximadamente {0} dias, {1} horas."
 	Reddit = ""
+	Roadmap = "ROTEIRO DO ACESSO ANTECIPADO"
 	Settings = CONFIGURAÇÕES
 	ShipLibrary = "BIBLIOTECA DE NAVES"
 	Steam = "Comunidade Steam"
@@ -5152,7 +5168,7 @@ Tutorials
 	{
 		
 		Designate = "Você também pode dizer à sua tripulação para armazenar <good>apenas um recurso específico</good> em quadros específicos. Clique no botão do recurso desejado e depois clique nos quadros que devem armazenar apenas aquele recurso. Sua tripulação tentará armazenar aquele recurso naqueles quadros sempre que possível, e não armazenará outros recursos automaticamente neles."
-		Limits = "Para <good>limitar a quantidade</good> de um recurso armazenado na sua nave, abra o <img name='hamburger_up'/> menu e selecione <white>Definir Limites para os Recursos</white>."
+		Limits = "Para <good>limitar a quantidade</good> de um recurso armazenado na sua nave, abra o <img name='hamburger_up'/> menu e selecione <white>Recursos desejados &amp; Limites</white>."
 		Manage = "Para gerenciar os recursos da sua nave, clique no botão <white>Gerenciar Recursos</white>."
 		Move = "Para mandar a sua tripulação <good>mover recursos</good> de um quadro para outro, selecione a ferramenta <white>Mover Recursos</white>, clique na pilha de recursos que quer mover, e depois clique no quadro para onde eles devem ser movidos."
 		Stacks = "A maioria dos recursos são armazenados em <good>pilhas</good> nos <good>quadros de armazenamento</good>. As Baias de Armazenamento podem conter pilhas de qualquer tipo. Armas, fábricas, e outras peças especializadas podem conter somente recursos que elas possam usar ou produzir."

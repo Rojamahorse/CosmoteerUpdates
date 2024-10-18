@@ -2,13 +2,13 @@ __Name = "日本語"
 __DebugOnly = false
 AI
 {
-	
+
 	Easy = "AI　イージー"
 	Normal = "AI ノーマル"
 }
 ArenaMode: Pvp
 {
-	
+
 	AtFirstPlaceFmt = "2位との差{0}ポイント（{1}）"
 	BehindFirstPlaceFmt = "1位との差{0}ポイント（{1}）"
 	CanRespawnCountdownFmt = "リスポーン可能になるまで{0}…"
@@ -25,7 +25,7 @@ ArenaMode: Pvp
 	RespawnCountdownFmt = "リスポーンまで{0}…"
 	Scoreboard: ^/0/Scoreboard
 	{
-		
+
 		DamageReceived = "受けた\nダメージ"
 		Points = "ダメージ\nポイント"
 	}
@@ -34,12 +34,12 @@ ArenaMode: Pvp
 }
 ArenaModeConfig: Workshop
 {
-	
+
 	Description = 他のプレイヤーにダメージを与え破壊し、ポイントを獲得しましょう！自分が破壊された場合はリスポーンします。
 	Name = アリーナ
 	Rulesets
 	{
-		
+
 		FFA1500K = "全員可能 　ー　1.5M"
 		FFA1500KShort = ""
 		FFA3000K = "全員可能 　ー　3M"
@@ -51,7 +51,7 @@ ArenaModeConfig: Workshop
 }
 Backgrounds
 {
-	
+
 	Black = 黒
 	Blue = 青
 	Galaxy = ギャラクシーマップ
@@ -63,7 +63,7 @@ Backgrounds
 }
 BillOfSale
 {
-	
+
 	ConstructionExpenses = <u>建造費用：</u>
 	DeconstructionRefunds = <u>解体資金：</u>
 	ExpensesSubtotalFmt = "費用小計：{0}"
@@ -79,7 +79,7 @@ BillOfSale
 }
 Brushes
 {
-	
+
 	Block10x10 = "10x10 ブロック"
 	Block10x10Icon = ""
 	Block1x1 = "1x1 ブロック"
@@ -117,7 +117,7 @@ Brushes
 }
 BuildBattleMode: Pvp
 {
-	
+
 	BattlePhaseAnnouncement = バトル開始！
 	BattleWinnerFmt = "{0}が{1}ラウンドを勝利！"
 	BuildPhaseAnnouncement = ビルド開始！
@@ -125,7 +125,7 @@ BuildBattleMode: Pvp
 	CapturePointFmt = "<b>{0}</b>\n<add_money>{1:n0}</add_money><gray>/{2} 秒</gray>"
 	CapturePointNames
 	[
-		
+
 		獲得ポイント
 	]
 	FleetValueFmt = "<s12>艦隊価値\n</s12><money_color>{0}</money_color>/<money_color>{1}</money_color>"
@@ -145,7 +145,7 @@ BuildBattleMode: Pvp
 	SaveToStashTip = 未開封のものをとっておいて後に購入します。
 	Scoreboard: ^/0/Scoreboard
 	{
-		
+
 		CapturePoints = コントロールポイント
 		Credits = クレジット
 		CurrentIncome = 現在の収入
@@ -164,7 +164,7 @@ BuildBattleMode: Pvp
 }
 BuildBattleModeConfig: Workshop
 {
-	
+
 	AIControlledBattles = AI操縦の戦闘
 	AIControlledBattlesTip = このオプションをチェックすると、戦闘フェーズの船はAIが操縦することになります。
 	AdditionalUnlockCost = 追加解放費用
@@ -195,7 +195,7 @@ BuildBattleModeConfig: Workshop
 	Name = 建造と戦闘
 	Rulesets
 	{
-		
+
 		Ai100K = "小規模船　ー　AI操縦"
 		Ai100KShort = ""
 		AiBlitz = "小規模船　ー　ブリッツ＋AI"
@@ -220,7 +220,7 @@ BuildBattleModeConfig: Workshop
 }
 BuildBox
 {
-	
+
 	BlueprintsInvalid = 無効な設計図
 	BrushDisabledTip = 選択中のパーツやツールは異なる「ブラシ」の形やサイズに対応していません。
 	BrushHotkeyFmt = "ホットキー：<b>{0}</b>"
@@ -251,6 +251,7 @@ BuildBox
 	CopyTip = "選択中のパーツをコピー。\n\nホットキー：<btn id='Design.CopySelected'/>"
 	Crew = 乗組員/ベッド
 	CrewFmt = ""
+	CrewOperatorsFmt = "操縦席：<b>{0}</b>"
 	CutTip = "選択中のパーツをカット（コピーして削除）。\n\nホットキー：<btn id='Design.CutSelected'/>"
 	DeletePartTip = "掴んでいるパーツを削除。\n\nホットキー：<btn id='Design.Delete'/>"
 	DeleteTip = "選択中のパーツを削除。\n\nホットキー：<btn id='Design.Delete'/>（または<btn id='Design.DeleteDoors'/>でドアのみ削除）"
@@ -285,7 +286,7 @@ BuildBox
 	InsufficientResourcesFmt = "{0}不足"
 	InvalidReasons
 	{
-		
+
 		Blocked = <bad>建設妨害</bad>
 		CategorySlotsExceeded = <bad>この種類のパーツが多すぎます</bad>
 		ExistingPart = <bad>既存のパーツ</bad>
@@ -362,12 +363,12 @@ BuildBox
 }
 CareerLog
 {
-	
+
 	Title = キャリアログ
 }
 CareerMode
 {
-	
+
 	CommsTip = "<b>通信</b>\n\n近隣の船との交信リンクを開きます。\n\nホットキー：<btn id='Comms.OpenClose'/>"
 	CreateCustomMarker = "<btn id='General.UIClick'/>でカスタムメーカーをここに追加します。"
 	CustomMarkerName = このカスタムメーカーの名前を入力してください。
@@ -402,7 +403,7 @@ CareerMode
 }
 CareerModeConfig
 {
-	
+
 	Advanced = 上級ゲームオプション
 	AdvancedInfo = これらオプションの変更はゲームの意図された遊び方を変えてしまいますが、ゲームプレイが楽しくなるようでしたら、ご自由に変更いただいてかまいません。
 	CantDisableSalvagingTip = 「乗組員による建設はしない」も有効にしなくてはなりません。
@@ -437,13 +438,13 @@ CareerModeConfig
 }
 CategoryNouns
 {
-	
+
 	ThrusterPlural = スラスター
 	ThrusterSingular = スラスター
 }
 ChatBox
 {
-	
+
 	ChatFmt = ""
 	Send = 送信
 	SendingTooFast = おおーーっと、ちょっと待って！メッセージを送るスピードが速すぎます！
@@ -453,13 +454,13 @@ ChatBox
 }
 CloudStorage
 {
-	
+
 	UsedFmt = "Steamクラウド：<good>{0:0.0}%</good>使用中"
 	UsedTipFmt = "使用中：{0} / {1}\n使用可能：{2}"
 }
 Codex
 {
-	
+
 	CodexDialog = チュートリアルとコーデックス
 	HowToPlay = 遊び方：
 	Lore = コーデックス
@@ -470,7 +471,7 @@ Codex
 }
 ColorPicker
 {
-	
+
 	Copy = 色をコピー
 	Hex = ""
 	Hsv = ""
@@ -479,7 +480,7 @@ ColorPicker
 }
 Colorblind
 {
-	
+
 	Achromatopsia = 1色覚
 	Deuteranopia = 2型2色覚
 	Normal = 正常
@@ -488,7 +489,7 @@ Colorblind
 }
 CombatDifficulty
 {
-	
+
 	Easy = 少尉
 	EasyTip = "● 敵から受けるダメージが30％減少。\n● 敵に与えるダメージが40％増加。"
 	Hard = 提督
@@ -502,7 +503,7 @@ CombatDifficulty
 }
 CommWindow
 {
-	
+
 	AcceptMission = 受託
 	AcceptMissionTip = このミッションを受託し、あなたのミッションログに追加すると、目標を完遂し報酬を獲得できるようになります。
 	AutoHireFmt = "最大数（{0}）まで雇用\n{1}"
@@ -547,7 +548,7 @@ CommWindow
 }
 CommsBox
 {
-	
+
 	AIHailingFmt = "<good>送信元…</good>\n{0}"
 	AcceptHail = 受信
 	DeclineHail = 拒否
@@ -565,7 +566,7 @@ CommsBox
 }
 ConstructionLegality
 {
-	
+
 	IllegalInCombat = 戦闘中は船の改修や修理はできません。
 	IllegalOutsideSpawnArea = スポーンエリアの外では船の改修や修理はできません。
 	IllegalSelfDestructing = 自爆する船の改修や修理はできません。
@@ -573,18 +574,18 @@ ConstructionLegality
 }
 CreativeMode
 {
-	
+
 	AddConnectionHover = "<btn id='Game.UseTool'/>でドラッグして2つの星系の間にハイパージャンプ中継地を作成します。"
 	Ai
 	{
-		
+
 		None = なし
 		TipFmt = "AIの{0}を選択中の船に割り当てます。"
 		Title = AI
 	}
 	Allegiance
 	{
-		
+
 		Barbarian = 海賊
 		BarbarianTip = 海賊は、廃船以外の海賊船を含む他の全ての船の敵です。
 		Junk = 廃船
@@ -597,7 +598,7 @@ CreativeMode
 	}
 	AutoBuilder
 	{
-		
+
 		BottomToTop = 下から上
 		BuildOrder = 建造指示
 		Cheap = 安価なものから
@@ -620,13 +621,13 @@ CreativeMode
 		SelfDestructDuration = 自爆持続時間：
 		SetStartingPart = 最初のパーツを設定：
 		Start = 出発
-		StartingPartFmt = 最初のパーツ：
+		StartingPartFmt = "最初のパーツ：{0}"
 		Title = 自動建造
 		TopToBottom = 上から下
 	}
 	BattleHelper
 	{
-		
+
 		AI = AI
 		AddShip = 船を追加
 		AutoCamera = カメラを自動化
@@ -682,7 +683,7 @@ CreativeMode
 	InvulnerableTip = このオプションをチェックすると、船はいかなるダメージも受けなくなります。
 	POIConfig
 	{
-		
+
 		CustomName = カスタム名
 		ShowOnlyInFog = 霧の中のみ表示
 		Title = 関心対象のオプション
@@ -693,7 +694,7 @@ CreativeMode
 	PartDestructTip = 選択したパーツを破壊します。
 	PlanetConfig
 	{
-		
+
 		Distance = 深さ
 		Random = ランダム
 		Seed = シード
@@ -702,7 +703,7 @@ CreativeMode
 	}
 	PlayAs
 	{
-		
+
 		AllPlayers = 全てのプレイヤー
 		AllPlayersTipFmt = "全てのプレイヤーの船を操縦できるようになります。\n\nプレイヤー1には新しい船が提供されます。"
 		PlayerIndexFmt = "プレイヤー{0}"
@@ -719,13 +720,13 @@ CreativeMode
 	ResetCrewTip = 乗組員全員を元のステーションに移送します。
 	SavedShips
 	{
-		
+
 		CrewCountFmt = "{0}乗組員"
 	}
 	SelectObjectsTip = "<b>選択ツール</b>\n\n船やその他のオブジェクトを選択、移動、回転、削除します。\n\nホットキー：<btn id='CreativeMode.SelectTool'/>"
 	SetBackground
 	{
-		
+
 		Tip = 背景の宇宙の見た目を変更します。
 		Title = 背景を変更中…
 	}
@@ -734,7 +735,7 @@ CreativeMode
 }
 CreativeModeConfig
 {
-	
+
 	Description = クレジットが無制限に使え、全ての設計図が解放された設定で船をデザインします。
 	GenerateFtlGates = ハイパージャンプ中継点を作成
 	GenerateFtlGatesTip = このオプションをチェックすると、隣の星系と隣接している全ての星系にハイパージャンプ中継点が自動的に追加されます。
@@ -751,7 +752,7 @@ CreativeModeConfig
 }
 CrewAndResourceTransfer
 {
-	
+
 	CancelTransfer = 移動をキャンセル
 	Crew = 乗組員
 	CrewFailure = 移動させたい乗組員全員が移動できるわけではありません。大抵の場合の原因は、これら乗組員が現在の船から新しい船に移動するためのエアロックがないためです。
@@ -771,7 +772,7 @@ CrewAndResourceTransfer
 }
 CrewBox
 {
-	
+
 	AddCrew = 更に乗組員を追加…
 	AddRole = 新規任務
 	AddRoleDisabledTip = 船の任務の最大数です。
@@ -829,7 +830,7 @@ CrewBox
 }
 CrewEditor
 {
-	
+
 	BodyType = 髪型
 	Copy = コピー
 	HairColor = 髪の色
@@ -844,7 +845,7 @@ CrewEditor
 }
 CrewScarcity
 {
-	
+
 	Max = 最大
 	MaxTip = プレイヤーの名声に関係なく、最大2000名の乗組員を雇用できます。これで強力な敵とも交戦せずに無限に採掘できるようになり、ゲームを進めるのがとても簡単になります。
 	Plentiful = 豊富
@@ -856,7 +857,7 @@ CrewScarcity
 }
 DecalGroups
 {
-	
+
 	Shapes = 形
 	Symbols = シンボル
 	TextLarge = テキスト（2x2）
@@ -864,10 +865,10 @@ DecalGroups
 }
 Dialogue
 {
-	
+
 	Surrender
 	{
-		
+
 		AISurrender = 降伏を受け入れる
 		AISurrenderDialogue = "{0}は<money>{1:n0}</money>であなたに降伏しようとしています。"
 		AISurrenderTip = "敵艦の降伏を受け入れます。<money>{0:n0}</money>を受け取り、敵艦はあなたに対して中立的になります。"
@@ -884,7 +885,7 @@ Dialogue
 }
 DominationMapStyles
 {
-	
+
 	Large2T = "2チーム　ー　大"
 	Large2TTip = 2チーム、6基の小規模コントロールポイント、2基の大規模コントロールポイント、1基の巨大コントロールポイント。
 	Large3T = "3チーム　ー　大"
@@ -906,11 +907,11 @@ DominationMapStyles
 }
 DominationMode: Pvp
 {
-	
+
 	CapturePointFmt = "<b>{0}</b>\n<add_money>{1:n0}</add_money><gray>/{2} 秒</gray>"
 	CapturePointNames
 	[
-		
+
 		アルファ
 		ブラボー
 		チャーリー
@@ -948,7 +949,7 @@ DominationMode: Pvp
 	RestockResourcesTip = 船の軍需品と資源を容量上限まで補充します。
 	Scoreboard: ^/0/Scoreboard
 	{
-		
+
 		CapturePoints = コントロールポイント
 		Credits = クレジット
 		CurrentIncome = 現在の収入
@@ -959,7 +960,7 @@ DominationMode: Pvp
 }
 DominationModeConfig: Workshop
 {
-	
+
 	BasicIncome = 基本収入
 	BasicIncomeTip = "コントロールポイントに加えて、各チームが10秒おき（½速度の場合）に獲得するクレジット（<img name='money' colored='true'/>）額。"
 	CapturePointIncome = コントロールポイント収入
@@ -976,7 +977,7 @@ DominationModeConfig: Workshop
 	Name = 優勢
 	Rulesets
 	{
-		
+
 		Large1500K = "大マップ　ー　1.5M"
 		Large1500KShort = ""
 		Large3000K = "大マップ　ー　3M"
@@ -1002,7 +1003,7 @@ DominationModeConfig: Workshop
 }
 Doodads
 {
-	
+
 	AsteroidCarbon_L = 炭素小惑星（L）
 	AsteroidCarbon_M = 炭素小惑星（M）
 	AsteroidCarbon_S = 炭素小惑星（S）
@@ -1080,7 +1081,7 @@ Doodads
 }
 EconDifficulty
 {
-	
+
 	Fast = 建設業者
 	FastTip = "● 資源ドロップ率が100％増加。\n● 金銭報酬が100％増加。\n● 名声・評判報酬が50％増加。"
 	FreeBuild = イマジニア（無料で建設）
@@ -1092,7 +1093,7 @@ EconDifficulty
 }
 EditorGroups
 {
-	
+
 	Crew = 乗組員
 	Defenses = 防御
 	Flight = 飛行
@@ -1110,10 +1111,10 @@ EditorGroups
 }
 EliminationMode: Pvp
 {
-	
+
 	Scoreboard: ^/0/Scoreboard
 	{
-		
+
 		Health = 体力
 	}
 	TeamStrengthTip = プレイヤーまたはチームの残りの体力。このバーが全てなくなると負けです。
@@ -1121,12 +1122,12 @@ EliminationMode: Pvp
 }
 EliminationModeConfig: Workshop
 {
-	
+
 	Description = 命を賭けた戦い！最後まで生き残ったプレイヤー・チームの勝利です！
 	Name = 排除
 	Rulesets
 	{
-		
+
 		BR1500K = "バトルロワイヤル　ー　1.5M"
 		BR1500KShort = ""
 		BR3000K = "バトルロワイヤル　ー　3M"
@@ -1144,13 +1145,13 @@ EliminationModeConfig: Workshop
 }
 Errors
 {
-	
+
 	GpuCrash = グラフィックドライバがクラッシュしたようです。これが続くようであれば、グラフィックドライバのアップデート、またはすでにアップデートされている場合は、以前のバージョンをダウンロードしてください。
 	HasMods = "MODが使用不可になっています。クラッシュの原因はMODの可能性があります。\nMODの作者に報告してください。"
 }
 Factions
 {
-	
+
 	Cabal = 太陽の結社
 	Fringe = フリンジ星系レジスタンス
 	Imperium = ケンタウリ帝国
@@ -1159,7 +1160,7 @@ Factions
 }
 FameTitles
 [
-	
+
 	「誰？？」
 	「埋もれてる」
 	「目立たない」
@@ -1182,7 +1183,7 @@ FameTitles
 ]
 Feedback
 {
-	
+
 	AttachErrorLog = エラーログを添付
 	AttachErrorLogTip = プログラムのエラーログを添付してください。私たちがバグを修正する際に役立ちます。
 	AttachSavedGame = セーブファイルまたは現在のゲームを添付
@@ -1202,7 +1203,7 @@ Feedback
 }
 FleetsWorkshop: Workshop
 {
-	
+
 	DialogName = Steamワークショップ船コレクションアップローダー
 	Folder = 船コレクションフォルダ：
 	Name = 船コレクション名称：
@@ -1212,7 +1213,7 @@ FleetsWorkshop: Workshop
 }
 Formations
 {
-	
+
 	A = ""
 	Alpha = アルファ・フォーメーション
 	B = ""
@@ -1241,7 +1242,7 @@ Formations
 }
 GalaxyMap
 {
-	
+
 	CancelJump = ハイパージャンプをキャンセル
 	CantPlotCourseTip = 稼働しているハイパードライブを搭載する船を1隻以上所有している必要があります。
 	InsufficientFuel = "他の星系へジャンプするには船の<u>ハイパードライブ</u>のハイペリウム燃料（<img name='resource.hyperium'/>）の量が不足しています。経路を計画しますか？"
@@ -1255,7 +1256,7 @@ GalaxyMap
 }
 GameLaunchFlow
 {
-	
+
 	ClientInitializing = "ゲームを開始しています…\n（初期化）"
 	ClientReceivingFmt = "ゲームを開始しています…\n（データ受信中：{0:0}％）"
 	ClientStarting = ゲーム開始！
@@ -1267,7 +1268,7 @@ GameLaunchFlow
 }
 GameMenu
 {
-	
+
 	Abort = セットアップへ戻る
 	CantSaveGameTip = 現在、ゲームはセーブできません。
 	Codex = チュートリアルとコーデックス
@@ -1300,7 +1301,7 @@ GameMenu
 }
 GameResyncFlow
 {
-	
+
 	ClientInitializing = "ゲームが同期していません。再同期中…\n（初期化）"
 	ClientReceivingFmt = "ゲームが同期していません。再同期中…\n（ゲームの状態を受信中：{0:0}％）"
 	ClientResuming = ゲーム再開！
@@ -1313,7 +1314,7 @@ GameResyncFlow
 }
 GameSetupScreen
 {
-	
+
 	AddAI = AIプレイヤーを追加
 	AddShip = ＋
 	AddShipTip = 艦隊に船を追加します。
@@ -1345,7 +1346,7 @@ GameSetupScreen
 	GameOpen = "ゲームは<good>公開されています。</good>\n<s12>ゲームが満員になっていなければ、他のプレイヤーも参加できます。</s12>"
 	HostDisconnectReason
 	{
-		
+
 		Canceled = ホストがゲームをキャンセルしました。
 		ConnectionLost = ホストとの接続が失われました。
 		Kicked = ホストがあなたをゲームから除外しました。
@@ -1385,7 +1386,7 @@ GameSetupScreen
 }
 Hud
 {
-	
+
 	AbandonShip = 船から退避
 	AbandonShipTip = 全乗組員に可能であれば船から退避するよう指示します。
 	AttackTip = "<b>攻撃</b>\n\n他の船に攻撃します。また、自船を攻撃することもできます（<btn id='Game.InvertCollisionAvoidance'/>を長押しして衝突回避機能を切り替えてください）\n\nホットキー：<btn id='Game.Attack'/>"
@@ -1400,6 +1401,13 @@ Hud
 	ClickToSelect = クリックして選択します。
 	ConfirmAbandonShip = 選択した船を放棄しますか？
 	ConfirmSelfDestruct = 選択した船を破壊しますか？この操作は元に戻すことはできません！
+	ConstructionAssistance = 建造補助
+	ConstructionAssistanceAllied = 全ての味方の船
+	ConstructionAssistanceAlliedTip = 船が、全ての味方の船の建造、解体、修理に協力します。
+	ConstructionAssistanceOff = オフ
+	ConstructionAssistanceOffTip = 船が他の船の建造、解体、修理に協力しなくなります。
+	ConstructionAssistanceOwned = 自分の船のみ
+	ConstructionAssistanceOwnedTip = 船が、同じプレイヤーが所有する他の船の建造、解体、修理に協力します。
 	ConstructionBlockedTip = 建造エリアに他のオブジェクトがあり、現在建造作業を妨げています。
 	CrewEvaFmt = ""
 	CrewEvaTip = 現在船外にいる乗組員の数。乗組員との距離が離れすぎると彼らを失うことになります。
@@ -1437,8 +1445,6 @@ Hud
 	FtlWaitingCountFmt = "{0}プレイヤーが交戦するのを待機中…"
 	FtlWaitingYou = あなたが交戦するのを待機中…
 	HaltTip = "<b>停止</b>\n\n現在の指示全てをキャンセルします。\n\nホットキー：<btn id='Game.Halt'/>"
-	HelpsWithConstruction = 建造の支援
-	HelpsWithConstructionTip = このオプションをチェックすると、選択した船が近隣の友好的な船の建造、解体、修繕を支援します。
 	IncreaseSpeedTip = "ゲームの速度を上げる\n\nホットキー：<btn id='Game.IncreaseSpeed'/>"
 	IndicatorDistFmt = ""
 	InteriorTip = "船内を表示します。\n\nホットキー：<btn id='View.ToggleInteriors'/>"
@@ -1523,22 +1529,22 @@ Hud
 }
 Inputs
 {
-	
+
 	Brushes
 	{
-		
+
 		Name = 船を編集（ブラシ）
 	}
 	Clear = クリア
 	Comms
 	{
-		
+
 		Name = 通信
 		OpenClose = 通信パネルを開く/閉じる
 	}
 	ControlGroups
 	{
-		
+
 		CreatePartGroupFmt = "パーツグループ{0}を作成"
 		CreateShipGroupFmt = "船グループ{0}を作成"
 		Name = コントロールグループ
@@ -1549,7 +1555,7 @@ Inputs
 	}
 	CreativeMode
 	{
-		
+
 		AutoBattleCamera = 戦闘カメラ自動操作へ切り替え
 		Delete = 選択したオブジェクトを削除
 		DeleteNode = 星系を削除
@@ -1572,7 +1578,7 @@ Inputs
 	}
 	Crew
 	{
-		
+
 		AddToSelection = 一人の乗組員をメンバーに追加
 		Name = 乗組員管理
 		OpenClose = 乗組員パネルを開く/閉じる
@@ -1586,7 +1592,7 @@ Inputs
 	Defaults = 規定値
 	Design
 	{
-		
+
 		AppendShapeMode = 形状追加モード
 		BuildClose = 建造パネルを閉じる
 		BuildOpen = 建造パネルを開く
@@ -1625,13 +1631,13 @@ Inputs
 	}
 	Formations
 	{
-		
+
 		MakeFormationFmt = "{0}フォーメーションを使用"
 		Name = フォーメーション
 	}
 	Game
 	{
-		
+
 		AllowSalvageOwnShip = 自船のサルベージを許可
 		AppendSelection = 選択をリストに追加
 		Attack = 攻撃
@@ -1687,7 +1693,7 @@ Inputs
 	}
 	General
 	{
-		
+
 		Cancel = キャンセル/戻る/メニュー
 		CaptureGif = GIFアニメーションをキャプチャ
 		Confirm = 了解/承諾/確認
@@ -1706,7 +1712,7 @@ Inputs
 	}
 	KeyNames
 	{
-		
+
 		A = ""
 		Alt = ""
 		Apps = アプリ
@@ -1813,7 +1819,7 @@ Inputs
 	}
 	MouseButtonNames
 	{
-		
+
 		Button4 = マウスボタン4
 		Button5 = マウスボタン5
 		Left = 左クリック
@@ -1822,7 +1828,7 @@ Inputs
 	}
 	Multiplayer
 	{
-		
+
 		Name = マルチプレイ
 		SendChat = チャットでメッセージを送信
 		ShowScoreboard = スコアボードを表示
@@ -1831,13 +1837,13 @@ Inputs
 	None = なし
 	PartTargetCancelers
 	{
-		
+
 		headlight_aim = ヘッドライトの照準をキャンセル
 		tractor_beam = トラクタービームをキャンセル
 	}
 	PartTargeters
 	{
-		
+
 		chaingun_aim = チェーンガンの照準
 		headlight_aim = ヘッドライトの照準
 		prism_aim = イオンプリズムの照準
@@ -1845,7 +1851,7 @@ Inputs
 	}
 	PartToggles
 	{
-		
+
 		airlock_type_both = エアロック：入退船用
 		airlock_type_closed = エアロック：閉鎖
 		airlock_type_entry = エアロック：入船専用
@@ -1886,12 +1892,12 @@ Inputs
 	}
 	PartTriggers
 	{
-		
+
 		detonate = 爆発物を起爆する
 	}
 	Parts
 	{
-		
+
 		Name = 船を編集（パーツ）
 		SelectPartFmt = "パーツ{0}をカテゴリで選択"
 		SelectPartGroupFmt = "パーツのカテゴリ{0}を選択"
@@ -1899,7 +1905,7 @@ Inputs
 	PressKeyOrClick = 使用したいキーを押すか、この箱の中をクリックしてください：
 	Resources
 	{
-		
+
 		ClearTool = 指定の資源ツールを解除
 		ClearToolMode = 指定の資源モードを解除
 		Eject = 資源排出
@@ -1916,7 +1922,7 @@ Inputs
 	}
 	View
 	{
-		
+
 		DragFocus = 画面をドラッグ/フォーカス
 		FocusCursorMode = フォーカスカーソルモード
 		FocusMidpoint = 選択した/目標の中間地点に焦点を当てる
@@ -1942,7 +1948,7 @@ Inputs
 }
 JobNames
 {
-	
+
 	CollectNuggets = 資源回収
 	Construct = 建造
 	Deconstruct = 解体
@@ -1956,7 +1962,7 @@ JobNames
 }
 Jobs
 {
-	
+
 	ConstructFmt = "{0}を建造中"
 	DeconstructFmt = "{0}を解体中"
 	FireExtinguishGetFmt = "{0}を回収中"
@@ -1976,7 +1982,7 @@ Jobs
 }
 LoadPaintScheme
 {
-	
+
 	ConfirmDelete = 塗装スキームを削除しますか？
 	Delete = 削除
 	Okay = ロード
@@ -1984,7 +1990,7 @@ LoadPaintScheme
 }
 LoadSaveGame
 {
-	
+
 	Auto = オートセーブ
 	AutoSave = オートセーブ
 	AutoSaving = オートセーブ中…
@@ -2008,7 +2014,7 @@ LoadSaveGame
 }
 LobbyScreen
 {
-	
+
 	Ban = 自分のゲームへの参加禁止
 	BanTip = このオプションをチェックすると、このプレイヤーはあなたがホストする全てのゲームへ参加することが出来なくなります。
 	ClearFilters = フィルターをクリア
@@ -2032,7 +2038,7 @@ LobbyScreen
 	Full = <bad>満員</bad>
 	GameInfo
 	{
-		
+
 		Closed = <bad>ゲームは非公開です</bad>
 		CustomRuleset = <b>ルールセット：</b>カスタム
 		Full = <bad>ゲームは満員です</bad>
@@ -2054,7 +2060,7 @@ LobbyScreen
 	}
 	GameJoinDenyReason
 	{
-		
+
 		Banned = ホストがあなたをゲーム参加禁止としました。
 		DataIncompatible = あなたのゲームデータとホストのゲームデータに互換性がないようです。MODが原因である可能性があります。
 		GameClosed = ホストがゲームを非公開にしたのでこれ以上プレーヤーが参加することはできません。
@@ -2082,7 +2088,7 @@ LobbyScreen
 	LobbyTypeTip = このタイプに合致したロビーのみ表示します。
 	LobbyTypes
 	{
-		
+
 		Coop = 協力プレイ
 		PVP = ""
 	}
@@ -2112,10 +2118,10 @@ LobbyScreen
 }
 Lore
 {
-	
+
 	Cabal
 	{
-		
+
 		Lore1 = 太陽の結社は宗教および科学的組織で、50年前に破壊されるまでは太陽（地球の星）を崇拝しており、今では科学研究を通じて死した神を生まれ変わらせることに尽力しています。
 		Lore2 = 結社がいつ創立されたのか正確なところはわかりませんが、彼らは何らかの形で少なくとも数百年は存在しています。元々は秘密主義のカルト集団でしたが、今では絶大かつ主流の宗教であり強力な銀河系国民国家となっています。実際、信者は星それぞれが星と月の創造主神であり生命を維持するエネルギーを授けるものであると信じています。星それぞれが神であると信じているものの、太陽の結社は特に地球の星である太陽を、人類のみならず、ハイパージャンプゲートを創造しアームストロング・モノリスを遺していった古代文明の創造主として崇拝しています。
 		Lore3 = 太陽の結社は高度に組織化された宗教団体で、50以上の既知の銀河系を自らの領地であると主張しており、その領土があれば彼らは銀河系で最も大規模な国民国家のひとつとなります。結社のテリトリーでは、宗教と行政は切り離せません。結社の12人の司祭長から成る世襲制の評議会が立法し、司祭とその他の聖職者の複雑なヒエラルキーにより並外れた厳格さと過酷さで行政の機能を取り仕切っています。しかし、評議会の勅令の元に生きることを選ぶ者にとっては、結社が提供する広範囲にわたる社会事業と信者共通の所得保障制度のおかけで人生は悪くないと言えます。また、太陽への信心を公言しその他全ての宗教を放棄する者であれば全員歓迎するという、結社の寛大な移民政策のおかげで、銀河系全域から多くの人々がその利益を受けようと勇敢にも結社の領域へ向かうことを選びます。
@@ -2126,7 +2132,7 @@ Lore
 	}
 	Fringe
 	{
-		
+
 		Lore1 = フリンジ星系レジスタンスは独立した星系の自由なコングロマリットで、生存および独立性を保つという共通の希望によってのみ結束しています。
 		Lore2 = 「フリンジ」の星系は既知の銀河系の端、あるいは大規模派閥のテリトリーの間にあります。彼らの星系の人口は少なく、生活水準は低いです。フリンジの住民は強い倫理規範を持っていますが、個々の開拓地やステーションが主張する境界を超えた共通の政治体制や法体系はありません。このように、フリンジ星系は「荒削りで大雑把」というタイプの人々を集める傾向があり、海賊行為が蔓延しています。
 		Lore3 = フリンジ星系内には正式な協力協定はなく、彼らが「統合している」と称している範囲は、他の大規模派閥に対する共通の憎悪と、お互い個別に動くよりも（しぶしぶでも）協力した方が独立性を守ることができるという理解に基づいています。この協力関係にも係わらず、フリンジ星系は他の主要な派閥には歯が立たず、敗北が確定した虚しい戦いのなかで、独立性を失いつつあります。
@@ -2134,7 +2140,7 @@ Lore
 	}
 	Imperium
 	{
-		
+
 		Lore1 = ケンタウリ帝国はまだ新しいですが、冷酷なまでに野心的な軍事帝国で、その起源はケンタウロス・コンステレーションです。
 		Lore2 = ケンタウロス・コンステレーションの星系は元々は地球に本部を置く地球連合に統治されていましたが、50年前の太陽系全体の破壊により、ケンタウロス・コンステレーションは突如、自身が独立した存在であることを認識し、埋めるべき銀河系の権力の空白に気付きました。ケンタウロス・コンステレーション内でしばしイデオロギーをめぐる市民戦争があった後、新たなケンタウリ帝国が勝鬨を上げて勃興し、周囲の星系を征服、威嚇し、急速に勢力を拡大しました。わずか50年で、ケンタウリ帝国は銀河系で最も強力な軍隊を持ち、既知の星系の半分近くを制圧し、今にも残りを征服する準備を整えました。
 		Lore3 = ケンタウリ帝国は文民と軍人のどちらにとっても独特で平坦な組織構造を持っています。真の直接民主主義として、ケンタウロス星系中核の12EY歳以上の全市民に法案を出し投票する資格を持っています。こうしたプロセスは光速よりも早い意思疎通とパブリックブロックチェーンにより処理されます。征服した星系の降伏条件の受け入れといった最重要事項ですら、即座に市民全体に差し迫った投票であると通知し、すぐさま決断を下すことができます。このように、ほとんどのケンタウリの民は帝国が直面するさまざまな問題の情報を把握しておくことに対する責任意識が極めて高く、市民参加が非常に活発です。単独の「国家元首」は存在せず、フォロワーに特定の投票をするように影響を与えられる著名人に権力が集中しています。
@@ -2144,7 +2150,7 @@ Lore
 	}
 	Monolith
 	{
-		
+
 		Lore1 = モノリス共同組合は巨大採掘・製造・輸送会社で銀河系の交易や経済を独占支配しています。
 		Lore2 = ハイパードライブ時代以前の元々の社名は「アームストロング採掘社」で、ソル（地球）系の小惑星帯の奥深くに隠されていた、今では「アームストロング・モノリス」として知られるものを最初に発見するという素晴らしい幸運に恵まれました。アームストロング・モノリスは古代文明の最後の遺物で、破壊される前は火星と木製の間の惑星の周囲を回っていました。モノリス自体が技術アーカイブで、かつて解読され、ハイパードライブ技術の設計図や大昔の文明が築いたハイパージャンプ中継点の広大なネットワークを検知し使用する能力を有していることが発見されました。論争はあるものの、彼らの惑星の破壊は、人類が傲慢にもソル系全体を破壊したのと同様、一般的にはハイパージャンプ技術の誤使用だと考えられています。この文明の生物学的な残存物や彼らの物理的形状の証拠はいまだかつて発見されたことがないため、彼らが本当に異星人であったのか人類の先駆者であったのかという憶測を呼んでいます。
 		Lore3 = アームストロング・モノリス発見後、たった2年でアームストロング採掘社が初歩的なハイパードライブ技術を再現し、さらに5年で商用利用に耐えうるほど頑丈にしました。最初は同社は史上最も重要な企業秘密としてその技術を守ることに成功していましたが、ハイパードライブ技術の基礎は2年後、ついに漏れ、瞬く間に太陽系に広がりました。それでも、この2年は同社（今ではモノリス協同組合として知られていますが）にとって競合他社の先を行くには十分であり、最終的には人類史上で最大の強力商業組織となりました。
@@ -2155,7 +2161,7 @@ Lore
 }
 MapSizes
 {
-	
+
 	Huge = 巨大
 	HugeTip = 160から200の太陽系。
 	Large = 大
@@ -2171,7 +2177,7 @@ MapSizes
 }
 MirrorAxis
 {
-	
+
 	All = ミラー：8方向
 	Both = ミラー：縦軸＋横軸
 	BothDiagonal = "ミラー：斜め、東北/南西軸　＋　北西/南東軸"
@@ -2182,7 +2188,7 @@ MirrorAxis
 }
 Misc
 {
-	
+
 	Apply = 適用
 	Cancel = キャンセル
 	ClassicDowngrade = "<halign value='Left'>こんにちは！あなたは以前に「クラッシック」バージョンのCosmoteerをプレイされたことがあるようですね！今あなたがプレイしているのは、新しい「モダン」バージョンの最新体験版です。\n\nこの体験版では多くのことが改善されていますが、それでも以前のクラッシックの方が良い、と思われるかもしれません。その場合、以下の手順を行ってください。\n\n\t1．まず、SteamでCosmoteer体験版のプロパティを開きます。\n\t2．次に、ベータタブをクリックしてください。\n\t3．そしてドロップダウンリストから「クラッシック」を選択します。\n\nCosmoteer体験版が自動的にクラッシックバージョンへと「アップデート」されます。ぜひお楽しみください！</halign>"
@@ -2213,7 +2219,7 @@ Misc
 }
 MissileTypes
 {
-	
+
 	EMP = EMPミサイル
 	EMPDesc = 着弾時に電磁パルスを放出する大型誘導ミサイルで、広範囲の敵のシステムの動力を消耗させます。
 	HE = 高爆破性能ミサイル
@@ -2225,7 +2231,7 @@ MissileTypes
 }
 MissionCategories
 {
-	
+
 	Bounties = 懸賞金
 	Debug = デバッグ
 	Deliveries = 配達（繰り返し）
@@ -2237,7 +2243,7 @@ MissionCategories
 }
 MissionLog
 {
-	
+
 	Abandon = 放棄
 	AbandonTip = このミッションを放棄し、永久にミッションログから抹消し、報酬が得られないようになります。
 	CategorizeByFaction = "<image name='categorize'/>派閥"
@@ -2277,7 +2283,7 @@ MissionLog
 	StarSystemRemoteFmt = "{0} <nostyle><gray>（{1:0.0}光年）</gray></nostyle>"
 	StarSystemRemoteIconFmt = "<image name='star_system'/> {0}<gray>（{1:0.0}光年）</gray>"
 	TabName = ミッションログ
-	TierFmt = "危険度：</b>{0}"
+	TierFmt = "<b>危険度：</b>{0}"
 	TimeRemainingFmt = ""
 	Track = お気に入り
 	TrackTip = ミッションログを開かなくても進行状況がわかるように、ミッションステータスを画面の左上に表示します。
@@ -2288,7 +2294,7 @@ MissionLog
 }
 Missions
 {
-	
+
 	Ambush = 奇襲に耐える
 	AmbushDesc = 海賊があなたに襲いかかってきました。敵との遭遇を切り抜けましょう。
 	Bounty = 逃亡者懸賞金
@@ -2321,7 +2327,7 @@ Missions
 }
 Mods
 {
-	
+
 	Activate = 有効化
 	ActivateAll = 全て有効化
 	AuthorFmt = "作成者{0}"
@@ -2370,7 +2376,7 @@ Mods
 }
 ModsSync
 {
-	
+
 	DialogName = MODを同期
 	MissingMods = 以下のMODが本セーブデータでプレイしている間に使用されましたが、現在は有効化されていません。自動的にサブスクライブしてこれらMODを有効にしますか？これらMODがなくてもプレイ可能ですが、問題が発生する可能性があります。
 	MissingModsNoSync = 以下のMODが本セーブデータでプレイしている間に使用されましたが、現在は有効化されていません。これらMODがなくてもプレイ可能ですが、問題が発生する可能性があります。
@@ -2385,7 +2391,7 @@ ModsSync
 }
 ModsWorkshop: Workshop
 {
-	
+
 	DialogName = SteamワークショップMODアップローダー
 	Folder = MODフォルダ：
 	Name = MOD名称：
@@ -2395,7 +2401,7 @@ ModsWorkshop: Workshop
 }
 Multiplayer
 {
-	
+
 	AI = AI
 	AINameFmt = "AIプレイヤー{0}"
 	AddressAlreadyInUseFmt = "他のプログラムで既にUDPポートが使用されていますので、{0}マルチプレイを始める前に閉じてください。"
@@ -2407,7 +2413,7 @@ Multiplayer
 	ErrorInitializingFmt = "マルチプレイの初期化でエラーが発生しました：{0}"
 	GameEndReason
 	{
-		
+
 		ConnectionLost = 回線切断
 		Deliberate = ホストがゲームを終了しました。
 		Kicked = ホストがあなたをゲームから除外しました。
@@ -2433,7 +2439,7 @@ Multiplayer
 }
 Nebulas
 {
-	
+
 	Cloudy = "<b>ガス雲</b>\n雲の中に入ると船はセンサーの範囲が狭くなりますが、武器を発射する場合を除き、外の船に対して姿を隠すことができます。"
 	CloudyHudFmt = "<s14>{0:0.}%</s14>\n<s12><gray>ガス</gray></s12>"
 	Electron = "<b>電子雲</b>\n船のリアクター出力が80％減少しますが、エネルギー兵器のダメージが75％上昇し、スラスターも強力になります。船は雲の中をハイパージャンプで出入りできず、電磁妨害によりレーダーの範囲が狭くなります。"
@@ -2443,21 +2449,21 @@ Nebulas
 }
 NewGame
 {
-	
+
 	SelectMode = ゲームモードを選択
 	StartNewGame = 最初から始める
 	Starting = ゲームを開始しています…
 }
 News
 {
-	
+
 	Next = 次に進む⮞
 	Previous = "⮜ 前に戻る"
 	TitleFmt = "ニュース（{0}/{1}）"
 }
 Objectives
 {
-	
+
 	CompletedFmt = ""
 	CountableFmt = ""
 	DebugEvent = デバッグイベント
@@ -2496,7 +2502,7 @@ Objectives
 }
 PaintBox
 {
-	
+
 	BrushDisabledTip = 選択中のデカールやツールは異なる「ブラシ」の形やサイズに対応していません。
 	BrushTip = 選択中のデカールやツールに使用するため、ブラシの形やサイズを変更します。
 	CancelPasteTip = "キャンセルして選択モードへ戻ります。\n\nホットキー：<btn id='General.Cancel'/>"
@@ -2545,12 +2551,12 @@ PaintBox
 }
 PartColors
 {
-	
+
 	RoofLight = ライトの色/明るさ
 }
 PartTargeters
 {
-	
+
 	ChaingunAim = "<b>チェーンガン照準</b>\n\n選択中のチェーンガンの照準を目的の場所へ合わせます。\n\nホットキー：<btn id='PartTargeters.chaingun_aim'/>"
 	HeadlightAim = "<b>ヘッドライト照準</b>\n\n選択中のヘッドライトの照準を目的の場所へ合わせます。\n\nホットキー：<btn id='PartTargeters.headlight_aim'/>"
 	HeadlightAimCancel = "<b>ヘッドライト照準リセット</b>\n\nホットキー：<btn id='PartTargetCancelers.headlight_aim'/>"
@@ -2560,7 +2566,7 @@ PartTargeters
 }
 PartToggles
 {
-	
+
 	Boost_Off = "<b>ブースト：<bad>オフ</bad></b>\n\nホットキー：<btn id='PartToggles.thruster_boost_off'/>"
 	Boost_On = "<b>ブースト：<good>オン</good></b>\n\nホットキー：<btn id='PartToggles.thruster_boost_on'/>"
 	DistributePower_Off = "<b>推進力配分：<bad>オフ</bad></b>\n\nホットキー：<btn id='PartToggles.distribute_power_off'/>"
@@ -2593,12 +2599,12 @@ PartToggles
 }
 PartTriggers
 {
-	
+
 	Detonate = "爆発チャージを起爆する。\n\nホットキー：<btn id='PartTriggers.detonate'/>"
 }
 Parts
 {
-	
+
 	Airlock = エアロックハッチ
 	AirlockDesc = 乗組員が資源を回収したり他の船に移動する際にここから船内外に出入りします。
 	AirlockIcon = エアロックハッチ
@@ -2793,7 +2799,7 @@ Parts
 	FactoryDiamondIcon = ダイヤモンド
 	FactoryEMP = EMPミサイル工場
 	FactoryEMPDesc = 広範囲にわたり敵のシステムの電力を消耗させる誘導電磁バルスミサイルを製造。鉄と銅を消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
-	FactoryEMPIcon = HEミサイル
+	FactoryEMPIcon = EMPミサイル
 	FactoryHE = 高性能爆薬ミサイル工場
 	FactoryHEDesc = 狭い範囲に多大なダメージを与える高性能爆薬の誘導ミサイルを製造。鉄と硫黄を消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryHEIcon = HEミサイル
@@ -2986,7 +2992,7 @@ Parts
 }
 PostShaders
 {
-	
+
 	Apple2 = ""
 	BlackAndWhite = それは外宇宙からやって来た
 	Inversion = 反転
@@ -2995,12 +3001,12 @@ PostShaders
 }
 Pvp: Multiplayer
 {
-	
+
 	ForfeitConfirm = 戦闘を放棄しますか？
 	ForfeitTip = 放棄する
 	Ranks
 	[
-		
+
 		1位
 		2位
 		3位
@@ -3012,7 +3018,7 @@ Pvp: Multiplayer
 	]
 	Scoreboard
 	{
-		
+
 		Place = 順位
 		PlayerName = プレイヤー
 	}
@@ -3020,7 +3026,7 @@ Pvp: Multiplayer
 }
 PvpModeConfig
 {
-	
+
 	AllowChangeShips = 艦隊のロードアウト変更を許可
 	AllowChangeShipsTip = このオプションをチェックすると、戦闘中にプレイヤーが購入可能な船のロードアウトを変更することができるようになります。
 	AllowIllegalShips = 違法の船を許可
@@ -3029,7 +3035,7 @@ PvpModeConfig
 	AllowObserversTip = このオプションをチェックすると、ゲームに参加中のプレイヤーは船を選択または指揮せずに戦闘を観戦することができます。
 	AsteroidDensities
 	{
-		
+
 		High = 高い
 		Low = 低い
 		None = なし
@@ -3045,7 +3051,7 @@ PvpModeConfig
 	FleetDistanceTip = ゲーム開始時の各プレイヤーまたはチームの艦隊間の距離。
 	FleetDistances
 	{
-		
+
 		LongFmt = "長い（{0}メートル）"
 		NormalFmt = "普通（{0}メートル）"
 		ShortFmt = "短い（{0}メートル）"
@@ -3061,7 +3067,7 @@ PvpModeConfig
 	GameSpeedControlTip = 戦闘中にゲームの進行速度を変更する場合に、どのプレイヤーが変更するかを指定します。
 	GameSpeedControls
 	{
-		
+
 		Disabled = 無効化
 		Everyone = 全員
 		HostOnly = ホストのみ
@@ -3081,7 +3087,7 @@ PvpModeConfig
 	NebulasTypeTip = 戦闘エリア内の雲と嵐の種類と濃さ。
 	NebulasTypes
 	{
-		
+
 		CloudyDense = ガス雲（濃い）
 		CloudySparse = ガス雲（薄い）
 		ElectronDense = 電子雲（濃い）
@@ -3096,7 +3102,7 @@ PvpModeConfig
 	PerimeterDistanceTip = 範囲外になると船が急速にダメージを受ける円の半径。
 	PerimeterDistances
 	{
-		
+
 		FarFmt = "遠い（{0}メートル）"
 		NearFmt = "近い（{0}メートル）"
 		NormalFmt = "普通（{0}メートル）"
@@ -3114,7 +3120,7 @@ PvpModeConfig
 	ShipAssignModeTip = 誰がどの船をどのプレイヤーに割り当てられるかを指定します。
 	ShipAssignModes
 	{
-		
+
 		All = 全員
 		Host = ホストのみ
 		Self = 各プレイヤー
@@ -3126,13 +3132,15 @@ PvpModeConfig
 	ShipPreviewModeTip = ゲーム開始前にプレイヤーが他のプレイヤーの選択した船を閲覧することが可能かどうかを指定します。
 	ShipPreviewModes
 	{
-		
+
 		All = 全員
 		Off = オフ
 		Team = 同じチーム
 	}
 	ShrinkingPerimeter = 死の輪を縮小
 	ShrinkingPerimeterTip = このオプションをチェックすると、死の輪が時間の経過とともに徐々に縮小します。
+	SpawnAsteroids = 小惑星
+	SpawnAsteroidsTip = チェックを入れると、戦闘エリアに小惑星が出現します。
 	Teams = チーム
 	TeamsFfa = 全員可能
 	TeamsFmt = "{0}チーム"
@@ -3145,7 +3153,7 @@ PvpModeConfig
 }
 ReputationLog
 {
-	
+
 	Fame = 銀河系での名声
 	MaxCrewFmt = "最大乗組員：{0}"
 	MilestoneFmt = ""
@@ -3153,7 +3161,7 @@ ReputationLog
 }
 ReputationTitleTips
 [
-	
+
 	"ミッションの金銭報酬が40％減少。\n資源、乗組員、設計図の価格が100％上昇する。\n指名手配の期間が100％延長する。\n指名手配追跡船：7"
 	"ミッションの金銭報酬が30％減少。\n資源、乗組員、設計図の価格が75％上昇する。\n指名手配の期間が75％延長する。\n指名手配追跡船：6"
 	"ミッションの金銭報酬20％減少。\n資源、乗組員、設計図の価格が50％上昇する。\n指名手配の期間が50％延長する。\n指名手配追跡船：5"
@@ -3166,7 +3174,7 @@ ReputationTitleTips
 ]
 ReputationTitles
 [
-	
+
 	ネメシス
 	ライバル
 	敵
@@ -3179,7 +3187,7 @@ ReputationTitles
 ]
 Resource
 {
-	
+
 	Battery = バッテリー
 	BatteryDesc = "多種多様な船のシステムに動力供給するバッテリー。\n\n他の資源とは異なり、バッテリーは貨物室に格納することはできません。"
 	BatteryPlural = 動力
@@ -3256,17 +3264,21 @@ Resource
 }
 ResourceLimits
 {
-	
+
 	HeaderCount = 保管済み
+	HeaderDesired = 要求
 	HeaderLimit = 制限
-	RemoveAll = 全ての制限を解除
-	SetToDesignatedFmt = "指定済みに設定（{0}）"
-	SetToStoredFmt = "保管済みに設定（{0}）"
-	Title = 資源保管制限
+	RemoveAllDesires = 全ての要求を削除
+	RemoveAllLimits = 全ての上限を削除
+	SetDesiredToDesignatedFmt = "要求を指定済みに設定（{0}）"
+	SetDesiredToStoredFmt = "要求を保管済みに設定（{0}）"
+	SetLimitToDesignatedFmt = "上限を指定済みに設定({0})"
+	SetLimitToStoredFmt = "上限を保管済みに設定({0})"
+	Title = 資源の要求と上限
 }
 ResourcesBox
 {
-	
+
 	AddSupplyLineTip = "<color r='50' g='149' b='255'>供給リンクを追加\n（<btn id='Game.Command'/>）</color>"
 	BuySellCostFmt = "{0} <gray>（購入）</gray> / {1} <gray>（売却）</gray>"
 	CancelTransfers = 全ての資源の移動をキャンセル
@@ -3298,7 +3310,7 @@ ResourcesBox
 	ResetMirrorLinesTip = ミラーの水平・垂直の線を船の中央へ戻します。
 	RestockResources = 全資源補充
 	RestockResourcesTip = "船の資源、弾薬、動力バッテリー全てを最大まで補充します。\n\nホットキー：<btn id='Resources.RestockResources'/>"
-	SetResourceLimits = 資源に上限を設定…
+	SetResourceLimits = 資源の要求と上限…
 	SetTypeTipFmt = "<b>{0}</b>\n{3}\n\n{1}\n\nこのボタンを選択している時は、保管庫タイルをクリックすると自動{2}配達と保管に指定します。（<btn id='Resources.SetAllToolMode'/>長押しで室内の全タイル、または<btn id='Resources.SetAllSameToolMode'/>で室内の一致する全てのタイル）"
 	ShowAllResources = 全ての資源の種類を表示
 	ShowAllResourcesTip = このオプションをチェックすると、自船で所持していない種類の資源も全て表示します。
@@ -3319,12 +3331,12 @@ ResourcesBox
 }
 Rewards
 {
-	
+
 	FameWithLimitFmt = "{0} <gray>（制限{1}）</gray>"
 }
 RoleEditor
 {
-	
+
 	AssignmentPriority = 雇用の優先順位：
 	AssignmentPriorityTip = 乗組員を自動的に優先順位の高いものから割り当てます。
 	AutoFillFromLower = 優先順位の低い任務から順に自動割り当て
@@ -3345,14 +3357,14 @@ RoleEditor
 }
 Roles
 {
-	
+
 	DefaultExistingShipRoleName = 乗組員
 	DefaultNewShipRoleName = 赤シャツ
 	NewRoleName = 名前のついていない任務
 }
 Roster
 {
-	
+
 	ClearFilters = フィルターをクリア
 	ConstructBeds = さらに多くの乗組員の部屋を作るために区画を増設します。
 	CopyAll = 名前と外見をコピー
@@ -3378,7 +3390,7 @@ Roster
 	RosterSearchCountFmt = "<s20><white>{0}</white><gray> 一致する乗組員</gray></s20>"
 	SortMode
 	{
-		
+
 		Favorite = "<img name='sort'/>お気に入り"
 		Job = "<img name='sort'/>現在の職務"
 		Name = "<img name='sort'/>名前"
@@ -3389,7 +3401,7 @@ Roster
 }
 SaveMedia
 {
-	
+
 	CalculateSize = "\nファイルサイズを計算"
 	Copy = コピー
 	CopyTip = 他のアプリケーションにペーストできるよう、画像をOSのクリップボードにコピーします。
@@ -3411,7 +3423,7 @@ SaveMedia
 }
 SectorTypes
 {
-	
+
 	Basic = 単一星
 	Binary = 連星
 	HighDensityNebula = 単一星（高濃度雲）
@@ -3419,10 +3431,10 @@ SectorTypes
 }
 Settings
 {
-	
+
 	Accessibility
 	{
-		
+
 		Ally = 味方
 		ColorBlindLbl = 色覚
 		CustomPreset = カスタム
@@ -3441,7 +3453,7 @@ Settings
 	}
 	Audio
 	{
-		
+
 		EffectsVol = 効果音の音量
 		EffectsVolTip = ゲームプレイ時の全体的な効果音の音量を調節します。
 		InterfaceVol = インターフェースの音量
@@ -3460,7 +3472,7 @@ Settings
 	}
 	Camera
 	{
-		
+
 		AutoTrack = 画面上の船を自動追跡
 		AutoTrackTip = このオプションをチェックすると、カメラは自動的に画面上の船の動きに合わせます。
 		DirectControlAutoRotate = 船の回転を一致
@@ -3496,7 +3508,7 @@ Settings
 		MinimapLbl = ミニマップ
 		MiniviewCombatMode
 		{
-			
+
 			Auto = 自動
 			AutoTip = 戦闘中、メインの視界に捉えられてない船を表示します。
 			DontShow = 表示しない
@@ -3513,7 +3525,7 @@ Settings
 		MiniviewLockRotationTip = このオプションをチェックすると、ピクチャー・イン・ピクチャーは表示されている船に合わせて回転します。
 		MiniviewNonCombatMode
 		{
-			
+
 			Auto = 自動
 			AutoTip = 非戦闘中、プレイヤーの船がメインの視界に捉えられていない場合、常にプレイヤーの船を表示します。
 			DontShow = 表示しない
@@ -3543,7 +3555,7 @@ Settings
 	}
 	Controls
 	{
-		
+
 		ConfirmDefaults = 全ての設定をリセットし、デフォルトに戻しますか？
 		ConflictsFmt = "<bad>❗ {0} コンフリクトを検知 ❗</bad>"
 		Defaults = デフォルトに戻す
@@ -3552,7 +3564,7 @@ Settings
 	}
 	CurrentGame
 	{
-		
+
 		CopyGalaxySeed = ギャラクシーシードをコピー
 		DifficultyLbl = 難易度
 		GalaxySeedFmt = "ギャラクシーシード：<b>{0}</b>"
@@ -3561,7 +3573,7 @@ Settings
 	}
 	Designer
 	{
-		
+
 		BlueprintAutoPause = 設計図モードの自動一時停止
 		BlueprintAutoPauseTip = このオプションをチェックすると、船の編集画面を開いた時に自動的にゲームを一時停止します。
 		BuildAllowInsufficientCommand = コマンドポイント不足を許可
@@ -3629,7 +3641,7 @@ Settings
 	DialogName = 設定
 	Gameplay
 	{
-		
+
 		AllowShipDeselection = 船の選択解除
 		AllowShipDeselectionTip = このオプションをチェックすると、何もない空間上で左クリックをすると、選択されている船の選択を解除します。
 		AlwaysShowCommandWidgets = コマンドハンドルを常に表示
@@ -3716,16 +3728,16 @@ Settings
 		ShowNearbyMissions = HUDに近くのミッションを表示
 		ShowNearbyMissionsTip = HUDの左上に自動的に表示される近隣のミッションの最大数です。
 		ShowResourcePickupLines = 資源の移動線
-		ShowResourcePickupLinesTip = このオプションをチェックすると、飛んでいる資源から船へ線が表示されます。
+		ShowResourcePickupLinesTip = チェックを入れると、浮遊している資源と目的の保管庫を結ぶ点線が表示されます。
 		ShowSpaceCrewLines = 乗組員の移動線
-		ShowSpaceCrewLinesTip = このオプションをチェックすると、飛んでいる乗組員から船に線が表示されます。
+		ShowSpaceCrewLinesTip = チェックを入れると、乗組員と船を結ぶ点線が表示されます。
 		TabName = ゲームプレイ
 		ZoomedOutBlips = ズームアウトして輝点を表示
 		ZoomedOutBlipsTip = このオプションをチェックすると、ズームアウトした際に小規模の船を色つきの「輝点」で表示します。
 	}
 	GifRecorder
 	{
-		
+
 		Enable = GIFレコーダーを有効化
 		EnableTip = このオプションをチェックすると、継続したGIF記録機能が有効になります。
 		Framerate1 = "フレームレート： "
@@ -3743,7 +3755,7 @@ Settings
 	}
 	Graphics
 	{
-		
+
 		AnimateBackgrounds = 背景アニメーション
 		AnimateBackgroundsTip = このオプションをチェックすると、ゲームの背景がアニメーションになります。オフにするとパフォーマンスが大幅に向上します。
 		BackgroundGrid = 背景グリッド
@@ -3786,6 +3798,8 @@ Settings
 		LimitFpsNumber = " 1秒あたりのフレーム数"
 		LimitFpsNumberTip = 1秒間に処理される最大のフレーム数です。
 		LimitFpsTip = このオプションをチェックすると、ゲームは特定のフレームレート以上では作動しなくなります。
+		LimitFpsUnfocused = フレームレート限定（バックグラウンド）
+		LimitFpsUnfocusedTip = チェックを入れると、バックグラウンドで作動している間、ゲームは特定のフレームレート以上では作動しなくなります。
 		LockCursor = マウスカーソルのトラップ
 		LockCursorTip = このオプションをチェックすると、ゲームプレイ中にマウスカーソルが画面外へ移動しません。排他的フルスクリーンでプレイしている場合は、このオプションがオンでもオフでもカーソルが画面外へ移動することはありません。
 		Monitor = モニター
@@ -3828,7 +3842,7 @@ Settings
 	KeepSettings = 維持
 	Misc
 	{
-		
+
 		AutoDisableMods = アップデート時にMODを無効化
 		AutoDisableModsTip = このオプションをチェックすると、ゲームのアップデート時にアップデートと互換性がない可能性のあるMODを自動的に無効化します。
 		Bmp = ""
@@ -3874,7 +3888,7 @@ Settings
 		UpdatesLbl = アップデート＆ニュース
 		VersionCheckMode
 		{
-			
+
 			Off = オフ
 			OffTip = アップデートをチェックしません。
 			Stable = オン（安定）
@@ -3891,7 +3905,7 @@ Settings
 	RevertSettings = 元に戻す
 	Saves
 	{
-		
+
 		AutoSave = オートセーブ
 		AutoSaveEvery = "毎 "
 		AutoSaveEveryMinutes = " 秒"
@@ -3919,14 +3933,14 @@ Settings
 }
 ShipClasses
 {
-	
+
 	Asteroid = 小惑星
 	Megaroid = 大型小惑星
 	Terran = テラン
 }
 ShipInfoDialog
 {
-	
+
 	Author = デザイナー：
 	Description = 説明/ロア：
 	Name = 船の名前：
@@ -3935,7 +3949,7 @@ ShipInfoDialog
 }
 ShipLibraries
 {
-	
+
 	BuiltIn = ビルトインの船
 	BuiltInTip = Cosmoteerにあらかじめ実装されている船のデザインです。
 	Classic = 私のクラッシックの船
@@ -3949,7 +3963,7 @@ ShipLibraries
 }
 ShipLibrary
 {
-	
+
 	AuthorFmt = "デザイナー：{0}"
 	BrowseWorkshop = Steamワークショップを見る
 	BudgetFmt = "予算：\n<s24>{0}</s24>"
@@ -3981,7 +3995,7 @@ ShipLibrary
 	SmallIcons = 小アイコン
 	SortMode
 	{
-		
+
 		CostHigh = "<img name='sort'/>費用（高）"
 		CostHighTip = 船を費用が高いものから低いもの順に並べ替えます。
 		CostLow = "<img name='sort'/>費用（低）"
@@ -4008,7 +4022,7 @@ ShipLibrary
 }
 StarterShips
 {
-	
+
 	ModelC = C型は低速ですが装甲が厚く、精度は低いものの敵船を貫通する大砲を2門搭載しています。
 	ModelL = L型は機動力が高く、敵のサブシステムを破壊するのに有効なレーザーブラスターを3基搭載していますが、防御性能が著しく不足しています。
 	ModelM = M型はアステロイドやデブリから資源を効率的に抽出できるよう、伝統的な武器ではなく採掘レーザーを搭載していますが、それでも敵船に対しては有効な武装を備えています。
@@ -4016,7 +4030,7 @@ StarterShips
 }
 StatCategories
 {
-	
+
 	BoostOff = ブースト：オフ
 	BoostOn = ブースト：オン
 	BulletChaingun = チェーンガン弾薬
@@ -4042,7 +4056,7 @@ StatCategories
 }
 Stats
 {
-	
+
 	AOEResistFmt = "<white>範囲ダメージ耐性：</white>　<good>{0:0.##}％</good>"
 	AbilityCooldownFmt = "<white>アビリティクールダウン：</white> <good>{0:0.#}</good><gray> 秒</gray>"
 	AccelerationDelayFmt = "<white>加速遅延：</white> <good>{0:0.0#}</good> <gray>秒</gray>"
@@ -4071,7 +4085,7 @@ Stats
 	CopperCapacityFmt = "<white>銅容量：</white> <good>{0}</good>"
 	CostFmt = "<white>価値：</white> <money>{0:n0}</money>"
 	CrewCapacityFmt = "<white>乗組員ベッド：</white> <good>{0}</good>"
-	CrewRequiredBeamsFmt = "<white>必要な乗組員：</white> <good>{0}-{1}</good>　<gray>（{2}ビームにつき{0}）"
+	CrewRequiredBeamsFmt = "<white>必要な乗組員：</white> <good>{0}-{1}</good>　<gray>（ビーム{0}につき{2}）</gray>"
 	CrewRequiredFmt = "<white>必要な乗組員：</white> <good>{0}</good>"
 	CrewSpeedAcrFmt = "<white>乗組員のスピード（横断）：</white> <good>{0:0}%</good>"
 	CrewSpeedFmt = "<white>乗組員のスピード：</white> <good>{0:0}%</good>"
@@ -4113,6 +4127,7 @@ Stats
 	MineCapacityFmt = "<white>機雷鉄容量：</white> <good>{0}</good>"
 	MineIronUsageFmt = "<white>鉄使用：</white> <good>{0:0.##}</good><gray>/採掘 (</gray><good>{1:0.##}</good><gray>/秒)</gray>"
 	MinePartCapacityFmt = "<white>容量：</white> <good>{0}</good><gray> パーツ（</gray><good>{1:0.##}</good><gray> 機雷）</gray>"
+	MinePartsFmt = "<white>部品収集元：</white>　<good>{0}</good><gray>　パーツ/機雷</gray>"
 	MinePowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/機雷 (</gray><good>{1:0.##}</good><gray>/秒)</gray>"
 	MineProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray>　機雷/秒</gray>"
 	MissileCopperUsageFmt = "<white>銅使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
@@ -4196,261 +4211,261 @@ Stats
 }
 Tips
 {
-	
+
 	Accessibility
 	{
-		
+
 		Tip = 味方と敵の船のアイコンの見分けが難しい場合は、<good>設定→アクセシビリティ</good>で色を変更できます。視覚的に繊細なプレイヤーの目に優しい追加設定もあります。
 		Title = 色覚＆アクセシビリティ設定
 	}
 	AdvancedCareerMode
 	{
-		
+
 		Tip = キャリアモードには、船の建造を即時に行ったり、星系全体を隠さずに表示するなど、あなたのお好みへゲームをできる上級オプションがいくつかあります。キャリアモードのゲームを新しく開始する時に<good>上級ゲームオプション</good>をクリックして、あるいは<good>設定→現在のゲーム→上級ゲームオプション</good>でこれら設定をオンにしてください。
 		Title = 上級キャリアモードのオプション
 	}
 	AdvancedCommands
 	{
-		
+
 		Tip = 上級船コマンドボタンが表示されない場合は、<good>設定→ゲームプレイ→上級船コマンドを表示</good>で有効にしてください。
 		Title = 上級船コマンド
 	}
 	AreYouSure
 	{
-		
+
 		Tip = "多くの<i>「実行しますか？」</i>系の確認は<btn id='General.SuppressConfirmation'/>を長押しすることでスキップできます。"
 		Title = 実行しますか？
 	}
 	AttackDefaults
 	{
-		
+
 		Tip = "敵に攻撃するたびに船の距離を設定し回転させるのに飽き飽きしてきましたか？自船の名前の隣にある<img name='hamburger_up'/>メニューを開いて<good>攻撃の初期値を設定</good>をクリックしましょう。次に攻撃を仕掛ける際に、現在の距離、回転、迎角が記憶されます。"
 		Title = 攻撃の初期値を設定
 	}
 	AutoSave
 	{
-		
+
 		Tip = 初期設定では、Cosmoteerは10分毎にゲームをーとセーブし、直近25のオートセーブファイルを維持します。古いオートセーブファイルは自動的に削除されます。オートセーブのファイル数を<good>設定→オートセーブ</good>にて変更できます。
 		Title = オートセーブ
 	}
 	BattleHelper
 	{
-		
+
 		Tip = "クリエイティブモードでは、2つの敵対する艦隊の戦闘を設定・運営するバトルヘルパーを使用できます。バトルヘルパーには<img name='hamburger_down'/>メニューからアクセスできます。"
 		Title = バトルヘルパー
 	}
 	BlueprintMode
 	{
-		
+
 		Tip = 「設計図モード」では、実際に実行する前に仮で、違法あるいは高価すぎて不可能な変更を船に加えることができます。船の編集の左下<white>設計図モード</white>ボタンをクリックして、設計図モードを有効にしてください。
 		Title = 設計図モード
 	}
 	ChangingDifficulty
 	{
-		
+
 		Tip = キャリアモードの難易度は、ゲーム開始時だけでなく、プレイ中でもいつでも変更可能です。<good>設定→現在のゲーム</good>から難易度を変更してください。
 		Title = 難易度変更
 	}
 	Chatting
 	{
-		
+
 		Tip = "マルチプレイでは、<btn id='Game.Chat'/>を押して他のプレイヤーにテキストチャットを送ることができます。"
 		Title = マルチプレイチャット
 	}
 	CollisionAvoidance
 	{
-		
+
 		Tip = "通常、船は大きな障害物を迂回して衝突を避けて運航します。これが不要であれば、<btn id='Game.InvertCollisionAvoidance'/>を長押ししながら、移動の指令を出して衝突回避機能を無効化しましょう。もしくは<good>設定→ゲームプレイ→船コマンド→衝突回避機能有効化</good>で永続的にオフにしましょう。"
 		Title = 衝突回避機能
 	}
 	ControlGroups
 	{
-		
+
 		Tip1 = "複数の船を選択し、<white>Ctrl + F1-F8</white>を押すとコントロールグループを作成できます。<white>F1-F8</white>を押してそのグループの全ての船を選択します。"
 		Tip2 = "同様に、複数の武器や他の船パーツを選択し、<white>Ctrl + 0-9</white>でコントロールグループを作成できます。<white>0-9</white>を押してそのグループの全てのパーツを選択します。"
 		Title = コントロールグループ
 	}
 	CrewCustomization
 	{
-		
+
 		Tip = 全ての乗組員の名前と外見がカスタマイズ可能です！乗組員名簿を開いてカスタマイズしたい乗組員を<white>ダブルクリック</white>しましょう。
 		Title = 乗組員のカスタマイズ
 	}
 	CrewFavorite
 	{
-		
+
 		Tip = 他よりもお気に入りの乗組員がいますか？乗組員名簿の乗組員を<white>右クリック</white>して「お気に入り」登録しましょう。そうすれば常に彼らがどこにいるかわかります！
 		Title = お気に入りの乗組員
 	}
 	CrewResourceTransfer
 	{
-		
+
 		Tip = "自分の船と船の間で乗組員と資源を移動させることができます。船の名前の隣にある<img name='hamburger_up'/>メニューをクリックして（または乗組員・資源管理画面で）<white>乗組員・資源の移動</white>を選択します。"
 		Title = 乗組員と資源の移動
 	}
 	CtrlSelectsParts
 	{
-		
+
 		Tip = "クリックして個々の武器や他の船を選択できない場合は、<btn id='Game.SelectParts'/>を長押しするか、<good>設定→ゲームプレイ→パーツの選択にCtrlを使用</good>の設定を無効にしてください。"
 		Title = パーツの選択にCtrlを使用
 	}
 	CtrlTargeting
 	{
-		
+
 		Tip1 = "<btn id='Game.SelectParts'/>を長押しで、いきなり攻撃せずに、武器の照準を敵船に合わせます。"
 		Tip2 = "また、<btn id='Game.SelectParts'/>を長押しして武器を味方の船に強制的に向けることもできます。"
 		Title = Ctrlで狙いを定める
 	}
 	DecalLayers
 	{
-		
+
 		Tip = 「目」のアイコンをクリックしてデカールのレイヤーを表示/非表示にできます。デカールのレイヤーをドラッグ＆ドロップで順番を変えることができます。
 		Title = デカールのレイヤー
 	}
 	DeleteDoors
 	{
-		
+
 		Tip = "複数のドアを一度に削除したい場合は、選択ツールを使用して、削除したいドアがある全てのパーツを選択し、<btn id='Design.DeleteDoors'/>を押して下さい。"
 		Title = ドアを削除
 	}
 	DeleteShortcut
 	{
-		
+
 		Tip = "船の編集あるいは塗装の編集で<btn id='Design.EraseCursorMode'/>を長押しして、一時的に削除モードへ切り替えることができます。"
 		Title = パーツとデカールの削除
 	}
 	DesigningAsteroids
 	{
-		
+
 		Tip = "クリエイティブモードでは、船のデザイン同様、小惑星もデザインできます。新しい船ボタンを<btn id='General.UIAltClick'/>し、小惑星または大型小惑星を選択しましょう<gray>（大型小惑星は本当に大きな小惑星です）。</gray>"
 		Title = 小惑星をデザイン
 	}
 	DirectControlBindings
 	{
-		
+
 		Tip1 = "直接操縦モードでは、各武器を発射するマウスボタンをカスタマイズできます。武器を選択し、<img name='hamburger_up'/>メニューを開いて<white>直接操縦バインド</white>を選択しましょう。"
-		Tip2 = また、直接操縦モードを使用している時でも、武器をAI操縦のままにすることもできます。
+		Tip2 = また、直接操縦モードを使用している時でも、武器を<white>AI操縦</white>のままにすることもできます。
 		Title = 直接操縦の武器のキーバインド
 	}
 	DirectControlSettings
 	{
-		
+
 		Tip = 直接操縦モードには多くの変更可能な設定がありますので、操作とカメラをお好みに合わせて調整できます。<good>設定→ゲームプレイ→直接操縦モード</good>と<good>設定→カメラ→直接操縦モード</good>で変更してください。
 		Title = 直接操縦設定
 	}
 	DirectControlSuppress
 	{
-		
+
 		Tip = "直接操縦モードの際には、<btn id='Game.SelectParts'/>を長押しして<i>一時的に</i>無効化できますので、通常の方法で船に司令を出し視点を操作することが可能です。<btn id='Game.SelectParts'/>を離すと直接操縦モードへ戻ります。"
 		Title = 直接操縦モードを中止
 	}
 	DisableAutoDoors
 	{
-		
+
 		Tip = "船に新しく部屋を追加すると、初期設定ではドアが自動で設置されます。この設定がお好みでない場合、<btn id='Design.NoAutoDoors'/>を長押しして一時的に自動追加を中止するか、機能をまとめて<good>設定→船の編集→ドア自動追加</good>をオフにしてください。"
 		Title = 自動ドア追加を無効化
 	}
 	DisableEdgePan
 	{
-		
+
 		Tip = マウスカーソルをうっかり画面端に動かしてしまい、カメラが動いてしまうのが面倒くさいなと思いますか？もしそうなら、<good>設定→カメラ→移動と回転→端へ移動</good>で設定をオフにできます。
 		Title = カメラを画面端へ移動
 	}
 	DisableUI
 	{
-		
+
 		Tip = "ユーザーインターフェースがない方がスクリーンショットもGIFも綺麗に見えると思いますか？<btn id='Game.ToggleUI'/>を押して隠しましょう。もう一度押すと再び表示されます。"
 		Title = UIを無効化
 	}
 	Discord
 	{
-		
-		Tip = "Cosmoteerには活気あふれる友好的なDiscordコミュニティがあります！参加するには、タイトル画面で<img name='hamburger_up'/>もっと見るをクリックし、<good>コミュニティ→Discordを選択してください</good>。"
+
+		Tip = "Cosmoteerには活気あふれる友好的なDiscordコミュニティがあります！参加するには、タイトル画面で<img name='hamburger_up'/>もっと見るをクリックし、<good>コミュニティ→Discord <good>を選択してください。"
 		Title = ""
 	}
 	DisplayName
 	{
-		
+
 		Tip = 初期設定では、マルチプレイにはSteamのアカウント名が表示されますが、<good>設定→その他→マルチプレイ→表示名</good>で表示名を変更できます。
 		Title = マルチプレイの名前の表示
 	}
 	EditShipInfo
 	{
-		
+
 		Tip = "船の名前、デザイナー（作者）、説明、ロアを編集できます。船の名前の隣にある<img name='hamburger_up'/>メニューを開き、<white>船の名前/情報を編集</white>を選択します<gray>（もしくは名前を直接クリックでも可能です！）</gray>"
 		Title = 船の情報編集
 	}
 	EngineRoomDistribution
 	{
-		
+
 		Tip = 機関室は動力バッテリーを受け取り、接続するスラスター全てに分配することができますが、これはつまり、スラスターが乗組員が行くことの<i>できる</i>機関室に接続されていれば、乗組員は実際にスラスターへ行けなくてもかまいません。
 		Title = 機関室動力配分
 	}
 	FameLimit
 	{
-		
+
 		Tip = ほとんのミッションには「名声制限」があります。あなたの<fame>名声</fame>がその制限よりもすでに高い場合、ミッションを完了しても名声は獲得できません。名声を獲得するためにはもっとレベルの高いミッションを完了しましょう。
 		Title = 名声制限
 	}
 	Feedback
 	{
-		
+
 		Tip = "フィードバックは大歓迎です！いつでも<btn id='General.SubmitFeedback'/>を押してあなたのアイデアや苦情、バグ報告、その他どんなことでもフィードバックを送信してください。ご協力感謝します！"
 		Title = フィードバックを送信
 	}
 	FillDoors
 	{
-		
-		Tip = "設置可能箇所全てにドアを設置しますか？ドアを1つ追加しながら<btn id='Design.FillAllDoors'/>を長押しして、全ての箇所にドアを設置します。"
+
+		Tip = "設置可能箇所全てにドアを設置しますか？ドアを1つ追加しながら<btn id='Design.FillAllDoors'/>を長押しして、<i>全ての箇所</i>にドアを設置します。"
 		Title = 全てのドアを設置
 	}
 	FlightDirection
 	{
-		
+
 		Tip = "初期設定では、船の編集画面の船は常に上側が前方となるよう運行しています。どの方向を前方とするかは、船の名前の隣にある<img name='hamburger_up'/>メニューを開くか、船の編集の右側にある小さな上向き矢印をクリックしてください。"
 		Title = 運航方向
 	}
 	ForceStartConstruction
 	{
-		
+
 		Tip = "完成するための資源が不足していると建造を開始できません。しかし、<btn id='Design.ConfirmPartialBuild'/>を長押しすると建造を強制的に開始できます。乗組員は建造を完成できませんが、出来る限りの作業をしてくれます。"
 		Title = 建造を強制開始
 	}
 	GameSpeedFramerate
 	{
-		
+
 		Tip = ゲームの速度を8倍に上げるということは、CPUの作業負荷が速度1倍の8倍になるということです。これによりフレームレート（FPS）が特にゲームの後半で下がる可能性があります。フレームレート向上のためにはゲームの速度を落とすことを検討してみましょう。
 		Title = ゲームの速度＆フレームレート
 	}
 	Hamburgers
 	{
-		
+
 		FunFact = <gray>（お楽しみ情報：ゲームやアプリの開発者はこういったものを「ハンバーガーメニュー」と呼びたがる。）</gray>
 		Tip = "Cosmoteerには多くの小さな<img name='hamburger_up'/>と<img name='hamburger_down'/>のメニューがあります。注目しておいてくださいね！メニューをクリックすると、多くの上級または「隠された」機能へアクセスできます。"
 		Title = ハンバーガーメニュー
 	}
 	HiringPriority
 	{
-		
+
 		Tip1 = 各乗組員の任務には<bad>1</bad>から<good>10</good>で表される「雇用の優先順位」があります。新たに乗組員を雇用または自船へ移動させる場合、空きのある任務で最も優先順位が高いものへ自動的に割り当てられます。
 		Tip2 = <white>優先順位の低い任務から自動で割り当て</white>のオプションを有効にすると、空いている乗組員スロットは優先順位が低い任務の乗組員を移動させて自動的に埋められます。
 		Title = 雇用の優先順位
 	}
 	Hotkeys
 	{
-		
+
 		Tip = 多くのユーザーインターフェースボタンには、クリックする代わりに使う「ホットキー」があります。これらのホットキーはマウスカーソルをボタンの上に持っていくとほぼ毎回ツールのヒントに表示されます。また<good>設定→コントロール</good>でカスタマイズも可能です。
 		Title = ホットキー
 	}
 	LauncherTypes
 	{
-		
+
 		Tip = ランチャーが発射するミサイルまたは魚雷の種類は、戦闘中を含めいつでも変更可能です。この機能を使って敵の想定外の核を打ち込んで驚かせてやりましょう！
 		Title = ランチャータイプ
 	}
 	LoadBlueprints
 	{
-		
+
 		Tip1 = "セーブされた他の船のデザインの設計図を、現在の船に読み込むことができます。船の編集画面で<img name='hamburger_up'/>メニューをクリックし、次のいずれかをクリックしてください。"
 		Tip2 = "<b>船をロード（既存のものを置き換え）</b>　ー　現在の船の設計図をセーブされた船のデザインと完全に置き換えます。"
 		Tip3 = "<b>船をロード（既存のものにペースト）</b>　ー　現在の船の選択した箇所にセーブされた船の設計図を追加します。"
@@ -4458,13 +4473,13 @@ Tips
 	}
 	LoadPaint
 	{
-		
+
 		Tip = "セーブされた他の船の塗装/デカールを、現在の船に読み込むことができます。塗装編集画面で<img name='hamburger_up'/>メニューを開き、<white>塗装デザインのロード</white>をクリックしましょう。"
 		Title = 塗装をロード
 	}
 	LoadShapeFromPNG
 	{
-		
+
 		Tip1 = MSペイント、Paint.NET、Gimp、Photoshop等の外部のアートプログラムを使用して船の基本の形の輪郭を作成することができます。
 		Tip2 = 1．まずお好みのアートプログラムを使用して船の全般的な形を描いた<b>白黒</b>PNGイメージファイルをセーブします。白のピクセルは通路タイルとして、黒のピクセルは空いたスペースとして判断されます。
 		Tip3 = "2．次に船の編集画面で<img name='hamburger_up'/>メニューを開き、<white>形をPNGから読み込む</white>を選択します。セーブしたPNGイメージを選択してください。"
@@ -4473,76 +4488,76 @@ Tips
 	}
 	MidpointFocus
 	{
-		
+
 		Tip = 敵船を攻撃した後、「目」のアイコンをクリックして自船と標的の中間点に焦点を当てることができます。
 		Title = 中間点のフォーカスアイコン
 	}
 	MirrorModeSettings
 	{
-		
+
 		Tip = "すでにご存知かもしれませんが、「ミラーモード」を有効化して船に左右対称な変更を加えることができます。ミラーモードボタンの<btn id='General.UIAltClick'/>で方向と左右対称線の数を変更することができます。"
 		Title = ミラーモードの設定
 	}
 	MissionsHUD
 	{
-		
+
 		Tip1 = 初期設定では、画面の左上に表示されるのは近隣のミッション3つまでです。表示数は<good>設定→ゲームプレイ→情報のオーバーレイ→HUDに近隣のミッションを表示</good>から変更できます。
 		Tip2 = また、ミッションを<white>右クリック</white>するか、キャリアログの「お気に入り」ボタンを押して「お気に入り」登録することもできます。これで他のより近距離のミッションがある場合でも常にお気に入りミッションが表示されるようになります。
 		Title = ミッションHUD
 	}
 	ModAutoDisable
 	{
-		
+
 		Tip = Cosmoteerをアップデートする際、インストールされているMODは新しいCosmoteerのアップデート版に互換性があると認識されていない場合、自動的に無効化される<b>可能性があります</b>。MODの自動無効化を望まない場合は、<good>設定→その他→アップデート時にMODを自動無効化</good>の設定をオフにします。
 		Title = Mod自動無効化
 	}
 	MovingResources
 	{
-		
+
 		Tip = "資源管理画面で資源を移動させる際、<btn id='Resources.Move1'/>を長押しで全部をスタックする代わりに1回で1つの資源を取ったり置いたりします。<btn id='Resources.Move5'/>を長押しで1回に5つ移動させます。"
 		Title = 資源の移動
 	}
 	ObjectiveFocus
 	{
-		
+
 		Tip = たいていのミッションで目標をクリックすると、目標達成のために移動しなくてはならない目的地に焦点を当てられます。
 		Title = 目標にフォーカス
 	}
 	PaintSchemes
 	{
-		
+
 		Tip1 = 「塗装スキーム」はセーブされた塗装の色と質感のセットで、船で共有して使用できます。
 		Tip2 = "船の現在の色と質感をセーブするには、塗装編集画面で<img name='hamburger_up'/>メニューを開き、<white>塗装スキームをセーブ</white>を選択してください。塗装スキームを違う船にロードする場合は、その船の<img name='hamburger_up'/>メニューを開き、<white>塗装スキームをロード</white>を選択してください。"
 		Title = 塗装スキーム
 	}
 	PartBrushes
 	{
-		
+
 		Tip = ほとんどの1x1サイズのパーツは様々な「ブラシ」サイズと形が利用可能です。利用可能な時にブラシ選択ボタンをクリックして全てのオプションを見てみましょう。
 		Title = パーツブラシ
 	}
 	PartRows
 	{
-		
+
 		Tip = 船の編集画面で見えるパーツの種類の数は、<good>設定→船の編集→パーツの列</good>で増やすことができます。
 		Title = 船の編集の列
 	}
 	PipSettings
 	{
-		
+
 		Tip = <good>設定→カメラ→ピクチャー・イン・ピクチャー</good>で、画面右上の「ピクチャー・イン・ピクチャー」がいつ何を表示するかをカスタマイズできます。
 		Title = ピクチャー・イン・ピクチャー設定
 	}
 	PostShaders
 	{
-		
+
 		Tip1 = Cosmoteerが50年代の白黒SF映画みたいだったらいいと思いませんか？そうであれば、<good>設定→グラフィック→環境設定→ポストシェーダー</good>で「それは外宇宙からやって来た」を選択してください。
 		Tip2 = 他にもいくつか楽しい「ポストシェーダー」のスタイルがありますので、お試しください！
 		Title = ポストシェーダー
 	}
 	QuickSave
 	{
-		
+
 		Tip1 = "<btn id='Game.QuickSave'/>を押して現在のゲームをクイックセーブします。"
 		Tip2 = "<btn id='Game.QuickLoad'/>を押すとタイプを問わず直近でセーブしたゲームをロードします。"
 		Tip3 = 初期設定では、Cosmoteerは直近25のクイックセーブファイルを維持します。古いクイックセーブファイルは自動的に削除されます。保持するクイックセーブのファイル数を<good>設定→オートセーブ</good>にて変更できます。
@@ -4550,110 +4565,110 @@ Tips
 	}
 	RebindingControls
 	{
-		
+
 		Tip = ほぼ全てのコントロールおよびホットキーは<good>設定→コントロール</good>で変更可能です。
 		Title = コントロールのリバインド
 	}
 	RecommendationBars
 	{
-		
-		Tip = 船の編集の右側にある<b>乗組員</b>と<b>動力</b>を示すバーは、新規プレイヤーへ向けた推奨値です。最適にデザインされた船ですと、そこまでの乗組員と動力を必要としません。このバーは<i>設定→船の編集→推奨バーを表示</i>で表示をオフにできます。
+
+		Tip = 船の編集の右側にある<b>乗組員</b>と<b>動力</b>を示すバーは、新規プレイヤーへ向けた<i>推奨値</i>です。最適にデザインされた船ですと、そこまでの乗組員と動力を必要としません。このバーは<good>設定→船の編集→推奨バーを表示</good>で表示をオフにできます。
 		Title = 推奨バー
 	}
 	ReleaseCandidates
 	{
-		
+
 		Tip1 = CosmoteerのSteamのプロパティで「不安定」ベータブランチに切り替えると、リリース前のCosmoteerアップデートのテストを手伝っていただけます。
 		Tip2 = "<bad>警告：</bad>　これら「リリース候補版」は公式アップデートよりもバグが多い可能性があります。こまめにセーブしてください！"
 		Title = リリース候補版
 	}
 	ResourceCollectionTypes
 	{
-		
+
 		Tip = "すでに充分量を所持している資源がありますか？回収/サルベージ/採掘ボタンを<btn id='General.UIAltClick'/>、これ以上は必要としない資源の選択を外します。乗組員はその種類の資源をこれ以上は回収、サルベージ、または採掘しません。"
 		Title = 資源回収の種類
 	}
 	ResourceEjection
 	{
-		
+
 		Tip = "全ての、または特定の数量の資源を排出するには、資源管理画面の下にあるボタンを<btn id='General.UIAltClick'/>し、<white>排出</white>オプションの中の1つを選択します。"
 		Title = 資源排出
 	}
 	ResourceLimits
 	{
-		
-		Tip1 = "どの種類の資源でも、船内にどれだけ保管するか制限を設定することができます。回収/サルベージ/採掘ボタンを<btn id='General.UIAltClick'/>で<white>資源の上限を設定</white>を選択します。"
+
+		Tip1 = "すべての種類の資源について、船内にどれだけ保管するか制限を設定することができます。回収/サルベージ/採掘ボタンを<btn id='General.UIAltClick'/>で<white>資源の要求と上限</white>を選択してください。"
 		Tip2 = 特定の種類の資源の上限を設定すると、乗組員は回収せず、工場は製造せず、またその上限以上の購入はできなくなります。
 		Title = 資源の上限
 	}
 	RightClickMenus
 	{
-		
+
 		Tip1 = マウスカーソルがこのアイコンを表示するので、目を離さないでくださいね！
 		Tip2 = "つまりこのボタンかユーザーインターフェースを<btn id='General.UIAltClick'/>で上級または「隠された」機能を含むポップアップメニューにアクセスできます。ユーザーインターフェースの多くのパーツにこの隠された機能があります！"
 		Title = 右クリックメニュー
 	}
 	RoleOrder
 	{
-		
+
 		Tip = 乗組員の任務のリストされている順番はドラッグ＆ドロップで変更できます。この操作は乗組員の働きぶりに影響はありませんが、整理するのに便利です。
 		Title = 乗組員職務指令
 	}
 	RotateCamera
 	{
-		
+
 		Tip1 = "<btn id='View.RotateLeft'/>と<btn id='View.RotateRight'/>を押して視界を回転させます。"
 		Tip2 = "視界の回転をリセットするには、<btn id='View.ResetRotation'/>を押すか、ミニマップ上の赤い「銀河系北」の矢印をクリックしてください。"
 		Title = カメラの回転
 	}
 	RotationFocus
 	{
-		
+
 		TIp2 = "また、<btn id='View.RotationFocusSelected'/>を押して自船に焦点を合わせ、<b>と</b>で回転を合わせられます。"
 		Tip1 = "もうすでにご存知かと思いますが、<btn id='View.FocusSelected'/>を押して視界を自船に合わせることができます。"
 		Title = フォーカス＆回転を合わせる
 	}
 	SavedShipFiles
 	{
-		
+
 		Tip1 = "船のデザインは実際には通常のPNGイメージファイルとしてセーブされますが、拡張子<fame_color>.ship.png</fame_color>がつきます。他のイメージファイルと同様に、これらイメージファイルをフレンドと共有したり、CosmoteerのDiscordで共有することができます。これらファイルはパソコンの「セーブされた船」というフォルダに格納されます。船のライブラリの<img name='hamburger_down'/>メニューをクリックし、<white>フォルダを開く</white>を選択してアクセスしてください。"
 		Tip2 = 他のプレイヤーのセーブされた船のデザインは、コピーして自分の船のライブラリ内のフォルダに格納し、ロードして遊ぶことができます。イメージが変更されていない限り、イメージは船のライブラリに即時反映され、使用することができます。「サイズ変更可能ウィンドウ」モードでCosmoteerをプレイされている場合は、イメージをそのまま船のライブラリまたはアクティブなクリエイティブモードのゲームへドラッグ＆ドロップできます。
 		Title = セーブされた船ファイル
 	}
 	SavingShips
 	{
-		
+
 		Tip = "船のデザインはセーブして他のクリエイティブモードやマルチプレイで再利用できます。船のデザインは船の名前の隣にある<img name='hamburger_up'/>メニューか船の編集画面を開き、<white>船のデザインをセーブ</white>を選択してください。"
 		Title = 船のセーブ
 	}
 	Scoreboard
 	{
-		
+
 		Tip = "対戦型のマルチプレイでは、<btn id='Multiplayer.ShowScoreboard'/>を押すと現在のスコアボードが表示されます。"
 		Title = マルチプレイスコアボード
 	}
 	ScreenshotsAndGifs
 	{
-		
+
 		Tip1 = "<btn id='General.TakeScreenshot'/>を押すといつでもスクリーンショットが撮れます。"
 		Tip2 = "また、<btn id='General.CaptureGif'/>で直近のゲームプレイを録画し、GIFアニメーションとして保存することもできますが、まず最初に<good>設定→GIF録画</good>で設定をオンにする必要があります。"
 		Title = スクリーンショット＆GIF
 	}
 	SelectSameType
 	{
-		
+
 		Tip = <white>ダブルクリック</white>して同じ種類の全ての船のパーツを選択することができます。武器、スラスター、シールド等の方向に関連するパーツについては、同じ方向を向いているパーツのみ選択されます。方向に関係なく全てを選択するには、<white>トリプルクリック</white>してください。
 		Title = 同じ種類のパーツを選択
 	}
 	Settings
 	{
-		
+
 		Tip = Cosmoteerはカスタマイズ性が高く、<i>多く</i>の設定機能があります。もしCosmoteerで何か変えたいと思うことがあれば、<good>設定</good>を見てみてください。あなたが求めている設定がすでに用意されている可能性が大いにあります！
 		Title = 設定
 	}
 	SharingRoles
 	{
-		
+
 		Tip1 = 乗組員の任務を完成させたら、これらの任務を同じように他の船に使用してみるのもいいかもしれません。いくつかやり方があります。
 		Tip2 = "1.　乗組員管理画面の<img name='hamburger_up'/>メニューを開いて<white>船の任務をロード</white>を選択し、セーブされた船から任務をロードします。"
 		Tip3 = "2.　同じ<img name='hamburger_up'/>メニューで、船の<white>任務をコピー</white>して別の船に<white>任務をペースト</white>することもできます。"
@@ -4662,76 +4677,76 @@ Tips
 	}
 	SpawnNotReady
 	{
-		
+
 		Tip = "クリエイティブモードでは、船にスポーンする間に<btn id='CreativeMode.SpawnNotReady'/>を長押しすると、動力、弾薬、資源なしでスポーンします"
 		Title = 弾薬/動力源なしでスポーンする
 	}
 	SubFolders
 	{
-		
+
 		Tip = "パソコンにファイルやフォルダで保存するのと同様に、セーブした船のデザインをサブフォルダで整理できます。サブフォルダは船のライブラリの「私の船」にあるの<btn id='General.UIAltClick'/>で<white>新規フォルダ</white>を選択して作成します。あとはその新規フォルダへ船のデザインをドラッグ＆ドロップするだけです。"
 		Title = 船のサブフォルダ
 	}
 	SymmetryLines
 	{
-		
+
 		Tip = ミラーモード有効の場合、緑のハンドルをクリック＆ドラッグして左右対称線を移動することができます。
 		Title = 左右対称線の移動
 	}
 	TeleportShip
 	{
-		
+
 		Tip = "クリエイティブモードでは、<btn id='CreativeMode.MoveShip'/>を押すと選択した船はその目的地まで即座にテレポートします。"
 		Title = 船をテレポート
 	}
 	Trade5x
 	{
-		
+
 		Tip = "資源を取引または輸送している間、<btn id='Resources.Transfer5'/>を長押しで1回につき5倍の資源を移動させることができます。"
 		Title = 5倍取引
 	}
 	TradeAmount
 	{
-		
+
 		Tip1 = 資源を取引または輸送する際、数をクリックし、購入、売却、または輸送したい正確な量を入力します。正の数は購入したい（または左から右へ移動したい）数、負の数は売却したい（または右から左に移動したい）数を表します。
 		Tip2 = また、船に保管したい総量を入力すると、購入、売却、または移動する必要がある量が自動的に計算されます。
 		Title = 正確な量を取引
 	}
 	TradeSurplusNeeded
 	{
-		
+
 		Tip1 = "取引の際、希望する量を超えた資源を<white>右クリック</white>し<white>余剰分を売却</white>を選択すると、余剰分を売却できます。もしくは、<white>必要分を購入</white>を選択して、希望する量に必要な分を購入することができます。<img name='hamburger_up'/>メニューを開くと、一度に全ての資源の超過分を売却または必要分を購入することができます。"
 		Tip2 = 資源に上限を設定している場合、希望する量はその資源の上限となります。設定していない場合、希望する量はその資源を保管するよう指定された資源タイルの合計総量となります。
 		Title = 余剰分を売却/必要分を購入
 	}
 	TransferringShipsMoney
 	{
-		
+
 		Tip1 = "マルチプレイのキャリアモードをプレイ中に、自船を他のプレイヤーへ移譲することがができます。自船の名前の隣にある<img name='hamburger_up'/>メニューをクリックして<white>船の操作を</white>へ移譲を選択します。"
 		Tip2 = "また、<money_color><img name='money' colored='true'/></money_color>クレジットを他のプレイヤーへ譲渡することもできます。右上の自分の<money_color><img name='money' colored='true'/></money_color>クレジットの表示を<btn id='General.UIAltClick'/>し、<white>クレジットを</white>へ譲渡を選択します。"
 		Title = 船と資金を移動
 	}
 	WhenEnemySpotted
 	{
-		
+
 		Tip = 敵を検知するたびにゲームの進行が遅くなるのは嫌ですか？<good>設定→ゲームプレイ→情報のオーバーレイ→敵を検知した場合</good>で設定をオフするか、違うゲーム進行速度を設定できます。
 		Title = 敵を検知
 	}
 	WorldRelativeAngles
 	{
-		
+
 		Tip = "通常、他の船を特定の角度で攻撃する時は、その角度は他の船が回転すると変わります。攻撃を繰り出す時あるいは追跡指令を出す際に<btn id='Game.WorldRelativeFollowAngle'/>を長押ししてこれを防止してください。"
 		Title = グリッド相対的攻撃/追跡角度
 	}
 }
 TipsDialog
 {
-	
+
 	Title = 知ってましたか？
 }
 TitleScreen
 {
-	
+
 	Codex = コーデックス
 	Community = コミュニティ
 	ConfirmExitGame = ゲームを終了しますか？
@@ -4750,6 +4765,7 @@ TitleScreen
 	NewsFmt = "ニュース<bad>（{0}）</bad>"
 	NextUpdateFmt = "次のアップデートまで約{0}日と{1}時間。"
 	Reddit = ""
+	Roadmap = アーリーアクセスのロードマップ
 	Settings = 設定
 	ShipLibrary = 船のライブラリ
 	Steam = ""
@@ -4757,19 +4773,19 @@ TitleScreen
 }
 Tutorials
 {
-	
+
 	AbandonedShips
 	{
-		
+
 		Dialog = 遺棄船に<good>何名の乗組員を派遣するか選択</good>しましょう（1隻以上の船を所有している場合、または近隣に複数の遺棄船がある場合には、目的の船を右のドロップダウンリストから選択する必要があります）。
-		Discover = "時折、乗組員に<good>見捨てられた</good>船を発見することもあるでしょう。このような船からは他の廃品と同様に\n\n資源もサルベージ<good>でき、また</good>制御して<good>自分の艦隊へ追加することもできます。"
+		Discover = "時折、乗組員に<good>見捨てられた</good>船を発見することもあるでしょう。\n\nこのような船からは他の廃品と同様に <good>資源もサルベージ<good>でき、また</good>制御して<good>自分の艦隊へ追加することもできます。"
 		StartTransfer = <white>移動開始</white>ボタンをクリックして乗組員を派遣します。乗組員が船に到着すると、彼らが船を制御してくれます！
 		Title = 遺棄船
 		Transfer = "遺棄船を<good>制御</good>するには、小さな<img name='hamburger_up'/>ボタンをクリックし、<white>乗組員を移動</white>オプションを選択してください。"
 	}
 	AdvancedCommands
 	{
-		
+
 		Attack = "<good>攻撃コマンド</good>（<btn id='Game.Attack'/>）でほぼ全ての船、味方や友好的な船までもを攻撃できます。また既に出している攻撃命令の角度や距離を素早く調整することもできます。"
 		DirectControl = キーボードとマウスを使用して<good>手動で船を運航する</good>方が良い場合、<white>直接操縦モード</white>ボタンをクリックしてください。
 		Halt = "<good>停止コマンド</good>（<btn id='Game.Halt'/>）で現在の指示全てをキャンセルします。"
@@ -4781,7 +4797,7 @@ Tutorials
 	}
 	Build
 	{
-		
+
 		Button = <good>船をアップグレード</good>するには、左下の<white>建造</white>ボタンをクリックしてください（敵艦から攻撃を受けている時は船のアップグレードはできません）。
 		Caution = "<bad>注意：</bad>　乗組員は船外に出ると非常に無防備な状態になります！安全が確認されている場合にのみアップグレードをしましょう！"
 		Crew = 乗組員が自動的に船外へ出て改修作業を行います。
@@ -4791,7 +4807,7 @@ Tutorials
 	}
 	Build2
 	{
-		
+
 		Close = "船のアップグレードが完了すると、赤の<bad>X</bad>ボタンをクリックするか<btn id='General.Cancel'/>を押して建造モードを終了します。"
 		Delete = 船から<good>パーツを削除</good>するには、<white>削除</white>ツールを使用します。そのパーツを建造するのに使用した材料の全額を払戻として受け取れます。
 		Grab = <good>パーツを拾って移動</good>させるには、<white>グリップ</white>ツールを使用します。
@@ -4801,7 +4817,7 @@ Tutorials
 	}
 	Build3
 	{
-		
+
 		Brush = 1つのタイルで出来たパーツを選択して、様々な形や大きさの<good>異なるブラシ</good>を選ぶことができます。
 		Button = 船の<good>設計図</good>を変更したい場合は、<white>設計図に切り替え</white>ボタンをクリックしてください。
 		Commit = 満足のいくデザインが完成すれば、<white>変更を適用</white>ボタンをクリックしてください。船がアップデートされ、資源と<money>クレジット</money>が差し引かれます。
@@ -4812,7 +4828,7 @@ Tutorials
 	}
 	Camera
 	{
-		
+
 		EdgePan = <good>カメラを移動</good>するには、<white>マウスカーソル</white>を画面の端に移動させるか、<white>矢印キー</white>を押してください。
 		Tip = "<good>ヒント：</good>　自分の船が見つかりませんか？左下の角のアイコンをクリックするか、<btn id='View.FocusSelected'/>（フォーカス）キーを押してください。"
 		Title = カメラを操作
@@ -4820,7 +4836,7 @@ Tutorials
 	}
 	Camera2
 	{
-		
+
 		AltDrag = "<good>複数の船にフォーカスする時は</good>、<btn id='View.FocusCursorMode'/>キーを長押し、<white>右クリック</white>、そしてその船の周りにボックスをドラッグしてください。"
 		Drag = <good>カメラをドラッグする</good>には、<white>マウスの中央ボタン</white>をクリック、長押し、そしてドラッグしてください。
 		FocusClick = "船に<good>カメラの焦点を合わせる</good>には、船の上で<white>マウスの中央ボタン</white>をクリックしてください。\n\nまた、何もない宙域を<white>中クリック</white>すると、そこにカメラの焦点を合わせます。"
@@ -4829,7 +4845,7 @@ Tutorials
 	}
 	Cannons
 	{
-		
+
 		Cannon = <good>大砲</good>（および<good>レールガン</good>）は動力のかわりに<good>弾薬</good>を使用する発射武器です。
 		Crew = <good>乗組員</good>は弾薬を保管庫または工場から大砲へ運びます。
 		Factory = "弾薬はステーションで安価で<good>購入</good>するか、弾薬工場で<img name='resource.sulfur'/>硫黄から<good>製造</good>することができます。"
@@ -4838,7 +4854,7 @@ Tutorials
 	}
 	Chainguns
 	{
-		
+
 		ForceFire = チェーンガンは通常チェーンガン自体またはマガジンの弾薬が容量最大になっていなければ発射<b>しません</b>。容量最大になる前に発射を強制的に開始したい場合は、<white>強制発射</white>ボタンをクリックしてください。
 		Info = チェーンガンは回転式の発射武器で、<good>撃ち続けると発射速度が上昇します</good>。長く撃ち続けていると、チェーンガンの発射速度は限界まで上がります。
 		Magazines = <good>弾薬マガジン</good>を装着すると装填できる弾薬を拡張でき、これにより最大速度で撃ち続けられる時間が延長します。マガジンはチェーンガンの左後方または右側に装着しなくてはなりません（図参照）。
@@ -4847,16 +4863,16 @@ Tutorials
 	}
 	Combat
 	{
-		
+
 		Attack = "敵艦そのものかレーダーの輝点を<white>右クリック</white>して<good>攻撃</good>します。自船が敵艦まで移動して攻撃します（ゲームがチュートリアル表示のために自動的に一時停止する場合もあります。<btn id='Game.PauseToggle'/>を押して再開してください）。"
 		Blips = レーダー上に検知できるものの遠すぎて直接視認できない敵艦は、パルスを発する<red>レーダーの輝点</red>として表示されます。
 		Detected = 付近に敵を発見！
-		Tip = "<good>ヒント：</good>　敵艦はあなたより遥かに強く撃破できないこともあります！退避し、船をアップグレードしてから攻撃しましょう。"
+		Tip = "<good>ヒント：</good>　敵艦はあなたより遥かに強く撃破できないこともあります！退避し、船を<good>アップグレード</good>してから攻撃しましょう。"
 		Title = 敵を攻撃
 	}
 	CommandPoints
 	{
-		
+
 		CommandRooms = "<white>コックピット</white>、<white>司令室</white>、および<white>ブリッジ</white>は各部屋の右上に表示される特定の数の<good><img name='command_points' colored='true'/>コマンドポイント</good>を供給します。"
 		PointsRemaining = <good>残りのコマンドポイント</good>数は右に表示されます。ポイントを使い切ってしまったら、司令室を追加またはアップグレードするまで、新しい武器や他のシステムを追加することはできません。
 		Tip = "<good>ヒント：</good>　司令室が破壊されたり動力がなくなってしまったら、司令室が供給するコマンドポイントを失います。船のコマンドポイントが不足すると、完全に制御不能になります。再び制御するためには、司令室を修繕するか、十分なコマンドポイントを所持するまで個々のシステムの電源を落とします。"
@@ -4865,8 +4881,8 @@ Tutorials
 	}
 	Comms
 	{
-		
-		CommsButton = 船やステーションに通信を送るには、まず左下の<white>通信</white>をクリックします。
+
+		CommsButton = </good>船やステーションに通信を送る</good>には、まず左下の<white>通信</white>をクリックします。
 		HailButton = そして呼びかけたい船やステーションの横の<white>交信</white>ボタンをクリックするか、画面上に見えているようであれば、シンプルに<white>相手をクリック</white>してください。<bad>近隣の友好的なステーションと交信してみましょう。</bad>
 		Interact = 他の船やステーションに<good>通信を送る</good>（呼びかける）ことで交流することができます。
 		Note = "<good>注意：</good>　全ての船やステーションが通信を受け入れたり、全てのサービスを提供してくれるわけではありません。"
@@ -4875,7 +4891,7 @@ Tutorials
 	}
 	Creative
 	{
-		
+
 		AddShip = <good>セーブした船をゲームに追加</good>するには、<white>船のライブラリ</white>ボタンをクリックしましょう。
 		Allegiance = "<good>船を戦闘させる</good>には、船の名称の隣の小さな<img name='hamburger_up'/>ボタンをクリックし、<white>忠誠</white>を選択、そして船にそれぞれ異なるプレイヤーを割り当てます。異なるプレイヤーに割り当てられた船は互いに攻撃しあうように指示され、射程内に入ると自動的に発射します。"
 		NewShip = <white>新しい船</white>ボタンをクリックして最初から<good>新しい船をデザイン</good>します。
@@ -4886,7 +4902,7 @@ Tutorials
 	}
 	Crew
 	{
-		
+
 		Crew = "<good>乗組員</good>　武器に人員を配置、操舵、物資運搬して船を操作しましょう。乗組員の数が多いほど、船は効率的に機能します！"
 		Indicator = 担当する乗組員がいない箇所は<red>赤い乗組員のアイコン</red>が表示されます。
 		InteriorButton = <good>船内を見る</good>には、<white>内装切り替えボタン</white>をクリックしてください。
@@ -4895,7 +4911,7 @@ Tutorials
 	}
 	Crew2
 	{
-		
+
 		Airlock = <white>エアロック</white>は乗組員がサルベージ、採掘、資源の移送をする時に船内外へ<good>出入り</good>できるようにします。
 		Button = 乗組員を雇用して数を増やす前に、<good>ベッドを増やす</good>必要があります。<white>建造</white>ボタンをクリックして始めましょう。
 		Door = 乗組員が<good>部屋から部屋へ移動</good>できるよう、<white>ドア</white>も設置しましょう。
@@ -4905,7 +4921,7 @@ Tutorials
 	}
 	Crew3
 	{
-		
+
 		Hail = <good>乗組員を雇用して増やしたい</good>場合は、近隣のステーションと交信し、<white>乗組員の雇用</white>タブをクリックします。
 		Hire = <good>一人を雇用する</good>場合、その乗組員の<white>雇用</white>ボタンをクリックしてください。<good>可能な限り多くの乗組員を雇用</good>する場合は、<white>最大数を雇用</white>ボタンをクリックします。各乗組員の雇用に対して手数料を<money>クレジット</money>で支払いますが、この手数料の請求は1回限りのものです。
 		List = あなたの<good>乗組員になりたい</good>と言っている全員のリストが表示されます。<fame>名声</fame>を上げてより多くの人材を勧誘できるようにしましょう。
@@ -4916,7 +4932,7 @@ Tutorials
 	}
 	Crew4
 	{
-		
+
 		AddRole = 大きな<white>新規任務</white>ボタンをクリックすると<good>新しい任務を追加</good>できます。
 		Autonomous = <good>乗組員はたいてい自律的に動いて</good>作業していますが、彼らの行動をカスタマイズすることできます。
 		Button = <white>乗組員管理</white>ボタンをクリックして<good>乗組員の行動をカスタマイズ</good>してください。
@@ -4928,7 +4944,7 @@ Tutorials
 	}
 	Crew5
 	{
-		
+
 		AssigningCrew = <good>乗組員を班に配属</good>するには、乗組員の上を<white>左クリック</white>か周囲にボックスをドラッグし、配属先の班の寝室を<white>右クリック</white>します。
 		SquadRoles = <good>それぞれの班に任務が割り当てられます。</good>割り当てたい任務のボタンをクリックし、その任務を担当させる班の寝室をクリックして任務を割り当ててください。
 		Squads = <good>乗組員は「班」に分けられます。</good>各班それぞれ寝室があり、班のメンバーはすることが何もない時は寝室に戻ります。
@@ -4936,7 +4952,7 @@ Tutorials
 	}
 	Crew6
 	{
-		
+
 		Never = <bad>気をつけてください！班に指令が出ていないと、その班は他のどのパーツに対しても作業をしません！</bad>
 		Order = 指令を出したい乗組員班の寝室の上を<white>左クリック</white>か周囲にボックスをドラッグし、担当させたい武器や他のパーツを<white>右クリック</white>します。
 		OrdersMode = <white>乗組員管理</white>画面を開き、<white>班指令モード</white>に切り替えます。
@@ -4946,7 +4962,7 @@ Tutorials
 	}
 	DirectControl
 	{
-		
+
 		Camera = 直接操縦モードを使用している間は、カメラは自船に固定されます。
 		Flight = "船を<good>前方または後方</good>へ運航するには、<btn id='Game.DirectControlForward'/>または<btn id='Game.DirectControlReverse'/>キーを押してください。\n\n<good>左や右に回転</good>するときは、<btn id='Game.DirectControlRotateLeft'/>か<btn id='Game.DirectControlRotateRight'/>キーを押します。\n\n<good>左または右へ掃射</good>するには、<btn id='Game.DirectControlStrafeLeft'/>または<btn id='Game.DirectControlStrafeRight'/>キーを押してください。"
 		Tip = <good>ヒント：</good>ゲーム設定には直接操縦モードでの運航やカメラをカスタマイズするオプションが多数用意されています。
@@ -4955,7 +4971,7 @@ Tutorials
 	}
 	Fame
 	{
-		
+
 		Fame = 現在の<fame>名声</fame>は右上、<money>クレジット</money>の下に表示されます。
 		FameCrew = <fame>名声</fame>が上がるにつれ、より多くの乗組員があなたの船に加わりたいと思うようになります！乗組員なんて何人いてもいいですからね！
 		IncreasingFame = <good>敵を倒して</good><good>ミッションを完遂</good>すると、<fame>名声</fame>が上がります。下がることはありません。
@@ -4964,7 +4980,7 @@ Tutorials
 	}
 	Fires
 	{
-		
+
 		Cause = 特定の武器で撃たれたり揮発性のパーツが爆発すると<red>火災</red>が発生する可能性があります。対処せずに放置していると、火災は急速に広がり、損害を引き起こし乗組員が命を落とす結果になるかもしれません。
 		FireExtinguisher = 火災に対処できるよう、船に<good>消化器</good>を備え付けましょう。乗組員が消化器を使用して火を消します。消化器の容量は限られていますので、大規模火災の場合には複数の消化器が必要となることが考えられます。
 		Spread = "<good>ヒント：</good>　火災は開いたエリアやドアを通じて広がりますが、壁は通過しません。ドアの数が多いと船は火災の被害を受けやすくなります。"
@@ -4972,7 +4988,7 @@ Tutorials
 	}
 	Fleets
 	{
-		
+
 		BoxSelect = "一度に<good>複数の船を操作</good>する場合は、船の周囲を<b>左クリック</b>してボックスをドラッグします。\n\nまたは、<btn id='Game.AppendSelection'/>を長押しして各船を<b>左クリック</b>してください。"
 		ControlGroups = "<good>ヒント：</good>　1隻以上の船を選択し、<b>Ctrl + F1-F8</b>を押して<good>コントロールグループ</good>を作成します。<b>F1-F8</b>を押してそのグループを選択します。"
 		Selected = "1隻以上の船を所有している場合、<good>操作</good>したい船を<b>左クリック</b>してください。\n\n操作中の船は<good>緑の印</good>が表示されます。"
@@ -4981,7 +4997,7 @@ Tutorials
 	}
 	Formations
 	{
-		
+
 		BasicFormations = 船に<good>隊列を組んで運航</good>するよう指令を出すには、2隻以上の船を選択し、<white>フォーメーション</white>ボタンをクリックし、使用したいフォーメーションを選択しましょう。
 		CustomFormations = <good>フォーメーションをカスタム</good>したい場合は、船を選択し、他の船の近くへ配置してからその近くの船を<white>右クリック</white>、マウスボタンを押しながら<white>ドラッグしてそこから離れます</white>。
 		SavingFormations = <good>カスタムフォーメーションをセーブ</good>するには、小さな矢印をクリックしてから<white>セーブ</white>ボタンをクリックし、空いているフォーメーションスロットにセーブしてください。
@@ -4989,7 +5005,7 @@ Tutorials
 	}
 	Ftl
 	{
-		
+
 		BuildFtl = <good>ハイパードライブ</good>を作ってその星系内や他の星系へハイパースペースジャンプで行けるようにしましょう（まずは宇宙ステーションから設計図を購入する必要があります）。
 		Hyperium = ジャンプでは多くの<good>ハイペリウム</good>を消費しますが、距離、船の大きさ、そして船のハイパードライブ効率に応じて消費量は変わります。ハイペリウムは小惑星から採掘、敵船のサルベージ、またはステーションで購入して入手します。
 		PlotJump = 作り終えたら、<white>ハイパージャンプ</white>ボタンをクリックして目的地を選択しましょう。乗組員がハイパードライブを始動し、船がジャンプします。
@@ -4999,7 +5015,7 @@ Tutorials
 	}
 	Ftl2
 	{
-		
+
 		Engage = ジャンプの準備が整ったら、<white>遂行</white>ボタンをクリックしましょう。
 		ExitMap = ギャラクシーマップを閉じると、使用するハイパージャンプ中継点が<good>ハイライト</good>で表示されます。それを<white>右クリック</white>してそこまで移動しましょう。到着したら、乗組員は自動的にハイパードライブを始動します。
 		GalaxyMap = <white>ギャラクシーマップ</white>ボタンをクリックすると銀河全体のマップを表示します。
@@ -5010,7 +5026,7 @@ Tutorials
 	}
 	IonBeams
 	{
-		
+
 		Aiming = <good>プリズムの照準を合わせる</good>には、建造モードを閉じ、プリズムを選択し、<white>イオンプリズム照準</white>ボタンをクリックしてください。
 		Combining = 複数の<good>ビームを組み合わせて</good>ひとつのプリズムにし、シングルレーザーでより高い威力のビームにすることができます。
 		IonBeams = <good>イオンビーム</good>は方向固定武器のため照準を合わせることはできませんが、威力の高い持続的ダメージを与えます。
@@ -5020,7 +5036,7 @@ Tutorials
 	}
 	Micro
 	{
-		
+
 		ControlGroups = "<good>ヒント：</good>　1つ以上のパーツを選択し、<white>Ctrl + 0-9</white>を押して<good>コントロールグループ</good>を作成します。<white>0-9</white>を押してそのグループを選択します。"
 		FireMode = <white>発射モード</white>ボタンを押して武器の<good>発射を停止</good>、<good>指示された標的にのみ発射</good>、あるいは<good>敵を視認次第無制限に発射</good>の指示を出します。
 		Power = <white>動力</white>ボタンを押して<good>オフにします</good>。操作を担当している乗組員はその場を離れ、他の場所へ手伝いに行きます。
@@ -5030,7 +5046,7 @@ Tutorials
 	}
 	Mining
 	{
-		
+
 		Asteroids = 宇宙を探索中に、貴重な<good>資源の堆積物</good>が含まれる小惑星をたびたび見かけるでしょう。
 		Icon = <good>ズームアウトすると</good>、手つかずの資源堆積物を含む小惑星の上に特有の化学元素のマークが表示されます。
 		Mine = そうした<good>小惑星を採掘</good>するには、左下の<white>回収/サルベージ/採掘</white>ボタンをクリックし、小惑星の中の採掘したい資源の堆積物のまわりにボックスをドラッグします。自船の乗組員が自動的に素材を回収し、船に格納保管します。
@@ -5039,7 +5055,7 @@ Tutorials
 	}
 	Missiles
 	{
-		
+
 		ChangeType = <good>発射する弾薬の種類を変更</good>するには、ランチャーを選択し、<white>弾薬の種類</white>ボタンをクリックしてください。
 		Launcher = <good>ランチャー</good>はミサイルや機雷等の様々な種類の<good>弾薬</good>を発射できる多用途武器です。
 		Tip = "<good>ヒント：</good>　ランチャーの弾薬の種類は建造中や建造後、また戦闘中であってもいつでも変更できます！"
@@ -5047,7 +5063,7 @@ Tutorials
 	}
 	Missions
 	{
-		
+
 		Accept = <good>ミッションを受諾</good>するには、リストからミッションを選択し、<white>「受諾」</white>ボタンをクリックしてください。
 		DangerLevel = "ほとんどのミッションには<gray>[</gray><good>1</good><gray>]</gray>等で表される<good>「危険度」</good>があり、そのミッションがどれほど難しいかを示しています。高レベルのミッションに挑戦する前には、船をアップグレードしておいた方が良いでしょう。"
 		Info = <money>クレジット</money>と<fame>名声</fame>を獲得する主な方法は、ミッションです。
@@ -5057,7 +5073,7 @@ Tutorials
 	}
 	Missions2
 	{
-		
+
 		Location = また多くのミッションは、その目標を達成するために行く必要がある<good>場所が表示</good>されています（見るためにズームアウトする必要がある場合があります）。<white>目標をクリック</white>すると、カメラの中央にその場所が表示されます。
 		MissionLog = 画面左上の<white>キャリアログ</white>をクリックすると<good>現在の全てのミッションを閲覧</good>することができます。
 		Title = ミッション（続き）
@@ -5066,7 +5082,7 @@ Tutorials
 	}
 	Missions3
 	{
-		
+
 		Hail = ステーションに戻り、<good>再度交信してみましょう</good>。
 		ReceiveRewards = 支払いが受けられる完了済みのミッションの一覧を閲覧できます。<good>支払いを受け取る</good>ためには、ミッションをクリックし、<white>支払いを受け取る</white>ボタンをクリックしてください。
 		Return = ミッションの全ての目標を達成した後は、通常、支払いを受け取るために<good>元のステーションへ戻る</good>必要があります。
@@ -5074,14 +5090,14 @@ Tutorials
 	}
 	Movement
 	{
-		
+
 		Codex = "<good>ヒント：</good>　ポーズメニューの<white>「チュートリアル＆Codex」</white>を選択するといつでもチュートリアルをもう一度読むことができます。"
 		Move = <good>宇宙船を運航</good>するには、宇宙空間を<white>右クリック</white>してください。船が自動でそこへ移動します。
 		Title = 船を運航
 	}
 	Movement2
 	{
-		
+
 		Drag = <white>右クリック</white>と<white>ドラッグ</white>で<good>船の方向を調整</good>します。
 		Handles = "既存のウェイポイントを<good>移動や回転</good>させるには、<btn id='Game.AppendSelection'/>を長押しし、出現するハンドルのひとつをドラッグしてください。\n\nウェイポイントの<good>削除</good>には<white>ゴミ箱</white>アイコンをクリックします。"
 		Queue = "<btn id='Game.AppendSelection'/>を長押ししながら右クリックで<good>ウェイポイントを追加</good>します。"
@@ -5090,7 +5106,7 @@ Tutorials
 	NotInDemo = <bad>以下の機能はCosmoteer体験版では使用できません。</bad>
 	Paint
 	{
-		
+
 		Button = 左下の<white>塗装</white>ボタンをクリックして<good>船の外装に色を塗ります</good>。
 		ColorWheel = ここから船の<good>ベースの塗装</good>の色と<good>パターン</good>を変えることができます。
 		Decals = "また、船の<good>デカール</good>を塗装することもできます。\n\n船のデカールのレイヤー数は1隻につき最大3です。各レイヤーに異なる色を配色でき、同じレイヤーにある全てのデカールはその色を共有します。"
@@ -5099,7 +5115,7 @@ Tutorials
 	}
 	Power
 	{
-		
+
 		Crew = <good>乗組員</good>は<white>リアクター</white>または<white>動力用コンデンサー</white>からプラズマバッテリーを船のパーツへ運搬します。
 		Indicator = 操作に必要な量の動力がないパーツは<red>赤のアイコン</red>で表示されます。大抵の場合、バッテリーを運搬する乗組員の数が不足しているか、動力源から距離が離れていることが原因ですが、リアクターが十分なバッテリーを生成していない可能性もあります。
 		Meter = <good>動力メーター</good>はリアクターが生成した動力の総量を表示し、<good>縦の緑のバー</good>は推奨量を示しています。
@@ -5109,7 +5125,7 @@ Tutorials
 	}
 	Railguns
 	{
-		
+
 		Accelerator = レールガンにはオプションでいくつでも<good>加速装置</good>モジュールが装着可能です。加速装置を装着するごとに発射物の射程、ダメージ、および貫通の深度が上昇します。
 		Info = レールガンは<good>モジュール式</good>で<good>長さのカスタムが可能</good>な発射武器で、複数のパーツで構成されています。レールガンの長さが長いほどダメージは高くなり射程距離も長くなります。
 		Launcher = レールガンには先端部に発射物を高速で撃つ<good>ランチャー</good>モジュールが必要です。
@@ -5119,7 +5135,7 @@ Tutorials
 	}
 	Repairs
 	{
-		
+
 		Button = 船の修理が必要な場合は、左下に赤で<white>修理</white>ボタンが出現します。クリックして<good>建造/修理モード</good>を開きましょう。
 		Caution = "<bad>注意：</bad>　乗組員は船外に出ると非常に無防備な状態になります！安全が確認されている場合にのみ修理を行いましょう！"
 		Exit = "修理が完了すると、赤の<bad>X</bad>ボタンをクリックするか<btn id='General.Cancel'/>を押して建造/修理モードを終了します。"
@@ -5130,7 +5146,7 @@ Tutorials
 	}
 	Reputation
 	{
-		
+
 		Negative = 同様に、派閥を攻撃すると評判が下がります。評判スコアが<bad>好ましくない</bad>と、価格が上がり、手配された時に逃げるのが難しくなります。
 		Positive = 派閥のミッションを完遂すると評判が上がります。評判スコアが<good>良好</good>であれば、彼らのステーションで買い物する際に値引きが受けられます。
 		ReputationScore = 各派閥のあなたに対する評価は<good>評判スコア</good>として表され、スコアは良くも悪くもなります。
@@ -5139,7 +5155,7 @@ Tutorials
 	}
 	Resources
 	{
-		
+
 		Elements = <white>鉄</white>や<white>銅</white>などの<good>希少素材</good>は工場で建造素材や軍需品を製造するために使用します。小惑星から採掘します。
 		Materials = <white>鋼鉄</white>や<white>コイル</white>等の<good>建造材料</good>は船の修理やアップグレードに使用します。これら材料は撃破した敵からサルベージしたり、ステーションで購入して入手します。
 		Munitions = <white>大砲の弾薬</white>等の<good>軍需品</good>は特定の武器に使用します。これらは工場で製造するか、ステーションで購入します。
@@ -5150,18 +5166,18 @@ Tutorials
 	}
 	Resources2
 	{
-		
+
 		Designate = 乗組員には、<good>特定の資源のみ</good>を特定のタイルに格納するように指示することもできます。格納したい資源のボタンをクリックし、その資源のみを格納したいタイルをクリックします。乗組員は可能な限りその資源をそのタイルへ格納しようとし、自動で他の資源をそこに格納することはありません。
-		Limits = "船に保管する資源の<good>量を制限</good>したい場合は、<img name='hamburger_up'/>メニューを開いて<white>資源に上限を設定</white>を選択してください。"
+		Limits = "船に保管する資源の<good>量を制限</good>したい場合は、<img name='hamburger_up'/>メニューを開いて<white>資源の要求と上限</white>を選択してください。"
 		Manage = <white>資源管理</white>ボタンをクリックして船の資源を管理します。
 		Move = 1つのタイルから他のタイルへ<good>資源を移動</good>するように乗組員に指示を出すには、<white>資源移動</white>ツールを選択、移動させたい資源のスタックをクリックし、移動先のタイルをクリックします。
 		Stacks = ほとんどの資源は<good>スタック</good>され<good>保管庫タイル</good>の上に格納されます。貨物室はどんな種類でもスタックできます。武器、工場およびその他パーツは実際に使用または生産する資源のみ保持することが可能です。
-		SupplyChains = 最後に、保管庫、工場、リアクター、武器、およびその他パーツの間に供給チェーンを備え付けることもできます。これは班指令と同様の役割を果たします。供給リンクが追加されると、供給する側と受け取る側は他のどこのパーツへも資源を送らず、またどこのパーツからも資源を受け取りません。
+		SupplyChains = 最後に、保管庫、工場、リアクター、武器、およびその他パーツの間に<good>供給チェーン</good>を備え付けることもできます。これは班指令と同様の役割を果たします。供給リンクが追加されると、供給する側と受け取る側は他のどこのパーツへも資源を送らず、またどこのパーツからも資源を受け取りません。
 		Title = 資源管理
 	}
 	Salvaging
 	{
-		
+
 		DestroyedShips = 破壊された船は自船の<good>修理やアップグレード</good>に利用できる<good>貴重な材料</good>をドロップします。破壊された船の残骸は全て追加材料としてサルベージ可能です。
 		GatherSalvage = 材料を<good>回収、サルベージ</good>するには、左下の<white>回収/サルベージ/採掘</white>ボタンをクリックし、回収およびサルベージの対象物のまわりにボックスをドラッグします。自船の乗組員が自動的に材料を回収し、船に格納保管します。
 		RecallCrew = 緊急時には、<white>乗組員呼び戻し</white>ボタンを押すと、乗組員に出した指示全てをキャンセルし<good>全員を船に呼び戻します</good>。
@@ -5170,14 +5186,14 @@ Tutorials
 	}
 	Tactics
 	{
-		
+
 		Reactor = "<good>ヒント：</good>　敵艦の<good>リアクターまたは司令室</good>を破壊すると、それはもう廃船同然です！"
 		Target = 敵に攻撃した後、敵艦の特定の箇所を再び<white>右クリック</white>して自船の武器の<good>標的</good>として選択します。
 		Title = 戦闘戦術
 	}
 	Tactics2
 	{
-		
+
 		Drag = "敵艦を <white>右クリック</white>し<white>ドラッグ</white>してそこから離れ、どこから攻撃するのか、<good>距離</good>と<good>方向</good>を選択します。"
 		Handles = "攻撃後に<good>距離</good>、<good>方向</good>、または<good>回転</good>を調節するには、<btn id='Game.AppendSelection'/>を長押しし、出現するハンドルのひとつをドラッグしてください。"
 		TargetQueue = "<good>さらに追加で標的を待機の順番に加えるには</good>、<btn id='Game.AppendSelection'/>を長押ししながらパーツを右クリックしてください。"
@@ -5185,7 +5201,7 @@ Tutorials
 	}
 	Techs
 	{
-		
+
 		Blueprints = 多くの武器やその他の船のパーツは、設計図を入手するまでは<good>建造できません</good>。
 		Permanent = 設計図を購入すると、その種類のパーツを建造するアビリティが<good>永久に解放</good>されます。
 		Purchase = 設計図を購入するには、宇宙ステーションに交信し、<white>設計図の購入</white>タブを選択してください。
@@ -5193,7 +5209,7 @@ Tutorials
 	}
 	Thrusters
 	{
-		
+
 		Many = "スラスターは船を反対方向へ推進します。\n\n船の速度と機動力はスラスターの数、配置、方向、そしてサイズに応じて変わります。"
 		Thruster = <good>スラスター</good>を追加して船の速度と機動力を上げましょう。スラスターが少なすぎると、船は運航できません。
 		Tip = "<good>ヒント：</good>　速度が早く機動力のある宇宙船は、さまざまな位置と方向にスラスターを設置しています。"
@@ -5201,7 +5217,7 @@ Tutorials
 	}
 	Time
 	{
-		
+
 		Buttons = "画面の上方の中央にある<white>||</white>ボタンをクリックするか<btn id='Game.PauseToggle'/>キーを押すと、いつでも<good>ゲームを一時停止</good>することができます。"
 		Faster = "<white>&gt;&gt;</white>か<white>&lt;&lt;</white>ボタンをクリックすると、時間の流れを<good>速く</good>したり<good>遅く</good>したりできます。"
 		Tip = "<good>ヒント：</good>　動きが早すぎてクリックするのが難しい場合は、<btn id='Game.PauseToggle'/>を押すとゲームが一時停止します。"
@@ -5209,7 +5225,7 @@ Tutorials
 	}
 	Wanted
 	{
-		
+
 		Attacking = 派閥に属する（あるいは派閥と友好的な）船やステーションを攻撃すると、<bad>指名手配</bad>されます。
 		Evade = 彼らが諦めるで<good>身を潜めて見つからないように</good>しましょう。
 		Hunted = 指名手配されている間は、派閥はあなたが最後に消息を知られている場所まで<bad>追跡</bad>し、あなたを視認すると攻撃を仕掛けます。
@@ -5218,7 +5234,7 @@ Tutorials
 }
 VersionCheck
 {
-	
+
 	ConfirmInstall = ダウンロードが完了しました。Cosmoteerを終了しアップデートをインストールしますか？
 	DownloadInstall = ダウンロード＆インストール
 	DownloadProgressFmt = "アップデートをダウンロード中…<good>{0}%</good>\n<gray>{1:0.0}MB / {2:0.0}MB</gray>"
@@ -5229,7 +5245,7 @@ VersionCheck
 }
 VitalCategories
 {
-	
+
 	Airlock = ⚠エアロックがありません
 	Command = ⚠司令室がありません
 	Crew = ⚠乗組員室がありません
@@ -5240,7 +5256,7 @@ VitalCategories
 }
 Wishlist
 {
-	
+
 	Caption = 今すぐ購入！
 	ExitMsg = ""
 	FameLimitReached = "おめでとうございます！！！\n体験版での<fame>名声</fame>の最大値に到達しました。しかしまだ伝説には道半ばといったところです。もちろんプレイを続けても構いませんが、これ以上の名声は獲得できず、また他の星系へ行くこともできません。旅を続けるためには、ぜひ製品版をどうぞ！"
@@ -5254,7 +5270,7 @@ Wishlist
 }
 Workshop
 {
-	
+
 	Changes = 変更メモ：
 	Description = 説明：
 	FirstVersion = 初版
