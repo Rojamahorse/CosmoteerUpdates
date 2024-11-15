@@ -266,7 +266,7 @@ Part : <../base_part_terran.rules>/Part
 			FiringArc = 270d
 			RotateSpeed = 20d
 			FireThresholdAngle = 20d
-			AIFirepowerRating = 800
+			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamageContinuousEnemies
 			CanSalvage = true
 			IncludeInFirepowerEstimation = false
 			AlwaysShowCoverage = true

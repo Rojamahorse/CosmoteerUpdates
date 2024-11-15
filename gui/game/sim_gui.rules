@@ -44,6 +44,56 @@ TentativeShipCrewLine
 	LineThickness = .25
 	LineUPerLength = 4
 }
+ShipVelocityLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "overlay_selection.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	LineThickness = 0.5
+	LineUPerLength = 1
+	EndCapSprite
+	{
+		Texture
+		{
+			File = "../line_arrow.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+	}
+	EndCapSize = [.25,.25]
+	EndCapOverlap = 0.05
+}
+ShipVelocityLineScale = 0.2
+ShipAngularVelocityCircle
+{
+	Texture
+	{
+		File = "overlay_selection.png"
+		SampleMode = Linear
+		MipLevels = 2
+	}
+	VertexColor = [255, 255, 255, 255]
+	Thickness = 0.5
+	QuadCount = 256
+}
+ShipAngularVelocityArrow
+{
+	Texture
+	{
+		File = "../line_arrow.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+}
+ShipAngularVelocityScale = 0.2
 TentativeScheduledNuggetCollectSprite
 {
 	Texture
@@ -188,6 +238,16 @@ TentativeFollowCommandCircle : <./Data/commands/command_follow.rules>/FollowComm
 TentativeFtlCommandCircle : <./Data/commands/command_ftl_gate_jump.rules>/FtlGateJumpCommand/Circle
 {
 	VertexColor = [0, 188, 255, 204]
+}
+
+TentativeSalvageCommandCircle : <./Data/commands/command_salvage.rules>/SalvageCommand/Circle
+{
+	VertexColor = [255, 200, 0, 204]
+}
+
+CancelSalvageCommandCircle : <./Data/commands/command_salvage.rules>/SalvageCommand/Circle
+{
+	VertexColor = [246, 49, 43, 204]
 }
 
 FocusModeCursor

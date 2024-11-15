@@ -1,7 +1,7 @@
 ID = combat
 TitleKey = "Tutorials/Combat/Title"
 TabNameKey = "Codex/Tutorials"
-ShowCondition = "? sim.EnemyDetected"
+ShowCondition = "? sim.EnemyDetected and not sim.StationInSight"
 AutoPause = true
 Entries
 [

@@ -599,7 +599,7 @@ Part : <../base_part_terran.rules>/Part
 			FiringArc = 220d
 			RotateSpeed = Infinity // AimingTurretSlider does the actual physical rotation.
 			FireThresholdAngle = 0
-			AIFirepowerRating = 18300 //Set to half the dps when its on, because of the down time.
+			AIFirepowerRating = (&~/Part/StatsByCategory/0/Stats/DamagePerSecond/1) / 2 //Set to half the dps when its on, because of the down time.
 			TargetingEmitter = BulletEmitter
 			InstantSearchesAfterTargetLost = 5
 			ToggleOnMode = HasTargetExceptShipRelative

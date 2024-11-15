@@ -3,11 +3,12 @@ NameKey = "Resource/Tristeel"
 PluralNameKey = "Resource/TristeelPlural"
 DescriptionKey = "Resource/TristeelDesc"
 BuyPrice = 200
-MaxPerNugget = 5
-MaxStackSize = 20
+MaxPerNugget = 10
+MaxStackSize = 40
 FlexGridPriorityKey = "flex_grid_tristeel"
 FlexGridDefaultPriority = 1
 DropRates = &<../resources.rules>/RareMaterialDropRates
+Rarity = Rare
 
 Icon
 {
@@ -63,6 +64,41 @@ NuggetSprites
 	{
 		File = "tristeel5.png"
 		NormalsFile = "tristeel5_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "tristeel6.png"
+		NormalsFile = "tristeel6_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "tristeel7.png"
+		NormalsFile = "tristeel7_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "tristeel8.png"
+		NormalsFile = "tristeel8_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "tristeel9.png"
+		NormalsFile = "tristeel9_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "tristeel10.png"
+		NormalsFile = "tristeel10_normals.png"
 		Size = [1, 1]
 		Offset = [.25+5/64, 0]
 		UVRotation = 1
@@ -149,6 +185,86 @@ StackSprites
 	}
 	{
 		File = "tristeel_stack_20.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_21.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_22.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_23.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_24.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_25.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_26.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_27.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_28.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_29.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_30.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_31.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_32.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_33.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_34.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_35.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_36.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_37.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_38.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_39.png"
+		Size = [1, 1]
+	}
+	{
+		File = "tristeel_stack_40.png"
 		Size = [1, 1]
 	}
 ]

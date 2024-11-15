@@ -328,7 +328,7 @@ WeaponBase
 	FireThresholdAngle = 180d;
 	RotateSpeed = 0d
 	AllowFireWithBlockedLOS = true
-	AIFirepowerRating = 1600
+	AIFirepowerRating = &~/MissileStats/Stats/DamagePerSecond
 	FirePermissionToggle = FirePermissionToggle
 
 	AutoTargets

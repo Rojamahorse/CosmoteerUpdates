@@ -13,6 +13,9 @@ Entries
 		TextKey = "Tutorials/Salvaging/GatherSalvage"
 	}
 	{
+		TextKey = "Tutorials/Salvaging/WholeShip"
+	}
+	{
 		Image { Texture { File="recall.png"; SampleMode=Linear; } }
 		TextKey = "Tutorials/Salvaging/RecallCrew"
 	}

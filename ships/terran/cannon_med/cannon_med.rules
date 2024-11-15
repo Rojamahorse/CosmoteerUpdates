@@ -309,7 +309,7 @@ Part : <../base_part_terran.rules>/Part
 			FiringArc = 115d
 			RotateSpeed = 45d
 			FireThresholdAngle = 1d
-			AIFirepowerRating = 1000
+			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamagePerSecond
 			Emitter = BulletEmitter
 			FirePermissionToggle = FireModeToggle
 

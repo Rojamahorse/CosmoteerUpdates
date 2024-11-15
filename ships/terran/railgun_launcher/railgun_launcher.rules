@@ -199,7 +199,7 @@ Part : <../base_part_terran.rules>/Part
 			AutoFireToggle = AutoFireToggle
 			FireInterval = 4
 			TargetingArc = 90d
-			AIFirepowerRating = { BaseValue=4000; BuffType=RailgunShot; BuffMode=Multiply; }
+			AIFirepowerRating = { BaseValue=&~/Part/StatsByCategory/0/Stats/DamagePerSecond; BuffType=RailgunShot; BuffMode=Multiply; }
 			Emitter = BulletEmitter
 			FirePermissionToggle = FireModeToggle
 
@@ -504,6 +504,18 @@ Part : <../base_part_terran.rules>/Part
 					{
 						File = "weapon.png"
 						NormalsFile = "weapon_normals.png"
+						Size = [2, 4]
+						Offset = [0, -0.5]
+					}
+					{
+						File = "weapon_33.png"
+						NormalsFile = "weapon_normals_33.png"
+						Size = [2, 4]
+						Offset = [0, -0.5]
+					}
+					{
+						File = "weapon_66.png"
+						NormalsFile = "weapon_normals_66.png"
 						Size = [2, 4]
 						Offset = [0, -0.5]
 					}

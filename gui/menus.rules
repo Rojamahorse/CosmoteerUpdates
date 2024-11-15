@@ -398,6 +398,17 @@ WaitingIcon
 	Texture
 	{
 		File = "icon_waiting.png"
+	    MipLevels = 2
+	    SampleMode = Linear
+	}
+	Size = [64, 64]
+}
+
+InCommsIcon
+{
+	Texture
+	{
+		File = "icon_in_comms.png"
 		MipLevels = 3
 		SampleMode = Linear
 	}

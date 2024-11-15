@@ -63,6 +63,7 @@ Part : <../base_part_asteroid.rules>/Part
 			Icon : <./Data/resources/gold/gold.rules>/Overlay
 			{
 				Size = [32, 32]
+				VertexColor = &<./Data/resources/resources.rules>/RareAsteroidColor
 			}
 			Weight = &~/Part/Resources/0/1
 			PulseInterval = 2

@@ -64,6 +64,10 @@ PartStats
 		FormatKey = "Stats/ThrusterRampUpFmt"
 	}
 	{
+		ID = ThrusterRampDown
+		FormatKey = "Stats/ThrusterRampDownFmt"
+	}
+	{
 		ID = TractorForce
 		FormatKey = "Stats/TractorForceFmt"
 	}

@@ -28,6 +28,7 @@ Part : <../base_part_terran.rules>/Part
 	]
 	ThrusterForce = 400
 	ThrustIncreaseTime = 0
+	ThrustDecreaseTime = 0
 	ThrustRecoveryTime = 0
 	FuelUsage = 30
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
@@ -345,16 +346,27 @@ Part : <../base_part_terran.rules>/Part
 			Type = Thruster
 			Location = [1.5, 1.5] // Relative to upper-left corner of unrotated part.
 			Rotation = 90d // Relative to unrotated part.
-			OperationalToggle = IsOperational
+			SoftOperationalToggle = IsOperational
 			Force = &../../ThrusterForce
 			MinActivation = -0.05
 			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation
 			MaxUncommandedActivation = &MaxActivation
 			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationDecreaseTime = &../../ThrustDecreaseTime
 			ActivationRecoveryTime = &../../ThrustRecoveryTime
 			FuelStorage = BatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		RampProgressBarBottom
+		{
+			Type = ProgressBar
+			ShowProgressFor = MainThrusterBottom
+			ValueRange = [0, &~/Part/Components/MainThrusterBottom/MaxActivation]
+			LowColor = [255, 127, 0]
+			HighColor = [255, 127, 0]
+			FullColor = [255, 127, 0]
 		}
 
 		NozzleColliderBottom
@@ -426,16 +438,27 @@ Part : <../base_part_terran.rules>/Part
 			Type = Thruster
 			Location = [2.5, 0.5] // Relative to upper-left corner of unrotated part.
 			Rotation = 0d // Relative to unrotated part.
-			OperationalToggle = IsOperational
+			SoftOperationalToggle = IsOperational
 			Force = &../../ThrusterForce
 			MinActivation = 0
 			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation
 			MaxUncommandedActivation = &MaxActivation
 			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationDecreaseTime = &../../ThrustDecreaseTime
 			ActivationRecoveryTime = &../../ThrustRecoveryTime
 			FuelStorage = BatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		RampProgressBarRight
+		{
+			Type = ProgressBar
+			ShowProgressFor = MainThrusterRight
+			ValueRange = [0, &~/Part/Components/MainThrusterRight/MaxActivation]
+			LowColor = [255, 127, 0]
+			HighColor = [255, 127, 0]
+			FullColor = [255, 127, 0]
 		}
 
 		NozzleColliderRight
@@ -507,16 +530,27 @@ Part : <../base_part_terran.rules>/Part
 			Type = Thruster
 			Location = [0.5, 0.5] // Relative to upper-left corner of unrotated part.
 			Rotation = 180d // Relative to unrotated part.
-			OperationalToggle = IsOperational
+			SoftOperationalToggle = IsOperational
 			Force = &../../ThrusterForce
 			MinActivation = 0
 			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation
 			MaxUncommandedActivation = &MaxActivation
 			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationDecreaseTime = &../../ThrustDecreaseTime
 			ActivationRecoveryTime = &../../ThrustRecoveryTime
 			FuelStorage = BatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		RampProgressBarLeft
+		{
+			Type = ProgressBar
+			ShowProgressFor = MainThrusterLeft
+			ValueRange = [0, &~/Part/Components/MainThrusterLeft/MaxActivation]
+			LowColor = [255, 127, 0]
+			HighColor = [255, 127, 0]
+			FullColor = [255, 127, 0]
 		}
 
 		NozzleColliderLeft
@@ -657,6 +691,7 @@ Part : <../base_part_terran.rules>/Part
 	{
 		ThrusterForce = &~/Part/ThrusterForce
 		ThrusterRampUp = &~/Part/ThrustIncreaseTime
+		ThrusterRampDown = &~/Part/ThrustDecreaseTime
 		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 

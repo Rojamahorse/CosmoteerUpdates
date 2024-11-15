@@ -3,7 +3,7 @@ StretchRange = 600
 IdealRange = 300
 Duration = .25
 HitInterval = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
-TractorImpulse = 50000 * (&HitInterval) / (&<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/BeamCount) // Actual impulse per-ship is half; this is net total of both ships.
+TractorImpulse = 40000 * (&HitInterval) / (&<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/BeamCount) // Actual impulse per-ship is half; this is net total of both ships.
 RampUpTime = 1
 RequireHitForRampUp = true
 PenetratesStructure = false
@@ -37,7 +37,7 @@ BeamMediaEffects
 			}
 			_displacementStrength = 4
 			_displacementSpeed = .08
-			
+
 			_additiveStrength = 4
 			_noiseScaleX = 0.01
 			_noiseScaleY = 2

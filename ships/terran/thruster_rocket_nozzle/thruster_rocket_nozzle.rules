@@ -27,6 +27,7 @@ Part : <../base_part_terran.rules>/Part
 	]
 	ThrusterForce = 8000
 	ThrustIncreaseTime = { BaseValue=4; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
+	ThrustDecreaseTime = { BaseValue=2; BuffType=RocketThrust; BuffMode=Divide; }
 	ThrustRecoveryTime = { BaseValue=2; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
 	FuelUsage = 300
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, Rocket, RocketThrust, RocketRampUp, RocketRampUpFinal, RocketOperation, RocketBatteryConnection]
@@ -277,7 +278,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = SelfBuffProvider
 			BuffType = RocketThrust
 			ChainsFromBuffType = Rocket
-			BuffAmount = { BaseValue=0; BuffType=Rocket; BuffMode=Add; }
+			BuffAmount = { BaseValue=0; BuffType=Rocket; BuffMode=Add; MinValue=1; }
 		}
 
 		RampUpBuffProvider
@@ -561,16 +562,27 @@ Part : <../base_part_terran.rules>/Part
 			Type = Thruster
 			Location = [1.5, 4.5]// Relative to upper-left corner of unrotated part.
 			Rotation = 90d// Relative to unrotated part.
-			OperationalToggle = IsOperational
+			SoftOperationalToggle = IsOperational
 			Force = &../../ThrusterForce
 			MinActivation = 0
 			MaxActivation = { BaseValue=1; BuffType=RocketThrust; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation
 			MaxUncommandedActivation = &MaxActivation
 			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationDecreaseTime = &../../ThrustDecreaseTime
 			ActivationRecoveryTime = &../../ThrustRecoveryTime
 			FuelStorage = CombinedBatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		RampProgressBar
+		{
+			Type = ProgressBar
+			ShowProgressFor = MainThruster
+			ValueRange = [0, &~/Part/Components/MainThruster/MaxActivation]
+			LowColor = [255, 127, 0]
+			HighColor = [255, 127, 0]
+			FullColor = [255, 127, 0]
 		}
 
 		NozzleCollider
@@ -725,6 +737,7 @@ Part : <../base_part_terran.rules>/Part
 		CrewRequired = &~/Part/Components/PartCrew/Crew
 		ThrusterForce = &~/Part/ThrusterForce
 		ThrusterRampUp = &~/Part/ThrustIncreaseTime/BaseValue
+		ThrusterRampDown = &~/Part/ThrustDecreaseTime/BaseValue
 		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
 		PowerCapacity = (&~/Part/Components/LocalBatteryStorage/MaxResources) / 1000
 

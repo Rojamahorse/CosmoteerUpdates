@@ -1717,6 +1717,66 @@ OffAlertSwitchButton : SwitchButton
 	}
 }
 
+OnAlertSwitchButton : SwitchButton
+{
+	StateNormalSelectedNineSlice
+	{
+		Bleed = 8
+		Borders = [16, 16, 16, 26]
+		ProvidedRectPadding = -7
+		
+		_X = 768
+		_Y = 1152
+		TopLeftSprite     : ~/MainSprite { Source=[(&../../_X)-0,  (&../../_Y)+0,  -32, 32]; }
+		TopSprite         : ~/MainSprite { Source=[(&../../_X)-32, (&../../_Y)+0,  -64, 32]; }
+		TopRightSprite    : ~/MainSprite { Source=[(&../../_X)-96, (&../../_Y)+0,  -32, 32]; }
+		LeftSprite        : ~/MainSprite { Source=[(&../../_X)-0,  (&../../_Y)+32, -32, 44]; }
+		CenterSprite      : ~/MainSprite { Source=[(&../../_X)-32, (&../../_Y)+32, -64, 44]; }
+		RightSprite       : ~/MainSprite { Source=[(&../../_X)-96, (&../../_Y)+32, -32, 44]; }
+		BottomLeftSprite  : ~/MainSprite { Source=[(&../../_X)-0,  (&../../_Y)+76, -32, 52]; }
+		BottomSprite      : ~/MainSprite { Source=[(&../../_X)-32, (&../../_Y)+76, -64, 52]; }
+		BottomRightSprite : ~/MainSprite { Source=[(&../../_X)-96, (&../../_Y)+76, -32, 52]; }
+	}
+	
+	StateHighlightedSelectedNineSlice
+	{
+		Bleed = 8
+		Borders = [16, 16, 16, 26]
+		ProvidedRectPadding = -7
+
+		_X = 896
+		_Y = 1152
+		TopLeftSprite     : ~/HighlightSprite { Source=[(&../../_X)-0,  (&../../_Y)+0,  -32, 32]; }
+		TopSprite         : ~/HighlightSprite { Source=[(&../../_X)-32, (&../../_Y)+0,  -64, 32]; }
+		TopRightSprite    : ~/HighlightSprite { Source=[(&../../_X)-96, (&../../_Y)+0,  -32, 32]; }
+		LeftSprite        : ~/HighlightSprite { Source=[(&../../_X)-0,  (&../../_Y)+32, -32, 44]; }
+		CenterSprite      : ~/HighlightSprite { Source=[(&../../_X)-32, (&../../_Y)+32, -64, 44]; }
+		RightSprite       : ~/HighlightSprite { Source=[(&../../_X)-96, (&../../_Y)+32, -32, 44]; }
+		BottomLeftSprite  : ~/HighlightSprite { Source=[(&../../_X)-0,  (&../../_Y)+76, -32, 52]; }
+		BottomSprite      : ~/HighlightSprite { Source=[(&../../_X)-32, (&../../_Y)+76, -64, 52]; }
+		BottomRightSprite : ~/HighlightSprite { Source=[(&../../_X)-96, (&../../_Y)+76, -32, 52]; }
+	}
+	
+	StatePressedSelectedNineSlice
+	{
+		Bleed = 8
+		Borders = [16, 16, 16, 26]
+		ProvidedRectPadding = -7
+
+		_X = 1024
+		_Y = 1152
+		TopLeftSprite     : ~/HighlightSprite { Source=[(&../../_X)-0,  (&../../_Y)+0,  -32, 32]; }
+		TopSprite         : ~/HighlightSprite { Source=[(&../../_X)-32, (&../../_Y)+0,  -64, 32]; }
+		TopRightSprite    : ~/HighlightSprite { Source=[(&../../_X)-96, (&../../_Y)+0,  -32, 32]; }
+		LeftSprite        : ~/HighlightSprite { Source=[(&../../_X)-0,  (&../../_Y)+32, -32, 44]; }
+		CenterSprite      : ~/HighlightSprite { Source=[(&../../_X)-32, (&../../_Y)+32, -64, 44]; }
+		RightSprite       : ~/HighlightSprite { Source=[(&../../_X)-96, (&../../_Y)+32, -32, 44]; }
+		BottomLeftSprite  : ~/HighlightSprite { Source=[(&../../_X)-0,  (&../../_Y)+76, -32, 52]; }
+		BottomSprite      : ~/HighlightSprite { Source=[(&../../_X)-32, (&../../_Y)+76, -64, 52]; }
+		BottomRightSprite : ~/HighlightSprite { Source=[(&../../_X)-96, (&../../_Y)+76, -32, 52]; }
+	}
+}
+
 ArrowUpLeft : ListItem
 {
 	StateNormalNineSlice      { Flags=Center; CenterSprite : ~/ArrowSprite { Bleed=8; Source=[0, 0, 128, 128]; } }

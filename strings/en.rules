@@ -351,6 +351,7 @@ Multiplayer
 	Observer = "Observer"
 	Disconnected = "Disconnected"
 	Waiting = "This player is slowing down the game."
+	InComms = "This player is in communications with another ship."
 	DefaultGameName = "Unnamed Game"
 	DefaultGameNameFmt = "{0}'s Game"
 	ShuttingDown = "Please wait..."
@@ -1233,6 +1234,7 @@ Settings
 		DirectControlLbl = "Direct Control Mode"
 		OverlaysLbl = "Informational Overlays"
 		MultiplayerLbl = "Multiplayer"
+		CrewLbl = "Crew"
 
 		AutoCollectNuggets = "Automatically Gather Resources"
 		AutoCollectNuggetsTip = "If checked, then resources from salvaging ships and mining asteroids will be automatically gathered."
@@ -1246,8 +1248,17 @@ Settings
 		ShowSpaceCrewLines = "Show Flying Crew Lines"
 		ShowSpaceCrewLinesTip = "If checked, dotted lines will be displayed connecting flying crew to their ships."
 
+		ShowFavoriteCrewNamesOnHover = "Display Favorite Crew Names On Hover"
+		ShowFavoriteCrewNamesOnHoverTip = "If checked, the names of crew marked 'favorite' will be displayed below them when hovered."
+
+		LogFavoriteCrewDeaths = "Log Deaths of Favorite Crew"
+		LogFavoriteCrewDeathsTip = "If checked, the deaths of favorite crew will be displayed in the message log."
+
 		ShowResourcePickupLines = "Show Floating Resource Lines"
 		ShowResourcePickupLinesTip = "If checked, dotted lines will be displayed connecting floating resources to their intended storages."
+
+		NuggetsDots = "Show Floating Resource Dots"
+		NuggetsDotsTip = "If enabled, the locations of previously-detected resources will be indicated with small dots."
 
 		PauseOnOpenDialogueWithEnemy = "Pause On Dialogue With Enemy"
 		PauseOnOpenDialogueWithEnemyTip = "If checked, the game will automatically pause when opening dialogue with an enemy ship."
@@ -1617,6 +1628,8 @@ Settings
 		DontDimBackgroundsTip = "If checked, the backgrounds behind dialog popups will <i>NOT</i> be dimmed."
 		DontFlickerBlueprints = "Don't Flicker Blueprints"
 		DontFlickerBlueprintsTip = "Ship blueprints have a subtle flicker that some people may find irritating. If checked, the flicker will be disabled."
+		DontFlashRedprints = "Don't Flash Invalid/Destroyed Parts"
+		DontFlashRedprintsTip = "If checked, the color fluctuation of invalid blueprints and destroyed parts will be disabled."
 	}
 
 	Controls
@@ -2100,11 +2113,11 @@ EconDifficulty
 	FreeBuild = "Imagineer (Free Build)"
 	FreeBuildTip = "● Can build anywhere and anytime without using credits or resources.\n● Normal resource drop rates.\n● Normal money rewards.\n● Normal fame/reputation rewards."
 	Fast = "Builder"
-	FastTip = "● Resource drop rates increased by 100%.\n● Money rewards increased by 100%.\n● Fame/reputation rewards increased by 50%."
+	FastTip = "● Enemy resource drop rates increased by 100%.\n● Money rewards increased by 100%.\n● Fame/reputation rewards increased by 50%."
 	Normal = "Architect"
 	NormalTip = "● Normal resource drop rates.\n● Normal Money rewards.\n● Normal fame/reputation rewards."
 	Slow = "Starwright"
-	SlowTip = "● Resource drop rates reduced by 50%.\n● Money rewards reduced by 50%.\n● Fame/reputation rewards reduced by 25%."
+	SlowTip = "● Enemy resource drop rates reduced by 50%.\n● Money rewards reduced by 50%.\n● Fame/reputation rewards reduced by 25%."
 }
 
 CrewScarcity
@@ -2126,8 +2139,11 @@ CareerMode
 	MissionCompleted = "MISSION COMPLETED"
 	MissionFailed = "MISSION FAILED"
 	FameLevelUp = "FAME LEVEL UP"
+	FameLevelUpCrewGained = "+{0} crew"
 	ReputationLevelUp = "REPUTATION LEVEL UP"
 	ReputationLevelDown = "REPUTATION LEVEL DOWN"
+	TruceBroken = "TRUCE BROKEN"
+	TruceBrokenResults = "Added to sector's surrender blacklist"
 	ReputationLevelTitleFmt = "{0} {1} - {2} {0}"
 	MissionLogTip = "Career Log\n\nHotkey: <btn id='Game.MissionLog'/>"
 	StarSystemFmt = "<b>{0} System</b><s6>\n \n</s6>"
@@ -3401,8 +3417,8 @@ Brushes
 	BoxIcon = "Box"
 	BoxTip = "Hold <btn id='Design.RestrictShapeMode'/> to make a perfect square."
 
-	Oval = "Oval"
-	OvalIcon = "Oval"
+	Oval = "Ellipse"
+	OvalIcon = "Ellipse"
 	OvalTip = "Hold <btn id='Design.RestrictShapeMode'/> to make a perfect circle."
 
 	Triangle = "Triangle"
@@ -3470,6 +3486,15 @@ CrewBox
 	HireCrewDialogFmt = "Hire <b>{0} Crew</b> for {1}?"
 	RemoveSelected = "Fire Selected Crew"
 	RemoveSelectedConfirmFmt = "Are you sure you wish to fire the <b>{0}</b> selected crew? You will <i>not</i> receive a refund. This cannot be undone."
+
+	CrewDeathLogFmt = "<b>{0}</b> of the <b>{1}</b> has perished! ({2})"
+	CrewAbandonedLogFmt = "<b>{0}</b> of the <b>{1}</b> was abandoned!"
+
+	DeathCauses
+	{
+		LostInSpace = "Lost in space"
+		Fire = "Fire"
+	}
 }
 
 Roster
@@ -3589,6 +3614,8 @@ ResourcesBox
 	ClearAllSupplyTargets = "Clear All Supply Links"
 	ClearAllSupplyTargetsTip = "Removes all supply links across the entire ship."
 	EjectResourcesTip = "Eject the selected resources out the nearest airlock.\n\nHotkey: <btn id='Resources.Eject'/>"
+	StripSalvage = "Strip Mine/Salvage"
+	StripSalvageTip = "When selected, a whole asteroid or ship will be mined/salvaged even if some of its parts don't contain desirable resources."
 	SetResourceLimits = "Resource Desires & Limits..."
 	EjectSome = "Eject Some..."
 	EjectSomeTip = "Type in a specific number of resources to eject from the ship."
@@ -3648,6 +3675,7 @@ CommsBox
 	IffTextHailing = "<neutral_bright>Incoming Hail...</neutral_bright>"
 	HailingFmt = "<good>HAILING...</good>\n{0}"
 	AIHailingFmt = "<good>HAILED BY...</good>\n{0}"
+	AIHailingAllyFmt = "<good>ALLY HAILED BY...</good>\n{0}"
 	HailingFailedFmt = "<bad>HAIL REJECTED</bad>\n{0}"
 	NoShips = "No Ships Within\nHailing Range"
 }
@@ -3674,10 +3702,11 @@ CommWindow
 	Hire = "Hire"
 	AutoHireFmt = "Hire Max ({0})\n{1}"
 	AutoHireNone = "Hire Max (0)\n<img name='money' colored='true'/>0"
-	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} souls</b> on {2} want to join your crew.\nIncrease your <fame>FAME</fame> to persuade more.</s12>"
+	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} souls</b> on {2} want to join your crew.\nIncrease your fame to <fame>{3}</fame> to persuade more.</s12>"
+	CountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} souls</b> on {2} want to join your crew.</s12>"
 	Crew = "CREW"
 	Beds = "BEDS"
-	InsufficientFame = "Increase your <fame>FAME</fame> to persuade this person to join your crew."
+	InsufficientFame = "Increase your <fame>FAME</fame> to {0} to persuade this person to join your crew."
 	InsufficientBeds = "All of the beds on your ship are occupied. Build more crew quarters to hire more crew."
 	RehireDebtFmt = "Hiring replacement crew will cost <ins_money>{0:n0}</ins_money> but you only have <money>{1:n0}</money>. "\
 	                "You can go into debt to hire replacement crew, but while in debt you will not be able to make most kinds of purchases until you pay back the debt."
@@ -3705,18 +3734,14 @@ Dialogue
 {
 	Surrender
 	{
-		PlayerSurrenderDialogue = "{0} is willing to let you surrender for <ins_money>{1:n0}</ins_money>."
-		AISurrenderDialogue = "{0} is requesting to surrender to you for <money>{1:n0}</money>."
-		PlayerSurrenderPayBountyDialogue = "{0} is willing to let you surrender for <ins_money>{1:n0}</ins_money>, paying off your bounty to {2}"
-		PlayerSurrender = "Surrender"
-		PlayerSurrenderTip = "Surrender to the enemy ship.  You will pay <ins_money>{0:n0}</ins_money> and the ship will stop attacking you for a while."
-		PlayerSurrenderPayBountyTip = "Surrender to the enemy ship.  You will pay <ins_money>{0:n0}</ins_money> and bounty from {1} will be paid off."
-		DeclinePlayerSurrender = "Fight On"
-		DeclinePlayerSurrenderTip = "Decline to surrender to the enemy ship.  You will continue to fight."
-		AISurrender = "Accept Surrender"
-		AISurrenderTip = "Accept the enemy ship's surrender.  You will receive <money>{0:n0}</money> and the ship will become neutral to you."
-		DeclineAISurrender = "Fight On"
-		DeclineAISurrenderTip = "Reject the enemy ship's surrender.  You will continue to fight."
+		PlayerSurrenderDialogue = "<b>{0}:</b> <i>\"You are outmatched! Surrender now and pay us <money>{1:n0}</money>... or die!\"</i>"
+		AISurrenderDialogue = "<b>{0}:</b> <i>\"We surrender! If you promise not to destroy us, we'll pay you <money>{1:n0}</money>!\"</i>"
+		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>\"Fugitive, the {2} has issued a bounty of <money>{1:n0}</money> for your destruction. Pay it now, or prepare to be destroyed.\"</i>"
+		PlayerSurrender = "<i>\"We surrender!\"</i> (Pay <money>{0:n0}</money>)"
+		PlayerSurrenderPayBounty = "<i>\"We'll pay the bounty.\"</i> (Pay <money>{0:n0}</money>)"
+		DeclinePlayerSurrender = "<i>\"Never!\"</i>"
+		AISurrender = "<i>\"We accept your surrender.\"</i>"
+		DeclineAISurrender = "[Terminate Connection]"
 	}
 }
 
@@ -3983,7 +4008,7 @@ Parts
 	RoofHeadlightIcon = &RoofHeadlight
 	RoofHeadlightDesc = "An exterior headlight that can be aimed. Provides no practical benefit."
 
-	FlakCannonLarge = "Flak Battery"
+	FlakCannonLarge = "Flak Array"
 	FlakCannonLargeIcon = &FlakCannonLarge
 	FlakCannonLargeDesc = "A powerful defensive system that can destroy enemy missiles, lasers, and projectiles. Can also inflict moderate damage to enemy ships."
 
@@ -4546,6 +4571,7 @@ Stats
 	FtlMinEfficiencyRangeFmt = "<white>Minimum Efficiency:</white> <good>{0:0.##}</good><gray> meters</gray>"
 	ThrusterForceFmt = "<white>Thrust:</white> <good>{0:#,0.#}</good><gray> kilonewtons</gray>"
 	ThrusterRampUpFmt = "<white>Ramp-Up Time:</white> <good>{0:0.##}</good><gray> seconds</gray>" //used for chaingun as well, RampUpTime
+	ThrusterRampDownFmt = "<white>Ramp-Down Time:</white> <good>{0:0.##}</good><gray> seconds</gray>"
 	TractorForceFmt = "<white>Tractor Force:</white> <good>{0:#,0.#}</good><gray> kilonewtons</gray>"
 	CrewSpeedFmt = "<white>Crew Speed:</white> <good>{0:0}%</good>"
 	CrewSpeedFwdFmt = "<white>Crew Speed (Forward):</white> <good>{0:0}%</good>"
@@ -4775,10 +4801,18 @@ Tutorials
 {
 	NotInDemo = "<bad>The following feature is not available in the Cosmoteer Demo.</bad>"
 
+	Welcome
+	{
+		Title = "Tutorials"
+		Welcome = "<b>Welcome to Cosmoteer!</b>"
+		Tutorials = "As you play for the first time, tutorials like this one will appear near the <white>top-left corner of the screen</white>. These will teach you how to play Cosmoteer one step at a time. To read a tutorial, simply <white>click on it</white>. To skip a tutorial, click the little red <bad>X</bad> next to it."
+		Codex = "<good>TIP:</good> All tutorials can be re-read at any time by selecting <white>\"Tutorials &amp; Codex\"</white> from the pause menu. (<btn id='General.Cancel'/> key)"
+	}
+
 	Camera
 	{
 		Title = "Controlling the Camera"
-		EdgePan = "To <good>pan the camera</good>, move the <white>mouse cursor</white> to the edge of the screen or press the <white>arrow keys</white>."
+		EdgePan = "To <good>pan the camera</good>, move the <white>mouse cursor</white> to the edge of the screen or use the <white>arrow or W.A.S.D. keys</white>."
 		Zoom = "To <good>zoom in and out</good>, use the <white>scroll wheel</white> on your mouse or press the <btn id='View.ZoomIn'/> and <btn id='View.ZoomOut'/> keys."
 		Tip = "<good>TIP:</good> Can't find your ship? Click its icon in the lower-left corner or press the <btn id='View.FocusSelected'/> (Focus) key."
 	}
@@ -4787,7 +4821,6 @@ Tutorials
 	{
 		Title = "Flying Your Ship"
 		Move = "To <good>fly your starship</good>, <white>right-click</white> anywhere in space. Your ship will fly there automatically."
-		Codex = "<good>TIP:</good> All tutorials can be re-read at any time by selecting <white>\"Tutorials &amp; Codex\"</white> from the pause menu."
 	}
 
 	Time
@@ -4848,6 +4881,7 @@ Tutorials
 		Title = "Gathering & Salvaging Materials"
 		DestroyedShips = "Destroyed ships will drop <good>valuable materials</good> which you can use to <good>repair and upgrade</good> your own ship. Any remaining pieces of destroyed ships can also be salvaged for additional materials."
 		GatherSalvage = "To <good>collect and salvage</good> those materials, click the <white>Gather/Salvage/Mine</white> button near the bottom-left and then drag a box around everything you want to collect and salvage. Your ship's crew will automatically collect the materials and store them in your ship."
+		WholeShip = "<white>Click without dragging</white> on a defeated ship to move your own ship to it and salvage the whole thing."
 		RecallCrew = "In an emergency, press the <white>Recall Crew</white> button to cancel all crew orders and <good>summon everyone back</good> to your ship."
 		Tip = "<good>TIP:</good> If gathering &amp; salvaging are taking too long, try using the <white>&gt;&gt;</white> button to increase the game speed."
 	}
@@ -4955,7 +4989,7 @@ Tutorials
 	{
 		Title = "Mining Asteroids"
 		Asteroids = "While exploring, you will often find asteroids containing valuable <good>resource deposits</good>."
-		Mine = "To <good>mine those asteroids</good>, click the <white>Gather/Salvage/Mine</white> button and then drag a box around the resource deposits in the asteroid you want to mine. Your ship's crew will automatically mine the resources and store them in your ship."
+		Mine = "To <good>mine those asteroids</good>, click the <white>Gather/Salvage/Mine</white> button and then click on the asteroid you want to mine. Your ship's crew will automatically mine the resources and store them in your ship."
 		Icon = "<good>When zoomed out</good>, the appropriate chemical element symbol will be displayed over any asteroids with untapped resource deposits."
 		Tip = "<good>TIP:</good> Many resource deposits will be stuck in rock that is too hard for crew to extract. Build a <good>Mining Laser</good> to extract those resources."
 	}
@@ -5199,6 +5233,13 @@ Tutorials
 		                   "fire extinguishers and use them to put out fires. Each fire extinguisher has a limited capacity, so multiple extinguishers may be required to put out large fires."
 		Spread = "<good>TIP:</good> Fires can spread through open areas and through doors, but not through walls. "\
 		         "Adding a lot of doors to your ship will make it more vulnerable to fires."
+	}
+
+	Nebulas
+	{
+		Title = "Clouds & Storms"
+		Nebulas = "As you explore each star system, you will sometimes encounter different types of <good>clouds</good> and <good>storms</good>. Flying into these areas may have both beneficial and detrimental effects."
+		Example = "For example, ships inside a <good>gaseous cloud</good> (pictured) will be hidden to ships outside the cloud but will also have reduced sensor range."
 	}
 
 	Creative

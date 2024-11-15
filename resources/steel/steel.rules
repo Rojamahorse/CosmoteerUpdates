@@ -3,8 +3,8 @@ NameKey = "Resource/Steel"
 PluralNameKey = "Resource/SteelPlural"
 DescriptionKey = "Resource/SteelDesc"
 BuyPrice = 25
-MaxPerNugget = 5
-MaxStackSize = 20
+MaxPerNugget = 10
+MaxStackSize = 40
 FlexGridPriorityKey = "flex_grid_steel"
 FlexGridDefaultPriority = 1
 DropRates = &<../resources.rules>/VeryCommonMaterialDropRates
@@ -63,6 +63,41 @@ NuggetSprites
 	{
 		File = "steel5.png"
 		NormalsFile = "steel5_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "steel6.png"
+		NormalsFile = "steel6_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "steel7.png"
+		NormalsFile = "steel7_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "steel8.png"
+		NormalsFile = "steel8_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "steel9.png"
+		NormalsFile = "steel9_normals.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "steel10.png"
+		NormalsFile = "steel10_normals.png"
 		Size = [1, 1]
 		Offset = [.25+5/64, 0]
 		UVRotation = 1
@@ -149,6 +184,86 @@ StackSprites
 	}
 	{
 		File = "steel_stack_20.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_21.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_22.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_23.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_24.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_25.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_26.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_27.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_28.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_29.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_30.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_31.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_32.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_33.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_34.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_35.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_36.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_37.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_38.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_39.png"
+		Size = [1, 1]
+	}
+	{
+		File = "steel_stack_40.png"
 		Size = [1, 1]
 	}
 ]

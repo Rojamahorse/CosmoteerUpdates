@@ -3,8 +3,8 @@ NameKey = "Resource/Coil"
 PluralNameKey = "Resource/CoilPlural"
 DescriptionKey = "Resource/CoilDesc"
 BuyPrice = 100
-MaxPerNugget = 5
-MaxStackSize = 20
+MaxPerNugget = 10
+MaxStackSize = 40
 FlexGridPriorityKey = "flex_grid_coil"
 FlexGridDefaultPriority = 1
 DropRates = &<../resources.rules>/CommonMaterialDropRates
@@ -63,6 +63,41 @@ NuggetSprites
 	{
 		File = "coil5.png"
 		NormalsFile = "coil5_normals.png"
+		Size = [1, 1]
+		Offset = [.25+4/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "coil6.png"
+		NormalsFile = "coil6_normals.png"
+		Size = [1, 1]
+		Offset = [.25+4/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "coil7.png"
+		NormalsFile = "coil7_normals.png"
+		Size = [1, 1]
+		Offset = [.25+4/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "coil8.png"
+		NormalsFile = "coil8_normals.png"
+		Size = [1, 1]
+		Offset = [.25+4/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "coil9.png"
+		NormalsFile = "coil9_normals.png"
+		Size = [1, 1]
+		Offset = [.25+4/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "coil10.png"
+		NormalsFile = "coil10_normals.png"
 		Size = [1, 1]
 		Offset = [.25+4/64, 0]
 		UVRotation = 1
@@ -149,6 +184,86 @@ StackSprites
 	}
 	{
 		File = "coil_stack_20.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_21.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_22.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_23.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_24.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_25.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_26.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_27.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_28.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_29.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_30.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_31.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_32.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_33.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_34.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_35.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_36.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_37.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_38.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_39.png"
+		Size = [1, 1]
+	}
+	{
+		File = "coil_stack_40.png"
 		Size = [1, 1]
 	}
 ]

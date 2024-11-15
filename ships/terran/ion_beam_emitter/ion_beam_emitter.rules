@@ -132,7 +132,7 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
 			FireInterval = .2
-			AIFirepowerRating = 3000
+			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamageContinuousNear
 			Emitter = BeamEmitter
 			ChainFireToggleComponent = IonBeamChainToggle
 			ProhibitTargetPartsFilter = &FriendlyPrismFilter // Don't force fire on friendly ion prisms!

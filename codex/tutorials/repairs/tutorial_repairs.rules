@@ -1,7 +1,7 @@
 ID = repairs
 TitleKey = "Tutorials/Repairs/Title"
 TabNameKey = "Codex/Tutorials"
-ShowCondition = "? game.HasSeenCodexPage('salvaging') and sim.SelectedShip != None and sim.SelectedShip.NeedsRepairs and sim.SelectedShip.ConstructionAllowed"
+ShowCondition = "? game.HasSeenCodexPage('salvaging') and sim.SelectedShip != None and sim.SelectedShip.NeedsRepairs and sim.SelectedShip.ConstructionAllowed and sim.StationInSight"
 Entries
 [
 	{

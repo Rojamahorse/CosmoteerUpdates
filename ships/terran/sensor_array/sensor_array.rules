@@ -24,6 +24,7 @@ Part : <../base_part_terran.rules>/Part
 		[1, 1]
 	]
 	ForceManhattanPathInPart = true
+	RadarRotSpeed = 179.8633694893d // SFX is 2.00151927 seconds long, so 360d/2.00151927=179.8633694893d
 	AllowedDoorLocations
 	[
 		[1, -1]
@@ -204,19 +205,19 @@ Part : <../base_part_terran.rules>/Part
 					{
 						File = "radar_rotor.png"
 						Size = [1, 1]
-						RotSpeed = 180d
+						RotSpeed = &~/Part/RadarRotSpeed
 						AnimationStartTime = WhenSpawned
 					}
 					{
 						File = "radar_rotor_33.png"
 						Size = [1, 1]
-						RotSpeed = 180d
+						RotSpeed = &~/Part/RadarRotSpeed
 						AnimationStartTime = WhenSpawned
 					}
 					{
 						File = "radar_rotor_66.png"
 						Size = [1, 1]
-						RotSpeed = 180d
+						RotSpeed = &~/Part/RadarRotSpeed
 						AnimationStartTime = WhenSpawned
 					}
 				]
@@ -271,7 +272,7 @@ Part : <../base_part_terran.rules>/Part
 						Size = [3, 3]
 						AnimationInterval = 0.1
 						AnimationStartTime = WhenSpawned
-						RotSpeed = 180d
+						RotSpeed = &~/Part/RadarRotSpeed
 					}
 					{
 						AnimationFiles
@@ -299,7 +300,7 @@ Part : <../base_part_terran.rules>/Part
 						Size = [3, 3]
 						AnimationInterval = 0.1
 						AnimationStartTime = WhenSpawned
-						RotSpeed = 180d
+						RotSpeed = &~/Part/RadarRotSpeed
 					}
 					{
 						AnimationFiles
@@ -327,7 +328,7 @@ Part : <../base_part_terran.rules>/Part
 						Size = [3, 3]
 						AnimationInterval = 0.1
 						AnimationStartTime = WhenSpawned
-						RotSpeed = 180d
+						RotSpeed = &~/Part/RadarRotSpeed
 					}
 				]
 			}
@@ -372,7 +373,7 @@ Part : <../base_part_terran.rules>/Part
 						Offset = [0, -78/64]
 						Z = 1.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
 						VertexColor = [0, 255, 120]
-						RotSpeed = 180d
+						RotSpeed = &~/Part/RadarRotSpeed
 					}
 					{
 						AnimationStartTime = WhenSpawned
@@ -381,7 +382,7 @@ Part : <../base_part_terran.rules>/Part
 						Offset = [0, -78/64]
 						Z = 1.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
 						VertexColor = [0, 255, 120]
-						RotSpeed = 180d
+						RotSpeed = &~/Part/RadarRotSpeed
 					}
 					{
 						AnimationStartTime = WhenSpawned
@@ -390,7 +391,7 @@ Part : <../base_part_terran.rules>/Part
 						Offset = [0, -78/64]
 						Z = 1.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
 						VertexColor = [0, 255, 120]
-						RotSpeed = 180d
+						RotSpeed = &~/Part/RadarRotSpeed
 					}
 				]
 			}
@@ -410,7 +411,7 @@ Part : <../base_part_terran.rules>/Part
 						UVRotation = 2
 						Z = 1.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
 						VertexColor = [0, 255, 120]
-						RotSpeed = 180d
+						RotSpeed = &~/Part/RadarRotSpeed
 					}
 					{
 						AnimationStartTime = WhenSpawned
@@ -420,7 +421,7 @@ Part : <../base_part_terran.rules>/Part
 						UVRotation = 2
 						Z = 1.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
 						VertexColor = [0, 255, 120]
-						RotSpeed = 180d
+						RotSpeed = &~/Part/RadarRotSpeed
 					}
 					{
 						AnimationStartTime = WhenSpawned
@@ -430,7 +431,7 @@ Part : <../base_part_terran.rules>/Part
 						UVRotation = 2
 						Z = 1.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
 						VertexColor = [0, 255, 120]
-						RotSpeed = 180d
+						RotSpeed = &~/Part/RadarRotSpeed
 					}
 				]
 			}

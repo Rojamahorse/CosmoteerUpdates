@@ -199,7 +199,12 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = TypedResourceGrid
 			ResourceType = bullet
-			GridRect = [1, 4, 1, 2]
+			GridRect = [0, 4, 3, 2]
+			DisableCells
+			[
+				[0, 1]
+				[2, 1]
+			]
 			Layer = "doodads_low"
 			SpriteInset = [11/64, 8/64, 11/64, 8/64]
 		}
@@ -424,7 +429,7 @@ Part : <../base_part_terran.rules>/Part
 			RotateSpeed = 120d
 			FireThresholdAngle = 30d
 			TargetSearchesPerSecond = 8 // Default is 2.
-			AIFirepowerRating = 1200
+			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamagePerSecond
 			Emitter = BaseFlakEmitter
 			AllowShipWideExplicitTargetsToggle = FirePrefAttack
 			EstimateFirepowerToggle = AttackToggle
@@ -1013,7 +1018,7 @@ Part : <../base_part_terran.rules>/Part
 	Stats
 	{
 		CrewRequired = &~/Part/Components/PartCrew/Crew
-		AmmoCapacity = (&~/Part/Components/AmmoStorage/GridRect/2) * (&~/Part/Components/AmmoStorage/GridRect/3) * (&<./Data/resources/bullet/bullet.rules>/MaxStackSize) + (&~/Part/Components/LoadedAmmo1/MaxResources) + (&~/Part/Components/LoadedAmmo2/MaxResources)
+		AmmoCapacity = ((&~/Part/Components/AmmoStorage/GridRect/2) * (&~/Part/Components/AmmoStorage/GridRect/3) - 2) * (&<./Data/resources/bullet/bullet.rules>/MaxStackSize) + (&~/Part/Components/LoadedAmmo1/MaxResources) + (&~/Part/Components/LoadedAmmo2/MaxResources)
 
 		RecAmmo = &../StatsByCategory/0/Stats/AmmoPerSecond
 		RecCrew = (&CrewRequired) + (&RecAmmo) * 2
@@ -1025,12 +1030,10 @@ Part : <../base_part_terran.rules>/Part
 			NameKey = "StatCategories/Flak"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/1/TotalDamage
+				DamagePerShot = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/0/TotalDamage
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				MaxDamage = [&../DamagePerShot, &../DamagePerSecond]
-				ShotDamagePerShot = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/0/TotalDamage
-				ShotDamagePerSecond = (&ShotDamagePerShot) * (&ROF)
-				ShotDamage = [&../ShotDamagePerShot, &../ShotDamagePerSecond]
+				ShotDamage = &MaxDamage
 				DamageArea = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/0/Radius
 				Salvo = [(&~/Part/Components/BaseFlakEmitter/Burst), (&~/Part/Components/Turret/FireInterval)]
 				ROF = (&~/Part/Components/BaseFlakEmitter/Burst) / (&~/Part/Components/Turret/FireInterval)

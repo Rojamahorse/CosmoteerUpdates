@@ -9,10 +9,11 @@
 float4 _colorFluctuateLow = 255;
 float4 _colorFluctuateHigh = 255;
 float _fluctuateInterval;
+float _fluctuationTime;
 
 float4 getCustomVertexColor(in VERT_INPUT_ATLAS input)
 {
-	return input.color * _color * lerp(_colorFluctuateLow, _colorFluctuateHigh, wave(_time, _fluctuateInterval));
+	return input.color * _color * lerp(_colorFluctuateLow, _colorFluctuateHigh, wave(_fluctuationTime, _fluctuateInterval));
 }
 
 float4 getCustomPixelColor(in VERT_OUTPUT_ATLAS input)

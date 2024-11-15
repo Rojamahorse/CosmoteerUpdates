@@ -1,0 +1,18 @@
+ID = welcome
+TitleKey = "Tutorials/Welcome/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? not game.HasSeenCodexPage('camera')"
+AutoOpen = true
+CenterScreen = true
+Entries
+[
+	{
+		TextKey = "Tutorials/Welcome/Welcome"
+	}
+	{
+		TextKey = "Tutorials/Welcome/Tutorials"
+	}
+	{
+		TextKey = "Tutorials/Welcome/Codex"
+	}
+]

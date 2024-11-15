@@ -22,10 +22,12 @@ Part : <../base_part_terran.rules>/Part
 	ProhibitBelow = 18
 	ThrusterForce = 3200
 	ThrustIncreaseTime = { BaseValue=2; BuffType=Engine; BuffMode=Divide; }
+	ThrustDecreaseTime = { BaseValue=0.25; BuffType=Engine; BuffMode=Divide; }
 	ThrustRecoveryTime = 2
 	FuelUsage = 200
 	BoostedThrusterForce = 9600
 	BoostedThrustIncreaseTime = 0
+	BoostedThrustDecreaseTime = 0
 	BoostedThrustRecoveryTime = 0
 	BoostedFuelUsage = 600
 	BoostedPowerDrain = { BaseValue=-30; BuffType=Engine; BuffMode=Multiply; }
@@ -563,16 +565,27 @@ Part : <../base_part_terran.rules>/Part
 					Type = Thruster
 					Location = [1, 4.5]// Relative to upper-left corner of unrotated part.
 					Rotation = 90d// Relative to unrotated part.
-					OperationalToggle = IsOperational
+					SoftOperationalToggle = IsOperational
 					Force = &~/Part/ThrusterForce
 					MinActivation = 0
 					MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
 					MinUncommandedActivation = &MinActivation
 					MaxUncommandedActivation = &MaxActivation
 					ActivationIncreaseTime = &~/Part/ThrustIncreaseTime
+					ActivationDecreaseTime = &~/Part/ThrustDecreaseTime
 					ActivationRecoveryTime = &~/Part/ThrustRecoveryTime
 					FuelStorage = RealBatteryStorage
 					FuelUsagePerSecond = &~/Part/FuelUsage
+				}
+
+				RampProgressBar
+				{
+					Type = ProgressBar
+					ShowProgressFor = MainThruster
+					ValueRange = [0, &../../MainThruster/MaxActivation]
+					LowColor = [255, 127, 0]
+					HighColor = [255, 127, 0]
+					FullColor = [255, 127, 0]
 				}
 
 				BurstTrigger
@@ -787,16 +800,27 @@ Part : <../base_part_terran.rules>/Part
 					Type = Thruster
 					Location = [1, 4.5]// Relative to upper-left corner of unrotated part.
 					Rotation = 90d// Relative to unrotated part.
-					OperationalToggle = IsOperational
+					SoftOperationalToggle = IsOperational
 					Force = &~/Part/BoostedThrusterForce
 					MinActivation = 0
 					MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
 					MinUncommandedActivation = &MinActivation
 					MaxUncommandedActivation = &MaxActivation
 					ActivationIncreaseTime = &~/Part/BoostedThrustIncreaseTime
+					ActivationDecreaseTime = &~/Part/BoostedThrustDecreaseTime
 					ActivationRecoveryTime = &~/Part/BoostedThrustRecoveryTime
 					FuelStorage = RealBatteryStorage
 					FuelUsagePerSecond = &~/Part/BoostedFuelUsage
+				}
+
+				RampProgressBar
+				{
+					Type = ProgressBar
+					ShowProgressFor = MainThrusterBoosted
+					ValueRange = [0, &../../MainThrusterBoosted/MaxActivation]
+					LowColor = [255, 127, 0]
+					HighColor = [255, 127, 0]
+					FullColor = [255, 127, 0]
 				}
 
 				BurstTriggerBoosted
@@ -1025,6 +1049,7 @@ Part : <../base_part_terran.rules>/Part
 			{
 				ThrusterForce = &~/Part/ThrusterForce
 				ThrusterRampUp = &~/Part/ThrustIncreaseTime/BaseValue
+				ThrusterRampDown = &~/Part/ThrustDecreaseTime/BaseValue
 				ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
 			}
 		}
@@ -1034,6 +1059,7 @@ Part : <../base_part_terran.rules>/Part
 			{
 				ThrusterForce = &~/Part/BoostedThrusterForce
 				ThrusterRampUp = &~/Part/BoostedThrustIncreaseTime
+				ThrusterRampDown = &~/Part/BoostedThrustDecreaseTime
 				ThrusterPowerUsage = (&~/Part/BoostedFuelUsage) / 1000
 				BoostedPowerUsageContinuous = -(&~/Part/BoostedPowerDrain/BaseValue) / (&~/Part/BoostedPowerDrainInterval) / 1000
 			}

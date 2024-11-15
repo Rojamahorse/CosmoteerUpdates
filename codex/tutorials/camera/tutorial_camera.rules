@@ -1,7 +1,7 @@
 ID = camera
 TitleKey = "Tutorials/Camera/Title"
 TabNameKey = "Codex/Tutorials"
-ShowCondition = "? True"
+ShowCondition = "? game.HasSeenCodexPage('welcome')"
 Entries
 [
 	{

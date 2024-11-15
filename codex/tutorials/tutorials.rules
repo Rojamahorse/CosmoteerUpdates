@@ -1,6 +1,7 @@
 CodexPages
 [
 	// On game start.
+	&<welcome/tutorial_welcome.rules>
 	&<camera/tutorial_camera.rules>
 	&<movement/tutorial_movement.rules>
 	&<time/tutorial_time.rules>
@@ -90,4 +91,5 @@ CodexPages
 	&<direct_control/tutorial_direct_control.rules>
 	&<wanted/tutorial_wanted.rules>
 	&<reputation/tutorial_reputation.rules>
+	&<nebulas/tutorial_nebulas.rules>
 ]

@@ -40,6 +40,7 @@ IndicatorMaterial
 
 BuiltInShipsFolder = "builtin_ships"
 
+DecalLayers = 3
 Ships
 [
 	&<ships/terran/terran.rules>/Terran
@@ -69,8 +70,8 @@ Simulation
 {
 	SimGui = &<gui/game/sim_gui.rules>
 
-	ClockScaleIncreaseDuration = .5
-	ClockScaleDecreaseDuration = .25
+	AudioSpeedIncreaseDuration = .25
+	AudioSpeedDecreaseDuration = .25
 	PhysicsUpdatesPerSecond = 30
 	CCDThresholdVelocity = (&PhysicsUpdatesPerSecond) * 0.75
 	SightCircleFadeDuration = .5

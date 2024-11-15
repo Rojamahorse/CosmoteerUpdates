@@ -56,7 +56,7 @@ Components
 		FireThresholdAngle = (&TargetingArc) / 2
 		RotateSpeed = 0d
 		AllowFireWithBlockedLOS = true
-		AIFirepowerRating = 4800
+		AIFirepowerRating = &~/MissileStats/Stats/DamagePerSecond
 		FirePermissionToggle = FirePermissionToggle
 
 		AutoTargets
