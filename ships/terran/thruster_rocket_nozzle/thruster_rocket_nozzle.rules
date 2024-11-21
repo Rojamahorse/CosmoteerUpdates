@@ -25,7 +25,7 @@ Part : <../base_part_terran.rules>/Part
 		[default, [0, 5, 3, 1]]
 		[default, [-1, 6, 5, 200]]
 	]
-	ThrusterForce = 8000
+	ThrusterForce = 10000
 	ThrustIncreaseTime = { BaseValue=4; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
 	ThrustDecreaseTime = { BaseValue=2; BuffType=RocketThrust; BuffMode=Divide; }
 	ThrustRecoveryTime = { BaseValue=2; BuffType=RocketRampUpFinal; BuffMode=Multiply; }

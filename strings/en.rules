@@ -2143,7 +2143,7 @@ CareerMode
 	ReputationLevelUp = "REPUTATION LEVEL UP"
 	ReputationLevelDown = "REPUTATION LEVEL DOWN"
 	TruceBroken = "TRUCE BROKEN"
-	TruceBrokenResults = "Added to sector's surrender blacklist"
+	TruceBrokenResults = "Enemies in this star system will no longer accept your surrender"
 	ReputationLevelTitleFmt = "{0} {1} - {2} {0}"
 	MissionLogTip = "Career Log\n\nHotkey: <btn id='Game.MissionLog'/>"
 	StarSystemFmt = "<b>{0} System</b><s6>\n \n</s6>"

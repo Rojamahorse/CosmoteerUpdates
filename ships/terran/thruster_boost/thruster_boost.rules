@@ -22,7 +22,7 @@ Part : <../base_part_terran.rules>/Part
 	ProhibitBelow = 18
 	ThrusterForce = 3200
 	ThrustIncreaseTime = { BaseValue=2; BuffType=Engine; BuffMode=Divide; }
-	ThrustDecreaseTime = { BaseValue=0.25; BuffType=Engine; BuffMode=Divide; }
+	ThrustDecreaseTime = 0
 	ThrustRecoveryTime = 2
 	FuelUsage = 200
 	BoostedThrusterForce = 9600
@@ -89,6 +89,8 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = battery
 			MaxResources = 8000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ToggleOnResources = &MaxResources
+			ToggleOffResources = 0
 		}
 
 		BoostProgressBar
@@ -1049,7 +1051,7 @@ Part : <../base_part_terran.rules>/Part
 			{
 				ThrusterForce = &~/Part/ThrusterForce
 				ThrusterRampUp = &~/Part/ThrustIncreaseTime/BaseValue
-				ThrusterRampDown = &~/Part/ThrustDecreaseTime/BaseValue
+				ThrusterRampDown = &~/Part/ThrustDecreaseTime
 				ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
 			}
 		}

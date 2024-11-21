@@ -22,7 +22,7 @@ Part : <../base_part_terran.rules>/Part
 	ProhibitBelow = 10
 	ThrusterForce = 8000
 	ThrustIncreaseTime = { BaseValue=4; BuffType=Engine; BuffMode=Divide; }
-	ThrustDecreaseTime = { BaseValue=1; BuffType=Engine; BuffMode=Divide; }
+	ThrustDecreaseTime = { BaseValue=0.5; BuffType=Engine; BuffMode=Divide; }
 	ThrustRecoveryTime = 2
 	FuelUsage = 400
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
