@@ -108,8 +108,8 @@ Brushes
 	Line = 直线
 	LineIcon = 直线
 	LineTip = "按住 <btn id='Design.RestrictShapeMode'/> 可绘制直线。"
-	Oval = 正圆
-	OvalIcon = 正圆
+	Oval = 椭圆
+	OvalIcon = 椭圆
 	OvalTip = "按住 <btn id='Design.RestrictShapeMode'/> 可绘制完美圆圈。"
 	Triangle = 三角形
 	TriangleIcon = 三角
@@ -374,6 +374,7 @@ CareerMode
 	CustomMarkerName = 为该自定义标记输入名称：
 	CustomMarkerTip = "添加/重命名/删除自定义标记\n\n热键：<btn id='Game.CustomMarker'/>"
 	FameLevelUp = 名望提升
+	FameLevelUpCrewGained = "+{0} 名船员"
 	GameOver = 全舰阵亡
 	GotoNode = "<fame_color>这里有你的星舰。</fame_color>\n<btn id='General.UIClick'/>可跳转到该恒星系。"
 	LoadLastSave = 加载最近存档
@@ -397,6 +398,8 @@ CareerMode
 	TransferMoneyFmt = "要将多少<money>信用点</money>转移到<b>{0}</b>？"
 	TransferShipControl = 将星舰控制权转移到……
 	TransferShipControlConfirmFmt = "确定要将所选星舰的控制权转移到<b>{0}</b>？"
+	TruceBroken = 停战失效
+	TruceBrokenResults = 已加入本区投降者黑名单
 	UnexploredSpace = 未探索的太空
 	Victory = "<s32><good><b>你成为了星海的传奇</b></good></s32>\n\n祝贺你！你的名望已经达到了<fame>“星海传奇”</fame>，这是目前可达到的最高等级。\n\n你<b>成功通关了游戏</b>，抵达了当前版本《Cosmoteer》的结局，但欢迎你继续在星海探索。在之后的抢先体验期间，可能会加入新的结局。\n"
 	Wanted = ⚠被通缉⚠
@@ -516,16 +519,17 @@ CommWindow
 	BuyTechFmt = "解锁\n{0}"
 	CancelTrade = 取消交易
 	ConfirmDecline = 确定要永远拒绝这个任务吗？如此会无法获得奖励，且此操作只能通过加载先前保存的游戏来撤销。
+	CountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n{2}上有 {1} <b>人</b>想成为你的船员。</s12>"
 	Crew = 船员
 	DeclineMission = 拒绝
 	DeclineMissionTip = 拒绝这项任务，再也无法获得完成任务的奖励。
 	Dialogue = 双方对话
-	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n{2}上有 {1} <b>人</b>想成为你的船员。\n提高<fame>名望</fame>后可劝说更多人加入。</s12>"
+	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n{2}上有 {1} <b>人</b>想成为你的船员。\n名望提升至 <fame>{3}</fame> 后可劝说更多人加入。</s12>"
 	Hire = 雇佣
 	HireCrew = 雇佣船员
 	InitiateTrade = 发起交易
 	InsufficientBeds = 星舰上的床位已满。建造更多船员宿舍后才能雇佣更多船员。
-	InsufficientFame = 提高<fame>名望</fame>便可劝说此人成为船员。
+	InsufficientFame = "将<fame>名望</fame>提高至 {0} 便可劝说此人成为船员。"
 	InsufficientFunds = 资金不足
 	Missions = 任务板
 	NoMissions = "无任务\n可接"
@@ -549,6 +553,7 @@ CommWindow
 CommsBox
 {
 	
+	AIHailingAllyFmt = "<good>友军呼叫人为……</good>\n{0}"
 	AIHailingFmt = "<good>呼叫人为……</good>\n{0}"
 	AcceptHail = 接受
 	DeclineHail = 拒绝
@@ -785,6 +790,14 @@ CrewBox
 	ClearTargetsTip = 移除所选区域中的所有班组命令。
 	Copy = 复制岗位
 	CopyRoles = 复制岗位
+	CrewAbandonedLogFmt = "<b>{1}</b> 人中 <b>{0}</b> 人被抛弃！"
+	CrewDeathLogFmt = "<b>{1}</b> 人中 <b>{0}</b> 人已死亡！（{2}）"
+	DeathCauses
+	{
+		
+		Fire = 火灾
+		LostInSpace = 迷失深空
+	}
 	DeleteRole = 删除岗位
 	Duplicate = 生成副本
 	EditRole = 编辑岗位
@@ -869,18 +882,14 @@ Dialogue
 	Surrender
 	{
 		
-		AISurrender = 接受投降
-		AISurrenderDialogue = "{0}愿意向你投降并缴纳 <money>{1:n0}</money>。"
-		AISurrenderTip = "接受敌舰的投降。敌舰会向你缴纳 <money>{0:n0}</money> 并变为中立状态。"
-		DeclineAISurrender = 至死方休
-		DeclineAISurrenderTip = 拒绝敌舰的投降。不是你死就是它亡。
-		DeclinePlayerSurrender = 至死方休
-		DeclinePlayerSurrenderTip = 拒绝向敌舰投降。战斗到最后一刻。
-		PlayerSurrender = 投降
-		PlayerSurrenderDialogue = "缴纳 <ins_money>{1:n0}</ins_money>，{0}就会接受你的投降。"
-		PlayerSurrenderPayBountyDialogue = "缴纳 <ins_money>{1:n0}</ins_money>，{0}就会接受你的投降并完成{2}对你的悬赏。"
-		PlayerSurrenderPayBountyTip = "向敌舰投降。向其缴纳 <ins_money>{0:n0}</ins_money> 并完成{1}对你的悬赏。"
-		PlayerSurrenderTip = "向敌舰投降。向其缴纳 <ins_money>{0:n0}</ins_money>，敌舰就会暂时停止攻击。"
+		AISurrender = <i>“我们接受你的投降。”</i>
+		AISurrenderDialogue = "<b>{0}：</b><i>“我们投降！只要你承诺不杀我们，我们就付你 <money>{1:n0}</money>！”</i>"
+		DeclineAISurrender = "[通讯结束]"
+		DeclinePlayerSurrender = <i>“想都别想！”</i>
+		PlayerSurrender = "<i>“我们投降！”</i>（支付 <money>{0:n0}</money>）"
+		PlayerSurrenderDialogue = "<b>{0}：</b><i>“你们根本不是对手！要么现在投降，要么交出 <money>{1:n0}</money>……否则就只有死！”</i>"
+		PlayerSurrenderPayBounty = "<i>“我们付你钱。”</i>（支付 <money>{0:n0}</money>）"
+		PlayerSurrenderPayBountyDialogue = "<b>{0}：</b><i>“逃犯听着，{2}现在出 <money>{1:n0}</money> 悬赏你们的人头。要么你来给我们这个数，要么就等着完蛋吧。”</i>"
 	}
 }
 DominationMapStyles
@@ -1083,13 +1092,13 @@ EconDifficulty
 {
 	
 	Fast = 建造工
-	FastTip = "● 资源掉落率提高 100%。\n● 金钱奖励提高 100%。\n● 名声/声誉奖励提高 50%。"
+	FastTip = "● 敌人资源掉落率提高 100%。\n● 金钱奖励提高 100%。\n● 名望/声誉奖励提高 50%。"
 	FreeBuild = 狂想者（自由建造）
 	FreeBuildTip = "● 可以随时随地建造，无需信用点或资源。\n● 常规资源掉落率。\n● 常规金钱奖励。\n● 常规名望/声誉奖励。"
 	Normal = 设计师
 	NormalTip = "● 常规资源掉落率。\n● 常规金钱奖励。\n● 常规名望/声誉奖励。"
 	Slow = 造星人
-	SlowTip = "● 资源掉落率降低 50%。\n● 金钱奖励降低 50%。\n● 名望/声誉奖励降低 25%。"
+	SlowTip = "● 敌人资源掉落率降低 50%。\n● 金钱奖励降低 50%。\n● 名望/声誉奖励降低 25%。"
 }
 EditorGroups
 {
@@ -2420,6 +2429,7 @@ Multiplayer
 		ReturnToGameSetup = 主机已结束游戏。
 	}
 	Host = 主机
+	InComms = 玩家正与另一艘舰船通信。
 	LeftClickBuyShip = 左键单击购买舰船。
 	LoadGameVoteFmt = "主机想要加载游戏存档，存档名为“<b>{0}</b>”。"
 	NextGameCountdownFmt = "将在{0}秒后返回游戏前……"
@@ -2824,9 +2834,9 @@ Parts
 	FireExtinguisher = 灭火器
 	FireExtinguisherDesc = "储存一个灭火器，船员可以用其灭火。可部署灭火器数量有一定上限，每 15 秒会刷新。"
 	FireExtinguisherIcon = 灭火器
-	FlakCannonLarge = 防空炮
+	FlakCannonLarge = 高射炮阵列
 	FlakCannonLargeDesc = 强大的防御系统，可以摧毁敌人的导弹、激光和炮弹。也可以对敌舰造成中等程度的伤害。
-	FlakCannonLargeIcon = 防空炮
+	FlakCannonLargeIcon = 高射炮阵列
 	HyperdriveBeacon = 超空间驱动信标
 	HyperdriveBeaconDesc = 配备超空间驱动器的星舰可以跳跃至配备有超空间驱动信标的星舰附近。
 	HyperdriveBeaconIcon = 超空间驱动信标
@@ -3320,6 +3330,8 @@ ResourcesBox
 	ShowResourceTransfersTip = 勾选后将显示资源储存点之间的预计资源转移情况。
 	ShowUnselectedResourceAssignment = 显示未选中资源的分配
 	ShowUnselectedResourceAssignmentTip = 如未勾选，则只显示选中或鼠标悬停资源的分配。
+	StripSalvage = 无差别开采/回收
+	StripSalvageTip = 若勾选，则无论是否包含需要的资源，将无差别开采/回收整个小行星或舰船。
 	SupplyOffTipFmt = "自动补给\n{0}：<bad>关</bad>"
 	SupplyOnTipFmt = "自动补给\n{0}：<good>开</good>"
 	SupplyToolTip = "<b>供应链模式</b>\n\n将工厂、反应堆和仓库与其负责供应的星舰系统关联起来。\n\n热键：<btn id='Resources.SupplyTool'/>"
@@ -3441,6 +3453,8 @@ Settings
 		Description = 如果难以分辨某些颜色的区别，可以尝试在这里改变这些颜色，使它们更容易区分。
 		DontDimBackgrounds = 对话背景不变暗
 		DontDimBackgroundsTip = 如果勾选，对话框弹出窗口后面的背景将<i>不会</i>变暗。
+		DontFlashRedprints = 关闭无效/毁坏部件闪动
+		DontFlashRedprintsTip = 若勾选，则蓝图无效部分与被摧毁的部件颜色不再闪动。
 		DontFlickerBlueprints = 蓝图不闪烁
 		DontFlickerBlueprintsTip = 星舰蓝图会轻微闪烁，某些玩家可能会不喜欢这点。如果勾选该选项，蓝图将不会闪烁。
 		Enemy = 敌人
@@ -3662,6 +3676,7 @@ Settings
 		BreakFormationToAttack = 脱离编队攻击
 		BreakFormationToAttackTip = 如果勾选，星舰在敌人进入攻击范围时将自动脱离编队。
 		CommandsLbl = 星舰命令
+		CrewLbl = 船员
 		CtrlSelectsParts = "需要按 <btn id='Game.SelectParts' xml='false'/> 来选择部件"
 		CtrlSelectsPartsTip = "如果勾选，在点击部件时必须按住 <btn id='Game.SelectParts'/> 键来选择。"
 		DirectControlAimAssist = 瞄准辅助
@@ -3684,7 +3699,11 @@ Settings
 		FriendAndFoe = 按敌我
 		FriendAndFoeTip = 本舰为绿色，同战队其他玩家的星舰为黄色，敌队的星舰为红色。
 		InterfaceLbl = UI
+		LogFavoriteCrewDeaths = 将收藏船员的死亡记入日志
+		LogFavoriteCrewDeathsTip = 若勾选，则收藏船员的死亡消息将显示在消息日志中。
 		MultiplayerLbl = 多人游戏
+		NuggetsDots = 显示飘浮资源点位
+		NuggetsDotsTip = 若启用，则此前探测到的资源位置将显示为点。
 		OffScreenBlips = 显示屏幕外星舰光点提示
 		OffScreenBlipsTip = 如果勾选，位于屏幕边缘以外的星舰将以彩色“光点”进行显示。
 		OnShipIndicators = 显示星舰状态图标
@@ -3725,6 +3744,8 @@ Settings
 		ShowAllCommandsTip = 如果勾选，命令中的航行与和攻击路径将对你控制的所有星舰显示，而不仅仅是选定的星舰。
 		ShowDamagePoints = 显示伤害点数
 		ShowDamagePointsTip = 如果勾选，伤害敌舰所获得的点数将在伤害结算完毕后显示在敌舰上。
+		ShowFavoriteCrewNamesOnHover = 光标悬停时显示收藏船员姓名
+		ShowFavoriteCrewNamesOnHoverTip = 若勾选，则光标悬停在被标记为“收藏”的船员上时，其下方将显示姓名。
 		ShowNearbyMissions = "在 HUD 上显示附近的任务"
 		ShowNearbyMissionsTip = "当前附近的任务将自动显示在 HUD 左上角。"
 		ShowResourcePickupLines = 显示飘浮资源连线
@@ -4197,6 +4218,7 @@ Stats
 	ThrusterBuffFmt = "<white>推进器增益：</white><good>+{0:0}%</good><gray> 推进力和能量消耗</gray>"
 	ThrusterForceFmt = "<white>推力：</white><good>{0:#,0.#}</good><gray>千牛</gray>"
 	ThrusterPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/秒（100% 推进力）</gray>"
+	ThrusterRampDownFmt = "<white>减速时间：</white><good>{0:0.##}</good> <gray>秒</gray>"
 	ThrusterRampUpFmt = "<white>加速时间：</white><good>{0:0.##}</good><gray>秒</gray>"
 	TractorForceFmt = "<white>牵引力：</white><good>{0:#,0.#}</good><gray>千牛</gray>"
 	TristeelCapacityFmt = "<white>三钛钢板容量：</white><good>{0}</good>"
@@ -4829,7 +4851,7 @@ Tutorials
 	Camera
 	{
 		
-		EdgePan = 要<good>平移镜头</good>，请将<white>鼠标光标</white>移动到屏幕边缘，或按<white>箭头键</white>。
+		EdgePan = "要<good>平移镜头</good>，请将<white>鼠标光标</white>移动到屏幕边缘，或按<white>方向键或 W、A、S、D 键</white>。"
 		Tip = "<good>提示：</good>找不到自己的星舰了？点击左下角的图标或按下 <btn id='View.FocusSelected'/>（聚焦）键即可。"
 		Title = 控制镜头
 		Zoom = "要<good>放大和缩小</good>，请使用鼠标上的<white>滚轮</white>或按下 <btn id='View.ZoomIn'/> 和 <btn id='View.ZoomOut'/> 键。"
@@ -5049,7 +5071,7 @@ Tutorials
 		
 		Asteroids = 在探索过程中，你经常会发现小行星含有宝贵的<good>资源矿藏</good>。
 		Icon = <good>拉远后</good>，含有未开采资源矿藏的小行星上会显示相应的化学元素符号。
-		Mine = 要<good>开采这些小行星</good>，请点击<white>收集/回收/开采</white>按钮，然后在要开采的小行星的资源矿藏周围拖动方框。星舰上的船员会自动开采资源，并将其储存在星舰中。
+		Mine = 要<good>开采这些小行星</good>，请点击<white>收集/回收/开采</white>按钮，然后点击要开采的小行星。星舰上的船员会自动开采资源，并将其储存在星舰中。
 		Tip = <good>提示：</good>许多资源矿藏会包藏在岩石中，对船员来说难以开采。建造一个<good>采矿激光</good>即可开采这些资源。
 		Title = 开采小行星
 	}
@@ -5091,7 +5113,6 @@ Tutorials
 	Movement
 	{
 		
-		Codex = <good>提示：</good>从暂停菜单中选择<white>“教程和百科”</white>，可随时重新阅读所有教程。
 		Move = 要<good>使星舰移动</good>，请<white>右键点击</white>任意空白处。星舰会自动飞到那里。
 		Title = 星舰移动
 	}
@@ -5102,6 +5123,13 @@ Tutorials
 		Handles = "要<good>移动或旋转</good>现有的航点，按住 <btn id='Game.AppendSelection'/>，然后拖动出现的手柄之一。\n\n要<good>删除</good>航点，请点击<white>垃圾桶</white>图标。"
 		Queue = "要<good>添加航点</good>，请按住 <btn id='Game.AppendSelection'/> 的同时单击右键。"
 		Title = 驾驶星舰（高级）
+	}
+	Nebulas
+	{
+		
+		Example = 例如，位于<good>气态星云</good>（如图所示）内的星舰无法被星云外的星舰侦测到，但传感器探测范围也会缩小。
+		Nebulas = 探索各个星系时，你可能会遭遇不同种类的<good>星云</good>和<good>风暴</good>。飞入其范围内产生的影响有好有坏。
+		Title = 星云与风暴
 	}
 	NotInDemo = <bad>以下功能在《Cosmoteer》试玩版中不可用。</bad>
 	Paint
@@ -5183,6 +5211,7 @@ Tutorials
 		RecallCrew = 遇到紧急情况，请按下<white>召回船员</white>按钮，取消所有出舱船员的命令，并<good>召唤他们回到星舰</good>。
 		Tip = "<good>提示：</good>如果回收残骸的时间过长，请尝试使用<white>&gt;&gt;</white>按钮提高游戏速度。"
 		Title = 收集和回收材料
+		WholeShip = <white>点击但不拖动</white>战败的星舰，可以将你的星舰移动到旁边，将其彻底分解回收。
 	}
 	Tactics
 	{
@@ -5230,6 +5259,14 @@ Tutorials
 		Evade = 如果能坚持<good>躲避追捕</good>一定时间，他们就会放弃追捕。
 		Hunted = 被通缉时，该派系会在你最后出现的已知位置附近<bad>追捕你</bad>，一旦发现你，他们会立即攻击。
 		Title = 被通缉
+	}
+	Welcome
+	{
+		
+		Codex = "<good>提示：</good>从暂停菜单中选择<white>“教程和百科”</white>，可随时重新阅读所有教程。（<btn id='General.Cancel'/> 键）"
+		Title = 教程
+		Tutorials = 由于你是第一次游玩，今后<white>屏幕的左上角</white>还会继续弹出像这样的教程提示框。你将通过它们，循序渐进地掌握《Cosmoteer》的玩法。想要阅读教程内容，只需<white>点击</white>提示框即可。如果想跳过教程，可以点击提示框旁的红<bad>X</bad>。
+		Welcome = <b>欢迎来到《Cosmoteer》！</b>
 	}
 }
 VersionCheck

@@ -1371,6 +1371,17 @@ Settings
 		PlayerName = "Display Name"
 		PlayerNameTip = "Name displayed in multiplayer."
 		PlayerNameDisabledTip =  "Cannot change your name while in a game."
+		
+		VelocityArrowsMode = "Velocity Arrows"
+		VelocityArrowsModeTip = "Which ships should display their linear and angular velocity arrow overlays."
+		VelocityArrowsModeAll = "All Ships"
+		VelocityArrowsModeAllTip = "All ships will display velocity arrows."
+		VelocityArrowsModeSelected = "Selected Ships"
+		VelocityArrowsModeSelectedTip = "Only selected ships, or those with selected parts, will display velocity arrows."
+		VelocityArrowsModeDirectControl = "Direct Control Only"
+		VelocityArrowsModeDirectControlTip = "Only ships under direct control will display velocity arrows."
+		VelocityArrowsModeNone = "None"
+		VelocityArrowsModeNoneTip = "No ships will display velocity arrows."
 	}
 
 	Camera

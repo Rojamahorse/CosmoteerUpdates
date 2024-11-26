@@ -108,8 +108,8 @@ Brushes
 	Line = Linha
 	LineIcon = Linha
 	LineTip = "Segure <btn id='Design.RestrictShapeMode'/> para fazer uma linha reta."
-	Oval = Oval
-	OvalIcon = Oval
+	Oval = Elipse
+	OvalIcon = Elipse
 	OvalTip = "Segure <btn id='Design.RestrictShapeMode'/> para fazer um círculo perfeito."
 	Triangle = Triângulo
 	TriangleIcon = ""
@@ -374,6 +374,7 @@ CareerMode
 	CustomMarkerName = "Digite um nome para este marcador personalizado:"
 	CustomMarkerTip = "Adicionar/renomear/apagar marcador personalizado\n\nAtalho: <btn id='Game.CustomMarker'/>"
 	FameLevelUp = "NÍVEL DE FAMA AVANÇADO"
+	FameLevelUpCrewGained = "+{0} na equipe"
 	GameOver = "TRIPULAÇÃO PERDIDA"
 	GotoNode = "<fame_color>Você tem naves aqui.</fame_color>\n<btn id='General.UIClick'/> para ver o sistema estelar."
 	LoadLastSave = "Carregar último jogo salvo"
@@ -397,6 +398,8 @@ CareerMode
 	TransferMoneyFmt = "Quantos <money>créditos</money> você quer transferir para <b>{0}</b>?"
 	TransferShipControl = "Transferir controle da nave para..."
 	TransferShipControlConfirmFmt = "Você quer mesmo transferir o controle da(s) nave(s) selecionada(s) para <b>{0}</b>?"
+	TruceBroken = "TRÉGUA QUEBRADA"
+	TruceBrokenResults = "Adicionada à lista negra de rendição do setor"
 	UnexploredSpace = "Espaço inexplorado"
 	Victory = "<s32><good><b>VOCÊ É LENDÁRIO</b></good></s32>\n\nParabéns! Você alcançou a <fame>Fama “Lendária\"</fame>, a classificação mais alta possível.\n\nNo momento, este é o “fim\" de Cosmoteer e você deve <b>se considerar vitorioso</b>, mas pode continuar jogando à vontade. É possível que novos finais sejam adicionados mais tarde, durante o Acesso Antecipado.\n"
 	Wanted = ⚠PROCURADO⚠
@@ -516,16 +519,17 @@ CommWindow
 	BuyTechFmt = "DESBLOQUEAR\n{0}"
 	CancelTrade = "Cancelar comércio"
 	ConfirmDecline = "Você quer mesmo recusar esta missão definitivamente? Isto vai evitar que você ganhe recompensas por ela. Esta ação só pode ser desfeita ao recarregar um jogo salvo anteriormente."
+	CountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} almas</b> em {2} querem entrar para a sua tripulação.</s12>"
 	Crew = TRIPULAÇÃO
 	DeclineMission = Recusar
 	DeclineMissionTip = "Recusa esta missão, evitando definitivamente que você receba as recompensas por completá-la."
 	Dialogue = "Diálogo de troca"
-	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} almas</b> em {2} querem entrar para a sua tripulação.\nAumente a sua <fame>FAMA</fame> para persuadir mais.</s12>"
+	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} almas</b> em {2} querem entrar para a sua tripulação.\nAumente a sua fama até <fame>{3}</fame> para persuadir mais.</s12>"
 	Hire = Contratar
 	HireCrew = "Contratar tripulantes"
 	InitiateTrade = "Iniciar comércio"
 	InsufficientBeds = "Todas as camas na sua nave estão ocupadas. Construa mais alojamentos para contratar mais tripulantes."
-	InsufficientFame = "Aumente a sua <fame>FAMA</fame> para persuadir esta pessoa a entrar para a sua tripulação."
+	InsufficientFame = "Aumente a sua <fame>FAMA</fame> até {0} para persuadir esta pessoa a entrar para a sua tripulação."
 	InsufficientFunds = "Fundos insuficientes"
 	Missions = "Quadro de Missões"
 	NoMissions = "Nenhuma missão\ndisponível"
@@ -549,6 +553,7 @@ CommWindow
 CommsBox
 {
 	
+	AIHailingAllyFmt = "<good>ALIADO RECEBE SAUDAÇÃO DE...</good>\n{0}"
 	AIHailingFmt = "<good>SAUDAÇÃO DE...</good>\n{0}"
 	AcceptHail = ACEITAR
 	DeclineHail = RECUSAR
@@ -785,6 +790,14 @@ CrewBox
 	ClearTargetsTip = "Remove todas as ordens de esquadrão da peça selecionada."
 	Copy = "Copiar cargo"
 	CopyRoles = "Copiar cargos"
+	CrewAbandonedLogFmt = "Abandonados: <b>{0}</b> de <b>{1}</b>!"
+	CrewDeathLogFmt = "Mortos: <b>{0}</b> de <b>{1}</b>! ({2})"
+	DeathCauses
+	{
+		
+		Fire = Incêndio
+		LostInSpace = "Perdeu-se no espaço"
+	}
 	DeleteRole = "Apagar cargo"
 	Duplicate = Duplicar
 	EditRole = "Editar cargo"
@@ -869,18 +882,14 @@ Dialogue
 	Surrender
 	{
 		
-		AISurrender = "Aceitar Rendição"
-		AISurrenderDialogue = "{0} quer se render a você em troca de <money>{1:n0}</money>."
-		AISurrenderTip = "Aceitar a rendição da nave inimiga. Você receberá <money>{0:n0}</money> e a nave se tornará neutra para você."
-		DeclineAISurrender = "Seguir Lutando"
-		DeclineAISurrenderTip = "Recusar a rendição da nave inimiga. Vocês continuarão lutando."
-		DeclinePlayerSurrender = "Seguir Lutando"
-		DeclinePlayerSurrenderTip = "Recusar a rendição para a nave inimiga. Vocês continuarão lutando."
-		PlayerSurrender = Rendição
-		PlayerSurrenderDialogue = "{0} aceitará sua rendição em troca de <ins_money>{1:n0}</ins_money>."
-		PlayerSurrenderPayBountyDialogue = "{0} aceitará sua rendição em troca de <ins_money>{1:n0}</ins_money>, o que saldará sua recompensa de {2}."
-		PlayerSurrenderPayBountyTip = "Render-se para a nave inimiga. Você pagará <ins_money>{0:n0}</ins_money> e a recompensa de {1} será saldada."
-		PlayerSurrenderTip = "Render-se para a nave inimiga. Você pagará <ins_money>{0:n0}</ins_money> e a nave vai parar de te atacar por um tempo."
+		AISurrender = "<i>\"Aceitamos a sua rendição.\"</i>"
+		AISurrenderDialogue = "<b>{0}:</b> <i>\"Nós nos rendemos! Se prometer não nos destruir, vamos pagar <money>{1:n0}</money>!\"</i>"
+		DeclineAISurrender = "[Encerrar conexão]"
+		DeclinePlayerSurrender = "<i>\"Jamais!\"</i>"
+		PlayerSurrender = "<i>\"Nós nos rendemos!\"</i> (Pagar <money>{0:n0}</money>)"
+		PlayerSurrenderDialogue = "<b>{0}:</b> <i>\"Você não tem chance! Renda-se agora e pague <money>{1:n0}</money>... ou morra!\"</i>"
+		PlayerSurrenderPayBounty = "<i>\"Vamos pagar a recompensa.\"</i> (Pagar <money>{0:n0}</money>)"
+		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>\"Nave fugitiva, {2} emitiu uma recompensa de <money>{1:n0}</money> pela sua destruição. Pague agora ou prepare-se para ser eliminada.\"</i>"
 	}
 }
 DominationMapStyles
@@ -1083,13 +1092,13 @@ EconDifficulty
 {
 	
 	Fast = Construtor
-	FastTip = "● Taxas de geração de recursos aumentadas em 100%.\n● Recompensas de dinheiro aumentadas em 100%.\n● Recompensas de fama/reputação aumentadas em 50%."
+	FastTip = "● Chance de adquirir recursos ao derrotar inimigos aumentada em 100%.\n● Recompensas de dinheiro aumentadas em 100%.\n● Recompensas de fama/reputação aumentadas em 50%."
 	FreeBuild = "Imaginador (construção livre)"
 	FreeBuildTip = "● Pode construir em qualquer lugar e a qualquer hora sem usar créditos ou recursos.\n● Taxas normais de geração de recursos.\n● Recompensas normais de dinheiro.\n● Recompensas normais de fama/reputação."
 	Normal = Arquiteto
 	NormalTip = "● Taxas normais de geração de recursos.\n● Recompensas normais de dinheiro.\n● Recompensas normais de fama/reputação."
 	Slow = "Construtor de estrelas"
-	SlowTip = "● Taxas de geração de recursos reduzidas em 50%.\n● Recompensas de dinheiro reduzidas em 50%.\n● Recompensas de fama/reputação reduzidas em 25%."
+	SlowTip = "● Chance de adquirir recursos ao derrotar inimigos reduzida em 50%.\n● Recompensas de dinheiro reduzidas em 50%.\n● Recompensas de fama/reputação reduzidas em 25%."
 }
 EditorGroups
 {
@@ -2420,6 +2429,7 @@ Multiplayer
 		ReturnToGameSetup = "O anfitrião encerrou o jogo."
 	}
 	Host = Anfitrião
+	InComms = "Este jogador está se comunicando com outra nave."
 	LeftClickBuyShip = "Clique com o botão esquerdo para comprar nave."
 	LoadGameVoteFmt = "O anfitrião quer carregar o jogo salvo chamado \"<b>{0}</b>\"."
 	NextGameCountdownFmt = "Retornando ao pré-jogo em {0} segundos..."
@@ -2824,9 +2834,9 @@ Parts
 	FireExtinguisher = "Extintor de incêndio"
 	FireExtinguisherDesc = "Armazena um extintor de incêndio que a tripulação pode usar para apagar incêndios. Os extintores de incêndio têm capacidade limitada, mas reaparecem após 15 segundos."
 	FireExtinguisherIcon = "Extintor de incêndio"
-	FlakCannonLarge = "Bateria flak"
+	FlakCannonLarge = "Matriz flak"
 	FlakCannonLargeDesc = "Um poderoso sistema defensivo que pode destruir mísseis, lasers e projéteis inimigos. Também pode causar dano moderado a naves inimigas."
-	FlakCannonLargeIcon = "Bateria flak"
+	FlakCannonLargeIcon = "Matriz flak"
 	HyperdriveBeacon = "Sinal de hipersalto"
 	HyperdriveBeaconDesc = "Naves com hiperpropulsores podem viajar até outras naves com Sinais de Hipersalto."
 	HyperdriveBeaconIcon = "Sinal de hipersalto"
@@ -3320,6 +3330,8 @@ ResourcesBox
 	ShowResourceTransfersTip = "Se marcado, as transferências programadas entre armazéns de recursos serão mostradas."
 	ShowUnselectedResourceAssignment = "Mostrar atribuições não selecionadas de recursos"
 	ShowUnselectedResourceAssignmentTip = "Se desmarcado, esta opção mostrará somente as atribuições de recursos selecionadas ou sob o cursor."
+	StripSalvage = "Extração Total"
+	StripSalvageTip = "Quando selecionado, extrairá completamente uma nave ou asteroide, mesmo que nem todas as partes contenham recursos desejados."
 	SupplyOffTipFmt = "Abastecer automaticamente\n{0}: <bad>DESLIGADO</bad>"
 	SupplyOnTipFmt = "Abastecer automaticamente\n{0}: <good>LIGADO</good>"
 	SupplyToolTip = "<b>Modo Cadeia de Suprimentos</b>\n\nConecta fábricas, reatores e armazéns aos sistemas da nave que eles devem abastecer.\n\nAtalho: <btn id='Resources.SupplyTool'/>"
@@ -3441,6 +3453,8 @@ Settings
 		Description = "Se você tem dificuldade em diferenciar certas cores, tente mudá-las aqui para que seja mais fácil distingui-las."
 		DontDimBackgrounds = "Não esmaecer plano de fundo de diálogos"
 		DontDimBackgroundsTip = "Se marcado, os planos de fundo atrás de caixas pop-ups de diálogos <i>NÃO</i> serão esmaecidos."
+		DontFlashRedprints = "Não mudar cores de peças inválidas/destruídas"
+		DontFlashRedprintsTip = "Se marcado, desativa a flutuação de cores de plantas inválidas e peças destruídas."
 		DontFlickerBlueprints = "Não cintilar Plantas"
 		DontFlickerBlueprintsTip = "As plantas da nave cintilam levemente, o que algumas pessoas podem achar irritante. Se marcado, o cintilar das plantas será desativado."
 		Enemy = Inimigo
@@ -3662,6 +3676,7 @@ Settings
 		BreakFormationToAttack = "Desfazer formação para atacar"
 		BreakFormationToAttackTip = "Se marcado, as naves vão desfazer a formação automaticamente ao entrarem em alcance de ataque em relação ao inimigo."
 		CommandsLbl = "Comandos da nave"
+		CrewLbl = Tripulação
 		CtrlSelectsParts = "Requisitar <btn id='Game.SelectParts' xml='false'/> para selecionar peças"
 		CtrlSelectsPartsTip = "Se marcado, a tecla <btn id='Game.SelectParts'/> deve estar pressionada enquanto você clica nas peças para selecioná-las."
 		DirectControlAimAssist = "Assistência de mira"
@@ -3684,7 +3699,11 @@ Settings
 		FriendAndFoe = "Amigo e inimigo"
 		FriendAndFoeTip = "As naves que você controla serão verdes, as naves dos outros jogadores da mesma equipe serão amarelas, e as naves da equipe inimiga serão vermelhas."
 		InterfaceLbl = ""
+		LogFavoriteCrewDeaths = "Registrar mortes de tripulantes favoritos"
+		LogFavoriteCrewDeathsTip = "Se marcado, a morte de um tripulante favorito será exibida no registro de mensagens."
 		MultiplayerLbl = Multijogador
+		NuggetsDots = "Exibir pontos de recursos flutuantes"
+		NuggetsDotsTip = "Se marcado, a localização de recursos detectados anteriormente será indicada com pequenos pontos."
 		OffScreenBlips = "Mostrar “blips” para naves fora da tela"
 		OffScreenBlipsTip = "Se marcado, “blips” coloridos serão exibidos para naves que estão localizadas além da borda da tela."
 		OnShipIndicators = "Mostrar ícones de status da nave"
@@ -3725,6 +3744,8 @@ Settings
 		ShowAllCommandsTip = "Se marcado, os caminhos de comandos de movimento e ataque serão exibidos para todas as naves sob o seu controle, não apenas as naves selecionadas."
 		ShowDamagePoints = "Mostrar pontos de dano"
 		ShowDamagePointsTip = "Se marcado, os pontos ganhos por danificar naves inimigas serão exibidos sobre a nave inimiga, conforme o dano for causado."
+		ShowFavoriteCrewNamesOnHover = "Exibir tripulantes favoritos ao colocar o cursor"
+		ShowFavoriteCrewNamesOnHoverTip = "Se marcado, os nomes de tripulantes selecionados como \"favoritos\" aparecerão ao colocar o cursor."
 		ShowNearbyMissions = "Mostrar missões próximas no HUD"
 		ShowNearbyMissionsTip = "Muitas das missões mais próximas serão exibidas automaticamente no canto superior esquerdo do HUD."
 		ShowResourcePickupLines = "Exibir linhas de recursos flutuantes"
@@ -4197,6 +4218,7 @@ Stats
 	ThrusterBuffFmt = "<white>Reforço de propulsor:</white> <good>+{0:0}%</good><gray> de propulsão e uso de energia</gray>"
 	ThrusterForceFmt = "<white>Propulsão:</white> <good>{0:#,0.#}</good><gray> quilonewtons</gray>"
 	ThrusterPowerUsageFmt = "<white>Uso de energia:</white> <good>{0:0.##}</good><gray>/s (100% de propulsão)</gray>"
+	ThrusterRampDownFmt = "<white>Tempo de desaceleração:</white> <good>{0:0.##}</good><gray> segundos</gray>"
 	ThrusterRampUpFmt = "<white>Tempo de aceleração:</white> <good>{0:0.##}</good><gray> segundos</gray>"
 	TractorForceFmt = "<white>Força de tração:</white> <good>{0:#,0.#}</good><gray> quilonewtons</gray>"
 	TristeelCapacityFmt = "<white>Capacidade de triaço:</white> <good>{0}</good>"
@@ -4829,7 +4851,7 @@ Tutorials
 	Camera
 	{
 		
-		EdgePan = "Para <good>movimentar a câmera</good>, mova o <white>cursor do mouse</white> até a borda da tela ou aperte as <white>teclas de seta</white>."
+		EdgePan = "Para <good>movimentar a câmera</good>, mova o <white>cursor do mouse</white> até a borda da tela ou use as <white>teclas de seta ou W-A-S-D</white>."
 		Tip = "<good>DICA:</good> não consegue encontrar a sua nave? Clique no ícone dela no canto inferior esquerdo ou aperte a tecla <btn id='View.FocusSelected'/> (Foco)."
 		Title = "Como controlar a câmera"
 		Zoom = "Para <good>aproximar e afastar o zoom</good>, use o <white>botão de rolagem</white> no seu mouse ou aperte as teclas <btn id='View.ZoomIn'/> e <btn id='View.ZoomOut'/>."
@@ -5049,7 +5071,7 @@ Tutorials
 		
 		Asteroids = "Durante a exploração, você poderá encontrar asteroides contendo valiosos <good>depósitos de recursos</good>."
 		Icon = "<good>Ao afastar o zoom</good>, o símbolo do elemento químico apropriado será mostrado sobre quaisquer asteroides com depósitos de recursos inexplorados."
-		Mine = "Para <good>minerar estes asteroides</good>, clique no botão <white>Coletar/Recuperar/Minerar</white> e depois arraste uma caixa ao redor dos depósitos de recursos que você deseja minerar no asteroide. A tripulação da sua nave minerará automaticamente os recursos e os armazenará na sua nave."
+		Mine = "Para <good>minerar estes asteroides</good>, clique no botão <white>Coletar/Recuperar/Minerar</white> e depois clique no asteroide que deseja minerar. A tripulação da sua nave minerará automaticamente os recursos e os armazenará na sua nave."
 		Tip = "<good>DICA:</good> muitos depósitos de recursos estarão presos em rochas que são muito duras para que a tripulação possa extrair. Construa um <good>Laser de Mineração</good> para extrair esses recursos."
 		Title = "Como minerar asteroides"
 	}
@@ -5091,7 +5113,6 @@ Tutorials
 	Movement
 	{
 		
-		Codex = "<good>DICA:</good> todos os tutoriais podem ser revistos a qualquer momento selecionando <white>”Tutoriais e Códice”</white> no menu de pausa."
 		Move = "Para <good>pilotar a sua espaçonave</good>, <white>clique com o botão direito</white> em qualquer lugar no espaço. Sua nave voará até lá automaticamente."
 		Title = "Como pilotar a sua nave"
 	}
@@ -5102,6 +5123,13 @@ Tutorials
 		Handles = "Para <good>mover ou girar</good> pontos de referência existentes, segure <btn id='Game.AppendSelection'/> e arraste uma das alças que aparecem.\n\nPara <good>apagar</good> um ponto de referência, clique no ícone da <white>lixeira</white>."
 		Queue = "Para <good>adicionar pontos de referência</good>, segure <btn id='Game.AppendSelection'/> enquanto clica com o botão direito."
 		Title = "Como pilotar a sua nave (avançado)"
+	}
+	Nebulas
+	{
+		
+		Example = "Por exemplo, naves em uma <good>nuvem gasosa</good> (imagem) são ocultadas de quem estiver fora da nuvem, mas também perdem alcance de sensor."
+		Nebulas = "Ao explorar sistemas estelares, é possível encontrar diversos tipos de <good>nuvens</good> e <good>tempestades</good>. Entrar nessas áreas pode gerar efeitos benéficos e prejudiciais."
+		Title = "Nuvens e tempestades"
 	}
 	NotInDemo = "<bad>O recurso seguinte não está disponível na demo de Cosmoteer.</bad>"
 	Paint
@@ -5183,6 +5211,7 @@ Tutorials
 		RecallCrew = "Em uma emergência, aperte o botão <white>Convocar Tripulação</white> para cancelar todas as ordens para a tripulação e <good>chamar todos de volta</good> para a sua nave."
 		Tip = "<good>DICA:</good> se coletar e recuperar está demorando muito, tente usar o botão <white>&gt;&gt;</white> para aumentar a velocidade do jogo."
 		Title = "Coleta e recuperação de materiais"
+		WholeShip = "<white>Clique sem arrastar</white> em uma nave derrotada para mover sua própria nave até ela e extrair recursos."
 	}
 	Tactics
 	{
@@ -5230,6 +5259,14 @@ Tutorials
 		Evade = "<good>Fique sem ser detectado</good> por tempo suficiente e eles vão desistir."
 		Hunted = "Enquanto você for PROCURADO, aquela facção vai <bad>caçar você</bad> perto da sua última localização conhecida e atacá-lo assim que você for avistado."
 		Title = "Como se tornar procurado"
+	}
+	Welcome
+	{
+		
+		Codex = "<good>DICA:</good> todos os tutoriais podem ser revistos a qualquer momento selecionando <white>\"Tutoriais e Códice\"</white> no menu de pausa. (Botão <btn id='General.Cancel'/>)"
+		Title = Tutoriais
+		Tutorials = "Durante o primeiro jogo, tutoriais como este vão aparecer perto do <white>canto superior esquerdo da tela</white>. Eles ensinam você a jogar Cosmoteer um passo de cada vez. Para ler um tutorial, basta <white>clicar nele</white>. Para pulá-lo, clique no <bad>X</bad> vermelho ao lado dele."
+		Welcome = "<b>Este é Cosmoteer!</b>"
 	}
 }
 VersionCheck

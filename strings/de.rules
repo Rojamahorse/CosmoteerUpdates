@@ -108,8 +108,8 @@ Brushes
 	Line = Linie
 	LineIcon = Linie
 	LineTip = "Halte <btn id='Design.RestrictShapeMode'/> gedrückt, um eine gerade Linie zu machen."
-	Oval = Oval
-	OvalIcon = Oval
+	Oval = ""
+	OvalIcon = ""
 	OvalTip = "Halte <btn id='Design.RestrictShapeMode'/> gedrückt, um einen perfekten Kreis zu machen."
 	Triangle = Dreieck
 	TriangleIcon = Drei.
@@ -374,6 +374,7 @@ CareerMode
 	CustomMarkerName = "Gib einen Namen für diese Benutzermarkierung ein:"
 	CustomMarkerTip = "Benutzermarkierung hinzufügen/umbenennen/löschen\n\nSchnelltaste: <btn id='Game.CustomMarker'/>"
 	FameLevelUp = RUHMSTUFENAUFSTIEG
+	FameLevelUpCrewGained = "+{0} Crewmitglieder"
 	GameOver = "GESAMTE CREW VERLOREN"
 	GotoNode = "<fame_color>Du hast hier Schiffe.</fame_color>\n<btn id='General.UIClick'/>, um dieses Sternensystem anzuzeigen."
 	LoadLastSave = "Letzten Spielstand laden"
@@ -397,6 +398,8 @@ CareerMode
 	TransferMoneyFmt = "Wie viele <money>Credits</money> willst du an <b>{0}</b> senden?"
 	TransferShipControl = "Schiffssteuerung übertragen an ..."
 	TransferShipControlConfirmFmt = "Bist du dir sicher, dass du die Steuerung des/der ausgewählten Schiffs/Schiffe an <b>{0}</b> übertragen willst?"
+	TruceBroken = "WAFFENRUHE GEBROCHEN"
+	TruceBrokenResults = "Feinde in diesem Sternensystem nehmen keine Kapitulation von dir mehr an."
 	UnexploredSpace = "Nicht erkundeter Bereich"
 	Victory = "<s32><good><b>DU BIST LEGENDÄR</b></good></s32>\n\nHerzlichen Glückwunsch! Du hast <fame>„legendären“ Ruhm</fame>, den höchsten Ruhmrang, erreicht.\n\nDas ist im Moment das „Ende“ von Cosmoteer, und du darfst <b>dich als siegreich betrachten</b>, aber du kannst gerne weiterspielen. Während des Early Access können später noch neue Enden hinzugefügt werden.\n"
 	Wanted = ⚠GESUCHT⚠
@@ -516,16 +519,17 @@ CommWindow
 	BuyTechFmt = "{0}\nFREISCHALTEN"
 	CancelTrade = "Handel abbrechen"
 	ConfirmDecline = "Willst du diese Mission wirklich endgültig ablehnen? Dadurch kannst du keine Belohnungen für diese Mission mehr erhalten. Diese Aktion kann nur rückgängig gemacht werden, indem du einen älteren Spielstand lädst."
+	CountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} Seelen</b> auf {2} wollen sich deiner Crew anschließen.</s12>"
 	Crew = ""
 	DeclineMission = Ablehnen
 	DeclineMissionTip = "Lehnt diese Mission ab und verhindert dauerhaft, dass du Belohnungen für den Abschluss dieser Mission erhältst."
 	Dialogue = "Dialog austauschen"
-	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} Seelen</b> auf {2} wollen sich deiner Crew anschließen.\nErhöhe deinen <fame>RUHM</fame>, um noch mehr zu überzeugen.</s12>"
+	FameAndCountFmt = "<s24><fame>{0:n0}</fame></s24><s12>\n<b>{1} Seelen</b> auf {2} wollen sich deiner Crew anschließen.\nErhöhe deinen Ruhm auf <fame>{3}</fame>, um noch mehr zu überzeugen.</s12>"
 	Hire = Anheuern
 	HireCrew = "Crew anheuern"
 	InitiateTrade = "Handel einleiten"
 	InsufficientBeds = "Alle Betten auf deinem Schiff sind belegt. Baue mehr Quartiere für deine Crew, um mehr Crewmitglieder anzuheuern."
-	InsufficientFame = "Erhöhe deinen <fame>RUHM</fame>, um diese Person zu überzeugen, sich deiner Crew anzuschließen."
+	InsufficientFame = "Erhöhe deinen <fame>RUHM</fame> auf {0}, um diese Person zu überzeugen, sich deiner Crew anzuschließen."
 	InsufficientFunds = "Nicht genügend Guthaben"
 	Missions = Missionsbrett
 	NoMissions = "Keine Missionen\nverfügbar"
@@ -549,6 +553,7 @@ CommWindow
 CommsBox
 {
 	
+	AIHailingAllyFmt = "<good>VERBÜNDETER GERUFEN VON ...</good>\n{0}"
 	AIHailingFmt = "<good>GERUFEN VON ...</good>\n{0}"
 	AcceptHail = AKZEPTIEREN
 	DeclineHail = ABLEHNEN
@@ -785,6 +790,14 @@ CrewBox
 	ClearTargetsTip = "Entfernt alle Gruppenbefehle vom ausgewählten Teil."
 	Copy = "Rolle kopieren"
 	CopyRoles = "Rollen kopieren"
+	CrewAbandonedLogFmt = "<b>{0}</b> vom Schiff <b>{1}</b> wurde aufgegeben!"
+	CrewDeathLogFmt = "<b>{0}</b> vom Schiff <b>{1}</b> ist umgekommen! ({2})"
+	DeathCauses
+	{
+		
+		Fire = Brand
+		LostInSpace = "Verloren im Weltall"
+	}
 	DeleteRole = "Rolle löschen"
 	Duplicate = Duplizieren
 	EditRole = "Rolle bearbeiten"
@@ -869,18 +882,14 @@ Dialogue
 	Surrender
 	{
 		
-		AISurrender = "Kapitulation annehmen"
-		AISurrenderDialogue = "{0} will sich dir für <money>{1:n0}</money> ergeben."
-		AISurrenderTip = "Nimm die Kapitulation des feindlichen Schiffes an. Du erhältst <money>{0:n0}</money> und das Schiff nimmt eine neutrale Position ein."
-		DeclineAISurrender = Weiterkämpfen
-		DeclineAISurrenderTip = "Lehne die Kapitulation des feindlichen Schiffes ab. Du kämpfst weiter."
-		DeclinePlayerSurrender = Weiterkämpfen
-		DeclinePlayerSurrenderTip = "Weigere dich, dich dem feindlichen Schiff zu ergeben. Du kämpfst weiter."
-		PlayerSurrender = Ergeben
-		PlayerSurrenderDialogue = "{0} lässt zu, dass du dich für <ins_money>{1:n0}</ins_money> ergibst."
-		PlayerSurrenderPayBountyDialogue = "{0} erlaubt, dass du dich für <ins_money>{1:n0}</ins_money> ergibst und das Kopfgeld der Fraktion {2} abbezahlst."
-		PlayerSurrenderPayBountyTip = "Ergib dich dem feindlichen Schiff. Du zahlst <ins_money>{0:n0}</ins_money> und das Kopfgeld von {1} wird bezahlt."
-		PlayerSurrenderTip = "Ergib dich dem feindlichen Schiff. Du zahlst <ins_money>{0:n0}</ins_money> und das Schiff greift dich für eine Weile nicht an."
+		AISurrender = "<i>Wir akzeptieren die Kapitulation.“</i>"
+		AISurrenderDialogue = "<b>{0}:</b> <i>„Wir ergeben uns! Wenn ihr versprecht, uns nicht zu zerstören, zahlen wir euch <money>{1:n0}</money>!“</i>"
+		DeclineAISurrender = "[Verbindung beenden]"
+		DeclinePlayerSurrender = <i>„Niemals“</i>
+		PlayerSurrender = "<i>„Wir ergeben uns!“</i> (<money>{0:n0}</money> bezahlen)"
+		PlayerSurrenderDialogue = "<b>{0}:</b> <i>„Ihr seid unterlegen! Ergebt euch jetzt und zahlt uns <money>{1:n0}</money> ... oder sterbt!“</i>"
+		PlayerSurrenderPayBounty = "<i>„Wir zahlen das Kopfgeld.“</i> (<money>{0:n0}</money> bezahlen)"
+		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>„Flüchtiger, {2} hat ein Kopfgeld von <money>{1:n0}</money> auf deine Zerstörung ausgesetzt. Zahle es jetzt oder mach dich bereit, erledigt zu werden.“</i>"
 	}
 }
 DominationMapStyles
@@ -1083,13 +1092,13 @@ EconDifficulty
 {
 	
 	Fast = Baumeister
-	FastTip = "● Fundrate von Ressourcen um 100 % erhöht.\n● Geldbelohnungen um 100 % erhöht.\n● Ruhm-/Rufbelohnungen um 50 % erhöht."
+	FastTip = "● Fundrate von gegnerischen Ressourcen um 100 % erhöht.\n● Geldbelohnungen um 100 % erhöht.\n● Ruhm-/Rufbelohnungen um 50 % erhöht."
 	FreeBuild = "Freiwerker (Bau ohne Grenzen)"
 	FreeBuildTip = "● Du kannst überall und jederzeit ohne den Einsatz von Credits oder Ressourcen bauen.\n● Normale Fundrate bei Ressourcen.\n● Normale Geldbelohnungen.\n● Normale Ruhm-/Rufbelohnungen."
 	Normal = Architekt
 	NormalTip = "● Normale Fundrate von Ressourcen.\n● Normale Geldbelohnungen.\n● Normale Ruhm-/Rufbelohnungen."
 	Slow = Sternhandwerker
-	SlowTip = "● Fundrate von Ressourcen um 50 % verringert.\n● Geldbelohnungen um 50 % verringert.\n● Ruhm-/Rufbelohnungen um 25 % verringert."
+	SlowTip = "● Fundrate von gegnerischen Ressourcen um 50 % verringert.\n● Geldbelohnungen um 50 % verringert.\n● Ruhm-/Rufbelohnungen um 25 % verringert."
 }
 EditorGroups
 {
@@ -2420,6 +2429,7 @@ Multiplayer
 		ReturnToGameSetup = "Der Host hat das Spiel beendet."
 	}
 	Host = ""
+	InComms = "Dieser Spieler kommuniziert mit einem anderen Schiff."
 	LeftClickBuyShip = "Mit links klicken, um Schiff zu kaufen."
 	LoadGameVoteFmt = "Der Host will das gespeicherte Spiel mit dem Namen „<b>{0}</b>“ laden."
 	NextGameCountdownFmt = "Zurück zum Menü vor dem Spiel in {0} Sekunden ..."
@@ -2824,9 +2834,9 @@ Parts
 	FireExtinguisher = Feuerlöscher
 	FireExtinguisherDesc = "Lagert einen Feuerlöscher, den die Crew zum Löschen von Bränden verwenden kann. Feuerlöscher haben eine begrenzte Kapazität, werden aber nach 15 Sekunden neu spawnen."
 	FireExtinguisherIcon = Feuerlöscher
-	FlakCannonLarge = Flakbatterie
+	FlakCannonLarge = Flakstellung
 	FlakCannonLargeDesc = "Ein mächtiges Verteidigungssystem, das feindliche Raketen, Laser und Projektile zerstören kann. Kann feindlichen Schiffen auch moderaten Schaden zufügen."
-	FlakCannonLargeIcon = Flakbatterie
+	FlakCannonLargeIcon = Flakstellung
 	HyperdriveBeacon = Hyperantrieb-Bake
 	HyperdriveBeaconDesc = "Schiffe mit einem Hyperantrieb können zu Schiffen mit Hyperantrieb-Baken springen."
 	HyperdriveBeaconIcon = Hyperantrieb-Bake
@@ -3320,6 +3330,8 @@ ResourcesBox
 	ShowResourceTransfersTip = "Bei Auswahl der Option werden geplante Transfers zwischen Ressourcenlagern angezeigt."
 	ShowUnselectedResourceAssignment = "Nicht ausgewählte Ressourcenzuweisungen anzeigen"
 	ShowUnselectedResourceAssignmentTip = "Wenn diese Option nicht aktiviert ist, werden nur ausgewählte oder Ressourcenzuweisungen angezeigt, über die der Mauszeiger schwebt."
+	StripSalvage = "Komplett abbauen/wiederverwerten"
+	StripSalvageTip = "Wenn diese Option ausgewählt ist, wird ein ganzer Asteroid oder ein ganzes Schiff abgebaut/wiederverwertet, auch wenn einige Teile keine benötigten Ressourcen enthalten."
 	SupplyOffTipFmt = "Automatische Versorgung\n{0}: <bad>AUS</bad>"
 	SupplyOnTipFmt = "Automatische Versorgung\n{0}: <good>EIN</good>"
 	SupplyToolTip = "<b>Versorgungsketten-Modus</b>\n\nVerbinde Fabriken, Reaktoren und Lagerräume mit den Schiffssystemen, die diese versorgen sollen.\n\nSchnelltaste: <btn id='Resources.SupplyTool'/>"
@@ -3441,6 +3453,8 @@ Settings
 		Description = "Wenn du Schwierigkeiten hast, bestimmte Farben zu unterscheiden, kannst du sie hier ändern, um es für dich einfacher zu machen, sie zu unterscheiden."
 		DontDimBackgrounds = "Dialoghintergründe nicht dimmen"
 		DontDimBackgroundsTip = "Bei Auswahl der Option wird der Hintergrund von Dialogfeldern <i>NICHT</i> gedimmt."
+		DontFlashRedprints = "Ungültige/Zerstörte Teile nicht blinken lassen"
+		DontFlashRedprintsTip = "Bei Auswahl der Option wird der Farbwechsel ungültiger Baupläne und zerstörter Teile deaktiviert."
 		DontFlickerBlueprints = "Kein Bauplanflackern"
 		DontFlickerBlueprintsTip = "Die Baupläne von Schiffen zeigen ein subtiles Flackern, das einige Menschen irritieren kann. Mit dieser Option wird dieses Flackern deaktiviert."
 		Enemy = Feind
@@ -3662,6 +3676,7 @@ Settings
 		BreakFormationToAttack = "Formation zum Angreifen auflösen"
 		BreakFormationToAttackTip = "Bei Auswahl der Option lösen Schiffe automatisch ihre Formation auf, wenn sie in Angriffsreichweite zum Gegner sind."
 		CommandsLbl = Schiffsbefehle
+		CrewLbl = ""
 		CtrlSelectsParts = "<btn id='Game.SelectParts' xml='false'/> erforderlich, um Teile auszuwählen"
 		CtrlSelectsPartsTip = "Bei Auswahl der Option musst du die Taste <btn id='Game.SelectParts'/> halten, wenn du auf Teile klickst, um sie auszuwählen."
 		DirectControlAimAssist = Zielhilfe
@@ -3684,7 +3699,11 @@ Settings
 		FriendAndFoe = "Freund & Feind"
 		FriendAndFoeTip = "Von dir kontrollierte Schiffe werden grün angezeigt, Schiffe von anderen Spielern in deinem Team werden gelb angezeigt und Schiffe des gegnerischen Teams werden rot angezeigt."
 		InterfaceLbl = Benutzeroberfläche
+		LogFavoriteCrewDeaths = "Tode von Crew-Favoriten im Protokoll anzeigen"
+		LogFavoriteCrewDeathsTip = "Bei Auswahl der Option werden die Tode deiner Crew-Favoriten im Nachrichtenprotokoll angezeigt."
 		MultiplayerLbl = ""
+		NuggetsDots = "Punkte der schwebenden Ressourcen anzeigen"
+		NuggetsDotsTip = "Wenn diese Option aktiviert ist, werden die Standorte bereits entdeckter Ressourcen durch kleine Punkte angezeigt."
 		OffScreenBlips = "Radarzeichen für Schiffe außerhalb des Bildschirms anzeigen"
 		OffScreenBlipsTip = "Bei Auswahl der Option werden farbige Radarzeichen für Schiffe angezeigt, die sich außerhalt des Bildschirmrandes befinden."
 		OnShipIndicators = "Schiffsstatus-Symbole anzeigen"
@@ -3725,6 +3744,8 @@ Settings
 		ShowAllCommandsTip = "Bei Auswahl der Option werden die befohlenen Bewegungen und Angriffswege aller Schiffe unter deiner Kontrolle angezeigt, nicht nur die der ausgewählten Schiffen."
 		ShowDamagePoints = "Schadenspunkte anzeigen"
 		ShowDamagePointsTip = "Bei Auswahl der Option werden die Punkte, die du beim Beschädigen von gegnerischen Schiffen verdienst, über dem gegnerischen Schiff angezeigt, während es Schaden erleidet."
+		ShowFavoriteCrewNamesOnHover = "Crew-Favoriten-Namen beim Drüberfahren anzeigen"
+		ShowFavoriteCrewNamesOnHoverTip = "Bei Auswahl der Option werden die als „Favoriten“ markierten Crew-Namen angezeigt, wenn du über sie fährst."
 		ShowNearbyMissions = "Zeige Missionen in der Nähe im HUD"
 		ShowNearbyMissionsTip = "Die Zahl bestimmt, bis zu wie viele der am nächsten gelegenen Missionen automatisch links oben im HUD angezeigt werden."
 		ShowResourcePickupLines = "Linien der schwebenden Ressourcen anzeigen"
@@ -4197,6 +4218,7 @@ Stats
 	ThrusterBuffFmt = "<white>Schubdüsen-Buff:</white> <good>+{0:0} %</good><gray> Schub &amp; Energieverbrauch</gray>"
 	ThrusterForceFmt = "<white>Schub:</white> <good>{0:#,0.#}</good><gray> Kilonewton</gray>"
 	ThrusterPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Sek. (100 % Schub)</gray>"
+	ThrusterRampDownFmt = "<white>Herunterfahrzeit:</white> <good>{0:0.##}</good><gray> Sekunden</gray>"
 	ThrusterRampUpFmt = "<white>Anlaufzeit:</white> <good>{0:0.##}</good><gray> Sekunden</gray>"
 	TractorForceFmt = "<white>Zugkraft:</white> <good>{0:#,0.#}</good><gray> Kilonewton</gray>"
 	TristeelCapacityFmt = "<white>Tri-Stahl-Kapazität:</white> <good>{0}</good>"
@@ -4829,7 +4851,7 @@ Tutorials
 	Camera
 	{
 		
-		EdgePan = "Um <good>die Kamera zu schwenken</good>, bewege den <white>Mauszeiger</white> an den Rand des Bildschirms oder drücke die <white>Pfeiltasten</white>."
+		EdgePan = "Um <good>die Kamera zu schwenken</good>, bewege den <white>Mauszeiger</white> an den Rand des Bildschirms oder verwende die <white>Pfeiltasten oder WASD-Tasten</white>."
 		Tip = "<good>TIPP:</good> Du findest dein Schiff nicht? Klicke auf sein Symbol in der linken unteren Ecke oder drücke die Taste <btn id='View.FocusSelected'/> (Fokus)."
 		Title = "Die Kamera steuern"
 		Zoom = "Verwende zum <good>Heran- und Herauszoomen</good> das <white>Mausrad</white> oder drücke die Tasten <btn id='View.ZoomIn'/> und <btn id='View.ZoomOut'/>."
@@ -5049,7 +5071,7 @@ Tutorials
 		
 		Asteroids = "Während du das Weltall erkundest, wirst du häufig Asteroiden mit wertvollen <good>Ressourcenablagerungen</good> finden."
 		Icon = "<good>Wenn du herauszoomst</good>, wird das entsprechende Symbol für das chemische Element über Asteroiden angezeigt, auf denen Ressourcenablagerungen vorhanden sind."
-		Mine = "Wenn du Ressourcen von <good>den Asteroiden abbauen</good> möchtest, klicke auf die Schaltfläche <white>„Sammeln/Wiederverwerten/Abbauen“</white> und ziehe eine Box um die Ressourcenablagerungen auf dem Asteroiden, die du abbauen möchtest. Die Crew deines Schiffs baut die Ressourcen automatisch ab und lagert sie auf deinem Schiff."
+		Mine = "Wenn du Ressourcen von <good>den Asteroiden abbauen</good> möchtest, klicke auf die Schaltfläche <white>„Sammeln/Wiederverwerten/Abbauen“</white> und klicke dann auf den Asteroiden, den du abbauen möchtest. Die Crew deines Schiffs baut die Ressourcen automatisch ab und lagert sie auf deinem Schiff."
 		Tip = "<good>TIPP:</good> Viele Ressourcenablagerungen befinden sich in Felsen, die für deine Crew zu hart sind, um sie abzubauen. Baue einen <good>Bergbaulaser</good>, um diese Ressourcen abzubauen."
 		Title = "Asteroiden abbauen"
 	}
@@ -5091,7 +5113,6 @@ Tutorials
 	Movement
 	{
 		
-		Codex = "<good>TIPP:</good> Du kannst jederzeit alle Tutorials erneut lesen, indem du im Pause-Menü <white>„Tutorials &amp; Kodex“</white> auswählst."
 		Move = "Um <good>dein Raumschiff zu fliegen</good>, <white>klicke mit der rechten Maustaste</white> irgendwo ins All. Dein Schiff fliegt automatisch dorthin."
 		Title = "Dein Schiff fliegen"
 	}
@@ -5102,6 +5123,13 @@ Tutorials
 		Handles = "Um bestehende Wegpunkte <good>zu verschieben oder zu drehen</good>, halte <btn id='Game.AppendSelection'/> gedrückt und ziehe an einem der Werkzeuge, die erscheinen.\n\nUm einen Wegpunkt <good>zu löschen</good>, klicke auf das <white>Mülleimer</white>-Symbol."
 		Queue = "Um <good>Wegpunkte hinzuzufügen</good>, halte <btn id='Game.AppendSelection'/> gedrückt, während du mit der rechten Maustaste klickst."
 		Title = "Dein Schiff fliegen (Fortgeschritten)"
+	}
+	Nebulas
+	{
+		
+		Example = "Schiffe innerhalb einer <good>Gaswolke</good> (wie abgebildet) sind zum Beispiel vor Schiffen außerhalb der Wolke versteckt, haben aber auch eine verringerte Sensorenreichweite."
+		Nebulas = "Bei der Erkundung der Sternensysteme triffst du manchmal auf verschiedene Arten von <good>Wolken</good> und <good>Stürmen</good>. In diese Gebiete zu fliegen, kann sowohl positive als auch negative Effekte haben."
+		Title = "Wolken & Stürme"
 	}
 	NotInDemo = "<bad>Die folgende Funktion ist in der Cosmoteer-Demo nicht verfügbar.</bad>"
 	Paint
@@ -5183,6 +5211,7 @@ Tutorials
 		RecallCrew = "Klicke im Notfall auf die Schaltfläche <white>„Crew zurückrufen“</white>, um alle Befehle an die Crew zu widerrufen und <good>alle zurück auf dein Schiff zu holen</good>."
 		Tip = "<good>TIPP:</good> Wenn Sammeln &amp; Wiederverwerten zu lange dauert, nutze die Schaltflächen <white>&gt;&gt;</white>, um die Spielgeschwindigkeit zu erhöhen."
 		Title = "Materialien sammeln & wiederverwerten"
+		WholeShip = "<white>Klicke ohne zu ziehen</white> auf ein besiegtes Schiff, um dein eigenes Schiff dorthin zu bewegen und es wiederzuverwerten."
 	}
 	Tactics
 	{
@@ -5230,6 +5259,14 @@ Tutorials
 		Evade = "<good>Vermeide lange genug, entdeckt zu werden</good>, dann geben sie die Suche auf."
 		Hunted = "Während du GESUCHT wirst, wird die Fraktion dich in der Nähe deiner letzten bekannten Position <bad>jagen</bad> und dich angreifen, sobald sie dich sieht."
 		Title = "Gesucht werden"
+	}
+	Welcome
+	{
+		
+		Codex = "<good>TIPP:</good> Du kannst jederzeit alle Tutorials erneut lesen, indem du im Pause-Menü <white>„Tutorials &amp; Kodex“</white> auswählst. (<btn id='General.Cancel'/>-Taste)"
+		Title = ""
+		Tutorials = "Wenn du zum ersten Mal spielst, werden Tutorials wie dieses in der <white>oberen linken Bildschirmecke</white> angezeigt. Darin lernst du Schritt für Schritt, Cosmoteer zu spielen. Um ein Tutorial zu lesen, <white>klicke einfach darauf</white>. Um ein Tutorial zu überspringen, klicke auf das kleine rote <bad>X</bad> daneben."
+		Welcome = "<b>Willkommen bei Cosmoteer!</b>"
 	}
 }
 VersionCheck

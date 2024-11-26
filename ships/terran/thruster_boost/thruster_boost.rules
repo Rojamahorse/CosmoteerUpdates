@@ -29,8 +29,8 @@ Part : <../base_part_terran.rules>/Part
 	BoostedThrustIncreaseTime = 0
 	BoostedThrustDecreaseTime = 0
 	BoostedThrustRecoveryTime = 0
-	BoostedFuelUsage = 600
-	BoostedPowerDrain = { BaseValue=-30; BuffType=Engine; BuffMode=Multiply; }
+	BoostedFuelUsage = 450
+	BoostedPowerDrain = { BaseValue=-10; BuffType=Engine; BuffMode=Multiply; }
 	BoostedPowerDrainInterval = 0.1
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
 	AllowedDoorLocations
@@ -87,9 +87,9 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 8000
+			MaxResources = 6000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
-			ToggleOnResources = &MaxResources
+			ToggleOnResources = (&MaxResources) - 999
 			ToggleOffResources = 0
 		}
 
@@ -270,22 +270,22 @@ Part : <../base_part_terran.rules>/Part
 			[
 				{
 					File = "batteries1.png"
-					Offset = [-0.5, 0.5]
-					Size = [1, 1]
+					Offset = [0, 23/64]
+					Size = [2, 1]
 				}
 				{
 					File = "batteries2.png"
-					Offset = [0, 0.5]
+					Offset = [0, 23/64]
 					Size = [2, 1]
 				}
 				{
 					File = "batteries3.png"
-					Offset = [0, 0.5]
+					Offset = [0, 23/64]
 					Size = [2, 1]
 				}
 				{
 					File = "batteries4.png"
-					Offset = [0, 0.5]
+					Offset = [0, 23/64]
 					Size = [2, 1]
 				}
 				{
@@ -294,14 +294,6 @@ Part : <../base_part_terran.rules>/Part
 				}
 				{
 					File = "batteries6.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries7.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries8.png"
 					Size = [2, 2]
 				}
 			]
@@ -316,22 +308,22 @@ Part : <../base_part_terran.rules>/Part
 			[
 				{
 					File = "roof_batteries1.png"
-					Offset = [-0.5, 0.5]
+					Offset = [-0.5, 23/64]
 					Size = [1, 1]
 				}
 				{
 					File = "roof_batteries2.png"
-					Offset = [0, 0.5]
+					Offset = [0, 23/64]
 					Size = [2, 1]
 				}
 				{
 					File = "roof_batteries3.png"
-					Offset = [0, 0.5]
+					Offset = [0, 23/64]
 					Size = [2, 1]
 				}
 				{
 					File = "roof_batteries4.png"
-					Offset = [0, 0.5]
+					Offset = [0, 23/64]
 					Size = [2, 1]
 				}
 				{
@@ -340,14 +332,6 @@ Part : <../base_part_terran.rules>/Part
 				}
 				{
 					File = "roof_batteries6.png"
-					Size = [2, 2]
-				}
-				{
-					File = "roof_batteries7.png"
-					Size = [2, 2]
-				}
-				{
-					File = "roof_batteries8.png"
 					Size = [2, 2]
 				}
 			]
@@ -556,6 +540,14 @@ Part : <../base_part_terran.rules>/Part
 						[
 							{
 								File = "doodads_boost_off.png"
+								Size = [1, 1]
+							}
+							{
+								File = "doodads_boost_off_33.png"
+								Size = [1, 1]
+							}
+							{
+								File = "doodads_boost_off_66.png"
 								Size = [1, 1]
 							}
 						]
