@@ -24,7 +24,7 @@ Part : <../base_part_terran.rules>/Part
 		[1, 1]
 	]
 	ForceManhattanPathInPart = true
-	RadarRotSpeed = 179.8633694893d // SFX is 2.00151927 seconds long, so 360d/2.00151927=179.8633694893d
+	RadarRotSpeed = 180d // SFX is 2.00151927 seconds long, so 360d/2.00151927=179.8633694893d
 	AllowedDoorLocations
 	[
 		[1, -1]

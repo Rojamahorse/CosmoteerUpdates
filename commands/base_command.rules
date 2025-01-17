@@ -6,8 +6,9 @@ BaseCommand
 	AvoidSlowdownAroundRadiusAngleRange = [0d, 5d]
 	AvoidModeVelocityFactorThreshold = 4
 	AvoidanceMergeSpeedThreshold = 1
-	RepulseRadiusBuffer = 2
+	RepulseRadiusBufferMult = 1.1
 	AvoidInsignificantMassFactor = .25
+	IgnoreCollisionTimeThreshold = 30
 	AvoidableDoodadTags = [sun]
 
 	WeaponOutOfCoverageColorFactor = [127, 127, 127, 127]

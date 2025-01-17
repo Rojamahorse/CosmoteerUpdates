@@ -12,7 +12,7 @@ Spawners
 		{
 			GridSize = [4, 16]
 			Octaves = 2
-			OutputShift = -0.2
+			OutputShift = -0.4
 			Repeat = [&../GridSize/0, 0]
 		}
 		UsePolarPerlinCoordinates = true

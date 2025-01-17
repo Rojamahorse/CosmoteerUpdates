@@ -10,6 +10,7 @@ Part : <../base_part_terran.rules>/Part
 		[steel, 4]
 		[coil, 2]
 	]
+	AIValueFactor = 0
 	Flammable = false
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Size = [1, 1]

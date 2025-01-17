@@ -26,6 +26,9 @@ StrategyModules
 		ReleaseAggroWithinRadar = true
 		AvoidableDoodadTags = [sun]
 	}
+	{
+		Type = ExitSector
+	}
 ]
 
 TacticsModules
@@ -55,3 +58,13 @@ TargetingModules
 ]
 
 CommsModules = &<ai_common.rules>/CommsModulesDefault
+
+StasisModules
+[
+	{
+		Type = ExitSector
+		DefaultStasisSpeed = 75
+		AvoidableDoodadTags = [sun]
+		AvoidableDoodadBuffer = 100
+	}
+]

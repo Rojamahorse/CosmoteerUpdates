@@ -29,6 +29,7 @@ Ships
 	:~{ File="Axlerod.ship.png";          Tier=3;  Difficulty=1; }
 	:~{ File="Liability.ship.png";        Tier=3;  Difficulty=1; }
 	:~{ File="Rustbloom.ship.png";        Tier=3;  Difficulty=1; }
+	:~{ File="Quicksilver Scout.ship.png";Tier=3;  Difficulty=1; }
 
 	// Patrol ships
 	:~{ File="Hardhat.ship.png";          Tier=4;  Difficulty=1; }
@@ -124,6 +125,7 @@ Ships
 	:~{ File="Desecrator.ship.png";     Tier=16;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Brutalizer.ship.png";     Tier=16;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ice Cutter.ship.png";     Tier=16;  Difficulty=2; }
+	:~{ File="Kenesary.ship.png";       Tier=16;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Blood Reaper.ship.png";   Tier=16;  Difficulty=3; }
 	:~{ File="Brave One.ship.png";      Tier=16;  Difficulty=3; }
 
@@ -132,6 +134,7 @@ Ships
 	:~{ File="Beluga.ship.png";         Tier=17;  Difficulty=2; }
 	:~{ File="Kingslayer.ship.png";     Tier=17;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Big Iron.ship.png";       Tier=17;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Clytemnestra.ship.png";   Tier=17;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Vulcan.ship.png";         Tier=17;  Difficulty=3; }
 
 	// Flagships

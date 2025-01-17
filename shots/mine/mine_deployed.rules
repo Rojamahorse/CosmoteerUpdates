@@ -120,6 +120,30 @@ Components
 			MipLevels = max
 		}
 	}
+	
+	
+	ArmedOverlaySprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		StartTime = &~/Components/DeathByEnemyProximity/StartDelay
+		Sprite
+		{
+			Shader = "particles/mine_armed.shader"
+			Texture
+			{
+				File = "mine_armed_glow_section.png"
+				MipLevels = 7
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			_circleSegments = 8
+			_thickness = 6 //the number of circles along the radius there would be, larger numbers make thinner rings
+			Size = [44, 44]
+			TargetBlendMode = Add
+			VertexColor = [200, 0, 0]
+		}
+	}
 
 	LightsSprite
 	{

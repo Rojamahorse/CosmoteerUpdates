@@ -170,21 +170,28 @@ Part : <../base_part_terran.rules>/Part
 			Components = &<mine/missile_launcher_mine.rules>/Components
 		}
 
-		CommonReloadTimerShort
+		CommonReloadTimerHE
 		{
 			Type = Timer
 			Duration = 2
 			AutoStart = true
 			StartTrigger = CommonReloadResetTriggerProxy
 		}
-		CommonReloadTimerMed
+		CommonReloadTimerEMP
+		{
+			Type = Timer
+			Duration = 4
+			AutoStart = true
+			StartTrigger = CommonReloadResetTriggerProxy
+		}
+		CommonReloadTimerMine
 		{
 			Type = Timer
 			Duration = 6
 			AutoStart = true
 			StartTrigger = CommonReloadResetTriggerProxy
 		}
-		CommonReloadTimerLong
+		CommonReloadTimerNuke
 		{
 			Type = Timer
 			Duration = 10

@@ -509,7 +509,7 @@ Part : <../base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "spin.wav"
+					Sound = "../hyperdrive_small/spin.wav"
 					Volume = .5
 					Speed = 2.5
 					MaxConcurrent = 0

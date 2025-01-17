@@ -77,7 +77,7 @@ Components
 	FirePermissionToggle
 	{
 		Type = MultiToggle
-		Toggles = [CommonReloadTimerShort, FireModeToggle]
+		Toggles = [CommonReloadTimerEMP, FireModeToggle]
 		Mode = All
 	}
 
@@ -85,7 +85,7 @@ Components
 	{
 		Type = ProgressBar
 		OperationalToggle = IsOperational
-		ShowProgressFor = CommonReloadTimerShort
+		ShowProgressFor = CommonReloadTimerEMP
 		Invert = true
 	}
 
@@ -333,7 +333,7 @@ Components
 			// Out of missiles.
 			{
 				Toggle = MissileStorage
-				Delay = &<../missile_launcher.rules>/Part/Components/CommonReloadTimerShort/Duration
+				Delay = &<../missile_launcher.rules>/Part/Components/CommonReloadTimerEMP/Duration
 				AtlasSprite
 				{
 					File = &/INDICATORS/NoEmp
@@ -366,7 +366,7 @@ MissileStats
 		PowerDrainPerSecond = (&PowerDrainPerShot) * (&ROF)
 		PowerDrain = [&../PowerDrainPerShot, &../PowerDrainPerSecond]
 		PowerDrainArea = &~/Components/Emitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius
-		ROF = 1 / (&<../missile_launcher.rules>/Part/Components/CommonReloadTimerShort/Duration)
+		ROF = 1 / (&<../missile_launcher.rules>/Part/Components/CommonReloadTimerEMP/Duration)
 		Range = &~/Components/Emitter/Bullet/Range
 		Arc = deg(&~/Components/Weapon/ValidArc)
 		ShotLaunchSpeed = &~/Components/Emitter/Bullet/Speed

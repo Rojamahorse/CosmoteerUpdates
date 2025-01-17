@@ -87,6 +87,7 @@ SubSpawners
 						AI
 						{
 							Type = DefensePlatform
+							ChanceToConsiderSurrenderingToPlayer = 0
 						}
 					}
 				]
@@ -197,6 +198,7 @@ SubSpawners
 					defense
 					{
 						Type = DefensePlatform
+						ChanceToConsiderSurrenderingToPlayer = 0
 					}
 				}
 			}

@@ -393,6 +393,7 @@ TradeShips
 	imperium_7b  : ~/BaseTradeShip { ShipID="Petrel";               Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
 	imperium_7c  : ~/BaseTradeShip { ShipID="Guillemot";            Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
 	imperium_7d  : ~/BaseTradeShip { ShipID="Cygnus";               Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	imperium_7e  : ~/BaseTradeShip { ShipID="Penguin";              Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
 	imperium_10a : ~/BaseTradeShip { ShipID="Albatross";            Faction=imperium; TierRange=[12, 18]; StasisSpeed=56; StasisTradeTime=100; }
 	imperium_10b : ~/BaseTradeShip { ShipID="Shearwater";           Faction=imperium; TierRange=[12, 18]; StasisSpeed=90; StasisTradeTime=100; }
 	imperium_10c : ~/BaseTradeShip { ShipID="Thalassarche";         Faction=imperium; TierRange=[12, 18]; StasisSpeed=90; StasisTradeTime=100; }

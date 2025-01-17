@@ -106,7 +106,7 @@ Components
 	FirePermissionToggle
 	{
 		Type = MultiToggle
-		Toggles = [CommonReloadTimerMed, FireModePermissionToggle]
+		Toggles = [CommonReloadTimerMine, FireModePermissionToggle]
 		Mode = All
 	}
 	FireModePermissionToggle
@@ -120,7 +120,7 @@ Components
 	{
 		Type = ProgressBar
 		OperationalToggle = IsOperational
-		ShowProgressFor = CommonReloadTimerMed
+		ShowProgressFor = CommonReloadTimerMine
 		Invert = true
 	}
 
@@ -426,7 +426,7 @@ Components
 			// Out of missiles.
 			{
 				Toggle = MineStorage
-				Delay = &<../missile_launcher.rules>/Part/Components/CommonReloadTimerMed/Duration
+				Delay = &<../missile_launcher.rules>/Part/Components/CommonReloadTimerMine/Duration
 				AtlasSprite
 				{
 					File = &/INDICATORS/NoMines
@@ -452,8 +452,8 @@ MineStats
 	NameKey = "StatCategories/Mine"
 	Stats
 	{
-		Salvo = [2, (&<../missile_launcher.rules>/Part/Components/CommonReloadTimerMed/Duration)]
-		ROF = 2 / (&<../missile_launcher.rules>/Part/Components/CommonReloadTimerMed/Duration)
+		Salvo = [2, (&<../missile_launcher.rules>/Part/Components/CommonReloadTimerMine/Duration)]
+		ROF = 2 / (&<../missile_launcher.rules>/Part/Components/CommonReloadTimerMine/Duration)
 		Range = &<./Data/shots/mine/mine.rules>/Range
 		Arc = deg(&~/Components/Weapon/ValidArc)
 		ShotLaunchSpeed = &<./Data/shots/mine/mine.rules>/Speed

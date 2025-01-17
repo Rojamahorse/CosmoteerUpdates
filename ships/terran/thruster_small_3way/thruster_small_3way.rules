@@ -31,11 +31,13 @@ Part : <../base_part_terran.rules>/Part
 	ThrustDecreaseTime = 0
 	ThrustRecoveryTime = 0
 	FuelUsage = 30
+	FuelRecharge = 5
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
 	AllowedDoorLocations
 	[
 		[1, -1]
 	]
+	DoorAccessWarningLevel = Weak
 	EditorIcon
 	{
 		Texture
@@ -75,6 +77,15 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = battery
 			MaxResources = 1000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ToggleOnResources = &~/Part/FuelUsage
+			ToggleOffResources = 0
+		}
+		BatteryProducer
+		{
+			Type = ResourceConverter
+			ToStorage = BatteryStorage
+			ToQuantity = &~/Part/FuelRecharge
+			Interval = 1
 		}
 
 		PowerDistributionBuffToggle
@@ -98,6 +109,7 @@ Part : <../base_part_terran.rules>/Part
 					DefaultPriority = &/PRIORITIES/Thruster_Supply
 					ResupplyThreshold = 500
 					OperationalToggle = PowerToggle
+					AccessWarningLevel = Weak
 				}
 			}
 		}
@@ -192,16 +204,49 @@ Part : <../base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						File = "doodads_off.png"
+						AnimationFiles
+						[
+							"doodads_off1.png"
+							"doodads_off2.png"
+							"doodads_off3.png"
+							"doodads_off4.png"
+							"doodads_off5.png"
+							"doodads_off6.png"
+							"doodads_off7.png"
+							"doodads_off8.png"
+						]
 						Size = [1, 1]
+						AnimationInterval = 0.075
 					}
 					{
-						File = "doodads_off_33.png"
+						AnimationFiles
+						[
+							"doodads_off1_33.png"
+							"doodads_off2_33.png"
+							"doodads_off3_33.png"
+							"doodads_off4_33.png"
+							"doodads_off5_33.png"
+							"doodads_off6_33.png"
+							"doodads_off7_33.png"
+							"doodads_off8_33.png"
+						]
 						Size = [1, 1]
+						AnimationInterval = 0.075
 					}
 					{
-						File = "doodads_off_66.png"
+						AnimationFiles
+						[
+							"doodads_off1_66.png"
+							"doodads_off2_66.png"
+							"doodads_off3_66.png"
+							"doodads_off4_66.png"
+							"doodads_off5_66.png"
+							"doodads_off6_66.png"
+							"doodads_off7_66.png"
+							"doodads_off8_66.png"
+						]
 						Size = [1, 1]
+						AnimationInterval = 0.075
 					}
 				]
 			}
@@ -694,6 +739,7 @@ Part : <../base_part_terran.rules>/Part
 		ThrusterRampDown = &~/Part/ThrustDecreaseTime
 		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		PowerGeneration = (&~/Part/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/BatteryProducer/Interval) / 1000
 
 		RecPower = (&ThrusterPowerUsage) / 2
 		RecCrew = (&RecPower) * 4

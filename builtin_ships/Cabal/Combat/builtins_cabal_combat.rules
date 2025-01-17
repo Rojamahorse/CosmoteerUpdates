@@ -41,6 +41,7 @@ Ships
 	:~{ File="Dschubba.ship.png";                Tier=6;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Eltanin.ship.png";                 Tier=6;  Difficulty=2; }
 	:~{ File="Risha.ship.png";                   Tier=6;  Difficulty=2; }
+	:~{ File="Lazurite Tear.ship.png";           Tier=6;  Difficulty=2; }
 
 	// Corvettes
 	:~{ File="Alsephina.ship.png";               Tier=7;  Difficulty=1; Tags:~/Tags[empty_storage]; OtherIDs=["Lightbringer"]; }
@@ -75,6 +76,7 @@ Ships
 	:~{ File="Maia.ship.png";                    Tier=12;  Difficulty=2; }
 	:~{ File="Gienah.ship.png";                  Tier=12;  Difficulty=2; }
 	:~{ File="Elagabalus.ship.png";              Tier=12;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Decrux.ship.png";                  Tier=12;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Destroyers
 	:~{ File="Acolyte of Adhara.ship.png";       Tier=13;  Difficulty=2; }
@@ -84,7 +86,9 @@ Ships
 	:~{ File="Phaethon.ship.png";                Tier=13;  Difficulty=3; }
 	:~{ File="Tureis Subortus.ship.png";         Tier=14;  Difficulty=1; }
 	:~{ File="Polaris.ship.png";                 Tier=14;  Difficulty=2; }
+	:~{ File="Atria.ship.png";                   Tier=14;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Hymn of Radiance.ship.png";        Tier=14;  Difficulty=3; }
+	:~{ File="Menkalinan.ship.png";              Tier=14;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Cruisers
 	:~{ File="Vega.ship.png";                    Tier=15;  Difficulty=2; }
@@ -104,12 +108,15 @@ Ships
 
 	// Battlecruisers
 	:~{ File="Atlas.ship.png";                   Tier=17;  Difficulty=2; }
+	:~{ File="Chasing Wind.ship.png";            Tier=17;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Sol Invictus.ship.png";            Tier=17;  Difficulty=3; }
 	:~{ File="Eclipse.ship.png";                 Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Sadalmelik.ship.png";              Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Sadalsuud.ship.png";               Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Alcor.ship.png";                   Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Flagships
 	:~{ File="Apotheosis.ship.png";              Tier=18;  Difficulty=2; }
 	:~{ File="Orion.ship.png";                   Tier=18;  Difficulty=3; }
+	:~{ File="Zaurak.ship.png";                  Tier=18;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 ]

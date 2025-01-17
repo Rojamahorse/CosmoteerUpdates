@@ -155,7 +155,7 @@ VeryCommonMaterialDropRates
 	PlayerPartSalvaged = 100%
 	StorageDestroyed = 50%
 	StorageSalvaged = 100%
-	PartRepairCost = 1 - (&PlayerPartDestroyed) / 2
+	PartRepairCost = (1 - (&PlayerPartDestroyed)) / 2
 }
 
 CommonMaterialDropRates
@@ -166,7 +166,7 @@ CommonMaterialDropRates
 	PlayerPartSalvaged = 100%
 	StorageDestroyed = 50%
 	StorageSalvaged = 100%
-	PartRepairCost = 1 - (&PlayerPartDestroyed) / 2
+	PartRepairCost = (1 - (&PlayerPartDestroyed)) / 2
 }
 
 RareMaterialDropRates

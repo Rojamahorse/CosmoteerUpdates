@@ -37,6 +37,7 @@ Ships
 	:~{ File="Austral.ship.png";       Tier=5;  Difficulty=3; }
 	:~{ File="Vulture.ship.png";       Tier=6;  Difficulty=2; }
 	:~{ File="Kingfisher.ship.png";    Tier=6;  Difficulty=2; }
+	:~{ File="Swallowtail.ship.png";   Tier=6;  Difficulty=2; }
 	:~{ File="Pandion.ship.png";       Tier=6;  Difficulty=3; }
 	:~{ File="Selim.ship.png";         Tier=6;  Difficulty=3; }
 	:~{ File="Saker.ship.png";         Tier=6;  Difficulty=3; Tags:~/Tags[empty_storage]; }
@@ -56,6 +57,7 @@ Ships
 	:~{ File="Rain Crow.ship.png";     Tier=8;  Difficulty=3; }
 	:~{ File="Taita.ship.png";         Tier=9;  Difficulty=2; }
 	:~{ File="Hercinia.ship.png";      Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Ani.ship.png";           Tier=9;  Difficulty=2; }
 	:~{ File="Buzzard.ship.png";       Tier=9;  Difficulty=3; }
 	:~{ File="Strix.ship.png";         Tier=9;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Nighthawk.ship.png";     Tier=9;  Difficulty=3; }
@@ -68,8 +70,10 @@ Ships
 	:~{ File="Skein.ship.png";         Tier=10;  Difficulty=3; }
 	:~{ File="Ostrich.ship.png";       Tier=11;  Difficulty=2; }
 	:~{ File="Ceyx.ship.png";          Tier=11;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Tinamou.ship.png";       Tier=11;  Difficulty=2; }
 	:~{ File="Cyrus.ship.png";         Tier=11;  Difficulty=3; }
 	:~{ File="Jackdaw.ship.png";       Tier=11;  Difficulty=3; }
+	:~{ File="Sulla.ship.png";         Tier=11;  Difficulty=3; }
 	:~{ File="Besra.ship.png";         Tier=12;  Difficulty=2; }
 	:~{ File="Razorbill.ship.png";     Tier=12;  Difficulty=2; }
 	:~{ File="Aethon.ship.png";        Tier=12;  Difficulty=3; }
@@ -106,6 +110,7 @@ Ships
 	:~{ File="Damocles.ship.png";      Tier=16;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Achaemenes.ship.png";    Tier=16;  Difficulty=3; }
 	:~{ File="Bonaparte.ship.png";     Tier=16;  Difficulty=3; }
+	:~{ File="Dromiceius.ship.png";    Tier=16;  Difficulty=3; }
 
 	// Battlecruisers
 	:~{ File="Anzu.ship.png";          Tier=17;  Difficulty=3; }

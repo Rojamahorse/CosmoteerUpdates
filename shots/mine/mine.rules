@@ -49,6 +49,26 @@ Components
 			MipLevels = max
 		}
 	}
+	
+	ArmingSprite2
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		LerpScaleFrom = [0.25, 0.25]
+		LerpTime = 0.35
+		Sprite
+		{
+			Texture
+			{
+				File = "mine_unarmed_glow.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [44, 44]
+			TargetBlendMode = Add
+			VertexColor = [0, 0, 120]
+		}
+	}
 
 	Targetable
 	{
@@ -75,6 +95,10 @@ Components
 					InheritVelocity = true
 					ScaleHealth = true
 				}
+			]
+			MediaEffects
+			[
+				&<particles/mine_arming.rules>
 			]
 		}
 	}

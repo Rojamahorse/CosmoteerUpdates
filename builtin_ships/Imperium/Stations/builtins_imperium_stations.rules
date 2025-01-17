@@ -13,8 +13,11 @@ Ships
 	:~{ File="Large Imperium Trade Station II.ship.png";  Tier=16; Tags : ~/Tags [trade_station, empty_storage]; StasisIcon="Large Imperium Trade Station II.png" }
 
 	// Military stations
-	:~{ File="Tiny Imperium Arms Depot.ship.png";     Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Tiny Imperium Arms Depot.png";  FlightDirection=UpLeft }
-	:~{ File="Small Imperium Arms Depot.ship.png";    Tier=9;  SpawnTier=8;  Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Small Imperium Arms Depot.png"; FlightDirection=UpRight }
-	:~{ File="Med Imperium Arms Depot.ship.png";      Tier=12; SpawnTier=12; Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Med Imperium Arms Depot.png";   FlightDirection=UpRight }
-	:~{ File="Large Imperium Arms Depot.ship.png";    Tier=16; SpawnTier=16; Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Large Imperium Arms Depot.png"; FlightDirection=UpRight }
+	:~{ File="Tiny Imperium Arms Depot.ship.png";     Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Tiny Imperium Arms Depot.png";      FlightDirection=UpLeft }
+	:~{ File="Tiny Imperium Arms Depot II.ship.png";  Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Tiny Imperium Arms Depot II.png";   FlightDirection=UpLeft }
+	:~{ File="Small Imperium Arms Depot.ship.png";    Tier=9;  SpawnTier=8;  Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Small Imperium Arms Depot.png";     FlightDirection=UpRight }
+	:~{ File="Small Imperium Arms Depot II.ship.png"; Tier=9;  SpawnTier=8;  Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Small Imperium Arms Depot II.png";  FlightDirection=UpRight }
+	:~{ File="Med Imperium Arms Depot.ship.png";      Tier=12; SpawnTier=12; Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Med Imperium Arms Depot.png";       FlightDirection=UpRight }
+	:~{ File="Med Imperium Arms Depot II.ship.png";   Tier=12; SpawnTier=12; Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Med Imperium Arms Depot II.png";    FlightDirection=UpRight }
+	:~{ File="Large Imperium Arms Depot.ship.png";    Tier=16; SpawnTier=16; Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Large Imperium Arms Depot.png";     FlightDirection=UpRight }
 ]

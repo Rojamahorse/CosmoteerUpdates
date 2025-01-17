@@ -26,7 +26,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	UnderlyingPartPerTile = ""
 	UnderlyingPart = cosmoteer.structure_1x3_wedge
 	CreatePartPerTileWhenGrabbed = ""
-	InitialPenetrationResistance = 3
+	InitialPenetrationResistance = 5
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
 	CrewSpeedFactor = 0
 	Density = 3

@@ -3,6 +3,7 @@ BaseFollowCommand : <base_command.rules>/BaseCommand
 	RightClickAdjustPixelThreshold = 32
 	RightClickSetsAngleThreshold = 0
 	MatchVelocityFactor = 1
+	AvoidanceLookaheadTime = 10
 	CircleDuration = 0.25
 	CircleShrinkFromFactor = 2
 	MovePathLine = &<command_move.rules>/MoveCommand/PathLine

@@ -1371,7 +1371,7 @@ Settings
 		PlayerName = "Display Name"
 		PlayerNameTip = "Name displayed in multiplayer."
 		PlayerNameDisabledTip =  "Cannot change your name while in a game."
-		
+
 		VelocityArrowsMode = "Velocity Arrows"
 		VelocityArrowsModeTip = "Which ships should display their linear and angular velocity arrow overlays."
 		VelocityArrowsModeAll = "All Ships"
@@ -3283,12 +3283,15 @@ BuildBox
 	NearestCrewWarningFmt = "<yellow>⚠ Nearest Crew: {0}m</yellow>"
 	NearestCrewStrongWarningFmt = "<bad>⚠ Nearest Crew: {0}m</bad>"
 	NearestResourceFmt = "<good>✓ Nearest {0}: {1}m</good>"
-	NearestResourceWarningFmt = "<yellow>⚠️ Nearest {0}: {1}m</yellow>"
-	NearestResourceStrongWarningFmt = "<bad>⚠️ Nearest {0}: {1}m</bad>"
+	NearestResourceWarningFmt = "<yellow>⚠ Nearest {0}: {1}m</yellow>"
+	NearestResourceStrongWarningFmt = "<bad>⚠ Nearest {0}: {1}m</bad>"
 	NoDoorAccess = "<bad>✘ No Door Access</bad>"
+	NoDoorAccessWeak = "<yellow>⚠ No Door Access</yellow>"
 	HasDoorAccess = "<good>✓ Has Door Access</good>"
 	NoCrewAccess = "<bad>✘ No Crew</bad>"
+	NoCrewAccessWeak = "<yellow>⚠ No Crew</yellow>"
 	NoResourceAccessFmt = "<bad>✘ No {0}</bad>"
+	NoResourceAccessWeakFmt = "<yellow>⚠ No {0}</yellow>"
 	Indent = "<yellow> ⮡ </yellow>"
 	IndentTransparent = "<color a='0'> ⮡ </color>"
 
@@ -3666,6 +3669,8 @@ ResourceLimits
 	HeaderLimit = "Limit"
 	HeaderDesired = "Desired"
 	HeaderCount = "Stored"
+	LimitTip = "If set, then your crew will refuse to store more than this number of resources on your ship, even if it has room for them."
+	DesiredTip = "If set, then your factories will automatically produce up to this number of resources."
 	SetDesiredToStoredFmt = "Set Desired To Stored ({0})"
 	SetDesiredToDesignatedFmt = "Set Desired To Designated ({0})"
 	SetLimitToStoredFmt = "Set Limit To Stored ({0})"
@@ -4116,7 +4121,7 @@ Parts
 	ShieldGenLarge = "Large Shield Generator"
 	ShieldGenLargeIcon = "Large Shield"
 	ShieldGenLargeDesc = "Projects a large defensive energy shield in an arc outside the ship, blocking most incoming fire. Vulnerable to Disruptors and EMPs.\n\n"\
-	                     "Due to its large size, the energy shield cannot be projected through non-structure ship mass, requiring the Large Shield Generator to be built on the ship's vulnerable exterior."
+	                     "Due to its large size, the energy shield cannot be projected through any ship parts (except structure), requiring the Large Shield Generator to be built on the ship's vulnerable exterior."
 
 	Structure = "Structure"
 	StructureIcon = &Structure
@@ -4156,15 +4161,15 @@ Parts
 
 	ThrusterSmall = "Small Thruster"
 	ThrusterSmallIcon = &ThrusterSmall
-	ThrusterSmallDesc = "A weak propulsion engine used mainly for maneuvering."
+	ThrusterSmallDesc = "A weak propulsion engine used mainly for maneuvering. Contains a small dynamo that slowly regenerates power."
 
 	ThrusterSmall2Way = "2-Way Small Thruster"
 	ThrusterSmall2WayIcon = &ThrusterSmall2Way
-	ThrusterSmall2WayDesc = "A weak, bi-directional propulsion engine used mainly for maneuvering."
+	ThrusterSmall2WayDesc = "A weak, bi-directional propulsion engine used mainly for maneuvering. Contains a small dynamo that slowly regenerates power."
 
 	ThrusterSmall3Way = "3-Way Small Thruster"
 	ThrusterSmall3WayIcon = &ThrusterSmall3Way
-	ThrusterSmall3WayDesc = "A weak, tri-directional propulsion engine used mainly for maneuvering."
+	ThrusterSmall3WayDesc = "A weak, tri-directional propulsion engine used mainly for maneuvering. Contains a small dynamo that slowly regenerates power."
 
 	ThrusterRocket = "Modular Rocket Thruster (M.R.T.)"
 	ThrusterRocketDesc = "A variable-length modular thruster that can accelerate ships up to very high speeds but takes a long time to ramp up to its full power, making it ineffective at maneuvering."
@@ -5726,7 +5731,6 @@ Tips
 	{
 		Title = "Sell Surplus / Buy Needed"
 		Tip1 = "When trading, you can sell your excess resources above a \"desired\" amount by <white>right-clicking</white> on a resource and choosing <white>Sell Surplus</white>. Or you can buy what you need to reach the \"desired\" amount by choosing <white>Buy Needed</white>. Open the <img name='hamburger_up'/> menu to Sell Excess or Buy Needed for all resources at once."
-		Tip2 = "If you have set a resource limit, then the \"desired\" amount will be that resource limit. If not, then the \"desired\" amount will be sum total of all resource tiles that have been designated to hold that resource."
 	}
 
 	// Parts
