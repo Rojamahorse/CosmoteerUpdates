@@ -52,7 +52,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceConverter
 			ToStorage = BatteryStorage
 			ToQuantity = 1000
-			Interval = { BaseValue=0.6666; BuffType=ElectronDebuff; BuffMode=Divide; }
+			Interval = { BaseValue=2/3; BuffType=ElectronDebuff; BuffMode=Divide; }
 		}
 
 		Graphics
@@ -304,7 +304,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-		
+
 		ElectronNebulaShipEffects
 		{
 			Type = ContinuousEffects

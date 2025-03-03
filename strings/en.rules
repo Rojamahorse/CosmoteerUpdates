@@ -2314,7 +2314,7 @@ ReputationLog
 
 Missions
 {
-	ResourceDelivery = "{resource_type} Delivery"
+	ResourceDelivery = "{resource_type} Procurement"
 	ResourceDeliveryDesc = "{to_ship} is requesting an emergency supply of {target_count} {resource_icon} {resource_type_plural} within {time_limit_minutes} minutes. "\
 	                       "In addition to standard payment for each {resource_type} delivered, an extra bonus of {money} will be paid once the entire delivery has been completed."
 	Bounty = "Fugitive Bounty"
@@ -2349,7 +2349,7 @@ Missions
 MissionCategories
 {
 	Stations = "Stations"
-	Deliveries = "Deliveries (Recurring)"
+	Deliveries = "Procurements (Recurring)"
 	Bounties = "Bounties"
 	FactionWars = "Faction Conflicts"
 	Exploration = "Exploration"
@@ -4550,7 +4550,7 @@ Stats
 	PowerUsageContinuousMinutesFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/min</gray>"
 	ThrusterPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/sec (100% thrust)</gray>"
 	BoostedPowerUsageContinuousFmt = "<zero>Power Use:</zero> <good>{0:0.##}</good><gray>/sec (continuous)</gray>"
-	PowerGenerationFmt = "<white>Power Generation:</white> <good>{0:0.##}</good><gray>/sec</gray>"
+	PowerGenerationFmt = "<white>Power Generation:</white> <good>{0:0.###}</good><gray>/sec</gray>"
 	BatterySizeFmt = "<white>Battery Size:</white> <good>{0:0.0#}</good>"
 	BatteryFillTimeFmt = "<white>Battery Charge Time:</white> <good>{0:0.0#}</good> <gray>seconds</gray>"
 	CrewStunDurationFmt = "<white>Crew Stun Time:</white> <good>{0:0.#}-{1:0.#}</good> <gray>seconds</gray>"
@@ -4953,7 +4953,7 @@ Tutorials
 	Fame
 	{
 		Title = "Becoming Famous"
-		Fame = "You current <fame>FAME</fame> is displayed in the top-right corner underneath your <money>CREDITS</money>."
+		Fame = "Your current <fame>FAME</fame> is displayed in the top-right corner underneath your <money>CREDITS</money>."
 		IncreasingFame = "As you <good>defeat enemies</good> and <good>complete missions</good>, your <fame>FAME</fame> will increase. It will never decrease."
 		FameCrew = "And as your <fame>FAME</fame> increases, more people will want to join your crew! More crew is always better!"
 		Tip = "<good>TIP:</good> As you become more famous, you will soon stop earning fame from lower-level ships and missions. Defeat and complete higher-level ships and missions to keep increasing your <fame>FAME</fame>."
