@@ -331,73 +331,91 @@ SalvagingDisabledMoneyRewardFactor = 2.0
 TradeShips
 {
 	// Fringe
-	fringe_3a  : ~/BaseTradeShip { ShipID="Courier";                Faction=fringe;   TierRange=[1, 9];   StasisSpeed=50; StasisTradeTime=40; }
-	fringe_3b  : ~/BaseTradeShip { ShipID="The Last Lightyear";     Faction=fringe;   TierRange=[1, 9];   StasisSpeed=53; StasisTradeTime=40; }
-	fringe_3c  : ~/BaseTradeShip { ShipID="Shamal";                 Faction=fringe;   TierRange=[1, 9];   StasisSpeed=53; StasisTradeTime=40; }
-	fringe_5a  : ~/BaseTradeShip { ShipID="Crate Bus";              Faction=fringe;   TierRange=[3, 12];  StasisSpeed=80; StasisTradeTime=60; }
-	fringe_5b  : ~/BaseTradeShip { ShipID="Loadspine";              Faction=fringe;   TierRange=[3, 12];  StasisSpeed=35; StasisTradeTime=60; }
-	fringe_5c  : ~/BaseTradeShip { ShipID="Harmattan";              Faction=fringe;   TierRange=[3, 12];  StasisSpeed=35; StasisTradeTime=60; }
-	fringe_7a  : ~/BaseTradeShip { ShipID="BuuLka FrEIghTa";        Faction=fringe;   TierRange=[6, 18];  StasisSpeed=28; StasisTradeTime=80; }
-	fringe_7b  : ~/BaseTradeShip { ShipID="Beautiful In Name Only"; Faction=fringe;   TierRange=[6, 18];  StasisSpeed=25; StasisTradeTime=80; }
-	fringe_7c  : ~/BaseTradeShip { ShipID="Impending Lawsuit";      Faction=fringe;   TierRange=[6, 18];  StasisSpeed=52; StasisTradeTime=80; }
-	fringe_10a : ~/BaseTradeShip { ShipID="Ol' Reliable";           Faction=fringe;   TierRange=[12, 18]; StasisSpeed=78; StasisTradeTime=100; }
-	fringe_10b : ~/BaseTradeShip { ShipID="Blockade Runner";        Faction=fringe;   TierRange=[12, 18]; StasisSpeed=88; StasisTradeTime=100; }
+	fringe_3a       : ~/BaseTradeShip { ShipID="Courier";                Faction=fringe;   TierRange=[1, 9];   StasisSpeed=50; StasisTradeTime=40; }
+	fringe_3b       : ~/BaseTradeShip { ShipID="The Last Lightyear";     Faction=fringe;   TierRange=[1, 9];   StasisSpeed=53; StasisTradeTime=40; }
+	fringe_3c       : ~/BaseTradeShip { ShipID="Shamal";                 Faction=fringe;   TierRange=[1, 9];   StasisSpeed=53; StasisTradeTime=40; }
+	fringe_5a       : ~/BaseTradeShip { ShipID="Crate Bus";              Faction=fringe;   TierRange=[3, 12];  StasisSpeed=80; StasisTradeTime=60; }
+	fringe_5b       : ~/BaseTradeShip { ShipID="Loadspine";              Faction=fringe;   TierRange=[3, 12];  StasisSpeed=35; StasisTradeTime=60; }
+	fringe_5c       : ~/BaseTradeShip { ShipID="Harmattan";              Faction=fringe;   TierRange=[3, 12];  StasisSpeed=35; StasisTradeTime=60; }
+	fringe_7a       : ~/BaseTradeShip { ShipID="BuuLka FrEIghTa";        Faction=fringe;   TierRange=[6, 18];  StasisSpeed=28; StasisTradeTime=80; }
+	fringe_7b       : ~/BaseTradeShip { ShipID="Beautiful In Name Only"; Faction=fringe;   TierRange=[6, 18];  StasisSpeed=25; StasisTradeTime=80; }
+	fringe_7c       : ~/BaseTradeShip { ShipID="Impending Lawsuit";      Faction=fringe;   TierRange=[6, 18];  StasisSpeed=52; StasisTradeTime=80; }
+	fringe_10a      : ~/BaseTradeShip { ShipID="Ol' Reliable";           Faction=fringe;   TierRange=[12, 18]; StasisSpeed=78; StasisTradeTime=100; }
+	fringe_10b      : ~/BaseTradeShip { ShipID="Blockade Runner";        Faction=fringe;   TierRange=[12, 18]; StasisSpeed=88; StasisTradeTime=100; }
+	fringe_crew_5a  : ~/BaseTradeShip { ShipID="Target Practice";        Faction=fringe;   TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	fringe_crew_8a  : ~/BaseTradeShip { ShipID="Packed Like Sardines";   Faction=fringe;   TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	fringe_crew_11a : ~/BaseTradeShip { ShipID="Khrushchevka";           Faction=fringe;   TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
 
 	// Monolith
-	monolith_3a  : ~/BaseTradeShip { ShipID="Package Distributor";  Faction=monolith; TierRange=[1, 9];   StasisSpeed=85; StasisTradeTime=40; }
-	monolith_3b  : ~/BaseTradeShip { ShipID="Minor Shipper";        Faction=monolith; TierRange=[1, 9];   StasisSpeed=68; StasisTradeTime=40; }
-	monolith_3c  : ~/BaseTradeShip { ShipID="Dwarf Freighter";      Faction=monolith; TierRange=[1, 9];   StasisSpeed=68; StasisTradeTime=40; }
-	monolith_3d  : ~/BaseTradeShip { ShipID="Porter";               Faction=monolith; TierRange=[1, 9];   StasisSpeed=68; StasisTradeTime=40; }
-	monolith_5a  : ~/BaseTradeShip { ShipID="Minor Transport";      Faction=monolith; TierRange=[3, 12];  StasisSpeed=85; StasisTradeTime=60; }
-	monolith_5b  : ~/BaseTradeShip { ShipID="Minor Modulus";        Faction=monolith; TierRange=[3, 12];  StasisSpeed=75; StasisTradeTime=60; }
-	monolith_5c  : ~/BaseTradeShip { ShipID="Minor Freighter";      Faction=monolith; TierRange=[3, 12];  StasisSpeed=75; StasisTradeTime=60; }
-	monolith_5d  : ~/BaseTradeShip { ShipID="Minor Hauler";         Faction=monolith; TierRange=[3, 12];  StasisSpeed=75; StasisTradeTime=60; }
-	monolith_7a  : ~/BaseTradeShip { ShipID="Bulk Transport";       Faction=monolith; TierRange=[6, 18];  StasisSpeed=77; StasisTradeTime=80; }
-	monolith_7b  : ~/BaseTradeShip { ShipID="Bulk Shipper";         Faction=monolith; TierRange=[6, 18];  StasisSpeed=57; StasisTradeTime=80; }
-	monolith_7c  : ~/BaseTradeShip { ShipID="Workhorse";            Faction=monolith; TierRange=[6, 18];  StasisSpeed=57; StasisTradeTime=80; }
-	monolith_7d  : ~/BaseTradeShip { ShipID="Factotum";             Faction=monolith; TierRange=[6, 18];  StasisSpeed=57; StasisTradeTime=80; }
-	monolith_10a : ~/BaseTradeShip { ShipID="Bulk Modulus";         Faction=monolith; TierRange=[12, 18]; StasisSpeed=83; StasisTradeTime=100; }
-	monolith_10b : ~/BaseTradeShip { ShipID="Bulk Extractor";       Faction=monolith; TierRange=[12, 18]; StasisSpeed=75; StasisTradeTime=100; }
-	monolith_10c : ~/BaseTradeShip { ShipID="Mass Freighter";       Faction=monolith; TierRange=[12, 18]; StasisSpeed=75; StasisTradeTime=100; }
-	monolith_10d : ~/BaseTradeShip { ShipID="Bulk Hauler";          Faction=monolith; TierRange=[12, 18]; StasisSpeed=75; StasisTradeTime=100; }
-	monolith_10e : ~/BaseTradeShip { ShipID="Atlas Freighter";      Faction=monolith; TierRange=[12, 18]; StasisSpeed=75; StasisTradeTime=100; }
+	monolith_3a       : ~/BaseTradeShip { ShipID="Package Distributor";  Faction=monolith; TierRange=[1, 9];   StasisSpeed=85; StasisTradeTime=40; }
+	monolith_3b       : ~/BaseTradeShip { ShipID="Minor Shipper";        Faction=monolith; TierRange=[1, 9];   StasisSpeed=68; StasisTradeTime=40; }
+	monolith_3c       : ~/BaseTradeShip { ShipID="Dwarf Freighter";      Faction=monolith; TierRange=[1, 9];   StasisSpeed=68; StasisTradeTime=40; }
+	monolith_3d       : ~/BaseTradeShip { ShipID="Porter";               Faction=monolith; TierRange=[1, 9];   StasisSpeed=68; StasisTradeTime=40; }
+	monolith_5a       : ~/BaseTradeShip { ShipID="Minor Transport";      Faction=monolith; TierRange=[3, 12];  StasisSpeed=85; StasisTradeTime=60; }
+	monolith_5b       : ~/BaseTradeShip { ShipID="Minor Modulus";        Faction=monolith; TierRange=[3, 12];  StasisSpeed=75; StasisTradeTime=60; }
+	monolith_5c       : ~/BaseTradeShip { ShipID="Minor Freighter";      Faction=monolith; TierRange=[3, 12];  StasisSpeed=75; StasisTradeTime=60; }
+	monolith_5d       : ~/BaseTradeShip { ShipID="Minor Hauler";         Faction=monolith; TierRange=[3, 12];  StasisSpeed=75; StasisTradeTime=60; }
+	monolith_7a       : ~/BaseTradeShip { ShipID="Bulk Transport";       Faction=monolith; TierRange=[6, 18];  StasisSpeed=77; StasisTradeTime=80; }
+	monolith_7b       : ~/BaseTradeShip { ShipID="Bulk Shipper";         Faction=monolith; TierRange=[6, 18];  StasisSpeed=57; StasisTradeTime=80; }
+	monolith_7c       : ~/BaseTradeShip { ShipID="Workhorse";            Faction=monolith; TierRange=[6, 18];  StasisSpeed=57; StasisTradeTime=80; }
+	monolith_7d       : ~/BaseTradeShip { ShipID="Factotum";             Faction=monolith; TierRange=[6, 18];  StasisSpeed=57; StasisTradeTime=80; }
+	monolith_10a      : ~/BaseTradeShip { ShipID="Bulk Modulus";         Faction=monolith; TierRange=[12, 18]; StasisSpeed=83; StasisTradeTime=100; }
+	monolith_10b      : ~/BaseTradeShip { ShipID="Bulk Extractor";       Faction=monolith; TierRange=[12, 18]; StasisSpeed=75; StasisTradeTime=100; }
+	monolith_10c      : ~/BaseTradeShip { ShipID="Mass Freighter";       Faction=monolith; TierRange=[12, 18]; StasisSpeed=75; StasisTradeTime=100; }
+	monolith_10d      : ~/BaseTradeShip { ShipID="Bulk Hauler";          Faction=monolith; TierRange=[12, 18]; StasisSpeed=75; StasisTradeTime=100; }
+	monolith_10e      : ~/BaseTradeShip { ShipID="Atlas Freighter";      Faction=monolith; TierRange=[12, 18]; StasisSpeed=75; StasisTradeTime=100; }
+	monolith_crew_5a  : ~/BaseTradeShip { ShipID="Minor Connector";      Faction=monolith; TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	monolith_crew_8a  : ~/BaseTradeShip { ShipID="Bulk Connector";       Faction=monolith; TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	monolith_crew_11a : ~/BaseTradeShip { ShipID="Mass Connector";       Faction=monolith; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
 
 	// Cabal
-	cabal_3a  : ~/BaseTradeShip { ShipID="Missionary";              Faction=cabal;    TierRange=[1, 9];   StasisSpeed=77; StasisTradeTime=40; }
-	cabal_3b  : ~/BaseTradeShip { ShipID="Dia";                     Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
-	cabal_3c  : ~/BaseTradeShip { ShipID="Supplicant";              Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
-	cabal_3d  : ~/BaseTradeShip { ShipID="Seeker";                  Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
-	cabal_5a  : ~/BaseTradeShip { ShipID="Preacher";                Faction=cabal;    TierRange=[3, 12];  StasisSpeed=55; StasisTradeTime=60; }
-	cabal_5b  : ~/BaseTradeShip { ShipID="Deliverance";             Faction=cabal;    TierRange=[3, 12];  StasisSpeed=86; StasisTradeTime=60; }
-	cabal_5c  : ~/BaseTradeShip { ShipID="Pilgrim";                 Faction=cabal;    TierRange=[3, 12];  StasisSpeed=86; StasisTradeTime=60; }
-	cabal_5d  : ~/BaseTradeShip { ShipID="Trinity";                 Faction=cabal;    TierRange=[3, 12];  StasisSpeed=86; StasisTradeTime=60; }
-	cabal_7a  : ~/BaseTradeShip { ShipID="Advocate";                Faction=cabal;    TierRange=[6, 18];  StasisSpeed=35; StasisTradeTime=80; }
-	cabal_7b  : ~/BaseTradeShip { ShipID="Acolyte";                 Faction=cabal;    TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
-	cabal_7c  : ~/BaseTradeShip { ShipID="Ascetic";                 Faction=cabal;    TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
-	cabal_7d  : ~/BaseTradeShip { ShipID="Minister";                Faction=cabal;    TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
-	cabal_10a : ~/BaseTradeShip { ShipID="Celebrant";               Faction=cabal;    TierRange=[12, 18]; StasisSpeed=31; StasisTradeTime=100; }
-	cabal_10b : ~/BaseTradeShip { ShipID="Witness";                 Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
-	cabal_10c : ~/BaseTradeShip { ShipID="Ecclesiarch";             Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
-	cabal_10d : ~/BaseTradeShip { ShipID="Pontiff";                 Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
+	cabal_3a       : ~/BaseTradeShip { ShipID="Missionary";   Faction=cabal;    TierRange=[1, 9];   StasisSpeed=77; StasisTradeTime=40; }
+	cabal_3b       : ~/BaseTradeShip { ShipID="Dia";          Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
+	cabal_3c       : ~/BaseTradeShip { ShipID="Supplicant";   Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
+	cabal_3d       : ~/BaseTradeShip { ShipID="Seeker";       Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
+	cabal_5a       : ~/BaseTradeShip { ShipID="Preacher";     Faction=cabal;    TierRange=[3, 12];  StasisSpeed=55; StasisTradeTime=60; }
+	cabal_5b       : ~/BaseTradeShip { ShipID="Deliverance";  Faction=cabal;    TierRange=[3, 12];  StasisSpeed=86; StasisTradeTime=60; }
+	cabal_5c       : ~/BaseTradeShip { ShipID="Pilgrim";      Faction=cabal;    TierRange=[3, 12];  StasisSpeed=86; StasisTradeTime=60; }
+	cabal_5d       : ~/BaseTradeShip { ShipID="Trinity";      Faction=cabal;    TierRange=[3, 12];  StasisSpeed=86; StasisTradeTime=60; }
+	cabal_7a       : ~/BaseTradeShip { ShipID="Advocate";     Faction=cabal;    TierRange=[6, 18];  StasisSpeed=35; StasisTradeTime=80; }
+	cabal_7b       : ~/BaseTradeShip { ShipID="Acolyte";      Faction=cabal;    TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	cabal_7c       : ~/BaseTradeShip { ShipID="Ascetic";      Faction=cabal;    TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	cabal_7d       : ~/BaseTradeShip { ShipID="Minister";     Faction=cabal;    TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	cabal_10a      : ~/BaseTradeShip { ShipID="Celebrant";    Faction=cabal;    TierRange=[12, 18]; StasisSpeed=31; StasisTradeTime=100; }
+	cabal_10b      : ~/BaseTradeShip { ShipID="Witness";      Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
+	cabal_10c      : ~/BaseTradeShip { ShipID="Ecclesiarch";  Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
+	cabal_10d      : ~/BaseTradeShip { ShipID="Pontiff";      Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
+	cabal_crew_5a  : ~/BaseTradeShip { ShipID="Tourist";      Faction=cabal;    TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_5b  : ~/BaseTradeShip { ShipID="Pioneer";      Faction=cabal;    TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_8a  : ~/BaseTradeShip { ShipID="Wayfarer";     Faction=cabal;    TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_8b  : ~/BaseTradeShip { ShipID="Cicerone";     Faction=cabal;    TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_11a : ~/BaseTradeShip { ShipID="Originator";   Faction=cabal;    TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_11b : ~/BaseTradeShip { ShipID="Pathfinder";   Faction=cabal;    TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
 
 	// Imperium
-	imperium_3a  : ~/BaseTradeShip { ShipID="Auklet";               Faction=imperium; TierRange=[1, 9];   StasisSpeed=40; StasisTradeTime=40; }
-	imperium_3b  : ~/BaseTradeShip { ShipID="Dovekie";              Faction=imperium; TierRange=[1, 9];   StasisSpeed=61; StasisTradeTime=40; }
-	imperium_3c  : ~/BaseTradeShip { ShipID="Skua";                 Faction=imperium; TierRange=[1, 9];   StasisSpeed=61; StasisTradeTime=40; }
-	imperium_3d  : ~/BaseTradeShip { ShipID="Gannet";               Faction=imperium; TierRange=[1, 9];   StasisSpeed=61; StasisTradeTime=40; }
-	imperium_5a  : ~/BaseTradeShip { ShipID="Cormorant";            Faction=imperium; TierRange=[3, 12];  StasisSpeed=67; StasisTradeTime=60; }
-	imperium_5b  : ~/BaseTradeShip { ShipID="Fulmar";               Faction=imperium; TierRange=[3, 12];  StasisSpeed=73; StasisTradeTime=60; }
-	imperium_5c  : ~/BaseTradeShip { ShipID="Murrelet";             Faction=imperium; TierRange=[3, 12];  StasisSpeed=73; StasisTradeTime=60; }
-	imperium_5d  : ~/BaseTradeShip { ShipID="Gull";                 Faction=imperium; TierRange=[3, 12];  StasisSpeed=73; StasisTradeTime=60; }
-	imperium_7a  : ~/BaseTradeShip { ShipID="Pelican";              Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
-	imperium_7b  : ~/BaseTradeShip { ShipID="Petrel";               Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
-	imperium_7c  : ~/BaseTradeShip { ShipID="Guillemot";            Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
-	imperium_7d  : ~/BaseTradeShip { ShipID="Cygnus";               Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
-	imperium_7e  : ~/BaseTradeShip { ShipID="Penguin";              Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
-	imperium_10a : ~/BaseTradeShip { ShipID="Albatross";            Faction=imperium; TierRange=[12, 18]; StasisSpeed=56; StasisTradeTime=100; }
-	imperium_10b : ~/BaseTradeShip { ShipID="Shearwater";           Faction=imperium; TierRange=[12, 18]; StasisSpeed=90; StasisTradeTime=100; }
-	imperium_10c : ~/BaseTradeShip { ShipID="Thalassarche";         Faction=imperium; TierRange=[12, 18]; StasisSpeed=90; StasisTradeTime=100; }
-	imperium_10d : ~/BaseTradeShip { ShipID="Stenidae";             Faction=imperium; TierRange=[12, 18]; StasisSpeed=90; StasisTradeTime=100; }
+	imperium_3a       : ~/BaseTradeShip { ShipID="Auklet";       Faction=imperium; TierRange=[1, 9];   StasisSpeed=40; StasisTradeTime=40; }
+	imperium_3b       : ~/BaseTradeShip { ShipID="Dovekie";      Faction=imperium; TierRange=[1, 9];   StasisSpeed=61; StasisTradeTime=40; }
+	imperium_3c       : ~/BaseTradeShip { ShipID="Skua";         Faction=imperium; TierRange=[1, 9];   StasisSpeed=61; StasisTradeTime=40; }
+	imperium_3d       : ~/BaseTradeShip { ShipID="Gannet";       Faction=imperium; TierRange=[1, 9];   StasisSpeed=61; StasisTradeTime=40; }
+	imperium_5a       : ~/BaseTradeShip { ShipID="Cormorant";    Faction=imperium; TierRange=[3, 12];  StasisSpeed=67; StasisTradeTime=60; }
+	imperium_5b       : ~/BaseTradeShip { ShipID="Fulmar";       Faction=imperium; TierRange=[3, 12];  StasisSpeed=73; StasisTradeTime=60; }
+	imperium_5c       : ~/BaseTradeShip { ShipID="Murrelet";     Faction=imperium; TierRange=[3, 12];  StasisSpeed=73; StasisTradeTime=60; }
+	imperium_5d       : ~/BaseTradeShip { ShipID="Gull";         Faction=imperium; TierRange=[3, 12];  StasisSpeed=73; StasisTradeTime=60; }
+	imperium_7a       : ~/BaseTradeShip { ShipID="Pelican";      Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	imperium_7b       : ~/BaseTradeShip { ShipID="Petrel";       Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	imperium_7c       : ~/BaseTradeShip { ShipID="Guillemot";    Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	imperium_7d       : ~/BaseTradeShip { ShipID="Cygnus";       Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	imperium_7e       : ~/BaseTradeShip { ShipID="Penguin";      Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	imperium_10a      : ~/BaseTradeShip { ShipID="Albatross";    Faction=imperium; TierRange=[12, 18]; StasisSpeed=56; StasisTradeTime=100; }
+	imperium_10b      : ~/BaseTradeShip { ShipID="Shearwater";   Faction=imperium; TierRange=[12, 18]; StasisSpeed=90; StasisTradeTime=100; }
+	imperium_10c      : ~/BaseTradeShip { ShipID="Thalassarche"; Faction=imperium; TierRange=[12, 18]; StasisSpeed=90; StasisTradeTime=100; }
+	imperium_10d      : ~/BaseTradeShip { ShipID="Stenidae";     Faction=imperium; TierRange=[12, 18]; StasisSpeed=90; StasisTradeTime=100; }
+	imperium_crew_5a  : ~/BaseTradeShip { ShipID="Ardeola";      Faction=imperium; TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	imperium_crew_5b  : ~/BaseTradeShip { ShipID="Bacchus";      Faction=imperium; TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	imperium_crew_8a  : ~/BaseTradeShip { ShipID="Agami";        Faction=imperium; TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	imperium_crew_8b  : ~/BaseTradeShip { ShipID="Botaurus";     Faction=imperium; TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	imperium_crew_11a : ~/BaseTradeShip { ShipID="Ardea";        Faction=imperium; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
+	imperium_crew_11b : ~/BaseTradeShip { ShipID="Butorides";    Faction=imperium; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
 }
 
 BaseTradeShip

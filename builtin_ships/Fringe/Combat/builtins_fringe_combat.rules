@@ -16,7 +16,7 @@ Ships
 	:~{ File="Horsefly.ship.png";         Tier=2;  Difficulty=1; }
 	:~{ File="Effigy.ship.png";           Tier=2;  Difficulty=1; }
 	:~{ File="Backburner.ship.png";       Tier=2;  Difficulty=2; }
-	:~{ File="Phalanx Light Escort.ship.png"; Tier=2; Difficulty=1; }
+	:~{ File="Phalanx Light Escort.ship.png"; Tier=2; Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Argonaut.ship.png";         Tier=2;  Difficulty=1; }
 	:~{ File="Klepht.ship.png";           Tier=2;  Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Junk Carver.ship.png";      Tier=2;  Difficulty=2; }
@@ -34,8 +34,8 @@ Ships
 	// Patrol ships
 	:~{ File="Hardhat.ship.png";          Tier=4;  Difficulty=1; }
 	:~{ File="Wrangler.ship.png";         Tier=4;  Difficulty=1; }
-	:~{ File="Marauder.ship.png";         Tier=4;  Difficulty=1; }
-	:~{ File="Phalanx II Medium Escort.ship.png"; Tier=4; Difficulty=1; }
+	:~{ File="Marauder.ship.png";         Tier=4;  Difficulty=1; Tags:~/Tags[empty_storage]; }
+	:~{ File="Phalanx II Medium Escort.ship.png"; Tier=4; Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Bigfoot.ship.png";          Tier=4;  Difficulty=1; }
 	:~{ File="Sprocket.ship.png";         Tier=4;  Difficulty=1; }
 	:~{ File="Backup.ship.png";           Tier=4;  Difficulty=1; }
@@ -66,7 +66,7 @@ Ships
 	:~{ File="Sarro.ship.png";            Tier=8;  Difficulty=1; }
 	:~{ File="Toadvine.ship.png";         Tier=8;  Difficulty=1; }
 	:~{ File="Desperado.ship.png";        Tier=8;  Difficulty=1; Tags:~/Tags[empty_storage]; OtherIDs=["Can Opener"]; }
-	:~{ File="Phalanx III Heavy Escort.ship.png"; Tier=8; Difficulty=2; }
+	:~{ File="Phalanx III Heavy Escort.ship.png"; Tier=8; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Blacksmith.ship.png";       Tier=9;  Difficulty=1; }
 	:~{ File="Sepa.ship.png";             Tier=9;  Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Metalhopper.ship.png";      Tier=9;  Difficulty=1; }
@@ -81,7 +81,7 @@ Ships
 	:~{ File="Loomer.ship.png";           Tier=10;  Difficulty=1; }
 	:~{ File="Omen.ship.png";             Tier=10;  Difficulty=1; }
 	:~{ File="Baelor Reaper.ship.png";    Tier=10;  Difficulty=1; }
-	:~{ File="Graverobber.ship.png";      Tier=10;  Difficulty=1; }
+	:~{ File="Gravedigger.ship.png";      Tier=10;  Difficulty=1; OtherIDs=["Graverobber"]; }
 	:~{ File="Raptor.ship.png";           Tier=10;  Difficulty=2; }
 	:~{ File="Crankshaft.ship.png";       Tier=10;  Difficulty=2; }
 	:~{ File="Hentzau.ship.png";          Tier=10;  Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -112,6 +112,7 @@ Ships
 
 	// Cruisers
 	:~{ File="Roko's Revenge.ship.png"; Tier=15;  Difficulty=1; }
+	:~{ File="Tenderizer.ship.png";     Tier=15;  Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ionclad.ship.png";        Tier=15;  Difficulty=2; }
 	:~{ File="Monarch.ship.png";        Tier=15;  Difficulty=2; }
 	:~{ File="Clockwork.ship.png";      Tier=15;  Difficulty=2; }
@@ -135,6 +136,7 @@ Ships
 	:~{ File="Kingslayer.ship.png";     Tier=17;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Big Iron.ship.png";       Tier=17;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Clytemnestra.ship.png";   Tier=17;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Bulkhead.ship.png";       Tier=17;  Difficulty=2; }
 	:~{ File="Vulcan.ship.png";         Tier=17;  Difficulty=3; }
 
 	// Flagships

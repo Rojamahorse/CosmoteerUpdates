@@ -137,7 +137,6 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = bullet
 			Storage = CombinedAmmo
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
-			AdditionalStorageForJobPriority = [LoadedAmmo]
 			OperationalToggle = PowerToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}

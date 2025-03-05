@@ -214,7 +214,6 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = bullet
 			Storage = AmmoStorage
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
-			AdditionalStorageForJobPriority = [LoadedAmmo1, LoadedAmmo2]
 			OperationalToggle = PowerToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
@@ -1033,7 +1032,6 @@ Part : <../base_part_terran.rules>/Part
 				DamagePerShot = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/0/TotalDamage
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				MaxDamage = [&../DamagePerShot, &../DamagePerSecond]
-				ShotDamage = &MaxDamage
 				DamageArea = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/0/Radius
 				Salvo = [(&~/Part/Components/BaseFlakEmitter/Burst), (&~/Part/Components/Turret/FireInterval)]
 				ROF = (&~/Part/Components/BaseFlakEmitter/Burst) / (&~/Part/Components/Turret/FireInterval)

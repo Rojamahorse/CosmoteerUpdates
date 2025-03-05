@@ -603,3 +603,15 @@ CrewPathLineWarningDist = 6
 CrewPathLineStrongWarningDist = 11
 CrewPathLineUSpeed = 4
 CrewPathOverlapSeparation = [.2, .2]
+
+FavoriteGroups = 3
+FavoriteSprite
+{
+	Texture
+	{
+		File = "group_favorites.png"
+		MipLevels = max
+		SampleMode = Linear
+	}
+	Size = [20, 20]
+}

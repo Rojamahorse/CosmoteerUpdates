@@ -37,13 +37,13 @@ Buffs
 	// Reduce reactor production and disable shields.
 	{
 		BuffType = ElectronDebuff
-		BuffAmount = -80%
+		BuffAmount = -40%
 	}
 
 	// Buff energy weapon damage.
 	{
 		BuffType = ElectronBuff
-		BuffAmount = 75%
+		BuffAmount = 90%
 	}
 ]
 

@@ -40,6 +40,12 @@ ActiveEffects
 				SpeedVariation = .2
 				MaxConcurrent = 20
 			}
+
+			: /BASE_SHAKE
+			{
+				ShakeAmount = .075
+				Duration = .5
+			}
 		]
 	}
 ]

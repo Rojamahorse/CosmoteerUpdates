@@ -235,3 +235,21 @@ PaintSchemeIcon
 	}
 	Shader = "paintscheme_background.shader"
 }
+
+FavoriteDecalsGroups
+[
+	: <editor_groups.rules>/__favorites0
+	{
+		Folders = [] // Unused
+	}
+	: <editor_groups.rules>/__favorites1
+	{
+		Folders = [] // Unused
+	}
+	: <editor_groups.rules>/__favorites2
+	{
+		Folders = [] // Unused
+	}
+]
+
+FavoriteSprite = &<build_gui.rules>/FavoriteSprite

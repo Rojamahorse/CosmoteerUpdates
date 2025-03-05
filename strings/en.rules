@@ -1956,7 +1956,7 @@ Nebulas
 {
 	Cloudy = "<b>Gaseous Cloud</b>\nShips inside the cloud have reduced sensor range but are hidden to ships outside, except when firing weapons."
 	CloudyHudFmt = "<s14>{0:0.}%</s14>\n<s12><gray>gaseous</gray></s12>"
-	Electron = "<b>Electron Cloud</b>\nShip reactor output will be reduced by 80%, but energy weapons will do 75% more damage and thrusters are more powerful. Ships cannot hyper-jump in or out and radar range is reduced due to electromagnetic interference."
+	Electron = "<b>Electron Cloud</b>\nShip reactor output will be reduced by 40%, but energy weapons will do 90% more damage and thrusters are more powerful. Ships cannot hyper-jump in or out and radar range is reduced due to electromagnetic interference."
 	ElectronHudFmt = "<s14><color r='180' g='255' b='77'>{0:0.}%</color></s14>\n<s12><gray>electron</gray></s12>"
 	IonStorm = "<b>Ion Storm</b>\nShips inside will be frequently struck by powerful bolts of ion-lightning."
 	IonStormHudFmt = "<s14><bad>{0:0.}%</bad></s14>\n<s12><gray>storm</gray></s12>"
@@ -2198,6 +2198,7 @@ SectorTypes
 	Binary = "Binary Star"
 	HighDensityNebula = "Unary Star (High Cloud Density)"
 	Supernova = "Supernova Aftermath"
+	Electron = "High Electron Density"
 }
 
 FameTitles
@@ -3802,14 +3803,24 @@ EditorGroups
 	Rock = "Basic Rock"
 	ResourcesCommon = "Common Resources"
 	ResourcesRare = "Rare Resources"
+	Favorites1 = "Favorites 1"
+	Favorites2 = "Favorites 2"
+	Favorites3 = "Favorites 3"
+	Favorites1Icon = "1"
+	Favorites2Icon = "2"
+	Favorites3Icon = "3"
 }
 
 DecalGroups
 {
-	Shapes = "Shapes"
+	Straights = "Straights"
+	Curves = "Curves"
+	Fades = "Fades"
 	Symbols = "Symbols"
 	TextSmall = "Text (1x1)"
 	TextLarge = "Text (2x2)"
+	TextSmallIcon = "<s14>1x1</s14>"
+	TextLargeIcon = "<s14>2x2</s14>"
 }
 
 CategoryNouns
@@ -4608,6 +4619,7 @@ Stats
 	RailgunNotes = "<gray>NOTE: Damage, Penetration, Range, Projectile Speed, and Power Usage are increased with each additional Railgun Accelerator.</gray>"
 	RocketNotes = "<gray>NOTE: Thrust, Ramp-Up Time, and Power Use are increased with each additional Extender Module.</gray>"
 	MissileLauncherNotes = "<gray>For munition statistics, refer to the corresponding factory for each type of munition.</gray>"
+	TractorBeamNotes = "<gray>Note: Force and power usage values listed above are theoretical maximums. Actual values will vary based on the target's distance.</gray>"
 }
 
 StatCategories
@@ -5631,6 +5643,12 @@ Tips
 	{
 		Title = "Editing Ship Info"
 		Tip = "You can edit your ship's name, designer (author), description, and lore. Open the <img name='hamburger_up'/> menu next to your ship's name and select <white>Edit Ship Name/Info</white>. <gray>(Or you can just click on the name itself!)</gray>"
+	}
+	Favorites
+	{
+		Title = "Favorite Parts & Decals"
+		Tip1 = "You can save up to three different custom sets of \"favorite\" ship parts or paint decals. <btn id='General.UIAltClick'/> on the part or decal to add it to or remove it from any of those sets."
+		Tip2 = "You can also <btn id='General.UIFocusClick'/> on a part or decal to quickly favorite or un-favorite it."
 	}
 	PartRows
 	{

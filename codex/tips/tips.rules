@@ -757,6 +757,22 @@ CodexPages
 		]
 	}
 	{
+		ID = Favorites
+		TitleKey = "Tips/Favorites/Title"
+		TabNameKey = "Codex/Tips"
+		IsTip = true
+		Entries
+		[
+			{
+				Image { Texture { File="favorites.png"; SampleMode=Linear; } }
+				TextKey = "Tips/Favorites/Tip1"
+			}
+			{
+				TextKey = "Tips/Favorites/Tip2"
+			}
+		]
+	}
+	{
 		ID = PartRows
 		TitleKey = "Tips/PartRows/Title"
 		TabNameKey = "Codex/Tips"

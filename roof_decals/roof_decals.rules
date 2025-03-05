@@ -1,13 +1,39 @@
 Groups
 [
 	{
-		Folders = ["shapes"]
-		NameKey = "DecalGroups/Shapes"
+		Folders = ["straights"]
+		NameKey = "DecalGroups/Straights"
 		Icon
 		{
 			Texture
 			{
-				File = "shapes.png"
+				File = "straights.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+	{
+		Folders = ["curves"]
+		NameKey = "DecalGroups/Curves"
+		Icon
+		{
+			Texture
+			{
+				File = "curves.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+	{
+		Folders = ["fades"]
+		NameKey = "DecalGroups/Fades"
+		Icon
+		{
+			Texture
+			{
+				File = "fades.png"
 				MipLevels = 2
 				SampleMode = Linear
 			}
@@ -29,6 +55,7 @@ Groups
 	{
 		Folders = ["text_small"]
 		NameKey = "DecalGroups/TextSmall"
+		IconTextKey = "DecalGroups/TextSmallIcon"
 		Icon
 		{
 			Texture
@@ -42,6 +69,7 @@ Groups
 	{
 		Folders = ["text_large"]
 		NameKey = "DecalGroups/TextLarge"
+		IconTextKey = "DecalGroups/TextLargeIcon"
 		Icon
 		{
 			Texture

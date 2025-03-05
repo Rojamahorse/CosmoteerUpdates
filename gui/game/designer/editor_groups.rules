@@ -182,7 +182,7 @@ Copper
 		Texture = &<./Data/resources/copper/copper.rules>/Overlay/Texture
 		VertexColor = [0, 183, 255]
 	}
-		SortOrder = 200
+	SortOrder = 200
 }
 
 Gold
@@ -249,4 +249,32 @@ Uranium
 		VertexColor = [0, 183, 255]
 	}
 	SortOrder = 800
+}
+
+__favorites0 // Special dynamically-generated group of favorite parts.
+{
+	NameKey = "EditorGroups/Favorites1"
+	IconTextKey = "EditorGroups/Favorites1Icon"
+	Icon
+	{
+		Texture
+		{
+			File = "group_favorites.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = -99999
+}
+__favorites1 : __favorites0
+{
+	NameKey = "EditorGroups/Favorites2"
+	IconTextKey = "EditorGroups/Favorites2Icon"
+	SortOrder = -99998
+}
+__favorites2 : __favorites0
+{
+	NameKey = "EditorGroups/Favorites3"
+	IconTextKey = "EditorGroups/Favorites3Icon"
+	SortOrder = -99997
 }

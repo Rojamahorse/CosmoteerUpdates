@@ -24,7 +24,7 @@ Ships
 	:~{ File="Helioblade.ship.png";              Tier=3;  Difficulty=2; }
 
 	// Patrol ships
-	:~{ File="Flamelicker.ship.png";             Tier=4;  Difficulty=1; OtherIDs=["Flamepincer"]; }
+	:~{ File="Flamelicker.ship.png";             Tier=4;  Difficulty=1; Tags:~/Tags[empty_storage]; OtherIDs=["Flamepincer"]; }
 	:~{ File="Sainted Pyre.ship.png";            Tier=4;  Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Whisp.ship.png";                   Tier=4;  Difficulty=2; }
 	:~{ File="Stargazer.ship.png";               Tier=4;  Difficulty=2; Tags:~/Tags[empty_storage]; }

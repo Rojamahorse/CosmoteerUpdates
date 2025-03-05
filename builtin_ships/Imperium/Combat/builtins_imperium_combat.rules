@@ -6,7 +6,7 @@ Ships
 	// Scouts
 	:~{ File="Falconet.ship.png";      Tier=1;  Difficulty=2; }
 	:~{ File="Merlin.ship.png";        Tier=1;  Difficulty=2; }
-	:~{ File="Kestral.ship.png";       Tier=1;  Difficulty=2; }
+	:~{ File="Kestrel.ship.png";       Tier=1;  Difficulty=2; Tags:~/Tags[empty_storage]; OtherIDs=["Kestral"]; }
 	:~{ File="Swift.ship.png";         Tier=1;  Difficulty=2; }
 	:~{ File="Fantail.ship.png";       Tier=1;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Milvus.ship.png";        Tier=1;  Difficulty=2; }

@@ -194,7 +194,7 @@ Part : <../base_part_terran.rules>/Part
 		CommonReloadTimerNuke
 		{
 			Type = Timer
-			Duration = 10
+			Duration = 4
 			AutoStart = true
 			StartTrigger = CommonReloadResetTriggerProxy
 		}

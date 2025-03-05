@@ -81,8 +81,8 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ResourceConverter
 			ToStorage = BatteryStorage
-			ToQuantity = &~/Part/FuelRecharge
-			Interval = 1
+			ToQuantity = &~/Part/FuelUsage // Not a typo! See math below.
+			Interval = (&~/Part/FuelUsage) / (&~/Part/FuelRecharge)
 		}
 
 		PowerDistributionBuffToggle

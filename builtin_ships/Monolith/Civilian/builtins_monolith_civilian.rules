@@ -21,4 +21,9 @@ Ships
 	:~{ File="Mass Freighter.ship.png";      Tier=10; Tags : ~/Tags [trade, empty_storage] }
 	:~{ File="Bulk Hauler.ship.png";         Tier=10; Tags : ~/Tags [trade, empty_storage] }
 	:~{ File="Atlas Freighter.ship.png";     Tier=10; Tags : ~/Tags [trade, empty_storage] }
+
+	// Crew Transports
+	:~{ File="Minor Connector.ship.png";     Tier=5;  Tags : ~/Tags [crew_transport] }
+	:~{ File="Bulk Connector.ship.png";      Tier=8;  Tags : ~/Tags [crew_transport] }
+	:~{ File="Mass Connector.ship.png";      Tier=11; Tags : ~/Tags [crew_transport] }
 ]

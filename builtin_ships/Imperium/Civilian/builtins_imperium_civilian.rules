@@ -21,4 +21,12 @@ Ships
 	:~{ File="Shearwater.ship.png";   Tier=10; Tags : ~/Tags [trade, empty_storage] }
 	:~{ File="Thalassarche.ship.png"; Tier=10; Tags : ~/Tags [trade, empty_storage] }
 	:~{ File="Stenidae.ship.png";     Tier=10; Tags : ~/Tags [trade, empty_storage] }
+
+	// Crew Transports
+	:~{ File="Ardeola.ship.png";      Tier=5;  Tags : ~/Tags [crew_transport] }
+	:~{ File="Bacchus.ship.png";      Tier=5;  Tags : ~/Tags [crew_transport] }
+	:~{ File="Agami.ship.png";        Tier=8;  Tags : ~/Tags [crew_transport] }
+	:~{ File="Botaurus.ship.png";     Tier=8;  Tags : ~/Tags [crew_transport] }
+	:~{ File="Ardea.ship.png";        Tier=11; Tags : ~/Tags [crew_transport] }
+	:~{ File="Butorides.ship.png";    Tier=11; Tags : ~/Tags [crew_transport] }
 ]

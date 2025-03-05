@@ -17,7 +17,7 @@ Ships
 	:~{ File="Knave.ship.png";       Tier=2;  Difficulty=2; }
 	:~{ File="Ordnance.ship.png";    Tier=3;  Difficulty=1; }
 	:~{ File="Sentinel.ship.png";    Tier=3;  Difficulty=1; Tags:~/Tags[empty_storage]; }
-	:~{ File="Paladin.ship.png";     Tier=3;  Difficulty=1; OtherIDs=["Twinshot"];  }
+	:~{ File="Buckler.ship.png";     Tier=3;  Difficulty=1; OtherIDs=["Twinshot", "Paladin"];  }
 	:~{ File="Roughhouser.ship.png"; Tier=3;  Difficulty=1; }
 	:~{ File="Crown.ship.png";       Tier=3;  Difficulty=1; }
 	:~{ File="Bouncer.ship.png";     Tier=3;  Difficulty=2; }
@@ -51,6 +51,7 @@ Ships
 	:~{ File="Bastion.ship.png";     Tier=7;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Quickdraw.ship.png";   Tier=7;  Difficulty=2; }
 	:~{ File="Suppressor.ship.png";  Tier=7;  Difficulty=2; OtherIDs=["Almogavar"]; }
+	:~{ File="Attractor.ship.png";   Tier=7;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Swiftwing.ship.png";   Tier=8;  Difficulty=1; }
 	:~{ File="Bulwark.ship.png";     Tier=8;  Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Intercessor.ship.png"; Tier=8;  Difficulty=1; Tags:~/Tags[empty_storage]; }
@@ -72,6 +73,7 @@ Ships
 	:~{ File="Aegis.ship.png";       Tier=10; Difficulty=2; }
 	:~{ File="Throne.ship.png";      Tier=10; Difficulty=2; }
 	:~{ File="Averter.ship.png";     Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Reginleif.ship.png";   Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Crossguard.ship.png";  Tier=11; Difficulty=2; }
 	:~{ File="Hullbreaker.ship.png"; Tier=11; Difficulty=2; }
 	:~{ File="Anvil.ship.png";       Tier=11; Difficulty=2; }
@@ -107,6 +109,7 @@ Ships
 	:~{ File="Negotiator.ship.png";  Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Zweihander.ship.png";  Tier=15; Difficulty=2; }
 	:~{ File="Degenbrecher.ship.png";Tier=15; Difficulty=2; }
+	:~{ File="Bluescreen.ship.png";  Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Guardian.ship.png";    Tier=15; Difficulty=3; }
 	:~{ File="Project Mjolnir.ship.png"; Tier=15; Difficulty=3; }
 	:~{ File="Liquidator.ship.png";  Tier=15; Difficulty=3; }

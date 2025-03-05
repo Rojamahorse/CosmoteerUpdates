@@ -156,5 +156,9 @@ SectorTypes
 			RandomWeight = 0.25
 			MinTier = 5
 		}
+		{
+			Type = electron
+			RandomWeight = 0.25
+		}
 	]
 }

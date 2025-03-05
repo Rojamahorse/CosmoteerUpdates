@@ -4,9 +4,10 @@ Tags = [station]
 Ships
 [
 	// Civilian stations
-	:~{ File="Small Fringe Trade Station.ship.png"; Tier=4;  Tags : ~/Tags [trade_station, empty_storage];    StasisIcon="Small Fringe Trade Station.png" }
-	:~{ File="Med Fringe Trade Station.ship.png";   Tier=10; Tags : ~/Tags [trade_station, empty_storage];    StasisIcon="Med Fringe Trade Station.png" }
-	:~{ File="Large Fringe Trade Station.ship.png"; Tier=16; Tags : ~/Tags [trade_station, empty_storage];    StasisIcon="Large Fringe Trade Station.png" }
+	:~{ File="Small Fringe Trade Station.ship.png";    Tier=4;  Tags : ~/Tags [trade_station, empty_storage];    StasisIcon="Small Fringe Trade Station.png" }
+	:~{ File="Small Fringe Trade Station II.ship.png"; Tier=4;  Tags : ~/Tags [trade_station, empty_storage];    StasisIcon="Small Fringe Trade Station II.png" }
+	:~{ File="Med Fringe Trade Station.ship.png";      Tier=10; Tags : ~/Tags [trade_station, empty_storage];    StasisIcon="Med Fringe Trade Station.png" }
+	:~{ File="Large Fringe Trade Station.ship.png";    Tier=16; Tags : ~/Tags [trade_station, empty_storage];    StasisIcon="Large Fringe Trade Station.png" }
 
 	// Military stations
 	:~{ File="Promise of Providence.ship.png";      Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Tiny Fringe Arms Depot.png"; OtherIDs=["Tiny Fringe Arms Depot"]; }
