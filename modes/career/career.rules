@@ -385,7 +385,7 @@ TradeShips
 	cabal_10b      : ~/BaseTradeShip { ShipID="Witness";      Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
 	cabal_10c      : ~/BaseTradeShip { ShipID="Ecclesiarch";  Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
 	cabal_10d      : ~/BaseTradeShip { ShipID="Pontiff";      Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
-	cabal_crew_5a  : ~/BaseTradeShip { ShipID="Tourist";      Faction=cabal;    TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_5a  : ~/BaseTradeShip { ShipID="Trailblazer";      Faction=cabal;    TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
 	cabal_crew_5b  : ~/BaseTradeShip { ShipID="Pioneer";      Faction=cabal;    TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
 	cabal_crew_8a  : ~/BaseTradeShip { ShipID="Wayfarer";     Faction=cabal;    TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
 	cabal_crew_8b  : ~/BaseTradeShip { ShipID="Cicerone";     Faction=cabal;    TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }

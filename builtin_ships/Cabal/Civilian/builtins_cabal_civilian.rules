@@ -22,7 +22,7 @@ Ships
 	:~{ File="Pontiff.ship.png";     Tier=10; Tags : ~/Tags [trade, empty_storage] }
 
 	// Crew Transports
-	:~{ File="Tourist.ship.png";     Tier=5;  Tags : ~/Tags [crew_transport] }
+	:~{ File="Trailblazer.ship.png"; Tier=5;  Tags : ~/Tags [crew_transport]; OtherIDs=["Tourist"] }
 	:~{ File="Pioneer.ship.png";     Tier=5;  Tags : ~/Tags [crew_transport] }
 	:~{ File="Wayfarer.ship.png";    Tier=8;  Tags : ~/Tags [crew_transport] }
 	:~{ File="Cicerone.ship.png";    Tier=8;  Tags : ~/Tags [crew_transport] }

@@ -4401,7 +4401,7 @@ PartToggles
 	MissileType_HE = "<b><string id='MissileTypes/HE'/></b>\n\n<string id='MissileTypes/HEDesc'/>\n\nHotkey: <btn id='PartToggles.missile_type_he'/>"
 	MissileType_EMP = "<b><string id='MissileTypes/EMP'/></b>\n\n<string id='MissileTypes/EMPDesc'/>\n\nHotkey: <btn id='PartToggles.missile_type_emp'/>"
 	MissileType_Nuke = "<b><string id='MissileTypes/Nuke'/></b>\n\n<string id='MissileTypes/NukeDesc'/>\n\nHotkey: <btn id='PartToggles.missile_type_nuke'/>"
-	MissileType_Mine = "<b><string id='MissileTypes/Mine'/></b>\n\n<string id='MissileTypes/Mine'/>\n\nHotkey: <btn id='PartToggles.missile_type_mine'/>"
+	MissileType_Mine = "<b><string id='MissileTypes/Mine'/></b>\n\n<string id='MissileTypes/MineDesc'/>\n\nHotkey: <btn id='PartToggles.missile_type_mine'/>"
 
 	LaunchMines = "Launch Mines\n\nHotkey: <btn id='PartToggles.launch_mines_on'/>"
 	ForceStartChaingun = "Force Fire Chaingun\n\nHotkey: <btn id='PartToggles.force_fire_chaingun_on'/>"

@@ -5,6 +5,7 @@ Megaroid : <../base_ship.rules>
 	DefaultPartID = cosmoteer.megarock_1x1
 	ShipScale = 4.0
 	ImmuneToEnvDamage = true
+	AlwaysVisibleInNebulas = true
 	IsAsteroid = true
 	JunkBlocksWeaponLOS = true
 	ExternalWalls = &<megaroid_walls/external_walls.rules>

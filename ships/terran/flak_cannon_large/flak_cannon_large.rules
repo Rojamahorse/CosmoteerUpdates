@@ -1029,9 +1029,12 @@ Part : <../base_part_terran.rules>/Part
 			NameKey = "StatCategories/Flak"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/0/TotalDamage
+				DamagePerShot = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/1/TotalDamage
+				DamagePerShotVsShots = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/0/TotalDamage
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
+				DamagePerSecondVsShots = (&DamagePerShotVsShots) * (&ROF)
 				MaxDamage = [&../DamagePerShot, &../DamagePerSecond]
+				ShotDamage = [&../DamagePerShotVsShots, &../DamagePerSecondVsShots]
 				DamageArea = &~/Part/Components/BaseFlakEmitter/HitNothing/HitEffects/0/Radius
 				Salvo = [(&~/Part/Components/BaseFlakEmitter/Burst), (&~/Part/Components/Turret/FireInterval)]
 				ROF = (&~/Part/Components/BaseFlakEmitter/Burst) / (&~/Part/Components/Turret/FireInterval)

@@ -56,7 +56,7 @@ Ships
 	:~{ File="Undying Ember.ship.png";           Tier=9;  Difficulty=1; }
 	:~{ File="Astraeus.ship.png";                Tier=9;  Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Pherkad.ship.png";                 Tier=9;  Difficulty=1; Tags:~/Tags[empty_storage]; }
-	:~{ File="Inquisitor.ship.png";              Tier=9;  Difficulty=2; }
+	:~{ File="Zelator.ship.png";                 Tier=9;  Difficulty=2; OtherIDs=["Inquisitor"]; }
 	:~{ File="Catalyst.ship.png";                Tier=9;  Difficulty=2; }
 	:~{ File="Callisto.ship.png";                Tier=9;  Difficulty=2; }
 
