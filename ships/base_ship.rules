@@ -122,6 +122,7 @@ Roofs
 
 	RoofTextureSizePerTile = [64, 64]
 
+	DecalsShader = "common/decals.shader"
 	DecalSizePerTile = [64, 64]
 	DecalsAtlasParams
 	{

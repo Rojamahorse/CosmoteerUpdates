@@ -594,6 +594,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceStorage = CombinedLoadedAmmo // Needed to prevent turret from trying to fire when out of ammo.
 			ResourcesUsed = 10
 			Recoil = 240
+			AntiPhasingRaycastDistance = 2
 		}
 		Emitter1 : BaseEmitter
 		{

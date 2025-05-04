@@ -145,111 +145,55 @@ Mode : <../base_pvp.rules>
 	OfficialRulesets
 	[
 		{
-			NameKey = "DominationModeConfig/Rulesets/Small500K"
-			ShortNameKey = "DominationModeConfig/Rulesets/Small500KShort"
+			NameKey = "DominationModeConfig/Rulesets/Standard1v1"
+			ShortNameKey = "DominationModeConfig/Rulesets/Standard1v1Short"
 			Options : ~/BaseOptions
 			{
-				MapStyleIndex = 0
-				MaxFleetValue = 500000
-				TeamFunds = 250000
-				CapturePointIncome = 5000
-				BasicIncome = 5000
-			}
-		}
-		{
-			NameKey = "DominationModeConfig/Rulesets/Small1500K"
-			ShortNameKey = "DominationModeConfig/Rulesets/Small1500KShort"
-			Options : ~/BaseOptions
-			{
-				MapStyleIndex = 0
-				MaxFleetValue = 1500000
-				TeamFunds = 750000
-				CapturePointIncome = 15000
+				MapStyleIndex = 1
+				MaxFleetValue = 50000000
+				MinShipValue = 50000
+				TeamFunds = 350000
+				CapturePointIncome = 1500
 				BasicIncome = 15000
 			}
 		}
 		{
-			NameKey = "DominationModeConfig/Rulesets/Small3000K"
-			ShortNameKey = "DominationModeConfig/Rulesets/Small3000KShort"
-			Options : ~/BaseOptions
-			{
-				MapStyleIndex = 0
-				MaxFleetValue = 3000000
-				TeamFunds = 1500000
-				CapturePointIncome = 30000
-				BasicIncome = 30000
-			}
-		}
-		{
-			NameKey = "DominationModeConfig/Rulesets/Med500K"
-			ShortNameKey = "DominationModeConfig/Rulesets/Med500KShort"
+			NameKey = "DominationModeConfig/Rulesets/Standard2v2"
+			ShortNameKey = "DominationModeConfig/Rulesets/Standard2v2Short"
 			Options : ~/BaseOptions
 			{
 				MapStyleIndex = 1
-				MaxFleetValue = 500000
-				TeamFunds = 250000
+				MaxFleetValue = 50000000
+				MinShipValue = 50000
+				TeamFunds = 700000
 				CapturePointIncome = 3000
-				BasicIncome = 5000
-			}
-		}
-		{
-			NameKey = "DominationModeConfig/Rulesets/Med1500K"
-			ShortNameKey = "DominationModeConfig/Rulesets/Med1500KShort"
-			Options : ~/BaseOptions
-			{
-				MapStyleIndex = 1
-				MaxFleetValue = 1500000
-				TeamFunds = 750000
-				CapturePointIncome = 9000
-				BasicIncome = 15000
-			}
-		}
-		{
-			NameKey = "DominationModeConfig/Rulesets/Med3000K"
-			ShortNameKey = "DominationModeConfig/Rulesets/Med3000KShort"
-			Options : ~/BaseOptions
-			{
-				MapStyleIndex = 1
-				MaxFleetValue = 3000000
-				TeamFunds = 1500000
-				CapturePointIncome = 18000
 				BasicIncome = 30000
 			}
 		}
 		{
-			NameKey = "DominationModeConfig/Rulesets/Large500K"
-			ShortNameKey = "DominationModeConfig/Rulesets/Large500KShort"
+			NameKey = "DominationModeConfig/Rulesets/Large3v3"
+			ShortNameKey = "DominationModeConfig/Rulesets/Large3v3Short"
 			Options : ~/BaseOptions
 			{
 				MapStyleIndex = 2
-				MaxFleetValue = 500000
-				TeamFunds = 250000
-				CapturePointIncome = 2000
-				BasicIncome = 5000
+				MaxFleetValue = 50000000
+				MinShipValue = 50000
+				TeamFunds = 1050000
+				CapturePointIncome = 4500
+				BasicIncome = 45000
 			}
 		}
 		{
-			NameKey = "DominationModeConfig/Rulesets/Large1500K"
-			ShortNameKey = "DominationModeConfig/Rulesets/Large1500KShort"
+			NameKey = "DominationModeConfig/Rulesets/Large4v4"
+			ShortNameKey = "DominationModeConfig/Rulesets/Large4v4Short"
 			Options : ~/BaseOptions
 			{
 				MapStyleIndex = 2
-				MaxFleetValue = 1500000
-				TeamFunds = 750000
+				MaxFleetValue = 50000000
+				MinShipValue = 50000
+				TeamFunds = 1400000
 				CapturePointIncome = 6000
-				BasicIncome = 15000
-			}
-		}
-		{
-			NameKey = "DominationModeConfig/Rulesets/Large3000K"
-			ShortNameKey = "DominationModeConfig/Rulesets/Large3000KShort"
-			Options : ~/BaseOptions
-			{
-				MapStyleIndex = 2
-				MaxFleetValue = 3000000
-				TeamFunds = 1500000
-				CapturePointIncome = 12000
-				BasicIncome = 30000
+				BasicIncome = 60000
 			}
 		}
 	]

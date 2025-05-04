@@ -19,7 +19,7 @@ Part : <../base_part_terran.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	MaxHealth = 5000
-	InitialPenetrationResistance = 3
+	InitialPenetrationResistance = 1
 	ProhibitAbove = 1
 	AllowedDoorLocations
 	[
@@ -444,6 +444,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = &../Turret/Location
 			Radius = .45
 			Density = .75
+			InitialPenetrationResistance = 3
 		}
 
 		TurretGraphics
@@ -609,6 +610,7 @@ Part : <../base_part_terran.rules>/Part
 	{
 		CrewRequired = &~/Part/Components/PartCrew/Crew
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		TurretPenResist = &~/Part/Components/TurretCollider/InitialPenetrationResistance
 
 		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
 		RecCrew = (&CrewRequired) + (&RecPower) * 4

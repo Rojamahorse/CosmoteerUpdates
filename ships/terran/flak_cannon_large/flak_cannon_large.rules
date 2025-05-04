@@ -502,7 +502,7 @@ Part : <../base_part_terran.rules>/Part
 			GetTargetFrom = Turret
 			ResourceStorage = CombinedLoadedAmmo // Needed to prevent turret from trying to fire when out of ammo.
 			FireTrigger // Not optional, but don't want to actually shoot this emitter.
-			Location = [1.25, 0]
+			Location = [0.25, 0]
 			OperationalToggle = IsOperational
 			ResourcesUsed = 1
 			Recoil = 10
@@ -510,13 +510,13 @@ Part : <../base_part_terran.rules>/Part
 		}
 		FlakEmitter1 : BaseFlakEmitter
 		{
-			Location = [1.25, -.5]
+			Location = [0.25, -.5]
 			FireTrigger = ShootTrigger1
 			ResourceStorage = LoadedAmmo1
 		}
 		FlakEmitter2 : BaseFlakEmitter
 		{
-			Location = [1.25, .5]
+			Location = [0.25, .5]
 			FireTrigger = ShootTrigger2
 			ResourceStorage = LoadedAmmo2
 		}

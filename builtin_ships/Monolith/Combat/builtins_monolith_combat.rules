@@ -88,6 +88,7 @@ Ships
 	:~{ File="Arquebus.ship.png";    Tier=12; Difficulty=3; }
 	:~{ File="Haymaker.ship.png";    Tier=12; Difficulty=3; }
 	:~{ File="Impaler.ship.png";     Tier=12; Difficulty=3; }
+	:~{ File="Praetor.ship.png";     Tier=12; Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Destroyers
 	:~{ File="Warden.ship.png";      Tier=13; Difficulty=2; }
@@ -102,6 +103,8 @@ Ships
 	:~{ File="Magistrate.ship.png";  Tier=14; Difficulty=3; }
 	:~{ File="Smasher.ship.png";     Tier=14; Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Project Dainsleif.ship.png"; Tier=14; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Praetorian.ship.png";  Tier=14; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Geironul.ship.png";    Tier=14; Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Cruisers
 	:~{ File="Enforcer.ship.png";    Tier=15; Difficulty=2; }

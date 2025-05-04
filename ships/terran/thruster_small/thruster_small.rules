@@ -80,9 +80,15 @@ Part : <../base_part_terran.rules>/Part
 		BatteryProducer
 		{
 			Type = ResourceConverter
+			OperationalToggle = NonJunkToggle
 			ToStorage = BatteryStorage
 			ToQuantity = &~/Part/FuelUsage // Not a typo! See math below.
 			Interval = (&~/Part/FuelUsage) / (&~/Part/FuelRecharge)
+		}
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
 		}
 
 		PowerDistributionBuffToggle
@@ -195,49 +201,16 @@ Part : <../base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						AnimationFiles
-						[
-							"doodads_off1.png"
-							"doodads_off2.png"
-							"doodads_off3.png"
-							"doodads_off4.png"
-							"doodads_off5.png"
-							"doodads_off6.png"
-							"doodads_off7.png"
-							"doodads_off8.png"
-						]
+						File = "doodads_off.png"
 						Size = [1, 1]
-						AnimationInterval = 0.075
 					}
 					{
-						AnimationFiles
-						[
-							"doodads_off1_33.png"
-							"doodads_off2_33.png"
-							"doodads_off3_33.png"
-							"doodads_off4_33.png"
-							"doodads_off5_33.png"
-							"doodads_off6_33.png"
-							"doodads_off7_33.png"
-							"doodads_off8_33.png"
-						]
+						File = "doodads_off_33.png"
 						Size = [1, 1]
-						AnimationInterval = 0.075
 					}
 					{
-						AnimationFiles
-						[
-							"doodads_off1_66.png"
-							"doodads_off2_66.png"
-							"doodads_off3_66.png"
-							"doodads_off4_66.png"
-							"doodads_off5_66.png"
-							"doodads_off6_66.png"
-							"doodads_off7_66.png"
-							"doodads_off8_66.png"
-						]
+						File = "doodads_off_66.png"
 						Size = [1, 1]
-						AnimationInterval = 0.075
 					}
 				]
 			}
@@ -356,6 +329,34 @@ Part : <../base_part_terran.rules>/Part
 						File = "nozzle_66.png"
 						NormalsFile = "nozzle_normals.png"
 						Size = [1, 1]
+					}
+				]
+			}
+		}
+		DynamoGraphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = NonJunkToggle
+			OperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"dynamo_on1.png"
+							"dynamo_on2.png"
+							"dynamo_on3.png"
+							"dynamo_on4.png"
+							"dynamo_on5.png"
+							"dynamo_on6.png"
+							"dynamo_on7.png"
+							"dynamo_on8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.075
 					}
 				]
 			}

@@ -160,6 +160,16 @@ FlipVerticalSprite
 	}
 }
 
+InvertSprite
+{
+	Texture
+	{
+		File = "tool_invert.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
 TrashcanSprite
 {
 	Texture

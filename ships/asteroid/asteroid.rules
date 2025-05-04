@@ -22,6 +22,8 @@ Asteroid : <../base_ship.rules>
 		DefaultRoofTexture = "bumpy1"
 
 		RoofDecalGroups = &<./Data/roof_decals/roof_decals.rules>/Groups
+		RoofDecalDefaultSizes = &<./Data/roof_decals/roof_decals.rules>/DefaultSizes
+		RoofDecalUpgrades = &<./Data/roof_decals/roof_decals.rules>/Upgrades
 
 		DefaultBaseColor
 		{

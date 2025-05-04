@@ -857,6 +857,11 @@ Inputs
 		RotateRight = "Rotate Parts/Decals Right"
 		FlipX = "Flip Parts/Decals Horiz."
 		FlipY = "Flip Parts/Decals Vert."
+		Invert = "Invert Decal Transparency"
+		IncreaseDecalWidth = "Increase Decal Width"
+		DecreaseDecalWidth = "Decrease Decal Width"
+		IncreaseDecalHeight = "Increase Decal Height"
+		DecreaseDecalHeight = "Decrease Decal Height"
 		Undo = "Undo"
 		Redo = "Redo"
 		ShowStats = "Show Part Statistics"
@@ -2785,24 +2790,14 @@ DominationModeConfig : PvpModeConfig
 
 	Rulesets
 	{
-		Small500K = "Small Map - 500K"
-		Small1500K = "Small Map - 1.5M"
-		Small3000K = "Small Map - 3M"
-		Med500K = "Standard Map - 500K"
-		Med1500K = "Standard Map - 1.5M"
-		Med3000K = "Standard Map - 3M"
-		Large500K = "Large Map - 500K"
-		Large1500K = "Large Map - 1.5M"
-		Large3000K = "Large Map - 3M"
-		Small500KShort = "SML\n500K"
-		Small1500KShort = "SML\n1.5M"
-		Small3000KShort = "SML\n3M"
-		Med500KShort = "STA\n500K"
-		Med1500KShort = "STA\n1.5M"
-		Med3000KShort = "STA\n3M"
-		Large500KShort = "LRG\n500K"
-		Large1500KShort = "LRG\n1.5M"
-		Large3000KShort = "LRG\n3M"
+		Standard1v1 = "1v1 - Standard"
+		Standard2v2 = "2v2 - Standard"
+		Large3v3 = "3v3 - Large"
+		Large4v4 = "4v4 - Large"
+		Standard1v1Short = "STA\n1v1"
+		Standard2v2Short = "STA\n2v2"
+		Large3v3Short = "LRG\n3v3"
+		Large4v4Short = "LRG\n4v4"
 	}
 }
 
@@ -3379,8 +3374,14 @@ PaintBox
 	RotateRightTip = "Rotate clockwise.\n\nHotkey: <btn id='Design.RotateRight'/>"
 	FlipXTip = "Flip horizontally.\n\nHotkey: <btn id='Design.FlipX'/>"
 	FlipYTip = "Flip vertically.\n\nHotkey: <btn id='Design.FlipY'/>"
+	InvertTip = "Invert Transparency.\n\nHotkey: <btn id='Design.Invert'/>"
 	DeleteDecalTip = "Deletes the held decal.\n\nHotkey: <btn id='Design.Delete'/>"
-
+	DecalSizeFmt = "{0}x{1}"
+	DecalSizeTip = "Stretch/scale.\n\n"\
+	               "Increase Width: <btn id='Design.IncreaseDecalWidth'/>\n"\
+	               "Decrease Width: <btn id='Design.DecreaseDecalWidth'/>\n"\
+	               "Increase Height: <btn id='Design.IncreaseDecalHeight'/>\n"\
+	               "Decrease Height: <btn id='Design.DecreaseDecalHeight'/>"
 	CopyTip = "Copy selected decals.\n\nHotkey: <btn id='Design.CopySelected'/>"
 	CutTip = "Cut (copy and remove) selected decals.\n\nHotkey: <btn id='Design.CutSelected'/>"
 	DeleteTip = "Delete selected decals.\n\nHotkey: <btn id='Design.Delete'/>"
@@ -3752,6 +3753,7 @@ Dialogue
 	Surrender
 	{
 		PlayerSurrenderDialogue = "<b>{0}:</b> <i>\"You are outmatched! Surrender now and pay us <money>{1:n0}</money>... or die!\"</i>"
+		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>\"Surrender now and pay us <money>{1:n0}</money>... or die!\"</i>"
 		AISurrenderDialogue = "<b>{0}:</b> <i>\"We surrender! If you promise not to destroy us, we'll pay you <money>{1:n0}</money>!\"</i>"
 		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>\"Fugitive, the {2} has issued a bounty of <money>{1:n0}</money> for your destruction. Pay it now, or prepare to be destroyed.\"</i>"
 		PlayerSurrender = "<i>\"We surrender!\"</i> (Pay <money>{0:n0}</money>)"
@@ -3813,14 +3815,12 @@ EditorGroups
 
 DecalGroups
 {
-	Straights = "Straights"
-	Curves = "Curves"
-	Fades = "Fades"
-	Symbols = "Symbols"
-	TextSmall = "Text (1x1)"
-	TextLarge = "Text (2x2)"
-	TextSmallIcon = "<s14>1x1</s14>"
-	TextLargeIcon = "<s14>2x2</s14>"
+	Straights = "Basic Straights"
+	Curves = "Basic Curves"
+	Fades = "Basic Fades"
+	Shapes = "Complex Shapes"
+	Icons = "Symbols & Icons"
+	Text = "Text"
 }
 
 CategoryNouns

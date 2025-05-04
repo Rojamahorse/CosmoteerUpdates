@@ -40,44 +40,254 @@ Groups
 		}
 	}
 	{
-		Folders = ["symbols"]
-		NameKey = "DecalGroups/Symbols"
+		Folders = ["shapes"]
+		NameKey = "DecalGroups/Shapes"
 		Icon
 		{
 			Texture
 			{
-				File = "symbols.png"
+				File = "shapes.png"
 				MipLevels = 2
 				SampleMode = Linear
 			}
 		}
 	}
 	{
-		Folders = ["text_small"]
-		NameKey = "DecalGroups/TextSmall"
-		IconTextKey = "DecalGroups/TextSmallIcon"
+		Folders = ["icons"]
+		NameKey = "DecalGroups/Icons"
 		Icon
 		{
 			Texture
 			{
-				File = "text_small.png"
+				File = "icons.png"
 				MipLevels = 2
 				SampleMode = Linear
 			}
 		}
 	}
 	{
-		Folders = ["text_large"]
-		NameKey = "DecalGroups/TextLarge"
-		IconTextKey = "DecalGroups/TextLargeIcon"
+		Folders = ["text"]
+		NameKey = "DecalGroups/Text"
 		Icon
 		{
 			Texture
 			{
-				File = "text_large.png"
+				File = "text.png"
 				MipLevels = 2
 				SampleMode = Linear
 			}
 		}
 	}
 ]
+
+DefaultSizes
+{
+	faction_cabal = [2,2]
+	faction_fringe = [2,2]
+	faction_imperium = [2,2]
+	faction_monolith = [2,2]
+
+	icon_biohazard = [2,2]
+	icon_nuclear = [2,2]
+	icon_omega = [1,1]
+	icon_smiley = [1,1]
+	icon_star = [1,1]
+	icon_yinyang = [2,2]
+}
+
+// These are used to upgrade old decals in old saved games and ships into new decals.
+Upgrades
+{
+	plain01 =    { ID="box"; Rot0Size=[1,1]; }
+	plain02 =    { ID="triangle_half"; Rot0Size=[1,1]; }
+	plain03 =    { ID="triangle_quarter"; Rot0Size=[1,1]; Rotation=1; }
+	plain04 =    { ID="triangle_quarter"; Rot0Size=[1,1]; Rotation=2; Invert=true; }
+	plain05 =    { ID="triangle_quarter_double"; Rot0Size=[1,1]; Rotation=1; }
+	plain06 =    { ID="box_half"; Rot0Size=[1,1]; }
+	plain07 =    { ID="box_quarter"; Rot0Size=[1,1]; }
+	plain08 =    { ID="box_quarter_double"; Rot0Size=[1,1]; }
+	plain09 =    { ID="box_quarter"; Rot0Size=[1,1]; Rotation=3; Invert=true; }
+	plain10 =    { ID="triangle_half"; Rot0Size=[1,2]; FlipX=true; }
+	plain10b =   { ID="triangle_half"; Rot0Size=[1,3]; FlipX=true; }
+	plain11 =    { ID="triangle_half"; Rot0Size=[1,2]; }
+	plain11b =   { ID="triangle_half"; Rot0Size=[1,3]; }
+	plain12 =    { ID="triangle_eighth"; Rot0Size=[1,1]; }
+	plain12_00 = { ID="triangle_eighth_offset"; Rot0Size=[1,1]; }
+	plain12_01 = { ID="triangle_eighth"; Rot0Size=[1,1]; Invert=true; }
+	plain13 =    { ID="triangle_eighth_twin"; Rot0Size=[1,1]; }
+	plain13_01 = { ID="triangle_eighth_twin"; Rot0Size=[1,1]; Invert=true; }
+	plain14 =    { ID="triangle_eighth_triple"; Rot0Size=[1,1]; }
+	plain15 =    { ID="triangle_eighth_quad"; Rot0Size=[1,1]; }
+	plain16 =    { ID="triangle_eighth_double"; Rot0Size=[1,1]; }
+	plain17 =    { ID="triangle_eighth_quad"; Rot0Size=[1,1]; Invert=true; }
+	plain18 =    { ID="box_quarter_triangle_eighth"; Rot0Size=[1,1]; Rotation=3; FlipX=true; Invert=true; }
+	plain19 =    { ID="box_quarter_triangle_eighth"; Rot0Size=[1,1]; Rotation=3; FlipX=true; }
+	plain20 =    { ID="triangle_eighth_double"; Rot0Size=[1,1]; Invert=true; }
+	plain20_01 = { ID="stripe_diagonal"; Rot0Size=[1,1]; }
+	plain21 =    { ID="triangle_eighth_offset"; Rot0Size=[1,1]; Rotation=1; FlipX=true; Invert=true; }
+	plain22 =    { ID="box_quarter_stripe_diagonal"; Rot0Size=[1,1]; Rotation=1; }
+	plain23 =    { ID="stripe_diagonal"; Rot0Size=[1,1]; Rotation=2; Invert=true; }
+	plain24 =    { ID="stripe_diagonal_double"; Rot0Size=[1,1]; }
+	plain25 =    { ID="box_quarter_triangle_eighth_flipped"; Rot0Size=[1,1]; Rotation=1; }
+	plain26 =    { ID="triangle_wedge"; Rot0Size=[1,1]; Rotation=3; FlipX=true; Invert=true; }
+	plain27 =    { ID="stripe_diagonal_half"; Rot0Size=[1,1]; Rotation=3; FlipX=true; }
+	plain28 =    { ID="box_half_stripe_diagonal"; Rot0Size=[1,1]; Rotation=2; }
+	plain29 =    { ID="triangle_wedge_double"; Rot0Size=[1,1]; Rotation=1; FlipX=true; }
+	plain30 =    { ID="box_quarter_triangle_eighth_flipped"; Rot0Size=[1,1]; Rotation=2; Invert=true; }
+	plain37 =    { ID="triangle_tall"; Rot0Size=[1,1]; Rotation=3; }
+	plain38 =    { ID="triangle_tall"; Rot0Size=[1,1]; Rotation=3; Invert=true; }
+	plain48 =    { ID="triangle_wedge"; Rot0Size=[1,1]; FlipX=true; }
+	plain49 =    { ID="triangle_wedge_double"; Rot0Size=[1,1]; FlipX=true; Invert=true; }
+	plain50 =    { ID="triangle_wedge_offset"; Rot0Size=[1,1]; Rotation=2; FlipX=true; Invert=true; }
+	plain51 =    { ID="triangle_wedge_offset"; Rot0Size=[1,1]; FlipX=true; }
+	plain52 =    { ID="cutter_1_offset"; Rot0Size=[1,1]; }
+	plain53 =    { ID="cutter_2_offset"; Rot0Size=[1,1]; }
+	plain54 =    { ID="cutter_3_offset"; Rot0Size=[1,1]; }
+	plain55 =    { ID="cutter_4_offset"; Rot0Size=[1,1]; }
+	plain56 =    { ID="cutter_1"; Rot0Size=[1,1]; }
+	plain57 =    { ID="cutter_2"; Rot0Size=[1,1]; }
+	plain58 =    { ID="cutter_3"; Rot0Size=[1,1]; }
+	plain59 =    { ID="cutter_4"; Rot0Size=[1,1]; }
+	plain60 =    { ID="cutter_1_offset"; Rot0Size=[1,1]; Invert=true; }
+	plain61 =    { ID="cutter_2_offset"; Rot0Size=[1,1]; Invert=true; }
+	plain62 =    { ID="cutter_3_offset"; Rot0Size=[1,1]; Invert=true; }
+	plain63 =    { ID="cutter_4_offset"; Rot0Size=[1,1]; Invert=true; }
+	plain64 =    { ID="cutter_1"; Rot0Size=[1,1]; Invert=true; }
+	plain65 =    { ID="cutter_2"; Rot0Size=[1,1]; Invert=true; }
+	plain66 =    { ID="cutter_3"; Rot0Size=[1,1]; Invert=true; }
+	plain67 =    { ID="cutter_4"; Rot0Size=[1,1]; Invert=true; }
+	plain68 =    { ID="box_quarter_stripe_diagonal"; Rot0Size=[1,1]; Rotation=1; Invert=true; }
+
+	curved01 = { ID="circle"; Rot0Size=[1,1]; }
+	curved02 = { ID="arc_90"; Rot0Size=[1,1]; }
+	curved03 = { ID="arc_180"; Rot0Size=[1,1]; }
+	curved04 = { ID="arc_180"; Rot0Size=[1,1]; Rotation=1; Invert=true; }
+	curved05 = { ID="arc_180_double"; Rot0Size=[1,1]; }
+	curved06 = { ID="arc_180_double"; Rot0Size=[1,1]; Rotation=1; Invert=true; }
+	curved07 = { ID="arc_90"; Rot0Size=[1,1]; Rotation=2; Invert=true; }
+	curved08 = { ID="box_rounded_twin_reversed"; Rot0Size=[1,1]; Rotation=3; Invert=true; }
+	curved09 = { ID="box_rounded_twin"; Rot0Size=[1,1]; }
+	curved10 = { ID="box_rounded_triple"; Rot0Size=[1,1]; }
+	curved11 = { ID="arc_90_small"; Rot0Size=[1,1]; }
+	curved12 = { ID="arc_90_small_twin"; Rot0Size=[1,1]; }
+	curved13 = { ID="arc_90_small_triple"; Rot0Size=[1,1]; }
+	curved14 = { ID="arc_90_small_quad"; Rot0Size=[1,1]; }
+	curved15 = { ID="arc_90_small_double"; Rot0Size=[1,1]; }
+	curved16 = { ID="arc_90_small_quad"; Rot0Size=[1,1]; Invert=true; }
+
+	fade00 =       { ID="fade_triangle_half_empty"; Rot0Size=[1,1]; }
+	fade00b =      { ID="fade_corner_straight"; Rot0Size=[1,1]; }
+	fade00_01 =    { ID="fade_triangle_half_filled"; Rot0Size=[1,1]; }
+	fade00c =      { ID="fade_triangle_half_corner_straight"; Rot0Size=[1,1]; }
+	fade00d_01 =   { ID="fade_triangle_half_empty"; Rot0Size=[1,2]; }
+	fade00d_02 =   { ID="fade_triangle_half_filled"; Rot0Size=[1,2]; }
+	fade00d_12 =   { ID="fade_corner_straight"; Rot0Size=[1,2]; }
+	fade00e_01 =   { ID="fade_triangle_half_empty"; Rot0Size=[1,3]; }
+	fade00e_02 =   { ID="fade_triangle_half_filled"; Rot0Size=[1,3]; }
+	fade00e_12 =   { ID="fade_corner_straight"; Rot0Size=[1,3]; }
+	fade00_04_02 = { ID="fade_triangle_quarter_empty"; Rot0Size=[1,1]; Rotation=2; }
+	fade00_04_03 = { ID="fade_triangle_quarter_tip"; Rot0Size=[1,1]; Rotation=2; }
+	fade00_04_05 = { ID="fade_corner_straight_twin"; Rot0Size=[1,1]; }
+	fade01 =       { ID="fade_corner"; Rot0Size=[1,1]; Rotation=2; Invert=true; }
+	fade02 =       { ID="fade_straight"; Rot0Size=[1,1]; }
+	fade03 =       { ID="fade_corner"; Rot0Size=[1,1]; }
+	fade04 =       { ID="fade_corner_double"; Rot0Size=[1,1]; }
+	fade05 =       { ID="fade_straight_half"; Rot0Size=[1,1]; }
+	fade06 =       { ID="fade_straight_half"; Rot0Size=[1,1]; FlipX=true; Invert=true; }
+	fade07 =       { ID="fade_straight_triangle_half_empty"; Rot0Size=[1,1]; Rotation=1; FlipX=true; }
+	fade08 =       { ID="fade_straight_triangle_half"; Rot0Size=[1,1]; Rotation=1; FlipX=true; }
+
+	faction_cabal_small =    { ID="faction_cabal"; Rot0Size=[1,1]; }
+	faction_fringe_small =   { ID="faction_fringe"; Rot0Size=[1,1]; }
+	faction_imperium_small = { ID="faction_imperium"; Rot0Size=[1,1]; }
+	faction_monolith_small = { ID="faction_monolith"; Rot0Size=[1,1]; }
+
+	icon_skull1 = { ID="icon_skull"; Rot0Size=[1,1]; }
+	icon_skull2 = { ID="icon_skull"; Rot0Size=[2,2]; }
+
+	text_0 =       { ID="number_0"; Rot0Size=[1,1]; }
+	text_large_0 = { ID="number_0"; Rot0Size=[2,2]; }
+	text_1 =       { ID="number_1"; Rot0Size=[1,1]; }
+	text_large_1 = { ID="number_1"; Rot0Size=[2,2]; }
+	text_2 =       { ID="number_2"; Rot0Size=[1,1]; }
+	text_large_2 = { ID="number_2"; Rot0Size=[2,2]; }
+	text_3 =       { ID="number_3"; Rot0Size=[1,1]; }
+	text_large_3 = { ID="number_3"; Rot0Size=[2,2]; }
+	text_4 =       { ID="number_4"; Rot0Size=[1,1]; }
+	text_large_4 = { ID="number_4"; Rot0Size=[2,2]; }
+	text_5 =       { ID="number_5"; Rot0Size=[1,1]; }
+	text_large_5 = { ID="number_5"; Rot0Size=[2,2]; }
+	text_6 =       { ID="number_6"; Rot0Size=[1,1]; }
+	text_large_6 = { ID="number_6"; Rot0Size=[2,2]; }
+	text_7 =       { ID="number_7"; Rot0Size=[1,1]; }
+	text_large_7 = { ID="number_7"; Rot0Size=[2,2]; }
+	text_8 =       { ID="number_8"; Rot0Size=[1,1]; }
+	text_large_8 = { ID="number_8"; Rot0Size=[2,2]; }
+	text_9 =       { ID="number_9"; Rot0Size=[1,1]; }
+	text_large_9 = { ID="number_9"; Rot0Size=[2,2]; }
+	text_a =       { ID="letter_a"; Rot0Size=[1,1]; }
+	text_large_a = { ID="letter_a"; Rot0Size=[2,2]; }
+	text_b =       { ID="letter_b"; Rot0Size=[1,1]; }
+	text_large_b = { ID="letter_b"; Rot0Size=[2,2]; }
+	text_c =       { ID="letter_c"; Rot0Size=[1,1]; }
+	text_large_c = { ID="letter_c"; Rot0Size=[2,2]; }
+	text_d =       { ID="letter_d"; Rot0Size=[1,1]; }
+	text_large_d = { ID="letter_d"; Rot0Size=[2,2]; }
+	text_e =       { ID="letter_e"; Rot0Size=[1,1]; }
+	text_large_e = { ID="letter_e"; Rot0Size=[2,2]; }
+	text_f =       { ID="letter_f"; Rot0Size=[1,1]; }
+	text_large_f = { ID="letter_f"; Rot0Size=[2,2]; }
+	text_g =       { ID="letter_g"; Rot0Size=[1,1]; }
+	text_large_g = { ID="letter_g"; Rot0Size=[2,2]; }
+	text_h =       { ID="letter_h"; Rot0Size=[1,1]; }
+	text_large_h = { ID="letter_h"; Rot0Size=[2,2]; }
+	text_i =       { ID="letter_i"; Rot0Size=[1,1]; }
+	text_large_i = { ID="letter_i"; Rot0Size=[2,2]; }
+	text_j =       { ID="letter_j"; Rot0Size=[1,1]; }
+	text_large_j = { ID="letter_j"; Rot0Size=[2,2]; }
+	text_k =       { ID="letter_k"; Rot0Size=[1,1]; }
+	text_large_k = { ID="letter_k"; Rot0Size=[2,2]; }
+	text_l =       { ID="letter_l"; Rot0Size=[1,1]; }
+	text_large_l = { ID="letter_l"; Rot0Size=[2,2]; }
+	text_m =       { ID="letter_m"; Rot0Size=[1,1]; }
+	text_large_m = { ID="letter_m"; Rot0Size=[2,2]; }
+	text_n =       { ID="letter_n"; Rot0Size=[1,1]; }
+	text_large_n = { ID="letter_n"; Rot0Size=[2,2]; }
+	text_o =       { ID="letter_o"; Rot0Size=[1,1]; }
+	text_large_o = { ID="letter_o"; Rot0Size=[2,2]; }
+	text_p =       { ID="letter_p"; Rot0Size=[1,1]; }
+	text_large_p = { ID="letter_p"; Rot0Size=[2,2]; }
+	text_q =       { ID="letter_q"; Rot0Size=[1,1]; }
+	text_large_q = { ID="letter_q"; Rot0Size=[2,2]; }
+	text_r =       { ID="letter_r"; Rot0Size=[1,1]; }
+	text_large_r = { ID="letter_r"; Rot0Size=[2,2]; }
+	text_s =       { ID="letter_s"; Rot0Size=[1,1]; }
+	text_large_s = { ID="letter_s"; Rot0Size=[2,2]; }
+	text_t =       { ID="letter_t"; Rot0Size=[1,1]; }
+	text_large_t = { ID="letter_t"; Rot0Size=[2,2]; }
+	text_u =       { ID="letter_u"; Rot0Size=[1,1]; }
+	text_large_u = { ID="letter_u"; Rot0Size=[2,2]; }
+	text_v =       { ID="letter_v"; Rot0Size=[1,1]; }
+	text_large_v = { ID="letter_v"; Rot0Size=[2,2]; }
+	text_w =       { ID="letter_w"; Rot0Size=[1,1]; }
+	text_large_w = { ID="letter_w"; Rot0Size=[2,2]; }
+	text_x =       { ID="letter_x"; Rot0Size=[1,1]; }
+	text_large_x = { ID="letter_x"; Rot0Size=[2,2]; }
+	text_y =       { ID="letter_y"; Rot0Size=[1,1]; }
+	text_large_y = { ID="letter_y"; Rot0Size=[2,2]; }
+	text_z =       { ID="letter_z"; Rot0Size=[1,1]; }
+	text_large_z = { ID="letter_z"; Rot0Size=[2,2]; }
+
+	text2_and =               { ID="symbol_and"; Rot0Size=[1,1]; }
+	text2_large_and =         { ID="symbol_and"; Rot0Size=[2,2]; }
+	text2_comma =             { ID="symbol_comma"; Rot0Size=[1,1]; }
+	text2_large_comma =       { ID="symbol_comma"; Rot0Size=[2,2]; }
+	text2_dash =              { ID="symbol_dash"; Rot0Size=[1,1]; }
+	text2_large_dash =        { ID="symbol_dash"; Rot0Size=[2,2]; }
+	text2_dot =               { ID="symbol_dot"; Rot0Size=[1,1]; }
+	text2_large_dot =         { ID="symbol_dot"; Rot0Size=[2,2]; }
+	text2_exclamation =       { ID="symbol_exclamation"; Rot0Size=[1,1]; }
+	text2_large_exclamation = { ID="symbol_exclamation"; Rot0Size=[2,2]; }
+	text2_question =          { ID="symbol_question"; Rot0Size=[1,1]; }
+	text2_large_question =    { ID="symbol_question"; Rot0Size=[2,2]; }
+}

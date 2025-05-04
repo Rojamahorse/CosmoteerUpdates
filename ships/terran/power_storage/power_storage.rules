@@ -9,7 +9,7 @@ Part : <../base_part_terran.rules>/Part
 	Resources
 	[
 		[steel, 32]
-		[coil, 32]
+		[coil, 22]
 	]
 	Size = [2, 2]
 	FlipHRotate = [0, 1, 2, 3] // Disable flipping UI.
@@ -48,7 +48,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 18000
+			MaxResources = 24000
 			StartingResources = 0
 			SuppliesResources = true
 			SuppliesResourcesToggle = PowerToggle
@@ -227,27 +227,33 @@ Part : <../base_part_terran.rules>/Part
 			[
 				{
 					File = "batteries1.png"
-					Size = [2, 2]
+					Size = [1, 1]
+					Offset = [-0.5,-0.5]
 				}
 				{
 					File = "batteries2.png"
-					Size = [2, 2]
+					Size = [2, 1]
+					Offset = [0,-0.5]
 				}
 				{
 					File = "batteries3.png"
-					Size = [2, 2]
+					Size = [2, 1]
+					Offset = [0,-0.5]
 				}
 				{
 					File = "batteries4.png"
-					Size = [2, 2]
+					Size = [2, 1]
+					Offset = [0,-0.5]
 				}
 				{
 					File = "batteries5.png"
-					Size = [2, 2]
+					Size = [2, 1]
+					Offset = [0,-0.5]
 				}
 				{
 					File = "batteries6.png"
-					Size = [2, 2]
+					Size = [2, 1]
+					Offset = [0,-0.5]
 				}
 				{
 					File = "batteries7.png"
@@ -295,6 +301,30 @@ Part : <../base_part_terran.rules>/Part
 				}
 				{
 					File = "batteries18.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries19.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries20.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries21.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries22.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries23.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries24.png"
 					Size = [2, 2]
 				}
 			]

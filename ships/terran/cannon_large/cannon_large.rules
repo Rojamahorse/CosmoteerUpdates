@@ -366,6 +366,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceStorage = LoadedAmmo
 			ResourcesUsed = 4
 			Recoil = 80
+			AntiPhasingRaycastDistance = 2
 		}
 
 		FireEffect

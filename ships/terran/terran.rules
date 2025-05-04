@@ -703,6 +703,8 @@ Terran : <../base_ship.rules>
 		DefaultRoofTexture = "_none_"
 
 		RoofDecalGroups = &<./Data/roof_decals/roof_decals.rules>/Groups
+		RoofDecalDefaultSizes = &<./Data/roof_decals/roof_decals.rules>/DefaultSizes
+		RoofDecalUpgrades = &<./Data/roof_decals/roof_decals.rules>/Upgrades
 	}
 
 	Fire : <../base_ship.rules>/Fire

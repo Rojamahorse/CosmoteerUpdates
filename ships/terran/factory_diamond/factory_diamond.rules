@@ -16,6 +16,14 @@ Part : <../base_part_terran.rules>/Part
 	MaxHealth = 6000
 	TypeCategories = [provides_diamonds, uses_carbon, uses_power]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
+	BlockedTravelCells
+	[
+		[0, 0]
+		[1, 0]
+		[0, 1]
+		[1, 1]
+	]
+	ForceManhattanPathInPart = true
 	AllowedDoorLocations
 	[
 		[-1, 2]
