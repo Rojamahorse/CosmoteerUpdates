@@ -858,6 +858,8 @@ Inputs
 		FlipX = "Flip Parts/Decals Horiz."
 		FlipY = "Flip Parts/Decals Vert."
 		Invert = "Invert Decal Transparency"
+		OpenDecalResizer = "Open Decal Resizer"
+		CloseDecalResizer = "Close Decal Resizer"
 		IncreaseDecalWidth = "Increase Decal Width"
 		DecreaseDecalWidth = "Decrease Decal Width"
 		IncreaseDecalHeight = "Increase Decal Height"
@@ -3378,6 +3380,7 @@ PaintBox
 	DeleteDecalTip = "Deletes the held decal.\n\nHotkey: <btn id='Design.Delete'/>"
 	DecalSizeFmt = "{0}x{1}"
 	DecalSizeTip = "Stretch/scale.\n\n"\
+	               "Hotkey: <btn id='Design.OpenDecalResizer'/>\n"\
 	               "Increase Width: <btn id='Design.IncreaseDecalWidth'/>\n"\
 	               "Decrease Width: <btn id='Design.DecreaseDecalWidth'/>\n"\
 	               "Increase Height: <btn id='Design.IncreaseDecalHeight'/>\n"\
@@ -3389,6 +3392,7 @@ PaintBox
 	CancelPasteTip = "Cancel and return to selection mode.\n\nHotkey: <btn id='General.Cancel'/>"
 	NoDecalsSelected = "No decals selected."
 	NoDecalsCopied = "No decals have been copied yet."
+	ResetDecal = "Reset"
 }
 
 MirrorAxis
@@ -3805,12 +3809,12 @@ EditorGroups
 	Rock = "Basic Rock"
 	ResourcesCommon = "Common Resources"
 	ResourcesRare = "Rare Resources"
-	Favorites1 = "Favorites 1"
-	Favorites2 = "Favorites 2"
-	Favorites3 = "Favorites 3"
-	Favorites1Icon = "1"
-	Favorites2Icon = "2"
-	Favorites3Icon = "3"
+	Favorites1 = "Favorites A"
+	Favorites2 = "Favorites B"
+	Favorites3 = "Favorites C"
+	Favorites1Icon = "A"
+	Favorites2Icon = "B"
+	Favorites3Icon = "C"
 }
 
 DecalGroups

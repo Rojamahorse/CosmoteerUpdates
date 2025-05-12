@@ -595,6 +595,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourcesUsed = 10
 			Recoil = 240
 			AntiPhasingRaycastDistance = 2
+			AntiPhasingRaycastIgnoreLowCollisions = true
 		}
 		Emitter1 : BaseEmitter
 		{
