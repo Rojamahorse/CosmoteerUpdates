@@ -1,4 +1,14 @@
-Part : <../base_part_terran.rules>/Part
+OVERCLOCK
+{
+	HEAT_PER_SECOND = 30
+	HEAT_PER_SHOT = 300
+	FIRE_RATE_FACTOR = 200%
+	POWER_USE_FACTOR = (&~/EMITTER_BASE_OVERCLOCK/OVERCLOCK/DAMAGE_FACTOR)
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/LaserBlasterLarge"
 	IconNameKey = "Parts/LaserBlasterLargeIcon"
@@ -12,6 +22,7 @@ Part : <../base_part_terran.rules>/Part
 		[coil2, 4]
 	]
 	TypeCategories = [weapon, uses_power, is_crewed]
+	SignificanceToggle = ScorchedToggle
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	Size = [2, 5]
 	PhysicalRect = [0, 2, 2, 3]
@@ -42,7 +53,14 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -54,10 +72,18 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 4
 		}
 
@@ -87,6 +113,31 @@ Part : <../base_part_terran.rules>/Part
 			ToggleID = "fire_alternating"
 			Default = 0
 		}
+		
+		IsFireSynchronised_NonOverclock
+		{
+			Type = MultiToggle
+			Toggles = [ FireAlternatingToggle, IsOverclocked ]
+			Mode = None
+		}
+		IsFireSynchronised_Overclock
+		{
+			Type = MultiToggle
+			Toggles = [ {Toggle=FireAlternatingToggle; Invert=true}, IsOverclocked ]
+			Mode = All
+		}
+		IsFireAlternating_NonOverclock
+		{
+			Type = MultiToggle
+			Toggles = [ FireAlternatingToggle, {Toggle=IsOverclocked; Invert=true} ]
+			Mode = All
+		}
+		IsFireAlternating_Overclock
+		{
+			Type = MultiToggle
+			Toggles = [ FireAlternatingToggle, IsOverclocked ]
+			Mode = All
+		}
 
 		BatteryStorage
 		{
@@ -105,6 +156,77 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = PowerToggle
 		}
 
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+		
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+		
+		OverheatEffects : ^/0/OverheatEffects
+		{
+			Location = [1, 3.5]
+		}
+
+		Overclock_ConstantHeatProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperationalOverclocked
+			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/HEAT_PER_SECOND) * (&Interval))
+			ToQuantity = (&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
+			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Interval = 0.5
+		}
+		Overclock_ShotHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_EmissionTriggered
+			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
+		}
+		
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Simple
+					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
+					Routes
+					[
+						[&../../HEAT_INPUT, Port_Thermal_Left, 0]
+						[&../../HEAT_INPUT, Port_Thermal_LeftDown, 0]
+						[&../../HEAT_INPUT, Port_Thermal_RightDown, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right, 0]
+					]
+				}
+			]
+		}
+
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 4]
+			Direction = Left
+		}
+		Port_Thermal_LeftDown : Port_Thermal_Left
+		{
+			Direction = Down
+		}
+		Port_Thermal_RightDown : Port_Thermal_Right
+		{
+			Direction = Down
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Location = [1, 4]
+			Direction = Right
+		}
+		
 		TurretHolder_Graphics
 		{
 			Type = Graphics
@@ -322,8 +444,8 @@ Part : <../base_part_terran.rules>/Part
 			RotateSpeed = 45d
 			FireThresholdAngle = 1d
 			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamagePerSecond
-			Emitter = BulletEmitterBase // Doesn't actually fire; only used for targeting.
-			HoldTargetAfterCancel = &../BulletEmitterBase/FireDelay
+			Emitter = EmitterBaseProxy // Doesn't actually fire; only used for targeting.
+			HoldTargetAfterCancel = &../NonOverclockedComponents/Components/EmitterBase/FireDelay
 			AutoTargetCrewSafetyDist = 8
 
 			AutoTargets
@@ -358,23 +480,6 @@ Part : <../base_part_terran.rules>/Part
 			Invert = true
 			Components
 			{
-				FireTimer
-				{
-					Type = Timer
-					OperationalToggle = IsOperational
-					Duration = 1.125
-					AutoStart = true
-					StartTrigger = Turret
-				}
-
-				ReloadProgressBar
-				{
-					Type = ProgressBar
-					OperationalToggle = IsOperational
-					ShowProgressFor = FireTimer
-					Invert = true
-				}
-
 				ShootLeftTrigger
 				{
 					Type = TriggerProxy
@@ -388,18 +493,17 @@ Part : <../base_part_terran.rules>/Part
 				}
 			}
 		}
-
-		ShootAlternatingComponents
+		ShootSynchronizedComponents_NonOverclocked
 		{
 			Type = ToggledComponents
-			Toggle = FireAlternatingToggle
+			Toggle = IsFireSynchronised_NonOverclock
 			Components
 			{
 				FireTimer
 				{
 					Type = Timer
 					OperationalToggle = IsOperational
-					Duration = 0.5625
+					Duration = 2.25
 					AutoStart = true
 					StartTrigger = Turret
 				}
@@ -411,7 +515,40 @@ Part : <../base_part_terran.rules>/Part
 					ShowProgressFor = FireTimer
 					Invert = true
 				}
+			}
+		}
+		ShootSynchronizedComponents_Overclocked
+		{
+			Type = ToggledComponents
+			Toggle = IsFireSynchronised_Overclock
+			Components
+			{
+				FireTimer
+				{
+					Type = Timer
+					OperationalToggle = IsOperational
+					DURATION_BASE = (&~/Part/Components/ShootSynchronizedComponents_NonOverclocked/Components/FireTimer/Duration)
+					Duration = (&DURATION_BASE) / (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+					AutoStart = true
+					StartTrigger = Turret
+				}
 
+				ReloadProgressBar
+				{
+					Type = ProgressBar
+					OperationalToggle = IsOperational
+					ShowProgressFor = FireTimer
+					Invert = true
+				}
+			}
+		}
+
+		ShootAlternatingComponents
+		{
+			Type = ToggledComponents
+			Toggle = FireAlternatingToggle
+			Components
+			{
 				ShootCycle
 				{
 					Type = ModeCycle
@@ -433,6 +570,55 @@ Part : <../base_part_terran.rules>/Part
 					Mode = ShootCycle
 					TriggerInModes = [1]
 					OperationalToggle = FireAlternatingToggle
+				}
+			}
+		}
+		ShootAlternatingComponents_NonOverclocked
+		{
+			Type = ToggledComponents
+			Toggle = IsFireAlternating_NonOverclock
+			Components
+			{
+				FireTimer
+				{
+					Type = Timer
+					OperationalToggle = IsOperational
+					Duration = 1.125
+					AutoStart = true
+					StartTrigger = Turret
+				}
+
+				ReloadProgressBar
+				{
+					Type = ProgressBar
+					OperationalToggle = IsOperational
+					ShowProgressFor = FireTimer
+					Invert = true
+				}
+			}
+		}
+		ShootAlternatingComponents_Overclocked
+		{
+			Type = ToggledComponents
+			Toggle = IsFireAlternating_Overclock
+			Components
+			{
+				FireTimer
+				{
+					Type = Timer
+					OperationalToggle = IsOperational
+					DURATION_BASE = (&~/Part/Components/ShootAlternatingComponents_NonOverclocked/Components/FireTimer/Duration)
+					Duration = (&DURATION_BASE) / (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+					AutoStart = true
+					StartTrigger = Turret
+				}
+
+				ReloadProgressBar
+				{
+					Type = ProgressBar
+					OperationalToggle = IsOperational
+					ShowProgressFor = FireTimer
+					Invert = true
 				}
 			}
 		}
@@ -461,37 +647,111 @@ Part : <../base_part_terran.rules>/Part
 			ComponentID = ShootRightTrigger
 		}
 
-		BulletEmitterBase // Doesn't actually fire; only used for targeting and as a base for the left and right emitters.
+		// Bullet emitters
+		NonOverclockedComponents
 		{
-			Type = BulletEmitter
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Invert = true
+			IncludeInBlueprints = true
+			Components
+			{
+				EmitterBase // Doesn't actually fire; only used for targeting and as a base for the left and right emitters.
+        		{
+        			Type = BulletEmitter
+        			ChainedTo = Turret
+        			FireTrigger // none, but field is required
+        			GetTargetFrom = Turret
+        			Location = [1.484375, 0]
+        			OperationalToggle = IsOperational
+        			FireDelay = .6
+        			Bullet = &<./Data/shots/laser_bolt_large/laser_bolt_large.rules>
+        			ResourceStorage = BatteryStorage
+        			ResourcesUsed = 500
+        			MinResourcesUsed = 1
+        		}
+        
+        		EmitterLeft : EmitterBase
+        		{
+        			FireTrigger = ShootLeftTriggerProxy
+        			Location = [1.35, -0.359375]
+        		}
+        
+        		EmitterRight : EmitterBase
+        		{
+        			FireTrigger = ShootRightTriggerProxy
+        			Location = [1.35, 0.359375]//[1.484375, 0.359375]//0.67
+        		}
+			}
+		}
+
+		// Beam emitters
+		OverclockedComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Components
+			{
+				// Doesn't actually fire; only used for targeting and as a base for the left and right emitters.
+				EmitterBase : <./Data/shots/laser_bolt_large/laser_bolt_large_overclock.rules>
+        		{
+        			Type = BeamEmitter
+        			ChainedTo = Turret
+        			FireTrigger // none, but field is required
+        			GetTargetFrom = Turret
+        			Location = [1.484375, 0]
+        			OperationalToggle = IsOperational
+        			FireDelay = (&~/Part/Components/NonOverclockedComponents/Components/EmitterBase/FireDelay) / (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+        			Duration = 0
+        			ResourceStorage = BatteryStorage
+        			ResourcesUsed = floor(500 * (&~/OVERCLOCK/POWER_USE_FACTOR))
+        			MinResourcesUsed = 1
+        		}
+        
+        		EmitterLeft : EmitterBase
+        		{
+        			FireTrigger = ShootLeftTriggerProxy
+        			Location = [1.35, -0.359375]
+        		}
+        
+        		EmitterRight : EmitterBase
+        		{
+        			FireTrigger = ShootRightTriggerProxy
+        			Location = [1.35, 0.359375]//[1.484375, 0.359375]//0.67
+        		}
+			}
+		}
+
+		EmitterBaseProxy
+		{
+			Type = EmitterProxy
+			ComponentID = EmitterBase
 			ChainedTo = Turret
-			FireTrigger // none, but field is required
-			GetTargetFrom = Turret
-			Location = [1.484375, 0]
-			OperationalToggle = IsOperational
-			FireDelay = .6
-			Bullet = &<./Data/shots/laser_bolt_large/laser_bolt_large.rules>
-			ResourceStorage = BatteryStorage
-			ResourcesUsed = 500
-			MinResourcesUsed = 1
+			Location = &../NonOverclockedComponents/Components/EmitterBase/Location
 		}
-
-		BulletEmitterLeft : BulletEmitterBase
+		EmitterLeftProxy : EmitterBaseProxy
 		{
-			FireTrigger = ShootLeftTriggerProxy
-			Location = [1.35, -0.359375]
+			ComponentID = EmitterLeft
+			Location = &../NonOverclockedComponents/Components/EmitterLeft/Location
 		}
-
-		BulletEmitterRight : BulletEmitterBase
+		EmitterRightProxy : EmitterBaseProxy
 		{
-			FireTrigger = ShootRightTriggerProxy
-			Location = [1.35, 0.359375]//[1.484375, 0.359375]//0.67
+			Type = EmitterProxy
+			ComponentID = EmitterRight
+			Location = &../NonOverclockedComponents/Components/EmitterRight/Location
+		}
+		
+		Overclock_EmissionTriggered
+		{
+			Type = MultiTrigger
+			OperationalToggle = IsOverclocked
+			Triggers = [ EmitterLeftProxy, EmitterRightProxy ]
 		}
 
 		ChargeEffectLeft
 		{
 			Type = TriggeredEffects
-			ChainedTo = BulletEmitterLeft
+			ChainedTo = EmitterLeftProxy
 			Trigger = ShootLeftTriggerProxy
 			AnchorMediaEffects = true
 
@@ -508,15 +768,15 @@ Part : <../base_part_terran.rules>/Part
 
 		ChargeEffectRight : ChargeEffectLeft
 		{
-			ChainedTo = BulletEmitterRight
+			ChainedTo = EmitterRightProxy
 			Trigger = ShootRightTriggerProxy
 		}
 
 		FireEffectLeft
 		{
 			Type = TriggeredEffects
-			ChainedTo = BulletEmitterLeft
-			Trigger = BulletEmitterLeft
+			ChainedTo = EmitterLeftProxy
+			Trigger = EmitterLeftProxy
 			AnchorMediaEffects = true
 
 			MediaEffects
@@ -535,8 +795,8 @@ Part : <../base_part_terran.rules>/Part
 
 		FireEffectRight : FireEffectLeft
 		{
-			ChainedTo = BulletEmitterRight
-			Trigger = BulletEmitterRight
+			ChainedTo = EmitterRightProxy
+			Trigger = EmitterRightProxy
 		}
 
 		CrewLocation1
@@ -764,6 +1024,21 @@ Part : <../base_part_terran.rules>/Part
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
 		}
 
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -777,6 +1052,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 3.5]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3,4]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -785,18 +1070,28 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [1,2]
+					HidesIndicators = [2,3,4]
 				}
 
 				// Out of power.
 				{
 					Toggle = BatteryStorage
-					Delay = &~/Part/Components/ShootSynchronizedComponents/Components/FireTimer/Duration
+					Delay = &~/Part/Components/ShootSynchronizedComponents_NonOverclocked/Components/FireTimer/Duration
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
 						Size = [1, 1]
 					}
+				}
+
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+					HidesIndicators = [4]
 				}
 
 				// No crew.
@@ -818,6 +1113,20 @@ Part : <../base_part_terran.rules>/Part
 			Size = [2, 6]
 			Offset = [0, -.5]
 		}
+		
+		PeakHeatGenerationValue
+		{
+			Type = StaticValue
+			SHOT_HEAT_PER_SECOND = (&~/Part/StatsByCategory/1/Stats/HeatPerShot) * (&~/Part/StatsByCategory/1/Stats/ROF)
+			Value = (&~/OVERCLOCK/HEAT_PER_SECOND) + (&SHOT_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = PeakHeatGenerationValue
+		}
 	}
 
 	Stats
@@ -836,19 +1145,38 @@ Part : <../base_part_terran.rules>/Part
 			NameKey = "StatCategories/LaserBoltLarge"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
+				DamagePerShot = &~/EMITTER_BASE/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				ROF = 1 / (&~/Part/Components/ShootAlternatingComponents/Components/FireTimer/Duration)
-				Range = &~/Part/Components/BulletEmitterBase/Bullet/Range
+				ROF = 1 / (&~/Part/Components/ShootAlternatingComponents_NonOverclocked/Components/FireTimer/Duration)
+				Range = &~/EMITTER_BASE/Bullet/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
 				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
-				ShotSpeed = &~/Part/Components/BulletEmitterBase/Bullet/Speed
-				ShotHP = &~/Part/Components/BulletEmitterBase/Bullet/Components/Targetable/Health
-				PowerPerShot = (&~/Part/Components/BulletEmitterBase/ResourcesUsed) / 1000
+				ShotSpeed = &~/EMITTER_BASE/Bullet/Speed
+				ShotHP = &~/EMITTER_BASE/Bullet/Components/Targetable/Health
+				PowerPerShot = (&~/EMITTER_BASE/ResourcesUsed) / 1000
+				PowerPerSecond = (&PowerPerShot) * (&ROF)
+				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
+			}
+		}
+		{
+			NameKey = "StatCategories/Overclocked"
+			Stats
+			{
+				DamagePerShot = &~/EMITTER_BASE_OVERCLOCK/HitOperational/HitEffects/0/Damage/BaseValue
+				DamagePerSecond = (&DamagePerShot) * (&ROF)
+				Damage = [&../DamagePerShot, &../DamagePerSecond]
+				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+				HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
+				ROF = (&../../0/Stats/ROF) * (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+				Range = &~/EMITTER_BASE_OVERCLOCK/Range
+				ShotSpeed = Infinity
+				PowerPerShot = (&~/EMITTER_BASE_OVERCLOCK/ResourcesUsed) / 1000
 				PowerPerSecond = (&PowerPerShot) * (&ROF)
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 			}
 		}
 	]
 }
+EMITTER_BASE = &~/Part/Components/NonOverclockedComponents/Components/EmitterBase
+EMITTER_BASE_OVERCLOCK = &~/Part/Components/OverclockedComponents/Components/EmitterBase

@@ -32,7 +32,7 @@ Components
 	DeathByEnemyProximity
 	{
 		Type = DeathByEnemyProximity
-		Interval = .1
+		Interval = .2
 		Range = 20
 		DetectsShips = true
 		DetectsBullets = false
@@ -84,7 +84,7 @@ Components
 	DeathByLifetime
 	{
 		Type = DeathByLifetime
-		Lifetime = 60
+		Lifetime = 90
 
 		OnDeath
 		{
@@ -166,6 +166,8 @@ Components
 			VertexColor = [255, 0, 0]
 			Shader = "./Data/common_effects/fancy_light.shader"
 			TargetBlendMode = Add
+			_z = 1
+			_nrmlStrengthLimit = 1
 			_litReflectiveStrength = 10
 			_litAdditiveStrength = 0
 			_unlitAdditiveStrength = .3

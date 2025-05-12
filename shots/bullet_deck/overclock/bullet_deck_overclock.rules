@@ -1,0 +1,86 @@
+BASE = &<./Data/shots/bullet_deck/bullet_deck.rules>
+
+ID = "cosmoteer.bullet_deck_overclock"
+Range = (&BASE/Range) * 2
+Speed = (&BASE/Speed) * 3
+IdealRange = [75, &~/Range]
+IdealRadius = [5, 50]
+
+DAMAGE_POOL = (&BASE/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue) * 350%
+IMPULSE = (&BASE/Components/Hit/HitOperational/HitEffects/1/Impulse/BaseValue) * 300%
+HEALTH = (&BASE/Components/Targetable/Health) * 150%
+
+Components : BASE/Components
+{
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = { BaseValue = &~/DAMAGE_POOL; EffectScaleExponent = 1; }
+	}
+	DeathByDamagePool
+	{
+		Type = DeathByDamagePool
+		DamagePool = DamagePool
+	}
+	
+	Targetable : ^/0/Targetable
+	{
+		Health = &~/HEALTH
+	}
+	
+	Hit : ^/0/Hit
+	{
+		Penetration = infinity
+		FactorHitEffectsWith = DamagePool
+		
+		HitShield = &HitOperational
+		HitOperational : ^/0/HitOperational
+		{
+			ReduceEffectsByPenetration = false
+			
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+				{
+					Type = Impulse
+					Impulse = &~/IMPULSE
+				}
+			]
+		}
+		HitStructural : ^/0/HitStructural
+		{
+			ReduceEffectsByPenetration = false
+		}
+		PenetratingOperational : ^/0/PenetratingOperational
+		{
+			ReduceEffectsByPenetration = false
+			
+			HitEffects
+			[
+				// Fire application
+				&../^/0/HitEffects/1
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+				{
+					Type = Impulse
+					Impulse = &~/IMPULSE
+				}
+			]
+		}
+		FinishedPenetratingOperational = &PenetratingOperational
+	}
+	
+	Sprite : ^/0/Sprite
+	{
+		ReduceScaleWith = DamagePool
+		// Required to avoid crashing, for some reason
+		Animation : ^/0/Animation {}
+	}
+}

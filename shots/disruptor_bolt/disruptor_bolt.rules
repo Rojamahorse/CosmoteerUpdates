@@ -46,7 +46,7 @@ Components
 			[
 				: ../../HitOperational/HitEffects/0
 				{
-					Amount = 900
+					Amount = { BaseValue = 900; EffectScaleExponent = 1 }
 					TreatShieldAsPart = true
 				}
 			]
@@ -63,7 +63,7 @@ Components
 				{
 					Type = ResourceDrain
 					ResourceType = battery
-					Amount = 600
+					Amount = { BaseValue = 600; EffectScaleExponent = 1 }
 
 					MediaEffectsOnDrain
 					[
@@ -82,7 +82,7 @@ Components
 				}
 				{
 					Type = Damage
-					Damage = 100
+					Damage = { BaseValue = 100; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -109,7 +109,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 75
+					Damage = { BaseValue = 75; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -155,6 +155,8 @@ Components
 			VertexColor = [231, 255, 2]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
+			_z = 1
+            _nrmlStrengthLimit = 1
 			_litReflectiveStrength = 24
 			_litAdditiveStrength = 0.05
 			_unlitAdditiveStrength = 0.25

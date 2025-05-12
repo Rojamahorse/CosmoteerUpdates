@@ -57,13 +57,20 @@ Part : <../base_part_terran.rules>/Part
 		BuffOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, PartCrew]
+			Toggles = [PowerToggle, PartCrew, ScorchedToggle]
 			Mode = All
 		}
 		IsOperational
 		{
 			Type = MultiToggle
 			Toggles = [BuffOperational, RailgunReverseOperationBuffToggle]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -81,11 +88,35 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 4
+		}
+
+		OverclockBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = Overclock
+			BuffMultiplier = NetworkOverclockStateValue
+		}
+
+		OverclockToggle
+		{
+			Type = BuffToggle
+			BuffType = Overclock
+			MinBuffValue = 0
+			MaxBuffValue = 0
+			Invert = true
 		}
 
 		LoadedAmmo
@@ -166,7 +197,7 @@ Part : <../base_part_terran.rules>/Part
 			ToStorage = LoadedAmmo
 			FromQuantity = 1
 			ToQuantity = 1
-			Interval = .15
+			Interval = 0.3
 		}
 
 		LoadEffects
@@ -235,6 +266,85 @@ Part : <../base_part_terran.rules>/Part
 				CrewLocation1
 				CrewLocation2
 			]
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[Port_Rail, NetworkOverclockStateValue, 0]
+						[Port_Rail, Network_OverflowHeatStorage, 0]
+					]
+				}
+				{
+					Type = Simple
+					Routes
+					[
+						[Port_Rail, Port_Thermal_Left, 0]
+						[Port_Rail, Port_Thermal_Right, 0]
+						[Port_Rail, Port_Thermal_BottomLeft, 0]
+						[Port_Rail, Port_Thermal_BottomRight, 0]
+					]
+				}
+			]
+		}
+		
+		OverflowHeatStorage : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverflowHeatStorage {}
+		OverheatEffects : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverheatEffects
+		{
+			Location = [1, 1.5]
+		}
+
+		Network_OverflowHeatStorage
+		{
+			Type = NetworkResourceStore
+			ResourceType = heat
+			ResourceStorage = OverflowHeatStorage
+			AllowProviding = false
+			Categories = [ railgun_heat_overflow ]
+		}
+
+		NetworkOverclockStateValue
+		{
+			Type = NetworkValueReceiver
+			Mode = Max
+			Categories = [ overclock ]
+			AllowUncategorized = false
+		}
+
+		Port_Rail
+		{
+			Type = NetworkPort
+			Location = [0, 0]
+			Direction = Up
+			Types = [ railgun_up ]
+			CompatibleTypes = [ railgun_down ]
+		}
+
+		Port_Thermal_Left : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/BASE_THERMAL_PORT
+		{
+			Location = [0, 2]
+			Direction = Left
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Location = [1, 2]
+			Direction = Right
+		}
+		Port_Thermal_BottomLeft : Port_Thermal_Left
+		{
+			Location = [0, 2]
+			Direction = Down
+		}
+		Port_Thermal_BottomRight : Port_Thermal_Left
+		{
+			Location = [1, 2]
+			Direction = Down
 		}
 
 		Graphics
@@ -588,6 +698,21 @@ Part : <../base_part_terran.rules>/Part
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
 		}
 
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -641,6 +766,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 1.5]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -649,7 +784,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [1,2]
+					HidesIndicators = [2,3]
 				}
 
 				// Out of ammo.

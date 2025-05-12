@@ -18,8 +18,12 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeID = "armor"
 	MaxHealth = 8000
 	ExplosiveDamageAbsorption = 100%
-	DamageResistances = {explosive = 50%}
-	TypeCategories = [armor]
+	DamageResistances
+	{
+		explosive = 50%
+		thermal = -25%
+	}
+	TypeCategories = [armor, non_flammable]
 	Flammable = false
 	InitialPenetrationResistance = 7
 	ContinuingPenetrationResistance = &InitialPenetrationResistance

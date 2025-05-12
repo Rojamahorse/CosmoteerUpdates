@@ -1,4 +1,13 @@
-Part : <../base_part_terran.rules>/Part
+OVERCLOCK
+{
+	HEAT_PER_CONVERSION = 50
+	SPEED_FACTOR = 300%
+	POWER_USE_FACTOR = 125%
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/FactoryUranium"
 	IconNameKey = "Parts/FactoryUraniumIcon"
@@ -41,7 +50,14 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, UraniumPrereq, BatteryStorage]
+			Toggles = [PowerToggle, UraniumPrereq, BatteryStorage, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -53,10 +69,18 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 1
 		}
 
@@ -145,7 +169,21 @@ Part : <../base_part_terran.rules>/Part
 			FromQuantity = 1
 			ToStorage = LoadedUranium
 			ToQuantity = 1
-			Interval = { BaseValue=1.5; BuffType=Factory; BuffMode=Divide; }
+			Interval
+			{
+				BaseValue = 1.5
+				Modifiers
+				[
+					{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+						ModificationMode = Divide
+					}
+				]
+			}
 		}
 
 		ResourceConverter
@@ -160,13 +198,38 @@ Part : <../base_part_terran.rules>/Part
 			    }
 			    {
 			        Storage = BatteryStorage
-			        Quantity = 1000
+			        Quantity
+			        {
+			        	BaseValue = 1000
+			        	Modifiers
+			        	[
+			        		: ~/MODIFIERS/OVERCLOCK_LERP 
+			        		{
+			        			MinValue = &../../BaseValue
+			        			MaxValue = (&MinValue) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			        		}
+			        	]
+			        }
 			        MinQuantityForConversion = 1
 			    }
 			]
 			ToStorage = EnrichedUraniumStorage
 			ToQuantity = 1
-			Interval = 0.75
+			Interval
+			{
+				BaseValue = 0.75
+				Modifiers
+				[
+					{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+						ModificationMode = Divide
+					}
+				]
+			}
 			CheckResourceLimits = true
 		}
 
@@ -194,6 +257,87 @@ Part : <../base_part_terran.rules>/Part
 			BuffAmount = 25%
 			GridDistance = 1
 			OperationalToggle = BatteryStorage
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+		
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		Overclock_ConversionHeatProducer
+		{
+			Type = ResourceChange
+			OperationalToggle = IsOverclocked
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_ResourceConverterProxy
+			Amount = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/HEAT_TO_RESOURCE)
+		}
+		
+		Overclock_ResourceConverterProxy
+		{
+			Type = TriggerProxy
+			ProxyToggle = IsOverclocked
+			ComponentID = ResourceConverter
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Simple
+					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
+					Routes
+					[
+						[&../../HEAT_INPUT, Port_Thermal_Left0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Left1, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down1, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down2, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right1, 0]
+					]
+				}
+			]
+		}
+
+		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 2]
+			Direction = Left
+		}
+		Port_Thermal_Left1 : Port_Thermal_Left0
+		{
+			Location = [0, 3]
+		}
+		Port_Thermal_Down0 : Port_Thermal_Left0
+		{
+			Location = [0, 3]
+			Direction = Down
+		}
+		Port_Thermal_Down1 : Port_Thermal_Down0
+		{
+			Location = [1, 3]
+		}
+		Port_Thermal_Down2 : Port_Thermal_Down0
+		{
+			Location = [2, 3]
+		}
+		Port_Thermal_Right0 : Port_Thermal_Left0
+		{
+			Location = [2, 2]
+			Direction = Right
+		}
+		Port_Thermal_Right1 : Port_Thermal_Right0
+		{
+			Location = [2, 3]
 		}
 
 		BeltSpeedFactor
@@ -710,6 +854,21 @@ Part : <../base_part_terran.rules>/Part
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
 		}
 
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/HugePartScorched
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -783,6 +942,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1.5, 2]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3,4]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -791,7 +960,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [1,2]
+					HidesIndicators = [2,3,4]
 				}
 
 				// No uranium.
@@ -813,6 +982,15 @@ Part : <../base_part_terran.rules>/Part
 						Size = [1, 1]
 					}
 				}
+				
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+				}
 			]
 		}
 
@@ -821,6 +999,33 @@ Part : <../base_part_terran.rules>/Part
 			Type = BlueprintSprite
 			File = "blueprints.png"
 			Size = [3, 4]
+		}
+		
+		Overclock_HeatProductionInterval
+		{
+			Type = BuffableValue
+			Value : ~/Part/Components/UraniumLoader/Interval
+			{
+				BaseValue = (&^/0/BaseValue) * (&~/Part/Components/ResourceConverter/From/0/Quantity)
+			}
+			IncludeInBlueprints = true
+		}
+		Overclock_HeatPerConversion { Type = StaticValue; Value = &~/OVERCLOCK/HEAT_PER_CONVERSION; }
+		HeatGenerationValue
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne = Overclock_HeatPerConversion
+			ValueTwo = Overclock_HeatProductionInterval
+			NaNFallbackValue = 0
+			IncludeInBlueprints = true
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = HeatGenerationValue
 		}
 	}
 
@@ -833,13 +1038,42 @@ Part : <../base_part_terran.rules>/Part
 		UraniumPerEnriched = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
 		UraniumPerSecond = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&Interval)
 		EnrichedUraniumUraniumUsage = [&../UraniumPerEnriched, &../UraniumPerSecond]
-		PowerPerEnriched = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
-		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&Interval) / 1000
+		PowerPerEnriched = (&~/Part/Components/ResourceConverter/From/1/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
+		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/1/Quantity/BaseValue) / (&Interval) / 1000
 		EnrichedUraniumPowerUsage = [&../PowerPerEnriched, &../PowerPerSecond]
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
 
 		RecPower = &PowerPerSecond
 		RecCrew = (&RecPower) * 4
+	}
+	
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/Overclocked"
+			Stats
+			{
+				EnrichedUraniumProduction = (&~/Part/Stats/EnrichedUraniumProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
+				EnrichedUraniumUraniumUsage = [(&~/Part/Stats/EnrichedUraniumUraniumUsage/0), (&~/Part/Stats/EnrichedUraniumUraniumUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+				POWER_PER_ITEM = (&~/Part/Stats/EnrichedUraniumPowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+				POWER_PER_SECOND = (&~/Part/Stats/EnrichedUraniumPowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
+				EnrichedUraniumPowerUsage = [&../POWER_PER_ITEM, &../POWER_PER_SECOND]
+				CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity)
+				HEAT_PER_ITEM = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT)
+				HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Stats/Interval) * (&~/OVERCLOCK/SPEED_FACTOR);
+				EnrichedUraniumHeatGeneration = [&../HEAT_PER_ITEM, &../HEAT_PER_SECOND]
+			}
+		}
+	]
+}
+
+MODIFIERS
+{
+	OVERCLOCK_LERP
+	{
+		Type = Buff
+		BuffType = Overclock
+		ModificationMode = Lerp
 	}
 }

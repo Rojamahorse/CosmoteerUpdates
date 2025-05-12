@@ -197,7 +197,7 @@ Part : <../base_part_terran.rules>/Part
 			ToStorage = AmmoStorageProxyLeft
 			FromQuantity = 1
 			ToQuantity = 1
-			Interval = 1/30
+			Interval = 1/60
 		}
 
 		IsRequestingLeftToRightAmmo
@@ -265,7 +265,7 @@ Part : <../base_part_terran.rules>/Part
 			ToStorage = AmmoStorageProxyRight
 			FromQuantity = 1
 			ToQuantity = 1
-			Interval = 1/30
+			Interval = 1/60
 		}
 
 		CombinedLeftBeltStorages //used for amount of ammo check
@@ -674,6 +674,32 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			MinStatusValue = 1
+			StatusType = cosmoteer.scorched
+			Invert = true
+			IncludeWhenUnderConstruction = true
+		}
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+		}
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			IncludeWhenUnderConstruction = false
+			Location = &~/Part/Components/DestroyedEffects/Location
+			FactorHitEffectsWith = AmmoStorage
+			MediaEffects = &~/Part/Components/DestroyedEffects/MediaEffects
+			HitEffects = &~/Part/Components/DestroyedHitEffects/HitEffects	
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -683,6 +709,7 @@ Part : <../base_part_terran.rules>/Part
 		DestroyedHitEffects
 		{
 			Type = DeathEffects
+			OperationalToggle = ScorchedToggle
 			IncludeWhenUnderConstruction = false
 			Location = [0.5, 1]
 			FactorHitEffectsWith = AmmoStorage
@@ -690,10 +717,13 @@ Part : <../base_part_terran.rules>/Part
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 6000
+					TotalDamage = { BaseValue = 6000; EffectScaleExponent = 1 }
 					Radius = 3
 					Delay = .05
-					FireChancePerNDamage = 50%
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 50%
+					StatusValue = 1
+					StatusValueType = Interpolated
 					NDamage = 1000
 					CrewKillChance = 10%
 					Filter
@@ -705,7 +735,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 1200
+					TotalDamage = { BaseValue = 1200; EffectScaleExponent = 1 }
 					Radius = 2
 					Delay = .05
 					Filter

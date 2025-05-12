@@ -30,6 +30,13 @@ Part : <../base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+		
 		PowerToggle
 		{
 			Type = UIToggle
@@ -38,10 +45,18 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		Airlock
 		{
 			Type = Airlock
-			OperationalToggle = PowerToggle
+			OperationalToggle = IsOperational
 			EnterExitPoint = [.5, .5]
 			NuggetEjectVelocity = [1.5,2.5]
 			NuggetEjectDirection = [-100d, -80d]
@@ -334,6 +349,21 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/SmallPartScorched
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -347,6 +377,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [0.5, 0.5]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle

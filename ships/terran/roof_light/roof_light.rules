@@ -11,8 +11,7 @@ Part : <../base_part_terran.rules>/Part
 		[coil, 1]
 	]
 	AIValueFactor = 0
-	TypeCategories = []
-	Flammable = false
+	TypeCategories = [non_flammable]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Size = [1, 1]
 	MaxHealth = 1000

@@ -47,6 +47,9 @@ SamplerState _noiseTexture_SS;
 float2 _noiseScale;
 float _distortionStrength;
 float2 _texScale;
+float _invertTex;
+float _twistStrength;
+float _coldColorAdd;
 
 float4 _hotColor = 255;
 float4 _coldColor = 255;
@@ -76,11 +79,42 @@ PIX_OUTPUT pix(in VERT_OUTPUT_DRAIN input) : SV_TARGET
 
 	float2 polarCoords = toPolarCoordinates(input.uv);
 	
+	//HARDCODED VALUES (Heat Exchanger)
+	//float2 noiseScale = float2(1, 0.7);
+	//float2 noiseScroll = float2(0.3, 1) * _gameTime;
+	//float2 noiseUVs = (polarCoords * noiseScale) + noiseScroll;
+	
+	//TWIST VERSION
+	//float twist = 1;
+	//float2 noiseUVs = (polarCoords * noiseScale);
+	//noiseUVs.x += (noiseUVs.y * twist);
+	//noiseUVs += noiseScroll;
+	
 	float2 noiseUVs = (polarCoords * _noiseScale) + input.noiseScroll;
+
+	//SCALING DISTORTION FROM CENTER VERSION
+	//float distortionIntensityAtCenter = 0;
+	//float centerOffset = 0.05;
+	//distortionStrength = lerp(distortionStrength, distortionStrength * distortionIntensityAtCenter, 1 - saturate(2 * (polarCoords.y - centerOffset)));
+
 	float distortion = ((_noiseTexture.Sample(_noiseTexture_SS, noiseUVs).r * 2) - 1) * _distortionStrength;
 	
-	float2 texUVs = ((polarCoords + distortion) * _texScale) + input.texScroll;
+	//HARDCODED VALUES (Heat Exchanger)
+	//float2 texScale = float2(1, 0.08);
+	//float2 texScroll = float2(0.125 * 2, 0.4) * _gameTime;
+	//float2 texUVs = ((polarCoords + distortion) * texScale) + texScroll;
+	
+	//TWIST VERSION
+	float twist = _twistStrength * input.intensity;
+	float2 texUVs = ((polarCoords + distortion) * _texScale);
+	texUVs.x += (texUVs.y * twist);
+	texUVs += + input.texScroll;
+	
+	//NO TWIST UVS
+	//float2 texUVs = ((polarCoords + distortion) * _texScale) + input.texScroll;
+	
 	float tex = _texture.Sample(_texture_SS, texUVs).r;
+	tex = lerp(tex, 1 - tex, _invertTex);
 
 	float baseNoise = saturate(pow(tex, input.inverseIntensity * input.inverseIntensity * 20));
 	baseNoise = saturate(baseNoise * (2 - input.intensity));
@@ -91,7 +125,9 @@ PIX_OUTPUT pix(in VERT_OUTPUT_DRAIN input) : SV_TARGET
 	normal = normalize(normal);
 	float edges = normal.z;
 
+	float4 coldColor = float4(0.25, 0.4, 0.5, 1);
 	float4 col = lerp(_coldColor, _hotColor, baseNoise);
+	col += coldColor * mask * _coldColorAdd;
 	baseNoise = pow(baseNoise, edges);
 	baseNoise = baseNoise * mask;
 	col.rgb = col.rgb * baseNoise;

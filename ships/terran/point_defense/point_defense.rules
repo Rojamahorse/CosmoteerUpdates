@@ -1,4 +1,13 @@
-Part : <../base_part_terran.rules>/Part
+OVERCLOCK
+{
+	RECHARGE_USAGE_RATIO = 25%
+	RECHARGE_TIME_PER_SHOT = (&~/Part/Components/Turret/FireInterval) / (&RECHARGE_USAGE_RATIO)
+	RECHARGING_HEAT_PER_SECOND = 75
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/PointDefense"
 	IconNameKey = "Parts/PointDefenseIcon"
@@ -12,6 +21,7 @@ Part : <../base_part_terran.rules>/Part
 		[coil, 8]
 	]
 	TypeCategories = [defense, uses_power]
+	SignificanceToggle = ScorchedToggle
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Size = [1, 2]
 	PhysicalRect = [0, 1, 1, 1]
@@ -41,7 +51,14 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -53,10 +70,18 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 1
 		}
 
@@ -119,6 +144,15 @@ Part : <../base_part_terran.rules>/Part
 			MaxResources = 2000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
+		Overclock_BatteryProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOverclocked
+			ToStorage = BatteryStorage
+			BATCH_COUNT = 6
+			ToQuantity = (&~/Part/Components/BulletEmitter/ResourcesUsed) * (&BATCH_COUNT)
+			Interval = (&~/OVERCLOCK/RECHARGE_TIME_PER_SHOT) * (&BATCH_COUNT)
+		}
 		BatteryConsumer
 		{
 			Type = ResourceConsumer
@@ -127,6 +161,71 @@ Part : <../base_part_terran.rules>/Part
 			ResupplyThreshold = 1
 			DefaultPriority = &/PRIORITIES/Defense_Supply
 			OperationalToggle = PowerToggle
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+		
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		OverheatEffects : ^/0/OverheatEffects
+		{
+			Location = [0.5, 1.5]
+		}
+
+		Overclock_RechargeHeatProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = Overclock_BatteryProducer
+			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/RECHARGING_HEAT_PER_SECOND) * (&Interval))
+			ToQuantity = (&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
+			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Interval = 0.5
+		}
+//		Overclock_ShotHeatProducer
+//		{
+//			Type = ResourceChange
+//			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+//			Trigger = Overclock_BulletEmitterProxy
+//			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
+//		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Simple
+					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
+					Routes
+					[
+						[&../../HEAT_INPUT, Port_Thermal_Left, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down, 0]
+					]
+				}
+			]
+		}
+
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 1]
+			Direction = Left
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Direction = Right
+		}
+		Port_Thermal_Down : Port_Thermal_Left
+		{
+			Direction = Down
 		}
 
 		TurretHolder
@@ -331,7 +430,7 @@ Part : <../base_part_terran.rules>/Part
 			Bullet = &<./Data/shots/pd_shot/pd_shot.rules>
 			Spread = [-1d, 1d]
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 35
+			ResourcesUsed = 17
 			MinResourcesUsed = 1
 		}
 
@@ -460,6 +559,21 @@ Part : <../base_part_terran.rules>/Part
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
 		}
 
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/SmallPartScorched
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -473,6 +587,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [.5, 1.5]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -481,7 +605,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [1]
+					HidesIndicators = [2,3]
 				}
 
 				// Out of power.
@@ -494,6 +618,15 @@ Part : <../base_part_terran.rules>/Part
 						Size = [1, 1]
 					}
 				}
+				
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+				}
 			]
 		}
 
@@ -502,6 +635,19 @@ Part : <../base_part_terran.rules>/Part
 			Type = BlueprintSprite
 			File = "blueprints.png"
 			Size = [1, 2]
+		}
+		
+		HeatGenerationValue
+		{
+			Type = StaticValue
+			Value = (&~/OVERCLOCK/RECHARGING_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = HeatGenerationValue
 		}
 	}
 
@@ -519,10 +665,10 @@ Part : <../base_part_terran.rules>/Part
 			NameKey = "StatCategories/PDShot"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage
+				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				ShotDamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitBullet/HitEffects/0/Damage
+				ShotDamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitBullet/HitEffects/0/Damage/BaseValue
 				ShotDamagePerSecond = (&ShotDamagePerShot) * (&ROF)
 				ShotDamage = [&../ShotDamagePerShot, &../ShotDamagePerSecond]
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
@@ -534,6 +680,14 @@ Part : <../base_part_terran.rules>/Part
 				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed) / 1000
 				PowerPerSecond = (&PowerPerShot) * (&ROF)
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
+			}
+		}
+		{
+			NameKey = "StatCategories/Overclocked"
+			Stats
+			{
+				PowerGeneration = (&~/Part/Components/BulletEmitter/ResourcesUsed) / (&~/OVERCLOCK/RECHARGE_TIME_PER_SHOT) / 1000
+				HeatGeneration = (&~/OVERCLOCK/RECHARGING_HEAT_PER_SECOND)
 			}
 		}
 	]

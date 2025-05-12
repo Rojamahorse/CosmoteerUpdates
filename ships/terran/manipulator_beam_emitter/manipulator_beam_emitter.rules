@@ -15,6 +15,7 @@ Part : <../base_part_terran.rules>/Part
 	IsRotateable = false
 	MaxHealth = 4000
 	TypeCategories = [uses_power, is_crewed]
+	SignificanceToggle = ScorchedToggle
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	IgnoreRotationForMirroredSelection = true
 	ForceManhattanPathInPart = true
@@ -32,25 +33,25 @@ Part : <../base_part_terran.rules>/Part
 		IsBeam1Operational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatterySplitter, PartCrew1]
+			Toggles = [PowerToggle, BatterySplitter, PartCrew1, ScorchedToggle]
 			Mode = All
 		}
 		IsBeam2Operational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatterySplitter, PartCrew2]
+			Toggles = [PowerToggle, BatterySplitter, PartCrew2, ScorchedToggle]
 			Mode = All
 		}
 		IsBeam3Operational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatterySplitter, PartCrew3]
+			Toggles = [PowerToggle, BatterySplitter, PartCrew3, ScorchedToggle]
 			Mode = All
 		}
 		IsBeam4Operational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatterySplitter, PartCrew4]
+			Toggles = [PowerToggle, BatterySplitter, PartCrew4, ScorchedToggle]
 			Mode = All
 		}
 		IsOperational
@@ -58,6 +59,13 @@ Part : <../base_part_terran.rules>/Part
 			Type = MultiToggle
 			Toggles = [IsBeam1Operational, IsBeam2Operational, IsBeam3Operational, IsBeam4Operational]
 			Mode = Any
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
 		}
 
 		PowerToggle
@@ -68,10 +76,18 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 4
 		}
 
@@ -942,6 +958,21 @@ Part : <../base_part_terran.rules>/Part
 			DoodadToggle = BeamEmitter4d
 		}
 
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/MedPartScorched
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -955,6 +986,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 1]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3,4,5,6]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -963,6 +1004,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [2,3,4,5,6]
 				}
 
 				// Out of power.

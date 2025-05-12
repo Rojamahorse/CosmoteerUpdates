@@ -45,6 +45,9 @@ Texture2D _noiseTexture;
 SamplerState _noiseTexture_SS;
 float _endCapSize;
 
+float4 _halfHighlightColor;
+float4 _baseColor;
+
 PIX_OUTPUT pix(in VERT_OUTPUT_BEAM input) : SV_TARGET
 {
 	float largeNoise1 = lerp(0.75, 1, _texture.Sample(_texture_SS, input.largeNoise1UVs).r);
@@ -81,11 +84,9 @@ PIX_OUTPUT pix(in VERT_OUTPUT_BEAM input) : SV_TARGET
 	innerCombined = (1 - innerCombined) + noiseBase + innerGrad;
 	innerCombined = innerCombined * innerCombined;
 
-	float4 colorA = float4(0.5, 0.219, 0.213, 1); //desired color * 0.5
-	float4 red = float4(1, 0, 0, 1);
-	float4 layer1 = colorA * innerCombined * innerSharp; //tinting the processed noise and masking it with innerSharp
-	float4 col = lerp(red, layer1, innerGrad); //blending in red using a cylinder gradient
-	col = lerp(red * noiseBase, col, innerBeam); //breaking up the outline
+	float4 layer1 = _halfHighlightColor * innerCombined * innerSharp; //tinting the processed noise and masking it with innerSharp
+	float4 col = lerp(_baseColor, layer1, innerGrad); //blending in red using a cylinder gradient
+	col = lerp(_baseColor * noiseBase, col, innerBeam); //breaking up the outline
 	float beamShape = pow(beamBase, 7.2/endT);  //creating the final mask including the pinched ends
 	col = col * beamShape * input.fadeAlpha;  //combining in the final mask and fadeAlpha
 

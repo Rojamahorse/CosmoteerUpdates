@@ -45,7 +45,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 4800
+					Damage = { BaseValue = 4800; EffectScaleExponent = 1 }
 					Filter
 					{
 						Friendlies = true
@@ -53,7 +53,7 @@ Components
 				}
 				{
 					Type = Impulse
-					Impulse = 40
+					Impulse = { BaseValue = 40; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -86,7 +86,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 2400
+					Damage = { BaseValue = 2400; EffectScaleExponent = 1 }
 					Filter
 					{
 						Friendlies = true
@@ -94,7 +94,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 30
+					Impulse = { BaseValue = 30; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -118,15 +118,17 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 4800
+					Damage = { BaseValue = 4800; EffectScaleExponent = 1 }
 					Filter
 					{
 						Friendlies = true
 					}
 				}
 				{
-					Type = Fire
-					FireChance = .4
+					Type = StatusApplication
+					StatusType = cosmoteer.fire
+					StatusChance = { BaseValue = .4; EffectScaleExponent = 1 }
+					ValueType = Interpolated
 					Filter
 					{
 						Friendlies = true
@@ -134,7 +136,7 @@ Components
 				}
 				{
 					Type = Impulse
-					Impulse = 60
+					Impulse = { BaseValue = 60; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -166,7 +168,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 100000
+					Damage = { BaseValue = 100000; EffectScaleExponent = 1 }
 					Filter
 					{
 						Friendlies = true
@@ -214,6 +216,8 @@ Components
 			VertexColor = [255, 100, 0]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
+			_z = 1
+			_nrmlStrengthLimit = 1
 			_litReflectiveStrength = 24
 			_litAdditiveStrength = 0.05
 			_unlitAdditiveStrength = 0.125

@@ -34,8 +34,14 @@ CombatDifficultyLevels
 		DamageFromEnemies = 100%
 		ResourceDrainVsEnemies = 100%
 		ResourceDrainFromEnemies = 100%
-		FireChanceVsEnemies = 100%
-		FireChanceFromEnemies = 100%
+		StatusFactorsVsEnemies
+		{
+			cosmoteer.fire = 100%
+		}
+		StatusFactorsFromEnemies
+		{
+			cosmoteer.fire = 100%
+		}
 		EnemyCombatNoBuildRadius = 0
 		EnemyCombatNoBuildDuration = 0
 	}
@@ -48,8 +54,14 @@ CombatDifficultyLevels
 		DamageFromEnemies = 70%
 		ResourceDrainVsEnemies = 140%
 		ResourceDrainFromEnemies = 70%
-		FireChanceVsEnemies = 140%
-		FireChanceFromEnemies = 70%
+		StatusFactorsVsEnemies
+		{
+			cosmoteer.fire = 140%
+		}
+		StatusFactorsFromEnemies
+		{
+			cosmoteer.fire = 70%
+		}
 		EnemyCombatNoBuildRadius = 800
 		EnemyCombatNoBuildDuration = 5
 	}
@@ -61,8 +73,14 @@ CombatDifficultyLevels
 		DamageFromEnemies = 100%
 		ResourceDrainVsEnemies = 100%
 		ResourceDrainFromEnemies = 100%
-		FireChanceVsEnemies = 100%
-		FireChanceFromEnemies = 100%
+		StatusFactorsVsEnemies
+		{
+			cosmoteer.fire = 100%
+		}
+		StatusFactorsFromEnemies
+		{
+			cosmoteer.fire = 100%
+		}
 		EnemyCombatNoBuildRadius = 800
 		EnemyCombatNoBuildDuration = 5
 	}
@@ -74,8 +92,14 @@ CombatDifficultyLevels
 		DamageFromEnemies = 125%
 		ResourceDrainVsEnemies = 80%
 		ResourceDrainFromEnemies = 125%
-		FireChanceVsEnemies = 80%
-		FireChanceFromEnemies = 125%
+		StatusFactorsVsEnemies
+		{
+			cosmoteer.fire = 80%
+		}
+		StatusFactorsFromEnemies
+		{
+			cosmoteer.fire = 125%
+		}
 		EnemyCombatNoBuildRadius = 800
 		EnemyCombatNoBuildDuration = 5
 	}
@@ -87,8 +111,14 @@ CombatDifficultyLevels
 		DamageFromEnemies = 140%
 		ResourceDrainVsEnemies = 70%
 		ResourceDrainFromEnemies = 140%
-		FireChanceVsEnemies = 70%
-		FireChanceFromEnemies = 140%
+		StatusFactorsVsEnemies
+		{
+			cosmoteer.fire = 70%
+		}
+		StatusFactorsFromEnemies
+		{
+			cosmoteer.fire = 140%
+		}
 		EnemyCombatNoBuildRadius = 800
 		EnemyCombatNoBuildDuration = 5
 	}

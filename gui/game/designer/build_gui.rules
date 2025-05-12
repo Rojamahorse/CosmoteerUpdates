@@ -1,5 +1,182 @@
 EditorGroups = &<editor_groups.rules>
-StatBars = &<stat_bars.rules>/StatBars
+StatsGui
+{
+	StatWidgets = &<stat_widgets.rules>/StatWidgets
+	MaxToggleContainerWidth = 300
+	StatToggleButtons
+	{
+		DirectionChooser
+		{
+    		TooltipKey = "BuildBox/Stats/DirectionChooserToggleTip"
+    		EnabledByDefault = false
+    		Icon
+    		{
+    			Texture
+    			{
+    				File = "stat_direction_chooser.png"
+    				MipLevels = 2
+    				SampleMode = Linear
+    			}
+    			VertexColor = [0, 183, 255]
+    		}
+    	}
+		Value
+		{
+    		TooltipKey = "BuildBox/Stats/ValueToggleTip"
+    		EnabledByDefault = false
+    		Icon
+    		{
+    			Texture
+    			{
+    				File = "../../icon_money.png"
+    				MipLevels = 2
+    				SampleMode = Linear
+    			}
+    			VertexColor = [0, 183, 255]
+    		}
+    	}
+    	Mass
+    	{
+			TooltipKey = "BuildBox/Stats/MassToggleTip"
+			EnabledByDefault = false
+    		Icon
+    		{
+    			Texture
+    			{
+    				File = "stat_mass.png"
+    				MipLevels = 2
+    				SampleMode = Linear
+    			}
+    			VertexColor = [0, 183, 255]
+    		}
+    	}
+    	Coordinates
+    	{
+    		TooltipKey = "BuildBox/Stats/CoordinatesToggleTip"
+    		EnabledByDefault = false
+    		Icon
+    		{
+    			Texture
+    			{
+    				File = "stat_coords.png"
+    				MipLevels = 2
+    				SampleMode = Linear
+    			}
+    			VertexColor = [0, 183, 255]
+    		}
+    	}
+    	Ftl
+    	{
+    		TooltipKey = "BuildBox/Stats/FtlToggleTip"
+    		Icon = &~/StatsGui/FtlStatSprite
+    	}
+    	CommandPoints
+    	{
+    		TooltipKey = "BuildBox/Stats/CommandPointsToggleTip"
+    		Icon = &~/StatsGui/CommandPointsSprite
+    	}
+		Crew
+		{
+			TooltipKey = "BuildBox/Stats/CrewToggleTip"
+			Icon
+			{
+				Texture
+				{
+					File = "stat_crew.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		Power
+		{
+			TooltipKey = "BuildBox/Stats/PowerToggleTip"
+			Icon
+			{
+				Texture
+				{
+					File = "stat_power.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		Thermal
+		{
+			TooltipKey = "BuildBox/Stats/ThermalToggleTip"
+			Icon
+			{
+				Texture
+				{
+					File = "stat_thermal.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+				VertexColor = [0, 183, 255]
+			}
+		}
+	}
+	DefaultStatToggleButton : /Widgets/FlatButton, /Widgets/ImageListItem 
+	{
+		SelectedNineSlice : StatePressedNineSlice
+    	{
+    		Flags = All
+    	}
+	}
+	DirectionChooserToggleButtonID = DirectionChooser
+	ValueStatToggleButtonID = Value
+	MassStatToggleButtonID = Mass
+	CoordinatesStatToggleButtonID = Coordinates
+	FtlStatToggleButtonID = Ftl
+	CommandPointsStatToggleButtonID = CommandPoints
+
+	DefaultStatLabel : /Widgets/Label
+    {
+    	TextRenderer : ^/0/TextRenderer
+    	{
+    		Font = &/Widgets/ShadowFont
+    		HAlignment = Right
+    		FontSize = 24
+    		Padding = [10, 0, 0, 0]
+    	}
+    }
+    StatBarSegmentSprite
+    {
+    	Texture
+    	{
+    		File = "../../stat_block.png"
+    		UVMode = Wrap
+    		SampleMode = Linear
+    		MipLevels = max
+    	}
+    	Shader = "stat_block.shader"
+    }
+    StatBarColorLerp
+    [
+    	[255, 0, 0]
+    	[0, 255, 0]
+    ]
+    CommandPointsSprite
+    {
+    	Texture
+    	{
+    		File = "group_flight.png"
+    		MipLevels = 2
+    		SampleMode = Linear
+    	}
+    }
+    CommandPointsSufficientColor = [0, 183, 255]
+    CommandPointsInsufficientColor = [255, 0, 0]
+    FtlStatSprite
+    {
+    	Texture
+    	{
+    		File = "./Data/resources/hyperium/icon.png"
+    		MipLevels = 2
+    		SampleMode = Linear
+    	}
+    }
+}
 
 MirrorLine
 {
@@ -432,43 +609,7 @@ BlueprintMakeItSoSound
 RepairSound = &BuildSound
 RepairAllSound = &MakeItSoSound
 
-CommandPointsSprite
-{
-	Texture
-	{
-		File = "group_flight.png"
-		MipLevels = 2
-		SampleMode = Linear
-	}
-}
-FtlStatSprite
-{
-	Texture
-	{
-		File = "./Data/resources/hyperium/icon.png"
-		MipLevels = 2
-		SampleMode = Linear
-	}
-}
-StatBlockSprite
-{
-	Texture
-	{
-		File = "../../stat_block.png"
-		UVMode = Wrap
-		SampleMode = Linear
-		MipLevels = max
-	}
-	Shader = "stat_block.shader"
-}
-StatBlockColorLerp
-[
-	[255, 0, 0]
-	[0, 255, 0]
-]
 
-CommandPointsSufficientColor = [0, 183, 255]
-CommandPointsInsufficientColor = [255, 0, 0]
 
 FtlOverlayAlpha = .5
 FtlOverlayHueRange = [0, 120]
@@ -614,4 +755,17 @@ FavoriteSprite
 		SampleMode = Linear
 	}
 	Size = [20, 20]
+}
+
+PartNetworkPortSprite
+{
+	Texture
+	{
+		File = "port_indicator.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+//	VertexColor = [0, 183, 255, 255]
+	VertexColor = [10, 212, 98, 255]
+	Size = [0.5, 0.5]
 }

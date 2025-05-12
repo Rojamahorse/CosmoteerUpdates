@@ -1,9 +1,10 @@
 Range = 350
 IdealRange = 300
 Width = .5
-HitInterval = .1
+HitInterval = 3 / (&/Simulation/PhysicsUpdatesPerSecond)
 HitEffectsScaleOverRange = [1, 80%]
 MediaEffectsScaleOverRange = &HitEffectsScaleOverRange
+BeamMediaEffectsIntensity = { BaseValue=1; EffectScaleExponent=1; }
 
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
@@ -38,6 +39,8 @@ BeamMediaEffects
 			_endCapSize = 4
 			Size = [100%, 3.5]
 			VertexColor = [255, 255, 255, 217]
+			_baseColor = [1, 0, 0, 1]
+			_halfHighlightColor = [0.5, 0.219, 0.213, 1]
 			TargetBlendMode
 			{
 				SourceRgbFactor = InverseDestColor
@@ -114,11 +117,13 @@ BeamMediaEffects
 HitShield = &HitOperational
 HitOperational
 {
+	HitEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
+	MediaEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
 	HitEffects
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=250; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=1250 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 			Filter
 			{
 				Enemies = false
@@ -128,7 +133,7 @@ HitOperational
 		}
 		{
 			Type = Impulse
-			Impulse = 2
+			Impulse = { BaseValue = 2; EffectScaleExponent = 1 }
 			Filter
 			{
 				Enemies = false
@@ -138,7 +143,7 @@ HitOperational
 		}
 		{
 			Type = Damage
-			Damage = { BaseValue=250; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=1250 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 			Filter
 			{
 				Friendlies = false
@@ -147,7 +152,7 @@ HitOperational
 		}
 		{
 			Type = Impulse
-			Impulse = 2
+			Impulse = { BaseValue = 2; EffectScaleExponent = 1 }
 			Filter
 			{
 				Friendlies = false
@@ -157,7 +162,7 @@ HitOperational
 		{
 			Type = ResourceDrain
 			ResourceType = ion_energy
-			Amount = -1000
+			Amount = { BaseValue = -1000; EffectScaleExponent = 1 }
 			Filter
 			{
 				Friendlies = true
@@ -223,11 +228,13 @@ HitOperational
 
 HitStructural
 {
+	HitEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
+	MediaEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
 	HitEffects
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=200; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=1000 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 			Filter
 			{
 				Enemies = false
@@ -236,7 +243,7 @@ HitStructural
 		}
 		{
 			Type = Impulse
-			Impulse = 1
+			Impulse = { BaseValue = 1; EffectScaleExponent = 1 }
 			Filter
 			{
 				Enemies = false
@@ -245,7 +252,7 @@ HitStructural
 		}
 		{
 			Type = Damage
-			Damage = { BaseValue=200; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=1000 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 			Filter
 			{
 				Friendlies = false
@@ -254,7 +261,7 @@ HitStructural
 		}
 		{
 			Type = Impulse
-			Impulse = 1
+			Impulse = { BaseValue = 1; EffectScaleExponent = 1 }
 			Filter
 			{
 				Friendlies = false

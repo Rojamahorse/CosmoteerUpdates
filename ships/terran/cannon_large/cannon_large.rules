@@ -1,4 +1,14 @@
-Part : <../base_part_terran.rules>/Part
+OVERCLOCK
+{
+	HEAT_PER_SHOT = 1000
+	RECOIL = (&~/Part/Components/BulletEmitter/Recoil) * 2
+	
+	BULLET = &<./Data/shots/bullet_large/overclock/bullet_large_overclock.rules>
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/CannonLarge"
 	IconNameKey = "Parts/CannonLargeIcon"
@@ -13,6 +23,7 @@ Part : <../base_part_terran.rules>/Part
 		[coil2, 5]
 	]
 	TypeCategories = [weapon, uses_ammo, is_crewed]
+	SignificanceToggle = ScorchedToggle
 	Size = [3, 3]
 	PhysicalRect = [0, 1, 3, 2]
 	SaveRect = &PhysicalRect
@@ -82,7 +93,14 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, PartCrew]
+			Toggles = [PowerToggle, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -94,10 +112,18 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 4
 		}
 
@@ -126,7 +152,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = bullet
 			MaxResources = 4
-			DelayBeforeReadyToUse = .25
+			DelayBeforeReadyToUse = 0.5
 			AnticipateMoreResourcesFrom = ["AmmoStorage"]
 			ToggleOnResources = 4
 			ToggleOffResources = 3
@@ -313,7 +339,7 @@ Part : <../base_part_terran.rules>/Part
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 1.35
+			FireInterval = 2.7
 			FiringArc = 115d
 			RotateSpeed = 30d
 			FireThresholdAngle = 1d
@@ -353,6 +379,13 @@ Part : <../base_part_terran.rules>/Part
 			ShowProgressFor = Turret
 		}
 
+		IsOperationalNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
+		}
+
 		BulletEmitter
 		{
 			Type = BulletEmitter
@@ -360,13 +393,19 @@ Part : <../base_part_terran.rules>/Part
 			FireTrigger = Turret
 			GetTargetFrom = Turret
 			Location = [3, 0]
-			OperationalToggle = IsOperational
+			OperationalToggle = IsOperationalNonOverclocked
 			Bullet = &<./Data/shots/bullet_large/bullet_large.rules>
 			Spread = [-2.5d, 2.5d]
 			ResourceStorage = LoadedAmmo
 			ResourcesUsed = 4
 			Recoil = 80
 			AntiPhasingRaycastDistance = 2
+		}
+		Overclock_BulletEmitter : BulletEmitter
+		{
+			OperationalToggle = IsOperationalOverclocked
+			Bullet = &~/OVERCLOCK/BULLET
+			Recoil = &~/OVERCLOCK/RECOIL
 		}
 
 		FireEffect
@@ -404,9 +443,9 @@ Part : <../base_part_terran.rules>/Part
 			ToStorage = LoadedAmmo
 			FromQuantity = 1
 			ToQuantity = 1
-			Interval = .15
+			Interval = 0.3
 			DelayTrigger = Turret
-			DelayAfterTrigger = .5
+			DelayAfterTrigger = 1
 		}
 
 		LoadEffects
@@ -455,6 +494,84 @@ Part : <../base_part_terran.rules>/Part
 			Location = &../Turret/Location
 			Radius = 1.155
 			Density = 1.5
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+		
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+		
+		OverheatEffects : ^/0/OverheatEffects
+		{
+			Location = [1.5, 2]
+		}
+		
+		Overclock_ShotHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_BulletEmitter
+			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Simple
+					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
+					Routes
+					[
+						[&../../HEAT_INPUT, Port_Thermal_Left0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Left1, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down1, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down2, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right1, 0]
+					]
+				}
+			]
+		}
+
+		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 1]
+			Direction = Left
+		}
+		Port_Thermal_Left1 : Port_Thermal_Left0
+		{
+			Location = [0, 2]
+		}
+		Port_Thermal_Down0 : Port_Thermal_Left0
+		{
+			Location = [0, 2]
+			Direction = Down
+		}
+		Port_Thermal_Down1 : Port_Thermal_Down0
+		{
+			Location = [1, 2]
+		}
+		Port_Thermal_Down2 : Port_Thermal_Down0
+		{
+			Location = [2, 2]
+		}
+		Port_Thermal_Right0 : Port_Thermal_Left0
+		{
+			Location = [2, 1]
+			Direction = Right
+		}
+		Port_Thermal_Right1 : Port_Thermal_Right0
+		{
+			Location = [2, 2]
 		}
 
 		TurretGraphics
@@ -718,6 +835,21 @@ Part : <../base_part_terran.rules>/Part
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
 		}
 
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -731,6 +863,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1.5, 1.5]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3,4]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -739,7 +881,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [1,2]
+					HidesIndicators = [2,3,4]
 				}
 
 				// Out of ammo.
@@ -751,6 +893,16 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/NoAmmo
 						Size = [1, 1]
 					}
+				}
+
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+					HidesIndicators = [4]
 				}
 
 				// No crew.
@@ -772,6 +924,20 @@ Part : <../base_part_terran.rules>/Part
 			Size = [3, 5]
 			Offset = [0, -1]
 		}
+		
+		PeakHeatGenerationValue
+		{
+			Type = StaticValue
+			SHOT_HEAT_PER_SECOND = (&~/Part/StatsByCategory/1/Stats/HeatPerShot) * (&~/Part/StatsByCategory/0/Stats/ROF)
+			Value = (&SHOT_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = PeakHeatGenerationValue
+		}
 	}
 
 	Stats
@@ -789,11 +955,11 @@ Part : <../base_part_terran.rules>/Part
 			NameKey = "StatCategories/BulletLarge"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage
+				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
 				Penetration = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/Penetration
-				FireChance = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/PenetratingOperational/HitEffects/1/FireChance) * 100
+				FireChance = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/PenetratingOperational/HitEffects/1/StatusChance/BaseValue) * 100
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
 				Range = &~/Part/Components/BulletEmitter/Bullet/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
@@ -804,6 +970,31 @@ Part : <../base_part_terran.rules>/Part
 				AmmoPerShot = &~/Part/Components/BulletEmitter/ResourcesUsed
 				AmmoPerSecond = (&AmmoPerShot) * (&ROF)
 				ShotAmmoUsage = [&../AmmoPerShot, &../AmmoPerSecond]
+			}
+		}
+		{
+			NameKey = "StatCategories/Overclocked"
+			Stats
+			{
+				SimpleDamage = 0
+				ShotSpeed = &~/OVERCLOCK/BULLET/Speed
+				ShotHP = &~/OVERCLOCK/BULLET/HEALTH
+				Shrapnel = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/Count
+				ShrapnelArc = (&~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/Arc/1)
+				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+			}
+		}
+		{
+			NameKey = "StatCategories/OverclockedShrapnel"
+			Stats
+			{
+				SimpleDamage = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/DAMAGE
+				Penetration = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/PENETRATION
+				FireChance = (&~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/FIRE_CHANCE) * 100
+				FireSize = (&~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/FIRE_SIZE) * 100
+				Range = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/Range
+				ShotSpeed = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/Speed
+				ShotHP = infinity
 			}
 		}
 	]

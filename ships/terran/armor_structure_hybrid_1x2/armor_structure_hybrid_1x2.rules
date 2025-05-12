@@ -16,10 +16,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeID = "armor"
 	MaxHealth = 4000
 	ExplosiveDamageAbsorption = 100%
-	DamageResistances = {explosive = 50%}
-	TypeCategories = [armor]
+	DamageResistances
+	{
+		explosive = 50%
+		thermal = -25%
+	}
+	TypeCategories = [armor, non_flammable]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
-	Flammable = false
 	CreatePartPerTileWhenGrabbed = structure
 	InitialPenetrationResistance = 5
 	ContinuingPenetrationResistance = &InitialPenetrationResistance

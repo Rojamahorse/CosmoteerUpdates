@@ -1,4 +1,14 @@
-Part : <../base_part_terran.rules>/Part
+OVERCLOCK
+{
+	CAPACITY_FACTOR = 300%
+	BATTERY_SIZE_FACTOR = 300%
+	MAX_HEAT_PER_SECOND = 250
+	HEAT_PER_BATTERY_DELIVERED = 20
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/PowerStorage"
 	IconNameKey = "Parts/PowerStorageIcon"
@@ -16,7 +26,7 @@ Part : <../base_part_terran.rules>/Part
 	FlipVRotate = [0, 1, 2, 3] // Disable flipping UI.
 	MaxHealth = 4000
 	TypeCategories = [provides_power, storage]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ThermalActivity]
 	IgnoreRotationForMirroredSelection = true
 	EditorIcon
 	{
@@ -32,7 +42,7 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
 			Mode = All
 		}
 
@@ -44,6 +54,27 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
+		PowerToggleNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ PowerToggle, { Toggle = IsOverclocked; Invert = true }]
+			Mode = All
+		}
+		PowerToggleOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ PowerToggle, IsOverclocked ]
+			Mode = All
+		}
+
 		BatteryStorage
 		{
 			Type = ResourceStorage
@@ -51,20 +82,181 @@ Part : <../base_part_terran.rules>/Part
 			MaxResources = 24000
 			StartingResources = 0
 			SuppliesResources = true
-			SuppliesResourcesToggle = PowerToggle
+			SuppliesResourcesToggle = PowerToggleNonOverclocked
 			MinResourcesPickUp = 1000
 			MaxResourcesPickUp = 1000
 			IsIntermediateStorage = true
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
+		
+		Overclock_BatteryProviderStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [ BatteryStorage, Overclock_BatteryStorageProxy ]
+			RemoveMode = InReverseOrder
+			SuppliesResources = true
+			SuppliesResourcesToggle = PowerToggleOverclocked
+			MinResourcesPickUp = (&../BatteryStorage/MinResourcesPickUp) * (&~/OVERCLOCK/BATTERY_SIZE_FACTOR)
+			MaxResourcesPickUp = &MinResourcesPickUp
+			IsIntermediateStorage = true
+		}
+		
+		Overclock_ToggledBatteryStorage
+		{
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Components
+			{
+				Overclock_BatteryStorage
+				{
+					Type = ResourceStorage
+					ResourceType = battery
+					MaxResources = "ceil((&~/Part/Components/BatteryStorage/MaxResources) * ((&~/OVERCLOCK/CAPACITY_FACTOR) - 1))"
+					IsIntermediateStorage = true
+				}
+			}
+		}
+		
+		Overclock_BatteryStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ResourceType = battery
+			ProxyToggle = IsOverclocked
+			ComponentID = Overclock_BatteryStorage
+		}
+		
+		BatteryReceiverStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [ BatteryStorage, Overclock_BatteryStorageProxy ]
+			AddMode = InOrder
+			ReceiveResourceMediaEffects = &../BatteryStorage/ReceiveResourceMediaEffects
+			IsIntermediateStorage = true
+			ProvidedValueRange = 0
+			ProvidedValuePerResource = 1/1000
+		}
+		
 		BatteryConsumer
 		{
 			Type = ResourceConsumer
 			ResourceType = battery
-			Storage = BatteryStorage
+			Storage = BatteryReceiverStorage
 			DefaultPriority = &/PRIORITIES/Storage_Supply
 			ResupplyThreshold = 500
 			OperationalToggle = PowerToggle
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+		
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		OverheatEffects : ^/0/OverheatEffects
+		{
+			Location = [1, 1]
+		}
+
+		Overclock_PowerDeliveredTrigger
+		{
+			Type = ValueChangeTrigger
+			OperationalToggle = IsOverclocked
+			ValueSource = BatteryReceiverStorage
+			TriggerOnDecrease = false
+		}
+		Overclock_DeliveryHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_PowerDeliveredTrigger
+			Amount = { BaseValue = (&~/OVERCLOCK/HEAT_PER_BATTERY_DELIVERED) * (&~/HEAT_TO_RESOURCE); EffectScaleExponent = 1; }
+		}
+
+		Overclock_ConstantHeatProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperationalOverclocked
+			HEAT_PER_INTERVAL = (&~/OVERCLOCK/MAX_HEAT_PER_SECOND) * (&Interval)
+			ToQuantity
+			{
+				BaseValue = ceil((&../HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE))
+				BuffType = ThermalActivity
+				BuffMode = Multiply
+			}
+			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Interval = 0.5
+		}
+		Overclock_FullnessBuff
+		{
+			Type = SelfBuffProvider
+			OperationalToggle = IsOverclocked
+			BuffType = ThermalActivity
+			BuffMultiplier = Overclock_BatteryProviderStorage
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Simple
+					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
+					Routes
+					[
+						[&../../HEAT_INPUT, Port_Thermal_TopLeft, 0]
+						[&../../HEAT_INPUT, Port_Thermal_LeftUp, 0]
+						[&../../HEAT_INPUT, Port_Thermal_RightUp, 0]
+						[&../../HEAT_INPUT, Port_Thermal_TopRight, 0]
+						[&../../HEAT_INPUT, Port_Thermal_BottomRight, 0]
+						[&../../HEAT_INPUT, Port_Thermal_RightDown, 0]
+						[&../../HEAT_INPUT, Port_Thermal_LeftDown, 0]
+						[&../../HEAT_INPUT, Port_Thermal_BottomLeft, 0]
+					]
+				}
+			]
+		}
+		
+		Port_Thermal_TopLeft : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0,0]
+			Direction = Left
+		}
+		Port_Thermal_LeftUp : Port_Thermal_TopLeft
+		{
+			Location = [0, 0]
+			Direction = Up
+		}
+		Port_Thermal_RightUp : Port_Thermal_LeftUp
+		{
+			Location = [1, 0]
+		}
+		Port_Thermal_TopRight : Port_Thermal_RightUp
+		{
+			Direction = Right
+		}
+		Port_Thermal_BottomRight : Port_Thermal_TopRight
+		{
+			Location = [1,1]
+		}
+		Port_Thermal_RightDown : Port_Thermal_BottomRight
+		{
+			Direction = Down
+		}
+		Port_Thermal_LeftDown : Port_Thermal_RightDown
+		{
+			Location = [0,1]
+		}
+		Port_Thermal_BottomLeft : Port_Thermal_LeftDown
+		{
+			Direction = Left
 		}
 
 		Graphics
@@ -221,7 +413,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ResourceSprites
 			Location = [1, 1]
-			ResourceStorage = BatteryStorage
+			ResourceStorage = BatteryReceiverStorage
 			Layer = "doodads_low"
 			ResourceLevels
 			[
@@ -330,6 +522,21 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/MedPartScorched
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -343,6 +550,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 1]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -351,7 +568,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [1]
+					HidesIndicators = [2,3]
 				}
 
 				// Out of power.
@@ -360,6 +577,15 @@ Part : <../base_part_terran.rules>/Part
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
 						Size = [1, 1]
 					}
 				}
@@ -379,4 +605,18 @@ Part : <../base_part_terran.rules>/Part
 		BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 	}
+	
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/Overclocked"
+			Stats
+			{
+				BatterySize = (&~/Part/Stats/BatterySize) * (&~/OVERCLOCK/BATTERY_SIZE_FACTOR)
+				PowerCapacity = (&~/Part/Stats/PowerCapacity) * (&~/OVERCLOCK/CAPACITY_FACTOR)
+				StorageHeatGeneration = (&~/OVERCLOCK/MAX_HEAT_PER_SECOND)
+				BatteryDeliveredHeatGeneration = (&~/OVERCLOCK/HEAT_PER_BATTERY_DELIVERED)
+			}
+		}
+	]
 }

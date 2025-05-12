@@ -16,12 +16,12 @@ Part : <../base_part_terran_structure.rules>/Part
 	AllowedContiguity = [Right, Bottom]
 	Density = .333
 	MaxHealth = 500
-	ConstructionDuration = 0.25
-	RepairDuration = 0.25
+	ConstructionWork = 0.25
+	WorkPerRepairedHealth = 0.25 / 1000
 	HealthType = Structural
-	TypeCategories = [structure]
+	DamageResistances = { thermal=60% }
+	TypeCategories = [structure, non_flammable]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
-	Flammable = false
 	UnderlyingPartPerTile = ""
 	TempConstructionPartPerTile = cosmoteer.structure
 	CreatePartPerTileWhenGrabbed = ""

@@ -28,6 +28,14 @@ Terran : <../base_ship.rules>
 		&<disruptor/disruptor.rules>/Part
 		&<ion_beam_emitter/ion_beam_emitter.rules>/Part
 		&<ion_beam_prism/ion_beam_prism.rules>/Part
+		&<resonance_beam_turret/resonance_beam_turret.rules>/Part
+		&<radiator/radiator.rules>/Part
+		&<heat_exchanger/heat_exchanger.rules>/Part
+		&<thermal_tank/thermal_tank.rules>/Part
+		&<heat_pipe_crossing/heat_pipe_crossing.rules>/Part
+		&<heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part
+		&<thermal_dilation_pump/thermal_dilation_pump.rules>/Part
+		&<thermal_amplification_pump/thermal_amplification_pump.rules>/Part
 
 		// Projectile weapons.
 		&<cannon_med/cannon_med.rules>/Part
@@ -91,6 +99,7 @@ Terran : <../base_ship.rules>
 		&<factory_emp/factory_emp.rules>/Part
 		&<factory_nuke/factory_nuke.rules>/Part
 		&<factory_mine/factory_mine.rules>/Part
+		&<factory_thermal/factory_thermal.rules>/Part
 		&<factory_steel/factory_steel.rules>/Part
 		&<factory_coil/factory_coil.rules>/Part
 		&<factory_coil2/factory_coil2.rules>/Part
@@ -296,7 +305,7 @@ Terran : <../base_ship.rules>
 			Value // The actual material.
 			{
 				UniqueBucket = -400
-				RenderStage = Low
+				RenderStage = Middle
 				AtlasTextureParams
 				{
 					MipLevels = 7 // Assumes 64x64 min part sprite size.
@@ -314,7 +323,7 @@ Terran : <../base_ship.rules>
 			Value // The actual material.
 			{
 				UniqueBucket = -300
-				RenderStage = Low
+				RenderStage = Middle
 				HasNormals = true
 				AtlasTextureParams
 				{
@@ -341,7 +350,7 @@ Terran : <../base_ship.rules>
 			Value // The actual material.
 			{
 				UniqueBucket = -200
-				RenderStage = Low
+				RenderStage = Middle
 				AtlasTextureParams
 				{
 					MipLevels = 7 // Assumes 64x64 min part sprite size.
@@ -359,7 +368,7 @@ Terran : <../base_ship.rules>
 			Value // The actual material.
 			{
 				UniqueBucket = -100
-				RenderStage = Low
+				RenderStage = Middle
 				AtlasTextureParams
 				{
 					MipLevels = 7 // Assumes 64x64 min part sprite size.
@@ -666,27 +675,6 @@ Terran : <../base_ship.rules>
 						DestAlphaFactor = One
 						AlphaOperator = Add
 					}
-				}
-			}
-		}
-
-		// Fire Indicator
-		{
-			Key = "fire_indicators" // Ship bucket layer.
-			Value // The actual material.
-			{
-				UniqueBucket = 1900
-				RenderStage = Highest
-				DrawForLocalPlayerOnly = true
-				IsIndicators = true
-				IsRoof = true
-				AtlasTextureParams
-				{
-					MipLevels = 7 // Assumes 64x64 min part sprite size.
-				}
-				Material
-				{
-					Shader = "./Data/fire/indicators_fire.shader"
 				}
 			}
 		}

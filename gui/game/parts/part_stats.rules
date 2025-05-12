@@ -68,6 +68,10 @@ PartStats
 		FormatKey = "Stats/ThrusterRampDownFmt"
 	}
 	{
+		ID = ThrusterRampExponent
+		FormatKey = "Stats/ThrusterRampExponentFmt"
+	}
+	{
 		ID = TractorForce
 		FormatKey = "Stats/TractorForceFmt"
 	}
@@ -76,8 +80,20 @@ PartStats
 		FormatKey = "Stats/ThrusterBuffFmt"
 	}
 	{
+		ID = ThrusterBonusForce
+		FormatKey = "Stats/ThrusterBonusForceFmt"
+	}
+	{
+		ID = PowerDistributionEfficiency
+		FormatKey = "Stats/PowerDistributionEfficiencyFmt"
+	}
+	{
 		ID = RailgunBuff
 		FormatKey = "Stats/RailgunBuffFmt"
+	}
+	{
+		ID = RailgunBuffExponentOverclock
+		FormatKey = "Stats/RailgunBuffExponentOverclockFmt"
 	}
 	{
 		ID = PowerGeneration
@@ -90,6 +106,26 @@ PartStats
 	{
 		ID = BatteryFillTime
 		FormatKey = "Stats/BatteryFillTimeFmt"
+	}
+	{
+		ID = ResonanceFireSize
+		FormatKey = "Stats/ResonanceFireSizeFmt"
+	}
+	{
+		ID = ResonanceDamageArea
+		FormatKey = "Stats/ResonanceDamageAreaFmt"
+	}
+	{
+		ID = ResonanceDamageFlammable
+		FormatKey = "Stats/ResonanceDamageFlammableFmt"
+	}
+	{
+		ID = ResonanceDamageNonFlammable
+		FormatKey = "Stats/ResonanceDamageNonFlammableFmt"
+	}
+	{
+		ID = ResonanceDamageShield
+		FormatKey = "Stats/ResonanceDamageShieldFmt"
 	}
 
 	// Damage & Weapons.
@@ -130,6 +166,10 @@ PartStats
 		FormatKey = "Stats/DamageContinuousEnemiesFmt"
 	}
 	{
+		ID = DamageContinuousShields
+		FormatKey = "Stats/DamageContinuousShieldsFmt"
+	}
+	{
 		ID = DamageContinuousJunk
 		FormatKey = "Stats/DamageContinuousJunkFmt"
 	}
@@ -138,8 +178,16 @@ PartStats
 		FormatKey = "Stats/DamageContinuousAsteroidsFmt"
 	}
 	{
+		ID = DamageContinuousPercent
+		FormatKey = "Stats/DamageContinuousPercentageFmt"
+	}
+	{
 		ID = ShieldDamage
 		FormatKey = "Stats/ShieldDamageFmt"
+	}
+	{
+		ID = ShieldDamageOverTime
+		FormatKey = "Stats/ShieldDamageOverTimeFmt"
 	}
 	{
 		ID = ShotDamage
@@ -150,12 +198,88 @@ PartStats
 		FormatKey = "Stats/DamageAreaFmt"
 	}
 	{
+		ID = DamageAreaFalloff
+		FormatKey = "Stats/DamageAreaFalloffFmt"
+	}
+	
+	{
+		ID = StrengthAtMaxRange
+		FormatKey = "Stats/StrengthAtMaxRangeFmt"
+	}
+	
+	{
+		ID = IonLightningInterval
+		FormatKey = "Stats/IonLightningIntervalFmt"
+	}
+	{
+		ID = LightningChance
+		FormatKey = "Stats/LightningChanceFmt"
+	}
+	{
+		ID = LightningRange
+		FormatKey = "Stats/LightningRangeFmt"
+	}
+	{
+		ID = LightningStrikeCountRange
+		FormatKey = "Stats/LightningStrikeCountRangeFmt"
+	}
+	{
+		ID = LightningMaxChain
+		FormatKey = "Stats/LightningMaxChainFmt"
+	}
+	{
+		ID = LightningChainChance
+		FormatKey = "Stats/LightningChainChanceFmt"
+	}
+	{
+		ID = LightningChainStrikeCountRange
+		FormatKey = "Stats/LightningChainStrikeCountRangeFmt"
+	}
+	{
+		ID = LightningDamage
+		FormatKey = "Stats/LightningDamageFmt"
+	}
+	
+	{
+		ID = HeatPerTileContinuous
+		FormatKey = "Stats/HeatPerTileContinuousFmt"
+	}
+	{
+		ID = ResonanceHeatPool
+		FormatKey = "Stats/ResonanceHeatPoolFmt"
+	}
+	{
+		ID = DilationHeatSpreadDistance
+		FormatKey = "Stats/DilationHeatSpreadDistanceFmt"
+	}
+	{
+		ID = HeatSpreadDistance
+		FormatKey = "Stats/HeatSpreadDistanceFmt"
+	}
+	{
+		ID = HitShieldHeatFactor
+		FormatKey = "Stats/HitShieldHeatFactorFmt"
+	}
+	{
+		ID = ShieldDamagePowerCost
+		FormatKey = "Stats/ShieldDamagePowerCostFmt"
+	}
+	
+	{
 		ID = PowerDrain
 		FormatKey = "Stats/PowerDrainFmt"
 	}
 	{
+		ID = PowerDrainOverTime
+		FormatKey = "Stats/PowerDrainOverTimeFmt"
+	}
+	{
 		ID = PowerDrainArea
 		FormatKey = "Stats/PowerDrainAreaFmt"
+	}
+	{
+		ID = EffectDuration
+		FormatKey = "Stats/EffectDurationFmt"
 	}
 	{
 		ID = Penetration
@@ -170,6 +294,10 @@ PartStats
 		FormatKey = "Stats/FireChanceFmt"
 	}
 	{
+		ID = FireSize
+		FormatKey = "Stats/FireSizeFmt"
+	}
+	{
 		ID = Salvo
 		FormatKey = "Stats/SalvoFmt"
 	}
@@ -182,8 +310,40 @@ PartStats
 		FormatKey = "Stats/ROFRangeFmt"
 	}
 	{
+		ID = FireInterval
+		FormatKey = "Stats/FireIntervalFmt"
+	}
+	{
+		ID = FireDelay
+		FormatKey = "Stats/FireDelayFmt"
+	}
+	{
+		ID = RailgunBaseChargeTime
+		FormatKey = "Stats/RailgunBaseChargeTimeFmt"
+	}
+	{
+		ID = RailgunAcceleratorChargeTime
+		FormatKey = "Stats/RailgunAcceleratorChargeTimeFmt"
+	}
+	{
+		ID = Burst
+		FormatKey = "Stats/BurstFmt"
+	}
+	{
+		ID = Pellets
+		FormatKey = "Stats/PelletsFmt"
+	}
+	{
+		ID = PelletSpread
+		FormatKey = "Stats/PelletSpreadFmt"
+	}
+	{
 		ID = RampUpTime
 		FormatKey = "Stats/ThrusterRampUpFmt"
+	}
+	{
+		ID = RampUpSpeedFactor
+		FormatKey = "Stats/RampUpSpeedFactorFmt"
 	}
 	{
 		ID = Range
@@ -250,6 +410,26 @@ PartStats
 		FormatKey = "Stats/ShrapnelFmt"
 	}
 	{
+		ID = ShrapnelArc
+		FormatKey = "Stats/ShrapnelArcFmt"
+	}
+	{
+		ID = ShrapnelFieldRadius
+		FormatKey = "Stats/ShrapnelFieldRadiusFmt"
+	}
+	{
+		ID = ShrapnelFieldBulletDamage
+		FormatKey = "Stats/ShrapnelFieldBulletDamageFmt"
+	}
+	{
+		ID = ShrapnelFieldDamagePool
+		FormatKey = "Stats/ShrapnelFieldDamagePoolFmt"
+	}
+	{
+		ID = ShrapnelFieldLifetime
+		FormatKey = "Stats/ShrapnelFieldLifetimeFmt"
+	}
+	{
 		ID = ShieldHP
 		FormatKey = "Stats/ShieldHPFmt"
 	}
@@ -264,6 +444,88 @@ PartStats
 	{
 		ID = ShieldDist
 		FormatKey = "Stats/ShieldDistFmt"
+	}
+
+	// Thermal Beam
+	{
+		ID = BaseAmplification
+		FormatKey = "Stats/BaseAmplificationFmt"
+	}
+	{
+		ID = BaseDilation
+		FormatKey = "Stats/BaseDilationFmt"
+	}
+	{
+		ID = ThermalAmplification
+		FormatKey = "Stats/ThermalAmplificationFmt"
+	}
+	{
+		ID = ThermalDilation
+		FormatKey = "Stats/ThermalDilationFmt"
+	}
+	{
+		ID = ThermalPumpMultiEfficiency
+		FormatKey = "Stats/ThermalPumpMultiEfficiencyFmt"
+	}
+	{
+		ID = AmplificationFactor
+		FormatKey = "Stats/AmplificationFactorFmt"
+	}
+	{
+		ID = DilationFactor
+		FormatKey = "Stats/DilationFactorFmt"
+	}
+	{
+		ID = HeatGenerationFactor
+		FormatKey = "Stats/HeatGenerationFactorFmt"
+	}
+	{
+		ID = PowerUsageFactor
+		FormatKey = "Stats/PowerUsageFactorFmt"
+	}
+	{
+		ID = PumpPowerUsageFactor
+		FormatKey = "Stats/PumpPowerUsageFactorFmt"
+	}
+	{
+		ID = OverclockTransitionTime
+		FormatKey = "Stats/OverclockTransitionTimeFmt"
+	}
+	{
+		ID = HeatAbsorption
+		FormatKey = "Stats/HeatAbsorptionFmt"
+	}
+	{
+		ID = HeatAbsorptionInefficiency
+		FormatKey = "Stats/HeatAbsorptionInefficiencyFmt"
+	}
+	{
+		ID = HeatAbsorptionRadius
+		FormatKey = "Stats/HeatAbsorptionRadiusFmt"
+	}
+	{
+		ID = HeatTransferInefficiency
+		FormatKey = "Stats/HeatTransferInefficiencyFmt"
+	}
+	{
+		ID = TurretExtraHeatGeneration
+		FormatKey = "Stats/TurretExtraHeatGenerationFmt"
+	}
+	{
+		ID = RailgunOverclockHeatOnShot
+		FormatKey = "Stats/RailgunOverclockHeatOnShotFmt"
+	}
+	{
+		ID = HeatPerShot
+		FormatKey = "Stats/HeatPerShotFmt"
+	}
+	{
+		ID = FiringHeatGeneration
+		FormatKey = "Stats/FiringHeatGenerationFmt"
+	}
+	{
+		ID = HeatPerDamage
+		FormatKey = "Stats/HeatPerDamageFmt"
 	}
 
 	// Production rates.
@@ -307,6 +569,87 @@ PartStats
 		ID = EnrichedUraniumProduction
 		FormatKey = "Stats/EnrichedUraniumProductionFmt"
 	}
+	
+	{
+		ID = ResonanceTurretHeatGeneration
+		FormatKey = "Stats/ResonanceTurretHeatGenerationFmt"
+	}
+	{
+		ID = HeatGeneration
+		FormatKey = "Stats/HeatGenerationFmt"
+	}
+	{
+		ID = HeatGenerationPerPart
+		FormatKey = "Stats/HeatGenerationPerPartFmt"
+	}
+	{
+		ID = AmmoHeatGeneration
+		FormatKey = "Stats/AmmoHeatGenerationFmt"
+	}
+	{
+		ID = MissileHeatGeneration
+		FormatKey = "Stats/MissileHeatGenerationFmt"
+	}
+	{
+		ID = MineHeatGeneration
+		FormatKey = "Stats/MineHeatGenerationFmt"
+	}
+	{
+		ID = SteelHeatGeneration
+		FormatKey = "Stats/SteelHeatGenerationFmt"
+	}
+	{
+		ID = CoilHeatGeneration
+		FormatKey = "Stats/CoilHeatGenerationFmt"
+	}
+	{
+		ID = Coil2HeatGeneration
+		FormatKey = "Stats/Coil2HeatGenerationFmt"
+	}
+	{
+		ID = TristeelHeatGeneration
+		FormatKey = "Stats/TristeelHeatGenerationFmt"
+	}
+	{
+		ID = DiamondHeatGeneration
+		FormatKey = "Stats/DiamondHeatGenerationFmt"
+	}
+	{
+		ID = ProcessorHeatGeneration
+		FormatKey = "Stats/ProcessorHeatGenerationFmt"
+	}
+	{
+		ID = EnrichedUraniumHeatGeneration
+		FormatKey = "Stats/EnrichedUraniumHeatGenerationFmt"
+	}
+	{
+		ID = ThrusterHeatGeneration
+		FormatKey = "Stats/ThrusterHeatGenerationFmt"
+	}
+	{
+		ID = BaseHeatFactor
+		FormatKey = "Stats/BaseHeatFactorFmt"
+	}
+	{
+		ID = BoostHeatFactorPerBattery
+		FormatKey = "Stats/BoostHeatFactorPerBatteryFmt"
+	}
+	{
+		ID = BoostHeatFactorBatteryThreshold
+		FormatKey = "Stats/BoostHeatFactorBatteryThresholdFmt"
+	}
+	{
+		ID = StorageHeatGeneration
+		FormatKey = "Stats/StorageHeatGenerationFmt"
+	}
+	{
+		ID = BatteryDeliveredHeatGeneration
+		FormatKey = "Stats/BatteryDeliveredHeatGenerationFmt"
+	}
+	{
+		ID = ThermalPowerGain
+		FormatKey = "Stats/ThermalPowerGainFmt"
+	}
 
 	// Usage rates.
 	{
@@ -336,6 +679,10 @@ PartStats
 	{
 		ID = MissileSulfurUsage
 		FormatKey = "Stats/MissileSulfurUsageFmt"
+	}
+	{
+		ID = MissileHeatUsage
+		FormatKey = "Stats/MissileHeatUsageFmt"
 	}
 	{
 		ID = MineIronUsage
@@ -441,6 +788,15 @@ PartStats
 		ID = BoostedPowerUsageContinuous
 		FormatKey = "Stats/BoostedPowerUsageContinuousFmt"
 	}
+	{
+		ID = HeatDissipation
+		FormatKey = "Stats/HeatDissipationFmt"
+	}
+	{
+		ID = ThermalPowerLoss
+		FormatKey = "Stats/ThermalPowerLossFmt"
+	}
+
 
 	// Capacities.
 	{
@@ -543,6 +899,18 @@ PartStats
 		ID = PowerCapacity
 		FormatKey = "Stats/PowerCapacityFmt"
 	}
+	{
+		ID = HeatCapacity
+		FormatKey = "Stats/HeatCapacityFmt"
+	}
+	{
+		ID = HeatFireThreshold
+		FormatKey = "Stats/HeatFireThresholdFmt"
+	}
+	{
+		ID = HeatFireChance
+		FormatKey = "Stats/HeatFireChanceFmt"
+	}
 
 	// Low-priority special stats.
 	{
@@ -589,6 +957,10 @@ PartStats
 	{
 		ID = EMPResist
 		FormatKey = "Stats/EMPResistFmt"
+	}
+	{
+		ID = EMPResistPercentage
+		FormatKey = "Stats/EMPResistPercentageFmt"
 	}
 	{
 		ID = CrewSpeed

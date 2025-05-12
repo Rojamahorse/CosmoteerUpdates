@@ -1,0 +1,551 @@
+Range
+{
+	BaseValue = 315
+	Modifiers
+	[
+		{
+			Type = Buff
+			BuffType = Overclock
+			ModificationMode = ReverseLerp
+			MinValue = 155
+			MaxValue = &../../BaseValue
+		}
+	]
+}
+IdealRange
+{
+	BaseValue = 300
+	Modifiers
+	[
+		{
+			Type = Buff
+			BuffType = Overclock
+			ModificationMode = ReverseLerp
+			MinValue = 145
+			MaxValue = &../../BaseValue
+		}
+	]
+}
+HitInterval = .1
+//Width = 1.5
+
+FriendlyShipLowCollisions = false
+
+BeamMediaEffectsIntensity
+{
+	BaseValue = 1
+	Modifiers
+	[
+		{
+			Type = Buff
+			BuffType = ThermalRadius
+			ModificationMode = Replace
+		}
+	]
+}
+
+ColorRed
+{
+	BaseValue = 1
+	Modifiers
+	[
+		{
+			Type = Buff
+			BuffType = ThermalIntensity
+			ModificationMode = Replace
+		}
+	]
+}
+//necessary for the light beam
+ColorBlue
+{
+	BaseValue = 1
+	Modifiers
+	[
+		{
+			Type = Buff
+			BuffType = ThermalIntensity
+			ModificationMode = Replace
+		}
+	]
+}
+
+ColorGreen
+{
+	BaseValue = 1
+	Modifiers
+	[
+		{
+			Type = Buff
+			BuffType = ThermalIntensity
+			ModificationMode = Replace
+		}
+	]
+}
+
+BASE_HEAT = 4
+BASE_HEAT_POOL = 90
+BASE_HEAT_SPREAD_BUDGET = 3.5
+HEAT_POOL_AMP_EXPONENT = 0.67
+SHIELD_HEAT_FACTOR = 0.04
+SHIELD_OVERLOAD_BASE = 0.5
+SHIELD_OVERLOAD_AMP_FACTOR = 0.025
+SHIELD_OVERLOAD_DILATION_FACTOR = 0.33
+
+HitOperational
+{
+//	HitEffectsScale = { BaseValue = 1; BuffType = ThermalPower; BuffMode = Multiply }
+	MediaEffectsScale = { BaseValue = 1; BuffType = ThermalRadius; BuffMode = Replace }
+	HitEffects
+	[
+		{
+			Type = GridStatusApplication
+			StatusType = cosmoteer.heat
+			StatusValue = &~/BASE_HEAT
+			StatusValuePool
+			{
+				BaseValue = &~/BASE_HEAT_POOL
+				MinValue = 40
+				Modifiers
+				[
+					{
+						Type = ScaledBuff
+						BuffType = ThermalIntensity
+						ModificationMode = Multiply
+						Exponent = &~/HEAT_POOL_AMP_EXPONENT
+					}
+				]
+			}
+			ValueFalloff = 0.75
+			MaxCost
+			{
+				BaseValue = &~/BASE_HEAT_SPREAD_BUDGET
+				MinValue = 2
+				Modifiers
+				[
+					{
+						Type = ScaledBuff
+						BuffType = ThermalRadius
+						ModificationMode = Multiply
+						Exponent = 0.5
+					}
+				]
+			}
+//			MaxDistance = &MaxCost
+			HitDirectionCostFactor = 0.5;
+			FalloffPadding = 0.5;
+			EmptyTileCost = 1000
+			AllowDiagonals = true
+			Filter {
+				Friendlies = false
+				TargetedFriendlies = true
+			}
+		}
+		// Apply shield overload status
+		{
+			Type = AreaShieldStatusApplication
+			StatusType = cosmoteer.shield_overload
+			Radius = &~/HitOperational/HitEffects/0/MaxCost
+			StatusDuration = 2
+			StatusValue
+			{
+				BaseValue = &~/SHIELD_OVERLOAD_BASE
+				Modifiers
+				[
+					{
+						Type = ScaledBuff
+						BuffType = ThermalIntensity
+						ModificationMode = Multiply
+						Basis = 1
+						Scale = &~/SHIELD_OVERLOAD_AMP_FACTOR
+					}
+					{
+						Type = ScaledBuff
+						BuffType = ThermalRadius
+						ModificationMode = Multiply
+						Basis = 1
+						Scale = &~/SHIELD_OVERLOAD_DILATION_FACTOR
+					}
+				]
+			}
+			ScaleValueByShieldArea = true
+			UseMaxValuesForHitShield = true
+		}
+	]
+	MediaEffects
+	[
+		//Hit Light
+		{
+			Type = Quad
+			Sprite
+			{
+				Texture
+				{
+					File = ../../common_effects/particles/blob.png
+					MipLevels = max
+					SampleMode = Linear
+					UVMode = Wrap
+				}
+				Size = [5, 3]
+				VertexColor = [255, 70, 0, 127]
+				Shader = ../../common_effects/fancy_light.shader
+				_z = 0.6
+				_litReflectiveStrength = 4
+				_litAdditiveStrength = 0
+				_unlitAdditiveStrength = 0
+				_nrmlStrengthLimit = 0.5
+				TargetBlendMode
+				{
+					SourceRgbFactor = InverseDestColor
+					DestRgbFactor = One
+					RgbOperator = Add
+					SourceAlphaFactor = Zero
+					DestAlphaFactor = One
+					AlphaOperator = Add
+				}
+			}
+			FadeInTime = .25
+			FadeOutTime = .25
+			Bucket = ThermalLaserHit
+			IntensityScaleFactor = 4
+			IntensityScaleExponent = 0.5
+			IsLight = true
+		}
+		//Hit Effect
+		{
+			Type = Quad
+			Sprite
+			{
+				Texture
+				{
+					File = ../../common_effects/particles/noise_marble.png
+					MipLevels = max
+					SampleMode = Linear
+					UVMode = Wrap
+				}
+				_noiseTexture2
+				{
+					File = ../../statuses/fire/particles/fire_noise.png
+					MipLevels = max
+					SampleMode = Linear
+					UVMode = Wrap
+				}
+				_rampTexture
+				{
+					File = ../../statuses/fire/particles/fire_ramp.png
+					MipLevels = max
+					SampleMode = Linear
+					UVMode = Clamp
+				}
+				_maskTexture
+				{
+					File = ../../common_effects/particles/blob.png
+					MipLevels = max
+					SampleMode = Linear
+					UVMode = Clamp
+				}
+				Shader = "resonance_beam_hit.shader"
+
+				_beamBaseAmplification = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseAmplification/Value)
+				_amplificationPerPump = (&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/Components/BasePumpAmplification/OnValue)
+				_maxAmplificationPumps = 20
+				_ampVisualExponent = 0.5
+				
+				Size = [4, 2]
+				TargetBlendMode = Add
+			}
+			FadeInTime = .25
+			FadeOutTime = .25
+			Bucket = ThermalLaserHit
+			IntensityScaleFactor = 4
+			IntensityScaleExponent = 0.5
+		}
+		//&<resonance_beam_hit_sparks.rules>
+		//&<resonance_beam_hit_fire.rules>
+		&<resonance_beam_hit_smoke.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "sounds/thermal_resonance_beam_damage.wav"
+			Db = 4
+			MaxConcurrent = 1
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+	]
+}
+
+HitShield
+{
+	MediaEffectsScale = { BaseValue = 1; BuffType = ThermalRadius; BuffMode = Replace }
+	HitEffects
+	[
+		&~/HitOperational/HitEffects/1
+		// Direct damage
+//		{
+//			Type = Damage
+//			DamageType = heat
+//			Damage
+//			{
+//				BaseValue = 13
+//				Modifiers
+//				[
+//					{
+//						Type = Buff
+//						BuffType = ThermalIntensity
+//						ModificationMode = Multiply
+//					}
+//				]
+//			}
+//		}
+		// Heat pass-through
+		{
+			Type = StatusApplication
+			StatusType = cosmoteer.heat
+			StatusValue
+			{
+				BaseValue = (&~/BASE_HEAT_POOL) * (&~/SHIELD_HEAT_FACTOR)
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = ThermalIntensity
+						ModificationMode = Multiply
+					}
+				]
+			}
+			ApplyToAllHitPartTiles = true;
+			DivideValueByPartArea = true;
+		}
+	]
+	MediaEffects = &~/HitOperational/MediaEffects
+}
+
+HitStructural
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			DamageType = heat
+			Damage
+			{
+				BaseValue = 10
+				MinValue = 5
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = ThermalIntensity
+						ModificationMode = Multiply
+					}
+				]
+			}
+		}
+	]
+}
+
+StartMediaEffects
+[
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/thermal_resonance_beam_start.wav"
+		Volume = 1
+		MaxConcurrent = 1
+		MaxConcurrentVolume = 1
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
+
+BeamMediaEffects
+[
+	{
+		Type = Beam
+		Sprite
+		{
+			Texture
+			{
+				File = resonance_beam.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_noiseTexture
+			{
+				File = ../../common_effects/particles/noise_marble3.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			_rampTexture
+			{
+				File = ../../statuses/fire/particles/fire_ramp.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Clamp
+			}
+			Shader = "resonance_beam.shader"
+			_extraBeginLength = 0
+			_extraEndLength = 0.25
+			_endFadeLength = 2
+			
+			_beamBaseAmplification = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseAmplification/Value)
+			_amplificationPerPump = (&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/Components/BasePumpAmplification/OnValue)
+			_maxAmplificationPumps = 20
+			_ampVisualExponent = 0.5
+			
+			_beamBaseDilation = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseDilation/Value)
+			_dilationPerPump = (&<./Data/ships/terran/thermal_dilation_pump/thermal_dilation_pump.rules>/Part/Components/BasePumpDilation/OnValue)
+			_maxDilationPumps = 60
+			_visualDilationFactor = 1.5
+
+			_minWidth = 1.75
+			_maxWidth = 7
+			Size = [100%, 1] //was 3.5
+			TargetBlendMode = Add
+		}
+		FadeInTime = .25
+		FadeOutTime = .25
+		RandomTimeOffset = [0, 1]
+		Bucket = ThermalBeam
+	}
+	//Distortion
+	{
+		Type = Beam
+		Sprite
+		{
+			Texture
+			{
+				File = resonance_beam.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_noiseTexture
+			{
+				File = ../../common_effects/particles/noise_marble3.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			_rampTexture
+			{
+				File = ../../fire/particles/fire_ramp.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Clamp
+			}
+			Shader = "resonance_beam_distortion.shader"
+			_extraBeginLength = 0
+			_extraEndLength = 0.25
+			_endFadeLength = 5
+
+			_beamBaseAmplification = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseAmplification/Value)
+			_amplificationPerPump = (&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/Components/BasePumpAmplification/OnValue)
+			_maxAmplificationPumps = 20
+			_ampVisualExponent = 0.5
+			
+			_beamBaseDilation = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseDilation/Value)
+			_dilationPerPump = (&<./Data/ships/terran/thermal_dilation_pump/thermal_dilation_pump.rules>/Part/Components/BasePumpDilation/OnValue)
+			_maxDilationPumps = 60
+			_visualDilationFactor = 1.5
+			
+			_minWidth = 1.75
+			_maxWidth = 7
+			Size = [100%, 1]
+			TargetBlendMode = AlphaBlend
+		}
+		FadeInTime = .25
+		FadeOutTime = .25
+		IsFancy = true
+		RandomTimeOffset = [0, 1]
+		Bucket = ThermalBeamDistortion
+		CaptureBackBuffer = true
+	}
+	//Light
+	{
+		Type = Beam
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			_rampTexture
+			{
+				File = ../../statuses/fire/particles/fire_ramp.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Clamp
+			}
+			Shader = "resonance_beam_light.shader"
+			
+			_beamBaseAmplification = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseAmplification/Value)
+			_amplificationPerPump = (&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/Components/BasePumpAmplification/OnValue)
+			_maxAmplificationPumps = 20
+			_ampVisualExponent = 1.5
+			
+			_beamBaseDilation = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseDilation/Value)
+			_dilationPerPump = (&<./Data/ships/terran/thermal_dilation_pump/thermal_dilation_pump.rules>/Part/Components/BasePumpDilation/OnValue)
+			_maxDilationPumps = 60
+			_visualDilationFactor = 1.5
+			
+			_minWidth = 4.8
+			_maxWidth = 18
+			Size = [100%, 1]
+			_extraBeginLength = (&Size/1) / 2 //can't be 0
+			_extraEndLength = (&Size/1) / 2
+			_z = 0.5
+			_litReflectiveStrength = 12
+			_litAdditiveStrength = 0
+			_unlitAdditiveStrength = 0.9
+			_unlitBeginLengthFade = 5 //relative to _extraBeginLength and can't be 0
+			_nrmlStrengthLimit = 0.5
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = Zero
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		Bucket = Upper5
+		IsLight = true
+		FadeInTime = .25
+		FadeOutTime = .25
+	}
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/thermal_resonance_beam_loop.wav"
+		Volume = 1
+		MaxConcurrent = 0 //must be zero to have speed scale with intensity
+		MaxConcurrentVolume = 1
+		RampUpTime = .25
+		RampDownTime = .25
+		VolumeOverIntensity = 1
+		SpeedOverIntensity = [1, 4]
+		IntensityBounds = [1, 23.5]  //zero pumps 0.5, 5 pumps 1, 10 pumps 1.5. 45 pumps 5
+
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]

@@ -11,14 +11,14 @@ Components
 		Type = CirclePhysics
 		Radius = .6
 		Density = 0.1
-		LinearDamping = 2.5
+		LinearDamping = 1.1
 		FrameOfReferenceDuration = 1
 	}
 
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 360d
+		TurnVelocity = 180d
 		Delay = .1
 	}
 
@@ -31,7 +31,7 @@ Components
 	DeployDeath
 	{
 		Type = DeathByLifetime
-		Lifetime = 1.25
+		Lifetime = 2.5
 		FactorEffectsWith = Targetable
 
 		OnDeath
@@ -43,7 +43,7 @@ Components
 					Bullet = &~/Stage2
 					Count = 1
 					InheritVelocity = true
-					ScaleHealth = true
+					HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 				}
 			]
 		}
@@ -107,6 +107,8 @@ Components
 			VertexColor = [255, 0, 0]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
+			_z = 1
+			_nrmlStrengthLimit = 1
 			_litReflectiveStrength = 10
 			_litAdditiveStrength = 0.25
 			_unlitAdditiveStrength = .4
@@ -136,7 +138,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 200000
+					TotalDamage = { BaseValue = 200000; EffectScaleExponent = 1 }
 					Radius = 10
 					ExpandDuration = .8
 					ExpandStartRadius = 2
@@ -152,7 +154,7 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 60000
+					TotalDamage = { BaseValue = 60000; EffectScaleExponent = 1 }
 					Radius = 8
 					ExpandDuration = .8
 					ExpandStartRadius = 2

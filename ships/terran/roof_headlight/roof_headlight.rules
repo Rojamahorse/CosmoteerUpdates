@@ -11,10 +11,10 @@ Part : <../base_part_terran.rules>/Part
 		[coil, 2]
 	]
 	AIValueFactor = 0
-	Flammable = false
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Size = [1, 1]
 	MaxHealth = 1000
+	TypeCategories = [non_flammable]
 	AllowedDoorLocations = []
 	ForceBrushCompatibility = false
 	CrewSpeedFactor = 0

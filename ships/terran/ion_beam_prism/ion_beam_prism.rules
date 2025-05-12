@@ -1,3 +1,5 @@
+ION_EMITTER = &<../ion_beam_emitter/ion_beam_emitter.rules>
+
 Part : <../base_part_terran.rules>/Part
 {
 	NameKey = "Parts/IonBeamPrism"
@@ -17,9 +19,8 @@ Part : <../base_part_terran.rules>/Part
 	Size = [2, 2]
 	SelectionPriority = 1
 	MaxHealth = 8000
-	TypeCategories = [weapon, ion, ion_beam_prism]
+	TypeCategories = [weapon, ion, ion_beam_prism, non_flammable]
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
-	Flammable = false
 	InitialPenetrationResistance = 100
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
 	IsWalled = false
@@ -101,7 +102,7 @@ Part : <../base_part_terran.rules>/Part
 		ToggledIonEnergyStorage
 		{
 			Type = ToggledComponents
-			Toggle = PowerToggle
+			Toggle = CanStoreNonOverclockedEnergy
 			Components
 			{
 				IonEnergyStorage
@@ -110,6 +111,19 @@ Part : <../base_part_terran.rules>/Part
 					ResourceType = ion_energy
 					ReductionFactorPerBeam = .75
 					IsDrainable = true
+				}
+			}
+		}
+		
+		Overclock_ToggledIonEnergyStorage
+		{
+			Type = ToggledComponents
+			Toggle = PowerToggle
+			Components
+			{
+				OverclockedIonEnergyStorage : ~/Part/Components/ToggledIonEnergyStorage/Components/IonEnergyStorage
+				{
+					ResourceType = ion_energy_overclocked
 				}
 			}
 		}
@@ -122,6 +136,46 @@ Part : <../base_part_terran.rules>/Part
 			ProvidedValueRange = 0
 			ProvidedValuePerResource = 1/1000
 			IsDrainable = false
+		}
+		
+		OverclockedIonEnergy : IonEnergy
+		{
+			ResourceType = ion_energy_overclocked
+			ComponentID = OverclockedIonEnergyStorage
+		}
+
+		Overclock_BeamTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = OverclockedIonEnergy
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+		
+		CanFireNonOverclocked
+		{
+			Type = Timer
+			OperationalToggle = OverclockedIonEnergy
+			InvertOperationalToggle = true
+			Duration = &../BeamEmitter/FireDelay
+			ResetTrigger = Overclock_BeamTrigger
+			StartTrigger = Overclock_BeamTrigger
+			AutoStart = true
+		}
+
+		CanStoreNonOverclockedEnergy
+		{
+			Type = MultiToggle
+			Toggles = [ CanFireNonOverclocked, PowerToggle ]
+			Mode = All
+		}
+
+		Overclock_IonEnergyDrain
+		{
+			Type = ResourceChange
+			ResourceStorage = IonEnergy
+			Trigger = Overclock_BeamTrigger
+			Amount = -2147483646
 		}
 
 		BeamTrigger
@@ -145,7 +199,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 1] // Relative to upper-left corner of unrotated part.
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = TurretToggle
-			FireInterval = &<../ion_beam_emitter/ion_beam_emitter.rules>/Part/Components/Weapon/FireInterval
+			FireInterval = &~/ION_EMITTER/Part/Components/Weapon/FireInterval
 			FiringArc = 360d
 			RotateSpeed = 20d
 			FireThresholdAngle = 1d
@@ -194,7 +248,7 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = Turret
 			OperationalToggle = PowerToggle
 			AutoFireToggle = AutoFireToggle
-			FireInterval = .2
+			FireInterval = &<../ion_beam_emitter/ion_beam_emitter.rules>/Part/Components/Weapon/FireInterval
 			AIFirepowerRating = 0
 			AddAIFirepowerRatingsWhenTargetedByPartCategories = [ion_beam_emitter, ion_beam_prism]
 			TargetingEmitter = BeamEmitter
@@ -244,6 +298,7 @@ Part : <../base_part_terran.rules>/Part
 		BeamEmitter : <./Data/shots/ion_beam/ion_beam.rules>
 		{
 			Type = BeamEmitter
+			OperationalToggle = CanFireNonOverclocked
 			ChainedTo = Turret
 			FireTrigger = BeamTrigger
 			GetTargetFrom = Turret
@@ -256,6 +311,16 @@ Part : <../base_part_terran.rules>/Part
 			ValueScaleFactor = IonEnergy
 			ResourceScaleFactor = IonEnergy
 			UpdateScaleFactorsPerEmit = true
+		}
+		
+		Overclock_BeamEmitter : <./Data/shots/ion_beam/ion_beam_overclock.rules>/Beam, BeamEmitter
+		{
+			OperationalToggle
+			FireTrigger = Overclock_BeamTrigger
+			ResourceStorage = OverclockedIonEnergy
+			EffectsScaleFactor = &ResourceStorage
+			ValueScaleFactor = &ResourceStorage
+			ResourceScaleFactor = &ResourceStorage
 		}
 
 		Graphics
@@ -430,10 +495,13 @@ Part : <../base_part_terran.rules>/Part
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 45000
+					TotalDamage = { BaseValue = 45000; EffectScaleExponent = 1 }
 					Radius = 5
 					Delay = .05
-					FireChancePerNDamage = 50%
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 50%
+					StatusValue = 1
+					StatusValueType = Interpolated
 					ImpulsePerNDamage = 10
 					NDamage = 1000
 					Filter
@@ -445,7 +513,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 10000
+					TotalDamage = { BaseValue = 10000; EffectScaleExponent = 1 }
 					Radius = 3
 					Delay = .05
 					ImpulsePerNDamage = 5

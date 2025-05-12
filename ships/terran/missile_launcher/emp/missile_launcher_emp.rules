@@ -55,7 +55,7 @@ Components
 		FireThresholdAngle = 180d;
 		RotateSpeed = 0d
 		AllowFireWithBlockedLOS = true
-		AIFirepowerRating = 4800
+		AIFirepowerRating = 2400
 		FirePermissionToggle = FirePermissionToggle
 
 		AutoTargets
@@ -268,11 +268,10 @@ Components
 			{
 				Type = ExplosiveResourceDrain
 				ResourceType = battery
-				TotalDrain = 24000
-				Radius = 12
+				TotalDrain = { BaseValue = 24000; EffectScaleExponent = 1 }
+				Radius = { BaseValue = 12; EffectScaleExponent = 0.5 }
 				Slices = 1
 				Delay = .05
-				RadiusEffectScaleExponent = 0.5
 				Filter
 				{
 					Ships = true
@@ -359,10 +358,10 @@ MissileStats
 	NameKey = "StatCategories/MissileEMP"
 	Stats
 	{
-		DamagePerShot = &~/Components/Emitter/Bullet/Components/Hit/HitOperational/HitEffects/1/Damage
+		DamagePerShot = &~/Components/Emitter/Bullet/Components/Hit/HitOperational/HitEffects/1/Damage/BaseValue
 		DamagePerSecond = (&DamagePerShot) * (&ROF)
 		Damage = [&../DamagePerShot, &../DamagePerSecond]
-		PowerDrainPerShot = (&~/Components/Emitter/Bullet/Components/Hit/HitShield/HitEffects/0/TotalDrain) / 1000
+		PowerDrainPerShot = (&~/Components/Emitter/Bullet/Components/Hit/HitShield/HitEffects/0/TotalDrain/BaseValue) / 1000
 		PowerDrainPerSecond = (&PowerDrainPerShot) * (&ROF)
 		PowerDrain = [&../PowerDrainPerShot, &../PowerDrainPerSecond]
 		PowerDrainArea = &~/Components/Emitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius

@@ -122,11 +122,11 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 600
+			Damage = { BaseValue = 600; EffectScaleExponent = 1 }
 		}
 		{
 			Type = Impulse;
-			Impulse = 10;
+			Impulse = { BaseValue = 10; EffectScaleExponent = 1 }
 		}
 	]
 	MediaEffects

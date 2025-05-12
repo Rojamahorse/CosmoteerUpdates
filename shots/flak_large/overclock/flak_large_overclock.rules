@@ -1,0 +1,21 @@
+BASE = &<./Data/shots/flak_large/flak_large.rules>
+
+FLAK_FIELD = &<flak_large_overclock_field.rules>
+
+Beam : BASE
+{
+	HitNothing : ^/0/HitNothing
+	{
+		HitEffects : ^/0/HitEffects
+		[
+			{
+				Type = SpawnBullets
+				Bullet = &~/FLAK_FIELD
+				Count = 1
+			}
+		]
+	}
+	HitShield = &HitNothing
+    HitOperational = &HitNothing
+    HitStructural = &HitNothing
+}

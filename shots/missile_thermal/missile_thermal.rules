@@ -1,0 +1,207 @@
+ID = "cosmoteer.missile_thermal"
+Range = 450
+IdealRange = 450
+Speed = 80
+
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [1.5, .5]
+		Density = 0.1
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 180d
+		Delay = .1
+		AvoidanceRaycastDistance = 250
+		VelocityCompensation = 80%
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 50
+	}
+
+	NegativeAcceleration
+	{
+		Type = Acceleration
+		Acceleration = [-90, 0]
+		AccelerationOverTime = [0, .75]
+		Direction = FrameOfReferenceVelocity
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 15
+		HasTarget = true
+	}
+
+	DeathByDistanceTraveled
+	{
+		Type = DeathByDistanceTraveled
+		// Distance auto-computed from range.
+		HasTarget = false
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "missile_thermal.png"
+				MipLevels = max
+			}
+			Size = [2, 1]
+		}
+
+		NormalsTexture
+		{
+			File = "missile_thermal_normals.png"
+			MipLevels = max
+		}
+	}
+
+	ThermalLightsSprite
+	{
+		Type = AnimatedSprite
+		RenderBucket = BulletUpper1
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "missile_thermal_light.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Size = [2, 1]
+				TargetBlendMode = Add
+			}
+			FrameCount = 8
+			FrameSize = [128, 64]
+			FramesPerRow = 4
+			FramesPerSecond = 16
+		}
+	}
+
+	MediaEffects
+	{
+		Type = MediaEffects
+		Offset = [-0.9, 0]
+		Rotation = 180d
+		MediaEffects
+		[
+			&<particles/missile_thermal_thruster_fire.rules>
+			&<particles/missile_thermal_thruster_smoke.rules>
+			&<particles/missile_thermal_thruster_plume.rules>
+			&<particles/missile_thermal_thruster_plume_light.rules>
+		]
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 800
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		SourcePartCollisionDelay = 1.5 / (&/Simulation/PhysicsUpdatesPerSecond)
+
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					StatusValue = 0
+					StatusValuePool = 10000
+					ValueFalloff = 1
+					MaxCost = 4
+					FalloffPadding = 0.5
+					EmptyTileCost = 1000
+					AllowDiagonals = true
+					Filter {
+						Friendlies = false
+						TargetedFriendlies = true
+					}
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/missile_thermal_hit_cone.rules>
+				&<particles/missile_thermal_shockwave.rules>
+				&<particles/missile_thermal_shrapnel.rules>
+				&<particles/missile_thermal_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "missile_thermal_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+		HitShield
+		{
+			HitEffects
+			[
+				{
+					Type = StatusApplication
+					StatusType = cosmoteer.heat
+					StatusValue = (&~/Components/Hit/HitOperational/HitEffects/0/StatusValuePool) * 10%
+					ApplyToAllHitPartTiles = true
+					DivideValueByPartArea = true
+				}
+			]
+			MediaEffects = &../HitOperational/MediaEffects
+		}
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<particles/missile_thermal_hit_cone.rules>
+				&<particles/missile_thermal_shockwave.rules>
+				&<particles/missile_thermal_shrapnel.rules>
+				&<particles/missile_thermal_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "missile_thermal_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+			]
+		}
+	}
+}

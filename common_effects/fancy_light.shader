@@ -31,9 +31,11 @@ VERT_OUTPUT2 vert(in VERT_INPUT2 input)
 	return output;
 }
 
+float _z;
 float _litReflectiveStrength;
 float _litAdditiveStrength;
 float _unlitAdditiveStrength;
+float _nrmlStrengthLimit;
 
 PIX_OUTPUT pix(in VERT_OUTPUT2 input) : SV_TARGET
 {
@@ -41,8 +43,10 @@ PIX_OUTPUT pix(in VERT_OUTPUT2 input) : SV_TARGET
 	if (c.a <= 0)
 		discard;
 
+	input.screenCenter.z = _z;
+	
 	float3 reflectColor = c.rgb;
-	float3 nrml = multiplyAdditiveLightValue(reflectColor, input.screenUV, input.screenCenter.xyz, input.screenLoc.xyz);
+	float3 nrml = multiplyAdditiveLightValue(reflectColor, input.screenUV, input.screenCenter.xyz, input.screenLoc.xyz, _nrmlStrengthLimit);
     float t = length(nrml);
 
 	float3 litColor = _litReflectiveStrength * reflectColor + _litAdditiveStrength * c.rgb;

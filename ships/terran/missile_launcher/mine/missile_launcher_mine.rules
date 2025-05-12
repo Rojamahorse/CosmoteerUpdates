@@ -75,7 +75,7 @@ Components
 		FireThresholdAngle = 45d;
 		RotateSpeed = 0d
 		AllowFireWithBlockedLOS = true
-		AIFirepowerRating = 3200
+		AIFirepowerRating = 1600
 		FirePermissionToggle = FirePermissionToggle
 		DefaultDirectControlBinding = 3
 
@@ -361,19 +361,40 @@ Components
 		]
 	}
 
+	ScorchedTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = ScorchedToggle
+		TriggerWhenOn = false
+		TriggerWhenOff = true
+	}
+	ScorchedEffects
+	{
+		Type = TriggeredEffects
+		Trigger = ScorchedTrigger
+		Location = &~/Components/DestroyedEffects/Location
+		FactorHitEffectsWith = MineStorage
+		MediaEffects = &~/Components/DestroyedEffects2/MediaEffects
+		HitEffects = &~/Components/DestroyedEffects/HitEffects
+	}
+
 	DestroyedEffects
 	{
 		Type = DeathEffects
+		OperationalToggle = ScorchedToggle
 		Location = [1, 2]
 		FactorHitEffectsWith = MineStorage
 		HitEffects
 		[
 			{
 				Type = ExplosiveDamage
-				TotalDamage = 15000
+				TotalDamage = { BaseValue = 15000; EffectScaleExponent = 1 }
 				Radius = 5
 				Delay = .05
-				FireChancePerNDamage = 50%
+				StatusType = cosmoteer.fire
+				StatusChancePerNDamage = 50%
+				StatusValue = 1
+				StatusValueType = Interpolated
 				NDamage = 1000
 				CrewKillChance = 50%
 				Filter
@@ -385,7 +406,7 @@ Components
 			}
 			{
 				Type = ExplosiveDamage
-				TotalDamage = 5000
+				TotalDamage = { BaseValue = 5000; EffectScaleExponent = 1 }
 				Radius = 4
 				Delay = .05
 				Filter
@@ -471,9 +492,9 @@ ShrapnelStats
 	NameKey = "StatCategories/MineShrapnel"
 	Stats
 	{
-		SimpleDamage = &<./Data/shots/mine/mine_shrapnel.rules>/Components/Hit/HitOperational/HitEffects/0/Damage
+		SimpleDamage = &<./Data/shots/mine/mine_shrapnel.rules>/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
 		Penetration = &<./Data/shots/mine/mine_shrapnel.rules>/Components/Hit/Penetration
-		FireChance = (&<./Data/shots/mine/mine_shrapnel.rules>/Components/Hit/PenetratingOperational/HitEffects/1/FireChance) * 100
+		FireChance = (&<./Data/shots/mine/mine_shrapnel.rules>/Components/Hit/PenetratingOperational/HitEffects/1/StatusChance/BaseValue) * 100
 		Range = &<./Data/shots/mine/mine_shrapnel.rules>/Range
 		ShotSpeed = &<./Data/shots/mine/mine_shrapnel.rules>/Speed
 		ShotHP = Infinity

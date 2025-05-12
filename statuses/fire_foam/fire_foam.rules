@@ -1,0 +1,63 @@
+ID = cosmoteer.fire_foam
+Layer = Tile
+StatusCombineMode = Extend
+StatusResistances
+{
+	cosmoteer.fire 
+	{
+		Resistance
+		{
+			Value = 100%
+			Duration = 100%
+		}
+	}
+}
+
+UseDurationForMediaIntensity = true
+MediaIntensityValueType = Interpolated
+MediaIntensityInterpolationRange = [0, 3]
+ContinuousMediaEffects
+[
+	{
+		Type = TileQuad
+		Sprite
+		{
+			Shader = particles/fire_foam.shader
+			Texture
+			{
+				File = ../../common_effects/particles/noise_gradient.png
+				//File = particles/fireFoamNoiseTemp.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_maskTexture
+			{
+				File = ../../common_effects/particles/blob_square.png
+				//File = ../../common_effects/particles/blob.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_noiseTexture
+			{
+				File = particles/fire_noise.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			//TargetBlendMode = Add
+		}
+		Inflate = 0.25 //square
+		//Inflate = 0.35 //round
+		//FadeInTime = 2
+		//FadeOutTime = 4
+		IntensitySmoothSpeed = 2
+		ColorOverIntensity
+		[
+			[255,255,255,0]
+			[255,255,255,255]
+		]
+		Bucket = Foam
+	}
+]

@@ -183,6 +183,18 @@ SmallPartDestroyedDry
 	}
 ]
 
+SmallPartScorched
+[
+	&<particles/explosions/small_part_explode_sparks.rules>
+	&<particles/explosions/small_part_explode_smoke.rules>
+	
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .01
+		Duration = .1
+	}
+]
+
 MedPartDestroyed
 [
 	&<particles/explosions/med_part_explode_flash.rules>
@@ -228,6 +240,18 @@ MedPartDestroyedDry
 	}
 ]
 
+MedPartScorched
+[
+	&<particles/explosions/med_part_explode_sparks.rules>
+	&<particles/explosions/med_part_explode_smoke.rules>
+	
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .02
+		Duration = .15
+	}
+]
+
 BigPartDestroyed
 [
 	&<particles/explosions/big_part_explode.rules>
@@ -251,6 +275,18 @@ BigPartDestroyed
 	}
 ]
 
+BigPartScorched
+[
+	&<particles/explosions/big_part_explode_sparks.rules>
+	&<particles/explosions/big_part_explode_smoke.rules>
+	
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .03
+		Duration = .2
+	}
+]
+
 HugePartDestroyed
 [
 	&<particles/explosions/huge_part_explode.rules>
@@ -269,6 +305,17 @@ HugePartDestroyed
 	{
 		ShakeAmount = .3
 		Duration = 1
+	}
+]
+
+HugePartScorched
+[
+	&<particles/explosions/huge_part_explode_smoke.rules>
+	
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .06
+		Duration = .2
 	}
 ]
 

@@ -1,0 +1,86 @@
+ID = "cosmoteer.flak_large_overclock_field"
+// Irrelevant
+Range = 0
+Speed = 0
+
+RADIUS = 4
+LIFETIME = 10
+MAX_BULLET_DAMAGE = ceil(500 / ((&RADIUS) * 2)) // 500 damage if a bullet passes right through the center
+DAMAGE_POOL = 1000
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = &~/RADIUS
+		Density = 1
+		FrameOfReferenceDuration = 0
+	}
+	
+	LifetimeDeath
+	{
+		Type = DeathByLifetime
+		Lifetime = &~/LIFETIME
+	}
+	DamagePoolDeath
+	{
+		Type = DeathByDamagePool
+		DamagePool = DamagePool
+	}
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = { BaseValue = (&~/DAMAGE_POOL); EffectScaleExponent = 1 }
+	}
+	
+	VolHit
+	{
+		Type = VolumeHit
+		HitBullet
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+					MaxDamageFromPool = { BaseValue = (&~/MAX_BULLET_DAMAGE); EffectScaleExponent = 1 }
+				}
+			]
+			MediaEffects
+			[
+				&<particles/sparks.rules>
+			]
+		}
+	}
+	
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletLower1
+		Sprite
+		{
+			Texture
+			{
+				File = "particles/circle_dashed.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [(&~/RADIUS) * 2, &0]
+			VertexColor = [207, 207, 207]
+		}
+//		Offset = [-(&~/RADIUS), &0]
+	}
+	
+	MediaEffects
+	{
+		Type = MediaEffects
+		FactorEffectsWith = DamagePool
+		MediaEffects
+		[
+			&<particles/flak_large_overclock_field_shrapnel.rules>
+		]
+	}
+}

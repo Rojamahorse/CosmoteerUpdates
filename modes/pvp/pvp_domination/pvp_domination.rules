@@ -13,7 +13,7 @@ Mode : <../base_pvp.rules>
 	IncomeInterval = 5
 	SpawnSeparationRadiusFactor = 2
 	JunkDamageFractionPerTick = .1
-	JunkDamageChancePerTick = .01
+	JunkDamageChancePerTick = 0.3 / (&/Simulation/PhysicsUpdatesPerSecond)
 	PerimeterDistance = 200
 
 	CapturePointTypes
@@ -324,7 +324,7 @@ SpawnPoint
 	Radius = 200
 	SightRadius = 400
 	EnemyDamageFractionPerTick = .2
-	EnemyDamageChancePerTick = .01
+	EnemyDamageChancePerTick = 0.3 / (&/Simulation/PhysicsUpdatesPerSecond)
 	MinDistanceBuffer = 200
 	AreaExpand = pi * ((&Radius) + (&MinDistanceBuffer))^2 * 2
 

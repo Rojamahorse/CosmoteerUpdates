@@ -29,7 +29,7 @@ Mode : <../base_pvp.rules>
 	ShipSpawnInvulnerabilityDuration = 5
 
 	JunkDamageFractionPerTick = .1
-	JunkDamageChancePerTick = .01
+	JunkDamageChancePerTick = 0.3 / (&/Simulation/PhysicsUpdatesPerSecond)
 
 	EnemyDefeatedSound
 	{

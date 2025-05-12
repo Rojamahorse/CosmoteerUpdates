@@ -410,6 +410,21 @@ PartToggles
 					}
 				}
 			}
+			
+			// Thermal Canister.
+			{
+				ChoiceID = "missile_type_thermal"
+				ButtonToolTipKey = "PartToggles/MissileType_Thermal"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "missile_type_thermal.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
 		]
 	}
 
@@ -545,6 +560,87 @@ PartToggles
 						MipLevels = 2
 						SampleMode = Linear
 					}
+				}
+			}
+		]
+	}
+	
+	// Safe / dangerous toggle
+	{
+		ToggleID = "thermal_safety"
+		Style = OffAlertSwitch
+		Choices
+		[
+			// Unsafe
+			{
+				ChoiceID = "thermal_safety_off"
+				ButtonToolTipKey = "PartToggles/FireSafety_Off"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "pick_color.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [255, 4, 0]
+				}
+			}
+		
+			// Safe
+			{
+				ChoiceID = "thermal_safety_on"
+				ButtonToolTipKey = "PartToggles/FireSafety_On"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "pick_color.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [10, 212, 98]
+				}
+			}
+		]
+	}
+	
+	// Thermal overclock toggle
+	{
+		ToggleID = "thermal_overclock"
+		Style = OnAlertSwitch
+		ShowInEditor = true
+		Choices
+		[
+			// Off
+			{
+				ChoiceID = "thermal_overclock_off"
+				ButtonToolTipKey = "PartToggles/ThermalOverclock_Off"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "overclock_off.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [221, 158, 86]
+				}
+			}
+
+			// On
+			{
+				ChoiceID = "thermal_overclock_on"
+				ButtonToolTipKey = "PartToggles/ThermalOverclock_On"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "overclock_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [249, 66, 33]
 				}
 			}
 		]

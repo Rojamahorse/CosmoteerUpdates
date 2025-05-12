@@ -1,7 +1,7 @@
 ID = fires
 TitleKey = "Tutorials/Fires/Title"
 TabNameKey = "Codex/Tutorials"
-TempShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.IsOnFire"
+TempShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.HasStatus(\"cosmoteer.fire\")"
 Entries
 [
 	{

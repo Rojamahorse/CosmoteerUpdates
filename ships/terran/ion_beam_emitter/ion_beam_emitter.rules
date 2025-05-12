@@ -1,4 +1,17 @@
-Part : <../base_part_terran.rules>/Part
+OVERCLOCK
+{
+	FIRING_HEAT_PER_SECOND = 500
+	BEAM = &~/Part/Components/Overclock_BeamEmitter/^/0/..
+	LIGHTNING_BASE_BEAM_HIT_INTERVALS = 3
+	LIGHTNING_HIT_INTERVALS_EXPONENT = 0.8
+	LIGHTNING_HIT_INTERVALS_SCALE = 0.05
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+ION_ENERGY = -(&Part/Components/BeamEmitter/HitOperational/HitEffects/4/Amount/BaseValue)
+
+Part : <../base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/IonBeamEmitter"
 	IconNameKey = "Parts/IonBeamEmitterIcon"
@@ -19,7 +32,8 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 8000
 	TypeCategories = [weapon, uses_power, is_crewed, ion, ion_beam_emitter]
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
+	SignificanceToggle = ScorchedToggle
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff, IonOverclockCharge]
 	BlockedTravelCells
 	[
 		[0, 1]
@@ -68,7 +82,14 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -80,10 +101,18 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 4
 		}
 
@@ -124,6 +153,70 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = PowerToggle
 		}
 
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+		
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		OverheatEffects : ^/0/OverheatEffects
+		{
+			Location = [1, 2.5]
+		}
+
+		Overclock_FiringHeatProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = Overclock_BeamEmitter
+			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/FIRING_HEAT_PER_SECOND) * (&Interval))
+			ToQuantity = (&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
+			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Interval = 0.5
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Simple
+					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
+					Routes
+					[
+						[&../../HEAT_INPUT, Port_Thermal_Left, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right, 0]
+						[&../../HEAT_INPUT, Port_Thermal_LeftDown, 0]
+						[&../../HEAT_INPUT, Port_Thermal_RightDown, 0]
+					]
+				}
+			]
+		}
+
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 4]
+			Direction = Left
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Location = [1, 4]
+			Direction = Right
+		}
+		Port_Thermal_LeftDown : Port_Thermal_Left
+		{
+			Direction = Down
+		}
+		Port_Thermal_RightDown : Port_Thermal_Right
+		{
+			Direction = Down
+		}
+
 		Weapon
 		{
 			Type = FixedWeapon
@@ -131,7 +224,7 @@ Part : <../base_part_terran.rules>/Part
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = .2
+			FireInterval = .4
 			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamageContinuousNear
 			Emitter = BeamEmitter
 			ChainFireToggleComponent = IonBeamChainToggle
@@ -179,6 +272,13 @@ Part : <../base_part_terran.rules>/Part
 				EndCapSize = [1, 2]
 			}
 		}
+		
+		IsOperationalNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
+		}
 
 		BeamEmitter : <./Data/shots/ion_beam/ion_beam.rules>
 		{
@@ -186,8 +286,8 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = Weapon
 			FireTrigger = Weapon
 			GetTargetFrom = Weapon
-			OperationalToggle = IsOperational
-			Duration = .5
+			OperationalToggle = IsOperationalNonOverclocked
+			Duration = 2.5 * (&../Weapon/FireInterval)
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 250
 			MinResourcesUsed = 1
@@ -204,6 +304,11 @@ Part : <../base_part_terran.rules>/Part
 					RampDownTime = .25
 				}
 			]
+		}
+
+		Overclock_BeamEmitter : <./Data/shots/ion_beam/ion_beam_overclock.rules>/Beam, BeamEmitter
+		{
+			OperationalToggle = IsOperationalOverclocked
 		}
 
 		CrewLocation1
@@ -622,6 +727,21 @@ Part : <../base_part_terran.rules>/Part
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
 		}
 
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -635,6 +755,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 3]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3,4]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -643,7 +773,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [1,2]
+					HidesIndicators = [2,3,4]
 				}
 
 				// Out of power.
@@ -655,6 +785,16 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/NoPower
 						Size = [1, 1]
 					}
+				}
+
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+					HidesIndicators = [4]
 				}
 
 				// No crew.
@@ -674,6 +814,19 @@ Part : <../base_part_terran.rules>/Part
 			Type = BlueprintSprite
 			File = "blueprints.png"
 			Size = [2, 5]
+		}
+		
+		HeatGenerationValue
+		{
+			Type = StaticValue
+			Value = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = HeatGenerationValue
 		}
 	}
 
@@ -703,6 +856,23 @@ Part : <../base_part_terran.rules>/Part
 				ShotSpeed = Infinity
 				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000
 				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Weapon/FireInterval)
+			}
+		}
+		
+		{
+			NameKey = "StatCategories/Overclocked"
+			Stats
+			{
+				FiringHeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
+				SimpleDamage = 0
+				StrengthAtMaxRange = 100
+				
+				LightningRange = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/InitialRadius)
+				LightningStrikeCountRange = &~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/InitialStrikes
+				LightningMaxChain = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING_BASE_CHAIN_LENGTH/1)
+				LightningChainChance = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/ChainChance) * 100
+				LightningChainStrikeCountRange = &~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/ChainStrikes
+				LightningDamage = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/HitEffects/0/Damage/BaseValue)
 			}
 		}
 	]

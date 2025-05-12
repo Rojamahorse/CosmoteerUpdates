@@ -1,0 +1,18 @@
+ID = cosmoteer.shield_overload
+Layer = Part
+StatusCombineMode = RefreshAndCombineValue
+ValueCombiner = Max
+ValueClampRange = [0, Infinity]
+RemoveAtMinValue = true
+SoftRepair
+{
+	RepairType = Simultaneous
+	TargetValue = 0
+	WorkPerValueChange = 0.1
+}
+ParentMediaEffectsToShip = true
+ContinuousMediaEffects
+[
+	&<particles/overload_sizzle.rules>
+]
+ 

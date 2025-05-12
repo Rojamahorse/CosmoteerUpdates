@@ -1,0 +1,981 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ThermalDilationPump"
+	IconNameKey = "Parts/ThermalDilationPumpIcon"
+	ID = cosmoteer.thermal_dilation_pump
+	EditorGroups []
+	EditorParentParts = [ ["cosmoteer.resonance_beam_turret", -1] ]
+	DescriptionKey = "Parts/ThermalDilationPumpDesc"
+	Resources
+	[
+		[steel, 16]
+		[coil2, 2]
+		[diamond, 1]
+	]
+	Size = [2, 2]
+	IsRotateable = true
+	SelectionPriority = 0
+	MaxHealth = 2000
+	ReceivableBuffs : ^/0/ReceivableBuffs [ ThermalActivity ]
+	TypeCategories = [ uses_power, thermal_pump ]
+	BlockedTravelCells
+	[
+		[0, 1], [1, 1]
+	]
+	AllowedDoorLocations 
+	[ 
+		[0, -1], [1, -1]
+		[-1, 0], [2, 0]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [56, 56]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+		
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 2
+		}
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 8000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+		
+		BasePumpDilation
+		{
+			Type = ValueTween
+			IsOnToggle = IsOperational
+			OnValue = 0.25
+			OnTweenDuration = 0.001
+			OffTweenDuration = 0.001
+		}
+		
+		// dilationFactor = (1 / ((beams - 1) * utilizationScale + 1)^(1-efficiency)
+		MultiUtilizationEfficiencyExponent
+		{
+			Type = StaticValue
+			EFFICIENCY = 50%
+			Value = 1 - (&EFFICIENCY)
+		}
+		UtilizationScale
+		{
+			Type = StaticValue
+			Value = 50%
+		}
+		
+		AdditionalUtilization_Left
+		{
+			Type = ValueOperation
+			Operator = Subtract
+			ValueOne = NetworkPumpUtilization_Left
+			ValueTwo = One
+		}
+		ScaledAdditionalUtilization_Left
+		{
+			Type = MultiValue
+			Values = [AdditionalUtilization_Left, UtilizationScale]
+			Mode = Multiply
+		}
+		ScaledDilationFactor_Left
+		{
+			Type = MultiValue
+			Values = [ScaledAdditionalUtilization_Left, One]
+			Mode = Add
+			OneOver = true
+		}
+		
+		DilationFactor_Left
+		{
+			Type = ValueOperation
+			Operator = Power
+			ValueOne = ScaledDilationFactor_Left
+			ValueTwo = MultiUtilizationEfficiencyExponent
+		}
+
+		PumpDilation_Left
+		{
+			Type = MultiValue
+			Values = [BasePumpDilation, DilationFactor_Left]
+			Mode = Multiply
+		}
+
+		AdditionalUtilization_Right : AdditionalUtilization_Left
+		{
+			ValueOne = NetworkPumpUtilization_Right
+		}
+		ScaledAdditionalUtilization_Right : ScaledAdditionalUtilization_Left
+		{
+			Values = [AdditionalUtilization_Right, UtilizationScale]
+		}
+		ScaledDilationFactor_Right : ScaledDilationFactor_Left
+		{
+			Values = [ScaledAdditionalUtilization_Right, One]
+		}
+		
+		DilationFactor_Right : DilationFactor_Left
+		{
+			ValueOne = ScaledDilationFactor_Right
+		}
+		
+		PumpDilation_Right : PumpDilation_Left
+		{
+			Values = [BasePumpDilation, DilationFactor_Right]
+		}
+		
+		NetworkedDilation_Left
+		{
+			Type = NetworkValue
+			ValueSource = PumpDilation_Left
+			Categories = [ thermal_dilation ]
+		}
+		NetworkedDilation_Right : NetworkedDilation_Left
+		{
+			ValueSource = PumpDilation_Right
+		}
+		
+		AdditionalTurretHeatGeneration
+		{
+			Type = ToggleValueSelector
+			Toggle = IsOperational
+			ToggleOffValue = Zero
+			ToggleOnValue = AdditionalTurretHeatGeneration_Active
+		}
+		Zero
+		{
+			Type = StaticValue
+			Value = 0
+		}
+		One
+		{
+			Type = StaticValue
+			Value = 1
+		}
+		AdditionalTurretHeatGeneration_Active
+		{
+			Type = StaticValue
+			Value = 50
+		}
+		NetworkedActivity_Left
+		{
+			Type = NetworkValue
+			ValueSource = AdditionalTurretHeatGeneration
+			Categories = [ thermal_activity ]
+		}
+		NetworkedActivity_Right = &NetworkedActivity_Left
+		
+		NetworkPumpUtilization_Left
+		{
+			Type = NetworkValueReceiver
+			AllowUncategorized = false
+			Categories = [ thermal_pump_utilization ]
+			Mode = Add
+		}
+		NetworkPumpUtilization_Right = &NetworkPumpUtilization_Left
+		TotalUtilization
+		{
+			Type = MultiValue
+			Values = [ NetworkPumpUtilization_Left, NetworkPumpUtilization_Right ]
+			Mode = Add
+		}
+		
+		UtilizationToggle
+		{
+			Type = ThresholdToggle
+			ValueFrom = TotalUtilization
+			MinAmount = 0
+			MaxAmount = 0
+			Invert = true 
+		}
+		
+		IsUtilized
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, UtilizationToggle ]
+			Mode = All
+		}
+		
+		PowerDrainFactor_Left
+		{
+			Type = MultiValue
+			Values = [ DilationFactor_Left, NetworkPumpUtilization_Left ]
+			Mode = Multiply
+		}
+		PowerDrainFactor_Right : PowerDrainFactor_Left
+		{
+			Values = [ DilationFactor_Right, NetworkPumpUtilization_Right ]
+		}
+		TotalPowerDrainFactor
+		{
+			Type = MultiValue
+			Values = [ PowerDrainFactor_Left, PowerDrainFactor_Right ]
+			Mode = Add
+		}
+		
+		UtilizationBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = ThermalActivity
+			BuffAmount = 1
+			BuffMultiplier = TotalPowerDrainFactor
+		}
+		
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsUtilized
+			FromStorage = BatteryStorage
+			FromQuantity 
+			{
+				BaseValue = 50
+				BuffType = ThermalActivity
+				BuffMode = Multiply
+			}
+			MinFromQuantityForConversion = 1
+			Interval = 0.4
+		}
+		
+		Port_BottomLeft
+		{
+			Type = NetworkPort
+			Location = [0, 1]
+			Direction = Down
+			Types = [ thermal, thermal_out ]
+			IncompatibleTypes = [ thermal_out ]
+		}
+		
+		Port_BottomRight : Port_BottomLeft
+		{
+			Location = [1, 1]
+		}
+		
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[Port_BottomLeft, NetworkedDilation_Left, 0]
+						[Port_BottomLeft, NetworkedActivity_Left, 0]
+						[Port_BottomLeft, NetworkPumpUtilization_Left, 0]
+						
+						[Port_BottomRight, NetworkedDilation_Right, 0]
+						[Port_BottomRight, NetworkedActivity_Right, 0]
+						[Port_BottomRight, NetworkPumpUtilization_Right, 0]
+					]
+				}
+			]
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			DoodadToggle = IsUtilized
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			ToggleOnDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, 12/64]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+
+
+
+		LeftPumpIsOperationalAndConnected
+		{
+			Type = MultiToggle
+			Toggles = [IsUtilized, Port_BottomLeft]
+			Mode = All
+		}
+		LeftPumpHeatAccumulator
+		{
+			Type = ValueAccumulator
+			AccumulatingToggle = LeftPumpIsOperationalAndConnected
+			AccumulationRate = 0.2
+			DissipationRate = 0.2
+			MinValue = 0
+			MaxValue = 1
+		}
+		LeftPumpHeatColorFactor
+		{
+			Type = ValueColor
+			AlphaFrom = LeftPumpHeatAccumulator
+		}
+		LeftPumpHeat_Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 1.5]
+			GetColorFrom =  LeftPumpHeatColorFactor
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "pump_heat.png"
+						Size = [1, 1]
+					}
+					{
+						File = "pump_heat_left_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "pump_heat_left_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		RightPumpIsOperationalAndConnected
+		{
+			Type = MultiToggle
+			Toggles = [IsUtilized, Port_BottomRight]
+			Mode = All
+		}
+		RightPumpHeatAccumulator
+		{
+			Type = ValueAccumulator
+			AccumulatingToggle = RightPumpIsOperationalAndConnected
+			AccumulationRate = 0.2
+			DissipationRate = 0.2
+			MinValue = 0
+			MaxValue = 1
+		}
+		RightPumpHeatColorFactor
+		{
+			Type = ValueColor
+			AlphaFrom = RightPumpHeatAccumulator
+		}
+		RightPumpHeat_Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			GetColorFrom =  RightPumpHeatColorFactor
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "pump_heat.png"
+						Size = [1, 1]
+						MirrorU = true
+					}
+					{
+						File = "pump_heat_right_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "pump_heat_right_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		LeftPump_Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 1.5]
+			OperationalToggle = LeftPumpIsOperationalAndConnected
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"pump_on1.png"
+							"pump_on2.png"
+							"pump_on3.png"
+							"pump_on4.png"
+							"pump_on5.png"
+							"pump_on6.png"
+							"pump_on7.png"
+							"pump_on8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+					}
+					{
+						AnimationFiles
+						[
+							"pump_on1_33.png"
+							"pump_on2_33.png"
+							"pump_on3_33.png"
+							"pump_on4_33.png"
+							"pump_on5_33.png"
+							"pump_on6_33.png"
+							"pump_on7_33.png"
+							"pump_on8_33.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+					}
+					{
+						AnimationFiles
+						[
+							"pump_on1_66.png"
+							"pump_on2_66.png"
+							"pump_on3_66.png"
+							"pump_on4_66.png"
+							"pump_on5_66.png"
+							"pump_on6_66.png"
+							"pump_on7_66.png"
+							"pump_on8_66.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "pump_off.png"
+						Size = [1, 1]
+					}
+					{
+						File = "pump_off_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "pump_off_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		RightPump_Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			OperationalToggle = RightPumpIsOperationalAndConnected
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"pump_on1.png"
+							"pump_on2.png"
+							"pump_on3.png"
+							"pump_on4.png"
+							"pump_on5.png"
+							"pump_on6.png"
+							"pump_on7.png"
+							"pump_on8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+						MirrorU = true
+					}
+					{
+						AnimationFiles
+						[
+							"pump_on1_33.png"
+							"pump_on2_33.png"
+							"pump_on3_33.png"
+							"pump_on4_33.png"
+							"pump_on5_33.png"
+							"pump_on6_33.png"
+							"pump_on7_33.png"
+							"pump_on8_33.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+						MirrorU = true
+					}
+					{
+						AnimationFiles
+						[
+							"pump_on1_66.png"
+							"pump_on2_66.png"
+							"pump_on3_66.png"
+							"pump_on4_66.png"
+							"pump_on5_66.png"
+							"pump_on6_66.png"
+							"pump_on7_66.png"
+							"pump_on8_66.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+						MirrorU = true
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "pump_off.png"
+						Size = [1, 1]
+						MirrorU = true
+					}
+					{
+						File = "pump_off_33.png"
+						Size = [1, 1]
+						MirrorU = true
+					}
+					{
+						File = "pump_off_66.png"
+						Size = [1, 1]
+						MirrorU = true
+					}
+				]
+			}
+		}
+
+		Left_Pipe_Components
+		{
+			Type = ToggledComponents
+			Toggle = Port_BottomLeft
+			Components
+			{
+				Left_Pipes_Graphics
+				{
+					Type = Graphics
+					Location = [0.5, 1.5]
+					OperationalToggle = IsOperational
+					Floor
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "pipes.png"
+								Size = [1, 1]
+							}
+							{
+								File = "pipes_33.png"
+								Size = [1, 1]
+							}
+							{
+								File = "pipes_66.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					Roof
+					{
+						Layer = "roof_doodads"
+						Offset = [0, 0.5]
+						DamageLevels
+						[
+							{
+								File = "pipe_roof.png"
+								NormalsFile = "pipe_roof_normals.png"
+								Size = [1, 1]
+							}
+							{
+								File = "pipe_roof_33.png"
+								NormalsFile = "pipe_roof_normals.png"
+								Size = [1, 1]
+							}
+							{
+								File = "pipe_roof_66.png"
+								NormalsFile = "pipe_roof_normals.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+
+		Right_Pipe_Components
+		{
+			Type = ToggledComponents
+			Toggle = Port_BottomRight
+			Components
+			{
+				Right_Pipes_Graphics
+				{
+					Type = Graphics
+					Location = [1.5, 1.5]
+					OperationalToggle = IsOperational
+					Floor
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "pipes.png"
+								Size = [1, 1]
+								MirrorU = true
+							}
+							{
+								File = "pipes_33.png"
+								Size = [1, 1]
+								MirrorU = true
+							}
+							{
+								File = "pipes_66.png"
+								Size = [1, 1]
+								MirrorU = true
+							}
+						]
+					}
+					Roof
+					{
+						Layer = "roof_doodads"
+						Offset = [0, 0.5]
+						DamageLevels
+						[
+							{
+								File = "pipe_roof.png"
+								NormalsFile = "pipe_roof_normals.png"
+								Size = [1, 1]
+							}
+							{
+								File = "pipe_roof_33.png"
+								NormalsFile = "pipe_roof_normals.png"
+								Size = [1, 1]
+							}
+							{
+								File = "pipe_roof_66.png"
+								NormalsFile = "pipe_roof_normals.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+		
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1, 1]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+					Offset = [-0.5, 0]
+				}
+				{
+					File = "batteries2.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries3.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries4.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries5.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries6.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries7.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries8.png"
+					Size = [2, 1]
+				}
+			]
+		}
+		
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+		
+		Left_Pipe_Connected_Blueprints
+		{
+			Type = BlueprintSprite
+			Offset = [-0.5, 0]
+			Toggle = Port_BottomLeft
+			File = "blueprints_connected.png"
+			Size = [1, 2]
+		}
+/*		Left_Pipe_Unconnected_Blueprints
+		{
+			Type = BlueprintSprite
+			Offset = [-0.5, 0]
+			Toggle = Port_BottomLeft
+			Invert = true
+			File = "blueprints_unconnected.png"
+			Size = [1, 2]
+		}
+*/		Right_Pipe_Connected_Blueprints
+		{
+			Type = BlueprintSprite
+			Offset = [0.5, 0]
+			Toggle = Port_BottomRight
+			File = "blueprints_connected.png"
+			Size = [1, 2]
+			MirrorU = true
+		}
+/*		Right_Pipe_Unconnected_Blueprints
+		{
+			Type = BlueprintSprite
+			Offset = [0.5, 0]
+			Toggle = Port_BottomRight
+			Invert = true
+			File = "blueprints_unconnected.png"
+			Size = [1, 2]
+			MirrorU = true
+		}
+*/
+
+		//------------------------ PIPE CONNECTOR ------------------------
+		Dont_Draw_Pipe_Connector_Into_This_Part { Type = Graphics }	//When this fake component is present, the Heat Pipes dont draw a Pipe Conector to this part.
+
+		//Draw a Pipe Connector Down Left if possible
+		PipeConnectorDownLeft_DrawToggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_DrawToggle
+		{
+			PartLocation = [0, 2]
+		}
+		PipeConnectorDownLeft_Toggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Toggle
+		{
+			Toggles = [Port_BottomLeft, {Toggle = PipeConnectorDownLeft_DrawToggle, invert = true}]
+		}
+		PipeConnectorDownLeft_Components : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components
+		{
+			Toggle = PipeConnectorDownLeft_Toggle
+			Components
+			{
+				PipesConnectorDownLeft_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components/Components/PipesConnectorDown_Graphics
+				{
+					Location = [0.5, 2.5]
+				}
+			}
+		}
+
+		//Draw a Pipe Connector Down Right if possible
+		PipeConnectorDownRight_DrawToggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_DrawToggle
+		{
+			PartLocation = [1, 2]
+		}
+		PipeConnectorDownRight_Toggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Toggle
+		{
+			Toggles = [Port_BottomRight, {Toggle = PipeConnectorDownRight_DrawToggle, invert = true}]
+		}
+		PipeConnectorDownRight_Components : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components
+		{
+			Toggle = PipeConnectorDownRight_Toggle
+			Components
+			{
+				PipesConnectorDownRight_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components/Components/PipesConnectorDown_Graphics
+				{
+					Location = [1.5, 2.5]
+				}
+			}
+		}
+		//---------------------- END PIPE CONNECTOR ----------------------
+	}
+	
+	Stats
+	{
+		ThermalDilation = (&~/Part/Components/BasePumpDilation/OnValue) * 100
+//		ThermalPumpMultiEfficiency = (&~/Part/Components/MultiUtilizationEfficiencyFactor/Value) * 100
+		TurretExtraHeatGeneration = (&~/Part/Components/AdditionalTurretHeatGeneration_Active/Value)
+		
+		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity/BaseValue) / (&~/Part/Components/PowerDrain/Interval) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		RecPower = &PowerUsageContinuous
+	}
+	
+	StatsNotesKey = "Stats/ThermalDilationPumpNotes"
+}

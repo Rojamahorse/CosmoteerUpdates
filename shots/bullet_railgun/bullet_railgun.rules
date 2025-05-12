@@ -7,7 +7,7 @@ IdealRange
 	{ BaseValue=300; BuffType=RailgunShot; BuffMode=Multiply; MaxValue=600; }
 ]
 IdealRadius = [5, 50]
-Speed = { BaseValue=360; BuffType=RailgunShot; BuffMode=Multiply; MaxValue=1200; }
+Speed = { BaseValue=330; BuffType=RailgunShot; BuffMode=Multiply; MaxValue=1200; }
 ReceivableBuffs = [RailgunShot]
 
 Components
@@ -68,11 +68,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=10000; BuffType=RailgunShot; BuffMode=Multiply; }
+					Damage = { BaseValue=10000; BuffType=RailgunShot; BuffMode=Multiply; EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse
-					Impulse = { BaseValue=140; BuffType=RailgunShot; BuffMode=Multiply; }
+					Impulse = { BaseValue=140; BuffType=RailgunShot; BuffMode=Multiply; EffectScaleExponent=1; }
 				}
 			]
 
@@ -88,10 +88,11 @@ Components
 					Type = Damage
 					Damage = 0
 					DamagePool = DamagePool
+					DamagePoolFactor = { BaseValue=1; EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse
-					Impulse = { BaseValue=140; BuffType=RailgunShot; BuffMode=Multiply; }
+					Impulse = { BaseValue=140; BuffType=RailgunShot; BuffMode=Multiply; EffectScaleExponent=1; }
 				}
 			]
 
@@ -125,11 +126,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=2400; BuffType=RailgunShot; BuffMode=Multiply; }
+					Damage = { BaseValue=2400; BuffType=RailgunShot; BuffMode=Multiply; EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse
-					Impulse = { BaseValue=34; BuffType=RailgunShot; BuffMode=Multiply; }
+					Impulse = { BaseValue=34; BuffType=RailgunShot; BuffMode=Multiply; EffectScaleExponent=1; }
 				}
 			]
 
@@ -155,13 +156,13 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=1000; BuffType=RailgunShot; BuffMode=Multiply; }
+					Damage = { BaseValue=1000; BuffType=RailgunShot; BuffMode=Multiply; EffectScaleExponent=1; }
 					DamagePool = DamagePool
 					DoPooledDamageFirst = true
 				}
 				{
 					Type = Impulse
-					Impulse = { BaseValue=140; BuffType=RailgunShot; BuffMode=Multiply; }
+					Impulse = { BaseValue=140; BuffType=RailgunShot; BuffMode=Multiply; EffectScaleExponent=1; }
 				}
 			]
 
@@ -238,6 +239,8 @@ Components
 			}
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
+			_z = 1
+            _nrmlStrengthLimit = 1
 			_litReflectiveStrength = 24
 			_litAdditiveStrength = 0.05
 			_unlitAdditiveStrength = 0.2

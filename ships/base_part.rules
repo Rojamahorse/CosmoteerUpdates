@@ -14,7 +14,7 @@ Part
 	CrewThrowSpeedWhenDestroyed = 10
 	CrewSpeedFactor = .5
 	CrewCongestedSpeedFactor = .3
-	CrewFireSpeedFactor = .2;
+	CrewMinimumSpeedFactor = .2;
 	ProhibitLeft = 0
 	ProhibitRight = 0
 	ProhibitAbove = 0

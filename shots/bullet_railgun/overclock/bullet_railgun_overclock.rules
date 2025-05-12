@@ -1,0 +1,122 @@
+BASE = &<./Data/shots/bullet_railgun/bullet_railgun.rules>
+
+ID = "cosomoteer.bullet_railgun_overclock"
+Range : BASE/Range { BuffType = RailgunShotOverclock; }
+IdealRange
+[
+	: ~/BASE/IdealRange/0 { BuffType = RailgunShotOverclock; }
+	: ~/BASE/IdealRange/1 { BuffType = RailgunShotOverclock; }
+]
+IdealRadius = &BASE/IdealRadius
+Speed
+{
+	BaseValue = (&~/BASE/Speed/BaseValue) * 200%
+	MaxValue = (&~/BASE/Speed/MaxValue) * 250%
+	BuffType = RailgunShotOverclock
+	BuffMode = Multiply
+}
+ReceivableBuffs = [RailgunShotOverclock]
+
+DAMAGE_POOL = (&BASE/Components/DamagePool/Damage/BaseValue) * 200%
+HEALTH = (&BASE/Components/Targetable/Health) * 200%
+IMPULSE_FACTOR = 250%
+IMPULSE = (&BASE/Components/Hit/HitOperational/HitEffects/1/Impulse/BaseValue) * (&IMPULSE_FACTOR)
+
+Components : BASE/Components
+{
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = { BaseValue = &~/DAMAGE_POOL; BuffType = RailgunShotOverclock; BuffMode = Multiply; EffectScaleExponent = 1; }
+	}
+	DeathByDamagePool
+	{
+		Type = DeathByDamagePool
+		DamagePool = DamagePool
+	}
+	Targetable : ^/0/Targetable
+	{
+		Health = &~/HEALTH
+	}
+	
+	Hit : ^/0/Hit
+	{
+		Penetration = infinity
+		FactorEffectsWith = DamagePool
+		
+		HitCrew = &HitOperational
+		HitShield = &HitOperational
+		HitOperational : ^/0/HitOperational
+		{
+			ReduceEffectsByPenetration = false
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+				{
+					Type = Impulse
+					Impulse = &~/IMPULSE
+				}
+			]
+			
+			MediaEffectsScale : ^/0/MediaEffectsScale { BuffType = RailgunShotOverclock; }
+			MediaEffects
+			[
+				&../^/0/MediaEffects/0
+				&../^/0/MediaEffects/1
+				&../^/0/MediaEffects/2
+				&../^/0/MediaEffects/3
+				: ../^/0/MediaEffects/4 { Volume : ^/0/Volume { BuffType = RailgunShotOverclock; }}
+				: ../^/0/MediaEffects/5 { ShakeAmount : ^/0/ShakeAmount { BuffType = RailgunShotOverclock; }}
+			]
+		}
+		HitStructural : ^/0/HitStructural
+		{
+			ReduceEffectsByPenetration = false
+			
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = &../../^/0/HitEffects/0/Damage/BaseValue
+				}
+				{
+					Type = Impulse
+					Impulse = (&../../^/0/HitEffects/1/Impulse/BaseValue) * (&~/IMPULSE_FACTOR)
+				}
+			]
+			
+			MediaEffectsScale : ^/0/MediaEffectsScale { BuffType = RailgunShotOverclock; }
+			MediaEffects
+			[
+				&../^/0/MediaEffects/0
+				&../^/0/MediaEffects/1
+				: ../^/0/MediaEffects/2 { Volume : ^/0/Volume { BuffType = RailgunShotOverclock; }}
+			]
+		}
+		PenetratingOperational : ^/0/PenetratingOperational
+		{
+			ReduceEffectsByPenetration = false
+			
+			HitEffects = &../HitOperational/HitEffects
+			MediaEffectsScale : ^/0/MediaEffectsScale { BuffType = RailgunShotOverclock; }
+		}
+		FinishedPenetratingOperational = &PenetratingOperational
+	}
+	
+	Sprite : ^/0/Sprite
+	{
+		ReduceScaleWith = DamagePool
+	}
+	GlowSprite : ^/0/GlowSprite
+	{
+		ReduceScaleWith = DamagePool
+	}
+	MediaEffects : ^/0/MediaEffects
+	{
+		MediaEffectsScale : ^/0/MediaEffectsScale { BuffType = RailgunShotOverclock; }
+	}
+}

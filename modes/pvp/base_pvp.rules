@@ -7,7 +7,7 @@ ShipSaleRefund = 75%
 
 PerimeterDamageFractionPerTick = .025
 PerimeterDamageFractionPerTickPerDistance = .0001
-PerimeterDamageChancePerTick = .01
+PerimeterDamageChancePerTick = 0.15 / (&/Simulation/PhysicsUpdatesPerSecond)
 
 PerimeterDamageMediaEffects
 [

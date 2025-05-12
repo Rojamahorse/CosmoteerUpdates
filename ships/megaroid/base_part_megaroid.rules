@@ -4,14 +4,13 @@ Part : <../base_part.rules>/Part
 	Density = 10
 	MaxHealth = 160000
 	IsCrewSalvageable = false
-	Flammable = false
 	UnderlyingPartPerTile = ""
 	CreatePartPerTileWhenGrabbed = ""
 	AllowedDoorLocations = []
 	IsRotateable = false
 	IgnoreRotationForMirroredSelection = true
 	CrewSpeedFactor = 0
-	TypeCategories = [asteroid]
+	TypeCategories = [asteroid, non_flammable]
 	InitialPenetrationResistance = 160
 	ContinuingPenetrationResistance = 160
 

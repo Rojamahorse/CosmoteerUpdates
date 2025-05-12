@@ -38,12 +38,27 @@ Part : <../base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+	
 		PowerToggle
 		{
 			Type = UIToggle
 			ToggleID = "on_off"
 			Default = 1
 			RequiresCommand = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
 		}
 
 		BatteryStorage
@@ -87,14 +102,14 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = hyperium
 			Storage = HyperiumStorage
 			DefaultPriority = &/PRIORITIES/Utility_Supply
-			OperationalToggle = PowerToggle
+			OperationalToggle = IsOperational
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
 
 		FtlDrive
 		{
 			Type = FtlDrive
-			OperationalToggle = PowerToggle
+			OperationalToggle = IsOperational
 			PowerStorage = BatteryStorage
 			FuelStorage = HyperiumStorage
 			SpinDownDuration = 5
@@ -165,7 +180,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = Graphics
 			Location = [2, 2]
-			OperationalToggle = PowerToggle
+			OperationalToggle = IsOperational
 			AnimationSpeedFactor = FtlDrive
 			Floor
 			{
@@ -504,7 +519,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = [2, 2]
 			FactorMediaEffectsIntensityWith = FtlDrive
 			MinMediaEffectsIntensity = 1%
-			OperationalToggle = PowerToggle
+			OperationalToggle = IsOperational
 			MediaEffects
 			[
 				: /BASE_SOUNDS/AudioExterior
@@ -909,9 +924,24 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ToggleEffects
 			Location = [2, 2]
-			Toggle = PowerToggle
+			Toggle = IsOperational
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/HugePartScorched
 		}
 
 		DestroyedEffects
@@ -927,6 +957,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [2, 2]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle

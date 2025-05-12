@@ -1,0 +1,869 @@
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+HEAT_PER_MISSILE = 10000
+
+EditorIcon
+{
+	Texture
+	{
+		File = "icon_thermal.png"
+		SampleMode = Linear
+	}
+	Size = [40, 80]
+}
+
+Components
+{
+	MissileStorageA : ~/BASE/MissileStorage {}
+	MissileStorageB : ~/BASE/MissileStorage {}
+	MissileStorageC : ~/BASE/MissileStorage {}
+	
+	CombinedMissileStorage
+	{
+		Type = MultiResourceStorage
+		ResourceType = &~/MISSILE_PART
+		ResourceStorages = [MissileStorageA, MissileStorageB, MissileStorageC]
+		AddMode = PrioritizeLeastEmptyCapacity
+		RemoveMode = PrioritizeMostEmptyCapacity
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
+		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
+	}
+	
+	Consumer
+	{
+		Type = ResourceConsumer
+		ResourceType = &~/MISSILE_PART
+		Storage = CombinedMissileStorage
+		DefaultPriority = &/PRIORITIES/Weapon_Supply
+		OverridePriorityKey = ThermalMissileStorage
+		OperationalToggle = PowerToggle
+		ConsumptionToggleButtonOffset = [0, -.4]
+	}
+	
+	HeatStorageA : ~/BASE/HeatStorage {}
+	HeatStorageB : ~/BASE/HeatStorage {}
+	HeatStorageC : ~/BASE/HeatStorage {}
+	
+	CombinedHeatStorage
+	{
+		Type = MultiResourceStorage
+		ResourceType = heat
+		ResourceStorages = [ HeatStorageA, HeatStorageB, HeatStorageC ]
+		AddMode = PrioritizeLeastEmptyCapacity
+		RemoveMode = PrioritizeMostEmptyCapacity
+	}
+	
+	HeatConverter
+	{
+		Type = ResourceConverter
+		OperationalToggle = PowerToggle
+		
+		MISSILE_FILL_TIME = 3
+		INTERVALS_TO_FILL = (&MISSILE_FILL_TIME) / (&Interval)
+		HEAT_PER_INTERVAL = ceil("(&~/BASE/HeatStorage/MaxResources) / (&INTERVALS_TO_FILL)")
+		
+		FromStorage = NetworkHeatOutput
+		MinFromQuantityForConversion = &HEAT_PER_INTERVAL
+		FromQuantity = &HEAT_PER_INTERVAL
+		ToStorage = CombinedHeatStorage
+		MinToQuantityForConversion = 1
+		ToQuantity = &HEAT_PER_INTERVAL
+		Interval = 0.5
+	}
+	
+	PrereqA
+	{
+		Type = MultiToggle
+		Toggles = [ MissileStorageA, HeatStorageA ]
+		Mode = All
+	}
+	PrereqB : PrereqA
+	{
+		Toggles = [ MissileStorageB, HeatStorageB ]
+	}
+	PrereqC : PrereqA
+	{
+		Toggles = [ MissileStorageC, HeatStorageC ]
+	}
+	
+	PartsPrereq
+	{
+		Type = MultiToggle
+		Toggles = [ MissileStorageA, MissileStorageB, MissileStorageC ]
+		Mode = Any
+	}
+	
+	HeatPrereq
+	{
+		Type = MultiToggle
+		Toggles = [ HeatStorageA, HeatStorageB, HeatStorageC ]
+		Mode = Any
+	}
+	
+	MissilesPrereq
+	{
+		Type = MultiToggle
+		Toggles = [PrereqA, PrereqB, PrereqC]
+		Mode = Any
+	}
+
+	ReloadProgressBar
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = CommonReloadTimerThermal
+		Invert = true
+	}
+	
+	WeaponA : ~/BASE/Weapon
+	{
+		Location = [.5, 1]
+		ShowExplicitTarget = false
+		Emitter = EmitterA
+	}
+
+	EmitterA : ~/BASE/Emitter
+	{
+		ChainedTo = WeaponA
+		FireTrigger = WeaponA
+		GetTargetFrom = WeaponA
+		ResourceUsage
+		[
+			{
+				ResourceStorage = MissileStorageA
+				ResourcesUsed = (&~/BASE/MissileStorage/MaxResources)
+			}
+			{
+				ResourceStorage = HeatStorageA
+				ResourcesUsed = (&~/BASE/HeatStorage/MaxResources)
+			}
+		]
+	}
+
+	WeaponB : ~/BASE/Weapon
+	{
+		Location = [1, 1]
+		Emitter = EmitterB
+
+		CoverageSectorArc
+		{
+			Texture = &/INDICATORS/VerticalGradient
+			VertexColor = [255, 255, 255, 51]
+			QuadCount = 64
+		}
+	}
+
+	EmitterB : ~/BASE/Emitter
+	{
+		ChainedTo = WeaponB
+		FireTrigger = WeaponB
+		GetTargetFrom = WeaponB
+		ResourceUsage
+		[
+			{
+				ResourceStorage = MissileStorageB
+				ResourcesUsed = (&~/BASE/MissileStorage/MaxResources)
+			}
+			{
+				ResourceStorage = HeatStorageB
+				ResourcesUsed = (&~/BASE/HeatStorage/MaxResources)
+			}
+		]
+	}
+
+	WeaponC : ~/BASE/Weapon
+	{
+		Location = [1.5, 1]
+		ShowExplicitTarget = false
+		Emitter = EmitterC
+	}
+
+	EmitterC : ~/BASE/Emitter
+	{
+		ChainedTo = WeaponC
+		FireTrigger = WeaponC
+		GetTargetFrom = WeaponC
+		ResourceUsage
+		[
+			{
+				ResourceStorage = MissileStorageC
+				ResourcesUsed = (&~/BASE/MissileStorage/MaxResources)
+			}
+			{
+				ResourceStorage = HeatStorageC
+				ResourcesUsed = (&~/BASE/HeatStorage/MaxResources)
+			}
+		]
+	}
+
+	FirePermissionToggle
+	{
+		Type = MultiToggle
+		Toggles = [CommonReloadTimerHE, FireModeToggle]
+		Mode = All
+	}
+
+	CommonReloadResetTrigger
+	{
+		Type = MultiTrigger
+		Triggers = [WeaponA, WeaponB, WeaponC]
+	}
+	
+	LaunchEffectA : ~/BASE/LaunchEffect
+	{
+		ChainedTo = WeaponA
+		Trigger = WeaponA
+	}
+
+	LaunchEffectB : ~/BASE/LaunchEffect
+	{
+		ChainedTo = WeaponB
+		Trigger = WeaponB
+	}
+
+	LaunchEffectC : ~/BASE/LaunchEffect
+	{
+		ChainedTo = WeaponC
+		Trigger = WeaponC
+	}
+	
+	Router
+	{
+		Type = NetworkRouter
+		RouteGenerators
+		[
+			{
+				Type = Bidirectional
+				Routes
+				[
+					[Port_Left, Port_Right, 0]
+					
+					[Port_Left, NetworkHeatOutput, 0]
+					[Port_Left, NetworkHeatReceiver, 0]
+				]
+			}
+		]
+	}
+	
+	Port_Left
+	{
+		Type = NetworkPort
+		Location = [0, 1]
+		Direction = Left
+		Types = [ thermal ]
+	}
+	Port_Right : Port_Left
+	{
+		Location = [1, 1]
+		Direction = Right
+	}
+	
+	NetworkHeatOutput
+	{
+		Type = NetworkResourceOutput
+		ResourceType = heat
+		Mode = DistributeProportionallyByAvailable
+		Categories = [ thermal_storage ]
+	}
+	
+	NetworkHeatReceiver
+	{
+		Type = NetworkResourceStore
+		ResourceType = heat
+		ResourceStorage = CombinedHeatStorage
+		AllowProviding = false
+	}
+	
+	External_Walls_Graphics
+	{
+		Type = Graphics
+		Location = [1, 1.0]
+		Walls
+		{
+			Layer = "external_walls"
+			DamageLevels
+			[
+				{
+					File = "external_walls.png"
+					NormalsFile = "external_walls_normals.png"
+					Size = [2, 3]
+				}
+				{
+					File = "external_walls_33.png"
+					NormalsFile = "external_walls_normals_33.png"
+					Size = [2, 3]
+				}
+				{
+					File = "external_walls_66.png"
+					NormalsFile = "external_walls_normals_66.png"
+					Size = [2, 3]
+				}
+			]
+		}
+	}
+
+	RackHeatSpritesA
+	{
+		Type = ResourceSprites
+		Location = [.5 + 2/64, 1.5]
+		ResourceStorage = HeatStorageA
+		Layer = "doors"
+		ResourceLevels
+		[
+			{
+				File = "rack_heat1.png"
+				Size = [1, 1]
+			}
+			{
+				File = "rack_heat2.png"
+
+				Size = [1, 1]
+			}
+			{
+				File = "rack_heat3.png"
+
+				Size = [1, 1]
+			}
+			{
+				File = "rack_heat4.png"
+				Size = [1, 1]
+			}
+			{
+				File = "rack_heat5.png"
+				Size = [1, 1]
+			}
+			{
+				File = "rack_heat6.png"
+				Size = [1, 1]
+			}
+			{
+				File = "rack_heat7.png"
+				Size = [1, 1]
+			}
+			{
+				File = "rack_heat8.png"
+				Size = [1, 1]
+			}
+		]
+	}
+	MissileLoadingSpritesA
+	{
+		Type = ToggledComponents
+		Toggle = MissileStorageA
+		Invert = true
+		Components
+		{
+			MissileSpritesA
+			{
+				Type = ResourceSprites
+				Location = [.5 + 2/64, 1.5]
+				ResourceStorage = MissileStorageA
+				Layer = "weapons"
+				HasZeroResourceSprite = true
+				ResourceLevels
+				[
+					{
+						File = "missile_0.png"
+						Offset = [0, 1]
+						Size = [1, 1]
+					}
+					{
+						File = "missile_1.png"
+						NormalsFile = "missile_normals_1.png"
+						Offset = [0, 0.5]
+						Size = [1, 2]
+					}
+					{
+						File = "missile_2.png"
+						NormalsFile = "missile_normals_2.png"
+						Size = [1, 3]
+					}
+					{
+						File = "missile_3.png"
+						NormalsFile = "missile_normals_3.png"
+						Size = [1, 3]
+					}
+					{
+						File = "missile_4.png"
+						NormalsFile = "missile_normals_4.png"
+						Size = [1, 3]
+					}
+				]
+			}
+		}
+	}
+	MissileLoadedSpritesA
+	{
+		Type = ToggledComponents
+		Toggle = MissileStorageA
+		Components
+		{
+			MissileHeatSpritesA
+			{
+				Type = ResourceSprites
+				Location = [.5 + 2/64, 1.5]
+				ResourceStorage = HeatStorageA
+				Layer = "weapons"
+				HasZeroResourceSprite = true
+				ResourceLevels
+				[
+					{
+						File = "missile_4.png"
+						NormalsFile = "missile_normals_4.png"
+						Size = [1, 3]
+					}
+					{
+						File = "missile_4_heat_20%.png"
+						NormalsFile = "missile_normals_4.png"
+						Size = [1, 3]
+					}
+					{
+						File = "missile_4_heat_40%.png"
+						NormalsFile = "missile_normals_4.png"
+						Size = [1, 3]
+					}
+					{
+						File = "missile_4_heat_60%.png"
+						NormalsFile = "missile_normals_4.png"
+						Size = [1, 3]
+					}
+					{
+						File = "missile_4_heat_80%.png"
+						NormalsFile = "missile_normals_4.png"
+						Size = [1, 3]
+					}
+					{
+						File = "missile_4_heat_100%.png"
+						NormalsFile = "missile_normals_4.png"
+						Size = [1, 3]
+					}
+				]
+			}
+			MissileHeatGlowSpritesA
+			{
+				Type = ResourceSprites
+				Location = [.5 + 2/64, 1]
+				ResourceStorage = HeatStorageA
+				Layer = "lights_add"
+				ResourceLevels
+				[
+					{
+						AnimationFiles
+						[
+							"missile_heat_20%_1.png"
+							"missile_heat_20%_2.png"
+							"missile_heat_20%_3.png"
+							"missile_heat_20%_4.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = Random
+					}
+					{
+						AnimationFiles
+						[
+							"missile_heat_40%_1.png"
+							"missile_heat_40%_2.png"
+							"missile_heat_40%_3.png"
+							"missile_heat_40%_4.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = Random
+					}
+					{
+						AnimationFiles
+						[
+							"missile_heat_60%_1.png"
+							"missile_heat_60%_2.png"
+							"missile_heat_60%_3.png"
+							"missile_heat_60%_4.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = Random
+					}
+					{
+						AnimationFiles
+						[
+							"missile_heat_80%_1.png"
+							"missile_heat_80%_2.png"
+							"missile_heat_80%_3.png"
+							"missile_heat_80%_4.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = Random
+					}
+					{
+						AnimationFiles
+						[
+							"missile_heat_100%_1.png"
+							"missile_heat_100%_2.png"
+							"missile_heat_100%_3.png"
+							"missile_heat_100%_4.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = Random
+					}
+				]
+			}
+		}
+	}
+
+	RackHeatSpritesB : RackHeatSpritesA
+	{
+		Location = [1, 1.5]
+		ResourceStorage = HeatStorageB
+	}
+	MissileLoadingSpritesB : MissileLoadingSpritesA
+	{
+		Toggle = MissileStorageB
+		Components
+		{
+			MissileSpritesB : ../../MissileLoadingSpritesA/Components/MissileSpritesA
+			{
+				Location = [1, 1.5]
+				ResourceStorage = MissileStorageB
+			}
+		}
+	}
+	MissileLoadedSpritesB : MissileLoadedSpritesA
+	{
+		Toggle = MissileStorageB
+		Components
+		{
+			MissileHeatSpritesB : ../../MissileLoadedSpritesA/Components/MissileHeatSpritesA
+			{
+				Location = [1, 1.5]
+				ResourceStorage =  HeatStorageB
+			}
+			MissileHeatGlowSpritesB : ../../MissileLoadedSpritesA/Components/MissileHeatGlowSpritesA
+			{
+				Location = [1, 1]
+				ResourceStorage =  HeatStorageB
+			}
+		}
+	}
+
+	RackHeatSpritesC : RackHeatSpritesA
+	{
+		Location = [1.5 - 2/64, 1.5]
+		ResourceStorage = HeatStorageC
+	}
+	MissileLoadingSpritesC : MissileLoadingSpritesA
+	{
+		Toggle = MissileStorageC
+		Components
+		{
+			MissileSpritesC : ../../MissileLoadingSpritesA/Components/MissileSpritesA
+			{
+				Location = [1.5 - 2/64, 1.5]
+				ResourceStorage = MissileStorageC
+			}
+		}
+	}
+	MissileLoadedSpritesC : MissileLoadedSpritesA
+	{
+		Toggle = MissileStorageC
+		Components
+		{
+			MissileHeatSpritesC : ../../MissileLoadedSpritesA/Components/MissileHeatSpritesA
+			{
+				Location = [1.5 - 2/64, 1.5]
+				ResourceStorage =  HeatStorageC
+			}
+			MissileHeatGlowSpritesC : ../../MissileLoadedSpritesA/Components/MissileHeatGlowSpritesA
+			{
+				Location = [1.5 - 2/64, 1]
+				ResourceStorage =  HeatStorageC
+			}
+		}
+	}
+
+	ScorchedTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = ScorchedToggle
+		TriggerWhenOn = false
+		TriggerWhenOff = true
+	}
+//	ScorchedEffects
+//	{
+//		Type = TriggeredEffects
+//		Trigger = ScorchedTrigger
+//		Location = &~/Components/DestroyedEffects/Location
+//		FactorHitEffectsWith = CombinedMissileStorage
+//		MediaEffects = &~/Components/DestroyedEffects/MediaEffects
+//		HitEffects = &~/Components/DestroyedEffects/HitEffects	
+//	}
+//
+//	DestroyedEffects
+//	{
+//		Type = DeathEffects
+//		OperationalToggle = ScorchedToggle
+//		MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+//		Location = [1, 2]
+//
+//		FactorHitEffectsWith = CombinedMissileStorage
+//		HitEffects
+//		[
+//			{
+//				Type = ExplosiveDamage
+//				TotalDamage = { BaseValue = 30000; EffectScaleExponent = 1 }
+//				Radius = 5
+//				Delay = .05
+//				StatusType = cosmoteer.fire
+//				StatusChancePerNDamage = 50%
+//				StatusValue = 1
+//				StatusValueType = Interpolated
+//				NDamage = 1000
+//				CrewKillChance = 50%
+//				Filter
+//				{
+//					OperationalHealth = true
+//					StructuralHealth = false
+//					Friendlies = true
+//				}
+//			}
+//			{
+//				Type = ExplosiveDamage
+//				TotalDamage = { BaseValue = 10000; EffectScaleExponent = 1 }
+//				Radius = 4
+//				Delay = .05
+//				Filter
+//				{
+//					OperationalHealth = false
+//					StructuralHealth = true
+//					Friendlies = true
+//					Crew = false
+//				}
+//			}
+//		]
+//	}
+
+	Indicators
+	{
+		Type = IndicatorSprites
+		Location = [1, 2]
+		Indicators
+		[
+			// Turned off.
+			{
+				Toggle = PowerToggle
+				AtlasSprite
+				{
+					File = &/INDICATORS/PowerOff
+					Size = [1, 1]
+				}
+				HidesIndicators = [1,2,3]
+			}
+
+			// Out of missiles.
+			{
+				Toggle = PartsPrereq
+				Delay = &<../missile_launcher.rules>/Part/Components/CommonReloadTimerHE/Duration
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoThermalMissiles
+					Size = [1, 1]
+				}
+			}
+			
+			// Not enough heat
+			{
+				Toggle = HeatPrereq
+				AtlasSprite : /INDICATORS/NoHeat
+				{
+					Size = [1, 1]
+				}
+			}
+
+			// No crew.
+			{
+				Toggle = PartCrew
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoCrew
+					Size = [1, 1]
+				}
+			}
+		]
+	}
+
+	//------------------------ PIPE CONNECTOR ------------------------
+	Dont_Draw_Pipe_Connector_Into_This_Part { Type = Graphics }	//When this fake component is present, the Heat Pipes dont draw a Pipe Conector to this part.
+
+	Left_Pipe_Components
+	{
+		Type = ToggledComponents
+		Toggle = Port_Left
+		Components
+		{
+			Left_Pipes_Graphics
+			{
+				Type = Graphics
+				Location = [0.5, 1.5]
+				Rotation = 90d
+				Floor
+				{
+					Layer = "weapons"//"doodads_low"
+					DamageLevels
+					[
+						{
+							File = "pipe.png"
+							NormalsFile = "pipe_normals.png"
+							Size = [1, 1]
+						}
+						{
+							File = "pipe_33.png"
+							NormalsFile = "pipe_normals.png"
+							Size = [1, 1]
+						}
+						{
+							File = "pipe_66.png"
+							NormalsFile = "pipe_normals.png"
+							Size = [1, 1]
+						}
+					]
+				}
+				Roof
+				{
+					Layer = "roof_doodads"
+					Offset = [0, 0.5]
+					DamageLevels
+					[
+						{
+							File = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof.png"
+							NormalsFile = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_normals.png"
+							Size = [1, 1]
+						}
+						{
+							File = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_33.png"
+							NormalsFile = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_normals.png"
+							Size = [1, 1]
+						}
+						{
+							File = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_66.png"
+							NormalsFile = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_normals.png"
+							Size = [1, 1]
+						}
+					]
+				}
+			}
+		}
+	}
+
+	Right_Pipe_Components : Left_Pipe_Components
+	{
+		Toggle = Port_Right
+		Components
+		{
+			Right_Pipes_Graphics : ../../Left_Pipe_Components/Components/Left_Pipes_Graphics
+			{
+				Location = [1.5, 1.5]
+				Rotation = -90d
+			}
+		}
+	}
+	//---------------------- END PIPE CONNECTOR ----------------------
+}
+
+MISSILE_PART = missile_part_thermal
+
+BASE
+{
+	MissileStorage
+	{
+		Type = ResourceStorage
+		ResourceType = &~/MISSILE_PART
+		MaxResources = 4
+		ToggleOnResources = 4
+		ToggleOffResources = 3
+		DelayBeforeReadyToUse = .5
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+	}
+
+	HeatStorage
+	{
+		Type = ResourceStorage
+		ResourceType = heat
+		MaxResources = (&~/HEAT_PER_MISSILE) * (&~/HEAT_TO_RESOURCE)
+		ToggleOnResources = (&MaxResources)
+		ToggleOffResources = (&MaxResources) - 1
+	}
+
+	Weapon
+	{
+		Type = TurretWeapon // This has an arc of 0, but we don't want to use FixedWeapon because that will only shoot at things directly in the LOS.
+		Rotation = -90d
+		OperationalToggle = IsOperational
+		AutoFireToggle = AutoFireToggle
+		FireInterval = 0 // Uses common reload timer.
+		FiringArc = 0d;
+		ValidArc = 360d;
+		FireThresholdAngle = 180d;
+		RotateSpeed = 0d
+		AllowFireWithBlockedLOS = true
+		// TODO
+		//AIFirepowerRating = &~/MissileStats/Stats/DamagePerSecond
+		FirePermissionToggle = FirePermissionToggle
+
+		AutoTargets
+		[
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+				EnableInDirectControlMode = true
+			}
+		]
+	}
+
+	Emitter
+	{
+		Type = BulletEmitter
+		OperationalToggle = IsOperational
+		Location = [.5, 0]
+		Bullet = &<./Data/shots/missile_thermal/missile_thermal.rules>
+		TargetLeadPrediction = false
+		Recoil = 50
+	}
+    
+	LaunchEffect
+	{
+		Type = TriggeredEffects
+
+		MediaEffects
+		[
+			&<../particles/missile_launcher_shoot.rules>
+			&<../particles/missile_launcher_shoot_flash.rules>
+
+			: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "../shoot.wav"
+				SpeedVariation = .25
+			}
+		]
+	}
+}
+
+MissileStats
+{
+	NameKey = "StatCategories/MissileThermal"
+	Stats
+	{
+		HeatCapacity = (&~/HEAT_PER_MISSILE)
+		HeatSpreadDistance = &~/BASE/Emitter/Bullet/Components/Hit/HitOperational/HitEffects/0/MaxCost
+		ROF = 1 / (&<../missile_launcher.rules>/Part/Components/CommonReloadTimerThermal/Duration)
+		Range = &~/BASE/Emitter/Bullet/Range
+		Arc = deg(&~/BASE/Weapon/ValidArc)
+		ShotLaunchSpeed = &~/BASE/Emitter/Bullet/Speed
+		Acceleration = &~/BASE/Emitter/Bullet/Components/Acceleration/Acceleration
+		ShotGuidance = deg(&~/BASE/Emitter/Bullet/Components/Homing/TurnVelocity)
+		ShotHP = &~/BASE/Emitter/Bullet/Components/Targetable/Health
+		MissileParts = &~/BASE/MissileStorage/MaxResources
+	}
+}

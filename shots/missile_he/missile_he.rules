@@ -2,7 +2,7 @@ ID = "cosmoteer.missile_he"
 OtherIDs = ["missile", "cosmoteer.missile"]
 Range = 450
 IdealRange = 450
-Speed = 45
+Speed = 40
 
 Components
 {
@@ -129,7 +129,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 15000
+					TotalDamage = { BaseValue = 15000; EffectScaleExponent = 1 }
 					Radius = 4
 					Filter
 					{
@@ -138,7 +138,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 100;
+					Impulse = { BaseValue = 100; EffectScaleExponent = 1 }
 				}
 			]
 

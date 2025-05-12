@@ -4,7 +4,7 @@ PluralNameKey = "Resource/BatteryPlural"
 DescriptionKey = "Resource/BatteryDesc"
 ReturnToStorage = false
 LoseExcessOnDelivery = true
-MaxPerNugget = 3000
+MaxPerNugget = 4000
 QuantityDisplayDivisor = 1000
 
 Icon
@@ -166,6 +166,59 @@ NestedNuggetSprites
 		{
 			File = "battery_large.png"
 			NormalsFile = "battery_large_normals.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+	]
+
+	// 4x size.
+	[
+		{
+			File = "battery_huge_fill1.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_huge_fill2.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_huge_fill3.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_huge_fill4.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_huge_fill5.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_huge_fill6.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_huge_fill7.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_huge.png"
+			NormalsFile = "battery_huge_normals.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3

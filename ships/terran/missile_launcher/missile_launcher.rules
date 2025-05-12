@@ -20,6 +20,7 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 6000
 	TypeCategories = [weapon, uses_missiles, uses_emps, uses_nukes, uses_mines, uses_launcher_parts, is_crewed]
+	SignificanceToggle = ScorchedToggle
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	ProhibitAbove = 2
 	AllowedDoorLocations
@@ -67,7 +68,14 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, PartCrew]
+			Toggles = [PowerToggle, PartCrew, ScorchedToggle]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -79,10 +87,19 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			MinStatusValue = 1
+			StatusType = cosmoteer.scorched
+			Invert = true
+			IncludeWhenUnderConstruction = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 5
 		}
 
@@ -169,11 +186,25 @@ Part : <../base_part_terran.rules>/Part
 			IncludeInBlueprints = dynamic
 			Components = &<mine/missile_launcher_mine.rules>/Components
 		}
+		
+		ThermalMissilesToggle
+		{
+			Type = ModeToggle
+			Mode = MissileType
+			OnMode = 4
+		}
+		ThermalMissilesComponents
+		{
+			Type = ToggledComponents
+			Toggle = ThermalMissilesToggle
+			IncludeInBlueprints = dynamic
+			Components = &<thermal/missile_launcher_thermal.rules>/Components
+		}
 
 		CommonReloadTimerHE
 		{
 			Type = Timer
-			Duration = 2
+			Duration = 4
 			AutoStart = true
 			StartTrigger = CommonReloadResetTriggerProxy
 		}
@@ -187,11 +218,18 @@ Part : <../base_part_terran.rules>/Part
 		CommonReloadTimerMine
 		{
 			Type = Timer
-			Duration = 6
+			Duration = 12
 			AutoStart = true
 			StartTrigger = CommonReloadResetTriggerProxy
 		}
 		CommonReloadTimerNuke
+		{
+			Type = Timer
+			Duration = 8
+			AutoStart = true
+			StartTrigger = CommonReloadResetTriggerProxy
+		}
+		CommonReloadTimerThermal
 		{
 			Type = Timer
 			Duration = 4
@@ -491,6 +529,19 @@ Part : <../base_part_terran.rules>/Part
 			{
 				ToggleID = missile_type
 				Mode = 3
+			}
+		}
+		BlueprintsThermal
+		{
+			Type = BlueprintSprite
+			File = "blueprints_thermal.png"
+			Size = [2, 5]
+			Offset = [0, -.5]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = missile_type
+				Mode = 4
 			}
 		}
 	}

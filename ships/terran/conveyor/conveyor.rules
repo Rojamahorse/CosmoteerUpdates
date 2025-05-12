@@ -28,13 +28,6 @@ Part : <../base_part_terran.rules>/Part
 		Right = .375
 		Down = .25
 	}
-	CrewFireSpeedFactor
-	{
-		Up = .4
-		Left = .2
-		Right = .2
-		Down = .2
-	}
 	TypeCategories = [corridor]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	IsRotateable = true
@@ -81,7 +74,7 @@ Part : <../base_part_terran.rules>/Part
 							"conveyor8.png"
 						]
 						Size = [1, 1]
-						AnimationInterval = .0333
+						AnimationInterval = 0.0666
 						AnimationStartTime = Zero
 					}
 				]

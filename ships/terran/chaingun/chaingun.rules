@@ -1,4 +1,13 @@
-Part : <../base_part_terran.rules>/Part
+OVERCLOCK
+{
+	RAMP_SPEED_FACTOR = 250%
+	MAX_FIRE_RATE = infinity
+	HEAT_PER_SHOT = 75
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/ChainGun"
 	IconNameKey = "Parts/ChainGunIcon"
@@ -12,6 +21,7 @@ Part : <../base_part_terran.rules>/Part
 		[tristeel, 45]
 	]
 	TypeCategories = [uses_ammo, is_crewed, chaingun, chaingun_ammo_requester]
+	SignificanceToggle = ScorchedToggle
 	ReceivableBuffs : ^/0/ReceivableBuffs [RateOfFire, ChaingunMagConnection]
 	Size = [3, 6]  //if you change this, need to also change TotalResourceStorage resource proxy checks.
 	PhysicalRect = [0, 2, 3, 4]
@@ -116,7 +126,14 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, PartCrew]
+			Toggles = [PowerToggle, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -128,10 +145,18 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 6
 		}
 
@@ -175,22 +200,56 @@ Part : <../base_part_terran.rules>/Part
 			Type = SelfBuffProvider
 			BuffType = RateOfFire  //used as divide by the fixed weapon fire rate
 			BuffAmount = 1
-			BuffMultiplier = RateOfFireTween
+			BuffMultiplier = RampUpAccumulator
 		}
-		RateOfFireTween
+		
+		RampUpAccumulator
 		{
-			Type = ValueTween
-			OffValue = 1
-			OnValue = 10.5 //30 shots per second if base value 0.35
-			OnTweenDuration = 10
-			OffTweenDuration = (&OnTweenDuration) / 2 //cooldown is half the ramp up
-			IsOnToggle = GunIsFiring
+			Type = ValueAccumulator
+			AccumulatingToggle = GunIsFiring
+			BASE_MAX_VALUE = 10.5 //15 shots per second if base value
+			BASE_RAMP_UP_TIME = 20
+			BASE_RAMP_DOWN_TIME = (&BASE_RAMP_UP_TIME) / 2 //cooldown is half the ramp up
+			AccumulationRate
+			{
+				BaseValue = ((&../BASE_MAX_VALUE) - (&../MinValue)) / (&../BASE_RAMP_UP_TIME)
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, (&~/OVERCLOCK/RAMP_SPEED_FACTOR)]
+					}
+				]
+			}
+			DissipationRate : AccumulationRate
+			{
+				BaseValue = ((&../BASE_MAX_VALUE) - (&../MinValue)) / (&../BASE_RAMP_DOWN_TIME)
+			}
+			MinValue = 1
+			MaxValue
+			{
+				BaseValue = (&../BASE_MAX_VALUE)
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = Overclock
+						ModificationMode = Replace
+						MinValue = &~/OVERCLOCK/MAX_FIRE_RATE
+						MaxValue = &MinValue
+					}
+				]
+			}
 		}
+		
 		ShellChangingValueTween
 		{
 			Type = ValueTween
-			OnTweenDuration = 0.6
-			OffTweenDuration = 1.2
+			OnTweenDuration = 1.2
+			OffTweenDuration = 2.4
 			IsOnToggle = ShellShouldOpen
 		}
 		IsShellFullyOpen
@@ -646,7 +705,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = FixedWeapon
 			OperationalToggle = IsShellFullyOpen//
 			AutoFireToggle = IsShellFullyOpen //
-			FireInterval = { BaseValue=0.35; BuffType=RateOfFire; BuffMode=Divide;}
+			FireInterval = { BaseValue=0.7; BuffType=RateOfFire; BuffMode=Divide;}
 			Emitter = BulletEmitter
 			DefaultDirectControlBinding = 0
 			CanBeGivenExplicitTarget = false
@@ -712,17 +771,17 @@ Part : <../base_part_terran.rules>/Part
 		ChaingunRampupProgressBar
 		{
 			Type = ProgressBar
-			ShowProgressFor = RateOfFireTween
+			ShowProgressFor = RampUpAccumulator
 			OperationalToggle = IsChaingunPoweredDown
 			InvertOperationalToggle = true
-			ValueRange = [&~/Part/Components/RateOfFireTween/OffValue, &~/Part/Components/RateOfFireTween/OnValue]
+			ValueRange = [&~/Part/Components/RampUpAccumulator/MinValue, &~/Part/Components/RampUpAccumulator/BASE_MAX_VALUE]
 		}
 
 		IsChaingunPoweredDown
 		{
 			Type = ThresholdToggle
-			ValueFrom = RateOfFireTween
-			MaxAmount = &../RateOfFireTween/OffValue
+			ValueFrom = RampUpAccumulator
+			MaxAmount = &../RampUpAccumulator/MinValue
 		}
 
 		CanEmit
@@ -832,7 +891,7 @@ Part : <../base_part_terran.rules>/Part
 		DefensiveShellColliderChangingValueTween
 		{
 			Type = ValueTween
-			OnTweenDuration = 0.35
+			OnTweenDuration = 0.7
 			OffTweenDuration = &../ShellChangingValueTween/OffTweenDuration
 			IsOnToggle = ShellShouldOpen
 		}
@@ -859,6 +918,88 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+		
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		OverheatEffects : ^/0/OverheatEffects
+		{
+			Location = [1.5, 4]
+		}
+
+//		Overclock_ConstantHeatProducer
+//		{
+//			Type = ResourceConverter
+//			OperationalToggle = IsOperationalOverclocked
+//			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/HEAT_PER_SECOND) * (&Interval))
+//			ToQuantity = (&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
+//			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+//			Interval = 0.5
+//		}
+		Overclock_ShotHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_EmitterProxy
+			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
+		}
+		
+		Overclock_EmitterProxy
+		{
+			Type = TriggerProxy
+			ComponentID = BulletEmitter
+			ProxyToggle = IsOverclocked
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Simple
+					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
+					Routes
+					[
+						[&../../HEAT_INPUT, Port_Thermal_Left, 0]
+						[&../../HEAT_INPUT, Port_Thermal_LeftDown, 0]
+						[&../../HEAT_INPUT, Port_Thermal_MidDown, 0]
+						[&../../HEAT_INPUT, Port_Thermal_RightDown, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right, 0]
+					]
+				}
+			]
+		}
+
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 5]
+			Direction = Left
+		}
+		Port_Thermal_LeftDown : Port_Thermal_Left
+		{
+			Direction = Down
+		}
+		Port_Thermal_MidDown : Port_Thermal_LeftDown
+		{
+			Location = [1, 5]
+		}
+		Port_Thermal_RightDown : Port_Thermal_LeftDown
+		{
+			Location = [2, 5]
+		}
+		Port_Thermal_Right : Port_Thermal_RightDown
+		{
+			Direction = Right
+		}
+
 		TurretWeaponShootingGraphics
 		{
 			Type = Graphics
@@ -866,7 +1007,7 @@ Part : <../base_part_terran.rules>/Part
 			Rotation = 90d
 			OperationalToggle = IsShellFullyOpen
 			ResetAnimationTrigger = BulletEmitter
-			AnimationSpeedFactor = RateOfFireTween
+			AnimationSpeedFactor = RampUpAccumulator
 
 			OperationalDoodad
 			{
@@ -2000,10 +2141,10 @@ Part : <../base_part_terran.rules>/Part
 			Location = [32/64, 163/64]
 			ResourceStorage = BulletSplitterLeft
 			Layer = "doodads_low"
-			AnimationSpeedFactor = RateOfFireTween
-			AnimationSpeedFactorRenormalize = [0, 1 / (&~/Part/Components/RateOfFireTween/OnValue)]
-			RangeLow = 4 //Gives the actual gun some extra to keep firing after the belt runs dry, works with the extra 3 in the splitter
-			RangeHigh = 27
+			AnimationSpeedFactor = RampUpAccumulator
+			AnimationSpeedFactorRenormalize = [0, 1 / (&~/Part/Components/RampUpAccumulator/BASE_MAX_VALUE)]
+			RangeLow = 3 //Gives the actual gun some extra to keep firing after the belt runs dry
+			RangeHigh = 19 + (&RangeLow) + (&~/Part/Components/BulletSplitterLeft/ToQuantity)  // 19 animations, then ToQuantity number of full animations
 			ResourceLevels
 			[
 				{
@@ -2211,7 +2352,7 @@ Part : <../base_part_terran.rules>/Part
 					ClampAnimation = true
 				}
 				{
-					AnimationFiles
+					AnimationFiles //(full)
 					[
 						"loaded_bullets20.png"
 						"loaded_bullets20-2.png"
@@ -2222,7 +2363,7 @@ Part : <../base_part_terran.rules>/Part
 					ClampAnimation = true
 				}
 				{
-					AnimationFiles
+					AnimationFiles //(full)
 					[
 						"loaded_bullets20.png"
 						"loaded_bullets20-2.png"
@@ -2233,7 +2374,7 @@ Part : <../base_part_terran.rules>/Part
 					ClampAnimation = true
 				}
 				{
-					AnimationFiles
+					AnimationFiles //(full)
 					[
 						"loaded_bullets20.png"
 						"loaded_bullets20-2.png"
@@ -2244,7 +2385,7 @@ Part : <../base_part_terran.rules>/Part
 					ClampAnimation = true
 				}
 				{
-					AnimationFiles
+					AnimationFiles //(full)
 					[
 						"loaded_bullets20.png"
 						"loaded_bullets20-2.png"
@@ -2263,10 +2404,10 @@ Part : <../base_part_terran.rules>/Part
 			Location = [160/64, 163/64]
 			ResourceStorage = BulletSplitterRight
 			Layer = "doodads_low"
-			AnimationSpeedFactor = RateOfFireTween
-			AnimationSpeedFactorRenormalize = [0, 1 / (&~/Part/Components/RateOfFireTween/OnValue)]
-			RangeLow = 4 //Gives the actual gun some extra to keep firing after the belt runs dry, works with the extra 4 in the splitter
-			RangeHigh = 27
+			AnimationSpeedFactor = RampUpAccumulator
+			AnimationSpeedFactorRenormalize = [0, 1 / (&~/Part/Components/RampUpAccumulator/BASE_MAX_VALUE)]
+			RangeLow = 3 //Gives the actual gun some extra to keep firing after the belt runs dry
+			RangeHigh = 19 + (&RangeLow) + (&~/Part/Components/BulletSplitterRight/ToQuantity)
 			ResourceLevels
 			[
 				{
@@ -2493,7 +2634,7 @@ Part : <../base_part_terran.rules>/Part
 					MirrorU = true
 				}
 				{
-					AnimationFiles //24 (full)
+					AnimationFiles //(full)
 					[
 						"loaded_bullets20.png"
 						"loaded_bullets20-2.png"
@@ -2505,7 +2646,7 @@ Part : <../base_part_terran.rules>/Part
 					MirrorU = true
 				}
 				{
-					AnimationFiles
+					AnimationFiles //(full)
 					[
 						"loaded_bullets20.png"
 						"loaded_bullets20-2.png"
@@ -2517,7 +2658,7 @@ Part : <../base_part_terran.rules>/Part
 					MirrorU = true
 				}
 				{
-					AnimationFiles //26 (full)
+					AnimationFiles //(full)
 					[
 						"loaded_bullets20.png"
 						"loaded_bullets20-2.png"
@@ -2529,7 +2670,7 @@ Part : <../base_part_terran.rules>/Part
 					MirrorU = true
 				}
 				{
-					AnimationFiles //27 (full)
+					AnimationFiles //(full)
 					[
 						"loaded_bullets20.png"
 						"loaded_bullets20-2.png"
@@ -2552,6 +2693,21 @@ Part : <../base_part_terran.rules>/Part
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
 		}
 
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -2568,10 +2724,13 @@ Part : <../base_part_terran.rules>/Part
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 6000
+					TotalDamage = { BaseValue = 6000; EffectScaleExponent = 1 }
 					Radius = 3
 					Delay = .05
-					FireChancePerNDamage = 50%
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 50%
+					StatusValue = 1
+					StatusValueType = Interpolated
 					NDamage = 1000
 					CrewKillChance = 10%
 					Filter
@@ -2583,7 +2742,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 1200
+					TotalDamage = { BaseValue = 1200; EffectScaleExponent = 1 }
 					Radius = 2
 					Delay = .05
 					Filter
@@ -2621,6 +2780,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1.5, 3.5]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3,4]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -2629,7 +2798,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [1,2]
+					HidesIndicators = [2,3,4]
 				}
 
 				// Out of ammo.
@@ -2641,6 +2810,16 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/NoAmmo
 						Size = [1, 1]
 					}
+				}
+
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+					HidesIndicators = [4]
 				}
 
 				// No crew.
@@ -2680,14 +2859,14 @@ Part : <../base_part_terran.rules>/Part
 			NameKey = "StatCategories/BulletChaingun"
 			Stats
 			{
-				RampUpTime = &~/Part/Components/RateOfFireTween/OnTweenDuration
-				DamagePerShot = &~/Part/Components/BulletEmitter/HitOperational/HitEffects/0/Damage
+				RampUpTime = &~/Part/Components/RampUpAccumulator/BASE_RAMP_UP_TIME
+				DamagePerShot = &~/Part/Components/BulletEmitter/HitOperational/HitEffects/0/Damage/BaseValue
 				DamagePerSecond = [(&../DamagePerShot) * (&../ROFRange/0), (&../DamagePerShot) * (&../ROFRange/1)]
 				DamageRange = [&../DamagePerShot, &../DamagePerSecond/0, &../DamagePerSecond/1]
 				ROFRange
 				[
 					(&~/Part/Components/BulletEmitter/Burst) / (&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue)
-					(&~/Part/Components/BulletEmitter/Burst) / ((&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue) / (&~/Part/Components/RateOfFireTween/OnValue))
+					(&~/Part/Components/BulletEmitter/Burst) / ((&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue) / (&~/Part/Components/RampUpAccumulator/MaxValue/BaseValue))
 				]
 				Range = &~/Part/Components/BulletEmitter/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
@@ -2697,6 +2876,19 @@ Part : <../base_part_terran.rules>/Part
 				AmmoPerShot = 1 / (&~/Part/Components/BulletSplitterRight/ToQuantity)
 				AmmoPerSecond = [(&../AmmoPerShot) * (&../ROFRange/0), (&../AmmoPerShot) * (&../ROFRange/1)]
 				ShotAmmoUsageRange = [&../AmmoPerShot, &../AmmoPerSecond/0, &../AmmoPerSecond/1]
+			}
+		}
+		{
+			NameKey = "StatCategories/Overclocked"
+			Stats
+			{
+				RampUpSpeedFactor = (&~/OVERCLOCK/RAMP_SPEED_FACTOR) * 100
+				ROFRange
+				[
+					&../../../0/Stats/ROFRange/0
+					&~/OVERCLOCK/MAX_FIRE_RATE
+				]
+				HeatPerShot = &~/OVERCLOCK/HEAT_PER_SHOT
 			}
 		}
 	]

@@ -105,6 +105,12 @@ float inverseLerp(float from, float to, float value)
 	return min(max(t, 0), 1);
 }
 
+float map(float from1, float to1, float from2, float to2, float value)
+{
+	float t = inverseLerp(from1, to1, value);
+	return unclampedLerp(from2, to2, t);
+}
+
 float2 rotate(float2 v, float radians)
 {
 	float cosRot = cos(radians);

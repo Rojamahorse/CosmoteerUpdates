@@ -1,4 +1,12 @@
-Part : <../base_part_terran.rules>/Part
+OVERCLOCK
+{
+	COLLECTED_HEAT_MULTIPLIER = 200%
+	POWER_DISTRIBUTION_MULTIPLIER = 125%
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/EngineRoom"
 	IconNameKey = "Parts/EngineRoomIcon"
@@ -35,7 +43,14 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -47,10 +62,18 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 6
 		}
 
@@ -60,6 +83,14 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = battery
 			MaxResources = 4000
 		}
+		
+		IsOperationalNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
+		}
+		
 		CombinedBatteryStorage
 		{
 			Type = MultiResourceStorage
@@ -73,11 +104,34 @@ Part : <../base_part_terran.rules>/Part
 			AddMode = PrioritizeLeastResources
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
+		
+		CombinedBatteryStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ProxyToggle = IsOverclocked
+			InvertProxyToggle = true
+			ResourceType = battery
+			ComponentID = CombinedBatteryStorage
+		}
+		Overclock_CombinedBatteryStorageProxy : CombinedBatteryStorageProxy
+		{
+			InvertProxyToggle = false
+			ComponentID = CombinedBatteryStorage
+			QuantityScale = 1 / (&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER)
+		}
+		
+		BatteryDistributionStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [CombinedBatteryStorageProxy, Overclock_CombinedBatteryStorageProxy]
+		}
+		
 		BatteryConsumer
 		{
 			Type = ResourceConsumer
 			ResourceType = battery
-			Storage = CombinedBatteryStorage
+			Storage = BatteryDistributionStorage
 			DefaultPriority = &/PRIORITIES/Thruster_Supply
 			ResupplyThreshold = 500
 			OperationalToggle = PowerToggle
@@ -90,7 +144,7 @@ Part : <../base_part_terran.rules>/Part
 			FromStorage = BatteryStorage
 			FromQuantity = 100
 			MinFromQuantityForConversion = 1
-			Interval = 1
+			Interval = 2
 		}
 
 		BuffProvider
@@ -168,6 +222,114 @@ Part : <../base_part_terran.rules>/Part
 				CrewLocation4
 			]
 			SwitchLocationInterval = [5, 10]
+		}
+		
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+		
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+		
+		OverheatEffects : ^/0/OverheatEffects
+		{
+			Location = [1.5, 1.5]
+		}
+		
+		EngineHeatCollectionStorage
+		{
+			Type = ResourceStorageProxy
+			ResourceType = heat
+			ComponentID = &~/Part/^/0/HEAT_TARGET_STORAGE
+			QuantityScale = 1 / (&~/OVERCLOCK/COLLECTED_HEAT_MULTIPLIER)
+		}
+		
+		Overclock_HeatCollectionBuffProvider : PowerDistributionBuffProvider
+		{
+			BuffType = EngineHeatCollection
+			OperationalToggle = IsOperationalOverclocked
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Simple
+					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
+					Routes
+					[
+						[&../../HEAT_INPUT, Port_Thermal_TopLeft, 0]
+						[&../../HEAT_INPUT, Port_Thermal_LeftUp, 0]
+						[&../../HEAT_INPUT, Port_Thermal_MidUp, 0]
+						[&../../HEAT_INPUT, Port_Thermal_RightUp, 0]
+						[&../../HEAT_INPUT, Port_Thermal_TopRight, 0]
+						[&../../HEAT_INPUT, Port_Thermal_MidRight, 0]
+						[&../../HEAT_INPUT, Port_Thermal_BottomRight, 0]
+						[&../../HEAT_INPUT, Port_Thermal_RightDown, 0]
+						[&../../HEAT_INPUT, Port_Thermal_MidDown, 0]
+						[&../../HEAT_INPUT, Port_Thermal_LeftDown, 0]
+						[&../../HEAT_INPUT, Port_Thermal_BottomLeft, 0]
+						[&../../HEAT_INPUT, Port_Thermal_MidLeft, 0]
+					]
+				}
+			]
+		}
+		
+		Port_Thermal_TopLeft : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0,0]
+			Direction = Left
+		}
+		Port_Thermal_LeftUp : Port_Thermal_TopLeft
+		{
+			Location = [0, 0]
+			Direction = Up
+		}
+		Port_Thermal_MidUp : Port_Thermal_LeftUp
+		{
+			Location = [1, 0]
+		}
+		Port_Thermal_RightUp : Port_Thermal_MidUp
+		{
+			Location = [2, 0]
+		}
+		Port_Thermal_TopRight : Port_Thermal_RightUp
+		{
+			Direction = Right
+		}
+		Port_Thermal_MidRight : Port_Thermal_TopRight
+		{
+			Location = [2,1]
+		}
+		Port_Thermal_BottomRight : Port_Thermal_TopRight
+		{
+			Location = [2,2]
+		}
+		Port_Thermal_RightDown : Port_Thermal_BottomRight
+		{
+			Direction = Down
+		}
+		Port_Thermal_MidDown : Port_Thermal_RightDown
+		{
+			Location = [1,2]
+		}
+		Port_Thermal_LeftDown : Port_Thermal_RightDown
+		{
+			Location = [0,2]
+		}
+		Port_Thermal_BottomLeft : Port_Thermal_LeftDown
+		{
+			Direction = Left
+		}
+		Port_Thermal_MidLeft : Port_Thermal_BottomLeft
+		{
+			Location = [0, 1]
 		}
 
 		Graphics
@@ -463,6 +625,21 @@ Part : <../base_part_terran.rules>/Part
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
 		}
 
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -476,6 +653,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1.5, 1.5]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -484,7 +671,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [1,2]
+					HidesIndicators = [2,3]
 				}
 
 				// Out of power.
@@ -527,4 +714,21 @@ Part : <../base_part_terran.rules>/Part
 		RecPower = &PowerUsageContinuous
 		RecCrew = (&CrewRequired) + (&RecPower) * 4
 	}
+	
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/Overclocked"
+			Stats
+			{
+				PowerDistributionEfficiency = (&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER) * 100
+				HeatTransferInefficiency = ((&~/OVERCLOCK/COLLECTED_HEAT_MULTIPLIER) - 1) * 100
+			}
+			Features
+			[
+				ForcedThrusterOverclock
+				ThrusterHeatTransfer
+			]
+		}
+	]
 }

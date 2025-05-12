@@ -56,6 +56,8 @@ Components
 			VertexColor = [255, 255, 255]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
+			_z = 1
+            _nrmlStrengthLimit = 1
 			_litReflectiveStrength = 24
 			_litAdditiveStrength = 0.05
 			_unlitAdditiveStrength = 0.2
@@ -84,7 +86,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 150
+					Damage = { BaseValue = 75; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -108,7 +110,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 35
+					Damage = { BaseValue = 17; EffectScaleExponent = 1 }
 				}
 			]
 			MediaEffects = &../HitBullet/MediaEffects

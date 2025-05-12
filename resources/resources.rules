@@ -12,6 +12,7 @@ Resources
 	&<missile_part_emp/missile_part_emp.rules>
 	&<missile_part_nuke/missile_part_nuke.rules>
 	&<mine_part/mine_part.rules>
+	&<missile_part_thermal/missile_part_thermal.rules>
 
 	// Construction materials.
 	&<steel/steel.rules>
@@ -34,6 +35,8 @@ Resources
 	// Misc.
 	&<fire_extinguisher/fire_extinguisher.rules>
 	&<ion_energy/ion_energy.rules>
+	&<ion_energy/ion_energy_overclocked.rules>
+	&<heat/heat.rules>
 	&<fake_resource/fake_resource.rules>
 ]
 

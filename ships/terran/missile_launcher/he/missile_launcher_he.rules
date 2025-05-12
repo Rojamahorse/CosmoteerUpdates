@@ -223,9 +223,27 @@ Components
 		ResourceStorage = MissileStorageC
 	}
 
+	ScorchedTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = ScorchedToggle
+		TriggerWhenOn = false
+		TriggerWhenOff = true
+	}
+	ScorchedEffects
+	{
+		Type = TriggeredEffects
+		Trigger = ScorchedTrigger
+		Location = &~/Components/DestroyedEffects/Location
+		FactorHitEffectsWith = CombinedMissileStorage
+		MediaEffects = &~/Components/DestroyedEffects/MediaEffects
+		HitEffects = &~/Components/DestroyedEffects/HitEffects	
+	}
+
 	DestroyedEffects
 	{
 		Type = DeathEffects
+		OperationalToggle = ScorchedToggle
 		MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
 		Location = [1, 2]
 
@@ -234,10 +252,13 @@ Components
 		[
 			{
 				Type = ExplosiveDamage
-				TotalDamage = 30000
+				TotalDamage = { BaseValue = 30000; EffectScaleExponent = 1 }
 				Radius = 5
 				Delay = .05
-				FireChancePerNDamage = 50%
+				StatusType = cosmoteer.fire
+				StatusChancePerNDamage = 50%
+				StatusValue = 1
+				StatusValueType = Interpolated
 				NDamage = 1000
 				CrewKillChance = 50%
 				Filter
@@ -249,7 +270,7 @@ Components
 			}
 			{
 				Type = ExplosiveDamage
-				TotalDamage = 10000
+				TotalDamage = { BaseValue = 10000; EffectScaleExponent = 1 }
 				Radius = 4
 				Delay = .05
 				Filter
@@ -374,7 +395,7 @@ MissileStats
 	NameKey = "StatCategories/MissileHE"
 	Stats
 	{
-		DamagePerShot = &~/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage
+		DamagePerShot = &~/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage/BaseValue
 		DamagePerSecond = (&DamagePerShot) * (&ROF)
 		MaxDamage = [&../DamagePerShot, &../DamagePerSecond]
 		DamageArea = &~/EmitterBase/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius

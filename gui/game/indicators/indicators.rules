@@ -3,12 +3,32 @@ PowerOff = "indicator_powered_off.png"
 NoPower = "indicator_power.png"
 NoAmmo = "indicator_ammo.png"
 NoMissiles = "indicator_missile.png"
+NoThermalMissiles = "indicator_thermal_missile.png"
 NoNuke = "indicator_nuke.png"
 NoEmp = "indicator_emp.png"
 NoMines = "indicator_mine.png"
 NoCrew = "indicator_crew.png"
 NoResource = "indicator_resource.png"
 MissingComponent = "indicator_component.png"
+Rubble = "indicator_rubble.png"
+
+NoHeat
+{
+	File = "indicator_heat_low.png"
+	VertexColor = [255, 38, 0]
+}
+
+FullHeat
+{
+	File = "indicator_heat_full.png"
+	VertexColor = [255, 38, 0]
+}
+
+OverclockReset
+{
+	File = "indicator_overclock_cooldown.png"
+	VertexColor = [255, 38, 0]
+}
 
 // Non-atlased indicators...
 

@@ -15,13 +15,14 @@ struct VERT_OUTPUT_BEAM
 
 float _extraBeginLength;
 float _extraEndLength;
+float _baseExtraEndLength;
 VERT_OUTPUT_BEAM vert(in VERT_INPUT_BEAM input)
 {
 	VERT_OUTPUT_BEAM output;
     input.vertexOffset.y *= input.intensity;
     float2 beamEnd;
     float extraBeginLength = _extraBeginLength * input.intensity;
-    float extraEndLength = _extraEndLength * input.intensity;
+    float extraEndLength = _baseExtraEndLength + _extraEndLength * input.intensity;
     float4 vertexLoc = calculateWorldVertexLoc(input, beamEnd, extraBeginLength, extraEndLength);
 	output.location = mul(vertexLoc, _transform);
 	output.screenLoc = output.location;

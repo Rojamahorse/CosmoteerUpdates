@@ -1,4 +1,13 @@
-Part : <../base_part_terran.rules>/Part
+OVERCLOCK
+{
+	HEAT_PER_CONVERSION = 333
+	OUTPUT_MULTIPLIER = 2
+	POWER_USE_FACTOR = 300%
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/FactoryNuke"
 	IconNameKey = "Parts/FactoryNukeIcon"
@@ -57,7 +66,14 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, IronSplitter, UraniumSplitter, BatteryStorage]
+			Toggles = [PowerToggle, IronSplitter, UraniumSplitter, BatteryStorage, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -72,7 +88,7 @@ Part : <../base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 1
 		}
 
@@ -176,13 +192,35 @@ Part : <../base_part_terran.rules>/Part
 			    }
 			    {
 			        Storage = BatteryStorage
-			        Quantity = 333
+			        Quantity
+			        {
+			        	BaseValue = 333
+			        	Modifiers
+			        	[
+			        		: ~/MODIFIERS/OVERCLOCK_LERP 
+			        		{
+			        			MinValue = &../../BaseValue
+			        			MaxValue = (&MinValue) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			        		}
+			        	]
+			        }
 			        MinQuantityForConversion = 1
 			    }
 			]
 			ToStorage = MissileStorage
-			ToQuantity = 1
-			Interval = { BaseValue=.5; BuffType=Factory; BuffMode=Divide; }
+			ToQuantity
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					: ~/MODIFIERS/OVERCLOCK_LERP 
+					{
+						MinValue = &../../BaseValue
+						MaxValue = (&MinValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+					}
+				]
+			}
+			Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
 			CheckResourceLimits = true
 		}
 
@@ -210,6 +248,92 @@ Part : <../base_part_terran.rules>/Part
 			BuffAmount = 25%
 			GridDistance = 1
 			OperationalToggle = BatteryStorage
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+		
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		Overclock_ConversionHeatProducer
+		{
+			Type = ResourceChange
+			OperationalToggle = IsOverclocked
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_ResourceConverterProxy
+			Amount = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/HEAT_TO_RESOURCE)
+		}
+		
+		Overclock_ResourceConverterProxy
+		{
+			Type = TriggerProxy
+			ProxyToggle = IsOverclocked
+			ComponentID = ResourceConverter
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Simple
+					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
+					Routes
+					[
+						[&../../HEAT_INPUT, Port_Thermal_Left0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Left1, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down1, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down2, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down3, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right1, 0]
+					]
+				}
+			]
+		}
+
+		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 2]
+			Direction = Left
+		}
+		Port_Thermal_Left1 : Port_Thermal_Left0
+		{
+			Location = [0, 3]
+		}
+		Port_Thermal_Down0 : Port_Thermal_Left0
+		{
+			Location = [0, 3]
+			Direction = Down
+		}
+		Port_Thermal_Down1 : Port_Thermal_Down0
+		{
+			Location = [1, 3]
+		}
+		Port_Thermal_Down2 : Port_Thermal_Down0
+		{
+			Location = [2, 3]
+		}
+		Port_Thermal_Down3 : Port_Thermal_Down0
+		{
+			Location = [3, 3]
+		}
+		Port_Thermal_Right0 : Port_Thermal_Left0
+		{
+			Location = [3, 2]
+			Direction = Right
+		}
+		Port_Thermal_Right1 : Port_Thermal_Right0
+		{
+			Location = [3, 3]
 		}
 
 		IronSprites
@@ -546,7 +670,7 @@ Part : <../base_part_terran.rules>/Part
 							"doodads_on8.png"
 						]
 						Size = [4, 3]
-						AnimationInterval = 0.09375
+						AnimationInterval = 0.1875
 					}
 					{
 						AnimationFiles
@@ -561,7 +685,7 @@ Part : <../base_part_terran.rules>/Part
 							"doodads_on8_33.png"
 						]
 						Size = [4, 3]
-						AnimationInterval = 0.09375
+						AnimationInterval = 0.1875
 					}
 					{
 						AnimationFiles
@@ -576,7 +700,7 @@ Part : <../base_part_terran.rules>/Part
 							"doodads_on8_66.png"
 						]
 						Size = [4, 3]
-						AnimationInterval = 0.09375
+						AnimationInterval = 0.1875
 					}
 				]
 			}
@@ -912,9 +1036,34 @@ Part : <../base_part_terran.rules>/Part
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			MinStatusValue = 1
+			StatusType = cosmoteer.scorched
+			Invert = true
+			IncludeWhenUnderConstruction = true
+		}
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+		}
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &~/Part/Components/DestroyedEffects/Location
+			MediaEffects = &~/Part/Components/DestroyedEffects/MediaEffects
+			HitEffects = &~/Part/Components/DestroyedEffects/HitEffects
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
+			OperationalToggle = ScorchedToggle
 			Location = [2, 2]
 
 			HitEffects
@@ -993,7 +1142,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [1,2,3]
+					HidesIndicators = [1,2,3,4]
 				}
 
 				// No iron.
@@ -1025,6 +1174,15 @@ Part : <../base_part_terran.rules>/Part
 						Size = [1, 1]
 					}
 				}
+				
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+				}
 			]
 		}
 
@@ -1043,24 +1201,48 @@ Part : <../base_part_terran.rules>/Part
 			File = "blueprints_flipped.png"
 			Size = [4, 4]
 		}
+		
+		Overclock_HeatProductionInterval
+		{
+			Type = BuffableValue
+			Value = &~/Part/Components/ResourceConverter/Interval
+			IncludeInBlueprints = true
+		}
+		Overclock_HeatPerConversion { Type = StaticValue; Value = &~/OVERCLOCK/HEAT_PER_CONVERSION; }
+		HeatGenerationValue
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne = Overclock_HeatPerConversion
+			ValueTwo = Overclock_HeatProductionInterval
+			NaNFallbackValue = 0
+			IncludeInBlueprints = true
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = HeatGenerationValue
+		}
 	}
 
 	Stats
 	{
 		PartsPerMissile = &<../missile_launcher/nuke/missile_launcher_nuke.rules>/Components/Emitter/ResourcesUsed
-		MissileProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / (&PartsPerMissile)
+		MissileProduction = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / (&PartsPerMissile)
 		PartCapacity = (&~/Part/Components/MissileStorage/GridRect/2) * (&~/Part/Components/MissileStorage/GridRect/3) * (&<./Data/resources/missile_part_nuke/missile_part_nuke.rules>/MaxStackSize)
 		MissilePartCapacity = [&../PartCapacity, (&../PartCapacity) / (&../PartsPerMissile)]
 		IronCapacity = (&~/Part/Components/IronStorage/GridRect/2) * (&~/Part/Components/IronStorage/GridRect/3) * (&<./Data/resources/iron/iron.rules>/MaxStackSize)
-		IronPerMissile = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity) * (&PartsPerMissile)
+		IronPerMissile = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&PartsPerMissile)
 		IronPerSecond = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
 		MissileIronUsage = [&../IronPerMissile, &../IronPerSecond]
 		UraniumCapacity = (&~/Part/Components/UraniumStorage/GridRect/2) * (&~/Part/Components/UraniumStorage/GridRect/3) * (&<./Data/resources/uranium/uranium.rules>/MaxStackSize)
-		UraniumPerMissile = (&~/Part/Components/UraniumSplitter/FromQuantity) / (&~/Part/Components/UraniumSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity) * (&PartsPerMissile)
+		UraniumPerMissile = (&~/Part/Components/UraniumSplitter/FromQuantity) / (&~/Part/Components/UraniumSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&PartsPerMissile)
 		UraniumPerSecond = (&~/Part/Components/UraniumSplitter/FromQuantity) / (&~/Part/Components/UraniumSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
 		MissileUraniumUsage = [&../UraniumPerMissile, &../UraniumPerSecond]
-		PowerPerMissile = (&~/Part/Components/ResourceConverter/From/2/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) * (&PartsPerMissile) / 1000
-		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/2/Quantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / 1000
+		PowerPerMissile = (&~/Part/Components/ResourceConverter/From/2/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&PartsPerMissile) / 1000
+		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/2/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / 1000
 		MissilePowerUsage = [&../PowerPerMissile, &../PowerPerSecond]
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
@@ -1072,5 +1254,31 @@ Part : <../base_part_terran.rules>/Part
 	StatsByCategory
 	[
 		&<../missile_launcher/nuke/missile_launcher_nuke.rules>/MissileStats
+		{
+			NameKey = "StatCategories/Overclocked"
+			Stats
+			{
+				MissileProduction = (&~/Part/Stats/MissileProduction) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+				MissileIronUsage = [(&~/Part/Stats/MissileIronUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MissileIronUsage/1)]
+				MissileUraniumUsage = [(&~/Part/Stats/MissileUraniumUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MissileUraniumUsage/1)]
+				POWER_PER_MISSILE = (&~/Part/Stats/MissilePowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+				POWER_PER_SECOND = (&~/Part/Stats/MissilePowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+				MissilePowerUsage = [&../POWER_PER_MISSILE, &../POWER_PER_SECOND]
+				CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+				HEAT_PER_MISSILE = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT) * (&~/Part/Stats/PartsPerMissile)
+				HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Components/ResourceConverter/Interval/BaseValue);
+				MissileHeatGeneration = [&../HEAT_PER_MISSILE, &../HEAT_PER_SECOND]
+			}
+		}
 	]
+}
+
+MODIFIERS
+{
+	OVERCLOCK_LERP
+	{
+		Type = Buff
+		BuffType = Overclock
+		ModificationMode = Lerp
+	}
 }

@@ -1,6 +1,6 @@
 ID = "cosmoteer.bullet_deck"
 Range = 190
-IdealRange = [75, 190]
+IdealRange = [75, &~/Range]
 IdealRadius = [5, 50]
 Speed = 100
 
@@ -52,11 +52,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 7500
+					Damage = { BaseValue = 7500; EffectScaleExponent = 1 }
 				}
 				{
 					Type = Impulse
-					Impulse = 180
+					Impulse = { BaseValue = 180; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -90,11 +90,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 3600
+					Damage = { BaseValue = 3600; EffectScaleExponent = 1 }
 				}
 				{
 					Type = Impulse;
-					Impulse = 90
+					Impulse = { BaseValue = 90; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -120,15 +120,17 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 7500
+					Damage = { BaseValue = 7500; EffectScaleExponent = 1 }
 				}
 				{
-					Type = Fire
-					FireChance = .4
+					Type = StatusApplication
+					StatusType = cosmoteer.fire
+					StatusChance = { BaseValue = .4; EffectScaleExponent = 1 }
+					ValueType = Interpolated
 				}
 				{
 					Type = Impulse
-					Impulse = 180
+					Impulse = { BaseValue = 180; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -158,7 +160,8 @@ Components
 			{
 				Texture
 				{
-					File = "../bullet_large/bullet_large.png"
+//					File = "../bullet_large/bullet_large.png"
+					File = "./Data/shots/bullet_large/bullet_large.png"
 					SampleMode = Linear
 					MipLevels = max
 				}
@@ -193,6 +196,8 @@ Components
 			VertexColor = [255, 100, 0]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
+			_z = 1
+            _nrmlStrengthLimit = 1
 			_litReflectiveStrength = 24
 			_litAdditiveStrength = 0.05
 			_unlitAdditiveStrength = 0.125

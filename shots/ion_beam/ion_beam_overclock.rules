@@ -1,0 +1,293 @@
+OVERCLOCK
+{
+	DAMAGE_FACTOR = 0%
+	LIGHTNING = &~/Beam/HitOperational/HitEffects/2
+	LIGHTNING_OFFSET = 8
+	LIGHTNING_BASE_CHAIN_LENGTH = [3,3]
+}
+
+BEAM_BASE = &<ion_beam.rules>
+BASE
+{
+	 DAMAGE = (&~/BEAM_BASE/HitOperational/HitEffects/0/Damage/BaseValue)
+	 ION_ENERGY = (&~/BEAM_BASE/HitOperational/HitEffects/4/Amount/BaseValue)
+}
+
+MODIFIABLE_DAMAGE
+{
+	Modifiers
+	[
+		{
+			Type = Buff
+			BuffType = ElectronBuff
+			ModificationMode = Multiply
+		}
+		{
+			Type = EffectScale
+			ModificationMode = Multiply
+		}
+	]
+}
+
+Beam : <ion_beam.rules>
+{
+	HitEffectsScaleOverRange = 1
+	MediaEffectsScaleOverRange = 1
+	SecondaryWidth = (&~/OVERCLOCK/LIGHTNING_OFFSET) * 2
+	SecondaryFilter 
+	{
+		ExcludePartCategories = [ion_beam_prism]
+		IgnoreInvulnerability = true; 
+	}
+	SecondaryOverrideFilter
+	{
+		Ships = true
+		OperationalHealth = true
+		Self = true
+		Shields = false
+		OnlyPartCategories = [ion_beam_prism]
+		IgnoreInvulnerability = true
+	}
+	ShieldCollisions { IgnoreInvulnerability = true; }
+	UseHitNormalAsWorldDirection = true
+	HitShield = &HitOperational
+	HitCrew = &HitOperational
+	HitNothing = &HitOperational
+	HitOperational : ^/0/HitOperational
+	{
+		HitEffects
+		[
+			{
+				Type = ResourceDrain
+				ResourceType = ion_energy_overclocked
+				Amount = { BaseValue = (&~/BASE/ION_ENERGY); EffectScaleExponent = 1 }
+				Filter
+				{
+					Friendlies = true
+					IgnoreInvulnerability = true
+					OnlyPartCategories = [ion_beam_prism]
+				}
+			}
+			{
+				Type = Damage
+				Damage = { BaseValue = &~/BASE/DAMAGE; EffectScaleExponent = 1; }
+				Filter
+				{
+					Friendlies = false
+					Self = false
+					Enemies = true
+					Shields = false
+					OnlyPartCategories = [ion_beam_prism]
+				}
+			}
+			{
+				Type = ChainLightning
+				MaxChainLength = &~/OVERCLOCK/LIGHTNING_BASE_CHAIN_LENGTH
+				InitialRadius = (&~/OVERCLOCK/LIGHTNING_OFFSET) + 1.5
+				ChainRadius = 1.5
+				InitialChance = 100%
+				InitialStrikes = [1, 1]
+				InitialStrikeRandomOffsetRadius = 2.5
+				RaycastInitialTargets = true
+				ChainChance = 100%
+				ChainStrikes = [1, 2]
+				MaxInitialAngle = 60d
+				MaxChainAngle = 60d
+				ChainDelay = 0.1
+				ChainEffectFalloff = 0.5
+				HitEffects
+				[
+					{
+						Type = Damage
+						Damage : ~/MODIFIABLE_DAMAGE
+						{
+							BaseValue = 300
+						}
+						Filter
+						{
+							Self = true
+						}
+					}
+				]
+				MediaEffects
+				[
+					&<particles/ion_beam_overclock_lightning_hit.rules>
+				]
+				HitFilter
+				{
+					Self = true
+					Friendlies = true
+					Enemies = true
+					Neutrals = true
+					Junk = true
+					ExcludePartCategories = [ion_beam_prism]
+				
+					Ships = true
+					OperationalHealth = true
+					StructuralHealth = true
+					Shields = true
+					Bullets = true
+					Crew = true
+					Nuggets = true
+					IgnoreInvulnerability = true
+				}
+				InitialFilter
+				{
+					ExcludePartCategories = [ion_beam_prism]
+					IgnoreInvulnerability = true
+				}
+				ChainFilter
+				{
+					Ships = true
+					OperationalHealth = true
+					StructuralHealth = true
+					Shields = true
+					Bullets = true
+					Crew = true
+					Nuggets = true
+					Self = true
+					IgnoreInvulnerability = true
+				}
+			}
+		]
+		
+		MediaEffects : ^/0/MediaEffects
+		[
+			{
+				Type = Quad
+				Bucket = IonHitSparks
+				IntensityScaleFactor = 1
+				IntensityScaleExponent = 0.5
+				FadeInTime = 0.2
+				FadeOutTime = 0.2
+				Sprite
+				{
+					Shader = particles/ion_storm_lightning.shader
+					Size = [8, 8]
+					_translationSpeed = -0.02
+					_rotationSpeed = 0
+					_uvScale = 0.25
+					_color1
+					{
+						Rf = 0.8235294
+						Gf = 0
+						Bf = 0
+						Af = 1
+					}
+					_noiseTex1
+					{
+						File = ./Data/nebulas/nebula_normals_02B.png
+						MipLevels = max
+						SampleMode = Linear
+						UMode = Wrap
+						VMode = Wrap
+					}
+					_noiseTex2
+					{
+						File = ./Data/common_effects/particles/noise_distorted_voronoi.png
+						MipLevels = max
+						SampleMode = Linear
+						UMode = Wrap
+						VMode = Wrap
+					}
+					Texture
+					{
+						File = ./Data/nebulas/nebula_normals_03D.png
+						MipLevels = max
+						SampleMode = Linear
+						UMode = Wrap
+						VMode = Wrap
+					}
+				}
+				Filter
+				{
+					ExcludePartCategories = [ion_beam_prism]
+				}
+			}
+			{
+				Type = Quad
+				Bucket = IonHitSpikes
+				IntensityScaleFactor = 1
+				IntensityScaleExponent = 0.5
+				FadeInTime = 0.2
+				FadeOutTime = 0.2
+				Sprite
+				{
+					Color = [255, 255, 255, 255]
+					Size = [8, 8]
+					Shader = particles/ion_storm.shader
+					_translationSpeed = 0.01
+					_rotationSpeed = 0
+					_uvScale = 0.25
+					Texture
+					{
+						File = ./Data/nebulas/nebula_normals_03D.png
+						SampleMode = Linear
+						MipLevels = max
+						UMode = Wrap
+						VMode = Wrap
+					}
+					_noiseTex1
+					{
+						File = ./Data/nebulas/nebula_normals_02B.png
+						SampleMode = Linear
+						MipLevels = max
+						UMode = Wrap
+						VMode = Wrap
+					}
+					_color1 = [210, 69, 69, 255]
+					_color2 = [130, 0, 0, 255]
+					_color3 = [43, 42, 76, 255]
+
+					_worldUVOffset = [0, 0]
+					_worldUVScale = 1
+
+					_midTexScale = 0.0005
+					_midWaveScale = 3000
+					_midWaveStrength = 0.1
+					_midWaveSpeed = 100
+					_midScrollSpeed = 20
+					_noiseScaleFactor = 0.15
+
+					_microTexScale = 0.0035
+					_microWaveScale = 200
+					_microWaveStrength = 0.02
+					_microWaveSpeed = 40
+					_microScrollSpeed = 8
+
+					_macroTexScale = 0.00006
+					_lodMaxBlend = 0.4
+					_parallaxIntensity = -0.75
+				}
+				Filter
+				{
+					ExcludePartCategories = [ion_beam_prism]
+				}
+			}
+			: <particles/ion_beam_overclock_sparks_radial.rules>
+			{
+				Filter
+				{
+					ExcludePartCategories = [ion_beam_prism]
+				}
+			}
+		]
+	}
+	
+	BeamMediaEffects
+	[
+		: ../^/0/BeamMediaEffects/0
+		{
+			Sprite : ^/0/Sprite
+			{
+				Shader = "ion_beam_overclocked.shader"
+				_baseColor = [1, 0, 0.53, 1]
+				_halfHighlightColor = [0.5, 0.22, 0.21, 1]
+			}
+		}
+		: ../^/0/BeamMediaEffects/1
+		{
+		
+		}
+	]
+}

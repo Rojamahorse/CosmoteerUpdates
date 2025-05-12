@@ -1,6 +1,6 @@
 CostPerCrew = 500
 MaxHealth = 500
-BaseSpeed = 3.2
+BaseSpeed = 1.6
 DoorOpenDistance = .5
 DoorCloseDistance = .25
 JobAssignmentsPerSecond = 120
@@ -12,7 +12,7 @@ MaxCrewSearchIterations = 50
 EqualPriorityJobDistanceThreshold = 10
 OffShipEqualPriorityJobDistanceThreshold = 3
 TotalPathTrafficIncrease = 2
-CrewUpdatesPerSecond = 6
+CrewUpdatesPerSecond = 3
 SourceRefreshesPerTick = 10
 FollowShipDistance = 2
 NewHomeSearchDistance = &LoseHomeShipWarningDistance
@@ -44,15 +44,16 @@ OxygenSupply = 150
 OxygenWarningLevel = 60 / (&OxygenSupply)
 SalvageDistance = 0.6
 ConstructDistance = 0.6
+WorkPerSecond = 1
 ManipulatorBeamDistToAsteroid = 0.7
 ManipulatorBeamVelocityToAsteroid = 5
 AvoidableDoodadTags = [sun]
-SalvageHitEffectsInterval = 0.2
+SalvageHitEffectsInterval = 6 / (&/Simulation/PhysicsUpdatesPerSecond)
 SalvageHitEffects
 [
 	{ //Damage to salvaging own ship and other
 		Type = Damage
-		Damage = 60
+		Damage = { BaseValue = 300 * (&~/SalvageHitEffectsInterval); EffectScaleExponent = 1 }
 		DamageType = salvage
 		Filter
 		{
@@ -63,7 +64,7 @@ SalvageHitEffects
 	}
 	{ //Damage to junk
 		Type = Damage
-		Damage = 60
+		Damage = { BaseValue = 300 * (&~/SalvageHitEffectsInterval); EffectScaleExponent = 1 }
 		DamageType = salvage
 		Filter
 		{
@@ -77,7 +78,7 @@ SalvageHitEffects
 	}
 	{ //Damage to armored junk
 		Type = Damage
-		Damage = 120
+		Damage = { BaseValue = 600 * (&~/SalvageHitEffectsInterval); EffectScaleExponent = 1 }
 		DamageType = salvage
 		Filter
 		{
@@ -92,8 +93,8 @@ SalvageHitEffects
 	}
 	{ //Taking apart own ship
 		Type = Damage
-		Damage = 60
-		DamageType = Salvage
+		Damage = { BaseValue = 300 * (&~/SalvageHitEffectsInterval); EffectScaleExponent = 1 }
+		DamageType = salvage
 		Filter
 		{
 			ExcludePartCategories = [asteroid, armor]
@@ -104,8 +105,8 @@ SalvageHitEffects
 	}
 	{ //Taking apart own ship armored
 		Type = Damage
-		Damage = 120
-		DamageType = Salvage
+		Damage = { BaseValue = 600 * (&~/SalvageHitEffectsInterval); EffectScaleExponent = 1 }
+		DamageType = salvage
 		Filter
 		{
 			ExcludePartCategories = [asteroid]
@@ -117,7 +118,7 @@ SalvageHitEffects
 	}
 	{ //Asteroids
 		Type = Damage
-		Damage = 120
+		Damage = { BaseValue = 600 * (&~/SalvageHitEffectsInterval); EffectScaleExponent = 1 }
 		DamageType = salvage
 		Filter
 		{
@@ -243,7 +244,7 @@ BodyTypes
 				"walk_a2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -264,7 +265,7 @@ BodyTypes
 				"carry_a2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -340,7 +341,7 @@ BodyTypes
 				"walk_b2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -361,7 +362,7 @@ BodyTypes
 				"carry_b2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -437,7 +438,7 @@ BodyTypes
 				"walk_c2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -458,7 +459,7 @@ BodyTypes
 				"carry_c2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -534,7 +535,7 @@ BodyTypes
 				"walk_d2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -555,7 +556,7 @@ BodyTypes
 				"carry_d2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -631,7 +632,7 @@ BodyTypes
 				"walk_e2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -652,7 +653,7 @@ BodyTypes
 				"carry_e2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -728,7 +729,7 @@ BodyTypes
 				"walk_f2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -749,7 +750,7 @@ BodyTypes
 				"carry_f2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -825,7 +826,7 @@ BodyTypes
 				"walk_g2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -846,7 +847,7 @@ BodyTypes
 				"carry_g2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -922,7 +923,7 @@ BodyTypes
 				"walk_h2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -943,7 +944,7 @@ BodyTypes
 				"carry_h2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -1019,7 +1020,7 @@ BodyTypes
 				"walk_i2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -1040,7 +1041,7 @@ BodyTypes
 				"carry_i2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -1116,7 +1117,7 @@ BodyTypes
 				"walk_j2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -1137,7 +1138,7 @@ BodyTypes
 				"carry_j2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -1213,7 +1214,7 @@ BodyTypes
 				"walk_k2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -1234,7 +1235,7 @@ BodyTypes
 				"carry_k2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -1310,7 +1311,7 @@ BodyTypes
 				"walk_l2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -1331,7 +1332,7 @@ BodyTypes
 				"carry_l2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -1407,7 +1408,7 @@ BodyTypes
 				"walk_m2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -1428,7 +1429,7 @@ BodyTypes
 				"carry_m2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -1504,7 +1505,7 @@ BodyTypes
 				"walk_n2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -1525,7 +1526,7 @@ BodyTypes
 				"carry_n2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -1601,7 +1602,7 @@ BodyTypes
 				"walk_o2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -1622,7 +1623,7 @@ BodyTypes
 				"carry_o2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -1698,7 +1699,7 @@ BodyTypes
 				"walk_p2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -1719,7 +1720,7 @@ BodyTypes
 				"carry_p2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -1795,7 +1796,7 @@ BodyTypes
 				"walk_q2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -1816,7 +1817,7 @@ BodyTypes
 				"carry_q2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -1892,7 +1893,7 @@ BodyTypes
 				"walk_r2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -1913,7 +1914,7 @@ BodyTypes
 				"carry_r2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -1989,7 +1990,7 @@ BodyTypes
 				"walk_s2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		CarrySprite
@@ -2010,7 +2011,7 @@ BodyTypes
 				"carry_s2.png"
 			]
 			Size = [1, 1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 		OperateSprite
@@ -2081,7 +2082,7 @@ SuitTypes
 				"suit_normals.png"
 			]
 			Size = [1.1, 1.1]
-			AnimationInterval = 0.025
+			AnimationInterval = 0.05
 			UVRotation = 3
 		}
 	}

@@ -88,6 +88,22 @@ Power
 	SortOrder = 600
 }
 
+Thermal
+{
+	NameKey = "EditorGroups/Thermal"
+	Icon
+	{
+		Texture
+		{
+			File = "group_thermal.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		VertexColor = [0, 183, 255]
+	}
+	SortOrder = 650
+}
+
 Production
 {
 	NameKey = "EditorGroups/Production"

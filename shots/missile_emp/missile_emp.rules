@@ -150,7 +150,7 @@ Components
 				{
 					Type = ExplosiveResourceDrain
 					ResourceType = battery
-					TotalDrain = 18000
+					TotalDrain = { BaseValue = 18000; EffectScaleExponent = 1 }
 					Radius = 18
 					Slices = 1
 					Filter
@@ -177,7 +177,7 @@ Components
 				}
 				{
 					Type = Damage
-					Damage = 300
+					Damage = { BaseValue = 300; EffectScaleExponent = 1 }
 					Filter
 					{
 						Friendlies = true
@@ -185,7 +185,7 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 10000
+					TotalDamage = { BaseValue = 10000; EffectScaleExponent = 1 }
 					Radius = 3
 					Filter
 					{
@@ -196,7 +196,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 100;
+					Impulse = { BaseValue = 100; EffectScaleExponent = 1 }
 				}
 			]
 

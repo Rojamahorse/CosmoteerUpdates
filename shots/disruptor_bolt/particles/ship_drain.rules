@@ -30,6 +30,9 @@ Sprite
 	_texScale = [1, 0.3]
 	_texScrollSpeed = [0.05, -0.6]
 	_distortionStrength = 0.01;
+	_twistStrength = 0
+	_invertTex = 0 //1 inverts the base texture, 0 keeps it the same
+	_coldColorAdd = 0
 	TargetBlendMode
 	{
 		SourceRgbFactor = One

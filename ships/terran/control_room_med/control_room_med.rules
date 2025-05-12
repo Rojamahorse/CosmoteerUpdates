@@ -17,6 +17,7 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeID = "control_room"
 	MaxHealth = 9000
 	ContiguityOriginPriority = 2
+	SignificanceToggle = ScorchedToggle
 	TypeCategories = [command, uses_power, is_crewed]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	ForceManhattanPathInPart = true
@@ -59,7 +60,7 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle]
 			Mode = All
 		}
 
@@ -69,6 +70,14 @@ Part : <../base_part_terran.rules>/Part
 			ToggleID = "on_off"
 			Default = 1
 			RequiresCommand = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
 		}
 
 		BatteryStorage
@@ -96,7 +105,7 @@ Part : <../base_part_terran.rules>/Part
 			FromStorage = BatteryStorage
 			FromQuantity = 1000
 			MinFromQuantityForConversion = 1
-			Interval = 30 // Drains 1 power every 30 seconds.
+			Interval = 60 // Drains 1 power every 60 seconds.
 		}
 
 		CommandProvider
@@ -404,6 +413,21 @@ Part : <../base_part_terran.rules>/Part
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
 		}
 
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -436,6 +460,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1.5, 1.5]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -444,7 +478,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [1,2]
+					HidesIndicators = [2,3]
 				}
 
 				// Out of power.

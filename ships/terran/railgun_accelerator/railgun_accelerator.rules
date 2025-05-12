@@ -17,24 +17,34 @@ Part : <../base_part_terran.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	MaxHealth = 6000
-	Flammable = false
-	TypeCategories = [weapon, uses_power, railgun_ammo, railgun, railgun_power]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Railgun, RailgunOperation, RailgunReverseOperation]
+	TypeCategories = [weapon, uses_power, railgun_ammo, railgun, railgun_power, non_flammable]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Railgun, RailgunOperation, RailgunReverseOperation, Overclock]
 	AllowedDoorLocations
 	[
+		[-1, 0]
 		[-1, 2]
+		[2, 0]
 		[2, 2]
 	]
 	HasNonContiguousPathing = true
-	BlockedTravelCells
-	[
-		[0, 0]
-		[1, 0]
-		[0, 1]
-		[1, 1]
-	]
 	BlockedTravelCellDirections
 	[
+		{
+			Key = [0, 0]
+			Value = [Right]
+		}
+		{
+			Key = [1, 0]
+			Value = [Left]
+		}
+		{
+			Key = [0, 1]
+			Value = [Right]
+		}
+		{
+			Key = [1, 1]
+			Value = [Left]
+		}
 		{
 			Key = [0, 2]
 			Value = [Right]
@@ -58,13 +68,20 @@ Part : <../base_part_terran.rules>/Part
 		BuffOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, RailgunOperationBuffToggle]
+			Toggles = [PowerToggle, BatteryStorage, RailgunOperationBuffToggle, ScorchedToggle]
 			Mode = All
 		}
 		IsOperational
 		{
 			Type = MultiToggle
 			Toggles = [BuffOperational, RailgunReverseOperationBuffToggle]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -76,10 +93,18 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 1
 		}
 
@@ -88,6 +113,8 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 2000
+			ProvidedValueRange = 0
+			ProvidedValuePerResource = 1
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
@@ -218,9 +245,134 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceChange
 			Trigger = BulletEmitter
 			ResourceStorage = BatteryStorage
-			Amount = -500
+			Amount
+			{
+				BaseValue = -500
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = Overclock
+						MinValue = -500
+						MaxValue = -250
+						ModificationMode = Lerp
+					}
+				]
+			}
 		}
 
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[Port_Rail_Up, Port_Rail_Down, 0]
+						
+						[Port_Rail_Up, Network_OverclockStateValue, 0]
+						[Port_Rail_Up, Network_OverflowHeatStorage, 0]
+						[Port_Rail_Up, Network_ChargedModules, 0]
+						[Port_Rail_Up, Network_ChargeValue, 0]
+					]
+				}
+				{
+					Type = Simple
+					Routes
+					[
+						[Port_Rail_Up, Port_Thermal_TopLeft, 0]
+						[Port_Rail_Up, Port_Thermal_TopRight, 0]
+						[Port_Rail_Up, Port_Thermal_BottomLeft, 0]
+						[Port_Rail_Up, Port_Thermal_BottomRight, 0]
+					]
+				}
+			]
+		}
+
+		OverflowHeatStorage : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverflowHeatStorage {}
+		OverheatEffects : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverheatEffects {}
+
+		Network_OverflowHeatStorage
+		{
+			Type = NetworkResourceStore
+			ResourceType = heat
+			ResourceStorage = OverflowHeatStorage
+			AllowProviding = false
+			Categories = [ railgun_heat_overflow ]
+		}
+
+		OverclockBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = Overclock
+			BuffMultiplier = Network_OverclockStateValue
+		}
+
+		Network_OverclockStateValue
+		{
+			Type = NetworkValueReceiver
+			Categories = [ overclock ]
+			Mode = Max
+			AllowUncategorized = false
+		}
+		
+		Network_ChargedModules
+		{
+			Type = NetworkValueReceiver
+			Categories = [ railgun_charge_modules ]
+			Mode = Max
+			AllowUncategorized = false
+		}
+		
+		Network_ChargeValue
+		{
+			Type = NetworkValueReceiver
+			Categories = [ railgun_charge ]
+			Mode = Max
+			AllowUncategorized = false
+		}
+
+		Port_Rail_Up
+		{
+			Type = NetworkPort
+			Location = [0, 0]
+			Direction = Up
+			Types = [ railgun_up ]
+			CompatibleTypes = [ railgun_down ]
+		}
+
+		Port_Rail_Down
+		{
+			Type = NetworkPort
+			Location = [0, 2]
+			Direction = Down
+			Types = [ railgun_down ]
+			CompatibleTypes = [ railgun_up ]
+		}
+		
+		Port_Thermal_TopLeft : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/BASE_THERMAL_PORT
+		{
+			Location = [0, 0]
+			Direction = Left
+		}
+		Port_Thermal_TopRight : Port_Thermal_TopLeft
+		{
+			Location = [1, 0]
+			Direction = Right
+		}
+		Port_Thermal_BottomLeft : Port_Thermal_TopLeft
+		{
+			Location = [0, 2]
+			Direction = Left
+		}
+		Port_Thermal_BottomRight : Port_Thermal_TopLeft
+		{
+			Location = [1, 2]
+			Direction = Right
+		}
+		
 		StructureGraphics
 		{
 			Type = Graphics
@@ -382,6 +534,36 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
+		RailgunBuffValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue = 1; BuffType = Railgun; BuffMode = Multiply; }
+		}
+		Overclock_ChargeLightsIntensity
+		{
+			Type = ValueOperation
+			Operator = Subtract
+			ValueOne = Network_ChargedModules
+			ValueTwo = RailgunBuffValue
+			MinValue = 0
+			MaxValue = 1
+		}
+		Overclock_ChargeLightsColor
+		{
+			Type = ValueColor
+			AlphaFrom = Overclock_ChargeLightsIntensity
+		}
+
+		Overclock_ChargeLights
+		{
+			Type = Sprite
+			OperationalToggle = IsOperational
+			Location = &../Graphics/Location
+			Layer = &../Graphics/OperationalLighting/Layer
+			DamageLevels = &../Graphics/OperationalLighting/DamageLevels
+			GetColorFrom = Overclock_ChargeLightsColor
+		}
+
 		BatterySprites
 		{
 			Type = ResourceSprites
@@ -409,6 +591,21 @@ Part : <../base_part_terran.rules>/Part
 			Toggle = IsOperational
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
 		}
 
 		DestroyedEffects
@@ -452,6 +649,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 1.5]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3]
+				}
 				// Missing component
 				{
 					Toggle = RailgunBuffToggle
@@ -471,7 +678,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [2]
+					HidesIndicators = [3]
 				}
 
 				// Out of power.
@@ -498,7 +705,7 @@ Part : <../base_part_terran.rules>/Part
 	Stats
 	{
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
-		PowerPerShot = -(&~/Part/Components/PowerDrainOnShoot/Amount) / 1000
+		PowerPerShot = -(&~/Part/Components/PowerDrainOnShoot/Amount/BaseValue) / 1000
 		PowerPerSecond = (&PowerPerShot) / (&<../railgun_launcher/railgun_launcher.rules>/Part/Components/Weapon/FireInterval)
 		ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 

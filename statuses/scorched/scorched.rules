@@ -1,0 +1,137 @@
+ID = cosmoteer.scorched
+Layer = Part
+StatusCombineMode = CombineValue
+ValueClampRange = [0, 1]
+RemoveAtMinValue = true
+ClearOnShipJunked = false
+MediaIntensityValueType = Interpolated
+CrewSpeedFactor = [1, .5]
+SoftRepair
+{
+	RepairType = Simultaneous
+	TargetValue = 0
+	WorkPerValueChange = 0.1
+}
+DamageResistances
+{
+	fire {
+		Resistance 
+		{
+			BaseValue = 0
+			Modifiers
+			[
+				{
+					Type = StatusToggledRange
+					StatusType = cosmoteer.scorched
+					ModificationMode = Replace
+					AffectedValueRange = [1,1]
+					InsideRangeValue = 1
+					OutsideRangeValue = 0
+				}
+			]
+		}
+	}
+}
+StatusResistances
+{
+	cosmoteer.fire {
+		Resistance 
+		{
+			Value
+			{
+				BaseValue = 0
+				Modifiers 
+				[
+					{
+						Type = StatusToggledRange
+						StatusType = cosmoteer.scorched
+						ModificationMode = Replace
+						AffectedValueRange = [1,1]
+						InsideRangeValue = 0.25
+						OutsideRangeValue = 0
+					}
+				]
+			}
+			Duration = &Value
+		}
+	}
+}
+ContinuousMediaEffects
+[
+	{
+		Type = PartQuad
+		Sprite
+		{
+			Shader = particles/scorched.shader
+			Texture
+			{
+				File = ../../common_effects/particles/noise_grainy.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_maskTexture
+			{
+				File = ../../common_effects/particles/blob_square.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_noiseTexture
+			{
+				File = particles/scorchedNoiseTemp.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_useRoofAlpha = false;
+			TargetBlendMode = Multiply
+		}
+		RectType = Physical
+		Inflate = 0.4
+		ColorOverIntensity
+		[
+			[40,40,40,0]
+			[30,30,30,255]
+		]
+		Bucket = Scorched
+	}
+	{
+		Type = PartQuad
+		Sprite
+		{
+			Shader = particles/scorched.shader
+			Texture
+			{
+				File = ../../common_effects/particles/noise_grainy.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_maskTexture
+			{
+				File = ../../common_effects/particles/blob_square.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_noiseTexture
+			{
+				File = particles/scorchedNoiseTemp.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_useRoofAlpha = true;
+			TargetBlendMode = Multiply
+		}
+		RectType = Physical
+		Inflate = 0.4
+		ColorOverIntensity
+		[
+			[60,60,60,0]
+			[20,20,20,255]
+		]
+		Bucket = Surface3
+	}
+]

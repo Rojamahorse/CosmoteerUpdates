@@ -19,10 +19,13 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeID = "armor"
 	MaxHealth = 4000
 	ExplosiveDamageAbsorption = 100%
-	DamageResistances = {explosive = 50%}
-	TypeCategories = [armor]
+	DamageResistances
+	{
+		explosive = 50%
+		thermal = -25%
+	}
+	TypeCategories = [armor, non_flammable]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
-	Flammable = false
 	UnderlyingPartPerTile = ""
 	UnderlyingPart = cosmoteer.structure_1x2_wedge
 	CreatePartPerTileWhenGrabbed = ""

@@ -14,14 +14,14 @@ ActiveEffects
 [
 	{
 		Type = LightningStrikes
-		LightningChancePerTilePerTick = 0.02%
+		LightningChancePerTilePerTick = 0.6% / (&/Simulation/PhysicsUpdatesPerSecond)
 		OriginDistanceFromShip = [50, 200]
 
 		HitEffects
 		[
 			{
 				Type = Damage
-				Damage = 5000
+				Damage = { BaseValue = 5000; EffectScaleExponent = 1 }
 			}
 		]
 

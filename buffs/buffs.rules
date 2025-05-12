@@ -26,6 +26,7 @@ EnginePowerDistribution
 {
 	// Only exists to piggyback engine room power distribution off the buff system.
 }
+EngineHeatCollection {}
 
 Factory
 {
@@ -66,6 +67,10 @@ RailgunShot
 	IconTextMultiply = 100
 	IconTextAdd = -100
 	ShowIconTextForZeroValue = false
+}
+RailgunShotOverclock : RailgunShot
+{
+	Exponent = 1
 }
 
 RailgunOperation
@@ -135,6 +140,12 @@ RocketOperation
 	RectFillColor = [10, 212, 98, 64]
 }
 
+RocketExtraForce
+{
+	CombineMode = Add
+	BaseValue = 0
+}
+
 RocketBatteryConnection // Only used to show connection in blueprints.
 {
 	Icon
@@ -151,6 +162,13 @@ RocketBatteryConnection // Only used to show connection in blueprints.
 	RectBorderColor = [10, 212, 98, 160]
 	RectFillColor = [10, 212, 98, 64]
 }
+
+HeatDissipation {}
+ThermalIntensity {}
+ThermalRadius {}
+ThermalActivity { MinValue = 0 }
+Overclock {}
+IonOverclockCharge {}
 
 RateOfFire
 {

@@ -34,6 +34,16 @@ LowerBuckets
 	PDCSparks,
 
 	DistortionLower,
+	
+]
+
+InteriorSurfaceBuckets
+[
+	Scorched,
+	FireSmoke,
+	Fire,
+	FireExinguisher,
+	Foam,
 ]
 
 MiddleBuckets
@@ -49,10 +59,8 @@ MiddleBuckets
 
 	PDCShoot,
 
-	FireSmoke,
-	Fire,
 	FireEmbers,
-	FireExinguisher,
+
 
     Middle1,
     Middle2,
@@ -64,6 +72,10 @@ SurfaceBuckets
 	ScaffoldingProgressGlow,
 	
 	ScaffoldingPoofShadow,
+	
+	ThermalLaserHitSmoke,
+	ThermalLaserHit,
+	ThermalLaserHitFire,
 
     Surface1,
     Surface2,
@@ -98,6 +110,9 @@ UpperBuckets
 	DisruptorLightningUpper,
 
     Upper2,
+    
+	ThermalBeam,
+	ThermalBeamDistortion,
 
 	ChaingunHitSmoke,
 
@@ -105,6 +120,9 @@ UpperBuckets
 	PrismExplodeHot,
 
 	FlakHitSmoke,
+	
+	MissileThermalShrapnel,
+	MissileThermalHit,
 
     Upper3,
 

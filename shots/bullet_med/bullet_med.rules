@@ -1,9 +1,30 @@
+OVERCLOCK
+{
+	SPEED = (&~/Speed/BaseValue) * 125%
+	RANGE = (&~/Range/BaseValue) + 50
+}
+
 ID = "cosmoteer.bullet_med"
 OtherIDs = ["med_bullet", "bullet_med"]
-Range = 190
-IdealRange = [75, 190]
+Range
+{
+	BaseValue = 190
+	BuffType = Overclock
+	BuffMode = Lerp
+	MinValue = &BaseValue
+	MaxValue = &~/OVERCLOCK/RANGE
+}
+IdealRange = [75, &~/Range]
 IdealRadius = [5, 50]
-Speed = 200
+Speed
+{
+	BaseValue = 200
+	BuffType = Overclock
+	BuffMode = Lerp
+	MinValue = &BaseValue
+	MaxValue = &~/OVERCLOCK/SPEED
+}
+ReceivableBuffs = [Overclock]
 
 Components
 {
@@ -52,11 +73,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 750
+					Damage = { BaseValue = 750; EffectScaleExponent = 1 }
 				}
 				{
 					Type = Impulse
-					Impulse = 20
+					Impulse = { BaseValue = 20; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -90,11 +111,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 375
+					Damage = { BaseValue = 375; EffectScaleExponent = 1 }
 				}
 				{
 					Type = Impulse
-					Impulse = 10
+					Impulse = { BaseValue = 10; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -120,15 +141,17 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 750
+					Damage = { BaseValue = 750; EffectScaleExponent = 1 }
 				}
 				{
-					Type = Fire
-					FireChance = .4
+					Type = StatusApplication
+					StatusType = cosmoteer.fire
+					StatusChance = { BaseValue = .4; EffectScaleExponent = 1 }
+					ValueType = Interpolated
 				}
 				{
 					Type = Impulse
-					Impulse = 20
+					Impulse = { BaseValue = 20; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -182,6 +205,8 @@ Components
 			VertexColor = [255, 100, 0]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
+			_z = 1
+			_nrmlStrengthLimit = 1
 			_litReflectiveStrength = 24
 			_litAdditiveStrength = 0.05
 			_unlitAdditiveStrength = 0.125

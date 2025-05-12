@@ -1,0 +1,426 @@
+Type = Particles
+Def
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 0
+	Initializers
+	[
+		{
+			Type = SetRandomCircle
+			LocationOut = location
+			Circle
+			{
+				Center
+				{
+					X = 0
+					Y = 0
+				}
+				Radius = 4
+			}
+			Perimeter = false
+			Name = "Initial Location"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandomVelocity
+			VelocityOut = base_vel
+			Speed
+			{
+				Min = 0.5
+				Max = 0.5
+			}
+			Direction
+			{
+				Min = 0d
+				Max = 360d
+			}
+			Name = "Initial Velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandomVelocityFromPoint
+			LocationIn = location
+			VelocityOut = base_vel
+			Speed
+			{
+				Min = 0
+				Max = 2
+			}
+			AwayFromPoint
+			{
+				X = 0
+				Y = 0
+			}
+			ConvertPointToWorldSpace = false
+			Name = "Initial Velocity"
+			Enabled = false
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = rotation
+			ValueType = Angle
+			FromValue = 0d
+			ToValue = 360d
+			Name = "Initial Rotation"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = rot_velocity
+			ValueType = Angle
+			FromValue = -90d
+			ToValue = 90d
+			Name = "Initial Angular Velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = LocationToWorldSpace
+			LocationIn = location
+			LocationOut = location
+			Name = "Convert location to world space."
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = VelocityToWorldSpace
+			VelocityIn = base_vel
+			VelocityOut = base_vel
+			Name = "Convert velocity to world space"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = sprite_index
+			ValueType = Int
+			FromValue = 0
+			ToValue = 15
+			Name = "Random sprite index"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = UvSprites
+			SpriteIndexIn = sprite_index
+			UvRectOut = uv_rect
+			TextureSize
+			{
+				X = 256
+				Y = 256
+			}
+			SpriteSize
+			{
+				X = 64
+				Y = 64
+			}
+			SpriteCount = 16
+			SpritesPerRow = 4
+			PixelOffset
+			{
+				X = 0
+				Y = 0
+			}
+			Looping = false
+			Name = "Sprite UVs"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandomHsvColor
+			ColorOut = base_color
+			HueRange
+			{
+				Min = 0
+				Max = 0
+			}
+			SaturationRange
+			{
+				Min = 0
+				Max = 0
+			}
+			ValueRange
+			{
+				Min = 0.1
+				Max = 0.3
+			}
+			AlphaRange
+			{
+				Min = 1
+				Max = 1
+			}
+			Name = "Set base color"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = life
+			ValueType = Float
+			FromValue = 0
+			ToValue = 1
+			Name = "Spent life"
+			Enabled = false
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetWorldSpaceScale
+			ScaleOut = base_scale
+			LocalScale = 2
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = lifetime
+			ValueType = Float
+			FromValue = 2
+			ToValue = 4
+			Name = "Random lifetime"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = InheritVelocity
+			VelocityInOut = base_vel
+			Name = "Inherit Bullet Velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	Updaters
+	[
+		{
+			Type = VariableLifetime
+			LifeInOut = life
+			LifetimeIn = lifetime
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = location
+			BIn = base_vel
+			ResultOut = location
+			Operator = AddDt
+			Name = "Apply velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Float
+			AIn = rotation
+			BIn = rot_velocity
+			ResultOut = rotation
+			Operator = AddDt
+			Name = "Apply rot velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Lerp
+			LerpIn = life
+			DataOut = scale
+			Invert = false
+			ValueType = Float
+			FromValue = 1
+			ToValue = 0
+			Name = "Scale lerp"
+			Enabled = true
+			UpdateAfterInit = true
+		}
+		{
+			Type = Operator
+			DataType = Float
+			AIn = scale
+			BIn = base_scale
+			ResultOut = scale
+			Operator = Multiply
+			Name = "Apply base scale"
+			Enabled = true
+			UpdateAfterInit = true
+		}
+		{
+			Type = ParticleLightNormal
+			LocationIn = location
+			LightNormalOut = light_normal
+			Name = "Light normal"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ColorRamp
+			LerpIn = life
+			ColorOut = color_ramp
+			Invert = false
+			Colors
+			[
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 0
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 1
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 1
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 0
+				}
+			]
+			Name = "Color Ramp"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Color
+			AIn = base_color
+			BIn = color_ramp
+			ResultOut = color
+			Operator = Multiply
+			Name = "Multiply Color"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	Renderer
+	{
+		Type = LitQuadRenderer
+		LightNormalIn = light_normal
+		DiffuseShader
+		NormalsShader
+		{
+			File = ../../../../common_effects/particles/particle_normals.shader
+		}
+		LocationIn = location
+		ScaleIn = scale
+		Scale2In
+		RotationIn = rotation
+		ColorIn = color
+		UvRectIn = uv_rect
+		BaseSize
+		{
+			X = 0.4
+			Y = 0.4
+		}
+		Offset
+		{
+			X = 0
+			Y = 0
+		}
+		Name = ""
+	}
+	Material
+	{
+		Shader
+		{
+			File = ../../../../common_effects/particles/particle_lit.shader
+		}
+		_normalsTexture
+		{
+			File = ../../../../common_effects/particles/shrapnel_normals.png
+			MipLevels = max
+		}
+		Texture
+		{
+			File = ../../../../common_effects/particles/shrapnel.png
+			MipLevels = 8
+			SampleMode = Linear
+		}
+	}
+	DeleteMode = Fast
+	FpsCompensation = None
+	FpsCompensationStrength = 1
+	EnableMultithreading = false
+	InitCapacity = 2500
+}
+EmitterDef
+{
+	EmitPerSecond = 150
+	EmitPerOneShot
+	{
+		Min = 0
+		Max = 0
+	}
+	PreInitializers[]
+	PostInitializers[]
+}
+Bucket = FlakShrapnel
+UseRealTime = false
+PenetratingBucket
+MinIntensity = 0
+IsFancy = true
+IsFancyLight = false
+IsSimpleLight = false
+IsSimple = false
+ToggleWithRoofOpacity = false
+Sharing = Global
+UnsharedRenderInWorldSpace = false
+DontEmitWhenOffScreen = false
+DontEmitWhenOffScreenSizeInflate = 3
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 15
+MaxParticleCount = 1000
+ScaleEmissionWithIntensity = true
+ScaleEmissionWithBeamLength = false
+ScaleEmissionWithWorldVelocity = false
+ScaleEmissionWithPartSize = false
+ScaleEmissionWithPartPhysicalSize = false
+CaptureBackBuffer = false
+Filter
+{
+	Ships = true
+	OperationalHealth = true
+	StructuralHealth = true
+	OnlyPartCategories
+	ExcludePartCategories
+	Shields = true
+	Bullets = true
+	OnlyBulletCategories
+	ExcludeBulletCategories
+	OnlyStatuses
+	ExcludeStatuses
+	Crew = true
+	Nuggets = true
+	IgnoreInvulnerability = true
+	Self
+	TargetedSelf
+	Friendlies = true
+	TargetedFriendlies
+	Enemies = true
+	TargetedEnemies
+	Neutrals = true
+	TargetedNeutrals
+	Junk = true
+	TargetedJunk
+	Deconstruction
+}
+Delay
+{
+	BaseValue = 0
+	Modifiers
+	MinValue = -1.7976931348623157E+308
+	MaxValue = 1.7976931348623157E+308
+}
+IgnoreIntensity = false

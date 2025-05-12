@@ -19,17 +19,17 @@ PartsGhostShader = "common/parts_ghost.shader"
 Doors = []
 DefaultDoorID = ""
 
-BaseLinearDamping = 0.4
-LinearDampingFactorPerSpeed = 75
-LinearDampingFactorPerSpeedExponent = 2.0
+BaseLinearDamping = 0.2
+LinearDampingFactorPerSpeed = 85
+LinearDampingFactorPerSpeedExponent = 4
 MinLinearDamping = &BaseLinearDamping
-BaseAngularDamping = [0.4, 0.4] // Dynamic angular damping currently disabled.
+BaseAngularDamping = [0.185, 0.185] // Dynamic angular damping currently disabled.
 BaseAngularDampingOverLinearSpeed = [0, 200]
 AngularDampingFactorPerSpeed = 1
 AngularDampingFactorPerSpeedExponent = 0
 MinAngularDamping = &BaseAngularDamping/0
 Restitution = 0
-RotationalInertiaFactor = 1
+RotationalInertiaFactor = 1.8 //Higher is slower
 ThrusterUpdateInterval = [1/10, 1/9] // Random range so that ships don't all update their thrusters on the same tick.
 ThrusterUpdateIntervalOverrideSpeedRange = [0.01, 5]
 ThrusterSolverIterations = 3
@@ -57,7 +57,7 @@ SelfDestructForce = 10
 BaseSightRadius = 25
 BaseRadarRadius = &BaseSightRadius
 MinCommsRadius = &<terran/control_room_small/control_room_small.rules>/Part/Components/Sensor/SightRadius
-WeaponActivationEnemyCheckRadius = &<terran/sensor_array/sensor_array.rules>/Part/Components/Sensor/SightRadius
+WeaponActivationEnemyCheckRadius = &<terran/sensor_array/sensor_array.rules>/Part/Components/Sensor/SightRadius/BaseValue
 DefaultTargetingRangeFactor = 4.0
 WeaponFireRevealDuration = 3
 
@@ -76,13 +76,11 @@ DefaultConstructPriority = 9
 DefaultDeconstructPriority = 9
 DefaultRepairPriority = 9
 
-DefaultConstructionDurationPerHealth = 1 / 1000 // 1 second per corridor tile (+0.5 for the structure makes 1.5 total)
-DefaultRepairDurationPerHealth = 1 / 1000 // 1 second per corridor tile (+0.5 for the structure makes 1.5 total)
+DefaultConstructionWorkPerHealth = 1 / 1000 // 1 second per corridor tile (+0.5 for the structure makes 1.5 total)
+DefaultWorkPerRepairedHealth = 1 / 1000
 ConstructionResourceSearchesPerTick = 1
 ConstructionNuggetSinkSearchesPerTick = 5
 MaxCrewExitShipSpeed = 1
-
-Fire = &<./Data/fire/fire.rules>
 
 IndicatorAtlasParams
 {

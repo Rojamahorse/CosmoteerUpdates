@@ -1,6 +1,7 @@
 EffectBuckets = &<common_effects/effect_buckets.rules>
 Crew = &<crew/crew.rules>
 Buffs = &<buffs/buffs.rules>
+Statuses = &<statuses/statuses.rules>
 Resources = &<resources/resources.rules>/Resources
 FtlFuelResource = hyperium
 Nuggets = &<resources/resources.rules>/Nuggets
@@ -72,7 +73,7 @@ Simulation
 
 	AudioSpeedIncreaseDuration = .25
 	AudioSpeedDecreaseDuration = .25
-	PhysicsUpdatesPerSecond = 30
+	PhysicsUpdatesPerSecond = 15
 	CCDThresholdVelocity = (&PhysicsUpdatesPerSecond) * 0.75
 	SightCircleFadeDuration = .5
 	SightCircleSizeTweenSpeed = 2

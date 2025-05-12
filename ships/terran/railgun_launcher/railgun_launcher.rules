@@ -1,4 +1,13 @@
-Part : <../base_part_terran.rules>/Part
+OVERCLOCK
+{
+	BULLET = &<./Data/shots/bullet_railgun/overclock/bullet_railgun_overclock.rules>
+	SHOT_HEAT_PER_MODULE = 1750
+	BASE_CHARGE_TIME = 1.5
+	MODULE_CHARGE_TIME = 0.25
+	RECOIL_FACTOR = 250%
+}
+
+Part : <../base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/RailgunLauncher"
 	IconNameKey = "Parts/RailgunLauncherIcon"
@@ -19,25 +28,36 @@ Part : <../base_part_terran.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	MaxHealth = 6000
-	Flammable = false
-	TypeCategories = [weapon, uses_power, railgun, railgun_power]
+	TypeCategories = [weapon, uses_power, railgun, railgun_power, non_flammable]
+	SignificanceToggle = ScorchedToggle
 	ProhibitAbove = 2
-	ReceivableBuffs : ^/0/ReceivableBuffs [Railgun, RailgunShot, RailgunOperation]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Railgun, RailgunShot, RailgunShotOverclock, RailgunOperation, Overclock]
 	AllowedDoorLocations
 	[
+		[-1, 1]
 		[-1, 3]
+		[2, 1]
 		[2, 3]
 	]
 	HasNonContiguousPathing = true
-	BlockedTravelCells
-	[
-		[0, 1]
-		[1, 1]
-		[0, 2]
-		[1, 2]
-	]
 	BlockedTravelCellDirections
 	[
+		{
+			Key = [0, 1]
+			Value = [Right]
+		}
+		{
+			Key = [1, 1]
+			Value = [Left]
+		}
+		{
+			Key = [0, 2]
+			Value = [Right]
+		}
+		{
+			Key = [1, 2]
+			Value = [Left]
+		}
 		{
 			Key = [0, 3]
 			Value = [Right]
@@ -83,7 +103,14 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, RailgunOperationBuffToggle]
+			Toggles = [PowerToggle, BatteryStorage, RailgunOperationBuffToggle, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -95,10 +122,18 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 1
 		}
 
@@ -158,6 +193,11 @@ Part : <../base_part_terran.rules>/Part
 			ChainsFromBuffType = Railgun
 			BuffAmount = { BaseValue=0; BuffType=Railgun; BuffMode=Add; }
 		}
+		Overclock_ShotBuffProvider : ShotBuffProvider
+		{
+			OperationalToggle = IsOverclocked
+			BuffType = RailgunShotOverclock
+		}
 
 		ReverseOperationBuffProvider
 		{
@@ -197,10 +237,10 @@ Part : <../base_part_terran.rules>/Part
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 4
+			FireInterval = 8
 			TargetingArc = 90d
 			AIFirepowerRating = { BaseValue=&~/Part/StatsByCategory/0/Stats/DamagePerSecond; BuffType=RailgunShot; BuffMode=Multiply; }
-			Emitter = BulletEmitter
+			Emitter = WeaponEmitterSelector
 			FirePermissionToggle = FireModeToggle
 
 			AutoTarget
@@ -233,18 +273,66 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
+		IsOperationalNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
+		}
+
 		ReloadProgressBar
 		{
 			Type = ProgressBar
 			OperationalToggle = IsOperational
 			ShowProgressFor = Weapon
 		}
-
+		
+		// Prevent toggling while firing
+		OverclockModeToggle : ^/0/OverclockModeToggle
+		{
+			OperationalToggle = ProjectileToggle
+			InvertOperationalToggle = true
+		}
+		
+		Overclock_ShotHeatProducer
+		{
+			Type = ResourceChange
+			Trigger = Overclock_BulletEmitter
+			Amount
+			{
+				PER_MODULE_RESOURCE_HEAT = (&~/OVERCLOCK/SHOT_HEAT_PER_MODULE) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+				// 2 for the launcher and loader
+				BaseValue = 2 * (&PER_MODULE_RESOURCE_HEAT)
+				Modifiers
+				[
+					{
+						Type = ScaledBuff
+						BuffType = Railgun
+						Scale = (&../../PER_MODULE_RESOURCE_HEAT)
+						ModificationMode = Add
+					}
+				]
+			}
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+		}
+		
+		HeatDistributionStorage : ^/0/HeatDistributionStorage
+		{
+			ResourceStorages = [ &../^/0/ResourceStorages/0, Network_RailgunOverflowHeatInput ]
+		}
+		
+		WeaponEmitterSelector
+		{
+			Type = ToggleEmitterSelector
+			Toggle = IsOverclocked
+			ToggleOffEmitter = BulletEmitter
+			ToggleOnEmitter = Overclock_BulletEmitter
+		}
 		BulletEmitter
 		{
 			Type = BulletEmitter
 			ChainedTo = Weapon
-			FireTrigger = Projectile
+			FireTrigger = ProjectileFinished_Uncharged
 			GetTargetFrom = Weapon
 			OperationalToggle = IsOperational
 			DynamicDelayPredictor = Projectile
@@ -261,11 +349,113 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
+		Overclock_BulletEmitter : BulletEmitter
+		{
+			FireTrigger = ProjectileFinished_Charged
+			Bullet = &~/OVERCLOCK/BULLET
+		}
+		
+		WeaponTriggerProxy_NonOverclocked
+		{
+			Type = TriggerProxy
+			ComponentID = Weapon
+			ProxyToggle = IsOperationalNonOverclocked
+		}
+		
+		WeaponTriggerProxy_Overclocked
+		{
+			Type = TriggerProxy
+			ComponentID = Weapon
+			ProxyToggle = IsOperationalOverclocked
+		}
+		
+		OperationalOverclockDisabled
+		{
+			Type = ToggleTrigger
+			Toggle = IsOperationalOverclocked
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+		}
+		
+		Overclock_ChargeTimerReset
+		{
+			Type = MultiTrigger
+			Triggers = [WeaponTriggerProxy_Overclocked, OperationalOverclockDisabled]
+		}
+		Overclock_ChargeTimer
+		{
+			Type = Timer
+			OperationalToggle = IsOperationalOverclocked
+			Duration
+			{
+				BaseValue = &~/OVERCLOCK/BASE_CHARGE_TIME
+				Modifiers
+				[
+					{
+						Type = ScaledBuff
+						BuffType = Railgun
+						Scale = &~/OVERCLOCK/MODULE_CHARGE_TIME
+						ModificationMode = Add
+					}
+				]
+			}
+			StartTrigger = WeaponTriggerProxy_Overclocked
+			ResetTrigger = Overclock_ChargeTimerReset
+			StopTrigger = OperationalOverclockDisabled
+		}
+		Overclock_PolledChargeTimer
+		{
+			Type = PolledValue
+			OperationalToggle = Overclock_ChargeTimer
+			InvertOperationalToggle = true
+			ValueSource = Overclock_ChargeTimer
+			DefaultValue = 1
+		}
+		Overclock_ChargeValue
+		{
+			Type = MultiValue
+			Values = [ Overclock_PolledChargeTimer ]
+			Mode = Add
+			Invert = true
+		}
+		
+		Overclock_HasCharged
+		{
+			Type = TriggeredToggle
+			OnTrigger = Overclock_ChargeTimer
+			OffTrigger = Overclock_BulletEmitter
+			OperationalToggle = IsOperationalOverclocked
+		}
+		
+		RailgunBuffValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue = 1; BuffType = Railgun; BuffMode = Multiply; }
+			IncludeInBlueprints = true
+		}
+		Overclock_ChargeableModuleCount
+		{
+			Type = MultiValue
+			Values = [RailgunBuffValue, One]
+			Mode = Add
+		}
+		Overclock_ChargedModules
+		{
+			Type = MultiValue
+			Values = [Overclock_ChargeValue, Overclock_ChargeableModuleCount]
+			Mode = Multiply
+		}
+
+		ProjectileStartTrigger
+		{
+			Type = MultiTrigger
+			Triggers = [WeaponTriggerProxy_NonOverclocked, Overclock_ChargeTimer]
+		}
 
 		ProjectileToggle
 		{
 			Type = TriggeredToggle
-			OnTrigger = Weapon
+			OnTrigger = ProjectileStartTrigger
 			OffTrigger = Projectile
 			OperationalToggle = IsOperational
 		}
@@ -280,6 +470,20 @@ Part : <../base_part_terran.rules>/Part
 			SpeedStart = &../BulletEmitter/Bullet/Speed/BaseValue
 			SpeedEnd = &../BulletEmitter/Bullet/Speed
 			Interpolate = true // WARNING: Only use this for interpolating graphics. Using it for game logic will cause multiplayer desyncs.
+		}
+		
+		ProjectileFinished_Uncharged
+		{
+			Type = TriggerProxy
+			ComponentID = Projectile
+			ProxyToggle = Overclock_HasCharged
+			InvertProxyToggle = true
+		}
+		ProjectileFinished_Charged
+		{
+			Type = TriggerProxy
+			ComponentID = Projectile
+			ProxyToggle = Overclock_HasCharged
 		}
 
 		RecoilProjectile : Projectile
@@ -305,7 +509,19 @@ Part : <../base_part_terran.rules>/Part
 			[
 				{
 					Type = Impulse
-					Impulse = 2000
+					Impulse 
+					{ 
+						BaseValue = 2000
+						Modifiers
+						[
+							{
+								Type = ScaledBuff
+								BuffType = Overclock
+								Scale = &~/OVERCLOCK/RECOIL_FACTOR
+								ModificationMode = Multiply
+							}
+						]
+					}
 				}
 			]
 		}
@@ -322,6 +538,124 @@ Part : <../base_part_terran.rules>/Part
 				&<particles/railgun_shoot.rules>
 				&<particles/railgun_shoot_distortion.rules>
 			]
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[Port_Rail, Networked_ChargedModules, 0]
+						[Port_Rail, Networked_ChargeValue, 0]
+						[Port_Rail, NetworkOverclockStateValue, 0]
+						[Port_Rail, Network_OverflowHeatStorage, 0]
+						[Port_Rail, Network_RailgunOverflowHeatInput, 0]
+					]
+				}
+				{
+					Type = Simple
+					Routes
+					[
+						[&~/Part/^/0/HEAT_NETWORK_INPUT, Port_Thermal_TopLeft, 0]
+						[&~/Part/^/0/HEAT_NETWORK_INPUT, Port_Thermal_TopRight, 0]
+						[&~/Part/^/0/HEAT_NETWORK_INPUT, Port_Thermal_BottomLeft, 0]
+						[&~/Part/^/0/HEAT_NETWORK_INPUT, Port_Thermal_BottomRight, 0]
+						[&~/Part/^/0/HEAT_NETWORK_INPUT, Port_Rail, 0]
+					]
+				}
+			]
+		}
+
+		Networked_ChargedModules
+		{
+			Type = NetworkValue
+			ValueSource = Overclock_ChargedModules
+			Categories = [ railgun_charge_modules ]
+		}
+
+		Networked_ChargeValue
+		{
+			Type = NetworkValue
+			ValueSource = Overclock_ChargeValue
+			Categories = [ railgun_charge ]
+		}
+
+		Network_RailgunOverflowHeatInput
+		{
+			Type = NetworkResourceInput
+			ResourceType = heat
+			AllowUncategorized = false
+			Categories = [ railgun_heat_overflow ]
+		}
+
+		Network_OverflowHeatStorage
+		{
+			Type = NetworkResourceStore
+			ResourceType = heat
+			ResourceStorage = OverflowHeatStorage
+			AllowProviding = false
+			Categories = [ railgun_heat_overflow ]
+		}
+
+		NetworkOverclockStateValue
+		{
+			Type = NetworkValue
+			ValueSource = OverclockStateValue
+			Categories = [ overclock ]
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero
+		{
+			Type = StaticValue
+			Value = 0
+		}
+		One
+		{
+			Type = StaticValue
+			Value = 1
+		}
+
+		Port_Rail
+		{
+			Type = NetworkPort
+			Location = [0, 3]
+			Direction = Down
+			Types = [ railgun_down ]
+			CompatibleTypes = [ railgun_up ]
+		}
+
+
+		Port_Thermal_TopLeft : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 1]
+			Direction = Left
+		}
+		Port_Thermal_TopRight : Port_Thermal_TopLeft
+		{
+			Location = [1, 1]
+			Direction = Right
+		}
+		Port_Thermal_BottomLeft : Port_Thermal_TopLeft
+		{
+			Location = [0, 3]
+			Direction = Left
+		}
+		Port_Thermal_BottomRight : Port_Thermal_TopLeft
+		{
+			Location = [1, 3]
+			Direction = Right
 		}
 
 		ToggledProjectileSprite
@@ -589,6 +923,31 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
+		Overclock_ChargeLightsIntensity
+		{
+			Type = ValueOperation
+			Operator = Subtract
+			ValueOne = Overclock_ChargedModules
+			ValueTwo = RailgunBuffValue
+			MinValue = 0
+			MaxValue = 1
+		}
+		Overclock_ChargeLightsColor
+		{
+			Type = ValueColor
+			AlphaFrom = Overclock_ChargeLightsIntensity
+		}
+
+		Overclock_ChargeLights
+		{
+			Type = Sprite
+			OperationalToggle = IsOperational
+			Location = &../Graphics/Location
+			Layer = &../Graphics/OperationalLighting/Layer
+			DamageLevels = &../Graphics/OperationalLighting/DamageLevels
+			GetColorFrom = Overclock_ChargeLightsColor
+		}
+
 		BatterySprites
 		{
 			Type = ResourceSprites
@@ -616,6 +975,21 @@ Part : <../base_part_terran.rules>/Part
 			Toggle = IsOperational
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
 		}
 
 		DestroyedEffects
@@ -654,6 +1028,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 2.5]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/Rubble
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3,4]
+				}
 				// Missing component
 				{
 					Toggle = RailgunBuffToggle
@@ -673,9 +1057,19 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [2]
+					HidesIndicators = [3,4]
 				}
-
+				
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+					HidesIndicators = [4]
+				}
+				
 				// Out of power.
 				{
 					Toggle = BatteryStorage
@@ -694,6 +1088,35 @@ Part : <../base_part_terran.rules>/Part
 			Type = BlueprintSprite
 			File = "blueprints.png"
 			Size = [2, 4]
+		}
+		
+		Two { Type = StaticValue; Value = 2; }
+		ModuleCount
+		{
+			Type = MultiValue
+			Values = [RailgunBuffValue, Two]
+			Mode = Add
+			IncludeInBlueprints = true
+		}
+		SingleModuleHeatPerSecond
+		{
+			Type = StaticValue
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/SHOT_HEAT_PER_MODULE) * (&~/Part/StatsByCategory/0/Stats/ROF)
+			Value = (&SHOT_HEAT_PER_SECOND)
+		}
+		AllModulesHeatPerSecond
+		{
+			Type = MultiValue
+			Values = [SingleModuleHeatPerSecond, ModuleCount]
+			Mode = Multiply
+			IncludeInBlueprints = true
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = AllModulesHeatPerSecond
 		}
 	}
 
@@ -726,6 +1149,22 @@ Part : <../base_part_terran.rules>/Part
 				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourceUsage/1/ResourcesUsed) / 1000
 				PowerPerSecond = (&PowerPerShot) * (&ROF)
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
+			}
+		}
+		{
+			NameKey = "StatCategories/Overclocked"
+			Stats
+			{
+				RailgunOverclockHeatOnShot = &~/OVERCLOCK/SHOT_HEAT_PER_MODULE
+				Penetration = infinity
+				Damage = [&~/OVERCLOCK/BULLET/DAMAGE_POOL, (&~/OVERCLOCK/BULLET/DAMAGE_POOL) * (&../../../0/Stats/ROF)]
+				ShotSpeed = (&~/OVERCLOCK/BULLET/Speed/BaseValue)
+				ShotHP = (&~/OVERCLOCK/BULLET/HEALTH)
+				RailgunBaseChargeTime = (&~/OVERCLOCK/BASE_CHARGE_TIME)
+				RailgunAcceleratorChargeTime = (&~/OVERCLOCK/MODULE_CHARGE_TIME)
+				BUFF_EXPONENT_NORMAL = (&<./Data/buffs/buffs.rules>/RailgunShot/Exponent)
+				BUFF_EXPONENT_OVERCLOCKED = (&<./Data/buffs/buffs.rules>/RailgunShotOverclock/Exponent)
+				RailgunBuffExponentOverclock = [&../BUFF_EXPONENT_OVERCLOCKED, (&../BUFF_EXPONENT_OVERCLOCKED) - (&../BUFF_EXPONENT_NORMAL)]
 			}
 		}
 	]

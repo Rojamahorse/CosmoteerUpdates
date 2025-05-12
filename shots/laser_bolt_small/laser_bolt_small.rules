@@ -45,11 +45,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=500; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = { BaseValue=500; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse;
-					Impulse = 5;
+					Impulse = { BaseValue = 5; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -80,11 +80,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=250; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = { BaseValue=250; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse;
-					Impulse = 2.5;
+					Impulse = { BaseValue = 2.5; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -162,6 +162,8 @@ Components
 			VertexColor = [255, 0, 0]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
+			_z = 1
+            _nrmlStrengthLimit = 1
 			_litReflectiveStrength = 24
 			_litAdditiveStrength = 0.05
 			_unlitAdditiveStrength = 0.25
