@@ -136,9 +136,9 @@ Components
 					Type = GridStatusApplication
 					StatusType = cosmoteer.heat
 					StatusValue = 0
-					StatusValuePool = 10000
+					StatusValuePool = &<./Data/ships/terran/missile_launcher/thermal/missile_launcher_thermal.rules>/HEAT_PER_MISSILE
 					ValueFalloff = 1
-					MaxCost = 4
+					MaxCost = 3
 					FalloffPadding = 0.5
 					EmptyTileCost = 1000
 					AllowDiagonals = true

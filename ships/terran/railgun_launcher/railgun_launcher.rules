@@ -241,7 +241,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			TargetingArc = 90d
 			AIFirepowerRating = { BaseValue=&~/Part/StatsByCategory/0/Stats/DamagePerSecond; BuffType=RailgunShot; BuffMode=Multiply; }
 			Emitter = WeaponEmitterSelector
-			FirePermissionToggle = FireModeToggle
+			FirePermissionToggle = FirePermission
 
 			AutoTarget
 			{
@@ -271,6 +271,19 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 				EndCapSize = [1, 2]
 			}
+		}
+
+		FirePermission
+		{
+			Type = MultiToggle
+			Mode = All
+			Toggles = [ FireModeToggle, { Toggle=IsOverclockedAndCharging; Invert=true; } ]
+		}
+		IsOverclockedAndCharging
+		{
+			Type = MultiToggle
+			Mode = All
+			Toggles = [ IsOverclocked, { Toggle = { ID=Overclock_ChargeTimer; ToggleID="IsRunning"; } }]
 		}
 
 		IsOperationalNonOverclocked
@@ -354,6 +367,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 			FireTrigger = ProjectileFinished_Charged
 			Bullet = &~/OVERCLOCK/BULLET
 		}
+		EmissionTriggered
+		{
+			Type = MultiTrigger
+			Triggers = [BulletEmitter, Overclock_BulletEmitter]
+		}
 		
 		WeaponTriggerProxy_NonOverclocked
 		{
@@ -389,6 +407,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Duration
 			{
 				BaseValue = &~/OVERCLOCK/BASE_CHARGE_TIME
+				MaxValue = &~/Part/Components/Weapon/FireInterval
 				Modifiers
 				[
 					{
@@ -1031,11 +1050,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				// Scorched
 				{
 					Toggle = ScorchedToggle
-					AtlasSprite
-					{
-						File = &/INDICATORS/Rubble
-						Size = [1, 1]
-					}
+					AtlasSprite = &/INDICATORS/Scorched
 					HidesIndicators = [1,2,3,4]
 				}
 				// Missing component

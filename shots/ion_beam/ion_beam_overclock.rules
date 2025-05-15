@@ -87,7 +87,7 @@ Beam : <ion_beam.rules>
 				ChainRadius = 1.5
 				InitialChance = 100%
 				InitialStrikes = [1, 1]
-				InitialStrikeRandomOffsetRadius = 2.5
+				InitialStrikeRandomOffsetRadius = 0.5
 				RaycastInitialTargets = true
 				ChainChance = 100%
 				ChainStrikes = [1, 2]
@@ -101,7 +101,7 @@ Beam : <ion_beam.rules>
 						Type = Damage
 						Damage : ~/MODIFIABLE_DAMAGE
 						{
-							BaseValue = 300
+							BaseValue = 200
 						}
 						Filter
 						{
@@ -134,18 +134,6 @@ Beam : <ion_beam.rules>
 				InitialFilter
 				{
 					ExcludePartCategories = [ion_beam_prism]
-					IgnoreInvulnerability = true
-				}
-				ChainFilter
-				{
-					Ships = true
-					OperationalHealth = true
-					StructuralHealth = true
-					Shields = true
-					Bullets = true
-					Crew = true
-					Nuggets = true
-					Self = true
 					IgnoreInvulnerability = true
 				}
 			}

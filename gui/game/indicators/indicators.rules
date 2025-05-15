@@ -10,7 +10,11 @@ NoMines = "indicator_mine.png"
 NoCrew = "indicator_crew.png"
 NoResource = "indicator_resource.png"
 MissingComponent = "indicator_component.png"
-Rubble = "indicator_rubble.png"
+Scorched
+{
+	File = "indicator_scorched.png"
+	VertexColor = [255, 38, 0]
+}
 
 NoHeat
 {

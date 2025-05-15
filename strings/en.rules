@@ -4760,7 +4760,7 @@ Stats
 	                       "  <white>5th Beam:</white> <good>{5:0}%</good><gray> dmg</gray>\n"\
 	                       "  ..."
 	ROFRangeFmt = "<white>Rate of Fire:</white> <good>{0:0.##}</good><white> - </white><good>{1:0.##}</good><gray> shots/sec</gray>"
-	BurstFmt = "<white>Burst:</white> <good>{0:0}</good> <gray>shots</gray>"
+	BurstFmt = "<white>Salvo:</white> <good>{0:0}</good> <gray>shots</gray>"
 	PelletsFmt = "<white>Projectiles:</white> <good>{0:0}</good> <gray>bullets</gray>"
 	PelletSpreadFmt = "<white>Projectile Spread:</white> <gray>+/-</gray> <good>{0:0.#}°</good>"
 	ShotAmmoUsageRangeFmt = "<white>Ammo Use:</white> <good>{0:0.##}</good><gray>/shot (</gray><good>{1:0.##}</good><white> - </white><good>{2:0.##}</good><gray>/sec)</gray>"

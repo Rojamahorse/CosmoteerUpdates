@@ -106,7 +106,7 @@ Part : <../base_part_terran.rules>/Part
 			Region
 			{
 				Type = EdgeDistance
-				Distance = 4
+				Distance = 5
 				BlueprintMaterial
 				{
 					Color = [255,0,0,100]
@@ -118,7 +118,7 @@ Part : <../base_part_terran.rules>/Part
 			ValueTargetStorage = NetworkHeatInput
 			INEFFICIENCY = 40%
 			ValuePerTargetResource = (&<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO) / (1 + (&INEFFICIENCY))
-			Falloff = 1
+			Falloff = 0
 			MediaEffectsOnDecrease
 			[
 				&<particles/heat_sink_absorb.rules>

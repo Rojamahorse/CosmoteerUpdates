@@ -674,11 +674,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				// Scorched
 				{
 					Toggle = ScorchedToggle
-					AtlasSprite
-					{
-						File = &/INDICATORS/Rubble
-						Size = [1, 1]
-					}
+					AtlasSprite = &/INDICATORS/Scorched
 					HidesIndicators = [1,2,3,4]
 				}
 				// Turned off.

@@ -225,7 +225,7 @@ Part : <../base_part_terran.rules>/Part
 			ComponentID = Weapon
 		}
 
-		BulletEmitter // This is called "BulletEmitter" to allow chaining with the launcher.
+		EmissionTriggered // This is called "EmissionTriggered" to allow chaining with the launcher.
 		{
 			Type = TriggerProxy
 			PartLocation = [0, -1]
@@ -237,13 +237,13 @@ Part : <../base_part_terran.rules>/Part
 				Right = 2
 				Bottom = 0
 			}
-			ComponentID = BulletEmitter
+			ComponentID = EmissionTriggered
 		}
 
 		PowerDrainOnShoot
 		{
 			Type = ResourceChange
-			Trigger = BulletEmitter
+			Trigger = EmissionTriggered
 			ResourceStorage = BatteryStorage
 			Amount
 			{
@@ -652,11 +652,7 @@ Part : <../base_part_terran.rules>/Part
 				// Scorched
 				{
 					Toggle = ScorchedToggle
-					AtlasSprite
-					{
-						File = &/INDICATORS/Rubble
-						Size = [1, 1]
-					}
+					AtlasSprite = &/INDICATORS/Scorched
 					HidesIndicators = [1,2,3]
 				}
 				// Missing component

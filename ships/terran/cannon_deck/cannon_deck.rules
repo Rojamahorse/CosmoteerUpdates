@@ -895,16 +895,21 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = EmitterProxy
 			ComponentID = BaseEmitter
+			ChainedTo = Turret
 		}
 		Emitter1Proxy
 		{
 			Type = EmitterProxy
 			ComponentID = Emitter1
+			ChainedTo = Turret
+			Location = [240/64, -35/64]
 		}
 		Emitter2Proxy
 		{
 			Type = EmitterProxy
 			ComponentID = Emitter2
+			ChainedTo = Turret
+			Location = [240/64, 35/64]
 		}
 
 		FireEffect1
@@ -1601,11 +1606,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				// Scorched
 				{
 					Toggle = ScorchedToggle
-					AtlasSprite
-					{
-						File = &/INDICATORS/Rubble
-						Size = [1, 1]
-					}
+					AtlasSprite = &/INDICATORS/Scorched
 					HidesIndicators = [1,2,3,4]
 				}
 				// Turned off.
@@ -1724,7 +1725,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				Spread = deg(&~/OVERCLOCK/HALF_SPREAD)
 				Range = &~/OVERCLOCK/BULLET/Range
 				ShotSpeed = &~/OVERCLOCK/BULLET/Speed
-				ShotHP = &~/OVERCLOCK/BULLET/HEALTH
+//				ShotHP = &~/OVERCLOCK/BULLET/HEALTH
 			}
 		}
 	]

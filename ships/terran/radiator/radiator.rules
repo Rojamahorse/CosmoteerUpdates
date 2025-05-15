@@ -150,17 +150,16 @@ Part : <../base_part_terran.rules>/Part
 			PartRectType = Physical
 			Line
 			{
-				MAX_SHIP_BORDERS = &<./Data/ships/base_ship.rules>/MaxBorders
-				MAX_WIDTH = (&MAX_SHIP_BORDERS/Right) - (&MAX_SHIP_BORDERS/Left)
-				MAX_HEIGHT = (&MAX_SHIP_BORDERS/Bottom) - (&MAX_SHIP_BORDERS/Top)
 				Location = [0, 0]
 				Direction = Up
-				MaxTiles = "max((&MAX_WIDTH), (&MAX_HEIGHT))"
+				MaxTiles = 120
 				MaxOcclusionDistance = 10
 			}
 			
-			MAX_SCORE = "sum(i, 0, (&Line/MaxTiles) - 1, (&EmptyTileScore) * ( 1 - i / (&Line/MaxTiles)), 1)"
-			EmptyTileScore = 4.5 * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+			HEAT_PER_SECOND = 550
+			MAX_SCORE = (&HEAT_PER_SECOND) * (&~/Part/Components/HeatDissipationConverter/Interval) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+			TILE_SCORE = (2 * (&MAX_SCORE)) / ((&Line/MaxTiles) + 1)
+			EmptyTileScore = &TILE_SCORE
 			PartCategoryTileScores
 			{
 				structure = (&../EmptyTileScore)

@@ -2061,6 +2061,7 @@ Part : <../base_part_terran.rules>/Part
 				HitInterval = &~/Part/Components/BeamEmitter/HitInterval
 				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed/BaseValue)
 				Range = &~/Part/Components/BeamEmitter/Range/BaseValue
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
 				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000
 				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
 				ResonanceTurretHeatGeneration = (&~/Part/Components/BaseHeatGeneration/Value)

@@ -344,7 +344,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			RotateSpeed = 30d
 			FireThresholdAngle = 1d
 			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamagePerSecond
-			Emitter = BulletEmitter
+			Emitter = WeaponEmitterSelector
 			FirePermissionToggle = FireModeToggle
 
 			AutoTargets
@@ -386,6 +386,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Mode = All
 		}
 
+		WeaponEmitterSelector
+		{
+			Type = ToggleEmitterSelector
+			Toggle = IsOverclocked
+			ToggleOffEmitter = BulletEmitter
+			ToggleOnEmitter = Overclock_BulletEmitter
+		}
 		BulletEmitter
 		{
 			Type = BulletEmitter
@@ -866,11 +873,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				// Scorched
 				{
 					Toggle = ScorchedToggle
-					AtlasSprite
-					{
-						File = &/INDICATORS/Rubble
-						Size = [1, 1]
-					}
+					AtlasSprite = &/INDICATORS/Scorched
 					HidesIndicators = [1,2,3,4]
 				}
 				// Turned off.

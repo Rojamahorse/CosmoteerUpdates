@@ -781,7 +781,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [-.5, -.5]
 			Rotation = 90d
 			Layer = "weapons"
-			ResetAnimationTrigger = FlakEmitter1
+			ResetAnimationTrigger = Emitter1Trigger
 			OperationalDoodad
 			{
 				Layer = "weapons"
@@ -881,7 +881,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [-.5, .5]
 			Rotation = 90d
 			Layer = "weapons"
-			ResetAnimationTrigger = FlakEmitter2
+			ResetAnimationTrigger = Emitter2Trigger
 			OperationalDoodad
 			{
 				Layer = "weapons"
@@ -1108,11 +1108,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				// Scorched
 				{
 					Toggle = ScorchedToggle
-					AtlasSprite
-					{
-						File = &/INDICATORS/Rubble
-						Size = [1, 1]
-					}
+					AtlasSprite = &/INDICATORS/Scorched
 					HidesIndicators = [1,2,3,4]
 				}
 				// Turned off.

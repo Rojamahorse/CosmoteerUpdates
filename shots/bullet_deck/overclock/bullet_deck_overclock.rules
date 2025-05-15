@@ -6,9 +6,9 @@ Speed = (&BASE/Speed) * 3
 IdealRange = [75, &~/Range]
 IdealRadius = [5, 50]
 
-DAMAGE_POOL = (&BASE/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue) * 350%
-IMPULSE = (&BASE/Components/Hit/HitOperational/HitEffects/1/Impulse/BaseValue) * 300%
-HEALTH = (&BASE/Components/Targetable/Health) * 150%
+DAMAGE_POOL = 20000
+IMPULSE = (&BASE/Components/Hit/HitOperational/HitEffects/1/Impulse/BaseValue) * 250%
+HEALTH = (&BASE/Components/Targetable/Health) * 100%
 
 Components : BASE/Components
 {
@@ -33,6 +33,7 @@ Components : BASE/Components
 		Penetration = infinity
 		FactorHitEffectsWith = DamagePool
 		
+		HitCrew = &HitOperational
 		HitShield = &HitOperational
 		HitOperational : ^/0/HitOperational
 		{
@@ -61,8 +62,8 @@ Components : BASE/Components
 			
 			HitEffects
 			[
-				// Fire application
-				&../^/0/HitEffects/1
+//				// Fire application
+//				&../^/0/HitEffects/1
 				{
 					Type = Damage
 					Damage = 0

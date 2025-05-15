@@ -553,11 +553,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				// Scorched
 				{
 					Toggle = ScorchedToggle
-					AtlasSprite
-					{
-						File = &/INDICATORS/Rubble
-						Size = [1, 1]
-					}
+					AtlasSprite = &/INDICATORS/Scorched
 					HidesIndicators = [1,2,3]
 				}
 				// Turned off.
@@ -597,6 +593,19 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = BlueprintSprite
 			File = "blueprints.png"
 			Size = [2, 2]
+		}
+		
+		PeakHeatGenerationStatValue
+		{
+			Type = StaticValue
+			Value = (&~/OVERCLOCK/MAX_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = PeakHeatGenerationStatValue
 		}
 	}
 

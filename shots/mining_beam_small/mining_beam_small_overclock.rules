@@ -23,6 +23,7 @@ Beam : BASE
 				Type = AreaDamage
 				Damage : ^/0/Damage { BaseValue = ceil((&^/0/BaseValue) * (&~/DAMAGE_FACTOR)) }
 				Radius = &~/RADIUS
+				RectType = Normal
 				Falloff = &~/RADIUS_FALLOFF
 				Filter : ^/0/Filter
 				{
@@ -48,6 +49,7 @@ Beam : BASE
 				Type = AreaDamage
 				Damage : ^/0/Damage { BaseValue = ceil((&^/0/BaseValue) * (&~/DAMAGE_FACTOR)) }
 				Radius = &~/RADIUS
+				RectType = Normal
 				Falloff = &~/RADIUS_FALLOFF
 			}
 			//Damage to junk armor
@@ -56,6 +58,7 @@ Beam : BASE
 				Type = AreaDamage
 				Damage : ^/0/Damage { BaseValue = ceil((&^/0/BaseValue) * (&~/DAMAGE_FACTOR)) }
 				Radius = &~/RADIUS
+				RectType = Normal
 				Falloff = &~/RADIUS_FALLOFF
 			}
 			//Damage to asteroids
@@ -64,6 +67,7 @@ Beam : BASE
 				Type = AreaDamage
 				Damage : ^/0/Damage { BaseValue = ceil((&^/0/BaseValue) * (&~/DAMAGE_FACTOR)) }
 				Radius = &~/RADIUS
+				RectType = Normal
 				Falloff = &~/RADIUS_FALLOFF
 			}
 		]
