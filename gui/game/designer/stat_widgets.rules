@@ -72,8 +72,8 @@ StatWidgets
         			VertexColor = [0, 183, 255]
         		}
         		Stat = HeatGeneration
-        		MinWidth = 120
-        		UseRuntimeStats = true
+//        		MinWidth = 120
+        		StatMode = Providers
         	}
         	{
         		Type = IconText
@@ -97,9 +97,35 @@ StatWidgets
         			VertexColor = [0, 183, 255]
         		}
         		Stat = HeatDissipation
-        		MinWidth = &../0/MinWidth
-        		UseRuntimeStats = true
+//        		MinWidth = &../0/MinWidth
+        		StatMode = Providers
         	}
 		]
+	}
+	{
+		Type = IconText
+		ToggleButtonID = Thermal
+		NameKey = "BuildBox/HeatCapacity"
+		CustomValueTextKey = "BuildBox/HeatCapacityFmt"
+		CustomValueLabel : <build_gui.rules>/StatsGui/DefaultStatLabel
+		{
+			TextRenderer : ^/0/TextRenderer
+			{
+				Color = [246, 149, 4]
+			}
+		}
+		Icon
+		{
+			Texture
+			{
+				File = "stat_thermal.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+			VertexColor = [0, 183, 255]
+		}
+		Stat = HeatCapacity
+//		MinWidth = 120
+		StatMode = ProvidersThenStatBlocks
 	}
 ]

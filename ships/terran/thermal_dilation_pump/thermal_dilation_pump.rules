@@ -968,11 +968,11 @@ Part : <../base_part_terran.rules>/Part
 	
 	Stats
 	{
-		ThermalDilation = (&~/Part/Components/BasePumpDilation/OnValue) * 100
+		ThermalDilation = (&~/Part/Components/BasePumpDilation/OnValue) * 100 * 2
 //		ThermalPumpMultiEfficiency = (&~/Part/Components/MultiUtilizationEfficiencyFactor/Value) * 100
-		TurretExtraHeatGeneration = (&~/Part/Components/AdditionalTurretHeatGeneration_Active/Value)
+		TurretExtraHeatGeneration = (&~/Part/Components/AdditionalTurretHeatGeneration_Active/Value) * 2
 		
-		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity/BaseValue) / (&~/Part/Components/PowerDrain/Interval) / 1000
+		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity/BaseValue) / (&~/Part/Components/PowerDrain/Interval) / 1000 * 2
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 		RecPower = &PowerUsageContinuous
 	}

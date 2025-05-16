@@ -42,6 +42,7 @@ Components : BASE/Components
 	Hit : ^/0/Hit
 	{
 		Penetration = infinity
+		PenetrationSpeed = &~/Speed
 		FactorEffectsWith = DamagePool
 		
 		HitCrew = &HitOperational

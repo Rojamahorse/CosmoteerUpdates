@@ -245,20 +245,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceChange
 			Trigger = EmissionTriggered
 			ResourceStorage = BatteryStorage
-			Amount
-			{
-				BaseValue = -500
-				Modifiers
-				[
-					{
-						Type = Buff
-						BuffType = Overclock
-						MinValue = -500
-						MaxValue = -250
-						ModificationMode = Lerp
-					}
-				]
-			}
+			Amount = -500
 		}
 
 		Router
@@ -701,7 +688,7 @@ Part : <../base_part_terran.rules>/Part
 	Stats
 	{
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
-		PowerPerShot = -(&~/Part/Components/PowerDrainOnShoot/Amount/BaseValue) / 1000
+		PowerPerShot = -(&~/Part/Components/PowerDrainOnShoot/Amount) / 1000
 		PowerPerSecond = (&PowerPerShot) / (&<../railgun_launcher/railgun_launcher.rules>/Part/Components/Weapon/FireInterval)
 		ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 

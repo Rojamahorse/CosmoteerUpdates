@@ -234,7 +234,7 @@ Part : <../base_part_terran.rules>/Part
 				Right = 2
 				Bottom = 0
 			}
-			ComponentID = BulletEmitter
+			ComponentID = EmissionTriggered
 		}
 
 		CrewLocation1

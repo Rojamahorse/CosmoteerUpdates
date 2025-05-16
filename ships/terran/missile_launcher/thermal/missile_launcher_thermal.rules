@@ -237,26 +237,13 @@ Components
 				Type = Bidirectional
 				Routes
 				[
-					[Port_Left, Port_Right, 0]
+					[Port_Thermal_Left, Port_Thermal_Right, 0]
 					
-					[Port_Left, NetworkHeatOutput, 0]
-					[Port_Left, NetworkHeatReceiver, 0]
+					[Port_Thermal_Left, NetworkHeatOutput, 0]
+					[Port_Thermal_Left, NetworkHeatReceiver, 0]
 				]
 			}
 		]
-	}
-	
-	Port_Left
-	{
-		Type = NetworkPort
-		Location = [0, 1]
-		Direction = Left
-		Types = [ thermal ]
-	}
-	Port_Right : Port_Left
-	{
-		Location = [1, 1]
-		Direction = Right
 	}
 	
 	NetworkHeatOutput
@@ -699,7 +686,7 @@ Components
 	Left_Pipe_Components
 	{
 		Type = ToggledComponents
-		Toggle = Port_Left
+		Toggle = Port_Thermal_Left
 		Components
 		{
 			Left_Pipes_Graphics
@@ -758,7 +745,7 @@ Components
 
 	Right_Pipe_Components : Left_Pipe_Components
 	{
-		Toggle = Port_Right
+		Toggle = Port_Thermal_Right
 		Components
 		{
 			Right_Pipes_Graphics : ../../Left_Pipe_Components/Components/Left_Pipes_Graphics

@@ -101,6 +101,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			SuppliesResourcesToggle = IsOverclocked
 			MinResourcesPickUp = (&../BatteryStorage/MinResourcesPickUp) + (1000 * (&~/OVERCLOCK/BONUS_BATTERY_SIZE))
 			MaxResourcesPickUp = &MinResourcesPickUp
+			InitPickUp = 3001
 			ToggleOnResources = (&MinResourcesPickUp) * 2 + 1
 			ToggleOffResources = (&MinResourcesPickUp) * 2
 		}

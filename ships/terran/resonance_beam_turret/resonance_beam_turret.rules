@@ -4,7 +4,7 @@ Part : <../base_part_terran.rules>/Part
 	IconNameKey = "Parts/ResonanceBeamTurretIcon"
 	ID = cosmoteer.resonance_beam_turret
 	OtherIDs = []
-	EditorGroup = "WeaponsEnergy"
+	EditorGroups = [ "WeaponsEnergy", "Thermal" ]
 	DescriptionKey = "Parts/ResonanceBeamTurretDesc"
 	Resources
 	[
@@ -141,7 +141,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ValueOperation
 			Operator = Divide
 			ValueOne = AnticipatedRemainingHeatCapacity
-			ValueTwo = AnticipatedSelfHeatProduction
+			ValueTwo = HeatProducedPerEmission
 			NaNFallbackValue = 1;
 		}
 		HasCapacityForBeamDurationHeatProduction
@@ -2035,6 +2035,20 @@ Part : <../base_part_terran.rules>/Part
 			Stat = HeatDissipation
 			ValueFrom = HeatDissipationStatValue
 		}
+		
+		// Requires blueprint part networks to provide a useful value
+//		HeatGenerationPerSecond
+//		{
+//			Type = BuffableValue
+//			Value : ~/Part/Components/HeatGenerationConverter/ToQuantity { BaseValue = (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO) }
+//			IncludeInBlueprints = true
+//		}
+//		HeatGenerationStatProvider
+//		{
+//			Type = StatProvider
+//			Stat = HeatGeneration
+//			ValueFrom = HeatGenerationPerSecond
+//		}
 	}
 	
 	Stats

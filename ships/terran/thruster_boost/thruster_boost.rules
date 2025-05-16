@@ -7,7 +7,11 @@ OVERCLOCK
 	
 	BASE_BOOST_HEAT_FACTOR = 150%
 	BOOST_HEAT_FACTOR_PER_BATTERY = 15%
+	BOOST_HEAT_FACTOR_PER_SECOND = -3%
 	BOOST_HEAT_FACTOR_POWER_THRESHOLD = (&~/Part/Components/RealBatteryStorage/MaxResources)
+	
+	BOOST_MAX_POWER_USAGE_FACTOR = 200%
+	BOOST_POWER_RAMP_TIME = 4
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -65,7 +69,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 	BoostedFuelUsage = 225
 	BoostedPowerDrain = { BaseValue=-5; BuffType=Engine; BuffMode=Multiply; }
 	BoostedPowerDrainInterval = 0.1
-	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, EngineHeatCollection, ThermalActivity]
+	BOOSTED_BASE_POWER_DRAIN_PER_SEC = (&BoostedPowerDrain/BaseValue) / (&BoostedPowerDrainInterval)
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, EngineHeatCollection, ThermalActivity, BoostOverclockPowerRamp]
 	AllowedDoorLocations
 	[
 		[-1, 0]
@@ -260,6 +265,22 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ValueAccumulator
 			OperationalToggle = IsOverclockedBoosting
 			NonOperationalBehaviour = Reset
+			AccumulatingToggle = Overclock_IsThrusterActive
+			THRUST_DISSIPATION_PER_SECOND = -(&~/OVERCLOCK/BOOST_HEAT_FACTOR_PER_SECOND) / (&~/OVERCLOCK/BOOST_HEAT_FACTOR_PER_BATTERY)
+			DISSIPATION_PER_SECOND = (&THRUST_DISSIPATION_PER_SECOND)
+			DissipationRate
+			{
+				BaseValue = (&../DISSIPATION_PER_SECOND) * 1000
+				Modifiers
+				[
+					{
+						Type = ScaledBuff
+						BuffType = Engine
+						Scale = -(&~/Part/BOOSTED_BASE_POWER_DRAIN_PER_SEC)
+						ModificationMode = Add
+					}
+				]
+			}
 			MinValue = 0
 			AccumulationTriggers
 			[
@@ -270,6 +291,32 @@ Part : <../base_part_terran_overclock.rules>/Part
 					AllowWhenNonOperational = false
 				}
 			]
+		}
+		Overclock_RampingBoostPowerUseFactor
+		{
+			Type = ValueAccumulator
+			OperationalToggle = IsOverclockedBoosting
+			NonOperationalBehaviour = Reset
+			AccumulatingToggle = Overclock_IsThrusterActive
+			AccumulationRate = 1 / (&~/OVERCLOCK/BOOST_POWER_RAMP_TIME)
+			DissipationRate = &AccumulationRate
+			MinValue = 0
+			MaxValue = 1
+		}
+		Overclock_BoostPowerUseBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = BoostOverclockPowerRamp
+			BuffMultiplier = Overclock_RampingBoostPowerUseFactor
+		}
+		Overclock_BoostPowerUseBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOverclockedBoosting
+			ShowProgressFor = Overclock_RampingBoostPowerUseFactor
+			LowColor = [201, 239, 0]
+			HighColor = [201, 239, 0]
+			FullColor = [201, 239, 0]
 		}
 		
 		Overclock_BoostHeatFactorPowerThreshold
@@ -417,6 +464,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = MultiValue
 			Values = [MainThrusterProxy, MainThrusterBoostedProxy]
 			Mode = Add
+		}
+		Overclock_IsThrusterActive
+		{
+			Type = ThresholdToggle
+			ValueFrom = Overclock_CombinedThrusterActivation
+			MinAmount = 0
+			MaxAmount = 0
+			Invert = true
 		}
 
 		Overclock_MaxActivation
@@ -760,6 +815,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 					FuelUsagePerSecond : ~/Part/Components/BoostOffComponents/Components/MainThruster/FuelUsagePerSecond
 					{
 						BaseValue = &~/Part/BoostedFuelUsage
+						Modifiers : ^/0/Modifiers
+						[
+							: ^/0/0 {
+								BuffType = BoostOverclockPowerRamp
+								RemapTo = [1, (&~/OVERCLOCK/BOOST_MAX_POWER_USAGE_FACTOR)]
+							}
+						]
 					}
 				}
 
@@ -1434,9 +1496,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Stats
 			{
 				ThrusterForce = (&~/Part/BoostedThrusterForce) * (&~/OVERCLOCK/THRUST_FACTOR)
-				ThrusterPowerUsage = (&~/Part/BoostedFuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000
+				BASE_THRUSTER_POWER_USAGE = (&~/Part/BoostedFuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000 
+				ThrusterPowerUsageRamp = [&../BASE_THRUSTER_POWER_USAGE, (&../BASE_THRUSTER_POWER_USAGE) * (&~/OVERCLOCK/BOOST_MAX_POWER_USAGE_FACTOR)]
+				ThrusterPowerUsageRampTime = (&~/OVERCLOCK/BOOST_POWER_RAMP_TIME)
 				BaseHeatFactor = [(&~/OVERCLOCK/BASE_BOOST_HEAT_FACTOR) * 100, (&~/OVERCLOCK/THRUST_HEAT_PER_SECOND) * (&~/OVERCLOCK/BASE_BOOST_HEAT_FACTOR)]
 				BoostHeatFactorPerBattery = (&~/OVERCLOCK/BOOST_HEAT_FACTOR_PER_BATTERY) * 100
+				BoostHeatFactorPerSecond = (&~/OVERCLOCK/BOOST_HEAT_FACTOR_PER_SECOND) * 100
 				BoostHeatFactorBatteryThreshold = (&~/OVERCLOCK/BOOST_HEAT_FACTOR_POWER_THRESHOLD) / 1000
 			}
 			Features

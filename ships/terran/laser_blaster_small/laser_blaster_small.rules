@@ -1,10 +1,10 @@
 OVERCLOCK
 {
-	EXTRA_INTERVAL = (&~/Part/Components/Turret/FireInterval) * 4
-	BURST = 15
-	BURST_DELAY = 0.1
-	HEAT_PER_SECOND = 70
-	HEAT_PER_SHOT = 110
+	EXTRA_INTERVAL = (&~/Part/Components/Turret/FireInterval) * 1
+	BURST = 6
+	BURST_DELAY = 0.05
+	HEAT_PER_SECOND = 20
+	HEAT_PER_SHOT = 125
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -904,6 +904,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			NameKey = "StatCategories/Overclocked"
 			Stats
 			{
+				DamagePerSecond = (&~/Part/StatsByCategory/0/Stats/DamagePerShot) * (&ROF)
+				Damage = [&~/Part/StatsByCategory/0/Stats/DamagePerShot, &../DamagePerSecond]
 				Burst = (&~/OVERCLOCK/BURST)
 				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
 				HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)

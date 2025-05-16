@@ -1171,7 +1171,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Stats
 			{
 				RailgunOverclockHeatOnShot = &~/OVERCLOCK/SHOT_HEAT_PER_MODULE
-				Penetration = infinity
+				PenetrationDamagePool = [infinity, &~/OVERCLOCK/BULLET/DAMAGE_POOL]
 				Damage = [&~/OVERCLOCK/BULLET/DAMAGE_POOL, (&~/OVERCLOCK/BULLET/DAMAGE_POOL) * (&../../../0/Stats/ROF)]
 				ShotSpeed = (&~/OVERCLOCK/BULLET/Speed/BaseValue)
 				ShotHP = (&~/OVERCLOCK/BULLET/HEALTH)

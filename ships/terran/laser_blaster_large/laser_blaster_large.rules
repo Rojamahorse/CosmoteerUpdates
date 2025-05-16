@@ -1,7 +1,6 @@
 OVERCLOCK
 {
-	HEAT_PER_SECOND = 30
-	HEAT_PER_SHOT = 300
+	HEAT_PER_SHOT = 320
 	FIRE_RATE_FACTOR = 200%
 	POWER_USE_FACTOR = (&~/EMITTER_BASE_OVERCLOCK/OVERCLOCK/DAMAGE_FACTOR)
 }
@@ -172,15 +171,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [1, 3.5]
 		}
 
-		Overclock_ConstantHeatProducer
-		{
-			Type = ResourceConverter
-			OperationalToggle = IsOperationalOverclocked
-			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/HEAT_PER_SECOND) * (&Interval))
-			ToQuantity = (&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
-			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
-			Interval = 0.5
-		}
 		Overclock_ShotHeatProducer
 		{
 			Type = ResourceChange
@@ -1114,7 +1104,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = StaticValue
 			SHOT_HEAT_PER_SECOND = (&~/Part/StatsByCategory/1/Stats/HeatPerShot) * (&~/Part/StatsByCategory/1/Stats/ROF)
-			Value = (&~/OVERCLOCK/HEAT_PER_SECOND) + (&SHOT_HEAT_PER_SECOND)
+			Value = (&SHOT_HEAT_PER_SECOND)
 		}
 		HeatGenerationStatProvider
 		{
@@ -1163,7 +1153,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
 				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
-				HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
 				ROF = (&../../0/Stats/ROF) * (&~/OVERCLOCK/FIRE_RATE_FACTOR)
 				Range = &~/EMITTER_BASE_OVERCLOCK/Range
 				ShotSpeed = Infinity

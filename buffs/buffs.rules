@@ -169,6 +169,7 @@ ThermalRadius {}
 ThermalActivity { MinValue = 0 }
 Overclock {}
 IonOverclockCharge {}
+BoostOverclockPowerRamp {}
 
 RateOfFire
 {

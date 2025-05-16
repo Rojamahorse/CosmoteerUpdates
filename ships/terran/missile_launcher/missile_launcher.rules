@@ -200,6 +200,19 @@ Part : <../base_part_terran.rules>/Part
 			IncludeInBlueprints = dynamic
 			Components = &<thermal/missile_launcher_thermal.rules>/Components
 		}
+		Port_Thermal_Left
+		{
+			Type = NetworkPort
+			OperationalToggle = ThermalMissilesToggle
+			Location = [0, 1]
+			Direction = Left
+			Types = [ thermal ]
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Location = [1, 1]
+			Direction = Right
+		}
 
 		CommonReloadTimerHE
 		{
@@ -544,6 +557,19 @@ Part : <../base_part_terran.rules>/Part
 				Mode = 4
 			}
 		}
+		
+		HeatCapacityStatValue
+		{
+			Type = StaticValue
+			Value = (&<thermal/missile_launcher_thermal.rules>/MissileStats/Stats/HeatCapacity) * (&~/Part/Stats/ThermalMissileCapacity)
+		}
+		ThermalMissileHeatCapacityStatProvider
+		{
+			Type = StatProvider
+			OperationalToggle = ThermalMissilesToggle
+			Stat = HeatCapacity
+			ValueFrom = HeatCapacityStatValue
+		}
 	}
 
 	Stats
@@ -552,6 +578,7 @@ Part : <../base_part_terran.rules>/Part
 		HEMissileCapacity = 3
 		EMPMissileCapacity = 1
 		NukeMissileCapacity = 1
+		ThermalMissileCapacity = 3
 		MineCapacity = 6
 
 		RecCrew = (&CrewRequired) + (&<he/missile_launcher_he.rules>/MissileStats/Stats/ROF) * (&<he/missile_launcher_he.rules>/MissileStats/Stats/MissileParts) * 4

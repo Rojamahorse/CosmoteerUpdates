@@ -1,10 +1,12 @@
 OVERCLOCK
 {
 	BULLET = &<./Data/shots/bullet_deck/overclock/bullet_deck_overclock.rules>
-	FIRE_RATE_FACTOR = 27%
+	FIRE_RATE_FACTOR = 50%
 	HALF_SPREAD = 1.5d
-	RECOIL_FACTOR = 350%
-	HEAT_PER_SHOT = 6000
+	RECOIL_FACTOR = 250%
+	CREW_STUN_DURATION = 3
+	CREW_STUN_RADIUS = 9
+	HEAT_PER_SHOT = 3500
 	HEAT_PER_SECOND = 60
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
@@ -960,9 +962,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				{
 					Type = AreaCrewStun
-					Duration = 1
+					Duration = { BaseValue=1; BuffType=Overclock; BuffMode=Lerp; MinValue=&BaseValue; MaxValue=&~/OVERCLOCK/CREW_STUN_DURATION; }
 					Falloff = 1
-					Radius = 6
+					Radius = { BaseValue=6; BuffType=Overclock; BuffMode=Lerp; MinValue=&BaseValue; MaxValue=&~/OVERCLOCK/CREW_STUN_RADIUS; }
 					Filter { Friendlies=true; IgnoreInvulnerability=true; }
 					Cumulative = true
 					HitShipOnly = true
@@ -1683,8 +1685,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		RecAmmo = &../StatsByCategory/0/Stats/AmmoPerSecond
 		RecCrew = (&CrewRequired) + (&RecAmmo) * 2
 
-		CrewStunDuration = [0, &~/Part/Components/StunEffect/HitEffects/0/Duration]
-		CrewStunRadius = &~/Part/Components/StunEffect/HitEffects/0/Radius
+		CrewStunDuration = [0, &~/Part/Components/StunEffect/HitEffects/0/Duration/BaseValue]
+		CrewStunRadius = &~/Part/Components/StunEffect/HitEffects/0/Radius/BaseValue
 	}
 
 	StatsByCategory
@@ -1717,7 +1719,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				DamagePerShot = &~/OVERCLOCK/BULLET/DAMAGE_POOL
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				Penetration = infinity
+				PenetrationDamagePool = [infinity, &../DamagePerShot]
 				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
 				HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
 				ROF = 1 / (&FireInterval)
@@ -1726,6 +1728,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				Range = &~/OVERCLOCK/BULLET/Range
 				ShotSpeed = &~/OVERCLOCK/BULLET/Speed
 //				ShotHP = &~/OVERCLOCK/BULLET/HEALTH
+				CrewStunDuration = [0, &~/OVERCLOCK/CREW_STUN_DURATION]
+        		CrewStunRadius = &~/OVERCLOCK/CREW_STUN_RADIUS
 			}
 		}
 	]
