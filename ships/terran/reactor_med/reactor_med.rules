@@ -3,6 +3,9 @@ OVERCLOCK
 	POWER_GENERATION_FACTOR = 250%
 	CAPACITY_FACTOR = 150%
 	HEAT_PER_SECOND = 700
+	
+	BATTERY_PER_SEC = (&~/Part/Components/BatteryProducer/ToQuantity/BaseValue) * (&POWER_GENERATION_FACTOR) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
+	HEAT_PER_BATTERY = (&HEAT_PER_SECOND) / (&BATTERY_PER_SEC)
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -105,6 +108,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 			ToggleOnResources = 4001
 			ToggleOffResources = 4000
+			ProvidedValueRange = 0
+			ProvidedValuePerResource = 1/1000
 		}
 		OverclockChangedTrigger
 		{
@@ -152,25 +157,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
-		OverheatEffects : ^/0/OverheatEffects
+		Overclock_PowerGenerationTrigger
 		{
-			Location = [1.5, 1.5]
+			Type = ValueChangeTrigger
+			OperationalToggle = IsOverclocked
+			ValueSource = CombinedBatteryStorage
+			TriggerOnDecrease = false;
 		}
 
-		IsOverclockedAndProducing
-		{
-			Type = MultiToggle
-			Toggles = [IsOverclocked, BatteryProducer]
-			Mode = All
-		}
 		Overclock_GenerationHeatProducer
 		{
-			Type = ResourceConverter
-			OperationalToggle = IsOverclockedAndProducing
-			HEAT_PER_INTERVAL = (&~/OVERCLOCK/HEAT_PER_SECOND) * (&Interval)
-			ToQuantity = ceil((&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE))
-			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
-			Interval = 0.5
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_PowerGenerationTrigger
+			Amount { BaseValue=ceil((&~/OVERCLOCK/HEAT_PER_BATTERY) * (&~/HEAT_TO_RESOURCE)); EffectScaleExponent=1 }
 		}
 
 		Router
@@ -893,7 +893,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			{
 				PowerCapacity = (&~/Part/Stats/PowerCapacity) * (&~/OVERCLOCK/CAPACITY_FACTOR)
 				PowerGeneration = (&~/Part/Stats/PowerGeneration) * (&~/OVERCLOCK/POWER_GENERATION_FACTOR)
-				HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
+				PowerHeatGeneration = [&~/OVERCLOCK/HEAT_PER_BATTERY, &~/OVERCLOCK/HEAT_PER_SECOND]
 			}
 		}
 	]

@@ -942,7 +942,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 
-		Overclock_ChargeLightsIntensity
+		Overclock_Charge_Lights_Intensity
 		{
 			Type = ValueOperation
 			Operator = Subtract
@@ -951,20 +951,59 @@ Part : <../base_part_terran_overclock.rules>/Part
 			MinValue = 0
 			MaxValue = 1
 		}
-		Overclock_ChargeLightsColor
+		Overclock_Charge_Lights
 		{
-			Type = ValueColor
-			AlphaFrom = Overclock_ChargeLightsIntensity
-		}
-
-		Overclock_ChargeLights
-		{
-			Type = Sprite
-			OperationalToggle = IsOperational
-			Location = &../Graphics/Location
-			Layer = &../Graphics/OperationalLighting/Layer
-			DamageLevels = &../Graphics/OperationalLighting/DamageLevels
-			GetColorFrom = Overclock_ChargeLightsColor
+			Type = ValueSprites
+			Location = [1, 2]
+			ValueFrom = Overclock_Charge_Lights_Intensity
+			Layer = "lights_add"
+			ResourceLevels
+			[
+				{
+					//Blank Frame
+				}
+				{
+					//Blank Frame
+				}
+				{
+					File = "../railgun_accelerator/OClights1.png"
+					Size = [2, 1]
+					Offset = [0, 1.5]
+				}
+				{
+					File = "../railgun_accelerator/OClights2.png"
+					Size = [2, 1]
+					Offset = [0, 1.5]
+				}
+				{
+					File = "../railgun_accelerator/OClights3.png"
+					Size = [2, 2]
+					Offset = [0, 1]
+				}
+				{
+					File = "../railgun_accelerator/OClights4.png"
+					Size = [2, 2]
+					Offset = [0, 1]
+				}
+				{
+					File = "../railgun_accelerator/OClights5.png"
+					Size = [2, 3]
+					Offset = [0, 0.5]
+				}
+				{
+					File = "../railgun_accelerator/OClights6.png"
+					Size = [2, 3]
+					Offset = [0, 0.5]
+				}
+				{
+					File = "OClights7.png"
+					Size = [2, 4]
+				}
+				{
+					File = "OClights8.png"
+					Size = [2, 4]
+				}
+			]
 		}
 
 		BatterySprites

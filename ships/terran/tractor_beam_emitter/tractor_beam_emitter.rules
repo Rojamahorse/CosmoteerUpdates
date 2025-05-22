@@ -1,6 +1,23 @@
+OVERCLOCK
+{
+	FIRING_HEAT_PER_SECOND = 700
+	ARC_MAX = 5d
+	FORCE_FACTOR = 150%
+	
+	OVERLOAD_FORCE = 200000
+	OVERLOAD_RADIUS = 600
+	OVERLOAD_BULLET_FORCE = 50000
+	OVERLOAD_BULLET_RADIUS = 150
+	OVERLOAD_CHARGE_DURATION = 5
+	OVERLOAD_MIN_POWER = 85%
+	OVERLOAD_HEAT = 5000
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
 BeamCount = 5
 
-Part : <../base_part_terran.rules>/Part
+Part : <../base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/TractorBeamEmitter"
 	IconNameKey = "Parts/TractorBeamEmitterIcon"
@@ -77,7 +94,7 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
 			Mode = All
 		}
 
@@ -146,6 +163,114 @@ Part : <../base_part_terran.rules>/Part
 			DefaultPriority = &/PRIORITIES/Factory_Supply
 			ResupplyThreshold = 1000
 			OperationalToggle = PowerToggle
+		}
+
+		Overclock_IsFiring
+		{
+			Type = MultiToggle
+			Toggles = [ Emitter, IsOverclocked ]
+			Mode = All
+		}
+
+		Overclock_FiringHeatProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = Overclock_IsFiring
+			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/FIRING_HEAT_PER_SECOND) * (&Interval))
+			ToQuantity = (&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
+			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Interval = 0.5
+		}
+		
+		Overclock_OverloadHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_OverloadChargeTimer
+			Amount = (&~/OVERCLOCK/OVERLOAD_HEAT) * (&~/HEAT_TO_RESOURCE)
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Simple
+					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
+					Routes
+					[
+						[&../../HEAT_INPUT, Port_Thermal_Left0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Left1, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Left2, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Up0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Up1, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Up2, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right1, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Right2, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down0, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down1, 0]
+						[&../../HEAT_INPUT, Port_Thermal_Down2, 0]
+					]
+				}
+			]
+		}
+
+		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 1]
+			Direction = Left
+		}
+		Port_Thermal_Left1 : Port_Thermal_Left0
+		{
+			Location = [0, 2]
+		}
+		Port_Thermal_Left2 : Port_Thermal_Left0
+		{
+			Location = [0, 3]
+		}
+		
+		Port_Thermal_Up0 : Port_Thermal_Left0
+		{
+			Location = [1, 0]
+			Direction = Up
+		}
+		Port_Thermal_Up1 : Port_Thermal_Up0
+		{
+			Location = [2, 0]
+		}
+		Port_Thermal_Up2 : Port_Thermal_Up0
+		{
+			Location = [3, 0]
+		}
+		
+		Port_Thermal_Right0 : Port_Thermal_Left0
+		{
+			Location = [4, 1]
+			Direction = Right
+		}
+		Port_Thermal_Right1 : Port_Thermal_Right0
+		{
+			Location = [4, 2]
+		}
+		Port_Thermal_Right2 : Port_Thermal_Right0
+		{
+			Location = [4, 3]
+		}
+		
+		Port_Thermal_Down0 : Port_Thermal_Left0
+		{
+			Location = [1, 4]
+			Direction = Down
+		}
+		Port_Thermal_Down1 : Port_Thermal_Down0
+		{
+			Location = [2, 4]
+		}
+		Port_Thermal_Down2 : Port_Thermal_Down0
+		{
+			Location = [3, 4]
 		}
 
 		Graphics
@@ -479,7 +604,7 @@ Part : <../base_part_terran.rules>/Part
 			AIFirepowerRating = 0
 			Emitter = Emitter
 			DefaultDirectControlBinding = 2
-			FirePermissionToggle = FireModeToggle
+			FirePermissionToggle = FirePermission
 
 			AutoTargets
 			[
@@ -546,6 +671,13 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
+		FirePermission
+		{
+			Type = MultiToggle
+			Toggles = [FireModeToggle, { Toggle=Overclock_OverloadToggle; Invert=true; }]
+			Mode = All
+		}
+
 		TurretCollider
 		{
 			Type = CircleCollider
@@ -559,7 +691,20 @@ Part : <../base_part_terran.rules>/Part
 		    Type = FanArcController
 		    ChainedTo = Turret
 		    GetTargetFrom = Turret
-		    MaxArc = 10d
+		    MaxArc
+		    {
+		    	BaseValue = 10d
+		    	Modifiers
+		    	[
+		    		{
+		    			Type = BuffRemap
+		    			BuffType = Overclock
+		    			RemapFrom = [0, 1]
+		    			RemapTo = [&../../../BaseValue, &~/OVERCLOCK/ARC_MAX]
+		    			ModificationMode = Replace
+		    		}
+		    	]
+		    }
 		    DefaultArc = &MaxArc
 		    ArcSizeFactor = 70%
 		    FanComponents
@@ -683,6 +828,161 @@ Part : <../base_part_terran.rules>/Part
 			Values = [BeamRegulatorProxy]
 			Mode = Add
 			Abs = true
+		}
+
+		Overclock_HasPowerForOverload
+		{
+			Type = ThresholdToggle
+			ValueFrom = BatteryStorage
+			MinAmount = &~/OVERCLOCK/OVERLOAD_MIN_POWER
+		}
+		Overclock_CanOverload
+		{
+			Type = MultiToggle
+			Toggles = [Overclock_HasPowerForOverload, IsOperationalOverclocked, { Toggle=Overclock_OverloadToggle; Invert=true } ]
+			Mode = All
+		}
+		Overclock_OverloadToggle
+		{
+			Type = UIToggle
+			ToggleID = "tractor_overload"
+			Default = 0
+			OperationalToggle = Overclock_CanOverload
+			AutoOffTrigger = Overclock_OverloadChargeTimer
+		}
+		Overclock_OverloadStartTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = Overclock_OverloadToggle
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+		Overclock_OverloadChargeTimer
+		{
+			Type = Timer
+			Duration = &~/OVERCLOCK/OVERLOAD_CHARGE_DURATION
+			StartTrigger = Overclock_OverloadStartTrigger
+		}
+		Overclock_OverloadInverseChargeProgress
+		{
+			Type = PolledValue
+			OperationalToggle = Overclock_OverloadToggle
+			ValueSource = Overclock_OverloadChargeTimer
+			DefaultValue = 0
+		}
+		Overclock_OverloadPullTrigger
+		{
+			Type = TriggerProxy
+			ProxyToggle = TractorModePullToggle
+			ComponentID = Overclock_OverloadChargeTimer
+		}
+		Overclock_OverloadPushTrigger : Overclock_OverloadPullTrigger
+		{
+			InvertProxyToggle = true
+		}
+
+		Overclock_OverloadPushEffects
+		{
+			Type = TriggeredEffects
+			Location = [2.5, 2.5]
+			Trigger = Overclock_OverloadPushTrigger
+			HitEffects
+			[
+				{
+					Type = AreaImpulse
+					Impulse = &~/OVERCLOCK/OVERLOAD_FORCE
+					Radius = &~/OVERCLOCK/OVERLOAD_RADIUS
+					PushShipCenterOfMassOnly = true
+					Filter 
+					{ 
+						Self = false
+						Shields = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = AreaImpulse
+					Impulse = &~/OVERCLOCK/OVERLOAD_BULLET_FORCE
+					Radius = &~/OVERCLOCK/OVERLOAD_BULLET_RADIUS
+					Filter
+					{
+						Self = true
+						Ships = false
+						Bullets = true
+						Friendlies = true
+					}
+				}
+			]
+			MediaEffects
+			[
+				&<particles/tractor_beam_overload_shockwave.rules>
+			]
+		}
+		Overclock_OverloadPullEffects
+		{
+			Type = TriggeredEffects
+			Location = [2.5, 2.5]
+			Trigger = Overclock_OverloadPullTrigger
+			HitEffects
+			[
+				{
+					Type = AreaImpulse
+					Impulse = -(&~/OVERCLOCK/OVERLOAD_FORCE)
+					Radius = &~/OVERCLOCK/OVERLOAD_RADIUS
+					PushShipCenterOfMassOnly = true
+					InvertFalloff = true
+					Filter 
+					{ 
+						Self = false
+						Shields = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = AreaImpulse
+					Impulse = -(&~/OVERCLOCK/OVERLOAD_BULLET_FORCE)
+					Radius = &~/OVERCLOCK/OVERLOAD_BULLET_RADIUS
+					InvertFalloff = true
+					Filter
+					{
+						Self = true
+						Ships = false
+						Bullets = true
+						Friendlies = true
+					}
+				}
+			]
+			MediaEffects
+			[
+				&<particles/tractor_beam_overload_shockwave_inverse.rules>
+			]
+		}
+		Overclock_OverloadEndPowerDrain
+		{
+			Type = ResourceChange
+			ResourceStorage = BatteryStorage
+			Trigger = Overclock_OverloadChargeTimer
+			Amount = -(&~/Part/Components/BatteryStorage/MaxResources)
+		}
+
+		Overclock_OverloadChargeMediaIntensity
+		{
+			Type = ValueLerp
+			InputValue = Overclock_OverloadInverseChargeProgress
+			OutputRange = [10, 1]
+		}
+		Overclock_OverloadChargingMediaEffects
+		{
+			Type = ContinuousEffects
+			Location = [2.5, 2.5]
+			OperationalToggle = Overclock_OverloadToggle
+			ParentToShip = true
+			FactorMediaEffectsIntensityWith = Overclock_OverloadChargeMediaIntensity
+			MediaEffects
+			[
+				&<particles/tractor_beam_overload_charging_glints.rules>
+				&<particles/tractor_beam_overload_charging_shockwave.rules>
+			]
 		}
 
 		CrewLocation1
@@ -834,7 +1134,7 @@ Part : <../base_part_terran.rules>/Part
 				{
 					Toggle = ScorchedToggle
 					AtlasSprite = &/INDICATORS/Scorched
-					HidesIndicators = [1,2]
+					HidesIndicators = [1,2,3]
 				}
 				// Turned off.
 				{
@@ -844,7 +1144,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [2]
+					HidesIndicators = [2,3]
 				}
 
 				// Out of power.
@@ -857,6 +1157,15 @@ Part : <../base_part_terran.rules>/Part
 						Size = [1, 1]
 					}
 				}
+				
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+				}
 			]
 		}
 
@@ -865,6 +1174,19 @@ Part : <../base_part_terran.rules>/Part
 			Type = BlueprintSprite
 			File = "blueprints.png"
 			Size = [5, 5]
+		}
+		
+		PeakHeatGenerationValue
+		{
+			Type = StaticValue
+			Value = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = PeakHeatGenerationValue
 		}
 	}
 
@@ -892,6 +1214,19 @@ Part : <../base_part_terran.rules>/Part
 				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
 				PowerPerShot = (&~/Part/Components/Emitter/ResourcesUsed) / 1000 * (&~/BeamCount)
 				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
+			}
+		}
+		{
+			NameKey = "StatCategories/Overclocked"
+			Stats
+			{
+				TractorForce = (&~/Part/StatsByCategory/0/Stats/TractorForce) * (&~/OVERCLOCK/FORCE_FACTOR)
+				TractorOverloadForce = (&~/OVERCLOCK/OVERLOAD_FORCE)
+				TractorOverloadRadius = (&~/OVERCLOCK/OVERLOAD_RADIUS)
+				TractorOverloadChargeTime = (&~/OVERCLOCK/OVERLOAD_CHARGE_DURATION)
+				TractorOverloadMinPower = (&~/OVERCLOCK/OVERLOAD_MIN_POWER) * 100
+				TractorOverloadHeatGeneration = &~/OVERCLOCK/OVERLOAD_HEAT
+				FiringHeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
 			}
 		}
 	]

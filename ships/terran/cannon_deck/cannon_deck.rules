@@ -1722,8 +1722,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				PenetrationDamagePool = [infinity, &../DamagePerShot]
 				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
 				HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
-				ROF = 1 / (&FireInterval)
-				FireInterval = ((&~/Part/Components/ShootAlternatingComponents_NonOverclocked/Components/FireTimer/Duration) / (&~/OVERCLOCK/FIRE_RATE_FACTOR))
+				FIRE_INTERVAL = ((&~/Part/Components/ShootAlternatingComponents_NonOverclocked/Components/FireTimer/Duration) / (&~/OVERCLOCK/FIRE_RATE_FACTOR))
+				ROF = 1 / (&FIRE_INTERVAL)
 				Spread = deg(&~/OVERCLOCK/HALF_SPREAD)
 				Range = &~/OVERCLOCK/BULLET/Range
 				ShotSpeed = &~/OVERCLOCK/BULLET/Speed

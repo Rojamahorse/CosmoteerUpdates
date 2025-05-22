@@ -1,9 +1,11 @@
+EMITTER = &<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>
+
 Range = 300
 StretchRange = 600
 IdealRange = 300
 Duration = 1
 HitInterval = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
-TractorImpulse = 20000 * (&HitInterval) / (&<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/BeamCount) // Actual impulse per-ship is half; this is net total of both ships.
+TractorImpulse = 20000 * (&HitInterval) / (&EMITTER/BeamCount) // Actual impulse per-ship is half; this is net total of both ships.
 RampUpTime = 1
 RequireHitForRampUp = true
 PenetratesStructure = false
@@ -100,7 +102,7 @@ BeamMediaEffects
 	: /BASE_SOUNDS/AudioExterior
 	{
 		Sound = "tractor_beam_emit.wav"
-		Volume = 1 / (&<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/BeamCount)
+		Volume = 1 / (&~/EMITTER/BeamCount)
 		MaxConcurrent = 0 // Unlimited
 		MaxConcurrentVolume = 1
 		RampUpTime = .25
@@ -113,7 +115,7 @@ BeamMediaEffects
 	: /BASE_SOUNDS/AudioExterior
 	{
 		Sound = "tractor_beam.wav"
-		Volume = 1 / (&<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/BeamCount)
+		Volume = 1 / (&~/EMITTER/BeamCount)
 		MaxConcurrent = 0 // Unlimited
 		MaxConcurrentVolume = 1
 		RampUpTime = .25
@@ -141,7 +143,7 @@ HitOperational
 	[
 		{
 			Type = Impulse
-			Impulse = { BaseValue = -(&~/TractorImpulse) / 2; EffectScaleExponent = 1 }
+			Impulse : ~/BASE_IMPULSE { BaseValue = -(&~/TractorImpulse) / 2 }
 		}
 		{
 			Type = Feedback
@@ -149,7 +151,7 @@ HitOperational
 			[
 				{
 					Type = Impulse
-					Impulse = { BaseValue = (&~/TractorImpulse) / 2; EffectScaleExponent = 1 }
+					Impulse : ~/BASE_IMPULSE { BaseValue = (&~/TractorImpulse) / 2 }
 				}
 			]
 		}
@@ -157,3 +159,21 @@ HitOperational
 }
 
 HitStructural = &HitOperational
+
+BASE_IMPULSE
+{
+	Modifiers
+	[
+		{
+			Type = BuffRemap
+			BuffType = Overclock
+			RemapFrom = [0, 1]
+			RemapTo = [1, (&~/EMITTER/OVERCLOCK/FORCE_FACTOR)]
+			ModificationMode = Multiply
+		}
+		{
+			Type = EffectScale
+			ModificationMode = Multiply
+		}
+	]
+}

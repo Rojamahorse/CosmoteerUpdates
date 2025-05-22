@@ -18,7 +18,7 @@ float _minAlpha;
 
 VERT_OUTPUT_BEAM vert(in VERT_INPUT_BEAM input)
 {
-    input.intensity = clamp(input.intensity, -1, 1);
+//    input.intensity = clamp(input.intensity, -1, 1);
 
 	VERT_OUTPUT_BEAM output;
     float4 vertexLoc = calculateWorldVertexLocProjZ(input, _extraBeginLength, _extraEndLength, 0, _extraEndArc);
@@ -80,13 +80,13 @@ PIX_OUTPUT pix(in VERT_OUTPUT_BEAM input) : SV_TARGET
 
 	float2 dd = float2(ddx(uv.x), ddy(uv.x));
 	dd = normalize(dd) / length(dd) * float2(ddx(input.normalizedLocation.x), ddy(input.normalizedLocation.y));
-	float2 captureUV = input.normalizedLocation + _displacementStrength * dd * noise * baseGradient * input.intensity / input.length;
+	float2 captureUV = input.normalizedLocation + _displacementStrength * dd * noise * baseGradient * clamp(input.intensity, -1, 1) / input.length;
 	float4 capturedColor = _capturedBackBuffer.Sample(_capturedBackBuffer_SS, captureUV);
 
 	float4 ret;
 	ret.a = baseGradient;
 	float blendFactor = 1 - saturate(((1 - noise) + 0.2) * 3 * baseGradient);
-	float4 col = lerp(_color1, _color2, displacementLines + blendFactor) * _additiveStrength;
+	float4 col = lerp(_color1, _color2, displacementLines + blendFactor) * _additiveStrength * clamp(abs(input.intensity), 1, 10);
 	ret.rgb = capturedColor.rgb + col.rgb;
 	ret.rgb *= input.color.rgb;
 	return ret;

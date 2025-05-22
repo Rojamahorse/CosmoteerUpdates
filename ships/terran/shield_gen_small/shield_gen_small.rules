@@ -1,6 +1,6 @@
 OVERCLOCK
 {
-	ARC_FACTOR = 0.5
+	ARC_FACTOR = 55%
 	DAMAGE_DRAIN_FACTOR = 1 / 3
 	EMP_RESIST = 50%
 	HEAT_PER_SECOND = 20
@@ -1175,25 +1175,31 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 	Stats
 	{
-		ShieldHP = (&~/Part/Components/BatteryStorage/MaxResources) / (&~/Part/Components/ArcShield/ResourceDrainPerDamage/BaseValue)
-		ShieldPenResist = &~/Part/Components/ArcShield/PenetrationResistance/0
-		ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue)
-		ShieldDist = (&~/Part/Components/ArcShield/Radius) - (&~/Part/Components/ArcShield/Location/1)
-		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 
-		RecPower = (&PowerUsageContinuous) + 0.5
+		RecPower = (&../StatsByCategory/0/Stats/PowerUsageContinuous) + 0.5
 		RecCrew = (&RecPower) * 4
 	}
-	
+
 	StatsByCategory
 	[
+		{
+			NameKey = "StatCategories/ShieldSmall"
+			Stats
+			{
+				ShieldHP = (&~/Part/Components/BatteryStorage/MaxResources) / (&~/Part/Components/ArcShield/ResourceDrainPerDamage/BaseValue)
+				ShieldPenResist = &~/Part/Components/ArcShield/PenetrationResistance/0
+				ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue)
+				ShieldDist = (&~/Part/Components/ArcShield/Radius) - (&~/Part/Components/ArcShield/Location/1)
+				PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000
+			}
+		}
 		{
 			NameKey = "StatCategories/Overclocked"
 			Stats
 			{
 				ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/ARC_FACTOR)
-				ShieldHP = (&~/Part/Stats/ShieldHP) / (&~/OVERCLOCK/DAMAGE_DRAIN_FACTOR)
+				ShieldHP = (&~/Part/StatsByCategory/0/Stats/ShieldHP) / (&~/OVERCLOCK/DAMAGE_DRAIN_FACTOR)
 				EMPResistPercentage = (&~/OVERCLOCK/EMP_RESIST) * 100
 				HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
 				HeatPerDamage = (&~/OVERCLOCK/HEAT_PER_DAMAGE)

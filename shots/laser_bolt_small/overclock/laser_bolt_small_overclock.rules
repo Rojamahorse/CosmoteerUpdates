@@ -1,44 +1,36 @@
-OVERCLOCK
-{
-	DAMAGE_FACTOR = 87.5%
-	EXTRA_RANGE = 50
-}
-BASE_BOLT_HIT = &<laser_bolt_large.rules>/Components/Hit
+BASE = &<./Data/shots/laser_bolt_small/laser_bolt_small.rules>
 
-Range = (&<laser_bolt_large.rules>/Range) + (&~/OVERCLOCK/EXTRA_RANGE)
-IdealRange = [90, (&~/Range)]
-Width = 0.2
+DAMAGE = 400
+
+Range = &BASE/Range
+IdealRange = &BASE/IdealRange
+IdealRadius = &BASE/IdealRadius
 
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
 
 HitShield = &HitOperational
-HitOperational : BASE_BOLT_HIT/HitOperational
+HitOperational
 {
 	HitEffects
 	[
-		: ../^/0/HitEffects/0
 		{
-			Damage : ^/0/Damage
-			{
-				BaseValue = floor((&^/0/BaseValue) * (&~/OVERCLOCK/DAMAGE_FACTOR))
-			}
+			Type = Damage
+			Damage : ~/BASE/Components/Hit/HitOperational/HitEffects/0/Damage { BaseValue=&~/DAMAGE }
 		}
 	]
+	MediaEffects = &~/BASE/Components/Hit/HitOperational/MediaEffects
 }
-
-HitStructural : BASE_BOLT_HIT/HitStructural
+HitStructural
 {
 	HitEffects
 	[
-		: ../^/0/HitEffects/0
 		{
-			Damage : ^/0/Damage
-			{
-				BaseValue = floor((&^/0/BaseValue) * (&~/OVERCLOCK/DAMAGE_FACTOR))
-			}
+			Type = Damage
+			Damage : ~/BASE/Components/Hit/HitStructural/HitEffects/0/Damage { BaseValue=ceil((&~/DAMAGE)/2) }
 		}
 	]
+	MediaEffects = &~/BASE/Components/Hit/HitStructural/MediaEffects
 }
 
 BeamMediaEffects
@@ -50,19 +42,19 @@ BeamMediaEffects
 		{
 			Texture
 			{
-				File = ../../common_effects/particles/noise_gradient.png
+				File = ./Data/common_effects/particles/noise_gradient.png
 				SampleMode = Linear
 				MipLevels = max
 				UVMode = Wrap
 			}
 			_noiseTexture
 			{
-				File = ../../common_effects/particles/noise_voronoi.png
+				File = ./Data/common_effects/particles/noise_voronoi.png
 				MipLevels = max
 				SampleMode = Linear
 				UVMode = Wrap
 			}
-			Shader = "../ion_beam/ion_beam.shader"
+			Shader = "./Data/shots/ion_beam/ion_beam.shader"
 			_extraBeginLength = 0
 			_extraEndLength = 0.25
 			_sizePulseFactor = 1.2

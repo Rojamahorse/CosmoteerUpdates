@@ -3,6 +3,9 @@ OVERCLOCK
 	POWER_GENERATION_FACTOR = 150%
 	BONUS_BATTERY_SIZE = 1
 	HEAT_PER_SECOND = 1200
+	
+	BATTERY_PER_SEC = (&~/Part/Components/BatteryProducer/ToQuantity/BaseValue) * (&POWER_GENERATION_FACTOR) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
+	HEAT_PER_BATTERY = (&HEAT_PER_SECOND) / (&BATTERY_PER_SEC)
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -91,6 +94,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 			ToggleOnResources = 6001
 			ToggleOffResources = 6000
+			ProvidedValueRange = 0
+			ProvidedValuePerResource = 1/1000
 		}
 		Overclock_BatteryProviderStorage : BatteryStorage
 		{
@@ -158,25 +163,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
-		OverheatEffects : ^/0/OverheatEffects
+		Overclock_PowerGenerationTrigger
 		{
-			Location = [2, 2]
+			Type = ValueChangeTrigger
+			OperationalToggle = IsOverclocked
+			ValueSource = BatteryStorage
+			TriggerOnDecrease = false;
 		}
 
-		IsOverclockedAndProducing
-		{
-			Type = MultiToggle
-			Toggles = [IsOverclocked, BatteryProducer]
-			Mode = All
-		}
 		Overclock_GenerationHeatProducer
 		{
-			Type = ResourceConverter
-			OperationalToggle = IsOverclockedAndProducing
-			HEAT_PER_INTERVAL = (&~/OVERCLOCK/HEAT_PER_SECOND) * (&Interval)
-			ToQuantity = ceil((&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE))
-			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
-			Interval = 0.5
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_PowerGenerationTrigger
+			Amount { BaseValue=ceil((&~/OVERCLOCK/HEAT_PER_BATTERY) * (&~/HEAT_TO_RESOURCE)); EffectScaleExponent=1 }
 		}
 
 		Router
@@ -472,160 +472,237 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 
-		ReactorLights_NonOverclocked_Components
+		ReactorLights_Graphics
+		{
+			Type = Graphics
+			OperationalToggle = IsOperational
+			Location = [2, 2]
+			DoodadToggle = IsOverclocked
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"lights1.png"
+							"lights2.png"
+							"lights3.png"
+							"lights4.png"
+							"lights5.png"
+							"lights6.png"
+							"lights7.png"
+							"lights8.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.065
+					}
+					{
+						AnimationFiles
+						[
+							"lights1.png"
+							"lights2.png"
+							"lights3.png"
+							"lights4.png"
+							"lights5.png"
+							"lights6.png"
+							"lights7.png"
+							"lights8.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.065/1.75
+					}
+					{
+						AnimationFiles
+						[
+							"lights1.png"
+							"lights2.png"
+							"lights3.png"
+							"lights4.png"
+							"lights5.png"
+							"lights6.png"
+							"lights7.png"
+							"lights8.png"
+						]
+						Size = [4, 4]
+						AnimationInterval = 0.065/2.5
+					}
+				]
+			}
+			ToggleOnDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "OCLights.png"
+						Size = [4, 4]
+					}
+				]
+			}
+		}
+
+		NonOverclocked_Components
 		{
 			Type = ToggledComponents
 			Toggle = IsNonOverclocked
 			Components
 			{
-				ReactorLights_NonOverclocked_Graphics
+				BatterySprites
 				{
-					Type = Graphics
-					OperationalToggle = IsOperational
+					Type = ResourceSprites
 					Location = [2, 2]
-					OperationalLighting
-					{
-						Layer = "lights_add"
-						DamageLevels
-						[
-							{
-								AnimationFiles
-								[
-									"lights1.png"
-									"lights2.png"
-									"lights3.png"
-									"lights4.png"
-									"lights5.png"
-									"lights6.png"
-									"lights7.png"
-									"lights8.png"
-								]
-								Size = [4, 4]
-								AnimationInterval = 0.065
-							}
-							{
-								AnimationFiles
-								[
-									"lights1.png"
-									"lights2.png"
-									"lights3.png"
-									"lights4.png"
-									"lights5.png"
-									"lights6.png"
-									"lights7.png"
-									"lights8.png"
-								]
-								Size = [4, 4]
-								AnimationInterval = 0.065/1.75
-							}
-							{
-								AnimationFiles
-								[
-									"lights1.png"
-									"lights2.png"
-									"lights3.png"
-									"lights4.png"
-									"lights5.png"
-									"lights6.png"
-									"lights7.png"
-									"lights8.png"
-								]
-								Size = [4, 4]
-								AnimationInterval = 0.065/2.5
-							}
-						]
-					}
+					ResourceStorage = BatteryStorage
+					Layer = "doodads_high"
+					Round = Down
+					ResourceLevels
+					[
+						{
+							File = "batteries1.png"
+							Offset = [0.5, -1.5]
+							Size = [1, 1]
+						}
+						{
+							File = "batteries2.png"
+							Offset = [1, -1]
+							Size = [2, 2]
+						}
+						{
+							File = "batteries3.png"
+							Offset = [1, 0]
+							Size = [2, 4]
+						}
+						{
+							File = "batteries4.png"
+							Offset = [1, 0]
+							Size = [2, 4]
+						}
+						{
+							File = "batteries5.png"
+							Size = [4, 4]
+						}
+						{
+							File = "batteries6.png"
+							Size = [4, 4]
+						}
+						{
+							File = "batteries7.png"
+							Size = [4, 4]
+						}
+						{
+							File = "batteries8.png"
+							Size = [4, 4]
+						}
+					]
 				}
 			}
 		}
 
-
-		ReactorLights_Overclocked_Components
+		Overclocked_Components
 		{
 			Type = ToggledComponents
 			Toggle = IsOverclocked
 			Components
 			{
-				ReactorLights_Overclocked_Graphics
+				OCBatterySprites
 				{
-					Type = Graphics
-					OperationalToggle = IsOperational
+					Type = ResourceSprites
 					Location = [2, 2]
-					OperationalLighting
-					{
-						Layer = "lights_add"
-						DamageLevels
-						[
-							{
-								AnimationFiles
-								[
-									"lights1.png"
-									"lights2.png"
-									"lights3.png"
-									"lights4.png"
-									"lights5.png"
-									"lights6.png"
-									"lights7.png"
-									"lights8.png"
-								]
-								Size = [4, 4]
-								AnimationInterval = 0.04
-							}
-							{
-								AnimationFiles
-								[
-									"lights1.png"
-									"lights2.png"
-									"lights3.png"
-									"lights4.png"
-									"lights5.png"
-									"lights6.png"
-									"lights7.png"
-									"lights8.png"
-								]
-								Size = [4, 4]
-								AnimationInterval = 0.04/1.75
-							}
-							{
-								AnimationFiles
-								[
-									"lights1.png"
-									"lights2.png"
-									"lights3.png"
-									"lights4.png"
-									"lights5.png"
-									"lights6.png"
-									"lights7.png"
-									"lights8.png"
-								]
-								Size = [4, 4]
-								AnimationInterval = 0.04/2.5
-							}
-						]
-					}
-				}
-
-				OCLights_Graphics
-				{
-					Type = Graphics
-					OperationalToggle = IsOperational
-					DoodadToggle = IsOverclocked
-					Location = [2, 2]
-					ToggleOnDoodad
-					{
-						Layer = "lights_add"
-						DamageLevels
-						[
-							{
-								File = "OCLights.png"
-								Size = [4, 4]
-							}
-						]
-					}
+					ResourceStorage = BatteryStorage
+					Layer = "doodads_high"
+					Round = Down
+					ResourceLevels
+					[
+						{
+							File = "OCbatteries1.png"
+							Offset = [0.5, -1.5]
+							Size = [1, 1]
+						}
+						{
+							File = "OCbatteries2.png"
+							Offset = [1, -1]
+							Size = [2, 2]
+						}
+						{
+							File = "OCbatteries3.png"
+							Offset = [1, 0]
+							Size = [2, 4]
+						}
+						{
+							File = "OCbatteries4.png"
+							Offset = [1, 0]
+							Size = [2, 4]
+						}
+						{
+							File = "OCbatteries5.png"
+							Size = [4, 4]
+						}
+						{
+							File = "OCbatteries6.png"
+							Size = [4, 4]
+						}
+						{
+							File = "OCbatteries7.png"
+							Size = [4, 4]
+						}
+						{
+							File = "OCbatteries8.png"
+							Size = [4, 4]
+						}
+					]
 				}
 			}
 		}
-
+/*
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [2, 2]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			Round = Down
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Offset = [0.5, -1.5]
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Offset = [1, -1]
+					Size = [2, 2]
+				}
+				{
+					File = "batteries3.png"
+					Offset = [1, 0]
+					Size = [2, 4]
+				}
+				{
+					File = "batteries4.png"
+					Offset = [1, 0]
+					Size = [2, 4]
+				}
+				{
+					File = "batteries5.png"
+					Size = [4, 4]
+				}
+				{
+					File = "batteries6.png"
+					Size = [4, 4]
+				}
+				{
+					File = "batteries7.png"
+					Size = [4, 4]
+				}
+				{
+					File = "batteries8.png"
+					Size = [4, 4]
+				}
+			]
+		}
+*/
 		ReactorHum
 		{
 			Type = ContinuousEffects
@@ -683,54 +760,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			MediaEffects
 			[
 				&<./Data/nebulas/electron/particles/electron_reactor_sizzle.rules>
-			]
-		}
-
-		BatterySprites
-		{
-			Type = ResourceSprites
-			Location = [2, 2]
-			ResourceStorage = BatteryStorage
-			Layer = "doodads_high"
-			Round = Down
-			ResourceLevels
-			[
-				{
-					File = "batteries1.png"
-					Offset = [0.5, -1.5]
-					Size = [1, 1]
-				}
-				{
-					File = "batteries2.png"
-					Offset = [1, -1]
-					Size = [2, 2]
-				}
-				{
-					File = "batteries3.png"
-					Offset = [1, 0]
-					Size = [2, 4]
-				}
-				{
-					File = "batteries4.png"
-					Offset = [1, 0]
-					Size = [2, 4]
-				}
-				{
-					File = "batteries5.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries6.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries7.png"
-					Size = [4, 4]
-				}
-				{
-					File = "batteries8.png"
-					Size = [4, 4]
-				}
 			]
 		}
 
@@ -927,7 +956,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			{
 				BatterySize = (&~/Part/Stats/BatterySize) + (&~/OVERCLOCK/BONUS_BATTERY_SIZE)
 				PowerGeneration = (&~/Part/Stats/PowerGeneration) * (&~/OVERCLOCK/POWER_GENERATION_FACTOR)
-				HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
+				PowerHeatGeneration = [&~/OVERCLOCK/HEAT_PER_BATTERY, &~/OVERCLOCK/HEAT_PER_SECOND]
 			}
 		}
 	]

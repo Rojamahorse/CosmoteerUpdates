@@ -76,6 +76,26 @@ PartStats
 		FormatKey = "Stats/TractorForceFmt"
 	}
 	{
+		ID = TractorOverloadForce
+		FormatKey = "Stats/TractorOverloadForceFmt"
+	}
+	{
+		ID = TractorOverloadRadius
+		FormatKey = "Stats/TractorOverloadRadiusFmt"
+	}
+	{
+		ID = TractorOverloadChargeTime
+		FormatKey = "Stats/TractorOverloadChargeTimeFmt"
+	}
+	{
+		ID = TractorOverloadMinPower
+		FormatKey = "Stats/TractorOverloadMinPowerFmt"
+	}
+	{
+		ID = TractorOverloadHeatGeneration
+		FormatKey = "Stats/TractorOverloadHeatGenerationFmt"
+	}
+	{
 		ID = ThrusterBuff
 		FormatKey = "Stats/ThrusterBuffFmt"
 	}
@@ -106,26 +126,6 @@ PartStats
 	{
 		ID = BatteryFillTime
 		FormatKey = "Stats/BatteryFillTimeFmt"
-	}
-	{
-		ID = ResonanceFireSize
-		FormatKey = "Stats/ResonanceFireSizeFmt"
-	}
-	{
-		ID = ResonanceDamageArea
-		FormatKey = "Stats/ResonanceDamageAreaFmt"
-	}
-	{
-		ID = ResonanceDamageFlammable
-		FormatKey = "Stats/ResonanceDamageFlammableFmt"
-	}
-	{
-		ID = ResonanceDamageNonFlammable
-		FormatKey = "Stats/ResonanceDamageNonFlammableFmt"
-	}
-	{
-		ID = ResonanceDamageShield
-		FormatKey = "Stats/ResonanceDamageShieldFmt"
 	}
 
 	// Damage & Weapons.
@@ -176,10 +176,6 @@ PartStats
 	{
 		ID = DamageContinuousAsteroids
 		FormatKey = "Stats/DamageContinuousAsteroidsFmt"
-	}
-	{
-		ID = DamageContinuousPercent
-		FormatKey = "Stats/DamageContinuousPercentageFmt"
 	}
 	{
 		ID = ShieldDamage
@@ -647,16 +643,16 @@ PartStats
 		FormatKey = "Stats/BoostHeatFactorBatteryThresholdFmt"
 	}
 	{
+		ID = PowerHeatGeneration
+		FormatKey = "Stats/PowerHeatGenerationFmt"
+	}
+	{
 		ID = StorageHeatGeneration
 		FormatKey = "Stats/StorageHeatGenerationFmt"
 	}
 	{
 		ID = BatteryDeliveredHeatGeneration
 		FormatKey = "Stats/BatteryDeliveredHeatGenerationFmt"
-	}
-	{
-		ID = ThermalPowerGain
-		FormatKey = "Stats/ThermalPowerGainFmt"
 	}
 
 	// Usage rates.
@@ -807,10 +803,6 @@ PartStats
 	{
 		ID = HeatDissipation
 		FormatKey = "Stats/HeatDissipationFmt"
-	}
-	{
-		ID = ThermalPowerLoss
-		FormatKey = "Stats/ThermalPowerLossFmt"
 	}
 
 

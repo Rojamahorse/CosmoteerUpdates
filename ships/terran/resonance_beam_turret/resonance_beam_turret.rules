@@ -20,7 +20,7 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 12500
 	TypeCategories = [weapon, uses_power, is_crewed, heat_resistant]
-	ReceivableBuffs : ^/0/ReceivableBuffs [ThermalIntensity, ThermalRadius, ThermalActivity, Overclock]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ThermalIntensity, ThermalRadius, ThermalShieldPiercing, ThermalActivity, Overclock]
 	Flammable = false
 	ProhibitedBy : ^/0/ProhibitedBy [tall]
 	ProhibitRects
@@ -653,6 +653,45 @@ Part : <../base_part_terran.rules>/Part
 			BuffType = ThermalActivity
 			BuffAmount = 1
 			BuffMultiplier = HeatGenerationValue
+		}
+		
+		ThermalShieldPiercingDenominatorOffset
+		{
+			Type = StaticValue
+			Value = 250
+		}
+		ThermalShieldPiercingExponent
+		{
+			Type = StaticValue
+			Value = 0.85
+		}
+		ThermalShieldPiercingIntensity
+		{
+			Type = ValueOperation
+			Operator = Power
+			ValueOne = IntensityMultiplier
+			ValueTwo = ThermalShieldPiercingExponent
+		}
+		ThermalShieldPiercingDenominator
+		{
+			Type = MultiValue
+			Values = [ThermalShieldPiercingIntensity, ThermalShieldPiercingDenominatorOffset]
+			Mode = Add
+		}
+		ThermalShieldPiercingMultiplier
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne = ThermalShieldPiercingIntensity
+			ValueTwo = ThermalShieldPiercingDenominator
+			NaNFallbackValue = 0
+		}
+		ThermalShieldPiercingBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = ThermalShieldPiercing
+			BuffAmount = 1
+			BuffMultiplier = ThermalShieldPiercingMultiplier
 		}
 		
 		OverheatEffects
@@ -2083,11 +2122,11 @@ Part : <../base_part_terran.rules>/Part
 				HeatPerTileContinuous = &~/Part/Components/BeamEmitter/BASE_HEAT
 				ResonanceHeatPool = [&~/Part/Components/BeamEmitter/BASE_HEAT_POOL, &~/Part/Components/BeamEmitter/HEAT_POOL_AMP_EXPONENT]
 				DilationHeatSpreadDistance = &~/Part/Components/BeamEmitter/BASE_HEAT_SPREAD_BUDGET
-				HitShieldHeatFactor = (&~/Part/Components/BeamEmitter/SHIELD_HEAT_FACTOR) * 100
+//				HitShieldHeatFactor = (&~/Part/Components/BeamEmitter/SHIELD_HEAT_FACTOR) * 100
 				
 				SHIELD_OVERLOAD_BASE = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_BASE) * 100
 				ShieldDamagePowerCost = [(&../SHIELD_OVERLOAD_BASE) * (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_AMP_FACTOR),
-					(&../SHIELD_OVERLOAD_BASE)]
+					(&../SHIELD_OVERLOAD_BASE) * (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_DILATION_FACTOR)]
 				
 				BaseAmplification = (1 + (&~/Part/Components/BaseAmplification/Value)) * 100
 				BaseDilation = (1 + (&~/Part/Components/BaseDilation/Value)) * 100

@@ -1,8 +1,9 @@
 OVERCLOCK
 {
-	HEAT_PER_SHOT = 320
-	FIRE_RATE_FACTOR = 200%
-	POWER_USE_FACTOR = (&~/EMITTER_BASE_OVERCLOCK/OVERCLOCK/DAMAGE_FACTOR)
+	BULLET = &<./Data/shots/laser_bolt_large/overclock/laser_bolt_large_overclock.rules>
+	HEAT_PER_SHOT = 650
+	FIRE_RATE_FACTOR = 50%
+	POWER_USE_FACTOR = 200%
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -166,10 +167,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 		
-		OverheatEffects : ^/0/OverheatEffects
-		{
-			Location = [1, 3.5]
-		}
+		OverheatEffects : ^/0/OverheatEffects {}
 
 		Overclock_ShotHeatProducer
 		{
@@ -675,7 +673,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 
-		// Beam emitters
 		OverclockedComponents
 		{
 			Type = ToggledComponents
@@ -683,16 +680,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Components
 			{
 				// Doesn't actually fire; only used for targeting and as a base for the left and right emitters.
-				EmitterBase : <./Data/shots/laser_bolt_large/laser_bolt_large_overclock.rules>
+				EmitterBase
         		{
-        			Type = BeamEmitter
+        			Type = BulletEmitter
         			ChainedTo = Turret
         			FireTrigger // none, but field is required
         			GetTargetFrom = Turret
         			Location = [1.484375, 0]
         			OperationalToggle = IsOperational
-        			FireDelay = (&~/Part/Components/NonOverclockedComponents/Components/EmitterBase/FireDelay) / (&~/OVERCLOCK/FIRE_RATE_FACTOR)
-        			Duration = 0
+        			Bullet = &~/OVERCLOCK/BULLET
         			ResourceStorage = BatteryStorage
         			ResourcesUsed = floor(500 * (&~/OVERCLOCK/POWER_USE_FACTOR))
         			MinResourcesUsed = 1
@@ -1103,7 +1099,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue
-			SHOT_HEAT_PER_SECOND = (&~/Part/StatsByCategory/1/Stats/HeatPerShot) * (&~/Part/StatsByCategory/1/Stats/ROF)
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/StatsByCategory/1/Stats/ROF)
 			Value = (&SHOT_HEAT_PER_SECOND)
 		}
 		HeatGenerationStatProvider
@@ -1149,13 +1145,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 			NameKey = "StatCategories/Overclocked"
 			Stats
 			{
-				DamagePerShot = &~/EMITTER_BASE_OVERCLOCK/HitOperational/HitEffects/0/Damage/BaseValue
+				DamagePerShot = &~/OVERCLOCK/BULLET/DAMAGE
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+				ShieldDamagePerShot = &~/OVERCLOCK/BULLET/DAMAGE_SHIELD
+				ShieldDamagePerSecond = (&ShieldDamagePerShot) * (&ROF)
+				ShieldDamage = [&../ShieldDamagePerShot, &../ShieldDamagePerSecond]
+				DamageArea = &~/OVERCLOCK/BULLET/DAMAGE_RADIUS
 				ROF = (&../../0/Stats/ROF) * (&~/OVERCLOCK/FIRE_RATE_FACTOR)
-				Range = &~/EMITTER_BASE_OVERCLOCK/Range
-				ShotSpeed = Infinity
+				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
 				PowerPerShot = (&~/EMITTER_BASE_OVERCLOCK/ResourcesUsed) / 1000
 				PowerPerSecond = (&PowerPerShot) * (&ROF)
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]

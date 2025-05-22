@@ -565,6 +565,49 @@ PartToggles
 		]
 	}
 	
+	// Tractor Beam Overcharge
+	{
+		ToggleID = "tractor_overload"
+		Style = CycledButton
+		ShowWithShipCommands = true
+		MultipleModesDisplayOrder = Last
+		SortOrder = 1
+		Choices
+		[
+			// Off
+			{
+				ChoiceID = "tractor_overload_off"
+				ButtonToolTipKey = "PartToggles/TractorOverload"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tractor_beam_overcharge.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+			}
+
+			// On
+			{
+				ChoiceID = "tractor_overload_on"
+				ButtonToolTipKey = "PartToggles/TractorOverload"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tractor_beam_overcharge.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+			}
+		]
+	}
+	
 	// Safe / dangerous toggle
 	{
 		ToggleID = "thermal_safety"

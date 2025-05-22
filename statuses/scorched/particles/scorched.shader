@@ -1,24 +1,8 @@
-#include "./Data/base.shader"
-
-struct VERT_INPUT_SCORCH
-{
-    float4 location : POSITION;
-    float4 color : COLOR0;
-    float2 uv : TEXCOORD0;
-    float2 shipLocation : TEXCOORD1;
-    float intensity : TEXCOORD2;
-	float roofOpacity : TEXCOORD3;
-};
-struct VERT_OUTPUT_SCORCH
-{
-    float4 location : SV_POSITION;
-    float4 color : COLOR0;
-    float2 uv : TEXCOORD0;
-    float2 shipLocation : TEXCOORD1;
-	float intensity : TEXCOORD2;
-	float roofOpacity : TEXCOORD3;
-    float2 screenUV : TEXCOORD4;
-};
+#define ENABLE_INTENSITY
+#define ENABLE_SHIP_COORDS
+#define ENABLE_SCREEN_UV
+#define USE_DEFAULT_VERT
+#include "./Data/base_shipquad.shader"
 
 Texture2D _maskTexture;
 SamplerState _maskTexture_SS;
@@ -28,20 +12,7 @@ SamplerState _noiseTexture_SS;
 
 bool _useRoofAlpha;
 
-VERT_OUTPUT_SCORCH vert(in VERT_INPUT_SCORCH input)
-{
-    VERT_OUTPUT_SCORCH output;
-    output.location = mul(input.location, _transform);
-    output.color = input.color;
-    output.uv = input.uv;
-    output.shipLocation = input.shipLocation;
-    output.screenUV.x = (output.location.x + 1) / 2;
-	output.screenUV.y = (-output.location.y + 1) / 2;
-    output.roofOpacity = input.roofOpacity;
-    return output;
-}
-
-PIX_OUTPUT pix(in VERT_OUTPUT_SCORCH input) : SV_TARGET
+PIX_OUTPUT pix(in GEOM_OUTPUT input) : SV_TARGET
 {
 //    float4 sample = _texture.Sample(_texture_SS, input.uv);
 //    return float4(sample.rgb, sample.r);
@@ -83,7 +54,7 @@ PIX_OUTPUT pix(in VERT_OUTPUT_SCORCH input) : SV_TARGET
 	if (_useRoofAlpha)
 	{
 		//return float4(input.color.rgb, saturate(lightCol + input.color.a * alpha * mask) * input.roofOpacity * rawNormals.a);
-		float baseCol = 1 - ((saturate(lightCol + input.color.a * alpha * mask) * input.roofOpacity * rawNormals.a) * 0.9);
+		float baseCol = 1 - ((saturate(lightCol + input.color.a * alpha * mask) * _roofOpacity * rawNormals.a) * 0.9);
 		return float4(baseCol, baseCol, baseCol, 1); //multiply
 	}
 	else

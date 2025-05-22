@@ -166,6 +166,7 @@ RocketBatteryConnection // Only used to show connection in blueprints.
 HeatDissipation {}
 ThermalIntensity {}
 ThermalRadius {}
+ThermalShieldPiercing {}
 ThermalActivity { MinValue = 0 }
 Overclock {}
 IonOverclockCharge {}

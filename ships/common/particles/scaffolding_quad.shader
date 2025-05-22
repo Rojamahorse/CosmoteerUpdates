@@ -1,32 +1,7 @@
-#include "./Data/base.shader"
-
-struct VERT_INPUT_SALVAGE
-{
-	float4 location : POSITION;
-	float4 color : COLOR0;
-	float2 uv : TEXCOORD0;
-	float2 shipLocation : TEXCOORD1;
-};
-struct VERT_OUTPUT_SALVAGE
-{
-	float4 location : SV_POSITION;
-	float4 color : COLOR0;
-	float2 uv : TEXCOORD0;
-	float2 shipLocation : TEXCOORD1;
-	float2 screenUV : TEXCOORD2;
-};
-
-VERT_OUTPUT_SALVAGE vert(in VERT_INPUT_SALVAGE input)
-{
-	VERT_OUTPUT_SALVAGE output;
-	output.location = mul(input.location, _transform);
-	output.color = input.color;
-	output.uv = input.uv;
-	output.shipLocation = input.shipLocation;
-	output.screenUV.x = (output.location.x + 1) / 2;
-	output.screenUV.y = (-output.location.y + 1) / 2;
-	return output;
-}
+#define ENABLE_SHIP_COORDS
+#define ENABLE_SCREEN_UV
+#define USE_DEFAULT_VERT
+#include "./Data/base_shipquad.shader"
 
 Texture2D _maskTexture;
 SamplerState _maskTexture_SS;
@@ -36,7 +11,7 @@ float4 _coldColor = 255;
 float _normalIntensity;
 float _intensity;
 
-PIX_OUTPUT pix(in VERT_OUTPUT_SALVAGE input) : SV_TARGET
+PIX_OUTPUT pix(in GEOM_OUTPUT input) : SV_TARGET
 {
 	float progress = input.color.r;
 	float maskTex = _maskTexture.Sample(_maskTexture_SS, input.uv).a;

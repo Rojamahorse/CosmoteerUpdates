@@ -3,7 +3,7 @@ OVERCLOCK
 	CAPACITY_FACTOR = 300%
 	BATTERY_SIZE_FACTOR = 300%
 	MAX_HEAT_PER_SECOND = 250
-	HEAT_PER_BATTERY_DELIVERED = 20
+	HEAT_PER_BATTERY_DELIVERED = 50
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -406,120 +406,266 @@ Part : <../base_part_terran_overclock.rules>/Part
 					}
 				]
 			}
-
 		}
 
-		BatterySprites
+		Overclock_Graphics_Components
 		{
-			Type = ResourceSprites
-			Location = [1, 1]
-			ResourceStorage = BatteryReceiverStorage
-			Layer = "doodads_low"
-			ResourceLevels
-			[
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Components
+			{
+				Overclock_Light_Graphics
 				{
-					File = "batteries1.png"
-					Size = [1, 1]
-					Offset = [-0.5,-0.5]
+					Type = Graphics
+					Location = [1, 1]
+					OperationalToggle = IsOperational
+					OperationalLighting
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "lights.png"
+								Size = [2, 2]
+							}
+						]
+					}
 				}
+
+				Overclock_BatterySprites1
 				{
-					File = "batteries2.png"
-					Size = [2, 1]
-					Offset = [0,-0.5]
+					Type = ResourceSprites
+					Location = [1, 40/64]
+					ResourceStorage = BatteryReceiverStorage
+					Layer = "doodads_low"
+					RangeLow = 0
+					RangeHigh = 18000
+					ResourceLevels
+					[
+						{
+							File = "batteries_overclock1.png"
+							Size = [1, 1]
+							Offset = [-0.5,0]
+						}
+						{
+							File = "batteries_overclock2.png"
+							Size = [1, 1]
+							Offset = [-0.5,0]
+						}
+						{
+							File = "batteries_overclock3.png"
+							Size = [1, 1]
+							Offset = [-0.5,0]
+						}
+						{
+							File = "batteries_overclock4.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock5.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock6.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock7.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock8.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock9.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock10.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock11.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock12.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock13.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock14.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock15.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock16.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock17.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock18.png"
+							Size = [2, 1]
+						}
+					]
 				}
+				Overclock_BatterySprites2 : Overclock_BatterySprites1
 				{
-					File = "batteries3.png"
-					Size = [2, 1]
-					Offset = [0,-0.5]
+					Location = [1, 56/64]
+					RangeLow = 18001
+					RangeHigh = 36000
 				}
+				Overclock_BatterySprites3 : Overclock_BatterySprites1
 				{
-					File = "batteries4.png"
-					Size = [2, 1]
-					Offset = [0,-0.5]
+					Location = [1, 72/64]
+					RangeLow = 36001
+					RangeHigh = 54000
 				}
+				Overclock_BatterySprites4 : Overclock_BatterySprites1
 				{
-					File = "batteries5.png"
-					Size = [2, 1]
-					Offset = [0,-0.5]
+					Location = [1, 88/64]
+					RangeLow = 54001
+					RangeHigh = 72000
 				}
+			}
+		}
+
+		IsNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOverclocked ]
+			Mode = None
+		}
+
+		NonOverclock_Graphics_Components
+		{
+			Type = ToggledComponents
+			Toggle = IsNonOverclocked
+			Components
+			{
+				Overclock_BatterySprites
 				{
-					File = "batteries6.png"
-					Size = [2, 1]
-					Offset = [0,-0.5]
+					Type = ResourceSprites
+					Location = [1, 1]
+					ResourceStorage = BatteryReceiverStorage
+					Layer = "doodads_low"
+					ResourceLevels
+					[
+						{
+							File = "batteries1.png"
+							Size = [1, 1]
+							Offset = [-0.5,-0.5]
+						}
+						{
+							File = "batteries2.png"
+							Size = [2, 1]
+							Offset = [0,-0.5]
+						}
+						{
+							File = "batteries3.png"
+							Size = [2, 1]
+							Offset = [0,-0.5]
+						}
+						{
+							File = "batteries4.png"
+							Size = [2, 1]
+							Offset = [0,-0.5]
+						}
+						{
+							File = "batteries5.png"
+							Size = [2, 1]
+							Offset = [0,-0.5]
+						}
+						{
+							File = "batteries6.png"
+							Size = [2, 1]
+							Offset = [0,-0.5]
+						}
+						{
+							File = "batteries7.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries8.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries9.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries10.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries11.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries12.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries13.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries14.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries15.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries16.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries17.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries18.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries19.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries20.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries21.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries22.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries23.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries24.png"
+							Size = [2, 2]
+						}
+					]
 				}
-				{
-					File = "batteries7.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries8.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries9.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries10.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries11.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries12.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries13.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries14.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries15.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries16.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries17.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries18.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries19.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries20.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries21.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries22.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries23.png"
-					Size = [2, 2]
-				}
-				{
-					File = "batteries24.png"
-					Size = [2, 2]
-				}
-			]
+			}
 		}
 
 		ScorchedTrigger

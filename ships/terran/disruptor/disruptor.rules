@@ -769,7 +769,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				PowerDrainPerShot = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Amount/BaseValue) / 1000
 				PowerDrainPerSecond = (&PowerDrainPerShot) * (&ROF)
 				PowerDrain = [&../PowerDrainPerShot, &../PowerDrainPerSecond]
-				ShieldPenetration = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/Penetration) / (&<../shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/PenetrationResistance/0)
+				ShieldPenetration = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/Penetration
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
 				Range = &~/Part/Components/BulletEmitter/Bullet/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)

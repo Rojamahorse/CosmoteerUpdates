@@ -1,0 +1,91 @@
+BASE = &<./Data/shots/laser_bolt_large/laser_bolt_large.rules>
+
+ID = "cosmoteer.laser_bolt_large_overclock"
+Range = &BASE/Range
+IdealRange = &BASE/IdealRange
+IdealRadius = &BASE/IdealRadius
+Speed = &BASE/Speed
+ReceivableBuffs = &BASE/ReceivableBuffs
+
+DAMAGE = 200% * (&BASE/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue)
+DAMAGE_SHIELD = (&DAMAGE) / (&DAMAGE_RADIUS) * 80%
+DAMAGE_RADIUS = 2
+IMPULSE = 200% * (&BASE/Components/Hit/HitOperational/HitEffects/1/Impulse/BaseValue)
+HEALTH = 175% * (&BASE/Components/Targetable/Health)
+
+Components : &BASE/Components
+{
+	Targetable : ^/0/Targetable
+	{
+		Health = &~/HEALTH
+	}
+	
+	Hit : ^/0/Hit
+	{
+		HitCrew = &HitOperational
+		HitShield = &HitOperational
+		HitOperational : ^/0/HitOperational
+		{
+			HitEffects
+			[
+				// Non-shield damage
+				{
+					Type = AreaDamage
+					Damage : ~/BASE/Components/Hit/HitOperational/HitEffects/0/Damage { BaseValue=&~/DAMAGE }
+					Radius = &~/DAMAGE_RADIUS
+					RectType = Normal
+					Falloff = 0.5
+					Filter
+					{
+						Shields = false
+					}
+				}
+				// Shield damage
+				: 0 {
+					Damage : ^/0/Damage { BaseValue=&~/DAMAGE_SHIELD }
+					Filter
+					{
+						Shields = true
+						OperationalHealth = false
+						StructuralHealth = false
+					}
+				}
+				: ../^/0/HitEffects/1 {
+					Impulse : ^/0/Impulse { BaseValue=&~/IMPULSE }
+				}
+			]
+			MediaEffects : ^/0/MediaEffects
+			[
+				&<particles/laser_bolt_large_overclock_hit.rules>
+			]
+		}
+		HitStructural : ^/0/HitStructural
+		{
+			HitEffects
+			[
+				: ../^/0/HitEffects/0 {
+					Damage : ^/0/Damage { BaseValue=floor((&~/DAMAGE) / 2) }
+				}
+				: ../^/0/HitEffects/1 {
+					Impulse : ^/0/Impulse { BaseValue=floor((&~/IMPULSE) / 2) }
+				}
+			]
+		}
+	}
+	
+	// Needed to prevent crash from ReduceScaleWith=Hit
+	Sprite : ^/0/Sprite
+	{}
+	
+	MediaEffects
+	{
+		Type = MediaEffects
+		Offset = [-0.5, 0]
+		FactorEffectsWith = Hit
+		FactorEffectsExponent = 0.5
+		MediaEffects
+		[
+			&<particles/laser_bolt_large_overclock_lightning.rules>
+		]
+	}
+}

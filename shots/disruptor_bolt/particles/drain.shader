@@ -1,42 +1,9 @@
-#include "./Data/base.shader"
-
-struct VERT_INPUT_DRAIN
-{
-	float4 location : POSITION;
-	float4 color : COLOR0;
-	float2 uv : TEXCOORD0;
-};
-struct VERT_OUTPUT_DRAIN
-{
-	float4 location : SV_POSITION;
-	float4 color : COLOR0;
-	float2 uv : TEXCOORD0;
-	float2 screenUV : TEXCOORD1;
-	float2 texScroll : TEXCOORD2;
-	float2 noiseScroll : TEXCOORD3;
-	float intensity : COLOR1;
-	float inverseIntensity : COLOR2;
-	float doubleIntensity : COLOR3;
-};
+#define ENABLE_SCREEN_UV
+#define USE_DEFAULT_VERT
+#include "./Data/base_shipquad.shader"
 
 float2 _noiseScrollSpeed;
 float2 _texScrollSpeed;
-
-VERT_OUTPUT_DRAIN vert(in VERT_INPUT_DRAIN input)
-{
-	VERT_OUTPUT_DRAIN output;
-	output.location = mul(input.location, _transform);
-	output.color = input.color;
-	output.uv = input.uv;
-	output.screenUV.x = (output.location.x + 1) / 2;
-	output.screenUV.y = (-output.location.y + 1) / 2;
-	output.texScroll = _texScrollSpeed * _gameTime;
-	output.noiseScroll = _noiseScrollSpeed * _gameTime;
-	output.intensity = input.color.a;
-	output.inverseIntensity = 1 - input.color.a;
-	output.doubleIntensity = saturate(input.color.a * 2);
-	return output;
-}
 
 Texture2D _maskTexture;
 SamplerState _maskTexture_SS;
@@ -71,12 +38,20 @@ float2 toPolarCoordinates(float2 uv)
 	return polarUVs;
 }
 
-PIX_OUTPUT pix(in VERT_OUTPUT_DRAIN input) : SV_TARGET
+PIX_OUTPUT pix(in GEOM_OUTPUT input) : SV_TARGET
 {
-	float mask = _maskTexture.Sample(_maskTexture_SS, input.uv).r * input.doubleIntensity;
+	float doubleIntensity = saturate(input.color.a * 2);
+	float mask = _maskTexture.Sample(_maskTexture_SS, input.uv).r * doubleIntensity;
 	if (mask <= 0)
 		discard;
 
+	// Moved from vert. Can be included in custom geom implementation if necessary
+	float2 texScroll = _texScrollSpeed * _gameTime;
+	float2 noiseScroll = _noiseScrollSpeed * _gameTime;
+	float intensity = input.color.a;
+	float inverseIntensity = 1 - input.color.a;
+	// End moved from vert
+	
 	float2 polarCoords = toPolarCoordinates(input.uv);
 	
 	//HARDCODED VALUES (Heat Exchanger)
@@ -90,7 +65,7 @@ PIX_OUTPUT pix(in VERT_OUTPUT_DRAIN input) : SV_TARGET
 	//noiseUVs.x += (noiseUVs.y * twist);
 	//noiseUVs += noiseScroll;
 	
-	float2 noiseUVs = (polarCoords * _noiseScale) + input.noiseScroll;
+	float2 noiseUVs = (polarCoords * _noiseScale) + noiseScroll;
 
 	//SCALING DISTORTION FROM CENTER VERSION
 	//float distortionIntensityAtCenter = 0;
@@ -105,10 +80,10 @@ PIX_OUTPUT pix(in VERT_OUTPUT_DRAIN input) : SV_TARGET
 	//float2 texUVs = ((polarCoords + distortion) * texScale) + texScroll;
 	
 	//TWIST VERSION
-	float twist = _twistStrength * input.intensity;
+	float twist = _twistStrength * intensity;
 	float2 texUVs = ((polarCoords + distortion) * _texScale);
 	texUVs.x += (texUVs.y * twist);
-	texUVs += + input.texScroll;
+	texUVs += + texScroll;
 	
 	//NO TWIST UVS
 	//float2 texUVs = ((polarCoords + distortion) * _texScale) + input.texScroll;
@@ -116,8 +91,8 @@ PIX_OUTPUT pix(in VERT_OUTPUT_DRAIN input) : SV_TARGET
 	float tex = _texture.Sample(_texture_SS, texUVs).r;
 	tex = lerp(tex, 1 - tex, _invertTex);
 
-	float baseNoise = saturate(pow(tex, input.inverseIntensity * input.inverseIntensity * 20));
-	baseNoise = saturate(baseNoise * (2 - input.intensity));
+	float baseNoise = saturate(pow(tex, inverseIntensity * inverseIntensity * 20));
+	baseNoise = saturate(baseNoise * (2 - intensity));
 
 	float3 baseNormal = colorToNormals(_normalsTarget.Sample(_normalsTarget_SS, input.screenUV).rgb);
 	float3 normal = baseNormal;

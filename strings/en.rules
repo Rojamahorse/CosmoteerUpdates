@@ -769,6 +769,9 @@ Inputs
 		tractor_mode_auto = "Tractor Beam: Auto"
 		tractor_mode_pull = "Tractor Beam: Pull"
 		tractor_mode_push = "Tractor Beam: Push"
+		tractor_overload_off = "Overloading Tractor Beam"
+		tractor_overload_on = "Overload Tractor Beam"
+		tractor_overload = "Overload Tractor Beam"
 		airlock_type_both = "Airlock: Enter & Exit"
 		airlock_type_entry = "Airlock: Enter Only"
 		airlock_type_exit = "Airlock: Exit Only"
@@ -787,7 +790,7 @@ Inputs
 		prism_aim = "Aim Ion Prism"
 		headlight_aim = "Aim Headlight"
 		chaingun_aim = "Aim Chaingun"
-		thermal_aim = "Aim Resonance Beam"
+		thermal_aim = "Aim Thermal Resonance Lance"
 	}
 
 	PartTargetCancelers
@@ -4096,8 +4099,8 @@ Parts
 	IonBeamPrismIcon = "Ion Prism"
 	IonBeamPrismDesc = "Redirects the angles of incoming ion beams, aiming them at enemy ships or other Ion Beam Prisms."
 	
-	ResonanceBeamTurret = "Thermal Resonance Turret"
-	ResonanceBeamTurretIcon = "Thermal Resonance Beam"
+	ResonanceBeamTurret = "Thermal Resonance Lance"
+	ResonanceBeamTurretIcon = "Thermal Resonance Lance"
 	ResonanceBeamTurretDesc = "A roof-mounted turret that fires an oscillating beam, inducing resonance within the target, thermally exciting chains of molecules around the hit location. "\
 								"Operation outside of its designed safety limits is likely to result in leakage of thermal energy in the turret's immediate vicinity.\n\n"\
 								"Cannot be within 2 tiles of other roof turrets or \"tall\" parts."
@@ -4126,12 +4129,12 @@ Parts
 
 	ThermalDilationPump = "Resonance Dilation Pump"
 	ThermalDilationPumpIcon = "Resonance Dilation Pump"
-	ThermalDilationPumpDesc = "Pumps energy into a thermal system through a split lens, fine-tuning Thermal Resonance Beams to increase the heated area on the target's hull.\n"\
+	ThermalDilationPumpDesc = "Pumps energy into a thermal system through a split lens, fine-tuning Thermal Resonance Lances to increase the heated area on the target's hull.\n"\
 								"Due to the requisite split lens, both of the pump's ports must be connected for full effect."
 
 	ThermalAmplificationPump = "Thermal Amplification Pump"
 	ThermalAmplificationPumpIcon = "Thermal Amplification Pump"
-	ThermalAmplificationPumpDesc = "Pumps energy into a thermal system through a precision lens, amplifying the intensity of connected Thermal Resonance Beams, increasing the amount of heat applied to the target's hull."
+	ThermalAmplificationPumpDesc = "Pumps energy into a thermal system through a precision lens, amplifying the intensity of connected Thermal Resonance Lances, increasing the amount of heat applied to the target's hull."
 
 	LaserBlasterSmall = "Laser Blaster"
 	LaserBlasterSmallIcon = "Laser"
@@ -4485,6 +4488,9 @@ PartToggles
 	TractorMode_Pull = "<b>Tractor Beam: Pull</b>\n\nThe Tractor Beam will pull the target as close as possible.\n\nHotkey: <btn id='PartToggles.tractor_mode_pull'/>"
 	TractorMode_Push = "<b>Tractor Beam: Push</b>\n\nThe Tractor Beam will push the target as far away as possible.\n\nHotkey: <btn id='PartToggles.tractor_mode_push'/>"
 	
+	TractorOverload = "<b>Overload Tractor Beam</b>\n\nExpend all available power to overload the emitters, triggering an uncontrolled extreme impulse wave and a significant release of heat.\n\n" \
+		"Setting the Tractor Beam to 'Pull' will invert the polarity of the impulse wave."
+	
 	FireSafety_Off = "<b>Safety: <bad>Off</bad></b>\nDo not prevent firing regardless of heat levels."
 	FireSafety_On = "<b>Safety: <good>On</good></b>\nPrevent firing while at dangerously high heat levels."
 	
@@ -4504,7 +4510,7 @@ PartTargeters
 
 	PrismAim = "<b>Aim Ion Prism</b>\n\nAims the selected Ion Beam Prism(s) at a desired location, or links it to fire through another Ion Beam Prism.\n\nHotkey: <btn id='PartTargeters.prism_aim'/>"
 	
-	ThermalResonanceAim = "<b>Aim Thermal Resonance Turret</b>\n\nAims the selected Thermal Resonance Turret(s) at a desired location.\n\nHotkey: <btn id='PartTargeters.thermal_aim'/>"
+	ThermalResonanceAim = "<b>Aim Thermal Resonance Lance</b>\n\nAims the selected Thermal Resonance Lance(s) at a desired location.\n\nHotkey: <btn id='PartTargeters.thermal_aim'/>"
 
 	HeadlightAim  = "<b>Aim Headlight</b>\n\nAims the selected Headlight(s) at a desired location.\n\nHotkey: <btn id='PartTargeters.headlight_aim'/>"
 	HeadlightAimCancel = "<b>Reset Headlight Aim</b>\n\nHotkey: <btn id='PartTargetCancelers.headlight_aim'/>"
@@ -4562,7 +4568,7 @@ Stats
 	                 "  <white>20: </white><good>+{19:000}%</good> "\
 	                 "  <white>30: </white><good>+{29:000}%</good>"
 	ThrusterBuffFmt = "<white>Thruster Buff:</white> <good>+{0:0}%</good><gray> thrust &amp; power use</gray>"
-	ThrusterBonusForceFmt = "<white>Thruster Bonus Base Force:</white> <good>+{0:0.##}</good>"
+	ThrusterBonusForceFmt = "<white>Thruster Bonus Base Force:</white> <good>+{0:0.##}</good> <gray>kilonewtons</gray>"
 	PowerDistributionEfficiencyFmt = "<white>Power Distribution Efficiency:</white> <good>{0:0.#}%</good>"
 	FactoryBuffFmt = "<white>Adjacent Factories:</white> <good>+{0:0}%</good><gray> prod. rate</gray>"
 	DamageFmt = "<white>Damage:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
@@ -4609,8 +4615,8 @@ Stats
 	PenetrationFmt = "<white>Penetration:</white> <good>{0:0.##}</good> <gray>meters</gray>"
 	PenetrationDamagePoolFmt = "<white>Penetration:</white> <good>{0:0.##}</good> <gray>meters (max </gray><good>{1:n0}</good><gray> damage)</gray>"
 	FireChanceFmt = "<white>Starts Fires:</white> <good>{0:0}%</good><gray> chance/tile</gray>"
+	ShieldPenetrationFmt = "<white>Shield Penetration:</white> <good>{0:0.##}</good> <gray>meters equivalent</gray>"
 	FireSizeFmt = "<white>Started Fire Size:</white> <good>{0:0}%</good>"
-	ShieldPenetrationFmt = "<white>Shield Penetration:</white> <good>{0:.##}</good> <gray>shields</gray>"
 	SalvoFmt = "<white>Salvo:</white> <good>{0:0.##}</good> <gray>shots/</gray><good>{1:0.##}</good> <gray>sec</gray>"
 	ROFFmt = "<white>Rate of Fire:</white> <good>{0:0.##}</good> <gray>shots/sec</gray>"
 	FireIntervalFmt = "<white>Fire Interval:</white> <good>{0:0.##}</good> <gray>seconds</gray>"
@@ -4739,6 +4745,11 @@ Stats
 	ThrusterRampExponentFmt = "<white>Ramp Time Exponent:</white> <good>{0:0.##}</good>"
 	RampUpSpeedFactorFmt = "<white>Ramp-Up Speed Factor:</white> <good>{0:0.#}%</good>"
 	TractorForceFmt = "<white>Tractor Force:</white> <good>{0:#,0.#}</good><gray> kilonewtons</gray>"
+	TractorOverloadForceFmt = "<white>Overload Tractor Force:</white> <good>{0:#,0.#}</good><gray> kilonewtons</gray>"
+	TractorOverloadRadiusFmt = "<white>Overload Radius:</white> <good>{0:#,0.#}</good><gray> meters</gray>"
+	TractorOverloadChargeTimeFmt = "<white>Overload Charge Time:</white> <good>{0:0.##}</good><gray> seconds</gray>"
+	TractorOverloadMinPowerFmt = "<white>Overload Minimum Power:</white> <good>{0:0.##}%</good><gray> stored</gray>"
+	TractorOverloadHeatGenerationFmt = "<white>Overload Heat Generation:</white> <good>{0:0.#}</good>"
 	CrewSpeedFmt = "<white>Crew Speed:</white> <good>{0:0}%</good>"
 	CrewSpeedFwdFmt = "<white>Crew Speed (Forward):</white> <good>{0:0}%</good>"
 	CrewSpeedAcrFmt = "<white>Crew Speed (Across):</white> <good>{0:0}%</good>"
@@ -4776,33 +4787,10 @@ Stats
 	BoostHeatFactorPerBatteryFmt = "<white>Heat Factor:</white> <good>{0:+0.#;-0.#;0}%</good> <gray>/battery used</gray>"
 	BoostHeatFactorPerSecondFmt = "<white>Heat Factor:</white> <good>{0:+0.#;-0.#;0}%</good> <gray>/sec while idle</gray>"
 	BoostHeatFactorBatteryThresholdFmt = "<white>Heat Increase Threshold:</white> <good>{0:0}</good> <gray>batteries used</gray>"
+	PowerHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/power (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	StorageHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good><gray>/sec (100% full)</gray>"
 	BatteryDeliveredHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good><gray> per battery delivered</gray>"
 	HeatDissipationFmt = "<white>Heat Dissipation:</white> <good>{0:#,0.##}</good><gray>/sec</gray>"
-	
-	ThermalPowerGainFmt = "<white>Thermal Power Gain:</white> <good>{0:#,0.##}</good><gray>/sec</gray>"
-	ThermalPowerLossFmt = "<white>Thermal Power Loss:</white> <good>{0:#,0.##}</good><gray>/sec</gray>"
-	DamageContinuousPercentageFmt = "<white>Damage:</white> <good>{0:p}</good><gray>/sec (target max HP)</gray>"
-	ResonanceFireSizeFmt = 	"<white>Fire Size by Thermal Power:</white>\n"\
-							"  <white> 1: </white><good>{0:0.###}</good><gray>/sec</gray> "\
-							"  <white> 5: </white><good>{1:0.###}</good><gray>/sec</gray> "\
-							"  <white>10: </white><good>{2:0.###}</good><gray>/sec</gray> "
-	ResonanceDamageAreaFmt = 	"<white>Damage Radius By Thermal Power:</white>\n"\
-								"  <white> 1: </white><good>{0:0.##}</good>"\
-								"  <white> 5: </white><good>{1:0.##}</good>"\
-								"  <white>10: </white><good>{2:0.##}</good>"
-	ResonanceDamageFlammableFmt = 	"<white>Flammable Tile Health Damage By Thermal Power:</white>\n"\
-									"  <white> 1: </white><good>{0:0.#%}</good><gray>/sec</gray>"\
-									"  <white> 5: </white><good>{1:0.#%}</good><gray>/sec</gray>"\
-									"  <white>10: </white><good>{2:0.#%}</good><gray>/sec</gray>"
-	ResonanceDamageNonFlammableFmt = 	"<white>Non-Flammable Tile Health Damage By Thermal Power:</white>\n"\
-										"  <white> 1: </white><good>{0:0.#%}</good><gray>/sec</gray>"\
-										"  <white> 5: </white><good>{1:0.#%}</good><gray>/sec</gray>"\
-										"  <white>10: </white><good>{2:0.#%}</good><gray>/sec</gray>"
-	ResonanceDamageShieldFmt = 	"<white>Shield Damage By Thermal Power:</white>\n"\
-									"  <white> 1: </white><good>{0:0.#}</good><gray>/sec</gray>"\
-									"  <white> 5: </white><good>{1:0.#}</good><gray>/sec</gray>"\
-									"  <white>10: </white><good>{2:0.#}</good><gray>/sec</gray>"
 									
 	BaseAmplificationFmt = "<white>Amplification (Base):</white> <good>{0:0.#}%</good>"
 	BaseDilationFmt = "<white>Dilation (Base):</white> <good>{0:0.#}%</good>"
@@ -4861,7 +4849,9 @@ StatCategories
 	MiningBeam = "Double Mining Beams"
 	BulletChaingun = "Chaingun Round"
 	ManipulatorBeam = "Manipulator Beam"
-	ResonanceBeam = "Resonance Beam"
+	ShieldSmall = "Small Shield"
+	ShieldLarge = "Large Shield"
+	ResonanceBeam = "Resonance Lance"
 	Overclocked = "Overclocked"
 	OverclockedShrapnel = "Overclocked (Shrapnel)"
 	OverclockedBoost = "Overclocked (Boost: On)"

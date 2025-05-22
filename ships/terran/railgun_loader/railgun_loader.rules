@@ -279,6 +279,7 @@ Part : <../base_part_terran.rules>/Part
 					[
 						[Port_Rail, NetworkOverclockStateValue, 0]
 						[Port_Rail, Network_OverflowHeatStorage, 0]
+						[Port_Rail, Network_ChargedModules, 0]
 					]
 				}
 				{
@@ -687,6 +688,55 @@ Part : <../base_part_terran.rules>/Part
 					]
 				}
 			}
+		}
+
+		Network_ChargedModules
+		{
+			Type = NetworkValueReceiver
+			Categories = [ railgun_charge_modules ]
+			Mode = Max
+			AllowUncategorized = false
+		}
+		Zero { Type = StaticValue; Value = 0; }
+		Overclock_Charge_Lights_Intensity
+		{
+			Type = ValueOperation
+			Operator = Subtract
+			ValueOne = Network_ChargedModules
+			ValueTwo = Zero
+			MinValue = 0
+			MaxValue = 0.5
+		}
+		FrameOffset { Type = StaticValue; Value = 0.5; }
+		Overclock_Charge_Lights_Intensity_Normalize
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne = Overclock_Charge_Lights_Intensity
+			ValueTwo = FrameOffset
+			MinValue = 0
+			MaxValue = 1
+		}
+		Overclock_Charge_Lights
+		{
+			Type = ValueSprites
+			Location = [1, 0.5]
+			ValueFrom = Overclock_Charge_Lights_Intensity_Normalize
+			Layer = "lights_add"
+			ResourceLevels
+			[
+				{
+					//Blank Frame
+				}
+				{
+					File = "OClights1.png"
+					Size = [2, 1]
+				}
+				{
+					File = "OClights2.png"
+					Size = [2, 1]
+				}
+			]
 		}
 
 		OperationEffects

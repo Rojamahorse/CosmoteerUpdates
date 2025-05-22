@@ -526,29 +526,73 @@ Part : <../base_part_terran.rules>/Part
 			Type = BuffableValue
 			Value = { BaseValue = 1; BuffType = Railgun; BuffMode = Multiply; }
 		}
-		Overclock_ChargeLightsIntensity
+		Overclock_Charge_Lights_Intensity
 		{
 			Type = ValueOperation
 			Operator = Subtract
 			ValueOne = Network_ChargedModules
 			ValueTwo = RailgunBuffValue
 			MinValue = 0
+			MaxValue = 1.5
+		}
+		FrameOffset { Type = StaticValue; Value = 1.5; }
+		Overclock_Charge_Lights_Intensity_Normalize
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne = Overclock_Charge_Lights_Intensity
+			ValueTwo = FrameOffset
+			MinValue = 0
 			MaxValue = 1
 		}
-		Overclock_ChargeLightsColor
+		Overclock_Charge_Lights
 		{
-			Type = ValueColor
-			AlphaFrom = Overclock_ChargeLightsIntensity
-		}
-
-		Overclock_ChargeLights
-		{
-			Type = Sprite
-			OperationalToggle = IsOperational
-			Location = &../Graphics/Location
-			Layer = &../Graphics/OperationalLighting/Layer
-			DamageLevels = &../Graphics/OperationalLighting/DamageLevels
-			GetColorFrom = Overclock_ChargeLightsColor
+			Type = ValueSprites
+			Location = [1, 1.5]
+			ValueFrom = Overclock_Charge_Lights_Intensity_Normalize
+			Layer = "lights_add"
+			ResourceLevels
+			[
+				{
+					//Blank Frame
+				}
+				{
+					File = "OClights1.png"
+					Size = [2, 1]
+					Offset = [0, 1]
+				}
+				{
+					File = "OClights2.png"
+					Size = [2, 1]
+					Offset = [0, 1]
+				}
+				{
+					File = "OClights3.png"
+					Size = [2, 2]
+					Offset = [0, 0.5]
+				}
+				{
+					File = "OClights4.png"
+					Size = [2, 2]
+					Offset = [0, 0.5]
+				}
+				{
+					File = "OClights5.png"
+					Size = [2, 3]
+				}
+				{
+					File = "OClights6.png"
+					Size = [2, 3]
+				}
+				{
+					File = "OClights7.png"
+					Size = [2, 3]
+				}
+				{
+					File = "OClights8.png"
+					Size = [2, 3]
+				}
+			]
 		}
 
 		BatterySprites
