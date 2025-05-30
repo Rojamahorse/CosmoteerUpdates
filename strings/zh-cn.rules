@@ -351,8 +351,6 @@ BuildBox
 	SaveSelected = 保存选定部件
 	SaveSelectedTip = 将选定部件保存为星舰设计。
 	SelectTip = "<b>选择工具</b>\n\n选定后，可以拖动方框来选中想要复制、剪切、粘贴、镜像、旋转或删除的部分。\n\n热键：<btn id='Design.SelectionTool'/>\n\n按住 <btn id='Design.ContiguousSelectionMode'/> 可以使用选定邻接范围的“魔杖”。"
-	ShowPartDescription = "<gray>按住 <btn id='Design.ShowStats'/> 即可显示描述。</gray>"
-	ShowPartStats = "<gray>按住 <btn id='Design.ShowStats'/> 即可显示统计数据。</gray>"
 	ShowResourceDeliveries = 显示资源货运
 	ShowResourceDeliveriesTip = 选中后，会显示建造资源的货运交付计划。
 	StatBarTipFmt = ""
@@ -1642,7 +1640,6 @@ Inputs
 		RotateRight = 向右旋转部件/贴花
 		SelectAll = 选择所有部件/贴花
 		SelectionTool = 选择/复制/粘贴工具
-		ShowStats = 显示部件统计
 		ToggleBlueprints = 切换蓝图
 		ToggleMirrorMode = 开/关镜像模式
 		Undo = 撤销
@@ -3645,8 +3642,6 @@ Settings
 		PaintLbl = 涂装编辑器
 		PaintSelectTool = 选择工具
 		PaintSelectToolTip = 打开涂装编辑器时，“选择工具”是默认工具。
-		PartToolTipsDefaultToStats = 默认显示数据
-		PartToolTipsDefaultToStatsTip = "如果勾选，将鼠标光标悬停在一个部件上时，将显示其数据，而不是其描述。你仍然可以按住 <btn id='Design.ShowStats'/> 来显示其描述。"
 		RepairAutoDoors = 自动修复门
 		RepairAutoDoorsTip = 如果勾选，重建被破坏的部件也会自动重建与之连接的门。
 		RequirePartialRefundConfirmation = 要求确认减额的退款

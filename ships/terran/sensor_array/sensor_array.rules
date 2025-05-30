@@ -856,15 +856,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 		RecCrew = (&CrewRequired) + (&RecPower) * 4
 	}
 	
-	StatsByCategory
-	[
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
 		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
-				SightRange = &~/OVERCLOCK/SIGHT_RADIUS
-			}
+			HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
+			SightRange = &~/OVERCLOCK/SIGHT_RADIUS
 		}
-	]
+	}
 }

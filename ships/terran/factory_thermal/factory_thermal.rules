@@ -16,15 +16,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 	DescriptionKey = "Parts/FactoryThermalDesc"
 	Resources
 	[
-		[steel, 76]
-		[coil2, 27]
-		[processor, 2]
+		[steel, 80]
+		[coil2, 46]
+		[tristeel, 11]
 	]
 	Size = [3, 3]
 	IsFlippable = true
 	SelectionPriority = 1
 	MaxHealth = 9000
-	TypeCategories = [provides_launcher_parts, uses_iron, uses_sulfur, uses_power]
+	TypeCategories = [provides_launcher_parts, uses_copper, uses_sulfur, uses_power]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
 	BlockedTravelCells
 	[
@@ -56,8 +56,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, IronSplitter, SulfurSplitter, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Toggles = [PowerToggle, NonJunkToggle, BatteryStorage, CopperSplitter, SulfurSplitter, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
 			Mode = All
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
 		}
 
 		CommandConsumptionToggle
@@ -82,29 +88,29 @@ Part : <../base_part_terran_overclock.rules>/Part
 			CommandPoints = 1
 		}
 
-		IronStorage
+		CopperStorage
 		{
 			Type = TypedResourceGrid
-			ResourceType = iron
+			ResourceType = copper
 			GridRect = [0, 1, 1, 1]
 			Layer = "doodads_low"
 			SpriteInset = [17/64, 9/64, 5/64, 5/64]
 			AllowExternalPickupAndDelivery = true
 		}
-		IronConsumer
+		CopperConsumer
 		{
 			Type = TypedResourceGridConsumer
-			ResourceType = iron
-			Storage = IronStorage
+			ResourceType = copper
+			Storage = CopperStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
 			OperationalToggle = PowerToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
-		IronSplitter
+		CopperSplitter
 		{
 			Type = InlineResourceConverter
-			ResourceType = iron
-			FromStorage = IronStorage
+			ResourceType = copper
+			FromStorage = CopperStorage
 			FromQuantity = 1
 			ToQuantity = 20
 		}
@@ -173,7 +179,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			From
 			[
 			    {
-			        Storage = IronSplitter
+			        Storage = CopperSplitter
 			        Quantity = 1
 			    }
 			    {
@@ -321,21 +327,21 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [2, 2]
 		}
 
-		IronSprites
+		CopperSprites
 		{
 			Type = ResourceSprites
 			Location = [0.5-8/64, 0.5+2/64]
-			ResourceStorage = IronSplitter
+			ResourceStorage = CopperSplitter
 			Layer = "doodads_high"
-			Modulus = &../IronSplitter/ToQuantity
+			Modulus = &../CopperSplitter/ToQuantity
 			AnimationToggle = ResourceConverter
 			ResourceLevels
 			[
 				{
 					AnimationFiles
 					[
-						"iron1-1.png"
-						"iron1-2.png"
+						"./Data/ships/terran/factory_emp/copper1-1.png"
+						"./Data/ships/terran/factory_emp/copper1-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -343,8 +349,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron2-1.png"
-						"iron2-2.png"
+						"./Data/ships/terran/factory_emp/copper2-1.png"
+						"./Data/ships/terran/factory_emp/copper2-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -352,8 +358,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron3-1.png"
-						"iron3-2.png"
+						"./Data/ships/terran/factory_emp/copper3-1.png"
+						"./Data/ships/terran/factory_emp/copper3-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -361,8 +367,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron4-1.png"
-						"iron4-2.png"
+						"./Data/ships/terran/factory_emp/copper4-1.png"
+						"./Data/ships/terran/factory_emp/copper4-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -370,8 +376,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron5-1.png"
-						"iron5-2.png"
+						"./Data/ships/terran/factory_emp/copper5-1.png"
+						"./Data/ships/terran/factory_emp/copper5-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -379,8 +385,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron6-1.png"
-						"iron6-2.png"
+						"./Data/ships/terran/factory_emp/copper6-1.png"
+						"./Data/ships/terran/factory_emp/copper6-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -388,8 +394,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron7-1.png"
-						"iron7-2.png"
+						"./Data/ships/terran/factory_emp/copper7-1.png"
+						"./Data/ships/terran/factory_emp/copper7-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -397,8 +403,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron8-1.png"
-						"iron8-2.png"
+						"./Data/ships/terran/factory_emp/copper8-1.png"
+						"./Data/ships/terran/factory_emp/copper8-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -406,8 +412,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron9-1.png"
-						"iron9-2.png"
+						"./Data/ships/terran/factory_emp/copper9-1.png"
+						"./Data/ships/terran/factory_emp/copper9-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -415,8 +421,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron10-1.png"
-						"iron10-2.png"
+						"./Data/ships/terran/factory_emp/copper10-1.png"
+						"./Data/ships/terran/factory_emp/copper10-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -424,8 +430,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron11-1.png"
-						"iron11-2.png"
+						"./Data/ships/terran/factory_emp/copper11-1.png"
+						"./Data/ships/terran/factory_emp/copper11-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -433,8 +439,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron12-1.png"
-						"iron12-2.png"
+						"./Data/ships/terran/factory_emp/copper12-1.png"
+						"./Data/ships/terran/factory_emp/copper12-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -442,8 +448,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron13-1.png"
-						"iron13-2.png"
+						"./Data/ships/terran/factory_emp/copper13-1.png"
+						"./Data/ships/terran/factory_emp/copper13-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -451,8 +457,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron14-1.png"
-						"iron14-2.png"
+						"./Data/ships/terran/factory_emp/copper14-1.png"
+						"./Data/ships/terran/factory_emp/copper14-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -460,8 +466,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron15-1.png"
-						"iron15-2.png"
+						"./Data/ships/terran/factory_emp/copper15-1.png"
+						"./Data/ships/terran/factory_emp/copper15-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -469,8 +475,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron16-1.png"
-						"iron16-2.png"
+						"./Data/ships/terran/factory_emp/copper16-1.png"
+						"./Data/ships/terran/factory_emp/copper16-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -478,8 +484,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron17-1.png"
-						"iron17-2.png"
+						"./Data/ships/terran/factory_emp/copper17-1.png"
+						"./Data/ships/terran/factory_emp/copper17-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -487,8 +493,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron18-1.png"
-						"iron18-2.png"
+						"./Data/ships/terran/factory_emp/copper18-1.png"
+						"./Data/ships/terran/factory_emp/copper18-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -496,8 +502,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"iron19-1.png"
-						"iron19-2.png"
+						"./Data/ships/terran/factory_emp/copper19-1.png"
+						"./Data/ships/terran/factory_emp/copper19-2.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -518,8 +524,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur1-2.png"
-						"sulfur1-1.png"
+						"./Data/ships/terran/factory_he/sulfur1-2.png"
+						"./Data/ships/terran/factory_he/sulfur1-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -527,8 +533,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur2-2.png"
-						"sulfur2-1.png"
+						"./Data/ships/terran/factory_he/sulfur2-2.png"
+						"./Data/ships/terran/factory_he/sulfur2-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -536,8 +542,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur3-2.png"
-						"sulfur3-1.png"
+						"./Data/ships/terran/factory_he/sulfur3-2.png"
+						"./Data/ships/terran/factory_he/sulfur3-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -545,8 +551,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur4-2.png"
-						"sulfur4-1.png"
+						"./Data/ships/terran/factory_he/sulfur4-2.png"
+						"./Data/ships/terran/factory_he/sulfur4-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -554,8 +560,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur5-2.png"
-						"sulfur5-1.png"
+						"./Data/ships/terran/factory_he/sulfur5-2.png"
+						"./Data/ships/terran/factory_he/sulfur5-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -563,8 +569,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur6-2.png"
-						"sulfur6-1.png"
+						"./Data/ships/terran/factory_he/sulfur6-2.png"
+						"./Data/ships/terran/factory_he/sulfur6-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -572,8 +578,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur7-2.png"
-						"sulfur7-1.png"
+						"./Data/ships/terran/factory_he/sulfur7-2.png"
+						"./Data/ships/terran/factory_he/sulfur7-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -581,8 +587,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur8-2.png"
-						"sulfur8-1.png"
+						"./Data/ships/terran/factory_he/sulfur8-2.png"
+						"./Data/ships/terran/factory_he/sulfur8-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -590,8 +596,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur9-2.png"
-						"sulfur9-1.png"
+						"./Data/ships/terran/factory_he/sulfur9-2.png"
+						"./Data/ships/terran/factory_he/sulfur9-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -599,8 +605,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur10-2.png"
-						"sulfur10-1.png"
+						"./Data/ships/terran/factory_he/sulfur10-2.png"
+						"./Data/ships/terran/factory_he/sulfur10-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -608,8 +614,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur11-2.png"
-						"sulfur11-1.png"
+						"./Data/ships/terran/factory_he/sulfur11-2.png"
+						"./Data/ships/terran/factory_he/sulfur11-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -617,8 +623,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur12-2.png"
-						"sulfur12-1.png"
+						"./Data/ships/terran/factory_he/sulfur12-2.png"
+						"./Data/ships/terran/factory_he/sulfur12-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -626,8 +632,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur13-2.png"
-						"sulfur13-1.png"
+						"./Data/ships/terran/factory_he/sulfur13-2.png"
+						"./Data/ships/terran/factory_he/sulfur13-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -635,8 +641,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur14-2.png"
-						"sulfur14-1.png"
+						"./Data/ships/terran/factory_he/sulfur14-2.png"
+						"./Data/ships/terran/factory_he/sulfur14-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -644,8 +650,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur15-2.png"
-						"sulfur15-1.png"
+						"./Data/ships/terran/factory_he/sulfur15-2.png"
+						"./Data/ships/terran/factory_he/sulfur15-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -653,8 +659,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur16-2.png"
-						"sulfur16-1.png"
+						"./Data/ships/terran/factory_he/sulfur16-2.png"
+						"./Data/ships/terran/factory_he/sulfur16-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -662,8 +668,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur17-2.png"
-						"sulfur17-1.png"
+						"./Data/ships/terran/factory_he/sulfur17-2.png"
+						"./Data/ships/terran/factory_he/sulfur17-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -671,8 +677,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur18-2.png"
-						"sulfur18-1.png"
+						"./Data/ships/terran/factory_he/sulfur18-2.png"
+						"./Data/ships/terran/factory_he/sulfur18-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -680,8 +686,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					AnimationFiles
 					[
-						"sulfur19-2.png"
-						"sulfur19-1.png"
+						"./Data/ships/terran/factory_he/sulfur19-2.png"
+						"./Data/ships/terran/factory_he/sulfur19-1.png"
 					]
 					Size = [1, 1]
 					AnimationInterval = 0.075
@@ -1229,9 +1235,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 					HidesIndicators = [1,2,3,4]
 				}
 
-				// No iron.
+				// No Copper.
 				{
-					Toggle = IronSplitter
+					Toggle = CopperSplitter
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoResource
@@ -1317,10 +1323,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 		MissileProduction = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / (&PartsPerMissile)
 		PartCapacity = (&~/Part/Components/MissileStorage/GridRect/2) * (&~/Part/Components/MissileStorage/GridRect/3) * (&<./Data/resources/missile_part_thermal/missile_part_thermal.rules>/MaxStackSize)
 		MissilePartCapacity = [&../PartCapacity, (&../PartCapacity) / (&../PartsPerMissile)]
-		IronCapacity = (&~/Part/Components/IronStorage/GridRect/2) * (&~/Part/Components/IronStorage/GridRect/3) * (&<./Data/resources/iron/iron.rules>/MaxStackSize)
-		IronPerMissile = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&PartsPerMissile)
-		IronPerSecond = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
-		MissileIronUsage = [&../IronPerMissile, &../IronPerSecond]
+		CopperCapacity = (&~/Part/Components/CopperStorage/GridRect/2) * (&~/Part/Components/CopperStorage/GridRect/3) * (&<./Data/resources/copper/copper.rules>/MaxStackSize)
+		CopperPerMissile = (&~/Part/Components/CopperSplitter/FromQuantity) / (&~/Part/Components/CopperSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&PartsPerMissile)
+		CopperPerSecond = (&~/Part/Components/CopperSplitter/FromQuantity) / (&~/Part/Components/CopperSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
+		MissileCopperUsage = [&../CopperPerMissile, &../CopperPerSecond]
 		SulfurCapacity = (&~/Part/Components/SulfurStorage/GridRect/2) * (&~/Part/Components/SulfurStorage/GridRect/3) * (&<./Data/resources/sulfur/sulfur.rules>/MaxStackSize)
 		SulfurPerMissile = (&~/Part/Components/SulfurSplitter/FromQuantity) / (&~/Part/Components/SulfurSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&PartsPerMissile)
 		SulfurPerSecond = (&~/Part/Components/SulfurSplitter/FromQuantity) / (&~/Part/Components/SulfurSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
@@ -1338,23 +1344,25 @@ Part : <../base_part_terran_overclock.rules>/Part
 	StatsByCategory
 	[
 		&<../missile_launcher/thermal/missile_launcher_thermal.rules>/MissileStats
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				MissileProduction = (&~/Part/Stats/MissileProduction) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
-				MissileIronUsage = [(&~/Part/Stats/MissileIronUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MissileIronUsage/1)]
-				MissileSulfurUsage = [(&~/Part/Stats/MissileSulfurUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MissileSulfurUsage/1)]
-				POWER_PER_MISSILE = (&~/Part/Stats/MissilePowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
-				POWER_PER_SECOND = (&~/Part/Stats/MissilePowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR)
-				MissilePowerUsage = [&../POWER_PER_MISSILE, &../POWER_PER_SECOND]
-				CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
-				HEAT_PER_MISSILE = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT) * (&~/Part/Stats/PartsPerMissile)
-				HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Components/ResourceConverter/Interval/BaseValue);
-				MissileHeatGeneration = [&../HEAT_PER_MISSILE, &../HEAT_PER_SECOND]
-			}
-		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
+		{
+			MissileProduction = (&~/Part/Stats/MissileProduction) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+			MissileCopperUsage = [(&~/Part/Stats/MissileCopperUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MissileCopperUsage/1)]
+			MissileSulfurUsage = [(&~/Part/Stats/MissileSulfurUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MissileSulfurUsage/1)]
+			POWER_PER_MISSILE = (&~/Part/Stats/MissilePowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+			POWER_PER_SECOND = (&~/Part/Stats/MissilePowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			MissilePowerUsage = [&../POWER_PER_MISSILE, &../POWER_PER_SECOND]
+			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+			HEAT_PER_MISSILE = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT) * (&~/Part/Stats/PartsPerMissile)
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Components/ResourceConverter/Interval/BaseValue);
+			MissileHeatGeneration = [&../HEAT_PER_MISSILE, &../HEAT_PER_SECOND]
+		}
+	}
 }
 
 MODIFIERS

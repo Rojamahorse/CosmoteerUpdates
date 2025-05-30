@@ -34,6 +34,27 @@ Part : <../base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		IsOperational
+		{
+			Type = CommandToggle
+		}
+
+		Darkness_Components
+		{
+			Type = ToggledComponents
+			Toggle = IsOperational
+			Invert = true
+			Components
+			{
+				DarknessBlend : <./Data/ships/terran/corridor/darkness/darkness.rules>
+				{
+					Type = BlendSprite
+					Location = [.5, .5]
+					BlendsWithCategories = [corridor]
+				}
+			}
+		}
+
 		WallsBlend : <../walls/walls.rules>
 		{
 			Type = BlendSprite

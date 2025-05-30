@@ -78,12 +78,15 @@ ResourceSink
 		{
     		Type = StatusApplication
     		StatusType = cosmoteer.fire_foam
+    		MIN_FOAM_DURATION = 7.5
+    		MAX_FOAM_DURATION = 30
     		StatusDuration
     		{
-    			FULL_EXTINGUISH_FOAM_DURATION = 20
-    			BaseValue = (&FULL_EXTINGUISH_FOAM_DURATION) / (&~/FIRE_MAX_HEALTH)
+    			BaseValue = ((&../MAX_FOAM_DURATION) - (&../MIN_FOAM_DURATION)) / (&~/FIRE_MAX_HEALTH)
     			EffectScaleExponent = 1
     		}
+    		InitialStatusDuration = &MIN_FOAM_DURATION
+    		
     		Filter
     		{
     			Friendlies = true

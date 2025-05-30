@@ -30,12 +30,12 @@ SoftRepair
 Diffusion
 {
 	Basis = 0
-	SpeedFactor = 0.003
-	MinDeltaThreshold = (&SpeedFactor) * 0.1
-	EmptyCellSpeedFactor = 0.0015
+	SpeedFactor = 0.01
+	MinDeltaThreshold = 0.05
+	EmptyCellSpeedFactor = 0.005
 	PartOutboundSpeedFactors
 	{
-		cosmoteer.structure = 100
+		cosmoteer.structure = 25
 		cosmoteer.structure_1x3_wedge = &cosmoteer.structure
 		cosmoteer.structure_1x2_wedge = &cosmoteer.structure
 		cosmoteer.structure_tri = &cosmoteer.structure
@@ -96,13 +96,6 @@ TickingEffects
 			BaseValue = 1
 			Modifiers
 			[
-//				{
-//					Type = StatusRemap
-//					StatusType = cosmoteer.heat
-//					ModificationMode = Replace
-//					RemapFrom = [750, 1000]
-//					RemapTo = [0, 0.1]
-//				}
 				{
 					Type = StatusRemap
 					StatusType = cosmoteer.heat
@@ -132,7 +125,8 @@ TickingEffects
 					StatusType = cosmoteer.heat
 					ModificationMode = Replace
 					RemapFrom = [350, 2500]
-					RemapTo = [0, 0.5]
+					RemapTo = [5%, 50%]
+					IgnoreValuesBelowRange = true
 				}
 			]
 		}
@@ -147,7 +141,7 @@ TickingEffects
 					StatusType = cosmoteer.heat
 					ModificationMode = Multiply
 					RemapFrom = [350, 2500]
-					RemapTo = [0, 1]
+					RemapTo = [10%, 100%]
 				}
 			]
 		}
@@ -165,7 +159,7 @@ ValueModulators
 		{
 			Type = Constant
 			AffectedValueRange = [0, infinity]
-			Value = 0.05
+			Value = 0.5
 			ModificationMode = Subtract
 			ScaleByDeltaTime = true
 		}

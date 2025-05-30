@@ -32,6 +32,18 @@ Part : <../base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [LocalBatteryStorage, CommandToggle]
+			Mode = All
+		}
+
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+
 		LeftBatteryConnectionProvider
 		{
 			Type = AreaBuffProvider
@@ -197,7 +209,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = Graphics
 			Location = [.5, 1]
-			OperationalToggle = LocalBatteryStorage
+			OperationalToggle = IsOperational
 			Floor
 			{
 				Layer = "floors"

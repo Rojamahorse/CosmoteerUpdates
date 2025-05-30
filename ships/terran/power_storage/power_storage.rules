@@ -761,17 +761,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 	}
 	
-	StatsByCategory
-	[
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
 		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				BatterySize = (&~/Part/Stats/BatterySize) * (&~/OVERCLOCK/BATTERY_SIZE_FACTOR)
-				PowerCapacity = (&~/Part/Stats/PowerCapacity) * (&~/OVERCLOCK/CAPACITY_FACTOR)
-				StorageHeatGeneration = (&~/OVERCLOCK/MAX_HEAT_PER_SECOND)
-				BatteryDeliveredHeatGeneration = (&~/OVERCLOCK/HEAT_PER_BATTERY_DELIVERED)
-			}
+			BatterySize = (&~/Part/Stats/BatterySize) * (&~/OVERCLOCK/BATTERY_SIZE_FACTOR)
+			PowerCapacity = (&~/Part/Stats/PowerCapacity) * (&~/OVERCLOCK/CAPACITY_FACTOR)
+			StorageHeatGeneration = (&~/OVERCLOCK/MAX_HEAT_PER_SECOND)
+			BatteryDeliveredHeatGeneration = (&~/OVERCLOCK/HEAT_PER_BATTERY_DELIVERED)
 		}
-	]
+	}
 }

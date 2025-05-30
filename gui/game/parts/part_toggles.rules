@@ -578,6 +578,7 @@ PartToggles
 			{
 				ChoiceID = "tractor_overload_off"
 				ButtonToolTipKey = "PartToggles/TractorOverload"
+				CreateHotkey = false
 				ButtonSprite
 				{
 					Texture

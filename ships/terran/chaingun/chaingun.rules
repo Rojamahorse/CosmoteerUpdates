@@ -2874,18 +2874,26 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ShotAmmoUsageRange = [&../AmmoPerShot, &../AmmoPerSecond/0, &../AmmoPerSecond/1]
 			}
 		}
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				RampUpSpeedFactor = (&~/OVERCLOCK/RAMP_SPEED_FACTOR) * 100
-				ROFRange
-				[
-					&../../../0/Stats/ROFRange/0
-					&~/OVERCLOCK/MAX_FIRE_RATE
-				]
-				HeatPerShot = &~/OVERCLOCK/HEAT_PER_SHOT
-			}
-		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/BulletChaingunOverclocked"
+				Stats
+				{
+					RampUpSpeedFactor = (&~/OVERCLOCK/RAMP_SPEED_FACTOR) * 100
+					ROFRange
+					[
+						&~/Part/StatsByCategory/0/Stats/ROFRange/0
+						&~/OVERCLOCK/MAX_FIRE_RATE
+					]
+					HeatPerShot = &~/OVERCLOCK/HEAT_PER_SHOT
+				}
+			}
+		]
+	}
 }

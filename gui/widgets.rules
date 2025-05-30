@@ -2557,12 +2557,68 @@ ContextMenu : Scrollbox
 
 ToolTipLabel : Label
 {
-	NineSlice = &~/StaticWidget/NineSlice
+	NineSlice { Flags = None }
 
 	TextRenderer : ^/0/TextRenderer { XmlFormatting=true; }
 
 	AutoSize { MaxWidth=350; }
 	ToolTipDisplayController { PreferredHorizontalSpace=&../AutoSize/MaxWidth; }
+}
+
+ToolTipBox : MaskedScrollbox
+{
+	ChildMask : ^/0/ChildMask
+	{
+		Borders = 7
+	}
+	
+	ToolTipLabel = &~/ToolTipLabel
+	ScrollBindingLabel : ~/Label
+	{
+		NineSlice : ~/StaticWidget/NineSlice
+		{
+			Flags = Center
+		}
+		TextRenderer : ^/0/TextRenderer
+		{
+			Padding = [0, 5, 0, 5] 
+			XmlFormatting=true; 
+		}
+	}
+	
+	VerticalScrollBar : ^/0/VerticalScrollBar
+	{
+		SelfInputActive = false
+		Width = 12
+		IncrementButton : ^/0/IncrementButton { Active = false }
+		DecrementButton : ^/0/DecrementButton { Active = false }
+		Paddle : ^/0/Paddle
+		{
+			SelfInputActive = false
+			
+			StateDisabledNineSlice
+			{
+				Flags = Center
+				Bleed = 8
+				Borders = 16
+				ProvidedRectPadding = -7
+		
+				_X = 384
+				_Y = 128
+				TopLeftSprite     : ~/MainSprite { Source=[(&../../_X)+0,  (&../../_Y)+0,  32, 32]; }
+				TopSprite         : ~/MainSprite { Source=[(&../../_X)+32, (&../../_Y)+0,  64, 32]; }
+				TopRightSprite    : ~/MainSprite { Source=[(&../../_X)+96, (&../../_Y)+0,  32, 32]; }
+				LeftSprite        : ~/MainSprite { Source=[(&../../_X)+0,  (&../../_Y)+32, 32, 64]; }
+				CenterSprite      : ~/MainSprite { Source=[(&../../_X)+32, (&../../_Y)+32, 64, 64]; }
+				RightSprite       : ~/MainSprite { Source=[(&../../_X)+96, (&../../_Y)+32, 32, 64]; }
+				BottomLeftSprite  : ~/MainSprite { Source=[(&../../_X)+0,  (&../../_Y)+96, 32, 32]; }
+				BottomSprite      : ~/MainSprite { Source=[(&../../_X)+32, (&../../_Y)+96, 64, 32]; }
+				BottomRightSprite : ~/MainSprite { Source=[(&../../_X)+96, (&../../_Y)+96, 32, 32]; }
+			}
+		}
+	}
+	
+	ScrollWheelController { DisableInputHandling = true }
 }
 
 ZeroButtonDialog

@@ -351,15 +351,13 @@ BuildBox
 	SaveSelected = 選択中のパーツをセーブ
 	SaveSelectedTip = 選択したパーツを船のデザインとしてセーブします。
 	SelectTip = "<b>選択ツール</b>\n\nこれを選択中に、コピー、カット、ペースト、ミラー、回転、または削除したいパーツの周りにボックスをドラッグします。\n\nホットキー：<btn id='Design.SelectionTool'/>\n\n<btn id='Design.ContiguousSelectionMode'/>を長押しで隣接物を「自動選択」します。"
-	ShowPartDescription = "<gray><btn id='Design.ShowStats'/>を長押しで説明を表示。</gray>"
-	ShowPartStats = "<gray><btn id='Design.ShowStats'/>を長押しで統計を表示。</gray>"
 	ShowResourceDeliveries = 資源配達を表示
 	ShowResourceDeliveriesTip = このオプションをチェックすると、予定された建造資源の配達が表示されます。
 	StatBarTipFmt = ""
 	StatBarTipIdealFmt = "<b>{0}</b>\n<good>提案：<b>{1}</b></good>"
 	Title = 船の編集
 	TotalBlueprintValueFmt = "船のデザインの価値：\n<b>{0}</b>"
-	TotalMassFmt = "塊：\n<b>{0:0.0}トン</b>"
+	TotalMassFmt = "質量：\n<b>{0:0.0}トン</b>"
 	TotalShipValueFmt = "現在の価値：\n<b>{0}</b>"
 	UncomittedModifications = 船の設計図に未実行の変更があります。これらの変更を破棄しますか？
 	UndoTip = "船に加えた直近の変更を元に戻します。\n\nホットキー：<btn id='Design.Undo'/>"
@@ -561,7 +559,7 @@ CommsBox
 	AcceptHail = 受信
 	DeclineHail = 拒否
 	DistFmt = "{0:0.00}km"
-	Hail = 交信中
+	Hail = 交信
 	HailingFailedFmt = "<bad>交信が拒否されました</bad>\n{0}"
 	HailingFmt = "<good>通信を送信中…</good>\n{0}"
 	IffAlly = 敵味方識別：<ally>味方</ally>
@@ -1039,11 +1037,11 @@ Doodads
 	AsteroidSulfur_S = 硫黄小惑星（S）
 	AsteroidSulfur_XL = 硫黄小惑星（XL）
 	AsteroidSulfur_XXL = 硫黄小惑星（XXL）
-	AsteroidTritanium_L = トライタニウム小惑星（L）
-	AsteroidTritanium_M = トライタニウム小惑星（M）
-	AsteroidTritanium_S = トライタニウム小惑星（S）
-	AsteroidTritanium_XL = トライタニウム小惑星（XL）
-	AsteroidTritanium_XXL = トライタニウム小惑星（XXL）
+	AsteroidTritanium_L = トリタニウム小惑星（L）
+	AsteroidTritanium_M = トリタニウム小惑星（M）
+	AsteroidTritanium_S = トリタニウム小惑星（S）
+	AsteroidTritanium_XL = トリタニウム小惑星（XL）
+	AsteroidTritanium_XXL = トリタニウム小惑星（XXL）
 	AsteroidUranium_L = ウラン小惑星（L）
 	AsteroidUranium_M = ウラン小惑星（M）
 	AsteroidUranium_S = ウラン小惑星（S）
@@ -1642,7 +1640,6 @@ Inputs
 		RotateRight = パーツ/デカールを右に回転
 		SelectAll = 全てのパーツ/デカールを選択
 		SelectionTool = 選択/コピー/ペーストツール
-		ShowStats = パーツの解析情報を表示
 		ToggleBlueprints = 設計図に切り替え
 		ToggleMirrorMode = ミラーモード切り替え
 		Undo = 元に戻す
@@ -1679,7 +1676,7 @@ Inputs
 		DirectControlToggle = 直接操縦モード切り替え
 		DirectControlToggleFaceCursor = 直接操縦：自動カーソル追従切り替え
 		DirectControlToggleWeapons = 直接操縦：武器操作切り替え
-		DoFtlJump = ハイパージャンプを実行
+		DoFtlJump = ハイパージャンプを出発
 		Halt = 停止
 		IncreaseSpeed = 速度を上げる
 		InvertCollisionAvoidance = 衝突回避機能を反転
@@ -2240,7 +2237,7 @@ MissileTypes
 	
 	EMP = EMPミサイル
 	EMPDesc = 着弾時に電磁パルスを放出する大型誘導ミサイルで、広範囲の敵のシステムの動力を消耗させます。
-	HE = 高爆破性能ミサイル
+	HE = 榴弾ミサイル
 	HEDesc = 狭い範囲に多大なダメージを与える誘導ミサイル。
 	Mine = 近接機雷
 	MineDesc = 静止状態の機雷で敵艦が接近すると起爆し、榴弾を発射しダメージを与えます。
@@ -2662,7 +2659,7 @@ Parts
 	ArmorWedgeDesc = 敵の武器からの攻撃によるダメージを吸収し、船の重要区画である内部を守ります。また、EMP効果に対しては避雷針としての役割を果たします。
 	ArmorWedgeIcon = 装甲楔形
 	CannonDeck = デッキ大砲
-	CannonDeckDesc = "安定化を増すために船の側面ではなく上に設置された大型のダブルバレル大砲。両バレル合わせて10発の発射物を搭載し\n\n前方および側面は他のルーフタレットあるいは「背の高い」パーツから2タイル以内には設置できません。"
+	CannonDeckDesc = "安定化を増すために船の側面ではなく上に設置された大型のダブルバレル大砲。両バレル合わせて10発の発射物を搭載し、その爆音は付近のクルーを一時的にスタンさせるほどです。\n\n前方および側面は他のルーフタレットあるいは「背の高い」パーツから2タイル以内には設置できません。"
 	CannonDeckIcon = デッキキャノン砲
 	CannonLarge = 大型大砲
 	CannonLargeDesc = 4発の発射弾を融合させ、標準大砲に比べ、ダメージおよび貫通力を強化します。
@@ -2772,18 +2769,18 @@ Parts
 	DepositSulfur3xHard = "硫黄堆積物（3x 硬）"
 	DepositSulfur3xHardIcon = "硫黄（3x 硬）"
 	DepositSulfur3xIcon = "硫黄（3x 軟）"
-	DepositTritanium1x = "トライタニウム堆積物（1x 軟）"
-	DepositTritanium1xHard = "トライタニウム堆積物（1x 硬）"
-	DepositTritanium1xHardIcon = "トライタニウム（1x 硬）"
-	DepositTritanium1xIcon = "トライタニウム（1x 軟）"
-	DepositTritanium2x = "トライタニウム堆積物（2x 軟）"
-	DepositTritanium2xHard = "トライタニウム堆積物（2x 硬）"
-	DepositTritanium2xHardIcon = "トライタニウム（2x 硬）"
-	DepositTritanium2xIcon = "トライタニウム（2x 軟）"
-	DepositTritanium3x = "トライタニウム堆積物（3x 軟）"
-	DepositTritanium3xHard = "トライタニウム堆積物（3x 硬）"
-	DepositTritanium3xHardIcon = "トライタニウム（3x 硬）"
-	DepositTritanium3xIcon = "トライタニウム（3x 軟）"
+	DepositTritanium1x = "トリタニウム堆積物（1x 軟）"
+	DepositTritanium1xHard = "トリタニウム堆積物（1x 硬）"
+	DepositTritanium1xHardIcon = "トリタニウム（1x 硬）"
+	DepositTritanium1xIcon = "トリタニウム（1x 軟）"
+	DepositTritanium2x = "トリタニウム堆積物（2x 軟）"
+	DepositTritanium2xHard = "トリタニウム堆積物（2x 硬）"
+	DepositTritanium2xHardIcon = "トリタニウム（2x 硬）"
+	DepositTritanium2xIcon = "トリタニウム（2x 軟）"
+	DepositTritanium3x = "トリタニウム堆積物（3x 軟）"
+	DepositTritanium3xHard = "トリタニウム堆積物（3x 硬）"
+	DepositTritanium3xHardIcon = "トリタニウム（3x 硬）"
+	DepositTritanium3xIcon = "トリタニウム（3x 軟）"
 	DepositUranium1x = "ウラン堆積物（1x 軟）"
 	DepositUranium1xHard = "ウラン堆積物（1x 硬）"
 	DepositUranium1xHardIcon = "ウラン（1x 硬）"
@@ -2823,7 +2820,7 @@ Parts
 	FactoryEMP = EMPミサイル工場
 	FactoryEMPDesc = 広範囲にわたり敵のシステムの電力を消耗させる誘導電磁バルスミサイルを製造。鉄と銅を消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryEMPIcon = EMPミサイル
-	FactoryHE = 高性能爆薬ミサイル工場
+	FactoryHE = 榴弾ミサイル工場
 	FactoryHEDesc = 狭い範囲に多大なダメージを与える高性能爆薬の誘導ミサイルを製造。鉄と硫黄を消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryHEIcon = HEミサイル
 	FactoryMine = 機雷工場
@@ -2839,7 +2836,7 @@ Parts
 	FactorySteelDesc = ほぼ全ての船のパーツの建造に使用される鋼鉄プレートを製造。鉄を消費します。種類を問わず、種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactorySteelIcon = 鋼鉄
 	FactoryTristeel = 3重鋼鉄溶鉱炉
-	FactoryTristeelDesc = 上級船の一部のパーツの建造に使用する3重鋼鉄プレートを製造。トライタニウムを消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
+	FactoryTristeelDesc = 上級船の一部のパーツの建造に使用するトリ鋼鉄プレートを製造。トリタニウムを消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryTristeelIcon = 3重鋼鉄
 	FactoryUranium = ウラン濃縮機
 	FactoryUraniumDesc = リアクターや船の他のパーツの建造に必要なウランを濃縮します。非濃縮ウランを消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
@@ -3257,7 +3254,7 @@ Resource
 	MissilePartEMPDesc = 電磁パルスミサイルの組み立てに使用する部品。
 	MissilePartEMPPlural = EMPミサイル部品
 	MissilePartHE = HEミサイル部品
-	MissilePartHEDesc = 高爆破性能ミサイルの組み立てに使用する部品。
+	MissilePartHEDesc = 榴弾ミサイルの組み立てに使用する部品。
 	MissilePartHEPlural = HEミサイル部品
 	MissilePartNuke = 核ミサイル部品
 	MissilePartNukeDesc = 核ミサイルの組み立てに使用する部品。
@@ -3276,10 +3273,10 @@ Resource
 	Tristeel = 3重鋼鉄
 	TristeelDesc = 上級船の一部のパーツの建造に使用する、貴重な超強力金属混合物。
 	TristeelPlural = 3重鋼鉄
-	Tritanium = トライタニウム
+	Tritanium = トリタニウム
 	TritaniumDesc = 3重鋼鉄プレート製造に使用する、採掘可能な希少資源。
 	TritaniumHardDesc = ""
-	TritaniumPlural = トライタニウム
+	TritaniumPlural = トリタニウム
 	Uranium = ウラン
 	UraniumDesc = 濃縮できる採掘可能な希少資源。
 	UraniumHardDesc = ""
@@ -3645,8 +3642,6 @@ Settings
 		PaintLbl = 塗装編集
 		PaintSelectTool = 選択ツール
 		PaintSelectToolTip = 「選択ツール」が塗装編集画面を開いた時のデフォルトで設定されているツールになります。
-		PartToolTipsDefaultToStats = デフォルトで統計を表示
-		PartToolTipsDefaultToStatsTip = "このオプションをチェックすると、パーツの上にマウスカーソルを当てた時にパーツの説明ではなく統計を表示します。<btn id='Design.ShowStats'/>を長押しすると説明を表示することもできます。"
 		RepairAutoDoors = 自動でドアを修理
 		RepairAutoDoorsTip = このオプションをチェックすると、破壊されたパーツを再建する時に、接しているドアも自動的に再建します。
 		RequirePartialRefundConfirmation = 減額された払い戻し金の確認を要求
@@ -4095,7 +4090,7 @@ StatCategories
 	MineShrapnel = 榴散弾
 	MiningBeam = ダブル採掘ビーム
 	MissileEMP = 電磁パルスミサイル
-	MissileHE = 高性能爆薬ミサイル
+	MissileHE = 榴弾ミサイル
 	MissileNuke = 戦術核ミサイル
 	PDShot = 拠点防衛弾薬
 	RailgunBuff = レールガンバフ
@@ -4128,7 +4123,7 @@ Stats
 	CoilPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/コイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	CoilProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> コイル/秒</gray>"
 	CommandPointsProvidedFmt = "<white>コマンドポイント：</white>　<good>＋{0}<image name='command_points' colored='true'/></good>　<gray>（供給）</gray>"
-	CommandPointsUsedFmt = "<white>コマンドポイント：</white><good>-{0}<image name='command_points' colored='true'/></good> <gray>（使用中）</gray>"
+	CommandPointsUsedFmt = "<white>コマンドポイント：</white><good>-{0}<image name='command_points' colored='true'/></good> <gray>（使用）</gray>"
 	CopperCapacityFmt = "<white>銅容量：</white> <good>{0}</good>"
 	CostFmt = "<white>価値：</white> <money>{0:n0}</money>"
 	CrewCapacityFmt = "<white>乗組員ベッド：</white> <good>{0}</good>"
@@ -4171,17 +4166,17 @@ Stats
 	IronCapacityFmt = "<white>鉄容量：</white> <good>{0}</good>"
 	MaxDamageFmt = "<white>最大ダメージ：</white> <good>{0:n0}</good><gray>/発（</gray><good>{1:n0}</good><gray>/秒）</gray>"
 	MineAmmoUsageFmt = "<white>弾薬使用：</white> <good>{0:0.##}</good><gray>/機雷 (</gray><good>{1:0.##}</good><gray>/秒)</gray>"
-	MineCapacityFmt = "<white>機雷鉄容量：</white> <good>{0}</good>"
+	MineCapacityFmt = "<white>機雷容量：</white> <good>{0}</good>"
 	MineIronUsageFmt = "<white>鉄使用：</white> <good>{0:0.##}</good><gray>/採掘 (</gray><good>{1:0.##}</good><gray>/秒)</gray>"
 	MinePartCapacityFmt = "<white>容量：</white> <good>{0}</good><gray> パーツ（</gray><good>{1:0.##}</good><gray> 機雷）</gray>"
-	MinePartsFmt = "<white>部品収集元：</white>　<good>{0}</good><gray>　パーツ/機雷</gray>"
+	MinePartsFmt = "<white>材料：</white>　<good>{0}</good><gray>　パーツ/機雷</gray>"
 	MinePowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/機雷 (</gray><good>{1:0.##}</good><gray>/秒)</gray>"
 	MineProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray>　機雷/秒</gray>"
 	MissileCopperUsageFmt = "<white>銅使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MissileIronUsageFmt = "<white>鉄使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MissileLauncherNotes = <gray>軍需品の統計については、各軍需品の種類に応じた工場を参照してください。</gray>
 	MissilePartCapacityFmt = "<white>容量：</white> <good>{0}</good><gray> パーツ（</gray><good>{1:0.##}</good><gray> ミサイル）</gray>"
-	MissilePartsFmt = "<white>部品収集元：</white>　<good>{0}</good><gray>　パーツ/ミサイル</gray>"
+	MissilePartsFmt = "<white>材料：</white>　<good>{0}</good><gray>　パーツ/ミサイル</gray>"
 	MissilePowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MissileProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray>　ミサイル/秒</gray>"
 	MissileSulfurUsageFmt = "<white>硫黄使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
@@ -4204,9 +4199,9 @@ Stats
 	ROFRangeFmt = "<white>発射速度：</white>　<good>{0:0.##}</good><white> - </white><good>{1:0.##}</good><gray>発/秒</gray>"
 	RadarRangeFmt = "<white>センサー範囲（レーダー）：</white> <good>{0:0}</good><gray> メートル</gray>"
 	RailgunBuffFmt = "<gray>レールガンダメージ、貫通、射程、発射物の速度を上昇（加速装置1台につき）：</gray>\n　<TransparentWhite>0</TransparentWhite><white>1: </white><good>+{0:000}%</good>   <white>11: </white><good>+{10:000}%</good>   <white>21: </white><good>+{20:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>2: </white><good>+{1:000}%</good>   <white>12: </white><good>+{11:000}%</good>   <white>22: </white><good>+{21:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>3: </white><good>+{2:000}%</good>   <white>13: </white><good>+{12:000}%</good>   <white>23: </white><good>+{22:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>4: </white><good>+{3:000}%</good>   <white>14: </white><good>+{13:000}%</good>   <white>24: </white><good>+{23:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>5: </white><good>+{4:000}%</good>   <white>15: </white><good>+{14:000}%</good>   <white>25: </white><good>+{24:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>6: </white><good>+{5:000}%</good>   <white>16: </white><good>+{15:000}%</good>   <white>26: </white><good>+{25:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>7: </white><good>+{6:000}%</good>   <white>17: </white><good>+{16:000}%</good>   <white>27: </white><good>+{26:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>8: </white><good>+{7:000}%</good>   <white>18: </white><good>+{17:000}%</good>   <white>28: </white><good>+{27:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>9: </white><good>+{8:000}%</good>   <white>19: </white><good>+{18:000}%</good>   <white>29: </white><good>+{28:000}%</good>\n  <white>10: </white><good>+{9:000}%</good>   <white>20: </white><good>+{19:000}%</good>   <white>30: </white><good>+{29:000}%</good>"
-	RailgunNotes = <gray>注意：ダメージ、貫通、範囲、発射物速度、動力消費は各レールガン加速装置1台追加するごとに上昇します。</gray>
-	RangeFmt = "<white>範囲：</white> <good>x{0:0}</good> <gray>メートル</gray>"
-	RangeLimitedFmt = "<white>範囲：</white> <good>x{0:0}</good> <gray>メートル（最大</gray>　<good>{1:0}</good><gray>メートル）</gray>"
+	RailgunNotes = <gray>注意：ダメージ、貫通、射程、発射物速度、動力消費は各レールガン加速装置1台追加するごとに上昇します。</gray>
+	RangeFmt = "<white>射程：</white> <good>x{0:0}</good> <gray>メートル</gray>"
+	RangeLimitedFmt = "<white>射程：</white> <good>x{0:0}</good> <gray>メートル（最大</gray>　<good>{1:0}</good><gray>メートル）</gray>"
 	Resources = "<white>資源：</white> "
 	RocketNotes = <gray>注意：推進力、強化時間、動力消費はエクステンダーモジュールを1つ追加するごとに上昇します。</gray>
 	SalvoFmt = "<white>斉射：</white> <good>{0:0.##}</good><gray>/発（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
@@ -4251,12 +4246,12 @@ Stats
 	TristeelCapacityFmt = "<white>3重鋼鉄容量：</white>　<good>{0}</good>"
 	TristeelPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/3重鋼鉄（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	TristeelProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> 3重鋼鉄/秒</gray>"
-	TristeelTritaniumUsageFmt = "<white>トライタニウム使用：</white> <good>{0:0.##}</good><gray>/3重鋼鉄（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
-	TritaniumCapacityFmt = "<white>トライタニウム容量：</white>　<good>{0}</good>"
+	TristeelTritaniumUsageFmt = "<white>トリタニウム使用：</white> <good>{0:0.##}</good><gray>/トリ鋼鉄（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	TritaniumCapacityFmt = "<white>トリタニウム容量：</white>　<good>{0}</good>"
 	TurretPenResistFmt = "<white>タレット貫通耐性：</white>　<good>-{0}</good><gray>メートル</gray>"
 	TurretSpeedFmt = "<white>タレット速度：</white> <good>{0:0}°</good><gray>/秒</gray>"
 	UraniumCapacityFmt = "<white>ウラン容量：</white> <good>{0}</good>"
-	WeightFmt = "<white>塊：</white> <good>{0:0.0#}</good> <gray>トン</gray>"
+	WeightFmt = "<white>質量：</white> <good>{0:0.0#}</good> <gray>トン</gray>"
 }
 Tips
 {

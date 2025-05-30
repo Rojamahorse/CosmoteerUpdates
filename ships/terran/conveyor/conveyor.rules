@@ -44,6 +44,10 @@ Part : <../base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		IsOperational : <../corridor/corridor.rules>/Part/Components/IsOperational {}
+
+		Darkness_Components : <../corridor/corridor.rules>/Part/Components/Darkness_Components {}
+
 		WallsBlend : <../walls/walls.rules>
 		{
 			Type = BlendSprite

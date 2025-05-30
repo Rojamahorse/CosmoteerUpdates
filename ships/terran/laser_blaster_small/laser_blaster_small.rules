@@ -770,7 +770,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue
-			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/StatsByCategory/1/Stats/ROF)
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/SecondaryToolTip/StatsByCategory/0/Stats/ROF)
 			Value = (&SHOT_HEAT_PER_SECOND)
 		}
 		HeatGenerationStatProvider
@@ -812,17 +812,25 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 			}
 		}
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				Damage = [&~/OVERCLOCK/BEAM/DAMAGE, (&~/OVERCLOCK/BEAM/DAMAGE) * (&../ROF)]
-				ROF = (&~/Part/StatsByCategory/0/Stats/ROF) * (&~/OVERCLOCK/FIRE_RATE_FACTOR)
-				ShotSpeed = Infinity
-				PowerPerShot = (&~/Part/Components/Overclock_BeamEmitter/ResourcesUsed) / 1000
-				ShotPowerUsage = [&../PowerPerShot, (&../PowerPerShot) * (&../ROF)]
-				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
-			}
-		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/LaserBoltSmallOverclocked"
+				Stats
+				{
+					Damage = [&~/OVERCLOCK/BEAM/DAMAGE, (&~/OVERCLOCK/BEAM/DAMAGE) * (&../ROF)]
+					ROF = (&~/Part/StatsByCategory/0/Stats/ROF) * (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+					ShotSpeed = Infinity
+					PowerPerShot = (&~/Part/Components/Overclock_BeamEmitter/ResourcesUsed) / 1000
+					ShotPowerUsage = [&../PowerPerShot, (&../PowerPerShot) * (&../ROF)]
+					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+				}
+			}
+		]
+	}
 }

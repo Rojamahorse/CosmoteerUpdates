@@ -43,7 +43,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Toggles = [PowerToggle, CommandToggle, BatteryStorage, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
 			Mode = All
 		}
 
@@ -75,6 +75,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = CommandConsumer
 			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 6
+		}
+		CommandToggle
+		{
+			Type = CommandToggle
 		}
 
 		BatteryStorage
@@ -711,20 +715,18 @@ Part : <../base_part_terran_overclock.rules>/Part
 		RecCrew = (&CrewRequired) + (&RecPower) * 4
 	}
 	
-	StatsByCategory
-	[
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
 		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				PowerDistributionEfficiency = (&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER) * 100
-				HeatTransferInefficiency = ((&~/OVERCLOCK/COLLECTED_HEAT_MULTIPLIER) - 1) * 100
-			}
-			Features
-			[
-				ForcedThrusterOverclock
-				ThrusterHeatTransfer
-			]
+			PowerDistributionEfficiency = (&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER) * 100
+			HeatTransferInefficiency = ((&~/OVERCLOCK/COLLECTED_HEAT_MULTIPLIER) - 1) * 100
 		}
-	]
+		Features
+		[
+			ForcedThrusterOverclock
+			ThrusterHeatTransfer
+		]
+	}
 }

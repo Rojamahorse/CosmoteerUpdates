@@ -50,8 +50,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Toggles = [NonJunkToggle, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
 			Mode = All
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
 		}
 	
 		ScorchedToggle
@@ -839,16 +845,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 		PowerCapacity = (&~/Part/Components/CombinedBatteryStorage/MaxResources) / 1000
 	}
 	
-	StatsByCategory
-	[
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
 		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				PowerCapacity = (&~/Part/Stats/PowerCapacity) * (&~/OVERCLOCK/CAPACITY_FACTOR)
-				PowerGeneration = (&~/Part/Stats/PowerGeneration) * (&~/OVERCLOCK/POWER_GENERATION_FACTOR)
-				PowerHeatGeneration = [&~/OVERCLOCK/HEAT_PER_BATTERY, &~/OVERCLOCK/HEAT_PER_SECOND]
-			}
+			PowerCapacity = (&~/Part/Stats/PowerCapacity) * (&~/OVERCLOCK/CAPACITY_FACTOR)
+			PowerGeneration = (&~/Part/Stats/PowerGeneration) * (&~/OVERCLOCK/POWER_GENERATION_FACTOR)
+			PowerHeatGeneration = [&~/OVERCLOCK/HEAT_PER_BATTERY, &~/OVERCLOCK/HEAT_PER_SECOND]
 		}
-	]
+	}
 }

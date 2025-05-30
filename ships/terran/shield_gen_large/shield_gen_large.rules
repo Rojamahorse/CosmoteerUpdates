@@ -1253,16 +1253,18 @@ Part : <../base_part_terran_overclock.rules>/Part
 				PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000
 			}
 		}
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/ARC_FACTOR)
-				ShieldHP = (&~/Part/StatsByCategory/0/Stats/ShieldHP) / (&~/OVERCLOCK/DAMAGE_DRAIN_FACTOR)
-				EMPResistPercentage = (&~/OVERCLOCK/EMP_RESIST) * 100
-				HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
-				HeatPerDamage = (&~/OVERCLOCK/HEAT_PER_DAMAGE)
-			}
-		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
+		{
+			ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/ARC_FACTOR)
+			ShieldHP = (&~/Part/StatsByCategory/0/Stats/ShieldHP) / (&~/OVERCLOCK/DAMAGE_DRAIN_FACTOR)
+			EMPResistPercentage = (&~/OVERCLOCK/EMP_RESIST) * 100
+			HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
+			HeatPerDamage = (&~/OVERCLOCK/HEAT_PER_DAMAGE)
+		}
+	}
 }

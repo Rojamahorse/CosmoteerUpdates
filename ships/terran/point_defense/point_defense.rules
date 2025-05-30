@@ -51,8 +51,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle]
+			Toggles = [NonJunkToggle, PowerToggle, BatteryStorage, ScorchedToggle]
 			Mode = All
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
 		}
 
 		CommandConsumptionToggle
@@ -687,4 +693,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
+		{
+			PowerGeneration = (&~/Part/Components/BulletEmitter/ResourcesUsed) / (&~/OVERCLOCK/RECHARGE_TIME_PER_SHOT) / 1000
+			HeatGeneration = (&~/OVERCLOCK/RECHARGING_HEAT_PER_SECOND)
+		}
+	}
 }

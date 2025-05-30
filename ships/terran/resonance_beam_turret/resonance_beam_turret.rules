@@ -272,7 +272,8 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = heat
-			MaxResources = 5000 * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+			MAX_STATUS_HEAT = 5000
+			MaxResources = (&MAX_STATUS_HEAT) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
 			InitToMaxResources = 0
 			IgnoreResourcesForInitToMax = true
 		}
@@ -930,7 +931,39 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-		
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [2, 2]
+			FactorHitEffectsWith = HeatStorage
+			
+			HitEffects
+			[
+				{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					HitPartSourceRectType = Normal
+					StatusValue = 0
+					StatusValuePool
+					{
+						BaseValue = &~/Part/Components/HeatStorage/MAX_STATUS_HEAT
+						EffectScaleExponent = 1
+					}
+					MaxCost = 3
+					EmptyTileCost = Infinity
+					ValueFalloff = 1
+					FalloffPadding = 1
+					Filter
+					{
+						Self = true
+					}
+				}
+			]
+			
+			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed
+		}
+
 		Graphics
 		{
 			Type = Graphics

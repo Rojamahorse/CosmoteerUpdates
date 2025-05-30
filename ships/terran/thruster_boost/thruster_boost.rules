@@ -5,8 +5,8 @@ OVERCLOCK
 	POWER_USAGE_FACTOR = 1 / (&THRUST_FACTOR) * (&MAX_POWER_USAGE_FACTOR)
 	THRUST_HEAT_PER_SECOND = 275
 	
-	BASE_BOOST_HEAT_FACTOR = 150%
-	BOOST_HEAT_FACTOR_PER_BATTERY = 15%
+	BASE_BOOST_HEAT_FACTOR = 175%
+	BOOST_HEAT_FACTOR_PER_BATTERY = 20%
 	BOOST_HEAT_FACTOR_PER_SECOND = -3%
 	BOOST_HEAT_FACTOR_POWER_THRESHOLD = (&~/Part/Components/RealBatteryStorage/MaxResources)
 	
@@ -92,7 +92,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, RealBatteryStorage, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Toggles = [PowerToggle, CommandToggle, RealBatteryStorage, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
 			Mode = All
 		}
 
@@ -124,6 +124,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = CommandConsumer
 			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 6
+		}
+		CommandToggle
+		{
+			Type = CommandToggle
 		}
 
 		BoostToggle
@@ -1482,32 +1486,37 @@ Part : <../base_part_terran_overclock.rules>/Part
 				BoostedPowerUsageContinuous = -(&~/Part/BoostedPowerDrain/BaseValue) / (&~/Part/BoostedPowerDrainInterval) / 1000
 			}
 		}
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				ThrusterForce = (&~/Part/ThrusterForce) * (&~/OVERCLOCK/THRUST_FACTOR)
-				ThrusterHeatGeneration = &~/OVERCLOCK/THRUST_HEAT_PER_SECOND
-				ThrusterPowerUsage = (&~/Part/FuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000
-			}
-		}
-		{
-			NameKey = "StatCategories/OverclockedBoost"
-			Stats
-			{
-				ThrusterForce = (&~/Part/BoostedThrusterForce) * (&~/OVERCLOCK/THRUST_FACTOR)
-				BASE_THRUSTER_POWER_USAGE = (&~/Part/BoostedFuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000 
-				ThrusterPowerUsageRamp = [&../BASE_THRUSTER_POWER_USAGE, (&../BASE_THRUSTER_POWER_USAGE) * (&~/OVERCLOCK/BOOST_MAX_POWER_USAGE_FACTOR)]
-				ThrusterPowerUsageRampTime = (&~/OVERCLOCK/BOOST_POWER_RAMP_TIME)
-				BaseHeatFactor = [(&~/OVERCLOCK/BASE_BOOST_HEAT_FACTOR) * 100, (&~/OVERCLOCK/THRUST_HEAT_PER_SECOND) * (&~/OVERCLOCK/BASE_BOOST_HEAT_FACTOR)]
-				BoostHeatFactorPerBattery = (&~/OVERCLOCK/BOOST_HEAT_FACTOR_PER_BATTERY) * 100
-				BoostHeatFactorPerSecond = (&~/OVERCLOCK/BOOST_HEAT_FACTOR_PER_SECOND) * 100
-				BoostHeatFactorBatteryThreshold = (&~/OVERCLOCK/BOOST_HEAT_FACTOR_POWER_THRESHOLD) / 1000
-			}
-			Features
-			[
-				CanReceivePower
-			]
-		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
+		{
+			ThrusterForce = (&~/Part/ThrusterForce) * (&~/OVERCLOCK/THRUST_FACTOR)
+			ThrusterHeatGeneration = &~/OVERCLOCK/THRUST_HEAT_PER_SECOND
+			ThrusterPowerUsage = (&~/Part/FuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000
+		}
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/OverclockedBoost"
+				Stats
+				{
+					ThrusterForce = (&~/Part/BoostedThrusterForce) * (&~/OVERCLOCK/THRUST_FACTOR)
+					BASE_THRUSTER_POWER_USAGE = (&~/Part/BoostedFuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000 
+					ThrusterPowerUsageRamp = [&../BASE_THRUSTER_POWER_USAGE, (&../BASE_THRUSTER_POWER_USAGE) * (&~/OVERCLOCK/BOOST_MAX_POWER_USAGE_FACTOR)]
+					ThrusterPowerUsageRampTime = (&~/OVERCLOCK/BOOST_POWER_RAMP_TIME)
+					BaseHeatFactor = [(&~/OVERCLOCK/BASE_BOOST_HEAT_FACTOR) * 100, (&~/OVERCLOCK/THRUST_HEAT_PER_SECOND) * (&~/OVERCLOCK/BASE_BOOST_HEAT_FACTOR)]
+					BoostHeatFactorPerBattery = (&~/OVERCLOCK/BOOST_HEAT_FACTOR_PER_BATTERY) * 100
+					BoostHeatFactorPerSecond = (&~/OVERCLOCK/BOOST_HEAT_FACTOR_PER_SECOND) * 100
+					BoostHeatFactorBatteryThreshold = (&~/OVERCLOCK/BOOST_HEAT_FACTOR_POWER_THRESHOLD) / 1000
+				}
+				Features
+				[
+					CanReceivePower
+				]
+			}
+		]
+	}
 }

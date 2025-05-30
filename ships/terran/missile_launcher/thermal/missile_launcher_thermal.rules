@@ -1,7 +1,7 @@
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-HEAT_PER_MISSILE = 7000
+HEAT_PER_MISSILE = 7500
 
 EditorIcon
 {
@@ -17,13 +17,12 @@ Components
 {
 	MissileStorageA : ~/BASE/MissileStorage {}
 	MissileStorageB : ~/BASE/MissileStorage {}
-	MissileStorageC : ~/BASE/MissileStorage {}
 	
 	CombinedMissileStorage
 	{
 		Type = MultiResourceStorage
 		ResourceType = &~/MISSILE_PART
-		ResourceStorages = [MissileStorageA, MissileStorageB, MissileStorageC]
+		ResourceStorages = [MissileStorageA, MissileStorageB]
 		AddMode = PrioritizeLeastEmptyCapacity
 		RemoveMode = PrioritizeMostEmptyCapacity
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
@@ -43,15 +42,16 @@ Components
 	
 	HeatStorageA : ~/BASE/HeatStorage {}
 	HeatStorageB : ~/BASE/HeatStorage {}
-	HeatStorageC : ~/BASE/HeatStorage {}
 	
 	CombinedHeatStorage
 	{
 		Type = MultiResourceStorage
 		ResourceType = heat
-		ResourceStorages = [ HeatStorageA, HeatStorageB, HeatStorageC ]
+		ResourceStorages = [ HeatStorageA, HeatStorageB ]
 		AddMode = PrioritizeLeastEmptyCapacity
 		RemoveMode = PrioritizeMostEmptyCapacity
+		ProvidedValueRange = 0
+		ProvidedValuePerResource = 1 * (&~/HEAT_TO_STATUS)
 	}
 	
 	HeatConverter
@@ -82,29 +82,25 @@ Components
 	{
 		Toggles = [ MissileStorageB, HeatStorageB ]
 	}
-	PrereqC : PrereqA
-	{
-		Toggles = [ MissileStorageC, HeatStorageC ]
-	}
 	
 	PartsPrereq
 	{
 		Type = MultiToggle
-		Toggles = [ MissileStorageA, MissileStorageB, MissileStorageC ]
+		Toggles = [ MissileStorageA, MissileStorageB ]
 		Mode = Any
 	}
 	
 	HeatPrereq
 	{
 		Type = MultiToggle
-		Toggles = [ HeatStorageA, HeatStorageB, HeatStorageC ]
+		Toggles = [ HeatStorageA, HeatStorageB ]
 		Mode = Any
 	}
 	
 	MissilesPrereq
 	{
 		Type = MultiToggle
-		Toggles = [PrereqA, PrereqB, PrereqC]
+		Toggles = [PrereqA, PrereqB]
 		Mode = Any
 	}
 
@@ -172,31 +168,6 @@ Components
 		]
 	}
 
-	WeaponC : ~/BASE/Weapon
-	{
-		Location = [1.5, 1]
-		ShowExplicitTarget = false
-		Emitter = EmitterC
-	}
-
-	EmitterC : ~/BASE/Emitter
-	{
-		ChainedTo = WeaponC
-		FireTrigger = WeaponC
-		GetTargetFrom = WeaponC
-		ResourceUsage
-		[
-			{
-				ResourceStorage = MissileStorageC
-				ResourcesUsed = (&~/BASE/MissileStorage/MaxResources)
-			}
-			{
-				ResourceStorage = HeatStorageC
-				ResourcesUsed = (&~/BASE/HeatStorage/MaxResources)
-			}
-		]
-	}
-
 	FirePermissionToggle
 	{
 		Type = MultiToggle
@@ -207,7 +178,7 @@ Components
 	CommonReloadResetTrigger
 	{
 		Type = MultiTrigger
-		Triggers = [WeaponA, WeaponB, WeaponC]
+		Triggers = [WeaponA, WeaponB]
 	}
 	
 	LaunchEffectA : ~/BASE/LaunchEffect
@@ -220,12 +191,6 @@ Components
 	{
 		ChainedTo = WeaponB
 		Trigger = WeaponB
-	}
-
-	LaunchEffectC : ~/BASE/LaunchEffect
-	{
-		ChainedTo = WeaponC
-		Trigger = WeaponC
 	}
 	
 	Router
@@ -293,7 +258,7 @@ Components
 	RackHeatSpritesA
 	{
 		Type = ResourceSprites
-		Location = [.5 + 2/64, 1.5]
+		Location = [&~/MISSILE_X_LOCATIONS/0, 1.5]
 		ResourceStorage = HeatStorageA
 		Layer = "doors"
 		ResourceLevels
@@ -344,7 +309,7 @@ Components
 			MissileSpritesA
 			{
 				Type = ResourceSprites
-				Location = [.5 + 2/64, 1.5]
+				Location = [&~/MISSILE_X_LOCATIONS/0, 1.5]
 				ResourceStorage = MissileStorageA
 				Layer = "weapons"
 				HasZeroResourceSprite = true
@@ -389,7 +354,7 @@ Components
 			MissileHeatSpritesA
 			{
 				Type = ResourceSprites
-				Location = [.5 + 2/64, 1.5]
+				Location = [&~/MISSILE_X_LOCATIONS/0, 1.5]
 				ResourceStorage = HeatStorageA
 				Layer = "weapons"
 				HasZeroResourceSprite = true
@@ -430,7 +395,7 @@ Components
 			MissileHeatGlowSpritesA
 			{
 				Type = ResourceSprites
-				Location = [.5 + 2/64, 1]
+				Location = [&~/MISSILE_X_LOCATIONS/0, 1]
 				ResourceStorage = HeatStorageA
 				Layer = "lights_add"
 				ResourceLevels
@@ -502,7 +467,7 @@ Components
 
 	RackHeatSpritesB : RackHeatSpritesA
 	{
-		Location = [1, 1.5]
+		Location = [&~/MISSILE_X_LOCATIONS/1, 1.5]
 		ResourceStorage = HeatStorageB
 	}
 	MissileLoadingSpritesB : MissileLoadingSpritesA
@@ -512,7 +477,7 @@ Components
 		{
 			MissileSpritesB : ../../MissileLoadingSpritesA/Components/MissileSpritesA
 			{
-				Location = [1, 1.5]
+				Location = [&~/MISSILE_X_LOCATIONS/1, 1.5]
 				ResourceStorage = MissileStorageB
 			}
 		}
@@ -524,48 +489,13 @@ Components
 		{
 			MissileHeatSpritesB : ../../MissileLoadedSpritesA/Components/MissileHeatSpritesA
 			{
-				Location = [1, 1.5]
+				Location = [&~/MISSILE_X_LOCATIONS/1, 1.5]
 				ResourceStorage =  HeatStorageB
 			}
 			MissileHeatGlowSpritesB : ../../MissileLoadedSpritesA/Components/MissileHeatGlowSpritesA
 			{
-				Location = [1, 1]
+				Location = [&~/MISSILE_X_LOCATIONS/1, 1]
 				ResourceStorage =  HeatStorageB
-			}
-		}
-	}
-
-	RackHeatSpritesC : RackHeatSpritesA
-	{
-		Location = [1.5 - 2/64, 1.5]
-		ResourceStorage = HeatStorageC
-	}
-	MissileLoadingSpritesC : MissileLoadingSpritesA
-	{
-		Toggle = MissileStorageC
-		Components
-		{
-			MissileSpritesC : ../../MissileLoadingSpritesA/Components/MissileSpritesA
-			{
-				Location = [1.5 - 2/64, 1.5]
-				ResourceStorage = MissileStorageC
-			}
-		}
-	}
-	MissileLoadedSpritesC : MissileLoadedSpritesA
-	{
-		Toggle = MissileStorageC
-		Components
-		{
-			MissileHeatSpritesC : ../../MissileLoadedSpritesA/Components/MissileHeatSpritesA
-			{
-				Location = [1.5 - 2/64, 1.5]
-				ResourceStorage =  HeatStorageC
-			}
-			MissileHeatGlowSpritesC : ../../MissileLoadedSpritesA/Components/MissileHeatGlowSpritesA
-			{
-				Location = [1.5 - 2/64, 1]
-				ResourceStorage =  HeatStorageC
 			}
 		}
 	}
@@ -630,6 +560,38 @@ Components
 //			}
 //		]
 //	}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [1, 2.5]
+			FactorHitEffectsWith = CombinedHeatStorage
+			
+			HitEffects
+			[
+				{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					HitPartSourceRectType = Normal
+					StatusValue = 0
+					StatusValuePool
+					{
+						BaseValue = 1
+						EffectScaleExponent = 1
+					}
+					MaxCost = 3
+					EmptyTileCost = Infinity
+					ValueFalloff = 1
+					FalloffPadding = 1
+					Filter
+					{
+						Self = true
+					}
+				}
+			]
+			
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+		}
 
 	Indicators
 	{
@@ -758,6 +720,12 @@ Components
 	//---------------------- END PIPE CONNECTOR ----------------------
 }
 
+MISSILE_X_LOCATIONS
+[
+	0.5 + 11/64
+	1.5 - 11/64
+]
+
 MISSILE_PART = missile_part_thermal
 
 BASE
@@ -766,9 +734,9 @@ BASE
 	{
 		Type = ResourceStorage
 		ResourceType = &~/MISSILE_PART
-		MaxResources = 4
-		ToggleOnResources = 4
-		ToggleOffResources = 3
+		MaxResources = 5
+		ToggleOnResources = (&MaxResources)
+		ToggleOffResources = (&MaxResources) - 1
 		DelayBeforeReadyToUse = .5
 		DropResourcesWhenDestroyed = true
 		DropResourcesWhenRemoved = true

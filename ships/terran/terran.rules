@@ -21,13 +21,6 @@ Terran : <../base_ship.rules>
 	[
 		// Basic.
 		&<corridor/corridor.rules>/Part
-
-		// Heat Management
-		&<heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part
-		&<heat_pipe_crossing/heat_pipe_crossing.rules>/Part
-		&<radiator/radiator.rules>/Part
-		&<thermal_tank/thermal_tank.rules>/Part
-		&<heat_exchanger/heat_exchanger.rules>/Part
 		
 		// Energy weapons.
 		&<laser_blaster_small/laser_blaster_small.rules>/Part
@@ -94,6 +87,14 @@ Terran : <../base_ship.rules>
 		&<reactor_med/reactor_med.rules>/Part
 		&<reactor_large/reactor_large.rules>/Part
 		&<power_storage/power_storage.rules>/Part
+
+		// Heat Management
+		&<radiator/radiator.rules>/Part
+		&<heat_exchanger/heat_exchanger.rules>/Part
+		&<thermal_tank/thermal_tank.rules>/Part
+		&<heat_pipe_crossing/heat_pipe_crossing.rules>/Part
+		&<heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part
+		&<heat_pipe_adaptive_structure/heat_pipe_adaptive_structure.rules>/Part
 
 		// Production.
 		&<factory_ammo/factory_ammo.rules>/Part

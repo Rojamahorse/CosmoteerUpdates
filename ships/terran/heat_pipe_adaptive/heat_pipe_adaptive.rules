@@ -10,7 +10,7 @@ Part : <../base_part_terran.rules>/Part
 	Resources
 	[
 		[steel, 4]
-		[coil, 1]
+		[coil, 2]
 	]
 	Size = [1, 1]
 	IsRotateable = false
@@ -50,6 +50,13 @@ Part : <../base_part_terran.rules>/Part
 		Port_Left : Port_Up
 		{
 			Direction = Left
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
 		}
 
 		//---------------------- PIPE CONNECTOR TOGGLES -----------------

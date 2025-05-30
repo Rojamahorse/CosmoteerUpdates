@@ -29,6 +29,11 @@ Part : <../base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		IsOperational
+		{
+			Type = CommandToggle
+		}
+
 		Storage
 		{
 			Type = FlexResourceGrid
@@ -43,6 +48,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = Graphics
 			Location = [1, 1]
+			OperationalToggle = IsOperational
 			Floor
 			{
 				Layer = "floors"
@@ -58,6 +64,17 @@ Part : <../base_part_terran.rules>/Part
 					}
 					{
 						File = "floor_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "../darkness/darkness2x2.png"
 						Size = [2, 2]
 					}
 				]

@@ -70,7 +70,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, CombinedBatteryStorage, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Toggles = [PowerToggle, CommandToggle, CombinedBatteryStorage, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
 			Mode = All
 		}
 
@@ -139,6 +139,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = CommandConsumer
 			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 16
+		}
+		CommandToggle
+		{
+			Type = CommandToggle
 		}
 
 		LocalBatteryStorage
@@ -985,17 +989,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 		RecCrew = (&RecPower) * 4
 	}
 
-	StatsByCategory
-	[
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				ThrusterRampExponent = &~/OVERCLOCK/RAMP_EXPONENT
-				ThrusterHeatGeneration = &~/OVERCLOCK/BASE_THRUST_HEAT_PER_SECOND
-			}
-		}
-	]
-
 	StatsNotesKey = "Stats/RocketNotes"
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
+		{
+			ThrusterRampExponent = &~/OVERCLOCK/RAMP_EXPONENT
+			ThrusterHeatGeneration = &~/OVERCLOCK/BASE_THRUST_HEAT_PER_SECOND
+		}
+	}
 }

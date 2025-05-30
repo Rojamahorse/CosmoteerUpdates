@@ -62,8 +62,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, IronSplitter, AmmoStorage, BatteryStorage, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Toggles = [PowerToggle, NonJunkToggle, IronSplitter, AmmoStorage, BatteryStorage, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
 			Mode = All
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
 		}
 
 		CommandConsumptionToggle
@@ -1141,23 +1147,25 @@ Part : <../base_part_terran_overclock.rules>/Part
 	[
 		&<../missile_launcher/mine/missile_launcher_mine.rules>/MineStats
 		&<../missile_launcher/mine/missile_launcher_mine.rules>/ShrapnelStats
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				MineProduction = (&~/Part/Stats/MineProduction) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
-				MineIronUsage = [(&~/Part/Stats/MineIronUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MineIronUsage/1)]
-				MineAmmoUsage = [(&~/Part/Stats/MineAmmoUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MineAmmoUsage/1)]
-				POWER_PER_MINE = (&~/Part/Stats/MinePowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
-				POWER_PER_SECOND = (&~/Part/Stats/MinePowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR)
-				MinePowerUsage = [&../POWER_PER_MINE, &../POWER_PER_SECOND]
-				CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
-				HEAT_PER_MINE = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT) * (&~/Part/Stats/PartsPerMine)
-				HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Components/ResourceConverter/Interval/BaseValue);
-				MineHeatGeneration = [&../HEAT_PER_MINE, &../HEAT_PER_SECOND]
-			}
-		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
+		{
+			MineProduction = (&~/Part/Stats/MineProduction) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+			MineIronUsage = [(&~/Part/Stats/MineIronUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MineIronUsage/1)]
+			MineAmmoUsage = [(&~/Part/Stats/MineAmmoUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MineAmmoUsage/1)]
+			POWER_PER_MINE = (&~/Part/Stats/MinePowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+			POWER_PER_SECOND = (&~/Part/Stats/MinePowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			MinePowerUsage = [&../POWER_PER_MINE, &../POWER_PER_SECOND]
+			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+			HEAT_PER_MINE = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT) * (&~/Part/Stats/PartsPerMine)
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Components/ResourceConverter/Interval/BaseValue);
+			MineHeatGeneration = [&../HEAT_PER_MINE, &../HEAT_PER_SECOND]
+		}
+	}
 }
 
 MODIFIERS

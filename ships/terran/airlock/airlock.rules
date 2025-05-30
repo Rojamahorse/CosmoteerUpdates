@@ -30,11 +30,16 @@ Part : <../base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
-		IsOperational
+		LightsAreOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, ScorchedToggle]
+			Toggles = [PowerToggle, CommandToggle, ScorchedToggle]
 			Mode = All
+		}
+
+		CommandToggle
+		{
+			Type = CommandToggle
 		}
 		
 		PowerToggle
@@ -56,7 +61,7 @@ Part : <../base_part_terran.rules>/Part
 		Airlock
 		{
 			Type = Airlock
-			OperationalToggle = IsOperational
+			OperationalToggle = PowerToggle
 			EnterExitPoint = [.5, .5]
 			NuggetEjectVelocity = [1.5,2.5]
 			NuggetEjectDirection = [-100d, -80d]
@@ -86,6 +91,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = Graphics
 			Location = [.5, .5]
+			OperationalToggle = LightsAreOperational
 			Floor
 			{
 				Layer = "floors"
@@ -101,6 +107,17 @@ Part : <../base_part_terran.rules>/Part
 					}
 					{
 						File = "floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "../darkness/darkness1x1.png"
 						Size = [1, 1]
 					}
 				]

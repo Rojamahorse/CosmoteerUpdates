@@ -1166,7 +1166,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue
-			SHOT_HEAT_PER_SECOND = (&~/Part/StatsByCategory/1/Stats/HeatPerShot) * (&~/Part/StatsByCategory/0/Stats/ROF)
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/StatsByCategory/0/Stats/ROF)
 			Value = (&SHOT_HEAT_PER_SECOND)
 		}
 		HeatGenerationStatProvider
@@ -1212,17 +1212,24 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ShotAmmoUsage = [&../AmmoPerShot, &../AmmoPerSecond]
 			}
 		}
-		
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				ShrapnelFieldRadius = (&~/OVERCLOCK/PROJECTILE/FLAK_FIELD/RADIUS)
-				ShrapnelFieldBulletDamage = (&~/OVERCLOCK/PROJECTILE/FLAK_FIELD/MAX_BULLET_DAMAGE)
-				ShrapnelFieldDamagePool = (&~/OVERCLOCK/PROJECTILE/FLAK_FIELD/DAMAGE_POOL)
-				ShrapnelFieldLifetime = (&~/OVERCLOCK/PROJECTILE/FLAK_FIELD/LIFETIME)
-				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
-			}
-		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/FlakOverclocked"
+				Stats
+				{
+					ShrapnelFieldRadius = (&~/OVERCLOCK/PROJECTILE/FLAK_FIELD/RADIUS)
+					ShrapnelFieldBulletDamage = (&~/OVERCLOCK/PROJECTILE/FLAK_FIELD/MAX_BULLET_DAMAGE)
+					ShrapnelFieldDamagePool = (&~/OVERCLOCK/PROJECTILE/FLAK_FIELD/DAMAGE_POOL)
+					ShrapnelFieldLifetime = (&~/OVERCLOCK/PROJECTILE/FLAK_FIELD/LIFETIME)
+					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+				}
+			}
+		]
+	}
 }

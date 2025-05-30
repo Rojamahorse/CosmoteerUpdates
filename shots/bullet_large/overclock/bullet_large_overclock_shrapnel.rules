@@ -8,7 +8,7 @@ Speed = (&BULLET/Speed) / 2
 
 DAMAGE_FACTOR = 0.65
 PENETRATION = 25
-FIRE_CHANCE = 10%
+FIRE_CHANCE = 3%
 FIRE_SIZE = 30%
 
 BASE_BULLET_DAMAGE = &BULLET/BASE/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue

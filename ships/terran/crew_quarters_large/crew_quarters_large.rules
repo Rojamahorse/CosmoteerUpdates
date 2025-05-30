@@ -34,6 +34,11 @@ Part : <../base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		IsOperational
+		{
+			Type = CommandToggle
+		}
+
 		CrewSource
 		{
 			Type = CrewSource
@@ -46,6 +51,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = Graphics
 			Location = [1.5, 2]
+			OperationalToggle = IsOperational
 			Floor
 			{
 				Layer = "floors"
@@ -84,6 +90,17 @@ Part : <../base_part_terran.rules>/Part
 						]
 						Size = [3, 4]
 						AnimationInterval = 0.2
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "../darkness/darkness3x4.png"
+						Size = [3, 4]
 					}
 				]
 			}

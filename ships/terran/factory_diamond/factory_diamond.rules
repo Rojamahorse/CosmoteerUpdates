@@ -45,8 +45,14 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, CarbonStorage, BatteryStorage, ScorchedToggle]
+			Toggles = [PowerToggle, NonJunkToggle, CarbonStorage, BatteryStorage, ScorchedToggle]
 			Mode = All
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
 		}
 
 		CommandConsumptionToggle

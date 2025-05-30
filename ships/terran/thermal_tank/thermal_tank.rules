@@ -9,8 +9,8 @@ Part : <../base_part_terran.rules>/Part
 	DescriptionKey = "Parts/ThermalBatteryDesc"
 	Resources
 	[
-		[steel, 32]
-		[coil, 12]
+		[steel, 60]
+		[coil, 20]
 	]
 	Size = [2, 2]
 	IsRotateable = true
@@ -75,7 +75,8 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = heat
-			MaxResources = 15000 * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+			MAX_STATUS_HEAT = 15000
+			MaxResources = (&MAX_STATUS_HEAT) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
 			InitToMaxResources = 0
 			IgnoreResourcesForInitToMax = true
 		}
@@ -86,6 +87,38 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = heat
 			ResourceStorage = HeatStorage
 			Categories = [ thermal_storage ]
+		}
+	
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [1, 1]
+			FactorHitEffectsWith = HeatStorage
+			
+			HitEffects
+			[
+				{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					HitPartSourceRectType = Normal
+					StatusValue = 0
+					StatusValuePool
+					{
+						BaseValue = &~/Part/Components/HeatStorage/MAX_STATUS_HEAT
+						EffectScaleExponent = 1
+					}
+					MaxCost = 3
+					EmptyTileCost = Infinity
+					ValueFalloff = 1
+					FalloffPadding = 1
+					Filter
+					{
+						Self = true
+					}
+				}
+			]
+			
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 		}
 	
 		HeatBatterySprites

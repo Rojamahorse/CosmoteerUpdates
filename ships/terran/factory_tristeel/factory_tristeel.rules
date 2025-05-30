@@ -63,8 +63,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, TritaniumStorage, BatteryStorage, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Toggles = [PowerToggle, NonJunkToggle, TritaniumStorage, BatteryStorage, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
 			Mode = All
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
 		}
 
 		CommandConsumptionToggle
@@ -934,25 +940,23 @@ Part : <../base_part_terran_overclock.rules>/Part
 		RecPower = &PowerPerSecond
 		RecCrew = (&RecPower) * 4
 	}
-
-	StatsByCategory
-	[
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
 		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				TristeelProduction = (&~/Part/Stats/TristeelProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
-				TristeelTritaniumUsage = [(&~/Part/Stats/TristeelTritaniumUsage/0), (&~/Part/Stats/TristeelTritaniumUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
-				POWER_PER_ITEM = (&~/Part/Stats/TristeelPowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
-				POWER_PER_SECOND = (&~/Part/Stats/TristeelPowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
-				TristeelPowerUsage = [&../POWER_PER_ITEM, &../POWER_PER_SECOND]
-				CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity)
-				HEAT_PER_ITEM = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT)
-				HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Components/ResourceConverter/Interval/BaseValue) * (&~/OVERCLOCK/SPEED_FACTOR);
-				TristeelHeatGeneration = [&../HEAT_PER_ITEM, &../HEAT_PER_SECOND]
-			}
+			TristeelProduction = (&~/Part/Stats/TristeelProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
+			TristeelTritaniumUsage = [(&~/Part/Stats/TristeelTritaniumUsage/0), (&~/Part/Stats/TristeelTritaniumUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			POWER_PER_ITEM = (&~/Part/Stats/TristeelPowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			POWER_PER_SECOND = (&~/Part/Stats/TristeelPowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
+			TristeelPowerUsage = [&../POWER_PER_ITEM, &../POWER_PER_SECOND]
+			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity)
+			HEAT_PER_ITEM = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT)
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Components/ResourceConverter/Interval/BaseValue) * (&~/OVERCLOCK/SPEED_FACTOR);
+			TristeelHeatGeneration = [&../HEAT_PER_ITEM, &../HEAT_PER_SECOND]
 		}
-	]
+	}
 }
 
 MODIFIERS

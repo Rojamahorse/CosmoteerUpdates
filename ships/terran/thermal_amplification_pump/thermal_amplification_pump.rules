@@ -266,6 +266,13 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 		
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [0.5, 1.5]
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+		}
+		
 		Graphics
 		{
 			Type = Graphics

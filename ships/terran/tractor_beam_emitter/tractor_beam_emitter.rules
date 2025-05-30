@@ -4,13 +4,13 @@ OVERCLOCK
 	ARC_MAX = 5d
 	FORCE_FACTOR = 150%
 	
-	OVERLOAD_FORCE = 200000
+	OVERLOAD_FORCE = 50000
 	OVERLOAD_RADIUS = 600
-	OVERLOAD_BULLET_FORCE = 50000
+	OVERLOAD_BULLET_FORCE = 10000
 	OVERLOAD_BULLET_RADIUS = 150
 	OVERLOAD_CHARGE_DURATION = 5
 	OVERLOAD_MIN_POWER = 85%
-	OVERLOAD_HEAT = 5000
+	OVERLOAD_HEAT = 12500
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -1216,20 +1216,31 @@ Part : <../base_part_terran_overclock.rules>/Part
 				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
 			}
 		}
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				TractorForce = (&~/Part/StatsByCategory/0/Stats/TractorForce) * (&~/OVERCLOCK/FORCE_FACTOR)
-				TractorOverloadForce = (&~/OVERCLOCK/OVERLOAD_FORCE)
-				TractorOverloadRadius = (&~/OVERCLOCK/OVERLOAD_RADIUS)
-				TractorOverloadChargeTime = (&~/OVERCLOCK/OVERLOAD_CHARGE_DURATION)
-				TractorOverloadMinPower = (&~/OVERCLOCK/OVERLOAD_MIN_POWER) * 100
-				TractorOverloadHeatGeneration = &~/OVERCLOCK/OVERLOAD_HEAT
-				FiringHeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
-			}
-		}
 	]
 
 	StatsNotesKey = "Stats/TractorBeamNotes"
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
+		{
+			TractorForce = (&~/Part/StatsByCategory/0/Stats/TractorForce) * (&~/OVERCLOCK/FORCE_FACTOR)
+			FiringHeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
+		}
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/TractorBeamOverload"
+				Stats
+				{
+					TractorOverloadForce = (&~/OVERCLOCK/OVERLOAD_FORCE)
+					TractorOverloadRadius = (&~/OVERCLOCK/OVERLOAD_RADIUS)
+					TractorOverloadChargeTime = (&~/OVERCLOCK/OVERLOAD_CHARGE_DURATION)
+					TractorOverloadMinPower = (&~/OVERCLOCK/OVERLOAD_MIN_POWER) * 100
+					TractorOverloadHeatGeneration = &~/OVERCLOCK/OVERLOAD_HEAT
+				}
+			}
+		]
+	}
 }

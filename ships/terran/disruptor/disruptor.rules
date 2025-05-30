@@ -781,24 +781,32 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 			}
 		}
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				PowerDrain = [0, 0]
-				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
-				Range = &~/OVERCLOCK/BULLET/RANGE
-			}
-		}
-		{
-			NameKey = "StatCategories/OverclockedDisruption"
-			Stats
-			{
-				PowerDrainOverTime = [(&~/OVERCLOCK/BULLET/TOTAL_DRAIN) / 1000, (&~/OVERCLOCK/BULLET/DRAIN_PER_SECOND) / 1000]
-				SHIELD_DRAIN_PER_DAMAGE = &<../shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/ResourceDrainPerDamage/BaseValue
-				ShieldDamageOverTime = [(&~/OVERCLOCK/BULLET/TOTAL_SHIELD_DRAIN) / (&../SHIELD_DRAIN_PER_DAMAGE), (&~/OVERCLOCK/BULLET/SHIELD_DRAIN_PER_SECOND) / (&../SHIELD_DRAIN_PER_DAMAGE)]
-				EffectDuration = &~/OVERCLOCK/BULLET/DRAIN_DURATION
-			}
-		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/DisruptorBoltOverclocked"
+				Stats
+				{
+					PowerDrain = [0, 0]
+					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+					Range = &~/OVERCLOCK/BULLET/RANGE
+				}
+			}
+			{
+				NameKey = "StatCategories/OverclockedDisruption"
+				Stats
+				{
+					PowerDrainOverTime = [(&~/OVERCLOCK/BULLET/TOTAL_DRAIN) / 1000, (&~/OVERCLOCK/BULLET/DRAIN_PER_SECOND) / 1000]
+					SHIELD_DRAIN_PER_DAMAGE = &<../shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/ResourceDrainPerDamage/BaseValue
+					ShieldDamageOverTime = [(&~/OVERCLOCK/BULLET/TOTAL_SHIELD_DRAIN) / (&../SHIELD_DRAIN_PER_DAMAGE), (&~/OVERCLOCK/BULLET/SHIELD_DRAIN_PER_SECOND) / (&../SHIELD_DRAIN_PER_DAMAGE)]
+					EffectDuration = &~/OVERCLOCK/BULLET/DRAIN_DURATION
+				}
+			}
+		]
+	}
 }

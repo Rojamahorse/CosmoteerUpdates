@@ -50,8 +50,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, UraniumPrereq, BatteryStorage, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Toggles = [PowerToggle, NonJunkToggle, UraniumPrereq, BatteryStorage, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
 			Mode = All
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
 		}
 
 		CommandConsumptionToggle
@@ -1044,24 +1050,22 @@ Part : <../base_part_terran_overclock.rules>/Part
 		RecCrew = (&RecPower) * 4
 	}
 	
-	StatsByCategory
-	[
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
 		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				EnrichedUraniumProduction = (&~/Part/Stats/EnrichedUraniumProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
-				EnrichedUraniumUraniumUsage = [(&~/Part/Stats/EnrichedUraniumUraniumUsage/0), (&~/Part/Stats/EnrichedUraniumUraniumUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
-				POWER_PER_ITEM = (&~/Part/Stats/EnrichedUraniumPowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
-				POWER_PER_SECOND = (&~/Part/Stats/EnrichedUraniumPowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
-				EnrichedUraniumPowerUsage = [&../POWER_PER_ITEM, &../POWER_PER_SECOND]
-				CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity)
-				HEAT_PER_ITEM = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT)
-				HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Stats/Interval) * (&~/OVERCLOCK/SPEED_FACTOR);
-				EnrichedUraniumHeatGeneration = [&../HEAT_PER_ITEM, &../HEAT_PER_SECOND]
-			}
+			EnrichedUraniumProduction = (&~/Part/Stats/EnrichedUraniumProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
+			EnrichedUraniumUraniumUsage = [(&~/Part/Stats/EnrichedUraniumUraniumUsage/0), (&~/Part/Stats/EnrichedUraniumUraniumUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			POWER_PER_ITEM = (&~/Part/Stats/EnrichedUraniumPowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			POWER_PER_SECOND = (&~/Part/Stats/EnrichedUraniumPowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
+			EnrichedUraniumPowerUsage = [&../POWER_PER_ITEM, &../POWER_PER_SECOND]
+			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity)
+			HEAT_PER_ITEM = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT)
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Stats/Interval) * (&~/OVERCLOCK/SPEED_FACTOR);
+			EnrichedUraniumHeatGeneration = [&../HEAT_PER_ITEM, &../HEAT_PER_SECOND]
 		}
-	]
+	}
 }
 
 MODIFIERS

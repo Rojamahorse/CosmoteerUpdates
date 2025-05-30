@@ -1205,23 +1205,31 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 			}
 		}
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				RailgunOverclockHeatOnShot = &~/OVERCLOCK/SHOT_HEAT_PER_MODULE
-				PenetrationDamagePool = [infinity, &~/OVERCLOCK/BULLET/DAMAGE_POOL]
-				Damage = [&~/OVERCLOCK/BULLET/DAMAGE_POOL, (&~/OVERCLOCK/BULLET/DAMAGE_POOL) * (&../../../0/Stats/ROF)]
-				ShotSpeed = (&~/OVERCLOCK/BULLET/Speed/BaseValue)
-				ShotHP = (&~/OVERCLOCK/BULLET/HEALTH)
-				RailgunBaseChargeTime = (&~/OVERCLOCK/BASE_CHARGE_TIME)
-				RailgunAcceleratorChargeTime = (&~/OVERCLOCK/MODULE_CHARGE_TIME)
-				BUFF_EXPONENT_NORMAL = (&<./Data/buffs/buffs.rules>/RailgunShot/Exponent)
-				BUFF_EXPONENT_OVERCLOCKED = (&<./Data/buffs/buffs.rules>/RailgunShotOverclock/Exponent)
-				RailgunBuffExponentOverclock = [&../BUFF_EXPONENT_OVERCLOCKED, (&../BUFF_EXPONENT_OVERCLOCKED) - (&../BUFF_EXPONENT_NORMAL)]
-			}
-		}
 	]
 
 	StatsNotesKey = "Stats/RailgunNotes"
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/BulletRailgunOverclocked"
+				Stats
+				{
+					RailgunOverclockHeatOnShot = &~/OVERCLOCK/SHOT_HEAT_PER_MODULE
+					PenetrationDamagePool = [infinity, &~/OVERCLOCK/BULLET/DAMAGE_POOL]
+					Damage = [&~/OVERCLOCK/BULLET/DAMAGE_POOL, (&~/OVERCLOCK/BULLET/DAMAGE_POOL) * (&~/Part/StatsByCategory/0/Stats/ROF)]
+					ShotSpeed = (&~/OVERCLOCK/BULLET/Speed/BaseValue)
+					ShotHP = (&~/OVERCLOCK/BULLET/HEALTH)
+					RailgunBaseChargeTime = (&~/OVERCLOCK/BASE_CHARGE_TIME)
+					RailgunAcceleratorChargeTime = (&~/OVERCLOCK/MODULE_CHARGE_TIME)
+					BUFF_EXPONENT_NORMAL = (&<./Data/buffs/buffs.rules>/RailgunShot/Exponent)
+					BUFF_EXPONENT_OVERCLOCKED = (&<./Data/buffs/buffs.rules>/RailgunShotOverclock/Exponent)
+					RailgunBuffExponentOverclock = [&../BUFF_EXPONENT_OVERCLOCKED, (&../BUFF_EXPONENT_OVERCLOCKED) - (&../BUFF_EXPONENT_NORMAL)]
+				}
+			}
+		]
+	}
 }

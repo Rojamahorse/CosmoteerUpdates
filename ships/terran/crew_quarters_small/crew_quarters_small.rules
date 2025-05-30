@@ -33,6 +33,11 @@ Part : <../base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		IsOperational
+		{
+			Type = CommandToggle
+		}
+
 		CrewSource
 		{
 			Type = CrewSource
@@ -68,6 +73,7 @@ Part : <../base_part_terran.rules>/Part
 				{
 					Type = Graphics
 					Location = [.5, 1]
+					OperationalToggle = IsOperational
 					Floor
 					{
 						Layer = "floors"
@@ -171,6 +177,7 @@ Part : <../base_part_terran.rules>/Part
 				{
 					Type = Graphics
 					Location = [.5, 1]
+					OperationalToggle = IsOperational
 					Floor
 					{
 						Layer = "floors"
@@ -273,6 +280,7 @@ Part : <../base_part_terran.rules>/Part
 				{
 					Type = Graphics
 					Location = [.5, 1]
+					OperationalToggle = IsOperational
 					Floor
 					{
 						Layer = "floors"
@@ -365,10 +373,22 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
-		RoofGraphics
+		Graphics
 		{
 			Type = Graphics
 			Location = [.5, 1]
+			OperationalToggle = IsOperational
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "../darkness/darkness1x2.png"
+						Size = [1, 2]
+					}
+				]
+			}
 			Roof
 			{
 				Layer = "roofs"

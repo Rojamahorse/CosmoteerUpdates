@@ -1074,7 +1074,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue
-			SHOT_HEAT_PER_SECOND = (&~/Part/StatsByCategory/1/Stats/HeatPerShot) * (&~/Part/StatsByCategory/0/Stats/ROF)
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/StatsByCategory/0/Stats/ROF)
 			Value = (&SHOT_HEAT_PER_SECOND)
 		}
 		HeatGenerationStatProvider
@@ -1132,4 +1132,25 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/BulletMedOverclocked"
+				Stats
+				{
+					Burst = (&~/OVERCLOCK/BURST)
+					ROF = (&Burst) / (&FireInterval)
+					FireInterval = (&~/Part/Components/Turret/FireInterval) + (&~/OVERCLOCK/EXTRA_INTERVAL)
+					Range = &~/Part/Components/BulletEmitter/Bullet/OVERCLOCK/RANGE
+					Spread = deg(&~/OVERCLOCK/HALF_SPREAD)
+					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+					ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/OVERCLOCK/SPEED
+				}
+			}
+		]
+	}
 }

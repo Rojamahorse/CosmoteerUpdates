@@ -1665,7 +1665,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue
-			SHOT_HEAT_PER_SECOND = (&~/Part/StatsByCategory/1/Stats/HeatPerShot) * (&~/Part/StatsByCategory/1/Stats/ROF)
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/SecondaryToolTip/StatsByCategory/0/Stats/ROF)
 			Value = (&~/OVERCLOCK/HEAT_PER_SECOND) + (&SHOT_HEAT_PER_SECOND)
 		}
 		HeatGenerationStatProvider
@@ -1712,25 +1712,36 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ShotAmmoUsage = [&../AmmoPerShot, &../AmmoPerSecond]
 			}
 		}
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				DamagePerShot = &~/OVERCLOCK/BULLET/DAMAGE_POOL
-				DamagePerSecond = (&DamagePerShot) * (&ROF)
-				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				PenetrationDamagePool = [infinity, &../DamagePerShot]
-				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
-				HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
-				FIRE_INTERVAL = ((&~/Part/Components/ShootAlternatingComponents_NonOverclocked/Components/FireTimer/Duration) / (&~/OVERCLOCK/FIRE_RATE_FACTOR))
-				ROF = 1 / (&FIRE_INTERVAL)
-				Spread = deg(&~/OVERCLOCK/HALF_SPREAD)
-				Range = &~/OVERCLOCK/BULLET/Range
-				ShotSpeed = &~/OVERCLOCK/BULLET/Speed
-//				ShotHP = &~/OVERCLOCK/BULLET/HEALTH
-				CrewStunDuration = [0, &~/OVERCLOCK/CREW_STUN_DURATION]
-        		CrewStunRadius = &~/OVERCLOCK/CREW_STUN_RADIUS
-			}
-		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
+		{
+			CrewStunDuration = [0, &~/OVERCLOCK/CREW_STUN_DURATION]
+			CrewStunRadius = &~/OVERCLOCK/CREW_STUN_RADIUS
+		}
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/BulletDeckOverclocked"
+				Stats
+				{
+					DamagePerShot = &~/OVERCLOCK/BULLET/DAMAGE_POOL
+					DamagePerSecond = (&DamagePerShot) * (&ROF)
+					Damage = [&../DamagePerShot, &../DamagePerSecond]
+					PenetrationDamagePool = [infinity, &../DamagePerShot]
+					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+					HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
+					FIRE_INTERVAL = ((&~/Part/Components/ShootAlternatingComponents_NonOverclocked/Components/FireTimer/Duration) / (&~/OVERCLOCK/FIRE_RATE_FACTOR))
+					ROF = 1 / (&FIRE_INTERVAL)
+					Spread = deg(&~/OVERCLOCK/HALF_SPREAD)
+					Range = &~/OVERCLOCK/BULLET/Range
+					ShotSpeed = &~/OVERCLOCK/BULLET/Speed
+//					ShotHP = &~/OVERCLOCK/BULLET/HEALTH
+				}
+			}
+		]
+	}
 }

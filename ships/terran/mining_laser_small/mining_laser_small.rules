@@ -877,20 +877,27 @@ Part : <../base_part_terran_overclock.rules>/Part
 				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
 			}
 		}
-		
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				FiringHeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
-				DamageArea = (&~/OVERCLOCK/BEAM/RADIUS)
-				DamageAreaFalloff = (&~/OVERCLOCK/BEAM/RADIUS_FALLOFF)
-				DamageContinuousEnemies = (&../../0/Stats/DamageContinuousEnemies) * (&~/OVERCLOCK/BEAM/DAMAGE_FACTOR)
-				DamageContinuousShields = (&../../0/Stats/DamageContinuousEnemies) * (&~/OVERCLOCK/BEAM/SHIELD_DAMAGE_FACTOR)
-				DamageContinuousJunk = (&../../0/Stats/DamageContinuousJunk) * (&~/OVERCLOCK/BEAM/DAMAGE_FACTOR)
-				DamageContinuousAsteroids = (&../../0/Stats/DamageContinuousAsteroids) * (&~/OVERCLOCK/BEAM/DAMAGE_FACTOR)
-				Range = &~/OVERCLOCK/BEAM/RANGE
-			}
-		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/MiningBeamOverclocked"
+				Stats
+				{
+					FiringHeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
+					DamageArea = (&~/OVERCLOCK/BEAM/RADIUS)
+					DamageAreaFalloff = (&~/OVERCLOCK/BEAM/RADIUS_FALLOFF)
+					DamageContinuousEnemies = (&~/Part/StatsByCategory/0/Stats/DamageContinuousEnemies) * (&~/OVERCLOCK/BEAM/DAMAGE_FACTOR)
+					DamageContinuousShields = (&~/Part/StatsByCategory/0/Stats/DamageContinuousEnemies) * (&~/OVERCLOCK/BEAM/SHIELD_DAMAGE_FACTOR)
+					DamageContinuousJunk = (&~/Part/StatsByCategory/0/Stats/DamageContinuousJunk) * (&~/OVERCLOCK/BEAM/DAMAGE_FACTOR)
+					DamageContinuousAsteroids = (&~/Part/StatsByCategory/0/Stats/DamageContinuousAsteroids) * (&~/OVERCLOCK/BEAM/DAMAGE_FACTOR)
+					Range = &~/OVERCLOCK/BEAM/RANGE
+				}
+			}
+		]
+	}
 }

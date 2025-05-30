@@ -322,6 +322,20 @@ Part : <../base_part_terran.rules>/Part
 			ValueScaleFactor = &ResourceStorage
 			ResourceScaleFactor = &ResourceStorage
 		}
+		
+		IsEmitting
+		{
+			Type = MultiToggle
+			Toggles = [BeamEmitter, Overclock_BeamEmitter]
+			Mode = Any
+		}
+		
+		EmitterValue
+		{
+			Type = MultiValue
+			Values = [BeamEmitter, Overclock_BeamEmitter]
+			Mode = Max
+		}
 
 		Graphics
 		{
@@ -357,7 +371,7 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = Turret
 			Location = [.5, 0]
 			Rotation = 90d
-			OperationalToggle = BeamEmitter
+			OperationalToggle = IsEmitting
 			Floor
 			{
 				Layer = "weapons"
@@ -430,7 +444,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = DeathEffects
 			Location = [1, 1]
-			OperationalToggle = BeamEmitter
+			OperationalToggle = IsEmitting
 			InvertOperationalToggle = true
 			IncludeWhenUnderConstruction = false
 
@@ -464,7 +478,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = DeathEffects
 			Location = [1, 1]
-			OperationalToggle = BeamEmitter
+			OperationalToggle = IsEmitting
 			IncludeWhenUnderConstruction = false
 
 			MediaEffects
@@ -490,7 +504,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 
-			FactorHitEffectsWith = BeamEmitter
+			FactorHitEffectsWith = EmitterValue
 			HitEffects
 			[
 				{

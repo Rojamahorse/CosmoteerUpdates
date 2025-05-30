@@ -8,7 +8,7 @@ Part : <../base_part_terran.rules>/Part
 	DescriptionKey = "Parts/HeatPipeCrossingDesc"
 	Resources
 	[
-		[steel, 12]
+		[steel, 4]
 		[coil, 2]
 	]
 	Size = [1, 1]
@@ -20,8 +20,6 @@ Part : <../base_part_terran.rules>/Part
 	[
 		[-1, 0], [1, 0]
 	]
-	GeneratorRequiresDoor = false
-//	IgnoreRotationForMirroredSelection = true
 	CrewSpeedFactor = .8
 	EditorIcon
 	{
@@ -46,7 +44,14 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Direction = Down
 		}
-	
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
 		Router
 		{
 			Type = NetworkRouter

@@ -1099,7 +1099,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue
-			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/StatsByCategory/1/Stats/ROF)
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/SecondaryToolTip/StatsByCategory/0/Stats/ROF)
 			Value = (&SHOT_HEAT_PER_SECOND)
 		}
 		HeatGenerationStatProvider
@@ -1141,25 +1141,33 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 			}
 		}
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				DamagePerShot = &~/OVERCLOCK/BULLET/DAMAGE
-				DamagePerSecond = (&DamagePerShot) * (&ROF)
-				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				ShieldDamagePerShot = &~/OVERCLOCK/BULLET/DAMAGE_SHIELD
-				ShieldDamagePerSecond = (&ShieldDamagePerShot) * (&ROF)
-				ShieldDamage = [&../ShieldDamagePerShot, &../ShieldDamagePerSecond]
-				DamageArea = &~/OVERCLOCK/BULLET/DAMAGE_RADIUS
-				ROF = (&../../0/Stats/ROF) * (&~/OVERCLOCK/FIRE_RATE_FACTOR)
-				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
-				PowerPerShot = (&~/EMITTER_BASE_OVERCLOCK/ResourcesUsed) / 1000
-				PowerPerSecond = (&PowerPerShot) * (&ROF)
-				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
-			}
-		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/LaserBoltLargeOverclocked"
+				Stats
+				{
+					DamagePerShot = &~/OVERCLOCK/BULLET/DAMAGE
+					DamagePerSecond = (&DamagePerShot) * (&ROF)
+					Damage = [&../DamagePerShot, &../DamagePerSecond]
+					ShieldDamagePerShot = &~/OVERCLOCK/BULLET/DAMAGE_SHIELD
+					ShieldDamagePerSecond = (&ShieldDamagePerShot) * (&ROF)
+					ShieldDamage = [&../ShieldDamagePerShot, &../ShieldDamagePerSecond]
+					DamageArea = &~/OVERCLOCK/BULLET/DAMAGE_RADIUS
+					ROF = (&~/Part/StatsByCategory/0/Stats/ROF) * (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+					PowerPerShot = (&~/EMITTER_BASE_OVERCLOCK/ResourcesUsed) / 1000
+					PowerPerSecond = (&PowerPerShot) * (&ROF)
+					ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
+				}
+			}
+		]
+	}
 }
 EMITTER_BASE = &~/Part/Components/NonOverclockedComponents/Components/EmitterBase
 EMITTER_BASE_OVERCLOCK = &~/Part/Components/OverclockedComponents/Components/EmitterBase

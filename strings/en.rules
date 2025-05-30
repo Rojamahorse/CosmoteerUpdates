@@ -875,7 +875,8 @@ Inputs
 		DecreaseDecalHeight = "Decrease Decal Height"
 		Undo = "Undo"
 		Redo = "Redo"
-		ShowStats = "Show Part Statistics"
+		ScrollToolTip = "Enable Tooltip Scrolling"
+		ToggleSecondaryToolTip = "Toggle Secondary Tooltip"
 	}
 
 	Brushes
@@ -1560,10 +1561,6 @@ Settings
 
 		ShowAutoRemovedParts = "Show Automatically Removed Parts"
 		ShowAutoRemovedPartsTip = "If checked, then red X's will be displayed over parts that will be automatically removed."
-
-		PartToolTipsDefaultToStats = "Show Statistics By Default"
-		PartToolTipsDefaultToStatsTip = "If checked, then hovering the mouse cursor over a part will display its statistics instead of its description. "\
-		                                "You can still hold <btn id='Design.ShowStats'/> to display its description."
 
 		DefaultBuildTool = "Default Tool"
 		DefaultBuildToolTip = "The default tool to select when opening the ship editor."
@@ -3303,8 +3300,9 @@ BuildBox
 
 	BuffPercentageFmt = "<good>+{0:0}%</good>"
 
-	ShowPartStats = "<gray>Hold <btn id='Design.ShowStats'/> to show statistics.</gray>"
-	ShowPartDescription = "<gray>Hold <btn id='Design.ShowStats'/> to show description.</gray>"
+	ScrollTooltip = "<gray>Hold <btn id='Design.ScrollTooltip'/> to scroll.</gray>"
+	ShowSecondaryTooltip = "<gray>Press <btn id='Design.ToggleSecondaryTooltip'/> to show overclock stats.</gray>"
+	HideSecondaryTooltip = "<gray>Press <btn id='Design.ToggleSecondaryTooltip'/> to hide overclock stats.</gray>"
 
 	NearestCrewFmt = "<good>✓ Nearest Crew: {0}m</good>"
 	NearestCrewWarningFmt = "<yellow>⚠ Nearest Crew: {0}m</yellow>"
@@ -4122,18 +4120,22 @@ Parts
 	HeatPipeCrossing = "Heat Pipe Crossing"
 	HeatPipeCrossingIcon = "Heat Pipe Crossing"
 	HeatPipeCrossingDesc = "Transfers thermal energy bi-directionally in a straight line. Allows crew to walk through."
-	
+
 	HeatPipeAdaptive = "Heat Pipe"
 	HeatPipeAdaptiveIcon = "Heat Pipe"
 	HeatPipeAdaptiveDesc = "Transfers thermal energy."
 
-	ThermalDilationPump = "Resonance Dilation Pump"
-	ThermalDilationPumpIcon = "Resonance Dilation Pump"
+	HeatPipeAdaptiveStructure = "Heat Pipe Structure"
+	HeatPipeAdaptiveStructureIcon = "Heat Pipe Structure"
+	HeatPipeAdaptiveStructureDesc = "Transfers thermal energy."
+	
+	ThermalDilationPump = "Lance Dilation Pump"
+	ThermalDilationPumpIcon = "Lance Dilation Pump"
 	ThermalDilationPumpDesc = "Pumps energy into a thermal system through a split lens, fine-tuning Thermal Resonance Lances to increase the heated area on the target's hull.\n"\
 								"Due to the requisite split lens, both of the pump's ports must be connected for full effect."
 
-	ThermalAmplificationPump = "Thermal Amplification Pump"
-	ThermalAmplificationPumpIcon = "Thermal Amplification Pump"
+	ThermalAmplificationPump = "Lance Amplification Pump"
+	ThermalAmplificationPumpIcon = "Lance Amplification Pump"
 	ThermalAmplificationPumpDesc = "Pumps energy into a thermal system through a precision lens, amplifying the intensity of connected Thermal Resonance Lances, increasing the amount of heat applied to the target's hull."
 
 	LaserBlasterSmall = "Laser Blaster"
@@ -4827,15 +4829,24 @@ PartFeatures
 StatCategories
 {
 	LaserBoltSmall = "Laser Bolt"
+	LaserBoltSmallOverclocked = "Laser Bolt (Overclocked)"
 	LaserBoltLarge = "Heavy Laser Bolt"
+	LaserBoltLargeOverclocked = "Heavy Laser Bolt (Overclocked)"
 	DisruptorBolt = "Disruptor Bolt"
+	DisruptorBoltOverclocked = "Disruptor Bolt (Overclocked)"
 	IonBeam = "Ion Beam"
+	IonBeamOverclocked = "Ion Beam (Overclocked)"
 	PDShot = "Point Defense Round"
 	BulletMed = "Standard Cannon Round"
+	BulletMedOverclocked = "Standard Cannon Round (Overclocked)"
 	BulletLarge = "Large Cannon Round"
+	BulletLargeOverclocked = "Large Cannon Round (Overclocked)"
 	BulletRailgun = "Railgun Round"
+	BulletRailgunOverclocked = "Railgun Round (Overclocked)"
 	BulletDeck = "Deck Cannon Round"
+	BulletDeckOverclocked = "Deck Cannon Round (Overclocked)"
 	Flak = "Flak"
+	FlakOverclocked = "Flak (Overclocked)"
 	MissileHE = "High-Explosive Missile"
 	MissileEMP = "Electromagnetic Pulse Missile"
 	MissileNuke = "Tactical Nuclear Missile"
@@ -4845,16 +4856,19 @@ StatCategories
 	BoostOff = "Boost: Off"
 	BoostOn = "Boost: On"
 	TractorBeam = "Tractor Beam"
+	TractorBeamOverload = "Tractor Overload Pulse"
 	RailgunBuff = "Railgun Buff"
 	MiningBeam = "Double Mining Beams"
+	MiningBeamOverclocked = "Double Mining Beams (Overclocked)"
 	BulletChaingun = "Chaingun Round"
+	BulletChaingunOverclocked = "Chaingun Round (Overclocked)"
 	ManipulatorBeam = "Manipulator Beam"
 	ShieldSmall = "Small Shield"
 	ShieldLarge = "Large Shield"
 	ResonanceBeam = "Resonance Lance"
 	Overclocked = "Overclocked"
 	OverclockedShrapnel = "Overclocked (Shrapnel)"
-	OverclockedBoost = "Overclocked (Boost: On)"
+	OverclockedBoost = "Boost: On (Overclocked)"
 	OverclockedDisruption = "Overclocked (Disruption Effect)"
 	Firing = "Firing"
 	NotFiring = "Not Firing"

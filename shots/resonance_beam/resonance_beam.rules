@@ -310,6 +310,7 @@ HitShield
 						Type = Buff
 						BuffType = ThermalIntensity
 						ModificationMode = Multiply
+						Exponent = &~/HEAT_POOL_AMP_EXPONENT
 					}
 					{
 						Type = Buff

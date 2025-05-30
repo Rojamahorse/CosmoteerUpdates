@@ -41,8 +41,13 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, ScorchedToggle]
+			Toggles = [PowerToggle, CommandToggle, ScorchedToggle]
 			Mode = All
+		}
+
+		CommandToggle
+		{
+			Type = CommandToggle
 		}
 	
 		PowerToggle

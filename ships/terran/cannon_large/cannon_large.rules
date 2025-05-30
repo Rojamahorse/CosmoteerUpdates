@@ -931,7 +931,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue
-			SHOT_HEAT_PER_SECOND = (&~/Part/StatsByCategory/1/Stats/HeatPerShot) * (&~/Part/StatsByCategory/0/Stats/ROF)
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/StatsByCategory/0/Stats/ROF)
 			Value = (&SHOT_HEAT_PER_SECOND)
 		}
 		HeatGenerationStatProvider
@@ -975,30 +975,38 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ShotAmmoUsage = [&../AmmoPerShot, &../AmmoPerSecond]
 			}
 		}
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				SimpleDamage = 0
-				ShotSpeed = &~/OVERCLOCK/BULLET/Speed
-				ShotHP = &~/OVERCLOCK/BULLET/HEALTH
-				Shrapnel = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/Count
-				ShrapnelArc = (&~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/Arc/1)
-				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
-			}
-		}
-		{
-			NameKey = "StatCategories/OverclockedShrapnel"
-			Stats
-			{
-				SimpleDamage = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/DAMAGE
-				Penetration = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/PENETRATION
-				FireChance = (&~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/FIRE_CHANCE) * 100
-				FireSize = (&~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/FIRE_SIZE) * 100
-				Range = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/Range
-				ShotSpeed = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/Speed
-				ShotHP = infinity
-			}
-		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/BulletLargeOverclocked"
+				Stats
+				{
+					SimpleDamage = 0
+					ShotSpeed = &~/OVERCLOCK/BULLET/Speed
+					ShotHP = &~/OVERCLOCK/BULLET/HEALTH
+					Shrapnel = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/Count
+					ShrapnelArc = (&~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/Arc/1)
+					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+				}
+			}
+			{
+				NameKey = "StatCategories/OverclockedShrapnel"
+				Stats
+				{
+					SimpleDamage = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/DAMAGE
+					Penetration = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/PENETRATION
+					FireChance = (&~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/FIRE_CHANCE) * 100
+					FireSize = (&~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/FIRE_SIZE) * 100
+					Range = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/Range
+					ShotSpeed = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/Speed
+					ShotHP = infinity
+				}
+			}
+		]
+	}
 }
