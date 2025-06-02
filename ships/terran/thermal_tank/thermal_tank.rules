@@ -9,8 +9,8 @@ Part : <../base_part_terran.rules>/Part
 	DescriptionKey = "Parts/ThermalBatteryDesc"
 	Resources
 	[
-		[steel, 60]
-		[coil, 20]
+		[steel, 40]
+		[coil, 15]
 	]
 	Size = [2, 2]
 	IsRotateable = true
@@ -89,11 +89,12 @@ Part : <../base_part_terran.rules>/Part
 			Categories = [ thermal_storage ]
 		}
 	
-		DestroyedEffects
+		DestroyedHeatEffects
 		{
 			Type = DeathEffects
 			Location = [1, 1]
 			FactorHitEffectsWith = HeatStorage
+			IncludeWhenUnderConstruction = false
 			
 			HitEffects
 			[
@@ -117,7 +118,11 @@ Part : <../base_part_terran.rules>/Part
 					}
 				}
 			]
-			
+		}
+		DestroyedMediaEffects
+		{
+			Type = DeathEffects
+			Location = [1, 1]
 			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 		}
 	

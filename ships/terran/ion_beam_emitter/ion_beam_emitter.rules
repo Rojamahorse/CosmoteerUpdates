@@ -854,23 +854,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Weapon/FireInterval)
 			}
 		}
-		
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				FiringHeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
-				SimpleDamage = 0
-				StrengthAtMaxRange = 100
-				
-				LightningRange = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/InitialRadius)
-				LightningStrikeCountRange = &~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/InitialStrikes
-				LightningMaxChain = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING_BASE_CHAIN_LENGTH/1)
-				LightningChainChance = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/ChainChance) * 100
-				LightningChainStrikeCountRange = &~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/ChainStrikes
-				LightningDamage = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/HitEffects/0/Damage/BaseValue)
-			}
-		}
 	]
 	
 	SecondaryToolTip

@@ -1118,19 +1118,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ShotAmmoUsage = [&../AmmoPerShot, &../AmmoPerSecond]
 			}
 		}
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				Burst = (&~/OVERCLOCK/BURST)
-				ROF = (&Burst) / (&FireInterval)
-				FireInterval = (&~/Part/Components/Turret/FireInterval) + (&~/OVERCLOCK/EXTRA_INTERVAL)
-				Range = &~/Part/Components/BulletEmitter/Bullet/OVERCLOCK/RANGE
-				Spread = deg(&~/OVERCLOCK/HALF_SPREAD)
-				HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
-				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/OVERCLOCK/SPEED
-			}
-		}
 	]
 	
 	SecondaryToolTip

@@ -684,14 +684,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 			}
 		}
-		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				PowerGeneration = (&~/Part/Components/BulletEmitter/ResourcesUsed) / (&~/OVERCLOCK/RECHARGE_TIME_PER_SHOT) / 1000
-				HeatGeneration = (&~/OVERCLOCK/RECHARGING_HEAT_PER_SECOND)
-			}
-		}
 	]
 	
 	SecondaryToolTip

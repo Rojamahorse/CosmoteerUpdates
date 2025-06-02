@@ -1243,7 +1243,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	StatsByCategory
 	[
 		{
-			NameKey = "StatCategories/ShieldSmall"
+			NameKey = "StatCategories/ShieldLarge"
 			Stats
 			{
 				ShieldHP = (&~/Part/Components/BatteryStorage/MaxResources) / (&~/Part/Components/ArcShield/ResourceDrainPerDamage/BaseValue)

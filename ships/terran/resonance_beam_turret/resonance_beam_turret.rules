@@ -932,11 +932,11 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
-		DestroyedEffects
+		DestroyedHeatEffects
 		{
 			Type = DeathEffects
 			Location = [2, 2]
-			FactorHitEffectsWith = HeatStorage
+			IncludeWhenUnderConstruction = false
 			
 			HitEffects
 			[
@@ -960,7 +960,11 @@ Part : <../base_part_terran.rules>/Part
 					}
 				}
 			]
-			
+		}
+		DestroyedMediaEffects
+		{
+			Type = DeathEffects
+			Location = [2, 2]
 			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed
 		}
 

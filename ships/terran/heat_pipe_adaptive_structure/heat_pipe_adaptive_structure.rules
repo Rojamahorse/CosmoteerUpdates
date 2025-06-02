@@ -1,4 +1,4 @@
-Part : <../base_part_terran.rules>/Part, <../heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part
+Part : <../heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part, <../base_part_terran.rules>/Part
 {
 	NameKey = "Parts/HeatPipeAdaptiveStructure"
 	IconNameKey = "Parts/HeatPipeAdaptiveStructure"
@@ -23,7 +23,7 @@ Part : <../base_part_terran.rules>/Part, <../heat_pipe_adaptive/heat_pipe_adapti
 		}
 		Size = [32, 32]
 	}
-	Components : ^/0/Components
+	Components : ^/1/Components
 	{
 		Port_Up
 		{
