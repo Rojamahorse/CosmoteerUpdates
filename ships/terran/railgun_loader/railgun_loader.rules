@@ -197,7 +197,7 @@ Part : <../base_part_terran.rules>/Part
 			ToStorage = LoadedAmmo
 			FromQuantity = 1
 			ToQuantity = 1
-			Interval = 0.3
+			Interval = 0.15
 		}
 
 		LoadEffects
@@ -294,7 +294,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-		
+
 		OverflowHeatStorage : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverflowHeatStorage {}
 		OverheatEffects : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverheatEffects
 		{

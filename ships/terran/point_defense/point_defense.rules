@@ -2,7 +2,7 @@ OVERCLOCK
 {
 	RECHARGE_USAGE_RATIO = 25%
 	RECHARGE_TIME_PER_SHOT = (&~/Part/Components/Turret/FireInterval) / (&RECHARGE_USAGE_RATIO)
-	RECHARGING_HEAT_PER_SECOND = 75
+	RECHARGING_HEAT_PER_SECOND = 150
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -176,7 +176,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -436,7 +436,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Bullet = &<./Data/shots/pd_shot/pd_shot.rules>
 			Spread = [-1d, 1d]
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 17
+			ResourcesUsed = 35
 			MinResourcesUsed = 1
 		}
 
@@ -620,7 +620,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -638,7 +638,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [1, 2]
 		}
-		
+
 		HeatGenerationValue
 		{
 			Type = StaticValue

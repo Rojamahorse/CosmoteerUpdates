@@ -129,7 +129,7 @@ HitOperational
 	[
 		{ //Damage to enemy ships
 			Type = Damage
-			Damage = { BaseValue=500/2 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+			Damage = { BaseValue=1000/2 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 			DamageType = salvage
 			SpawnUnderlying = false
 			Filter

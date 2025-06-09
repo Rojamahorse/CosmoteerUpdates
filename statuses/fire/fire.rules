@@ -20,7 +20,7 @@ FIRE_SELF_MODIFIER_LERP_MAP : ~/FIRE_SELF_MODIFIER_LERP
 // The total % of current health damage to reach max scorch
 MAX_SCORCH_DAMAGE_PERCENT = 75%
 // The time for a fully on-fire, full-health part with 1000 HP per tile to reach max scorch.
-FULL_HEALTH_SCORCH_TIME = 80
+FULL_HEALTH_SCORCH_TIME = 40
 
 SCORCH_PER_SECOND = (&MAX_SCORCH_DAMAGE_PERCENT) / (&FULL_HEALTH_SCORCH_TIME)
 SCORCH_PER_TICK = (&SCORCH_PER_SECOND) & (&TickInterval)
@@ -49,7 +49,7 @@ Filter
 	ExcludePartCategories = [ non_flammable ]
 	StructuralHealth = false
 }
-ResourceSink 
+ResourceSink
 {
 	Resource = fire_extinguisher
 	AssociateJobWithPart = cosmoteer.fire_extinguisher
@@ -62,7 +62,7 @@ ResourceSink
 	DeliveryMediaEffects
 	[
     	&<particles/fire_extinguisher.rules>
-    
+
     	: /BASE_SOUNDS/AudioInterior
     	{
     		Sound = "fire_extinguisher.wav"
@@ -78,15 +78,15 @@ ResourceSink
 		{
     		Type = StatusApplication
     		StatusType = cosmoteer.fire_foam
-    		MIN_FOAM_DURATION = 7.5
-    		MAX_FOAM_DURATION = 30
+    		MIN_FOAM_DURATION = 3.25
+    		MAX_FOAM_DURATION = 15
     		StatusDuration
     		{
     			BaseValue = ((&../MAX_FOAM_DURATION) - (&../MIN_FOAM_DURATION)) / (&~/FIRE_MAX_HEALTH)
     			EffectScaleExponent = 1
     		}
     		InitialStatusDuration = &MIN_FOAM_DURATION
-    		
+
     		Filter
     		{
     			Friendlies = true
@@ -102,7 +102,7 @@ SoftRepair
 	WorkPerValueChange = 0.1/3
 	CrewRequestCountOverride = 1
 }
-TickInterval = 0.5
+TickInterval = 7.5 / (&/Simulation/PhysicsUpdatesPerSecond) // 0.25 at 30 physics update
 TickingEffects
 [
 	{
@@ -111,7 +111,7 @@ TickingEffects
 		StatusChance
 		{
 			BaseValue = 0.4
-			Modifiers 
+			Modifiers
 			[
 				: ~/FIRE_SELF_MODIFIER_LERP_MAP
 				{
@@ -127,7 +127,7 @@ TickingEffects
 				}
 			]
 		}
-		StatusValue 
+		StatusValue
 		{
 			BaseValue = 0.2
 			Modifiers [ &~/FIRE_SELF_MODIFIER ]
@@ -136,7 +136,7 @@ TickingEffects
 		MinDistance = 1
 		MaxDistance = 1
 		BlockedByWalls = true
-		Filter 
+		Filter
 		{
 			IgnoreInvulnerability = true
 			Friendlies = true
@@ -148,7 +148,7 @@ TickingEffects
 		Damage
 		{
 			BaseValue = &~/DAMAGE_PER_TICK
-			Modifiers 
+			Modifiers
 			[
 				: ~/FIRE_SELF_MODIFIER_LERP_MAP
 				{
@@ -168,7 +168,7 @@ TickingEffects
 		KillChance
 		{
 			BaseValue = .16 * (&~/TickInterval)
-			Modifiers 
+			Modifiers
 			[
 				: ~/FIRE_SELF_MODIFIER_LERP_MAP
 				{
@@ -196,7 +196,7 @@ TickingEffects
 		StatusValue
 		{
 			BaseValue = (&~/DAMAGE_PER_TICK) / (&~/MAX_SCORCH_DAMAGE_PERCENT)
-			Modifiers 
+			Modifiers
 			[
 				: ~/FIRE_SELF_MODIFIER_LERP_MAP
 				{
@@ -223,7 +223,7 @@ ValueModulators
 	T_1 = 0.1 * (&~/FIRE_MAX_HEALTH)
 	T_2 = 0.15 * (&~/FIRE_MAX_HEALTH)
 	T_3 = ((&~/FIRE_MAX_HEALTH) - (&T_1)) / 2 + (&T_1)
-	
+
 	Modulators
 	[
 		// Slowly extinguish when part is scorched
@@ -236,12 +236,12 @@ ValueModulators
 				MinValue = 1
 			}
 			ModificationMode = Add
-			Value = -1.5
+			Value = -3
 		}
 		{
 			Type = Interpolate
 			AffectedValueRange = [0, &../../../T_1 ]
-			InterpolationRange = [-0.0025 * (&~/FIRE_MAX_HEALTH), -0.0125 * (&~/FIRE_MAX_HEALTH)]
+			InterpolationRange = [-0.005 * (&~/FIRE_MAX_HEALTH), -0.025 * (&~/FIRE_MAX_HEALTH)]
 			Exponent = 1.5
 			ModificationMode = Add
 			ScaleByDeltaTime = true
@@ -257,14 +257,14 @@ ValueModulators
 		{
 			Type = InterpolateSine
 			AffectedValueRange = [&../../../T_2, &../../../T_3]
-			InterpolationRange = [0, 0.05 * (&~/FIRE_MAX_HEALTH)]
+			InterpolationRange = [0, 0.1 * (&~/FIRE_MAX_HEALTH)]
 			ModificationMode = Add
 			ScaleByDeltaTime = true
 		}
 		{
 			Type = InterpolateSine
 			AffectedValueRange = [&../../../T_3, &~/FIRE_MAX_HEALTH]
-			InterpolationRange = [&../../3/InterpolationRange/1, 0.004 * (&~/FIRE_MAX_HEALTH)]
+			InterpolationRange = [&../../3/InterpolationRange/1, 0.008 * (&~/FIRE_MAX_HEALTH)]
 			InvertCurve = true
 			ModificationMode = Add
 			ScaleByDeltaTime = true
@@ -280,7 +280,7 @@ CustomShapeEffects
     	&<particles/fire_base.rules>
     	&<particles/fire_smoke.rules>
     	&<particles/fire_sparks.rules>
-    
+
     	: /BASE_SOUNDS/AudioInterior
     	{
     		Sound = "fire.wav"
@@ -290,7 +290,7 @@ CustomShapeEffects
     		RampUpTime = .2
     		RampDownTime = .2
     		MaxConcurrent = 1
-    
+
     		DynamicVolume : ^/0/DynamicVolume
     		{
     			UseCustomShapeForDistance = true

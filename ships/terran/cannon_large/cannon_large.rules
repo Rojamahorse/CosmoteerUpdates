@@ -2,7 +2,7 @@ OVERCLOCK
 {
 	HEAT_PER_SHOT = 1000
 	RECOIL = (&~/Part/Components/BulletEmitter/Recoil) * 2
-	
+
 	BULLET = &<./Data/shots/bullet_large/overclock/bullet_large_overclock.rules>
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
@@ -152,7 +152,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = bullet
 			MaxResources = 4
-			DelayBeforeReadyToUse = 0.5
+			DelayBeforeReadyToUse = .25
 			AnticipateMoreResourcesFrom = ["AmmoStorage"]
 			ToggleOnResources = 4
 			ToggleOffResources = 3
@@ -339,7 +339,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 2.7
+			FireInterval = 1.35
 			FiringArc = 115d
 			RotateSpeed = 30d
 			FireThresholdAngle = 1d
@@ -450,9 +450,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToStorage = LoadedAmmo
 			FromQuantity = 1
 			ToQuantity = 1
-			Interval = 0.3
+			Interval = .15
 			DelayTrigger = Turret
-			DelayAfterTrigger = 1
+			DelayAfterTrigger = .5
 		}
 
 		LoadEffects
@@ -510,15 +510,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
-		
+
 		OverheatEffects : ^/0/OverheatEffects
 		{
 			Location = [1.5, 2]
 		}
-		
+
 		Overclock_ShotHeatProducer
 		{
 			Type = ResourceChange
@@ -927,7 +927,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Size = [3, 5]
 			Offset = [0, -1]
 		}
-		
+
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue

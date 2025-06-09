@@ -2,8 +2,8 @@ OVERCLOCK
 {
 	BULLET = &<./Data/shots/bullet_railgun/overclock/bullet_railgun_overclock.rules>
 	SHOT_HEAT_PER_MODULE = 1750
-	BASE_CHARGE_TIME = 1.5
-	MODULE_CHARGE_TIME = 0.25
+	BASE_CHARGE_TIME = 0.75
+	MODULE_CHARGE_TIME = 0.125
 	RECOIL_FACTOR = 250%
 }
 
@@ -237,7 +237,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 8
+			FireInterval = 4
 			TargetingArc = 90d
 			AIFirepowerRating = { BaseValue=&~/Part/StatsByCategory/0/Stats/DamagePerSecond; BuffType=RailgunShot; BuffMode=Multiply; }
 			Emitter = WeaponEmitterSelector
@@ -299,14 +299,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			OperationalToggle = IsOperational
 			ShowProgressFor = Weapon
 		}
-		
+
 		// Prevent toggling while firing
 		OverclockModeToggle : ^/0/OverclockModeToggle
 		{
 			OperationalToggle = ProjectileToggle
 			InvertOperationalToggle = true
 		}
-		
+
 		Overclock_ShotHeatProducer
 		{
 			Type = ResourceChange
@@ -328,12 +328,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
 		}
-		
+
 		HeatDistributionStorage : ^/0/HeatDistributionStorage
 		{
 			ResourceStorages = [ &../^/0/ResourceStorages/0, Network_RailgunOverflowHeatInput ]
 		}
-		
+
 		WeaponEmitterSelector
 		{
 			Type = ToggleEmitterSelector
@@ -372,21 +372,21 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = MultiTrigger
 			Triggers = [BulletEmitter, Overclock_BulletEmitter]
 		}
-		
+
 		WeaponTriggerProxy_NonOverclocked
 		{
 			Type = TriggerProxy
 			ComponentID = Weapon
 			ProxyToggle = IsOperationalNonOverclocked
 		}
-		
+
 		WeaponTriggerProxy_Overclocked
 		{
 			Type = TriggerProxy
 			ComponentID = Weapon
 			ProxyToggle = IsOperationalOverclocked
 		}
-		
+
 		OperationalOverclockDisabled
 		{
 			Type = ToggleTrigger
@@ -394,7 +394,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			TriggerWhenOn = false
 			TriggerWhenOff = true
 		}
-		
+
 		Overclock_ChargeTimerReset
 		{
 			Type = MultiTrigger
@@ -437,7 +437,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Mode = Add
 			Invert = true
 		}
-		
+
 		Overclock_HasCharged
 		{
 			Type = TriggeredToggle
@@ -445,7 +445,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			OffTrigger = Overclock_BulletEmitter
 			OperationalToggle = IsOperationalOverclocked
 		}
-		
+
 		RailgunBuffValue
 		{
 			Type = BuffableValue
@@ -490,7 +490,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			SpeedEnd = &../BulletEmitter/Bullet/Speed
 			Interpolate = true // WARNING: Only use this for interpolating graphics. Using it for game logic will cause multiplayer desyncs.
 		}
-		
+
 		ProjectileFinished_Uncharged
 		{
 			Type = TriggerProxy
@@ -528,8 +528,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				{
 					Type = Impulse
-					Impulse 
-					{ 
+					Impulse
+					{
 						BaseValue = 2000
 						Modifiers
 						[
@@ -1113,7 +1113,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					}
 					HidesIndicators = [3,4]
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -1123,7 +1123,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					}
 					HidesIndicators = [4]
 				}
-				
+
 				// Out of power.
 				{
 					Toggle = BatteryStorage
@@ -1143,7 +1143,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [2, 4]
 		}
-		
+
 		Two { Type = StaticValue; Value = 2; }
 		ModuleCount
 		{

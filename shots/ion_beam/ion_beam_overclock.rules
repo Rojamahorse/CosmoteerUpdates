@@ -101,7 +101,7 @@ Beam : <ion_beam.rules>
 						Type = Damage
 						Damage : ~/MODIFIABLE_DAMAGE
 						{
-							BaseValue = 200
+							BaseValue = 400
 						}
 						Filter
 						{

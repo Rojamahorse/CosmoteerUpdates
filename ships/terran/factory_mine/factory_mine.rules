@@ -193,7 +193,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			        	BaseValue = 250
 			        	Modifiers
 			        	[
-			        		: ~/MODIFIERS/OVERCLOCK_LERP 
+			        		: ~/MODIFIERS/OVERCLOCK_LERP
 			        		{
 			        			MinValue = &../../BaseValue
 			        			MaxValue = (&MinValue) * (&~/OVERCLOCK/POWER_USE_FACTOR)
@@ -209,14 +209,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 				BaseValue = 1
 				Modifiers
 				[
-					: ~/MODIFIERS/OVERCLOCK_LERP 
+					: ~/MODIFIERS/OVERCLOCK_LERP
 					{
 						MinValue = &../../BaseValue
 						MaxValue = (&MinValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
 					}
 				]
 			}
-			Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
+			Interval = { BaseValue=0.5; BuffType=Factory; BuffMode=Divide; }
 			CheckResourceLimits = true
 		}
 
@@ -253,7 +253,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -265,7 +265,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Trigger = Overclock_ResourceConverterProxy
 			Amount = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/HEAT_TO_RESOURCE)
 		}
-		
+
 		Overclock_ResourceConverterProxy
 		{
 			Type = TriggerProxy
@@ -595,7 +595,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_on8.png"
 						]
 						Size = [4, 2]
-						AnimationInterval = 0.125
+						AnimationInterval = 0.0625
 					}
 					{
 						AnimationFiles
@@ -610,7 +610,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_on8_33.png"
 						]
 						Size = [4, 2]
-						AnimationInterval = 0.125
+						AnimationInterval = 0.0625
 					}
 					{
 						AnimationFiles
@@ -625,7 +625,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_on8_66.png"
 						]
 						Size = [4, 2]
-						AnimationInterval = 0.125
+						AnimationInterval = 0.0625
 					}
 				]
 			}
@@ -974,7 +974,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Trigger = ScorchedTrigger
 			Location = &~/Part/Components/DestroyedEffects/Location
 			MediaEffects = &~/Part/Components/DestroyedEffects/MediaEffects
-			HitEffects = &~/Part/Components/DestroyedEffects/HitEffects	
+			HitEffects = &~/Part/Components/DestroyedEffects/HitEffects
 		}
 
 		DestroyedEffects
@@ -1065,7 +1065,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -1092,7 +1092,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints_flipped.png"
 			Size = [4, 3]
 		}
-		
+
 		Overclock_HeatProductionInterval
 		{
 			Type = BuffableValue

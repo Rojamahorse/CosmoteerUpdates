@@ -76,7 +76,7 @@ Part : <../base_part_terran.rules>/Part
 			Toggles = [PowerToggle, PartCrew]
 			Mode = All
 		}
-		
+
 		PowerToggle
 		{
 			Type = UIToggle
@@ -84,14 +84,14 @@ Part : <../base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
-		
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
 			OperationalToggle = PowerToggle
 			CommandPoints = 8
 		}
-		
+
 		// Heat safety
 		HeatProducedPerInterval
 		{
@@ -109,7 +109,7 @@ Part : <../base_part_terran.rules>/Part
 			Values = [ HeatProducedPerInterval, HeatProductionIntervalsPerEmission ]
 			Mode = Multiply
 		}
-		
+
 		AnticipatedSelfHeatProduction
 		{
 			Type = ValueProxy
@@ -150,7 +150,7 @@ Part : <../base_part_terran.rules>/Part
 			ValueFrom = EmissionsUntilHeatFull
 			MinAmount = 1
 		}
-				
+
 //		HeatProductionIntervalsUntilFull
 //		{
 //			Type = ValueOperation
@@ -166,14 +166,14 @@ Part : <../base_part_terran.rules>/Part
 //			// The number of heat production ticks that could occur from a single beam emitter trigger
 //			MinAmount = "ceil((&../BeamEmitter/Duration) / (&../HeatGenerationConverter/Interval))"
 //		}
-		
+
 		SafetyToggle
 		{
 			Type = UIToggle
 			ToggleID = "thermal_safety"
 			Default = 1
 		}
-		
+
 //		OverclockModeToggle
 //		{
 //			Type = UIToggle
@@ -196,7 +196,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = MultiToggle
 			Mode = Any
-			Toggles 
+			Toggles
 			[
 				{
 					Toggle = SafetyToggle
@@ -205,7 +205,7 @@ Part : <../base_part_terran.rules>/Part
 				SafeModeFireToggle
 			]
 		}
-		
+
 		FireModeToggle
 		{
 			Type = UIToggle
@@ -225,7 +225,7 @@ Part : <../base_part_terran.rules>/Part
 			Mode = FireModeToggle
 			OnMode = 2
 		}
-		
+
 		FirePermissionToggle
 		{
 			Type = MultiToggle
@@ -240,7 +240,7 @@ Part : <../base_part_terran.rules>/Part
 			MaxResources = 24000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-		
+
 		BatteryConsumer
 		{
 			Type = ResourceConsumer
@@ -250,7 +250,7 @@ Part : <../base_part_terran.rules>/Part
 			ResupplyThreshold = 500
 			OperationalToggle = PowerToggle
 		}
-		
+
 		IsFiringTimer
 		{
 			Type = Timer
@@ -260,14 +260,14 @@ Part : <../base_part_terran.rules>/Part
 			StartExpired = true
 			InvertToggle = true
 		}
-		
+
 		IsFiring
 		{
 			Type = MultiToggle
 			Toggles = [IsFiringTimer]
 			Mode = All
 		}
-		
+
 		HeatStorage
 		{
 			Type = ResourceStorage
@@ -277,7 +277,7 @@ Part : <../base_part_terran.rules>/Part
 			InitToMaxResources = 0
 			IgnoreResourcesForInitToMax = true
 		}
-		
+
 		NetworkedHeatStorage
 		{
 			Type = NetworkResourceStore
@@ -285,7 +285,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceStorage = HeatStorage
 			Categories = [ thermal_storage ]
 		}
-		
+
 		NetworkHeatInput
 		{
 			Type = NetworkResourceInput
@@ -293,7 +293,7 @@ Part : <../base_part_terran.rules>/Part
 			Mode = DistributeProportionallyByAvailable
 			Categories = [ thermal_storage ]
 		}
-		
+
 		OverflowHeatStorage
 		{
 			Type = ResourceConsumingStorage
@@ -301,7 +301,7 @@ Part : <../base_part_terran.rules>/Part
 			TriggerThreshold = 0
 			ProvidedValuePerResource = (&<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO)
 		}
-		
+
 		HeatDistributionStorage
 		{
 			Type = MultiResourceStorage
@@ -310,7 +310,7 @@ Part : <../base_part_terran.rules>/Part
 			AddMode = InOrder
 			RemoveMode = InReverseOrder
 		}
-		
+
 		HeatGenerationConverter
 		{
 			Type = ResourceConverter
@@ -324,31 +324,31 @@ Part : <../base_part_terran.rules>/Part
 			}
 			Interval = 0.5
 		}
-		
+
 		NetworkHeatOutput
 		{
 			Type = NetworkResourceOutput
 			ResourceType = heat
 			Mode = DistributeProportionallyByAvailable
 		}
-		
+
 		HeatDissipationConverter
 		{
 			Type = ResourceConverter
 			FromStorage = NetworkHeatOutput
 			MinFromQuantityForConversion = 1
-			BASE_DISSIPATION = 25
+			BASE_DISSIPATION = 50
 			DISSIPATION_PER_SECOND = (&BASE_DISSIPATION) / (&Interval)
-			FromQuantity = 25 * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+			FromQuantity = (&BASE_DISSIPATION) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
 			Interval = 0.5
 		}
-		
+
 		OverclockStateTween
 		{
 			Type = ValueTween
 			IsOnToggle = OverclockModeToggle
-			OnTweenDuration = 10;
-			OffTweenDuration = 10;
+			OnTweenDuration = 5;
+			OffTweenDuration = 5;
 		}
 		OverclockBuff
 		{
@@ -368,7 +368,7 @@ Part : <../base_part_terran.rules>/Part
 			InputValue = OverclockStateTween
 			OutputRange = [1, 1.1]
 		}
-		
+
 		BasePumpUtilization
 		{
 			Type = ValueTween
@@ -383,14 +383,14 @@ Part : <../base_part_terran.rules>/Part
 			Values = [ BasePumpUtilization, OverclockUtilizationFactor ]
 			Mode = Multiply
 		}
-		
+
 		NetworkedPumpUtilization
 		{
 			Type = NetworkValue
 			ValueSource = PumpUtilization
 			Categories = [ thermal_pump_utilization ]
 		}
-		
+
 		Network_PumpHeatGeneration
 		{
 			Type = NetworkValueReceiver
@@ -398,11 +398,11 @@ Part : <../base_part_terran.rules>/Part
 			Categories = [ thermal_activity ]
 			Mode = Add
 		}
-		
+
 		BaseHeatGeneration
 		{
 			Type = StaticValue
-			Value = 300
+			Value = 600
 		}
 		CombinedHeatGeneration
 		{
@@ -422,7 +422,7 @@ Part : <../base_part_terran.rules>/Part
 			Values = [ CombinedHeatGeneration, Overclock_HeatFactor ]
 			Mode = Multiply
 		}
-		
+
 		NetworkAmplification
 		{
 			Type = NetworkValueReceiver
@@ -437,19 +437,19 @@ Part : <../base_part_terran.rules>/Part
 			Categories = [ thermal_dilation ]
 			Mode = Add
 		}
-		
+
 		BaseAmplification
 		{
 			Type = StaticValue
 			Value = 0
 		}
-		
+
 		BaseDilation
 		{
 			Type = StaticValue
 			Value = -50%
 		}
-		
+
 		OverclockAmplificationFactor
 		{
 			Type = ValueLerp
@@ -462,7 +462,7 @@ Part : <../base_part_terran.rules>/Part
 			InputValue = OverclockStateTween
 			OutputRange = [1, 0.85]
 		}
-		
+
 		CombinedAmplification
 		{
 			Type = MultiValue
@@ -475,7 +475,7 @@ Part : <../base_part_terran.rules>/Part
 			Values = [ BaseDilation, NetworkDilation ]
 			Mode = Add
 		}
-		
+
 		AmplificationValue
 		{
 			Type = MultiValue
@@ -488,7 +488,7 @@ Part : <../base_part_terran.rules>/Part
 			Values = [ CombinedDilation, OverclockDilationFactor ]
 			Mode = Multiply
 		}
-		
+
 		Zero
 		{
 			Type = StaticValue
@@ -504,7 +504,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = StaticValue
 			Value = -1
 		}
-		
+
 		// Convert value range -inf -> +inf to a positive factor
 		// i_min = min(amp, 0)
 		// i_max = max(amp, 0)
@@ -573,7 +573,7 @@ Part : <../base_part_terran.rules>/Part
 			Values = [ Intensity_Pos, Intensity_Neg ]
 			Abs = true
 		}
-		
+
 		Radius_LowerBound
 		{
 			Type = StaticValue
@@ -633,7 +633,7 @@ Part : <../base_part_terran.rules>/Part
 			Values = [ Radius_Pos, Radius_Neg ]
 			Abs = true
 		}
-		
+
 		ThermalIntensityBuff
 		{
 			Type = SelfBuffProvider
@@ -655,7 +655,7 @@ Part : <../base_part_terran.rules>/Part
 			BuffAmount = 1
 			BuffMultiplier = HeatGenerationValue
 		}
-		
+
 		ThermalShieldPiercingDenominatorOffset
 		{
 			Type = StaticValue
@@ -694,7 +694,7 @@ Part : <../base_part_terran.rules>/Part
 			BuffAmount = 1
 			BuffMultiplier = ThermalShieldPiercingMultiplier
 		}
-		
+
 		OverheatEffects
 		{
 			Type = TriggeredEffects
@@ -711,14 +711,14 @@ Part : <../base_part_terran.rules>/Part
 			Radius = 85/64
 			IsHigh = true
 		}
-		
+
 		Targeter
 		{
 			Type = UITargeter
 			TargeterID = thermal_aim
 			Weapons = [Turret, FixedWeapon]
 		}
-		
+
 		Turret
 		{
 			Type = TurretWeapon
@@ -728,7 +728,7 @@ Part : <../base_part_terran.rules>/Part
 			AutoFireToggle = AutoFireToggle
 			FirePermissionToggle = FirePermissionToggle
 			TargetingEmitter = BeamEmitter
-			FireInterval = .4
+			FireInterval = .2
 			FiringArc = 270d
 			RotateSpeed
 			{
@@ -751,7 +751,7 @@ Part : <../base_part_terran.rules>/Part
 			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
 			SuppressDirectControlWhenTargetingShipRelativePoints = true
 			SaveShipRelativeTargets = true
-			
+
 			AutoTargets
 			[
 				{
@@ -759,7 +759,7 @@ Part : <../base_part_terran.rules>/Part
 					Toggle = AutoTargetToggle
 				}
 			]
-			
+
 			BlueprintArcSprite
 			{
 				Texture = &/INDICATORS/WeaponArc
@@ -768,7 +768,7 @@ Part : <../base_part_terran.rules>/Part
 			}
 			BlueprintArcRadius = 10
 			BlueprintArcSpriteSegments = 64
-			
+
 			CoverageSectorArc
 			{
 				Texture = &/INDICATORS/VerticalGradient
@@ -776,7 +776,7 @@ Part : <../base_part_terran.rules>/Part
 				QuadCount = 64
 			}
 		}
-		
+
 		FixedWeapon
 		{
 			Type = FixedWeapon
@@ -789,10 +789,10 @@ Part : <../base_part_terran.rules>/Part
 			DefaultDirectControlBinding = 0
 			FirePermissionToggle = FirePermissionToggle
 			IgnoreFriendlyShipLowLOSChecks = true
-			
+
 			AutoTarget = &../Turret/AutoTargets/0
 		}
-		
+
 		BeamEmitter : <./Data/shots/resonance_beam/resonance_beam.rules>
 		{
 			Type = BeamEmitter
@@ -807,7 +807,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceScaleFactor = OverclockPowerUsageFactor
 			MinResourcesUsed = 1
 		}
-		
+
 		CrewLocation1
 		{
 			Type = CrewLocation
@@ -832,7 +832,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = [174/64, 178/64]
 			Rotation = -50.5d
 		}
-		
+
 		PartCrew
 		{
 			Type = PartCrew
@@ -855,9 +855,9 @@ Part : <../base_part_terran.rules>/Part
 				CrewLocation4
 			]
 		}
-		
-		
-		
+
+
+
 		Port_TopLeft
 		{
 			Type = NetworkPort
@@ -869,7 +869,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Location = [2, 0]
 		}
-		
+
 		Port_RightTop : Port_TopLeft
 		{
 			Location = [3, 1]
@@ -879,7 +879,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Location = [3, 2]
 		}
-		
+
 		Port_BottomRight : Port_TopLeft
 		{
 			Location = [2, 3]
@@ -889,7 +889,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Location = [1, 3]
 		}
-		
+
 		Port_LeftBottom : Port_TopLeft
 		{
 			Location = [0, 2]
@@ -899,7 +899,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Location = [0, 1]
 		}
-		
+
 		Router
 		{
 			Type = NetworkRouter
@@ -917,7 +917,7 @@ Part : <../base_part_terran.rules>/Part
 						[Port_BottomLeft, Port_LeftBottom, 0]
 						[Port_LeftBottom, Port_LeftTop, 0]
 						[Port_LeftTop, Port_TopLeft, 0]
-						
+
 						[Port_TopLeft, NetworkHeatInput, 0]
 						[Port_TopLeft, NetworkHeatOutput, 0]
 						[Port_TopLeft, NetworkedHeatStorage, 0]
@@ -973,7 +973,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = Graphics
 			Location = [2, 2]
 			OperationalToggle = IsOperational
-			Floor 
+			Floor
 			{
 				Layer = "floors"
 				DamageLevels
@@ -1137,7 +1137,7 @@ Part : <../base_part_terran.rules>/Part
 				]
 			}
 		}
-		
+
 		TurretGraphics
 		{
 			Type = Graphics
@@ -1749,7 +1749,7 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
-		
+
 		BatterySprites
 		{
 			Type = ResourceSprites
@@ -2006,7 +2006,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			}
 		}
-		
+
 		HeatSprites
 		{
 			Type = ResourceSprites
@@ -2049,7 +2049,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-		
+
 		Indicators
 		{
 			Type = IndicatorSprites
@@ -2092,14 +2092,14 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-		
+
 		Blueprints
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
 			Size = [4, 4]
 		}
-		
+
 		HeatDissipationStatValue
 		{
 			Type = StaticValue
@@ -2111,7 +2111,7 @@ Part : <../base_part_terran.rules>/Part
 			Stat = HeatDissipation
 			ValueFrom = HeatDissipationStatValue
 		}
-		
+
 		// Requires blueprint part networks to provide a useful value
 //		HeatGenerationPerSecond
 //		{
@@ -2126,22 +2126,22 @@ Part : <../base_part_terran.rules>/Part
 //			ValueFrom = HeatGenerationPerSecond
 //		}
 	}
-	
+
 	Stats
 	{
 		CrewRequired = &~/Part/Components/PartCrew/Crew
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
-		
+
 		RecPower = &../StatsByCategory/0/Stats/PowerUsageContinuous
 		RecCrew = (&CrewRequired) + (&RecPower) * 4
-		
+
 		HeatCapacity = (&~/Part/Components/HeatStorage/MaxResources) / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
 		OverclockTransitionTime = &~/Part/Components/OverclockStateTween/OnTweenDuration
 		HeatDissipation = (&~/Part/Components/HeatDissipationConverter/FromQuantity) / (&~/Part/Components/HeatDissipationConverter/Interval) / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
 //		HeatFireThreshold = &~/Part/Components/OverflowHeatStorage/TriggerThreshold
 //		HeatFireChance = &~/Part/Components/FireFromHeatEffect/HitEffects/0/FireChance
 	}
-	
+
 	StatsByCategory
 	[
 		{
@@ -2155,16 +2155,16 @@ Part : <../base_part_terran.rules>/Part
 				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000
 				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
 				ResonanceTurretHeatGeneration = (&~/Part/Components/BaseHeatGeneration/Value)
-				
-				HeatPerTileContinuous = &~/Part/Components/BeamEmitter/BASE_HEAT
-				ResonanceHeatPool = [&~/Part/Components/BeamEmitter/BASE_HEAT_POOL, &~/Part/Components/BeamEmitter/HEAT_POOL_AMP_EXPONENT]
+
+				HeatPerTileContinuous = (&~/Part/Components/BeamEmitter/BASE_HEAT) / (&HitInterval)
+				ResonanceHeatPool = [(&~/Part/Components/BeamEmitter/BASE_HEAT_POOL) / (&../HitInterval), &~/Part/Components/BeamEmitter/HEAT_POOL_AMP_EXPONENT]
 				DilationHeatSpreadDistance = &~/Part/Components/BeamEmitter/BASE_HEAT_SPREAD_BUDGET
 //				HitShieldHeatFactor = (&~/Part/Components/BeamEmitter/SHIELD_HEAT_FACTOR) * 100
-				
+
 				SHIELD_OVERLOAD_BASE = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_BASE) * 100
 				ShieldDamagePowerCost = [(&../SHIELD_OVERLOAD_BASE) * (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_AMP_FACTOR),
 					(&../SHIELD_OVERLOAD_BASE) * (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_DILATION_FACTOR)]
-				
+
 				BaseAmplification = (1 + (&~/Part/Components/BaseAmplification/Value)) * 100
 				BaseDilation = (1 + (&~/Part/Components/BaseDilation/Value)) * 100
 			}

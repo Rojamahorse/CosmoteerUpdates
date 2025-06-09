@@ -1,10 +1,7 @@
 OVERCLOCK
 {
-	FIRING_HEAT_PER_SECOND = 500
+	FIRING_HEAT_PER_SECOND = 1000
 	BEAM = &~/Part/Components/Overclock_BeamEmitter/^/0/..
-	LIGHTNING_BASE_BEAM_HIT_INTERVALS = 3
-	LIGHTNING_HIT_INTERVALS_EXPONENT = 0.8
-	LIGHTNING_HIT_INTERVALS_SCALE = 0.05
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -160,7 +157,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -224,7 +221,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = .4
+			FireInterval = .2
 			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamageContinuousNear
 			Emitter = BeamEmitter
 			ChainFireToggleComponent = IonBeamChainToggle
@@ -272,7 +269,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				EndCapSize = [1, 2]
 			}
 		}
-		
+
 		IsOperationalNonOverclocked
 		{
 			Type = MultiToggle
@@ -811,7 +808,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [2, 5]
 		}
-		
+
 		HeatGenerationValue
 		{
 			Type = StaticValue

@@ -202,13 +202,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 			BuffAmount = 1
 			BuffMultiplier = RampUpAccumulator
 		}
-		
+
 		RampUpAccumulator
 		{
 			Type = ValueAccumulator
 			AccumulatingToggle = GunIsFiring
-			BASE_MAX_VALUE = 10.5 //15 shots per second if base value
-			BASE_RAMP_UP_TIME = 20
+			BASE_MAX_VALUE = 10.5 //30 shots per second if base value
+			BASE_RAMP_UP_TIME = 10
 			BASE_RAMP_DOWN_TIME = (&BASE_RAMP_UP_TIME) / 2 //cooldown is half the ramp up
 			AccumulationRate
 			{
@@ -244,12 +244,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 				]
 			}
 		}
-		
+
 		ShellChangingValueTween
 		{
 			Type = ValueTween
-			OnTweenDuration = 1.2
-			OffTweenDuration = 2.4
+			OnTweenDuration = 0.6
+			OffTweenDuration = 1.2
 			IsOnToggle = ShellShouldOpen
 		}
 		IsShellFullyOpen
@@ -705,7 +705,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = FixedWeapon
 			OperationalToggle = IsShellFullyOpen//
 			AutoFireToggle = IsShellFullyOpen //
-			FireInterval = { BaseValue=0.7; BuffType=RateOfFire; BuffMode=Divide;}
+			FireInterval = { BaseValue=0.35; BuffType=RateOfFire; BuffMode=Divide;}
 			Emitter = BulletEmitter
 			DefaultDirectControlBinding = 0
 			CanBeGivenExplicitTarget = false
@@ -891,7 +891,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		DefensiveShellColliderChangingValueTween
 		{
 			Type = ValueTween
-			OnTweenDuration = 0.7
+			OnTweenDuration = 0.35
 			OffTweenDuration = &../ShellChangingValueTween/OffTweenDuration
 			IsOnToggle = ShellShouldOpen
 		}
@@ -925,7 +925,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -950,7 +950,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Trigger = Overclock_EmitterProxy
 			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
 		}
-		
+
 		Overclock_EmitterProxy
 		{
 			Type = TriggerProxy
@@ -2143,7 +2143,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Layer = "doodads_low"
 			AnimationSpeedFactor = RampUpAccumulator
 			AnimationSpeedFactorRenormalize = [0, 1 / (&~/Part/Components/RampUpAccumulator/BASE_MAX_VALUE)]
-			RangeLow = 3 //Gives the actual gun some extra to keep firing after the belt runs dry
+			RangeLow = 4 //Gives the actual gun some extra to keep firing after the belt runs dry
 			RangeHigh = 19 + (&RangeLow) + (&~/Part/Components/BulletSplitterLeft/ToQuantity)  // 19 animations, then ToQuantity number of full animations
 			ResourceLevels
 			[

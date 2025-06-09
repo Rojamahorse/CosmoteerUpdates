@@ -29,11 +29,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 		[default, [0, 2, 1, 3]]
 		[default, [2, 0, 3, 1]]
 	]
-	ThrusterForce = 200
+	ThrusterForce = 400
 	ThrustIncreaseTime = 0
 	ThrustDecreaseTime = 0
 	ThrustRecoveryTime = 0
-	FuelUsage = 15
+	FuelUsage = 30
 	FuelRecharge = 3
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, EngineHeatCollection, ThermalActivity]
 	AllowedDoorLocations
@@ -155,7 +155,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -196,7 +196,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ComponentIDs = [ EngineHeatCollectionStorage ]
 			}
 		}
-		
+
 		// Overriding to use the combined heat input
 		HeatDistributionStorage : ^/0/HeatDistributionStorage
 		{
@@ -205,10 +205,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 		Overclock_ThrusterHeatProducer : ~/THRUSTER_SMALL/Part/Components/Overclock_ThrusterHeatProducer
 		{}
-		
+
 		Overclock_ActivationBuff : ~/THRUSTER_SMALL/Part/Components/Overclock_ActivationBuff
 		{}
-		
+
 		Overclock_SmoothedThrusterActivation : ~/THRUSTER_SMALL/Part/Components/Overclock_SmoothedThrusterActivation
 		{}
 
@@ -216,14 +216,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			ValueOne = Overclock_TotalThrusterActivation
 		}
-		
+
 		Overclock_TotalThrusterActivation
 		{
 			Type = MultiValue
 			Mode = Add
 			Values = [MainThrusterBottom, MainThrusterRight]
 		}
-		
+
 		Overclock_MaxActivation
 		{
 			Type = BuffableValue
@@ -791,7 +791,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -809,7 +809,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [2, 2]
 		}
-		
+
 		PeakHeatGenerationStatValue
 		{
 			Type = StaticValue

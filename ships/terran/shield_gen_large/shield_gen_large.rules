@@ -1,9 +1,9 @@
 OVERCLOCK
 {
-	ARC_FACTOR = 0.5
+	ARC_FACTOR = 50%
 	DAMAGE_DRAIN_FACTOR = 1 / 3
 	EMP_RESIST = 50%
-	HEAT_PER_SECOND = 40
+	HEAT_PER_SECOND = 80
 	HEAT_PER_DAMAGE = 0.5
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
@@ -143,7 +143,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			FromStorage = BatteryStorage
 			FromQuantity = 200
 			MinFromQuantityForConversion = 1
-			Interval = 2
+			Interval = 1
 		}
 
 		ArcShield
@@ -227,8 +227,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Type = ArcShield
 					Radius = &~/Part/Components/ArcShield/Radius
 					Arc = &~/Part/Components/ArcShield/Arc
-					FadeInTime = 1
-					FadeOutTime = 1
+					FadeInTime = .5
+					FadeOutTime = .5
 					FadeFromScale = .8
 					ArcAngleAffectsUVs = true
 					UPerNinetyDegrees = 1
@@ -293,21 +293,21 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 			HitMediaEffects = &<../shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/HitMediaEffects
 		}
-		
+
 		OverclockTweenToggle
 		{
 			Type = ThresholdToggle
 			ValueFrom = OverclockStateValue
 			MinAmount = 1
 		}
-		
+
 		OverclockedEffectToggle
 		{
 			Type = MultiToggle
 			Toggles = [OverclockTweenToggle, IsOperationalOverclocked]
 			Mode = All
 		}
-		
+
 		Overclock_BlueprintArc
 		{
 			Type = ArcSprite
@@ -329,7 +329,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				Color = [255, 134, 36, 127]
 			}
 		}
-		
+
 		OverclockEffect
 		{
 			Type = ShieldArcsMimic
@@ -390,7 +390,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 			]
 		}
-		
+
 		OverloadValue
 		{
 			Type = BuffableValue
@@ -408,28 +408,28 @@ Part : <../base_part_terran_overclock.rules>/Part
 				]
 			}
 		}
-		
+
 		IsOverloaded
 		{
 			Type = ThresholdToggle
 			ValueFrom = OverloadValue
 			MinAmount = 0.01
 		}
-		
+
 		IsOperationalOverloaded
 		{
 			Type = MultiToggle
 			Toggles = [ IsOperational, IsOverloaded ]
 			Mode = All
 		}
-		
+
 		IsOperationalOverclockedOverloaded
 		{
 			Type = MultiToggle
 			Toggles = [ IsOperational, IsOverloaded, OverclockedEffectToggle ]
 			Mode = All
 		}
-		
+
 		OverloadEffect
 		{
 			Type = ShieldArcsMimic
@@ -444,8 +444,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Type = ArcShield
 					Radius = &~/Part/Components/ArcShield/Radius
 					Arc = &~/Part/Components/ArcShield/Arc
-					FadeInTime = 1
-					FadeOutTime = 1
+					FadeInTime = .5
+					FadeOutTime = .5
 					FadeFromScale = .8
 					ArcAngleAffectsUVs = true
 					UPerNinetyDegrees = 1
@@ -485,11 +485,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 						_waveCurveInterval = .5
 						_waveCurveMagnitude = .35
 						_waveCurveUOffsetPerSecond = .2
-						
+
 						_color1 = [255, 0, 255 * 0.31, 0]
 						_color2 = [255, 255 * 0.41, 0, 0]
 						_maxGreen = 0.9
-						
+
 						_xScale = 1
 						_gradientXWidth = 0.590625
 						_hexDamageIntensity = 0.8
@@ -501,7 +501,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 			]
 		}
-		
+
 		OverclockOverloadEffect
 		{
 			Type = ShieldArcsMimic
@@ -555,7 +555,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						_waveCurveInterval = .5
 						_waveCurveMagnitude = .35
 						_waveCurveUOffsetPerSecond = .2
-						
+
 						_color1 = [255, 0, 255 * 0.31, 0]
 						_color2 = [255, 255 * 0.41, 0, 0]
 						_maxGreen = 0.9
@@ -652,7 +652,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Location = [2, 5]
 		}
-		
+
 
 		EmitterEffect
 		{
@@ -669,8 +669,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Type = ArcShield
 					Radius = 2.4
 					Arc = 160d
-					FadeInTime = 0.5
-					FadeOutTime = 0.5
+					FadeInTime = 0.25
+					FadeOutTime = 0.25
 					ArcSprite
 					{
 						Texture
@@ -1217,7 +1217,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [3, 6]
 		}
-		
+
 		HeatGenerationValue
 		{
 			Type = StaticValue

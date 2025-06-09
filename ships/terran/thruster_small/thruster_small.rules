@@ -3,7 +3,7 @@ OVERCLOCK
 	THRUST_FACTOR = 400%
 	POWER_USAGE_FACTOR = 1 / (&THRUST_FACTOR)
 	POWER_GENERATION_FACTOR = 3
-	THRUST_HEAT_PER_SECOND = 100
+	THRUST_HEAT_PER_SECOND = 200
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -32,11 +32,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SelectionTypeID = "thrusters"
 	MaxHealth = 1000
 	ProhibitBelow = 3
-	ThrusterForce = 200
+	ThrusterForce = 400
 	ThrustIncreaseTime = 0
 	ThrustDecreaseTime = 0
 	ThrustRecoveryTime = 0
-	FuelUsage = 15
+	FuelUsage = 30
 	FuelRecharge = 3
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, EngineHeatCollection, ThermalActivity]
 	AllowedDoorLocations
@@ -167,7 +167,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -208,7 +208,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ComponentIDs = [ EngineHeatCollectionStorage ]
 			}
 		}
-		
+
 		// Overriding to use the combined heat input
 		HeatDistributionStorage : ^/0/HeatDistributionStorage
 		{
@@ -229,21 +229,21 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
 			Interval = 0.5
 		}
-		
+
 		Overclock_ActivationBuff
 		{
 			Type = SelfBuffProvider
 			BuffType = ThermalActivity
 			BuffMultiplier = Overclock_SmoothedThrusterActivation
 		}
-		
+
 		Overclock_SmoothedThrusterActivation
 		{
 			Type = SmoothedValue
 			ValueSource = Overclock_NormalizedThrusterActivation
 			MaxDelta = 1 / (&../Overclock_ThrusterHeatProducer/Interval)
 		}
-		
+
 		Overclock_NormalizedThrusterActivation
 		{
 			Type = ValueOperation
@@ -560,7 +560,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Force = &../../ThrusterForce
 			MinActivation = 0
 			MaxActivation
-			{ 
+			{
 				BaseValue=1;
 				Modifiers
 				[
@@ -756,7 +756,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -774,13 +774,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [1, 2]
 		}
-		
+
 		PeakHeatGenerationStatValue
 		{
 			Type = StaticValue
 			Value = &~/OVERCLOCK/THRUST_HEAT_PER_SECOND
 		}
-		
+
 		HeatGenerationStatProvider
 		{
 			Type = StatProvider

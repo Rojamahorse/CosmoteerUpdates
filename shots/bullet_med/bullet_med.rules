@@ -18,7 +18,7 @@ IdealRange = [75, &~/Range]
 IdealRadius = [5, 50]
 Speed
 {
-	BaseValue = 200
+	BaseValue = 240
 	BuffType = Overclock
 	BuffMode = Lerp
 	MinValue = &BaseValue

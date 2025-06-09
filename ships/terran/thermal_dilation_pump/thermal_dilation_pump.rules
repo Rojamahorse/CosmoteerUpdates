@@ -204,7 +204,7 @@ Part : <../base_part_terran.rules>/Part
 		AdditionalTurretHeatGeneration_Active
 		{
 			Type = StaticValue
-			Value = 50
+			Value = 100
 		}
 		NetworkedActivity_Left
 		{
@@ -277,12 +277,12 @@ Part : <../base_part_terran.rules>/Part
 			FromStorage = BatteryStorage
 			FromQuantity 
 			{
-				BaseValue = 50
+				BaseValue = 250
 				BuffType = ThermalActivity
 				BuffMode = Multiply
 			}
 			MinFromQuantityForConversion = 1
-			Interval = 0.4
+			Interval = 1
 		}
 		
 		Port_BottomLeft

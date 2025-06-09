@@ -1,7 +1,7 @@
 OVERCLOCK
 {
 	HEAT_PER_SHOT = 200
-	
+
 	PROJECTILE = &<./Data/shots/flak_large/overclock/flak_large_overclock.rules>
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
@@ -256,7 +256,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			FromStorage = AmmoStorage
 			ToStorage = CombinedLoadedAmmo
 			FromQuantity = 1
-			ToQuantity = 2
+			ToQuantity = 1
 			Interval = .075
 		}
 		LoadEffects
@@ -451,7 +451,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			FireInterval = 0.25
 			FiringArc = 50d
 			RotateSpeed = 120d
-			FireThresholdAngle = 60d
+			FireThresholdAngle = 30d
 			TargetSearchesPerSecond = 8 // Default is 2.
 			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamagePerSecond
 			Emitter = BaseFlakEmitter
@@ -552,7 +552,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			FireTrigger = ShootTrigger2
 			ResourceStorage = LoadedAmmo2
 		}
-		
+
 		Overclock_BaseFlakEmitter : <./Data/shots/flak_large/overclock/flak_large_overclock.rules>/Beam, BaseFlakEmitter
 		{
 			OperationalToggle = IsOperationalOverclocked
@@ -569,13 +569,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 			FireTrigger = &^/1/FireTrigger
 			ResourceStorage = &^/1/ResourceStorage
 		}
-		
+
 		Overclock_EmissionTrigger
 		{
 			Type = MultiTrigger
 			Triggers = [Overclock_FlakEmitter1, Overclock_FlakEmitter2]
 		}
-		
+
 		Emitter1Trigger
 		{
 			Type = MultiTrigger
@@ -684,7 +684,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -1132,7 +1132,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -1162,7 +1162,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Size = [3, 7]
 			Offset = [0, -.5]
 		}
-		
+
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue

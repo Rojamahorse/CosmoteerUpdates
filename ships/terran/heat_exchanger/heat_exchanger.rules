@@ -114,7 +114,7 @@ Part : <../base_part_terran.rules>/Part
 			}
 			TargetValue = 0
 			ValueDelta = 0
-			ValueDeltaPool = 180
+			ValueDeltaPool = 360
 			ValueTargetStorage = NetworkHeatInput
 			INEFFICIENCY = 40%
 			ValuePerTargetResource = (&<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO) / (1 + (&INEFFICIENCY))
@@ -134,7 +134,7 @@ Part : <../base_part_terran.rules>/Part
 		}
 
 		//HeatExchangerValueDeltaPool { Type = StaticValue; Value = (&~/Part/Components/HeatExchanger/ValueDeltaPool) }
-		HeatExchangerValueDeltaPool { Type = StaticValue; Value = 50 }
+		HeatExchangerValueDeltaPool { Type = StaticValue; Value = 100 }
 		
 		NormalizedAbsorptionValue
 		{

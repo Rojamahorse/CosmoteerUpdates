@@ -3,15 +3,15 @@ OVERCLOCK
 	THRUST_FACTOR = 250%
 	MAX_POWER_USAGE_FACTOR = 175%
 	POWER_USAGE_FACTOR = 1 / (&THRUST_FACTOR) * (&MAX_POWER_USAGE_FACTOR)
-	THRUST_HEAT_PER_SECOND = 275
+	THRUST_HEAT_PER_SECOND = 550
 	
 	BASE_BOOST_HEAT_FACTOR = 175%
 	BOOST_HEAT_FACTOR_PER_BATTERY = 20%
-	BOOST_HEAT_FACTOR_PER_SECOND = -3%
+	BOOST_HEAT_FACTOR_PER_SECOND = -6%
 	BOOST_HEAT_FACTOR_POWER_THRESHOLD = (&~/Part/Components/RealBatteryStorage/MaxResources)
-	
+
 	BOOST_MAX_POWER_USAGE_FACTOR = 200%
-	BOOST_POWER_RAMP_TIME = 4
+	BOOST_POWER_RAMP_TIME = 2
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -39,10 +39,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SelectionTypeID = "thrusters"
 	MaxHealth = 6000
 	ProhibitBelow = 18
-	ThrusterForce = 1600
+	ThrusterForce = 3200
 	ThrustIncreaseTime
 	{
-		BaseValue = 4
+		BaseValue = 2
 		Modifiers
 		[
 			{
@@ -61,13 +61,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 	}
 	ThrustDecreaseTime = 0
 	ThrustRecoveryTime = 2
-	FuelUsage = 100
-	BoostedThrusterForce = 4800
+	FuelUsage = 200
+	BoostedThrusterForce = 9600
 	BoostedThrustIncreaseTime = 0
 	BoostedThrustDecreaseTime = 0
 	BoostedThrustRecoveryTime = 0
-	BoostedFuelUsage = 225
-	BoostedPowerDrain = { BaseValue=-5; BuffType=Engine; BuffMode=Multiply; }
+	BoostedFuelUsage = 450
+	BoostedPowerDrain = { BaseValue=-10; BuffType=Engine; BuffMode=Multiply; }
 	BoostedPowerDrainInterval = 0.1
 	BOOSTED_BASE_POWER_DRAIN_PER_SEC = (&BoostedPowerDrain/BaseValue) / (&BoostedPowerDrainInterval)
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, EngineHeatCollection, ThermalActivity, BoostOverclockPowerRamp]
@@ -248,7 +248,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = BuffToggle
 			BuffType = EnginePowerDistribution
 		}
-		
+
 		IsOverclockedBoosting
 		{
 			Type = MultiToggle
@@ -322,13 +322,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 			HighColor = [201, 239, 0]
 			FullColor = [201, 239, 0]
 		}
-		
+
 		Overclock_BoostHeatFactorPowerThreshold
 		{
 			Type = StaticValue
 			Value = (&~/OVERCLOCK/BOOST_HEAT_FACTOR_POWER_THRESHOLD)
 		}
-		
+
 		Overclock_BoostPowerUsedOverThreshold
 		{
 			Type = ValueOperation
@@ -337,13 +337,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ValueTwo = Overclock_BoostHeatFactorPowerThreshold
 			MinValue = 0
 		}
-		
+
 		Overclock_BoostHeatFactorPerPower
 		{
 			Type = StaticValue
 			Value = (&~/OVERCLOCK/BOOST_HEAT_FACTOR_PER_BATTERY) / 1000
 		}
-		
+
 		Overclock_BoostPowerUsedAdditionalHeatFactor
 		{
 			Type = MultiValue
@@ -376,7 +376,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -400,7 +400,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			OperationalToggle = Overclock_EngineHeatCollectionBuffToggle
 			InvertOperationalToggle = true
 		}
-		
+
 		Overclock_CombinedHeatInput
 		{
 			Type = MultiResourceStorage
@@ -412,7 +412,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ComponentIDs = [ EngineHeatCollectionStorage ]
 			}
 		}
-		
+
 		// Overriding to use the combined heat input
 		HeatDistributionStorage : ^/0/HeatDistributionStorage
 		{
@@ -440,21 +440,21 @@ Part : <../base_part_terran_overclock.rules>/Part
 			BuffType = ThermalActivity
 			BuffMultiplier = Overclock_HeatProductionFactor
 		}
-		
+
 		Overclock_HeatProductionFactor
 		{
 			Type = MultiValue
 			Values = [Overclock_BoostPowerUsedHeatFactor, Overclock_SmoothedThrusterActivation]
 			Mode = Multiply
 		}
-		
+
 		Overclock_SmoothedThrusterActivation
 		{
 			Type = SmoothedValue
 			ValueSource = Overclock_NormalizedThrusterActivation
 			MaxDelta = 1 / (&../Overclock_ThrusterHeatProducer/Interval)
 		}
-		
+
 		Overclock_NormalizedThrusterActivation
 		{
 			Type = ValueOperation
@@ -462,7 +462,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ValueOne = Overclock_CombinedThrusterActivation
 			ValueTwo = Overclock_MaxActivation
 		}
-		
+
 		Overclock_CombinedThrusterActivation
 		{
 			Type = MultiValue
@@ -539,7 +539,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Force = &~/Part/ThrusterForce
 					MinActivation = 0
 					MaxActivation
-					{ 
+					{
 						BaseValue=1;
 						Modifiers
 						[
@@ -1421,7 +1421,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -1439,7 +1439,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [2, 5]
 		}
-		
+
 		// Since heat ramps during refuelled boost, this just provides the base boost peak heat
 		PeakHeatGenerationValue
 		{

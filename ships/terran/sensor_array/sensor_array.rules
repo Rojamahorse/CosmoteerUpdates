@@ -1,7 +1,7 @@
 OVERCLOCK
 {
 	SIGHT_RADIUS = (&~/Part/Components/Sensor/SightRadius/BaseValue) * 150%
-	HEAT_PER_SECOND = 150
+	HEAT_PER_SECOND = 300
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -116,7 +116,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			FromStorage = BatteryStorage
 			FromQuantity = 200
 			MinFromQuantityForConversion = 1
-			Interval = 2
+			Interval = 1
 		}
 
 		Sensor
@@ -800,7 +800,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -829,7 +829,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [3, 3]
 		}
-		
+
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue

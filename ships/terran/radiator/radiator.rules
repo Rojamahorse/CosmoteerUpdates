@@ -163,7 +163,7 @@ Part : <../base_part_terran.rules>/Part
 				MaxOcclusionDistance = 10
 			}
 			
-			HEAT_PER_SECOND = 550
+			HEAT_PER_SECOND = 1100
 			MAX_SCORE = (&HEAT_PER_SECOND) * (&~/Part/Components/HeatDissipationConverter/Interval) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
 			TILE_SCORE = (2 * (&MAX_SCORE)) / ((&Line/MaxTiles) + 1)
 			EmptyTileScore = &TILE_SCORE

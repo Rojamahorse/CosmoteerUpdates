@@ -2,7 +2,7 @@ ID = "cosmoteer.pd_shot"
 OtherIDs = ["point_defense_shot", "pd_shot"]
 Range = 150
 IdealRange = 65
-Speed = 350
+Speed = 420
 
 Components
 {
@@ -86,7 +86,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue = 75; EffectScaleExponent = 1 }
+					Damage = { BaseValue = 180; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -110,7 +110,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue = 17; EffectScaleExponent = 1 }
+					Damage = { BaseValue = 35; EffectScaleExponent = 1 }
 				}
 			]
 			MediaEffects = &../HitBullet/MediaEffects

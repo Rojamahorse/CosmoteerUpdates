@@ -146,7 +146,7 @@ Part : <../base_part_terran.rules>/Part
 			FromStorage = BatteryStorage
 			FromQuantity = 200
 			MinFromQuantityForConversion = 1
-			Interval = 2
+			Interval = 1
 		}
 
 		HighCollider

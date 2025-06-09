@@ -1,6 +1,6 @@
 OVERCLOCK
 {
-	FIRING_HEAT_PER_SECOND = 700
+	FIRING_HEAT_PER_SECOND = 1400
 	ARC_MAX = 5d
 	FORCE_FACTOR = 150%
 	
@@ -8,7 +8,7 @@ OVERCLOCK
 	OVERLOAD_RADIUS = 600
 	OVERLOAD_BULLET_FORCE = 10000
 	OVERLOAD_BULLET_RADIUS = 150
-	OVERLOAD_CHARGE_DURATION = 5
+	OVERLOAD_CHARGE_DURATION = 2.5
 	OVERLOAD_MIN_POWER = 85%
 	OVERLOAD_HEAT = 12500
 }
@@ -181,7 +181,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
 			Interval = 0.5
 		}
-		
+
 		Overclock_OverloadHeatProducer
 		{
 			Type = ResourceChange
@@ -230,7 +230,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Location = [0, 3]
 		}
-		
+
 		Port_Thermal_Up0 : Port_Thermal_Left0
 		{
 			Location = [1, 0]
@@ -244,7 +244,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Location = [3, 0]
 		}
-		
+
 		Port_Thermal_Right0 : Port_Thermal_Left0
 		{
 			Location = [4, 1]
@@ -258,7 +258,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Location = [4, 3]
 		}
-		
+
 		Port_Thermal_Down0 : Port_Thermal_Left0
 		{
 			Location = [1, 4]
@@ -593,7 +593,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = .4
+			FireInterval = .2
 			FiringArc = 360d
 			RotateSpeed = 120d
 			FireThresholdAngle = 1d
@@ -727,7 +727,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			OperationalToggle = IsOperational
 			ResourceStorage = BatteryStorage
 			FriendlyShipLowCollisions = false
-			ResourcesUsed = ceil(2250 * (&~/Part/Components/Turret/FireInterval) / (&~/BeamCount))
+			ResourcesUsed = ceil(4500 * (&~/Part/Components/Turret/FireInterval) / (&~/BeamCount))
 			ValueOverRampUp = [.1, 1]
 			ResourceUsageScaleOverRampUp = [.1, 1]
 			MinResourcesUsed = 1
@@ -893,8 +893,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Impulse = &~/OVERCLOCK/OVERLOAD_FORCE
 					Radius = &~/OVERCLOCK/OVERLOAD_RADIUS
 					PushShipCenterOfMassOnly = true
-					Filter 
-					{ 
+					Filter
+					{
 						Self = false
 						Shields = false
 						Friendlies = true
@@ -931,8 +931,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Radius = &~/OVERCLOCK/OVERLOAD_RADIUS
 					PushShipCenterOfMassOnly = true
 					InvertFalloff = true
-					Filter 
-					{ 
+					Filter
+					{
 						Self = false
 						Shields = false
 						Friendlies = true
@@ -1157,7 +1157,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -1175,7 +1175,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [5, 5]
 		}
-		
+
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue

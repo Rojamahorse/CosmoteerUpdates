@@ -1,6 +1,6 @@
 OVERCLOCK
 {
-	FIRING_HEAT_PER_SECOND = 225
+	FIRING_HEAT_PER_SECOND = 450
 	BEAM = &<./Data/shots/mining_beam_small/mining_beam_small_overclock.rules>
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
@@ -123,7 +123,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -136,7 +136,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
 			Interval = 0.5
 		}
-		
+
 		Router
 		{
 			Type = NetworkRouter
@@ -335,7 +335,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 0.4
+			FireInterval = 0.2
 			FiringArc = 270d
 			RotateSpeed = 20d
 			FireThresholdAngle = 20d
@@ -444,7 +444,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [0, 14/64]
 			Width = &<./Data/shots/mining_beam_small/mining_beam_small.rules>/Width // BeamEmitterBase overrides width for targeting purposes.
 		}
-		
+
 		BeamEmissionToggleLeft
 		{
 			Type = MultiToggle
@@ -455,7 +455,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Toggles = [BeamEmitterRight, Overclock_BeamEmitterRight]
 		}
-		
+
 		Overclock_BeamEmitterBase : &~/OVERCLOCK/BEAM/Beam, BeamEmitterBase
 		{
 			OperationalToggle = IsOperationalOverclocked
@@ -803,7 +803,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -832,7 +832,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [2, 3]
 		}
-		
+
 		HeatGenerationValue
 		{
 			Type = StaticValue

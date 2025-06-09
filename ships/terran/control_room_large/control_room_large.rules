@@ -111,7 +111,7 @@ Part : <../base_part_terran.rules>/Part
 			FromStorage = BatteryStorage
 			FromQuantity = 1000
 			MinFromQuantityForConversion = 1
-			Interval = 30 // Drains 1 power every 30 seconds.
+			Interval = 15 // Drains 1 power every 15 seconds.
 		}
 
 		CommandProvider

@@ -14,7 +14,7 @@ RESOURCE_TO_STATUS_RATIO = 1 / (&STATUS_TO_RESOURCE_RATIO)
 ValueClampRange = [0, Infinity]
 RemoveAtMinValue = true
 TransferToUnderlyingOnPartDestroyed = true
-TickInterval = 0.5
+TickInterval = 7.5 / (&/Simulation/PhysicsUpdatesPerSecond) // 0.25 at 30 physics update
 RequireValueRangeForTick = [350, Infinity]
 MediaIntensityValueType = Interpolated
 MediaIntensityInterpolationRange = [0, 1000]
@@ -30,9 +30,9 @@ SoftRepair
 Diffusion
 {
 	Basis = 0
-	SpeedFactor = 0.01
-	MinDeltaThreshold = 0.05
-	EmptyCellSpeedFactor = 0.005
+	SpeedFactor = 0.02
+	MinDeltaThreshold = 0.1
+	EmptyCellSpeedFactor = 0.01
 	PartOutboundSpeedFactors
 	{
 		cosmoteer.structure = 25
@@ -159,7 +159,7 @@ ValueModulators
 		{
 			Type = Constant
 			AffectedValueRange = [0, infinity]
-			Value = 0.5
+			Value = 1
 			ModificationMode = Subtract
 			ScaleByDeltaTime = true
 		}

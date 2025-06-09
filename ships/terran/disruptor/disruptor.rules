@@ -68,7 +68,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
-		
+
 		ScorchedToggle
 		{
 			Type = StatusToggle
@@ -128,7 +128,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -398,11 +398,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 1
+			FireInterval = .5
 			FiringArc = 200d
 			RotateSpeed = 90d
 			FireThresholdAngle = 1d
-			AIFirepowerRating = 300
+			AIFirepowerRating = 600
 			Emitter = BulletEmitter
 			FirePermissionToggle = FireModeToggle
 			AutoTargetCrewSafetyDist = 8
@@ -728,7 +728,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Size = [1, 5]
 			Offset = [0, -.5]
 		}
-		
+
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue

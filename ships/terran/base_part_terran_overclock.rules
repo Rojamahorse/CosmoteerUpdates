@@ -61,8 +61,8 @@ Part : <base_part_terran.rules>/Part
 		{
 			Type = ValueTween
 			IsOnToggle = OverclockModeToggle
-			OnTweenDuration = 2;
-			OffTweenDuration = 0.2;
+			OnTweenDuration = 1;
+			OffTweenDuration = 0.1;
 		}
 		OverclockToggledOnTrigger
 		{
@@ -108,7 +108,7 @@ Part : <base_part_terran.rules>/Part
 		OverclockReset
 		{
 			Type = Timer
-			Duration = 6
+			Duration = 3
 			StartExpired = true
 			StartTrigger = WasOperationalOverclockDisabled
 			StopTrigger = OverclockToggledOnTrigger
@@ -172,7 +172,6 @@ Part : <base_part_terran.rules>/Part
 			RemoveMode = InReverseOrder
 		}
 		
-		// Inheritors should implement this with `Location` pointing to their center.
 		OverheatEffects
 		{
 			Type = TriggeredEffects

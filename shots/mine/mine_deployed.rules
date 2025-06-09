@@ -32,7 +32,7 @@ Components
 	DeathByEnemyProximity
 	{
 		Type = DeathByEnemyProximity
-		Interval = .2
+		Interval = .1
 		Range = 20
 		DetectsShips = true
 		DetectsBullets = false
@@ -84,7 +84,7 @@ Components
 	DeathByLifetime
 	{
 		Type = DeathByLifetime
-		Lifetime = 90
+		Lifetime = 60
 
 		OnDeath
 		{
@@ -120,8 +120,8 @@ Components
 			MipLevels = max
 		}
 	}
-	
-	
+
+
 	ArmedOverlaySprite
 	{
 		Type = Sprite

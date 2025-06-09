@@ -83,8 +83,8 @@ ColorGreen
 	]
 }
 
-BASE_HEAT = 4
-BASE_HEAT_POOL = 90
+BASE_HEAT = 8
+BASE_HEAT_POOL = 180
 BASE_HEAT_SPREAD_BUDGET = 3.5
 HEAT_POOL_AMP_EXPONENT = 0.67
 SHIELD_OVERLOAD_BASE = 0.5
@@ -104,7 +104,6 @@ HitOperational
 			StatusValuePool
 			{
 				BaseValue = &~/BASE_HEAT_POOL
-				MinValue = 40
 				Modifiers
 				[
 					{
@@ -145,7 +144,7 @@ HitOperational
 			Type = AreaShieldStatusApplication
 			StatusType = cosmoteer.shield_overload
 			Radius = &~/HitOperational/HitEffects/0/MaxCost
-			StatusDuration = 2
+			StatusDuration = 1
 			StatusValue
 			{
 				BaseValue = &~/SHIELD_OVERLOAD_BASE
@@ -307,7 +306,7 @@ HitShield
 				Modifiers
 				[
 					{
-						Type = Buff
+						Type = ScaledBuff
 						BuffType = ThermalIntensity
 						ModificationMode = Multiply
 						Exponent = &~/HEAT_POOL_AMP_EXPONENT
@@ -335,8 +334,7 @@ HitStructural
 			DamageType = heat
 			Damage
 			{
-				BaseValue = 10
-				MinValue = 5
+				BaseValue = 20
 				Modifiers
 				[
 					{

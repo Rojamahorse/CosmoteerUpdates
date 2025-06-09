@@ -7,7 +7,7 @@ IdealRange
 	{ BaseValue=300; BuffType=RailgunShot; BuffMode=Multiply; MaxValue=600; }
 ]
 IdealRadius = [5, 50]
-Speed = { BaseValue=330; BuffType=RailgunShot; BuffMode=Multiply; MaxValue=1200; }
+Speed = { BaseValue=432; BuffType=RailgunShot; BuffMode=Multiply; MaxValue=1200; }
 ReceivableBuffs = [RailgunShot]
 
 Components

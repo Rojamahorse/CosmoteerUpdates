@@ -113,7 +113,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleID = "fire_alternating"
 			Default = 0
 		}
-		
+
 		IsFireSynchronised_NonOverclock
 		{
 			Type = MultiToggle
@@ -163,10 +163,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
-		
+
 		OverheatEffects : ^/0/OverheatEffects {}
 
 		Overclock_ShotHeatProducer
@@ -176,7 +176,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Trigger = Overclock_EmissionTriggered
 			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
 		}
-		
+
 		Router
 		{
 			Type = NetworkRouter
@@ -214,7 +214,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [1, 4]
 			Direction = Right
 		}
-		
+
 		TurretHolder_Graphics
 		{
 			Type = Graphics
@@ -491,7 +491,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					Type = Timer
 					OperationalToggle = IsOperational
-					Duration = 2.25
+					Duration = 1.125
 					AutoStart = true
 					StartTrigger = Turret
 				}
@@ -571,7 +571,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					Type = Timer
 					OperationalToggle = IsOperational
-					Duration = 1.125
+					Duration = 0.5625
 					AutoStart = true
 					StartTrigger = Turret
 				}
@@ -658,13 +658,13 @@ Part : <../base_part_terran_overclock.rules>/Part
         			ResourcesUsed = 500
         			MinResourcesUsed = 1
         		}
-        
+
         		EmitterLeft : EmitterBase
         		{
         			FireTrigger = ShootLeftTriggerProxy
         			Location = [1.35, -0.359375]
         		}
-        
+
         		EmitterRight : EmitterBase
         		{
         			FireTrigger = ShootRightTriggerProxy
@@ -680,26 +680,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Components
 			{
 				// Doesn't actually fire; only used for targeting and as a base for the left and right emitters.
-				EmitterBase
+				EmitterBase : ~/Part/Components/NonOverclockedComponents/Components/EmitterBase
         		{
         			Type = BulletEmitter
-        			ChainedTo = Turret
-        			FireTrigger // none, but field is required
-        			GetTargetFrom = Turret
-        			Location = [1.484375, 0]
-        			OperationalToggle = IsOperational
         			Bullet = &~/OVERCLOCK/BULLET
         			ResourceStorage = BatteryStorage
         			ResourcesUsed = floor(500 * (&~/OVERCLOCK/POWER_USE_FACTOR))
-        			MinResourcesUsed = 1
         		}
-        
+
         		EmitterLeft : EmitterBase
         		{
         			FireTrigger = ShootLeftTriggerProxy
         			Location = [1.35, -0.359375]
         		}
-        
+
         		EmitterRight : EmitterBase
         		{
         			FireTrigger = ShootRightTriggerProxy
@@ -726,7 +720,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ComponentID = EmitterRight
 			Location = &../NonOverclockedComponents/Components/EmitterRight/Location
 		}
-		
+
 		Overclock_EmissionTriggered
 		{
 			Type = MultiTrigger
@@ -1095,7 +1089,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Size = [2, 6]
 			Offset = [0, -.5]
 		}
-		
+
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue

@@ -1,11 +1,11 @@
 OVERCLOCK
 {
-	HEAT_PER_SHOT = 175	
+	HEAT_PER_SHOT = 175
 	BURST = 3
-	BURST_DELAY = 0.2
+	BURST_DELAY = 0.1
 	FIRE_INTERVAL_FACTOR = 200%
 	HALF_SPREAD = 1.5d
-	
+
 	EXTRA_INTERVAL = (&~/Part/Components/Turret/FireInterval) * ((&FIRE_INTERVAL_FACTOR) - 100%)
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
@@ -139,7 +139,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = bullet
 			MaxResources = 1
-			DelayBeforeReadyToUse = .5
+			DelayBeforeReadyToUse = .25
 			AnticipateMoreResourcesFrom = ["AmmoStorage"]
 			ToggleOnResources = 1
 			ToggleOffResources = 0
@@ -177,9 +177,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToStorage = LoadedAmmo
 			FromQuantity = 1
 			ToQuantity = 1
-			Interval = .30
+			Interval = .15
 			DelayTrigger = Turret
-			DelayAfterTrigger = 1
+			DelayAfterTrigger = .5
 		}
 		LoadEffects
 		{
@@ -334,7 +334,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 1.8
+			FireInterval = .9
 			FiringArc = 115d
 			RotateSpeed = 45d
 			FireThresholdAngle = 1d
@@ -383,7 +383,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				Overclock_FireTimer
 			]
 		}
-		
+
 		Overclock_ReloadProgressBar
 		{
 			Type = ProgressBar
@@ -410,7 +410,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = StaticValue
 			Value = (&~/OVERCLOCK/EXTRA_INTERVAL) / (&~/Part/Components/Turret/FireInterval)
 		}
-		
+
 		Overclock_FireTimerInverted
 		{
 			Type = LazyMultiValue
@@ -427,14 +427,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			StartTrigger = Overclock_StartFireTimer
 			ResetTrigger = Turret
 		}
-		
+
 		Overclock_StartFireTimer
 		{
 			Type = ToggleTrigger
 			Toggle = Overclock_CanProgressFireTimer
 			TriggerWhenOff = false
 		}
-		
+
 		Overclock_CanProgressFireTimer
 		{
 			Type = MultiToggle
@@ -462,7 +462,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ComponentID = BulletEmitter
 			ProxyToggle = IsOverclocked
 		}
-		
+
 		BulletEmitter
 		{
 			Type = BulletEmitter
@@ -588,7 +588,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -1070,7 +1070,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Size = [2, 3]
 			Offset = [0, -.5]
 		}
-		
+
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue

@@ -2955,7 +2955,7 @@ Hud
 	SpeedQuarter = "¼"
 	SpeedQuarterLong = "Very Slow (¼)"
 	SpeedHalf = "½"
-	SpeedHalfLong = "Slow (½)"
+	SpeedHalfLong = "Slow (½ - M.P. Standard)"
 	Speed1 = "1x"
 	Speed1Long = "Normal (1x)"
 	Speed2 = "2x"
@@ -3184,7 +3184,7 @@ BuildBox
 	InsufficientResourcesFmt = "INSUFFICIENT {0}"
 	InsufficientCommandPoints = "BUILD MORE COMMAND ROOMS"
 	InsufficientBeds = "NOT ENOUGH BEDS"
-	
+
 	Stats
 	{
 		DirectionChooserToggleTip = "<b>Flight Direction Chooser</b>"
@@ -3197,7 +3197,7 @@ BuildBox
 		PowerToggleTip = "<b>Power</b>"
 		ThermalToggleTip = "<b>Heat Stats</b>"
 	}
-	
+
 	HeatGeneration = "Heat Generation"
 	HeatGenerationFmt = "{0:0,.#'k';;0}/s"
 	HeatDissipation = "Heat Dissipation"
@@ -4096,13 +4096,13 @@ Parts
 	IonBeamPrism = "Ion Beam Prism"
 	IonBeamPrismIcon = "Ion Prism"
 	IonBeamPrismDesc = "Redirects the angles of incoming ion beams, aiming them at enemy ships or other Ion Beam Prisms."
-	
+
 	ResonanceBeamTurret = "Thermal Resonance Lance"
 	ResonanceBeamTurretIcon = "Thermal Resonance Lance"
 	ResonanceBeamTurretDesc = "A roof-mounted turret that fires an oscillating beam, inducing resonance within the target, thermally exciting chains of molecules around the hit location. "\
 								"Operation outside of its designed safety limits is likely to result in leakage of thermal energy in the turret's immediate vicinity.\n\n"\
 								"Cannot be within 2 tiles of other roof turrets or \"tall\" parts."
-	
+
 	Radiator = "Radiator"
 	RadiatorIcon = "Radiator"
 	RadiatorDesc = "Dissipates stored thermal energy through the release of super-heated particles constrained in a magnetic field.\n"\
@@ -4112,11 +4112,11 @@ Parts
 	HeatExchanger = "Heat Exchanger"
 	HeatExchangerIcon = "Heat Exchanger"
 	HeatExchangerDesc = "Absorbs heat from the hull,transferring it to the connected thermal system. Generates some extra waste heat."
-	
+
 	ThermalBattery = "Thermal Battery"
 	ThermalBatteryIcon = "Thermal Battery"
 	ThermalBatteryDesc = "Safely contains large amounts of thermal energy, providing additional heat storage to the connected thermal system."
-	
+
 	HeatPipeCrossing = "Heat Pipe Crossing"
 	HeatPipeCrossingIcon = "Heat Pipe Crossing"
 	HeatPipeCrossingDesc = "Transfers thermal energy bi-directionally in a straight line. Allows crew to walk through."
@@ -4489,13 +4489,13 @@ PartToggles
 	TractorMode_Auto = "<b>Tractor Beam: Auto</b>\n\nThe Tractor Beam will automatically push or pull to keep the target at the current distance.\n\nHotkey: <btn id='PartToggles.tractor_mode_auto'/>"
 	TractorMode_Pull = "<b>Tractor Beam: Pull</b>\n\nThe Tractor Beam will pull the target as close as possible.\n\nHotkey: <btn id='PartToggles.tractor_mode_pull'/>"
 	TractorMode_Push = "<b>Tractor Beam: Push</b>\n\nThe Tractor Beam will push the target as far away as possible.\n\nHotkey: <btn id='PartToggles.tractor_mode_push'/>"
-	
+
 	TractorOverload = "<b>Overload Tractor Beam</b>\n\nExpend all available power to overload the emitters, triggering an uncontrolled extreme impulse wave and a significant release of heat.\n\n" \
 		"Setting the Tractor Beam to 'Pull' will invert the polarity of the impulse wave."
-	
+
 	FireSafety_Off = "<b>Safety: <bad>Off</bad></b>\nDo not prevent firing regardless of heat levels."
 	FireSafety_On = "<b>Safety: <good>On</good></b>\nPrevent firing while at dangerously high heat levels."
-	
+
 	ThermalOverclock_Off = "<b>Overclock: <good>Off</good></b>\nOperate normally, adhering to the part's intended limits."
 	ThermalOverclock_On = "<b>Overclock: <bad>On</bad></b>\nBypass limiters and exceed operational ratings, increasing performance at the cost of heat generation and unreliability."
 }
@@ -4511,7 +4511,7 @@ PartTargeters
 	TractorBeamCancel = "<b>Cancel Tractor Beam</b>\n\nHotkey: <btn id='PartTargetCancelers.tractor_beam'/>"
 
 	PrismAim = "<b>Aim Ion Prism</b>\n\nAims the selected Ion Beam Prism(s) at a desired location, or links it to fire through another Ion Beam Prism.\n\nHotkey: <btn id='PartTargeters.prism_aim'/>"
-	
+
 	ThermalResonanceAim = "<b>Aim Thermal Resonance Lance</b>\n\nAims the selected Thermal Resonance Lance(s) at a desired location.\n\nHotkey: <btn id='PartTargeters.thermal_aim'/>"
 
 	HeadlightAim  = "<b>Aim Headlight</b>\n\nAims the selected Headlight(s) at a desired location.\n\nHotkey: <btn id='PartTargeters.headlight_aim'/>"
@@ -4590,9 +4590,9 @@ Stats
 	ShieldDamageFmt = "<white>Dmg vs Shields:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
 	ShieldDamageOverTimeFmt = "<white>Dmg vs Shields:</white> <good>{0:0}</good> <gray>total (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	ShotDamageFmt = "<white>Dmg vs Shots:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
-	
+
 	StrengthAtMaxRangeFmt = "<white>Strength at Max Range:</white> <good>{0:0.#}%</good>"
-	
+
 	IonLightningIntervalFmt = "<white>Lightning Interval:</white> <good>{0:0.#}</good> <gray>seconds (reduced by beam strength)</gray>"
 	LightningChanceFmt = "<white>Lightning Chance:</white> <good>{0:0.#}%</good>"
 	LightningRangeFmt = "<white>Lightning Range:</white> <good>{0:0.#}</good> <gray>meters</gray>"
@@ -4601,7 +4601,7 @@ Stats
 	LightningChainChanceFmt = "<white>Lightning Chain Chance:</white> <good>{0:0.#}%</good> <gray>per strike</gray>"
 	LightningChainStrikeCountRangeFmt = "<white>Lightning Chain Strikes:</white> <good>{0}-{1}</good>"
 	LightningDamageFmt = "<white>Lightning Damage:</white> <good>{0:0}</good> <gray>per strike</gray>"
-	
+
 	HeatPerTileContinuousFmt = "<white>Heat Applied:</white> <good>{0:n1}</good><gray>/tile/sec</gray>"
 	ResonanceHeatPoolFmt = "<white>Heat Applied (Pool):</white> <good>{0:n1}</good><gray>/sec * amplification^</gray><good>{1:0.##}</good>"
 	HeatAmplificationExponentFmt = "<white>Heat Pool Amplification Exponent:</white> <good>{0.##}</good>"
@@ -4609,7 +4609,7 @@ Stats
 	HeatSpreadDistanceFmt = "<white>Heat Spread Distance:</white> <good>{0:0.##}</good><gray> meters</gray>"
 	HitShieldHeatFactorFmt = "<white>Hit Shield Heating:</white> <good>{0:0.##}%</good>"
 	ShieldDamagePowerCostFmt = "<white>Shield Damage Power Cost:</white> <good>{0:+0.#;-0.#}%</good><gray> * amplification</gray>, <good>{1:+0.#;-0.#}%</good><gray> * dilation</gray>"
-	
+
 	PowerDrainFmt = "<white>Power Drain On Hit:</white> <good>{0:0.##}</good><gray>/shot (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	PowerDrainOverTimeFmt = "<white>Power Drain:</white> <good>{0:0}</good> <gray>total (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	PowerDrainAreaFmt = "<white>Power Drain Area:</white> <good>{0:0.#}</good><gray> meter radius</gray>"
@@ -4779,9 +4779,9 @@ Stats
 	HeatCapacityFmt = "<white>Heat Capacity:</white> <good>{0:#,0.##}</good>"
 	HeatFireThresholdFmt = "<white>Heat Fire Threshold:</white> <good>{0:#,0.#}</good>"
 	HeatFireChanceFmt = "<white>Heat Threshold Fire Chance:</white> <good>{0:0.##%}</good>"
-	
+
 	ResonanceTurretHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.#}</good><gray>/sec + pumps</gray>"
-	
+
 	HeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good><gray>/sec</gray>"
 	HeatGenerationPerPartFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good><gray>/sec/part</gray>"
 	ThrusterHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good><gray>/sec (100% thrust)</gray>"
@@ -4793,7 +4793,7 @@ Stats
 	StorageHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good><gray>/sec (100% full)</gray>"
 	BatteryDeliveredHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good><gray> per battery delivered</gray>"
 	HeatDissipationFmt = "<white>Heat Dissipation:</white> <good>{0:#,0.##}</good><gray>/sec</gray>"
-									
+
 	BaseAmplificationFmt = "<white>Amplification (Base):</white> <good>{0:0.#}%</good>"
 	BaseDilationFmt = "<white>Dilation (Base):</white> <good>{0:0.#}%</good>"
 	ThermalAmplificationFmt = "<white>Thermal Amplification:</white> <good>{0:+0.#;-0.#}%</good>"
@@ -5024,7 +5024,7 @@ Resource
 	MinePart = "Mine Part"
 	MinePartPlural = "Mine Parts"
 	MinePartDesc = "Parts used to assemble proximity mines."
-	
+
 	MissilePartThermal = "Thermal Canister Missile Part"
 	MissilePartThermalPlural = "Thermal Canister Missile Parts"
 	MissilePartThermalDesc = "Parts used to assemble Thermal Canister Missiles."
@@ -5036,7 +5036,7 @@ Resource
 	FireExtinguisher = "Fire Extinguisher"
 
 	IonEnergy = "Ion Beam Energy"
-	
+
 	Heat = "Heat"
 
 	NotMineable = "<b>Not mineable by crew. Mining laser required.</b>"

@@ -73,7 +73,7 @@ Simulation
 
 	AudioSpeedIncreaseDuration = .25
 	AudioSpeedDecreaseDuration = .25
-	PhysicsUpdatesPerSecond = 15
+	PhysicsUpdatesPerSecond = 30
 	CCDThresholdVelocity = (&PhysicsUpdatesPerSecond) * 0.75
 	SightCircleFadeDuration = .5
 	SightCircleSizeTweenSpeed = 2

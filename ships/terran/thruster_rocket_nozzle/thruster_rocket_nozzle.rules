@@ -1,7 +1,7 @@
 OVERCLOCK
 {
 	RAMP_EXPONENT = 0.6
-	BASE_THRUST_HEAT_PER_SECOND = 175
+	BASE_THRUST_HEAT_PER_SECOND = 350
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -34,11 +34,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 		[default, [0, 5, 3, 1]]
 		[default, [-1, 6, 5, 200]]
 	]
-	ThrusterForce = { BaseValue=5000; BuffType=RocketExtraForce; BuffMode=Add; }
-	ThrustIncreaseTime = { BaseValue=8; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
-	ThrustDecreaseTime = { BaseValue=4; BuffType=RocketThrust; BuffMode=Divide; }
-	ThrustRecoveryTime = { BaseValue=4; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
-	FuelUsage = 150
+	ThrusterForce = { BaseValue=10000; BuffType=RocketExtraForce; BuffMode=Add; }
+	ThrustIncreaseTime = { BaseValue=4; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
+	ThrustDecreaseTime = { BaseValue=2; BuffType=RocketThrust; BuffMode=Divide; }
+	ThrustRecoveryTime = { BaseValue=2; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
+	FuelUsage = 300
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, EngineHeatCollection, Rocket, RocketThrust, RocketRampUp, RocketRampUpFinal, RocketOperation, RocketExtraForce, RocketBatteryConnection, ThermalActivity]
 	BlockedTravelCells
 	[
@@ -388,7 +388,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -412,7 +412,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			OperationalToggle = Overclock_EngineHeatCollectionBuffToggle
 			InvertOperationalToggle = true
 		}
-		
+
 		Overclock_CombinedHeatInput
 		{
 			Type = MultiResourceStorage
@@ -424,7 +424,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ComponentIDs = [ EngineHeatCollectionStorage ]
 			}
 		}
-		
+
 		// Overriding to use the combined heat input
 		HeatDistributionStorage : ^/0/HeatDistributionStorage
 		{
@@ -445,14 +445,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
 			Interval = 0.5
 		}
-		
+
 		Overclock_ActivationBuff
 		{
 			Type = SelfBuffProvider
 			BuffType = ThermalActivity
 			BuffMultiplier = Overclock_SmoothedThrusterActivation
 		}
-		
+
 		Overclock_SmoothedThrusterActivation
 		{
 			Type = SmoothedValue
@@ -952,7 +952,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Size = [3, 6]
 			Offset = [0, .5]
 		}
-		
+
 		MaxActivationValue
 		{
 			Type = BuffableValue
@@ -990,7 +990,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	}
 
 	StatsNotesKey = "Stats/RocketNotes"
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

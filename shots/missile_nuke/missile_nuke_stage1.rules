@@ -1,7 +1,7 @@
 ID = "cosmoteer.missile_nuke_stage1"
 Range = 250
 IdealRange = 240
-Speed = 100
+Speed = 120
 Stage2 = &<missile_nuke_stage2.rules>
 
 Components
@@ -11,14 +11,14 @@ Components
 		Type = CirclePhysics
 		Radius = .6
 		Density = 0.1
-		LinearDamping = 1.1
+		LinearDamping = 25
 		FrameOfReferenceDuration = 1
 	}
 
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 180d
+		TurnVelocity = 360d
 		Delay = .1
 	}
 
@@ -31,7 +31,7 @@ Components
 	DeployDeath
 	{
 		Type = DeathByLifetime
-		Lifetime = 2.5
+		Lifetime = 1.25
 		FactorEffectsWith = Targetable
 
 		OnDeath

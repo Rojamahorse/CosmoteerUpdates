@@ -129,7 +129,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -367,7 +367,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			AutoFireToggle = AutoFireToggle
 			FireInterval
 			{
-				BaseValue = 1.5
+				BaseValue = 0.75
 				Modifiers
 				[
 					{
@@ -736,7 +736,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -766,7 +766,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Size = [1, 4]
 			Offset = [0, -.5]
 		}
-		
+
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue

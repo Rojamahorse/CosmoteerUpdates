@@ -197,7 +197,7 @@ Part : <../base_part_terran.rules>/Part
 			ToStorage = AmmoStorageProxyLeft
 			FromQuantity = 1
 			ToQuantity = 1
-			Interval = 1/60
+			Interval = 1/30
 		}
 
 		IsRequestingLeftToRightAmmo
@@ -265,7 +265,7 @@ Part : <../base_part_terran.rules>/Part
 			ToStorage = AmmoStorageProxyRight
 			FromQuantity = 1
 			ToQuantity = 1
-			Interval = 1/60
+			Interval = 1/30
 		}
 
 		CombinedLeftBeltStorages //used for amount of ammo check
@@ -697,7 +697,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = &~/Part/Components/DestroyedEffects/Location
 			FactorHitEffectsWith = AmmoStorage
 			MediaEffects = &~/Part/Components/DestroyedEffects/MediaEffects
-			HitEffects = &~/Part/Components/DestroyedHitEffects/HitEffects	
+			HitEffects = &~/Part/Components/DestroyedHitEffects/HitEffects
 		}
 
 		DestroyedEffects

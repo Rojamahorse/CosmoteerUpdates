@@ -4,10 +4,10 @@ OVERCLOCK
 	FIRE_RATE_FACTOR = 50%
 	HALF_SPREAD = 1.5d
 	RECOIL_FACTOR = 250%
-	CREW_STUN_DURATION = 3
+	CREW_STUN_DURATION = 1.5
 	CREW_STUN_RADIUS = 9
 	HEAT_PER_SHOT = 3500
-	HEAT_PER_SECOND = 60
+	HEAT_PER_SECOND = 120
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -130,7 +130,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
-		
+
 		PowerToggle
 		{
 			Type = UIToggle
@@ -219,7 +219,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
 			DropResourcesWhenDestroyed = true
 		}
-		
+
 		LoadedAmmo2 : LoadedAmmo1
 		{
 			UITileRect = [2.5 + 7/64, 2 + 7/64, 1 - 14/64, 1 - 14/64]
@@ -281,7 +281,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToStorage = CombinedLoadedAmmo
 			FromQuantity = 1
 			ToQuantity = 1
-			Interval = .15
+			Interval = .075
 		}
 		LoadEffects
 		{
@@ -297,10 +297,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
-		
+
 		OverheatEffects : ^/0/OverheatEffects
 		{
 			Location = [2, 2.5]
@@ -669,7 +669,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					Type = Timer
 					OperationalToggle = IsOperational
-					Duration = 2.5*2
+					Duration = 1.25*2
 					AutoStart = true
 					StartTrigger = Turret
 				}
@@ -749,7 +749,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					Type = Timer
 					OperationalToggle = IsOperational
-					Duration = 2.5
+					Duration = 1.25
 					AutoStart = true
 					StartTrigger = Turret
 				}
@@ -819,7 +819,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Radius = 1.5
 			IsHigh = true
 		}
-		
+
 		IsOperationalNonOverclocked
 		{
 			Type = MultiToggle
@@ -892,7 +892,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 			}
 		}
-		
+
 		BaseEmitterProxy
 		{
 			Type = EmitterProxy
@@ -962,7 +962,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				{
 					Type = AreaCrewStun
-					Duration = { BaseValue=1; BuffType=Overclock; BuffMode=Lerp; MinValue=&BaseValue; MaxValue=&~/OVERCLOCK/CREW_STUN_DURATION; }
+					Duration = { BaseValue=0.5; BuffType=Overclock; BuffMode=Lerp; MinValue=&BaseValue; MaxValue=&~/OVERCLOCK/CREW_STUN_DURATION; }
 					Falloff = 1
 					Radius = { BaseValue=6; BuffType=Overclock; BuffMode=Lerp; MinValue=&BaseValue; MaxValue=&~/OVERCLOCK/CREW_STUN_RADIUS; }
 					Filter { Friendlies=true; IgnoreInvulnerability=true; }
@@ -1661,7 +1661,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [4, 5]
 		}
-		
+
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue

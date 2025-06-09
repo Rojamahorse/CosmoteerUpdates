@@ -87,14 +87,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ResourceType = battery
 			MaxResources = 4000
 		}
-		
+
 		IsOperationalNonOverclocked
 		{
 			Type = MultiToggle
 			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
 			Mode = All
 		}
-		
+
 		CombinedBatteryStorage
 		{
 			Type = MultiResourceStorage
@@ -108,7 +108,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			AddMode = PrioritizeLeastResources
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-		
+
 		CombinedBatteryStorageProxy
 		{
 			Type = ResourceStorageProxy
@@ -123,14 +123,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ComponentID = CombinedBatteryStorage
 			QuantityScale = 1 / (&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER)
 		}
-		
+
 		BatteryDistributionStorage
 		{
 			Type = MultiResourceStorage
 			ResourceType = battery
 			ResourceStorages = [CombinedBatteryStorageProxy, Overclock_CombinedBatteryStorageProxy]
 		}
-		
+
 		BatteryConsumer
 		{
 			Type = ResourceConsumer
@@ -148,7 +148,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			FromStorage = BatteryStorage
 			FromQuantity = 100
 			MinFromQuantityForConversion = 1
-			Interval = 2
+			Interval = 1
 		}
 
 		BuffProvider
@@ -227,7 +227,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			]
 			SwitchLocationInterval = [5, 10]
 		}
-		
+
 		OverclockStateValue
 		{
 			Type = ToggleValueSelector
@@ -235,15 +235,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
-		
+
 		OverheatEffects : ^/0/OverheatEffects
 		{
 			Location = [1.5, 1.5]
 		}
-		
+
 		EngineHeatCollectionStorage
 		{
 			Type = ResourceStorageProxy
@@ -251,7 +251,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ComponentID = &~/Part/^/0/HEAT_TARGET_STORAGE
 			QuantityScale = 1 / (&~/OVERCLOCK/COLLECTED_HEAT_MULTIPLIER)
 		}
-		
+
 		Overclock_HeatCollectionBuffProvider : PowerDistributionBuffProvider
 		{
 			BuffType = EngineHeatCollection
@@ -284,7 +284,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 			]
 		}
-		
+
 		Port_Thermal_TopLeft : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0,0]
