@@ -276,28 +276,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ComponentID = ResourceConverter
 		}
 
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_Left0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Left1, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down1, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down2, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right1, 0]
-					]
-				}
-			]
-		}
-
 		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0, 1]
@@ -735,7 +713,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						]
 						Size = [3, 2]
 						Offset = [0, 0.5]
-						AnimationInterval = 0.075
+						AnimationInterval = &../0/AnimationInterval
 						AnimationStartTime = WhenSpawned
 					}
 					{
@@ -752,7 +730,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						]
 						Size = [3, 2]
 						Offset = [0, 0.5]
-						AnimationInterval = 0.075
+						AnimationInterval = &../0/AnimationInterval
 						AnimationStartTime = WhenSpawned
 					}
 				]
@@ -772,7 +750,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						]
 						Offset = [0, 0.5]
 						Size = [3, 2]
-						AnimationInterval = 0.15
+						AnimationInterval = 0.1125*2
 						AnimationStartTime = WhenSpawned
 					}
 					{
@@ -789,7 +767,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						]
 						Offset = [0, 0.5]
 						Size = [3, 2]
-						AnimationInterval = 0.075
+						AnimationInterval = &../0/AnimationInterval
 						AnimationStartTime = WhenSpawned
 					}
 					{
@@ -806,7 +784,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						]
 						Offset = [0, 0.5]
 						Size = [3, 2]
-						AnimationInterval = 0.075
+						AnimationInterval = &../0/AnimationInterval
 						AnimationStartTime = WhenSpawned
 					}
 				]
@@ -860,10 +838,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 		}
 
 		BeltSpeedFactor
-        {
-        	Type = BuffableValue
-        	Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
-        }
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
+		}
 
 		Graphics
 		{

@@ -26,11 +26,14 @@ Radius = .25
 PathfindRadius = .25
 CollisionRadius = .25
 Density = 0.1
-Acceleration = 9
-RotSpeed = 5
-LinearDamping = 0.75
-AngularDamping = 0.75
-DesiredVelocityPerDistance = 2
+AccelerationOverDistance = 25
+AccelerationOverDistanceRange = 1
+DecelerationOverDistance = [25, 150]
+DecelerationOverDistanceRange = [1, 6]
+RotSpeed = 10
+LinearDamping = 0.35
+AngularDamping = 0.35
+DesiredVelocityPerDistance = 3.5
 MinDesiredVelocity = 0.1
 MinDesiredVelocityEnteringAirlock = 2
 MinDesiredVelocityGrabbingNugget = 2
@@ -53,7 +56,7 @@ SalvageHitEffects
 [
 	{ //Damage to salvaging own ship and other
 		Type = Damage
-		Damage = { BaseValue = 300 * (&~/SalvageHitEffectsInterval); EffectScaleExponent = 1 }
+		Damage = 120
 		DamageType = salvage
 		Filter
 		{
@@ -64,7 +67,7 @@ SalvageHitEffects
 	}
 	{ //Damage to junk
 		Type = Damage
-		Damage = { BaseValue = 300 * (&~/SalvageHitEffectsInterval); EffectScaleExponent = 1 }
+		Damage = 120
 		DamageType = salvage
 		Filter
 		{
@@ -78,7 +81,7 @@ SalvageHitEffects
 	}
 	{ //Damage to armored junk
 		Type = Damage
-		Damage = { BaseValue = 600 * (&~/SalvageHitEffectsInterval); EffectScaleExponent = 1 }
+		Damage = 480
 		DamageType = salvage
 		Filter
 		{
@@ -93,7 +96,7 @@ SalvageHitEffects
 	}
 	{ //Taking apart own ship
 		Type = Damage
-		Damage = { BaseValue = 300 * (&~/SalvageHitEffectsInterval); EffectScaleExponent = 1 }
+		Damage = 120
 		DamageType = salvage
 		Filter
 		{
@@ -105,7 +108,7 @@ SalvageHitEffects
 	}
 	{ //Taking apart own ship armored
 		Type = Damage
-		Damage = { BaseValue = 600 * (&~/SalvageHitEffectsInterval); EffectScaleExponent = 1 }
+		Damage = 480
 		DamageType = salvage
 		Filter
 		{
@@ -118,7 +121,7 @@ SalvageHitEffects
 	}
 	{ //Asteroids
 		Type = Damage
-		Damage = { BaseValue = 600 * (&~/SalvageHitEffectsInterval); EffectScaleExponent = 1 }
+		Damage = 240
 		DamageType = salvage
 		Filter
 		{

@@ -93,7 +93,7 @@ Def
 			Invert = false
 			ValueType = Float
 			FromValue = 1
-			ToValue = 20
+			ToValue = 5
 			Name = ""
 			Enabled = true
 			UpdateAfterInit = false
@@ -212,7 +212,7 @@ Def
 		Offset
 		{
 			X = 0
-			Y = 0
+			Y = 0.4
 		}
 		Name = ""
 	}
@@ -282,8 +282,8 @@ EmitterDef
 			Type = SetRandom
 			DataOut = scale
 			ValueType = Float
-			FromValue = 0.2
-			ToValue = 0.4
+			FromValue = 3
+			ToValue = 4
 			Name = "random base scale"
 			Enabled = true
 			UpdateAfterInit = false
@@ -298,9 +298,9 @@ EmitterDef
 					X = 0
 					Y = 0
 				}
-				Radius = 2
+				Radius = 0.25
 			}
-			Perimeter = false
+			Perimeter = true
 			Name = "Set Location"
 			Enabled = true
 			UpdateAfterInit = false
@@ -343,6 +343,7 @@ IsFancy = false
 IsFancyLight = false
 IsSimpleLight = false
 IsSimple = false
+ToggleWithRoofOpacity = false
 Sharing = None
 UnsharedRenderInWorldSpace = false
 DontEmitWhenOffScreen = true

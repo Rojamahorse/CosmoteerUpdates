@@ -4,7 +4,7 @@ OVERCLOCK
 	DAMAGE_DRAIN_FACTOR = 1 / 3
 	EMP_RESIST = 50%
 	HEAT_PER_SECOND = 80
-	HEAT_PER_DAMAGE = 0.5
+	HEAT_PER_DAMAGE = 0.6
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -493,6 +493,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						_xScale = 1
 						_gradientXWidth = 0.590625
 						_hexDamageIntensity = 0.8
+						_thermalIntensityExponent = 0.25
 						TargetBlendMode = Add
 						Size = [0, 3]
 					}
@@ -562,6 +563,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 						_xScale = 1
 						_hexDamageIntensity = 0.8
+						_thermalIntensityExponent = 0.25
 						TargetBlendMode = Add
 						Size = [0, 3]
 					}
@@ -610,25 +612,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Location = [1.5, 3]
 		}
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_BL, 0]
-						[&../../HEAT_INPUT, Port_BR, 0]
-						[&../../HEAT_INPUT, Port_BD0, 0]
-						[&../../HEAT_INPUT, Port_BD1, 0]
-						[&../../HEAT_INPUT, Port_BD2, 0]
-					]
-				}
-			]
-		}
+
 		Port_BL : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0, 5]

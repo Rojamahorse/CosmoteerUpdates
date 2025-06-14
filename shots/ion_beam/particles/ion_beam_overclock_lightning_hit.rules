@@ -41,8 +41,8 @@ Def
 			Type = SetRandom
 			DataOut = lifetime
 			ValueType = Float
-			FromValue = 0.75
-			ToValue = 1
+			FromValue = 0.3
+			ToValue = 0.3
 			Name = "Random Lifetime"
 			Enabled = true
 			UpdateAfterInit = false
@@ -156,32 +156,32 @@ Def
 			Colors
 			[
 				{
-					Rf = 0.19607843
+					Rf = 0.5
 					Gf = 3.9215686
 					Bf = 1
 					Af = 1
 				}
 				{
-					Rf = 0.39215687
+					Rf = 0.5882353
 					Gf = 1.9607843
 					Bf = 1
 					Af = 1
 				}
 				{
-					Rf = 0.5882353
+					Rf = 0.6666667
 					Gf = 1
 					Bf = 1
 					Af = 1
 				}
 				{
 					Rf = 1
-					Gf = 1
-					Bf = 1
+					Gf = 0
+					Bf = 0
 					Af = 0
 				}
 			]
 			Name = ""
-			Enabled = false
+			Enabled = true
 			UpdateAfterInit = false
 		}
 		{
@@ -191,7 +191,7 @@ Def
 			Invert = false
 			ValueType = Int
 			FromValue = 0
-			ToValue = 24
+			ToValue = 8
 			Name = "add frames over life"
 			Enabled = true
 			UpdateAfterInit = false
@@ -249,21 +249,27 @@ Def
 			Colors
 			[
 				{
-					Rf = 0.5019608
+					Rf = 0.19607843
+					Gf = 0
+					Bf = 0
+					Af = 1
+				}
+				{
+					Rf = 0.39215687
+					Gf = 3.9215686
+					Bf = 1
+					Af = 1
+				}
+				{
+					Rf = 0.5882353
 					Gf = 1.9607843
-					Bf = 1
+					Bf = 0.5882353
 					Af = 1
 				}
 				{
-					Rf = 0.2509804
-					Gf = 0.39215687
-					Bf = 1
-					Af = 1
-				}
-				{
-					Rf = 0
-					Gf = 0.39215687
-					Bf = 1
+					Rf = 0.6666667
+					Gf = 1
+					Bf = 0.6666667
 					Af = 0
 				}
 			]
@@ -295,27 +301,27 @@ Def
 			_centerColor
 			{
 				Rf = 1
-				Gf = 0
-				Bf = 0
+				Gf = 1
+				Bf = 1
 				Af = 1
 			}
 			_outerColor
 			{
-				Rf = 0.7490196
+				Rf = 1
 				Gf = 0
 				Bf = 0
 				Af = 1
 			}
 			_bloomColor
 			{
-				Rf = 0.89411765
+				Rf = 1
 				Gf = 0
 				Bf = 0
 				Af = 1
 			}
 			Texture
 			{
-				File = ../../../nebulas/ion_storm/particles/ion_storm_lightning.png
+				File = oc_ion_lightning.png
 				MipLevels = max
 				FixTransparentColors = true
 				SampleMode = Linear
@@ -334,18 +340,18 @@ Def
 		}
 		LineThickness
 		{
-			Min = 0.2
-			Max = 0.3
+			Min = 0.4
+			Max = 0.9
 		}
-		EnableLightningShaderAnimation = false
-		BlendLightningShaderAnimation = true
+		EnableLightningShaderAnimation = true
+		BlendLightningShaderAnimation = false
 		UseSameSeedForEntireBolt = true
 		IgnoreBoltEndingOverride = true
 		IgnoreBoltStartOverride = true
-		LightningShaderAnimationSegments = 0.25
+		LightningShaderAnimationSegments = 1.15
 		TimeShiftPerSegment = 0.43
 		AnimationIntensity = 0.5
-		SegmentOverlap = 0.25
+		SegmentOverlap = 0.7
 		SourceLocationIn = source_location
 		DestLocationIn = dest_location
 		ScaleIn = scale
@@ -353,16 +359,16 @@ Def
 		UVRectIn = uv_rect
 		TimeIn = perlin_time
 		SeedIn = seed
-		DistPerSegment = 0.8
+		DistPerSegment = 1.1
 		XOffsetPerlin
 		{
 			Seed = 0
-			GridSize = 2
+			GridSize = 4
 			Repeat = 0
 			Octaves = 1
 			Persistence = 0.5
 			OutputExponent = 1
-			OutputScale = 0.5
+			OutputScale = 0.8
 			OutputShift = 0
 			ClampOutput
 			{
@@ -373,12 +379,12 @@ Def
 		YOffsetPerlin
 		{
 			Seed = 0
-			GridSize = 2
+			GridSize = 3
 			Repeat = 0
 			Octaves = 1
 			Persistence = 0.5
 			OutputExponent = 1
-			OutputScale = 0.5
+			OutputScale = 0.1
 			OutputShift = 0
 			ClampOutput
 			{
@@ -427,6 +433,7 @@ IsFancy = false
 IsFancyLight = false
 IsSimpleLight = false
 IsSimple = false
+ToggleWithRoofOpacity = false
 Sharing = Global
 UnsharedRenderInWorldSpace = false
 DontEmitWhenOffScreen = true

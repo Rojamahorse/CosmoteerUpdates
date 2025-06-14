@@ -54,9 +54,24 @@ Components : &BASE/Components
 					Impulse : ^/0/Impulse { BaseValue=&~/IMPULSE }
 				}
 			]
-			MediaEffects : ^/0/MediaEffects
+			MediaEffects
 			[
 				&<particles/laser_bolt_large_overclock_hit.rules>
+				&<particles/laser_bolt_large_overclock_flash.rules>
+				&<particles/laser_bolt_large_overclock_sparks.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../laser_bolt_large_hit.wav"
+					Volume = .4
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .06
+					Duration = .3
+				}
 			]
 		}
 		HitStructural : ^/0/HitStructural

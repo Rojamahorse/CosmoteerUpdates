@@ -4,6 +4,8 @@ RANGE = (&BASE/Range) + 50
 TOTAL_DRAIN = 300% * (&BASE/Components/Hit/HitOperational/HitEffects/0/Amount/BaseValue)
 TOTAL_SHIELD_DRAIN = 300% * (&Base/Components/Hit/HitShield/HitEffects/0/Amount/BaseValue)
 DRAIN_DURATION = 5
+PENETRATION = 10
+ARMOR_PENETRATION_FACTOR = 2/7
 
 DRAIN_PER_SECOND = (&TOTAL_DRAIN) / (&DRAIN_DURATION)
 SHIELD_DRAIN_PER_SECOND = (&TOTAL_SHIELD_DRAIN) / (&DRAIN_DURATION)
@@ -18,6 +20,12 @@ Bullet : BASE
 	{
 		Hit : ^/0/Hit
 		{
+			Penetration = &~/PENETRATION
+			PenetratesOperational = true
+			PartCategoryPenetrationFactors
+			{
+				armor = &~/ARMOR_PENETRATION_FACTOR
+			}
 			HitShield : ^/0/HitShield
 			{
 				HitEffects
@@ -38,9 +46,10 @@ Bullet : BASE
 						StatusDuration = &~/DRAIN_DURATION
 						StatusValue = { BaseValue = (&~/DRAIN_PER_SECOND) / 1000; EffectScaleExponent = 1 }
 					}
-					&~/BASE/Components/Hit/HitOperational/HitEffects/1
+//					&~/BASE/Components/Hit/HitOperational/HitEffects/1
 				]
 			}
+			PenetratingOperational = &HitOperational
 		}
 		// Necessary to prevent crash from FactorEffectsWith
 		MediaEffects : ^/0/MediaEffects {}

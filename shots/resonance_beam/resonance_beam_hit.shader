@@ -6,6 +6,7 @@ struct VERT_INPUT_THERMAL_HIT
 	float4 color : COLOR0;
 	float2 uv : TEXCOORD0;
 	float roofOpacity : TEXCOORD1;
+	float randomTimeOffset : TEXCOORD2;
 };
 struct VERT_OUTPUT_THERMAL_HIT
 {
@@ -40,8 +41,8 @@ VERT_OUTPUT_THERMAL_HIT vert(in VERT_INPUT_THERMAL_HIT input)
 	output.color = input.color;
 	output.uv = input.uv;
 	output.thermalIntensity = pow(saturate(map(0, _maxAmplificationPumps * _amplificationPerPump, 0, 1, input.color.r - _beamBaseAmplification)), _ampVisualExponent);
-	output.noise1ScrollSpeed = float2(0.1, -0.5) * _gameTime;
-	output.noise2ScrollSpeed = float2(-0.083, -0.73) * _gameTime;
+	output.noise1ScrollSpeed = float2(0.1, -0.5) * (_gameTime + input.randomTimeOffset);
+	output.noise2ScrollSpeed = float2(-0.083, -0.73) * (_gameTime + (input.randomTimeOffset * 2));
 	output.roofOpacity = input.roofOpacity;
 	return output;
 }

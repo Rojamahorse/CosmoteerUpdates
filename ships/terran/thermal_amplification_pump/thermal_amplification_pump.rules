@@ -247,6 +247,8 @@ Part : <../base_part_terran.rules>/Part
 			Direction = Down
 			Types = [ thermal, thermal_out ]
 			IncompatibleTypes = [ thermal_out ]
+			RouteSource = NetworkedAmplification
+			RouteEndpoint = NetworkedAmplification
 		}
 		
 		Router
@@ -258,9 +260,8 @@ Part : <../base_part_terran.rules>/Part
 					Type = Bidirectional
 					Routes
 					[
-						[Port_Down, NetworkedAmplification, 0]
-						[Port_Down, NetworkedActivity, 0]
-						[Port_Down, NetworkPumpUtilization, 0]
+						[NetworkedAmplification, NetworkedActivity, 0]
+						[NetworkedAmplification, NetworkPumpUtilization, 0]
 					]
 				}
 			]

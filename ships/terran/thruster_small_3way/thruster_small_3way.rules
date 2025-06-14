@@ -228,25 +228,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Value = &~/Part/Components/MainThrusterBottom/MaxActivation
 		}
 
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Bidirectional
-					Routes
-					[
-						[Port_Thermal_Up, &~/Part/^/0/HEAT_NETWORK_INPUT, 0]
-					]
-				}
-			]
-		}
-
 		Port_Thermal_Up : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [1, 0]
 			Direction = Up
+			// We can set both of these as an optimisation since we only have 1 port
+			RouteSource = &~/Part/^/0/HEAT_NETWORK_INPUT
+			RouteEndpoint = &~/Part/^/0/HEAT_NETWORK_INPUT
 		}
 
 

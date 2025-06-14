@@ -1,10 +1,10 @@
 OVERCLOCK
 {
-	FIRING_HEAT_PER_SECOND = 1400
+	FIRING_HEAT_PER_SECOND = 2200
 	ARC_MAX = 5d
 	FORCE_FACTOR = 150%
 	
-	OVERLOAD_FORCE = 50000
+	OVERLOAD_FORCE = 100000
 	OVERLOAD_RADIUS = 600
 	OVERLOAD_BULLET_FORCE = 10000
 	OVERLOAD_BULLET_RADIUS = 150
@@ -168,7 +168,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Overclock_IsFiring
 		{
 			Type = MultiToggle
-			Toggles = [ Emitter, IsOverclocked ]
+			Toggles = [ EmitterToggleProxy, IsOverclocked ]
 			Mode = All
 		}
 
@@ -188,33 +188,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
 			Trigger = Overclock_OverloadChargeTimer
 			Amount = (&~/OVERCLOCK/OVERLOAD_HEAT) * (&~/HEAT_TO_RESOURCE)
-		}
-
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_Left0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Left1, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Left2, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Up0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Up1, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Up2, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right1, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right2, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down1, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down2, 0]
-					]
-				}
-			]
 		}
 
 		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
@@ -429,7 +402,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [0, 0]
 			Rotation = 90d
 			OperationalToggle = IsOperational
-			AnimationSpeedFactor = Emitter
+			AnimationSpeedFactor = EmitterProxy
 			DoodadToggle = IsOperational
 			ShowToggledDoodadsWhenNotOperational = true
 			OperationalDoodad
@@ -602,7 +575,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ShowTargetButtons = false
 			HoldTargetAfterCancel = 0.5
 			AIFirepowerRating = 0
-			Emitter = Emitter
+			Emitter = EmitterProxy
 			DefaultDirectControlBinding = 2
 			FirePermissionToggle = FirePermission
 
@@ -686,61 +659,107 @@ Part : <../base_part_terran_overclock.rules>/Part
 			IsHigh = true
 		}
 
-		EmitterFanArcController
+		EmitterProxy
 		{
-		    Type = FanArcController
-		    ChainedTo = Turret
-		    GetTargetFrom = Turret
-		    MaxArc
-		    {
-		    	BaseValue = 10d
-		    	Modifiers
-		    	[
-		    		{
-		    			Type = BuffRemap
-		    			BuffType = Overclock
-		    			RemapFrom = [0, 1]
-		    			RemapTo = [&../../../BaseValue, &~/OVERCLOCK/ARC_MAX]
-		    			ModificationMode = Replace
-		    		}
-		    	]
-		    }
-		    DefaultArc = &MaxArc
-		    ArcSizeFactor = 70%
-		    FanComponents
-		    [
-		        Emitter2,
-		        Emitter3,
-		        Emitter,
-		        Emitter4,
-		        Emitter5,
-		    ]
+			Type = BeamEmitterProxy
+			ComponentID = Emitter
+		}
+		EmitterToggleProxy
+		{
+			Type = ToggleProxy
+			ComponentID = Emitter
 		}
 
-		Emitter : <./Data/shots/tractor_beam/tractor_beam.rules>
+		EmissionComponents_NonOverclocked
 		{
-			Type = BeamEmitter
-			ChainedTo = EmitterFanArcController
-			Location = [1.5, 0]
-			FireTrigger = Turret
-			GetTargetFrom = Turret
-			OperationalToggle = IsOperational
-			ResourceStorage = BatteryStorage
-			FriendlyShipLowCollisions = false
-			ResourcesUsed = ceil(4500 * (&~/Part/Components/Turret/FireInterval) / (&~/BeamCount))
-			ValueOverRampUp = [.1, 1]
-			ResourceUsageScaleOverRampUp = [.1, 1]
-			MinResourcesUsed = 1
-			EffectsScaleFactor = BeamRegulatorProxy
-			ResourceScaleFactor = AbsBeamRegulator
-			ValueScaleFactor = BeamRegulatorProxy
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Invert = true
+			IncludeInBlueprints = true
+			Components
+			{
+				EmitterFanArcController
+				{
+					Type = FanArcController
+					ChainedTo = Turret
+					GetTargetFrom = Turret
+					MaxArc = 10d
+					DefaultArc = &MaxArc
+					ArcSizeFactor = 70%
+					FanComponents
+					[
+						Emitter2,
+						Emitter3,
+						Emitter,
+						Emitter4,
+						Emitter5,
+					]
+				}
+				
+				Emitter : <./Data/shots/tractor_beam/tractor_beam.rules>
+				{
+					Type = BeamEmitter
+					ChainedTo = EmitterFanArcController
+					Location = [1.5, 0]
+					FireTrigger = Turret
+					GetTargetFrom = Turret
+					OperationalToggle = IsOperational
+					ResourceStorage = BatteryStorage
+					FriendlyShipLowCollisions = false
+					ResourcesUsed = ceil(4500 * (&~/Part/Components/Turret/FireInterval) / (&~/BeamCount))
+					ValueOverRampUp = [.1, 1]
+					ResourceUsageScaleOverRampUp = [.1, 1]
+					MinResourcesUsed = 1
+					EffectsScaleFactor = BeamRegulatorProxy
+					ResourceScaleFactor = AbsBeamRegulator
+					ValueScaleFactor = BeamRegulatorProxy
+				}
+		
+				// Note: When adding or removing emitters, make sure to update BeamCount at the top of this file as well.
+				Emitter2  = &Emitter
+				Emitter3  = &Emitter
+				Emitter4  = &Emitter
+				Emitter5  = &Emitter
+			}
 		}
 
-		// Note: When adding or removing emitters, make sure to update BeamCount at the top of this file as well.
-		Emitter2  = &Emitter
-		Emitter3  = &Emitter
-		Emitter4  = &Emitter
-		Emitter5  = &Emitter
+		EmissionComponents_Overclocked
+		{
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			IncludeInBlueprints = true
+			Components
+			{
+				EmitterFanArcController : ~/Part/Components/EmissionComponents_NonOverclocked/Components/EmitterFanArcController
+				{
+					Type = FanArcController
+					ChainedTo = Turret
+					GetTargetFrom = Turret
+					MaxArc = &~/OVERCLOCK/ARC_MAX
+					DefaultArc = &MaxArc
+					ArcSizeFactor = 70%
+					FanComponents
+					[
+						Emitter2,
+						Emitter3,
+						Emitter,
+						Emitter4,
+						Emitter5,
+					]
+				}
+				
+				Emitter : <./Data/shots/tractor_beam/tractor_beam_overclock.rules>/Beam, ~/Part/Components/EmissionComponents_NonOverclocked/Components/Emitter
+				{
+					
+				}
+		
+				// Note: When adding or removing emitters, make sure to update BeamCount at the top of this file as well.
+				Emitter2  = &Emitter
+				Emitter3  = &Emitter
+				Emitter4  = &Emitter
+				Emitter5  = &Emitter
+			}
+		}
 
 		TractorModeToggle
 		{
@@ -765,8 +784,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 				BeamRegulator
 				{
 					Type = BeamRegulator
-					Emitter = Emitter
-					BeamLengthRange = [-(&~/Part/Components/Emitter/Range), &~/Part/Components/Emitter/Range]
+					Emitter = EmitterProxy
+					RANGE = (&~/Part/Components/EmissionComponents_NonOverclocked/Components/Emitter/Range)
+					BeamLengthRange = [-(&../RANGE), &../RANGE]
 					RelativeToInitHitLength = true
 					OutputValueRange = [-1, 1]
 				}
@@ -788,8 +808,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				BeamRegulator
 				{
 					Type = BeamRegulator
-					Emitter = Emitter
-					BeamLengthRange = [0, &~/Part/Components/Emitter/StretchRange]
+					Emitter = EmitterProxy
+					BeamLengthRange = [0, (&~/Part/Components/EmissionComponents_NonOverclocked/Components/Emitter/StretchRange)]
 					OutputValueRange = [.1, 1]
 				}
 			}
@@ -810,8 +830,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				BeamRegulator
 				{
 					Type = BeamRegulator
-					Emitter = Emitter
-					BeamLengthRange = [0, &~/Part/Components/Emitter/Range]
+					Emitter = EmitterProxy
+					BeamLengthRange = [0, (&~/Part/Components/EmissionComponents_NonOverclocked/Components/Emitter/Range)]
 					OutputValueRange = [-1, -.1]
 				}
 			}
@@ -1205,14 +1225,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			NameKey = "StatCategories/TractorBeam"
 			Stats
 			{
-				ImpulsePerShot = &~/Part/Components/Emitter/TractorImpulse
-				HitInterval = &~/Part/Components/Emitter/HitInterval
+				ImpulsePerShot = &~/Part/Components/EmissionComponents_NonOverclocked/Components/Emitter/TractorImpulse
+				HitInterval = &~/Part/Components/EmissionComponents_NonOverclocked/Components/Emitter/HitInterval
 				TractorForce = (&ImpulsePerShot) / (&HitInterval) * (&~/BeamCount)
-				Range = &~/Part/Components/Emitter/Range
-				StretchRange = &~/Part/Components/Emitter/StretchRange
+				Range = &~/Part/Components/EmissionComponents_NonOverclocked/Components/Emitter/Range
+				StretchRange = &~/Part/Components/EmissionComponents_NonOverclocked/Components/Emitter/StretchRange
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
 				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
-				PowerPerShot = (&~/Part/Components/Emitter/ResourcesUsed) / 1000 * (&~/BeamCount)
+				PowerPerShot = (&~/Part/Components/EmissionComponents_NonOverclocked/Components/Emitter/ResourcesUsed) / 1000 * (&~/BeamCount)
 				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
 			}
 		}
@@ -1228,6 +1248,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 			TractorForce = (&~/Part/StatsByCategory/0/Stats/TractorForce) * (&~/OVERCLOCK/FORCE_FACTOR)
 			FiringHeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
 		}
+		Features
+		[
+			CoMForceApplication
+		]
 		StatsByCategory
 		[
 			{

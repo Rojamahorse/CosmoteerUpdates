@@ -67,7 +67,7 @@ MapJumpDistanceExponent = 1
 LocalJumpFuelCostPerMass = 0
 LocalJumpFuelCostPerMassDistance = 1 / 100 / 25000 // 1 fuel per 100 mass to jump 25km at 100% efficiency.
 LocalJumpDistanceExponent = 1
-LocalJumpMinDistance = 500
+LocalJumpMinDistance = 0
 
 DefaultCollectNuggetPriority = 8
 DefaultEjectNuggetPriority = 1
@@ -76,8 +76,8 @@ DefaultConstructPriority = 9
 DefaultDeconstructPriority = 9
 DefaultRepairPriority = 9
 
-DefaultConstructionWorkPerHealth = 1 / 1000 // 1 second per corridor tile (+0.5 for the structure makes 1.5 total)
-DefaultWorkPerRepairedHealth = 1 / 1000
+DefaultConstructionWorkPerHealth = 0.5 / 1000 // 1 second per corridor tile (+0.5 for the structure makes 1.5 total)
+DefaultWorkPerRepairedHealth = 0.5 / 1000 // 1 second per corridor tile (+0.5 for the structure makes 1.5 total)
 ConstructionResourceSearchesPerTick = 1
 ConstructionNuggetSinkSearchesPerTick = 5
 MaxCrewExitShipSpeed = 1

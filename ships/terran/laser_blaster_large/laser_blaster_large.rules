@@ -177,25 +177,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
 		}
 
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_Left, 0]
-						[&../../HEAT_INPUT, Port_Thermal_LeftDown, 0]
-						[&../../HEAT_INPUT, Port_Thermal_RightDown, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right, 0]
-					]
-				}
-			]
-		}
-
 		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0, 4]

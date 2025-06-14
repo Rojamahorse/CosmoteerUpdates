@@ -230,12 +230,19 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ComponentID = LoadedAmmo
 		}
 
+		IsWeaponOperational
+		{
+			Type = MultiToggle
+			Mode = All
+			Toggles = [ IsOperational, { Toggle=IsOverclockedAndCharging; Invert=true } ]
+		}
+
 		Weapon
 		{
 			Type = FixedWeapon
 			Location = [1, .5] // Relative to upper-left corner of unrotated part.
 			Rotation = -90d // Relative to unrotated part.
-			OperationalToggle = IsOperational
+			OperationalToggle = IsWeaponOperational
 			AutoFireToggle = AutoFireToggle
 			FireInterval = 4
 			TargetingArc = 90d
@@ -568,22 +575,17 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Type = Bidirectional
 					Routes
 					[
-						[Port_Rail, Networked_ChargedModules, 0]
-						[Port_Rail, Networked_ChargeValue, 0]
-						[Port_Rail, NetworkOverclockStateValue, 0]
-						[Port_Rail, Network_OverflowHeatStorage, 0]
-						[Port_Rail, Network_RailgunOverflowHeatInput, 0]
+						[NetworkOverclockStateValue, Networked_ChargedModules, 0]
+						[NetworkOverclockStateValue, Networked_ChargeValue, 0]
+						[NetworkOverclockStateValue, Network_OverflowHeatStorage, 0]
+						[NetworkOverclockStateValue, Network_RailgunOverflowHeatInput, 0]
 					]
 				}
 				{
 					Type = Simple
 					Routes
 					[
-						[&~/Part/^/0/HEAT_NETWORK_INPUT, Port_Thermal_TopLeft, 0]
-						[&~/Part/^/0/HEAT_NETWORK_INPUT, Port_Thermal_TopRight, 0]
-						[&~/Part/^/0/HEAT_NETWORK_INPUT, Port_Thermal_BottomLeft, 0]
-						[&~/Part/^/0/HEAT_NETWORK_INPUT, Port_Thermal_BottomRight, 0]
-						[&~/Part/^/0/HEAT_NETWORK_INPUT, Port_Rail, 0]
+						[&~/Part/^/0/HEAT_NETWORK_INPUT, NetworkOverclockStateValue, 0]
 					]
 				}
 			]
@@ -653,6 +655,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Direction = Down
 			Types = [ railgun_down ]
 			CompatibleTypes = [ railgun_up ]
+			RouteSource = NetworkOverclockStateValue
+			RouteEndpoint = NetworkOverclockStateValue
 		}
 
 

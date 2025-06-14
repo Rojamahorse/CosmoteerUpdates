@@ -239,25 +239,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ComponentID = ResourceConverter
 		}
 
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_Left, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down1, 0]
-					]
-				}
-			]
-		}
-
 		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0, 1]
@@ -277,188 +258,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [1, 1]
 		}
 
-		SulfurSprites
+		SulfurSprites : <../factory_he/factory_he.rules>/Part/Components/SulfurSprites
 		{
-			Type = ResourceSprites
 			Location = [.5-8/64, 0.5+2/64]
-			ResourceStorage = SulfurSplitter
-			Layer = "doodads_high"
-			Modulus = &../SulfurSplitter/ToQuantity
-			AnimationToggle = ResourceConverter
-			ResourceLevels
-			[
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur1-2.png"
-						"./Data/ships/terran/factory_he/sulfur1-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur2-2.png"
-						"./Data/ships/terran/factory_he/sulfur2-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur3-2.png"
-						"./Data/ships/terran/factory_he/sulfur3-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur4-2.png"
-						"./Data/ships/terran/factory_he/sulfur4-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur5-2.png"
-						"./Data/ships/terran/factory_he/sulfur5-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur6-2.png"
-						"./Data/ships/terran/factory_he/sulfur6-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur7-2.png"
-						"./Data/ships/terran/factory_he/sulfur7-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur8-2.png"
-						"./Data/ships/terran/factory_he/sulfur8-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur9-2.png"
-						"./Data/ships/terran/factory_he/sulfur9-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur10-2.png"
-						"./Data/ships/terran/factory_he/sulfur10-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur11-2.png"
-						"./Data/ships/terran/factory_he/sulfur11-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur12-2.png"
-						"./Data/ships/terran/factory_he/sulfur12-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur13-2.png"
-						"./Data/ships/terran/factory_he/sulfur13-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur14-2.png"
-						"./Data/ships/terran/factory_he/sulfur14-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur15-2.png"
-						"./Data/ships/terran/factory_he/sulfur15-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur16-2.png"
-						"./Data/ships/terran/factory_he/sulfur16-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur17-2.png"
-						"./Data/ships/terran/factory_he/sulfur17-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur18-2.png"
-						"./Data/ships/terran/factory_he/sulfur18-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur19-2.png"
-						"./Data/ships/terran/factory_he/sulfur19-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-			]
 		}
 
 		IdleDoodaddAndDamageLevels_Graphics
@@ -498,7 +300,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_waste_on8_33.png"
 						]
 						Size = [2, 1]
-						AnimationInterval = 0.0625
+						AnimationInterval = &../0/AnimationInterval
 						AnimationStartTime = WhenSpawned
 					}
 					{
@@ -514,7 +316,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_waste_on8_66.png"
 						]
 						Size = [2, 1]
-						AnimationInterval = 0.0625
+						AnimationInterval = &../0/AnimationInterval
 						AnimationStartTime = WhenSpawned
 					}
 				]
@@ -533,7 +335,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_idle2.png"
 						]
 						Size = [2, 1]
-						AnimationInterval = 0.125
+						AnimationInterval = 0.1125*2
 						AnimationStartTime = WhenSpawned
 					}
 					{
@@ -549,7 +351,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_idle8_33.png"
 						]
 						Size = [2, 1]
-						AnimationInterval = 0.0625
+						AnimationInterval = &../0/AnimationInterval
 						AnimationStartTime = WhenSpawned
 					}
 					{
@@ -565,7 +367,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_idle8_66.png"
 						]
 						Size = [2, 1]
-						AnimationInterval = 0.0625
+						AnimationInterval = &../0/AnimationInterval
 						AnimationStartTime = WhenSpawned
 					}
 				]

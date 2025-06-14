@@ -38,6 +38,8 @@ Part : <../base_part_terran.rules>/Part
 			Location = [0, 0]
 			Direction = Up
 			Types = [ thermal ]
+			RouteSource = NetworkAverageThermalDissipationLoadValue
+			RouteEndpoint = NetworkAverageThermalDissipationLoadValue
 		}
 		
 		Port_Down : Port_Up
@@ -50,23 +52,6 @@ Part : <../base_part_terran.rules>/Part
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
 			Location = [.5, .5]
-		}
-
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Bidirectional
-					Routes
-					[
-						[Port_Up, Port_Down, 0]
-						
-						[Port_Up, NetworkAverageThermalDissipationLoadValue, 0]
-					]
-				}
-			]
 		}
 
 		NetworkAverageThermalDissipationLoadValue

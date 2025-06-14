@@ -11,6 +11,8 @@ SoftRepair
 	WorkPerValueChange = 0.1
 }
 ParentMediaEffectsToShip = true
+MediaIntensityValueType = Interpolated
+MediaIntensityInterpolationRange = [0, 6]
 ContinuousMediaEffects
 [
 	&<particles/overload_sizzle.rules>

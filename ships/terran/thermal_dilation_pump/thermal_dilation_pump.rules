@@ -292,11 +292,15 @@ Part : <../base_part_terran.rules>/Part
 			Direction = Down
 			Types = [ thermal, thermal_out ]
 			IncompatibleTypes = [ thermal_out ]
+			RouteSource = NetworkedDilation_Left
+			RouteEndpoint = NetworkedDilation_Left
 		}
 		
 		Port_BottomRight : Port_BottomLeft
 		{
 			Location = [1, 1]
+			RouteSource = NetworkedDilation_Right
+			RouteEndpoint = NetworkedDilation_Right
 		}
 		
 		Router
@@ -308,13 +312,11 @@ Part : <../base_part_terran.rules>/Part
 					Type = Bidirectional
 					Routes
 					[
-						[Port_BottomLeft, NetworkedDilation_Left, 0]
-						[Port_BottomLeft, NetworkedActivity_Left, 0]
-						[Port_BottomLeft, NetworkPumpUtilization_Left, 0]
+						[NetworkedDilation_Left, NetworkedActivity_Left, 0]
+						[NetworkedDilation_Left, NetworkPumpUtilization_Left, 0]
 						
-						[Port_BottomRight, NetworkedDilation_Right, 0]
-						[Port_BottomRight, NetworkedActivity_Right, 0]
-						[Port_BottomRight, NetworkPumpUtilization_Right, 0]
+						[NetworkedDilation_Right, NetworkedActivity_Right, 0]
+						[NetworkedDilation_Right, NetworkPumpUtilization_Right, 0]
 					]
 				}
 			]

@@ -434,7 +434,7 @@ Part : <../base_part_terran.rules>/Part
 			Rotation = -135d // Relative to unrotated part.
 			FireInterval = &../BeamEmitter1/Duration
 			FiringArc = 360d
-			RotateSpeed = 360d
+			RotateSpeed = Infinity
 			FireThresholdAngle = 0.25d
 			AIFirepowerRating = 0
 			IncludeInFirepowerEstimation = false

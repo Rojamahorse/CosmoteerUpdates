@@ -57,12 +57,21 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = IsOperational
+			CommandPoints = 5
+		}
+
 		Port_Left
 		{
 			Type = NetworkPort
 			Location = [0, 2]
 			Direction = Left
 			Types = [ thermal ]
+			RouteSource = NetworkedHeatBuffer
+			RouteEndpoint = NetworkedHeatBuffer
 		}
 		Port_Right : Port_Left
 		{
@@ -78,10 +87,8 @@ Part : <../base_part_terran.rules>/Part
 					Type = Bidirectional
 					Routes
 					[
-						[Port_Left, Port_Right, 0]
-						[Port_Left, NetworkedHeatBuffer, 0]
-						[Port_Left, NetworkHeatOutput, 0]
-						[Port_Left, NetworkedThermalDissipationLoadValue, 0]
+						[NetworkedHeatBuffer, NetworkHeatOutput, 0]
+						[NetworkedHeatBuffer, NetworkedThermalDissipationLoadValue, 0]
 					]
 				}
 			]

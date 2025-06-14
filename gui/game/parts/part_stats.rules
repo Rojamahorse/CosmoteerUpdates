@@ -282,6 +282,10 @@ PartStats
 		FormatKey = "Stats/PenetrationFmt"
 	}
 	{
+		ID = ArmorPenetrationResistance
+		FormatKey = "Stats/ArmorPenetrationResistanceFmt"
+	}
+	{
 		ID = PenetrationDamagePool
 		FormatKey = "Stats/PenetrationDamagePoolFmt"
 	}

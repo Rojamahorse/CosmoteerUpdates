@@ -173,21 +173,20 @@ ContinuousMediaEffects
 		{
 			Texture
 			{
-				File = heatNoise2.png
+				File = "./Data/statuses/fire/particles/fire_noise.png"
 				MipLevels = max
 				SampleMode = Linear
 				UVMode = Wrap
 			}
 			_maskTexture
 			{
-				//File = "./Data/common_effects/particles/wet_light_cookie.png"
 				File = single_tile_square_mask.png
 				MipLevels = max
 				SampleMode = Linear
 			}
 			_noiseTexture2
 			{
-				File = heatNoise.png
+				File = "./Data/common_effects/particles/noise_distorted_voronoi.png"
 				MipLevels = max
 				SampleMode = Linear
 				UVMode = Wrap
@@ -195,7 +194,7 @@ ContinuousMediaEffects
 			Shader = heat.shader
 			_hotColor = [255, 222, 155, 255]
 			_coldColor = [255, 130, 0, 255]
-			_normalIntensity = 0.02; //lower is more intense, 0.02 for ship
+			_normalIntensity = 0.2
 			TargetBlendMode
 			{
 				SourceRgbFactor = SourceAlpha
@@ -210,6 +209,7 @@ ContinuousMediaEffects
 		Inflate = 0.5
 		FadeInTime = 0
 		FadeOutTime = 0.5
+		IsFancy = true
 		IsFancyLight = true
 		CaptureBackBuffer = true
 		ColorOverIntensity
@@ -217,5 +217,55 @@ ContinuousMediaEffects
 			[0, 0, 0, 0]
 			[255, 255, 255, 255]
 		]
-    }
+	}
+	//Simple Version
+	{
+		Type = TileQuad
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/statuses/fire/particles/fire_noise.png"
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			_maskTexture
+			{
+				File = single_tile_square_mask.png
+				MipLevels = max
+				SampleMode = Linear
+			}
+			_noiseTexture2
+			{
+				File = "./Data/common_effects/particles/noise_distorted_voronoi.png"
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			Shader = heat_simple.shader
+			_hotColor = [255, 222, 155, 255]
+			_coldColor = [255, 130, 0, 255]
+			_normalIntensity = 0.2
+			TargetBlendMode
+			{
+				SourceRgbFactor = One
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = Zero
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		Bucket = Surface2
+		Inflate = 0.5
+		FadeInTime = 0
+		FadeOutTime = 0.5
+		IsSimpleOrSimpleLight = true
+		ColorOverIntensity
+		[
+			[0, 0, 0, 0]
+			[255, 255, 255, 255]
+		]
+	}
 ]

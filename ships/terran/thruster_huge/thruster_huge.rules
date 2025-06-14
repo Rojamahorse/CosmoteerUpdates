@@ -256,28 +256,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Value = &~/Part/Components/MainThruster/MaxActivation
 		}
 
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_BottomLeft, 0]
-						[&../../HEAT_INPUT, Port_Thermal_TopLeft, 0]
-						[&../../HEAT_INPUT, Port_Thermal_LeftUp, 0]
-						[&../../HEAT_INPUT, Port_Thermal_MidUp, 0]
-						[&../../HEAT_INPUT, Port_Thermal_RightUp, 0]
-						[&../../HEAT_INPUT, Port_Thermal_TopRight, 0]
-						[&../../HEAT_INPUT, Port_Thermal_BottomRight, 0]
-					]
-				}
-			]
-		}
-
 		Port_Thermal_BottomLeft : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0, 1]

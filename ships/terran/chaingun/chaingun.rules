@@ -1,8 +1,10 @@
 OVERCLOCK
 {
-	RAMP_SPEED_FACTOR = 250%
-	MAX_FIRE_RATE = infinity
-	HEAT_PER_SHOT = 75
+	PELLET_COUNT = 4
+	PELLET_HALF_SPREAD = 6d
+	RAMP_TIME = 5
+	MAX_FIRE_RATE = 5
+	HEAT_PER_SHOT = 400
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -210,23 +212,32 @@ Part : <../base_part_terran_overclock.rules>/Part
 			BASE_MAX_VALUE = 10.5 //30 shots per second if base value
 			BASE_RAMP_UP_TIME = 10
 			BASE_RAMP_DOWN_TIME = (&BASE_RAMP_UP_TIME) / 2 //cooldown is half the ramp up
+			BASE_RAMP_PER_SEC = ((&BASE_MAX_VALUE) - (&MinValue)) / (&BASE_RAMP_UP_TIME)
+			OVERCLOCK_RAMP_PER_SEC = ((&~/OVERCLOCK/MAX_FIRE_RATE) - (&MinValue)) / (&~/OVERCLOCK/RAMP_TIME)
 			AccumulationRate
 			{
-				BaseValue = ((&../BASE_MAX_VALUE) - (&../MinValue)) / (&../BASE_RAMP_UP_TIME)
+				BaseValue = &../BASE_RAMP_PER_SEC
 				Modifiers
 				[
 					{
 						Type = BuffRemap
 						BuffType = Overclock
-						ModificationMode = Multiply
+						ModificationMode = Replace
 						RemapFrom = [0, 1]
-						RemapTo = [1, (&~/OVERCLOCK/RAMP_SPEED_FACTOR)]
+						RemapTo = [1, (&../../../../OVERCLOCK_RAMP_PER_SEC)]
 					}
 				]
 			}
 			DissipationRate : AccumulationRate
 			{
 				BaseValue = ((&../BASE_MAX_VALUE) - (&../MinValue)) / (&../BASE_RAMP_DOWN_TIME)
+				Modifiers
+				[
+					: ../^/0/Modifiers/0 
+					{
+						RemapTo = [1, (&../../../../OVERCLOCK_RAMP_PER_SEC) / 2]
+					}
+				]
 			}
 			MinValue = 1
 			MaxValue
@@ -774,7 +785,23 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ShowProgressFor = RampUpAccumulator
 			OperationalToggle = IsChaingunPoweredDown
 			InvertOperationalToggle = true
-			ValueRange = [&~/Part/Components/RampUpAccumulator/MinValue, &~/Part/Components/RampUpAccumulator/BASE_MAX_VALUE]
+			ValueRange
+			[
+				&~/Part/Components/RampUpAccumulator/MinValue 
+				{
+					BaseValue = &~/Part/Components/RampUpAccumulator/BASE_MAX_VALUE
+					Modifiers
+					[
+						{
+							Type = Buff
+							BuffType = Overclock
+							ModificationMode = Replace
+							MinValue = &~/OVERCLOCK/MAX_FIRE_RATE
+							MaxValue = &MinValue
+						}
+					]
+				}
+			]
 		}
 
 		IsChaingunPoweredDown
@@ -800,8 +827,51 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [0, 0]
 			Duration = 0
 			ResourceStorage = CombinedBulletSplitters // Needed to prevent turret from trying to fire when out of ammo.
-			ResourcesUsed = 1
-			Spread = [-1.5d, 1.5d]
+			ResourcesUsed
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Replace
+						RemapFrom = [0, 1]
+						RemapTo = [(&../../../BaseValue), &~/OVERCLOCK/PELLET_COUNT]
+					}
+				]
+			}
+			Spread
+			[
+				{
+					BaseValue = -1.5d
+					Modifiers
+					[
+						{
+							Type = ScaledBuff
+							BuffType = Overclock
+							ModificationMode = Multiply
+							Scale = 0
+						}
+					]
+				}
+				: 0 { BaseValue = -(&^/0/BaseValue) }
+			]
+			Pellets
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Replace
+						RemapFrom = [0, 1]
+						RemapTo = [(&../../../BaseValue), &~/OVERCLOCK/PELLET_COUNT]
+					}
+				]
+			}
+			PelletSpread = [-(&~/OVERCLOCK/PELLET_HALF_SPREAD), (&~/OVERCLOCK/PELLET_HALF_SPREAD)]
 			Recoil = 10
 			Burst = 1
 			BeamMediaEffectsOffset = [2, 0]
@@ -929,20 +999,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
-		OverheatEffects : ^/0/OverheatEffects
-		{
-			Location = [1.5, 4]
-		}
-
-//		Overclock_ConstantHeatProducer
-//		{
-//			Type = ResourceConverter
-//			OperationalToggle = IsOperationalOverclocked
-//			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/HEAT_PER_SECOND) * (&Interval))
-//			ToQuantity = (&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
-//			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
-//			Interval = 0.5
-//		}
 		Overclock_ShotHeatProducer
 		{
 			Type = ResourceChange
@@ -956,26 +1012,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = TriggerProxy
 			ComponentID = BulletEmitter
 			ProxyToggle = IsOverclocked
-		}
-
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_Left, 0]
-						[&../../HEAT_INPUT, Port_Thermal_LeftDown, 0]
-						[&../../HEAT_INPUT, Port_Thermal_MidDown, 0]
-						[&../../HEAT_INPUT, Port_Thermal_RightDown, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right, 0]
-					]
-				}
-			]
 		}
 
 		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
@@ -2866,7 +2902,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				]
 				Range = &~/Part/Components/BulletEmitter/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
-				Spread = deg(&~/Part/Components/BulletEmitter/Spread/1)
+				Spread = deg(&~/Part/Components/BulletEmitter/Spread/1/BaseValue)
 				TurretSpeed = deg(&~/Part/Components/AimingTurretSlider/MatchRotationSpeed)
 				ShotSpeed = Infinity
 				AmmoPerShot = 1 / (&~/Part/Components/BulletSplitterRight/ToQuantity)
@@ -2885,7 +2921,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 				NameKey = "StatCategories/BulletChaingunOverclocked"
 				Stats
 				{
-					RampUpSpeedFactor = (&~/OVERCLOCK/RAMP_SPEED_FACTOR) * 100
+					Pellets = &~/OVERCLOCK/PELLET_COUNT
+					RampUpTime = &~/OVERCLOCK/RAMP_TIME
 					ROFRange
 					[
 						&~/Part/StatsByCategory/0/Stats/ROFRange/0

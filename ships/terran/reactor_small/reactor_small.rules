@@ -172,30 +172,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Trigger = Overclock_PowerGenerationTrigger
 			Amount { BaseValue=ceil((&~/OVERCLOCK/HEAT_PER_BATTERY) * (&~/HEAT_TO_RESOURCE)); EffectScaleExponent=1 }
 		}
-
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_TopLeft, 0]
-						[&../../HEAT_INPUT, Port_Thermal_LeftUp, 0]
-						[&../../HEAT_INPUT, Port_Thermal_RightUp, 0]
-						[&../../HEAT_INPUT, Port_Thermal_TopRight, 0]
-						[&../../HEAT_INPUT, Port_Thermal_BottomRight, 0]
-						[&../../HEAT_INPUT, Port_Thermal_RightDown, 0]
-						[&../../HEAT_INPUT, Port_Thermal_LeftDown, 0]
-						[&../../HEAT_INPUT, Port_Thermal_BottomLeft, 0]
-					]
-				}
-			]
-		}
-
+		
 		Port_Thermal_TopLeft : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0,0]

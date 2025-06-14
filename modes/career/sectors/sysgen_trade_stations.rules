@@ -380,7 +380,7 @@ StationDefenses
 			Type = Ships
 			Tags = [station_defense]
 			Count = 1
-			Distance = 100
+			Distance = 250
 			MinDistanceFromTags = [[asteroid, 0]]
 			Allegiance = FactionCivilian
 			FamePerTier = &/TIER_TABLES/StandardFamePerTier

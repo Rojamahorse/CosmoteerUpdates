@@ -143,24 +143,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
 		}
 
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_Left, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down, 0]
-					]
-				}
-			]
-		}
-
 		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0, 2]
@@ -443,7 +425,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			GetTargetFrom = Turret
 			Location = [1, 0]
 			OperationalToggle = IsOperationalNonOverclocked
-			FireDelay = .4
+			OVERCLOCK_FIRE_INTERVAL = (&../Turret/FireInterval/BaseValue) / (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+			FireDelay = 0.4
 			Bullet = &<./Data/shots/laser_bolt_small/laser_bolt_small.rules>
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 200
@@ -455,6 +438,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			OperationalToggle = IsOperationalOverclocked
 			DAMAGE_FACTOR = (&~/OVERCLOCK/BEAM/DAMAGE) / (&~/Part/StatsByCategory/0/Stats/DamagePerShot)
 			ResourcesUsed = (&^/1/ResourcesUsed) * (&DAMAGE_FACTOR)
+			FireDelay = (&^/1/FireDelay) / (&~/OVERCLOCK/FIRE_RATE_FACTOR)
 		}
 
 		ChargeEffect
@@ -595,6 +579,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		WeaponSprite
 		{
 			Type = Sprite
+			OperationalToggle = IsOverclocked
+			InvertOperationalToggle = true
 			ChainedTo = Turret
 			Location = [.5, 0]
 			Rotation = 90d
@@ -642,6 +628,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 				AnimationInterval = 0.05
 				AnimationStartTime = MinValue
 				ClampAnimation = true
+			}
+		}
+		Overclock_WeaponSprite : WeaponSprite
+		{
+			InvertOperationalToggle = false
+			AtlasSprite : ^/0/AtlasSprite
+			{
+				AnimationInterval = (&^/0/AnimationInterval) / (&~/OVERCLOCK/FIRE_RATE_FACTOR)
 			}
 		}
 

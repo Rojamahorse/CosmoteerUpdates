@@ -1,7 +1,7 @@
 OVERCLOCK
 {
-	COLLECTED_HEAT_MULTIPLIER = 200%
-	POWER_DISTRIBUTION_MULTIPLIER = 125%
+	COLLECTED_HEAT_MULTIPLIER = 75%
+	POWER_DISTRIBUTION_MULTIPLIER = 140%
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -256,33 +256,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			BuffType = EngineHeatCollection
 			OperationalToggle = IsOperationalOverclocked
-		}
-
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_TopLeft, 0]
-						[&../../HEAT_INPUT, Port_Thermal_LeftUp, 0]
-						[&../../HEAT_INPUT, Port_Thermal_MidUp, 0]
-						[&../../HEAT_INPUT, Port_Thermal_RightUp, 0]
-						[&../../HEAT_INPUT, Port_Thermal_TopRight, 0]
-						[&../../HEAT_INPUT, Port_Thermal_MidRight, 0]
-						[&../../HEAT_INPUT, Port_Thermal_BottomRight, 0]
-						[&../../HEAT_INPUT, Port_Thermal_RightDown, 0]
-						[&../../HEAT_INPUT, Port_Thermal_MidDown, 0]
-						[&../../HEAT_INPUT, Port_Thermal_LeftDown, 0]
-						[&../../HEAT_INPUT, Port_Thermal_BottomLeft, 0]
-						[&../../HEAT_INPUT, Port_Thermal_MidLeft, 0]
-					]
-				}
-			]
 		}
 
 		Port_Thermal_TopLeft : ~/Part/^/0/BASE_THERMAL_PORT

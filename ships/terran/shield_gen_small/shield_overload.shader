@@ -25,6 +25,8 @@ float4 _fullPowerColor1 = 255;
 float4 _fullPowerColor2 = 255;
 float4 _lowPowerColor1 = 255;
 float4 _lowPowerColor2 = 255;
+float _thermalIntensityExponent;
+
 VERT_OUTPUT_SHIELD vert(in VERT_INPUT_SHIELD input)
 {
 	VERT_OUTPUT_SHIELD output;
@@ -33,7 +35,7 @@ VERT_OUTPUT_SHIELD vert(in VERT_INPUT_SHIELD input)
 	output.uv = input.uv;
 	output.powerLevel = powerLevel;
 	output.color = input.color;
-	output.thermalIntensity = input.color.r;
+	output.thermalIntensity = pow(input.color.r, _thermalIntensityExponent);
 	output.randomWaveTimeOffset = input.randomWaveUOffset;
 	output.randomWaveUOffset = input.randomWaveUOffset;
 	return output;

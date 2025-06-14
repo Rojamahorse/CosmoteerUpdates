@@ -864,6 +864,8 @@ Part : <../base_part_terran.rules>/Part
 			Types = [ thermal ]
 			Location = [1, 0]
 			Direction = Up
+			RouteSource = NetworkHeatInput
+			RouteEndpoint = NetworkHeatInput
 		}
 		Port_TopRight : Port_TopLeft
 		{
@@ -909,24 +911,14 @@ Part : <../base_part_terran.rules>/Part
 					Type = Bidirectional
 					Routes
 					[
-						[Port_TopLeft, Port_TopRight, 0]
-						[Port_TopRight, Port_RightTop, 0]
-						[Port_RightTop, Port_RightBottom, 0]
-						[Port_RightBottom, Port_BottomRight, 0]
-						[Port_BottomRight, Port_BottomLeft, 0]
-						[Port_BottomLeft, Port_LeftBottom, 0]
-						[Port_LeftBottom, Port_LeftTop, 0]
-						[Port_LeftTop, Port_TopLeft, 0]
-
-						[Port_TopLeft, NetworkHeatInput, 0]
-						[Port_TopLeft, NetworkHeatOutput, 0]
-						[Port_TopLeft, NetworkedHeatStorage, 0]
-						[Port_TopLeft, NetworkedPumpUtilization, 0]
-						[Port_TopLeft, Network_PumpHeatGeneration, 0]
-						[Port_TopLeft, NetworkAmplification, 0]
-						[Port_TopLeft, NetworkDilation, 0]
-						[Port_TopLeft, Networked_AnticipatedSelfHeatProduction, 0]
-						[Port_TopLeft, Network_AnticipatedHeatProduction, 0]
+						[NetworkHeatInput, NetworkHeatOutput, 0]
+						[NetworkHeatInput, NetworkedHeatStorage, 0]
+						[NetworkHeatInput, NetworkedPumpUtilization, 0]
+						[NetworkHeatInput, Network_PumpHeatGeneration, 0]
+						[NetworkHeatInput, NetworkAmplification, 0]
+						[NetworkHeatInput, NetworkDilation, 0]
+						[NetworkHeatInput, Networked_AnticipatedSelfHeatProduction, 0]
+						[NetworkHeatInput, Network_AnticipatedHeatProduction, 0]
 					]
 				}
 			]

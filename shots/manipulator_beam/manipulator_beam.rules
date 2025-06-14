@@ -125,17 +125,17 @@ HitNothing
 		{
 			Type = CollectNugget
 			DeliveryDistance = 0.25
-			AccelerationOverDistance = 16
-			DampingOverDistance = [7, 0.25]
-			OverDistance = [0.5, 8]
+			AccelerationOverDistance = [32,64]
+			DampingOverDistance = [8, .01]
+			OverDistance = [1, 8]
 			DoorOpenDistance = 4
 		}
 		{
 			Type = MoveCrew
 			DeliveryDistance = 0.25
-			AccelerationOverDistance = [16,32]
-			DampingOverDistance = [7, 0.25]
-			OverDistance = [0.5, 8]
+			AccelerationOverDistance = [32,64]
+			DampingOverDistance = [15, 0.1]
+			OverDistance = [0.1, 8]
 			DoorOpenDistance = 7
 		}
 	]

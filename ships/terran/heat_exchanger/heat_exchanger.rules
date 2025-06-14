@@ -47,6 +47,8 @@ Part : <../base_part_terran.rules>/Part
 			Location = [0, 0]
 			Direction = Down
 			Types = [ thermal ]
+			RouteSource = NetworkHeatInput
+			RouteEndpoint = NetworkHeatInput
 		}
 	
 		Router
@@ -60,7 +62,7 @@ Part : <../base_part_terran.rules>/Part
 					[
 						[Port_Down, NetworkHeatInput, 0]
 
-						[Port_Down, NetworkAverageThermalDissipationLoadValue, 0]
+						[NetworkHeatInput, NetworkAverageThermalDissipationLoadValue, 0]
 					]
 				}
 			]

@@ -527,28 +527,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
 		}
 
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_Left0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Left1, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down1, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down2, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right1, 0]
-					]
-				}
-			]
-		}
-
 		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0, 1]
@@ -1000,6 +978,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				{
 					SimpleDamage = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/DAMAGE
 					Penetration = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/PENETRATION
+					ArmorPenetrationResistance = (&~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/ARMOR_PENETRATION_FACTOR) * 100
 					FireChance = (&~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/FIRE_CHANCE) * 100
 					FireSize = (&~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/FIRE_SIZE) * 100
 					Range = &~/OVERCLOCK/BULLET/SHRAPNEL_EFFECT/BULLET/Range

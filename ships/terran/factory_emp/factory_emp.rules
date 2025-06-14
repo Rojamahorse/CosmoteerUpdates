@@ -287,28 +287,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ComponentID = ResourceConverter
 		}
 
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_Left0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Left1, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down1, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down2, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right1, 0]
-					]
-				}
-			]
-		}
-
 		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0, 2]
@@ -341,207 +319,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [2, 3]
 		}
 
-		IronSprites
+		IronSprites : <../factory_he/factory_he.rules>/Part/Components/IronSprites
 		{
-			Type = ResourceSprites
 			Location = [.5+1/64, 1.5+15/64]
-			ResourceStorage = IronSplitter
-			Layer = "doodads_high"
-			Modulus = &../IronSplitter/ToQuantity
-			AnimationToggle = ResourceConverter
-			ResourceLevels
-			[
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron1-1.png"
-						"./Data/ships/terran/factory_he/iron1-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron2-1.png"
-						"./Data/ships/terran/factory_he/iron2-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron3-1.png"
-						"./Data/ships/terran/factory_he/iron3-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron4-1.png"
-						"./Data/ships/terran/factory_he/iron4-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron5-1.png"
-						"./Data/ships/terran/factory_he/iron5-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron6-1.png"
-						"./Data/ships/terran/factory_he/iron6-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron7-1.png"
-						"./Data/ships/terran/factory_he/iron7-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron8-1.png"
-						"./Data/ships/terran/factory_he/iron8-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron9-1.png"
-						"./Data/ships/terran/factory_he/iron9-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron10-1.png"
-						"./Data/ships/terran/factory_he/iron10-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron11-1.png"
-						"./Data/ships/terran/factory_he/iron11-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron12-1.png"
-						"./Data/ships/terran/factory_he/iron12-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron13-1.png"
-						"./Data/ships/terran/factory_he/iron13-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron14-1.png"
-						"./Data/ships/terran/factory_he/iron14-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron15-1.png"
-						"./Data/ships/terran/factory_he/iron15-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron16-1.png"
-						"./Data/ships/terran/factory_he/iron16-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron17-1.png"
-						"./Data/ships/terran/factory_he/iron17-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron18-1.png"
-						"./Data/ships/terran/factory_he/iron18-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/iron19-1.png"
-						"./Data/ships/terran/factory_he/iron19-2.png"
-					]
-					UVRotation = 3
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-			]
+			Rotation = -90d
 		}
 
 		CopperSprites
@@ -775,10 +556,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 		}
 
 		BeltSpeedFactor
-        {
-        	Type = BuffableValue
-        	Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
-        }
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
+		}
 
 		Graphics
 		{
@@ -820,7 +601,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_on8_33.png"
 						]
 						Size = [3, 4]
-						AnimationInterval = 0.0625
+						AnimationInterval = &../0/AnimationInterval
 					}
 					{
 						AnimationFiles
@@ -835,7 +616,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_on8_66.png"
 						]
 						Size = [3, 4]
-						AnimationInterval = 0.0625
+						AnimationInterval = &../0/AnimationInterval
 					}
 				]
 			}
@@ -858,7 +639,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_idle8.png"
 						]
 						Size = [3, 3]
-						AnimationInterval = 0.0625
+						AnimationInterval = 0.1125
 						AnimationStartTime = WhenSpawned
 					}
 					{
@@ -874,7 +655,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_idle8_33.png"
 						]
 						Size = [3, 3]
-						AnimationInterval = 0.0625
+						AnimationInterval = &../0/AnimationInterval
 						AnimationStartTime = WhenSpawned
 					}
 					{
@@ -890,7 +671,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"doodads_idle8_66.png"
 						]
 						Size = [3, 3]
-						AnimationInterval = 0.0625
+						AnimationInterval = &../0/AnimationInterval
 						AnimationStartTime = WhenSpawned
 					}
 				]

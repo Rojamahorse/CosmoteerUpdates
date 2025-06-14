@@ -87,13 +87,13 @@ Beam : <ion_beam.rules>
 				ChainRadius = 1.5
 				InitialChance = 100%
 				InitialStrikes = [1, 1]
-				InitialStrikeRandomOffsetRadius = 0.5
+				InitialStrikeRandomOffsetRadius = 0
 				RaycastInitialTargets = true
 				ChainChance = 100%
 				ChainStrikes = [1, 2]
 				MaxInitialAngle = 60d
 				MaxChainAngle = 60d
-				ChainDelay = 0.1
+				ChainDelay = 0.02
 				ChainEffectFalloff = 0.5
 				HitEffects
 				[
@@ -101,7 +101,7 @@ Beam : <ion_beam.rules>
 						Type = Damage
 						Damage : ~/MODIFIABLE_DAMAGE
 						{
-							BaseValue = 400
+							BaseValue = 200
 						}
 						Filter
 						{
@@ -112,6 +112,14 @@ Beam : <ion_beam.rules>
 				MediaEffects
 				[
 					&<particles/ion_beam_overclock_lightning_hit.rules>
+					&<particles/ion_beam_overclock_flash.rules>
+					&<particles/ion_beam_hit_sparks.rules>
+				]
+				ChainMediaEffects
+				[
+					&<particles/ion_beam_overclock_lightning_chain.rules>
+					&<particles/ion_beam_overclock_flash.rules>
+					&<particles/ion_beam_hit_sparks.rules>
 				]
 				HitFilter
 				{
@@ -139,54 +147,44 @@ Beam : <ion_beam.rules>
 			}
 		]
 		
-		MediaEffects : ^/0/MediaEffects
+		MediaEffects
 		[
+			: <particles/ion_beam_overclock_spikes.rules>
 			{
-				Type = Quad
-				Bucket = IonHitSparks
-				IntensityScaleFactor = 1
-				IntensityScaleExponent = 0.5
-				FadeInTime = 0.2
-				FadeOutTime = 0.2
-				Sprite
+				Filter
 				{
-					Shader = particles/ion_storm_lightning.shader
-					Size = [8, 8]
-					_translationSpeed = -0.02
-					_rotationSpeed = 0
-					_uvScale = 0.25
-					_color1
-					{
-						Rf = 0.8235294
-						Gf = 0
-						Bf = 0
-						Af = 1
-					}
-					_noiseTex1
-					{
-						File = ./Data/nebulas/nebula_normals_02B.png
-						MipLevels = max
-						SampleMode = Linear
-						UMode = Wrap
-						VMode = Wrap
-					}
-					_noiseTex2
-					{
-						File = ./Data/common_effects/particles/noise_distorted_voronoi.png
-						MipLevels = max
-						SampleMode = Linear
-						UMode = Wrap
-						VMode = Wrap
-					}
-					Texture
-					{
-						File = ./Data/nebulas/nebula_normals_03D.png
-						MipLevels = max
-						SampleMode = Linear
-						UMode = Wrap
-						VMode = Wrap
-					}
+					ExcludePartCategories = [ion_beam_prism]
 				}
+			}
+			
+			: <particles/ion_beam_overclock_sparks_radial.rules>
+			{
+				Filter
+				{
+					ExcludePartCategories = [ion_beam_prism]
+				}
+			}
+	
+			: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "ion_beam_hit.wav"
+				Volume = .5
+				MaxConcurrent = 1
+				MaxConcurrentVolume = 1
+				RampUpTime = .25
+				RampDownTime = .25
+	
+				Filter
+				{
+					ExcludePartCategories = [ion_beam_prism]
+				}
+			}
+	
+			: /BASE_SHAKE
+			{
+				ShakeAmount = .05
+				Duration = .5
+	
 				Filter
 				{
 					ExcludePartCategories = [ion_beam_prism]
@@ -202,14 +200,11 @@ Beam : <ion_beam.rules>
 				Sprite
 				{
 					Color = [255, 255, 255, 255]
-					Size = [8, 8]
+					Size = [24, 24]
 					Shader = particles/ion_storm.shader
-					_translationSpeed = 0.01
-					_rotationSpeed = 0
-					_uvScale = 0.25
 					Texture
 					{
-						File = ./Data/nebulas/nebula_normals_03D.png
+						File = ./Data/common_effects/particles/noise_voronoi.png
 						SampleMode = Linear
 						MipLevels = max
 						UMode = Wrap
@@ -217,43 +212,16 @@ Beam : <ion_beam.rules>
 					}
 					_noiseTex1
 					{
-						File = ./Data/nebulas/nebula_normals_02B.png
+						File = ./Data/common_effects/particles/noise_marble2.png
 						SampleMode = Linear
 						MipLevels = max
 						UMode = Wrap
 						VMode = Wrap
 					}
-					_color1 = [210, 69, 69, 255]
-					_color2 = [130, 0, 0, 255]
-					_color3 = [43, 42, 76, 255]
-
-					_worldUVOffset = [0, 0]
-					_worldUVScale = 1
-
-					_midTexScale = 0.0005
-					_midWaveScale = 3000
-					_midWaveStrength = 0.1
-					_midWaveSpeed = 100
-					_midScrollSpeed = 20
-					_noiseScaleFactor = 0.15
-
-					_microTexScale = 0.0035
-					_microWaveScale = 200
-					_microWaveStrength = 0.02
-					_microWaveSpeed = 40
-					_microScrollSpeed = 8
-
-					_macroTexScale = 0.00006
-					_lodMaxBlend = 0.4
-					_parallaxIntensity = -0.75
+					_color1 = [255 * 0.9, 0, 0, 255]
+					_color2 = [255, 255 * 0.8, 255 * 0.8, 255]
+					TargetBlendMode = Add
 				}
-				Filter
-				{
-					ExcludePartCategories = [ion_beam_prism]
-				}
-			}
-			: <particles/ion_beam_overclock_sparks_radial.rules>
-			{
 				Filter
 				{
 					ExcludePartCategories = [ion_beam_prism]
@@ -264,18 +232,108 @@ Beam : <ion_beam.rules>
 	
 	BeamMediaEffects
 	[
-		: ../^/0/BeamMediaEffects/0
+		// The beam itself.
 		{
-			Sprite : ^/0/Sprite
+			Type = Beam
+			Sprite
 			{
-				Shader = "ion_beam_overclocked.shader"
-				_baseColor = [1, 0, 0.53, 1]
-				_halfHighlightColor = [0.5, 0.22, 0.21, 1]
+				Texture
+				{
+					File = ../../common_effects/particles/noise_cells.png
+					SampleMode = Linear
+					MipLevels = max
+					UVMode = Wrap
+				}
+				_noiseTexture
+				{
+					File = ../../common_effects/particles/noise_marble4.png
+					MipLevels = max
+					SampleMode = Linear
+					UVMode = Wrap
+				}
+				Shader = "ion_beam.shader"
+				_extraBeginLength = 0
+				_extraEndLength = 0.25
+				_sizePulseFactor = 1.2
+				_sizePulseInterval = .1
+				_sizePulseUOffsetFactor = -.03
+				_endCapSize = 4
+				Size = [100%, 2.5]
+				VertexColor = [255, 255, 255, 217]
+				_baseColor = [1, 0, 0, 1]
+				_halfHighlightColor = [0.5, 0.4, 0.4, 1]
+				TargetBlendMode
+				{
+					SourceRgbFactor = InverseDestColor
+					DestRgbFactor = One
+					RgbOperator = Add
+					SourceAlphaFactor = One
+					DestAlphaFactor = One
+					AlphaOperator = Add
+				}
 			}
+			FadeInTime = .25
+			FadeOutTime = .25
+			RandomTimeOffset = [0, 1]
+			Bucket = IonBeam
 		}
-		: ../^/0/BeamMediaEffects/1
+	
+		// Beam lighting.
 		{
+			Type = Beam
+			Sprite
+			{
+				Texture
+				{
+					File = "./Data/common_effects/particles/blob.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Shader = "./Data/common_effects/fancy_beam_light.shader"
+				Size = [100%, 7]
+				_extraBeginLength = (&Size/1) / 2
+				_extraEndLength = (&Size/1) / 2
+				VertexColor = [255, 0, 0, 255]
+				_z = 0.4
+				_litReflectiveStrength = 12
+				_litAdditiveStrength = 0
+				_unlitAdditiveStrength = 0.25
+				_nrmlStrengthLimit = 1.0
+				TargetBlendMode
+				{
+					SourceRgbFactor = InverseDestColor
+					DestRgbFactor = One
+					RgbOperator = Add
+					SourceAlphaFactor = Zero
+					DestAlphaFactor = One
+					AlphaOperator = Add
+				}
+			}
+			Bucket = Upper4
+			IsLight = true
+			FadeInTime = .25
+			FadeOutTime = .25
+		}
 		
+		//&<particles/ion_beam_overclock_beam_lightning.rules> //Currently Disabled
+	
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "ion_beam.wav"
+			Volume = 1
+			MaxConcurrent = 1
+			MaxConcurrentVolume = 1
+			RampUpTime = .25
+			RampDownTime = .25
+	
+			DynamicVolume : ^/0/DynamicVolume
+			{
+				UseCustomShapeForDistance = true
+			}
+			DynamicFilter : ^/0/DynamicFilter
+			{
+				UseCustomShapeForDistance = true
+			}
 		}
 	]
 }

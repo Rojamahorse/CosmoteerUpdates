@@ -9,6 +9,8 @@ Part : <base_part_terran.rules>/Part
 		Types = [ thermal, thermal_out ]
 		// Refuse connection to other 'output' ports
 		IncompatibleTypes = [ thermal_out ]
+		// Allow creating routes *outbound* from the heat input
+		RouteSource = &../HEAT_NETWORK_INPUT
 	}
 	
 	// Inheritors should use this as the destination storage for heat generation.

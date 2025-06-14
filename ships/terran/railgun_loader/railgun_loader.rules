@@ -277,19 +277,8 @@ Part : <../base_part_terran.rules>/Part
 					Type = Bidirectional
 					Routes
 					[
-						[Port_Rail, NetworkOverclockStateValue, 0]
-						[Port_Rail, Network_OverflowHeatStorage, 0]
-						[Port_Rail, Network_ChargedModules, 0]
-					]
-				}
-				{
-					Type = Simple
-					Routes
-					[
-						[Port_Rail, Port_Thermal_Left, 0]
-						[Port_Rail, Port_Thermal_Right, 0]
-						[Port_Rail, Port_Thermal_BottomLeft, 0]
-						[Port_Rail, Port_Thermal_BottomRight, 0]
+						[NetworkOverclockStateValue, Network_OverflowHeatStorage, 0]
+						[NetworkOverclockStateValue, Network_ChargedModules, 0]
 					]
 				}
 			]
@@ -325,12 +314,15 @@ Part : <../base_part_terran.rules>/Part
 			Direction = Up
 			Types = [ railgun_up ]
 			CompatibleTypes = [ railgun_down ]
+			RouteSource = NetworkOverclockStateValue
+			RouteEndpoint = NetworkOverclockStateValue
 		}
 
 		Port_Thermal_Left : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/BASE_THERMAL_PORT
 		{
 			Location = [0, 2]
 			Direction = Left
+			RouteSource = NetworkOverclockStateValue
 		}
 		Port_Thermal_Right : Port_Thermal_Left
 		{

@@ -15,8 +15,8 @@ Part : <../base_part_terran_structure.rules>/Part
 	SelectionTypeID = "structure"
 	Density = .333
 	MaxHealth = 1000
-	ConstructionWork = 0.5
-	WorkPerRepairedHealth = 0.5 / 1000
+	ConstructionWork = 0.25
+	WorkPerRepairedHealth = 0.25 / 1000
 	HealthType = Structural
 	DamageResistances = { thermal=60% }
 	TypeCategories = [structure, non_flammable]

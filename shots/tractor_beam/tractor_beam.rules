@@ -143,7 +143,7 @@ HitOperational
 	[
 		{
 			Type = Impulse
-			Impulse : ~/BASE_IMPULSE { BaseValue = -(&~/TractorImpulse) / 2 }
+			Impulse = { BaseValue = -(&~/TractorImpulse) / 2; EffectScaleExponent = 1 }
 		}
 		{
 			Type = Feedback
@@ -151,7 +151,7 @@ HitOperational
 			[
 				{
 					Type = Impulse
-					Impulse : ~/BASE_IMPULSE { BaseValue = (&~/TractorImpulse) / 2 }
+					Impulse = { BaseValue = (&~/TractorImpulse) / 2; EffectScaleExponent = 1 }
 				}
 			]
 		}
@@ -159,21 +159,3 @@ HitOperational
 }
 
 HitStructural = &HitOperational
-
-BASE_IMPULSE
-{
-	Modifiers
-	[
-		{
-			Type = BuffRemap
-			BuffType = Overclock
-			RemapFrom = [0, 1]
-			RemapTo = [1, (&~/EMITTER/OVERCLOCK/FORCE_FACTOR)]
-			ModificationMode = Multiply
-		}
-		{
-			Type = EffectScale
-			ModificationMode = Multiply
-		}
-	]
-}

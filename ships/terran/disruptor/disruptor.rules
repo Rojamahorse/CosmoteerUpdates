@@ -145,24 +145,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
 		}
 
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_Left, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down, 0]
-					]
-				}
-			]
-		}
-
 		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0, 3]
@@ -795,7 +777,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 					PowerDrain = [0, 0]
 					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
 					Range = &~/OVERCLOCK/BULLET/RANGE
+					Penetration = &~/OVERCLOCK/BULLET/PENETRATION
+					ArmorPenetrationResistance = (&~/OVERCLOCK/BULLET/ARMOR_PENETRATION_FACTOR) * 100
 				}
+				Features
+				[
+					PenetratesOperational
+				]
 			}
 			{
 				NameKey = "StatCategories/OverclockedDisruption"

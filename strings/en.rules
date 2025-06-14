@@ -4615,6 +4615,7 @@ Stats
 	PowerDrainAreaFmt = "<white>Power Drain Area:</white> <good>{0:0.#}</good><gray> meter radius</gray>"
 	EffectDurationFmt = "<white>Effect Duration:</white> <good>{0:0.##}</good> <gray>seconds</gray>"
 	PenetrationFmt = "<white>Penetration:</white> <good>{0:0.##}</good> <gray>meters</gray>"
+	ArmorPenetrationResistanceFmt = "<white>Armor Penetration Resistance:</white> <good>{0:0}%</good>"
 	PenetrationDamagePoolFmt = "<white>Penetration:</white> <good>{0:0.##}</good> <gray>meters (max </gray><good>{1:n0}</good><gray> damage)</gray>"
 	FireChanceFmt = "<white>Starts Fires:</white> <good>{0:0}%</good><gray> chance/tile</gray>"
 	ShieldPenetrationFmt = "<white>Shield Penetration:</white> <good>{0:0.##}</good> <gray>meters equivalent</gray>"
@@ -4765,7 +4766,7 @@ Stats
 	                       "  ..."
 	ROFRangeFmt = "<white>Rate of Fire:</white> <good>{0:0.##}</good><white> - </white><good>{1:0.##}</good><gray> shots/sec</gray>"
 	BurstFmt = "<white>Salvo:</white> <good>{0:0}</good> <gray>shots</gray>"
-	PelletsFmt = "<white>Projectiles:</white> <good>{0:0}</good> <gray>bullets</gray>"
+	PelletsFmt = "<white>Projectiles:</white> <good>{0:0}</good> <gray>bullets/shot</gray>"
 	PelletSpreadFmt = "<white>Projectile Spread:</white> <gray>+/-</gray> <good>{0:0.#}°</good>"
 	ShotAmmoUsageRangeFmt = "<white>Ammo Use:</white> <good>{0:0.##}</good><gray>/shot (</gray><good>{1:0.##}</good><white> - </white><good>{2:0.##}</good><gray>/sec)</gray>"
 	ShellDamageResistFmt = "<white>Shell Damage Resist:</white> <good>{0}%</good>"
@@ -4824,6 +4825,8 @@ PartFeatures
 	ThrusterHeatTransfer = "Thruster Heat Transfer"
 	ForcedThrusterOverclock = "Forced Thruster Overclock"
 	CanReceivePower = "Can Receive Power"
+	CoMForceApplication = "Applies force to target centre of mass"
+	PenetratesOperational = "Penetrates operational parts"
 }
 
 StatCategories

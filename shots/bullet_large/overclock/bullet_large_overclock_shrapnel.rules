@@ -7,7 +7,8 @@ Speed = (&BULLET/Speed) / 2
 //Speed = 35
 
 DAMAGE_FACTOR = 0.65
-PENETRATION = 25
+PENETRATION = 20
+ARMOR_PENETRATION_FACTOR = 150%
 FIRE_CHANCE = 3%
 FIRE_SIZE = 30%
 
@@ -37,6 +38,10 @@ Components
 	{
 		Type = PenetratingHit
 		Penetration = &~/PENETRATION
+		PartCategoryPenetrationFactors
+		{
+			armor = &~/ARMOR_PENETRATION_FACTOR
+		}
 //		PenetrationSpeed = 25
 		
 		CrewCollisions = {Enemies=true; Junk=true}

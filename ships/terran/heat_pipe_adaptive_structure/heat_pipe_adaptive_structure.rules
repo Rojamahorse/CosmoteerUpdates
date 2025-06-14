@@ -31,6 +31,8 @@ Part : <../heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part, <../base_part_terr
 			Location = [0, 0]
 			Direction = Up
 			Types = [ thermal ]
+			RouteSource = NetworkAverageThermalDissipationLoadValue
+			RouteEndpoint = NetworkAverageThermalDissipationLoadValue
 		}
 		Port_Right : Port_Up
 		{
@@ -105,26 +107,6 @@ Part : <../heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part, <../base_part_terr
 			Mode = All
 		}
 		//-------------------- END PIPE CONNECTOR TOGGLES ---------------
-		
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Bidirectional
-					Routes
-					[
-						[Port_Up, Port_Right, 0]
-						[Port_Right, Port_Down, 0]
-						[Port_Down, Port_Left, 0]
-						[Port_Left, Port_Up, 0]
-						
-						[Port_Up, NetworkAverageThermalDissipationLoadValue, 0]
-					]
-				}
-			]
-		}
 		
 		NetworkAverageThermalDissipationLoadValue
 		{

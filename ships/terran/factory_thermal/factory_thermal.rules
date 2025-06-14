@@ -273,28 +273,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ComponentID = ResourceConverter
 		}
 
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Simple
-					HEAT_INPUT = &~/Part/^/0/HEAT_NETWORK_INPUT
-					Routes
-					[
-						[&../../HEAT_INPUT, Port_Thermal_Left0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Left1, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down1, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Down2, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right0, 0]
-						[&../../HEAT_INPUT, Port_Thermal_Right1, 0]
-					]
-				}
-			]
-		}
-
 		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0, 1]
@@ -327,488 +305,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [2, 2]
 		}
 
-		CopperSprites
+		CopperSprites : <../factory_emp/factory_emp.rules>/Part/Components/CopperSprites
 		{
-			Type = ResourceSprites
 			Location = [0.5-8/64, 0.5+2/64]
-			ResourceStorage = CopperSplitter
-			Layer = "doodads_high"
-			Modulus = &../CopperSplitter/ToQuantity
-			AnimationToggle = ResourceConverter
-			ResourceLevels
-			[
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper1-1.png"
-						"./Data/ships/terran/factory_emp/copper1-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper2-1.png"
-						"./Data/ships/terran/factory_emp/copper2-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper3-1.png"
-						"./Data/ships/terran/factory_emp/copper3-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper4-1.png"
-						"./Data/ships/terran/factory_emp/copper4-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper5-1.png"
-						"./Data/ships/terran/factory_emp/copper5-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper6-1.png"
-						"./Data/ships/terran/factory_emp/copper6-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper7-1.png"
-						"./Data/ships/terran/factory_emp/copper7-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper8-1.png"
-						"./Data/ships/terran/factory_emp/copper8-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper9-1.png"
-						"./Data/ships/terran/factory_emp/copper9-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper10-1.png"
-						"./Data/ships/terran/factory_emp/copper10-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper11-1.png"
-						"./Data/ships/terran/factory_emp/copper11-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper12-1.png"
-						"./Data/ships/terran/factory_emp/copper12-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper13-1.png"
-						"./Data/ships/terran/factory_emp/copper13-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper14-1.png"
-						"./Data/ships/terran/factory_emp/copper14-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper15-1.png"
-						"./Data/ships/terran/factory_emp/copper15-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper16-1.png"
-						"./Data/ships/terran/factory_emp/copper16-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper17-1.png"
-						"./Data/ships/terran/factory_emp/copper17-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper18-1.png"
-						"./Data/ships/terran/factory_emp/copper18-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_emp/copper19-1.png"
-						"./Data/ships/terran/factory_emp/copper19-2.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-			]
+			Rotation = 90d
 		}
 
-		SulfurSprites
-		{
-			Type = ResourceSprites
-			Location = [2.5+8/64, 0.5+2/64]
-			ResourceStorage = SulfurSplitter
-			Layer = "doodads_high"
-			Modulus = &../SulfurSplitter/ToQuantity
-			AnimationToggle = ResourceConverter
-			ResourceLevels
-			[
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur1-2.png"
-						"./Data/ships/terran/factory_he/sulfur1-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur2-2.png"
-						"./Data/ships/terran/factory_he/sulfur2-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur3-2.png"
-						"./Data/ships/terran/factory_he/sulfur3-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur4-2.png"
-						"./Data/ships/terran/factory_he/sulfur4-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur5-2.png"
-						"./Data/ships/terran/factory_he/sulfur5-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur6-2.png"
-						"./Data/ships/terran/factory_he/sulfur6-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur7-2.png"
-						"./Data/ships/terran/factory_he/sulfur7-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur8-2.png"
-						"./Data/ships/terran/factory_he/sulfur8-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur9-2.png"
-						"./Data/ships/terran/factory_he/sulfur9-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur10-2.png"
-						"./Data/ships/terran/factory_he/sulfur10-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur11-2.png"
-						"./Data/ships/terran/factory_he/sulfur11-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur12-2.png"
-						"./Data/ships/terran/factory_he/sulfur12-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur13-2.png"
-						"./Data/ships/terran/factory_he/sulfur13-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur14-2.png"
-						"./Data/ships/terran/factory_he/sulfur14-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur15-2.png"
-						"./Data/ships/terran/factory_he/sulfur15-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur16-2.png"
-						"./Data/ships/terran/factory_he/sulfur16-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur17-2.png"
-						"./Data/ships/terran/factory_he/sulfur17-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur18-2.png"
-						"./Data/ships/terran/factory_he/sulfur18-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-				{
-					AnimationFiles
-					[
-						"./Data/ships/terran/factory_he/sulfur19-2.png"
-						"./Data/ships/terran/factory_he/sulfur19-1.png"
-					]
-					Size = [1, 1]
-					AnimationInterval = 0.075
-				}
-			]
-		}
-
-		IdleDoodaddAndDamageLevels_Graphics
-		{
-			Type = Graphics
-			Location = [1.5, 0.5]
-			OperationalToggle = IsOperational
-			DoodadToggle = ResourceConverter
-			ToggleOnDoodad
-			{
-				Layer = "walls"
-				DamageLevels
-				[
-					{
-						AnimationFiles
-						[
-							"doodads_waste_on1.png"
-							"doodads_waste_on2.png"
-							"doodads_waste_on3.png"
-							"doodads_waste_on4.png"
-						]
-						Size = [3, 1]
-						AnimationInterval = 0.075
-						AnimationStartTime = WhenSpawned
-					}
-					{
-						AnimationFiles
-						[
-							"doodads_waste_on1_33.png"
-							"doodads_waste_on2_33.png"
-							"doodads_waste_on3_33.png"
-							"doodads_waste_on4_33.png"
-							"doodads_waste_on5_33.png"
-							"doodads_waste_on6_33.png"
-							"doodads_waste_on7_33.png"
-							"doodads_waste_on8_33.png"
-						]
-						Size = [3, 2]
-						Offset = [0, 0.5]
-						AnimationInterval = 0.075
-						AnimationStartTime = WhenSpawned
-					}
-					{
-						AnimationFiles
-						[
-							"doodads_waste_on1_66.png"
-							"doodads_waste_on2_66.png"
-							"doodads_waste_on3_66.png"
-							"doodads_waste_on4_66.png"
-							"doodads_waste_on5_66.png"
-							"doodads_waste_on6_66.png"
-							"doodads_waste_on7_66.png"
-							"doodads_waste_on8_66.png"
-						]
-						Size = [3, 2]
-						Offset = [0, 0.5]
-						AnimationInterval = 0.075
-						AnimationStartTime = WhenSpawned
-					}
-				]
-			}
-			ToggleOffDoodad
-			{
-				Layer = "walls"
-				DamageLevels
-				[
-					{
-						AnimationFiles
-						[
-							"doodads_idle1.png"
-							"doodads_idle2.png"
-							"doodads_idle3.png"
-							"doodads_idle2.png"
-						]
-						Offset = [0, 0.5]
-						Size = [3, 2]
-						AnimationInterval = 0.15
-						AnimationStartTime = WhenSpawned
-					}
-					{
-						AnimationFiles
-						[
-							"doodads_idle1_33.png"
-							"doodads_idle2_33.png"
-							"doodads_idle3_33.png"
-							"doodads_idle4_33.png"
-							"doodads_idle5_33.png"
-							"doodads_idle6_33.png"
-							"doodads_idle7_33.png"
-							"doodads_idle8_33.png"
-						]
-						Offset = [0, 0.5]
-						Size = [3, 2]
-						AnimationInterval = 0.075
-						AnimationStartTime = WhenSpawned
-					}
-					{
-						AnimationFiles
-						[
-							"doodads_idle1_66.png"
-							"doodads_idle2_66.png"
-							"doodads_idle3_66.png"
-							"doodads_idle4_66.png"
-							"doodads_idle5_66.png"
-							"doodads_idle6_66.png"
-							"doodads_idle7_66.png"
-							"doodads_idle8_66.png"
-						]
-						Offset = [0, 0.5]
-						Size = [3, 2]
-						AnimationInterval = 0.075
-						AnimationStartTime = WhenSpawned
-					}
-				]
-			}
-		}
+		SulfurSprites : <../factory_he/factory_he.rules>/Part/Components/SulfurSprites {}
 
 		FloorSprite
 		{
@@ -857,21 +360,21 @@ Part : <../base_part_terran_overclock.rules>/Part
 		}
 
 		BeltSpeedFactor
-        {
-        	Type = BuffableValue
-        	Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
-        }
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
+		}
 
 		Graphics
 		{
 			Type = Graphics
 			Location = [1.5, 1.5]
 			OperationalToggle = IsOperational
-			AnimationToggle = ResourceConverter
+			DoodadToggle = ResourceConverter
 			AnimationSpeedFactor = BeltSpeedFactor
-			OperationalDoodad
+			ToggleOnDoodad
 			{
-				Layer = "doodads_low"
+				Layer = "walls" //Wall layer so the robotic arm sprites are draw over the resources sprites
 				Offset = [0, -.5]
 				DamageLevels
 				[
@@ -889,18 +392,111 @@ Part : <../base_part_terran_overclock.rules>/Part
 						]
 						Size = [3, 2]
 						AnimationInterval = 0.075
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = &../0/AnimationInterval
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = &../0/AnimationInterval
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "walls" //Wall layer so the robotic arm sprites are draw over the resources sprites
+				Offset = [0, -.5]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_idle1.png"
+							"doodads_idle2.png"
+							"doodads_idle3.png"
+							"doodads_idle4.png"
+							"doodads_idle5.png"
+							"doodads_idle6.png"
+							"doodads_idle7.png"
+							"doodads_idle8.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = (&~/Part/Components/Graphics/ToggleOnDoodad/DamageLevels/0/AnimationInterval) * 1.5
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_idle1_33.png"
+							"doodads_idle2_33.png"
+							"doodads_idle3_33.png"
+							"doodads_idle4_33.png"
+							"doodads_idle5_33.png"
+							"doodads_idle6_33.png"
+							"doodads_idle7_33.png"
+							"doodads_idle8_33.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = &../0/AnimationInterval
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_idle1_66.png"
+							"doodads_idle2_66.png"
+							"doodads_idle3_66.png"
+							"doodads_idle4_66.png"
+							"doodads_idle5_66.png"
+							"doodads_idle6_66.png"
+							"doodads_idle7_66.png"
+							"doodads_idle8_66.png"
+						]
+						Size = [3, 2]
+						AnimationInterval = &../0/AnimationInterval
 						AnimationStartTime = WhenSpawned
 					}
 				]
 			}
 			NonOperationalDoodad
 			{
-				Layer = "doodads_low"
+				Layer = "walls" //Wall layer so the robotic arm sprites are draw over the resources sprites
 				Offset = [0, -.5]
 				DamageLevels
 				[
 					{
 						File = "doodads_off.png"
+						Size = [3, 2]
+					}
+					{
+						File = "doodads_off_33.png"
+						Size = [3, 2]
+					}
+					{
+						File = "doodads_off_66.png"
 						Size = [3, 2]
 					}
 				]
@@ -1114,34 +710,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			]
 		}
 
-		BatterySprites
-		{
-			Type = ResourceSprites
-			Location = [1.5, 1]
-			ResourceStorage = BatteryStorage
-			Layer = "doodads_high"
-			ResourceLevels
-			[
-				{
-					File = "batteries1.png"
-					Size = [1, 1]
-					OffSet = [-1, 0]
-				}
-				{
-					File = "batteries2.png"
-					Size = [2, 1]
-					OffSet = [-0.5, 0]
-				}
-				{
-					File = "batteries3.png"
-					Size = [3, 1]
-				}
-				{
-					File = "batteries4.png"
-					Size = [3, 1]
-				}
-			]
-		}
+		BatterySprites : <../factory_he/factory_he.rules>/Part/Components/BatterySprites {}
 
 		OperationEffects
 		{

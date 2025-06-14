@@ -202,10 +202,7 @@ Components
 				Type = Bidirectional
 				Routes
 				[
-					[Port_Thermal_Left, Port_Thermal_Right, 0]
-					
-					[Port_Thermal_Left, NetworkHeatOutput, 0]
-					[Port_Thermal_Left, NetworkHeatReceiver, 0]
+					[NetworkHeatOutput, NetworkHeatReceiver, 0]
 				]
 			}
 		]

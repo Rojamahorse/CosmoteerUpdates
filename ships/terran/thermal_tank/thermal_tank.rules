@@ -47,29 +47,14 @@ Part : <../base_part_terran.rules>/Part
 			Location = [0, 1]
 			Direction = Down
 			Types = [ thermal ]
+			RouteSource = NetworkedHeatStorage
+			RouteEndpoint = NetworkedHeatStorage
 		}
 		
 		Port_BottomRight : Port_BottomLeft
 		{
 			Location = [1, 1]
 		}  
-	
-		Router
-		{
-			Type = NetworkRouter
-			RouteGenerators
-			[
-				{
-					Type = Bidirectional
-					Routes
-					[
-						[Port_BottomLeft, Port_BottomRight, 0]
-					
-						[Port_BottomLeft, NetworkedHeatStorage, 0]
-					]
-				}
-			]
-		}
 	
 		HeatStorage
 		{
