@@ -4,7 +4,8 @@ Part : <../base_part_terran.rules>/Part
 	IconNameKey = "Parts/ArmorIcon"
 	ID = cosmoteer.armor // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	OtherIDs = [armor]
-	EditorGroup = "Defenses"
+	EditorGroups = ["Defenses", "Structure"]
+	DontStackInEditorGroups = ["Structure"]
 	DescriptionKey = "Parts/ArmorDesc"
 	Resources
 	[
@@ -38,7 +39,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [32, 32]
 	}

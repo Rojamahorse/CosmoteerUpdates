@@ -22,20 +22,30 @@ ShowInMinimap = true
 MinimapColorScale = [255, 255, 255, 255]
 Tags = [sun]
 
-ProximityDamage
+ProximityEffects
 {
-	InstantKillRadius = 1
-	RaycastDamageRadius = 2.5
+	InstantKillRadiusFactor = 1.0
+	EffectsRadiusFactor = 2.5
 	RaycastsPerDiameterPerSecond = 5
-	RaycastDamage = [600, 60]
-	RaycastDamageDistanceExponent = 0.5
-	DamageType = heat
+	EffectsScaleOverDistance = [100%, 5%]
+	EffectsDistanceExponent = 1.0
 	IgnoreShipTypes = [cosmoteer.asteroid, cosmoteer.megaroid, cosmoteer.ancient]
-	RaycastDamageMediaEffects
+
+	HitEffects
+	[
+		{
+			Type = StatusApplication
+			StatusType = cosmoteer.heat
+			StatusValue = { BaseValue=400; EffectScaleExponent=1; }
+		}
+	]
+
+	MediaEffects
 	[
 		&<particles/sun_damage.rules>
 	]
-	RaycastDamageCircle
+
+	WarningCircle
 	{
 		Thickness = 8
 		QuadCount = 256
@@ -59,8 +69,8 @@ ProximityDamage
 			AlphaOperator = Add
 		}
 	}
-	RaycastDamageCircleThicknessZoomExponent = .4
-	RaycastDamageMinimapCircle : RaycastDamageCircle
+	WarningCircleThicknessZoomExponent = 0.4
+	WarningMinimapCircle : WarningCircle
 	{
 		Thickness = 4
 		Color = [255, 255, 255, 255]

@@ -26,7 +26,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [32, 32]
 	}
@@ -40,6 +41,16 @@ Part : <../base_part_terran.rules>/Part
 			Types = [ thermal ]
 			RouteSource = NetworkAverageThermalDissipationLoadValue
 			RouteEndpoint = NetworkAverageThermalDissipationLoadValue
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				IconDrawMode = Never
+				RouteDrawMode = Connected
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+			}
 		}
 		Port_Right : Port_Up
 		{
@@ -52,6 +63,12 @@ Part : <../base_part_terran.rules>/Part
 		Port_Left : Port_Up
 		{
 			Direction = Left
+		}
+
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
 		}
 
 		DestroyedEffects
@@ -114,7 +131,7 @@ Part : <../base_part_terran.rules>/Part
 			Mode = All
 		}
 		//-------------------- END PIPE CONNECTOR TOGGLES ---------------
-		
+
 		NetworkAverageThermalDissipationLoadValue
 		{
 			Type = NetworkValueReceiver
@@ -122,20 +139,20 @@ Part : <../base_part_terran.rules>/Part
 			Categories = [ thermal_load_dissipation ]
 			AllowUncategorized = false
 		}
-		
+
 		ThermalLoadGlowColorFactor
 		{
 			Type = ValueColor
 			AlphaFrom = NetworkAverageThermalDissipationLoadValue
 		}
-		
+
 		FloorBlendSprites : <heat_pipe_blend_sprites.rules>/FloorBlendSprites {}
 		GlowBlendSprites : <heat_pipe_blend_sprites.rules>/GlowBlendSprites
 		{
 			GetColorFrom = ThermalLoadGlowColorFactor
 		}
 		RoofBlendSprites : <heat_pipe_blend_sprites.rules>/RoofBlendSprites {}
-		RoofGlowBlendSprites : <heat_pipe_blend_sprites.rules>/RoofGlowBlendSprites 
+		RoofGlowBlendSprites : <heat_pipe_blend_sprites.rules>/RoofGlowBlendSprites
 		{
 			GetColorFrom = ThermalLoadGlowColorFactor
 		}

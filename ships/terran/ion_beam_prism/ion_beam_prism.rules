@@ -7,7 +7,7 @@ Part : <../base_part_terran.rules>/Part
 	ID = cosmoteer.ion_beam_prism // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	OtherIDs = [cosmoteer.ion_beam_prism_45]
 	SelectionTypeID = ion_beam_prism
-	EditorGroup = "WeaponsEnergy"
+	EditorParentParts = [ "cosmoteer.ion_beam_emitter" ]
 	DescriptionKey = "Parts/IonBeamPrismDesc"
 	Resources
 	[
@@ -40,7 +40,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [48, 60]
 	}
@@ -114,7 +115,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			}
 		}
-		
+
 		Overclock_ToggledIonEnergyStorage
 		{
 			Type = ToggledComponents
@@ -137,7 +138,7 @@ Part : <../base_part_terran.rules>/Part
 			ProvidedValuePerResource = 1/1000
 			IsDrainable = false
 		}
-		
+
 		OverclockedIonEnergy : IonEnergy
 		{
 			ResourceType = ion_energy_overclocked
@@ -151,7 +152,7 @@ Part : <../base_part_terran.rules>/Part
 			TriggerWhenOn = true
 			TriggerWhenOff = false
 		}
-		
+
 		CanFireNonOverclocked
 		{
 			Type = Timer
@@ -312,7 +313,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceScaleFactor = IonEnergy
 			UpdateScaleFactorsPerEmit = true
 		}
-		
+
 		Overclock_BeamEmitter : <./Data/shots/ion_beam/ion_beam_overclock.rules>/Beam, BeamEmitter
 		{
 			OperationalToggle
@@ -322,14 +323,14 @@ Part : <../base_part_terran.rules>/Part
 			ValueScaleFactor = &ResourceStorage
 			ResourceScaleFactor = &ResourceStorage
 		}
-		
+
 		IsEmitting
 		{
 			Type = MultiToggle
 			Toggles = [BeamEmitter, Overclock_BeamEmitter]
 			Mode = Any
 		}
-		
+
 		EmitterValue
 		{
 			Type = MultiValue

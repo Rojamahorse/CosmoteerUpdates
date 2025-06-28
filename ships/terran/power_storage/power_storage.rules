@@ -4,6 +4,7 @@ OVERCLOCK
 	BATTERY_SIZE_FACTOR = 300%
 	MAX_HEAT_PER_SECOND = 500
 	HEAT_PER_BATTERY_DELIVERED = 50
+	PICKUP_RATE = 1000
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -33,7 +34,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [56, 56]
 	}
@@ -88,7 +90,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			IsIntermediateStorage = true
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
-		
+
 		Overclock_BatteryProviderStorage
 		{
 			Type = MultiResourceStorage
@@ -99,9 +101,16 @@ Part : <../base_part_terran_overclock.rules>/Part
 			SuppliesResourcesToggle = PowerToggleOverclocked
 			MinResourcesPickUp = (&../BatteryStorage/MinResourcesPickUp) * (&~/OVERCLOCK/BATTERY_SIZE_FACTOR)
 			MaxResourcesPickUp = &MinResourcesPickUp
+			InitPickUp = (&MinResourcesPickUp) - 999
+			PickUpRate = &~/OVERCLOCK/PICKUP_RATE
 			IsIntermediateStorage = true
+			// Hack to get crew to respect the min pickup
+			ExpectedResourceGenerationRate = 1
+			ExpectedResourceGenerationToggle = Overclock_BatteryProviderStorage
+			ToggleOnResources = (&MinResourcesPickUp) + 1
+			ToggleOffResources = (&MinResourcesPickUp)
 		}
-		
+
 		Overclock_ToggledBatteryStorage
 		{
 			Type = ToggledComponents
@@ -117,7 +126,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 			}
 		}
-		
+
 		Overclock_BatteryStorageProxy
 		{
 			Type = ResourceStorageProxy
@@ -125,7 +134,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ProxyToggle = IsOverclocked
 			ComponentID = Overclock_BatteryStorage
 		}
-		
+
 		BatteryReceiverStorage
 		{
 			Type = MultiResourceStorage
@@ -137,7 +146,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ProvidedValueRange = 0
 			ProvidedValuePerResource = 1/1000
 		}
-		
+
 		BatteryConsumer
 		{
 			Type = ResourceConsumer
@@ -155,7 +164,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -200,7 +209,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			BuffType = ThermalActivity
 			BuffMultiplier = Overclock_BatteryProviderStorage
 		}
-		
+
 		Port_Thermal_TopLeft : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0,0]
@@ -699,7 +708,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -717,7 +726,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [2, 2]
 		}
-		
+
 		PeakHeatGenerationStatValue
 		{
 			Type = StaticValue
@@ -737,7 +746,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 	}
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

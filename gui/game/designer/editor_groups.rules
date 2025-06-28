@@ -58,6 +58,21 @@ Flight
 	SortOrder = 400
 }
 
+Control
+{
+	NameKey = "EditorGroups/Control"
+	Icon
+	{
+		Texture
+		{
+			File = "group_control.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	SortOrder = 450
+}
+
 Crew
 {
 	NameKey = "EditorGroups/Crew"

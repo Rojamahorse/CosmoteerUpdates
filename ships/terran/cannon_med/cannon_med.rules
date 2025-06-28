@@ -1,6 +1,6 @@
 OVERCLOCK
 {
-	HEAT_PER_SHOT = 175
+	HEAT_PER_SHOT = 265
 	BURST = 3
 	BURST_DELAY = 0.1
 	FIRE_INTERVAL_FACTOR = 200%
@@ -71,7 +71,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [42.66, 64]
 	}
@@ -1100,7 +1101,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 	]
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

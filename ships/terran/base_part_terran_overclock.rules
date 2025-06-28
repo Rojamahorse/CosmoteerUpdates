@@ -6,11 +6,22 @@ Part : <base_part_terran.rules>/Part
 	BASE_THERMAL_PORT
 	{
 		Type = NetworkPort
+		OperationalToggle = OverclockModeToggle
+		BlueprintOperationalToggle = &OperationalToggle
 		Types = [ thermal, thermal_out ]
 		// Refuse connection to other 'output' ports
 		IncompatibleTypes = [ thermal_out ]
 		// Allow creating routes *outbound* from the heat input
 		RouteSource = &../HEAT_NETWORK_INPUT
+		Overlay
+		{
+			OverlayIcon = "ThermalPort"
+			RouteLine = "Thermal"
+			DrawRouteHub = false
+			ConnectedEdgeIcon = "ThermalDot"
+			HighlightPartOnPrimaryConnection = true
+			PartHighlightColor = [255, 217, 0, 61]
+		}
 	}
 	
 	// Inheritors should use this as the destination storage for heat generation.

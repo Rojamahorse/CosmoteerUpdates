@@ -30,9 +30,9 @@ SoftRepair
 Diffusion
 {
 	Basis = 0
-	SpeedFactor = 0.02
+	SpeedFactor = 0.01
 	MinDeltaThreshold = 0.1
-	EmptyCellSpeedFactor = 0.01
+	EmptyCellSpeedFactor = 0.04
 	PartOutboundSpeedFactors
 	{
 		cosmoteer.structure = 25

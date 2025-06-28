@@ -45,7 +45,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [64, 64]
 	}
@@ -63,7 +64,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = JunkToggle
 			OnWhenJunk = false
 		}
-	
+
 		ScorchedToggle
 		{
 			Type = StatusToggle
@@ -863,7 +864,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		BatteryFillTime = 1000 / (&~/Part/Components/CombinedBatteryStorage/PickUpRate)
 		PowerCapacity = (&~/Part/Components/CombinedBatteryStorage/MaxResources) / 1000
 	}
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

@@ -84,7 +84,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [55.2, 92]
 	}
@@ -954,7 +955,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 	]
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

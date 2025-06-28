@@ -52,7 +52,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [64, 48]
 	}
@@ -203,7 +204,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			        	BaseValue = 120
 			        	Modifiers
 			        	[
-			        		: ~/MODIFIERS/OVERCLOCK_LERP 
+			        		: ~/MODIFIERS/OVERCLOCK_LERP
 			        		{
 			        			MinValue = &../../BaseValue
 			        			MaxValue = (&MinValue) * (&~/OVERCLOCK/POWER_USE_FACTOR)
@@ -266,7 +267,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -278,7 +279,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Trigger = Overclock_ResourceConverterProxy
 			Amount = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/HEAT_TO_RESOURCE)
 		}
-		
+
 		Overclock_ResourceConverterProxy
 		{
 			Type = TriggerProxy
@@ -1051,7 +1052,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -1078,7 +1079,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints_flipped.png"
 			Size = [4, 3]
 		}
-		
+
 		Overclock_HeatProductionInterval
 		{
 			Type = BuffableValue
@@ -1125,7 +1126,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		RecPower = &PowerPerSecond
 		RecCrew = (&RecPower) * 4
 	}
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

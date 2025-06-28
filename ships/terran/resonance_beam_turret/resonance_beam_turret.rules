@@ -4,7 +4,7 @@ Part : <../base_part_terran.rules>/Part
 	IconNameKey = "Parts/ResonanceBeamTurretIcon"
 	ID = cosmoteer.resonance_beam_turret
 	OtherIDs = []
-	EditorGroups = [ "WeaponsEnergy", "Thermal" ]
+	EditorGroups = [ "WeaponsEnergy" ]
 	DescriptionKey = "Parts/ResonanceBeamTurretDesc"
 	Resources
 	[
@@ -64,7 +64,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [61.3, 92]
 	}
@@ -441,13 +442,13 @@ Part : <../base_part_terran.rules>/Part
 		BaseAmplification
 		{
 			Type = StaticValue
-			Value = 0
+			Value = 100%
 		}
 
 		BaseDilation
 		{
 			Type = StaticValue
-			Value = -50%
+			Value = 50%
 		}
 
 		OverclockAmplificationFactor
@@ -505,148 +506,19 @@ Part : <../base_part_terran.rules>/Part
 			Value = -1
 		}
 
-		// Convert value range -inf -> +inf to a positive factor
-		// i_min = min(amp, 0)
-		// i_max = max(amp, 0)
-		// i_neg_denom = (i_min - 1)
-		// i_neg_scaled = (1 - i_low) / i_neg_d
-		// i_neg = i_neg_scaled - i_low
-		// i_pos = i_max + 1
-		// i = abs(i_pos * i_neg)
-		Intensity_LowerBound
-		{
-			Type = StaticValue
-			// Intensity approaches this as amplification approaches -infinity. Must be in 0 -> 1 range.
-			Value = 0.5
-		}
-		Intensity_LowerBoundNeg
-		{
-			Type = StaticValue
-			Value = -(&~/Part/Components/Intensity_LowerBound/Value)
-		}
-		Intensity_NegScale
-		{
-			Type = StaticValue
-			Value = 1 - (&~/Part/Components/Intensity_LowerBound/Value)
-		}
-		Intensity_Min
-		{
-			Type = MultiValue
-			Mode = Min
-			Values = [ AmplificationValue, Zero ]
-		}
-		Intensity_Max
-		{
-			Type = MultiValue
-			Mode = Max
-			Values = [ AmplificationValue, Zero ]
-		}
-		Intensity_NegDenominator
-		{
-			Type = MultiValue
-			Mode = Add
-			Values = [ Intensity_Min, NegOne ]
-		}
-		Intensity_NegDownscaled
-		{
-			Type = ValueOperation
-			Operator = Divide
-			ValueOne = Intensity_NegScale
-			ValueTwo = Intensity_NegDenominator
-		}
-		Intensity_Neg
-		{
-			Type = MultiValue
-			Mode = Add
-			Values = [ Intensity_NegDownscaled, Intensity_LowerBoundNeg ]
-		}
-		Intensity_Pos
-		{
-			Type = MultiValue
-			Mode = Add
-			Values = [ Intensity_Max, One ]
-		}
-		IntensityMultiplier
-		{
-			Type = MultiValue
-			Mode = Multiply
-			Values = [ Intensity_Pos, Intensity_Neg ]
-			Abs = true
-		}
-
-		Radius_LowerBound
-		{
-			Type = StaticValue
-			Value = 0.5
-		}
-		Radius_LowerBoundNeg
-		{
-			Type = StaticValue
-			Value = -(&~/Part/Components/Radius_LowerBound/Value)
-		}
-		Radius_NegScale
-		{
-			Type = StaticValue
-			Value = 1 - (&~/Part/Components/Radius_LowerBound/Value)
-		}
-		Radius_Min
-		{
-			Type = MultiValue
-			Mode = Min
-			Values = [ DilationValue, Zero ]
-		}
-		Radius_Max
-		{
-			Type = MultiValue
-			Mode = Max
-			Values = [ DilationValue, Zero ]
-		}
-		Radius_NegDenominator
-		{
-			Type = MultiValue
-			Mode = Add
-			Values = [ Radius_Min, NegOne ]
-		}
-		Radius_NegDownscaled
-		{
-			Type = ValueOperation
-			Operator = Divide
-			ValueOne = Radius_NegScale
-			ValueTwo = Radius_NegDenominator
-		}
-		Radius_Neg
-		{
-			Type = MultiValue
-			Mode = Add
-			Values = [ Radius_NegDownscaled, Radius_LowerBoundNeg ]
-		}
-		Radius_Pos
-		{
-			Type = MultiValue
-			Mode = Add
-			Values = [ Radius_Max, One ]
-		}
-		RadiusMultiplier
-		{
-			Type = MultiValue
-			Mode = Multiply
-			Values = [ Radius_Pos, Radius_Neg ]
-			Abs = true
-		}
-
 		ThermalIntensityBuff
 		{
 			Type = SelfBuffProvider
 			BuffType = ThermalIntensity
 			BuffAmount = 1
-			BuffMultiplier = IntensityMultiplier
+			BuffMultiplier = AmplificationValue
 		}
 		ThermalRadiusBuff
 		{
 			Type = SelfBuffProvider
 			BuffType = ThermalRadius
 			BuffAmount = 1
-			BuffMultiplier = RadiusMultiplier
+			BuffMultiplier = DilationValue
 		}
 		ThermalActivityBuff
 		{
@@ -670,7 +542,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ValueOperation
 			Operator = Power
-			ValueOne = IntensityMultiplier
+			ValueOne = AmplificationValue
 			ValueTwo = ThermalShieldPiercingExponent
 		}
 		ThermalShieldPiercingDenominator
@@ -866,6 +738,17 @@ Part : <../base_part_terran.rules>/Part
 			Direction = Up
 			RouteSource = NetworkHeatInput
 			RouteEndpoint = NetworkHeatInput
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
 		}
 		Port_TopRight : Port_TopLeft
 		{
@@ -902,6 +785,12 @@ Part : <../base_part_terran.rules>/Part
 			Location = [0, 1]
 		}
 
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
+
 		Router
 		{
 			Type = NetworkRouter
@@ -929,7 +818,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = DeathEffects
 			Location = [2, 2]
 			IncludeWhenUnderConstruction = false
-			
+
 			HitEffects
 			[
 				{
@@ -2153,12 +2042,13 @@ Part : <../base_part_terran.rules>/Part
 				DilationHeatSpreadDistance = &~/Part/Components/BeamEmitter/BASE_HEAT_SPREAD_BUDGET
 //				HitShieldHeatFactor = (&~/Part/Components/BeamEmitter/SHIELD_HEAT_FACTOR) * 100
 
-				SHIELD_OVERLOAD_BASE = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_BASE) * 100
-				ShieldDamagePowerCost = [(&../SHIELD_OVERLOAD_BASE) * (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_AMP_FACTOR),
-					(&../SHIELD_OVERLOAD_BASE) * (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_DILATION_FACTOR)]
+				SHIELD_OVERLOAD_BASE = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_BASE)
+				SHIELD_OVERLOAD_PER_AMP = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_PER_AMP)
+				SHIELD_OVERLOAD_PER_DILATION = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_PER_DILATION)
+				ShieldDamagePowerCost = [ (&../SHIELD_OVERLOAD_BASE) * 100, (&../SHIELD_OVERLOAD_PER_AMP) * 100, (&../SHIELD_OVERLOAD_PER_DILATION) * 100 ]
 
-				BaseAmplification = (1 + (&~/Part/Components/BaseAmplification/Value)) * 100
-				BaseDilation = (1 + (&~/Part/Components/BaseDilation/Value)) * 100
+				BaseAmplification = (&~/Part/Components/BaseAmplification/Value) * 100
+				BaseDilation = (&~/Part/Components/BaseDilation/Value) * 100
 			}
 		}
 //		{

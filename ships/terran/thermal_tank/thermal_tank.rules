@@ -28,7 +28,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [56, 56]
 	}
@@ -49,13 +50,30 @@ Part : <../base_part_terran.rules>/Part
 			Types = [ thermal ]
 			RouteSource = NetworkedHeatStorage
 			RouteEndpoint = NetworkedHeatStorage
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
 		}
-		
+
 		Port_BottomRight : Port_BottomLeft
 		{
 			Location = [1, 1]
-		}  
-	
+		}
+
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
+
 		HeatStorage
 		{
 			Type = ResourceStorage
@@ -73,14 +91,14 @@ Part : <../base_part_terran.rules>/Part
 			ResourceStorage = HeatStorage
 			Categories = [ thermal_storage ]
 		}
-	
+
 		DestroyedHeatEffects
 		{
 			Type = DeathEffects
 			Location = [1, 1]
 			FactorHitEffectsWith = HeatStorage
 			IncludeWhenUnderConstruction = false
-			
+
 			HitEffects
 			[
 				{
@@ -110,7 +128,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 1]
 			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 		}
-	
+
 		HeatBatterySprites
 		{
 			Type = ResourceSprites
@@ -156,7 +174,7 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
-	
+
 		Graphics
 		{
 			Type = Graphics
@@ -496,8 +514,8 @@ Part : <../base_part_terran.rules>/Part
 		}
 		//---------------------- END PIPE CONNECTOR ----------------------
 	}
-	
-	Stats 
+
+	Stats
 	{
 		HeatCapacity = (&~/Part/Components/HeatStorage/MaxResources) / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
 //		DeathFireSizeByHeat =

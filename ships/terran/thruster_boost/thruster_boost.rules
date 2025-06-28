@@ -3,14 +3,14 @@ OVERCLOCK
 	THRUST_FACTOR = 250%
 	MAX_POWER_USAGE_FACTOR = 175%
 	POWER_USAGE_FACTOR = 1 / (&THRUST_FACTOR) * (&MAX_POWER_USAGE_FACTOR)
-	THRUST_HEAT_PER_SECOND = 550
-	
+	THRUST_HEAT_PER_SECOND = 675
+
 	BASE_BOOST_HEAT_FACTOR = 175%
 	BOOST_HEAT_FACTOR_PER_BATTERY = 20%
 	BOOST_HEAT_FACTOR_PER_SECOND = -6%
 	BOOST_HEAT_FACTOR_POWER_THRESHOLD = (&~/Part/Components/RealBatteryStorage/MaxResources)
 
-	BOOST_MAX_POWER_USAGE_FACTOR = 200%
+	BOOST_MAX_POWER_USAGE_FACTOR = 175%
 	BOOST_POWER_RAMP_TIME = 2
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
@@ -83,7 +83,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [42.66, 106.66]
 	}
@@ -198,6 +199,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 		}
 
 		AutoBoostOffTrigger
+		{
+			Type = MultiTrigger
+			Triggers = [ BatteryDepletedTrigger, OverclockDisabledTrigger ]
+		}
+
+		BatteryDepletedTrigger
 		{
 			Type = ToggleTrigger
 			Toggle = RealBatteryStorage
@@ -1468,7 +1475,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 	]
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
@@ -1485,7 +1492,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				Stats
 				{
 					ThrusterForce = (&~/Part/BoostedThrusterForce) * (&~/OVERCLOCK/THRUST_FACTOR)
-					BASE_THRUSTER_POWER_USAGE = (&~/Part/BoostedFuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000 
+					BASE_THRUSTER_POWER_USAGE = (&~/Part/BoostedFuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000
 					ThrusterPowerUsageRamp = [&../BASE_THRUSTER_POWER_USAGE, (&../BASE_THRUSTER_POWER_USAGE) * (&~/OVERCLOCK/BOOST_MAX_POWER_USAGE_FACTOR)]
 					ThrusterPowerUsageRampTime = (&~/OVERCLOCK/BOOST_POWER_RAMP_TIME)
 					BaseHeatFactor = [(&~/OVERCLOCK/BASE_BOOST_HEAT_FACTOR) * 100, (&~/OVERCLOCK/THRUST_HEAT_PER_SECOND) * (&~/OVERCLOCK/BASE_BOOST_HEAT_FACTOR)]

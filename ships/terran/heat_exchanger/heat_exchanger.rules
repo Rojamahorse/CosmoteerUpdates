@@ -27,7 +27,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [32, 32]
 	}
@@ -40,7 +41,7 @@ Part : <../base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
-	
+
 		Port_Down
 		{
 			Type = NetworkPort
@@ -49,8 +50,17 @@ Part : <../base_part_terran.rules>/Part
 			Types = [ thermal ]
 			RouteSource = NetworkHeatInput
 			RouteEndpoint = NetworkHeatInput
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
 		}
-	
+
 		Router
 		{
 			Type = NetworkRouter
@@ -67,14 +77,14 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-	
+
 		NetworkHeatInput
 		{
 			Type = NetworkResourceInput
 			ResourceType = heat
 			Mode = DistributeProportionallyByAvailable
 		}
-		
+
 		IsNetworkHeatNonFull
 		{
 			Type = ThresholdToggle
@@ -83,14 +93,14 @@ Part : <../base_part_terran.rules>/Part
 			MaxAmount = 0
 			Invert = true
 		}
-	
+
 		IsAbleToAbsorb
 		{
 			Type = MultiToggle
 			Toggles = [ PowerToggle, IsNetworkHeatNonFull ]
 			Mode = All
 		}
-	
+
 		HeatExchangerTimer
 		{
 			Type = Timer
@@ -124,7 +134,7 @@ Part : <../base_part_terran.rules>/Part
 			MediaEffectsOnDecrease
 			[
 				&<particles/heat_sink_absorb.rules>
-				
+
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
 					Sound = "sounds/heat_absorb.wav"
@@ -132,12 +142,12 @@ Part : <../base_part_terran.rules>/Part
 					RampUpTime = .25
 					RampDownTime = .25
 				}
-			]			
+			]
 		}
 
 		//HeatExchangerValueDeltaPool { Type = StaticValue; Value = (&~/Part/Components/HeatExchanger/ValueDeltaPool) }
 		HeatExchangerValueDeltaPool { Type = StaticValue; Value = 100 }
-		
+
 		NormalizedAbsorptionValue
 		{
 			Type = ValueOperation
@@ -160,7 +170,7 @@ Part : <../base_part_terran.rules>/Part
 			MaxDelta = 0.5
 			Deterministic = false
 		}
-		
+
 		HeatExchangerEffects
 		{
 			Type = ContinuousEffects
@@ -171,14 +181,14 @@ Part : <../base_part_terran.rules>/Part
 				&<particles/heat_sink_max.rules>
 			]
 		}
-	
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
 			Location = [.5, .5]
 		}
-	
+
 		Graphics
 		{
 			Type = Graphics
@@ -282,7 +292,7 @@ Part : <../base_part_terran.rules>/Part
 			Categories = [ thermal_load_dissipation ]
 			AllowUncategorized = false
 		}
-		
+
 		ThermalLoadGlowColorFactor
 		{
 			Type = ValueColor
@@ -368,7 +378,7 @@ Part : <../base_part_terran.rules>/Part
 			File = "blueprints.png"
 			Size = [1, 1]
 		}
-		
+
 		Indicators
 		{
 			Type = IndicatorSprites
@@ -385,7 +395,7 @@ Part : <../base_part_terran.rules>/Part
 					}
 					HidesIndicators = [1]
 				}
-				
+
 				// Heat storage full
 				{
 					Toggle = IsNetworkHeatNonFull
@@ -407,12 +417,12 @@ Part : <../base_part_terran.rules>/Part
 		PipeConnectorDown_Components : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components {}
 		//---------------------- END PIPE CONNECTOR ----------------------
 	}
-	
-	Stats 
+
+	Stats
 	{
 		HeatAbsorption = (&~/Part/Components/HeatExchanger/ValueDeltaPool) / (&~/Part/Components/HeatExchangerTimer/Duration)
 		HeatAbsorptionInefficiency = (&~/Part/Components/HeatExchanger/INEFFICIENCY) * 100
 		HeatAbsorptionRadius = (&~/Part/Components/HeatExchanger/Region/Distance)
-		
+
 	}
 }

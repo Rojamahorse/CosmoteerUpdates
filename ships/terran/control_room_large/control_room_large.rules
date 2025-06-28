@@ -3,7 +3,7 @@ Part : <../base_part_terran.rules>/Part
 	NameKey = "Parts/ControlRoomLarge"
 	IconNameKey = "Parts/ControlRoomLargeIcon"
 	ID = cosmoteer.control_room_large // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroup = "Flight"
+	EditorGroup = "Control"
 	DescriptionKey = "Parts/ControlRoomLargeDesc"
 	Resources
 	[
@@ -57,7 +57,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [80, 80]
 	}

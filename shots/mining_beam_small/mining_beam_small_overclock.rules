@@ -2,8 +2,8 @@ BASE = &<mining_beam_small.rules>
 
 RANGE = (&~/BASE/Range) + 50
 RADIUS = 2
-DAMAGE_FACTOR = 75%
-SHIELD_DAMAGE_FACTOR = 200% / ((&RADIUS) * 2)
+DAMAGE_FACTOR = 50%
+SHIELD_DAMAGE_FACTOR = 160% / ((&RADIUS) * 2)
 RADIUS_FALLOFF = 0 
 
 Beam : BASE

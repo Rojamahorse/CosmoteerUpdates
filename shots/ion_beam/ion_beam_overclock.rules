@@ -4,6 +4,7 @@ OVERCLOCK
 	LIGHTNING = &~/Beam/HitOperational/HitEffects/2
 	LIGHTNING_OFFSET = 8
 	LIGHTNING_BASE_CHAIN_LENGTH = [3,3]
+	LIGHTNING_DAMAGE = 180
 }
 
 BEAM_BASE = &<ion_beam.rules>
@@ -101,7 +102,7 @@ Beam : <ion_beam.rules>
 						Type = Damage
 						Damage : ~/MODIFIABLE_DAMAGE
 						{
-							BaseValue = 200
+							BaseValue = &~/OVERCLOCK/LIGHTNING_DAMAGE
 						}
 						Filter
 						{

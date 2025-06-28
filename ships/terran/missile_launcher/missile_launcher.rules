@@ -200,15 +200,32 @@ Part : <../base_part_terran.rules>/Part
 			IncludeInBlueprints = dynamic
 			Components = &<thermal/missile_launcher_thermal.rules>/Components
 		}
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
 		Port_Thermal_Left
 		{
 			Type = NetworkPort
 			OperationalToggle = ThermalMissilesToggle
+			BlueprintOperationalToggle = ThermalMissilesToggle
 			Location = [0, 1]
 			Direction = Left
 			Types = [ thermal ]
 			RouteSource = NetworkHeatOutputProxy
 			RouteEndpoint = NetworkHeatOutputProxy
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
 		}
 		Port_Thermal_Right : Port_Thermal_Left
 		{

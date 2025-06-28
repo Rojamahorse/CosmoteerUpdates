@@ -41,7 +41,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [56, 56]
 	}
@@ -59,7 +60,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = JunkToggle
 			OnWhenJunk = false
 		}
-	
+
 		ScorchedToggle
 		{
 			Type = StatusToggle
@@ -172,7 +173,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Trigger = Overclock_PowerGenerationTrigger
 			Amount { BaseValue=ceil((&~/OVERCLOCK/HEAT_PER_BATTERY) * (&~/HEAT_TO_RESOURCE)); EffectScaleExponent=1 }
 		}
-		
+
 		Port_Thermal_TopLeft : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0,0]
@@ -821,7 +822,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		BatteryFillTime = 0
 		PowerCapacity = (&~/Part/Components/CombinedBatteryStorage/MaxResources) / 1000
 	}
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

@@ -116,7 +116,7 @@ StatsGui
 			}
 		}
 	}
-	DefaultStatToggleButton : /Widgets/FlatButton, /Widgets/ImageListItem 
+	DefaultStatToggleButton : /Widgets/FlatButton, /Widgets/ImageListItem
 	{
 		SelectedNineSlice : StatePressedNineSlice
     	{
@@ -160,7 +160,7 @@ StatsGui
     {
     	Texture
     	{
-    		File = "group_flight.png"
+    		File = "group_control.png"
     		MipLevels = 2
     		SampleMode = Linear
     	}
@@ -755,17 +755,4 @@ FavoriteSprite
 		SampleMode = Linear
 	}
 	Size = [20, 20]
-}
-
-PartNetworkPortSprite
-{
-	Texture
-	{
-		File = "port_indicator.png"
-		SampleMode = Linear
-		MipLevels = max
-	}
-//	VertexColor = [0, 183, 255, 255]
-	VertexColor = [10, 212, 98, 255]
-	Size = [0.5, 0.5]
 }

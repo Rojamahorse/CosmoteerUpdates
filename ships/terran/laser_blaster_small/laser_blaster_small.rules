@@ -1,7 +1,7 @@
 OVERCLOCK
 {
 	HEAT_PER_SHOT = 90
-	FIRE_RATE_FACTOR = 300%
+	FIRE_RATE_FACTOR = 225%
 	BEAM = &<./Data/shots/laser_bolt_small/overclock/laser_bolt_small_overclock.rules>
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
@@ -42,7 +42,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [16, 64]
 	}
@@ -807,7 +808,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 	]
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

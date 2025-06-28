@@ -171,7 +171,7 @@ Components
 	FirePermissionToggle
 	{
 		Type = MultiToggle
-		Toggles = [CommonReloadTimerHE, FireModeToggle]
+		Toggles = [CommonReloadTimerThermal, FireModeToggle]
 		Mode = All
 	}
 
@@ -615,7 +615,7 @@ Components
 			// Out of missiles.
 			{
 				Toggle = PartsPrereq
-				Delay = &<../missile_launcher.rules>/Part/Components/CommonReloadTimerHE/Duration
+				Delay = &<../missile_launcher.rules>/Part/Components/CommonReloadTimerThermal/Duration
 				AtlasSprite
 				{
 					File = &/INDICATORS/NoThermalMissiles

@@ -11,7 +11,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	NameKey = "Parts/ThrusterRocketExtender"
 	IconNameKey = "Parts/ThrusterRocketExtenderIcon"
 	ID = cosmoteer.thruster_rocket_extender // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroup = "Flight"
+	EditorParentParts = [ "cosmoteer.thruster_rocket_nozzle" ]
 	DescriptionKey = "Parts/ThrusterRocketExtenderDesc"
 	Resources
 	[
@@ -46,7 +46,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [64, 48]
 	}
@@ -337,7 +338,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOffValue = Zero
 			ToggleOnValue = One
 		}
-		
+
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
@@ -373,7 +374,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ComponentIDs = [ EngineHeatCollectionStorage ]
 			}
 		}
-		
+
 		// Overriding to use the combined heat input
 		HeatDistributionStorage : ^/0/HeatDistributionStorage
 		{
@@ -394,14 +395,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
 			Interval = 0.5
 		}
-		
+
 		Overclock_ActivationBuff
 		{
 			Type = SelfBuffProvider
 			BuffType = ThermalActivity
 			BuffMultiplier = Overclock_SmoothedThrusterActivation
 		}
-		
+
 		Overclock_SmoothedThrusterActivation
 		{
 			Type = SmoothedValue
@@ -807,7 +808,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Size = [1, 1]
 					}
 				}
-				
+
 				// Resetting from overclock
 				{
 					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
@@ -825,7 +826,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "blueprints.png"
 			Size = [3, 2]
 		}
-		
+
 		PeakHeatGenerationStatValue
 		{
 			Type = StaticValue
@@ -848,7 +849,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		RecPower = &<../thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/Stats/RecPower
 		RecCrew = &<../thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/Stats/RecCrew
 	}
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

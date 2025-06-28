@@ -44,7 +44,7 @@ Techs
 		NameKey = &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/NameKey
 		DescriptionKey = &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/DescriptionKey
 		Icon = &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/EditorIcon
-		EditorGroup = &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/EditorGroup
+		EditorGroup = &<./Data/ships/terran/ion_beam_emitter/ion_beam_emitter.rules>/Part/EditorGroup
 		PartsUnlocked = [&<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/ID]
 		Cost = 5000
 		Prerequisites = [cosmoteer.ion_beam_emitter]

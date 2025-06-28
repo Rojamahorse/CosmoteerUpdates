@@ -1,10 +1,9 @@
 OVERCLOCK
 {
-	ARC_FACTOR = 55%
-	DAMAGE_DRAIN_FACTOR = 1 / 3
-	EMP_RESIST = 50%
+	ARC_FACTOR = 150%
+	ARC_RADIUS_FACTOR = 150%
 	HEAT_PER_SECOND = 40
-	HEAT_PER_DAMAGE = 0.5
+	HEAT_PER_DAMAGE = 0.25
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -42,7 +41,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [42.66, 64]
 	}
@@ -99,13 +99,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 				Modifiers
 				[
 					{
-						Type = BuffRemap
-						BuffType = Overclock
-						ModificationMode = Add
-						RemapFrom = [0, 1]
-						RemapTo = [0, (&~/OVERCLOCK/EMP_RESIST)]
-					}
-					{
 						Type = Status
 						StatusType = cosmoteer.shield_overload
 						ModificationMode = Subtract
@@ -147,7 +140,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 		ArcShield
 		{
 			Type = ArcShield
-			Radius = 7.5
+			Radius
+			{
+				BaseValue = 7.5
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/ARC_RADIUS_FACTOR]
+					}
+				]
+			}
 			Arc
 			{
 				BaseValue = 90d
@@ -175,13 +181,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 						StatusType = cosmoteer.shield_overload
 						ModificationMode = Multiply
 						BaseStatusValue = 1
-					}
-					{
-						Type = BuffRemap
-						BuffType = Overclock
-						ModificationMode = Multiply
-						RemapFrom = [0, 1]
-						RemapTo = [1, &~/OVERCLOCK/DAMAGE_DRAIN_FACTOR ]
 					}
 				]
 			}
@@ -362,7 +361,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = ArcSprite
 			ChainedTo = ArcShield
-			Radius = &../ArcShield/Radius
+			Radius = (&../ArcShield/Radius/BaseValue) * (&~/OVERCLOCK/ARC_RADIUS_FACTOR)
 			Arc = (&../ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/ARC_FACTOR)
 			SpriteSegments = (&../ArcShield/BlueprintArcSpriteSegments)
 			Sprite
@@ -777,7 +776,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = ToggleEffects
 			ChainedTo = ArcShield
-			Location = [&~/Part/Components/ArcShield/Radius, 0]
+			Location = [&~/Part/Components/ArcShield/Radius/BaseValue, 0]
 			Toggle = IsOperational
 			ToggledOnMediaEffects
 			[
@@ -1175,20 +1174,19 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ShieldHP = (&~/Part/Components/BatteryStorage/MaxResources) / (&~/Part/Components/ArcShield/ResourceDrainPerDamage/BaseValue)
 				ShieldPenResist = &~/Part/Components/ArcShield/PenetrationResistance/0
 				ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue)
-				ShieldDist = (&~/Part/Components/ArcShield/Radius) - (&~/Part/Components/ArcShield/Location/1)
+				ShieldDist = (&~/Part/Components/ArcShield/Radius/BaseValue) - (&~/Part/Components/ArcShield/Location/1)
 				PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000
 			}
 		}
 	]
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
 		Stats
 		{
 			ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/ARC_FACTOR)
-			ShieldHP = (&~/Part/StatsByCategory/0/Stats/ShieldHP) / (&~/OVERCLOCK/DAMAGE_DRAIN_FACTOR)
-			EMPResistPercentage = (&~/OVERCLOCK/EMP_RESIST) * 100
+			ShieldDist = (&~/Part/Components/ArcShield/Radius/BaseValue) * (&~/OVERCLOCK/ARC_RADIUS_FACTOR)
 			HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
 			HeatPerDamage = (&~/OVERCLOCK/HEAT_PER_DAMAGE)
 		}

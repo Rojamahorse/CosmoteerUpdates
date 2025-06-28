@@ -354,6 +354,7 @@ PartToggles
 			// High-Explosive.
 			{
 				ChoiceID = "missile_type_he"
+				Mode = 0
 				ButtonToolTipKey = "PartToggles/MissileType_HE"
 				ButtonSprite
 				{
@@ -369,6 +370,7 @@ PartToggles
 			// EMP.
 			{
 				ChoiceID = "missile_type_emp"
+				Mode = 1
 				ButtonToolTipKey = "PartToggles/MissileType_EMP"
 				ButtonSprite
 				{
@@ -381,9 +383,26 @@ PartToggles
 				}
 			}
 
+			// Thermal Canister.
+			{
+				ChoiceID = "missile_type_thermal"
+				Mode = 4
+				ButtonToolTipKey = "PartToggles/MissileType_Thermal"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "missile_type_thermal.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
 			// Nuke.
 			{
 				ChoiceID = "missile_type_nuke"
+				Mode = 2
 				ButtonToolTipKey = "PartToggles/MissileType_Nuke"
 				ButtonSprite
 				{
@@ -399,27 +418,13 @@ PartToggles
 			// Mine.
 			{
 				ChoiceID = "missile_type_mine"
+				Mode = 3
 				ButtonToolTipKey = "PartToggles/MissileType_Mine"
 				ButtonSprite
 				{
 					Texture
 					{
 						File = "missile_type_mine.png"
-						MipLevels = 2
-						SampleMode = Linear
-					}
-				}
-			}
-			
-			// Thermal Canister.
-			{
-				ChoiceID = "missile_type_thermal"
-				ButtonToolTipKey = "PartToggles/MissileType_Thermal"
-				ButtonSprite
-				{
-					Texture
-					{
-						File = "missile_type_thermal.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
@@ -564,7 +569,7 @@ PartToggles
 			}
 		]
 	}
-	
+
 	// Tractor Beam Overcharge
 	{
 		ToggleID = "tractor_overload"
@@ -608,7 +613,7 @@ PartToggles
 			}
 		]
 	}
-	
+
 	// Safe / dangerous toggle
 	{
 		ToggleID = "thermal_safety"
@@ -630,7 +635,7 @@ PartToggles
 					VertexColor = [255, 4, 0]
 				}
 			}
-		
+
 			// Safe
 			{
 				ChoiceID = "thermal_safety_on"
@@ -648,7 +653,7 @@ PartToggles
 			}
 		]
 	}
-	
+
 	// Thermal overclock toggle
 	{
 		ToggleID = "thermal_overclock"

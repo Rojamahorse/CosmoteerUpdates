@@ -119,7 +119,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [45,90]
 	}
@@ -233,7 +234,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				BaseValue = ((&../BASE_MAX_VALUE) - (&../MinValue)) / (&../BASE_RAMP_DOWN_TIME)
 				Modifiers
 				[
-					: ../^/0/Modifiers/0 
+					: ../^/0/Modifiers/0
 					{
 						RemapTo = [1, (&../../../../OVERCLOCK_RAMP_PER_SEC) / 2]
 					}
@@ -787,7 +788,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			InvertOperationalToggle = true
 			ValueRange
 			[
-				&~/Part/Components/RampUpAccumulator/MinValue 
+				&~/Part/Components/RampUpAccumulator/MinValue
 				{
 					BaseValue = &~/Part/Components/RampUpAccumulator/BASE_MAX_VALUE
 					Modifiers
@@ -2911,7 +2912,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 	]
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

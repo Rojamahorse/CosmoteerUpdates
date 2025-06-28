@@ -29,7 +29,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [21.33,70.65]
 	}
@@ -72,10 +73,27 @@ Part : <../base_part_terran.rules>/Part
 			Types = [ thermal ]
 			RouteSource = NetworkedHeatBuffer
 			RouteEndpoint = NetworkedHeatBuffer
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
 		}
 		Port_Right : Port_Left
 		{
 			Direction = Right
+		}
+
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
 		}
 
 		Router
@@ -93,7 +111,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-	
+
 		HeatBuffer
 		{
 			Type = ResourceStorage
@@ -112,7 +130,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceStorage = HeatBuffer
 			Categories = [ thermal_storage ]
 		}
-		
+
 		NetworkHeatOutput
 		{
 			Type = NetworkResourceOutput
@@ -122,7 +140,7 @@ Part : <../base_part_terran.rules>/Part
 			ProvidedValuePerResource = 1
 			Categories = [ thermal_storage ]
 		}
-		
+
 		NormalizedDissipationValue
 		{
 			Type = ValueOperation
@@ -145,7 +163,7 @@ Part : <../base_part_terran.rules>/Part
 		NormalizedDissipationValueSmoothed
 		{
 			Type = SmoothedValue
-			ValueSource = NormalizedDissipationValue
+			ValueSource = DissipationSmoothingTargetValue
 			MaxDelta = 0.25
 			Deterministic = false
 		}
@@ -169,7 +187,7 @@ Part : <../base_part_terran.rules>/Part
 				MaxTiles = 120
 				MaxOcclusionDistance = 10
 			}
-			
+
 			HEAT_PER_SECOND = 1100
 			MAX_SCORE = (&HEAT_PER_SECOND) * (&~/Part/Components/HeatDissipationConverter/Interval) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
 			TILE_SCORE = (2 * (&MAX_SCORE)) / ((&Line/MaxTiles) + 1)
@@ -186,7 +204,7 @@ Part : <../base_part_terran.rules>/Part
 				//&<particles/heat_sink_radiation_base2.rules>
 			]
 			OcclusionCheckInterval = (&~/Part/Components/HeatDissipationConverter/Interval) / 4;
-			OcclusionHitEffects 
+			OcclusionHitEffects
 			[
 				{
 					Type = StatusApplication
@@ -233,7 +251,7 @@ Part : <../base_part_terran.rules>/Part
 			FractionalTextValueBasis = &MAX_SCORE
 			FractionalTextValueScaleFactor = 100
 		}
-		
+
 		DissipationBuff
 		{
 			Type = SelfBuffProvider
@@ -241,14 +259,14 @@ Part : <../base_part_terran.rules>/Part
 			BuffAmount = 1
 			BuffMultiplier = DissipationScore
 		}
-		
+
 		HeatDissipationConverter
 		{
 			Type = ResourceConverter
 			OperationalToggle = PowerToggle
 			FromStorage = NetworkHeatOutput
 			MinFromQuantityForConversion = 1
-			FromQuantity 
+			FromQuantity
 			{
 				BaseValue = 1
 				BuffType = HeatDissipation
@@ -256,7 +274,7 @@ Part : <../base_part_terran.rules>/Part
 			}
 			Interval = 0.5
 		}
-		
+
 		SteamEffects
 		{
 			Type = ContinuousEffects
@@ -272,13 +290,13 @@ Part : <../base_part_terran.rules>/Part
 				&<particles/radiator_heat_base.rules>
 				&<particles/radiator_heat_scaling.rules>
 				&<particles/radiator_heat_sparks.rules>
-				
+
 				: /BASE_SOUNDS/AudioExterior
 				{
 					Sound = "sounds/radiator_venting.wav"
 					RampUpTime = .2
 					RampDownTime = .4
-				
+
 					DynamicVolume
 					{
 						MinDistance = 0
@@ -299,7 +317,7 @@ Part : <../base_part_terran.rules>/Part
 						MinZoom = 1
 						MaxZoom = 12
 						ZoomFalloff = 2
-						
+
 						Filter
 						{
 							FilterType = LowPassAmplify
@@ -308,10 +326,10 @@ Part : <../base_part_terran.rules>/Part
 							FrequencyFactorExponent = 0.25
 						}
 					}
-				}	
+				}
 			]
 		}
-	
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -414,7 +432,7 @@ Part : <../base_part_terran.rules>/Part
 				]
 			}
 		}
-		
+
 		Indicators
 		{
 			Type = IndicatorSprites
@@ -432,7 +450,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-		
+
 		Left_Pipe_Components
 		{
 			Type = ToggledComponents
@@ -550,7 +568,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			}
 		}
-		
+
 		One { Type=StaticValue; Value=1; }
 		ThermalLoadFactor
 		{
@@ -704,8 +722,8 @@ Part : <../base_part_terran.rules>/Part
 			ValueFrom = HeatDissipationStatValue
 		}
 	}
-	
-	Stats 
+
+	Stats
 	{
 		DISSIPATION_RESOURCE = (&~/Part/Components/DissipationScore/MAX_SCORE) / (&~/Part/Components/HeatDissipationConverter/Interval)
 		HeatDissipation = (&DISSIPATION_RESOURCE) * (&<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO)

@@ -2,7 +2,7 @@ OVERCLOCK
 {
 	BULLET = &<./Data/shots/bullet_railgun/overclock/bullet_railgun_overclock.rules>
 	SHOT_HEAT_PER_MODULE = 1750
-	BASE_CHARGE_TIME = 0.75
+	BASE_CHARGE_TIME = 0.5
 	MODULE_CHARGE_TIME = 0.125
 	RECOIL_FACTOR = 250%
 }
@@ -94,7 +94,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [46, 92]
 	}
@@ -230,19 +231,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ComponentID = LoadedAmmo
 		}
 
-		IsWeaponOperational
-		{
-			Type = MultiToggle
-			Mode = All
-			Toggles = [ IsOperational, { Toggle=IsOverclockedAndCharging; Invert=true } ]
-		}
-
 		Weapon
 		{
 			Type = FixedWeapon
 			Location = [1, .5] // Relative to upper-left corner of unrotated part.
 			Rotation = -90d // Relative to unrotated part.
-			OperationalToggle = IsWeaponOperational
+			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
 			FireInterval = 4
 			TargetingArc = 90d
@@ -414,7 +408,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Duration
 			{
 				BaseValue = &~/OVERCLOCK/BASE_CHARGE_TIME
-				MaxValue = &~/Part/Components/Weapon/FireInterval
+				MaxValue = (&~/Part/Components/Weapon/FireInterval) - 0.5
 				Modifiers
 				[
 					{
@@ -637,6 +631,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOnValue = One
 		}
 
+		BlueprintNetwork_IsOverclocked
+		{
+			Type = NetworkToggle
+			ToggleSource = OverclockModeToggle
+			Categories = [ overclock ]
+			IncludeInBlueprints = true
+			IncludeInPhysical = false
+		}
+
 		Zero
 		{
 			Type = StaticValue
@@ -657,13 +660,23 @@ Part : <../base_part_terran_overclock.rules>/Part
 			CompatibleTypes = [ railgun_up ]
 			RouteSource = NetworkOverclockStateValue
 			RouteEndpoint = NetworkOverclockStateValue
+			BlueprintRouteSource = BlueprintNetwork_IsOverclocked
+			BlueprintRouteEndpoint = BlueprintNetwork_IsOverclocked
+			Overlay
+			{
+				RouteDrawMode = Never
+				IconDrawMode = Never
+			}
 		}
-
 
 		Port_Thermal_TopLeft : ~/Part/^/0/BASE_THERMAL_PORT
 		{
 			Location = [0, 1]
 			Direction = Left
+			Overlay : ^/0/Overlay
+			{
+				SpreadHighlightThroughNetwork = BlueprintNetwork_IsOverclocked
+			}
 		}
 		Port_Thermal_TopRight : Port_Thermal_TopLeft
 		{
@@ -1212,7 +1225,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	]
 
 	StatsNotesKey = "Stats/RailgunNotes"
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

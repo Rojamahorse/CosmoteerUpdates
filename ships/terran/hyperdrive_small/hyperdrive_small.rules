@@ -4,7 +4,7 @@ Part : <../base_part_terran.rules>/Part
 	IconNameKey = "Parts/HyperdriveSmallIcon"
 	ID = cosmoteer.hyperdrive_small // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	OtherIDs = [ftl_drive, cosmoteer.ftl_drive]
-	EditorGroup = "Flight"
+	EditorGroup = "Utilities"
 	DescriptionKey = "Parts/HyperdriveSmallDesc"
 	Resources
 	[
@@ -24,7 +24,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [56, 56]
 	}
@@ -41,7 +42,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = CommandToggle
 		}
-	
+
 		PowerToggle
 		{
 			Type = UIToggle

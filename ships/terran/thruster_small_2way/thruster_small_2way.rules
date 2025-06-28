@@ -34,7 +34,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	ThrustDecreaseTime = 0
 	ThrustRecoveryTime = 0
 	FuelUsage = 30
-	FuelRecharge = 3
+	FuelRecharge = 5
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, EngineHeatCollection, ThermalActivity]
 	AllowedDoorLocations
 	[
@@ -49,7 +49,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [42.66, 42.66]
 	}
@@ -819,7 +820,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		RecPower = (&ThrusterPowerUsage) / 2
 		RecCrew = (&RecPower) * 4
 	}
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

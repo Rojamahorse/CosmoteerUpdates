@@ -26,7 +26,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [32, 32]
 	}
@@ -40,13 +41,27 @@ Part : <../base_part_terran.rules>/Part
 			Types = [ thermal ]
 			RouteSource = NetworkAverageThermalDissipationLoadValue
 			RouteEndpoint = NetworkAverageThermalDissipationLoadValue
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				IconDrawMode = Never
+				RouteDrawMode = Connected
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+			}
 		}
-		
+
 		Port_Down : Port_Up
 		{
 			Direction = Down
 		}
-
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -61,7 +76,7 @@ Part : <../base_part_terran.rules>/Part
 			Categories = [ thermal_load_dissipation ]
 			AllowUncategorized = false
 		}
-		
+
 		ThermalLoadGlowColorFactor
 		{
 			Type = ValueColor

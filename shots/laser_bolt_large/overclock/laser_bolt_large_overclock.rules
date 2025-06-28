@@ -7,8 +7,8 @@ IdealRadius = &BASE/IdealRadius
 Speed = &BASE/Speed
 ReceivableBuffs = &BASE/ReceivableBuffs
 
-DAMAGE = 200% * (&BASE/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue)
-DAMAGE_SHIELD = (&DAMAGE) / (&DAMAGE_RADIUS) * 80%
+DAMAGE = 150% * (&BASE/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue)
+DAMAGE_SHIELD = 160% * (&BASE/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue)
 DAMAGE_RADIUS = 2
 IMPULSE = 200% * (&BASE/Components/Hit/HitOperational/HitEffects/1/Impulse/BaseValue)
 HEALTH = 175% * (&BASE/Components/Targetable/Health)
@@ -23,7 +23,6 @@ Components : &BASE/Components
 	Hit : ^/0/Hit
 	{
 		HitCrew = &HitOperational
-		HitShield = &HitOperational
 		HitOperational : ^/0/HitOperational
 		{
 			HitEffects
@@ -72,6 +71,14 @@ Components : &BASE/Components
 					ShakeAmount = .06
 					Duration = .3
 				}
+			]
+		}
+		HitShield : HitOperational
+		{
+			HitEffects
+			[
+				&../^/0/HitEffects/1
+				&../^/0/HitEffects/2
 			]
 		}
 		HitStructural : ^/0/HitStructural

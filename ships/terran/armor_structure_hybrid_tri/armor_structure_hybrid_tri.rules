@@ -3,7 +3,8 @@ Part : <../base_part_terran.rules>/Part
 	NameKey = "Parts/ArmorStructureHybridTri"
 	IconNameKey = "Parts/ArmorStructureHybridTriIcon"
 	ID = cosmoteer.armor_structure_hybrid_tri // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroups = ["Defenses", "Structure"]
+	EditorGroups = ["Structure"]
+	EditorParentParts = [ "cosmoteer.armor" ]
 	DescriptionKey = "Parts/ArmorStructureHybridTriDesc"
 	Resources
 	[
@@ -44,7 +45,7 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
 			MipLevels = max
 		}
 		Size = [32, 32]

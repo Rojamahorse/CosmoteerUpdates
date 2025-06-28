@@ -3826,14 +3826,15 @@ EditorGroups
 	WeaponsEnergy = "Energy Weapons"
 	WeaponsProjectile = "Projectile Weapons"
 	Defenses = "Defenses"
-	Flight = "Flight"
+	Control = "Command & Control"
+	Flight = "Thrusters"
 	Crew = "Crew"
 	Power = "Power"
 	Thermal = "Heat Management"
 	Production = "Production"
 	Storage = "Storage"
 	Utilities = "Utilities"
-	Structure = "Structure"
+	Structure = "Armor & Structure"
 	Rock = "Basic Rock"
 	ResourcesCommon = "Common Resources"
 	ResourcesRare = "Rare Resources"
@@ -4024,7 +4025,7 @@ Parts
 	FactoryMineDesc = "Manufactures mines that explode when in proximity to enemy ships, launching damaging shrapnel. Consumes iron and ammo. Gains +25% production speed for each adjacent factory of any type."
 
 	FactoryThermal = "Thermal Canister Missile Factory"
-	FactoryThermalIcon = "Thermal Canister Missiles"
+	FactoryThermalIcon = "Thermal Missiles"
 	FactoryThermalDesc = "Manufactures guided Thermal Canister Missiles that significantly heat up a small area. Consumes iron and sulfur. Gains +25% production speed for each adjacent factory of any type."
 
 	FactorySteel = "Steel Smelter"
@@ -4128,7 +4129,7 @@ Parts
 	HeatPipeAdaptiveStructure = "Heat Pipe Structure"
 	HeatPipeAdaptiveStructureIcon = "Heat Pipe Structure"
 	HeatPipeAdaptiveStructureDesc = "Transfers thermal energy."
-	
+
 	ThermalDilationPump = "Lance Dilation Pump"
 	ThermalDilationPumpIcon = "Lance Dilation Pump"
 	ThermalDilationPumpDesc = "Pumps energy into a thermal system through a split lens, fine-tuning Thermal Resonance Lances to increase the heated area on the target's hull.\n"\
@@ -4608,7 +4609,7 @@ Stats
 	DilationHeatSpreadDistanceFmt = "<white>Heat Spread Distance:</white> <good>{0:0.##}</good><gray> meters * dilation</gray>"
 	HeatSpreadDistanceFmt = "<white>Heat Spread Distance:</white> <good>{0:0.##}</good><gray> meters</gray>"
 	HitShieldHeatFactorFmt = "<white>Hit Shield Heating:</white> <good>{0:0.##}%</good>"
-	ShieldDamagePowerCostFmt = "<white>Shield Damage Power Cost:</white> <good>{0:+0.#;-0.#}%</good><gray> * amplification</gray>, <good>{1:+0.#;-0.#}%</good><gray> * dilation</gray>"
+	ShieldDamagePowerCostFmt = "<white>Shield Damage Power Cost:</white> <good>{0:+0.#;-0.#}%</good> <gray>base</gray>, <good>{1:+0.#;-0.#}%</good><gray> * amplification</gray>, <good>{2:+0.#;-0.#}%</good><gray> * dilation</gray>"
 
 	PowerDrainFmt = "<white>Power Drain On Hit:</white> <good>{0:0.##}</good><gray>/shot (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	PowerDrainOverTimeFmt = "<white>Power Drain:</white> <good>{0:0}</good> <gray>total (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
@@ -4813,6 +4814,7 @@ Stats
 	TurretExtraHeatGenerationFmt = "<white>Turret Heat Generation:</white> <good>{0:+0.#;-0.#}</good><gray>/sec</gray>"
 	RailgunOverclockHeatOnShotFmt = "<white>Heat Generation:</white> <good>{0:0.#}</good><gray>/part/shot</gray>"
 	HeatPerShotFmt = "<white>Heat Generation</white> <good>{0:0.#}</good><gray>/shot</gray>"
+	HeatPerRestockFmt = "<white>Heat Generation:</white> <good>{0:0.#}</good><gray>/restock</gray>"
 	FiringHeatGenerationFmt = "<white>Firing Heat Generation:</white> <good>{0:#,0.##}</good><gray>/sec</gray>"
 	HeatPerDamageFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/damage</gray>"
 }

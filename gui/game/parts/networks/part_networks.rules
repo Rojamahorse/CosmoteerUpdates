@@ -1,0 +1,122 @@
+DefaultRouteLine
+{
+	Type = SplitCappedLine
+	LineSprite
+	{
+		Shader = "split_scroll_vertical.shader"
+		_speed = -2;
+        _splitV = 0.5;
+		Texture
+		{
+			File = "./Data/gui/line_arrow_double.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+	}
+	LineThickness = .3
+	LineUPerLength = -1.6 / (&LineThickness)
+	SplitRelativeThickness = true
+	ColorFactor = [0, 183, 255, 255]
+	DisconnectedColorFactor = [0, 91, 128, 255]
+	UnroutableColorFactor = [255, 255, 255, 170]
+}
+DefaultRouteHubSprite
+{
+	Sprite
+	{
+		File = "./Data/gui/dot.png"
+		VertexColor = [0, 183, 255]
+		Size = [0.6, 0.6]
+	}
+	UnroutableColorFactor = [255, 255, 255, 170]
+}
+DefaultPortSprite
+{
+	Sprite
+	{
+		File = "port_indicator.png"
+		VertexColor = [10, 212, 98, 255]
+		Size = [0.5, 0.5]
+	}
+	UnroutableColorFactor = [255, 255, 255, 170]
+}
+OverlayIconsAtlasParams
+{
+	MipLevels = 8
+}
+OverlayIconMaterial
+{
+	Shader = "overlay_icons.shader"
+}
+OverlayIcons
+{
+	ThermalPort
+	{
+		Sprite
+		{
+			File = "port_thermal.png"
+			VertexColor = [254, 195, 1, 255]
+			Size = [0.3, 0.3]
+		}
+		EdgeOffset = -(&Sprite/Size/0) * 24/64
+		RouteLineOffset = (&EdgeOffset) - (&Sprite/Size/0) * 16/64
+		DrawLineToEdgeWhenConnected = true
+		UnroutableColorFactor = [255, 255, 255, 170]
+	}
+	ThermalDot
+	{
+		Sprite
+		{
+			File = "thermal_circle.png"
+			Size = [0.54, 0.54]
+		}
+		UnroutableColorFactor = [255, 255, 255, 170]
+	}
+}
+RouteLines
+{
+	Thermal
+    {
+    	Type = CappedLine
+    	RenderToSeparateTexture = true
+    	LineSprite
+    	{
+    		Texture
+    		{
+    			File = "./Data/gui/line_split_channel.png"
+    			SampleMode = Linear
+    			MipLevels = max
+    			UMode = Wrap
+    		}
+    		Shader = "./Data/gui/line_split_channel.shader"
+    		_baseColor = [255, 217, 0, 204]
+    		_glowColor = [255, 111, 0, 204]
+    		TargetBlendMode = Max
+    	}
+    	BeginCapSprite : LineSprite
+    	{
+    		Texture
+    		{
+    			File = "./Data/gui/line_split_channel_endcap_flipped.png"
+    			SampleMode = Linear
+    			MipLevels = max
+    		}
+    	}
+    	BeginCapSize = [(&../LineThickness) / 2, (&../LineThickness)]
+    	EndCapSprite : LineSprite
+    	{
+    		Texture
+    		{
+    			File = "./Data/gui/line_split_channel_endcap.png"
+    			SampleMode = Linear
+    			MipLevels = max
+    		}
+    	}
+    	EndCapSize = &BeginCapSize
+    	LineThickness = 0.4
+    	LineUPerLength = 0.8 / (&LineThickness)
+    	ColorFactor = [255, 255, 255, 255]
+    	UnroutableColorFactor = [255, 255, 255, 170]
+    }
+}

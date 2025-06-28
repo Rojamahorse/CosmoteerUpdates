@@ -1,6 +1,6 @@
 OVERCLOCK
 {
-	COLLECTED_HEAT_MULTIPLIER = 75%
+	COLLECTED_HEAT_MULTIPLIER = 175%
 	POWER_DISTRIBUTION_MULTIPLIER = 140%
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
@@ -34,7 +34,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [64, 64]
 	}
@@ -687,7 +688,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		RecPower = &PowerUsageContinuous
 		RecCrew = (&CrewRequired) + (&RecPower) * 4
 	}
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

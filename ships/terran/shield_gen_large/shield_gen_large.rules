@@ -1,8 +1,8 @@
 OVERCLOCK
 {
 	ARC_FACTOR = 50%
-	DAMAGE_DRAIN_FACTOR = 1 / 3
-	EMP_RESIST = 50%
+	DAMAGE_DRAIN_FACTOR = 1 / 200%
+	EMP_RESIST = 33%
 	HEAT_PER_SECOND = 80
 	HEAT_PER_DAMAGE = 0.6
 }
@@ -44,7 +44,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [48, 96]
 	}
@@ -1238,7 +1239,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 	]
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

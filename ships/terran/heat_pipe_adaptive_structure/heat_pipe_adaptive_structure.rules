@@ -19,7 +19,8 @@ Part : <../heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part, <../base_part_terr
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [32, 32]
 	}
@@ -33,6 +34,16 @@ Part : <../heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part, <../base_part_terr
 			Types = [ thermal ]
 			RouteSource = NetworkAverageThermalDissipationLoadValue
 			RouteEndpoint = NetworkAverageThermalDissipationLoadValue
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				IconDrawMode = Never
+				RouteDrawMode = Connected
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+			}
 		}
 		Port_Right : Port_Up
 		{
@@ -46,7 +57,11 @@ Part : <../heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part, <../base_part_terr
 		{
 			Direction = Left
 		}
-
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -107,7 +122,7 @@ Part : <../heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part, <../base_part_terr
 			Mode = All
 		}
 		//-------------------- END PIPE CONNECTOR TOGGLES ---------------
-		
+
 		NetworkAverageThermalDissipationLoadValue
 		{
 			Type = NetworkValueReceiver
@@ -115,13 +130,13 @@ Part : <../heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part, <../base_part_terr
 			Categories = [ thermal_load_dissipation ]
 			AllowUncategorized = false
 		}
-		
+
 		ThermalLoadGlowColorFactor
 		{
 			Type = ValueColor
 			AlphaFrom = NetworkAverageThermalDissipationLoadValue
 		}
-		
+
 		FloorBlendSprites : <heat_pipe_blend_sprites.rules>/FloorBlendSprites {}
 		GlowBlendSprites : <../heat_pipe_adaptive/heat_pipe_blend_sprites.rules>/GlowBlendSprites
 		{

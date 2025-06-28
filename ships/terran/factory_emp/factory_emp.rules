@@ -14,6 +14,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	ID = cosmoteer.factory_emp // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	OtherIDs = [cosmoteer.missile_factory_emp]
 	EditorGroup = "Production"
+	EditorParentParts = [ "cosmoteer.missile_launcher" ]
 	DescriptionKey = "Parts/FactoryEMPDesc"
 	Resources
 	[
@@ -53,7 +54,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [48, 64]
 	}
@@ -1144,7 +1146,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	[
 		&<../missile_launcher/emp/missile_launcher_emp.rules>/MissileStats
 	]
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

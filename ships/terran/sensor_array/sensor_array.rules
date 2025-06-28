@@ -45,7 +45,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [64, 64]
 	}
@@ -836,7 +837,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		RecPower = &PowerUsageContinuous
 		RecCrew = (&CrewRequired) + (&RecPower) * 4
 	}
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

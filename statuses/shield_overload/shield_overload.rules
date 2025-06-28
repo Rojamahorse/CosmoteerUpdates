@@ -1,7 +1,7 @@
 ID = cosmoteer.shield_overload
 Layer = Part
 StatusCombineMode = RefreshAndCombineValue
-ValueCombiner = Max
+ValueCombiner = Add
 ValueClampRange = [0, Infinity]
 RemoveAtMinValue = true
 SoftRepair

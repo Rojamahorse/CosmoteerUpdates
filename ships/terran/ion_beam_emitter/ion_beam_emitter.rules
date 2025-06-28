@@ -70,7 +70,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [36.8, 92]
 	}
@@ -833,7 +834,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 	]
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
@@ -846,7 +847,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					FiringHeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
 					SimpleDamage = 0
 					StrengthAtMaxRange = 100
-					
+
 					LightningRange = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/InitialRadius)
 					LightningStrikeCountRange = &~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/InitialStrikes
 					LightningMaxChain = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING_BASE_CHAIN_LENGTH/1)

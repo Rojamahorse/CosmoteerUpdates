@@ -23,8 +23,8 @@ Part : <../base_part_terran.rules>/Part
 		[0, 1]
 		[0, 2]
 	]
-	AllowedDoorLocations 
-	[ 
+	AllowedDoorLocations
+	[
 		[0, -1]
 		[-1, 0], [1, 0]
 	]
@@ -33,7 +33,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [21.33, 64]
 		UVRect = [0, 1, 1, -1]
@@ -46,14 +47,14 @@ Part : <../base_part_terran.rules>/Part
 			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle]
 			Mode = All
 		}
-		
+
 		CommandConsumptionToggle
 		{
 			Type = MultiToggle
 			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
-		
+
 		PowerToggle
 		{
 			Type = UIToggle
@@ -61,7 +62,7 @@ Part : <../base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
-		
+
 		ScorchedToggle
 		{
 			Type = StatusToggle
@@ -69,14 +70,14 @@ Part : <../base_part_terran.rules>/Part
 			MinStatusValue = 1
 			Invert = true
 		}
-		
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
 			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 1
 		}
-		
+
 		// Battery is drained by turret part
 		BatteryStorage
 		{
@@ -94,7 +95,7 @@ Part : <../base_part_terran.rules>/Part
 			ResupplyThreshold = 500
 			OperationalToggle = PowerToggle
 		}
-		
+
 		BasePumpAmplification
 		{
 			Type = ValueTween
@@ -103,7 +104,7 @@ Part : <../base_part_terran.rules>/Part
 			OnTweenDuration = 0.001
 			OffTweenDuration = 0.001
 		}
-		
+
 		// amplificationFactor = (1 / ((beams - 1) * utilizationScale + 1)^(1-efficiency)
 		MultiUtilizationEfficiencyExponent
 		{
@@ -116,13 +117,14 @@ Part : <../base_part_terran.rules>/Part
 			Type = StaticValue
 			Value = 50%
 		}
-		
+
 		AdditionalUtilization
 		{
 			Type = ValueOperation
 			Operator = Subtract
 			ValueOne = NetworkPumpUtilization
 			ValueTwo = One
+			MinValue = 0
 		}
 		ScaledAdditionalUtilization
 		{
@@ -137,7 +139,7 @@ Part : <../base_part_terran.rules>/Part
 			Mode = Add
 			OneOver = true
 		}
-		
+
 		AmplificationFactor
 		{
 			Type = ValueOperation
@@ -145,21 +147,21 @@ Part : <../base_part_terran.rules>/Part
 			ValueOne = ScaledAmplificationFactor
 			ValueTwo = MultiUtilizationEfficiencyExponent
 		}
-		
+
 		PumpAmplification
 		{
 			Type = MultiValue
 			Values = [ BasePumpAmplification, AmplificationFactor]
 			Mode = Multiply
 		}
-		
+
 		NetworkedAmplification
 		{
 			Type = NetworkValue
 			ValueSource = PumpAmplification
 			Categories = [ thermal_amplification ]
 		}
-		
+
 		AdditionalTurretHeatGeneration
 		{
 			Type = ToggleValueSelector
@@ -178,14 +180,14 @@ Part : <../base_part_terran.rules>/Part
 			Type = StaticValue
 			Value = 200
 		}
-		
+
 		NetworkedActivity
 		{
 			Type = NetworkValue
 			ValueSource = AdditionalTurretHeatGeneration
 			Categories = [ thermal_activity ]
 		}
-		
+
 		NetworkPumpUtilization
 		{
 			Type = NetworkValueReceiver
@@ -193,30 +195,30 @@ Part : <../base_part_terran.rules>/Part
 			Categories = [ thermal_pump_utilization ]
 			Mode = Add
 		}
-		
+
 		UtilizationToggle
 		{
 			Type = ThresholdToggle
 			ValueFrom = NetworkPumpUtilization
 			MinAmount = 0
 			MaxAmount = 0
-			Invert = true 
+			Invert = true
 		}
-		
+
 		IsUtilized
 		{
 			Type = MultiToggle
 			Toggles = [ IsOperational, UtilizationToggle ]
 			Mode = All
 		}
-		
+
 		PowerDrainFactor
 		{
 			Type = MultiValue
 			Values = [ AmplificationFactor, NetworkPumpUtilization ]
 			Mode = Multiply
 		}
-		
+
 		UtilizationBuff
 		{
 			Type = SelfBuffProvider
@@ -224,13 +226,13 @@ Part : <../base_part_terran.rules>/Part
 			BuffAmount = 1
 			BuffMultiplier = PowerDrainFactor
 		}
-		
+
 		PowerDrain
 		{
 			Type = ResourceConverter
 			OperationalToggle = IsUtilized
 			FromStorage = BatteryStorage
-			FromQuantity 
+			FromQuantity
 			{
 				BaseValue = 400
 				BuffType = ThermalActivity
@@ -239,7 +241,7 @@ Part : <../base_part_terran.rules>/Part
 			MinFromQuantityForConversion = 1
 			Interval = 1
 		}
-		
+
 		Port_Down
 		{
 			Type = NetworkPort
@@ -249,8 +251,17 @@ Part : <../base_part_terran.rules>/Part
 			IncompatibleTypes = [ thermal_out ]
 			RouteSource = NetworkedAmplification
 			RouteEndpoint = NetworkedAmplification
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
 		}
-		
+
 		Router
 		{
 			Type = NetworkRouter
@@ -266,14 +277,14 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-		
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
 			Location = [0.5, 1.5]
 			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 		}
-		
+
 		Graphics
 		{
 			Type = Graphics
@@ -605,7 +616,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-		
+
 		Indicators
 		{
 			Type = IndicatorSprites
@@ -670,13 +681,13 @@ Part : <../base_part_terran.rules>/Part
 		}
 		//---------------------- END PIPE CONNECTOR ----------------------
 	}
-	
+
 	Stats
 	{
 		ThermalAmplification = (&~/Part/Components/BasePumpAmplification/OnValue) * 100
 //		ThermalPumpMultiEfficiency = (&~/Part/Components/MultiUtilizationEfficiencyFactor/Value) * 100
 		TurretExtraHeatGeneration = (&~/Part/Components/AdditionalTurretHeatGeneration_Active/Value)
-		
+
 		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity/BaseValue) / (&~/Part/Components/PowerDrain/Interval) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 		RecPower = &PowerUsageContinuous

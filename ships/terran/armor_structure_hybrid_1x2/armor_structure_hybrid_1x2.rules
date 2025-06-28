@@ -3,7 +3,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/ArmorStructureHybrid1x2"
 	IconNameKey = "Parts/ArmorStructureHybrid1x2Icon"
 	ID = cosmoteer.armor_structure_hybrid_1x2
-	EditorGroups = ["Defenses", "Structure"]
+	EditorGroups = ["Structure"]
+	EditorParentParts = [ "cosmoteer.armor" ]
 	DescriptionKey = "Parts/ArmorStructureHybrid1x2Desc"
 	EditorReplacementPartID = structure
 	Resources
@@ -68,7 +69,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
 			MipLevels = max
 		}
 		Size = [32, 64]

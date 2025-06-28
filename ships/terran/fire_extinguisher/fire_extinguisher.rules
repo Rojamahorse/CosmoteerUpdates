@@ -1,4 +1,12 @@
-Part : <../base_part_terran.rules>/Part
+OVERCLOCK
+{
+	RESTOCK_INTERVAL = 1.5
+	HEAT_PER_RESTOCK = 150
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/FireExtinguisher"
 	IconNameKey = "Parts/FireExtinguisherIcon"
@@ -24,7 +32,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [32, 32]
 	}
@@ -37,16 +46,82 @@ Part : <../base_part_terran.rules>/Part
 			MaxResources = &<./Data/resources/fire_extinguisher/fire_extinguisher.rules>/MaxPerNugget
 			StartingResources = &MaxResources
 			SuppliesResources = true
+			// Overclock only
+			ExpectedResourceGenerationRate = (&MaxResources) / (&~/OVERCLOCK/RESTOCK_INTERVAL)
+			ExpectedResourceGenerationToggle = IsOverclocked
+		}
+
+		CanProduce
+		{
+			Type = MultiToggle
+			Toggles = [ { Toggle=ExtinguisherStorage; Invert=true }, &~/Part/^/0/OVERCLOCK_OPERATIONAL ]
+			Mode = All
 		}
 
 		ExtinguisherProducer
 		{
 			Type = ResourceConverter
-			OperationalToggle = ExtinguisherStorage
-			InvertOperationalToggle = true
+			OperationalToggle = CanProduce
 			ToStorage = ExtinguisherStorage
 			ToQuantity = &../ExtinguisherStorage/MaxResources
-			Interval = 15
+			Interval
+			{
+				BaseValue = 15
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [&../../../BaseValue, &~/OVERCLOCK/RESTOCK_INTERVAL]
+						ModificationMode = Replace
+					}
+				]
+			}
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		Overclock_OnRestock
+		{
+			Type = TriggerProxy
+			ComponentID = ExtinguisherProducer
+			ProxyToggle = IsOverclocked
+		}
+
+		Overclock_RestockHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_OnRestock
+			Amount = (&~/OVERCLOCK/HEAT_PER_RESTOCK) * (&~/HEAT_TO_RESOURCE)
+		}
+
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 0]
+			Direction = Left
+		}
+		Port_Thermal_Up : Port_Thermal_Left
+		{
+			Direction = Up
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Direction = Right
+		}
+		Port_Thermal_Down : Port_Thermal_Left
+		{
+			Direction = Down
 		}
 
 		ProgressBar
@@ -155,6 +230,16 @@ Part : <../base_part_terran.rules>/Part
 
 	Stats
 	{
-		AbilityCooldown = &~/Part/Components/ExtinguisherProducer/Interval
+		AbilityCooldown = &~/Part/Components/ExtinguisherProducer/Interval/BaseValue
+	}
+
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		Stats
+		{
+			AbilityCooldown = &~/OVERCLOCK/RESTOCK_INTERVAL
+			HeatPerRestock = &~/OVERCLOCK/HEAT_PER_RESTOCK
+		}
 	}
 }

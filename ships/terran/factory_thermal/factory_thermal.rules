@@ -13,6 +13,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	IconNameKey = "Parts/FactoryThermalIcon"
 	ID = cosmoteer.factory_thermal
 	EditorGroup = "Production"
+	EditorParentParts = [ "cosmoteer.missile_launcher" ]
 	DescriptionKey = "Parts/FactoryThermalDesc"
 	Resources
 	[
@@ -47,7 +48,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [64, 64]
 	}
@@ -914,7 +916,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	[
 		&<../missile_launcher/thermal/missile_launcher_thermal.rules>/MissileStats
 	]
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

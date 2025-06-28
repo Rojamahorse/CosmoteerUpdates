@@ -22,8 +22,8 @@ Part : <../base_part_terran.rules>/Part
 	[
 		[0, 1], [1, 1]
 	]
-	AllowedDoorLocations 
-	[ 
+	AllowedDoorLocations
+	[
 		[0, -1], [1, -1]
 		[-1, 0], [2, 0]
 	]
@@ -32,7 +32,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [56, 56]
 	}
@@ -51,7 +52,7 @@ Part : <../base_part_terran.rules>/Part
 			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
-		
+
 		PowerToggle
 		{
 			Type = UIToggle
@@ -59,7 +60,7 @@ Part : <../base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
-		
+
 		ScorchedToggle
 		{
 			Type = StatusToggle
@@ -67,14 +68,14 @@ Part : <../base_part_terran.rules>/Part
 			MinStatusValue = 1
 			Invert = true
 		}
-		
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
 			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 2
 		}
-		
+
 		BatteryStorage
 		{
 			Type = ResourceStorage
@@ -91,7 +92,7 @@ Part : <../base_part_terran.rules>/Part
 			ResupplyThreshold = 500
 			OperationalToggle = PowerToggle
 		}
-		
+
 		BasePumpDilation
 		{
 			Type = ValueTween
@@ -100,7 +101,7 @@ Part : <../base_part_terran.rules>/Part
 			OnTweenDuration = 0.001
 			OffTweenDuration = 0.001
 		}
-		
+
 		// dilationFactor = (1 / ((beams - 1) * utilizationScale + 1)^(1-efficiency)
 		MultiUtilizationEfficiencyExponent
 		{
@@ -113,13 +114,14 @@ Part : <../base_part_terran.rules>/Part
 			Type = StaticValue
 			Value = 50%
 		}
-		
+
 		AdditionalUtilization_Left
 		{
 			Type = ValueOperation
 			Operator = Subtract
 			ValueOne = NetworkPumpUtilization_Left
 			ValueTwo = One
+			MinValue = 0
 		}
 		ScaledAdditionalUtilization_Left
 		{
@@ -134,7 +136,7 @@ Part : <../base_part_terran.rules>/Part
 			Mode = Add
 			OneOver = true
 		}
-		
+
 		DilationFactor_Left
 		{
 			Type = ValueOperation
@@ -162,17 +164,17 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Values = [ScaledAdditionalUtilization_Right, One]
 		}
-		
+
 		DilationFactor_Right : DilationFactor_Left
 		{
 			ValueOne = ScaledDilationFactor_Right
 		}
-		
+
 		PumpDilation_Right : PumpDilation_Left
 		{
 			Values = [BasePumpDilation, DilationFactor_Right]
 		}
-		
+
 		NetworkedDilation_Left
 		{
 			Type = NetworkValue
@@ -183,7 +185,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			ValueSource = PumpDilation_Right
 		}
-		
+
 		AdditionalTurretHeatGeneration
 		{
 			Type = ToggleValueSelector
@@ -213,7 +215,7 @@ Part : <../base_part_terran.rules>/Part
 			Categories = [ thermal_activity ]
 		}
 		NetworkedActivity_Right = &NetworkedActivity_Left
-		
+
 		NetworkPumpUtilization_Left
 		{
 			Type = NetworkValueReceiver
@@ -228,23 +230,23 @@ Part : <../base_part_terran.rules>/Part
 			Values = [ NetworkPumpUtilization_Left, NetworkPumpUtilization_Right ]
 			Mode = Add
 		}
-		
+
 		UtilizationToggle
 		{
 			Type = ThresholdToggle
 			ValueFrom = TotalUtilization
 			MinAmount = 0
 			MaxAmount = 0
-			Invert = true 
+			Invert = true
 		}
-		
+
 		IsUtilized
 		{
 			Type = MultiToggle
 			Toggles = [ IsOperational, UtilizationToggle ]
 			Mode = All
 		}
-		
+
 		PowerDrainFactor_Left
 		{
 			Type = MultiValue
@@ -261,7 +263,7 @@ Part : <../base_part_terran.rules>/Part
 			Values = [ PowerDrainFactor_Left, PowerDrainFactor_Right ]
 			Mode = Add
 		}
-		
+
 		UtilizationBuff
 		{
 			Type = SelfBuffProvider
@@ -269,13 +271,13 @@ Part : <../base_part_terran.rules>/Part
 			BuffAmount = 1
 			BuffMultiplier = TotalPowerDrainFactor
 		}
-		
+
 		PowerDrain
 		{
 			Type = ResourceConverter
 			OperationalToggle = IsUtilized
 			FromStorage = BatteryStorage
-			FromQuantity 
+			FromQuantity
 			{
 				BaseValue = 250
 				BuffType = ThermalActivity
@@ -284,7 +286,7 @@ Part : <../base_part_terran.rules>/Part
 			MinFromQuantityForConversion = 1
 			Interval = 1
 		}
-		
+
 		Port_BottomLeft
 		{
 			Type = NetworkPort
@@ -294,15 +296,24 @@ Part : <../base_part_terran.rules>/Part
 			IncompatibleTypes = [ thermal_out ]
 			RouteSource = NetworkedDilation_Left
 			RouteEndpoint = NetworkedDilation_Left
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
 		}
-		
+
 		Port_BottomRight : Port_BottomLeft
 		{
 			Location = [1, 1]
 			RouteSource = NetworkedDilation_Right
 			RouteEndpoint = NetworkedDilation_Right
 		}
-		
+
 		Router
 		{
 			Type = NetworkRouter
@@ -314,21 +325,21 @@ Part : <../base_part_terran.rules>/Part
 					[
 						[NetworkedDilation_Left, NetworkedActivity_Left, 0]
 						[NetworkedDilation_Left, NetworkPumpUtilization_Left, 0]
-						
+
 						[NetworkedDilation_Right, NetworkedActivity_Right, 0]
 						[NetworkedDilation_Right, NetworkPumpUtilization_Right, 0]
 					]
 				}
 			]
 		}
-		
+
 		DestroyedEffects
 		{
 			Type = DeathEffects
 			Location = [1, 1]
 			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 		}
-		
+
 		Graphics
 		{
 			Type = Graphics
@@ -819,7 +830,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			}
 		}
-		
+
 		BatterySprites
 		{
 			Type = ResourceSprites
@@ -863,7 +874,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-		
+
 		Indicators
 		{
 			Type = IndicatorSprites
@@ -889,7 +900,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-		
+
 		Left_Pipe_Connected_Blueprints
 		{
 			Type = BlueprintSprite
@@ -974,17 +985,17 @@ Part : <../base_part_terran.rules>/Part
 		}
 		//---------------------- END PIPE CONNECTOR ----------------------
 	}
-	
+
 	Stats
 	{
 		ThermalDilation = (&~/Part/Components/BasePumpDilation/OnValue) * 100 * 2
 //		ThermalPumpMultiEfficiency = (&~/Part/Components/MultiUtilizationEfficiencyFactor/Value) * 100
 		TurretExtraHeatGeneration = (&~/Part/Components/AdditionalTurretHeatGeneration_Active/Value) * 2
-		
+
 		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity/BaseValue) / (&~/Part/Components/PowerDrain/Interval) / 1000 * 2
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 		RecPower = &PowerUsageContinuous
 	}
-	
+
 	StatsNotesKey = "Stats/ThermalDilationPumpNotes"
 }

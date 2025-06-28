@@ -3,7 +3,7 @@ OVERCLOCK
 	FIRING_HEAT_PER_SECOND = 2200
 	ARC_MAX = 5d
 	FORCE_FACTOR = 150%
-	
+
 	OVERLOAD_FORCE = 100000
 	OVERLOAD_RADIUS = 600
 	OVERLOAD_BULLET_FORCE = 10000
@@ -85,7 +85,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [64, 64]
 	}
@@ -695,7 +696,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Emitter5,
 					]
 				}
-				
+
 				Emitter : <./Data/shots/tractor_beam/tractor_beam.rules>
 				{
 					Type = BeamEmitter
@@ -714,7 +715,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					ResourceScaleFactor = AbsBeamRegulator
 					ValueScaleFactor = BeamRegulatorProxy
 				}
-		
+
 				// Note: When adding or removing emitters, make sure to update BeamCount at the top of this file as well.
 				Emitter2  = &Emitter
 				Emitter3  = &Emitter
@@ -747,12 +748,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Emitter5,
 					]
 				}
-				
+
 				Emitter : <./Data/shots/tractor_beam/tractor_beam_overclock.rules>/Beam, ~/Part/Components/EmissionComponents_NonOverclocked/Components/Emitter
 				{
-					
+
 				}
-		
+
 				// Note: When adding or removing emitters, make sure to update BeamCount at the top of this file as well.
 				Emitter2  = &Emitter
 				Emitter3  = &Emitter
@@ -1239,7 +1240,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	]
 
 	StatsNotesKey = "Stats/TractorBeamNotes"
-	
+
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"

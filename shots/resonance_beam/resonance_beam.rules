@@ -84,12 +84,14 @@ ColorGreen
 }
 
 BASE_HEAT = 8
-BASE_HEAT_POOL = 180
+BASE_HEAT_POOL = 225
 BASE_HEAT_SPREAD_BUDGET = 3.5
 HEAT_POOL_AMP_EXPONENT = 0.67
-SHIELD_OVERLOAD_BASE = 0.5
-SHIELD_OVERLOAD_AMP_FACTOR = 0.025
-SHIELD_OVERLOAD_DILATION_FACTOR = 0.33
+
+SHIELD_OVERLOAD_PER_AMP = 0.6%
+SHIELD_OVERLOAD_PER_DILATION = 10%
+SHIELD_OVERLOAD_BASE = 4.4%
+SHIELD_OVERLOAD_RAMP_TIME = 3
 
 HitOperational
 {
@@ -145,7 +147,23 @@ HitOperational
 			StatusType = cosmoteer.shield_overload
 			Radius = &~/HitOperational/HitEffects/0/MaxCost
 			StatusDuration = 1
-			StatusValue
+			StatusValue : MaxStatusValue
+			{
+				FACTOR = (&~/HitInterval) / (&~/SHIELD_OVERLOAD_RAMP_TIME);
+				BaseValue = (&^/0/BaseValue) * (&FACTOR)
+				Modifiers
+				[
+					: ../^/0/Modifiers/0 
+					{
+						Scale = (&^/0/Scale) * (&../../FACTOR)
+					}
+					: ../^/0/Modifiers/1
+					{
+						Scale = (&^/0/Scale) * (&../../FACTOR)
+					}
+				]
+			}
+			MaxStatusValue
 			{
 				BaseValue = &~/SHIELD_OVERLOAD_BASE
 				Modifiers
@@ -153,20 +171,19 @@ HitOperational
 					{
 						Type = ScaledBuff
 						BuffType = ThermalIntensity
-						ModificationMode = Multiply
-						Basis = 1
-						Scale = &~/SHIELD_OVERLOAD_AMP_FACTOR
+						ModificationMode = Add
+						Scale = &~/SHIELD_OVERLOAD_PER_AMP
 					}
 					{
 						Type = ScaledBuff
 						BuffType = ThermalRadius
-						ModificationMode = Multiply
-						Basis = 1
-						Scale = &~/SHIELD_OVERLOAD_DILATION_FACTOR
+						ModificationMode = Add
+						Scale = &~/SHIELD_OVERLOAD_PER_DILATION
 					}
 				]
 			}
 			ScaleValueByShieldArea = true
+			ScaleMaxValueByShieldArea = true
 			UseMaxValuesForHitShield = true
 		}
 	]

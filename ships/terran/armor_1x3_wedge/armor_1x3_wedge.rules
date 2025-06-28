@@ -5,7 +5,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	ID = cosmoteer.armor_1x3_wedge
 	OtherIDs = [Kroom.Armor_1x3_Wedge_L, Kroom.Armor_1x3_Wedge_R]
 	FlipWhenLoadingIDs = [Kroom.Armor_1x3_Wedge_R]
-	EditorGroup = "Defenses"
+	EditorGroup = "Structure"
+	EditorParentParts = [ "cosmoteer.armor" ]
 	DescriptionKey = "Parts/Armor1x3WedgeDesc"
 	EditorReplacementPartID = ""
 	Resources
@@ -81,7 +82,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [27, 80]
 	}

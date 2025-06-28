@@ -3,7 +3,7 @@ Part : <../base_part_terran.rules>/Part
 	NameKey = "Parts/RailgunLoader"
 	IconNameKey = "Parts/RailgunLoaderIcon"
 	ID = cosmoteer.railgun_loader // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroup = "WeaponsProjectile"
+	EditorParentParts = [ "cosmoteer.railgun_launcher" ]
 	DescriptionKey = "Parts/RailgunLoaderDesc"
 	Resources
 	[
@@ -48,7 +48,8 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Linear
+			SampleMode = Point
+			MipLevels = max
 		}
 		Size = [46, 69]
 	}
@@ -107,7 +108,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = SelfBuffProvider
 			BuffType = Overclock
-			BuffMultiplier = NetworkOverclockStateValue
+			BuffMultiplier = Network_OverclockStateValue
 		}
 
 		OverclockToggle
@@ -277,8 +278,8 @@ Part : <../base_part_terran.rules>/Part
 					Type = Bidirectional
 					Routes
 					[
-						[NetworkOverclockStateValue, Network_OverflowHeatStorage, 0]
-						[NetworkOverclockStateValue, Network_ChargedModules, 0]
+						[Network_OverclockStateValue, Network_OverflowHeatStorage, 0]
+						[Network_OverclockStateValue, Network_ChargedModules, 0]
 					]
 				}
 			]
@@ -299,12 +300,30 @@ Part : <../base_part_terran.rules>/Part
 			Categories = [ railgun_heat_overflow ]
 		}
 
-		NetworkOverclockStateValue
+		Network_OverclockStateValue
 		{
 			Type = NetworkValueReceiver
 			Mode = Max
 			Categories = [ overclock ]
 			AllowUncategorized = false
+		}
+		IsOverclocked
+		{
+			Type = ThresholdToggle
+			ValueFrom = Network_OverclockStateValue
+			MinAmount = 0
+			MaxAmount = 0
+			Invert = true
+		}
+
+		BlueprintNetwork_IsOverclocked
+		{
+			Type = NetworkToggleReceiver
+			Categories = [ overclock ]
+			Mode = Any
+			AllowUncategorized = false
+			IncludeInBlueprints = true
+			IncludeInPhysical = false
 		}
 
 		Port_Rail
@@ -314,15 +333,28 @@ Part : <../base_part_terran.rules>/Part
 			Direction = Up
 			Types = [ railgun_up ]
 			CompatibleTypes = [ railgun_down ]
-			RouteSource = NetworkOverclockStateValue
-			RouteEndpoint = NetworkOverclockStateValue
+			RouteSource = Network_OverclockStateValue
+			RouteEndpoint = Network_OverclockStateValue
+			BlueprintRouteSource = BlueprintNetwork_IsOverclocked
+			BlueprintRouteEndpoint = BlueprintNetwork_IsOverclocked
+			Overlay
+			{
+				RouteDrawMode = Never
+				IconDrawMode = Never
+			}
 		}
 
 		Port_Thermal_Left : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/BASE_THERMAL_PORT
 		{
+			OperationalToggle = IsOverclocked
+			BlueprintOperationalToggle = BlueprintNetwork_IsOverclocked
 			Location = [0, 2]
 			Direction = Left
-			RouteSource = NetworkOverclockStateValue
+			RouteSource = Network_OverclockStateValue
+			Overlay : ^/0/Overlay
+			{
+				SpreadHighlightThroughNetwork = BlueprintNetwork_IsOverclocked
+			}
 		}
 		Port_Thermal_Right : Port_Thermal_Left
 		{
