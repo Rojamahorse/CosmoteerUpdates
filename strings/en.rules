@@ -4577,6 +4577,7 @@ Stats
 	DamageFmt = "<white>Damage:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
 	MaxDamageFmt = "<white>Max Damage:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
 	DamageRangeFmt = "<white>Damage:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/sec)</gray>"
+	MaxDamageRangeFmt = "<white>Max Damage:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/sec)</gray>"
 	SimpleDamageFmt = "<white>Damage:</white> <good>{0:n0}</good>"
 	SimpleMaxDamageFmt = "<white>Max Damage:</white> <good>{0:n0}</good>"
 	DamageAreaFmt = "<white>Damage Area:</white> <good>{0:0.#}</good><gray> meter radius</gray>"

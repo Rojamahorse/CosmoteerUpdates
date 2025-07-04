@@ -1,0 +1,281 @@
+
+	EmitPerSecond = 0
+	EmitPerOneShot = 0
+	Initializers
+	[
+		{
+			Type = LocationToWorldSpace
+			LocationIn = location
+			LocationOut = location
+			Name = "Convert location to world space."
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetWorldSpaceScale
+			ScaleOut = scale
+			LocalScale = 1
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = rot
+			ValueType = Angle
+			FromValue = 0d
+			ToValue = 360d
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = InheritVelocity
+			VelocityInOut = velocity
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = startFrame
+			ValueType = Int
+			FromValue = 0
+			ToValue = 6
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	Updaters
+	[
+		{
+			Type = Lifetime
+			LifeInOut = life
+			Lifetime = 0.5
+			Name = Lifetime
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = location
+			BIn = velocity
+			ResultOut = location
+			Operator = AddDt
+			Name = "Apply velocity."
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ColorRamp
+			LerpIn = life
+			ColorOut = color
+			Invert = false
+			Colors
+			[
+				{
+					Rf = 0.39215687
+					Gf = 0.39215687
+					Bf = 0.39215687
+					Af = 0
+				}
+				{
+					Rf = 0.39215687
+					Gf = 0.39215687
+					Bf = 0.39215687
+					Af = 1
+				}
+				{
+					Rf = 0.39215687
+					Gf = 0.39215687
+					Bf = 0.39215687
+					Af = 1
+				}
+				{
+					Rf = 0.39215687
+					Gf = 0.39215687
+					Bf = 0.39215687
+					Af = 1
+				}
+				{
+					Rf = 0.39215687
+					Gf = 0.39215687
+					Bf = 0.39215687
+					Af = 1
+				}
+				{
+					Rf = 0.39215687
+					Gf = 0.39215687
+					Bf = 0.39215687
+					Af = 0
+				}
+			]
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ParticleLightNormal
+			LocationIn = location
+			LightNormalOut = light_normal
+			Name = "Light normal"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Lerp
+			LerpIn = life
+			DataOut = incrementFrames
+			Invert = false
+			ValueType = Int
+			FromValue = 0
+			ToValue = 10
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Int
+			AIn = startFrame
+			BIn = incrementFrames
+			ResultOut = sprite_index
+			Operator = Add
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = UvSprites
+			SpriteIndexIn = sprite_index
+			UvRectOut = uv_rect
+			TextureSize
+			{
+				X = 2048
+				Y = 2048
+			}
+			SpriteSize
+			{
+				X = 512
+				Y = 512
+			}
+			SpriteCount = 16
+			SpritesPerRow = 4
+			PixelOffset
+			{
+				X = 0
+				Y = 0
+			}
+			Looping = true
+			Name = "Sprite UV Rect"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = UvFlip
+			FlipXYIn = flip_xy
+			UvRectInOut = uv_rect
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ValueCurve
+			MinValue = 1
+			MaxValue = 0.8
+			LerpIn = life
+			CurveOut = scale
+			Invert = true
+			Points
+			[
+				1
+				0.8235294
+				0.65882355
+				0.5921569
+				0.5254902
+				0.45882353
+				0.39607844
+				0.34117648
+				0.30980393
+				0.27450982
+				0.23921569
+				0.20784314
+				0.1764706
+				0.14509805
+				0.11372549
+				0.08627451
+				0.05882353
+				0.03137255
+				0.015686275
+				0.003921569
+				0
+				0
+				0.003921569
+				0.05882353
+				0.14117648
+				0.23137255
+				0.32941177
+				0.43137255
+				0.5372549
+				0.64705884
+				0.7607843
+				0.8784314
+			]
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	Renderer
+	{
+		Type = LitQuadRenderer
+		LightNormalIn = light_normal
+		DiffuseShader
+		NormalsShader
+		{
+			File = ../../../../common_effects/particles/particle_normals.shader
+		}
+		LocationIn = location
+		ScaleIn = scale
+		Scale2In
+		RotationIn = rot
+		ColorIn = color
+		UvRectIn = uv_rect
+		BaseSize
+		{
+			X = 10
+			Y = 10
+		}
+		Offset
+		{
+			X = 0
+			Y = 0
+		}
+		Name = ""
+	}
+	Material
+	{
+		Shader
+		{
+			File = ../../../../common_effects/particles/particle_lit.shader
+		}
+		_normalsTexture
+		{
+			File = oc_flak_field_normals.png
+			MipLevels = max
+			SampleMode = Linear
+		}
+		Texture
+		{
+			File = oc_flak_field.png
+			MipLevels = max
+			SampleMode = Linear
+		}
+	}
+	DeleteMode = KeepOrder
+	FpsCompensation = None
+	FpsCompensationStrength = 1
+	EnableMultithreading = false
+	InitCapacity = 256

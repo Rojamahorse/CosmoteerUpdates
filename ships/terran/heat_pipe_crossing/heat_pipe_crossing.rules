@@ -33,6 +33,11 @@ Part : <../base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		IsOperational
+		{
+			Type = CommandToggle
+		}
+
 		Port_Up
 		{
 			Type = NetworkPort
@@ -162,6 +167,24 @@ Part : <../base_part_terran.rules>/Part
 					{
 						File = "roof_66.png"
 						NormalsFile = "roof_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		Darkness_Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "darkness.png"
 						Size = [1, 1]
 					}
 				]

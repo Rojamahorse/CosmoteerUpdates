@@ -148,7 +148,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = bullet
 			Storage = AmmoStorage
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
 
@@ -255,7 +255,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = PartCrew
 			Crew = 2
 			DefaultPriority = &/PRIORITIES/Weapon_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [CommandConsumptionToggle]
 			HighPriorityPrerequisites = [AmmoPrereq]
 			CrewDestinations
 			[

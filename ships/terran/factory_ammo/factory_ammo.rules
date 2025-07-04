@@ -102,7 +102,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ResourceType = sulfur
 			Storage = SulfurStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
 		SulfurSplitter
@@ -141,7 +141,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
 			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 		}
 
 		ResourceConverter
@@ -889,7 +889,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			AmmoPowerUsage = [&../POWER_PER_AMMO, &../POWER_PER_SECOND]
 			AMMO_PER_CONVERSION = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
 			HEAT_PER_AMMO = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&AMMO_PER_CONVERSION)
-			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Components/ResourceConverter/Interval/BaseValue);
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue);
 			AmmoHeatGeneration = [&../HEAT_PER_AMMO, &../HEAT_PER_SECOND]
 		}
 	}

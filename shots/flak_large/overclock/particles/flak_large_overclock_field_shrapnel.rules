@@ -15,7 +15,7 @@ Def
 					X = 0
 					Y = 0
 				}
-				Radius = 4
+				Radius = 1.5
 			}
 			Perimeter = false
 			Name = "Initial Location"
@@ -27,8 +27,8 @@ Def
 			VelocityOut = base_vel
 			Speed
 			{
-				Min = 0.5
-				Max = 0.5
+				Min = 8
+				Max = 12
 			}
 			Direction
 			{
@@ -36,7 +36,7 @@ Def
 				Max = 360d
 			}
 			Name = "Initial Velocity"
-			Enabled = true
+			Enabled = false
 			UpdateAfterInit = false
 		}
 		{
@@ -45,8 +45,8 @@ Def
 			VelocityOut = base_vel
 			Speed
 			{
-				Min = 0
-				Max = 2
+				Min = 12
+				Max = 16
 			}
 			AwayFromPoint
 			{
@@ -55,7 +55,7 @@ Def
 			}
 			ConvertPointToWorldSpace = false
 			Name = "Initial Velocity"
-			Enabled = false
+			Enabled = true
 			UpdateAfterInit = false
 		}
 		{
@@ -72,8 +72,8 @@ Def
 			Type = SetRandom
 			DataOut = rot_velocity
 			ValueType = Angle
-			FromValue = -90d
-			ToValue = 90d
+			FromValue = -540d
+			ToValue = 540d
 			Name = "Initial Angular Velocity"
 			Enabled = true
 			UpdateAfterInit = false
@@ -158,16 +158,6 @@ Def
 			UpdateAfterInit = false
 		}
 		{
-			Type = SetRandom
-			DataOut = life
-			ValueType = Float
-			FromValue = 0
-			ToValue = 1
-			Name = "Spent life"
-			Enabled = false
-			UpdateAfterInit = false
-		}
-		{
 			Type = SetWorldSpaceScale
 			ScaleOut = base_scale
 			LocalScale = 2
@@ -179,8 +169,8 @@ Def
 			Type = SetRandom
 			DataOut = lifetime
 			ValueType = Float
-			FromValue = 2
-			ToValue = 4
+			FromValue = 0.3
+			ToValue = 1.2
 			Name = "Random lifetime"
 			Enabled = true
 			UpdateAfterInit = false
@@ -189,6 +179,25 @@ Def
 			Type = InheritVelocity
 			VelocityInOut = base_vel
 			Name = "Inherit Bullet Velocity"
+			Enabled = false
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetWorldSpaceLocation
+			LocationOut = center
+			LocalLocation
+			{
+				X = 0
+				Y = 0
+			}
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = InheritVelocity
+			VelocityInOut = bullet_vel
+			Name = ""
 			Enabled = true
 			UpdateAfterInit = false
 		}
@@ -231,8 +240,8 @@ Def
 			DataOut = scale
 			Invert = false
 			ValueType = Float
-			FromValue = 1
-			ToValue = 0
+			FromValue = 0.6
+			ToValue = 0.4
 			Name = "Scale lerp"
 			Enabled = true
 			UpdateAfterInit = true
@@ -285,6 +294,24 @@ Def
 					Rf = 1
 					Gf = 1
 					Bf = 1
+					Af = 1
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 1
+				}
+				{
+					Rf = 1
+					Gf = 1
+					Bf = 1
+					Af = 1
+				}
+				{
+					Rf = 0
+					Gf = 0
+					Bf = 0
 					Af = 0
 				}
 			]
@@ -300,6 +327,54 @@ Def
 			ResultOut = color
 			Operator = Multiply
 			Name = "Multiply Color"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = center
+			BIn = bullet_vel
+			ResultOut = center
+			Operator = AddDt
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = center
+			BIn = location
+			ResultOut = center_vel
+			Operator = Subtract
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = OperatorConst
+			AIn = center_vel
+			ResultOut = center_vel
+			Operator = Multiply
+			ValueType = Vector2
+			Value
+			{
+				X = 14
+				Y = 14
+			}
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = base_vel
+			BIn = center_vel
+			ResultOut = base_vel
+			Operator = AddDt
+			Name = ""
 			Enabled = true
 			UpdateAfterInit = false
 		}
@@ -321,8 +396,8 @@ Def
 		UvRectIn = uv_rect
 		BaseSize
 		{
-			X = 0.4
-			Y = 0.4
+			X = 0.9
+			Y = 0.9
 		}
 		Offset
 		{
@@ -357,17 +432,18 @@ Def
 }
 EmitterDef
 {
-	EmitPerSecond = 150
+	EmitPerSecond = 25
 	EmitPerOneShot
 	{
-		Min = 0
-		Max = 0
+		Min = 15
+		Max = 20
 	}
 	PreInitializers[]
 	PostInitializers[]
 }
-Bucket = FlakShrapnel
+Bucket = DisruptorOrb
 UseRealTime = false
+EmitImmediately = false
 PenetratingBucket
 MinIntensity = 0
 IsFancy = true
@@ -380,9 +456,9 @@ UnsharedRenderInWorldSpace = false
 DontEmitWhenOffScreen = false
 DontEmitWhenOffScreenSizeInflate = 3
 UseCustomShapeForOffScreenCheck = false
-MaxEmissionZoom = 15
+MaxEmissionZoom = 8
 MaxParticleCount = 1000
-ScaleEmissionWithIntensity = true
+ScaleEmissionWithIntensity = false
 ScaleEmissionWithBeamLength = false
 ScaleEmissionWithWorldVelocity = false
 ScaleEmissionWithPartSize = false

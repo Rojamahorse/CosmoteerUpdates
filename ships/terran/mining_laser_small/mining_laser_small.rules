@@ -94,7 +94,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Storage = BatteryStorage
 			DefaultPriority = &<./Data/ships/base_ship.rules>/DefaultSalvagePriority
 			ResupplyThreshold = 1000
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 		}
 
 		FireModeToggle
@@ -474,7 +474,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = PartCrew
 			Crew = 1
 			DefaultPriority = &<./Data/ships/base_ship.rules>/DefaultSalvagePriority
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
 			HighPriorityPrerequisites = [BatteryStorage]
 			CrewDestinations
 			[

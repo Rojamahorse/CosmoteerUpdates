@@ -38,6 +38,7 @@ Components
 	VolHit
 	{
 		Type = VolumeHit
+		BeamAttenuationDamagePool = DamagePool
 		HitBullet
 		{
 			HitEffects
@@ -51,7 +52,7 @@ Components
 			]
 			MediaEffects
 			[
-				&<particles/sparks.rules>
+				&<particles/sparks_field.rules>
 			]
 		}
 	}
@@ -71,8 +72,8 @@ Components
 			Size = [(&~/RADIUS) * 2, &0]
 			VertexColor = [207, 207, 207]
 		}
-//		Offset = [-(&~/RADIUS), &0]
 	}
+
 	
 	MediaEffects
 	{
@@ -81,6 +82,8 @@ Components
 		MediaEffects
 		[
 			&<particles/flak_large_overclock_field_shrapnel.rules>
+			&<particles/flak_large_overclock_field_right.rules>
+			&<particles/flak_large_overclock_field_left.rules>
 		]
 	}
 }

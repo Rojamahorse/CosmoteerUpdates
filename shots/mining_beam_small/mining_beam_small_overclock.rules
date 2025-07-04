@@ -11,6 +11,15 @@ Beam : BASE
 	Range = &~/Range
 	IdealRange = (&Range) - 10
 	
+	AttenuationLimit : HitOperational/HitEffects/0/Damage
+	{
+		BaseValue = (&^/0/BaseValue) * (&~/RADIUS)
+	}
+    HitAttenuator
+    {
+    	MediaEffects = &~/Beam/HitOperational/MediaEffects
+    }
+	
 	HitShield = &HitOperational
 	HitStructural = &HitOperational
 	HitOperational : ^/0/HitOperational

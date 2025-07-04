@@ -111,7 +111,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ResourceType = iron
 			Storage = IronStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
 		IronSplitter
@@ -140,7 +140,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ResourceType = bullet
 			Storage = AmmoStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
 
@@ -171,7 +171,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
 			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 		}
 
 		ResourceConverter
@@ -958,7 +958,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			MinePowerUsage = [&../POWER_PER_MINE, &../POWER_PER_SECOND]
 			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
 			HEAT_PER_MINE = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT) * (&~/Part/Stats/PartsPerMine)
-			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Components/ResourceConverter/Interval/BaseValue);
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue);
 			MineHeatGeneration = [&../HEAT_PER_MINE, &../HEAT_PER_SECOND]
 		}
 	}

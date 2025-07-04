@@ -14,6 +14,13 @@ Beam : BASE
 				Count = 1
 			}
 		]
+		MediaEffects
+		[
+			&<particles/flak_large_overclock_field_shrapnel.rules>
+			&<particles/flak_large_overclock_flash.rules>
+			&<particles/flak_large_overclock_field_right.rules>
+			&<particles/flak_large_overclock_field_left.rules>
+		]
 	}
 	HitShield = &HitNothing
     HitOperational = &HitNothing

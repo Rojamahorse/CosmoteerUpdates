@@ -1,5 +1,11 @@
 Range = 240
 
+AttenuationLimit = &HitOperational/HitEffects/0/Damage
+HitAttenuator
+{
+	MediaEffects = &~/HitOperational/MediaEffects
+}
+
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
 

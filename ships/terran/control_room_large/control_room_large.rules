@@ -86,6 +86,13 @@ Part : <../base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
+		
+		ConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
 
 		BatteryStorage
 		{
@@ -101,7 +108,7 @@ Part : <../base_part_terran.rules>/Part
 			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/ControlRoom_Supply
 			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			OperationalToggle = ConsumptionToggle
 			AllowNonContiguousCrewSearch = true
 		}
 

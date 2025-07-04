@@ -43,7 +43,7 @@ Components
 		Storage = CombinedMissileStorage
 		DefaultPriority = &/PRIORITIES/Weapon_Supply
 		OverridePriorityKey = MissileStorage
-		OperationalToggle = PowerToggle
+		OperationalToggle = CommandConsumptionToggle
 		ConsumptionToggleButtonOffset = [0, -.4]
 	}
 

@@ -63,7 +63,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		IsConnected
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, IsConnectedProxy]
+			Toggles = [PowerToggle, ScorchedToggle, IsConnectedProxy]
 			Mode = All
 		}
 		IsConnectedProxy

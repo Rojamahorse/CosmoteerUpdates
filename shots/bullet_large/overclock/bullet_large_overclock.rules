@@ -53,8 +53,61 @@ Components : &BASE/Components
 		HitStructural = &~/BASE/Components/Hit/HitStructural
 	}
 	
-	Sprite : ^/0/Sprite
+	Sprite
 	{
-		ReduceScaleWith
+		Type = AnimatedSprite
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "../bullet_large_cracked.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				Size = [0.7, 0.7] //130% larger than 0.7
+			}
+			FrameCount = 16
+			FrameSize = [256, 256]
+			FramesPerRow = 4
+			FramesPerSecond = 120
+		}
+	}
+	
+	GlowSprite2
+	{
+		Type = AnimatedSprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Offset = [0, 0]
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "../bullet_large_oc_light.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Size = [18.2, 18.2]
+				//VertexColor = [255, 255, 255]
+				TargetBlendMode = Add
+				Shader = "./Data/common_effects/fancy_light.shader"
+				_z = 1
+				_nrmlStrengthLimit = 1
+				_litReflectiveStrength = 24
+				_litAdditiveStrength = 0
+				_unlitAdditiveStrength = 1
+			}
+		FrameCount = 16
+		FrameSize = [512, 512]
+		FramesPerRow = 4
+		FramesPerSecond = 120
+		}
 	}
 }

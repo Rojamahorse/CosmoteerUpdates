@@ -6,6 +6,12 @@ HitEffectsScaleOverRange = [1, 80%]
 MediaEffectsScaleOverRange = &HitEffectsScaleOverRange
 BeamMediaEffectsIntensity = { BaseValue=1; EffectScaleExponent=1; }
 
+AttenuationLimit = &HitOperational/HitEffects/0/Damage
+HitAttenuator
+{
+	MediaEffects = &~/HitOperational/MediaEffects
+}
+
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
 

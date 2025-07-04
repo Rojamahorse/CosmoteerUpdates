@@ -109,7 +109,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ResourceType = uranium
 			Storage = UraniumStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
 
@@ -141,7 +141,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
 			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 		}
 
 		UraniumPrereq

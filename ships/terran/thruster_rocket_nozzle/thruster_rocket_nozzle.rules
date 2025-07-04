@@ -99,7 +99,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = PartCrew
 			Crew = 2
 			DefaultPriority = &/PRIORITIES/Thruster_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [CommandConsumptionToggle]
 			HighPriorityPrerequisites = [CombinedBatteryStorage]
 			CrewDestinations
 			[
@@ -116,7 +116,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		IsConnected // Needed to be referenced by extenders.
 		{
 			Type = ToggleProxy
-			ComponentID = PowerToggle
+			ComponentID = CommandConsumptionToggle
 		}
 
 		PowerToggle
@@ -288,7 +288,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Storage = ExtendableBatteryStorage
 					DefaultPriority = &/PRIORITIES/Thruster_Supply
 					ResupplyThreshold = 500
-					OperationalToggle = PowerToggle
+					OperationalToggle = CommandConsumptionToggle
 				}
 			}
 		}

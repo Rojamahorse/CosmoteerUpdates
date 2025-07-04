@@ -123,7 +123,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/Defense_Supply
 			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 		}
 
 		ProgressBar
@@ -607,7 +607,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = TriggerProxy
 			ComponentID = ArcShield
-			ProxyToggle = IsOperationalOverclocked
+			ProxyToggle = IsOverclocked
 		}
 		OverheatEffects : ^/0/OverheatEffects
 		{

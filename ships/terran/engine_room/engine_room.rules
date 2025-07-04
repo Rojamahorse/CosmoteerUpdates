@@ -139,7 +139,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Storage = BatteryDistributionStorage
 			DefaultPriority = &/PRIORITIES/Thruster_Supply
 			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 		}
 
 		PowerDrain
@@ -210,7 +210,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = PartCrew
 			Crew = 2
 			DefaultPriority = &/PRIORITIES/Thruster_Supply // Needs to be at least as high as the supply priority.
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
 			HighPriorityPrerequisites = [BatteryStorage]
 			CrewDestinations
 			[

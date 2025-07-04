@@ -35,7 +35,7 @@ Beam : <ion_beam.rules>
 	HitEffectsScaleOverRange = 1
 	MediaEffectsScaleOverRange = 1
 	SecondaryWidth = (&~/OVERCLOCK/LIGHTNING_OFFSET) * 2
-	SecondaryFilter 
+	SecondaryFilter
 	{
 		ExcludePartCategories = [ion_beam_prism]
 		IgnoreInvulnerability = true; 
@@ -51,6 +51,13 @@ Beam : <ion_beam.rules>
 	}
 	ShieldCollisions { IgnoreInvulnerability = true; }
 	UseHitNormalAsWorldDirection = true
+	
+	AttenuationLimit = &~/BASE/DAMAGE
+    HitAttenuator
+    {
+    	MediaEffects = &~/Beam/HitOperational/MediaEffects
+    }
+	
 	HitShield = &HitOperational
 	HitCrew = &HitOperational
 	HitNothing = &HitOperational

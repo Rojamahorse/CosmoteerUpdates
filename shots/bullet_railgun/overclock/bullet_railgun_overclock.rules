@@ -44,6 +44,7 @@ Components : BASE/Components
 		Penetration = infinity
 		PenetrationSpeed = &~/Speed
 		FactorEffectsWith = DamagePool
+		CalculateWorldHitNormal = true
 		
 		HitCrew = &HitOperational
 		HitShield = &HitOperational
@@ -66,12 +67,13 @@ Components : BASE/Components
 			MediaEffectsScale : ^/0/MediaEffectsScale { BuffType = RailgunShotOverclock; }
 			MediaEffects
 			[
-				&../^/0/MediaEffects/0
+				//&../^/0/MediaEffects/0
 				&../^/0/MediaEffects/1
 				&../^/0/MediaEffects/2
 				&../^/0/MediaEffects/3
 				: ../^/0/MediaEffects/4 { Volume : ^/0/Volume { BuffType = RailgunShotOverclock; }}
 				: ../^/0/MediaEffects/5 { ShakeAmount : ^/0/ShakeAmount { BuffType = RailgunShotOverclock; }}
+				&<../particles/oc_bullet_hit_railgun.rules>
 			]
 		}
 		HitStructural : ^/0/HitStructural

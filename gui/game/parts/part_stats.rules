@@ -142,6 +142,10 @@ PartStats
 		FormatKey = "Stats/DamageRangeFmt"
 	}
 	{
+		ID = MaxDamageRange
+		FormatKey = "Stats/MaxDamageRangeFmt"
+	}
+	{
 		ID = SimpleDamage
 		FormatKey = "Stats/SimpleDamageFmt"
 	}

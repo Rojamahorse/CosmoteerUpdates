@@ -52,6 +52,33 @@ Bullet : BASE
 			PenetratingOperational = &HitOperational
 		}
 		// Necessary to prevent crash from FactorEffectsWith
-		MediaEffects : ^/0/MediaEffects {}
+		//MediaEffects : ^/0/MediaEffects {}
+		MediaEffects
+		{
+			Type = MediaEffects
+			FactorEffectsWith = Hit
+			FactorEffectsExponent = 0.5
+			MediaEffects
+			[
+				&<particles/disruptor_bolt_oc_lightning.rules>
+			]
+		}
+		Sprite
+		{
+			Type = Sprite
+			ReduceScaleWith = Hit
+			ReduceScaleExponent = 0.5
+			Sprite
+			{
+				Texture
+				{
+					File = "particles/disruptor_bolt_hit_orb.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				VertexColor = [240, 255, 150, 255]
+				Size = [2, 2] //0.35
+			}
+		}
 	}
 }

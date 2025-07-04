@@ -63,17 +63,24 @@ Part : <../base_part_terran_overclock.rules>/Part
 			MinStatusValue = 1
 			Invert = true
 		}
+		
+		ConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
 
 		PowerToggleNonOverclocked
 		{
 			Type = MultiToggle
-			Toggles = [ PowerToggle, { Toggle = IsOverclocked; Invert = true }]
+			Toggles = [ ConsumptionToggle, { Toggle = IsOverclocked; Invert = true }]
 			Mode = All
 		}
 		PowerToggleOverclocked
 		{
 			Type = MultiToggle
-			Toggles = [ PowerToggle, IsOverclocked ]
+			Toggles = [ ConsumptionToggle, IsOverclocked ]
 			Mode = All
 		}
 
@@ -154,7 +161,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Storage = BatteryReceiverStorage
 			DefaultPriority = &/PRIORITIES/Storage_Supply
 			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			OperationalToggle = ConsumptionToggle
 		}
 
 		OverclockStateValue

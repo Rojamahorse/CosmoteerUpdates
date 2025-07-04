@@ -167,7 +167,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Storage = BatteryStorage
 			ResupplyThreshold = 1
 			DefaultPriority = &/PRIORITIES/Defense_Supply
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 		}
 
 		OverclockStateValue

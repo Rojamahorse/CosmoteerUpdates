@@ -176,7 +176,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ResourceType = bullet
 			Storage = AmmoStorage
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
 
@@ -447,6 +447,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		AmmoLoader
 		{
 			Type = ResourceConverter
+			OperationalToggle = ScorchedToggle
 			FromStorage = AmmoStorage
 			ToStorage = LoadedAmmo
 			FromQuantity = 1
@@ -482,7 +483,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = PartCrew
 			Crew = 2
 			DefaultPriority = &/PRIORITIES/Weapon_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
 			HighPriorityPrerequisites = [AmmoPrereq]
 			CrewDestinations
 			[

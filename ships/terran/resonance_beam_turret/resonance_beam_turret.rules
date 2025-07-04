@@ -20,6 +20,7 @@ Part : <../base_part_terran.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 12500
 	TypeCategories = [weapon, uses_power, is_crewed, heat_resistant]
+	SignificanceToggle = ScorchedToggle
 	ReceivableBuffs : ^/0/ReceivableBuffs [ThermalIntensity, ThermalRadius, ThermalShieldPiercing, ThermalActivity, Overclock]
 	Flammable = false
 	ProhibitedBy : ^/0/ProhibitedBy [tall]
@@ -74,7 +75,7 @@ Part : <../base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, PartCrew]
+			Toggles = [PowerToggle, PartCrew, ScorchedToggle]
 			Mode = All
 		}
 
@@ -86,11 +87,26 @@ Part : <../base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 8
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
 		}
 
 		// Heat safety
@@ -240,6 +256,8 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = battery
 			MaxResources = 24000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ToggleOnResources = &../BeamEmitter/ResourcesUsed
+			ToggleOffResources = (&ToggleOnResources) - 1
 		}
 
 		BatteryConsumer
@@ -249,7 +267,7 @@ Part : <../base_part_terran.rules>/Part
 			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
 			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 		}
 
 		IsFiringTimer
@@ -372,11 +390,10 @@ Part : <../base_part_terran.rules>/Part
 
 		BasePumpUtilization
 		{
-			Type = ValueTween
-			IsOnToggle = IsFiring
-			OnValue = 1
-			OnTweenDuration = 0.001
-			OffTweenDuration = 0.001
+			Type = ToggleValueSelector
+			Toggle = IsIntendingToFire
+			ToggleOnValue = One
+			ToggleOffValue = Zero
 		}
 		PumpUtilization
 		{
@@ -665,11 +682,24 @@ Part : <../base_part_terran.rules>/Part
 			AutoTarget = &../Turret/AutoTargets/0
 		}
 
+		FixedWeaponHasResourcesTriggerProxy
+		{
+			Type = TriggerProxy
+			ComponentID = FixedWeapon
+			ProxyToggle = &../BeamEmitter/ResourceStorage
+		}
+		IsIntendingToFire
+		{
+			Type = TriggeredToggle
+			OnTrigger = FixedWeaponHasResourcesTriggerProxy
+			OffTrigger = IsFiringTimer
+		}
+
 		BeamEmitter : <./Data/shots/resonance_beam/resonance_beam.rules>
 		{
 			Type = BeamEmitter
 			ChainedTo = Turret
-			FireTrigger = FixedWeapon
+			FireTrigger = FixedWeaponHasResourcesTriggerProxy
 			GetTargetFrom = Turret
 			Location = [1.2, 0]
 			OperationalToggle = IsOperational
@@ -710,7 +740,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = PartCrew
 			Crew = 4
 			DefaultPriority = &/PRIORITIES/Weapon_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
 			HighPriorityPrerequisites = [BatteryStorage]
 			CrewDestinations
 			[
@@ -847,6 +877,21 @@ Part : <../base_part_terran.rules>/Part
 			Type = DeathEffects
 			Location = [2, 2]
 			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed
+		}
+		
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedMediaEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/HugePartScorched
 		}
 
 		Graphics
@@ -1938,6 +1983,12 @@ Part : <../base_part_terran.rules>/Part
 			Layer = "indicators"
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3,4]
+				}
 				{
 					Toggle = PowerToggle
 					AtlasSprite
@@ -1945,6 +1996,7 @@ Part : <../base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [2,3,4]
 				}
 				{
 					Toggle = BatteryStorage

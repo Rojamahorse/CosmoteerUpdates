@@ -395,12 +395,6 @@ Part : <../base_part_terran.rules>/Part
 			Location = [0.5, 0.5]
 			Indicators
 			[
-				// Scorched
-				{
-					Toggle = ScorchedToggle
-					AtlasSprite = &/INDICATORS/Scorched
-					HidesIndicators = [1]
-				}
 				// Turned off.
 				{
 					Toggle = PowerToggle

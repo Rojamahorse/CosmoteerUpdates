@@ -114,7 +114,7 @@ Part : <../base_part_terran.rules>/Part
 			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/PriorityUtility_Supply
 			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 		}
 		CrewLocation1
 		{
@@ -145,7 +145,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = PartCrew
 			Crew = 1
 			DefaultPriority = &/PRIORITIES/PriorityUtility_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle, PartCrew1Prereq]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle, PartCrew1Prereq]
 			HighPriorityPrerequisites = [BatteryStorage]
 			CrewDestinations [ &../../CrewLocation1/Location ]
 			CrewLocations [ CrewLocation1 ]
@@ -153,19 +153,19 @@ Part : <../base_part_terran.rules>/Part
 		}
 		PartCrew2 : PartCrew1
 		{
-			PrerequisitesBeforeCrewing = [PowerToggle, PartCrew2Prereq]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle, PartCrew2Prereq]
 			CrewDestinations [ &../../CrewLocation2/Location ]
 			CrewLocations [ CrewLocation2 ]
 		}
 		PartCrew3 : PartCrew1
 		{
-			PrerequisitesBeforeCrewing = [PowerToggle, PartCrew3Prereq]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle, PartCrew3Prereq]
 			CrewDestinations [ &../../CrewLocation3/Location ]
 			CrewLocations [ CrewLocation3 ]
 		}
 		PartCrew4 : PartCrew1
 		{
-			PrerequisitesBeforeCrewing = [PowerToggle, PartCrew4Prereq]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle, PartCrew4Prereq]
 			CrewDestinations [ &../../CrewLocation4/Location ]
 			CrewLocations [ CrewLocation4 ]
 		}
@@ -430,7 +430,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret1
 		{
 			Type = TurretWeapon
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			Location = [1, 1] //Relative to upper-left corner of unrotated part.
 			Rotation = -135d // Relative to unrotated part.
 			FireInterval = &../BeamEmitter1/Duration
@@ -553,7 +553,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret1bSearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret1bSearchingToggle, PowerToggle]
+			Toggles = [_Turret1bSearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret1cSearchingToggle
@@ -565,7 +565,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret1cSearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret1cSearchingToggle, PowerToggle]
+			Toggles = [_Turret1cSearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret1dSearchingToggle
@@ -577,7 +577,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret1dSearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret1dSearchingToggle, PowerToggle]
+			Toggles = [_Turret1dSearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret2SearchingToggle
@@ -589,7 +589,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret2SearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret2SearchingToggle, PowerToggle]
+			Toggles = [_Turret2SearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret2bSearchingToggle
@@ -601,7 +601,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret2bSearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret2bSearchingToggle, PowerToggle]
+			Toggles = [_Turret2bSearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret2cSearchingToggle
@@ -613,7 +613,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret2cSearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret2cSearchingToggle, PowerToggle]
+			Toggles = [_Turret2cSearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret2dSearchingToggle
@@ -625,7 +625,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret2dSearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret2dSearchingToggle, PowerToggle]
+			Toggles = [_Turret2dSearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret3SearchingToggle
@@ -637,7 +637,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret3SearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret3SearchingToggle, PowerToggle]
+			Toggles = [_Turret3SearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret3bSearchingToggle
@@ -649,7 +649,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret3bSearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret3bSearchingToggle, PowerToggle]
+			Toggles = [_Turret3bSearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret3cSearchingToggle
@@ -661,7 +661,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret3cSearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret3cSearchingToggle, PowerToggle]
+			Toggles = [_Turret3cSearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret3dSearchingToggle
@@ -673,7 +673,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret3dSearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret3dSearchingToggle, PowerToggle]
+			Toggles = [_Turret3dSearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret4SearchingToggle
@@ -685,7 +685,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret4SearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret4SearchingToggle, PowerToggle]
+			Toggles = [_Turret4SearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret4bSearchingToggle
@@ -697,7 +697,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret4bSearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret4bSearchingToggle, PowerToggle]
+			Toggles = [_Turret4bSearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret4cSearchingToggle
@@ -709,7 +709,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret4cSearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret4cSearchingToggle, PowerToggle]
+			Toggles = [_Turret4cSearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 		_Turret4dSearchingToggle
@@ -721,7 +721,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret4dSearchingToggle
 		{
 			Type = MultiToggle
-			Toggles = [_Turret4dSearchingToggle, PowerToggle]
+			Toggles = [_Turret4dSearchingToggle, CommandConsumptionToggle]
 			Mode = All
 		}
 

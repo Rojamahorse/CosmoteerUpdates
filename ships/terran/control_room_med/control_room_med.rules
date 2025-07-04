@@ -72,7 +72,12 @@ Part : <../base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
-
+		ConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
 		ScorchedToggle
 		{
 			Type = StatusToggle
@@ -95,7 +100,7 @@ Part : <../base_part_terran.rules>/Part
 			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/ControlRoom_Supply
 			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			OperationalToggle = ConsumptionToggle
 			AllowNonContiguousCrewSearch = true
 		}
 
@@ -140,7 +145,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = PartCrew
 			Crew = 3
 			DefaultPriority = &/PRIORITIES/ControlRoom_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
 			HighPriorityPrerequisites = [BatteryStorage]
 			CrewDestinations
 			[

@@ -93,6 +93,16 @@ SHIELD_OVERLOAD_PER_DILATION = 10%
 SHIELD_OVERLOAD_BASE = 4.4%
 SHIELD_OVERLOAD_RAMP_TIME = 3
 
+AttenuationLimit : HitOperational/HitEffects/0/StatusValuePool
+{
+	BaseValue = ceil((&^/0/BaseValue) * 10%)
+}
+HitAttenuator
+{
+	MediaEffectsScale = { BaseValue = 1; BuffType = ThermalRadius; BuffMode = Replace; MaxValue = 1 }
+	MediaEffects = &~/HitOperational/MediaEffects
+}
+
 HitOperational
 {
 //	HitEffectsScale = { BaseValue = 1; BuffType = ThermalPower; BuffMode = Multiply }
@@ -113,6 +123,11 @@ HitOperational
 						BuffType = ThermalIntensity
 						ModificationMode = Multiply
 						Exponent = &~/HEAT_POOL_AMP_EXPONENT
+					}
+					{
+						Type = Buff
+						BuffType = ElectronBuff
+						ModificationMode = Multiply
 					}
 				]
 			}
@@ -161,6 +176,10 @@ HitOperational
 					{
 						Scale = (&^/0/Scale) * (&../../FACTOR)
 					}
+					: ../^/0/Modifiers/2
+					{
+						Scale = (&^/0/Scale) * (&../../FACTOR)
+					}
 				]
 			}
 			MaxStatusValue
@@ -179,6 +198,11 @@ HitOperational
 						BuffType = ThermalRadius
 						ModificationMode = Add
 						Scale = &~/SHIELD_OVERLOAD_PER_DILATION
+					}
+					{
+						Type = Buff
+						BuffType = ElectronBuff
+						ModificationMode = Multiply
 					}
 				]
 			}
@@ -296,23 +320,7 @@ HitShield
 	HitEffects
 	[
 		&~/HitOperational/HitEffects/1
-		// Direct damage
-//		{
-//			Type = Damage
-//			DamageType = heat
-//			Damage
-//			{
-//				BaseValue = 13
-//				Modifiers
-//				[
-//					{
-//						Type = Buff
-//						BuffType = ThermalIntensity
-//						ModificationMode = Multiply
-//					}
-//				]
-//			}
-//		}
+
 		// Heat pass-through
 		{
 			Type = StatusApplication
@@ -331,6 +339,11 @@ HitShield
 					{
 						Type = Buff
 						BuffType = ThermalShieldPiercing
+						ModificationMode = Multiply
+					}
+					{
+						Type = Buff
+						BuffType = ElectronBuff
 						ModificationMode = Multiply
 					}
 				]
@@ -357,6 +370,11 @@ HitStructural
 					{
 						Type = Buff
 						BuffType = ThermalIntensity
+						ModificationMode = Multiply
+					}
+					{
+						Type = Buff
+						BuffType = ElectronBuff
 						ModificationMode = Multiply
 					}
 				]

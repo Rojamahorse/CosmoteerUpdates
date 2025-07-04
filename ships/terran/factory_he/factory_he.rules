@@ -108,7 +108,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ResourceType = iron
 			Storage = IronStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
 		IronSplitter
@@ -135,7 +135,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ResourceType = sulfur
 			Storage = SulfurStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
 		SulfurSplitter
@@ -174,7 +174,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
 			ResupplyThreshold = 500
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 		}
 
 		ResourceConverter
@@ -1342,7 +1342,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			MissilePowerUsage = [&../POWER_PER_MISSILE, &../POWER_PER_SECOND]
 			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
 			HEAT_PER_MISSILE = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT) * (&~/Part/Stats/PartsPerMissile)
-			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Components/ResourceConverter/Interval/BaseValue);
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue);
 			MissileHeatGeneration = [&../HEAT_PER_MISSILE, &../HEAT_PER_SECOND]
 		}
 	}

@@ -1,10 +1,15 @@
 OVERCLOCK
 {
-	PELLET_COUNT = 4
-	PELLET_HALF_SPREAD = 6d
-	RAMP_TIME = 5
-	MAX_FIRE_RATE = 5
-	HEAT_PER_SHOT = 400
+	BURST_COUNT = 4
+	BASE_BURST_DELAY = 0.4 / 4
+	HALF_SPREAD = 0.5d
+	FIRE_INTERVAL_FACTOR = 400%
+	RAMP_TIME = 10
+	MAX_FIRE_RATE = 5.25
+	HEAT_PER_SHOT = 300
+	RECOIL = (&BEAM/../IMPULSE_FACTOR) * (&~/EMITTER/Recoil)
+	
+	BEAM = &<./Data/shots/chaingun_shot/overclock/chaingun_shot_overclock.rules>/Beam
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -187,8 +192,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = Timer
 			Duration = &../ShellChangingValueTween/OffTweenDuration
-			StartTrigger = BulletEmitter
-			ResetTrigger = BulletEmitter
+			StartTrigger = BulletEmitterProxy
+			ResetTrigger = BulletEmitterProxy
 			StartExpired = true
 			InvertToggle = true
 		}
@@ -212,7 +217,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			AccumulatingToggle = GunIsFiring
 			BASE_MAX_VALUE = 10.5 //30 shots per second if base value
 			BASE_RAMP_UP_TIME = 10
-			BASE_RAMP_DOWN_TIME = (&BASE_RAMP_UP_TIME) / 2 //cooldown is half the ramp up
+			BASE_RAMP_DOWN_TIME = (&BASE_RAMP_UP_TIME) / 2 
 			BASE_RAMP_PER_SEC = ((&BASE_MAX_VALUE) - (&MinValue)) / (&BASE_RAMP_UP_TIME)
 			OVERCLOCK_RAMP_PER_SEC = ((&~/OVERCLOCK/MAX_FIRE_RATE) - (&MinValue)) / (&~/OVERCLOCK/RAMP_TIME)
 			AccumulationRate
@@ -231,15 +236,16 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 			DissipationRate : AccumulationRate
 			{
-				BaseValue = ((&../BASE_MAX_VALUE) - (&../MinValue)) / (&../BASE_RAMP_DOWN_TIME)
+				BaseValue = (&../BASE_RAMP_PER_SEC) * 2 //cooldown is half the ramp up
 				Modifiers
 				[
 					: ../^/0/Modifiers/0
 					{
-						RemapTo = [1, (&../../../../OVERCLOCK_RAMP_PER_SEC) / 2]
+						RemapTo = [1, (&../../../../OVERCLOCK_RAMP_PER_SEC) * 2]
 					}
 				]
 			}
+			BaseValue = &MinValue
 			MinValue = 1
 			MaxValue
 			{
@@ -255,6 +261,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 					}
 				]
 			}
+			BASE_TO_OC_FACTOR = (&BASE_RAMP_PER_SEC) / (&OVERCLOCK_RAMP_PER_SEC)
+			AccumulationTriggers
+			[
+				{
+					Trigger = OverclockToggledOnTrigger
+					Value = 1 / (&../../BASE_TO_OC_FACTOR)
+					Operation = MultiplyFromBase
+				}
+				{
+					Trigger = OverclockDisabledTrigger
+					Value = (&../../BASE_TO_OC_FACTOR)
+					Operation = MultiplyFromBase
+				}
+			]
 		}
 
 		ShellChangingValueTween
@@ -340,7 +360,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					ResourceType = bullet
 					Storage = AmmoStorageLeft
 					DefaultPriority = &/PRIORITIES/Weapon_Supply
-					OperationalToggle = PowerToggle
+					OperationalToggle = CommandConsumptionToggle
 					ConsumptionToggleButtonOffset = [0, .4]
 				}
 				AmmoConsumerRight //For the crew to fill
@@ -349,7 +369,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					ResourceType = bullet
 					Storage = AmmoStorageRight
 					DefaultPriority = &/PRIORITIES/Weapon_Supply
-					OperationalToggle = PowerToggle
+					OperationalToggle = CommandConsumptionToggle
 					ConsumptionToggleButtonOffset = [0, .4]
 					OverridePriorityKey = AmmoConsumerLeft
 				}
@@ -671,7 +691,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			RotateSpeed = Infinity // AimingTurretSlider does the actual physical rotation.
 			FireThresholdAngle = 0
 			AIFirepowerRating = (&~/Part/StatsByCategory/0/Stats/DamagePerSecond/1) / 2 //Set to half the dps when its on, because of the down time.
-			TargetingEmitter = BulletEmitter
+			TargetingEmitter = BulletEmitterProxy
 			InstantSearchesAfterTargetLost = 5
 			ToggleOnMode = HasTargetExceptShipRelative
 			SaveShipRelativeTargets = true
@@ -717,8 +737,26 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = FixedWeapon
 			OperationalToggle = IsShellFullyOpen//
 			AutoFireToggle = IsShellFullyOpen //
-			FireInterval = { BaseValue=0.35; BuffType=RateOfFire; BuffMode=Divide;}
-			Emitter = BulletEmitter
+			FireInterval
+			{ 
+				BaseValue=0.35
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = RateOfFire
+						ModificationMode = Divide
+					}
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, (&~/OVERCLOCK/FIRE_INTERVAL_FACTOR)]
+					}
+				]
+			}
+			Emitter = BulletEmitterProxy
 			DefaultDirectControlBinding = 0
 			CanBeGivenExplicitTarget = false
 
@@ -742,7 +780,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			OperationalToggle = IsOperational//Always checking for a target
 			AutoFireToggle = AutoFireToggle //
 			FireInterval = Infinity //only used in the fixed weapon
-			Emitter = BulletEmitter
+			Emitter = BulletEmitterProxy
 			DefaultDirectControlBinding = 0
 			ToggleOnMode = WantsToFire
 			AIFirepowerRating = &../Turret/AIFirepowerRating
@@ -818,72 +856,115 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Toggles = [AimingTurretSlider, GunIsFiring]
 			Mode = Any
 		}
-		BulletEmitter : <./Data/shots/chaingun_shot/chaingun_shot.rules>
+		
+		EmissionComponents
 		{
-			Type = BeamEmitter
-			OperationalToggle = CanEmit
-			ChainedTo = AimingTurretSlider
-			FireTrigger = FixedWeaponShooter
-			GetTargetFrom = Turret
-			Location = [0, 0]
-			Duration = 0
-			ResourceStorage = CombinedBulletSplitters // Needed to prevent turret from trying to fire when out of ammo.
-			ResourcesUsed
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Invert = true
+			IncludeInBlueprints = true
+			Components
 			{
-				BaseValue = 1
-				Modifiers
-				[
-					{
-						Type = BuffRemap
-						BuffType = Overclock
-						ModificationMode = Replace
-						RemapFrom = [0, 1]
-						RemapTo = [(&../../../BaseValue), &~/OVERCLOCK/PELLET_COUNT]
-					}
-				]
-			}
-			Spread
-			[
+				BulletEmitter : <./Data/shots/chaingun_shot/chaingun_shot.rules>
 				{
-					BaseValue = -1.5d
-					Modifiers
-					[
-						{
-							Type = ScaledBuff
-							BuffType = Overclock
-							ModificationMode = Multiply
-							Scale = 0
-						}
-					]
+					Type = BeamEmitter
+					OperationalToggle = CanEmit
+					ChainedTo = AimingTurretSlider
+					FireTrigger = FixedWeaponShooter
+					GetTargetFrom = Turret
+					Location = [0, 0]
+					Duration = 0
+					ResourceStorage = CombinedBulletSplitters // Needed to prevent turret from trying to fire when out of ammo.
+					ResourcesUsed = 1
+					Spread = [-1.5d, 1.5d]
+					Recoil = 10
+					Burst = 1
+					BeamMediaEffectsOffset = [2, 0]
+					BeamMediaEffectsLengthOffset = -2
 				}
-				: 0 { BaseValue = -(&^/0/BaseValue) }
-			]
-			Pellets
-			{
-				BaseValue = 1
-				Modifiers
-				[
+				FireIntervalValue
+				{
+					Type = BuffableValue
+					Value
 					{
-						Type = BuffRemap
-						BuffType = Overclock
-						ModificationMode = Replace
-						RemapFrom = [0, 1]
-						RemapTo = [(&../../../BaseValue), &~/OVERCLOCK/PELLET_COUNT]
+						BaseValue = &~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue
+						Modifiers
+						[
+							{
+								Type = Buff
+								BuffType = RateOfFire
+								ModificationMode = Divide
+							}
+						]
 					}
-				]
+				}
+				InverseShotInterval
+				{
+					Type = MultiValue
+					Values = [FireIntervalValue]
+					OneOver = true
+					Mode = Add
+				}
+				BarrelAnimationResetTrigger
+				{
+					Type = MultiTrigger
+					Triggers = [BulletEmitter]
+				}
 			}
-			PelletSpread = [-(&~/OVERCLOCK/PELLET_HALF_SPREAD), (&~/OVERCLOCK/PELLET_HALF_SPREAD)]
-			Recoil = 10
-			Burst = 1
-			BeamMediaEffectsOffset = [2, 0]
-			BeamMediaEffectsLengthOffset = -2
+		}
+		Overclock_EmissionComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Components
+			{
+				BulletEmitter : ~/OVERCLOCK/BEAM, ~/EMITTER
+				{
+					Recoil = &~/OVERCLOCK/RECOIL
+					Spread = [-(&~/OVERCLOCK/HALF_SPREAD), &~/OVERCLOCK/HALF_SPREAD]
+					Burst = &~/OVERCLOCK/BURST_COUNT
+					BurstDelay = { BaseValue = &~/OVERCLOCK/BASE_BURST_DELAY; BuffType=RateOfFire; BuffMode=Divide; }
+					UseResourcePerShotInBurst = true
+				}
+				BurstDelayValue
+				{
+					Type = BuffableValue
+					Value = &../BulletEmitter/BurstDelay
+				}
+				InverseShotInterval
+				{
+					Type = MultiValue
+					Values = [BurstDelayValue]
+					OneOver = true
+					Mode = Add
+				}
+				BarrelAnimationResetTrigger
+				{
+					Type = Timer
+//					Duration : ../BulletEmitter/BurstDelay
+//					{
+//						BaseValue = (&^/0/BaseValue) * (&~/OVERCLOCK/BURST_COUNT)
+//					}
+					Duration = &../BulletEmitter/BurstDelay
+					AutoStart = true
+					Repeats = true
+				}
+			}
+		}
+		
+		BulletEmitterProxy
+		{
+			Type = BeamEmitterProxy
+			Location = &~/EMITTER/Location
+			ChainedTo = &~/EMITTER/ChainedTo
+			ComponentID = BulletEmitter
 		}
 
 		FireEffect
 		{
 			Type = TriggeredEffects
-			ChainedTo = BulletEmitter
-			Trigger = BulletEmitter
+			ChainedTo = BulletEmitterProxy
+			Trigger = BulletEmitterProxy
 			Location = [2.2, 0]
 
 			MediaEffects
@@ -934,7 +1015,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = PartCrew
 			Crew = 3
 			DefaultPriority = &/PRIORITIES/Weapon_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
 			HighPriorityPrerequisites = [CombinedAmmoStorage]
 			CrewDestinations //where the crew actually go
 			[
@@ -1037,14 +1118,25 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Direction = Right
 		}
 
+		BarrelAnimationResetTriggerProxy
+		{
+			Type = TriggerProxy
+			ComponentID = BarrelAnimationResetTrigger
+		}
+		InverseShotIntervalProxy
+		{
+			Type = ValueProxy
+			ComponentID = InverseShotInterval
+		}
+		
 		TurretWeaponShootingGraphics
 		{
 			Type = Graphics
 			ChainedTo = AimingTurretSlider
 			Rotation = 90d
 			OperationalToggle = IsShellFullyOpen
-			ResetAnimationTrigger = BulletEmitter
-			AnimationSpeedFactor = RampUpAccumulator
+			ResetAnimationTrigger = BarrelAnimationResetTriggerProxy
+			AnimationSpeedFactor = InverseShotIntervalProxy
 
 			OperationalDoodad
 			{
@@ -1070,13 +1162,49 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"turret_barrel_normals1.png"// Loop back to beginning and clamp there.
 						]
 						Size = [1, 2]
-						AnimationInterval = (&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue) / 4
+						AnimationInterval = 1/4
 						AnimationStartTime = MinValue
 						ClampAnimation = true
 					}
 				]
 			}
 		}
+//		Overclock_TurretWeaponHeatSprite
+//		{
+//			Type = Sprite
+//			ChainedTo = AimingTurretSlider
+//			Location = [106/64, -1/64]
+//			OperationalToggle = IsShellFullyOpen
+//			Layer = "lights_add"
+//			GetColorFrom = Overclock_TurretWeaponHeatColor
+//			AtlasSprite
+//			{
+//				File = "./Data/gui/gradient_weapon_arc.png"
+//				Size = [0.5, 0.46]
+//				UVRotation = 3
+//				VertexColor = [255, 188, 51, 255]
+//			}
+//		}
+//		Overclock_TurretWeaponHeatColor
+//		{
+//			Type = ValueColor
+//			AlphaFrom = Overclock_TurretWeaponHeatValue
+//		}
+//		Overclock_TurretWeaponHeatValue
+//		{
+//			Type = ValueAccumulator
+//			AccumulatingToggle = False
+//			MinValue = 0
+//			MaxValue = 1
+//			DissipationRate = 1 / 4
+//			AccumulationTriggers
+//			[
+//				{
+//					Trigger = Overclock_EmitterProxy
+//					Value = 0.1
+//				}
+//			]
+//		}
 
 		TurretWeaponExtendAndRetractGraphics
 		{
@@ -2874,6 +3002,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Size = [3, 6]
 			Offset = [0, 0]
 		}
+		
+		PeakHeatGenerationValue
+		{
+			Type = StaticValue
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/SecondaryToolTip/StatsByCategory/0/Stats/ROF_MAX)
+			Value = (&SHOT_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = PeakHeatGenerationValue
+		}
 	}
 
 	Stats
@@ -2893,17 +3035,17 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Stats
 			{
 				RampUpTime = &~/Part/Components/RampUpAccumulator/BASE_RAMP_UP_TIME
-				DamagePerShot = &~/Part/Components/BulletEmitter/HitOperational/HitEffects/0/Damage/BaseValue
+				DamagePerShot = &~/EMITTER/HitOperational/HitEffects/0/Damage/BaseValue
 				DamagePerSecond = [(&../DamagePerShot) * (&../ROFRange/0), (&../DamagePerShot) * (&../ROFRange/1)]
 				DamageRange = [&../DamagePerShot, &../DamagePerSecond/0, &../DamagePerSecond/1]
 				ROFRange
 				[
-					(&~/Part/Components/BulletEmitter/Burst) / (&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue)
-					(&~/Part/Components/BulletEmitter/Burst) / ((&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue) / (&~/Part/Components/RampUpAccumulator/MaxValue/BaseValue))
+					(&~/EMITTER/Burst) / (&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue)
+					(&~/EMITTER/Burst) / ((&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue) / (&~/Part/Components/RampUpAccumulator/MaxValue/BaseValue))
 				]
-				Range = &~/Part/Components/BulletEmitter/Range
+				Range = &~/EMITTER/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
-				Spread = deg(&~/Part/Components/BulletEmitter/Spread/1/BaseValue)
+				Spread = deg(&~/EMITTER/Spread/1)
 				TurretSpeed = deg(&~/Part/Components/AimingTurretSlider/MatchRotationSpeed)
 				ShotSpeed = Infinity
 				AmmoPerShot = 1 / (&~/Part/Components/BulletSplitterRight/ToQuantity)
@@ -2922,16 +3064,24 @@ Part : <../base_part_terran_overclock.rules>/Part
 				NameKey = "StatCategories/BulletChaingunOverclocked"
 				Stats
 				{
-					Pellets = &~/OVERCLOCK/PELLET_COUNT
 					RampUpTime = &~/OVERCLOCK/RAMP_TIME
+					DAMAGE_PER_SHOT = &~/OVERCLOCK/BEAM/../DAMAGE
+					DAMAGE_PER_SECOND = [(&../DAMAGE_PER_SHOT) * (&../ROF_BASE), (&../DAMAGE_PER_SHOT) * (&../ROF_MAX)]
+					MaxDamageRange = [&../DAMAGE_PER_SHOT, &../DAMAGE_PER_SECOND/0, &../DAMAGE_PER_SECOND/1]
+					DamageArea = &~/OVERCLOCK/BEAM/../RADIUS
+					INTERVAL_BASE = (&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue) * (&~/OVERCLOCK/FIRE_INTERVAL_FACTOR)
+					ROF_BASE = (&~/OVERCLOCK/BURST_COUNT) / (&INTERVAL_BASE)
+					ROF_MAX = (&ROF_BASE) * (&~/OVERCLOCK/MAX_FIRE_RATE)
 					ROFRange
 					[
-						&~/Part/StatsByCategory/0/Stats/ROFRange/0
-						&~/OVERCLOCK/MAX_FIRE_RATE
+						&../ROF_BASE
+						&../ROF_MAX
 					]
+					Spread = deg(&~/OVERCLOCK/HALF_SPREAD)
 					HeatPerShot = &~/OVERCLOCK/HEAT_PER_SHOT
 				}
 			}
 		]
 	}
 }
+EMITTER = &Part/Components/EmissionComponents/Components/BulletEmitter
