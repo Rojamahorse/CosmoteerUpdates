@@ -1167,7 +1167,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = MultiValue
 			Values = [RailgunBuffValue, Two]
 			Mode = Add
-			IncludeInBlueprints = true
+			IncludeInBlueprints = Normal
 		}
 		SingleModuleHeatPerSecond
 		{
@@ -1180,7 +1180,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = MultiValue
 			Values = [SingleModuleHeatPerSecond, ModuleCount]
 			Mode = Multiply
-			IncludeInBlueprints = true
+			IncludeInBlueprints = Normal
 		}
 		HeatGenerationStatProvider
 		{

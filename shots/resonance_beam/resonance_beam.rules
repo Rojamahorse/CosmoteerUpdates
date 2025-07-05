@@ -286,7 +286,7 @@ HitOperational
 				Shader = "resonance_beam_hit.shader"
 
 				_beamBaseAmplification = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseAmplification/Value)
-				_amplificationPerPump = (&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/Components/BasePumpAmplification/OnValue)
+				_amplificationPerPump = (&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/Components/BaseAmplificationPerPort/Value)
 				_maxAmplificationPumps = 20
 				_ampVisualExponent = 0.5
 				
@@ -435,12 +435,12 @@ BeamMediaEffects
 			_endFadeLength = 2
 			
 			_beamBaseAmplification = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseAmplification/Value)
-			_amplificationPerPump = (&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/Components/BasePumpAmplification/OnValue)
+			_amplificationPerPump = (&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/Components/BaseAmplificationPerPort/Value)
 			_maxAmplificationPumps = 20
 			_ampVisualExponent = 0.5
 			
 			_beamBaseDilation = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseDilation/Value)
-			_dilationPerPump = (&<./Data/ships/terran/thermal_dilation_pump/thermal_dilation_pump.rules>/Part/Components/BasePumpDilation/OnValue)
+			_dilationPerPump = (&<./Data/ships/terran/thermal_dilation_pump/thermal_dilation_pump.rules>/Part/Components/BaseDilationPerPort/Value)
 			_maxDilationPumps = 60
 			_visualDilationFactor = 1.5
 
@@ -486,12 +486,12 @@ BeamMediaEffects
 			_endFadeLength = 5
 
 			_beamBaseAmplification = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseAmplification/Value)
-			_amplificationPerPump = (&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/Components/BasePumpAmplification/OnValue)
+			_amplificationPerPump = (&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/Components/BaseAmplificationPerPort/Value)
 			_maxAmplificationPumps = 20
 			_ampVisualExponent = 0.5
 			
 			_beamBaseDilation = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseDilation/Value)
-			_dilationPerPump = (&<./Data/ships/terran/thermal_dilation_pump/thermal_dilation_pump.rules>/Part/Components/BasePumpDilation/OnValue)
+			_dilationPerPump = (&<./Data/ships/terran/thermal_dilation_pump/thermal_dilation_pump.rules>/Part/Components/BaseDilationPerPort/Value)
 			_maxDilationPumps = 60
 			_visualDilationFactor = 1.5
 			
@@ -528,12 +528,12 @@ BeamMediaEffects
 			Shader = "resonance_beam_light.shader"
 			
 			_beamBaseAmplification = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseAmplification/Value)
-			_amplificationPerPump = (&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/Components/BasePumpAmplification/OnValue)
+			_amplificationPerPump = (&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/Components/BaseAmplificationPerPort/Value)
 			_maxAmplificationPumps = 20
 			_ampVisualExponent = 1.5
 			
 			_beamBaseDilation = 1 + (&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/Components/BaseDilation/Value)
-			_dilationPerPump = (&<./Data/ships/terran/thermal_dilation_pump/thermal_dilation_pump.rules>/Part/Components/BasePumpDilation/OnValue)
+			_dilationPerPump = (&<./Data/ships/terran/thermal_dilation_pump/thermal_dilation_pump.rules>/Part/Components/BaseDilationPerPort/Value)
 			_maxDilationPumps = 60
 			_visualDilationFactor = 1.5
 			

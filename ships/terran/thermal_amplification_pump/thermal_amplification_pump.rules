@@ -96,13 +96,16 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = CommandConsumptionToggle
 		}
 
+		True { Type=StaticToggle; ToggleOn=true; }
+		BaseAmplificationPerPort { Type=StaticValue; Value=1.1; }
 		BasePumpAmplification
 		{
-			Type = ValueTween
-			IsOnToggle = IsOperational
-			OnValue = 1.1
-			OnTweenDuration = 0.001
-			OffTweenDuration = 0.001
+			Type = ToggleValueSelector
+			Toggle = IsOperational
+			BlueprintToggle = True
+			ToggleOnValue = BaseAmplificationPerPort
+			ToggleOffValue = Zero
+			IncludeInBlueprints = true
 		}
 
 		// amplificationFactor = (1 / ((beams - 1) * utilizationScale + 1)^(1-efficiency)
@@ -125,12 +128,14 @@ Part : <../base_part_terran.rules>/Part
 			ValueOne = NetworkPumpUtilization
 			ValueTwo = One
 			MinValue = 0
+			IncludeInBlueprints = All
 		}
 		ScaledAdditionalUtilization
 		{
 			Type = MultiValue
 			Values = [AdditionalUtilization, UtilizationScale]
 			Mode = Multiply
+			IncludeInBlueprints = All
 		}
 		ScaledAmplificationFactor
 		{
@@ -138,6 +143,7 @@ Part : <../base_part_terran.rules>/Part
 			Values = [ScaledAdditionalUtilization, One]
 			Mode = Add
 			OneOver = true
+			IncludeInBlueprints = All
 		}
 
 		AmplificationFactor
@@ -146,6 +152,7 @@ Part : <../base_part_terran.rules>/Part
 			Operator = Power
 			ValueOne = ScaledAmplificationFactor
 			ValueTwo = MultiUtilizationEfficiencyExponent
+			IncludeInBlueprints = All
 		}
 
 		PumpAmplification
@@ -153,6 +160,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = MultiValue
 			Values = [ BasePumpAmplification, AmplificationFactor]
 			Mode = Multiply
+			IncludeInBlueprints = All
 		}
 
 		NetworkedAmplification
@@ -160,14 +168,17 @@ Part : <../base_part_terran.rules>/Part
 			Type = NetworkValue
 			ValueSource = PumpAmplification
 			Categories = [ thermal_amplification ]
+			IncludeInBlueprints = true
 		}
 
 		AdditionalTurretHeatGeneration
 		{
 			Type = ToggleValueSelector
 			Toggle = IsOperational
+			BlueprintToggle = true
 			ToggleOffValue = Zero
 			ToggleOnValue = AdditionalTurretHeatGeneration_Active
+			IncludeInBlueprints = true
 		}
 		Zero
 		{
@@ -186,6 +197,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = NetworkValue
 			ValueSource = AdditionalTurretHeatGeneration
 			Categories = [ thermal_activity ]
+			IncludeInBlueprints = true
 		}
 
 		NetworkPumpUtilization
@@ -194,6 +206,7 @@ Part : <../base_part_terran.rules>/Part
 			AllowUncategorized = false
 			Categories = [ thermal_pump_utilization ]
 			Mode = Add
+			IncludeInBlueprints = true
 		}
 
 		UtilizationToggle
@@ -251,6 +264,8 @@ Part : <../base_part_terran.rules>/Part
 			IncompatibleTypes = [ thermal_out ]
 			RouteSource = NetworkedAmplification
 			RouteEndpoint = NetworkedAmplification
+			BlueprintRouteSource = NetworkedAmplification
+			BlueprintRouteEndpoint = NetworkedAmplification
 			Overlay
 			{
 				OverlayIcon = "ThermalPort"
@@ -265,6 +280,7 @@ Part : <../base_part_terran.rules>/Part
 		Router
 		{
 			Type = NetworkRouter
+			IncludeInBlueprints = All
 			RouteGenerators
 			[
 				{
@@ -684,7 +700,7 @@ Part : <../base_part_terran.rules>/Part
 
 	Stats
 	{
-		ThermalAmplification = (&~/Part/Components/BasePumpAmplification/OnValue) * 100
+		ThermalAmplification = (&~/Part/Components/BaseAmplificationPerPort/Value) * 100
 //		ThermalPumpMultiEfficiency = (&~/Part/Components/MultiUtilizationEfficiencyFactor/Value) * 100
 		TurretExtraHeatGeneration = (&~/Part/Components/AdditionalTurretHeatGeneration_Active/Value)
 

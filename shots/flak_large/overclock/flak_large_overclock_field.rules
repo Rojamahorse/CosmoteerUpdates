@@ -57,22 +57,22 @@ Components
 		}
 	}
 	
-	Sprite
-	{
-		Type = Sprite
-		RenderBucket = BulletLower1
-		Sprite
-		{
-			Texture
-			{
-				File = "particles/circle_dashed.png"
-				SampleMode = Linear
-				MipLevels = max
-			}
-			Size = [(&~/RADIUS) * 2, &0]
-			VertexColor = [207, 207, 207]
-		}
-	}
+	//Sprite
+	//{
+		//Type = Sprite
+		//RenderBucket = BulletLower1
+		//Sprite
+		//{
+			//Texture
+			//{
+				//File = "particles/circle_dashed.png"
+				//SampleMode = Linear
+				//MipLevels = max
+			//}
+			//Size = [(&~/RADIUS) * 2, &0]
+			//VertexColor = [207, 207, 207]
+		//}
+	//}
 
 	
 	MediaEffects

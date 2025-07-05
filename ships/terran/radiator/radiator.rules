@@ -713,7 +713,7 @@ Part : <../base_part_terran.rules>/Part
 			ValueOne = DissipationScore
 			ValueTwo = HeatDissipationStatDenominator
 			NaNFallbackValue = 0
-			IncludeInBlueprints = true
+			IncludeInBlueprints = Normal
 		}
 		HeatDissipationStatProvider
 		{

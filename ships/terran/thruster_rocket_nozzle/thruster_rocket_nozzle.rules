@@ -945,7 +945,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = MultiValue
 			Values = [MaxActivationValue, HeatPerActivationValue]
 			Mode = Multiply
-			IncludeInBlueprints = true
+			IncludeInBlueprints = Normal
 		}
 		HeatGenerationStatProvider
 		{

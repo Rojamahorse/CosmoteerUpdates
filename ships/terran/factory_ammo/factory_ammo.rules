@@ -848,7 +848,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ValueOne = Overclock_HeatPerConversion
 			ValueTwo = Overclock_HeatProductionInterval
 			NaNFallbackValue = 0
-			IncludeInBlueprints = true
+			IncludeInBlueprints = Normal
 		}
 		HeatGenerationStatProvider
 		{

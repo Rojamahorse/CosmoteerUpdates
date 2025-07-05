@@ -21,7 +21,7 @@ Part : <../base_part_terran.rules>/Part
 	MaxHealth = 12500
 	TypeCategories = [weapon, uses_power, is_crewed, heat_resistant]
 	SignificanceToggle = ScorchedToggle
-	ReceivableBuffs : ^/0/ReceivableBuffs [ThermalIntensity, ThermalRadius, ThermalShieldPiercing, ThermalActivity, Overclock]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ThermalIntensity, ThermalRadius, ThermalShieldPiercing, ThermalActivity]
 	Flammable = false
 	ProhibitedBy : ^/0/ProhibitedBy [tall]
 	ProhibitRects
@@ -110,10 +110,16 @@ Part : <../base_part_terran.rules>/Part
 		}
 
 		// Heat safety
+		BaseHeatPerInterval
+		{
+			Type = StaticValue
+			Value = &../HeatGenerationConverter/ToQuantity/BaseValue
+		}
 		HeatProducedPerInterval
 		{
-			Type = BuffableValue
-			Value = &../HeatGenerationConverter/ToQuantity
+			Type = MultiValue
+			Values = [ BaseHeatPerInterval, CombinedHeatGeneration ]
+			Mode = Multiply
 		}
 		HeatProductionIntervalsPerEmission
 		{
@@ -191,12 +197,6 @@ Part : <../base_part_terran.rules>/Part
 			Default = 1
 		}
 
-//		OverclockModeToggle
-//		{
-//			Type = UIToggle
-//			ToggleID = "thermal_overclock"
-//			Default = 0
-//		}
 		OverclockModeToggle { Type = StaticToggle; ToggleOn = false; }
 
 		SafeModeFireToggle
@@ -362,31 +362,6 @@ Part : <../base_part_terran.rules>/Part
 			Interval = 0.5
 		}
 
-		OverclockStateTween
-		{
-			Type = ValueTween
-			IsOnToggle = OverclockModeToggle
-			OnTweenDuration = 5;
-			OffTweenDuration = 5;
-		}
-		OverclockBuff
-		{
-			Type = SelfBuffProvider
-			BuffType = Overclock
-			BuffMultiplier = OverclockStateTween
-		}
-		OverclockPowerUsageFactor
-		{
-			Type = ValueLerp
-			InputValue = OverclockStateTween
-			OutputRange = [1, 1.5]
-		}
-		OverclockUtilizationFactor
-		{
-			Type = ValueLerp
-			InputValue = OverclockStateTween
-			OutputRange = [1, 1.1]
-		}
 
 		BasePumpUtilization
 		{
@@ -398,7 +373,7 @@ Part : <../base_part_terran.rules>/Part
 		PumpUtilization
 		{
 			Type = MultiValue
-			Values = [ BasePumpUtilization, OverclockUtilizationFactor ]
+			Values = [ BasePumpUtilization ]
 			Mode = Multiply
 		}
 
@@ -408,6 +383,12 @@ Part : <../base_part_terran.rules>/Part
 			ValueSource = PumpUtilization
 			Categories = [ thermal_pump_utilization ]
 		}
+		BlueprintNetworkedPumpUtilization : NetworkedPumpUtilization
+		{
+			ValueSource = One
+			IncludeInPhysical = false
+			IncludeInBlueprints = true
+		}
 
 		Network_PumpHeatGeneration
 		{
@@ -415,6 +396,7 @@ Part : <../base_part_terran.rules>/Part
 			AllowUncategorized = false
 			Categories = [ thermal_activity ]
 			Mode = Add
+			IncludeInBlueprints = true
 		}
 
 		BaseHeatGeneration
@@ -427,18 +409,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = MultiValue
 			Mode = Add
 			Values = [ BaseHeatGeneration, Network_PumpHeatGeneration ]
-		}
-		Overclock_HeatFactor
-		{
-			Type = ValueLerp
-			InputValue = OverclockStateTween
-			OutputRange = [1, 1.75]
-		}
-		HeatGenerationValue
-		{
-			Type = MultiValue
-			Values = [ CombinedHeatGeneration, Overclock_HeatFactor ]
-			Mode = Multiply
+			IncludeInBlueprints = Normal
 		}
 
 		NetworkAmplification
@@ -468,19 +439,6 @@ Part : <../base_part_terran.rules>/Part
 			Value = 50%
 		}
 
-		OverclockAmplificationFactor
-		{
-			Type = ValueLerp
-			InputValue = OverclockStateTween
-			OutputRange = [1, 1.75]
-		}
-		OverclockDilationFactor
-		{
-			Type = ValueLerp
-			InputValue = OverclockStateTween
-			OutputRange = [1, 0.85]
-		}
-
 		CombinedAmplification
 		{
 			Type = MultiValue
@@ -497,13 +455,13 @@ Part : <../base_part_terran.rules>/Part
 		AmplificationValue
 		{
 			Type = MultiValue
-			Values = [ CombinedAmplification, OverclockAmplificationFactor ]
+			Values = [ CombinedAmplification ]
 			Mode = Multiply
 		}
 		DilationValue
 		{
 			Type = MultiValue
-			Values = [ CombinedDilation, OverclockDilationFactor ]
+			Values = [ CombinedDilation ]
 			Mode = Multiply
 		}
 
@@ -542,7 +500,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = SelfBuffProvider
 			BuffType = ThermalActivity
 			BuffAmount = 1
-			BuffMultiplier = HeatGenerationValue
+			BuffMultiplier = CombinedHeatGeneration
 		}
 
 		ThermalShieldPiercingDenominatorOffset
@@ -619,20 +577,7 @@ Part : <../base_part_terran.rules>/Part
 			TargetingEmitter = BeamEmitter
 			FireInterval = .2
 			FiringArc = 270d
-			RotateSpeed
-			{
-				BaseValue = 60d
-				Modifiers
-				[
-					{
-						Type = Buff
-						BuffType = Overclock
-						ModificationMode = Lerp
-						MinValue = &../../BaseValue
-						MaxValue = 120d
-					}
-				]
-			}
+			RotateSpeed = 60d
 			FireThresholdAngle = 2d
 			AIFirepowerRating = 7500
 			IgnoreFriendlyShipLowLOSChecks = true
@@ -706,7 +651,6 @@ Part : <../base_part_terran.rules>/Part
 			Duration = 1
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 350
-			ResourceScaleFactor = OverclockPowerUsageFactor
 			MinResourcesUsed = 1
 		}
 
@@ -758,8 +702,6 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
-
-
 		Port_TopLeft
 		{
 			Type = NetworkPort
@@ -768,8 +710,8 @@ Part : <../base_part_terran.rules>/Part
 			Direction = Up
 			RouteSource = NetworkHeatInput
 			RouteEndpoint = NetworkHeatInput
-			BlueprintRouteSource = BlueprintNetworkNode
-			BlueprintRouteEndpoint = BlueprintNetworkNode
+			BlueprintRouteSource = BlueprintNetworkedPumpUtilization
+			BlueprintRouteEndpoint = BlueprintNetworkedPumpUtilization
 			Overlay
 			{
 				OverlayIcon = "ThermalPort"
@@ -815,12 +757,6 @@ Part : <../base_part_terran.rules>/Part
 			Location = [0, 1]
 		}
 
-		BlueprintNetworkNode
-		{
-			Type = NetworkBasicNode
-			IncludeInBlueprints = true
-		}
-
 		Router
 		{
 			Type = NetworkRouter
@@ -838,6 +774,22 @@ Part : <../base_part_terran.rules>/Part
 						[NetworkHeatInput, NetworkDilation, 0]
 						[NetworkHeatInput, Networked_AnticipatedSelfHeatProduction, 0]
 						[NetworkHeatInput, Network_AnticipatedHeatProduction, 0]
+					]
+				}
+			]
+		}
+		BlueprintRouter
+		{
+			Type = NetworkRouter
+			IncludeInPhysical = false
+			IncludeInBlueprints = All
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[Network_PumpHeatGeneration, BlueprintNetworkedPumpUtilization, 0]
 					]
 				}
 			]
@@ -2045,19 +1997,12 @@ Part : <../base_part_terran.rules>/Part
 			ValueFrom = HeatDissipationStatValue
 		}
 
-		// Requires blueprint part networks to provide a useful value
-//		HeatGenerationPerSecond
-//		{
-//			Type = BuffableValue
-//			Value : ~/Part/Components/HeatGenerationConverter/ToQuantity { BaseValue = (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO) }
-//			IncludeInBlueprints = true
-//		}
-//		HeatGenerationStatProvider
-//		{
-//			Type = StatProvider
-//			Stat = HeatGeneration
-//			ValueFrom = HeatGenerationPerSecond
-//		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			ValueFrom = CombinedHeatGeneration
+		}
 	}
 
 	Stats
@@ -2069,10 +2014,7 @@ Part : <../base_part_terran.rules>/Part
 		RecCrew = (&CrewRequired) + (&RecPower) * 4
 
 		HeatCapacity = (&~/Part/Components/HeatStorage/MaxResources) / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
-		OverclockTransitionTime = &~/Part/Components/OverclockStateTween/OnTweenDuration
 		HeatDissipation = (&~/Part/Components/HeatDissipationConverter/FromQuantity) / (&~/Part/Components/HeatDissipationConverter/Interval) / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
-//		HeatFireThreshold = &~/Part/Components/OverflowHeatStorage/TriggerThreshold
-//		HeatFireChance = &~/Part/Components/FireFromHeatEffect/HitEffects/0/FireChance
 	}
 
 	StatsByCategory
@@ -2082,7 +2024,7 @@ Part : <../base_part_terran.rules>/Part
 			Stats
 			{
 				HitInterval = &~/Part/Components/BeamEmitter/HitInterval
-				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed/BaseValue)
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
 				Range = &~/Part/Components/BeamEmitter/Range/BaseValue
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
 				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000
@@ -2103,18 +2045,5 @@ Part : <../base_part_terran.rules>/Part
 				BaseDilation = (&~/Part/Components/BaseDilation/Value) * 100
 			}
 		}
-//		{
-//			NameKey = "StatCategories/Overclocked"
-//			Stats
-//			{
-//				AmplificationFactor = (&~/Part/Components/OverclockAmplificationFactor/OutputRange/1)
-//				DilationFactorFactor = (&~/Part/Components/OverclockDilationFactor/OutputRange/1)
-//				HeatGenerationFactor = (&~/Part/Components/Overclock_HeatFactor/OutputRange/1)
-//				PumpPowerUsageFactor = (&~/Part/Components/OverclockUtilizationFactor/OutputRange/1)
-//				PowerUsageFactor = (&~/Part/Components/OverclockPowerUsageFactor/OutputRange/1)
-//				Range = &~/Part/Components/BeamEmitter/Range/Modifiers/0/MinValue
-//				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed/Modifiers/0/MaxValue)
-//			}
-//		}
 	]
 }

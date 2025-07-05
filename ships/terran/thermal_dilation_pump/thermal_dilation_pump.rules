@@ -93,13 +93,16 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = CommandConsumptionToggle
 		}
 
+		True { Type=StaticToggle; ToggleOn=true; }
+		BaseDilationPerPort { Type=StaticValue; Value=0.25; }
 		BasePumpDilation
 		{
-			Type = ValueTween
-			IsOnToggle = IsOperational
-			OnValue = 0.25
-			OnTweenDuration = 0.001
-			OffTweenDuration = 0.001
+			Type = ToggleValueSelector
+			Toggle = IsOperational
+			BlueprintToggle = True
+			ToggleOnValue = BaseDilationPerPort
+			ToggleOffValue = Zero
+			IncludeInBlueprints = true
 		}
 
 		// dilationFactor = (1 / ((beams - 1) * utilizationScale + 1)^(1-efficiency)
@@ -122,12 +125,14 @@ Part : <../base_part_terran.rules>/Part
 			ValueOne = NetworkPumpUtilization_Left
 			ValueTwo = One
 			MinValue = 0
+			IncludeInBlueprints = All
 		}
 		ScaledAdditionalUtilization_Left
 		{
 			Type = MultiValue
 			Values = [AdditionalUtilization_Left, UtilizationScale]
 			Mode = Multiply
+			IncludeInBlueprints = All
 		}
 		ScaledDilationFactor_Left
 		{
@@ -135,6 +140,7 @@ Part : <../base_part_terran.rules>/Part
 			Values = [ScaledAdditionalUtilization_Left, One]
 			Mode = Add
 			OneOver = true
+			IncludeInBlueprints = All
 		}
 
 		DilationFactor_Left
@@ -143,6 +149,7 @@ Part : <../base_part_terran.rules>/Part
 			Operator = Power
 			ValueOne = ScaledDilationFactor_Left
 			ValueTwo = MultiUtilizationEfficiencyExponent
+			IncludeInBlueprints = All
 		}
 
 		PumpDilation_Left
@@ -150,6 +157,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = MultiValue
 			Values = [BasePumpDilation, DilationFactor_Left]
 			Mode = Multiply
+			IncludeInBlueprints = All
 		}
 
 		AdditionalUtilization_Right : AdditionalUtilization_Left
@@ -180,6 +188,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = NetworkValue
 			ValueSource = PumpDilation_Left
 			Categories = [ thermal_dilation ]
+			IncludeInBlueprints = true
 		}
 		NetworkedDilation_Right : NetworkedDilation_Left
 		{
@@ -190,8 +199,10 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ToggleValueSelector
 			Toggle = IsOperational
+			BlueprintToggle = True
 			ToggleOffValue = Zero
 			ToggleOnValue = AdditionalTurretHeatGeneration_Active
+			IncludeInBlueprints = true
 		}
 		Zero
 		{
@@ -213,6 +224,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = NetworkValue
 			ValueSource = AdditionalTurretHeatGeneration
 			Categories = [ thermal_activity ]
+			IncludeInBlueprints = true
 		}
 		NetworkedActivity_Right = &NetworkedActivity_Left
 
@@ -222,6 +234,7 @@ Part : <../base_part_terran.rules>/Part
 			AllowUncategorized = false
 			Categories = [ thermal_pump_utilization ]
 			Mode = Add
+			IncludeInBlueprints = true
 		}
 		NetworkPumpUtilization_Right = &NetworkPumpUtilization_Left
 		TotalUtilization
@@ -296,6 +309,8 @@ Part : <../base_part_terran.rules>/Part
 			IncompatibleTypes = [ thermal_out ]
 			RouteSource = NetworkedDilation_Left
 			RouteEndpoint = NetworkedDilation_Left
+			BlueprintRouteSource = NetworkedDilation_Left
+			BlueprintRouteEndpoint = NetworkedDilation_Left
 			Overlay
 			{
 				OverlayIcon = "ThermalPort"
@@ -312,11 +327,14 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 1]
 			RouteSource = NetworkedDilation_Right
 			RouteEndpoint = NetworkedDilation_Right
+			BlueprintRouteSource = NetworkedDilation_Right
+			BlueprintRouteEndpoint = NetworkedDilation_Right
 		}
 
 		Router
 		{
 			Type = NetworkRouter
+			IncludeInBlueprints = All
 			RouteGenerators
 			[
 				{
@@ -988,7 +1006,7 @@ Part : <../base_part_terran.rules>/Part
 
 	Stats
 	{
-		ThermalDilation = (&~/Part/Components/BasePumpDilation/OnValue) * 100 * 2
+		ThermalDilation = (&~/Part/Components/BaseDilationPerPort/Value) * 100 * 2
 //		ThermalPumpMultiEfficiency = (&~/Part/Components/MultiUtilizationEfficiencyFactor/Value) * 100
 		TurretExtraHeatGeneration = (&~/Part/Components/AdditionalTurretHeatGeneration_Active/Value) * 2
 
