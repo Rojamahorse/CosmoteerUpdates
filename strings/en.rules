@@ -3299,6 +3299,8 @@ BuildBox
 	BrushHotkeyFmt = "Hotkey: <b>{0}</b>"
 
 	BuffPercentageFmt = "<good>+{0:0}%</good>"
+	AmplificationBuffPercentageFmt = "<b><good>Amplification: {0:0}%</good></b>"
+	DilationBuffPercentageFmt = "<b><good>Dilation: {0:0}%</good></b>"
 
 	ScrollTooltip = "<gray>Hold <btn id='Design.ScrollTooltip'/> to scroll.</gray>"
 	ShowSecondaryTooltip = "<gray>Press <btn id='Design.ToggleSecondaryTooltip'/> to show overclock stats.</gray>"

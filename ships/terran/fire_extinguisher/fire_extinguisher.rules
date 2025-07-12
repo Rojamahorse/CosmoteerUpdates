@@ -1,7 +1,7 @@
 OVERCLOCK
 {
 	RESTOCK_INTERVAL = 1.5
-	HEAT_PER_RESTOCK = 150
+	HEAT_PER_RESTOCK = 400
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -12,7 +12,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	IconNameKey = "Parts/FireExtinguisherIcon"
 	ID = cosmoteer.fire_extinguisher // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	OtherIDs = [fire_extinguisher]
-	EditorGroups = ["Defenses", "Utilities"]
+	EditorGroups = ["Defenses", "Utilities", "Thermal"]
 	DescriptionKey = "Parts/FireExtinguisherDesc"
 	Resources
 	[

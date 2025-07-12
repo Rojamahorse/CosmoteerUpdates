@@ -119,11 +119,8 @@ Part : <../base_part_terran.rules>/Part
 			{
 				Type = EdgeDistance
 				Distance = 5
-				BlueprintMaterial
-				{
-					Color = [255,0,0,100]
-				}
 			}
+			RegionHighlightID = "HeatExchangerArea"
 			TargetValue = 0
 			ValueDelta = 0
 			ValueDeltaPool = 360

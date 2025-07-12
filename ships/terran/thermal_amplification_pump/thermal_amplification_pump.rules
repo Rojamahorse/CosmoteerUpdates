@@ -293,6 +293,13 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
+		
+		PumpOverlaySignal
+		{
+			Type = BlueprintNetworkOverlaySignal
+			Signal = pump_amplification
+			SignalThroughNode = NetworkedAmplification
+		}
 
 		DestroyedEffects
 		{

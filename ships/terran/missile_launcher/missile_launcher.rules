@@ -270,7 +270,7 @@ Part : <../base_part_terran.rules>/Part
 		CommonReloadTimerThermal
 		{
 			Type = Timer
-			Duration = 4
+			Duration = 2
 			AutoStart = true
 			StartTrigger = CommonReloadResetTriggerProxy
 		}

@@ -418,6 +418,7 @@ Part : <../base_part_terran.rules>/Part
 			AllowUncategorized = false
 			Categories = [ thermal_amplification ]
 			Mode = Add
+			IncludeInBlueprints = true
 		}
 		NetworkDilation
 		{
@@ -425,6 +426,7 @@ Part : <../base_part_terran.rules>/Part
 			AllowUncategorized = false
 			Categories = [ thermal_dilation ]
 			Mode = Add
+			IncludeInBlueprints = true
 		}
 
 		BaseAmplification
@@ -444,25 +446,14 @@ Part : <../base_part_terran.rules>/Part
 			Type = MultiValue
 			Values = [ BaseAmplification, NetworkAmplification ]
 			Mode = Add
+			IncludeInBlueprints = All
 		}
 		CombinedDilation
 		{
 			Type = MultiValue
 			Values = [ BaseDilation, NetworkDilation ]
 			Mode = Add
-		}
-
-		AmplificationValue
-		{
-			Type = MultiValue
-			Values = [ CombinedAmplification ]
-			Mode = Multiply
-		}
-		DilationValue
-		{
-			Type = MultiValue
-			Values = [ CombinedDilation ]
-			Mode = Multiply
+			IncludeInBlueprints = All
 		}
 
 		Zero
@@ -486,14 +477,14 @@ Part : <../base_part_terran.rules>/Part
 			Type = SelfBuffProvider
 			BuffType = ThermalIntensity
 			BuffAmount = 1
-			BuffMultiplier = AmplificationValue
+			BuffMultiplier = CombinedAmplification
 		}
 		ThermalRadiusBuff
 		{
 			Type = SelfBuffProvider
 			BuffType = ThermalRadius
 			BuffAmount = 1
-			BuffMultiplier = DilationValue
+			BuffMultiplier = CombinedDilation
 		}
 		ThermalActivityBuff
 		{
@@ -517,7 +508,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = ValueOperation
 			Operator = Power
-			ValueOne = AmplificationValue
+			ValueOne = CombinedAmplification
 			ValueTwo = ThermalShieldPiercingExponent
 		}
 		ThermalShieldPiercingDenominator
@@ -790,9 +781,40 @@ Part : <../base_part_terran.rules>/Part
 					Routes
 					[
 						[Network_PumpHeatGeneration, BlueprintNetworkedPumpUtilization, 0]
+						[Network_PumpHeatGeneration, NetworkDilation, 0]
+						[Network_PumpHeatGeneration, NetworkAmplification, 0]
 					]
 				}
 			]
+		}
+
+		DilationValueOverlay
+		{
+			Type = BlueprintNetworkValueOverlay
+			FormatKey = "BuildBox/DilationBuffPercentageFmt"
+			BorderColor = [10, 212, 98, 160]
+			FillColor = [10, 212, 98, 64]
+			ValueSource = CombinedDilation
+			ValueScale = 100
+			ValidSignals = [ pump_dilation ]
+			SignalThroughNode = BlueprintNetworkedPumpUtilization
+			DrawOnHover = true
+		}
+		AmplificationValueOverlay : DilationValueOverlay
+		{
+			FormatKey = "BuildBox/AmplificationBuffPercentageFmt"
+			ValueSource = CombinedAmplification
+			ValidSignals = [ pump_amplification ]
+		}
+		PumpOverlaySignal_Dilation
+		{
+			Type = BlueprintNetworkOverlaySignal
+			Signal = pump_dilation
+			SignalThroughNode = BlueprintNetworkedPumpUtilization
+		}
+		PumpOverlaySignal_Amplification : PumpOverlaySignal_Dilation
+		{
+			Signal = pump_amplification
 		}
 
 		DestroyedHeatEffects

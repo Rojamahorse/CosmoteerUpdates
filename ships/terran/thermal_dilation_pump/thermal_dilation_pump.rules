@@ -351,6 +351,17 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
+		PumpOverlaySignal_Left
+		{
+			Type = BlueprintNetworkOverlaySignal
+			Signal = pump_dilation
+			SignalThroughNode = NetworkedDilation_Left
+		}
+		PumpOverlaySignal_Right : PumpOverlaySignal_Left
+		{
+			SignalThroughNode = NetworkedDilation_Right
+		}
+
 		DestroyedEffects
 		{
 			Type = DeathEffects

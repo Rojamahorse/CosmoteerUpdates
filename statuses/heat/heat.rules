@@ -32,10 +32,10 @@ Diffusion
 	Basis = 0
 	SpeedFactor = 0.01
 	MinDeltaThreshold = 0.1
-	EmptyCellSpeedFactor = 0.04
-	PartOutboundSpeedFactors
+	EmptyCellSpeedFactor = 0.004
+	PartSpeedFactors
 	{
-		cosmoteer.structure = 25
+		cosmoteer.structure = { Occupied=25; Empty=4; }
 		cosmoteer.structure_1x3_wedge = &cosmoteer.structure
 		cosmoteer.structure_1x2_wedge = &cosmoteer.structure
 		cosmoteer.structure_tri = &cosmoteer.structure

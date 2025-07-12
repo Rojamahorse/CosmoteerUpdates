@@ -229,6 +229,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						Texture
 						{
 							File = "shield_energy.png"
+							UVMode = Wrap
 							SampleMode = Linear
 							MipLevels = 1
 						}
@@ -308,6 +309,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						_maskTex
 						{
 							File = "shield_energy_original.png"
+							UVMode = Wrap
 							SampleMode = Linear
 							MipLevels = max
 						}
@@ -415,6 +417,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						_maskTex
 						{
 							File = "shield_mask_oc.png"
+							UVMode = Wrap
 							SampleMode = Linear
 							MipLevels = 1
 						}
@@ -423,12 +426,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 						_waveCurveInterval = .5
 						_waveCurveMagnitude = .35
 						_waveCurveUOffsetPerSecond = .2
-						_fullPowerColor1 = [203, 80, 33, 127]
-						_lowPowerColor1 = [255, 0, 0, 127]
-						_fullPowerColor2 = [255, 134, 36, 255]
-						_lowPowerColor2 = [255, 50, 0, 127]
+						_fullPowerColor1 = [33, 192, 203, 64]
+						_lowPowerColor1 = [255, 0, 0, 64]
+						_fullPowerColor2 = [36, 255, 244, 64]
+						_lowPowerColor2 = [255, 50, 0, 64]
 						_lowPowerThicknessExponent = .6
-						_xScale = 1
+						_xScale = 5
 						_hexDamageIntensity = 0.8
 						TargetBlendMode = Add
 						Size = [0, 1.5]

@@ -2,7 +2,7 @@ OVERCLOCK
 {
 	BULLET = &<./Data/shots/bullet_deck/overclock/bullet_deck_overclock.rules>
 	FIRE_RATE_FACTOR = 50%
-	HALF_SPREAD = 1.5d
+	HALF_SPREAD = 2d
 	RECOIL_FACTOR = 250%
 	CREW_STUN_DURATION = 1.5
 	CREW_STUN_RADIUS = 9

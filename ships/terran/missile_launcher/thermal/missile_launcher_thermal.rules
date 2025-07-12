@@ -59,7 +59,7 @@ Components
 		Type = ResourceConverter
 		OperationalToggle = PowerToggle
 		
-		MISSILE_FILL_TIME = 3
+		MISSILE_FILL_TIME = 1.5
 		INTERVALS_TO_FILL = (&MISSILE_FILL_TIME) / (&Interval)
 		HEAT_PER_INTERVAL = ceil("(&~/BASE/HeatStorage/MaxResources) / (&INTERVALS_TO_FILL)")
 		

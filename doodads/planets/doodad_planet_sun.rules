@@ -31,12 +31,28 @@ ProximityEffects
 	EffectsDistanceExponent = 1.0
 	IgnoreShipTypes = [cosmoteer.asteroid, cosmoteer.megaroid, cosmoteer.ancient]
 
-	HitEffects
+	HitOperationalEffects
 	[
 		{
 			Type = StatusApplication
 			StatusType = cosmoteer.heat
 			StatusValue = { BaseValue=400; EffectScaleExponent=1; }
+		}
+	]
+	HitStructuralEffects = &HitOperationalEffects
+	HitShieldEffects
+	[
+		{
+			Type = StatusApplication
+			StatusType = cosmoteer.heat
+			StatusValue = { BaseValue=40; EffectScaleExponent=1; }
+			ApplyToAllHitPartTiles = true;
+			DivideValueByPartArea = true;
+		}
+
+		{
+			Type = Damage
+			Damage = 60
 		}
 	]
 

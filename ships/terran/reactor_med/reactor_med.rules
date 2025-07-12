@@ -1,7 +1,7 @@
 OVERCLOCK
 {
 	POWER_GENERATION_FACTOR = 250%
-	CAPACITY_FACTOR = 150%
+	EXTRA_CAPACITY_FACTOR = 150%
 	HEAT_PER_SECOND = 1400
 
 	BATTERY_PER_SEC = (&~/Part/Components/BatteryProducer/ToQuantity/BaseValue) * (&POWER_GENERATION_FACTOR) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
@@ -88,7 +88,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		}
 		Overclock_BatteryStorage : BatteryStorage
 		{
-			MaxResources = (&^/0/MaxResources) * (&~/OVERCLOCK/CAPACITY_FACTOR)
+			MaxResources = (&^/0/MaxResources) * (&~/OVERCLOCK/EXTRA_CAPACITY_FACTOR)
 			StartingResources = &MaxResources
 		}
 		Overclock_BatteryStorageProxy
@@ -870,7 +870,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		TitleKey = "StatCategories/Overclocked"
 		Stats
 		{
-			PowerCapacity = (&~/Part/Stats/PowerCapacity) * (&~/OVERCLOCK/CAPACITY_FACTOR)
+			PowerCapacity = (&~/Part/Stats/PowerCapacity) * (1 + (&~/OVERCLOCK/EXTRA_CAPACITY_FACTOR))
 			PowerGeneration = (&~/Part/Stats/PowerGeneration) * (&~/OVERCLOCK/POWER_GENERATION_FACTOR)
 			PowerHeatGeneration = [&~/OVERCLOCK/HEAT_PER_BATTERY, &~/OVERCLOCK/HEAT_PER_SECOND]
 		}

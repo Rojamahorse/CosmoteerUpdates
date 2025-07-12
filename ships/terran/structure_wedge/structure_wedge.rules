@@ -28,6 +28,7 @@ Part : <../base_part_terran_structure.rules>/Part
 	InitialPenetrationResistance = 0
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
 	CrewSpeedFactor = 0
+	CellOccupancyFactor = 0.25
 	IsExternal = true
 	ExternalWalls = [None]
 	InternalWalls = [All]

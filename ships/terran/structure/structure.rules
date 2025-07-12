@@ -27,6 +27,7 @@ Part : <../base_part_terran_structure.rules>/Part
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
 	CrewSpeedFactor = 0
 	AllowedDoorLocations = []
+	CellOccupancyFactor = 0.25
 	IsExternal = true
 	ExternalWalls = [None]
 	InternalWalls = [All]
