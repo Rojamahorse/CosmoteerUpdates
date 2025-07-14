@@ -40,8 +40,8 @@ Def
 			Type = SetRandom
 			DataOut = lifetime
 			ValueType = Float
-			FromValue = 0.8
-			ToValue = 0.8
+			FromValue = 0.3
+			ToValue = 0.6
 			Name = "random lifetime"
 			Enabled = true
 			UpdateAfterInit = false
@@ -124,11 +124,90 @@ Def
 			DataOut = scale
 			Invert = false
 			ValueType = Float
-			FromValue = 3
+			FromValue = 5
 			ToValue = 0
 			Name = "Scale lerp"
 			Enabled = true
 			UpdateAfterInit = true
+		}
+		{
+			Type = ValueCurve
+			MinValue = -1
+			MaxValue = 1
+			LerpIn = life
+			CurveOut = curve
+			Invert = false
+			Points
+			[
+				0.45882353
+				0.28235295
+				0.05490196
+				0.003921569
+				0.20392157
+				0.5372549
+				0.8509804
+				1
+				0.9098039
+				0.6784314
+				0.3882353
+				0.13725491
+				0.003921569
+				0.039215688
+				0.17254902
+				0.36862746
+				0.58431375
+				0.7882353
+				0.9372549
+				1
+				0.9098039
+				0.68235296
+				0.39607844
+				0.14509805
+				0.007843138
+				0.023529412
+				0.10980392
+				0.24705882
+				0.41568628
+				0.5921569
+				0.7647059
+				0.90588236
+			]
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ScalarOperator
+			AIn = curve
+			DataType = Vector2
+			BIn = randomVel
+			ResultOut = randomVel2
+			Operator = Multiply
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = velocity
+			BIn = randomVel2
+			ResultOut = vel2
+			Operator = Add
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = location
+			BIn = vel2
+			ResultOut = location
+			Operator = AddDt
+			Name = "Apply velocity."
+			Enabled = true
+			UpdateAfterInit = false
 		}
 	]
 	Renderer
@@ -142,8 +221,8 @@ Def
 		UvRectIn
 		BaseSize
 		{
-			X = 0.4
-			Y = 0.2
+			X = 0.3
+			Y = 0.1
 		}
 		Offset
 		{
@@ -185,7 +264,7 @@ Def
 }
 EmitterDef
 {
-	EmitPerSecond = 300
+	EmitPerSecond = 100
 	EmitPerOneShot
 	{
 		Min = 0
@@ -203,9 +282,9 @@ EmitterDef
 					X = 0
 					Y = 0
 				}
-				Radius = 0.02
+				Radius = 0.1
 			}
-			Perimeter = true
+			Perimeter = false
 			Name = "Init location"
 			Enabled = true
 			UpdateAfterInit = false
@@ -216,7 +295,7 @@ EmitterDef
 			VelocityOut = base_velocity
 			Speed
 			{
-				Min = 4.5
+				Min = 2
 				Max = 6
 			}
 			AwayFromPoint
@@ -245,11 +324,30 @@ EmitterDef
 			Enabled = true
 			UpdateAfterInit = false
 		}
+		{
+			Type = SetRandom
+			DataOut = randomVel
+			ValueType = Vector2
+			FromValue
+			{
+				X = 0
+				Y = 0
+			}
+			ToValue
+			{
+				X = 2
+				Y = 2
+			}
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
 	]
 	PostInitializers[]
 }
 Bucket = Upper1
 UseRealTime = false
+EmitImmediately = false
 PenetratingBucket
 MinIntensity = 0
 IsFancy = true

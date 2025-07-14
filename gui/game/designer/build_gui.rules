@@ -50,6 +50,21 @@ StatsGui
     			VertexColor = [0, 183, 255]
     		}
     	}
+    	CenterOfMass
+    	{
+			TooltipKey = "BuildBox/Stats/CenterOfMassTip"
+			EnabledByDefault = false
+    		Icon
+    		{
+    			Texture
+    			{
+    				File = "mass_center_toggle.png"
+    				MipLevels = 2
+    				SampleMode = Linear
+    			}
+    			VertexColor = [0, 183, 255]
+    		}
+    	}
     	Coordinates
     	{
     		TooltipKey = "BuildBox/Stats/CoordinatesToggleTip"
@@ -126,6 +141,7 @@ StatsGui
 	DirectionChooserToggleButtonID = DirectionChooser
 	ValueStatToggleButtonID = Value
 	MassStatToggleButtonID = Mass
+	CenterOfMassToggleButtonID = CenterOfMass
 	CoordinatesStatToggleButtonID = Coordinates
 	FtlStatToggleButtonID = Ftl
 	CommandPointsStatToggleButtonID = CommandPoints
@@ -755,4 +771,16 @@ FavoriteSprite
 		SampleMode = Linear
 	}
 	Size = [20, 20]
+}
+
+CenterOfMassSprite
+{
+	Texture
+	{
+		File = "mass_center.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+	VertexColor = [10, 212, 98]
+	Size = [2, 2]
 }

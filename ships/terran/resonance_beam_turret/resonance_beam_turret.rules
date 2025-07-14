@@ -602,6 +602,15 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
+		InterpolatedTurret // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			Location = &../Turret/Location
+			MatchTransformOf = Turret
+			MatchRotationSpeed = Infinity
+			InterpolateRotation = true
+		}
+
 		FixedWeapon
 		{
 			Type = FixedWeapon
@@ -637,6 +646,7 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = FixedWeaponHasResourcesTriggerProxy
 			GetTargetFrom = Turret
+			AttachBeamMediaEffectsTo = InterpolatedTurret
 			Location = [1.2, 0]
 			OperationalToggle = IsOperational
 			Duration = 1
@@ -852,7 +862,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = [2, 2]
 			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed
 		}
-		
+
 		ScorchedTrigger
 		{
 			Type = ToggleTrigger
@@ -1041,7 +1051,7 @@ Part : <../base_part_terran.rules>/Part
 		TurretGraphics
 		{
 			Type = Graphics
-			ChainedTo = Turret
+			ChainedTo = InterpolatedTurret
 			Location = [81/64, 0]
 			Rotation = 90d
 			OperationalToggle = IsOperational
@@ -1276,7 +1286,7 @@ Part : <../base_part_terran.rules>/Part
 		TurretGraphics_FancyLight2
 		{
 			Type = Graphics
-			ChainedTo = Turret
+			ChainedTo = InterpolatedTurret
 			Location = [81/64, 0]
 			Rotation = 90d
 			OperationalToggle = IsOperational
@@ -1306,7 +1316,7 @@ Part : <../base_part_terran.rules>/Part
 				OverclockOpenCloseSprite
 				{
 					Type = OpenCloseSprite
-					ChainedTo = Turret
+					ChainedTo = InterpolatedTurret
 					Location = [177/64, 0]
 					Rotation = 90d
 					OperationalToggle = OverclockModeToggle
@@ -1453,7 +1463,7 @@ Part : <../base_part_terran.rules>/Part
 				OverclockOpenCloseSprite
 				{
 					Type = OpenCloseSprite
-					ChainedTo = Turret
+					ChainedTo = InterpolatedTurret
 					Location = [177/64, 0]
 					Rotation = 90d
 					OperationalToggle = OverclockModeToggle
@@ -1593,7 +1603,7 @@ Part : <../base_part_terran.rules>/Part
 		Turret_HeatSprites
 		{
 			Type = ResourceSprites
-			ChainedTo = Turret
+			ChainedTo = InterpolatedTurret
 			Location = [-47/64, 0]
 			Rotation = 90d
 			ResourceStorage = HeatStorage

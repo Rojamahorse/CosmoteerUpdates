@@ -1,9 +1,20 @@
 OVERCLOCK
 {
-	ARC_FACTOR = 150%
-	ARC_RADIUS_FACTOR = 150%
 	HEAT_PER_SECOND = 40
-	HEAT_PER_DAMAGE = 0.25
+	MODE_SWITCH_TIME = 1
+	EXTENDED
+	{
+		ARC_FACTOR = 150%
+		ARC_RADIUS_FACTOR = 150%
+		HEAT_PER_DAMAGE = 0.25
+	}
+	REINFORCED
+	{
+		ARC_FACTOR = 55%
+		DAMAGE_DRAIN_FACTOR = 1/2
+		EMP_RESIST = 33%
+		HEAT_PER_DAMAGE = 0.6
+	}
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -29,6 +40,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SelectionTypeByRotation = true
 	MaxHealth = 6000
 	TypeCategories = [defense, uses_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ ShieldOverclockExtended, ShieldOverclockReinforced ]
 	AllowedDoorLocations
 	[
 		[-1, 2]
@@ -85,6 +97,58 @@ Part : <../base_part_terran_overclock.rules>/Part
 			CommandPoints = 3
 		}
 
+		Overclock_ShieldModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "overclock_shield"
+			Default = 0
+			VisibilityToggle = OverclockModeToggle
+		}
+		Overclock_ExtendedModeToggle
+		{
+			Type = ModeToggle
+			Mode = Overclock_ShieldModeToggle
+			OnModes = [ 0 ]
+		}
+		Overclock_ReinforcedModeToggle : Overclock_ExtendedModeToggle
+		{
+			OnModes = [ 1 ]
+		}
+		Overclock_ExtendedModeRawValue
+		{
+			Type = ValueTween
+			IsOnToggle = Overclock_ExtendedModeToggle
+			OnTweenDuration = &~/OVERCLOCK/MODE_SWITCH_TIME
+			OffTweenDuration = &OnTweenDuration
+		}
+		Overclock_ReinforcedModeRawValue : Overclock_ExtendedModeRawValue
+		{
+			IsOnToggle = Overclock_ReinforcedModeToggle
+		}
+		Overclock_ExtendedModeValue
+		{
+			Type = MultiValue
+			Values = [ Overclock_ExtendedModeRawValue, OverclockStateValue ]
+			Mode = Min
+		}
+		Overclock_ReinforcedModeValue : Overclock_ExtendedModeValue
+		{
+			Values = [ Overclock_ReinforcedModeRawValue, OverclockStateValue ]
+		}
+		Overclock_ExtendedModeBuff
+		{
+			Type = SelfBuffProvider
+			OperationalToggle = IsOverclocked
+			BuffType = ShieldOverclockExtended
+			BuffMultiplier = Overclock_ExtendedModeValue
+		}
+		Overclock_ReinforcedModeBuff : Overclock_ExtendedModeBuff
+		{
+			BuffType = ShieldOverclockReinforced
+			BuffMultiplier = Overclock_ReinforcedModeValue
+		}
+		
+
 		BatteryStorage
 		{
 			Type = ResourceStorage
@@ -98,6 +162,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 				BaseValue = 0
 				Modifiers
 				[
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockReinforced
+						ModificationMode = Add
+						RemapFrom = [0, 1]
+						RemapTo = [0, (&~/OVERCLOCK/REINFORCED/EMP_RESIST)]
+					}
 					{
 						Type = Status
 						StatusType = cosmoteer.shield_overload
@@ -147,10 +218,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 				[
 					{
 						Type = BuffRemap
-						BuffType = Overclock
+						BuffType = ShieldOverclockExtended
 						ModificationMode = Multiply
 						RemapFrom = [0, 1]
-						RemapTo = [1, &~/OVERCLOCK/ARC_RADIUS_FACTOR]
+						RemapTo = [1, &~/OVERCLOCK/EXTENDED/ARC_RADIUS_FACTOR ]
 					}
 				]
 			}
@@ -161,10 +232,17 @@ Part : <../base_part_terran_overclock.rules>/Part
 				[
 					{
 						Type = BuffRemap
-						BuffType = Overclock
+						BuffType = ShieldOverclockExtended
 						ModificationMode = Multiply
 						RemapFrom = [0, 1]
-						RemapTo = [1, &~/OVERCLOCK/ARC_FACTOR]
+						RemapTo = [1, &~/OVERCLOCK/EXTENDED/ARC_FACTOR ]
+					}
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockReinforced
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/REINFORCED/ARC_FACTOR ]
 					}
 				]
 			}
@@ -181,6 +259,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 						StatusType = cosmoteer.shield_overload
 						ModificationMode = Multiply
 						BaseStatusValue = 1
+					}
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockReinforced
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/REINFORCED/DAMAGE_DRAIN_FACTOR ]
 					}
 				]
 			}
@@ -345,26 +430,54 @@ Part : <../base_part_terran_overclock.rules>/Part
 			]
 		}
 
-		OverclockTweenToggle
+		Overclock_ExtendedModeTweenToggle
 		{
 			Type = ThresholdToggle
-			ValueFrom = OverclockStateValue
+			ValueFrom = Overclock_ExtendedModeValue
 			MinAmount = 1
 		}
-
-		OverclockedEffectToggle
+		Overclock_ReinforcedModeTweenToggle : Overclock_ExtendedModeTweenToggle
 		{
-			Type = MultiToggle
-			Toggles = [OverclockTweenToggle, IsOperationalOverclocked]
-			Mode = All
+			ValueFrom = Overclock_ReinforcedModeValue
 		}
 
-		Overclock_BlueprintArc
+		Overclock_ExtendedEffectToggle
+		{
+			Type = MultiToggle
+			Toggles = [Overclock_ExtendedModeTweenToggle, IsOperationalOverclocked]
+			Mode = All
+		}
+		Overclock_ReinforcedEffectToggle : Overclock_ExtendedEffectToggle
+		{
+			Toggles = [Overclock_ReinforcedModeTweenToggle, IsOperationalOverclocked]
+		}
+
+		Overclock_ExtendedBlueprintArc
 		{
 			Type = ArcSprite
 			ChainedTo = ArcShield
-			Radius = (&../ArcShield/Radius/BaseValue) * (&~/OVERCLOCK/ARC_RADIUS_FACTOR)
-			Arc = (&../ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/ARC_FACTOR)
+			Radius = (&../ArcShield/Radius/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_RADIUS_FACTOR)
+			Arc = (&../ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_FACTOR)
+			SpriteSegments = (&../ArcShield/BlueprintArcSpriteSegments)
+			Sprite
+			{
+				Texture
+				{
+					File = "shield_energy_oc.png"
+					UVMode = Wrap
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [36, 255, 244, 64]
+			}
+		}
+		Overclock_ReinforcedBlueprintArc : Overclock_ExtendedBlueprintArc
+		{
+			Type = ArcSprite
+			ChainedTo = ArcShield
+			Radius = (&../ArcShield/Radius/BaseValue)
+			Arc = (&../ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/REINFORCED/ARC_FACTOR)
 			SpriteSegments = (&../ArcShield/BlueprintArcSpriteSegments)
 			Sprite
 			{
@@ -380,14 +493,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 
-		OverclockEffect
+		Overclock_ExtendedEffect
 		{
 			Type = ShieldArcsMimic
 			Shield = ArcShield
 			ChainedTo = ArcShield
 			FactorMediaEffectsIntensityWith = BatteryStorage
 			MimicFadeInStartTime = false
-			OperationalToggle = OverclockedEffectToggle
+			OperationalToggle = Overclock_ExtendedEffectToggle
 			ContinuousEffects
 			[
 				{
@@ -431,13 +544,31 @@ Part : <../base_part_terran_overclock.rules>/Part
 						_fullPowerColor2 = [36, 255, 244, 64]
 						_lowPowerColor2 = [255, 50, 0, 64]
 						_lowPowerThicknessExponent = .6
-						_xScale = 5
+						_xScale = 3
 						_hexDamageIntensity = 0.8
 						TargetBlendMode = Add
 						Size = [0, 1.5]
 					}
 					ArcSpriteSegments = 64
 					Bucket = Lower1
+				}
+			]
+		}
+		Overclock_ReinforcedEffect : Overclock_ExtendedEffect
+		{
+			OperationalToggle = Overclock_ReinforcedEffectToggle
+			ContinuousEffects
+			[
+				: ../^/0/ContinuousEffects/0 
+				{
+					ArcSprite : ^/0/ArcSprite
+					{
+						_fullPowerColor1 = [203, 80, 33, 127]
+						_lowPowerColor1 = [255, 0, 0, 127]
+						_fullPowerColor2 = [255, 134, 36, 255]
+						_lowPowerColor2 = [255, 50, 0, 127]
+						_xScale = 1
+					}
 				}
 			]
 		}
@@ -483,12 +614,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Toggles = [ IsOperational, IsOverloaded ]
 			Mode = All
 		}
-
-		IsOperationalOverclockedOverloaded
+		IsOperationalOverloaded_Extended
 		{
 			Type = MultiToggle
-			Toggles = [ IsOperational, IsOverloaded, OverclockedEffectToggle ]
+			Toggles = [ IsOperationalOverloaded, Overclock_ExtendedEffectToggle ]
 			Mode = All
+		}
+		IsOperationalOverloaded_Reinforced : IsOperationalOverloaded_Extended
+		{
+			Toggles = [ IsOperationalOverloaded, Overclock_ReinforcedEffectToggle ]
 		}
 
 		OverloadEffect
@@ -564,14 +698,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			]
 		}
 
-		OverclockOverloadEffect
+		Overclock_OverloadEffect_Extended
 		{
 			Type = ShieldArcsMimic
 			Shield = ArcShield
 			ChainedTo = ArcShield
 			FactorMediaEffectsIntensityWith = BatteryStorage
 			FactorRedVertexColorWith = OverloadValue
-			OperationalToggle = IsOperationalOverclockedOverloaded
+			OperationalToggle = IsOperationalOverloaded_Extended
 			ContinuousEffects
 			[
 				{
@@ -622,7 +756,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						_color2 = [255, 255 * 0.41, 0, 0]
 						_maxGreen = 0.9
 
-						_xScale = 1
+						_xScale = 3
 						_hexDamageIntensity = 0.8
 						_thermalIntensityExponent = 0.25
 						TargetBlendMode = Add
@@ -630,6 +764,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 					}
 					ArcSpriteSegments = 64
 					Bucket = Lower1
+				}
+			]
+		}
+		Overclock_OverloadEffect_Reinforced : Overclock_OverloadEffect_Extended
+		{
+			OperationalToggle = IsOperationalOverloaded_Reinforced
+			ContinuousEffects
+			[
+				: ../^/0/ContinuousEffects/0
+				{
+					ArcSprite : ^/0/ArcSprite
+					{
+						_xScale = 1
+					}
 				}
 			]
 		}
@@ -652,9 +800,23 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Trigger = Overclock_ArcShieldProxy
 			Amount
 			{
-				BaseValue = "round((&~/OVERCLOCK/HEAT_PER_DAMAGE) * (&~/HEAT_TO_RESOURCE), 0)"
+				BaseValue = 0
 				Modifiers
 				[
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockExtended
+						ModificationMode = Add
+						RemapFrom = [0, 1]
+						RemapTo = [0, (&~/OVERCLOCK/EXTENDED/HEAT_PER_DAMAGE) * (&~/HEAT_TO_RESOURCE)]
+					}
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockReinforced
+						ModificationMode = Add
+						RemapFrom = [0, 1]
+						RemapTo = [0, (&~/OVERCLOCK/REINFORCED/HEAT_PER_DAMAGE) * (&~/HEAT_TO_RESOURCE)]
+					}
 					{
 						Type = EffectScale
 						ModificationMode = Multiply
@@ -664,11 +826,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 						StatusType = cosmoteer.shield_overload
 						ModificationMode = Multiply
 						BaseStatusValue = 1
-					}
-					{
-						Type = Buff
-						BuffType = Overclock
-						ModificationMode = Multiply
 					}
 				]
 			}
@@ -1188,10 +1345,29 @@ Part : <../base_part_terran_overclock.rules>/Part
 		TitleKey = "StatCategories/Overclocked"
 		Stats
 		{
-			ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/ARC_FACTOR)
-			ShieldDist = (&~/Part/Components/ArcShield/Radius/BaseValue) * (&~/OVERCLOCK/ARC_RADIUS_FACTOR)
 			HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
-			HeatPerDamage = (&~/OVERCLOCK/HEAT_PER_DAMAGE)
 		}
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/ShieldExtended"
+				Stats
+				{
+					ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_FACTOR)
+					ShieldDist = (&~/Part/Components/ArcShield/Radius/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_RADIUS_FACTOR)
+					HeatPerDamage = (&~/OVERCLOCK/EXTENDED/HEAT_PER_DAMAGE)
+				}
+			}
+			{
+				NameKey = "StatCategories/ShieldReinforced"
+				Stats
+				{
+					ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/REINFORCED/ARC_FACTOR)
+					ShieldHP = (&~/Part/StatsByCategory/0/Stats/ShieldHP) / (&~/OVERCLOCK/REINFORCED/DAMAGE_DRAIN_FACTOR)
+					EMPResistPercentage = (&~/OVERCLOCK/REINFORCED/EMP_RESIST) * 100
+					HeatPerDamage = (&~/OVERCLOCK/REINFORCED/HEAT_PER_DAMAGE)
+				}
+			}
+		]
 	}
 }

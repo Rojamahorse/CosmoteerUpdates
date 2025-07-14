@@ -322,6 +322,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
 		{
+			Location = [0, 1]
+			Direction = Left
+		}
+		Port_Thermal_Left1 : Port_Thermal_Left0
+		{
 			Location = [0, 2]
 			Direction = Left
 		}
@@ -339,6 +344,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [2, 2]
 		}
 		Port_Thermal_Right0 : Port_Thermal_Left0
+		{
+			Location = [2, 1]
+			Direction = Right
+		}
+		Port_Thermal_Right1 : Port_Thermal_Right0
 		{
 			Location = [2, 2]
 			Direction = Right

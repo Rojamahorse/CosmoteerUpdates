@@ -228,6 +228,8 @@ Beam : <ion_beam.rules>
 					}
 					_color1 = [255 * 0.9, 0, 0, 255]
 					_color2 = [255, 255 * 0.8, 255 * 0.8, 255]
+					_noise1ScrollSpeed = [-0.03, -0.3]
+					_noise2ScrollSpeed = [0.04, -0.34]
 					TargetBlendMode = Add
 				}
 				Filter

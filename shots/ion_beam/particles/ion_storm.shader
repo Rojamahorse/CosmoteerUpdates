@@ -9,6 +9,8 @@ SamplerState _noiseTex1_SS;
 
 float4 _color1 = 255;
 float4 _color2 = 255;
+float2 _noise1ScrollSpeed;
+float2 _noise2ScrollSpeed;
 
 struct VERT_INPUT_ION_AOE
 {
@@ -35,8 +37,8 @@ VERT_OUTPUT_ION_AOE vert(in VERT_INPUT_ION_AOE input)
 	output.color = input.color * _color;
 	output.uv = input.uv;
 	output.offsetTime = input.randomTimeOffset + _gameTime;
-	output.noise1ScrollSpeed = float2(-0.03, -0.3) * output.offsetTime;
-	output.noise2ScrollSpeed = float2(0.04, -0.34) * output.offsetTime;
+	output.noise1ScrollSpeed = _noise1ScrollSpeed * output.offsetTime;
+	output.noise2ScrollSpeed = _noise2ScrollSpeed * output.offsetTime;
 	return output;
 }
 
@@ -80,8 +82,6 @@ PIX_OUTPUT pix(in VERT_OUTPUT_ION_AOE input) : SV_TARGET
 	float fadeAlpha = 1 - (polarUVs.y * polarUVs.y);
 	baseAlpha = pow(baseAlpha, 1 + (1 - fadeAlpha));
 
-	//float3 color1 = float3(0.9, 0, 0);
-	//float3 color2 = float3(1, 0.8, 0.8);
 	float3 col = lerp(_color1.rgb, _color2.rgb, pow((1 - baseNoise.a) * 1.3 * fadeAlpha, 4) + centerDot);
 	
 	return float4(col * (saturate(baseAlpha * input.color.a * fadeAlpha * 1.5) + centerDot), 1);

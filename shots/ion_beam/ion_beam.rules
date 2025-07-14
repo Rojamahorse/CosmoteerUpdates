@@ -134,6 +134,7 @@ HitOperational
 			{
 				Enemies = false
 				Junk = false
+				Neutrals = false
 				ExcludePartCategories = [ion_beam_prism]
 			}
 		}
@@ -245,6 +246,7 @@ HitStructural
 			{
 				Enemies = false
 				Junk = false
+				Neutrals = false
 			}
 		}
 		{

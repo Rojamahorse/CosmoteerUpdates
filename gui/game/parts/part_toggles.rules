@@ -673,7 +673,7 @@ PartToggles
 						MipLevels = 2
 						SampleMode = Linear
 					}
-					VertexColor = [221, 158, 86]
+					VertexColor = [0, 183, 255]
 				}
 			}
 
@@ -690,6 +690,47 @@ PartToggles
 						SampleMode = Linear
 					}
 					VertexColor = [249, 66, 33]
+				}
+			}
+		]
+	}
+	
+	// Shield Overclock Extended/Reinforced toggle
+	{
+		ToggleID = "overclock_shield"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Extended
+			{
+				ChoiceID = "overclock_shield_extended"
+				ButtonToolTipKey = "PartToggles/OverclockShield_Extended"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_overclock_extended.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+			}
+
+			// Reinforced
+			{
+				ChoiceID = "overclock_shield_reinforced"
+				ButtonToolTipKey = "PartToggles/OverclockShield_Reinforced"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shield_overclock_reinforced.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
 				}
 			}
 		]

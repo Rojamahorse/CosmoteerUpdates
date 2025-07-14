@@ -3190,6 +3190,7 @@ BuildBox
 		DirectionChooserToggleTip = "<b>Flight Direction Chooser</b>"
 		ValueToggleTip = "<b>Ship Value</b>"
 		MassToggleTip = "<b>Ship Mass</b>"
+		CenterOfMassTip = "<b>Center of Mass</b>"
 		CoordinatesToggleTip = "<b>Cursor Coordinates</b>"
 		FtlToggleTip = "<b>Hyperdrive Efficiency</b>"
 		CommandPointsToggleTip = "<b>Command Points</b>"
@@ -3828,7 +3829,7 @@ EditorGroups
 	WeaponsEnergy = "Energy Weapons"
 	WeaponsProjectile = "Projectile Weapons"
 	Defenses = "Defenses"
-	Control = "Command & Control"
+	Control = "Ship Control"
 	Flight = "Thrusters"
 	Crew = "Crew"
 	Power = "Power"
@@ -4501,6 +4502,9 @@ PartToggles
 
 	ThermalOverclock_Off = "<b>Overclock: <good>Off</good></b>\nOperate normally, adhering to the part's intended limits."
 	ThermalOverclock_On = "<b>Overclock: <bad>On</bad></b>\nBypass limiters and exceed operational ratings, increasing performance at the cost of heat generation and unreliability."
+	
+	OverclockShield_Extended = "<b>Shield Overclock Mode: <good>Extended</good></b>\nIncreases the shield arc and projection distance by routing additional power to the shield's core."
+	OverclockShield_Reinforced = "<b>Shield Overclock Mode: <good>Reinforced</good></b>\nHardens the shield against damage and energy draining effects by routing power from the peripheral to central emitters."
 }
 
 PartColors
@@ -4878,6 +4882,8 @@ StatCategories
 	OverclockedShrapnel = "Overclocked (Shrapnel)"
 	OverclockedBoost = "Boost: On (Overclocked)"
 	OverclockedDisruption = "Overclocked (Disruption Effect)"
+	ShieldExtended = "Shield Mode: Extended"
+	ShieldReinforced = "Shield Mode: Reinforced"
 	Firing = "Firing"
 	NotFiring = "Not Firing"
 }
@@ -5040,6 +5046,7 @@ Resource
 	Hyperium = "Hyperium"
 	HyperiumPlural = "Hyperium"
 	HyperiumDesc = "Mysterious crystals capable of bending spacetime. Used to fuel hyper-jumps."
+	HyperiumHardDesc = "<string id='Resource/HyperiumDesc'/>\n\n<string id='Resource/NotMineable'/>"
 
 	FireExtinguisher = "Fire Extinguisher"
 

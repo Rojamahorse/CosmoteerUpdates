@@ -361,6 +361,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 
+		InterpolatedTurret // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			Location = &../Turret/Location
+			MatchTransformOf = Turret
+			MatchRotationSpeed = Infinity
+			InterpolateRotation = true
+		}
+
 		TurretCollider
 		{
 			Type = CircleCollider
@@ -403,30 +412,50 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = Oscillator
 			ChainedTo = Turret
 			OperationalToggle = BeamEmissionToggleLeft
-			Location = [59/64, -14/64]
+			Location = [59/64, -28/64]
 			Angle = -0.3333333333d
 			Interval = 4.0
 			ResetWhenOperational = true
 		}
+		InterpolatedLeftOscillator // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			MatchTransformOf = LeftOscillator
+			MatchLocationSpeed = Infinity
+			MatchRotationSpeed = Infinity
+			InterpolateLocation = true
+			InterpolateRotation = true
+		}
 		RightOscillator : LeftOscillator
 		{
 			OperationalToggle = BeamEmissionToggleRight
-			Location = [59/64, 14/64]
+			Location = [59/64, 28/64]
 			Angle = -(&../LeftOscillator/Angle)
+		}
+		InterpolatedRightOscillator // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			MatchTransformOf = RightOscillator
+			MatchLocationSpeed = Infinity
+			MatchRotationSpeed = Infinity
+			InterpolateLocation = true
+			InterpolateRotation = true
 		}
 		BeamEmitterLeft : BeamEmitterBase
 		{
 			ChainedTo = LeftOscillator
 			FireTrigger = Turret
-			Location = [0, -14/64]
+			Location = [0, 0]
 			Width = &<./Data/shots/mining_beam_small/mining_beam_small.rules>/Width // BeamEmitterBase overrides width for targeting purposes.
+			AttachBeamMediaEffectsTo = InterpolatedLeftOscillator
 		}
 		BeamEmitterRight : BeamEmitterBase
 		{
 			ChainedTo = RightOscillator
 			FireTrigger = Turret
-			Location = [0, 14/64]
+			Location = [0, 0]
 			Width = &<./Data/shots/mining_beam_small/mining_beam_small.rules>/Width // BeamEmitterBase overrides width for targeting purposes.
+			AttachBeamMediaEffectsTo = InterpolatedRightOscillator
 		}
 
 		BeamEmissionToggleLeft
@@ -489,7 +518,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		TurretGraphics
 		{
 			Type = Graphics
-			ChainedTo = Turret
+			ChainedTo = InterpolatedTurret
 			Location = [0, 0]
 			Rotation = 90d
 			OperationalToggle = IsOperational

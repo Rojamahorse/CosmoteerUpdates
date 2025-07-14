@@ -243,6 +243,15 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
+		InterpolatedTurret // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			Location = &../Turret/Location
+			MatchTransformOf = Turret
+			MatchRotationSpeed = Infinity
+			InterpolateRotation = true
+		}
+
 		IonBeamChainToggle
 		{
 			Type = FixedWeapon
@@ -303,6 +312,7 @@ Part : <../base_part_terran.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = BeamTrigger
 			GetTargetFrom = Turret
+			AttachBeamMediaEffectsTo = InterpolatedTurret
 			ResourceStorage = IonEnergy
 			ResourcesUsed = 1000
 			MinResourcesUsed = 1
@@ -369,7 +379,7 @@ Part : <../base_part_terran.rules>/Part
 		TurretGraphics
 		{
 			Type = Graphics
-			ChainedTo = Turret
+			ChainedTo = InterpolatedTurret
 			Location = [.5, 0]
 			Rotation = 90d
 			OperationalToggle = IsEmitting

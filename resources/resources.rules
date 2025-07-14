@@ -152,8 +152,8 @@ Nuggets
 
 VeryCommonMaterialDropRates
 {
-	PartDestroyed = 15%
-	PartSalvaged = 20%
+	PartDestroyed = 12%
+	PartSalvaged = 16%
 	PlayerPartDestroyed = 85%
 	PlayerPartSalvaged = 100%
 	StorageDestroyed = 50%
@@ -163,8 +163,8 @@ VeryCommonMaterialDropRates
 
 CommonMaterialDropRates
 {
-	PartDestroyed = 10%
-	PartSalvaged = 15%
+	PartDestroyed = 8%
+	PartSalvaged = 12%
 	PlayerPartDestroyed = 85%
 	PlayerPartSalvaged = 100%
 	StorageDestroyed = 50%

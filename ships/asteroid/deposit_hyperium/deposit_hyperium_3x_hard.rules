@@ -2,7 +2,7 @@ Part : <../base_part_asteroid.rules>/Part
 {
 	NameKey = "Parts/DepositHyperium3xHard"
 	IconNameKey = "Parts/DepositHyperium3xHardIcon"
-	DescriptionKey = "Resource/HyperiumDesc"
+	DescriptionKey = "Resource/HyperiumHardDesc"
 	ID = cosmoteer.deposit_hyperium_3x_hard // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	SelectionTypeID = "deposit_hyperium"
 	EditorGroup = "Hyperium"
