@@ -33,8 +33,7 @@ Part : <../base_part_terran.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Point
-			MipLevels = max
+			SampleMode = Linear
 		}
 		Size = [21.33, 64]
 		UVRect = [0, 1, 1, -1]
@@ -293,7 +292,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 		}
-		
+
 		PumpOverlaySignal
 		{
 			Type = BlueprintNetworkOverlaySignal

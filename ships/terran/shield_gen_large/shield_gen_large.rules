@@ -44,8 +44,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Point
-			MipLevels = max
+			SampleMode = Linear
 		}
 		Size = [48, 96]
 	}
@@ -192,6 +191,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Rotation = -90d
 			Location = [1.5, 1.5]
 
+			BlueprintArcToggle = OverclockModeToggle
+			InvertBlueprintToggle = true
 			BlueprintArcSprite
 			{
 				Texture
@@ -313,6 +314,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = ArcSprite
 			ChainedTo = ArcShield
+			VisibilityToggle = OverclockModeToggle
 			Radius = &../ArcShield/Radius
 			Arc = (&../ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/ARC_FACTOR)
 			SpriteSegments = (&../ArcShield/BlueprintArcSpriteSegments)

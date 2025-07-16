@@ -689,12 +689,12 @@ PartToggles
 						MipLevels = 2
 						SampleMode = Linear
 					}
-					VertexColor = [249, 66, 33]
+					VertexColor = [255, 4, 0]
 				}
 			}
 		]
 	}
-	
+
 	// Shield Overclock Extended/Reinforced toggle
 	{
 		ToggleID = "overclock_shield"

@@ -351,6 +351,7 @@ BuildBox
 	SaveSelected = 選択中のパーツをセーブ
 	SaveSelectedTip = 選択したパーツを船のデザインとしてセーブします。
 	SelectTip = "<b>選択ツール</b>\n\nこれを選択中に、コピー、カット、ペースト、ミラー、回転、または削除したいパーツの周りにボックスをドラッグします。\n\nホットキー：<btn id='Design.SelectionTool'/>\n\n<btn id='Design.ContiguousSelectionMode'/>を長押しで隣接物を「自動選択」します。"
+	ShowPartStats = "<gray><btn id='Design.ScrollTooltip'/>を長押しで統計を表示。</gray>"
 	ShowResourceDeliveries = 資源配達を表示
 	ShowResourceDeliveriesTip = このオプションをチェックすると、予定された建造資源の配達が表示されます。
 	StatBarTipFmt = ""
@@ -3642,6 +3643,8 @@ Settings
 		PaintLbl = 塗装編集
 		PaintSelectTool = 選択ツール
 		PaintSelectToolTip = 「選択ツール」が塗装編集画面を開いた時のデフォルトで設定されているツールになります。
+		PartToolTipsDefaultToStats = デフォルトで統計を表示
+		PartToolTipsDefaultToStatsTip = "このオプションをチェックすると、パーツの上にマウスカーソルを当てた時にパーツの説明ではなく統計を表示します。<btn id='Design.ScrollTooltip'/>を長押しすると説明を表示することもできます。"
 		RepairAutoDoors = 自動でドアを修理
 		RepairAutoDoorsTip = このオプションをチェックすると、破壊されたパーツを再建する時に、接しているドアも自動的に再建します。
 		RequirePartialRefundConfirmation = 減額された払い戻し金の確認を要求

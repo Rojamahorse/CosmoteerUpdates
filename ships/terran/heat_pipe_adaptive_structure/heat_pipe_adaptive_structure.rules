@@ -19,8 +19,7 @@ Part : <../heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part, <../base_part_terr
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Point
-			MipLevels = max
+			SampleMode = Linear
 		}
 		Size = [32, 32]
 	}

@@ -47,8 +47,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Point
-			MipLevels = max
+			SampleMode = Linear
 		}
 		Size = [64, 42.66]
 	}

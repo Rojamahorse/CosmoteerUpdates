@@ -351,6 +351,7 @@ BuildBox
 	SaveSelected = "Ausgewählte Teile speichern"
 	SaveSelectedTip = "Speichert die ausgewählten Teile als Schiffsdesign."
 	SelectTip = "<b>Auswahlwerkzeug</b>\n\nWenn dieses Werkzeug ausgewählt ist, kannst du eine Box um die Teile ziehen, die du kopieren, ausschneiden, einfügen, spiegeln, drehen oder entfernen möchtest.\n\nSchnelltaste: <btn id='Design.SelectionTool'/>\n\nHalte <btn id='Design.ContiguousSelectionMode'/> gedrückt, um die „Angrenzender Zauberstab“-Auswahl zu nutzen."
+	ShowPartStats = "<gray>Halte <btn id='Design.ScrollTooltip'/>, um die Statistik anzuzeigen.</gray>"
 	ShowResourceDeliveries = "Ressourcenlieferungen anzeigen"
 	ShowResourceDeliveriesTip = "Bei Auswahl der Option werden geplante Lieferungen von Bauressourcen angezeigt."
 	StatBarTipFmt = ""
@@ -3642,6 +3643,8 @@ Settings
 		PaintLbl = Lackierungseditor
 		PaintSelectTool = Auswahlwerkzeug
 		PaintSelectToolTip = "Das Auswahlwerkzeug ist standardmäßig ausgewählt, wenn du den Lackierungseditor öffnest."
+		PartToolTipsDefaultToStats = "Standardmäßig Statistik anzeigen"
+		PartToolTipsDefaultToStatsTip = "Bei Auswahl der Option wird die Statistik anstatt der Beschreibung eines Teils angezeigt, wenn du mit dem Mauszeiger darüber fährst. Du kannst <btn id='Design.ScrollTooltip'/> gedrückt halten, um die Beschreibung des Teils anzeigen zu lassen."
 		RepairAutoDoors = "Türen automatisch reparieren"
 		RepairAutoDoorsTip = "Bei Auswahl der Option werden Verbindungstüren automatisch neu gebaut, wenn ein zerstörtes Teil neu gebaut wird."
 		RequirePartialRefundConfirmation = "Bestätigung für verringerte Rückerstattung erforderlich"

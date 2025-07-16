@@ -53,8 +53,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Point
-			MipLevels = max
+			SampleMode = Linear
 		}
 		Size = [42.66, 64]
 	}
@@ -147,7 +146,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			BuffType = ShieldOverclockReinforced
 			BuffMultiplier = Overclock_ReinforcedModeValue
 		}
-		
+
 
 		BatteryStorage
 		{
@@ -272,6 +271,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Rotation = -90d
 			Location = [1, 1.5]
 
+			BlueprintArcToggle = OverclockModeToggle
+			InvertBlueprintToggle = true
 			BlueprintArcSprite
 			{
 				Texture
@@ -451,11 +452,23 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Toggles = [Overclock_ReinforcedModeTweenToggle, IsOperationalOverclocked]
 		}
+		
+		Overclock_ExtendedAndOverclockedModeToggle
+		{
+			Type = MultiToggle
+			Toggles = [ OverclockModeToggle, Overclock_ExtendedModeToggle ]
+			Mode = All
+		}
+		Overclock_ReinforcedAndOverclockedModeToggle : Overclock_ExtendedAndOverclockedModeToggle
+		{
+			Toggles = [ OverclockModeToggle, Overclock_ReinforcedModeToggle ]
+		}
 
 		Overclock_ExtendedBlueprintArc
 		{
 			Type = ArcSprite
 			ChainedTo = ArcShield
+			VisibilityToggle = Overclock_ExtendedAndOverclockedModeToggle
 			Radius = (&../ArcShield/Radius/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_RADIUS_FACTOR)
 			Arc = (&../ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_FACTOR)
 			SpriteSegments = (&../ArcShield/BlueprintArcSpriteSegments)
@@ -476,6 +489,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = ArcSprite
 			ChainedTo = ArcShield
+			VisibilityToggle = Overclock_ReinforcedAndOverclockedModeToggle
 			Radius = (&../ArcShield/Radius/BaseValue)
 			Arc = (&../ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/REINFORCED/ARC_FACTOR)
 			SpriteSegments = (&../ArcShield/BlueprintArcSpriteSegments)
@@ -559,7 +573,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			OperationalToggle = Overclock_ReinforcedEffectToggle
 			ContinuousEffects
 			[
-				: ../^/0/ContinuousEffects/0 
+				: ../^/0/ContinuousEffects/0
 				{
 					ArcSprite : ^/0/ArcSprite
 					{

@@ -1,15 +1,15 @@
 OVERCLOCK
 {
 	BURST_COUNT = 4
-	BASE_BURST_DELAY = 0.8 / 4
+	BASE_BURST_DELAY = 0.4 / 4
 	HALF_SPREAD = 0.5d
-	FIRE_INTERVAL_FACTOR = 800%
+	FIRE_INTERVAL_FACTOR = 400%
 	RAMP_TIME = 10
-	MAX_FIRE_RATE = 5.25
+	MAX_FIRE_RATE = 10.5 / 4
 	HEAT_PER_SHOT = 600
 	BULLETS_PER_SHOT = 4
 	RECOIL = 300% * (&~/EMITTER/Recoil)
-	
+
 	BEAM = &<./Data/shots/chaingun_shot/overclock/chaingun_shot_overclock.rules>/Beam
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
@@ -125,8 +125,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Texture
 		{
 			File = "icon.png"
-			SampleMode = Point
-			MipLevels = max
+			SampleMode = Linear
 		}
 		Size = [45,90]
 	}
@@ -192,22 +191,18 @@ Part : <../base_part_terran_overclock.rules>/Part
 		GunIsFiringTimer //Is on if we have fired a shot
 		{
 			Type = Timer
+			// Only count down while finished reloading
+			OperationalToggle = FixedWeaponShooter
 			Duration = &../ShellChangingValueTween/OffTweenDuration
 			StartTrigger = BulletEmitterProxy
 			ResetTrigger = BulletEmitterProxy
 			StartExpired = true
 			InvertToggle = true
 		}
-		GunMightContinueFiring
-		{
-			Type = MultiToggle
-			Toggles = [GunIsFiringTimer, FixedWeaponShooter]
-			Mode = Any
-		}
 		GunIsFiring
 		{
 			Type = MultiToggle
-			Toggles = [GunMightContinueFiring, CombinedBulletSplitters]
+			Toggles = [GunIsFiringTimer, CombinedBulletSplitters]
 			Mode = All
 		}
 		RateOfFireRampUpBuff
@@ -224,7 +219,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			AccumulatingToggle = GunIsFiring
 			BASE_MAX_VALUE = 10.5 //30 shots per second if base value
 			BASE_RAMP_UP_TIME = 10
-			BASE_RAMP_DOWN_TIME = (&BASE_RAMP_UP_TIME) / 2 
+			BASE_RAMP_DOWN_TIME = (&BASE_RAMP_UP_TIME) / 2
 			BASE_RAMP_PER_SEC = ((&BASE_MAX_VALUE) - (&MinValue)) / (&BASE_RAMP_UP_TIME)
 			OVERCLOCK_RAMP_PER_SEC = ((&~/OVERCLOCK/MAX_FIRE_RATE) - (&MinValue)) / (&~/OVERCLOCK/RAMP_TIME)
 			AccumulationRate
@@ -744,8 +739,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = FixedWeapon
 			OperationalToggle = IsShellFullyOpen//
 			AutoFireToggle = IsShellFullyOpen //
+			ToggleOnMode = IsReloaded
 			FireInterval
-			{ 
+			{
 				BaseValue=0.35
 				Modifiers
 				[
@@ -766,7 +762,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Emitter = BulletEmitterProxy
 			DefaultDirectControlBinding = 0
 			CanBeGivenExplicitTarget = false
-			ToggleOnMode = WantsAndReadyToFire
 
 			AutoTarget
 			{
@@ -864,7 +859,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Toggles = [AimingTurretSlider, GunIsFiring]
 			Mode = Any
 		}
-		
+
 		EmissionComponents
 		{
 			Type = ToggledComponents
@@ -960,7 +955,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 			}
 		}
-		
+
 		BulletEmitterProxy
 		{
 			Type = BeamEmitterProxy
@@ -1137,7 +1132,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ValueProxy
 			ComponentID = InverseShotInterval
 		}
-		
+
 		TurretWeaponShootingGraphics
 		{
 			Type = Graphics
@@ -3011,7 +3006,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Size = [3, 6]
 			Offset = [0, 0]
 		}
-		
+
 		PeakHeatGenerationValue
 		{
 			Type = StaticValue
@@ -3074,16 +3069,16 @@ Part : <../base_part_terran_overclock.rules>/Part
 				Stats
 				{
 					RampUpTime = &~/OVERCLOCK/RAMP_TIME
-					
+
 					DAMAGE_PER_SHOT = &~/OVERCLOCK/BEAM/../DAMAGE
 					DAMAGE_PER_SECOND = [(&../DAMAGE_PER_SHOT) * (&../ROF_BASE), (&../DAMAGE_PER_SHOT) * (&../ROF_MAX)]
 					DamageRange = [&../DAMAGE_PER_SHOT, &../DAMAGE_PER_SECOND/0, &../DAMAGE_PER_SECOND/1]
-					
+
 					DAMAGE_PER_SHOT_EXPLOSIVE = &~/OVERCLOCK/BEAM/../DAMAGE_EXPLOSIVE
 					DAMAGE_PER_SECOND_EXPLOSIVE = [(&../DAMAGE_PER_SHOT_EXPLOSIVE) * (&../ROF_BASE), (&../DAMAGE_PER_SHOT_EXPLOSIVE) * (&../ROF_MAX)]
 					MaxDamageRange = [&../DAMAGE_PER_SHOT_EXPLOSIVE, &../DAMAGE_PER_SECOND_EXPLOSIVE/0, &../DAMAGE_PER_SECOND_EXPLOSIVE/1]
 					DamageArea = &~/OVERCLOCK/BEAM/../RADIUS
-					
+
 					INTERVAL_BASE = (&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue) * (&~/OVERCLOCK/FIRE_INTERVAL_FACTOR)
 					ROF_BASE = (&~/OVERCLOCK/BURST_COUNT) / (&INTERVAL_BASE)
 					ROF_MAX = (&ROF_BASE) * (&~/OVERCLOCK/MAX_FIRE_RATE)

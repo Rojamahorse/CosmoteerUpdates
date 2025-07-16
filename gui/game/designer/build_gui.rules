@@ -1,4 +1,9 @@
 EditorGroups = &<editor_groups.rules>
+StackedPartGroupMaterial
+{
+	Shader = "monochrome.shader"
+	_targetColor = [0, 183, 255, 255]
+}
 StatsGui
 {
 	StatWidgets = &<stat_widgets.rules>/StatWidgets
@@ -187,7 +192,7 @@ StatsGui
     {
     	Texture
     	{
-    		File = "./Data/resources/hyperium/icon.png"
+    		File = "stat_ftl.png"
     		MipLevels = 2
     		SampleMode = Linear
     	}

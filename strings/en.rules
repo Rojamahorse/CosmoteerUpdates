@@ -875,7 +875,7 @@ Inputs
 		DecreaseDecalHeight = "Decrease Decal Height"
 		Undo = "Undo"
 		Redo = "Redo"
-		ScrollToolTip = "Enable Tooltip Scrolling"
+		ScrollToolTip = "Enable Tooltip Scrolling / Show Stats"
 		ToggleSecondaryToolTip = "Toggle Secondary Tooltip"
 	}
 
@@ -1561,6 +1561,9 @@ Settings
 
 		ShowAutoRemovedParts = "Show Automatically Removed Parts"
 		ShowAutoRemovedPartsTip = "If checked, then red X's will be displayed over parts that will be automatically removed."
+
+		PartToolTipsDefaultToStats = "Show Statistics By Default"
+		PartToolTipsDefaultToStatsTip = "If checked, then hovering the mouse cursor over a part will display its statistics in addition to its description. "\
 
 		DefaultBuildTool = "Default Tool"
 		DefaultBuildToolTip = "The default tool to select when opening the ship editor."
@@ -3303,6 +3306,7 @@ BuildBox
 	AmplificationBuffPercentageFmt = "<b><good>Amplification: {0:0}%</good></b>"
 	DilationBuffPercentageFmt = "<b><good>Dilation: {0:0}%</good></b>"
 
+	ShowPartStats = "<gray>Hold <btn id='Design.ScrollTooltip'/> to show statistics.</gray>"
 	ScrollTooltip = "<gray>Hold <btn id='Design.ScrollTooltip'/> to scroll.</gray>"
 	ShowSecondaryTooltip = "<gray>Press <btn id='Design.ToggleSecondaryTooltip'/> to show overclock stats.</gray>"
 	HideSecondaryTooltip = "<gray>Press <btn id='Design.ToggleSecondaryTooltip'/> to hide overclock stats.</gray>"
