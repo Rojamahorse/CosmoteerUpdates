@@ -169,6 +169,7 @@ ContinuousMediaEffects
 [
 	{
 		Type = TileQuad
+		DebugName = "Heat_Fancy"
 		Sprite
 		{
 			Texture
@@ -221,6 +222,7 @@ ContinuousMediaEffects
 	//Simple Version
 	{
 		Type = TileQuad
+		DebugName = "Heat_Simple"
 		Sprite
 		{
 			Texture

@@ -1,8 +1,8 @@
 OVERCLOCK
 {
-	HEAT_PER_CONVERSION = 275
-	OUTPUT_MULTIPLIER = 2
-	POWER_USE_FACTOR = 300%
+	HEAT_PER_CONVERSION = 110
+	SPEED_FACTOR = 300%
+	POWER_USE_FACTOR = 150%
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -208,19 +208,22 @@ Part : <../base_part_terran_overclock.rules>/Part
 			    }
 			]
 			ToStorage = MissileStorage
-			ToQuantity
+			ToQuantity = 1
+			Interval
 			{
-				BaseValue = 1
+				BaseValue = 0.3
 				Modifiers
 				[
-					: ~/MODIFIERS/OVERCLOCK_LERP
+					{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
 					{
-						MinValue = &../../BaseValue
-						MaxValue = (&MinValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+						ModificationMode = Divide
 					}
 				]
 			}
-			Interval = { BaseValue=.3; BuffType=Factory; BuffMode=Divide; }
 			CheckResourceLimits = true
 		}
 
@@ -1302,18 +1305,18 @@ Part : <../base_part_terran_overclock.rules>/Part
 	Stats
 	{
 		PartsPerMissile = &<../missile_launcher/he/missile_launcher_he.rules>/EmitterBase/ResourcesUsed
-		MissileProduction = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / (&PartsPerMissile)
+		MissileProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / (&PartsPerMissile)
 		PartCapacity = (&~/Part/Components/MissileStorage/GridRect/2) * (&~/Part/Components/MissileStorage/GridRect/3) * (&<./Data/resources/missile_part_he/missile_part_he.rules>/MaxStackSize)
 		MissilePartCapacity = [&../PartCapacity, (&../PartCapacity) / (&../PartsPerMissile)]
 		IronCapacity = (&~/Part/Components/IronStorage/GridRect/2) * (&~/Part/Components/IronStorage/GridRect/3) * (&<./Data/resources/iron/iron.rules>/MaxStackSize)
-		IronPerMissile = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&PartsPerMissile)
+		IronPerMissile = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity) * (&PartsPerMissile)
 		IronPerSecond = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
 		MissileIronUsage = [&../IronPerMissile, &../IronPerSecond]
 		SulfurCapacity = (&~/Part/Components/SulfurStorage/GridRect/2) * (&~/Part/Components/SulfurStorage/GridRect/3) * (&<./Data/resources/sulfur/sulfur.rules>/MaxStackSize)
-		SulfurPerMissile = (&~/Part/Components/SulfurSplitter/FromQuantity) / (&~/Part/Components/SulfurSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&PartsPerMissile)
+		SulfurPerMissile = (&~/Part/Components/SulfurSplitter/FromQuantity) / (&~/Part/Components/SulfurSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity) * (&PartsPerMissile)
 		SulfurPerSecond = (&~/Part/Components/SulfurSplitter/FromQuantity) / (&~/Part/Components/SulfurSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
 		MissileSulfurUsage = [&../SulfurPerMissile, &../SulfurPerSecond]
-		PowerPerMissile = (&~/Part/Components/ResourceConverter/From/2/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&PartsPerMissile) / 1000
+		PowerPerMissile = (&~/Part/Components/ResourceConverter/From/2/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/ToQuantity) * (&PartsPerMissile) / 1000
 		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/2/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / 1000
 		MissilePowerUsage = [&../PowerPerMissile, &../PowerPerSecond]
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
@@ -1333,15 +1336,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 		TitleKey = "StatCategories/Overclocked"
 		Stats
 		{
-			MissileProduction = (&~/Part/Stats/MissileProduction) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
-			MissileIronUsage = [(&~/Part/Stats/MissileIronUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MissileIronUsage/1)]
-			MissileSulfurUsage = [(&~/Part/Stats/MissileSulfurUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MissileSulfurUsage/1)]
-			POWER_PER_MISSILE = (&~/Part/Stats/MissilePowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
-			POWER_PER_SECOND = (&~/Part/Stats/MissilePowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			MissileProduction = (&~/Part/Stats/MissileProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
+			MissileIronUsage = [(&~/Part/Stats/MissileIronUsage/0), (&~/Part/Stats/MissileIronUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			MissileSulfurUsage = [(&~/Part/Stats/MissileSulfurUsage/0), (&~/Part/Stats/MissileSulfurUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			POWER_PER_MISSILE = (&~/Part/Stats/MissilePowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			POWER_PER_SECOND = (&~/Part/Stats/MissilePowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
 			MissilePowerUsage = [&../POWER_PER_MISSILE, &../POWER_PER_SECOND]
-			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity)
 			HEAT_PER_MISSILE = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT) * (&~/Part/Stats/PartsPerMissile)
-			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue);
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) * (&~/OVERCLOCK/SPEED_FACTOR);
 			MissileHeatGeneration = [&../HEAT_PER_MISSILE, &../HEAT_PER_SECOND]
 		}
 	}

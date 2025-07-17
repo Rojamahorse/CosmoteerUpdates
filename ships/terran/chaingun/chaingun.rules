@@ -188,11 +188,18 @@ Part : <../base_part_terran_overclock.rules>/Part
 			OnMode = 2
 		}
 
+		IsReloadedOrNotOpen
+		{
+			Type = MultiToggle
+			Toggles = [ FixedWeaponShooter, IsShellNotFullyOpen ]
+			Mode = Any
+		}
+
 		GunIsFiringTimer //Is on if we have fired a shot
 		{
 			Type = Timer
-			// Only count down while finished reloading
-			OperationalToggle = FixedWeaponShooter
+			// Only count down while not reloading, unless the shell isn't fully open
+			OperationalToggle = IsReloadedOrNotOpen
 			Duration = &../ShellChangingValueTween/OffTweenDuration
 			StartTrigger = BulletEmitterProxy
 			ResetTrigger = BulletEmitterProxy

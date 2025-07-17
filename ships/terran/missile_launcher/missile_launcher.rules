@@ -200,6 +200,10 @@ Part : <../base_part_terran.rules>/Part
 			IncludeInBlueprints = dynamic
 			Components = &<thermal/missile_launcher_thermal.rules>/Components
 		}
+		// Thermal Missile heat storages - so they don't empty on switching missiles
+		HeatStorageA : <thermal/missile_launcher_thermal.rules>/BASE/HeatStorage {}
+		HeatStorageB : HeatStorageA {}
+		
 		BlueprintNetworkNode
 		{
 			Type = NetworkBasicNode

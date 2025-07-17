@@ -1,8 +1,8 @@
 OVERCLOCK
 {
-	HEAT_PER_CONVERSION = 200
-	OUTPUT_MULTIPLIER = 2
-	POWER_USE_FACTOR = 300%
+	HEAT_PER_CONVERSION = 100
+	SPEED_FACTOR = 300%
+	POWER_USE_FACTOR = 150%
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -171,19 +171,22 @@ Part : <../base_part_terran_overclock.rules>/Part
 			    }
 			]
 			ToStorage = AmmoStorage
-			ToQuantity
+			ToQuantity = 1
+			Interval
 			{
-				BaseValue = 1
+				BaseValue = 0.5
 				Modifiers
 				[
-					: ~/MODIFIERS/OVERCLOCK_LERP
+					{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
 					{
-						MinValue = &../../BaseValue
-						MaxValue = (&MinValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+						ModificationMode = Divide
 					}
 				]
 			}
-			Interval = { BaseValue=0.5; BuffType=Factory; BuffMode=Divide; }
 			CheckResourceLimits = true
 		}
 
@@ -860,13 +863,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 	Stats
 	{
-		AmmoProduction = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
+		AmmoProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
 		AmmoCapacity = (&~/Part/Components/AmmoStorage/GridRect/2) * (&~/Part/Components/AmmoStorage/GridRect/3) * (&<./Data/resources/bullet/bullet.rules>/MaxStackSize)
 		SulfurCapacity = (&~/Part/Components/SulfurStorage/GridRect/2) * (&~/Part/Components/SulfurStorage/GridRect/3) * (&<./Data/resources/sulfur/sulfur.rules>/MaxStackSize)
-		SulfurPerAmmo = (&~/Part/Components/SulfurSplitter/FromQuantity) / (&~/Part/Components/SulfurSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue)
+		SulfurPerAmmo = (&~/Part/Components/SulfurSplitter/FromQuantity) / (&~/Part/Components/SulfurSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
 		SulfurPerSecond = (&~/Part/Components/SulfurSplitter/FromQuantity) / (&~/Part/Components/SulfurSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
 		AmmoSulfurUsage = [&../SulfurPerAmmo, &../SulfurPerSecond]
-		PowerPerAmmo = (&~/Part/Components/ResourceConverter/From/1/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) / 1000
+		PowerPerAmmo = (&~/Part/Components/ResourceConverter/From/1/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
 		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/1/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / 1000
 		AmmoPowerUsage = [&../PowerPerAmmo, &../PowerPerSecond]
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
@@ -881,14 +884,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 		TitleKey = "StatCategories/Overclocked"
 		Stats
 		{
-			AmmoProduction = (&~/Part/Stats/AmmoProduction) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
-			AmmoSulfurUsage = [(&~/Part/Stats/AmmoSulfurUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/AmmoSulfurUsage/1)]
-			POWER_PER_AMMO = (&~/Part/Stats/AmmoPowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
-			POWER_PER_SECOND = (&~/Part/Stats/AmmoPowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			AmmoProduction = (&~/Part/Stats/AmmoProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
+			AmmoSulfurUsage = [(&~/Part/Stats/AmmoSulfurUsage/0), (&~/Part/Stats/AmmoSulfurUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			POWER_PER_AMMO = (&~/Part/Stats/AmmoPowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			POWER_PER_SECOND = (&~/Part/Stats/AmmoPowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
 			AmmoPowerUsage = [&../POWER_PER_AMMO, &../POWER_PER_SECOND]
-			AMMO_PER_CONVERSION = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+			AMMO_PER_CONVERSION = (&~/Part/Components/ResourceConverter/ToQuantity)
 			HEAT_PER_AMMO = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&AMMO_PER_CONVERSION)
-			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue);
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) * (&~/OVERCLOCK/SPEED_FACTOR);
 			AmmoHeatGeneration = [&../HEAT_PER_AMMO, &../HEAT_PER_SECOND]
 		}
 	}

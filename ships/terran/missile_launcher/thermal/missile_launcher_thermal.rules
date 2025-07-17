@@ -40,9 +40,6 @@ Components
 		ConsumptionToggleButtonOffset = [0, -.4]
 	}
 	
-	HeatStorageA : ~/BASE/HeatStorage {}
-	HeatStorageB : ~/BASE/HeatStorage {}
-	
 	CombinedHeatStorage
 	{
 		Type = MultiResourceStorage

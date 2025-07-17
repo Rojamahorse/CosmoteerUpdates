@@ -1,8 +1,8 @@
 OVERCLOCK
 {
-	HEAT_PER_CONVERSION = 250
-	OUTPUT_MULTIPLIER = 2
-	POWER_USE_FACTOR = 300%
+	HEAT_PER_CONVERSION = 125
+	SPEED_FACTOR = 300%
+	POWER_USE_FACTOR = 150%
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -205,19 +205,22 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 			]
 			ToStorage = MineStorage
-			ToQuantity
+			ToQuantity = 1
+			Interval
 			{
-				BaseValue = 1
+				BaseValue = 0.5
 				Modifiers
 				[
-					: ~/MODIFIERS/OVERCLOCK_LERP
+					{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
 					{
-						MinValue = &../../BaseValue
-						MaxValue = (&MinValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+						ModificationMode = Divide
 					}
 				]
 			}
-			Interval = { BaseValue=0.5; BuffType=Factory; BuffMode=Divide; }
 			CheckResourceLimits = true
 		}
 
@@ -916,18 +919,18 @@ Part : <../base_part_terran_overclock.rules>/Part
 	Stats
 	{
 		PartsPerMine = &<../missile_launcher/mine/missile_launcher_mine.rules>/Components/Emitter1/ResourcesUsed
-		MineProduction = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / (&PartsPerMine)
+		MineProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / (&PartsPerMine)
 		PartCapacity = (&~/Part/Components/MineStorage/GridRect/2) * (&~/Part/Components/MineStorage/GridRect/3) * (&<./Data/resources/mine_part/mine_part.rules>/MaxStackSize)
 		MinePartCapacity = [&../PartCapacity, (&../PartCapacity) / (&../PartsPerMine)]
 		IronCapacity = (&~/Part/Components/IronStorage/GridRect/2) * (&~/Part/Components/IronStorage/GridRect/3) * (&<./Data/resources/iron/iron.rules>/MaxStackSize)
-		IronPerMine = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&PartsPerMine)
+		IronPerMine = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity) * (&PartsPerMine)
 		IronPerSecond = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
 		MineIronUsage = [&../IronPerMine, &../IronPerSecond]
-		AmmoPerMine = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&PartsPerMine)
+		AmmoPerMine = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) * (&PartsPerMine)
 		AmmoPerSecond = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
 		MineAmmoUsage = [&../AmmoPerMine, &../AmmoPerSecond]
 		AmmoCapacity = (&~/Part/Components/AmmoStorage/GridRect/2) * (&~/Part/Components/AmmoStorage/GridRect/3) * (&<./Data/resources/bullet/bullet.rules>/MaxStackSize)
-		PowerPerMine = (&~/Part/Components/ResourceConverter/From/2/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&PartsPerMine) / 1000
+		PowerPerMine = (&~/Part/Components/ResourceConverter/From/2/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/ToQuantity) * (&PartsPerMine) / 1000
 		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/2/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / 1000
 		MinePowerUsage = [&../PowerPerMine, &../PowerPerSecond]
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
@@ -949,15 +952,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 		TitleKey = "StatCategories/Overclocked"
 		Stats
 		{
-			MineProduction = (&~/Part/Stats/MineProduction) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
-			MineIronUsage = [(&~/Part/Stats/MineIronUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MineIronUsage/1)]
-			MineAmmoUsage = [(&~/Part/Stats/MineAmmoUsage/0) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER), (&~/Part/Stats/MineAmmoUsage/1)]
-			POWER_PER_MINE = (&~/Part/Stats/MinePowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR) / (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
-			POWER_PER_SECOND = (&~/Part/Stats/MinePowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			MineProduction = (&~/Part/Stats/MineProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
+			MineIronUsage = [(&~/Part/Stats/MineIronUsage/0), (&~/Part/Stats/MineIronUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			MineAmmoUsage = [(&~/Part/Stats/MineAmmoUsage/0), (&~/Part/Stats/MineAmmoUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			POWER_PER_MINE = (&~/Part/Stats/MinePowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			POWER_PER_SECOND = (&~/Part/Stats/MinePowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
 			MinePowerUsage = [&../POWER_PER_MINE, &../POWER_PER_SECOND]
-			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity/BaseValue) * (&~/OVERCLOCK/OUTPUT_MULTIPLIER)
+			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity)
 			HEAT_PER_MINE = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT) * (&~/Part/Stats/PartsPerMine)
-			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue);
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) * (&~/OVERCLOCK/SPEED_FACTOR);
 			MineHeatGeneration = [&../HEAT_PER_MINE, &../HEAT_PER_SECOND]
 		}
 	}

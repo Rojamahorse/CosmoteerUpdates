@@ -1,9 +1,10 @@
 EditorGroups = &<editor_groups.rules>
-StackedPartGroupMaterial
-{
-	Shader = "monochrome.shader"
-	_targetColor = [0, 183, 255, 255]
-}
+ColorReplaceShader = "color_replace.shader"
+StackedPartGroupGlowShader = "../ship_icon_glow.shader"
+StackedPartGroupGlowColor = [0, 183, 255, 255]
+StackedPartGroupGlowIterations = 5/128
+StackedPartGroupGlowDisplacement = 3
+StackedPartGroupIconScale = 0.8
 StatsGui
 {
 	StatWidgets = &<stat_widgets.rules>/StatWidgets
