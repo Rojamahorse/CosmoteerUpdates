@@ -922,6 +922,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/FactoryThermalOverclockDesc"
 		Stats
 		{
 			MissileProduction = (&~/Part/Stats/MissileProduction) * (&~/OVERCLOCK/SPEED_FACTOR)

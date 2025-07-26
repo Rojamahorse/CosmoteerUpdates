@@ -1357,6 +1357,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/ShieldGenSmallOverclockDesc"
 		Stats
 		{
 			HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)

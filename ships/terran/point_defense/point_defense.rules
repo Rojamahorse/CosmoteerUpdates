@@ -671,6 +671,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/PointDefenseOverclockDesc"
 		Stats
 		{
 			PowerGeneration = (&~/Part/Components/BulletEmitter/ResourcesUsed) / (&~/OVERCLOCK/RECHARGE_TIME_PER_SHOT) / 1000

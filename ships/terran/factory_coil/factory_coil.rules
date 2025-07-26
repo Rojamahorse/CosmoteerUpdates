@@ -930,6 +930,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/FactoryCoilOverclockDesc"
 		Stats
 		{
 			CoilProduction = (&~/Part/Stats/CoilProduction) * (&~/OVERCLOCK/SPEED_FACTOR)

@@ -1,0 +1,29 @@
+ID = io
+TitleKey = "Lore/Io/Title"
+TabNameKey = "Codex/Lore"
+Entries
+[
+	{
+		Image
+		{
+			Texture
+			{
+				File = "./Data/factions/io.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+		}
+	}
+	{
+		TextKey = "Lore/Io/Lore1"
+	}
+	{
+		TextKey = "Lore/Io/Lore2"
+	}
+	{
+		TextKey = "Lore/Io/Lore3"
+	}
+	{
+		TextKey = "Lore/Io/Lore4"
+	}
+]

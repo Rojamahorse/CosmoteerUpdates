@@ -76,12 +76,13 @@ Mode : <../base_pvp.rules>
 
 	TechOfferingsPerRound
 	[
-		[weapons, 1],
-		[defenses, 1],
+		[weapons, 1]
+		[defenses, 1]
 		[thrusters, 1]
+		[overclocks, 1]
 	]
-	RandomOfferingsPerRound = 2 //Additional Offerings from any category or uncategorized
-	ExtraFirstRoundOfferings = 1 ////Extra random Offerings in round 1
+	RandomOfferingsPerRound = 1 //Additional Offerings from any category or uncategorized
+	ExtraFirstRoundOfferings = 2 ////Extra random Offerings in round 1
 
 	TimeLimits
 	[

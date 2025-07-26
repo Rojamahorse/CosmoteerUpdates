@@ -11,6 +11,7 @@ SubSpawners
 			{ Type=cosmoteer.ftl_beacon_monolith; Faction=monolith; }
 			{ Type=cosmoteer.ftl_beacon_cabal; Faction=cabal; }
 			{ Type=cosmoteer.ftl_beacon_imperium; Faction=imperium; }
+			{ Type=cosmoteer.ftl_beacon_io; Faction=io; }
 		]
 		Tags = [ftl_beacon]
 		MinDistanceFromSiblings = 7500

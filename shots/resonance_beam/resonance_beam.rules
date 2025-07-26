@@ -87,6 +87,7 @@ BASE_HEAT = 8
 BASE_HEAT_POOL = 225
 BASE_HEAT_SPREAD_BUDGET = 3.5
 HEAT_POOL_AMP_EXPONENT = 0.67
+SHIELD_HEAT_FACTOR = 7.5%
 
 SHIELD_OVERLOAD_PER_AMP = 0.6%
 SHIELD_OVERLOAD_PER_DILATION = 10%
@@ -327,7 +328,7 @@ HitShield
 			StatusType = cosmoteer.heat
 			StatusValue
 			{
-				BaseValue = (&~/BASE_HEAT_POOL)
+				BaseValue = (&~/BASE_HEAT_POOL) * (&~/SHIELD_HEAT_FACTOR)
 				Modifiers
 				[
 					{
@@ -335,11 +336,6 @@ HitShield
 						BuffType = ThermalIntensity
 						ModificationMode = Multiply
 						Exponent = &~/HEAT_POOL_AMP_EXPONENT
-					}
-					{
-						Type = Buff
-						BuffType = ThermalShieldPiercing
-						ModificationMode = Multiply
 					}
 					{
 						Type = Buff

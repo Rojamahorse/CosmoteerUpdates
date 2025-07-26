@@ -1,0 +1,21 @@
+ID = heat
+TitleKey = "Tutorials/Heat/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.HasStatus(\"cosmoteer.heat\")"
+Entries
+[
+	{
+		Image { Texture { File="heat.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Heat/Cause"
+	}
+	{
+		TextKey = "Tutorials/Heat/Effect"
+	}
+	{
+		TextKey = "Tutorials/Heat/OverTime"
+	}
+	{
+		Image { Texture { File="exchanger.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Heat/Exchanger"
+	}
+]

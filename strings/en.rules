@@ -782,6 +782,8 @@ Inputs
 		thermal_safety_on = "Thermal Safety: On"
 		thermal_overclock_off = "Overclock: Off"
 		thermal_overclock_on = "Overclock: On"
+		overclock_shield_extended = "Overclocked Shield: Extended"
+		overclock_shield_reinforced = "Overclocked Shield: Reinforced"
 	}
 
 	PartTargeters
@@ -1563,7 +1565,7 @@ Settings
 		ShowAutoRemovedPartsTip = "If checked, then red X's will be displayed over parts that will be automatically removed."
 
 		PartToolTipsDefaultToStats = "Show Statistics By Default"
-		PartToolTipsDefaultToStatsTip = "If checked, then hovering the mouse cursor over a part will display its statistics in addition to its description. "\
+		PartToolTipsDefaultToStatsTip = "If checked, then hovering the mouse cursor over a part will display its statistics in addition to its description."
 
 		DefaultBuildTool = "Default Tool"
 		DefaultBuildToolTip = "The default tool to select when opening the ship editor."
@@ -2206,6 +2208,7 @@ Factions
 	Cabal = "Cabal of Sol"
 	Imperium = "Centauri Imperium"
 	Fringe = "Fringe Systems Resistance"
+	Io = "Great House Io"
 }
 
 SectorTypes
@@ -3203,11 +3206,11 @@ BuildBox
 	}
 
 	HeatGeneration = "Heat Generation"
-	HeatGenerationFmt = "{0:0,.#'k';;0}/s"
+	HeatGenerationFmt = "{0:#,0} <gray>MJ/s</gray>"
 	HeatDissipation = "Heat Dissipation"
-	HeatDissipationFmt = "{0:0,.#'k';;0}/s"
+	HeatDissipationFmt = "{0:#,0} <gray>MJ/s</gray>"
 	HeatCapacity = "Heat Capacity"
-	HeatCapacityFmt = "{0:#,0.#;;0}"
+	HeatCapacityFmt = "{0:#,0.#;;0} <gray>MJ</gray>"
 	Crew = "Crew/Beds"
 	CrewFmt = "{0}/{3}"
 	CrewOperatorsFmt = "Operator Seats: <b>{0}</b>"
@@ -3308,8 +3311,8 @@ BuildBox
 
 	ShowPartStats = "<gray>Hold <btn id='Design.ScrollTooltip'/> to show statistics.</gray>"
 	ScrollTooltip = "<gray>Hold <btn id='Design.ScrollTooltip'/> to scroll.</gray>"
-	ShowSecondaryTooltip = "<gray>Press <btn id='Design.ToggleSecondaryTooltip'/> to show overclock stats.</gray>"
-	HideSecondaryTooltip = "<gray>Press <btn id='Design.ToggleSecondaryTooltip'/> to hide overclock stats.</gray>"
+	ShowSecondaryTooltip = "<gray>Press <btn id='Design.ToggleSecondaryTooltip'/> to show overclock info.</gray>"
+	HideSecondaryTooltip = "<gray>Press <btn id='Design.ToggleSecondaryTooltip'/> to hide overclock info.</gray>"
 
 	NearestCrewFmt = "<good>✓ Nearest Crew: {0}m</good>"
 	NearestCrewWarningFmt = "<yellow>⚠ Nearest Crew: {0}m</yellow>"
@@ -3838,6 +3841,7 @@ EditorGroups
 	Crew = "Crew"
 	Power = "Power"
 	Thermal = "Heat Management"
+	ThermalDesc = "Tools for managing heat, including pipes, radiators, thermal batteries, and exchangers."
 	Production = "Production"
 	Storage = "Storage"
 	Utilities = "Utilities"
@@ -3938,19 +3942,27 @@ Parts
 	CannonMed = "Standard Cannon"
 	CannonMedIcon = "Cannon"
 	CannonMedDesc = "Fires single rounds of projectile ammunition that can penetrate into enemy ships, sometimes starting fires."
+	CannonMedOverclock = "Overclocked Standard Cannon"
+	CannonMedOverclockDesc = "Fires salvos of multiple smaller shells, but each shell has lower damage and projectile speed. Produces waste heat when firing."
 
 	CannonLarge = "Large Cannon"
 	CannonLargeIcon = &CannonLarge
 	CannonLargeDesc = "Fuses together four rounds of projectile ammunition to greatly enhance damage and penetration depth compared to the Standard Cannon."
+	CannonLargeOverclock = "Overclocked Large Cannon"
+	CannonLargeOverclockDesc = "Causes each cannon shell to break apart upon impact into multiple smaller incendiary shells that each continue penetrating into the target ship. Produces waste heat when firing."
 
 	CannonDeck = "Deck Cannon"
 	CannonDeckIcon = &CannonDeck
 	CannonDeckDesc = "A huge double-barreled cannon that is mounted on top of the ship instead of the side for extra stability. Each barrel fuses together ten rounds of projectile ammunition and is so loud that it briefly stuns nearby crew.\n\n"\
 	                 "The front and sides cannot be within 2 tiles of other roof turrets or \"tall\" parts."
+	CannonDeckOverclock = "Overclocked Deck Cannon"
+	CannonDeckOverclockDesc = "Increases shell damage, velocity, and accuracy, but lowers rate of fire and stops penetration once its damage potential is exhausted. Produces waste heat when firing."
 
 	ChainGun = "Chaingun"
 	ChainGunIcon = &ChainGun
 	ChainGunDesc = "A powerful rotary cannon that increases its rate of fire the longer it shoots and hides behind a protective shell while not shooting. Additional ammunition magazines can be attached to increase its duration and rate of fire."
+	ChainGunOverclock = "Overclocked Chaingun"
+	ChainGunOverclockDesc = "Projectiles become explosive-tipped, causing splash damage and greater overall destruction, but reduces rate of fire and requires the Chaingun to rest briefly after every four shots. Produces waste heat when firing."
 
 	ChaingunMagazine = "Chaingun Magazine"
 	ChaingunMagazineIcon = &ChaingunMagazine
@@ -4002,10 +4014,15 @@ Parts
 	Disruptor = "Disruptor"
 	DisruptorIcon = &Disruptor
 	DisruptorDesc = "Fires bolts of electrical energy that deal little damage but can short-circuit enemy systems, causing them to lose power. Can penetrate shields while draining them."
+	DisruptorOverclock = "Overclocked Disruptor"
+	DisruptorOverclockDesc = "Allows disruptor bolts to phase through solid materials and causes the energy drain effect to linger after the initial impact, but reduces shield penetration and the instant energy drain on initial impact. Produces waste heat when firing."
 
 	EngineRoom = "Engine Room"
 	EngineRoomIcon = &EngineRoom
 	EngineRoomDesc = "Increases the thrust and power usage of adjacent thrusters by 50%. Also acts as a central delivery point for adjacent thrusters to which crew can deliver batteries without having to travel to each one individually."
+	EngineRoomOverclock = "Overclocked Engine Room"
+	EngineRoomOverclockDesc = "Improves power efficiency when distributing power to attached thrusters, but forces all attached thrusters into Overclock mode. Produces waste heat while distributing power.\n\n"\
+	                          "Additionally collects waste heat from attached thrusters, but produces additional waste heat while doing so."
 
 	ExplosiveCharge = "Explosive Charge"
 	ExplosiveChargeIcon = &ExplosiveCharge
@@ -4014,58 +4031,84 @@ Parts
 	FactoryAmmo = "Cannon Ammo Factory"
 	FactoryAmmoIcon = "Ammo"
 	FactoryAmmoDesc = "Manufactures projectile ammunition used by cannons and railguns. Consumes sulfur. Gains +25% production speed for each adjacent factory of any type."
+	FactoryAmmoOverclock = "Overclocked Cannon Ammo Factory"
+	FactoryAmmoOverclockDesc = "Significantly increases production speed. Produces waste heat while producing ammo."
 
 	FactoryHE = "High-Explosive Missile Factory"
 	FactoryHEIcon = "H.E. Missiles"
 	FactoryHEDesc = "Manufactures guided High-Explosive missiles that cause significant damage over a small area. Consumes iron and sulfur. Gains +25% production speed for each adjacent factory of any type."
+	FactoryHEOverclock = "Overclocked High-Explosive Missile Factory"
+	FactoryHEOverclockDesc = "Significantly increases production speed. Produces waste heat while producing missile parts."
 
 	FactoryEMP = "E.M.P. Missile Factory"
 	FactoryEMPIcon = "E.M.P. Missiles"
 	FactoryEMPDesc = "Manufactures guided Electromagnetic Pulse missiles that drain power from enemy systems in a very large area. Consumes iron and copper. Gains +25% production speed for each adjacent factory of any type."
+	FactoryEMPOverclock = "Overclocked E.M.P. Missile Factory"
+	FactoryEMPOverclockDesc = "Significantly increases production speed. Produces waste heat while producing missile parts."
 
 	FactoryNuke = "Nuclear Missile Factory"
 	FactoryNukeIcon = "Nukes"
 	FactoryNukeDesc = "Manufactures Tactical Nuclear Missiles that cause massive damage in a very large area. Consumes iron and uranium. Gains +25% production speed for each adjacent factory of any type."
+	FactoryNukeOverclock = "Overclocked Nuclear Missile Factory"
+	FactoryNukeOverclockDesc = "Significantly increases production speed. Produces waste heat while producing missile parts."
 
 	FactoryMine = "Mine Factory"
 	FactoryMineIcon = "Mines"
 	FactoryMineDesc = "Manufactures mines that explode when in proximity to enemy ships, launching damaging shrapnel. Consumes iron and ammo. Gains +25% production speed for each adjacent factory of any type."
+	FactoryMineOverclock = "Overclocked Mine Factory"
+	FactoryMineOverclockDesc = "Significantly increases production speed. Produces waste heat while producing mine parts."
 
 	FactoryThermal = "Thermal Canister Missile Factory"
-	FactoryThermalIcon = "Thermal Missiles"
-	FactoryThermalDesc = "Manufactures guided Thermal Canister Missiles that significantly heat up a small area. Consumes iron and sulfur. Gains +25% production speed for each adjacent factory of any type."
+	FactoryThermalIcon = "T.C. Missiles"
+	FactoryThermalDesc = "Manufactures guided Thermal Canister Missiles that take thermal energy from their own ship's heat pipe network and inflict it upon the target in a small area of effect. Consumes iron and sulfur. Gains +25% production speed for each adjacent factory of any type."
+	FactoryThermalOverclock = "Overclocked Thermal Canister Missile Factory"
+	FactoryThermalOverclockDesc = "Significantly increases production speed. Produces waste heat while producing missile parts."
 
 	FactorySteel = "Steel Smelter"
 	FactorySteelIcon = "Steel"
 	FactorySteelDesc = "Manufactures steel plates, which are used to construct almost all ship parts. Consumes iron. Gains +25% production speed for each adjacent factory of any type."
+	FactorySteelOverclock = "Overclocked Steel Smelter"
+	FactorySteelOverclockDesc = "Significantly increases production speed. Produces waste heat while producing steel."
 
 	FactoryCoil = "Coil Factory"
 	FactoryCoilIcon = "Coils"
 	FactoryCoilDesc = "Manufactures coils, which are used to construct many ship parts. Consumes copper. Gains +25% production speed for each adjacent factory of any type."
+	FactoryCoilOverclock = "Overclocked Coil Factory"
+	FactoryCoilOverclockDesc = "Significantly increases production speed. Produces waste heat while producing coils."
 
 	FactoryCoil2 = "Hyper-Coil Factory"
 	FactoryCoil2Icon = "Hyper-Coils"
 	FactoryCoil2Desc = "Manufactures hyper-coils, which are used to construct many advanced ship parts. Consumes copper and coils. Gains +25% production speed for each adjacent factory of any type."
+	FactoryCoil2Overclock = "Overclocked Hyper-Coil Factory"
+	FactoryCoil2OverclockDesc = "Significantly increases production speed. Produces waste heat while producing hyper-coils."
 
 	FactoryTristeel = "Tri-Steel Smelter"
 	FactoryTristeelIcon = "Tri-Steel"
 	FactoryTristeelDesc = "Manufactures Tri-Steel plates, which are used to construct some advanced ship parts. Consumes tritanium. Gains +25% production speed for each adjacent factory of any type."
+	FactoryTristeelOverclock = "Overclocked Tri-Steel Smelter"
+	FactoryTristeelOverclockDesc = "Significantly increases production speed. Produces waste heat while producing tri-steel."
 
 	FactoryDiamond = "Diamond Smelter"
 	FactoryDiamondIcon = "Diamonds"
-	FactoryDiamondDesc = "Manufactures diamonds, which are used to construct some advanced ship parts. Consumes carbon."
+	FactoryDiamondDesc = "Significantly increases production speed. Produces waste heat while producing diamonds."
 
 	FactoryProcessor = "Processor Fabricator"
 	FactoryProcessorIcon = "Processors"
 	FactoryProcessorDesc = "Manufactures processors, which are used to construct some advanced ship parts. Consumes gold and coils. Gains +25% production speed for each adjacent factory of any type."
+	FactoryProcessorOverclock = "Overclocked Processor Fabricator"
+	FactoryProcessorOverclockDesc = "Significantly increases production speed. Produces waste heat while producing processors."
 
 	FactoryUranium = "Uranium Enricher"
 	FactoryUraniumIcon = "Enr. Uranium"
 	FactoryUraniumDesc = "Enriches uranium, which is needed to construct reactors and other advanced ship parts. Consumes unenriched uranium. Gains +25% production speed for each adjacent factory of any type."
+	FactoryUraniumOverclock = "Overclocked Uranium Enricher"
+	FactoryUraniumOverclockDesc = "Significantly increases production speed. Produces waste heat while producing enriched uranium."
 
-	FireExtinguisher = "Fire Extinguisher"
-	FireExtinguisherIcon = &FireExtinguisher
-	FireExtinguisherDesc = "Stores a fire extinguisher that crew can use to put out fires. Fire extinguishers have a limited capacity but will respawn after 15 seconds."
+	FireExtinguisher = "Fire Extinguisher Closet"
+	FireExtinguisherIcon = "Fire Extinguisher"
+	FireExtinguisherDesc = "Stores a fire extinguisher that crew can use to put out fires. Fire extinguishers have a limited capacity but a new one will be constructed out of thin air every 15 seconds."
+	FireExtinguisherOverclock = "Overclocked Fire Extinguisher Closet"
+	FireExtinguisherOverclockDesc = "Rapidly increases the construction speed of fire extinguishers. Produces ironic waste heat while constructing fire extinguishers."
 
 	ManipulatorBeam = "Manipulator Beam Emitter"
 	ManipulatorBeamIcon = "Manipulator Beam"
@@ -4082,6 +4125,8 @@ Parts
 	FlakCannonLarge = "Flak Array"
 	FlakCannonLargeIcon = &FlakCannonLarge
 	FlakCannonLargeDesc = "A powerful defensive system that can destroy enemy missiles, lasers, and projectiles. Can also inflict moderate damage to enemy ships."
+	FlakCannonLargeOverclock = "Overclocked Flak Array"
+	FlakCannonLargeOverclockDesc = "Flak shells are packed with shrapnel that lingers in space for a short while after detonation, damaging any projectiles and blocking any energy beams that pass through. Produces waste heat when firing."
 
 	HyperdriveSmall = "Small Hyperdrive"
 	HyperdriveSmallIcon = &HyperdriveSmall
@@ -4100,6 +4145,8 @@ Parts
 	IonBeamEmitter = "Ion Beam Emitter"
 	IonBeamEmitterIcon = "Ion Beam"
 	IonBeamEmitterDesc = "Shoots a powerful beam of ion energy in a fixed direction. Damage is lower at longer range. Can be shot into an Ion Beam Prism to redirect its angle."
+	IonBeamEmitterOverclock = "Overclocked Ion Beam Emitter"
+	IonBeamEmitterOverclockDesc = "Causes the ion beam to destabilize near its target, creating chaotic and powerful lightning strikes in an area around it, but prevents the beam itself from directly hitting its target. Produces waste heat when firing."
 
 	IonBeamPrism = "Ion Beam Prism"
 	IonBeamPrismIcon = "Ion Prism"
@@ -4107,52 +4154,53 @@ Parts
 
 	ResonanceBeamTurret = "Thermal Resonance Lance"
 	ResonanceBeamTurretIcon = "Thermal Resonance Lance"
-	ResonanceBeamTurretDesc = "A roof-mounted turret that fires an oscillating beam, inducing resonance within the target, thermally exciting chains of molecules around the hit location. "\
-								"Operation outside of its designed safety limits is likely to result in leakage of thermal energy in the turret's immediate vicinity.\n\n"\
+	ResonanceBeamTurretDesc = "A roof-mounted turret that fires a beam of pure heat energy but also produces a great deal of its own waste heat.\n\n"\
 								"Cannot be within 2 tiles of other roof turrets or \"tall\" parts."
 
 	Radiator = "Radiator"
 	RadiatorIcon = "Radiator"
-	RadiatorDesc = "Dissipates stored thermal energy through the release of super-heated particles constrained in a magnetic field.\n"\
-						"Dissipation effectiveness increases with empty space in front of its output."
+	RadiatorDesc = "Dissipates thermal from the connected heat pipe system. Dissipation effectiveness is reduced if the area in front of the radiator is blocked."
 	RadiatorDissipationScoreFmt = "<good>{1:0.#}%\n({0:0.#}<gray>/sec</gray>)</good>"
 
 	HeatExchanger = "Heat Exchanger"
 	HeatExchangerIcon = "Heat Exchanger"
-	HeatExchangerDesc = "Absorbs heat from the hull,transferring it to the connected thermal system. Generates some extra waste heat."
+	HeatExchangerDesc = "Absorbs heat from the hull, transferring it to the connected heat pipe system while generating some additional waste heat."
 
 	ThermalBattery = "Thermal Battery"
 	ThermalBatteryIcon = "Thermal Battery"
-	ThermalBatteryDesc = "Safely contains large amounts of thermal energy, providing additional heat storage to the connected thermal system."
+	ThermalBatteryDesc = "Safely contains large amounts of thermal energy, providing additional heat storage to the connected heat pipe system."
 
 	HeatPipeCrossing = "Heat Pipe Crossing"
 	HeatPipeCrossingIcon = "Heat Pipe Crossing"
-	HeatPipeCrossingDesc = "Transfers thermal energy bi-directionally in a straight line. Allows crew to walk through."
+	HeatPipeCrossingDesc = "<string id='Parts/HeatPipeAdaptiveDesc'/> Allows crew to walk underneath the pipe."
 
 	HeatPipeAdaptive = "Heat Pipe"
 	HeatPipeAdaptiveIcon = "Heat Pipe"
-	HeatPipeAdaptiveDesc = "Transfers thermal energy."
+	HeatPipeAdaptiveDesc = "Instantaneously transfers thermal energy between connected parts."
 
 	HeatPipeAdaptiveStructure = "Heat Pipe Structure"
 	HeatPipeAdaptiveStructureIcon = "Heat Pipe Structure"
-	HeatPipeAdaptiveStructureDesc = "Transfers thermal energy."
+	HeatPipeAdaptiveStructureDesc = &HeatPipeAdaptiveDesc
 
 	ThermalDilationPump = "Lance Dilation Pump"
 	ThermalDilationPumpIcon = "Lance Dilation Pump"
-	ThermalDilationPumpDesc = "Pumps energy into a thermal system through a split lens, fine-tuning Thermal Resonance Lances to increase the heated area on the target's hull.\n"\
-								"Due to the requisite split lens, both of the pump's ports must be connected for full effect."
+	ThermalDilationPumpDesc = "Increases the heat area-of-effect for all Thermal Resonance Lances connected to the same heat pipe system. Both of the pump's ports must be connected to achieve full effect."
 
 	ThermalAmplificationPump = "Lance Amplification Pump"
 	ThermalAmplificationPumpIcon = "Lance Amplification Pump"
-	ThermalAmplificationPumpDesc = "Pumps energy into a thermal system through a precision lens, amplifying the intensity of connected Thermal Resonance Lances, increasing the amount of heat applied to the target's hull."
+	ThermalAmplificationPumpDesc = "Increases the heat intensity for all Thermal Resonance Lances connected to the same heat pipe system."
 
 	LaserBlasterSmall = "Laser Blaster"
 	LaserBlasterSmallIcon = "Laser"
 	LaserBlasterSmallDesc = "A highly accurate and versatile weapon that fires single blasts of energy, dealing moderate damage to enemy ships."
+	LaserBlasterSmallOverclock = "Overclocked Laser Blaster"
+	LaserBlasterSmallOverclockDesc = "Increases the rate of fire and replaces the laser bolts with instantaneous energy beams, but lowers the damage of each shot. Produces waste heat when firing."
 
 	LaserBlasterLarge = "Heavy Laser Blaster"
 	LaserBlasterLargeIcon = "Heavy Laser"
 	LaserBlasterLargeDesc = "Pairs together two large laser guns on a single turret, which combine for much higher damage at the expense of some accuracy and versatility."
+	LaserBlasterLargeOverclock = "Overclocked Heavy Laser Blaster"
+	LaserBlasterLargeOverclockDesc = "Increases the damage of each laser bolt and adds splash damage, but reduces the rate of fire. Produces waste heat when firing."
 
 	MissileLauncher = "Missile & Mine Launcher"
 	MissileLauncherIcon = "Launcher"
@@ -4161,13 +4209,18 @@ Parts
 	PointDefense = "Point Defense System"
 	PointDefenseIcon = "Point Defense"
 	PointDefenseDesc = "An automated defensive system that shoots down enemy missiles and projectiles using super-heated plasma rounds. Can also inflict light damage to enemy ships."
+	PointDefenseOverclock = "Overclocked Point Defense System"
+	PointDefenseOverclockDesc = "Turns on a dynamo that slowly regenerates power, allowing the Point Defense System to fire for short periods without ever receiving batteries. Produces waste heat while regenerating."
 
 	PowerStorage = "Power Capacitor"
 	PowerStorageIcon = "Capacitor"
 	PowerStorageDesc = "Stores a limited cache of plasma batteries that may be delivered by crew to nearby ship's systems."
+	PowerStorageOverclock = "Overclocked Power Capacitor"
+	PowerStorageOverclockDesc = "Triples the power capacity of both the Power Capacitor itself and the individual stored batteries. Produces waste heat continuously while storing power and additionally when receiving power."
 
 	Railgun = "Railgun"
 	RailgunDesc = "A variable-length modular weapon that fires magnetically accelerated projectiles that can penetrate deep into enemy ships, causing great damage."
+	RailgunOverclock = "Overclocked Railgun"
 
 	RailgunBaseDesc = "Railguns fire magnetically accelerated projectiles that can penetrate deep into enemy ships, causing great damage. "\
 	                  "Each Railgun requires both a Loader and a Launcher, plus any number of optional Accelerators."
@@ -4177,6 +4230,7 @@ Parts
 	RailgunLauncherDesc = "A required component of all railguns. Must be paired with a Loader and zero or more Accelerators.\n\n"\
 	                      "<string id='Parts/RailgunBaseDesc'/>\n\n"\
 	                      "Crew cannot walk from one side of a Railgun Launcher or Accelerator to the other."
+	RailgunLauncherOverclockDesc = "Improves the efficiency of longer Railguns and increases projectile speed and damage, but requires a charge-up before firing and stops penetration once its damage potential is exhausted. Produces waste heat when firing."
 
 	RailgunLoader = "Railgun Loader Module"
 	RailgunLoaderIcon = "Railgun Loader"
@@ -4192,18 +4246,26 @@ Parts
 	ReactorSmall = "Small Reactor Core"
 	ReactorSmallIcon = "Small Reactor"
 	ReactorSmallDesc = "A power generator that produces the plasma batteries needed to power many of the ship's systems."
+	ReactorSmallOverclock = "Overclocked Small Reactor Core"
+	ReactorSmallOverclockDesc = "Increases maximum power capacity and generation rate. Produces waste heat while generating power."
 
 	ReactorMed = "Medium Reactor Core"
 	ReactorMedIcon = "Med. Reactor"
 	ReactorMedDesc = "A power generator that produces double-capacity plasma batteries needed to power many of the ship's systems."
+	ReactorMedOverclock = "Overclocked Medium Reactor Core"
+	ReactorMedOverclockDesc = "Increases maximum power capacity and generation rate. Produces waste heat while generating power."
 
 	ReactorLarge = "Large Reactor Core"
 	ReactorLargeIcon = "Large Reactor"
 	ReactorLargeDesc = "A power generator that produces triple-capacity plasma batteries needed to power many of the ship's systems."
+	ReactorLargeOverclock = "Overclocked Large Reactor Core"
+	ReactorLargeOverclockDesc = "Increases maximum power capacity and generation rate. Additionally increases battery size from triple-capacity to quadruple-capacity. Produces waste heat while generating power."
 
 	SensorArray = "Sensor Array"
 	SensorArrayIcon = "Sensors"
 	SensorArrayDesc = "Extends the sensor range of your ship. (Does not stack with other sensor arrays.)"
+	SensorArrayOverclock = "Overclocked Sensor Array"
+	SensorArrayOverclockDesc = "Increases the visual range of the Sensor Array. Produces heat while operating."
 
 	HyperdriveBeacon = "Hyperdrive Beacon"
 	HyperdriveBeaconIcon = "Hyperdrive Beacon"
@@ -4213,11 +4275,15 @@ Parts
 	ShieldGenSmallIcon = "Small Shield"
 	ShieldGenSmallDesc = "Projects a small defensive energy shield in an arc outside the ship, blocking most incoming fire. Vulnerable to Disruptors and EMPs.\n\n"\
 	                     "Due to its small size, the energy shield can be projected through the ship itself, allowing the Small Shield Generator to be built within the ship's protected interior."
+	ShieldGenSmallOverclock = "Overclocked Small Shield Generator"
+	ShieldGenSmallOverclockDesc = "Enables choosing between two modes for the energy shield:\n\n1. The energy shield expands to cover a larger area.\n\n2. The energy shield shrinks to cover a smaller area but becomes stronger and loses less power per hit.\n\nProduces waste heat when hit."
 
 	ShieldGenLarge = "Large Shield Generator"
 	ShieldGenLargeIcon = "Large Shield"
 	ShieldGenLargeDesc = "Projects a large defensive energy shield in an arc outside the ship, blocking most incoming fire. Vulnerable to Disruptors and EMPs.\n\n"\
 	                     "Due to its large size, the energy shield cannot be projected through any ship parts (except structure), requiring the Large Shield Generator to be built on the ship's vulnerable exterior."
+	ShieldGenLargeOverclock = "Overclocked Large Shield Generator"
+	ShieldGenLargeOverclockDesc = "The energy shield shrinks to cover a smaller area but becomes stronger and loses less power per hit. Produces waste heat when hit."
 
 	Structure = "Structure"
 	StructureIcon = &Structure
@@ -4242,22 +4308,33 @@ Parts
 	ThrusterBoost = "Boost Thruster"
 	ThrusterBoostIcon = &ThrusterBoost
 	ThrusterBoostDesc = "A variant of the Large Thruster that can inject raw plasma directly into its combustors for a powerful but short-lived boost. Power cannot be delivered while boosting."
+	ThrusterBoostOverclock = "Overclocked Boost Thruster"
+	ThrusterBoostOverclockDesc = "Greatly increases thrust and moderately improves power efficiency without affecting ramp times, but also increases power consumption. Produces waste heat while firing.\n\n"\
+	                             "Additionally allows the Boost Thruster to be refueled while boosting, but every additional battery increases the rate of waste heat production."
 
 	ThrusterHuge = "Huge Thruster"
 	ThrusterHugeIcon = &ThrusterHuge
 	ThrusterHugeDesc = "A huge propulsion engine capable of pushing the ship with more than twice the force of the Large Thruster. Requires a long time to achieve full thrust."
+	ThrusterHugeOverclock = "Overclocked Huge Thruster"
+	ThrusterHugeOverclockDesc = "Greatly increases thrust and minorly improves power efficiency without affecting ramp times, but also increases power consumption. Produces waste heat while firing."
 
 	ThrusterLarge = "Large Thruster"
 	ThrusterLargeIcon = &ThrusterLarge
 	ThrusterLargeDesc = "A double-sized propulsion engine capable of pushing the ship with more than twice the force of the Standard Thruster. Requires a medium amount of time to achieve full thrust."
+	ThrusterLargeOverclock = "Overclocked Large Thruster"
+	ThrusterLargeOverclockDesc = "Greatly increases thrust and moderately improves power efficiency without affecting ramp times, but also increases power consumption. Produces waste heat while firing."
 
 	ThrusterMed = "Standard Thruster"
 	ThrusterMedIcon = &ThrusterMed
 	ThrusterMedDesc = "A standard-sized propulsion engine capable of pushing the ship with a modest amount of force. Requires a short time to achieve full thrust."
+	ThrusterMedOverclock = "Overclocked Standard Thruster"
+	ThrusterMedOverclockDesc = "Greatly increases thrust and power efficiency without affecting ramp times, but also increases power consumption. Produces waste heat while firing."
 
 	ThrusterSmall = "Small Thruster"
 	ThrusterSmallIcon = &ThrusterSmall
 	ThrusterSmallDesc = "A weak propulsion engine used mainly for maneuvering. Contains a small dynamo that slowly regenerates power."
+	ThrusterSmallOverclock = "Overclocked Small Thruster"
+	ThrusterSmallOverclockDesc = "Greatly increases thrust and power efficiency while significantly improving dynamo power generation, but also increases power consumption. Produces waste heat while firing."
 
 	ThrusterSmall2Way = "2-Way Small Thruster"
 	ThrusterSmall2WayIcon = &ThrusterSmall2Way
@@ -4277,11 +4354,15 @@ Parts
 	ThrusterRocketNozzleIcon = "M.R.T. Nozzle"
 	ThrusterRocketNozzleDesc = "A required component of all Modular Rocket Thrusters. May be combined with zero or more Extender modules and up to two Fuel Pods per Nozzle or Extender.\n\n"\
 	                           "<string id='Parts/ThrusterRocketBaseDesc'/>"
+	ThrusterRocketNozzleOverclock = "Overclocked M.R.T. Nozzle Module"
+	ThrusterRocketNozzleOverclockDesc = "Reduces the impact of Extender Modules on ramp-up time. Produces waste heat while firing."
 
 	ThrusterRocketExtender = "M.R.T. Extender Module"
 	ThrusterRocketExtenderIcon = "M.R.T. Extender"
 	ThrusterRocketExtenderDesc = "An optional component placed behind a Modular Rocket Thruster's Nozzle or other Extender. Each extender increases its maximum thrust, power usage, and ramp-up time. Battery fuel capacity may be extended with up to two Fuel Pods.\n\n"\
 	                             "<string id='Parts/ThrusterRocketBaseDesc'/>"
+ 	ThrusterRocketExtenderOverclock = "Overclocked M.R.T. Extender Module"
+ 	ThrusterRocketExtenderOverclockDesc = "Increases both the Nozzle Module's base thrust <i>and</i> the thrust of <i>every</i> attached Extender Module. Produces waste heat while firing."
 
 	ThrusterRocketBattery = "M.R.T. Fuel Pod"
 	ThrusterRocketBatteryIcon = &ThrusterRocketBattery
@@ -4291,10 +4372,15 @@ Parts
 	MiningLaserSmall = "Mining Laser"
 	MiningLaserSmallIcon = &MiningLaserSmall
 	MiningLaserSmallDesc = "A pair of roof-mounted precision laser beams that can quickly extract resources from even the toughest asteroids. Also effective at salvaging ships, and in a pinch can be used as a short-range weapon."
+	MiningLaserSmallOverclock = "Overclocked Mining Laser"
+	MiningLaserSmallOverclockDesc = "Adds an area-of-effect to both mining beams. Produces waste heat when firing."
 
 	TractorBeamEmitter = "Tractor Beam Emitter"
 	TractorBeamEmitterIcon = "Tractor Beam"
 	TractorBeamEmitterDesc = "Emits a gravitation beam that pulls and pushes ships and other large objects."
+	TractorBeamEmitterOverclock = "Overclocked Tractor Beam Emitter"
+	TractorBeamEmitterOverclockDesc = "Significantly increases gravitational force in all modes, but restricts the force to always act upon the target's center of mass. Produces waste heat while firing.\n\n"\
+									  "Additionally, allows the emitter to be overcharged, depleting its energy and emitting a massive wave of gravitational energy in all directions, which also produces a large amount of waste heat."
 
 	WallHole = "Hole"
 	WallHoleDesc = "A hole blasted through a wall"
@@ -4447,7 +4533,7 @@ MissileTypes
 	Mine = "Proximity Mines"
 	MineDesc = "Stationary mines that detonate in proximity to enemy ships, shooting out damaging shrapnel."
 	Thermal = "Thermal Canister Missiles"
-	ThermalDesc = "Guided missiles that heat their target's hull in a small area. Must be supplied with heat in order to fire."
+	ThermalDesc = "Guided missiles that take waste heat from their own ship and apply it to their target's hull in a small area. Must be connected to a heat pipe and supplied with heat in order to fire."
 }
 
 PartTriggers
@@ -4506,7 +4592,7 @@ PartToggles
 
 	ThermalOverclock_Off = "<b>Overclock: <good>Off</good></b>\nOperate normally, adhering to the part's intended limits."
 	ThermalOverclock_On = "<b>Overclock: <bad>On</bad></b>\nBypass limiters and exceed operational ratings, increasing performance at the cost of heat generation and unreliability."
-	
+
 	OverclockShield_Extended = "<b>Shield Overclock Mode: <good>Extended</good></b>\nIncreases the shield arc and projection distance by routing additional power to the shield's core."
 	OverclockShield_Reinforced = "<b>Shield Overclock Mode: <good>Reinforced</good></b>\nHardens the shield against damage and energy draining effects by routing power from the peripheral to central emitters."
 }
@@ -4581,7 +4667,7 @@ Stats
 	                 "  <white>20: </white><good>+{19:000}%</good> "\
 	                 "  <white>30: </white><good>+{29:000}%</good>"
 	ThrusterBuffFmt = "<white>Thruster Buff:</white> <good>+{0:0}%</good><gray> thrust &amp; power use</gray>"
-	ThrusterBonusForceFmt = "<white>Thruster Bonus Base Force:</white> <good>+{0:0.##}</good> <gray>kilonewtons</gray>"
+	ThrusterBonusForceFmt = "<white>Thruster Bonus Base Force:</white> <good>+{0:0.##}</good> <gray>kN</gray>"
 	PowerDistributionEfficiencyFmt = "<white>Power Distribution Efficiency:</white> <good>{0:0.#}%</good>"
 	FactoryBuffFmt = "<white>Adjacent Factories:</white> <good>+{0:0}%</good><gray> prod. rate</gray>"
 	DamageFmt = "<white>Damage:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
@@ -4614,8 +4700,8 @@ Stats
 	LightningChainStrikeCountRangeFmt = "<white>Lightning Chain Strikes:</white> <good>{0}-{1}</good>"
 	LightningDamageFmt = "<white>Lightning Damage:</white> <good>{0:0}</good> <gray>per strike</gray>"
 
-	HeatPerTileContinuousFmt = "<white>Heat Applied:</white> <good>{0:n1}</good><gray>/tile/sec</gray>"
-	ResonanceHeatPoolFmt = "<white>Heat Applied (Pool):</white> <good>{0:n1}</good><gray>/sec * amplification^</gray><good>{1:0.##}</good>"
+	HeatPerTileContinuousFmt = "<white>Heat Applied:</white> <good>{0:n1}</good> <gray>MJ/tile/sec</gray>"
+	ResonanceHeatPoolFmt = "<white>Heat Applied (Pool):</white> <good>{0:n1}</good> <gray>MJ/sec * amplification^</gray><good>{1:0.##}</good>"
 	HeatAmplificationExponentFmt = "<white>Heat Pool Amplification Exponent:</white> <good>{0.##}</good>"
 	DilationHeatSpreadDistanceFmt = "<white>Heat Spread Distance:</white> <good>{0:0.##}</good><gray> meters * dilation</gray>"
 	HeatSpreadDistanceFmt = "<white>Heat Spread Distance:</white> <good>{0:0.##}</good><gray> meters</gray>"
@@ -4683,30 +4769,29 @@ Stats
 	ShotPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.###}</good><gray>/shot (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
 	AmmoSulfurUsageFmt = "<white>Sulfur Use:</white> <good>{0:0.##}</good><gray>/ammo (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	AmmoPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/ammo (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	AmmoHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/ammo (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	AmmoHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/ammo (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	MissileIronUsageFmt = "<white>Iron Use:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	MissileCopperUsageFmt = "<white>Copper Use:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	MissileUraniumUsageFmt = "<white>Uranium Use:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	MissileSulfurUsageFmt = "<white>Sulfur Use:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	MissileHeatUsageFmt = "<white>Heat Use:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	MissilePowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	MissileHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	MineHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/mine (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	MissileHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/missile (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	MineHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/mine (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	MinePowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/mine (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	SteelPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/steel (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	SteelHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/steel (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	SteelHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/steel (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	CoilPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/coil (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	CoilHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/coil (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	CoilHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/coil (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	Coil2PowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/h-coil (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	Coil2HeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/h-coil (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	Coil2HeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/h-coil (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	TristeelPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/tri-steel (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	TristeelHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/tri-steel (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	DiamondPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/diamond (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	DiamondHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/diamond (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	TristeelHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/tri-steel (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	DiamondPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good> <gray>MJ/diamond (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	ProcessorPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/processor (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	ProcessorHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/processor (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	ProcessorHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/processor (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	EnrichedUraniumPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/e-uranium (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	EnrichedUraniumHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/e-uranium (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	EnrichedUraniumHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/e-uranium (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	PowerUsageContinuousFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/sec</gray>"
 	PowerUsageContinuousMinutesFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/min</gray>"
 	ThrusterPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/sec (100% thrust)</gray>"
@@ -4754,17 +4839,17 @@ Stats
 	RadarRangeFmt = "<white>Sensor Range (Radar):</white> <good>{0:0}</good><gray> meters</gray>"
 	FtlMaxEfficiencyRangeFmt = "<white>Optimal Efficiency:</white> <good>{0:0.##}</good><gray> meters</gray>"
 	FtlMinEfficiencyRangeFmt = "<white>Minimum Efficiency:</white> <good>{0:0.##}</good><gray> meters</gray>"
-	ThrusterForceFmt = "<white>Thrust:</white> <good>{0:#,0.#}</good><gray> kilonewtons</gray>"
+	ThrusterForceFmt = "<white>Thrust:</white> <good>{0:#,0.#}</good><gray> kN</gray>"
 	ThrusterRampUpFmt = "<white>Ramp-Up Time:</white> <good>{0:0.##}</good><gray> seconds</gray>" //used for chaingun as well, RampUpTime
 	ThrusterRampDownFmt = "<white>Ramp-Down Time:</white> <good>{0:0.##}</good><gray> seconds</gray>"
 	ThrusterRampExponentFmt = "<white>Ramp Time Exponent:</white> <good>{0:0.##}</good>"
 	RampUpSpeedFactorFmt = "<white>Ramp-Up Speed Factor:</white> <good>{0:0.#}%</good>"
-	TractorForceFmt = "<white>Tractor Force:</white> <good>{0:#,0.#}</good><gray> kilonewtons</gray>"
-	TractorOverloadForceFmt = "<white>Overload Tractor Force:</white> <good>{0:#,0.#}</good><gray> kilonewtons</gray>"
+	TractorForceFmt = "<white>Tractor Force:</white> <good>{0:#,0.#}</good><gray> kN</gray>"
+	TractorOverloadForceFmt = "<white>Overload Tractor Force:</white> <good>{0:#,0.#}</good><gray> kN</gray>"
 	TractorOverloadRadiusFmt = "<white>Overload Radius:</white> <good>{0:#,0.#}</good><gray> meters</gray>"
 	TractorOverloadChargeTimeFmt = "<white>Overload Charge Time:</white> <good>{0:0.##}</good><gray> seconds</gray>"
 	TractorOverloadMinPowerFmt = "<white>Overload Minimum Power:</white> <good>{0:0.##}%</good><gray> stored</gray>"
-	TractorOverloadHeatGenerationFmt = "<white>Overload Heat Generation:</white> <good>{0:0.#}</good>"
+	TractorOverloadHeatGenerationFmt = "<white>Overload Heat Generation:</white> <good>{0:0.#}</good> <gray>MJ</gray>"
 	CrewSpeedFmt = "<white>Crew Speed:</white> <good>{0:0}%</good>"
 	CrewSpeedFwdFmt = "<white>Crew Speed (Forward):</white> <good>{0:0}%</good>"
 	CrewSpeedAcrFmt = "<white>Crew Speed (Across):</white> <good>{0:0}%</good>"
@@ -4789,23 +4874,23 @@ Stats
 	ThermalDilationPumpNotes = "<gray>NOTE: Dilation, Heat Generation, and Power Usage are halved with only a single connected port.</gray>"
 	MissileLauncherNotes = "<gray>For munition statistics, refer to the corresponding factory for each type of munition.</gray>"
 	TractorBeamNotes = "<gray>Note: Force and power usage values listed above are theoretical maximums. Actual values will vary based on the target's distance.</gray>"
-	HeatCapacityFmt = "<white>Heat Capacity:</white> <good>{0:#,0.##}</good>"
-	HeatFireThresholdFmt = "<white>Heat Fire Threshold:</white> <good>{0:#,0.#}</good>"
+	HeatCapacityFmt = "<white>Heat Capacity:</white> <good>{0:#,0.##}</good> <gray>MJ</gray>"
+	HeatFireThresholdFmt = "<white>Heat Fire Threshold:</white> <good>{0:#,0.#}</good> <gray>MJ</gray>"
 	HeatFireChanceFmt = "<white>Heat Threshold Fire Chance:</white> <good>{0:0.##%}</good>"
 
-	ResonanceTurretHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.#}</good><gray>/sec + pumps</gray>"
+	ResonanceTurretHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.#}</good> <gray>MJ/sec + pumps</gray>"
 
-	HeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good><gray>/sec</gray>"
-	HeatGenerationPerPartFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good><gray>/sec/part</gray>"
-	ThrusterHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good><gray>/sec (100% thrust)</gray>"
+	HeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good> <gray>MJ/sec</gray>"
+	HeatGenerationPerPartFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good> <gray>MJ/sec/part</gray>"
+	ThrusterHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good> <gray>MJ/sec (100% thrust)</gray>"
 	BaseHeatFactorFmt = "<white>Base Heat Factor:</white> <good>{0:0.#}% ({1:0.#})</good>"
 	BoostHeatFactorPerBatteryFmt = "<white>Heat Factor:</white> <good>{0:+0.#;-0.#;0}%</good> <gray>/battery used</gray>"
 	BoostHeatFactorPerSecondFmt = "<white>Heat Factor:</white> <good>{0:+0.#;-0.#;0}%</good> <gray>/sec while idle</gray>"
 	BoostHeatFactorBatteryThresholdFmt = "<white>Heat Increase Threshold:</white> <good>{0:0}</good> <gray>batteries used</gray>"
-	PowerHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/power (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	StorageHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good><gray>/sec (100% full)</gray>"
-	BatteryDeliveredHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good><gray> per battery delivered</gray>"
-	HeatDissipationFmt = "<white>Heat Dissipation:</white> <good>{0:#,0.##}</good><gray>/sec</gray>"
+	PowerHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/power (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	StorageHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good> <gray>MJ/sec (100% full)</gray>"
+	BatteryDeliveredHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good> <gray>MJ per battery delivered</gray>"
+	HeatDissipationFmt = "<white>Heat Dissipation:</white> <good>{0:#,0.##}</good> <gray>MJ/sec</gray>"
 
 	BaseAmplificationFmt = "<white>Amplification (Base):</white> <good>{0:0.#}%</good>"
 	BaseDilationFmt = "<white>Dilation (Base):</white> <good>{0:0.#}%</good>"
@@ -4818,16 +4903,16 @@ Stats
 	PowerUsageFactorFmt = "<white>Power Use Factor:</white> <good>{0:0.###}x</good>"
 	PumpPowerUsageFactorFmt = "<white>Pump Power Use Factor:</white> <good>{0:0.###}x</good>"
 	OverclockTransitionTimeFmt = "<white>Overclock Transition Time:</white> <good>{0:0.#}</good> <gray>seconds</gray>"
-	HeatAbsorptionFmt = "<white>Heat Absorption:</white> <good>{0:0.#}</good><gray>/sec</gray>"
+	HeatAbsorptionFmt = "<white>Heat Absorption:</white> <good>{0:0.#}</good> <gray>MJ/sec</gray>"
 	HeatAbsorptionInefficiencyFmt = "<white>Absorption Inefficiency:</white> <good>+{0:0.#}%</good> <gray>heat</gray>"
 	HeatAbsorptionRadiusFmt = "<white>Absorption Radius:</white> <good>{0:0.#}</good> <gray>metres</gray>"
 	HeatTransferInefficiencyFmt = "<white>Heat Transfer Inefficiency:</white> <good>+{0:0.#}%</good> <gray>heat</gray>"
-	TurretExtraHeatGenerationFmt = "<white>Turret Heat Generation:</white> <good>{0:+0.#;-0.#}</good><gray>/sec</gray>"
-	RailgunOverclockHeatOnShotFmt = "<white>Heat Generation:</white> <good>{0:0.#}</good><gray>/part/shot</gray>"
-	HeatPerShotFmt = "<white>Heat Generation</white> <good>{0:0.#}</good><gray>/shot</gray>"
-	HeatPerRestockFmt = "<white>Heat Generation:</white> <good>{0:0.#}</good><gray>/restock</gray>"
-	FiringHeatGenerationFmt = "<white>Firing Heat Generation:</white> <good>{0:#,0.##}</good><gray>/sec</gray>"
-	HeatPerDamageFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good><gray>/damage</gray>"
+	TurretExtraHeatGenerationFmt = "<white>Turret Heat Generation:</white> <good>{0:+0.#;-0.#}</good> <gray>MJ/sec</gray>"
+	RailgunOverclockHeatOnShotFmt = "<white>Heat Generation:</white> <good>{0:0.#}</good> <gray>MJ/part/shot</gray>"
+	HeatPerShotFmt = "<white>Heat Generation</white> <good>{0:0.#}</good> <gray>MJ/shot</gray>"
+	HeatPerRestockFmt = "<white>Heat Generation:</white> <good>{0:0.#}</good> <gray>MJ/restock</gray>"
+	FiringHeatGenerationFmt = "<white>Firing Heat Generation:</white> <good>{0:#,0.##}</good> <gray>MJ/sec</gray>"
+	HeatPerDamageFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/damage</gray>"
 }
 
 PartFeatures
@@ -5507,12 +5592,28 @@ Tutorials
 	Fires
 	{
 		Title = "Fires"
-		Cause = "<red>Fires</red> can break out when hit by certain weapons and when volatile parts explode. Left unattended, "\
-		        "fires will quickly spread, causing damage and killing crew."
+		Cause = "<red>Fires</red> can break out when hit by certain weapons, when volatile parts explode, or when the ship's hull is very hot. Left unattended, "\
+		        "fires will quickly grow and spread, causing damage, killing crew, and eventually <red>scorching</red> parts, which renders them inoperable until repaired."
 		FireExtinguisher = "Add <good>fire extinguishers</good> to your ship to help fight fires. Your crew will pick up "\
 		                   "fire extinguishers and use them to put out fires. Each fire extinguisher has a limited capacity, so multiple extinguishers may be required to put out large fires."
 		Spread = "<good>TIP:</good> Fires can spread through open areas and through doors, but not through walls. "\
 		         "Adding a lot of doors to your ship will make it more vulnerable to fires."
+	}
+
+	Scorched
+	{
+		Title = "Scorched Parts"
+		CauseAndEffect = "After burning for long enough, a part will become <red>scorched</red>. Scorched parts will no longer function and will slow the movement of crew."
+		Solution = "The part's functionality can be restored by repairing it to full health."
+	}
+
+	Heat
+	{
+		Title = "Hull Heat"
+		Cause = "A ship's hull can <orange>heat up</orange> when hit with thermal weaponry, or when certain parts produce <orange>waste heat</orange> with nowhere to store or exhaust it."
+		Effect = "As the hull gets hotter, it becomes more vulnerable to damage and penetration, will begin to catch on fire, and then will eventually melt."
+		OverTime = "Heat naturally spreads out and, without an active heat source, will slowly dissipate on its own over time."
+		Exchanger = "<good>TIP:</good> To remove hull heat, build <orange>Heat Exchangers</orange> connected to Radiators or Thermal Storages."
 	}
 
 	Nebulas
@@ -5603,6 +5704,15 @@ Lore
 		Lore1 = "The Fringe Systems Resistance is a loose conglomeration of independent star systems united only by the common desire to survive and remain independent."
 		Lore2 = "The \"Fringe\" star systems are those that lie on the edge of the known galaxy or between the territories of the major factions. They are generally sparsely populated and have a low standard of living. While there is a strong code of honor among inhabitants of the Fringe, there is no common government or system of laws beyond the borders that can be enforced by each individual settlement or station. As such, the Fringe systems tend to attract a \"rough and ready\" type of personality, and piracy runs rampant."
 		Lore3 = "There are no formal cooperation agreements between any of the Fringe systems, so the extent to which they can be called \"unified\" is based on a mutual hatred of the other major factions and an understanding that they can better defend their independence working (begrudgingly) together than apart. Despite this cooperation, the Fringe systems are no match for the full might of any of the major factions, and thus are fighting a doomed battle, losing their independence one-by-one."
+	}
+
+	Io
+	{
+		Title = "Great House Io"
+		Lore1 = "Long before the discovery of the Armstrong Monolith and the destruction of Sol, as the cold war between Earth and Mars was heating up, many of the richest and noblest families of the Imperial Martian Matriarchy, known as The Great Houses, abandoned their sworn empress and fled their war-torn world to colonize the moons of the outer gas giants."
+		Lore2 = "One such Great House, the Rodomonts, ran an industrial metallurgy and construction empire that spanned the Sol system and pioneered the modular starship-welding techniques still in use today. The Rodomonts, along with tens of thousands of their servants and most skilled employees, settled on Jupiter's moon Io, the most volcanically-active object in the Sol system, and formally restyled themselves as "The Great House Io". Using their metallurgical prowess, they tamed Io's volcanos and harnessed its heat for near limitless energy, all in less than a decade."
+		Lore3 = "And then, for reasons only known by the House's top matriarchs, they decided to leave. Undertaking the largest and most ambitious construction and geo-engineering project in the history of humankind, they converted Io into a giant interstellar generation ship. Using Io's near-limitless internal heat to fuel the largest rocket thrusters ever built, Io escaped Jupiter's gravity and departed the Sol system. For hundreds of years, the Great House Io was never seen, presumed dead and lost forever."
+		Lore4 = "That is, until the moon Io itself suddenly reappeared on the weakly-guarded outskirts of the Centauri Imperium, only now with a population in the millions thanks to an aggressive breeding program, and thousands of warships wielding advanced heat-based weaponry that were smelted from Io's molten iron core. Great House Io caught the Centauri Imperium by surprise and quickly conquered much of its rear territory, plus a handful of Fringe-aligned star systems, thus destabilizing the galaxy's delicate balance of power. Their mission, which was publicly broadcast throughout the known galaxy, is to unite Humanity under the rule of Io's matriarch in order to focus all of humanity's resources against a much larger threat they claim is looming on the horizon. But what that threat is, or what they saw in their hundreds of years traveling between the stars, they will not say."
 	}
 }
 

@@ -921,6 +921,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/FactoryTristeelOverclockDesc"
 		Stats
 		{
 			TristeelProduction = (&~/Part/Stats/TristeelProduction) * (&~/OVERCLOCK/SPEED_FACTOR)

@@ -15,7 +15,7 @@ Factions
 			FactionID = monolith
 			TerritoryRatio = 100%
 			AvoidOtherFactionsStrength = .3
-			AvoidEdgeStrength = .2
+			AvoidEdgeStrength = .3
 			FactionStrengthExponent = 1
 			MinFactionStrength = 5%
 		}
@@ -23,7 +23,15 @@ Factions
 			FactionID = cabal
 			TerritoryRatio = 100%
 			AvoidOtherFactionsStrength = .3
-			AvoidEdgeStrength = .2
+			AvoidEdgeStrength = .3
+			FactionStrengthExponent = 3
+			MinFactionStrength = 5%
+		}
+		{
+			FactionID = io
+			TerritoryRatio = 100%
+			AvoidOtherFactionsStrength = .3
+			AvoidEdgeStrength = .3
 			FactionStrengthExponent = 3
 			MinFactionStrength = 5%
 		}
@@ -31,7 +39,7 @@ Factions
 			FactionID = imperium
 			TerritoryRatio = 100%
 			AvoidOtherFactionsStrength = .3
-			AvoidEdgeStrength = .2
+			AvoidEdgeStrength = .3
 			FactionStrengthExponent = 2
 			MinFactionStrength = 5%
 		}
@@ -66,6 +74,11 @@ FactionTiers
 			TierRangeHigh = [1 + (&~/TierSpread), (&~/MaxTier)]
 		}
 		{
+			FactionID = io
+			TierRangeLow = [1, (&~/MaxTier) - (&~/TierSpread)]
+			TierRangeHigh = [1 + (&~/TierSpread), (&~/MaxTier)]
+		}
+		{
 			FactionID = fringe
 			TierRangeLow = 1
 			TierRangeHigh = 1
@@ -78,7 +91,7 @@ StartingNodePicker
 	Type = StartingNodePicker
 	AllowedFactions = [fringe]
 	MinConnections = 2
-	CandidatesFarthestFromFactions = [5, [imperium]]
+	CandidatesFarthestFromFactions = [5, [imperium, io]]
 	CandidatesClosestToFactions = [1, [monolith, cabal]]
 	SetTierRangeTo = [1, 1 + (&~/TierSpread)]
 	SetSectorTypeTo = basic

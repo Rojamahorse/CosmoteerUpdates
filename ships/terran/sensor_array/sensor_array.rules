@@ -840,6 +840,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/SensorArrayOverclockDesc"
 		Stats
 		{
 			HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)

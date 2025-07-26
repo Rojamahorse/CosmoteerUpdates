@@ -1245,6 +1245,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/ShieldGenLargeOverclockDesc"
 		Stats
 		{
 			ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/ARC_FACTOR)

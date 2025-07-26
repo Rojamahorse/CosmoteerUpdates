@@ -71,4 +71,22 @@ Factions
 		MilitaryPlayerIndex = 400
 		CivilianPlayerIndex = 401
 	}
+
+	// Great House Io
+	{
+		ID = io
+		NameKey = "Factions/Io"
+		Icon
+		{
+			Texture
+			{
+				File = "io.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+		}
+		BorderColor = [255, 127, 0]
+		MilitaryPlayerIndex = 500
+		CivilianPlayerIndex = 501
+	}
 ]

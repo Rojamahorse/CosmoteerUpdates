@@ -825,6 +825,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/ReactorSmallOverclockDesc"
 		Stats
 		{
 			PowerCapacity = (&~/Part/Stats/PowerCapacity) * (1 + (&~/OVERCLOCK/EXTRA_CAPACITY_FACTOR))

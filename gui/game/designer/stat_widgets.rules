@@ -59,6 +59,7 @@ StatWidgets
         			TextRenderer : ^/0/TextRenderer
         			{
         				Color = [246, 94, 4]
+        				FontSize = 20
         			}
         		}
         		Icon
@@ -72,7 +73,6 @@ StatWidgets
         			VertexColor = [0, 183, 255]
         		}
         		Stat = HeatGeneration
-//        		MinWidth = 120
         		StatMode = Providers
         	}
         	{
@@ -84,6 +84,7 @@ StatWidgets
         			TextRenderer : ^/0/TextRenderer
         			{
         				Color = [67, 227, 231]
+        				FontSize = 20
         			}
         		}
         		Icon
@@ -97,7 +98,6 @@ StatWidgets
         			VertexColor = [0, 183, 255]
         		}
         		Stat = HeatDissipation
-//        		MinWidth = &../0/MinWidth
         		StatMode = Providers
         	}
 		]
@@ -112,6 +112,7 @@ StatWidgets
 			TextRenderer : ^/0/TextRenderer
 			{
 				Color = [246, 149, 4]
+				FontSize = 20
 			}
 		}
 		Icon
@@ -125,7 +126,6 @@ StatWidgets
 			VertexColor = [0, 183, 255]
 		}
 		Stat = HeatCapacity
-//		MinWidth = 120
 		StatMode = ProvidersThenStatBlocks
 	}
 ]

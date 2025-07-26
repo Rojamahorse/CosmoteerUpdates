@@ -1031,6 +1031,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/FactoryUraniumOverclockDesc"
 		Stats
 		{
 			EnrichedUraniumProduction = (&~/Part/Stats/EnrichedUraniumProduction) * (&~/OVERCLOCK/SPEED_FACTOR)

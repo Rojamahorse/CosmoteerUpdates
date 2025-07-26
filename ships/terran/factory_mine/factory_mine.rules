@@ -950,6 +950,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/FactoryMineOverclockDesc"
 		Stats
 		{
 			MineProduction = (&~/Part/Stats/MineProduction) * (&~/OVERCLOCK/SPEED_FACTOR)

@@ -446,6 +446,21 @@ TradeShips
 	imperium_crew_8b  : ~/BaseTradeShip { ShipID="Botaurus";     Faction=imperium; TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
 	imperium_crew_11a : ~/BaseTradeShip { ShipID="Ardea";        Faction=imperium; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
 	imperium_crew_11b : ~/BaseTradeShip { ShipID="Butorides";    Faction=imperium; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
+
+	// House Io
+	io_3a       : ~/BaseTradeShip { ShipID="Chalcis";      Faction=io; TierRange=[1, 9];   StasisSpeed=85; StasisTradeTime=40; }
+	io_3b       : ~/BaseTradeShip { ShipID="Erato";        Faction=io; TierRange=[1, 9];   StasisSpeed=85; StasisTradeTime=40; }
+	io_3c       : ~/BaseTradeShip { ShipID="Cleeia";       Faction=io; TierRange=[1, 9];   StasisSpeed=85; StasisTradeTime=40; }
+	io_5a       : ~/BaseTradeShip { ShipID="Ismene";       Faction=io; TierRange=[3, 12];  StasisSpeed=85; StasisTradeTime=60; }
+	io_5b       : ~/BaseTradeShip { ShipID="Phaeo";        Faction=io; TierRange=[3, 12];  StasisSpeed=85; StasisTradeTime=60; }
+	io_5c       : ~/BaseTradeShip { ShipID="Coronis";      Faction=io; TierRange=[3, 12];  StasisSpeed=85; StasisTradeTime=60; }
+	io_7a       : ~/BaseTradeShip { ShipID="Synecho";      Faction=io; TierRange=[6, 18];  StasisSpeed=85; StasisTradeTime=80; }
+	io_7b       : ~/BaseTradeShip { ShipID="Eudora";       Faction=io; TierRange=[6, 18];  StasisSpeed=85; StasisTradeTime=80; }
+	io_10a      : ~/BaseTradeShip { ShipID="Aesyle";       Faction=io; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=100; }
+	io_10b      : ~/BaseTradeShip { ShipID="Polyxio";      Faction=io; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=100; }
+	io_crew_5a  : ~/BaseTradeShip { ShipID="Orpheus";      Faction=io; TierRange=[1, 12];  StasisSpeed=85; StasisTradeTime=20; }
+	io_crew_8a  : ~/BaseTradeShip { ShipID="Eurydice";     Faction=io; TierRange=[6, 18];  StasisSpeed=85; StasisTradeTime=20; }
+	io_crew_11a : ~/BaseTradeShip { ShipID="Eurydice";     Faction=io; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
 }
 
 BaseTradeShip

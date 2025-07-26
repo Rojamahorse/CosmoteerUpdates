@@ -4,7 +4,6 @@ TabNameKey = "Codex/Lore"
 Entries
 [
 	{
-		TextKey = "Lore/Fringe/Lore1"
 		Image
 		{
 			Texture
@@ -14,6 +13,9 @@ Entries
 				MipLevels = max
 			}
 		}
+	}
+	{
+		TextKey = "Lore/Fringe/Lore1"
 	}
 	{
 		TextKey = "Lore/Fringe/Lore2"

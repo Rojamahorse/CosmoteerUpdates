@@ -1243,6 +1243,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/TractorBeamEmitterOverclockDesc"
 		Stats
 		{
 			TractorForce = (&~/Part/StatsByCategory/0/Stats/TractorForce) * (&~/OVERCLOCK/FORCE_FACTOR)

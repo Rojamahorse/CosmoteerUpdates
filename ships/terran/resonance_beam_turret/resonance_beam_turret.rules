@@ -4,13 +4,12 @@ Part : <../base_part_terran.rules>/Part
 	IconNameKey = "Parts/ResonanceBeamTurretIcon"
 	ID = cosmoteer.resonance_beam_turret
 	OtherIDs = []
-	EditorGroups = [ "WeaponsEnergy" ]
+	EditorGroup = "WeaponsEnergy"
 	DescriptionKey = "Parts/ResonanceBeamTurretDesc"
 	Resources
 	[
-		[steel, 60]
-		[coil2, 15]
-		[tristeel, 10]
+		[steel, 80]
+		[coil2, 20]
 		[diamond, 2]
 	]
 	Size = [4,4]
@@ -21,7 +20,7 @@ Part : <../base_part_terran.rules>/Part
 	MaxHealth = 12500
 	TypeCategories = [weapon, uses_power, is_crewed, heat_resistant]
 	SignificanceToggle = ScorchedToggle
-	ReceivableBuffs : ^/0/ReceivableBuffs [ThermalIntensity, ThermalRadius, ThermalShieldPiercing, ThermalActivity]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ThermalIntensity, ThermalRadius, ThermalActivity]
 	Flammable = false
 	ProhibitedBy : ^/0/ProhibitedBy [tall]
 	ProhibitRects
@@ -491,45 +490,6 @@ Part : <../base_part_terran.rules>/Part
 			BuffType = ThermalActivity
 			BuffAmount = 1
 			BuffMultiplier = CombinedHeatGeneration
-		}
-
-		ThermalShieldPiercingDenominatorOffset
-		{
-			Type = StaticValue
-			Value = 250
-		}
-		ThermalShieldPiercingExponent
-		{
-			Type = StaticValue
-			Value = 0.85
-		}
-		ThermalShieldPiercingIntensity
-		{
-			Type = ValueOperation
-			Operator = Power
-			ValueOne = CombinedAmplification
-			ValueTwo = ThermalShieldPiercingExponent
-		}
-		ThermalShieldPiercingDenominator
-		{
-			Type = MultiValue
-			Values = [ThermalShieldPiercingIntensity, ThermalShieldPiercingDenominatorOffset]
-			Mode = Add
-		}
-		ThermalShieldPiercingMultiplier
-		{
-			Type = ValueOperation
-			Operator = Divide
-			ValueOne = ThermalShieldPiercingIntensity
-			ValueTwo = ThermalShieldPiercingDenominator
-			NaNFallbackValue = 0
-		}
-		ThermalShieldPiercingBuff
-		{
-			Type = SelfBuffProvider
-			BuffType = ThermalShieldPiercing
-			BuffAmount = 1
-			BuffMultiplier = ThermalShieldPiercingMultiplier
 		}
 
 		OverheatEffects
@@ -2065,7 +2025,7 @@ Part : <../base_part_terran.rules>/Part
 				HeatPerTileContinuous = (&~/Part/Components/BeamEmitter/BASE_HEAT) / (&HitInterval)
 				ResonanceHeatPool = [(&~/Part/Components/BeamEmitter/BASE_HEAT_POOL) / (&../HitInterval), &~/Part/Components/BeamEmitter/HEAT_POOL_AMP_EXPONENT]
 				DilationHeatSpreadDistance = &~/Part/Components/BeamEmitter/BASE_HEAT_SPREAD_BUDGET
-//				HitShieldHeatFactor = (&~/Part/Components/BeamEmitter/SHIELD_HEAT_FACTOR) * 100
+				HitShieldHeatFactor = (&~/Part/Components/BeamEmitter/SHIELD_HEAT_FACTOR) * 100
 
 				SHIELD_OVERLOAD_BASE = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_BASE)
 				SHIELD_OVERLOAD_PER_AMP = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_PER_AMP)

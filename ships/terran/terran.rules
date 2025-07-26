@@ -55,10 +55,7 @@ Terran : <../base_ship.rules>
 		&<armor_1x3_wedge/armor_1x3_wedge.rules>/Part
 		&<armor_tri/armor_tri.rules>/Part
 
-		// Flight.
-		&<control_room_small/control_room_small.rules>/Part
-		&<control_room_med/control_room_med.rules>/Part
-		&<control_room_large/control_room_large.rules>/Part
+		// Thrusters.
 		&<thruster_small/thruster_small.rules>/Part
 		&<thruster_small_2way/thruster_small_2way.rules>/Part
 		&<thruster_small_3way/thruster_small_3way.rules>/Part
@@ -70,6 +67,14 @@ Terran : <../base_ship.rules>
 		&<thruster_rocket_extender/thruster_rocket_extender.rules>/Part
 		&<thruster_rocket_battery/thruster_rocket_battery.rules>/Part
 		&<engine_room/engine_room.rules>/Part
+
+		// Ship Control.
+		&<control_room_small/control_room_small.rules>/Part
+		&<control_room_med/control_room_med.rules>/Part
+		&<control_room_large/control_room_large.rules>/Part
+		&<hyperdrive_small/hyperdrive_small.rules>/Part
+		&<hyperdrive_med/hyperdrive_med.rules>/Part
+		&<hyperdrive_large/hyperdrive_large.rules>/Part
 
 		// Crew.
 		&<crew_quarters_small/crew_quarters_small.rules>/Part
@@ -89,7 +94,7 @@ Terran : <../base_ship.rules>
 		&<heat_pipe_crossing/heat_pipe_crossing.rules>/Part
 		&<heat_pipe_adaptive_structure/heat_pipe_adaptive_structure.rules>/Part
 		&<radiator/radiator.rules>/Part
-		&<thermal_tank/thermal_tank.rules>/Part
+		&<thermal_battery/thermal_battery.rules>/Part
 		&<heat_exchanger/heat_exchanger.rules>/Part
 
 		// Production.
@@ -115,9 +120,6 @@ Terran : <../base_ship.rules>
 		&<storage_4x4/storage_4x4.rules>/Part
 
 		// Utilities.
-		&<hyperdrive_small/hyperdrive_small.rules>/Part
-		&<hyperdrive_med/hyperdrive_med.rules>/Part
-		&<hyperdrive_large/hyperdrive_large.rules>/Part
 		&<fire_extinguisher/fire_extinguisher.rules>/Part
 		&<mining_laser_small/mining_laser_small.rules>/Part
 		&<manipulator_beam_emitter/manipulator_beam_emitter.rules>/Part

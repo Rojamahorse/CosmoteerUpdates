@@ -12,7 +12,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	IconNameKey = "Parts/FireExtinguisherIcon"
 	ID = cosmoteer.fire_extinguisher // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	OtherIDs = [fire_extinguisher]
-	EditorGroups = ["Defenses", "Utilities", "Thermal"]
+	EditorGroups = ["Defenses", "Thermal"]
 	DescriptionKey = "Parts/FireExtinguisherDesc"
 	Resources
 	[
@@ -235,6 +235,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/FireExtinguisherOverclockDesc"
 		Stats
 		{
 			AbilityCooldown = &~/OVERCLOCK/RESTOCK_INTERVAL
