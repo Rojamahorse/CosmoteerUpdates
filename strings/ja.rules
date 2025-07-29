@@ -221,6 +221,7 @@ BuildBattleModeConfig: Workshop
 BuildBox
 {
 	
+	AmplificationBuffPercentageFmt = "<b><good>増幅：{0:0}%</good></b>"
 	BlueprintsInvalid = 無効な設計図
 	BrushDisabledTip = 選択中のパーツやツールは異なる「ブラシ」の形やサイズに対応していません。
 	BrushHotkeyFmt = "ホットキー：<b>{0}</b>"
@@ -255,6 +256,7 @@ BuildBox
 	CutTip = "選択中のパーツをカット（コピーして削除）。\n\nホットキー：<btn id='Design.CutSelected'/>"
 	DeletePartTip = "掴んでいるパーツを削除。\n\nホットキー：<btn id='Design.Delete'/>"
 	DeleteTip = "選択中のパーツを削除。\n\nホットキー：<btn id='Design.Delete'/>（または<btn id='Design.DeleteDoors'/>でドアのみ削除）"
+	DilationBuffPercentageFmt = "<b><good>拡大：{0:0}%</good></b>"
 	Discard = 改修を元に戻す
 	DiscardModifications = 変更を破棄する
 	DiscardTip = 船の設計図に加えられた全ての変更で未実行のものを元に戻します。
@@ -268,6 +270,13 @@ BuildBox
 	FtlEfficiency = ハイパードライブ効率
 	GrabTip = "<b>グリップツール</b>\n\nこれを選択中に、船のパーツをクリックするとパーツを掴み、他の場所へ移動できるようになります。<btn id='Game.AppendSelection'/>を長押しで移動の代わりにパーツを複製します。\n\n<btn id='General.UIAltClick'/>でそのボタンを押すのと同様にそのパーツの種類を選択します。\n\nホットキー：<btn id='Design.GrabTool'/>"
 	HasDoorAccess = "<good>✓ ドアへのアクセスあり</good>"
+	HeatCapacity = 熱容量
+	HeatCapacityFmt = "{0:#,0.#;;0}<gray>MJ</gray>"
+	HeatDissipation = 放熱
+	HeatDissipationFmt = "{0:#,0}<gray>MJ/s</gray>"
+	HeatGeneration = 熱生成
+	HeatGenerationFmt = "{0:#,0}<gray>MJ/s</gray>"
+	HideSecondaryTooltip = "<gray><btn id='Design.ToggleSecondaryTooltip'/>を押して、オーバークロック情報を非表示。</gray>"
 	HireCrewFmt = " 乗組員{0}人を雇用：{1}"
 	HireCrewTip = 空きベッドを埋めるために乗組員を雇用します。乗組員の数がベッドの数より多い場合、余剰の乗組員は解雇されます。
 	ImportPng = PNGから形をロード
@@ -350,12 +359,28 @@ BuildBox
 	SaveDiscardModifications = セーブ＆破棄
 	SaveSelected = 選択中のパーツをセーブ
 	SaveSelectedTip = 選択したパーツを船のデザインとしてセーブします。
+	ScrollTooltip = "<gray><btn id='Design.ScrollTooltip'/>を長押ししてスクロール。</gray>"
 	SelectTip = "<b>選択ツール</b>\n\nこれを選択中に、コピー、カット、ペースト、ミラー、回転、または削除したいパーツの周りにボックスをドラッグします。\n\nホットキー：<btn id='Design.SelectionTool'/>\n\n<btn id='Design.ContiguousSelectionMode'/>を長押しで隣接物を「自動選択」します。"
 	ShowPartStats = "<gray><btn id='Design.ScrollTooltip'/>を長押しで統計を表示。</gray>"
 	ShowResourceDeliveries = 資源配達を表示
 	ShowResourceDeliveriesTip = このオプションをチェックすると、予定された建造資源の配達が表示されます。
+	ShowSecondaryTooltip = "<gray><btn id='Design.ToggleSecondaryTooltip'/>を押して、オーバークロック情報を表示。</gray>"
 	StatBarTipFmt = ""
 	StatBarTipIdealFmt = "<b>{0}</b>\n<good>提案：<b>{1}</b></good>"
+	Stats
+	{
+		
+		CenterOfMassTip = <b>重心</b>
+		CommandPointsToggleTip = <b>コマンドポイント</b>
+		CoordinatesToggleTip = <b>カーソル座標</b>
+		CrewToggleTip = <b>乗組員/ベッド</b>
+		DirectionChooserToggleTip = <b>運行方向選択機能</b>
+		FtlToggleTip = <b>ハイパードライブ効率</b>
+		MassToggleTip = <b>船の質量</b>
+		PowerToggleTip = <b>動力</b>
+		ThermalToggleTip = <b>熱統計</b>
+		ValueToggleTip = <b>船の価値</b>
+	}
 	Title = 船の編集
 	TotalBlueprintValueFmt = "船のデザインの価値：\n<b>{0}</b>"
 	TotalMassFmt = "質量：\n<b>{0:0.0}トン</b>"
@@ -1098,6 +1123,7 @@ EconDifficulty
 EditorGroups
 {
 	
+	Control = 船の操縦
 	Crew = 乗組員
 	Defenses = 防御
 	Favorites1 = お気に入りA
@@ -1106,7 +1132,7 @@ EditorGroups
 	Favorites2Icon = ""
 	Favorites3 = お気に入りC
 	Favorites3Icon = ""
-	Flight = 飛行
+	Flight = スラスター
 	None = なし
 	Power = 動力
 	Production = 生産
@@ -1114,7 +1140,9 @@ EditorGroups
 	ResourcesRare = 希少資源
 	Rock = 岩石
 	Storage = 保管
-	Structure = 構造
+	Structure = 装甲と構造
+	Thermal = 熱管理
+	ThermalDesc = パイプ、ラジエーター、熱バッテリー、交換器を含む熱を管理するツール。
 	Utilities = ユーティリティ
 	WeaponsEnergy = エネルギー武器
 	WeaponsProjectile = 発射武器
@@ -1639,10 +1667,12 @@ Inputs
 		RestrictShapeMode = 形状指定モード
 		RotateLeft = パーツ/デカールを左に回転
 		RotateRight = パーツ/デカールを右に回転
+		ScrollToolTip = "ツールチップのスクロールを有効にする / 統計を表示する"
 		SelectAll = 全てのパーツ/デカールを選択
 		SelectionTool = 選択/コピー/ペーストツール
 		ToggleBlueprints = 設計図に切り替え
 		ToggleMirrorMode = ミラーモード切り替え
+		ToggleSecondaryToolTip = セカンダリーツールチップを切り替える
 		Undo = 元に戻す
 	}
 	Formations
@@ -1863,6 +1893,7 @@ Inputs
 		chaingun_aim = チェーンガンの照準
 		headlight_aim = ヘッドライトの照準
 		prism_aim = イオンプリズムの照準
+		thermal_aim = 熱共鳴ランスの照準
 		tractor_beam = トラクタービームの標的
 	}
 	PartToggles
@@ -1896,15 +1927,23 @@ Inputs
 		missile_type_he = ランチャータイプ：高性能爆薬
 		missile_type_mine = ランチャータイプ：機雷
 		missile_type_nuke = ランチャータイプ：核
+		missile_type_thermal = ランチャータイプ：熱弾頭ミサイル
 		on_off_off = パーツの動力源をオフにする
 		on_off_on = パーツの動力源をオンにする
 		rotate_off = 回転：オフ
 		rotate_on = 回転：オン
+		thermal_overclock_off = オーバークロック：オフ
+		thermal_overclock_on = オーバークロック：オン
+		thermal_safety_off = 熱安全性：オフ
+		thermal_safety_on = 熱安全性：オン
 		thruster_boost_off = ブーストモードオフ
 		thruster_boost_on = ブーストモードオン
 		tractor_mode_auto = トラクタービーム：自動
 		tractor_mode_pull = トラクタービーム：引く
 		tractor_mode_push = トラクタービーム：押す
+		tractor_overload = 過負荷トラクタービーム
+		tractor_overload_off = 過負荷トラクタービーム
+		tractor_overload_on = 過負荷トラクタービーム
 	}
 	PartTriggers
 	{
@@ -1975,6 +2014,7 @@ JobNames
 	Repair = 修理
 	ResourceFetchFmt = "{0}を供給"
 	Salvage = サルベージ/採掘
+	UnnamedStatusJob = 名前のないステータス職
 }
 Jobs
 {
@@ -2244,6 +2284,8 @@ MissileTypes
 	MineDesc = 静止状態の機雷で敵艦が接近すると起爆し、榴弾を発射しダメージを与えます。
 	Nuke = 戦術核ミサイル
 	NukeDesc = 広範囲に強力な核爆発を引き起こし非常に大きなダメージを与える巨大ミサイル。
+	Thermal = 熱弾頭ミサイル
+	ThermalDesc = 自船の廃熱を吸収し、狭い範囲でそれを標的の船体に当てる誘導ミサイル。発射するには熱パイプに接続し、熱を供給する必要があります。
 }
 MissionCategories
 {
@@ -2575,6 +2617,17 @@ PartColors
 	
 	RoofLight = ライトの色/明るさ
 }
+PartFeatures
+{
+	
+	CanReceivePower = 動力受取可能
+	CoMForceApplication = 目的の質量中心に力を加える
+	FeatureFmt = ""
+	Features = <white>機能：</white>
+	ForcedThrusterOverclock = 強制スラスターオーバークロック
+	PenetratesOperational = 稼働部品を貫通する
+	ThrusterHeatTransfer = スラスター熱移行
+}
 PartTargeters
 {
 	
@@ -2582,6 +2635,7 @@ PartTargeters
 	HeadlightAim = "<b>ヘッドライト照準</b>\n\n選択中のヘッドライトの照準を目的の場所へ合わせます。\n\nホットキー：<btn id='PartTargeters.headlight_aim'/>"
 	HeadlightAimCancel = "<b>ヘッドライト照準リセット</b>\n\nホットキー：<btn id='PartTargetCancelers.headlight_aim'/>"
 	PrismAim = "<b>イオンプリズム照準</b>\n\n選択中のイオンビームプリズムの照準を目的の場所へ合わせるか、他のイオンビームプリズムを通して発射するようリンクさせます。\n\nホットキー：<btn id='PartTargeters.prism_aim'/>"
+	ThermalResonanceAim = "<b>熱共鳴ランスの照準</b>\n\n選択した熱共鳴ランスの照準を目的の場所に向けます。\n\nホットキー：<btn id='PartTargeters.thermal_aim'/>"
 	TractorBeam = "<b>トラクタービーム標的</b>\n\n<btn id='Game.SelectParts'/>を長押しで特定のパーツを標的に定めます。\n\nホットキー：<btn id='PartTargeters.tractor_beam'/>"
 	TractorBeamCancel = "<b>トラクタービーム解除</b>\n\nホットキー：<btn id='PartTargetCancelers.tractor_beam'/>"
 }
@@ -2599,6 +2653,8 @@ PartToggles
 	FirePref_Attack = "<b>攻撃</b>\n敵艦に対してのみ発射します。\n\nホットキー：<btn id='PartToggles.fire_pref_attack'/>"
 	FirePref_Both = "<b>攻撃＋防衛</b>\n敵艦と飛来する発射物の両方に発射します。\n\nホットキー：<btn id='PartToggles.fire_pref_both'/>"
 	FirePref_Defend = "<b>防衛</b>\n向かってくる発射物に対してのみ発射します。この操作により武器は船全体を標的とする指令を無視します。\n\nホットキー：<btn id='PartToggles.fire_pref_defend'/>"
+	FireSafety_Off = "<b>セーフティー：<bad>オフ</bad></b>\n熱レベルに関係なく発射をさたまげることがありません。"
+	FireSafety_On = "<b>セーフティー：<good>オン</good></b>\n危険な熱レベル状態での発射を防ぎます。"
 	Fire_Alternating = "<b>発射：交互</b>\n\nホットキー：<btn id='PartToggles.fire_alternating_on'/>"
 	Fire_Synchronized = "<b>発射：同時</b>\n\nホットキー：<btn id='PartToggles.fire_alternating_off'/>"
 	ForceStartChaingun = "チェーンガン強制発射\n\nホットキー：<btn id='PartToggles.force_fire_chaingun_on'/>"
@@ -2610,13 +2666,19 @@ PartToggles
 	MissileType_HE = "<b><string id='MissileTypes/HE'/></b>\n\n<string id='MissileTypes/HEDesc'/>\n\nホットキー：<btn id='PartToggles.missile_type_he'/>"
 	MissileType_Mine = "<b><string id='MissileTypes/Mine'/></b>\n\n<string id='MissileTypes/MineDesc'/>\n\nホットキー：<btn id='PartToggles.missile_type_mine'/>"
 	MissileType_Nuke = "<b><string id='MissileTypes/Nuke'/></b>\n\n<string id='MissileTypes/NukeDesc'/>\n\nホットキー：<btn id='PartToggles.missile_type_nuke'/>"
+	MissileType_Thermal = "<b><string id='MissileTypes/Thermal'/></b>\n\n<string id='MissileTypes/ThermalDesc'/>\n\nホットキー：<btn id='PartToggles.missile_type_thermal'/>"
 	OnOff_Off = "<b>動力源：<bad>オフ</bad></b>\n\nホットキー：<btn id='PartToggles.on_off_off'/>"
 	OnOff_On = "<b>動力源：<good>オン</good></b>\n\nホットキー：<btn id='PartToggles.on_off_on'/>"
+	OverclockShield_Extended = "<b>シールドオーバークロックモード：<good>延長</good></b>\nシールドのコアに追加の動力を供給することで、シールド範囲と発射物の距離を増加させます。"
+	OverclockShield_Reinforced = "<b>シールドオーバークロックモード：<good>強化</good></b>\n周辺からの動力を中央のエミッターに送ることで、シールドをダメージやエネルギー消費の影響から保護します。"
 	Rotate_Off = "<b>回転：<bad>オフ</bad></b>\n\nホットキー：<btn id='PartToggles.rotate_off'/>"
 	Rotate_On = "<b>回転：<good>オン</good></b>\n\nホットキー：<btn id='PartToggles.rotate_on'/>"
+	ThermalOverclock_Off = "<b>オーバークロック：<good>オフ</good></b>\n部品の意図された限界値を守り、正常に作動させます。"
+	ThermalOverclock_On = "<b>オーバークロック：<bad>オン</bad></b>\nリミッターをバイパスして動作定格を超え、熱生成と信頼性の低下を犠牲にしてパフォーマンスを向上させます。"
 	TractorMode_Auto = "<b>トラクタービーム：自動</b>\n\nトラクタービームが自動で押したり引いたりして、標的との現在の距離を維持します。\n\nホットキー：<btn id='PartToggles.tractor_mode_auto'/>"
 	TractorMode_Pull = "<b>トラクタービーム：引く</b>\n\nトラクタービームが標的を可能か限り近くまで引き寄せます。\n\nホットキー：<btn id='PartToggles.tractor_mode_pull'/>"
 	TractorMode_Push = "<b>トラクタービーム：引く</b>\n\nトラクタービームが標的を可能か限り遠くまで押します。\n\nホットキー：<btn id='PartToggles.tractor_mode_push'/>"
+	TractorOverload = "<b>オーバークロックした過負荷トラクタービーム</b>\n\n利用可能なすべての動力を費やしてエミッターに過負荷をかけ、制御不能の強大なインパルス波と大幅な熱放出を引き起こします。\n\nトラクタービームを「プル」に設定すると、インパルス波の極性が反転します。"
 }
 PartTriggers
 {
@@ -2662,15 +2724,23 @@ Parts
 	CannonDeck = デッキ大砲
 	CannonDeckDesc = "安定化を増すために船の側面ではなく上に設置された大型のダブルバレル大砲。両バレル合わせて10発の発射物を搭載し、その爆音は付近のクルーを一時的にスタンさせるほどです。\n\n前方および側面は他のルーフタレットあるいは「背の高い」パーツから2タイル以内には設置できません。"
 	CannonDeckIcon = デッキキャノン砲
+	CannonDeckOverclock = オーバークロックしたデッキ大砲
+	CannonDeckOverclockDesc = 砲弾ダメージ、速度、精度が上昇しますが、ダメージポテンシャルが尽きると貫通しなくなります。
 	CannonLarge = 大型大砲
 	CannonLargeDesc = 4発の発射弾を融合させ、標準大砲に比べ、ダメージおよび貫通力を強化します。
 	CannonLargeIcon = 大型大砲
+	CannonLargeOverclock = オーバークロックした大型大砲
+	CannonLargeOverclockDesc = 各大砲の砲弾は着弾時にバラバラになって複数の小さな焼夷弾となり、それぞれ標的の船を貫通します。発射時に廃熱が発生します。
 	CannonMed = 標準大砲
 	CannonMedDesc = 敵艦を貫通する単発の発射弾を撃ち、発火する場合もあります。
 	CannonMedIcon = 大砲
+	CannonMedOverclock = オーバークロックした標準大砲
+	CannonMedOverclockDesc = 小型砲弾を複数発射しますが、各砲弾のダメージと弾速は低く、発射時に廃熱が発生します。
 	ChainGun = チェーンガン
 	ChainGunDesc = 強力な回転式大砲で射程が長くなるほど発射速度が上がり、発射していない時は防御シェルの背後に隠れています。追加の弾薬マガジンを装着すると発射持続時間を延長し発射速度が上がります。
 	ChainGunIcon = チェーンガン
+	ChainGunOverclock = オーバークロックしたチェーンガン
+	ChainGunOverclockDesc = 発射物の先端には爆発性があり、飛沫ダメージと全体的な破壊力の増大を引き起こしますが、発射速度が低下し、4発撃つごとにチェーンガンを短時間休ませる必要があります。発射時に廃熱が発生します。
 	ChaingunMagazine = チェーンガンのマガジン
 	ChaingunMagazineDesc = チェーンガンの追加弾薬を保管し、発射持続時間を延長し発射速度を上げます。チェーンガンの左下または右側に装着します。
 	ChaingunMagazineIcon = チェーンガンのマガジン
@@ -2797,57 +2867,104 @@ Parts
 	Disruptor = 妨害装置
 	DisruptorDesc = 与えるダメージはわずかではあるものの敵のシステムをショートさせることができる電気エネルギーのボルトを発射し、敵の動力を消耗させます。照射中はシールドを貫通することができます。
 	DisruptorIcon = 妨害装置
+	DisruptorOverclock = オーバークロックしたディスラプター
+	DisruptorOverclockDesc = ディスラプターボルトが固形素材を貫通できるようになり、エネルギードレイン効果が最初の着弾後にも持続するようになりますが、シールドの貫通力と最初の着弾時の瞬間的なエネルギードレインが減少します。発射時に廃熱が発生します。
 	Door = ドア
 	DoorDesc = 乗組員（そして火災も！）が部屋と部屋の間を行き来できます。
 	DoorIcon = ドア
 	EngineRoom = 機関室
 	EngineRoomDesc = 近接したスラスターの推進力および動力を50％増加します。また、近接したスラスターの中央運搬ポイントとして機能し、乗組員がそれぞれのスラスターを行き来せずにバッテリーを運搬できます。
 	EngineRoomIcon = 機関室
+	EngineRoomOverclock = オーバークロックした機関室
+	EngineRoomOverclockDesc = "接続されているスラスターにパワーを分配する際のパワー効率を向上させますが、接続されているすべてのスラスターをオーバークロックモードに強制的に切り替えます。\n\nさらに、付属のスラスターから廃熱を回収しますが、その際にさらに廃熱を発生させます。"
 	ExplosiveCharge = 爆発チャージ
 	ExplosiveChargeDesc = 手動で起爆可能な小型爆発物。主に船を意図的に分解させるために使用します。
 	ExplosiveChargeIcon = 爆発チャージ
 	FactoryAmmo = 大砲弾薬工場
 	FactoryAmmoDesc = 大砲およびレールガンで使用する弾薬を製造。硫黄を消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryAmmoIcon = 弾薬
+	FactoryAmmoOverclock = オーバークロックした大砲弾薬工場
+	FactoryAmmoOverclockDesc = 生産速度が大幅に向上します。弾薬を生産する際に廃熱が発生します。
 	FactoryCoil = コイル工場
 	FactoryCoil2 = ハイパーコイル工場
 	FactoryCoil2Desc = 上級船の多くのパーツの建造に使用するハイパーコイルを製造。銅とコイルを消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryCoil2Icon = ハイパーコイル
+	FactoryCoil2Overclock = オーバークロックしたハイパーコイル工場
+	FactoryCoil2OverclockDesc = 生産速度が大幅に向上します。ハイパーコイルを生産する際に廃熱が発生します。
 	FactoryCoilDesc = 多くの船のパーツの建造に使用されるコイルを製造。銅を消費します。種類を問わず、種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryCoilIcon = コイル
+	FactoryCoilOverclock = オーバークロックしたコイル工場
+	FactoryCoilOverclockDesc = 生産速度が大幅に向上します。コイルを生産する際に廃熱が発生します。
 	FactoryDiamond = ダイヤモンド溶鉱炉
-	FactoryDiamondDesc = 上級船の一部のパーツの建造に使用するダイヤモンドを製造。炭素を消費します。
+	FactoryDiamondDesc = 生産速度が大幅に向上します。ダイヤモンドを生産する際に廃熱が発生します。
 	FactoryDiamondIcon = ダイヤモンド
 	FactoryEMP = EMPミサイル工場
 	FactoryEMPDesc = 広範囲にわたり敵のシステムの電力を消耗させる誘導電磁バルスミサイルを製造。鉄と銅を消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryEMPIcon = EMPミサイル
+	FactoryEMPOverclock = オーバークロックしたEMPミサイル工場
+	FactoryEMPOverclockDesc = 生産速度が大幅に向上します。ミサイル部品を生産する際に廃熱が発生します。
 	FactoryHE = 榴弾ミサイル工場
 	FactoryHEDesc = 狭い範囲に多大なダメージを与える高性能爆薬の誘導ミサイルを製造。鉄と硫黄を消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryHEIcon = HEミサイル
+	FactoryHEOverclock = オーバークロックした榴弾ミサイル工場
+	FactoryHEOverclockDesc = 生産速度が大幅に向上します。ミサイル部品を生産する際に廃熱が発生します。
 	FactoryMine = 機雷工場
 	FactoryMineDesc = 敵艦が近づくと爆発しダメージを与える榴弾を発射する機雷を製造。鉄と弾薬を消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryMineIcon = 機雷
+	FactoryMineOverclock = オーバークロックした機雷工場
+	FactoryMineOverclockDesc = 生産速度が大幅に向上します。機雷の部品を生産する際に廃熱が発生します。
 	FactoryNuke = 核ミサイル工場
 	FactoryNukeDesc = 広大な範囲にわたり甚大なダメージを与える戦術核ミサイルを製造。鉄とウランを消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryNukeIcon = 核
+	FactoryNukeOverclock = オーバークロックした’核ミサイル工場
+	FactoryNukeOverclockDesc = 生産速度が大幅に向上します。ミサイル部品を生産する際に廃熱が発生します。
 	FactoryProcessor = プロセッサ製造場
 	FactoryProcessorDesc = 上級船の一部のパーツの建造に使用するプロセッサを製造。金とコイルを消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryProcessorIcon = プロセッサ
+	FactoryProcessorOverclock = オーバークロックしたプロセッサ製造場
+	FactoryProcessorOverclockDesc = 生産速度が大幅に向上します。プロセッサを生産する際に廃熱が発生します。
 	FactorySteel = 溶鉱炉
 	FactorySteelDesc = ほぼ全ての船のパーツの建造に使用される鋼鉄プレートを製造。鉄を消費します。種類を問わず、種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactorySteelIcon = 鋼鉄
+	FactorySteelOverclock = オーバークロックした溶鉱炉
+	FactorySteelOverclockDesc = 生産速度が大幅に向上します。鋼鉄を生産する際に廃熱が発生します。
+	FactoryThermal = 熱弾頭ミサイル工場
+	FactoryThermalDesc = 自船の熱パイプ網から熱エネルギーを取り出し、狭い効果範囲内で標的に与える、誘導式熱弾道ミサイルを製造しています。鉄と硫黄を消費します。隣接するあらゆるタイプの工場1つにつき生産速度が25%アップします。
+	FactoryThermalIcon = T.C.ミサイル
+	FactoryThermalOverclock = オーバークロックした’熱弾頭ミサイル工場
+	FactoryThermalOverclockDesc = 生産速度が大幅に向上します。ミサイル部品を生産する際に廃熱が発生します。
 	FactoryTristeel = 3重鋼鉄溶鉱炉
 	FactoryTristeelDesc = 上級船の一部のパーツの建造に使用するトリ鋼鉄プレートを製造。トリタニウムを消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryTristeelIcon = 3重鋼鉄
+	FactoryTristeelOverclock = オーバークロックした3重鋼鉄溶鉱炉
+	FactoryTristeelOverclockDesc = 生産速度が大幅に向上します。3重鋼鉄を生産する際に廃熱が発生します。
 	FactoryUranium = ウラン濃縮機
 	FactoryUraniumDesc = リアクターや船の他のパーツの建造に必要なウランを濃縮します。非濃縮ウランを消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
 	FactoryUraniumIcon = 濃縮ウラン
-	FireExtinguisher = 消火器
-	FireExtinguisherDesc = 火を消す際に乗組員が使用できる消化器を保管。消火器の容量には上限がありますが、15秒後には復活します。
+	FactoryUraniumOverclock = オーバークロックしたウラン濃縮機
+	FactoryUraniumOverclockDesc = 生産速度が大幅に向上します。濃縮ウランを生産する際に廃熱が発生します。
+	FireExtinguisher = 消火器収納棚
+	FireExtinguisherDesc = 乗組員が消火に使用する消火器を保管します。消火器の容量には限りがありますが、15秒ごとに新しい消火器が空中から生成されます。
 	FireExtinguisherIcon = 消火器
+	FireExtinguisherOverclock = オーバークロックした消火器収納棚
+	FireExtinguisherOverclockDesc = 消火器の作成速度が飛躍的に向上します。消火器の作成時に廃熱が発生します。
 	FlakCannonLarge = 高射砲アレイ
 	FlakCannonLargeDesc = 敵のミサイル、レーザー、発射物を破壊できる強力な防御システム。敵艦に中程度のダメージを与えることもできます。
 	FlakCannonLargeIcon = 高射砲アレイ
+	FlakCannonLargeOverclock = オーバークロックした高射砲アレイ
+	FlakCannonLargeOverclockDesc = 高射砲砲弾には榴散弾が詰まっており、爆発後しばらくの間空間に留まり、発射物にダメージを与え、通過するエネルギービームをブロックします。発射時に廃熱が発生します。
+	HeatExchanger = 熱交換器
+	HeatExchangerDesc = 船体から熱を吸収し、接続された熱パイプシステムに伝えると同時に、追加の廃熱を発生させます。
+	HeatExchangerIcon = 熱交換器
+	HeatPipeAdaptive = 熱パイプ
+	HeatPipeAdaptiveDesc = 接続された部品間で熱エネルギーを瞬時に伝達します。
+	HeatPipeAdaptiveIcon = 熱パイプ
+	HeatPipeAdaptiveStructure = 熱パイプ構造
+	HeatPipeAdaptiveStructureDesc = 接続された部品間で熱エネルギーを瞬時に伝達します。
+	HeatPipeAdaptiveStructureIcon = 熱パイプ構造
+	HeatPipeCrossing = 熱パイプクロッシング
+	HeatPipeCrossingDesc = "<string id='Parts/HeatPipeAdaptiveDesc'/>乗組員がパイプ下を歩けるようになります。"
+	HeatPipeCrossingIcon = 熱パイプクロッシング
 	HyperdriveBeacon = ハイパードライブビーコン
 	HyperdriveBeaconDesc = ハイパードライブ搭載の船はハイパードライブビーコン搭載の船にジャンプできます。
 	HyperdriveBeaconIcon = ハイパードライブビーコン
@@ -2863,15 +2980,21 @@ Parts
 	IonBeamEmitter = イオンビームエミッター
 	IonBeamEmitterDesc = 固定方向へイオンエネルギーの強力なビームを放つ。長距離になればダメージは減弱。イオンビームプリズムへ打ち込んで角度を変更することもできます。
 	IonBeamEmitterIcon = イオンビーム
+	IonBeamEmitterOverclock = オーバークロックしたトラクタービームエミッター
+	IonBeamEmitterOverclockDesc = イオンビームをターゲット付近で不安定化させ、周囲に混沌とした強力な落雷を発生させますが、ビーム自体はターゲットに直接当たりません。
 	IonBeamPrism = イオンビームプリズム
 	IonBeamPrismDesc = 敵艦や他のイオンビームプリズムに焦点をあて、向かってくるイオンビームの向きを変更できます。
 	IonBeamPrismIcon = イオンプリズム
 	LaserBlasterLarge = ヘビーレーザーブラスター
 	LaserBlasterLargeDesc = 単機のタレット上の2基の大型レーザーガンを組み合わせ、精度と多用途性がいくらか損なわれますが、より大きなダメージを与えます。
 	LaserBlasterLargeIcon = ヘビーレーザー
+	LaserBlasterLargeOverclock = オーバークロックしたヘビーレーザーブラスター
+	LaserBlasterLargeOverclockDesc = 各レーザーボルトのダメージを増加させ、飛沫ダメージを追加しますが、発射速度が遅くなります。発射時に廃熱が発生します。
 	LaserBlasterSmall = レーザーブラスター
 	LaserBlasterSmallDesc = 単発のエネルギーを放つ極めて精度の高い多用途武器で、敵艦に中程度のダメージを与えます。
 	LaserBlasterSmallIcon = レーザー
+	LaserBlasterSmallOverclock = オーバークロックしたレーザーブラスター
+	LaserBlasterSmallOverclockDesc = 発射速度を上げ、レーザーボルトを瞬間エネルギービームに置き換えますが、各ショットのダメージが低くなります。発射時に廃熱が発生します。
 	ManipulatorBeam = マニピュレータービームエミッター
 	ManipulatorBeamDesc = 資源の回収や遊泳中の乗組員の支援が出来る最大16の小型ルーフ設置型のトラクタービームを放射。乗組員一人でビームを4基まで操作可能で、支援の必要なタスクがある場合にのみ乗組員はマニピュレータービーム放射器に向かいます。
 	ManipulatorBeamIcon = マニピュレータービーム
@@ -2884,15 +3007,25 @@ Parts
 	MiningLaserSmall = 採掘レーザー
 	MiningLaserSmallDesc = 2本のルーフ搭載型精密レーザービームで、頑丈な小惑星からも素早く資源を回収することができます。船のサルベージにも有効であり、また、危機的状況では短距離武器としても使えます。
 	MiningLaserSmallIcon = 採掘レーザー
+	MiningLaserSmallOverclock = オーバークロックした採掘レーザー
+	MiningLaserSmallOverclockDesc = 両方の採掘ビームの効果範囲が広くなります。発射時に廃熱が発生します。
 	MissileLauncher = ミサイル＆機雷ランチャー
 	MissileLauncherDesc = "種類を問わずミサイルと機雷を発射。\n\n発射する弾薬は建造中または建造後のいつでも、戦闘中であっても変更可能。"
 	MissileLauncherIcon = ランチャー
 	PointDefense = 拠点防衛システム
 	PointDefenseDesc = 超高音プラズマ弾で敵のミサイルや発射物を撃ち落とすことができる自動防御システム。敵艦に軽度のダメージを与えることもできます。
 	PointDefenseIcon = 拠点防衛
+	PointDefenseOverclock = オーバークロックした拠点防衛システム
+	PointDefenseOverclockDesc = ゆっくりと動力を再生する発電機をオンにして、拠点防衛システムはバッテリーを補給することなく短時間射撃することができるようになります。再生する際に廃熱が発生します。
 	PowerStorage = 動力源コンデンサー
 	PowerStorageDesc = 限られた量ではあるものの、乗組員が近くの船のシステムに運搬するプラズマバッテリーを貯蔵します。
 	PowerStorageIcon = コンデンサー
+	PowerStorageOverclock = オーバークロックした動力源コンデンサー
+	PowerStorageOverclockDesc = 動力容量本体と各保管バッテリーの動力容量を3倍にします。動力を貯めながら、また動力を受け取りながら継続的に廃熱を発生します。
+	Radiator = ラジエーター
+	RadiatorDesc = 接続された熱パイプシステムから熱を放出します。ラジエーター前面が塞がれていると放出効果が低下します。
+	RadiatorDissipationScoreFmt = "<good>{1:0.#}%\n({0:0.#}<gray>/秒</gray>)</good>"
+	RadiatorIcon = ラジエーター
 	Railgun = レールガン
 	RailgunAccelerator = レールガン加速装置モジュール
 	RailgunAcceleratorDesc = "レールガンのランチャーとローダーの間に設置されるオプションの構成部品。加速装置毎に発射物の速度、ダメージ、貫通の深さを増加させます。\n\n<string id='Parts/RailgunBaseDesc'/>\n\n乗組員はレールガンランチャーまたは加速装置の片方から反対側へ歩いて行くことはできません。"
@@ -2902,18 +3035,29 @@ Parts
 	RailgunLauncher = レールガンランチャーモジュール
 	RailgunLauncherDesc = "全てのレールガンに必要な構成部品。ローダーと0以上の加速器と組み合わせなくてはなりません。\n\n<string id='Parts/RailgunBaseDesc'/>\n\n乗組員はレールガンランチャーまたは加速装置の片方から反対側へ歩いて行くことはできません。"
 	RailgunLauncherIcon = レールガンランチャー
+	RailgunLauncherOverclockDesc = 長いサイズのレールガンの効率が向上し、発射物の速度とダメージが増加しますが、発射前にチャージアップが必要で、ダメージポテンシャルが尽きると貫通しなくなります。発射時に廃熱が発生します。
 	RailgunLoader = レールガンローダーモジュール
 	RailgunLoaderDesc = "全てのレールガンに必要な構成部品。ランチャーと0以上の加速装置と組み合わせなくてはなりません。\n\n<string id='Parts/RailgunBaseDesc'/>"
 	RailgunLoaderIcon = レールガンローダー
+	RailgunOverclock = オーバークロックしたレールガン
 	ReactorLarge = 大型リアクター炉心
 	ReactorLargeDesc = 船の多くのシステムに動力を供給するのに必要なプラズマバッテリーを3倍の生産能力で生産する発電装置。
 	ReactorLargeIcon = 大型リアクター
+	ReactorLargeOverclock = オーバークロックした大型リアクター炉心
+	ReactorLargeOverclockDesc = 最大動力容量と生成率を増加させます。さらに、バッテリーサイズを3倍容量から4倍容量に拡大します。動力生成時に廃熱が発生します。
 	ReactorMed = 中型リアクター炉心
 	ReactorMedDesc = 船の多くのシステムに動力を供給するのに必要なプラズマバッテリーを生産する発電装置。
 	ReactorMedIcon = 中型リアクター
+	ReactorMedOverclock = オーバークロックした中型リアクター炉心
+	ReactorMedOverclockDesc = 最大動力容量と生成率を増加させます。動力生成時に廃熱が発生します。
 	ReactorSmall = 小型リアクター炉心
 	ReactorSmallDesc = 船の多くのシステムに動力を供給するのに必要なプラズマバッテリーを生産する発電装置。
 	ReactorSmallIcon = 小型リアクター
+	ReactorSmallOverclock = オーバークロックした小型リアクター炉心
+	ReactorSmallOverclockDesc = 最大動力容量と生成率を増加させます。動力生成時に廃熱が発生します。
+	ResonanceBeamTurret = 熱共鳴ランス
+	ResonanceBeamTurretDesc = "屋根に設置されたタレットが、純粋な熱エネルギーのビームを発射しますが、大量の廃熱が発生します。\n\n他のルーフタレットまたは「高い」部分から2タイル以内に配置することはできません。"
+	ResonanceBeamTurretIcon = 熱共鳴ランス
 	Rock1x1 = "岩（1x1　柔らかい）"
 	Rock1x1Hard = "岩（1x1　硬い）"
 	Rock2x2 = "岩（2x2　柔らかい）"
@@ -2935,12 +3079,18 @@ Parts
 	SensorArray = センサーアレイ
 	SensorArrayDesc = 船のセンサーの範囲を拡大します（他のセンサーアレイとスタックはしません）
 	SensorArrayIcon = センサー
+	SensorArrayOverclock = オーバークロックしたセンサーアレイ
+	SensorArrayOverclockDesc = センサーアレイの視認範囲を広げます。作動中に熱を発します。
 	ShieldGenLarge = 大型シールド生成装置
 	ShieldGenLargeDesc = "船の外にアーチ型の大型の防御シールドを張り、ほとんどの攻撃をブロックしますが、ディスラプターとEMPに対しては脆弱です。\n\n大型のため、エネルギーシールド船のパーツ越しに放射できないので（構造物を除いて）、大型シールド生成装置は攻撃を受けやすい船の外部に設置する必要があります。"
 	ShieldGenLargeIcon = 大型シールド
+	ShieldGenLargeOverclock = オーバークロックした大型シールド生成装置
+	ShieldGenLargeOverclockDesc = エネルギーシールドが縮小します。カバーするエリアが小さくなりますが、さらに強力になり、ヒットごとに消費される動力が少なくなります。ヒット時に廃熱が発生します。
 	ShieldGenSmall = 小型シールド生成装置
 	ShieldGenSmallDesc = "船の外にアーチ型の小型の防御シールドを張り、ほとんどの攻撃をブロックします。ディスラプターとEMPに対して脆弱。\n\n小型というサイズのため、エネルギーシールドが船そのものを通して張ることができるので、小型シールド生成装置を船の防護された内部に設置することが可能。"
 	ShieldGenSmallIcon = 小型シールド
+	ShieldGenSmallOverclock = オーバークロックした小型シールド生成装置
+	ShieldGenSmallOverclockDesc = "エネルギーシールドの2つのモードから選択できます：\n\n1. エネルギーシールドが拡大し、大きなエリアをカバーします。\n\n2.エネルギーシールドが縮小します。カバーするエリアが小さくなりますが、さらに強力になり、ヒットごとに消費される動力が少なくなります。\n\nヒット時に廃熱が発生します。"
 	Storage2x2 = 貨物室（4）
 	Storage2x2Desc = 種類を問わず資源を4スタック分保管します。
 	Storage2x2Icon = 保管庫（4）
@@ -2972,18 +3122,35 @@ Parts
 	StructureWedge = 構造楔形
 	StructureWedgeDesc = 船をまとめる基礎的な構造的枠組み。構造は全ての部屋および通路の一部として自動的に含まれています。
 	StructureWedgeIcon = 構造楔形
+	ThermalAmplificationPump = ランス増幅ポンプ
+	ThermalAmplificationPumpDesc = 同じ熱パイプシステムに接続された、すべての熱共鳴ランスの熱強度を増加させます。
+	ThermalAmplificationPumpIcon = ランス増幅ポンプ
+	ThermalBattery = 熱バッテリー
+	ThermalBatteryDesc = 大量の熱エネルギーを安全に保管し、接続された熱パイプシステムに追加の蓄熱を提供します。
+	ThermalBatteryIcon = 熱バッテリー
+	ThermalDilationPump = ランス拡張ポンプ
+	ThermalDilationPumpDesc = 同じ熱パイプシステムに接続された、すべての熱共鳴ランスの熱効果範囲を増加させます。その効果を十分に発揮させるためには、ポンプの両方のポートを接続する必要があります。
+	ThermalDilationPumpIcon = ランス拡張ポンプ
 	ThrusterBoost = 強化スラスター
 	ThrusterBoostDesc = 大型スラスターの変種。未処理プラズマを直接燃焼器へ注入し、強力ではあるものの効果時間の短い強化が可能。ブースト中は動力を供給することはできません。
 	ThrusterBoostIcon = 強化スラスター
+	ThrusterBoostOverclock = オーバークロックした強化スラスター
+	ThrusterBoostOverclockDesc = "ランプタイムに影響を与えることなく推力を大幅に増加させ、動力効率を適度に改善しますが、動力の消費量も増加します。発射時に廃熱が発生します。\n\nさらに、ブースト中に強化スラスターに燃料を補給することも可能ですが、バッテリーが増えるごとに廃熱の発生率が高まります。"
 	ThrusterHuge = 巨大スラスター
 	ThrusterHugeDesc = 巨大推進エンジン。大型スラスターの2倍の原動力で船を押し出すことが可能。推進力を全開にするまで長時間が必要です。
 	ThrusterHugeIcon = 巨大スラスター
+	ThrusterHugeOverclock = オーバークロックした巨大スラスター
+	ThrusterHugeOverclockDesc = ランプタイムに影響を与えることなく推力を大幅に増加させ、動力効率を少し改善しますが、動力の消費量も増加します。発射時に廃熱が発生します。
 	ThrusterLarge = 大型スラスター
 	ThrusterLargeDesc = 標準スラスターの2倍の大きさの推進エンジンで、2倍以上の原動力で船を押し出すことが可能。推進力を全開にするまで少し時間が掛かります。
 	ThrusterLargeIcon = 大型スラスター
+	ThrusterLargeOverclock = オーバークロックした大型スラスター
+	ThrusterLargeOverclockDesc = ランプタイムに影響を与えることなく推力を大幅に増加させ、動力効率を適度に改善しますが、動力の消費量も増加します。発射時に廃熱が発生します。
 	ThrusterMed = 標準スラスター
 	ThrusterMedDesc = 標準サイズの推進エンジンで、わずかな原動力で船を押し出すことが可能。推進力を全開にするまで時間が掛かりません。
 	ThrusterMedIcon = 標準スラスター
+	ThrusterMedOverclock = オーバークロックした標準スラスター
+	ThrusterMedOverclockDesc = ランプタイムに影響を与えることなく推力と動力効率を大幅に増加させますが、動力の消費量も増加します。発射時に廃熱が発生します。
 	ThrusterRocket = モジュラーロケットスラスター（MRT）
 	ThrusterRocketBaseDesc = モジュラーロケットスラスター（MRT）は船を超高速まで加速できますがフルパワーまで到達するには長時間を要するため、機動力が損なわれることになります。MRT毎にノズルおよび0以上のオプションのエクステンダーと燃料ポッドが必要です。
 	ThrusterRocketBattery = MRT燃料ポッド
@@ -2993,9 +3160,13 @@ Parts
 	ThrusterRocketExtender = MRTエクステンダーモジュール
 	ThrusterRocketExtenderDesc = "モジュラーロケットスラスターのノズルまたはエクステンダーの背後に配置されるオプションの構成部品。エクステンダー1つにつき最大推進力、動力、使用量、およびフルパワーに到達するまでの時間が増加します。バッテリー燃料の容量は最大2つの燃料ポッドで拡張可能。\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
 	ThrusterRocketExtenderIcon = MRTエクステンダー
+	ThrusterRocketExtenderOverclock = オーバークロックしたMRTエクステンダーモジュール
+	ThrusterRocketExtenderOverclockDesc = ノズルモジュールの基本推力<i>と</i><i>すべて</i>の接続されているエクステンダーモジュールの推力の両方を増加します。発射時に廃熱が発生します。
 	ThrusterRocketNozzle = MRTノズルモジュール
 	ThrusterRocketNozzleDesc = "全てのモジュラーロケットスラスターに必要な構成部品。0以上のエクステンダーモジュールとノズルまたはエクステンダー1つにつき最大2の燃料ポッドと組み合わせ可能。\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
 	ThrusterRocketNozzleIcon = MRTノズル
+	ThrusterRocketNozzleOverclock = オーバークロックしたMRTノズル
+	ThrusterRocketNozzleOverclockDesc = エクステンダーモジュールのランプアップ時間への影響を軽減します。発射時に廃熱が発生します。
 	ThrusterSmall = 小型スラスター
 	ThrusterSmall2Way = 二方向小型スラスター
 	ThrusterSmall2WayDesc = 弱い双方向性の推進エンジンで主に作戦行動に使用されます。小さな発電機を搭載しており、それにより動力をゆっくり再生させることができます。
@@ -3005,9 +3176,13 @@ Parts
 	ThrusterSmall3WayIcon = 三方向小型スラスター
 	ThrusterSmallDesc = 弱い推進エンジンで主に作戦行動に使用されます。小さな発電機を搭載しており、それにより動力をゆっくり再生させることができます。
 	ThrusterSmallIcon = 小型スラスター
+	ThrusterSmallOverclock = オーバークロックした小型スラスター
+	ThrusterSmallOverclockDesc = 発電機の動力生成を大幅に改善しつつ、推力と動力効率を大幅に向上させますが、同時に消費する動力も増加します。発射時に廃熱が発生します。
 	TractorBeamEmitter = トラクタービームエミッター
 	TractorBeamEmitterDesc = 重力ビームを放出し船やその他のオブジェクトを押したり引いたりします。
 	TractorBeamEmitterIcon = トラクタービーム
+	TractorBeamEmitterOverclock = オーバークロックしたトラクタービームエミッター
+	TractorBeamEmitterOverclockDesc = "すべてのモードで重力が大幅に増加しますが、その力は常にターゲットの質量中心に作用するよう制限されます。発射時に廃熱が発生します。\n\nさらに、エミッターが過充電されるようになり、エネルギーが枯渇して、全方位に重力エネルギーの大波が放出され、大量の廃熱も発生します。"
 	WallHole = 穴
 	WallHoleDesc = 爆発で壁に空いた穴
 }
@@ -3240,8 +3415,10 @@ Resource
 	GoldDesc = プロセッサ製造に使用する、採掘可能な希少資源。
 	GoldHardDesc = ""
 	GoldPlural = 金
+	Heat = 熱
 	Hyperium = ハイペリウム
 	HyperiumDesc = 時空を歪ませることができる不思議なクリスタル。ハイパージャンプの燃料として使用。
+	HyperiumHardDesc = ""
 	HyperiumPlural = ハイペリウム
 	IonEnergy = イオンビームエネルギー
 	Iron = 鉄
@@ -3260,6 +3437,9 @@ Resource
 	MissilePartNuke = 核ミサイル部品
 	MissilePartNukeDesc = 核ミサイルの組み立てに使用する部品。
 	MissilePartNukePlural = 核ミサイル部品
+	MissilePartThermal = 熱弾頭ミサイル部品
+	MissilePartThermalDesc = 熱弾頭ミサイルの組み立てに使用する部品。
+	MissilePartThermalPlural = 熱弾頭ミサイル部品
 	NotMineable = <b>乗組員では採掘不可能。採掘レーザーが必要です。</b>
 	Processor = プロセッサ
 	ProcessorDesc = 上級船の一部のパーツの建造に使用する、貴重なコンピューター構成部品。
@@ -3644,7 +3824,7 @@ Settings
 		PaintSelectTool = 選択ツール
 		PaintSelectToolTip = 「選択ツール」が塗装編集画面を開いた時のデフォルトで設定されているツールになります。
 		PartToolTipsDefaultToStats = デフォルトで統計を表示
-		PartToolTipsDefaultToStatsTip = "このオプションをチェックすると、パーツの上にマウスカーソルを当てた時にパーツの説明ではなく統計を表示します。<btn id='Design.ScrollTooltip'/>を長押しすると説明を表示することもできます。"
+		PartToolTipsDefaultToStatsTip = チェックされている場合、マウスカーソルをパーツに合わせると、そのパーツの説明と統計情報が表示されます。
 		RepairAutoDoors = 自動でドアを修理
 		RepairAutoDoorsTip = このオプションをチェックすると、破壊されたパーツを再建する時に、接しているドアも自動的に再建します。
 		RequirePartialRefundConfirmation = 減額された払い戻し金の確認を要求
@@ -4079,25 +4259,49 @@ StatCategories
 	BoostOff = ブースト：オフ
 	BoostOn = ブースト：オン
 	BulletChaingun = チェーンガン弾薬
+	BulletChaingunOverclocked = チェーンガン弾薬（オーバークロック）
 	BulletDeck = デッキ大砲弾薬
+	BulletDeckOverclocked = デッキ大砲弾薬（オーバークロック）
 	BulletLarge = 大型大砲弾薬
+	BulletLargeOverclocked = 大型大砲弾薬（オーバークロック）
 	BulletMed = 標準大砲弾薬
+	BulletMedOverclocked = 標準大砲弾薬（オーバークロック）
 	BulletRailgun = レールガン弾薬
+	BulletRailgunOverclocked = レールガン弾薬（オーバークロック）
 	DisruptorBolt = 妨害装置ボルト
+	DisruptorBoltOverclocked = 妨害装置ボルト（オーバークロック）
+	Firing = 発射
 	Flak = 高射砲
+	FlakOverclocked = 高射砲（オーバークロック）
 	IonBeam = イオンビーム
+	IonBeamOverclocked = イオンビーム（オーバークロック）
 	LaserBoltLarge = ヘビーレーザーボルト
+	LaserBoltLargeOverclocked = ヘビーレーザーボルト（オーバークロック）
 	LaserBoltSmall = レーザーボルト
+	LaserBoltSmallOverclocked = レーザー（オーバークロック）
 	ManipulatorBeam = マニピュレータービーム
 	Mine = 機雷
 	MineShrapnel = 榴散弾
 	MiningBeam = ダブル採掘ビーム
+	MiningBeamOverclocked = ダブル採掘ビーム（オーバークロック）
 	MissileEMP = 電磁パルスミサイル
 	MissileHE = 榴弾ミサイル
 	MissileNuke = 戦術核ミサイル
+	MissileThermal = 熱弾頭ミサイル
+	NotFiring = 発射しない
+	Overclocked = オーバークロック
+	OverclockedBoost = ブースト：オン（オーバークロック）
+	OverclockedDisruption = オーバークロック（破壊効果）
+	OverclockedShrapnel = オーバークロック（榴散弾）
 	PDShot = 拠点防衛弾薬
 	RailgunBuff = レールガンバフ
+	ResonanceBeam = 共鳴ランス
+	ShieldExtended = シールドモード：拡張
+	ShieldLarge = 大型シールド
+	ShieldReinforced = シールドモード：強化
+	ShieldSmall = 小型シールド
 	TractorBeam = トラクタービーム
+	TractorBeamOverload = トラクターオーバーロードパルス
 }
 Stats
 {
@@ -4107,22 +4311,35 @@ Stats
 	AccelerationDelayFmt = "<white>加速遅延：</white> <good>{0:0.0#}</good> <gray>秒</gray>"
 	AccelerationFmt = "<white>加速：</white> <good>{0:0}</good> <gray>メートル/秒²</gray>"
 	AmmoCapacityFmt = "<white>弾薬容量：</white> <good>{0}</good>"
+	AmmoHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good><gray>MJ/装甲（</gray><good>{1:0.##}</good><gray>MJ/秒）</gray>"
 	AmmoPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/弾薬（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	AmmoProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> 弾薬/秒</gray>"
 	AmmoSulfurUsageFmt = "<white>硫黄使用：</white> <good>{0:0.##}</good><gray>/弾薬（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	AmplificationFactorFmt = "<white>増幅係数：</white> <good>{0:0.###}x</good>"
 	ArcFmt = "<white>射撃範囲：</white>　<good>{0:0}°</good>"
+	ArmorPenetrationResistanceFmt = "<white>装甲貫通抵抗：</white> <good>{0:0}%</good>"
+	BaseAmplificationFmt = "<white>増幅（ベース）：</white><good>{0:0.#}%</good>"
+	BaseDilationFmt = "<white>拡張（ベース）：</white> <good>{0:0.#}%</good>"
+	BaseHeatFactorFmt = "<white>基礎熱係数：</white> <good>{0:0.#}% ({1:0.#})</good>"
+	BatteryDeliveredHeatGenerationFmt = "<white>熱生成：</white> バッテリー1個あたり<good>{0:#,0.##}</good><gray>MJ</gray>"
 	BatteryFillTimeFmt = "<white>バッテリー交換時間：</white> <good>{0:0.0#}</good> <gray>秒</gray>"
 	BatterySizeFmt = "<white>バッテリーサイズ：</white> <good>{0:0.0#}</good>"
 	BeamDamageFalloffFmt = "<white>組み合わせ減衰：</white> <good>-{0}%</good><gray>/ビーム</gray>\n  <white>1番ビーム：</white> <good>{1:0}%</good><gray> ダメージ</gray>\n  <white>2番ビーム：</white> <good>{2:0}%</good><gray> ダメージ</gray>\n  <white>3番ビーム：</white> <good>{3:0}%</good><gray> ダメージ</gray>\n  <white>4番ビーム：</white> <good>{4:0}%</good><gray> ダメージ</gray>\n  <white>5番ビーム：</white> <good>{5:0}%</good><gray> ダメージ</gray>\n  ..."
+	BoostHeatFactorBatteryThresholdFmt = "<white>熱上昇しきい値：</white><good>{0:0}</good> <gray>バッテリー使用</gray>"
+	BoostHeatFactorPerBatteryFmt = "<white>熱係数：</white> <good>{0:+0.#;-0.#;0}%</good> <gray>/バッテリー使用</gray>"
+	BoostHeatFactorPerSecondFmt = "<white>熱係数：</white> アイドル時、<good>{0:+0.#;-0.#;0}%</good> <gray>/秒</gray>"
 	BoostedPowerUsageContinuousFmt = "<zero>動力使用：</zero> <good>{0:0.##}</good><gray>/秒（継続）</gray>"
+	BurstFmt = "<white>斉射：</white> <good>{0:0}</good> <gray>発</gray>"
 	CarbonCapacityFmt = "<white>炭素容量：</white> <good>{0}</good>"
 	Coil2CapacityFmt = "<white>ハイパーコイル容量：</white> <good>{0}</good>"
 	Coil2CoilUsageFmt = "<white>コイル使用：</white> <good>{0:0.##}</good><gray>/hコイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	Coil2CopperUsageFmt = "<white>銅使用：</white> <good>{0:0.##}</good><gray>/hコイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	Coil2HeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good><gray>MJ/hコイル（</gray><good>{1:0.##}</good><gray>MJ/秒）</gray>"
 	Coil2PowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/hコイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	Coil2ProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> Hコイル/秒</gray>"
 	CoilCapacityFmt = "<white>コイル容量：</white> <good>{0}</good>"
 	CoilCopperUsageFmt = "<white>銅使用：</white> <good>{0:0.##}</good><gray>/コイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	CoilHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good><gray>MJ/コイル（</gray><good>{1:0.##}</good><gray>MJ/秒）</gray>"
 	CoilPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/コイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	CoilProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> コイル/秒</gray>"
 	CommandPointsProvidedFmt = "<white>コマンドポイント：</white>　<good>＋{0}<image name='command_points' colored='true'/></good>　<gray>（供給）</gray>"
@@ -4138,6 +4355,7 @@ Stats
 	CrewSpeedRevFmt = "<white>乗組員のスピード（後退）</white> <good>{0:0}%</good>"
 	CrewStunDurationFmt = "<white>乗組員気絶時間：</white> <good>{0:0.#}-{1:0.#}</good> <gray>秒</gray>"
 	CrewStunRadiusFmt = "<white>乗組員気絶半径</white> <good>{0:0.#}</good> <gray>メートル</gray>"
+	DamageAreaFalloffFmt = "<white>ダメージ落下指数：</white> <good>{0:0.##}</good>"
 	DamageAreaFmt = "<white>ダメージ範囲：</white>　<good>{0:0.#}</good><gray>メートル半径</gray>"
 	DamageContinuousAsteroidsFmt = "<white>アステロイドへのダメージ</white> <good>{0:n0}</good><gray>/秒</gray>"
 	DamageContinuousEnemiesFmt = "<white>敵へのダメージ：</white>　<good>{0:n0}</good><gray>/秒</gray>"
@@ -4145,37 +4363,77 @@ Stats
 	DamageContinuousFmt = "<white>ダメージ：</white> <good>{0:n0}</good><gray>/秒</gray>"
 	DamageContinuousJunkFmt = "<white>廃船へのダメージ：</white> <good>{0:n0}</good><gray>/秒</gray>"
 	DamageContinuousNearFmt = "<white>ダメージ（近接）：</white> <good>{0:n0}</good><gray>/秒</gray>"
+	DamageContinuousShieldsFmt = "<white>シールドへのダメージ：</white> <good>{0:n0}</good><gray>/秒</gray>"
 	DamageFmt = "<white>ダメージ：</white> <good>{0:n0}</good><gray>/発（</gray><good>{1:n0}</good><gray>/秒）</gray>"
 	DamageRangeFmt = "<white>ダメージ：</white> <good>{0:n0}</good><gray>/発（</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/秒）</gray>"
 	DetonationRangeFmt = "<white>爆轟範囲：</white> <good>x{0:0}</good> <gray>メートル</gray>"
 	DiamondCapacityFmt = "<white>ダイヤモンド容量：</white> <good>{0}</good>"
 	DiamondCarbonUsageFmt = "<white>炭素使用：</white> <good>{0:0.##}</good><gray>/ダイヤモンド（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
-	DiamondPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/ダイヤモンド（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	DiamondPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>MJ/ダイヤモンド（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	DiamondProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> ダイヤモンド/秒</gray>"
+	DilationFactorFmt = "<white>拡張係数：</white> <good>{0:0.###}x</good>"
+	DilationHeatSpreadDistanceFmt = "<white>熱拡散距離：</white> <good>{0:0.##}</good><gray>メーター * 拡張</gray>"
 	EMPMissileCapacityFmt = "<white>EMPミサイル容量：</white>　<good>{0}</good>"
 	EMPResistFmt = "<white>EMP耐性：</white> <good>-{0:0.##}</good> <gray>動力消耗</gray>"
+	EMPResistPercentageFmt = "<white>EMP耐性：</white><good>{0:0.#}%</good>"
+	EffectDurationFmt = "<white>効果期間：</white> <good>{0:0.##}</good> <gray>秒</gray>"
 	EnrichedUraniumCapacityFmt = "<white>濃縮ウラン容量：</white> <good>{0}</good>"
+	EnrichedUraniumHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good><gray>MJ/eウラン（</gray><good>{1:0.##}</good><gray>MJ/秒）</gray>"
 	EnrichedUraniumPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/eウラン（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	EnrichedUraniumProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> eウラン/秒</gray>"
 	EnrichedUraniumUraniumUsageFmt = "<white>ウラン使用：</white> <good>{0:0.##}</good><gray>/eウラン（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	FactoryBuffFmt = "<white>隣接工場：</white> <good>+{0:0}%</good><gray>生産率</gray>"
 	FireChanceFmt = "<white>出火：</white>　<good>{0:0}％</good><gray>　確率/タイル</gray>"
+	FireDelayFmt = "<white>発射遅延：</white> <good>{0:0.##}</good> <gray>秒</gray>"
+	FireIntervalFmt = "<white>発射間隔：</white> <good>{0:0.##}</good> <gray>秒</gray>"
+	FireSizeFmt = "<white>開始射撃規模：</white> <good>{0:0}%</good>"
+	FiringHeatGenerationFmt = "<white>発射熱生成：</white> <good>{0:#,0.##}</good><gray>MJ/秒</gray>"
 	FtlMaxEfficiencyRangeFmt = "<white>最適効率：</white>　<good>-{0:0.##}</good><gray> メートル</gray>"
 	FtlMinEfficiencyRangeFmt = "<white>最低効率：</white>　<good>-{0:0.##}</good><gray> メートル</gray>"
 	GoldCapacityFmt = "<white>金容量：</white> <good>{0}</good>"
 	HEMissileCapacityFmt = "<white>高性能爆薬ミサイル容量：</white> <good>{0}</good>"
 	HPFmt = "<white>ヒットポイント：</white> <good>{0:n0}</good>"
+	HeatAbsorptionFmt = "<white>熱吸収：</white> <good>{0:0.#}</good><gray>MJ/秒</gray>"
+	HeatAbsorptionInefficiencyFmt = "<white>吸収の非効率性：</white> <good>+{0:0.#}%</good> <gray>熱</gray>"
+	HeatAbsorptionRadiusFmt = "<white>吸収半径：</white> <good>{0:0.#}</good> <gray>メーター</gray>"
+	HeatAmplificationExponentFmt = "<white>熱プール増幅指数：</white> <good>{0.##}</good>"
+	HeatCapacityFmt = "<white>熱容量：</white> <good>{0:#,0.##}</good><gray>MJ</gray>"
+	HeatDissipationFmt = "<white>放熱：</white> <good>{0:#,0.##}</good><gray>MJ/秒</gray>"
+	HeatFireChanceFmt = "<white>熱しきい値発射率：</white> <good>{0:0.##%}</good>"
+	HeatFireThresholdFmt = "<white>熱発射のしきい値</white> <good>{0:#,0.#}</good><gray>MJ</gray>"
+	HeatGenerationFactorFmt = "<white>熱生成係数：</white> <good>{0:0.###}x</good>"
+	HeatGenerationFmt = "<white>熱生成：</white> <good>{0:#,0.##}</good><gray>MJ/秒</gray>"
+	HeatGenerationPerPartFmt = "<white>熱生成：</white> <good>{0:#,0.##}</good><gray>MJ/秒/パーツ</gray>"
+	HeatPerDamageFmt = "<white>熱生成：</white> <good>{0:0.##}</good><gray>MJ/ダメージ</gray>"
+	HeatPerRestockFmt = "<white>熱生成：</white> <good>{0:0.#}</good><gray>MJ/補充</gray>"
+	HeatPerShotFmt = "<white>熱生成：</white> <good>{0:0.#}</good><gray>MJ/発</gray>"
+	HeatPerTileContinuousFmt = "<white>熱を加える：</white><good>{0:n1}</good><gray>MJ/タイル/秒</gray>"
+	HeatSpreadDistanceFmt = "<white>熱拡散距離：</white> <good>{0:0.##}</good><gray>メーター</gray>"
+	HeatTransferInefficiencyFmt = "<white>熱伝達の非効率性：</white> <good>+{0:0.#}%</good> <gray>熱</gray>"
+	HitShieldHeatFactorFmt = "<white>ヒットシールド加熱：</white> <good>{0:0.##}%</good>"
 	HyperiumCapacityFmt = "<white>ハイペリウム容量：</white> <good>{0}</good>"
+	IonLightningIntervalFmt = "<white>雷の間隔：</white><good>{0:0.#}</good> <gray>秒（ビームの強度によって減少）</gray>"
 	IronCapacityFmt = "<white>鉄容量：</white> <good>{0}</good>"
+	LightningChainChanceFmt = "<white>雷の連鎖率：</white><gray>落雷ごとに</gray><good>{0:0.#}%</good>"
+	LightningChainStrikeCountRangeFmt = "<white>落雷の連鎖：</white> <good>{0}-{1}</good>"
+	LightningChanceFmt = "<white>雷の確率：</white> <good>{0:0.#}%</good>"
+	LightningDamageFmt = "<white>雷ダメージ：</white><gray>落雷ごとに</gray><good>{0:0}</good>"
+	LightningMaxChainFmt = "<white>雷の最大連鎖：</white><good>{0}</good> <gray>連続落雷</gray>"
+	LightningRangeFmt = "<white>雷の範囲：</white> <good>{0:0.#}</good> <gray>メートル</gray>"
+	LightningStrikeCountRangeFmt = "<white>落雷：</white> <good>{0}-{1}</good>"
 	MaxDamageFmt = "<white>最大ダメージ：</white> <good>{0:n0}</good><gray>/発（</gray><good>{1:n0}</good><gray>/秒）</gray>"
+	MaxDamageRangeFmt = "<white>最大ダメージ：</white> <good>{0:n0}</good><gray>/発 （</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/秒）</gray>"
 	MineAmmoUsageFmt = "<white>弾薬使用：</white> <good>{0:0.##}</good><gray>/機雷 (</gray><good>{1:0.##}</good><gray>/秒)</gray>"
 	MineCapacityFmt = "<white>機雷容量：</white> <good>{0}</good>"
+	MineHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good><gray>MJ/機雷（</gray><good>{1:0.##}</good><gray>MJ/秒）</gray>"
 	MineIronUsageFmt = "<white>鉄使用：</white> <good>{0:0.##}</good><gray>/採掘 (</gray><good>{1:0.##}</good><gray>/秒)</gray>"
 	MinePartCapacityFmt = "<white>容量：</white> <good>{0}</good><gray> パーツ（</gray><good>{1:0.##}</good><gray> 機雷）</gray>"
 	MinePartsFmt = "<white>材料：</white>　<good>{0}</good><gray>　パーツ/機雷</gray>"
 	MinePowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/機雷 (</gray><good>{1:0.##}</good><gray>/秒)</gray>"
 	MineProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray>　機雷/秒</gray>"
 	MissileCopperUsageFmt = "<white>銅使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	MissileHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good><gray>MJ/ミサイル（</gray><good>{1:0.##}</good><gray>MJ/秒）</gray>"
+	MissileHeatUsageFmt = "<white>熱使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MissileIronUsageFmt = "<white>鉄使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MissileLauncherNotes = <gray>軍需品の統計については、各軍需品の種類に応じた工場を参照してください。</gray>
 	MissilePartCapacityFmt = "<white>容量：</white> <good>{0}</good><gray> パーツ（</gray><good>{1:0.##}</good><gray> ミサイル）</gray>"
@@ -4185,38 +4443,57 @@ Stats
 	MissileSulfurUsageFmt = "<white>硫黄使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MissileUraniumUsageFmt = "<white>ウラン使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	NukeMissileCapacityFmt = "<white>核容量：</white> <good>{0}</good>"
+	OverclockTransitionTimeFmt = "<white>オーバークロック移行時間：</white> <good>{0:0.#}</good> <gray>秒</gray>"
+	PelletSpreadFmt = "<white>発射体分散：</white> <gray>+/-</gray> <good>{0:0.#}°</good>"
+	PelletsFmt = "<white>発射物：</white> <good>{0:0}</good> <gray>弾丸/発</gray>"
 	PenResistFmt = "<white>貫通耐性：</white>　<good>-{0:0.##}</good><gray>メートル</gray>"
+	PenetrationDamagePoolFmt = "<white>貫通：</white> <good>{0:0.##}</good> <gray>メートル（最大</gray><good>{1:n0}</good><gray>ダメージ）</gray>"
 	PenetrationFmt = "<white>貫通：</white>　<good>-{0:0.##}</good><gray>メートル</gray>"
 	PowerCapacityFmt = "<white>動力容量：</white> <good>{0:0.##}</good>"
+	PowerDistributionEfficiencyFmt = "<white>動力分配効率：</white> <good>{0:0.#}%</good>"
 	PowerDrainAreaFmt = "<white>動力消耗範囲：</white>　<good>{0:0.#}</good><gray>メートル半径</gray>"
 	PowerDrainFmt = "<white>ヒット時の動力消耗：</white> <good>{0:0.##}</good><gray>/発（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	PowerDrainOverTimeFmt = "<white>動力消耗量：</white> <good>{0:0}</good> <gray>合計（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	PowerGenerationFmt = "<white>動力生成：</white> <good>{0:0.###}</good><gray>/秒</gray>"
+	PowerHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good><gray>MJ/動力（</gray><good>{1:0.##}</good><gray>MJ/秒）</gray>"
 	PowerUsageContinuousFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/秒</gray>"
 	PowerUsageContinuousMinutesFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/分</gray>"
+	PowerUsageFactorFmt = "<white>動力使用係数：</white> <good>{0:0.###}x</good>"
 	ProcessorCapacityFmt = "<white>プロセッサ容量：</white>　<good>{0}</good>"
 	ProcessorCoilUsageFmt = "<white>コイル使用：</white> <good>{0:0.##}</good><gray>/プロセッサ（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	ProcessorGoldUsageFmt = "<white>金使用：</white> <good>{0:0.##}</good><gray>/プロセッサ（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	ProcessorHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good><gray>MJ/プロセッサ（</gray><good>{1:0.##}</good><gray>MJ/秒）</gray>"
 	ProcessorPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/プロセッサ（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	ProcessorProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> プロセッサ/秒</gray>"
+	PumpPowerUsageFactorFmt = "<white>ポンプ動力使用係数：</white> <good>{0:0.###}x</good>"
 	ROFFmt = "<white>発射速度：</white>　<good>{0:0.##}</good>　<gray>発/秒</gray>"
 	ROFRangeFmt = "<white>発射速度：</white>　<good>{0:0.##}</good><white> - </white><good>{1:0.##}</good><gray>発/秒</gray>"
 	RadarRangeFmt = "<white>センサー範囲（レーダー）：</white> <good>{0:0}</good><gray> メートル</gray>"
+	RailgunAcceleratorChargeTimeFmt = "<white>チャージ時間：</white> <good>+{0:0.##}</good> <gray>秒/加速装置</gray>"
+	RailgunBaseChargeTimeFmt = "<white>基本チャージ時間：</white> <good>{0:0.##}</good> <gray>秒</gray>"
+	RailgunBuffExponentOverclockFmt = "<white>レールガンバフ指数：</white> <good>{0:0.##}</good> <gray>(<good>+{1:0.##}</good>)</gray>"
 	RailgunBuffFmt = "<gray>レールガンダメージ、貫通、射程、発射物の速度を上昇（加速装置1台につき）：</gray>\n　<TransparentWhite>0</TransparentWhite><white>1: </white><good>+{0:000}%</good>   <white>11: </white><good>+{10:000}%</good>   <white>21: </white><good>+{20:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>2: </white><good>+{1:000}%</good>   <white>12: </white><good>+{11:000}%</good>   <white>22: </white><good>+{21:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>3: </white><good>+{2:000}%</good>   <white>13: </white><good>+{12:000}%</good>   <white>23: </white><good>+{22:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>4: </white><good>+{3:000}%</good>   <white>14: </white><good>+{13:000}%</good>   <white>24: </white><good>+{23:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>5: </white><good>+{4:000}%</good>   <white>15: </white><good>+{14:000}%</good>   <white>25: </white><good>+{24:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>6: </white><good>+{5:000}%</good>   <white>16: </white><good>+{15:000}%</good>   <white>26: </white><good>+{25:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>7: </white><good>+{6:000}%</good>   <white>17: </white><good>+{16:000}%</good>   <white>27: </white><good>+{26:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>8: </white><good>+{7:000}%</good>   <white>18: </white><good>+{17:000}%</good>   <white>28: </white><good>+{27:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>9: </white><good>+{8:000}%</good>   <white>19: </white><good>+{18:000}%</good>   <white>29: </white><good>+{28:000}%</good>\n  <white>10: </white><good>+{9:000}%</good>   <white>20: </white><good>+{19:000}%</good>   <white>30: </white><good>+{29:000}%</good>"
 	RailgunNotes = <gray>注意：ダメージ、貫通、射程、発射物速度、動力消費は各レールガン加速装置1台追加するごとに上昇します。</gray>
+	RailgunOverclockHeatOnShotFmt = "<white>熱生成：</white> <good>{0:0.#}</good><gray>MJ/パーツ/発</gray>"
+	RampUpSpeedFactorFmt = "<white>ランプタイム速度係数：</white> <good>{0:0.#}%</good>"
 	RangeFmt = "<white>射程：</white> <good>x{0:0}</good> <gray>メートル</gray>"
 	RangeLimitedFmt = "<white>射程：</white> <good>x{0:0}</good> <gray>メートル（最大</gray>　<good>{1:0}</good><gray>メートル）</gray>"
+	ResonanceHeatPoolFmt = "<white>熱を加える（プール）：</white> <good>{0:n1}</good><gray>MJ/秒 * 増幅^</gray><good>{1:0.##}</good>"
+	ResonanceTurretHeatGenerationFmt = "<white>熱生成:</white> <good>{0:0.#}</good><gray>MJ/秒 + ポンプ</gray>"
 	Resources = "<white>資源：</white> "
-	RocketNotes = <gray>注意：推進力、強化時間、動力消費はエクステンダーモジュールを1つ追加するごとに上昇します。</gray>
+	RocketNotes = <gray>注意：推進、ランプアップ時間、動力使用、熱生成は、各追加のエクステンダーモジュールで増加します。</gray>
 	SalvoFmt = "<white>斉射：</white> <good>{0:0.##}</good><gray>/発（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	SeparationRangeFmt = "<white>間隔：</white>　<good>-{0:0}</good><gray>メートル</gray>"
 	ShellDamageResistFmt = "<white>シェルダメージ耐性：</white>　<good>{0}％</good>"
 	ShellPenResistFmt = "<white>シェル貫通耐性：</white> <good>-{0}</good> <gray>メートル</gray>"
 	ShieldArcFmt = "<white>シールド範囲：</white> <good>{0:0}°</good>"
 	ShieldDamageFmt = "<white>シールドへのダメージ</white> <good>{0:n0}</good><gray>/発（</gray><good>{1:n0}</good><gray>/秒）</gray>"
+	ShieldDamageOverTimeFmt = "<white>シールドへのダメージ：</white> <good>{0:0}</good> <gray>合計（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	ShieldDamagePowerCostFmt = "<white>シールドダメージ動力消費量：</white> <good>{0:+0.#;-0.#}%</good> <gray>ベース</gray>, <good>{1:+0.#;-0.#}%</good><gray> * 増幅n</gray>, <good>{2:+0.#;-0.#}%</good><gray> * 拡張</gray>"
 	ShieldDistFmt = "<white>シールド距離：</white>　<good>-{0}</good><gray> メートル</gray>"
 	ShieldHPFmt = "<white>シールド強度：</white> <good>{0:n0}</good>"
 	ShieldPenResistFmt = "<white>シールド貫通耐性：</white> <good>-{0}</good> <gray>メートル</gray>"
-	ShieldPenetrationFmt = "<white>シールド貫通：</white>　<good>-{0:.##}</good><gray>シールド</gray>"
+	ShieldPenetrationFmt = "<white>シールド貫通：</white> <good>{0:0.##}</good> <gray>メートル相当</gray>"
 	ShotAmmoUsageFmt = "<white>弾薬使用：</white> <good>{0:0.##}</good><gray>/発（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	ShotAmmoUsageRangeFmt = "<white>弾薬使用：</white> <good>{0:0.##}</good><gray>/発（</gray><good>{1:0.##}</good><white>- </white><good>{2:0.##}</good><gray>秒）</gray>"
 	ShotDamageFmt = "<white>発砲へのダメージ</white> <good>{0:n0}</good><gray>/発（</gray><good>{1:n0}</good><gray>/秒）</gray>"
@@ -4226,6 +4503,11 @@ Stats
 	ShotLaunchSpeedFmt = "<white>発射速度：</white> <good>{0:0}</good> <gray>メートル/秒</gray>"
 	ShotPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.###}</good><gray>/発（</gray><good>{1:0.###}</good><gray>/秒）</gray>"
 	ShotSpeedFmt = "<white>速度：</white> <good>{0:0}</good> <gray>メートル/秒</gray>"
+	ShrapnelArcFmt = "<white>榴散弾範囲：</white> <good>{0:0}°</good>"
+	ShrapnelFieldBulletDamageFmt = "<white>榴散弾フィールド弾丸ダメージ：</white> <good>{0:0}</good><gray>/メートル</gray>"
+	ShrapnelFieldDamagePoolFmt = "<white>榴散弾フィールドダメージプール：</white> <good>{0:0}</good>"
+	ShrapnelFieldLifetimeFmt = "<white>榴散弾フィールド期間：</white> <good>{0:0.#}</good> <gray>秒</gray>"
+	ShrapnelFieldRadiusFmt = "<white>榴散弾フィールド半径：</white> <good>{0:0.#}</good> <gray>メートル</gray>"
 	ShrapnelFmt = "<white>榴散弾：</white> <good>{0}</good>"
 	SightRangeFmt = "<white>センサー範囲（視覚）：</white> <good>{0:0}</good><gray> メートル</gray>"
 	SimpleDamageFmt = "<white>ダメージ：</white> <good>{0:n0}</good>"
@@ -4233,24 +4515,44 @@ Stats
 	SizeFmt = "<white>サイズ：</white> <good>{0}x{1}</good> <gray>メートル</gray>"
 	SpreadFmt = "<white>ランダム分散：</white>　<gray>+/-</gray> <good>{0:0.#}°</good>"
 	SteelCapacityFmt = "<white>鋼鉄容量：</white> <good>{0}</good>"
+	SteelHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good><gray>MJ/鋼鉄（</gray><good>{1:0.##}</good><gray>MJ/秒）</gray>"
 	SteelIronUsageFmt = "<white>鉄使用：</white> <good>{0:0.##}</good><gray>/鋼鉄（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	SteelPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/鋼鉄（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	SteelProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> 鋼鉄/秒</gray>"
+	StorageHeatGenerationFmt = "<white>熱生成：:</white> <good>{0:#,0.##}</good><gray>MJ/秒（100%）</gray>"
 	StorageTilesFmt = "<white>保管庫：</white>　<good>{0}</good>　<gray>スタック</gray>"
+	StrengthAtMaxRangeFmt = "<white>最大範囲での強さ：</white> <good>{0:0.#}%</good>"
 	StretchRangeFmt = "<white>伸縮範囲：</white> <good>x{0:0}</good> <gray>メートル</gray>"
 	SulfurCapacityFmt = "<white>硫黄容量：</white> <good>{0}</good>"
+	ThermalAmplificationFmt = "<white>熱増幅：</white> <good>{0:+0.#;-0.#}%</good>"
+	ThermalDilationFmt = "<white>熱拡張：</white> <good>{0:+0.#;-0.#}%</good>"
+	ThermalDilationPumpNotes = <gray>注意：接続されたポートが1つの場合、拡張、熱生成、動力使用は半分になります。</gray>
+	ThermalMissileCapacityFmt = "<white>熱ミサイル容量：</white> <good>{0}</good>"
+	ThermalPumpMultiEfficiencyFmt = "<white>マルチユーザー効率：</white> <good>{0:0.#}%</good><gray>^追加ユーザー</gray>"
+	ThrusterBonusForceFmt = "<white>スラスターボーナスベースフォース：</white> <good>+{0:0.##}</good> <gray>kN</gray>"
 	ThrusterBuffFmt = "<white>スラスターのバフ：</white>　<good>+{0:0}%</good><gray>推進＆使用動力</gray>"
-	ThrusterForceFmt = "<white>推進力：</white> <good>{0:#,0.#}</good><gray> キロニュートン</gray>"
+	ThrusterForceFmt = "<white>推進：</white> <good>{0:#,0.#}</good><gray> kN</gray>"
+	ThrusterHeatGenerationFmt = "<white>熱生成：</white> <good>{0:#,0.##}</good><gray>MJ/秒（100%推進）</gray>"
 	ThrusterPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/秒（100％推進）</gray>"
+	ThrusterPowerUsageRampFmt = "<white>動力使用：</white> <good>{0:0.##}-{1:0.##}</good><gray>/秒（100%推進）</gray>"
+	ThrusterPowerUsageRampTimeFmt = "<white>動力使用ランプタイム：</white> <good>{0:0.##}</good> <gray>秒</gray>"
 	ThrusterRampDownFmt = "<white>弱化時間：</white> <good>{0:0.##}</good> <gray>秒</gray>"
+	ThrusterRampExponentFmt = "<white>ランプタイム指数：</white> <good>{0:0.##}</good>"
 	ThrusterRampUpFmt = "<white>強化時間：</white> <good>{0:0.##}</good> <gray>　秒</gray>"
 	TractorBeamNotes = <gray>注：上記の動力と電力の使用値は理論上の最大値です。実際の値はターゲットの距離に応じて変わります。
-	TractorForceFmt = "<white>牽引力：</white> <good>{0:#,0.#}</good><gray> キロニュートン</gray>"
+	TractorForceFmt = "<white>トラクターフォース：</white> <good>{0:#,0.#}</good><gray> kN</gray>"
+	TractorOverloadChargeTimeFmt = "<white>過負荷チャージ時間：</white> <good>{0:0.##}</good><gray>秒</gray>"
+	TractorOverloadForceFmt = "<white>過負荷トラクターフォース：</white> <good>{0:#,0.#}</good><gray> kN</gray>"
+	TractorOverloadHeatGenerationFmt = "<white>過負荷熱生成：</white> <good>{0:0.#}</good><gray>MJ</gray>"
+	TractorOverloadMinPowerFmt = "<white>過負荷最少動力：</white> <good>{0:0.##}%</good><gray>保管済み</gray>"
+	TractorOverloadRadiusFmt = "<white>過負荷半径：</white> <good>{0:#,0.#}</good><gray>メートル</gray>"
 	TristeelCapacityFmt = "<white>3重鋼鉄容量：</white>　<good>{0}</good>"
+	TristeelHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good><gray>MJ/3重鋼鉄（</gray><good>{1:0.##}</good><gray>MJ/秒）</gray>"
 	TristeelPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/3重鋼鉄（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	TristeelProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> 3重鋼鉄/秒</gray>"
 	TristeelTritaniumUsageFmt = "<white>トリタニウム使用：</white> <good>{0:0.##}</good><gray>/トリ鋼鉄（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	TritaniumCapacityFmt = "<white>トリタニウム容量：</white>　<good>{0}</good>"
+	TurretExtraHeatGenerationFmt = "<white>タレット熱生成：</white> <good>{0:+0.#;-0.#}</good><gray>MJ/秒</gray>"
 	TurretPenResistFmt = "<white>タレット貫通耐性：</white>　<good>-{0}</good><gray>メートル</gray>"
 	TurretSpeedFmt = "<white>タレット速度：</white> <good>{0:0}°</good><gray>/秒</gray>"
 	UraniumCapacityFmt = "<white>ウラン容量：</white> <good>{0}</good>"

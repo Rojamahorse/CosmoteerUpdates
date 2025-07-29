@@ -532,10 +532,6 @@ PartStats
 		FormatKey = "Stats/HeatPerRestockFmt"
 	}
 	{
-		ID = FiringHeatGeneration
-		FormatKey = "Stats/FiringHeatGenerationFmt"
-	}
-	{
 		ID = HeatPerDamage
 		FormatKey = "Stats/HeatPerDamageFmt"
 	}

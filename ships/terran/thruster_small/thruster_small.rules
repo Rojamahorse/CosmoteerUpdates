@@ -171,32 +171,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
-		Overclock_EngineHeatCollectionBuffToggle
-		{
-			Type = BuffToggle
-			BuffType = EngineHeatCollection
-		}
-		ForceOverclockTrigger
-		{
-			Type = ToggleTrigger
-			Toggle = Overclock_EngineHeatCollectionBuffToggle
-			AllowOperationalBypass = true
-			TriggerWhenOff = false
-		}
-
-		// Overriding to allow forcing on / locking
-		OverclockModeToggle : ^/0/OverclockModeToggle
-		{
-			AutoOnTrigger = ForceOverclockTrigger
-			OperationalToggle = Overclock_EngineHeatCollectionBuffToggle
-			InvertOperationalToggle = true
-		}
-
-		OverheatEffects : ^/0/OverheatEffects
-		{
-			Location = [0.5, 0.5]
-		}
-
 		Overclock_CombinedHeatInput
 		{
 			Type = MultiResourceStorage

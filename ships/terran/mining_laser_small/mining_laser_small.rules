@@ -901,7 +901,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				NameKey = "StatCategories/MiningBeamOverclocked"
 				Stats
 				{
-					FiringHeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
+					HeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
 					DamageArea = (&~/OVERCLOCK/BEAM/RADIUS)
 					DamageAreaFalloff = (&~/OVERCLOCK/BEAM/RADIUS_FALLOFF)
 					DamageContinuousEnemies = (&~/Part/StatsByCategory/0/Stats/DamageContinuousEnemies) * (&~/OVERCLOCK/BEAM/DAMAGE_FACTOR)

@@ -1247,7 +1247,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Stats
 		{
 			TractorForce = (&~/Part/StatsByCategory/0/Stats/TractorForce) * (&~/OVERCLOCK/FORCE_FACTOR)
-			FiringHeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
+			HeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
 		}
 		Features
 		[

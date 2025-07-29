@@ -18,7 +18,7 @@ Part : <../base_part_terran.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	MaxHealth = 12500
-	TypeCategories = [weapon, uses_power, is_crewed, heat_resistant]
+	TypeCategories = [weapon, uses_power, is_crewed, heat_management]
 	SignificanceToggle = ScorchedToggle
 	ReceivableBuffs : ^/0/ReceivableBuffs [ThermalIntensity, ThermalRadius, ThermalActivity]
 	Flammable = false

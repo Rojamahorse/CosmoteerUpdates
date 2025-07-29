@@ -1,0 +1,18 @@
+ID = overclocking
+TitleKey = "Tutorials/Overclocking/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.PartInHandHasToggleMode('thermal_overclock', 1) or (game.HasAnyTechUnlockedInCategory('overclock') and game.Fame > 0)"
+Entries
+[
+	{
+		Image { Texture { File="overclock_toggle.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Overclocking/Overview1"
+	}
+	{
+		TextKey = "Tutorials/Overclocking/Overview2"
+	}
+	{
+		Image { Texture { File="thermal_group.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Overclocking/HeatManagement"
+	}
+]

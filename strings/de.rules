@@ -221,6 +221,7 @@ BuildBattleModeConfig: PvpModeConfig
 BuildBox
 {
 	
+	AmplificationBuffPercentageFmt = "<b><good>Verstärkung: {0:0} %</good></b>"
 	BlueprintsInvalid = "UNGÜLTIGE BAUPLÄNE"
 	BrushDisabledTip = "Das ausgewählte Teil oder Werkzeug unterstützt keine unterschiedlichen Formen und Größen von „Pinseln“."
 	BrushHotkeyFmt = "Schnelltaste: <b>{0}</b>"
@@ -255,6 +256,7 @@ BuildBox
 	CutTip = "Schneide die ausgewählten Teile aus (kopieren und entfernen).\n\nSchnelltaste: <btn id='Design.CutSelected'/>"
 	DeletePartTip = "Löscht das Teil in deiner Hand.\n\nSchnelltaste: <btn id='Design.Delete'/>"
 	DeleteTip = "Lösche die ausgewählten Teile.\n\nSchnelltaste: <btn id='Design.Delete'/> (oder mit <btn id='Design.DeleteDoors'/> nur die Türen löschen)"
+	DilationBuffPercentageFmt = "<b><good>Ausdehnung: {0:0} %</good></b>"
 	Discard = "Modifikationen verwerfen"
 	DiscardModifications = "Modifikationen verwerfen"
 	DiscardTip = "Verwirft alle an den Bauplänen des Schiffs vorgenommenen Änderungen, die noch nicht umgesetzt wurden."
@@ -267,7 +269,14 @@ BuildBox
 	ForgetDestroyedTip = "Vergisst die Teile, die zerstört, aber noch nicht wiederaufgebaut wurden."
 	FtlEfficiency = Hyperantriebseffizienz
 	GrabTip = "<b>Greifen-Werkzeug</b>\n\nWenn dieses Werkzeug ausgewählt ist, kannst du ein Schiffsteil greifen und in die Hand nehmen, indem du auf dieses Teil klickst, um es woanders zu platzieren. Halte <btn id='Game.AppendSelection'/> gedrückt, um das Teil zu duplizieren, anstatt es zu bewegen.\n\nMit <btn id='General.UIAltClick'/> wählst du den Teiletyp aus, als ob du auf dessen Schaltfläche geklickt hättest.\n\nSchnelltaste: <btn id='Design.GrabTool'/>"
-	HasDoorAccess = "<good>✓ Hat Türzugang</good>"
+	HasDoorAccess = "<good>✘ Hat Türzugang</good>"
+	HeatCapacity = Wärmekapazität
+	HeatCapacityFmt = "{0:#,0.#;;0}<gray>MJ</gray>"
+	HeatDissipation = Wärmeableitung
+	HeatDissipationFmt = "{0:#,0}<gray>MJ/Sek.</gray>"
+	HeatGeneration = Wärmeerzeugung
+	HeatGenerationFmt = "{0:#,0}<gray>MJ/Sek.</gray>"
+	HideSecondaryTooltip = "<gray>Drücke <btn id='Design.ToggleSecondaryTooltip'/>, um die Übertaktungsinfo auszublenden.</gray>"
 	HireCrewFmt = " Heuere {0} Crewmitglieder an: {1}"
 	HireCrewTip = "Heuere Crewmitglieder an, um leere Betten zu füllen. Wenn du mehr Crewmitglieder als Betten hast, werden die überschüssigen Crewmitglieder gefeuert."
 	ImportPng = "Form von PNG laden"
@@ -350,12 +359,28 @@ BuildBox
 	SaveDiscardModifications = "Speichern & verwerfen"
 	SaveSelected = "Ausgewählte Teile speichern"
 	SaveSelectedTip = "Speichert die ausgewählten Teile als Schiffsdesign."
+	ScrollTooltip = "<gray>Halte <btn id='Design.ScrollTooltip'/>, um zu scrollen.</gray>"
 	SelectTip = "<b>Auswahlwerkzeug</b>\n\nWenn dieses Werkzeug ausgewählt ist, kannst du eine Box um die Teile ziehen, die du kopieren, ausschneiden, einfügen, spiegeln, drehen oder entfernen möchtest.\n\nSchnelltaste: <btn id='Design.SelectionTool'/>\n\nHalte <btn id='Design.ContiguousSelectionMode'/> gedrückt, um die „Angrenzender Zauberstab“-Auswahl zu nutzen."
 	ShowPartStats = "<gray>Halte <btn id='Design.ScrollTooltip'/>, um die Statistik anzuzeigen.</gray>"
 	ShowResourceDeliveries = "Ressourcenlieferungen anzeigen"
 	ShowResourceDeliveriesTip = "Bei Auswahl der Option werden geplante Lieferungen von Bauressourcen angezeigt."
+	ShowSecondaryTooltip = "<gray>Drücke <btn id='Design.ToggleSecondaryTooltip'/>, um die Übertaktungsinfo anzuzeigen.</gray>"
 	StatBarTipFmt = ""
 	StatBarTipIdealFmt = "<b>{0}</b>\n<good>Empfohlen: <b>{1}</b></good>"
+	Stats
+	{
+		
+		CenterOfMassTip = <b>Massenmittelpunkt</b>
+		CommandPointsToggleTip = <b>Kommandopunkte</b>
+		CoordinatesToggleTip = <b>Cursor-Koordinaten</b>
+		CrewToggleTip = <b>Crew/Betten</b>
+		DirectionChooserToggleTip = <b>Flugrichtungswahl</b>
+		FtlToggleTip = <b>Hyperantriebseffizienz</b>
+		MassToggleTip = <b>Schiffsmasse</b>
+		PowerToggleTip = <b>Energie</b>
+		ThermalToggleTip = <b>Wärmewerte</b>
+		ValueToggleTip = <b>Schiffswert</b>
+	}
 	Title = Schiffseditor
 	TotalBlueprintValueFmt = "Schiffsdesign-Wert:\n<b>{0}</b>"
 	TotalMassFmt = "Masse:\n<b>{0:0.0} Tonnen</b>"
@@ -891,7 +916,7 @@ Dialogue
 		DeclineAISurrender = "[Verbindung beenden]"
 		DeclinePlayerSurrender = <i>„Niemals“</i>
 		PlayerSurrender = "<i>„Wir ergeben uns!“</i> (<money>{0:n0}</money> bezahlen)"
-		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>„Ergebt euch jetzt und zahlt uns <money>{1:n0}</money> ... oder sterbt!“</i>"
+		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>„Ergebt euch jetzt und zahlt uns <money>{1:n0}</money> ... oder sterbt!“</i>"
 		PlayerSurrenderDialogue = "<b>{0}:</b> <i>„Ihr seid unterlegen! Ergebt euch jetzt und zahlt uns <money>{1:n0}</money> ... oder sterbt!“</i>"
 		PlayerSurrenderPayBounty = "<i>„Wir zahlen das Kopfgeld.“</i> (<money>{0:n0}</money> bezahlen)"
 		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>„Flüchtiger, {2} hat ein Kopfgeld von <money>{1:n0}</money> auf deine Zerstörung ausgesetzt. Zahle es jetzt oder mach dich bereit, erledigt zu werden.“</i>"
@@ -1098,6 +1123,7 @@ EconDifficulty
 EditorGroups
 {
 	
+	Control = Schiffssteuerung
 	Crew = ""
 	Defenses = Verteidigungsanlagen
 	Favorites1 = "Favoriten A"
@@ -1106,7 +1132,7 @@ EditorGroups
 	Favorites2Icon = ""
 	Favorites3 = "Favoriten C"
 	Favorites3Icon = ""
-	Flight = Flug
+	Flight = Schubdüsen
 	None = Keine
 	Power = Energie
 	Production = Produktion
@@ -1114,7 +1140,9 @@ EditorGroups
 	ResourcesRare = "Seltene Ressourcen"
 	Rock = "Einfacher Fels"
 	Storage = Lagerung
-	Structure = Struktur
+	Structure = "Panzerung & Struktur"
+	Thermal = Wärmemanagement
+	ThermalDesc = "Werkzeuge für das Wärmemanagement, darunter Rohre, Radiatoren, Thermalbatterien und Tauscher."
 	Utilities = Einrichtungen
 	WeaponsEnergy = Energiewaffen
 	WeaponsProjectile = Projektilwaffen
@@ -1614,7 +1642,7 @@ Inputs
 		ContiguousSelectionMode = "„Angrenzender Zauberstab“-Auswahlmodus"
 		CopySelected = "Ausgewählte Teile/Aufkleber kopieren"
 		CutSelected = "Ausgewählte Teile/Aufkleber ausschneiden"
-		DecreaseDecalHeight = "Aufkleberlänge verringern"
+		DecreaseDecalHeight = "Aufkleberhöhe verringern"
 		DecreaseDecalWidth = "Aufkleberbreite verringern"
 		Delete = "Alle Teile/Aufkleber löschen"
 		DeleteDoors = "Nur Türen löschen"
@@ -1626,7 +1654,7 @@ Inputs
 		ForceBlueprints = "In Bauplänen öffnen"
 		GrabTool = Greifen-Werkzeug
 		ImportPng = "PNG importieren"
-		IncreaseDecalHeight = "Aufkleberlänge erhöhen"
+		IncreaseDecalHeight = "Aufkleberhöhe erhöhen"
 		IncreaseDecalWidth = "Aufkleberbreite erhöhen"
 		Invert = "Aufklebertransparenz invertieren"
 		Name = Schiffseditor
@@ -1639,10 +1667,12 @@ Inputs
 		RestrictShapeMode = "Formmodus beschränken"
 		RotateLeft = "Teile/Aufkleber nach links drehen"
 		RotateRight = "Teile/Aufkleber nach rechts drehen"
+		ScrollToolTip = "Tooltipp-Scrollen aktivieren/Werte anzeigen"
 		SelectAll = "Alle Teile/Aufkleber auswählen"
 		SelectionTool = "Auswählen/Kopieren/Einfügen-Werkzeug "
 		ToggleBlueprints = "Baupläne umschalten"
 		ToggleMirrorMode = "Spiegelmodus umschalten"
+		ToggleSecondaryToolTip = "Sekundäre Tooltipps ein-/ausschalten"
 		Undo = Rückgängig
 	}
 	Formations
@@ -1863,6 +1893,7 @@ Inputs
 		chaingun_aim = "Chain Gun ausrichten"
 		headlight_aim = "Scheinwerfer ausrichten"
 		prism_aim = "Ionen-Prisma ausrichten"
+		thermal_aim = "Thermische Resonanzlanze ausrichten"
 		tractor_beam = "Traktorstrahl anvisieren"
 	}
 	PartToggles
@@ -1896,15 +1927,23 @@ Inputs
 		missile_type_he = "Werfertyp: Hochexplosiv"
 		missile_type_mine = "Werfertyp: Mine"
 		missile_type_nuke = "Werfertyp: Nuklearwaffe"
+		missile_type_thermal = "Werfertyp: Thermische Kanisterrakete"
 		on_off_off = "Energie für Teil aus"
 		on_off_on = "Energie für Teil ein"
 		rotate_off = "Drehen: Aus"
 		rotate_on = "Drehen: Ein"
+		thermal_overclock_off = "Übertaktung: Aus"
+		thermal_overclock_on = "Übertaktung: Ein"
+		thermal_safety_off = "Überhitzungsschutz: Aus"
+		thermal_safety_on = "Überhitzungsschutz: Ein"
 		thruster_boost_off = "Boost-Modus aus"
 		thruster_boost_on = "Boost-Modus ein"
 		tractor_mode_auto = "Traktorstrahl: Auto"
 		tractor_mode_pull = "Traktorstrahl: Ziehen"
 		tractor_mode_push = "Traktorstrahl: Schieben"
+		tractor_overload = "Traktorstrahl überladen"
+		tractor_overload_off = "Überladung des Traktorstrahls"
+		tractor_overload_on = "Traktorstrahl überladen"
 	}
 	PartTriggers
 	{
@@ -1975,6 +2014,7 @@ JobNames
 	Repair = Reparieren
 	ResourceFetchFmt = "{0} versorgen"
 	Salvage = Wiederverwerten/Abbauen
+	UnnamedStatusJob = "„Unbenannter Status“-Job"
 }
 Jobs
 {
@@ -2244,6 +2284,8 @@ MissileTypes
 	MineDesc = "Stationäre Minen, die in der Nähe von feindlichen Schiffen explodieren und dabei Splitter ausstoßen, die Schaden verursachen."
 	Nuke = "Taktische Nuklearrakete"
 	NukeDesc = "Eine riesige Rakete, die eine mächtige nukleare Explosion hervorruft und enormen Schaden in einem sehr großen Gebiet verursacht."
+	Thermal = "Thermische Kanisterraketen"
+	ThermalDesc = "Lenkraketen, die die Restwärme ihres eigenen Schiffes nutzen und in einem kleinen Bereich auf die Hülle ihres Ziels übertragen. Müssen an ein Wärmerohr angeschlossen und mit Wärme versorgt werden, um feuern zu können."
 }
 MissionCategories
 {
@@ -2575,6 +2617,17 @@ PartColors
 	
 	RoofLight = Lichtfarbe/Helligkeit
 }
+PartFeatures
+{
+	
+	CanReceivePower = "Kann Energie empfangen"
+	CoMForceApplication = "Wendet Kraft auf den Massenmittelpunkt des Ziels an"
+	FeatureFmt = ""
+	Features = "<white>Eigenschaften:</white>"
+	ForcedThrusterOverclock = "Erzwungene Schubdüsen-Übertaktung"
+	PenetratesOperational = "Durchdringt Betriebsteile"
+	ThrusterHeatTransfer = Schubdüsen-Wärmeübertragung
+}
 PartTargeters
 {
 	
@@ -2582,6 +2635,7 @@ PartTargeters
 	HeadlightAim = "<b>Scheinwerfer ausrichten</b>\n\nRichtet einen oder mehrere ausgewählte Scheinwerfer auf eine gewünschte Position aus.\n\nSchnelltaste: <btn id='PartTargeters.headlight_aim'/>"
 	HeadlightAimCancel = "<b>Scheinwerferausrichtung zurücksetzen</b>\n\nSchnelltaste: <btn id='PartTargetCancelers.headlight_aim'/>"
 	PrismAim = "<b>Ionen-Prisma ausrichten</b>\n\nZielt mit einem oder mehreren ausgewählten Ionenstrahl-Prismen auf einen gewünschten Ort oder verknüpft sie mit einem anderen Ionenstrahl-Prisma, um dadurch zu schießen.\n\nSchnelltaste: <btn id='PartTargeters.prism_aim'/>"
+	ThermalResonanceAim = "<b>Thermische Resonanzlanze ausrichten</b>\n\nRichtet eine oder mehrere thermische Resonanzlanze(n) auf eine gewünschte Position aus.\n\nSchnelltaste: <btn id='PartTargeters.thermal_aim'/>"
 	TractorBeam = "<b>Traktorstrahl ausrichten</b>\n\nHalte <btn id='Game.SelectParts'/> gedrückt, um bestimmte Teile anzuvisieren.\n\nSchnelltaste: <btn id='PartTargeters.tractor_beam'/>"
 	TractorBeamCancel = "<b>Traktorstrahl abbrechen</b>\n\nSchnelltaste: <btn id='PartTargetCancelers.tractor_beam'/>"
 }
@@ -2599,6 +2653,8 @@ PartToggles
 	FirePref_Attack = "<b>Angreifen</b>\nNur auf feindliche Schiffe feuern.\n\nSchnelltaste: <btn id='PartToggles.fire_pref_attack'/>"
 	FirePref_Both = "<b>Angreifen + Verteidigen</b>\nFeuert auf feindliche Schiffe und eingehende Projektile.\n\nSchnelltaste: <btn id='PartToggles.fire_pref_both'/>"
 	FirePref_Defend = "<b>Verteidigen</b>\nNur auf eingehende Projektile feuern. Dadurch ignoriert die Waffe auch schiffsweite Feuerbefehle.\n\nSchnelltaste: <btn id='PartToggles.fire_pref_defend'/>"
+	FireSafety_Off = "<b>Schutz: <bad>Aus</bad></b>\nFeuern wird nicht verhindert, unabhängig vom Wärmegrad."
+	FireSafety_On = "<b>Schutz: <good>Ein</good></b>\nVerhindert das Feuern während gefährlich hoher Wärmegrade."
 	Fire_Alternating = "<b>Feuer: Abwechselnd</b>\n\nSchnelltaste: <btn id='PartToggles.fire_alternating_on'/>"
 	Fire_Synchronized = "<b>Feuer: Synchronisiert</b>\n\nSchnelltaste: <btn id='PartToggles.fire_alternating_off'/>"
 	ForceStartChaingun = "Chain-Gun-Feuer erzwingen\n\nSchnelltaste: <btn id='PartToggles.force_fire_chaingun_on'/>"
@@ -2610,13 +2666,19 @@ PartToggles
 	MissileType_HE = "<b><string id='MissileTypes/HE'/></b>\n\n<string id='MissileTypes/HEDesc'/>\n\nSchnelltaste: <btn id='PartToggles.missile_type_he'/>"
 	MissileType_Mine = "<b><string id='MissileTypes/Mine'/></b>\n\n<string id='MissileTypes/MineDesc'/>\n\nSchnelltaste: <btn id='PartToggles.missile_type_mine'/>"
 	MissileType_Nuke = "<b><string id='MissileTypes/Nuke'/></b>\n\n<string id='MissileTypes/NukeDesc'/>\n\nSchnelltaste: <btn id='PartToggles.missile_type_nuke'/>"
+	MissileType_Thermal = "<b><string id='MissileTypes/Thermal'/></b>\n\n<string id='MissileTypes/ThermalDesc'/>\n\nSchnelltaste: <btn id='PartToggles.missile_type_thermal'/>"
 	OnOff_Off = "<b>Energie: <bad>Aus</bad></b>\n\nSchnelltaste: <btn id='PartToggles.on_off_off'/>"
 	OnOff_On = "<b>Energie: <good>Ein</good></b>\n\nSchnelltaste: <btn id='PartToggles.on_off_on'/>"
+	OverclockShield_Extended = "<b>Schildübertaktungsmodus: <good>Erweitert</good></b>\nErhöht Schildbogen und -projektionsweite, indem zusätzliche Energie in den Kern des Schildes geleitet wird."
+	OverclockShield_Reinforced = "<b>Schildübertaktungsmodus: <good>Verstärkt</good></b>\nHärtet den Schild gegen Schäden und energieentziehende Effekte, indem Energie von den peripheren zu den zentralen Emittern geleitet wird."
 	Rotate_Off = "<b>Drehen: <bad>Aus</bad></b>\n\nSchnelltaste: <btn id='PartToggles.rotate_off'/>"
 	Rotate_On = "<b>Drehen: <good>Ein</good></b>\n\nSchnelltaste: <btn id='PartToggles.rotate_on'/>"
+	ThermalOverclock_Off = "<b>Übertaktung: <good>Aus</good></b>\nNormaler Betrieb unter Beachtung der für das Teil vorgesehenen Grenzwerte."
+	ThermalOverclock_On = "<b>Übertaktung: <bad>Ein</bad></b>\nUmgeht Begrenzer und überschreitet die Betriebswerte, um die Leistung auf Kosten von Wärmeerzeugung und Zuverlässigkeit zu erhöhen."
 	TractorMode_Auto = "<b>Traktorstrahl: Auto</b>\n\nDer Traktorstrahl schiebt oder zieht automatisch, um das Ziel in der aktuellen Distanz zu halten.\n\nSchnelltaste: <btn id='PartToggles.tractor_mode_auto'/>"
 	TractorMode_Pull = "<b>Traktorstrahl: Ziehen</b>\n\nDer Traktorstrahl zieht das Ziel so nah wie möglich heran.\n\nSchnelltaste: <btn id='PartToggles.tractor_mode_pull'/>"
 	TractorMode_Push = "<b>Traktorstrahl: Schieben</b>\n\nDer Traktorstrahl schiebt das Ziel so weit wie möglich weg.\n\nSchnelltaste: <btn id='PartToggles.tractor_mode_push'/>"
+	TractorOverload = "<b>Traktorstrahl überladen</b>\n\nVerwendet die gesamte verfügbare Energie, um die Emitter zu überladen, was eine unkontrollierte extreme Impulswelle und einen erheblichen Wärmeausstoß auslöst.\n\nWenn der Traktorstrahl auf „Ziehen“ eingestellt wird, wird die Polarität der Impulswelle umgekehrt."
 }
 PartTriggers
 {
@@ -2662,15 +2724,23 @@ Parts
 	CannonDeck = Deckkanone
 	CannonDeckDesc = "Eine große Kanone mit zwei Läufen, die auf dem Schiff und nicht an dessen Seite angebracht ist, um zusätzliche Stabilität zu gewährleisten. Jeder Lauf verschmilzt zehn Projektilpatronen und ist so laut, dass er die Crew in der Nähe betäubt.\n\nDie Front und die Seiten müssen weiter als 2 Kacheln von anderen Dachtürmen oder „großen“ Teilen entfernt sein."
 	CannonDeckIcon = Deckkanone
+	CannonDeckOverclock = "Übertaktete Deckkanone"
+	CannonDeckOverclockDesc = "Erhöht den Geschossschaden, die Geschwindigkeit und die Präzision, stoppt aber die Durchdringung, sobald das Schadenspotenzial ausgeschöpft ist. Erzeugt beim Abfeuern Restwärme."
 	CannonLarge = "Große Kanone"
 	CannonLargeDesc = "Verschmilzt vier Projektilpatronen, um größeren Schaden als die Standardkanone zu verursachen und tiefer ins feindliche Schiff einzudringen."
 	CannonLargeIcon = "Große Kanone"
+	CannonLargeOverclock = "Übertaktete große Kanone"
+	CannonLargeOverclockDesc = "Jedes Kanonengeschoss zerbricht beim Aufprall in mehrere kleinere Brandgeschosse, die jeweils weiter ins Zielschiff eindringen. Erzeugt beim Abfeuern Restwärme."
 	CannonMed = Standardkanone
 	CannonMedDesc = "Feuert einfache Projektilpatronen, die die Hülle von feindlichen Schiffen durchdringen und manchmal Brände verursachen können."
 	CannonMedIcon = Kanone
+	CannonMedOverclock = "Übertaktete Standardkanone"
+	CannonMedOverclockDesc = "Feuert Salven aus mehreren kleineren Geschossen ab, die aber weniger Schaden anrichten und langsamer sind. Erzeugt beim Abfeuern Restwärme."
 	ChainGun = "Chain Gun"
 	ChainGunDesc = "Eine mächtige Gatling-Kanone, die ihre Feuerrate mit zunehmender Feuerdauer erhöht und in Feuerpausen hinter einem Schutzschild geschützt ist. Zusätzliche Munitionsmagazine können angebracht werden, um Feuerdauer und Feuerrate zu erhöhen."
 	ChainGunIcon = "Chain Gun"
+	ChainGunOverclock = "Übertaktete Chain Gun"
+	ChainGunOverclockDesc = "Die Projektile erhalten Sprengköpfe und verursachen Flächenschaden und mehr Zerstörung, aber die Feuerrate sinkt und die Chain Gun muss nach vier Schüssen immer kurz pausieren. Erzeugt beim Abfeuern Restwärme."
 	ChaingunMagazine = Chain-Gun-Magazin
 	ChaingunMagazineDesc = "Ein zusätzlicher Munitionsspeicher für die Chain Gun, der ihre Feuerdauer und Feuerrate erhöht. Muss unten links oder rechts an der Chain Gun angebracht werden."
 	ChaingunMagazineIcon = Chain-Gun-Magazin
@@ -2797,57 +2867,104 @@ Parts
 	Disruptor = ""
 	DisruptorDesc = "Feuert einen Blitz aus elektrischer Energie ab, der wenig Schaden verursacht, aber feindliche Systeme kurzschließen kann, wodurch ihre Schiffe Energie verlieren. Kann Schilde durchdringen, während er diesen Energie abzieht."
 	DisruptorIcon = ""
+	DisruptorOverclock = "Übertakteter Disruptor"
+	DisruptorOverclockDesc = "Lässt Disruptorblitze feste Materialien durchdringen und sorgt dafür, dass der Energieentzugseffekt nach dem ersten Aufprall länger anhält, reduziert aber die Schilddurchdringung und den sofortigen Energieentzug beim ersten Aufprall. Erzeugt beim Abfeuern Restwärme."
 	Door = Tür
 	DoorDesc = "Ermöglicht der Crew (und Feuer!), von einem Raum in den nächsten zu kommen."
 	DoorIcon = Tür
 	EngineRoom = Maschinenraum
 	EngineRoomDesc = "Erhöht die Schubkraft und den Energieverbrauch angrenzender Schubdüsen um 50 %. Fungiert außerdem als zentraler Verteiler für angrenzende Schubdüsen, an die Crewmitglieder Batterien liefern können, ohne einzeln zu jeder Schubdüse laufen zu müssen."
 	EngineRoomIcon = Maschinenraum
+	EngineRoomOverclock = "Übertakteter Maschinenraum"
+	EngineRoomOverclockDesc = "Verbessert die Energieeffizienz bei der Energieverteilung auf angeschlossene Schubdüsen, schaltet aber alle angeschlossenen Schubdüsen in den Übertaktungsmodus. Erzeugt bei der Energieverteilung Restwärme.\n\nSammelt außerdem Restwärme von angeschlossenen Schubdüsen, erzeugt dabei aber zusätzliche Restwärme."
 	ExplosiveCharge = Sprengladung
 	ExplosiveChargeDesc = "Ein kleines explosives Gerät, das manuell gesprengt werden kann. Wird hauptsächlich dazu verwendet, Schiffe absichtlich in mehrere Teile zu zerteilen."
 	ExplosiveChargeIcon = Sprengladung
 	FactoryAmmo = "Munitionsfabrik für Kanone"
 	FactoryAmmoDesc = "Stellt Projektilmunition für Kanonen und Railguns her. Verbraucht Schwefel. Erhält +25 % Produktionsgeschwindigkeit für jede angrenzende Fabrik jeglicher Art."
 	FactoryAmmoIcon = Munition
+	FactoryAmmoOverclock = "Übertaktete Munitionsfabrik für Kanone"
+	FactoryAmmoOverclockDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Munitionsproduktion Restwärme."
 	FactoryCoil = Spulenfabrik
 	FactoryCoil2 = Hyperspulenfabrik
 	FactoryCoil2Desc = "Produziert Hyperspulen, die beim Bau von vielen fortschrittlichen Schiffsteilen verwendet werden. Verbraucht Kupfer und Spulen. Erhält +25 % Produktionsgeschwindigkeit für jede angrenzende Fabrik jeglicher Art."
 	FactoryCoil2Icon = Hyperspulen
+	FactoryCoil2Overclock = "Übertaktete Hyperspulenfabrik"
+	FactoryCoil2OverclockDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Hyperspulenproduktion Restwärme."
 	FactoryCoilDesc = "Produziert Spulen, die beim Bau von vielen Schiffsteilen verwendet werden. Verbraucht Kupfer. Erhält +25 % Produktionsgeschwindigkeit für jede angrenzende Fabrik jeglicher Art."
 	FactoryCoilIcon = Spulen
+	FactoryCoilOverclock = "Übertaktete Spulenfabrik"
+	FactoryCoilOverclockDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Spulenproduktion Restwärme."
 	FactoryDiamond = Diamantschmelzerei
-	FactoryDiamondDesc = "Produziert Diamanten, die beim Bau von einigen fortschrittlichen Schiffsteilen verwendet werden. Verbraucht Kohlenstoff."
+	FactoryDiamondDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Diamantenproduktion Restwärme."
 	FactoryDiamondIcon = Diamanten
 	FactoryEMP = "Fabrik für EMP-Raketen"
 	FactoryEMPDesc = "Produziert Raketen, die einen elektromagnetischen Impuls ausstoßen, der die Energie der feindlichen Systeme in einem großen Gebiet erschöpft. Verbraucht Eisen und Kupfer. Erhält +25 % Produktionsgeschwindigkeit für jede angrenzende Fabrik jeglicher Art."
 	FactoryEMPIcon = EMP-Raketen
+	FactoryEMPOverclock = "Übertaktete Fabrik für EMP-Raketen"
+	FactoryEMPOverclockDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Produktion von Raketenteilen Restwärme."
 	FactoryHE = "Fabrik für hochexplosive Raketen"
 	FactoryHEDesc = "Produziert hochexplosive Raketen, die enormen Schaden in einem kleinen Gebiet verursachen können. Verbraucht Eisen und Schwefel. Erhält +25 % Produktionsgeschwindigkeit für jede angrenzende Fabrik jeglicher Art."
 	FactoryHEIcon = HE-Raketen
+	FactoryHEOverclock = "Übertaktete Fabrik für hochexplosive Raketen"
+	FactoryHEOverclockDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Produktion von Raketenteilen Restwärme."
 	FactoryMine = Minenfabrik
 	FactoryMineDesc = "Produziert Minen, die explodieren, wenn sich feindliche Schiffe in der Nähe befinden, und dabei Splitter ausstoßen, die Schaden verursachen. Verbraucht Eisen und Munition. Erhält +25 % Produktionsgeschwindigkeit für jede angrenzende Fabrik jeglicher Art."
 	FactoryMineIcon = Minen
+	FactoryMineOverclock = "Übertaktete Minenfabrik"
+	FactoryMineOverclockDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Produktion von Minenteilen Restwärme."
 	FactoryNuke = "Fabrik für Nuklearraketen"
 	FactoryNukeDesc = "Produziert taktische Nuklearraketen, die riesigen Schaden in einem sehr großen Gebiet verursachen. Verbraucht Eisen und Uran. Erhält +25 % Produktionsgeschwindigkeit für jede angrenzende Fabrik jeglicher Art."
 	FactoryNukeIcon = Nuklearwaffen
+	FactoryNukeOverclock = "Übertaktete Fabrik für Nuklearraketen"
+	FactoryNukeOverclockDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Produktion von Raketenteilen Restwärme."
 	FactoryProcessor = Prozessorfabrik
 	FactoryProcessorDesc = "Produziert Prozessoren, die beim Bau von einigen fortschrittlichen Schiffsteilen verwendet werden. Verbraucht Gold und Spulen. Erhält +25 % Produktionsgeschwindigkeit für jede angrenzende Fabrik jeglicher Art."
 	FactoryProcessorIcon = Prozessoren
+	FactoryProcessorOverclock = "Übertaktete Prozessorfabrik"
+	FactoryProcessorOverclockDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Prozessorproduktion Restwärme."
 	FactorySteel = Stahlschmelzerei
 	FactorySteelDesc = "Produziert Stahlplatten, die beim Bau von fast allen Schiffsteilen verwendet werden. Verbraucht Eisen. Erhält +25 % Produktionsgeschwindigkeit für jede angrenzende Fabrik jeglicher Art."
 	FactorySteelIcon = Stahl
+	FactorySteelOverclock = "Übertaktete Stahlschmelzerei"
+	FactorySteelOverclockDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Stahlproduktion Restwärme."
+	FactoryThermal = "Fabrik für thermische Kanisterraketen"
+	FactoryThermalDesc = "Produziert thermische Kanisterraketen, die thermische Energie aus dem Wärmerohrnetz des eigenen Schiffes entnehmen und sie gegen Ziele in einem kleinen Wirkungsbereich einsetzen. Verbraucht Eisen und Schwefel. Erhält +25 % Produktionsgeschwindigkeit für jede angrenzende Fabrik jeglicher Art."
+	FactoryThermalIcon = TK-Raketen
+	FactoryThermalOverclock = "Übertaktete Fabrik für thermische Kanisterraketen"
+	FactoryThermalOverclockDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Produktion von Raketenteilen Restwärme."
 	FactoryTristeel = Tri-Stahl-Schmelzerei
 	FactoryTristeelDesc = "Produziert Tri-Stahl-Platten, die beim Bau von einigen fortschrittlichen Schiffsteilen verwendet werden. Verbraucht Tritanium. Erhält +25 % Produktionsgeschwindigkeit für jede angrenzende Fabrik jeglicher Art."
 	FactoryTristeelIcon = Tri-Stahl
+	FactoryTristeelOverclock = "Übertaktete Tri-Stahl-Schmelzerei"
+	FactoryTristeelOverclockDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Tri-Stahl-Produktion Restwärme."
 	FactoryUranium = "Fabrik zur Uran-Anreicherung"
 	FactoryUraniumDesc = "Reichert Uran an, das zum Bau von Reaktoren und anderen fortschrittlichen Schiffsteilen benötigt wird. Verbraucht nicht angereichertes Uran. Erhält +25 % Produktionsgeschwindigkeit für jede angrenzende Fabrik jeglicher Art."
 	FactoryUraniumIcon = "Anger. Uran"
-	FireExtinguisher = Feuerlöscher
-	FireExtinguisherDesc = "Lagert einen Feuerlöscher, den die Crew zum Löschen von Bränden verwenden kann. Feuerlöscher haben eine begrenzte Kapazität, werden aber nach 15 Sekunden neu spawnen."
+	FactoryUraniumOverclock = "Übertaktete Fabrik zur Uran-Anreicherung"
+	FactoryUraniumOverclockDesc = "Erhöht die Produktionsgeschwindigkeit signifikant. Erzeugt bei der Produktion von angereichertem Uran Restwärme."
+	FireExtinguisher = Feuerlöscher-Schrank
+	FireExtinguisherDesc = "Lagert einen Feuerlöscher, den die Crew zum Löschen von Bränden verwenden kann. Feuerlöscher haben eine begrenzte Kapazität, allerdings entsteht alle 15 Sekunden aus dem Nichts ein neuer."
 	FireExtinguisherIcon = Feuerlöscher
+	FireExtinguisherOverclock = "Übertakteter Feuerlöscher-Schrank"
+	FireExtinguisherOverclockDesc = "Erhöht die Baugeschwindigkeit von Feuerlöschern rapide. Erzeugt beim Bau von Feuerlöschern ironische Restwärme."
 	FlakCannonLarge = Flakstellung
 	FlakCannonLargeDesc = "Ein mächtiges Verteidigungssystem, das feindliche Raketen, Laser und Projektile zerstören kann. Kann feindlichen Schiffen auch moderaten Schaden zufügen."
 	FlakCannonLargeIcon = Flakstellung
+	FlakCannonLargeOverclock = "Übertaktete Flakstellung"
+	FlakCannonLargeOverclockDesc = "Flakgeschosse sind mit Splittern gefüllt, die nach der Explosion kurz im Raum schweben und allen Projektilen Schaden zufügen und durchkommende Energiestrahlen blockieren. Erzeugt beim Abfeuern Restwärme."
+	HeatExchanger = Wärmetauscher
+	HeatExchangerDesc = "Absorbiert Wärme vom Rumpf, überträgt sie an das angeschlossene Wärmerohrsystem und erzeugt dabei etwas zusätzliche Restwärme."
+	HeatExchangerIcon = Wärmetauscher
+	HeatPipeAdaptive = Wärmerohr
+	HeatPipeAdaptiveDesc = "Überträgt thermische Energie sofort zwischen verbundenen Teilen."
+	HeatPipeAdaptiveIcon = Wärmerohr
+	HeatPipeAdaptiveStructure = Wärmerohrstruktur
+	HeatPipeAdaptiveStructureDesc = "Überträgt thermische Energie sofort zwischen verbundenen Teilen."
+	HeatPipeAdaptiveStructureIcon = Wärmerohrstruktur
+	HeatPipeCrossing = Wärmerohr-Unterführung
+	HeatPipeCrossingDesc = "<string id='Parts/HeatPipeAdaptiveDesc'/> Ermöglicht es der Crew, unter dem Rohr durchzugehen."
+	HeatPipeCrossingIcon = Wärmerohr-Unterführung
 	HyperdriveBeacon = Hyperantrieb-Bake
 	HyperdriveBeaconDesc = "Schiffe mit einem Hyperantrieb können zu Schiffen mit Hyperantrieb-Baken springen."
 	HyperdriveBeaconIcon = Hyperantrieb-Bake
@@ -2863,15 +2980,21 @@ Parts
 	IonBeamEmitter = Ionenstrahl-Emitter
 	IonBeamEmitterDesc = "Feuert einen mächtigen Strahl ionischer Energie in eine vorgegebene Richtung ab. Auf größere Entfernungen ist der Schaden geringer. Kann in ein Ionenstrahl-Prisma geschossen werden, um den Winkel zu verändern."
 	IonBeamEmitterIcon = Ionenstrahl
+	IonBeamEmitterOverclock = "Übertakteter Ionenstrahl-Emitter"
+	IonBeamEmitterOverclockDesc = "Sorgt dafür, dass der Ionenstrahl in der Nähe seines Ziels destabilisiert wird und chaotische und mächtige Blitzschläge in einem Bereich um ihn herum erzeugt, verhindert aber, dass der Strahl selbst sein Ziel direkt trifft. Erzeugt beim Abfeuern Restwärme."
 	IonBeamPrism = Ionenstrahl-Prisma
 	IonBeamPrismDesc = "Lenkt den Winkel eingehender Ionenstrahlen ab und richtet sie auf feindliche Schiffe oder andere Ionenstrahl-Prismen."
 	IonBeamPrismIcon = Ionen-Prisma
 	LaserBlasterLarge = "Schwerer Laserblaster"
 	LaserBlasterLargeDesc = "Kombiniert zwei größere Laserwaffen in einem einzelnen Turm, die zusammen viel mehr Schaden anrichten, dafür aber nicht so präzise und vielseitig sind."
 	LaserBlasterLargeIcon = "Schwerer Laser"
+	LaserBlasterLargeOverclock = "Übertakteter schwerer Laserblaster"
+	LaserBlasterLargeOverclockDesc = "Erhöht den Schaden jedes Laserblitzes und fügt Flächenschaden hinzu, verringert aber die Feuerrate. Erzeugt beim Abfeuern Restwärme."
 	LaserBlasterSmall = Laserblaster
 	LaserBlasterSmallDesc = "Eine sehr präzise und vielseitige Waffe, die einzelne Energiestöße abfeuert, welche moderaten Schaden bei feindlichen Schiffen verursachen."
 	LaserBlasterSmallIcon = ""
+	LaserBlasterSmallOverclock = "Übertakteter Laserblaster"
+	LaserBlasterSmallOverclockDesc = "Erhöht die Feuerrate und ersetzt die Laserblitze durch sofortige Energiestrahlen, verringert aber den Schaden der einzelnen Schüsse. Erzeugt beim Abfeuern Restwärme."
 	ManipulatorBeam = Manipulationsstrahl-Emitter
 	ManipulatorBeamDesc = "Projiziert bis zu 16 kleine, auf dem Dach montierte Traktorstrahlen, die Ressourcen sammeln und die Crew unterstützen können. Eine einzige Crew kann bis zu vier Strahlen kontrollieren und sie begibt sich nur zum Manipulationsstrahl-Emitter, um bei Aufgaben zu helfen."
 	ManipulatorBeamIcon = Manipulationsstrahl
@@ -2884,15 +3007,25 @@ Parts
 	MiningLaserSmall = Bergbaulaser
 	MiningLaserSmallDesc = "Ein Paar auf dem Dach montierte Präzisionslaserstrahlen, die Ressourcen sogar vom härtesten Asteroiden schnell abbauen können. Ist auch beim Wiederverwerten von Schiffen sehr effektiv und kann im Notfall als Nahdistanzwaffe eingesetzt werden."
 	MiningLaserSmallIcon = Bergbaulaser
+	MiningLaserSmallOverclock = "Übertakteter Bergbaulaser"
+	MiningLaserSmallOverclockDesc = "Fügt bei beiden Bergbaustrahlen einen Wirkungsbereich hinzu. Erzeugt beim Abfeuern Restwärme."
 	MissileLauncher = "Raketen- & Minenwerfer"
 	MissileLauncherDesc = "Feuert Raketen oder Minen jeglicher Art ab.\n\nDie Art der abgefeuerten Munition kann jederzeit während oder nach dem Bau geändert werden, sogar während des Kampfes."
 	MissileLauncherIcon = Werfer
 	PointDefense = Punktverteidigungssystem
 	PointDefenseDesc = "Ein automatisiertes Verteidigungssystem, das feindliche Raketen und Projektile mit superheißen Plasmasalven abschießt. Kann außerdem feindlichen Schiffen leichten Schaden zufügen."
 	PointDefenseIcon = Punktverteidigung
+	PointDefenseOverclock = "Übertaktetes Punktverteidigungssystem"
+	PointDefenseOverclockDesc = "Aktiviert einen Dynamo, der langsam Energie regeneriert, sodass das Punktverteidigungssystem für kurze Phasen ohne Batterien feuern kann. Erzeugt bei der Regeneration Restwärme."
 	PowerStorage = Energiekondensator
 	PowerStorageDesc = "Speichert eine begrenzte Menge an Plasmabatterien, die von der Crew zu nahegelegenen Schiffssystemen geliefert werden können."
 	PowerStorageIcon = Kondensator
+	PowerStorageOverclock = "Übertakteter Energiekondensator"
+	PowerStorageOverclockDesc = "Verdreifacht die Energiekapazität sowohl des Energiekondensators selbst als auch der einzelnen gelagerten Batterien. Erzeugt beim Speichern der Energie kontinuierlich Restwärme und zudem beim Aufnehmen von Energie."
+	Radiator = ""
+	RadiatorDesc = "Leitet die Wärme vom angeschlossenen Wärmerohrsystem ab. Die Effizienz der Ableitung wird verringert, wenn der Bereich vor dem Radiator blockiert ist."
+	RadiatorDissipationScoreFmt = "<good>{1:0.#} %\n({0:0.#}<gray>/Sek.</gray>)</good>"
+	RadiatorIcon = ""
 	Railgun = ""
 	RailgunAccelerator = Railgun-Beschleuniger-Modul
 	RailgunAcceleratorDesc = "Eine optionale Komponente, die zwischen dem Werfer und der Ladeeinheit einer Railgun platziert wird. Jeder Beschleuniger erhöht die Geschwindigkeit, den Schaden und die Durchdringungstiefe des Projektils.\n\n<string id='Parts/RailgunBaseDesc'/>\n\nDie Crew kann nicht von einer Seite eines Railgun-Werfers oder -Beschleunigers auf die andere laufen."
@@ -2902,18 +3035,29 @@ Parts
 	RailgunLauncher = Railgun-Werfer-Modul
 	RailgunLauncherDesc = "Eine erforderliche Komponente aller Railguns. Muss mit einer Ladeeinheit und keinem oder mehreren Beschleunigern gepaart werden.\n\n<string id='Parts/RailgunBaseDesc'/>\n\nDie Crew kann nicht von einer Seite eines Railgun-Werfers oder -Beschleunigers auf die andere laufen."
 	RailgunLauncherIcon = Railgun-Werfer
+	RailgunLauncherOverclockDesc = "Verbessert die Effizienz längerer Railguns und erhöht die Projektilgeschwindigkeit und den Schaden, erfordert aber vor dem Abfeuern eine Aufladung und beendet die Durchdringung, sobald das Schadenspotenzial erschöpft ist. Erzeugt beim Abfeuern Restwärme."
 	RailgunLoader = Railgun-Ladeeinheit-Modul
 	RailgunLoaderDesc = "Eine erforderliche Komponente aller Railguns. Muss mit einem Werfer und keinem oder mehreren Beschleunigern gepaart werden.\n\n<string id='Parts/RailgunBaseDesc'/>"
 	RailgunLoaderIcon = Railgun-Ladeeinheit
+	RailgunOverclock = "Übertaktete Railgun"
 	ReactorLarge = "Großer Reaktorkern"
 	ReactorLargeDesc = "Ein Energiegenerator, der Plasmabatterien mit dreifacher Kapazität produziert, die zum Betreiben vieler Schiffssysteme erforderlich sind."
 	ReactorLargeIcon = "Großer Reaktor"
+	ReactorLargeOverclock = "Übertakteter großer Reaktorkern"
+	ReactorLargeOverclockDesc = "Erhöht die maximale Energiekapazität und die Erzeugungsrate. Erhöht zudem die Batteriegröße von dreifacher auf vierfache Kapazität. Bei der Energieerzeugung entsteht Restwärme."
 	ReactorMed = "Mittlerer Reaktorkern"
 	ReactorMedDesc = "Ein Energiegenerator, der Plasmabatterien mit doppelter Kapazität produziert, die zum Betreiben vieler Schiffssysteme erforderlich sind."
 	ReactorMedIcon = "Mittl. Reaktor"
+	ReactorMedOverclock = "Übertakteter mittlerer Reaktorkern"
+	ReactorMedOverclockDesc = "Erhöht die maximale Energiekapazität und die Erzeugungsrate. Bei der Energieerzeugung entsteht Restwärme."
 	ReactorSmall = "Kleiner Reaktorkern"
 	ReactorSmallDesc = "Ein Energiegenerator, der Plasmabatterien produziert, die zum Betreiben vieler Schiffssysteme erforderlich sind."
 	ReactorSmallIcon = "Kleiner Reaktor"
+	ReactorSmallOverclock = "Übertakteter kleiner Reaktorkern"
+	ReactorSmallOverclockDesc = "Erhöht die maximale Energiekapazität und die Erzeugungsrate. Bei der Energieerzeugung entsteht Restwärme."
+	ResonanceBeamTurret = "Thermische Resonanzlanze"
+	ResonanceBeamTurretDesc = "Ein auf dem Dach montierter Turm, der einen Strahl aus reiner Wärmeenergie abfeuert, aber auch viel eigene Restwärme erzeugt.\n\nMuss weiter als 2 Kacheln von anderen Dachtürmen oder „großen“ Teilen entfernt sein."
+	ResonanceBeamTurretIcon = "Thermische Resonanzlanze"
 	Rock1x1 = "Felsen (1x1, weich)"
 	Rock1x1Hard = "Felsen (1x1, hart)"
 	Rock2x2 = "Felsen (2x2, weich)"
@@ -2935,12 +3079,18 @@ Parts
 	SensorArray = Sensorenmatrix
 	SensorArrayDesc = "Erhöht die Reichweite der Sensoren deines Schiffs."
 	SensorArrayIcon = Sensoren
+	SensorArrayOverclock = "Übertaktete Sensorenmatrix"
+	SensorArrayOverclockDesc = "Erhöht die Sichtweite der Sensorenmatrix. Erzeugt während des Betriebs Wärme."
 	ShieldGenLarge = "Großer Schildgenerator"
 	ShieldGenLargeDesc = "Projiziert einen großen bogenförmigen Energieschild außerhalb des Schiffs, der den meisten feindlichen Beschuss abblockt. Anfällig gegen Disruptoren und EMPs.\n\nAufgrund seiner enormen Größe kann der Energieschild nicht durch Schiffsteile (außer durch die Struktur) projiziert werden, weswegen der große Schildgenerator an der anfälligen Außenhülle des Schiffs angebracht werden muss."
 	ShieldGenLargeIcon = "Großer Schild"
+	ShieldGenLargeOverclock = "Übertakteter großer Schildgenerator"
+	ShieldGenLargeOverclockDesc = "Der Energieschild wird kleiner und deckt weniger Fläche ab, wird aber stärker und verliert pro Treffer weniger Energie. Erzeugt bei einem Treffer Restwärme."
 	ShieldGenSmall = "Kleiner Schildgenerator"
-	ShieldGenSmallDesc = "Projiziert einen kleinen bogenförmigen Energieschild außerhalb des Schiffs, der den meisten feindlichen Beschuss abblockt. Anfällig gegen Disruptoren und EMPs.\n\nAufgrund seiner geringen Größe kann der Energieschild durch das Schiff selbst projiziert werden, wodurch der kleine Schildgenerator innerhalb des geschützten Innenbereichs des Schiffs gebaut werden kann."
+	ShieldGenSmallDesc = "Projiziert einen kleinen bogenförmigen Energieschild außerhalb des Schiffs, der den meisten feindlichen Beschuss abblockt. Anfällig gegen Disruptoren und EMPs\n\nAufgrund seiner geringen Größe kann der Energieschild durch das Schiff selbst projiziert werden, wodurch der kleine Schildgenerator innerhalb des geschützten Innenbereichs des Schiffs gebaut werden kann."
 	ShieldGenSmallIcon = "Kleiner Schild"
+	ShieldGenSmallOverclock = "Übertakteter kleiner Schildgenerator"
+	ShieldGenSmallOverclockDesc = "Hier kannst du zwischen zwei Modi für den Energieschild wählen:\n\n1. Der Energieschild wird größer und deckt einen größeren Bereich ab.\n\n2. Der Energieschild wird kleiner und deckt weniger Fläche ab, wird aber stärker und verliert pro Treffer weniger Energie.\n\nErzeugt bei einem Treffer Restwärme."
 	Storage2x2 = "Lagerhalle (4)"
 	Storage2x2Desc = "Lagert 4 Stapel Ressourcen aller Art."
 	Storage2x2Icon = "Lager (4)"
@@ -2972,18 +3122,35 @@ Parts
 	StructureWedge = Keilstruktur
 	StructureWedgeDesc = "Der strukturelle Rahmen, der das Schiff zusammenhält. Die Struktur ist automatisch in allen Räumen und Korridoren enthalten."
 	StructureWedgeIcon = Keilstruktur
+	ThermalAmplificationPump = Lanzenverstärkungspumpe
+	ThermalAmplificationPumpDesc = "Vergrößert die Wärme-Intensität für alle thermischen Resonanzlanzen, die mit demselben Wärmerohrsystem verbunden sind."
+	ThermalAmplificationPumpIcon = Lanzenverstärkungspumpe
+	ThermalBattery = Thermalbatterie
+	ThermalBatteryDesc = "Speichert große Mengen thermischer Energie sicher und sorgt so für zusätzliche Wärmespeicherung für das angeschlossene Wärmerohrsystem."
+	ThermalBatteryIcon = Thermalbatterie
+	ThermalDilationPump = Lanzenausdehnungspumpe
+	ThermalDilationPumpDesc = "Vergrößert den Wärme-Wirkungsbereich für alle thermischen Resonanzlanzen, die mit demselben Wärmerohrsystem verbunden sind. Beide Anschlüsse der Pumpe müssen verbunden sein, um den vollen Effekt zu erzielen."
+	ThermalDilationPumpIcon = Lanzenausdehnungspumpe
 	ThrusterBoost = Boostdüse
 	ThrusterBoostDesc = "Eine Variante der großen Schubdüse, die pures Plasma direkt in ihre Brennkammer injizieren kann, wodurch ein mächtiger, aber kurzzeitiger Boost erzeugt wird."
 	ThrusterBoostIcon = Boostdüse
+	ThrusterBoostOverclock = "Übertaktete Boostdüse"
+	ThrusterBoostOverclockDesc = "Erhöht die Schubkraft stark und verbessert die Energieeffizienz moderat, ohne die Anlaufzeiten zu beeinflussen, erhöht aber auch den Energieverbrauch. Erzeugt während des Feuerns Restwärme.\n\nAußerdem kann die Boostdüse jetzt während des Boosts aufgetankt werden, aber jede zusätzliche Batterie erhöht die Rate der Restwärmeerzeugung."
 	ThrusterHuge = "Riesige Schubdüse"
 	ThrusterHugeDesc = "Ein riesiges Schubtriebwerk, das das Schiff mit mehr als der doppelten Kraft einer großen Schubdüse antreiben kann. Braucht eine lange Zeit, bis die volle Schubkraft erreicht ist."
 	ThrusterHugeIcon = "Riesige Schubdüse"
+	ThrusterHugeOverclock = "Übertaktete riesige Schubdüse"
+	ThrusterHugeOverclockDesc = "Erhöht die Schubkraft stark und verbessert die Energieeffizienz leicht, ohne die Anlaufzeiten zu beeinflussen, erhöht aber auch den Energieverbrauch. Erzeugt während des Feuerns Restwärme."
 	ThrusterLarge = "Große Schubdüse"
 	ThrusterLargeDesc = "Ein Schubtriebwerk von doppelter Größe, das das Schiff mit mehr als der doppelten Kraft einer Standardschubdüse antreiben kann. Braucht eine mittellange Zeit, bis die volle Schubkraft erreicht ist."
 	ThrusterLargeIcon = "Große Schubdüse"
+	ThrusterLargeOverclock = "Übertaktete große Schubdüse"
+	ThrusterLargeOverclockDesc = "Erhöht die Schubkraft stark und verbessert die Energieeffizienz moderat, ohne die Anlaufzeiten zu beeinflussen, erhöht aber auch den Energieverbrauch. Erzeugt während des Feuerns Restwärme."
 	ThrusterMed = Standardschubdüse
 	ThrusterMedDesc = "Ein Schubtriebwerk der Standardgröße, das das Schiff mit einer moderaten Schubkraft antreiben kann. Braucht eine kurze Zeit, bis die volle Schubkraft erreicht ist."
 	ThrusterMedIcon = Standardschubdüse
+	ThrusterMedOverclock = "Übertaktete Standardschubdüse"
+	ThrusterMedOverclockDesc = "Erhöht die Schubkraft und die Energieeffizienz stark, ohne die Anlaufzeiten zu beeinflussen, erhöht aber auch den Energieverbrauch. Erzeugt während des Feuerns Restwärme."
 	ThrusterRocket = "Modulare Raketenschubdüse (M.R.S.)"
 	ThrusterRocketBaseDesc = "Modulare Raketenschubdüsen (M.R.S.) können Schiffe auf sehr hohe Geschwindigkeiten beschleunigen. Allerdings brauchen sie eine Weile, um ihre volle Leistung zu erreichen, wodurch sie beim Manövrieren ineffizient sind. Jede M.R.S. erfordert eine Düse sowie keine oder mehrere optionale Erweiterungen und Treibstoffkapseln."
 	ThrusterRocketBattery = M.R.S.-Treibstoffkapsel
@@ -2993,9 +3160,13 @@ Parts
 	ThrusterRocketExtender = M.R.S.-Erweiterungsmodul
 	ThrusterRocketExtenderDesc = "Eine optionale Komponente, die hinter der Düse oder einer anderen Erweiterung einer modularen Raketenschubdüse platziert wird. Jede Erweiterung erhöht die maximale Schubkraft, den Energieverbrauch und die Anlaufzeit. Die Batterie-Treibstoffkapazität kann mit bis zu zwei Treibstoffkapseln erhöht werden.\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
 	ThrusterRocketExtenderIcon = M.R.S.-Erweiterung
+	ThrusterRocketExtenderOverclock = "Übertaktetes M.R.S.-Erweiterungsmodul"
+	ThrusterRocketExtenderOverclockDesc = "Erhöht sowohl den Basisschub des Düsenmoduls <i>als auch</i> den Schub <i>jedes</i> verbundenen Erweiterungsmoduls. Erzeugt während des Feuerns Restwärme."
 	ThrusterRocketNozzle = M.R.S.-Düsenmodul
 	ThrusterRocketNozzleDesc = "Eine erforderliche Komponente aller modularen Raketenschubdüsen. Kann mit keinen oder mehreren Erweiterungsmodulen und bis zu zwei Treibstoffkapseln pro Düse oder Verlängerung kombiniert werden.\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
 	ThrusterRocketNozzleIcon = M.R.S.-Düse
+	ThrusterRocketNozzleOverclock = "Übertaktetes M.R.S.-Düsenmodul"
+	ThrusterRocketNozzleOverclockDesc = "Verringert die Auswirkungen von Erweiterungsmodulen auf die Anlaufzeit. Erzeugt während des Feuerns Restwärme."
 	ThrusterSmall = "Kleine Schubdüse"
 	ThrusterSmall2Way = "Kleine 2-Weg-Schubdüse"
 	ThrusterSmall2WayDesc = "Ein schwaches 2-Weg-Schubtriebwerk, das hauptsächlich zum Manövrieren verwendet wird. Enthält einen kleinen Dynamo, der langsam Energie regeneriert."
@@ -3005,9 +3176,13 @@ Parts
 	ThrusterSmall3WayIcon = "Kleine 3-Weg-Schubdüse"
 	ThrusterSmallDesc = "Ein schwaches Schubtriebwerk, das hauptsächlich zum Manövrieren verwendet wird. Enthält einen kleinen Dynamo, der langsam Energie regeneriert."
 	ThrusterSmallIcon = "Kleine Schubdüse"
+	ThrusterSmallOverclock = "Übertaktete kleine Schubdüse"
+	ThrusterSmallOverclockDesc = "Erhöht die Schubkraft und die Energieeffizienz stark, während sie die Dynamo-Energieerzeugung signifikant verbessert, erhöht aber auch den Energieverbrauch. Erzeugt während des Feuerns Restwärme."
 	TractorBeamEmitter = Traktorstrahl-Emitter
 	TractorBeamEmitterDesc = "Stößt einen Gravitationsstrahl aus, der andere Schiffe und Objekte ziehen und schieben kann."
 	TractorBeamEmitterIcon = Traktorstrahl
+	TractorBeamEmitterOverclock = "Übertakteter Traktorstrahl-Emitter"
+	TractorBeamEmitterOverclockDesc = "Erhöht die Gravitationskraft in allen Modi signifikant, beschränkt aber die Kraft so, dass sie immer auf den Massenmittelpunkt des Ziels wirkt. Erzeugt während des Feuerns Restwärme.\n\nAußerdem kann der Emitter überladen werden, was seine Energie verbraucht und eine gewaltige Welle an Gravitationsenergie in alle Richtungen ausstößt, was ebenfalls eine große Menge an Restwärme erzeugt."
 	WallHole = Loch
 	WallHoleDesc = "Ein Loch, das durch eine Wand geschossen wurde."
 }
@@ -3240,8 +3415,10 @@ Resource
 	GoldDesc = "Eine seltene abbaubare Ressource, die zur Herstellung von Prozessoren verwendet wird."
 	GoldHardDesc = ""
 	GoldPlural = ""
+	Heat = Wärme
 	Hyperium = ""
 	HyperiumDesc = "Geheimnisvolle Kristalle, die die Raumzeit krümmen können. Werden als Treibstoff bei Hypersprüngen verwendet."
+	HyperiumHardDesc = ""
 	HyperiumPlural = ""
 	IonEnergy = Ionenstrahl-Energie
 	Iron = Eisen
@@ -3260,6 +3437,9 @@ Resource
 	MissilePartNuke = Nuklearraketen-Teil
 	MissilePartNukeDesc = "Teile, die zum Bau von Nuklearraketen verwendet werden."
 	MissilePartNukePlural = Nuklearraketen-Teile
+	MissilePartThermal = "Teil für thermische Kanisterrakete"
+	MissilePartThermalDesc = "Teile, die zum Bau von thermischen Kanisterraketen verwendet werden."
+	MissilePartThermalPlural = "Teile für thermische Kanisterrakete"
 	NotMineable = "<b>Nicht von Crew abbaubar. Bergbaulaser erforderlich.</b>"
 	Processor = Prozessor
 	ProcessorDesc = "Eine wertvolle Computerkomponente, die beim Bau von einigen fortschrittlichen Schiffsteilen verwendet wird."
@@ -3644,7 +3824,7 @@ Settings
 		PaintSelectTool = Auswahlwerkzeug
 		PaintSelectToolTip = "Das Auswahlwerkzeug ist standardmäßig ausgewählt, wenn du den Lackierungseditor öffnest."
 		PartToolTipsDefaultToStats = "Standardmäßig Statistik anzeigen"
-		PartToolTipsDefaultToStatsTip = "Bei Auswahl der Option wird die Statistik anstatt der Beschreibung eines Teils angezeigt, wenn du mit dem Mauszeiger darüber fährst. Du kannst <btn id='Design.ScrollTooltip'/> gedrückt halten, um die Beschreibung des Teils anzeigen zu lassen."
+		PartToolTipsDefaultToStatsTip = "Bei Auswahl der Option wird die Statistik und die Beschreibung angezeigt, wenn du mit dem Mauszeiger über ein Teil fährst."
 		RepairAutoDoors = "Türen automatisch reparieren"
 		RepairAutoDoorsTip = "Bei Auswahl der Option werden Verbindungstüren automatisch neu gebaut, wenn ein zerstörtes Teil neu gebaut wird."
 		RequirePartialRefundConfirmation = "Bestätigung für verringerte Rückerstattung erforderlich"
@@ -4079,25 +4259,49 @@ StatCategories
 	BoostOff = "Boost: Aus"
 	BoostOn = "Boost: Ein"
 	BulletChaingun = Chain-Gun-Projektil
+	BulletChaingunOverclocked = "Chain-Gun-Projektil (übertaktet)"
 	BulletDeck = Deckkanonenprojektil
+	BulletDeckOverclocked = "Deckkanonenprojektil (übertaktet)"
 	BulletLarge = "Projektil für große Kanone"
+	BulletLargeOverclocked = "Projektil für große Kanone (übertaktet)"
 	BulletMed = Standardkanonenprojektil
+	BulletMedOverclocked = "Standardkanonenprojektil (übertaktet)"
 	BulletRailgun = Railgun-Projektil
+	BulletRailgunOverclocked = "Railgun-Projektil (übertaktet)"
 	DisruptorBolt = Disruptorblitz
+	DisruptorBoltOverclocked = "Disruptorblitz (übertaktet)"
+	Firing = Feuern
 	Flak = ""
+	FlakOverclocked = "Flak (übertaktet)"
 	IonBeam = Ionenstrahl
+	IonBeamOverclocked = "Ionenstrahl (übertaktet)"
 	LaserBoltLarge = "Schwerer Laserblitz"
+	LaserBoltLargeOverclocked = "Schwerer Laserblitz (übertaktet)"
 	LaserBoltSmall = Laserblitz
+	LaserBoltSmallOverclocked = "Laserblitz (übertaktet)"
 	ManipulatorBeam = Manipulationsstrahl
 	Mine = ""
 	MineShrapnel = Splitter
 	MiningBeam = "Doppelte Bergbaustrahlen"
+	MiningBeamOverclocked = "Doppelte Bergbaustrahlen (übertaktet)"
 	MissileEMP = "Elektromagnetischen Impulsrakete"
 	MissileHE = "Hochexplosive Rakete"
 	MissileNuke = "Taktische Nuklearrakete"
+	MissileThermal = "Thermische Kanisterrakete"
+	NotFiring = "Nicht feuern"
+	Overclocked = Übertaktet
+	OverclockedBoost = "Boost: Ein (übertaktet)"
+	OverclockedDisruption = "Übertaktet (Disruptionseffekt)"
+	OverclockedShrapnel = "Übertaktet (Splitter)"
 	PDShot = Punktverteidigungsprojektil
 	RailgunBuff = Railgun-Buff
+	ResonanceBeam = Resonanzlanze
+	ShieldExtended = "Schildmodus: Erweitert"
+	ShieldLarge = "Großer Schild"
+	ShieldReinforced = "Schildmodus: Verstärkt"
+	ShieldSmall = "Kleiner Schild"
 	TractorBeam = Traktorstrahl
+	TractorBeamOverload = Traktorüberladungsimpuls
 }
 Stats
 {
@@ -4107,22 +4311,35 @@ Stats
 	AccelerationDelayFmt = "<white>Beschleunigungsverzögerung:</white> <good>{0:0.0#}</good> <gray>Sekunden</gray>"
 	AccelerationFmt = "<white>Beschleunigung:</white> <good>{0:0}</good> <gray>m/s²</gray>"
 	AmmoCapacityFmt = "<white>Munitionskapazität:</white> <good>{0}</good>"
+	AmmoHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.##}</good><gray>MJ/Munition (</gray><good>{1:0.##}</good><gray>MJ/Sek.)</gray>"
 	AmmoPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Munition (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	AmmoProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> Munition/Sek.</gray>"
 	AmmoSulfurUsageFmt = "<white>Schwefelverbrauch:</white> <good>{0:0.##}</good><gray>/Munition (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
+	AmplificationFactorFmt = "<white>Verstärkungsfaktor:</white> <good>{0:0.###}x</good>"
 	ArcFmt = "<white>Feuerkurve:</white> <good>{0:0}°</good>"
+	ArmorPenetrationResistanceFmt = "<white>Panzer-Durchdringungswiderstand:</white> <good>{0:0} %</good>"
+	BaseAmplificationFmt = "<white>Verstärkung (Basis):</white> <good>{0:0.#} %</good>"
+	BaseDilationFmt = "<white>Ausdehnung (Basis):</white> <good>{0:0.#} %</good>"
+	BaseHeatFactorFmt = "<white>Basiswärmefaktor:</white> <good>{0:0.#} % ({1:0.#})</good>"
+	BatteryDeliveredHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:#,0.##}</good><gray>MJ pro gelieferter Batterie</gray>"
 	BatteryFillTimeFmt = "<white>Batterieladezeit:</white> <good>{0:0.0#}</good> <gray>Sekunden</gray>"
 	BatterySizeFmt = "<white>Batteriegröße:</white> <good>{0:0.0#}</good>"
 	BeamDamageFalloffFmt = "<white>Rückgang durch Kombination:</white> <good>-{0} %</good><gray>/Strahl</gray>\n  <white>1. Strahl:</white> <good>{1:0} %</good><gray> Schaden</gray>\n  <white>2. Strahl:</white> <good>{2:0} %</good><gray> Schaden</gray>\n  <white>3. Strahl:</white> <good>{3:0} %</good><gray> Schaden</gray>\n  <white>4. Strahl:</white> <good>{4:0} %</good><gray> Schaden</gray>\n  <white>5. Strahl:</white> <good>{5:0} %</good><gray> Schaden</gray>\n ..."
+	BoostHeatFactorBatteryThresholdFmt = "<white>Wärmeerhöhungsgrenzwert:</white> <good>{0:0}</good> <gray>verwendete Batterien</gray>"
+	BoostHeatFactorPerBatteryFmt = "<white>Wärmefaktor:</white> <good>{0:+0.#;-0.#;0} %</good> <gray>/verwendete Batterie</gray>"
+	BoostHeatFactorPerSecondFmt = "<white>Wärmefaktor:</white> <good>{0:+0.#;-0.#;0} %</good> <gray>/Sek. während untätig</gray>"
 	BoostedPowerUsageContinuousFmt = "<zero>Energieverbrauch:</zero> <good>{0:0.##}</good><gray>/Sek. (dauerhaft)</gray>"
+	BurstFmt = "<white>Salve:</white> <good>{0:0}</good> <gray>Schüsse</gray>"
 	CarbonCapacityFmt = "<white>Kohlenstoffkapazität:</white> <good>{0}</good>"
 	Coil2CapacityFmt = "<white>Hyperspulenkapazität:</white> <good>{0}</good>"
 	Coil2CoilUsageFmt = "<white>Spulenverbrauch:</white> <good>{0:0.##}</good><gray>/H-Spule (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	Coil2CopperUsageFmt = "<white>Kupferverbrauch:</white> <good>{0:0.##}</good><gray>/H-Spule (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
+	Coil2HeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.##}</good><gray>MJ/H-Spule (</gray><good>{1:0.##}</good><gray>MJ/Sek.)</gray>"
 	Coil2PowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/H-Spule (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	Coil2ProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> H-Spulen/Sek.</gray>"
 	CoilCapacityFmt = "<white>Spulenkapazität:</white> <good>{0}</good>"
 	CoilCopperUsageFmt = "<white>Kupferverbrauch:</white> <good>{0:0.##}</good><gray>/Spule (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
+	CoilHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.##}</good><gray>MJ/Spule (</gray><good>{1:0.##}</good><gray>MJ/Sek.)</gray>"
 	CoilPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Spule (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	CoilProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> Spulen/Sek.</gray>"
 	CommandPointsProvidedFmt = "<white>Kommandopunkte:</white> <good>+{0}<image name='command_points' colored='true'/></good> <gray>(zur Verfügung)</gray>"
@@ -4138,6 +4355,7 @@ Stats
 	CrewSpeedRevFmt = "<white>Crew-Geschwindigkeit (rückwärts):</white> <good>{0:0} %</good>"
 	CrewStunDurationFmt = "<white>Dauer der Crew-Betäubung:</white> <good>{0:0.#}-{1:0.#}</good> <gray>Sekunden</gray>"
 	CrewStunRadiusFmt = "<white>Radius der Crew-Betäubung:</white> <good>{0:0.#}</good> <gray>Meter</gray>"
+	DamageAreaFalloffFmt = "<white>Schadensrückgangsexponent:</white> <good>{0:0.##}</good>"
 	DamageAreaFmt = "<white>Schadensbereich:</white> <good>{0:0.#}</good><gray>-Meter-Radius</gray>"
 	DamageContinuousAsteroidsFmt = "<white>Schaden gegen Asteroiden:</white> <good>{0:n0}</good><gray>/Sek.</gray>"
 	DamageContinuousEnemiesFmt = "<white>Schaden gegen Gegner:</white> <good>{0:n0}</good><gray>/Sek.</gray>"
@@ -4145,37 +4363,77 @@ Stats
 	DamageContinuousFmt = "<white>Schaden:</white> <good>{0:n0}</good><gray>/Sek.</gray>"
 	DamageContinuousJunkFmt = "<white>Schaden gegen Schrott:</white> <good>{0:n0}</good><gray>/Sek.</gray>"
 	DamageContinuousNearFmt = "<white>Schaden (Nahkampf):</white> <good>{0:n0}</good><gray>/Sek.</gray>"
+	DamageContinuousShieldsFmt = "<white>Schaden gegen Schilde:</white> <good>{0:n0}</good><gray>/Sek.</gray>"
 	DamageFmt = "<white>Schaden:</white> <good>{0:n0}</good><gray>/Schuss (</gray><good>{1:n0}</good><gray>/Sek.)</gray>"
 	DamageRangeFmt = "<white>Schaden:</white> <good>{0:n0}</good><gray>/Schuss (</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/Sek.)</gray>"
 	DetonationRangeFmt = "<white>Detonationsreichweite:</white> <good>{0:0}</good> <gray>Meter</gray>"
 	DiamondCapacityFmt = "<white>Diamantenkapazität:</white> <good>{0}</good>"
 	DiamondCarbonUsageFmt = "<white>Kohlenstoffverbrauch:</white> <good>{0:0.##}</good><gray>/Diamant (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
-	DiamondPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Diamant (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
+	DiamondPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>MJ/Diamant (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	DiamondProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> Diamanten/Sek.</gray>"
+	DilationFactorFmt = "<white>Ausdehnungsfaktor:</white> <good>{0:0.###}x</good>"
+	DilationHeatSpreadDistanceFmt = "<white>Wärme-Streuungsdistanz:</white> <good>{0:0.##}</good><gray> Meter * Ausdehnung</gray>"
 	EMPMissileCapacityFmt = "<white>EMP-Raketen-Kapazität:</white> <good>{0}</good>"
 	EMPResistFmt = "<white>Widerstand gegen EMP:</white> <good>-{0:0.##}</good> <gray>Energieentzug</gray>"
+	EMPResistPercentageFmt = "<white>Widerstand gegen EMP:</white> <good>{0:0.#} %</good>"
+	EffectDurationFmt = "<white>Effektdauer:</white> <good>{0:0.##}</good> <gray>Sekunden</gray>"
 	EnrichedUraniumCapacityFmt = "<white>Angereichertes-Uran-Kapazität:</white> <good>{0}</good>"
+	EnrichedUraniumHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.##}</good><gray>MJ/A-Uran (</gray><good>{1:0.##}</good><gray>MJ/Sek.)</gray>"
 	EnrichedUraniumPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/A-Uran (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	EnrichedUraniumProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> A-Uran/Sek.</gray>"
 	EnrichedUraniumUraniumUsageFmt = "<white>Uranverbrauch:</white> <good>{0:0.##}</good><gray>/A-Uran (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	FactoryBuffFmt = "<white>Angrenzende Fabriken:</white> <good>+{0:0} %</good><gray> Produktionsrate</gray>"
 	FireChanceFmt = "<white>Verursacht Brände:</white> <good>{0:0} %</good><gray> Chance/Kachel</gray>"
+	FireDelayFmt = "<white>Feuerverzögerung:</white> <good>{0:0.##}</good> <gray>Sekunden</gray>"
+	FireIntervalFmt = "<white>Feuerintervall:</white> <good>{0:0.##}</good> <gray>Sekunden</gray>"
+	FireSizeFmt = "<white>Anfänglicher Feuerumfang:</white> <good>{0:0} %</good>"
+	FiringHeatGenerationFmt = "<white>Feuer-Wärmeerzeugung:</white> <good>{0:#,0.##}</good><gray>MJ/Sek.</gray>"
 	FtlMaxEfficiencyRangeFmt = "<white>Optimale Effizienz:</white> <good>{0:0.##}</good><gray> Meter</gray>"
 	FtlMinEfficiencyRangeFmt = "<white>Minimale Effizienz:</white> <good>{0:0.##}</good><gray> Meter</gray>"
 	GoldCapacityFmt = "<white>Goldkapazität:</white> <good>{0}</good>"
 	HEMissileCapacityFmt = "<white>HE-Raketen-Kapazität:</white> <good>{0}</good>"
 	HPFmt = "<white>Trefferpunkte:</white> <good>{0:n0}</good>"
+	HeatAbsorptionFmt = "<white>Wärmeabsorption:</white> <good>{0:0.#}</good><gray>MJ/Sek.</gray>"
+	HeatAbsorptionInefficiencyFmt = "<white>Absorptionsineffizienz:</white> <good>+{0:0.#} %</good> <gray>Wärme</gray>"
+	HeatAbsorptionRadiusFmt = "<white>Absorptionsradius:</white> <good>{0:0.#}</good> <gray>Meter</gray>"
+	HeatAmplificationExponentFmt = "<white>Wärme-Pool-Verstärkungsexponent:</white> <good>{0.##}</good>"
+	HeatCapacityFmt = "<white>Wärmekapazität:</white> <good>{0:#,0.##}</good><gray>MJ</gray>"
+	HeatDissipationFmt = "<white>Wärmeableitung:</white> <good>{0:#,0.##}</good><gray>MJ/Sek.</gray>"
+	HeatFireChanceFmt = "<white>Feuer-Chance bei Wärme-Grenzwert:</white> <good>{0:0.##%}</good>"
+	HeatFireThresholdFmt = "<white>Wärme-Feuer-Grenzwert:</white> <good>{0:#,0.#}</good><gray>MJ</gray>"
+	HeatGenerationFactorFmt = "<white>Wärmeerzeugungsfaktor:</white> <good>{0:0.###}x</good>"
+	HeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:#,0.##}</good><gray>MJ/Sek.</gray>"
+	HeatGenerationPerPartFmt = "<white>Wärmeerzeugung:</white> <good>{0:#,0.##}</good><gray>MJ/Sek./Teil</gray>"
+	HeatPerDamageFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.##}</good><gray>MJ/Schaden</gray>"
+	HeatPerRestockFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.#}</good><gray>MJ/Auffüllen</gray>"
+	HeatPerShotFmt = "<white>Wärmeerzeugung</white> <good>{0:0.#}</good><gray>MJ/Schuss</gray>"
+	HeatPerTileContinuousFmt = "<white>Angewendete Wärme:</white> <good>{0:n1}</good><gray>MJ/Kachel/Sek.</gray>"
+	HeatSpreadDistanceFmt = "<white>Wärme-Streuungsdistanz:</white> <good>{0:0.##}</good><gray> Meter</gray>"
+	HeatTransferInefficiencyFmt = "<white>Wärmeübertragungsineffizienz:</white> <good>+{0:0.#} %</good> <gray>Wärme</gray>"
+	HitShieldHeatFactorFmt = "<white>Treffer-Schild-Erhitzung:</white> <good>{0:0.##} %</good>"
 	HyperiumCapacityFmt = "<white>Hyperiumkapazität:</white> <good>{0}</good>"
+	IonLightningIntervalFmt = "<white>Blitz-Intervall:</white> <good>{0:0.#}</good> <gray>Sekunden (verringert durch Strahlstärke)</gray>"
 	IronCapacityFmt = "<white>Eisenkapazität:</white> <good>{0}</good>"
+	LightningChainChanceFmt = "<white>Blitz-Ketten-Chance:</white> <good>{0:0.#} %</good> <gray>pro Schlag</gray>"
+	LightningChainStrikeCountRangeFmt = "<white>Blitz-Ketten-Schläge:</white> <good>{0}-{1}</good>"
+	LightningChanceFmt = "<white>Blitz-Chance:</white> <good>{0:0.#} %</good>"
+	LightningDamageFmt = "<white>Blitzschaden:</white> <good>{0:0}</good> <gray>pro Schlag</gray>"
+	LightningMaxChainFmt = "<white>Max. Blitz-Kette:</white> <good>{0}</good> <gray>aneinandergereihte Schläge</gray>"
+	LightningRangeFmt = "<white>Blitz-Reichweite:</white> <good>{0:0.#}</good> <gray>Meter</gray>"
+	LightningStrikeCountRangeFmt = "<white>Blitzschläge:</white> <good>{0}-{1}</good>"
 	MaxDamageFmt = "<white>Max. Schaden:</white> <good>{0:n0}</good><gray>/Schuss (</gray><good>{1:n0}</good><gray>/Sek.)</gray>"
+	MaxDamageRangeFmt = "<white>Max. Schaden:</white> <good>{0:n0}</good><gray>/Schuss (</gray><good>{1:n0}</good><white> – </white><good>{2:n0}</good><gray>/Sek.)</gray>"
 	MineAmmoUsageFmt = "<white>Munitionsverbrauch:</white> <good>{0:0.##}</good><gray>/Mine (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	MineCapacityFmt = "<white>Minenkapazität:</white> <good>{0}</good>"
+	MineHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.##}</good><gray>MJ/Mine (</gray><good>{1:0.##}</good><gray>MJ/Sek.)</gray>"
 	MineIronUsageFmt = "<white>Eisenverbrauch:</white> <good>{0:0.##}</good><gray>/Mine (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	MinePartCapacityFmt = "<white>Kapazität:</white> <good>{0}</good><gray> Teile (</gray><good>{1:0.##}</good><gray> Minen)</gray>"
 	MinePartsFmt = "<white>Gebaut aus:</white> <good>{0}</good><gray> Teilen/Mine</gray>"
 	MinePowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Mine (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	MineProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> Minen/Sek.</gray>"
 	MissileCopperUsageFmt = "<white>Kupferverbrauch:</white> <good>{0:0.##}</good><gray>/Rakete (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
+	MissileHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.##}</good><gray>MJ/Rakete (</gray><good>{1:0.##}</good><gray>MJ/Sek.)</gray>"
+	MissileHeatUsageFmt = "<white>Wärmeverbrauch:</white> <good>{0:0.##}</good><gray>/Rakete (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	MissileIronUsageFmt = "<white>Eisenverbrauch:</white> <good>{0:0.##}</good><gray>/Rakete (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	MissileLauncherNotes = "<gray>Munitionsstatistiken für jede Munition findest du in der entsprechenden Fabrik.</gray>"
 	MissilePartCapacityFmt = "<white>Kapazität:</white> <good>{0}</good><gray> Teile (</gray><good>{1:0.##}</good><gray> Raketen)</gray>"
@@ -4185,38 +4443,57 @@ Stats
 	MissileSulfurUsageFmt = "<white>Schwefelverbrauch:</white> <good>{0:0.##}</good><gray>/Rakete (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	MissileUraniumUsageFmt = "<white>Uranverbrauch:</white> <good>{0:0.##}</good><gray>/Rakete (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	NukeMissileCapacityFmt = "<white>Nuklearwaffenkapazität:</white> <good>{0}</good>"
+	OverclockTransitionTimeFmt = "<white>Übergangszeit übertakten:</white> <good>{0:0.#}</good> <gray>Sekunden</gray>"
+	PelletSpreadFmt = "<white>Projektilstreuung:</white> <gray>+/-</gray> <good>{0:0.#}°</good>"
+	PelletsFmt = "<white>Projektile:</white> <good>{0:0}</good> <gray>Kugeln/Schuss</gray>"
 	PenResistFmt = "<white>Widerstand gegen Durchdringung:</white> <good>-{0:0.##}</good> <gray>Meter</gray>"
+	PenetrationDamagePoolFmt = "<white>Durchdringung:</white> <good>{0:0.##}</good> <gray>Meter (max. </gray><good>{1:n0}</good><gray> Schaden)</gray>"
 	PenetrationFmt = "<white>Durchdringung:</white> <good>{0:0.##}</good> <gray>Meter</gray>"
 	PowerCapacityFmt = "<white>Energiekapazität:</white> <good>{0:0.##}</good>"
+	PowerDistributionEfficiencyFmt = "<white>Energieverteilungseffizienz:</white> <good>{0:0.#} %</good>"
 	PowerDrainAreaFmt = "<white>Energieentzugsbereich:</white> <good>{0:0.#}</good><gray>-Meter-Radius</gray>"
 	PowerDrainFmt = "<white>Energieentzug bei Einschlag:</white> <good>{0:0.##}</good><gray>/Schuss (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
+	PowerDrainOverTimeFmt = "<white>Energieentzug:</white> <good>{0:0}</good> <gray>Gesamt (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	PowerGenerationFmt = "<white>Energieerzeugung:</white> <good>{0:0.###}</good><gray>/Sek.</gray>"
+	PowerHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.##}</good><gray>MJ/Energie (</gray><good>{1:0.##}</good><gray>MJ/Sek.)</gray>"
 	PowerUsageContinuousFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Sek.</gray>"
 	PowerUsageContinuousMinutesFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Min.</gray>"
+	PowerUsageFactorFmt = "<white>Energieverbrauchsfaktor:</white> <good>{0:0.###}x</good>"
 	ProcessorCapacityFmt = "<white>Prozessorenkapazität:</white> <good>{0}</good>"
 	ProcessorCoilUsageFmt = "<white>Spulenverbrauch:</white> <good>{0:0.##}</good><gray>/Prozessor (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	ProcessorGoldUsageFmt = "<white>Goldverbrauch:</white> <good>{0:0.##}</good><gray>/Prozessor (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
+	ProcessorHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.##}</good><gray>MJ/Prozessor (</gray><good>{1:0.##}</good><gray>MJ/Sek.)</gray>"
 	ProcessorPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Prozessor (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	ProcessorProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> Prozessoren/Sek.</gray>"
+	PumpPowerUsageFactorFmt = "<white>Pumpen-Energieverbrauchsfaktor:</white> <good>{0:0.###}x</good>"
 	ROFFmt = "<white>Feuerrate:</white> <good>{0:0.##}</good> <gray>Schüsse/Sek.</gray>"
 	ROFRangeFmt = "<white>Feuerrate:</white> <good>{0:0.##}</good><white> – </white><good>{1:0.##}</good><gray> Schüsse/Sek.</gray>"
 	RadarRangeFmt = "<white>Sensorenreichweite (Radar):</white> <good>{0:0}</good><gray> Meter</gray>"
+	RailgunAcceleratorChargeTimeFmt = "<white>Ladezeit:</white> <good>+{0:0.##}</good> <gray>Sekunden/Beschleuniger</gray>"
+	RailgunBaseChargeTimeFmt = "<white>Basisladezeit:</white> <good>{0:0.##}</good> <gray>Sekunden</gray>"
+	RailgunBuffExponentOverclockFmt = "<white>Railgun-Buff-Exponent:</white> <good>{0:0.##}</good> <gray>(<good>+{1:0.##}</good>)</gray>"
 	RailgunBuffFmt = "<gray>Erhöhung des Schadens, der Durchdringung, der Reichweite und der Projektilgeschwindigkeit der Railgun (pro Beschleuniger):</gray>\n  <TransparentWhite>0</TransparentWhite><white>1: </white><good>+{0:000} %</good>   <white>11: </white><good>+{10:000} %</good>   <white>21: </white><good>+{20:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>2: </white><good>+{1:000} %</good>   <white>12: </white><good>+{11:000} %</good>   <white>22: </white><good>+{21:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>3: </white><good>+{2:000} %</good>   <white>13: </white><good>+{12:000} %</good>   <white>23: </white><good>+{22:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>4: </white><good>+{3:000} %</good>   <white>14: </white><good>+{13:000} %</good>   <white>24: </white><good>+{23:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>5: </white><good>+{4:000} %</good>   <white>15: </white><good>+{14:000} %</good>   <white>25: </white><good>+{24:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>6: </white><good>+{5:000} %</good>   <white>16: </white><good>+{15:000} %</good>   <white>26: </white><good>+{25:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>7: </white><good>+{6:000} %</good>   <white>17: </white><good>+{16:000} %</good>   <white>27: </white><good>+{26:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>8: </white><good>+{7:000} %</good>   <white>18: </white><good>+{17:000} %</good>   <white>28: </white><good>+{27:000} %</good>\n  <TransparentWhite>0</TransparentWhite><white>9: </white><good>+{8:000} %</good>   <white>19: </white><good>+{18:000} %</good>   <white>29: </white><good>+{28:000} %</good>\n  <white>10: </white><good>+{9:000} %</good>   <white>20: </white><good>+{19:000} %</good>   <white>30: </white><good>+{29:000} %</good>"
 	RailgunNotes = "<gray>HINWEIS: Schaden, Durchdringung, Reichweite, Projektilgeschwindigkeit und Energieverbrauch steigen mit jedem zusätzlichen Railgun-Beschleuniger.</gray>"
+	RailgunOverclockHeatOnShotFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.#}</good><gray>MJ/Teil/Schuss</gray>"
+	RampUpSpeedFactorFmt = "<white>Anlaufgeschwindigkeitsfaktor:</white> <good>{0:0.#} %</good>"
 	RangeFmt = "<white>Reichweite:</white> <good>{0:0}</good> <gray>Meter</gray>"
 	RangeLimitedFmt = "<white>Reichweite:</white> <good>{0:0}</good> <gray>Meter (max. </gray><good>{1:0}</good><gray> Meter)</gray>"
+	ResonanceHeatPoolFmt = "<white>Angewendete Wärme (Pool):</white> <good>{0:n1}</good><gray>MJ/Sek. * Verstärkung^</gray><good>{1:0.##}</good>"
+	ResonanceTurretHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.#}</good><gray>MJ/Sek. + Pumpen</gray>"
 	Resources = "<white>Ressourcen:</white> "
-	RocketNotes = "<gray>HINWEIS: Schubkraft, Anlaufzeit und Energieverbrauch steigen mit jedem zusätzlichen Erweiterungsmodul an.</gray>"
+	RocketNotes = "<gray>HINWEIS: Schubkraft, Anlaufzeit, Energieverbrauch und Wärmeerzeugung steigen mit jedem zusätzlichen Erweiterungsmodul an.</gray>"
 	SalvoFmt = "<white>Salve:</white> <good>{0:0.##}</good> <gray>Schüsse/</gray><good>{1:0.##}</good> <gray>Sek.</gray>"
 	SeparationRangeFmt = "<white>Abstand:</white> <good>{0:0}</good> <gray>Meter</gray>"
 	ShellDamageResistFmt = "<white>Schutzhüllenwiderstand gegen Schaden:</white> <good>{0} %</good>"
 	ShellPenResistFmt = "<white>Schutzhüllenwiderstand gegen Durchdringung:</white> <good>-{0}</good> <gray>Meter</gray>"
 	ShieldArcFmt = "<white>Schildbogen:</white> <good>{0:0}°</good>"
 	ShieldDamageFmt = "<white>Schaden gegen Schilde:</white> <good>{0:n0}</good><gray>/Schuss (</gray><good>{1:n0}</good><gray>/Sek.)</gray>"
+	ShieldDamageOverTimeFmt = "<white>Schaden gegen Schilde:</white> <good>{0:0}</good> <gray>Gesamt (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
+	ShieldDamagePowerCostFmt = "<white>Energiekosten für Schildschaden:</white> <good>{0:+0.#;-0.#} %</good> <gray>Basis</gray>, <good>{1:+0.#;-0.#} %</good><gray> * Verstärkung</gray>, <good>{2:+0.#;-0.#} %</good><gray> * Ausdehnung</gray>"
 	ShieldDistFmt = "<white>Schildentfernung:</white> <good>{0}</good><gray> Meter</gray>"
 	ShieldHPFmt = "<white>Schildstärke:</white> <good>{0:n0}</good>"
 	ShieldPenResistFmt = "<white>Schildwiderstand gegen Durchdringung:</white> <good>-{0}</good> <gray>Meter</gray>"
-	ShieldPenetrationFmt = "<white>Schilddurchdringung:</white> <good>{0:.##}</good> <gray>Schilde</gray>"
+	ShieldPenetrationFmt = "<white>Schilddurchdringung:</white> <good>{0:0.##}</good> <gray>Meter äquivalent</gray>"
 	ShotAmmoUsageFmt = "<white>Munitionsverbrauch:</white> <good>{0:0.##}</good><gray>/Schuss (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	ShotAmmoUsageRangeFmt = "<white>Munitionsverbrauch:</white> <good>{0:0.##}</good><gray>/Schuss (</gray><good>{1:0.##}</good><white> – </white><good>{2:0.##}</good><gray>/Sek.)</gray>"
 	ShotDamageFmt = "<white>Schaden gegen Schüsse:</white> <good>{0:n0}</good><gray>/Schuss (</gray><good>{1:n0}</good><gray>/Sek.)</gray>"
@@ -4226,6 +4503,11 @@ Stats
 	ShotLaunchSpeedFmt = "<white>Startgeschwindigkeit:</white> <good>{0:0}</good> <gray>m/s</gray>"
 	ShotPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.###}</good><gray>/Schuss (</gray><good>{1:0.###}</good><gray>/Sek.)</gray>"
 	ShotSpeedFmt = "<white>Geschwindigkeit:</white> <good>{0:0}</good> <gray>m/s</gray>"
+	ShrapnelArcFmt = "<white>Splitter-Bogen:</white> <good>{0:0}°</good>"
+	ShrapnelFieldBulletDamageFmt = "<white>Splitterfeld-Kugelschaden:</white> <good>{0:0}</good><gray>/Meter</gray>"
+	ShrapnelFieldDamagePoolFmt = "<white>Splitterfeld-Schadenspool:</white> <good>{0:0}</good>"
+	ShrapnelFieldLifetimeFmt = "<white>Splitterfelddauer:</white> <good>{0:0.#}</good> <gray>Sekunden</gray>"
+	ShrapnelFieldRadiusFmt = "<white>Splitterfeldradius:</white> <good>{0:0.#}</good> <gray>Meter</gray>"
 	ShrapnelFmt = "<white>Splitter:</white> <good>{0}</good>"
 	SightRangeFmt = "<white>Sensorenreichweite (visuell):</white> <good>{0:0}</good><gray> Meter</gray>"
 	SimpleDamageFmt = "<white>Schaden:</white> <good>{0:n0}</good>"
@@ -4233,24 +4515,44 @@ Stats
 	SizeFmt = "<white>Größe:</white> <good>{0}x{1}</good> <gray>Meter</gray>"
 	SpreadFmt = "<white>Zufällige Streuung:</white> <gray>+/-</gray> <good>{0:0.#}°</good>"
 	SteelCapacityFmt = "<white>Stahlkapazität:</white> <good>{0}</good>"
+	SteelHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.##}</good><gray>MJ/Stahl (</gray><good>{1:0.##}</good><gray>MJ/Sek.)</gray>"
 	SteelIronUsageFmt = "<white>Eisenverbrauch:</white> <good>{0:0.##}</good><gray>/Stahl (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	SteelPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Stahl (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	SteelProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> Stahl/Sek.</gray>"
+	StorageHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:#,0.##}</good><gray>MJ/Sek. (100 % voll)</gray>"
 	StorageTilesFmt = "<white>Lager:</white> <good>{0}</good> <gray>Stapel</gray>"
+	StrengthAtMaxRangeFmt = "<white>Stärke bei max. Reichweite:</white> <good>{0:0.#} %</good>"
 	StretchRangeFmt = "<white>Reichweite strecken:</white> <good>{0:0}</good> <gray>Meter</gray>"
 	SulfurCapacityFmt = "<white>Schwefelkapazität:</white> <good>{0}</good>"
+	ThermalAmplificationFmt = "<white>Thermische Verstärkung:</white> <good>{0:+0.#;-0.#} %</good>"
+	ThermalDilationFmt = "<white>Thermische Ausdehnung:</white> <good>{0:+0.#;-0.#} %</good>"
+	ThermalDilationPumpNotes = "<gray>HINWEIS: Ausdehnung, Wärmeerzeugung und Energieverbrauch werden mit nur einem verbundenen Anschluss halbiert.</gray>"
+	ThermalMissileCapacityFmt = "<white>„Thermische Raketen“-Kapazität:</white> <good>{0}</good>"
+	ThermalPumpMultiEfficiencyFmt = "<white>Merfachnutzer-Effizienz:</white> <good>{0:0.#} %</good><gray>^zusätzliche Nutzer</gray>"
+	ThrusterBonusForceFmt = "<white>Schubdüsenbonus-Grundkraft:</white> <good>+{0:0.##}</good> <gray>kN</gray>"
 	ThrusterBuffFmt = "<white>Schubdüsen-Buff:</white> <good>+{0:0} %</good><gray> Schub &amp; Energieverbrauch</gray>"
-	ThrusterForceFmt = "<white>Schub:</white> <good>{0:#,0.#}</good><gray> Kilonewton</gray>"
+	ThrusterForceFmt = "<white>Schub:</white> <good>{0:#,0.#}</good><gray> kN</gray>"
+	ThrusterHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:#,0.##}</good><gray>MJ/Sek. (100 % Schub)</gray>"
 	ThrusterPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Sek. (100 % Schub)</gray>"
+	ThrusterPowerUsageRampFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}-{1:0.##}</good><gray>/Sek. (100 % Schub)</gray>"
+	ThrusterPowerUsageRampTimeFmt = "<white>Energieverbrauch-Anlaufzeit:</white> <good>{0:0.##}</good> <gray>Sekunden</gray>"
 	ThrusterRampDownFmt = "<white>Herunterfahrzeit:</white> <good>{0:0.##}</good><gray> Sekunden</gray>"
+	ThrusterRampExponentFmt = "<white>Anlaufzeit-Exponent:</white> <good>{0:0.##}</good>"
 	ThrusterRampUpFmt = "<white>Anlaufzeit:</white> <good>{0:0.##}</good><gray> Sekunden</gray>"
 	TractorBeamNotes = "<gray>Hinweis: Die oben aufgeführten Werte für Kraft und Energieverbrauch sind theoretische Höchstwerte. Die tatsächlichen Werte variieren je nach Entfernung des Ziels.</gray>"
-	TractorForceFmt = "<white>Zugkraft:</white> <good>{0:#,0.#}</good><gray> Kilonewton</gray>"
+	TractorForceFmt = "<white>Zugkraft:</white> <good>{0:#,0.#}</good><gray> kN</gray>"
+	TractorOverloadChargeTimeFmt = "<white>Ladezeit überladen:</white> <good>{0:0.##}</good><gray> Sekunden</gray>"
+	TractorOverloadForceFmt = "<white>Zugkraft überladen:</white> <good>{0:#,0.#}</good><gray> kN</gray>"
+	TractorOverloadHeatGenerationFmt = "<white>Wärmeerzeugung überladen:</white> <good>{0:0.#}</good><gray>MJ</gray>"
+	TractorOverloadMinPowerFmt = "<white>Minimale Energie überladen:</white> <good>{0:0.##} %</good><gray> gespeichert</gray>"
+	TractorOverloadRadiusFmt = "<white>Radius überladen:</white> <good>{0:#,0.#}</good><gray> Meter</gray>"
 	TristeelCapacityFmt = "<white>Tri-Stahl-Kapazität:</white> <good>{0}</good>"
+	TristeelHeatGenerationFmt = "<white>Wärmeerzeugung:</white> <good>{0:0.##}</good><gray>MJ/Tri-Stahl (</gray><good>{1:0.##}</good><gray>MJ/Sek.)</gray>"
 	TristeelPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Tri-Stahl (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	TristeelProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> Tri-Stahl/Sek.</gray>"
 	TristeelTritaniumUsageFmt = "<white>Tritaniumverbrauch:</white> <good>{0:0.##}</good><gray>/Tri-Stahl (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	TritaniumCapacityFmt = "<white>Tritaniumkapazität:</white> <good>{0}</good>"
+	TurretExtraHeatGenerationFmt = "<white>Turm-Wärmeerzeugung:</white> <good>{0:+0.#;-0.#}</good><gray>MJ/Sek.</gray>"
 	TurretPenResistFmt = "<white>Turmwiderstand gegen Durchdringung:</white> <good>-{0}</good> <gray>Meter</gray>"
 	TurretSpeedFmt = "<white>Turmgeschwindigkeit:</white> <good>{0:0} °</good><gray>/Sek.</gray>"
 	UraniumCapacityFmt = "<white>Urankapazität:</white> <good>{0}</good>"

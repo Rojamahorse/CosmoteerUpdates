@@ -3943,7 +3943,7 @@ Parts
 	CannonMedIcon = "Cannon"
 	CannonMedDesc = "Fires single rounds of projectile ammunition that can penetrate into enemy ships, sometimes starting fires."
 	CannonMedOverclock = "Overclocked Standard Cannon"
-	CannonMedOverclockDesc = "Fires salvos of multiple smaller shells, but each shell has lower damage and projectile speed. Produces waste heat when firing."
+	CannonMedOverclockDesc = "Fires salvos of multiple shells at higher velocity and longer range. Produces waste heat when firing."
 
 	CannonLarge = "Large Cannon"
 	CannonLargeIcon = &CannonLarge
@@ -4021,7 +4021,7 @@ Parts
 	EngineRoomIcon = &EngineRoom
 	EngineRoomDesc = "Increases the thrust and power usage of adjacent thrusters by 50%. Also acts as a central delivery point for adjacent thrusters to which crew can deliver batteries without having to travel to each one individually."
 	EngineRoomOverclock = "Overclocked Engine Room"
-	EngineRoomOverclockDesc = "Improves power efficiency when distributing power to attached thrusters, but forces all attached thrusters into Overclock mode. Produces waste heat while distributing power.\n\n"\
+	EngineRoomOverclockDesc = "Improves power efficiency when distributing power to attached thrusters, but produces waste heat while distributing power.\n\n"\
 	                          "Additionally collects waste heat from attached thrusters, but produces additional waste heat while doing so."
 
 	ExplosiveCharge = "Explosive Charge"
@@ -4090,7 +4090,7 @@ Parts
 
 	FactoryDiamond = "Diamond Smelter"
 	FactoryDiamondIcon = "Diamonds"
-	FactoryDiamondDesc = "Significantly increases production speed. Produces waste heat while producing diamonds."
+	FactoryDiamondDesc = "Manufactures diamonds, which are used to construct some advanced ship parts. Consumes carbon."
 
 	FactoryProcessor = "Processor Fabricator"
 	FactoryProcessorIcon = "Processors"
@@ -4159,16 +4159,16 @@ Parts
 
 	Radiator = "Radiator"
 	RadiatorIcon = "Radiator"
-	RadiatorDesc = "Dissipates thermal from the connected heat pipe system. Dissipation effectiveness is reduced if the area in front of the radiator is blocked."
+	RadiatorDesc = "Dissipates heat from the connected thermal network. Dissipation effectiveness is reduced if the area in front of the radiator is blocked."
 	RadiatorDissipationScoreFmt = "<good>{1:0.#}%\n({0:0.#}<gray>/sec</gray>)</good>"
 
 	HeatExchanger = "Heat Exchanger"
 	HeatExchangerIcon = "Heat Exchanger"
-	HeatExchangerDesc = "Absorbs heat from the hull, transferring it to the connected heat pipe system while generating some additional waste heat."
+	HeatExchangerDesc = "Absorbs heat from the hull, transferring it to the connected thermal network while generating some additional waste heat."
 
 	ThermalBattery = "Thermal Battery"
 	ThermalBatteryIcon = "Thermal Battery"
-	ThermalBatteryDesc = "Safely contains large amounts of thermal energy, providing additional heat storage to the connected heat pipe system."
+	ThermalBatteryDesc = "Safely contains large amounts of thermal energy, providing additional heat storage to the connected thermal network."
 
 	HeatPipeCrossing = "Heat Pipe Crossing"
 	HeatPipeCrossingIcon = "Heat Pipe Crossing"
@@ -4184,11 +4184,11 @@ Parts
 
 	ThermalDilationPump = "Lance Dilation Pump"
 	ThermalDilationPumpIcon = "Lance Dilation Pump"
-	ThermalDilationPumpDesc = "Increases the heat area-of-effect for all Thermal Resonance Lances connected to the same heat pipe system. Both of the pump's ports must be connected to achieve full effect."
+	ThermalDilationPumpDesc = "Increases the heat area-of-effect for all Thermal Resonance Lances connected to the same thermal network. Both of the pump's ports must be connected to achieve full effect."
 
 	ThermalAmplificationPump = "Lance Amplification Pump"
 	ThermalAmplificationPumpIcon = "Lance Amplification Pump"
-	ThermalAmplificationPumpDesc = "Increases the heat intensity for all Thermal Resonance Lances connected to the same heat pipe system."
+	ThermalAmplificationPumpDesc = "Increases the heat intensity for all Thermal Resonance Lances connected to the same thermal network."
 
 	LaserBlasterSmall = "Laser Blaster"
 	LaserBlasterSmallIcon = "Laser"
@@ -4717,7 +4717,7 @@ Stats
 	PenetrationDamagePoolFmt = "<white>Penetration:</white> <good>{0:0.##}</good> <gray>meters (max </gray><good>{1:n0}</good><gray> damage)</gray>"
 	FireChanceFmt = "<white>Starts Fires:</white> <good>{0:0}%</good><gray> chance/tile</gray>"
 	ShieldPenetrationFmt = "<white>Shield Penetration:</white> <good>{0:0.##}</good> <gray>meters equivalent</gray>"
-	FireSizeFmt = "<white>Started Fire Size:</white> <good>{0:0}%</good>"
+	FireSizeFmt = "<white>Initial Fire Size:</white> <good>{0:0}%</good>"
 	SalvoFmt = "<white>Salvo:</white> <good>{0:0.##}</good> <gray>shots/</gray><good>{1:0.##}</good> <gray>sec</gray>"
 	ROFFmt = "<white>Rate of Fire:</white> <good>{0:0.##}</good> <gray>shots/sec</gray>"
 	FireIntervalFmt = "<white>Fire Interval:</white> <good>{0:0.##}</good> <gray>seconds</gray>"
@@ -4769,29 +4769,29 @@ Stats
 	ShotPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.###}</good><gray>/shot (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
 	AmmoSulfurUsageFmt = "<white>Sulfur Use:</white> <good>{0:0.##}</good><gray>/ammo (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	AmmoPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/ammo (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	AmmoHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/ammo (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	AmmoHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/ammo (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	MissileIronUsageFmt = "<white>Iron Use:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	MissileCopperUsageFmt = "<white>Copper Use:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	MissileUraniumUsageFmt = "<white>Uranium Use:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	MissileSulfurUsageFmt = "<white>Sulfur Use:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	MissileHeatUsageFmt = "<white>Heat Use:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	MissilePowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/missile (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	MissileHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/missile (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
-	MineHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/mine (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	MissileHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/missile (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	MineHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/mine (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	MinePowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/mine (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	SteelPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/steel (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	SteelHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/steel (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	SteelHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/steel (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	CoilPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/coil (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	CoilHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/coil (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	CoilHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/coil (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	Coil2PowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/h-coil (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	Coil2HeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/h-coil (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	Coil2HeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/h-coil (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	TristeelPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/tri-steel (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	TristeelHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/tri-steel (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	TristeelHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/tri-steel (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	DiamondPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good> <gray>MJ/diamond (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	ProcessorPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/processor (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	ProcessorHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/processor (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	ProcessorHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/processor (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	EnrichedUraniumPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/e-uranium (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	EnrichedUraniumHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/e-uranium (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	EnrichedUraniumHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/e-uranium (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	PowerUsageContinuousFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/sec</gray>"
 	PowerUsageContinuousMinutesFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/min</gray>"
 	ThrusterPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/sec (100% thrust)</gray>"
@@ -4849,7 +4849,7 @@ Stats
 	TractorOverloadRadiusFmt = "<white>Overload Radius:</white> <good>{0:#,0.#}</good><gray> meters</gray>"
 	TractorOverloadChargeTimeFmt = "<white>Overload Charge Time:</white> <good>{0:0.##}</good><gray> seconds</gray>"
 	TractorOverloadMinPowerFmt = "<white>Overload Minimum Power:</white> <good>{0:0.##}%</good><gray> stored</gray>"
-	TractorOverloadHeatGenerationFmt = "<white>Overload Heat Generation:</white> <good>{0:0.#}</good> <gray>MJ</gray>"
+	TractorOverloadHeatGenerationFmt = "<white>Overload Heat Gen.:</white> <good>{0:0.#}</good> <gray>MJ</gray>"
 	CrewSpeedFmt = "<white>Crew Speed:</white> <good>{0:0}%</good>"
 	CrewSpeedFwdFmt = "<white>Crew Speed (Forward):</white> <good>{0:0}%</good>"
 	CrewSpeedAcrFmt = "<white>Crew Speed (Across):</white> <good>{0:0}%</good>"
@@ -4878,18 +4878,18 @@ Stats
 	HeatFireThresholdFmt = "<white>Heat Fire Threshold:</white> <good>{0:#,0.#}</good> <gray>MJ</gray>"
 	HeatFireChanceFmt = "<white>Heat Threshold Fire Chance:</white> <good>{0:0.##%}</good>"
 
-	ResonanceTurretHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.#}</good> <gray>MJ/sec + pumps</gray>"
+	ResonanceTurretHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.#}</good> <gray>MJ/sec + pumps</gray>"
 
-	HeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good> <gray>MJ/sec</gray>"
-	HeatGenerationPerPartFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good> <gray>MJ/sec/part</gray>"
-	ThrusterHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good> <gray>MJ/sec (100% thrust)</gray>"
+	HeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:#,0.##}</good> <gray>MJ/sec</gray>"
+	HeatGenerationPerPartFmt = "<white>Heat Gen.:</white> <good>{0:#,0.##}</good> <gray>MJ/sec/part</gray>"
+	ThrusterHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:#,0.##}</good> <gray>MJ/sec (100% thrust)</gray>"
 	BaseHeatFactorFmt = "<white>Base Heat Factor:</white> <good>{0:0.#}% ({1:0.#})</good>"
 	BoostHeatFactorPerBatteryFmt = "<white>Heat Factor:</white> <good>{0:+0.#;-0.#;0}%</good> <gray>/battery used</gray>"
 	BoostHeatFactorPerSecondFmt = "<white>Heat Factor:</white> <good>{0:+0.#;-0.#;0}%</good> <gray>/sec while idle</gray>"
 	BoostHeatFactorBatteryThresholdFmt = "<white>Heat Increase Threshold:</white> <good>{0:0}</good> <gray>batteries used</gray>"
-	PowerHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/power (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
-	StorageHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good> <gray>MJ/sec (100% full)</gray>"
-	BatteryDeliveredHeatGenerationFmt = "<white>Heat Generation:</white> <good>{0:#,0.##}</good> <gray>MJ per battery delivered</gray>"
+	PowerHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/power (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	StorageHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:#,0.##}</good> <gray>MJ/sec (100% full)</gray>"
+	BatteryDeliveredHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:#,0.##}</good> <gray>MJ per battery delivered</gray>"
 	HeatDissipationFmt = "<white>Heat Dissipation:</white> <good>{0:#,0.##}</good> <gray>MJ/sec</gray>"
 
 	BaseAmplificationFmt = "<white>Amplification (Base):</white> <good>{0:0.#}%</good>"
@@ -4907,12 +4907,11 @@ Stats
 	HeatAbsorptionInefficiencyFmt = "<white>Absorption Inefficiency:</white> <good>+{0:0.#}%</good> <gray>heat</gray>"
 	HeatAbsorptionRadiusFmt = "<white>Absorption Radius:</white> <good>{0:0.#}</good> <gray>metres</gray>"
 	HeatTransferInefficiencyFmt = "<white>Heat Transfer Inefficiency:</white> <good>+{0:0.#}%</good> <gray>heat</gray>"
-	TurretExtraHeatGenerationFmt = "<white>Turret Heat Generation:</white> <good>{0:+0.#;-0.#}</good> <gray>MJ/sec</gray>"
-	RailgunOverclockHeatOnShotFmt = "<white>Heat Generation:</white> <good>{0:0.#}</good> <gray>MJ/part/shot</gray>"
-	HeatPerShotFmt = "<white>Heat Generation</white> <good>{0:0.#}</good> <gray>MJ/shot</gray>"
-	HeatPerRestockFmt = "<white>Heat Generation:</white> <good>{0:0.#}</good> <gray>MJ/restock</gray>"
-	FiringHeatGenerationFmt = "<white>Firing Heat Generation:</white> <good>{0:#,0.##}</good> <gray>MJ/sec</gray>"
-	HeatPerDamageFmt = "<white>Heat Generation:</white> <good>{0:0.##}</good> <gray>MJ/damage</gray>"
+	TurretExtraHeatGenerationFmt = "<white>Turret Heat Gen.:</white> <good>{0:+0.#;-0.#}</good> <gray>MJ/sec</gray>"
+	RailgunOverclockHeatOnShotFmt = "<white>Heat Gen.:</white> <good>{0:0.#}</good> <gray>MJ/part/shot</gray>"
+	HeatPerShotFmt = "<white>Heat Gen.:</white> <good>{0:0.#}</good> <gray>MJ/shot</gray>"
+	HeatPerRestockFmt = "<white>Heat Gen.:</white> <good>{0:0.#}</good> <gray>MJ/restock</gray>"
+	HeatPerDamageFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/damage</gray>"
 }
 
 PartFeatures
@@ -4920,8 +4919,6 @@ PartFeatures
 	Features = "<white>Features:</white>"
 	FeatureFmt = "<white> • {0}</white>"
 
-	ThrusterHeatTransfer = "Thruster Heat Transfer"
-	ForcedThrusterOverclock = "Forced Thruster Overclock"
 	CanReceivePower = "Can Receive Power"
 	CoMForceApplication = "Applies force to target centre of mass"
 	PenetratesOperational = "Penetrates operational parts"
@@ -5613,7 +5610,27 @@ Tutorials
 		Cause = "A ship's hull can <orange>heat up</orange> when hit with thermal weaponry, or when certain parts produce <orange>waste heat</orange> with nowhere to store or exhaust it."
 		Effect = "As the hull gets hotter, it becomes more vulnerable to damage and penetration, will begin to catch on fire, and then will eventually melt."
 		OverTime = "Heat naturally spreads out and, without an active heat source, will slowly dissipate on its own over time."
-		Exchanger = "<good>TIP:</good> To remove hull heat, build <orange>Heat Exchangers</orange> connected to Radiators or Thermal Storages."
+		Exchanger = "<good>TIP:</good> To remove hull heat, build <good>Heat Exchangers</good> connected to Radiators or Thermal Storages."
+	}
+
+	HeatManagement
+	{
+		Title = "Heat Management"
+		Overview1 = "Some weapons and other ship parts, such as those in Overclock Mode, produce <orange>waste heat</orange> which will turn into dangerous <orange>hull heat</orange> if not managed."
+		Overview2 = "To prevent this, connect them using <good>Heat Pipes</good> to other heat management parts. This creates a <good>thermal network</good>."
+		Icons = "Locations where a part can be connected to a thermal network are indicated by orange 'port' icons. The orange lines show how everything in a thermal network is connected and thus can transfer heat."
+		Batteries = "<good>Thermal Batteries</good> can receive and safely store large amounts of heat from other parts in the same thermal network."
+		Radiators = "<good>Radiators</good> dissipate heat, pulling heat out of the connected thermal network and radiating it into space. Blocking a Radiator exhaust port will reduce the rate at which it can dissipate heat."
+		Excess = "Any excess waste heat that cannot be safely stored or radiated will turn into dangerous <orange>hull heat</orange>, which will make your ship more vulnerable, start fires, and eventually melt."
+		Exchangers = "And <good>Heat Exchangers</good> will absorb <orange>hull heat</orange> and put it into the connected thermal network to be safely stored or radiated away."
+	}
+
+	Overclocking
+	{
+		Title = "Overclocking"
+		Overview1 = "Many parts can be <bad>overclocked</bad>, changing their functionality in powerful ways, but causing them to generate <orange>waste heat</orange>."
+		Overview2 = "To see what overclocking a part will do, hover the mouse cursor over it to show the tooltip, and then press <btn id='Design.ToggleSecondaryTooltip'/>."
+		HeatManagement = "<good>TIP:</good> Overclocked parts should be connected to a <good>thermal network</good> to safely store or radiate its waste heat, or else the waste heat will turn into dangerous <orange>hull heat</orange>."
 	}
 
 	Nebulas

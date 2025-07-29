@@ -1,7 +1,7 @@
 ID = heat
 TitleKey = "Tutorials/Heat/Title"
 TabNameKey = "Codex/Tutorials"
-TempShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.HasStatus(\"cosmoteer.heat\")"
+TempShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.HasStatus(\"cosmoteer.heat\", True)"
 Entries
 [
 	{

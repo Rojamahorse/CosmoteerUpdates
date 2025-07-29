@@ -221,6 +221,7 @@ BuildBattleModeConfig: PvpModeConfig
 BuildBox
 {
 	
+	AmplificationBuffPercentageFmt = "<b><good>增幅：{0:0}%</good></b>"
 	BlueprintsInvalid = 无效蓝图
 	BrushDisabledTip = 所选部件或工具不支持不同的“笔刷”形状或尺寸。
 	BrushHotkeyFmt = "热键：<b>{0}</b>"
@@ -255,6 +256,7 @@ BuildBox
 	CutTip = "剪切（复制并删除）选定部件。\n\n热键：<btn id='Design.CutSelected'/>"
 	DeletePartTip = "删除所持部件。\n\n热键：<btn id='Design.Delete'/>"
 	DeleteTip = "删除所选部件。\n\n热键：<btn id='Design.Delete'/>（或<btn id='Design.DeleteDoors'/>，只删除门）"
+	DilationBuffPercentageFmt = "<b><good>热膨胀率：{0:0}%</good></b>"
 	Discard = 撤销修改
 	DiscardModifications = 放弃修改
 	DiscardTip = 撤销所有星舰蓝图中尚未确认的修改。
@@ -268,6 +270,13 @@ BuildBox
 	FtlEfficiency = 超空间驱动效率
 	GrabTip = "<b>抓取工具</b>\n\n选择后，点击一个星舰部件后会将其抓取，随后可以将其放置于其他位置。按住 <btn id='Game.AppendSelection'/> 可复制该部件，而非移动。\n\n<btn id='General.UIAltClick'/> 可选择该类型的部件，效果等同于点击其按键。\n\n热键：<btn id='Design.GrabTool'/>"
 	HasDoorAccess = <good>✘有舱门连接</good>
+	HeatCapacity = 储热量
+	HeatCapacityFmt = "{0:#,0.#;;0} <gray>兆焦</gray>"
+	HeatDissipation = 散热速率
+	HeatDissipationFmt = "{0:#,0} <gray>兆焦/秒</gray>"
+	HeatGeneration = 热能产生速率
+	HeatGenerationFmt = "{0:#,0} <gray>兆焦/秒</gray>"
+	HideSecondaryTooltip = "<gray>按 <btn id='Design.ToggleSecondaryTooltip'/> 即可隐藏超频信息。</gray>"
 	HireCrewFmt = " 雇佣 {0} 名船员：{1}"
 	HireCrewTip = 雇佣船员来填补床位。若船员多于床位，则多余的船员将被解雇。
 	ImportPng = "从 PNG 图片加载形状"
@@ -350,12 +359,28 @@ BuildBox
 	SaveDiscardModifications = "保存&amp;放弃"
 	SaveSelected = 保存选定部件
 	SaveSelectedTip = 将选定部件保存为星舰设计。
+	ScrollTooltip = "<gray>按住 <btn id='Design.ScrollTooltip'/> 即可滚动显示。</gray>"
 	SelectTip = "<b>选择工具</b>\n\n选定后，可以拖动方框来选中想要复制、剪切、粘贴、镜像、旋转或删除的部分。\n\n热键：<btn id='Design.SelectionTool'/>\n\n按住 <btn id='Design.ContiguousSelectionMode'/> 可以使用选定邻接范围的“魔杖”。"
 	ShowPartStats = "<gray>按住 <btn id='Design.ScrollTooltip'/> 即可显示统计数据。</gray>"
 	ShowResourceDeliveries = 显示资源货运
 	ShowResourceDeliveriesTip = 选中后，会显示建造资源的货运交付计划。
+	ShowSecondaryTooltip = "<gray>按 <btn id='Design.ToggleSecondaryTooltip'/> 即可显示超频信息。</gray>"
 	StatBarTipFmt = ""
 	StatBarTipIdealFmt = "<b>{0}</b>\n<good>建议：<b>{1}</b></good>"
+	Stats
+	{
+		
+		CenterOfMassTip = <b>星舰质心</b>
+		CommandPointsToggleTip = <b>指挥点数</b>
+		CoordinatesToggleTip = <b>光标坐标</b>
+		CrewToggleTip = <b>船员/床位</b>
+		DirectionChooserToggleTip = <b>选择飞行方向</b>
+		FtlToggleTip = <b>超空间驱动效率</b>
+		MassToggleTip = <b>星舰质量</b>
+		PowerToggleTip = <b>能源</b>
+		ThermalToggleTip = <b>热能属性</b>
+		ValueToggleTip = <b>星舰价值</b>
+	}
 	Title = 星舰编辑器
 	TotalBlueprintValueFmt = "星舰设计价值：\n<b>{0}</b>"
 	TotalMassFmt = "质量：\n<b>{0:.0}吨</b>"
@@ -876,7 +901,7 @@ DecalGroups
 	Curves = 基础弧形
 	Fades = 基础渐变
 	Icons = 符号与图标
-	Shapes = 复杂图形
+	Shapes = 复杂形状
 	Straights = 基础直角
 	Text = 文字
 }
@@ -1098,6 +1123,7 @@ EconDifficulty
 EditorGroups
 {
 	
+	Control = 星舰控制
 	Crew = 船员
 	Defenses = 防御
 	Favorites1 = "收藏 A"
@@ -1106,7 +1132,7 @@ EditorGroups
 	Favorites2Icon = ""
 	Favorites3 = "收藏 C"
 	Favorites3Icon = ""
-	Flight = 飞行
+	Flight = 推进器
 	None = 无
 	Power = 能源
 	Production = 生产
@@ -1114,7 +1140,9 @@ EditorGroups
 	ResourcesRare = 稀有资源
 	Rock = 基本岩石
 	Storage = 储存
-	Structure = 结构
+	Structure = 装甲与结构
+	Thermal = 热能管理
+	ThermalDesc = 用于管理包括管道、散热器、储热器和交换器的工具。
 	Utilities = 设施
 	WeaponsEnergy = 能量武器
 	WeaponsProjectile = 实弹武器
@@ -1639,10 +1667,12 @@ Inputs
 		RestrictShapeMode = 限制形状模式
 		RotateLeft = 向左旋转部件/贴花
 		RotateRight = 向右旋转部件/贴花
+		ScrollToolTip = 开启悬浮提示滚动/显示属性
 		SelectAll = 选择所有部件/贴花
 		SelectionTool = 选择/复制/粘贴工具
 		ToggleBlueprints = 切换蓝图
 		ToggleMirrorMode = 开/关镜像模式
+		ToggleSecondaryToolTip = 开启二级悬浮提示
 		Undo = 撤销
 	}
 	Formations
@@ -1863,6 +1893,7 @@ Inputs
 		chaingun_aim = 瞄准链炮
 		headlight_aim = 探照灯瞄准
 		prism_aim = 离子棱镜瞄准
+		thermal_aim = 热共振光矛瞄准
 		tractor_beam = 牵引光束瞄准
 	}
 	PartToggles
@@ -1896,15 +1927,23 @@ Inputs
 		missile_type_he = 发射器类型：高爆
 		missile_type_mine = 发射器类型：空雷
 		missile_type_nuke = 发射器类型：核弹
+		missile_type_thermal = 发射器类型：储热式导弹
 		on_off_off = 部件关机
 		on_off_on = 部件开机
 		rotate_off = 旋转：关
 		rotate_on = 旋转：开
+		thermal_overclock_off = 超频模式：关
+		thermal_overclock_on = 超频模式：开
+		thermal_safety_off = 热能安全阀：关
+		thermal_safety_on = 热能安全阀：开
 		thruster_boost_off = 推进模式关
 		thruster_boost_on = 推进模式开
 		tractor_mode_auto = 牵引光束：自动
 		tractor_mode_pull = 牵引光束：拉动
 		tractor_mode_push = 牵引光束：推动
+		tractor_overload = 超载牵引光束
+		tractor_overload_off = 牵引光束超载中
+		tractor_overload_on = 超载牵引光束
 	}
 	PartTriggers
 	{
@@ -1975,6 +2014,7 @@ JobNames
 	Repair = 修理
 	ResourceFetchFmt = "供应{0}"
 	Salvage = 回收/开采
+	UnnamedStatusJob = 未命名状态工作
 }
 Jobs
 {
@@ -2244,6 +2284,8 @@ MissileTypes
 	MineDesc = 固定空雷，敌舰靠近时引爆，射出杀伤性弹片。
 	Nuke = 战术核导弹
 	NukeDesc = 巨型导弹，可在很大区域内引发猛烈核爆炸，杀伤力巨大。
+	Thermal = 储热式导弹
+	ThermalDesc = 可以吸收本舰废热并向敌舰发射，在小范围内传导热能的导弹。必须连接到热管并供热才能发射。
 }
 MissionCategories
 {
@@ -2537,7 +2579,7 @@ PaintBox
 	FlipXTip = "水平翻转。\n\n热键：<btn id='Design.FlipX'/>"
 	FlipYTip = "垂直翻转。\n\n热键：<btn id='Design.FlipY'/>"
 	GrabTip = "<b>抓取工具</b>\n\n选择后，点击贴花会将其抓取，随后可以将其放于其他位置。\n\n热键：<btn id='Design.GrabTool'/>"
-	InvertTip = "反转透明度\n\n热键：<btn id='Design.Invert'/>"
+	InvertTip = "反转透明度。\n\n热键：<btn id='Design.Invert'/>"
 	Layers = 涂层
 	LoadDefaultPaintScheme = 加载默认涂装方案
 	LoadDefaultPaintSchemeTip = 用默认涂装方案替换当前涂装的颜色和图案。
@@ -2575,6 +2617,17 @@ PartColors
 	
 	RoofLight = 灯光颜色/亮度
 }
+PartFeatures
+{
+	
+	CanReceivePower = 可接收能源
+	CoMForceApplication = 向目标质心提供推力
+	FeatureFmt = ""
+	Features = <white>功能：</white>
+	ForcedThrusterOverclock = 强制超频推进器
+	PenetratesOperational = 可穿透运行部件
+	ThrusterHeatTransfer = 推进器热能转移
+}
 PartTargeters
 {
 	
@@ -2582,6 +2635,7 @@ PartTargeters
 	HeadlightAim = "<b>探照灯瞄准</b>\n\n将选定的探照灯对准目标\n\n热键：<btn id='PartTargeters.headlight_aim'/>"
 	HeadlightAimCancel = "<b>重置探照灯瞄准</b>\n\n热键：<btn id='PartTargetCancelers.headlight_aim'/>"
 	PrismAim = "<b>瞄准离子棱镜</b>\n\n将选定离子光束棱镜对准目标或将其光束引导至另一个离子光束棱镜\n\n热键：<btn id='PartTargeters.prism_aim'/>"
+	ThermalResonanceAim = "<b>瞄准热共振光矛</b>\n\n将选定的热共振光矛对准目标\n\n热键：<btn id='PartTargeters.thermal_aim'/>"
 	TractorBeam = "<b>瞄准牵引光束</b>\n\n按住 <btn id='Game.SelectParts'/> 可瞄准特定部件。\n\n热键：<btn id='PartTargeters.tractor_beam'/>"
 	TractorBeamCancel = "<b>取消牵引光束</b>\n\n热键：<btn id='PartTargetCancelers.tractor_beam'/>"
 }
@@ -2599,6 +2653,8 @@ PartToggles
 	FirePref_Attack = "<b>攻击</b>\n只对敌舰开火。\n\n热键：<btn id='PartToggles.fire_pref_attack'/>"
 	FirePref_Both = "<b>攻击+防御</b>\n对敌舰和来袭的炮弹都开火。\n\n热键：<btn id='PartToggles.fire_pref_both'/>"
 	FirePref_Defend = "<b>防御</b>\n只对来袭的炮弹开火。此武器将忽略所有全舰瞄准命令。\n\n热键：<btn id='PartToggles.fire_pref_defend'/>"
+	FireSafety_Off = "<b>安全阀：<bad>关</bad></b>\n无视热能水平，持续发射。"
+	FireSafety_On = "<b>安全阀：<good>开</good></b>\n热能水平达到高危等级时停止发射。"
 	Fire_Alternating = "<b>开火：交替</b>\n\n热键：<btn id='PartToggles.fire_alternating_on'/>"
 	Fire_Synchronized = "<b>开火：同步</b>\n\n热键：<btn id='PartToggles.fire_alternating_off'/>"
 	ForceStartChaingun = "链炮强制开火\n\n热键：<btn id='PartToggles.force_fire_chaingun_on'/>"
@@ -2610,13 +2666,19 @@ PartToggles
 	MissileType_HE = "<b><string id='MissileTypes/HE'/></b>\n\n<string id='MissileTypes/HEDesc'/>\n\n热键：<btn id='PartToggles.missile_type_he'/>"
 	MissileType_Mine = "<b><string id='MissileTypes/Mine'/></b>\n\n<string id='MissileTypes/MineDesc'/>\n\n热键：<btn id='PartToggles.missile_type_mine'/>"
 	MissileType_Nuke = "<b><string id='MissileTypes/Nuke'/></b>\n\n<string id='MissileTypes/NukeDesc'/>\n\n热键：<btn id='PartToggles.missile_type_nuke'/>"
+	MissileType_Thermal = "<b><string id='MissileTypes/Thermal'/></b>\n\n<string id='MissileTypes/ThermalDesc'/>\n\n热键：<btn id='PartToggles.missile_type_thermal'/>"
 	OnOff_Off = "<b>能源：<bad>关</bad></b>\n\n热键：<btn id='PartToggles.on_off_off'/>"
 	OnOff_On = "<b>能源：<good>开</good></b>\n\n热键：<btn id='PartToggles.on_off_on'/>"
+	OverclockShield_Extended = "<b>护盾超频模式：<good>扩展</good></b>\n向能量盾核心投入更多能源，令能量盾弧度更大，投射距离更远。"
+	OverclockShield_Reinforced = "<b>护盾超频模式：<good>加强</good></b>\n将外围能量盾发生器的能源投入中央发生器，令能量盾强度更高，受攻击时损失的能量更少。"
 	Rotate_Off = "<b>旋转：<bad>关</bad></b>\n\n热键：<btn id='PartToggles.rotate_off'/>"
 	Rotate_On = "<b>旋转：<good>开</good></b>\n\n热键：<btn id='PartToggles.rotate_on'/>"
+	ThermalOverclock_Off = "<b>超频模式：<good>关</good></b>\n该部件会照其常规参数运行。"
+	ThermalOverclock_On = "<b>超频模式：<bad>开</bad></b>\n绕过限制，超越常规运行指标，提高部件性能和热能产生率，降低可靠性。"
 	TractorMode_Auto = "<b>牵引光束：自动</b>\n\n牵引光束将自动推拉目标，将其锁定在当前距离。\n\n热键：<btn id='PartToggles.tractor_mode_auto'/>"
 	TractorMode_Pull = "<b>牵引光束：拉</b>\n\n牵引光束将尽可能拉近目标。\n\n热键：<btn id='PartToggles.tractor_mode_pull'/>"
 	TractorMode_Push = "<b>牵引光束：推</b>\n\n牵引光束将尽可能推远目标。\n\n热键：<btn id='PartToggles.tractor_mode_push'/>"
+	TractorOverload = "<b>超载牵引光束</b>\n\n耗尽所有可用能源超载发射器，触发一道极为强烈的冲击波，并放出大量热能。\n\n将牵引光束调至“拉动”模式即可反转冲击波极性。"
 }
 PartTriggers
 {
@@ -2662,15 +2724,23 @@ Parts
 	CannonDeck = 甲板加农炮
 	CannonDeckDesc = "巨型双管炮，为了增加稳定性，安装在了星舰顶部而不是船舷上。每根炮管都能够融合 10 发炮弹，开炮时发出巨响，暂时震晕附近的船员。\n\n正面与侧面 2 单元格内不能存在其他甲板炮塔或“高大”部件。"
 	CannonDeckIcon = 甲板加农炮
+	CannonDeckOverclock = 超频甲板加农炮
+	CannonDeckOverclockDesc = 提升炮弹伤害、速度和精准度，但一旦其伤害潜力耗尽就会停止穿透。开火时会产生废热。
 	CannonLarge = 大型加农炮
 	CannonLargeDesc = 与标准加农炮相比，将四发炮弹融合在一起，大大增强了伤害和穿深。
 	CannonLargeIcon = 大型加农炮
+	CannonLargeOverclock = 超频大型加农炮
+	CannonLargeOverclockDesc = 每发炮弹命中后会分裂成多个较小的燃烧弹头，继续穿透目标星舰。开火时会产生废热。
 	CannonMed = 标准加农炮
 	CannonMedDesc = 发射单发炮弹，可以穿透敌舰，击穿后可能引发火灾。
 	CannonMedIcon = 加农炮
+	CannonMedOverclock = 超频标准加农炮
+	CannonMedOverclockDesc = 齐射多发小型炮弹，但每发炮弹的伤害和弹速都有所降低。发射时会产生废热。
 	ChainGun = 链炮
 	ChainGunDesc = 拥有多根可旋转炮管的强大火炮，开火时射速会逐渐加快，不开火时会收入装甲外壳中。能够加装额外的弹药架以加快射速并延长射击时间。
 	ChainGunIcon = 链炮
+	ChainGunOverclock = 超频链炮
+	ChainGunOverclockDesc = 弹药变为爆炸弹头，可造成溅射伤害，破坏范围更广，但会降低射速，且链炮每发射四发之后需要冷却一小段时间。开火时会产生废热。
 	ChaingunMagazine = 链炮弹药架
 	ChaingunMagazineDesc = 链炮额外弹药架，能够加快射速并延长射击时间。只能加装在链炮的左下或右下位置。
 	ChaingunMagazineIcon = 链炮弹药架
@@ -2797,57 +2867,104 @@ Parts
 	Disruptor = 干扰器
 	DisruptorDesc = 可发出电击，只能造成少量伤害，但可以使敌舰的系统短路，使其失去动力。可以在穿透护盾的同时消耗护盾能量。
 	DisruptorIcon = 干扰器
+	DisruptorOverclock = 超频干扰器
+	DisruptorOverclockDesc = 使干扰器爆能束可穿透固体，且耗能效果会在初次命中后持续生效，但会降低护盾穿透力以及初次命中时的瞬时耗能效果。发射时会产生废热。
 	Door = 舱门
 	DoorDesc = 允许船员（以及火焰！）在舱室间移动。
 	DoorIcon = 舱门
 	EngineRoom = 引擎室
 	EngineRoomDesc = "使相邻推进器的推力以及能量消耗增加 50%。也可作为相邻推进器的中央输送点，船员可向其输送电池，而不必单独前往各个推进器。"
 	EngineRoomIcon = 引擎室
+	EngineRoomOverclock = 超频引擎室
+	EngineRoomOverclockDesc = "提高为连接的推进器分配能源时的能效，但会令所有连接的推进器强制进入超频模式。分配能源时会产生废热。\n\n还会从连接的推进器中收集废热，但在此过程中会产生额外废热。"
 	ExplosiveCharge = 炸弹
 	ExplosiveChargeDesc = 一种可以手动引爆的小型爆炸装置。主要用于主动将本舰分割成多块。
 	ExplosiveChargeIcon = 炸弹
 	FactoryAmmo = 炮弹工厂
 	FactoryAmmoDesc = "制造加农炮与轨道炮使用的炮弹。需要消耗硫磺。与之相邻的所有工厂都获得 +25% 生产速度。"
 	FactoryAmmoIcon = 弹药
+	FactoryAmmoOverclock = 超频炮弹工厂
+	FactoryAmmoOverclockDesc = 大幅提升生产速度。生产炮弹时会产生废热。
 	FactoryCoil = 线圈工厂
 	FactoryCoil2 = 超感线圈工厂
 	FactoryCoil2Desc = "制造能用于建造许多先进星舰部件的超感线圈。需要消耗铜和线圈。与之相邻的所有工厂都获得 +25% 生产速度。"
 	FactoryCoil2Icon = 超感线圈
+	FactoryCoil2Overclock = 超频超感线圈工厂
+	FactoryCoil2OverclockDesc = 大幅提升生产速度。生产超感线圈时会产生废热。
 	FactoryCoilDesc = "制造能用于建造许多星舰部件的线圈。需要消耗铜。与之相邻的所有工厂都获得 +25% 生产速度。"
 	FactoryCoilIcon = 线圈
+	FactoryCoilOverclock = 超频线圈工厂
+	FactoryCoilOverclockDesc = 大幅提升生产速度。生产线圈时会产生废热。
 	FactoryDiamond = 金刚石工厂
-	FactoryDiamondDesc = 制造能用于建造一些先进星舰部件的金刚石。需要消耗碳。
+	FactoryDiamondDesc = 大幅提升生产速度。生产金刚石时会产生废热。
 	FactoryDiamondIcon = 金刚石
 	FactoryEMP = "EMP 导弹工厂"
 	FactoryEMPDesc = "制造能在大范围内消耗敌舰系统能量的 EMP 导弹。需要消耗铁和铜。与之相邻的所有工厂都获得 +25% 生产速度。"
 	FactoryEMPIcon = "EMP 导弹"
+	FactoryEMPOverclock = "超频 EMP 导弹工厂"
+	FactoryEMPOverclockDesc = 大幅提升生产速度。生产导弹部件时会产生废热。
 	FactoryHE = 高爆导弹工厂
 	FactoryHEDesc = "制造能在小范围内造成高伤害的高爆导弹。需要消耗铁和硫磺。与之相邻的所有工厂都获得 +25% 生产速度。"
 	FactoryHEIcon = 高爆导弹
+	FactoryHEOverclock = 超频高爆导弹工厂
+	FactoryHEOverclockDesc = 大幅提升生产速度。生产导弹部件时会产生废热。
 	FactoryMine = 空雷工厂
 	FactoryMineDesc = "制造能在敌舰接近时爆炸并射出弹片的空雷。需要消耗铁和炮弹。与之相邻的所有工厂都获得 +25% 生产速度。"
 	FactoryMineIcon = 空雷
+	FactoryMineOverclock = 超频空雷工厂
+	FactoryMineOverclockDesc = 大幅提升生产速度。生产空雷部件时会产生废热。
 	FactoryNuke = 核导弹工厂
 	FactoryNukeDesc = "制造能在大范围内造成极高伤害的战术核导弹。需要消耗铁和铀。与之相邻的所有工厂都获得 +25% 生产速度。"
 	FactoryNukeIcon = 核弹
+	FactoryNukeOverclock = 超频核导弹工厂
+	FactoryNukeOverclockDesc = 大幅提升生产速度。生产导弹部件时会产生废热。
 	FactoryProcessor = 处理器装配机
 	FactoryProcessorDesc = "制造能用于建造一些先进星舰部件的处理器。需要消耗黄金和线圈。与之相邻的所有工厂都获得 +25% 生产速度。"
 	FactoryProcessorIcon = 处理器
+	FactoryProcessorOverclock = 超频处理器装配机
+	FactoryProcessorOverclockDesc = 大幅提升生产速度。生产处理器时会产生废热。
 	FactorySteel = 炼钢厂
 	FactorySteelDesc = "制造能用于建造几乎所有星舰部件的钢板。需要消耗铁。与之相邻的所有工厂都获得 +25% 生产速度。"
 	FactorySteelIcon = 钢板
+	FactorySteelOverclock = 超频炼钢厂
+	FactorySteelOverclockDesc = 大幅提升生产速度。生产钢板时会产生废热。
+	FactoryThermal = 储热式导弹工厂
+	FactoryThermalDesc = "制造能从发射星舰的热管系统中提取热能，并在命中的小范围内放射的储热式导弹。需要消耗铁和硫磺。与之相邻的所有工厂都获得 +25% 生产速度。"
+	FactoryThermalIcon = 储热式导弹
+	FactoryThermalOverclock = 超频储热式导弹工厂
+	FactoryThermalOverclockDesc = 大幅提升生产速度。生产导弹部件时会产生废热。
 	FactoryTristeel = 三钛钢炼钢厂
 	FactoryTristeelDesc = "制造能用于建造一些先进星舰部件的三钛钢板。需要消耗三钛原矿。与之相邻的所有工厂都获得 +25% 生产速度。"
 	FactoryTristeelIcon = 三钛钢板
+	FactoryTristeelOverclock = 超频三钛钢炼钢厂
+	FactoryTristeelOverclockDesc = 大幅提升生产速度。生产三钛钢板时会产生废热。
 	FactoryUranium = 铀浓缩器
 	FactoryUraniumDesc = "浓缩建造反应堆等先进星舰部件必不可少的铀。需要消耗未浓缩的铀。与之相邻的所有工厂都获得 +25% 生产速度。"
 	FactoryUraniumIcon = 浓缩铀
-	FireExtinguisher = 灭火器
-	FireExtinguisherDesc = "储存一个灭火器，船员可以用其灭火。可部署灭火器数量有一定上限，每 15 秒会刷新。"
+	FactoryUraniumOverclock = 超频铀浓缩器
+	FactoryUraniumOverclockDesc = 大幅提升生产速度。生产浓缩铀时会产生废热。
+	FireExtinguisher = 灭火器储柜
+	FireExtinguisherDesc = "储存一个灭火器，船员可以用其灭火。可部署灭火器数量有一定上限，但每 15 秒会固定制造一个，不消耗任何资源。"
 	FireExtinguisherIcon = 灭火器
+	FireExtinguisherOverclock = 超频灭火器储柜
+	FireExtinguisherOverclockDesc = 大幅提升灭火器的制造速度。在制造灭火器时会产生颇具讽刺意味的废热。
 	FlakCannonLarge = 高射炮阵列
 	FlakCannonLargeDesc = 强大的防御系统，可以摧毁敌人的导弹、激光和炮弹。也可以对敌舰造成中等程度的伤害。
 	FlakCannonLargeIcon = 高射炮阵列
+	FlakCannonLargeOverclock = 超频高射炮阵列
+	FlakCannonLargeOverclockDesc = 在高射炮弹中填充破片，爆炸后破片会在太空中残留一小段时间，对经过的炮弹造成伤害并阻挡能量束。开火时会产生废热。
+	HeatExchanger = 热交换器
+	HeatExchangerDesc = 从舰体吸收热能，并转移至连接的热管系统，同时会产生部分额外废热。
+	HeatExchangerIcon = 热交换器
+	HeatPipeAdaptive = 热管
+	HeatPipeAdaptiveDesc = 在连通的部件之间瞬时传送热能。
+	HeatPipeAdaptiveIcon = 热管
+	HeatPipeAdaptiveStructure = 热管结构
+	HeatPipeAdaptiveStructureDesc = 在连通的部件之间瞬时传送热能。
+	HeatPipeAdaptiveStructureIcon = 热管结构
+	HeatPipeCrossing = 热管走道
+	HeatPipeCrossingDesc = "<string id='Parts/HeatPipeAdaptiveDesc'/> 让船员可以在热管下方穿行。"
+	HeatPipeCrossingIcon = 热管走道
 	HyperdriveBeacon = 超空间驱动信标
 	HyperdriveBeaconDesc = 配备超空间驱动器的星舰可以跳跃至配备有超空间驱动信标的星舰附近。
 	HyperdriveBeaconIcon = 超空间驱动信标
@@ -2863,15 +2980,21 @@ Parts
 	IonBeamEmitter = 离子光束发射器
 	IonBeamEmitterDesc = 向固定方向发射一束强大的离子能量束。距离越远，伤害越低。可将其射入离子光束棱镜来调整角度。
 	IonBeamEmitterIcon = 离子光束
+	IonBeamEmitterOverclock = 超频离子光束发射器
+	IonBeamEmitterOverclockDesc = 使离子光束在接近目标时失稳，制造混乱而强力的闪电，攻击其周围区域，但光束本身无法直接命中目标。开火时会产生废热。
 	IonBeamPrism = 离子光束棱镜
 	IonBeamPrismDesc = 为入射的离子光束重新定向，瞄准敌舰或其他离子光束棱镜。
 	IonBeamPrismIcon = 离子棱镜
 	LaserBlasterLarge = 重型激光炮
 	LaserBlasterLargeDesc = 在炮塔上安装了两门大型激光炮，牺牲射击精度、进一步特化功能，获得了更高的伤害。
 	LaserBlasterLargeIcon = 重型激光
+	LaserBlasterLargeOverclock = 超频重型激光炮
+	LaserBlasterLargeOverclockDesc = 提升每发激光爆能束的伤害，还能附带溅射伤害，但会导致射速下降。开火时会产生废热。
 	LaserBlasterSmall = 激光炮
 	LaserBlasterSmallDesc = 一种高精度多用途武器，发射单发爆能束，对敌舰造成中等程度的伤害。
 	LaserBlasterSmallIcon = 激光
+	LaserBlasterSmallOverclock = 超频激光炮
+	LaserBlasterSmallOverclockDesc = 提升射速，并将激光爆能束替换为同时发射的能量束，但每次攻击的伤害降低。开火时会产生废热。
 	ManipulatorBeam = 工程光束发射器
 	ManipulatorBeamDesc = "安装在星舰顶部的发射器最多可投射 16 根小型牵引光束，可收集资源并为出舱船员加速。一名船员最多可以控制四根光束，船员只在有任务需要协助时才会使用工程光束发射器。"
 	ManipulatorBeamIcon = 工程光束
@@ -2884,15 +3007,25 @@ Parts
 	MiningLaserSmall = 开采激光
 	MiningLaserSmallDesc = 安装在星舰顶部的双联装精准激光，能够迅速切割哪怕最为坚硬的小行星，从中提取资源。在回收弃舰方面也很有效，在紧要关头还可作为短程武器使用。
 	MiningLaserSmallIcon = 开采激光
+	MiningLaserSmallOverclock = 超频开采激光
+	MiningLaserSmallOverclockDesc = 两道开采激光能造成范围伤害。发射时会产生废热。
 	MissileLauncher = 导弹与空雷发射器
 	MissileLauncherDesc = "可发射任意类型的导弹或空雷。\n\n哪怕在战斗中，也可以随时更换其发射的弹药类型。"
 	MissileLauncherIcon = 发射器
 	PointDefense = 点防系统
 	PointDefenseDesc = 自动防御系统，使用超热等离子弹击落敌人的导弹和炮弹。也可以对敌舰造成轻度伤害。
 	PointDefenseIcon = 点防
+	PointDefenseOverclock = 超频点防系统
+	PointDefenseOverclockDesc = 启动一台可缓慢供能的发电机，使点防系统在无需接收电池的情况下短时开火。供能时会产生废热。
 	PowerStorage = 能源电容器
 	PowerStorageDesc = 能储存有限的等离子电池，船员可将电池运送至附近的星舰系统。
 	PowerStorageIcon = 电容器
+	PowerStorageOverclock = 超频能源电容器
+	PowerStorageOverclockDesc = 使电容器及其存储的电池容量提升三倍。在储能期间会持续产生废热，接收电力时更会额外产生废热。
+	Radiator = 散热器
+	RadiatorDesc = 从连接的热管系统中散热。若散热器正面被阻挡，散热效率会降低。
+	RadiatorDissipationScoreFmt = "<good>{1:0.#}%\n（{0:0.#}<gray>/秒</gray>）</good>"
+	RadiatorIcon = 散热器
 	Railgun = 轨道炮
 	RailgunAccelerator = 轨道炮加速器模块
 	RailgunAcceleratorDesc = "可选组件，布置在轨道炮发射器与装填器之间。每一个加速器都会增加弹丸的速度、伤害和穿深。\n\n<string id='Parts/RailgunBaseDesc'/>\n\n轨道炮发射器以及加速器无法供船员通行。"
@@ -2902,18 +3035,29 @@ Parts
 	RailgunLauncher = 轨道炮发射器模块
 	RailgunLauncherDesc = "所有轨道炮的必要组成部分。必须与一个装填器配对，还可酌情安装任意数量的加速器。\n\n<string id='Parts/RailgunBaseDesc'/>\n\n轨道炮发射器以及加速器无法供船员通行。"
 	RailgunLauncherIcon = 轨道炮发射器
+	RailgunLauncherOverclockDesc = 提升较长轨道炮的作战效能，提高弹速和伤害，但开火前需充能，且一旦其伤害潜力耗尽就会停止穿透。开火时会产生废热。
 	RailgunLoader = 轨道炮装填器模块
 	RailgunLoaderDesc = "所有轨道炮的必要组成部分。必须与一个发射器配对，还可酌情安装任意数量的加速器。\n\n<string id='Parts/RailgunBaseDesc'/>"
 	RailgunLoaderIcon = 轨道炮装填器
+	RailgunOverclock = 超频轨道炮
 	ReactorLarge = 大型反应堆芯
 	ReactorLargeDesc = 发电装置，可为星舰各种系统生产三倍的供电等离子电池。
 	ReactorLargeIcon = 大型反应堆
+	ReactorLargeOverclock = 超频大型反应堆芯
+	ReactorLargeOverclockDesc = 提高最大电容量和功率。还会将电池大小从三倍提高到四倍。发电时会产生废热。
 	ReactorMed = 中型反应堆芯
 	ReactorMedDesc = 发电装置，可为星舰各种系统生产双倍的供电等离子电池。
 	ReactorMedIcon = 中型反应堆
+	ReactorMedOverclock = 超频中型反应堆芯
+	ReactorMedOverclockDesc = 提高最大电容量和功率。发电时会产生废热。
 	ReactorSmall = 小型反应堆芯
 	ReactorSmallDesc = 发电装置，可为星舰各种系统生产供电等离子电池。
 	ReactorSmallIcon = 小型反应堆
+	ReactorSmallOverclock = 超频小型反应堆芯
+	ReactorSmallOverclockDesc = 提高最大电容量和功率。发电时会产生废热。
+	ResonanceBeamTurret = 热共振光矛
+	ResonanceBeamTurretDesc = "安装在星舰顶部的发射器，可以发射纯热能束，但自身也会产生大量废热。\n\n2 单元格内不能存在其他甲板炮塔或“高大”部件。"
+	ResonanceBeamTurretIcon = 热共振光矛
 	Rock1x1 = "岩石（1x1 软）"
 	Rock1x1Hard = "岩石（1x1 硬）"
 	Rock2x2 = "岩石（2x2 软）"
@@ -2935,12 +3079,18 @@ Parts
 	SensorArray = 传感器阵列
 	SensorArrayDesc = 扩大星舰的传感范围。（不会同其他传感器阵列叠加）
 	SensorArrayIcon = 传感器
+	SensorArrayOverclock = 超频传感器阵列
+	SensorArrayOverclockDesc = 提升传感器阵列的视觉范围。运行时会产生热量。
 	ShieldGenLarge = 大型护盾发生器
 	ShieldGenLargeDesc = "在星舰外投射一层大型防御性能量盾，阻挡大部分来袭的火力。易受干扰器和 EMP 的影响。\n\n由于其体积巨大，能量护盾不能透过舰体的任意部分投射（结构部分除外），需要建造在星舰脆弱的外装上。"
 	ShieldGenLargeIcon = 大型护盾
+	ShieldGenLargeOverclock = 超频大型护盾发生器
+	ShieldGenLargeOverclockDesc = 缩小能量盾覆盖面积，但使其强度更高，受到攻击时损失的能量更少。被击中时会产生废热。
 	ShieldGenSmall = 小型护盾发生器
 	ShieldGenSmallDesc = "在星舰外投射一层小型防御性能量盾，阻挡大部分来袭的火力。易受干扰器和 EMP 的影响。\n\n由于其体积小，能量护盾可以透过星舰舰体投射，从而允许小型护盾发生器建在受到良好保护的星舰内部。"
 	ShieldGenSmallIcon = 小型护盾
+	ShieldGenSmallOverclock = 超频小型护盾发生器
+	ShieldGenSmallOverclockDesc = "开启后可以为能量盾选择两种模式之一：\n\n1. 扩展能量盾覆盖面积。\n\n2. 缩小能量盾覆盖面积，但使其强度更高，受到攻击时损失的能量更少。\n\n被击中时会产生废热。"
 	Storage2x2 = 储存坞（4）
 	Storage2x2Desc = "可储存 4 组任意资源。"
 	Storage2x2Icon = 储存（4）
@@ -2972,18 +3122,35 @@ Parts
 	StructureWedge = 结构（楔形）
 	StructureWedgeDesc = 支撑一艘星舰的底层结构框架。结构自动包含在所有房间和走廊中。
 	StructureWedgeIcon = 结构（楔形）
+	ThermalAmplificationPump = 光矛增幅泵
+	ThermalAmplificationPumpDesc = 提升连接至同一热管系统的所有热共振光矛的热强度。
+	ThermalAmplificationPumpIcon = 光矛增幅泵
+	ThermalBattery = 储热器
+	ThermalBatteryDesc = 安全储存大量热能，为连接的热管系统充当额外热能缓冲区。
+	ThermalBatteryIcon = 储热器
+	ThermalDilationPump = 光矛膨胀泵
+	ThermalDilationPumpDesc = 提升连接至同一热管系统的所有热共振光矛的热能作用范围。泵的两端都必须连接才能正常运作。
+	ThermalDilationPumpIcon = 光矛膨胀泵
 	ThrusterBoost = 加速推进器
 	ThrusterBoostDesc = 大型推进器的一个变种，可以将原始等离子体直接注入其燃烧室，获得强大但短暂的加速。
 	ThrusterBoostIcon = 加速推进器
+	ThrusterBoostOverclock = 超频加速推进器
+	ThrusterBoostOverclockDesc = "在不影响加速时间的前提下大幅提升推力，中幅提升能效，但会增加能源消耗。推进时会产生废热。\n\n此外还能让加速推进器在推进状态下补充燃料，但每次补充电池都会提高废热产生速率。"
 	ThrusterHuge = 超大推进器
 	ThrusterHugeDesc = 巨大的推进引擎，能够以超过大型推进器两倍的动力推动星舰。需要很长时间才能达到最高推进力。
 	ThrusterHugeIcon = 超大推进器
+	ThrusterHugeOverclock = 超频超大推进器
+	ThrusterHugeOverclockDesc = 在不影响加速时间的前提下大幅提升推力，小幅提升能效，但会增加能源消耗。推进时会产生废热。
 	ThrusterLarge = 大型推进器
 	ThrusterLargeDesc = 双倍大小的推进引擎，能够以超过标准推进器两倍的动力推动星舰。需要中等时间才能达到最高推进力。
 	ThrusterLargeIcon = 大型推进器
+	ThrusterLargeOverclock = 超频大型推进器
+	ThrusterLargeOverclockDesc = 在不影响加速时间的前提下大幅提升推力，中幅提升能效，但会增加能源消耗。推进时会产生废热。
 	ThrusterMed = 标准推进器
 	ThrusterMedDesc = 标准大小的推进引擎，能够以适度的动力推动星舰。只需很短时间即可达到最高推进力。
 	ThrusterMedIcon = 标准推进器
+	ThrusterMedOverclock = 超频标准推进器
+	ThrusterMedOverclockDesc = 在不影响加速时间的前提下大幅提升推力和能效，但会增加能源消耗。推进时会产生废热。
 	ThrusterRocket = 模块化火箭推进器（MRT）
 	ThrusterRocketBaseDesc = 模块化火箭推进器（MRT）可将星舰加速到极高的速度，但加速所需时间较长，不适合进行机动。每套MRT都需要一个喷口，还可酌情安装多个拓展器以及燃料罐。
 	ThrusterRocketBattery = MRT燃料罐
@@ -2993,9 +3160,13 @@ Parts
 	ThrusterRocketExtender = MRT拓展器模块
 	ThrusterRocketExtenderDesc = "可选组件，布置在模块化火箭推进器的喷口或其他拓展器后面。每一个拓展器都会增加推进器的最大推力、能耗以及加速时间。可以安装燃料罐来增加电池燃料容量，每个拓展器最多安装 2 个燃料罐。\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
 	ThrusterRocketExtenderIcon = MRT拓展器
+	ThrusterRocketExtenderOverclock = 超频MRT拓展器模块
+	ThrusterRocketExtenderOverclockDesc = 提升喷口模块的基础推力，<i>同时</i>提升<i>所有</i>相连拓展器的推力。推进时会产生废热。
 	ThrusterRocketNozzle = MRT喷口模块
 	ThrusterRocketNozzleDesc = "所有模块化火箭推进器的必要组成部分。可酌情安装任意数量的拓展器以及燃料罐，每个喷口或拓展器最多安装 2 个燃料罐。\n\n<string id='Parts/ThrusterRocketBaseDesc'/>"
 	ThrusterRocketNozzleIcon = MRT喷口
+	ThrusterRocketNozzleOverclock = 超频MRT喷口模块
+	ThrusterRocketNozzleOverclockDesc = 降低拓展器对加速启动时间的负面影响。推进时会产生废热。
 	ThrusterSmall = 小型推进器
 	ThrusterSmall2Way = 双向小型推进器
 	ThrusterSmall2WayDesc = 动力孱弱的双向推进引擎，主要用于机动与转向。配备小型发电机，可缓慢恢复能源。
@@ -3005,9 +3176,13 @@ Parts
 	ThrusterSmall3WayIcon = 三向小型推进器
 	ThrusterSmallDesc = 动力孱弱的推进引擎，主要用于机动与转向。配备小型发电机，可缓慢恢复能源。
 	ThrusterSmallIcon = 小型推进器
+	ThrusterSmallOverclock = 超频小型推进器
+	ThrusterSmallOverclockDesc = 大幅提升推力与能效，同时显著提升发电机功率输出，但能源消耗也会也随之增加。推进时会产生废热。
 	TractorBeamEmitter = 牵引光束发射器
 	TractorBeamEmitterDesc = 发出引力光束，拉动或推动其他星舰与物体。
 	TractorBeamEmitterIcon = 牵引光束
+	TractorBeamEmitterOverclock = 超频牵引光束发射器
+	TractorBeamEmitterOverclockDesc = "在所有模式下都能显著增强牵引力，但牵引仅可作用于目标星舰的质心。发射时会产生废热。\n\n超频的牵引光速还能超载，耗尽其能量并向四周发出一股强大引力波，同时也会产生大量废热。"
 	WallHole = 墙洞
 	WallHoleDesc = 炸穿的墙洞
 }
@@ -3240,8 +3415,10 @@ Resource
 	GoldDesc = 稀有的可开采资源，用于制造处理器。
 	GoldHardDesc = ""
 	GoldPlural = 金
+	Heat = 热能
 	Hyperium = 超光素
 	HyperiumDesc = 能够弯曲时空的神秘晶体。用来助推超空间跳跃。
+	HyperiumHardDesc = ""
 	HyperiumPlural = 超光素
 	IonEnergy = 离子光束能量
 	Iron = 铁
@@ -3260,6 +3437,9 @@ Resource
 	MissilePartNuke = 核导弹部件
 	MissilePartNukeDesc = 用于组装核导弹的部件。
 	MissilePartNukePlural = 核导弹部件
+	MissilePartThermal = 储热式导弹部件
+	MissilePartThermalDesc = 用于组装储热式导弹的部件。
+	MissilePartThermalPlural = 储热式导弹部件
 	NotMineable = <b>船员无法开采。需要使用开采激光。</b>
 	Processor = 处理器
 	ProcessorDesc = 高价值计算机部件，用于建造一些先进星舰部件。
@@ -3644,7 +3824,7 @@ Settings
 		PaintSelectTool = 选择工具
 		PaintSelectToolTip = 打开涂装编辑器时，“选择工具”是默认工具。
 		PartToolTipsDefaultToStats = 默认显示数据
-		PartToolTipsDefaultToStatsTip = "如果勾选，将鼠标光标悬停在一个部件上时，将显示其数据，而不是其描述。你仍然可以按住 <btn id='Design.ScrollTooltip'/> 来显示其描述。"
+		PartToolTipsDefaultToStatsTip = 如果勾选，将鼠标光标悬停在一个部件上时，将同时显示其数据和描述。
 		RepairAutoDoors = 自动修复门
 		RepairAutoDoorsTip = 如果勾选，重建被破坏的部件也会自动重建与之连接的门。
 		RequirePartialRefundConfirmation = 要求确认减额的退款
@@ -3775,7 +3955,7 @@ Settings
 		VelocityArrowsModeNone = 无
 		VelocityArrowsModeNoneTip = 所有星舰都不显示速度指示箭头。
 		VelocityArrowsModeSelected = 选定星舰
-		VelocityArrowsModeSelectedTip = 仅选定星舰，或是星舰所选部件显示速度指示箭头。
+		VelocityArrowsModeSelectedTip = 仅选定星舰，或是具有所选部件的星舰显示速度指示箭头。
 		VelocityArrowsModeTip = 决定哪些星舰以箭头形式显示线速度与角速度。
 		ZoomedOutBlips = 显示拉远光点
 		ZoomedOutBlipsTip = 如果勾选，小型星舰在镜头拉远时将以彩色“光点”进行显示。
@@ -4079,25 +4259,49 @@ StatCategories
 	BoostOff = 加速：关
 	BoostOn = 加速：开
 	BulletChaingun = 链炮炮弹
+	BulletChaingunOverclocked = 链炮炮弹（已超频）
 	BulletDeck = 甲板加农炮弹
+	BulletDeckOverclocked = 甲板加农炮弹（已超频）
 	BulletLarge = 大型加农炮弹
+	BulletLargeOverclocked = 大型加农炮弹（已超频）
 	BulletMed = 标准加农炮弹
+	BulletMedOverclocked = 标准加农炮弹（已超频）
 	BulletRailgun = 轨道炮弹
+	BulletRailgunOverclocked = 轨道炮弹（已超频）
 	DisruptorBolt = 干扰器爆能束
+	DisruptorBoltOverclocked = 干扰器爆能束（已超频）
+	Firing = 正在发射
 	Flak = 高射炮弹
+	FlakOverclocked = 高射炮弹（已超频）
 	IonBeam = 离子光束
+	IonBeamOverclocked = 离子光束（已超频）
 	LaserBoltLarge = 重型激光爆能束
+	LaserBoltLargeOverclocked = 重型激光爆能束（已超频）
 	LaserBoltSmall = 激光爆能束
+	LaserBoltSmallOverclocked = 激光爆能束（已超频）
 	ManipulatorBeam = 工程光束
 	Mine = 空雷
 	MineShrapnel = 弹片
 	MiningBeam = 双联装开采光束
+	MiningBeamOverclocked = 双联装开采光束（已超频）
 	MissileEMP = "EMP 导弹"
 	MissileHE = 高爆导弹
 	MissileNuke = 战术核导弹
+	MissileThermal = 储热式导弹
+	NotFiring = 停止发射
+	Overclocked = 已超频
+	OverclockedBoost = 加速：开（已超频）
+	OverclockedDisruption = 已超频（干扰效果）
+	OverclockedShrapnel = 已超频（弹片）
 	PDShot = 点防弹
 	RailgunBuff = 轨道炮加成
+	ResonanceBeam = 共振光矛
+	ShieldExtended = 护盾模式：扩展
+	ShieldLarge = 大型护盾
+	ShieldReinforced = 护盾模式：加强
+	ShieldSmall = 小型护盾
 	TractorBeam = 牵引光束
+	TractorBeamOverload = 牵引超载脉冲
 }
 Stats
 {
@@ -4107,22 +4311,35 @@ Stats
 	AccelerationDelayFmt = "<white>加速延迟：</white><good>{0:0.0#}</good> <gray>秒</gray>"
 	AccelerationFmt = "<white>加速度：</white><good>{0:0}</good> <gray>米/秒²</gray>"
 	AmmoCapacityFmt = "<white>炮弹容量：</white><good>{0}</good>"
+	AmmoHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:0.##}</good> <gray>兆焦/炮弹（</gray><good>{1:0.##}</good><gray>兆焦/秒）</gray>"
 	AmmoPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/炮弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	AmmoProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>炮弹/秒</gray>"
 	AmmoSulfurUsageFmt = "<white>硫磺消耗：</white><good>{0:0.##}</good><gray>/炮弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	AmplificationFactorFmt = "<white>增幅因子：</white><good>{0:0.###}x</good>"
 	ArcFmt = "<white>射界：</white><good>{0:0}°</good>"
+	ArmorPenetrationResistanceFmt = "<white>抗穿能力：</white><good>{0:0}%</good>"
+	BaseAmplificationFmt = "<white>增幅（基础）：</white><good>{0:0.#}%</good>"
+	BaseDilationFmt = "<white>膨胀（基础）：</white><good>{0:0.#}%</good>"
+	BaseHeatFactorFmt = "<white>基础热能因子：</white><good>{0:0.#}%（{1:0.#}）</good>"
+	BatteryDeliveredHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:#,0.##}</good> <gray>兆焦/运送的电池</gray>"
 	BatteryFillTimeFmt = "<white>电池充电时间：</white><good>{0:0.0#}</good> <gray>秒</gray>"
 	BatterySizeFmt = "<white>电池大小：</white><good>{0:0.0#}</good>"
 	BeamDamageFalloffFmt = "<white>组合衰减：</white> <good>-{0}%</good><gray>/光束</gray>\n  <white>第一光束：</white><good>{1:0}%</good><gray>伤害</gray>\n  <white>第二光束：</white><good>{2:0}%</good><gray>伤害</gray>\n  <white>第三光束：</white><good>{3:0}%</good><gray>伤害</gray>\n  <white>第四光束：</white><good>{4:0}%</good><gray>伤害</gray>\n  <white>第五光束：</white><good>{5:0}%</good><gray>伤害</gray>\n…"
+	BoostHeatFactorBatteryThresholdFmt = "<white>热能上升阈值：<gray>使用电池量达</gray></white><good>{0:0}</good>"
+	BoostHeatFactorPerBatteryFmt = "<white>热能因子：</white><good>{0:+0.#;-0.#;0}%</good><gray>/使用电池</gray>"
+	BoostHeatFactorPerSecondFmt = "<white>热能因子：</white><good>{0:+0.#;-0.#;0}%</good><gray>/秒（空闲时）</gray>"
 	BoostedPowerUsageContinuousFmt = "<zero>能源消耗：</zero><good>{0:0.##}</good><gray>/秒（持续）</gray>"
+	BurstFmt = "<white>齐射：</white><good>{0:0}</good> <gray>发</gray>"
 	CarbonCapacityFmt = "<white>碳容量：</white><good>{0}</good>"
 	Coil2CapacityFmt = "<white>超感线圈容量：</white><good>{0}</good>"
 	Coil2CoilUsageFmt = "<white>线圈消耗：</white><good>{0:0.##}</good><gray>/超感线圈（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	Coil2CopperUsageFmt = "<white>铜消耗：</white><good>{0:0.##}</good><gray>/超感线圈（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	Coil2HeatGenerationFmt = "<white>热能产生速率：</white><good>{0:0.##} </good><gray>兆焦/超感线圈（</gray><good>{1:0.##}</good> <gray>兆焦/秒）</gray>"
 	Coil2PowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/超感线圈（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	Coil2ProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray> 超感线圈/秒</gray>"
 	CoilCapacityFmt = "<white>线圈容量：</white><good>{0}</good>"
 	CoilCopperUsageFmt = "<white>铜消耗：</white><good>{0:0.##}</good><gray>/线圈（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	CoilHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:0.##} </good><gray>兆焦/线圈（</gray><good>{1:0.##}</good> <gray>兆焦/秒）</gray>"
 	CoilPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/线圈（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	CoilProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>线圈/秒</gray>"
 	CommandPointsProvidedFmt = "<white>指挥点数：</white><good>+{0}<image name='command_points' colored='true'/></good> <gray>（可使用）</gray>"
@@ -4138,6 +4355,7 @@ Stats
 	CrewSpeedRevFmt = "<white>船员速度（后退）：</white> <good>{0:0}%</good>"
 	CrewStunDurationFmt = "<white>船员眩晕时间：</white><good>{0:0.#}-{1:0.#}</good> <gray>秒</gray>"
 	CrewStunRadiusFmt = "<white>船员眩晕半径：</white><good>{0:0.#}</good> <gray>米</gray>"
+	DamageAreaFalloffFmt = "<white>伤害衰减量：</white><good>{0:0.##}</good>"
 	DamageAreaFmt = "<white>伤害范围：</white><good>{0:0.#}</good><gray> 米半径</gray>"
 	DamageContinuousAsteroidsFmt = "<white>对小行星伤害：</white><good>{0:n0}</good><gray>/秒</gray>"
 	DamageContinuousEnemiesFmt = "<white>对敌舰伤害：</white> <good>{0:n0}</good><gray>/秒</gray>"
@@ -4145,37 +4363,77 @@ Stats
 	DamageContinuousFmt = "<white>伤害：</white><good>{0:n0}</good><gray>/秒</gray>"
 	DamageContinuousJunkFmt = "<white>对废舰伤害：</white> <good>{0:n0}</good><gray>/秒</gray>"
 	DamageContinuousNearFmt = "<white>伤害（近处）：</white><good>{0:n0}</good><gray>/秒</gray>"
+	DamageContinuousShieldsFmt = "<white>对护盾伤害：</white><good>{0:n0}</good><gray>/秒）</gray>"
 	DamageFmt = "<white>伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><gray>/秒）</gray>"
 	DamageRangeFmt = "<white>伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/秒）</gray>"
 	DetonationRangeFmt = "<white>引爆距离：</white><good>{0:0}</good> <gray>米</gray>"
 	DiamondCapacityFmt = "<white>金刚石容量：</white><good>{0}</good>"
 	DiamondCarbonUsageFmt = "<white>碳消耗：</white><good>{0:0.##}</good><gray>/金刚石（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
-	DiamondPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/金刚石（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	DiamondPowerUsageFmt = "<white>能耗：</white><good>{0:0.##}</good> <gray>兆焦/金刚石（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	DiamondProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>金刚石/秒</gray>"
+	DilationFactorFmt = "<white>膨胀因子：</white><good>{0:0.###}x</good>"
+	DilationHeatSpreadDistanceFmt = "<white>热能传播距离：</white><good>{0:0.##}</good><gray> 米 * 膨胀</gray>"
 	EMPMissileCapacityFmt = "<white>EMP 导弹容量：</white><good>{0}</good>"
 	EMPResistFmt = "<white>抗 EMP：</white><good>-{0:0.##}</good> <gray>消耗能源</gray>"
+	EMPResistPercentageFmt = "<white>抗 EMP：</white><good>{0:0.#}%</good>"
+	EffectDurationFmt = "<white>效果持续时间：</white><good>{0:0.##}</good> <gray>秒</gray>"
 	EnrichedUraniumCapacityFmt = "<white>浓缩铀容量：</white><good>{0}</good>"
+	EnrichedUraniumHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:0.##}</good> <gray>兆焦/浓缩铀（</gray><good>{1:0.##}</good> <gray>兆焦/秒）</gray>"
 	EnrichedUraniumPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/浓缩铀（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	EnrichedUraniumProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>浓缩铀/秒</gray>"
 	EnrichedUraniumUraniumUsageFmt = "<white>铀消耗：</white><good>{0:0.##}</good><gray>/浓缩铀（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	FactoryBuffFmt = "<white>附近工厂：</white><good>+{0:0}%</good><gray> 生产速度</gray>"
 	FireChanceFmt = "<white>点燃几率：</white><good>{0:0}%</good><gray> 几率/单元格</gray>"
+	FireDelayFmt = "<white>发射延迟：</white><good>{0:0.##}</good> <gray>秒</gray>"
+	FireIntervalFmt = "<white>发射间隔：</white><good>{0:0.##}</good> <gray>秒</gray>"
+	FireSizeFmt = "<white>初始发射尺寸：</white><good>{0:0}%</good>"
+	FiringHeatGenerationFmt = "<white>开火热能产生速率：</white><good>{0:#,0.##}</good> <gray>兆焦/秒</gray>"
 	FtlMaxEfficiencyRangeFmt = "<white>最优效率：</white><good>{0:0.##}</good><gray>米</gray>"
 	FtlMinEfficiencyRangeFmt = "<white>最低效率：</white><good>{0:0.##}</good><gray>米</gray>"
 	GoldCapacityFmt = "<white>金容量：</white><good>{0}</good>"
 	HEMissileCapacityFmt = "<white>高爆导弹容量：</white><good>{0}</good>"
 	HPFmt = "<white>血量：</white><good>{0:n0}</good>"
+	HeatAbsorptionFmt = "<white>热能吸收：</white> <good>{0:0.#}</good> <gray>兆焦/秒</gray>"
+	HeatAbsorptionInefficiencyFmt = "<white>吸收低效度：</white><good>+{0:0.#}%</good> <gray>热能</gray>"
+	HeatAbsorptionRadiusFmt = "<white>吸收范围：</white><good>{0:0.#}</good> <gray>米</gray>"
+	HeatAmplificationExponentFmt = "<white>热能池增幅量：</white><good>{0.##}</good>"
+	HeatCapacityFmt = "<white>储热量：</white><good>{0:#,0.##}</good> <gray>兆焦</gray>"
+	HeatDissipationFmt = "<white>散热速率：</white><good>{0:#,0.##}</good> <gray>兆焦/秒</gray>"
+	HeatFireChanceFmt = "<white>热能达阈值后火灾几率：</white><good>{0:0.##%}</good>"
+	HeatFireThresholdFmt = "<white>热能火灾阈值：</white><good>{0:#,0.#}</good> <gray>兆焦</gray>"
+	HeatGenerationFactorFmt = "<white>热能产生速率因子：</white><good>{0:0.###}x</good>"
+	HeatGenerationFmt = "<white>热能产生速率：</white><good>{0:#,0.##}</good> <gray>兆焦/秒</gray>"
+	HeatGenerationPerPartFmt = "<white>热能产生速率：</white><good>{0:#,0.##}</good> <gray>兆焦/秒/部件</gray>"
+	HeatPerDamageFmt = "<white>热能产生速率：</white><good>{0:0.##}</good> <gray>兆焦/伤害</gray>"
+	HeatPerRestockFmt = "<white>热能产生速率：</white><good>{0:0.#}</good> <gray>兆焦/补充</gray>"
+	HeatPerShotFmt = "<white>热能产生速率：</white><good>{0:0.#}</good> <gray>兆焦/发</gray>"
+	HeatPerTileContinuousFmt = "<white>传导热能：</white><good>{0:n1} </good><gray>兆焦/格/秒</gray>"
+	HeatSpreadDistanceFmt = "<white>热能传播距离：</white><good>{0:0.##}</good><gray> 米</gray>"
+	HeatTransferInefficiencyFmt = "<white>热能转移低效度：</white><good>+{0:0.#}%</good> <gray>热能</gray>"
+	HitShieldHeatFactorFmt = "<white>护盾击中时产热：</white> <good>{0:0.##}%</good>"
 	HyperiumCapacityFmt = "<white>超光素容量：</white><good>{0}</good>"
+	IonLightningIntervalFmt = "<white>闪电触发间隔：</white><good>{0:0.#}</good> <gray>秒（光束越强，间隔越短）</gray>"
 	IronCapacityFmt = "<white>铁容量：</white><good>{0}</good>"
+	LightningChainChanceFmt = "<white>闪电链跳跃几率：<gray>（每次打击几率）</gray></white><good>{0:0.#}%</good>"
+	LightningChainStrikeCountRangeFmt = "<white>闪电链打击次数：</white><good>{0}-{1}</good>"
+	LightningChanceFmt = "<white>闪电触发几率：</white><good>{0:0.#}%</good>"
+	LightningDamageFmt = "<white>闪电伤害：<gray>每次打击</gray></white> <good>{0:0}</good>"
+	LightningMaxChainFmt = "<white>闪电链最多跳跃次数：</white><good>{0}</good> <gray>次闪电链跳跃</gray>"
+	LightningRangeFmt = "<white>闪电范围：</white><good>{0:0.#}</good> <gray>米</gray>"
+	LightningStrikeCountRangeFmt = "<white>闪电打击次数：</white><good>{0}-{1}</good>"
 	MaxDamageFmt = "<white>最大伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><gray>/秒）</gray>"
+	MaxDamageRangeFmt = "<white>最大伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/秒）</gray>"
 	MineAmmoUsageFmt = "<white>炮弹消耗：</white><good>{0:0.##}</good><gray>/空雷（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MineCapacityFmt = "<white>空雷容量：</white><good>{0}</good>"
+	MineHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:0.##} </good><gray>兆焦/空雷（</gray><good>{1:0.##}</good> <gray>兆焦/秒）</gray>"
 	MineIronUsageFmt = "<white>铁消耗：</white><good>{0:0.##}</good><gray>/空雷（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MinePartCapacityFmt = "<white>容量：</white><good>{0}</good><gray> 部件（</gray><good>{1:0.##}</good><gray> 空雷）</gray>"
 	MinePartsFmt = "<white>组装自：</white><good>{0}</good><gray>部件/空雷</gray>"
 	MinePowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/空雷（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MineProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>空雷/秒</gray>"
 	MissileCopperUsageFmt = "<white>铜消耗：</white><good>{0:0.##}</good><gray>/导弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	MissileHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:0.##} </good><gray>兆焦/导弹（</gray><good>{1:0.##}</good> <gray>兆焦/秒）</gray>"
+	MissileHeatUsageFmt = "<white>热能用量：</white><good>{0:0.##}</good><gray>/导弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MissileIronUsageFmt = "<white>铁消耗：</white><good>{0:0.##}</good><gray>/导弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MissileLauncherNotes = <gray>关于弹药的数据，请参考每种类型弹药的相应工厂。</gray>
 	MissilePartCapacityFmt = "<white>容量：</white><good>{0}</good><gray> 部件（</gray><good>{1:0.##}</good><gray> 导弹）</gray>"
@@ -4185,38 +4443,57 @@ Stats
 	MissileSulfurUsageFmt = "<white>硫磺消耗：</white><good>{0:0.##}</good><gray>/导弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MissileUraniumUsageFmt = "<white>铀消耗：</white><good>{0:0.##}</good><gray>/导弹（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	NukeMissileCapacityFmt = "<white>核导弹容量：</white><good>{0}</good>"
+	OverclockTransitionTimeFmt = "<white>超频传输时间：</white> <good>{0:0.#}</good> <gray>秒</gray>"
+	PelletSpreadFmt = "<white>炮弹散布：</white><gray>+/-</gray><good>{0:0.#}°</good>"
+	PelletsFmt = "<white>炮弹：</white><good>{0:0}</good> <gray>枚子弹/发</gray>"
 	PenResistFmt = "<white>抗穿：</white><good>-{0:0.##}</good> <gray>米</gray>"
+	PenetrationDamagePoolFmt = "<white>穿深：</white><good>{0:0.##}</good> <gray>米（最大</gray><good>{1:n0}</good><gray>伤害）</gray>"
 	PenetrationFmt = "<white>穿深：</white><good>{0:0.##}</good> <gray>米</gray>"
 	PowerCapacityFmt = "<white>电容量：</white><good>{0:0.##}</good>"
+	PowerDistributionEfficiencyFmt = "<white>能源分配效率：</white><good>{0:0.#}%</good>"
 	PowerDrainAreaFmt = "<white>耗能范围：</white><good>{0:0.#}</good><gray> 米半径</gray>"
 	PowerDrainFmt = "<white>击中时耗能：</white><good>{0:0.##}</good><gray>/发（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	PowerDrainOverTimeFmt = "<white>耗能：</white><good>{0:0}</good> <gray>总计（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	PowerGenerationFmt = "<white>发电量：</white><good>{0:0.###}</good><gray>/秒</gray>"
+	PowerHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:0.##}</good> <gray>兆焦/能量（</gray><good>{1:0.##}</good> <gray>兆焦/秒）</gray>"
 	PowerUsageContinuousFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/秒</gray>"
 	PowerUsageContinuousMinutesFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/秒</gray>"
+	PowerUsageFactorFmt = "<white>能耗因子：</white><good>{0:0.###}x</good>"
 	ProcessorCapacityFmt = "<white>处理器容量：</white><good>{0}</good>"
 	ProcessorCoilUsageFmt = "<white>线圈消耗：</white><good>{0:0.##}</good><gray>/处理器（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	ProcessorGoldUsageFmt = "<white>金消耗：</white><good>{0:0.##}</good><gray>/处理器（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	ProcessorHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:0.##}</good> <gray>兆焦/处理器（</gray><good>{1:0.##}</good> <gray>兆焦/秒）</gray>"
 	ProcessorPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/处理器（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	ProcessorProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>处理器/秒</gray>"
+	PumpPowerUsageFactorFmt = "<white>热泵能耗因子：</white><good>{0:0.###}x</good>"
 	ROFFmt = "<white>射速：</white><good>{0:0.##}</good> <gray>发/秒</gray>"
 	ROFRangeFmt = "<white>射速：</white> <good>{0:0.##}</good><white> - </white><good>{1:0.##}</good><gray> 发/秒</gray>"
 	RadarRangeFmt = "<white>传感器范围（雷达）：</white><good>{0:0}</good><gray>米</gray>"
+	RailgunAcceleratorChargeTimeFmt = "<white>充能时间：</white><good>+{0:0.##}</good> <gray>秒/加速器</gray>"
+	RailgunBaseChargeTimeFmt = "<white>基础充能时间：</white><good>{0:0.##}</good> <gray>秒</gray>"
+	RailgunBuffExponentOverclockFmt = "<white>轨道炮加成值：</white><good>{0:0.##}</good> <gray>（<good>+{1:0.##}</good>）</gray>"
 	RailgunBuffFmt = "<gray>轨道炮的伤害、穿深、射程与炮弹弹速（按加速器数量）增量：</gray>\n  <TransparentWhite>0</TransparentWhite><white>1: </white><good>+{0:000}%</good>   <white>11: </white><good>+{10:000}%</good>   <white>21: </white><good>+{20:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>2: </white><good>+{1:000}%</good>   <white>12: </white><good>+{11:000}%</good>   <white>22: </white><good>+{21:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>3: </white><good>+{2:000}%</good>   <white>13: </white><good>+{12:000}%</good>   <white>23: </white><good>+{22:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>4: </white><good>+{3:000}%</good>   <white>14: </white><good>+{13:000}%</good>   <white>24: </white><good>+{23:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>5: </white><good>+{4:000}%</good>   <white>15: </white><good>+{14:000}%</good>   <white>25: </white><good>+{24:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>6: </white><good>+{5:000}%</good>   <white>16: </white><good>+{15:000}%</good>   <white>26: </white><good>+{25:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>7: </white><good>+{6:000}%</good>   <white>17: </white><good>+{16:000}%</good>   <white>27: </white><good>+{26:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>8: </white><good>+{7:000}%</good>   <white>18: </white><good>+{17:000}%</good>   <white>28: </white><good>+{27:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>9: </white><good>+{8:000}%</good>   <white>19: </white><good>+{18:000}%</good>   <white>29: </white><good>+{28:000}%</good>\n  <white>10: </white><good>+{9:000}%</good>   <white>20: </white><good>+{19:000}%</good>   <white>30: </white><good>+{29:000}%</good>"
 	RailgunNotes = <gray>注意：每增加一个轨道炮加速器，伤害、穿深、射程、弹速和功率消耗都会增加。</gray>
+	RailgunOverclockHeatOnShotFmt = "<white>热能产生速率：</white><good>{0:0.#}</good> <gray>兆焦/部件/发</gray>"
+	RampUpSpeedFactorFmt = "<white>加速度因子：</white><good>{0:0.#}%</good>"
 	RangeFmt = "<white>射程：</white><good>{0:0}</good> <gray>米</gray>"
 	RangeLimitedFmt = "<white>射程：</white><good>{0:0}</good> <gray>米（最大 </gray><good>{1:0}</good><gray>米）</gray>"
+	ResonanceHeatPoolFmt = "<white>传导热能（热能池）：</white><good>{0:n1} </good><gray>兆焦/秒 * 增幅^</gray><good>{1:0.##}</good>"
+	ResonanceTurretHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:0.#}</good> <gray>兆焦/秒 + 热泵</gray>"
 	Resources = "<white>资源：</white> "
-	RocketNotes = <gray>注意：每个拓展器都会增加推进器的最大推力、能耗以及加速时间。</gray>
+	RocketNotes = <gray>注意：每个拓展器都会增加推进器的最大推力、能耗、加速时间和热能产生速率。</gray>
 	SalvoFmt = "<white>齐射：</white><good>{0:0.##}</good> <gray>发/</gray><good>{1:0.##}</good> <gray>秒</gray>"
 	SeparationRangeFmt = "<white>分离：</white><good>{0:0}</good> <gray>米</gray>"
 	ShellDamageResistFmt = "<white>装甲外壳伤害抵抗：</white><good>{0}%</good>"
 	ShellPenResistFmt = "<white>装甲外壳穿透抵抗：</white> <good>-{0}</good> <gray>米</gray>"
 	ShieldArcFmt = "<white>护盾弧度：</white><good>{0:0}°</good>"
 	ShieldDamageFmt = "<white>对护盾伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><gray>/秒）</gray>"
+	ShieldDamageOverTimeFmt = "<white>对护盾伤害：</white><good>{0:0}</good><gray>总计（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	ShieldDamagePowerCostFmt = "<white>护盾伤害能量消耗:<gray>基础</gray></white> <good>{0:+0.#;-0.#}%</good>，<gray> * 增幅</gray> <good>{1:+0.#;-0.#}%</good>，<good><gray> * 膨胀</gray> {2:+0.#;-0.#}%</good>"
 	ShieldDistFmt = "<white>护盾距离：</white><good>{0}</good><gray>米</gray>"
 	ShieldHPFmt = "<white>护盾强度：</white><good>{0:n0}</good>"
 	ShieldPenResistFmt = "<white>护盾抗穿：</white><good>-{0}</good> <gray>米</gray>"
-	ShieldPenetrationFmt = "<white>护盾穿透：</white><good>{0:.##}</good> <gray>护盾</gray>"
+	ShieldPenetrationFmt = "<white>护盾穿深：</white><good>{0:0.##}</good> <gray>米（换算）</gray>"
 	ShotAmmoUsageFmt = "<white>炮弹消耗：</white><good>{0:0.##}</good><gray>/发（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	ShotAmmoUsageRangeFmt = "<white>炮弹消耗：</white> <good>{0:0.##}</good><gray>/发（</gray><good>{1:0.##}</good><white> - </white><good>{2:0.##}</good><gray>/秒）</gray>"
 	ShotDamageFmt = "<white>对来袭射弹伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><gray>/秒）</gray>"
@@ -4226,6 +4503,11 @@ Stats
 	ShotLaunchSpeedFmt = "<white>发射速度：</white><good>{0:0}</good> <gray>米/秒</gray>"
 	ShotPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.###}</good><gray>/发（</gray><good>{1:0.###}</good><gray>/秒）</gray>"
 	ShotSpeedFmt = "<white>飞行速度：</white><good>{0:0}</good> <gray>米/秒</gray>"
+	ShrapnelArcFmt = "<white>弹片弧度：</white><good>{0:0}°</good>"
+	ShrapnelFieldBulletDamageFmt = "<white>弹片区域炮弹伤害：</white><good>{0:0}</good><gray>/米</gray>"
+	ShrapnelFieldDamagePoolFmt = "<white>弹片区域伤害池：</white><good>{0:0}</good>"
+	ShrapnelFieldLifetimeFmt = "<white>弹片区域持续时间：</white><good>{0:0.#}</good> <gray>秒</gray>"
+	ShrapnelFieldRadiusFmt = "<white>弹片区域半径：</white><good>{0:0.#}</good> <gray>米</gray>"
 	ShrapnelFmt = "<white>弹片：</white><good>{0}</good>"
 	SightRangeFmt = "<white>传感器范围（视觉）：</white><good>{0:0}</good><gray>米</gray>"
 	SimpleDamageFmt = "<white>伤害：</white><good>{0:n0}</good>"
@@ -4233,24 +4515,44 @@ Stats
 	SizeFmt = "<white>尺寸：</white><good>{0}x{1}</good> <gray>米</gray>"
 	SpreadFmt = "<white>随机散布：</white><gray>+/-</gray> <good>{0:0.#}°</good>"
 	SteelCapacityFmt = "<white>钢板容量：</white><good>{0}</good>"
+	SteelHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:0.##} </good><gray>兆焦/钢板（</gray><good>{1:0.##}</good> <gray>兆焦/秒）</gray>"
 	SteelIronUsageFmt = "<white>铁消耗：</white><good>{0:0.##}</good><gray>/钢板（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	SteelPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/钢板（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	SteelProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>钢板/秒</gray>"
+	StorageHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:#,0.##}</good> <gray>兆焦/秒（100% 满值）</gray>"
 	StorageTilesFmt = "<white>存储空间：</white><good>{0}</good> <gray>堆</gray>"
+	StrengthAtMaxRangeFmt = "<white>最大距离强度：</white><good>{0:0.#}%</good>"
 	StretchRangeFmt = "<white>延伸射程：</white><good>{0:0}</good> <gray>米</gray>"
 	SulfurCapacityFmt = "<white>硫磺容量：</white><good>{0}</good>"
+	ThermalAmplificationFmt = "<white>热能增幅：</white><good>{0:+0.#;-0.#}%</good>"
+	ThermalDilationFmt = "<white>热能膨胀：</white><good>{0:+0.#;-0.#}%</good>"
+	ThermalDilationPumpNotes = <gray>注意：如果只连接了一个端口，热膨胀率、热能产生速率和能耗都会减半。</gray>
+	ThermalMissileCapacityFmt = "<white>储热导弹容量：</white><good>{0}</good>"
+	ThermalPumpMultiEfficiencyFmt = "<white>多端供热效率：</white><good>{0:0.#}%</good><gray>^额外用热部件数量</gray>"
+	ThrusterBonusForceFmt = "<white>推进器加成基础加力：</white><good>+{0:0.##} </good><gray>千牛</gray>"
 	ThrusterBuffFmt = "<white>推进器增益：</white><good>+{0:0}%</good><gray> 推进力和能量消耗</gray>"
-	ThrusterForceFmt = "<white>推力：</white><good>{0:#,0.#}</good><gray>千牛</gray>"
+	ThrusterForceFmt = "<white>推进力：</white><good>{0:#,0.#}</good><gray> 千牛</gray>"
+	ThrusterHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:#,0.##}</good> <gray>兆焦/秒（100% 推进力）</gray>"
 	ThrusterPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/秒（100% 推进力）</gray>"
+	ThrusterPowerUsageRampFmt = "<white>能耗：</white><good>{0:0.##}-{1:0.##}</good><gray>/秒（100% 推进力）</gray>"
+	ThrusterPowerUsageRampTimeFmt = "<white>能耗启动时间：</white><good>{0:0.##}</good> <gray>秒</gray>"
 	ThrusterRampDownFmt = "<white>减速时间：</white><good>{0:0.##}</good> <gray>秒</gray>"
+	ThrusterRampExponentFmt = "<white>加速时间量：</white><good>{0:0.##}</good>"
 	ThrusterRampUpFmt = "<white>加速时间：</white><good>{0:0.##}</good><gray>秒</gray>"
 	TractorBeamNotes = <gray>注意：上述牵引力和能源损耗仅为理论最大值。实际数值与和目标之间的距离相关。</gray>
-	TractorForceFmt = "<white>牵引力：</white><good>{0:#,0.#}</good><gray>千牛</gray>"
+	TractorForceFmt = "<white>牵引力：</white><good>{0:#,0.#}</good><gray> 千牛</gray>"
+	TractorOverloadChargeTimeFmt = "<white>超载充能时间：</white><good>{0:0.##}</good><gray> 秒</gray>"
+	TractorOverloadForceFmt = "<white>超载牵引力：</white><good>{0:#,0.#}</good><gray> 千牛</gray>"
+	TractorOverloadHeatGenerationFmt = "<white>超载热能产生速率：</white><good>{0:0.#}</good> <gray>兆焦</gray>"
+	TractorOverloadMinPowerFmt = "<white>超载最低能源储量：<gray>储能达到</gray></white> <good>{0:0.##}%</good>"
+	TractorOverloadRadiusFmt = "<white>超载范围：</white><good>{0:#,0.#}</good><gray> 米</gray>"
 	TristeelCapacityFmt = "<white>三钛钢板容量：</white><good>{0}</good>"
+	TristeelHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:0.##} </good><gray>兆焦/三钛钢板（</gray><good>{1:0.##}</good> <gray>兆焦/秒）</gray>"
 	TristeelPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/三钛钢板（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	TristeelProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>三钛钢板/秒</gray>"
 	TristeelTritaniumUsageFmt = "<white>三钛原矿消耗：</white><good>{0:0.##}</good><gray>/三钛钢板（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	TritaniumCapacityFmt = "<white>三钛原矿容量：</white><good>{0}</good>"
+	TurretExtraHeatGenerationFmt = "<white>炮塔热能产生速率：</white><good>{0:+0.#;-0.#}</good> <gray>兆焦/秒</gray>"
 	TurretPenResistFmt = "<white>炮塔装甲抗穿：</white><good>-{0}</good> <gray>米</gray>"
 	TurretSpeedFmt = "<white>炮塔旋转速度：</white><good>{0:0}°</good><gray>/秒</gray>"
 	UraniumCapacityFmt = "<white>铀容量：</white><good>{0}</good>"
@@ -4459,7 +4761,7 @@ Tips
 		
 		Tip1 = "你可以将至多三套自定义部件或贴花保存进“收藏”。在部件或贴花上按 <btn id='General.UIAltClick'/> 将其加入收藏或从收藏中移除。"
 		Tip2 = "你还可以在部件或贴花上按 <btn id='General.UIFocusClick'/> 快速将其加入或移出收藏。"
-		Title = 收藏部件和贴花
+		Title = 收藏部件与贴花
 	}
 	Feedback
 	{

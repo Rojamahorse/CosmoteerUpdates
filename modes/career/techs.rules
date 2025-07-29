@@ -559,6 +559,7 @@ Techs
 
 	{
 		ID = cosmoteer.laser_blaster_small-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/LaserBlasterSmallOverclock"
 		DescriptionKey = "Parts/LaserBlasterSmallOverclockDesc"
 		Icon = &<./Data/ships/terran/laser_blaster_small/laser_blaster_small.rules>/Part/EditorIcon
@@ -573,6 +574,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.laser_blaster_large-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/LaserBlasterLargeOverclock"
 		DescriptionKey = "Parts/LaserBlasterLargeOverclockDesc"
 		Icon = &<./Data/ships/terran/laser_blaster_large/laser_blaster_large.rules>/Part/EditorIcon
@@ -587,6 +589,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.disruptor-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/DisruptorOverclock"
 		DescriptionKey = "Parts/DisruptorOverclockDesc"
 		Icon = &<./Data/ships/terran/disruptor/disruptor.rules>/Part/EditorIcon
@@ -601,6 +604,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.ion_beam_emitter-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/IonBeamEmitterOverclock"
 		DescriptionKey = "Parts/IonBeamEmitterOverclockDesc"
 		Icon = &<./Data/ships/terran/ion_beam_emitter/ion_beam_emitter.rules>/Part/EditorIcon
@@ -615,6 +619,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.cannon_med-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/CannonMedOverclock"
 		DescriptionKey = "Parts/CannonMedOverclockDesc"
 		Icon = &<./Data/ships/terran/cannon_med/cannon_med.rules>/Part/EditorIcon
@@ -629,6 +634,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.cannon_large-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/CannonLargeOverclock"
 		DescriptionKey = "Parts/CannonLargeOverclockDesc"
 		Icon = &<./Data/ships/terran/cannon_large/cannon_large.rules>/Part/EditorIcon
@@ -643,6 +649,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.cannon_deck-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/CannonDeckOverclock"
 		DescriptionKey = "Parts/CannonDeckOverclockDesc"
 		Icon = &<./Data/ships/terran/cannon_deck/cannon_deck.rules>/Part/EditorIcon
@@ -657,6 +664,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.railgun-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/RailgunOverclock"
 		DescriptionKey = "Parts/RailgunLauncherOverclockDesc"
 		Icon = &<./Data/ships/terran/railgun_launcher/railgun_launcher.rules>/Part/EditorIcon
@@ -671,6 +679,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.chaingun-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ChainGunOverclock"
 		DescriptionKey = "Parts/ChainGunOverclockDesc"
 		Icon = &<./Data/ships/terran/chaingun/chaingun.rules>/Part/EditorIcon
@@ -685,6 +694,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.shield_gen_small-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ShieldGenSmallOverclock"
 		DescriptionKey = "Parts/ShieldGenSmallOverclockDesc"
 		Icon = &<./Data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/EditorIcon
@@ -699,6 +709,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.shield_gen_large-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ShieldGenLargeOverclock"
 		DescriptionKey = "Parts/ShieldGenLargeOverclockDesc"
 		Icon = &<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/EditorIcon
@@ -713,6 +724,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.flak_cannon_large-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FlakCannonLargeOverclock"
 		DescriptionKey = "Parts/FlakCannonLargeOverclockDesc"
 		Icon = &<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/EditorIcon
@@ -727,6 +739,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.point_defense-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/PointDefenseOverclock"
 		DescriptionKey = "Parts/PointDefenseOverclockDesc"
 		Icon = &<./Data/ships/terran/point_defense/point_defense.rules>/Part/EditorIcon
@@ -741,6 +754,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.fire_extinguisher-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FireExtinguisherOverclock"
 		DescriptionKey = "Parts/FireExtinguisherOverclockDesc"
 		Icon = &<./Data/ships/terran/fire_extinguisher/fire_extinguisher.rules>/Part/EditorIcon
@@ -755,6 +769,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.thruster_small-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ThrusterSmallOverclock"
 		DescriptionKey = "Parts/ThrusterSmallOverclockDesc"
 		Icon = &<./Data/ships/terran/thruster_small/thruster_small.rules>/Part/EditorIcon
@@ -771,6 +786,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.thruster_med-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ThrusterMedOverclock"
 		DescriptionKey = "Parts/ThrusterMedOverclockDesc"
 		Icon = &<./Data/ships/terran/thruster_med/thruster_med.rules>/Part/EditorIcon
@@ -785,6 +801,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.thruster_large-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ThrusterLargeOverclock"
 		DescriptionKey = "Parts/ThrusterLargeOverclockDesc"
 		Icon = &<./Data/ships/terran/thruster_large/thruster_large.rules>/Part/EditorIcon
@@ -799,6 +816,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.thruster_huge-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ThrusterHugeOverclock"
 		DescriptionKey = "Parts/ThrusterHugeOverclockDesc"
 		Icon = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/EditorIcon
@@ -813,6 +831,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.thruster_boost-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ThrusterBoostOverclock"
 		DescriptionKey = "Parts/ThrusterBoostOverclockDesc"
 		Icon = &<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/EditorIcon
@@ -827,6 +846,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.thruster_rocket_nozzle-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ThrusterRocketNozzleOverclock"
 		DescriptionKey = "Parts/ThrusterRocketNozzleOverclockDesc"
 		Icon = &<./Data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/EditorIcon
@@ -841,6 +861,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.thruster_rocket_extender-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ThrusterRocketExtenderOverclock"
 		DescriptionKey = "Parts/ThrusterRocketExtenderOverclockDesc"
 		Icon = &<./Data/ships/terran/thruster_rocket_extender/thruster_rocket_extender.rules>/Part/EditorIcon
@@ -855,6 +876,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.engine_room-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/EngineRoomOverclock"
 		DescriptionKey = "Parts/EngineRoomOverclockDesc"
 		Icon = &<./Data/ships/terran/engine_room/engine_room.rules>/Part/EditorIcon
@@ -869,6 +891,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.reactor_small-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ReactorSmallOverclock"
 		DescriptionKey = "Parts/ReactorSmallOverclockDesc"
 		Icon = &<./Data/ships/terran/reactor_small/reactor_small.rules>/Part/EditorIcon
@@ -883,6 +906,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.reactor_med-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ReactorMedOverclock"
 		DescriptionKey = "Parts/ReactorMedOverclockDesc"
 		Icon = &<./Data/ships/terran/reactor_med/reactor_med.rules>/Part/EditorIcon
@@ -897,6 +921,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.reactor_large-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/ReactorLargeOverclock"
 		DescriptionKey = "Parts/ReactorLargeOverclockDesc"
 		Icon = &<./Data/ships/terran/reactor_large/reactor_large.rules>/Part/EditorIcon
@@ -911,6 +936,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.power_storage-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/PowerStorageOverclock"
 		DescriptionKey = "Parts/PowerStorageOverclockDesc"
 		Icon = &<./Data/ships/terran/power_storage/power_storage.rules>/Part/EditorIcon
@@ -925,6 +951,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.factory_ammo-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryAmmoOverclock"
 		DescriptionKey = "Parts/FactoryAmmoOverclockDesc"
 		Icon = &<./Data/ships/terran/factory_ammo/factory_ammo.rules>/Part/EditorIcon
@@ -939,6 +966,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.factory_he-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryHEOverclock"
 		DescriptionKey = "Parts/FactoryHEOverclockDesc"
 		Icon = &<./Data/ships/terran/factory_he/factory_he.rules>/Part/EditorIcon
@@ -953,6 +981,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.factory_emp-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryEMPOverclock"
 		DescriptionKey = "Parts/FactoryEMPOverclockDesc"
 		Icon = &<./Data/ships/terran/factory_emp/factory_emp.rules>/Part/EditorIcon
@@ -967,6 +996,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.factory_thermal-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryThermalOverclock"
 		DescriptionKey = "Parts/FactoryThermalOverclockDesc"
 		Icon = &<./Data/ships/terran/factory_thermal/factory_thermal.rules>/Part/EditorIcon
@@ -981,6 +1011,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.factory_nuke-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryNukeOverclock"
 		DescriptionKey = "Parts/FactoryNukeOverclockDesc"
 		Icon = &<./Data/ships/terran/factory_nuke/factory_nuke.rules>/Part/EditorIcon
@@ -995,6 +1026,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.factory_mine-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryMineOverclock"
 		DescriptionKey = "Parts/FactoryMineOverclockDesc"
 		Icon = &<./Data/ships/terran/factory_mine/factory_mine.rules>/Part/EditorIcon
@@ -1009,6 +1041,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.factory_steel-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactorySteelOverclock"
 		DescriptionKey = "Parts/FactorySteelOverclockDesc"
 		Icon = &<./Data/ships/terran/factory_steel/factory_steel.rules>/Part/EditorIcon
@@ -1023,6 +1056,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.factory_coil-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryCoilOverclock"
 		DescriptionKey = "Parts/FactoryCoilOverclockDesc"
 		Icon = &<./Data/ships/terran/factory_coil/factory_coil.rules>/Part/EditorIcon
@@ -1037,6 +1071,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.factory_coil2-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryCoil2Overclock"
 		DescriptionKey = "Parts/FactoryCoil2OverclockDesc"
 		Icon = &<./Data/ships/terran/factory_coil2/factory_coil2.rules>/Part/EditorIcon
@@ -1051,6 +1086,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.factory_tristeel-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryTristeelOverclock"
 		DescriptionKey = "Parts/FactoryTristeelOverclockDesc"
 		Icon = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/EditorIcon
@@ -1065,6 +1101,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.factory_processor-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryProcessorOverclock"
 		DescriptionKey = "Parts/FactoryProcessorOverclockDesc"
 		Icon = &<./Data/ships/terran/factory_processor/factory_processor.rules>/Part/EditorIcon
@@ -1079,6 +1116,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.factory_uranium-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryUraniumOverclock"
 		DescriptionKey = "Parts/FactoryUraniumOverclockDesc"
 		Icon = &<./Data/ships/terran/factory_uranium/factory_uranium.rules>/Part/EditorIcon
@@ -1093,6 +1131,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.mining_laser_small-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/MiningLaserSmallOverclock"
 		DescriptionKey = "Parts/MiningLaserSmallOverclockDesc"
 		Icon = &<./Data/ships/terran/mining_laser_small/mining_laser_small.rules>/Part/EditorIcon
@@ -1107,6 +1146,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.tractor_beam_emitter-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/TractorBeamEmitterOverclock"
 		DescriptionKey = "Parts/TractorBeamEmitterOverclockDesc"
 		Icon = &<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/Part/EditorIcon
@@ -1121,6 +1161,7 @@ Techs
 	}
 	{
 		ID = cosmoteer.sensor_array-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/SensorArrayOverclock"
 		DescriptionKey = "Parts/SensorArrayOverclockDesc"
 		Icon = &<./Data/ships/terran/sensor_array/sensor_array.rules>/Part/EditorIcon

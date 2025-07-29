@@ -1,7 +1,8 @@
 OVERCLOCK
 {
 	COLLECTED_HEAT_MULTIPLIER = 175%
-	POWER_DISTRIBUTION_MULTIPLIER = 140%
+	POWER_DISTRIBUTION_MULTIPLIER = 150%
+	HEAT_PER_EXTRA_BATTERY = 200
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -123,6 +124,16 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ComponentID = CombinedBatteryStorage
 			QuantityScale = 1 / (&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER)
 		}
+		Overclock_DeliveryHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_CombinedBatteryStorageProxy
+			// Convert raw energy to just the bonus portion of the energy
+			BONUS_ENERGY_FACTOR = ((&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER) - 1) / (&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER)
+			HEAT_PER_VALUE = (&BONUS_ENERGY_FACTOR) * (&~/OVERCLOCK/HEAT_PER_EXTRA_BATTERY) / 1000
+			Amount = { BaseValue = floor((&../HEAT_PER_VALUE) * (&~/HEAT_TO_RESOURCE)); EffectScaleExponent = 1; MinValue = 0; }
+		}
 
 		BatteryDistributionStorage
 		{
@@ -238,11 +249,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
-
-		OverheatEffects : ^/0/OverheatEffects
-		{
-			Location = [1.5, 1.5]
-		}
 
 		EngineHeatCollectionStorage
 		{
@@ -696,11 +702,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			PowerDistributionEfficiency = (&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER) * 100
 			HeatTransferInefficiency = ((&~/OVERCLOCK/COLLECTED_HEAT_MULTIPLIER) - 1) * 100
+			BatteryDeliveredHeatGeneration = (&~/OVERCLOCK/HEAT_PER_EXTRA_BATTERY) * ((&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER) - 1)
 		}
-		Features
-		[
-			ForcedThrusterOverclock
-			ThrusterHeatTransfer
-		]
 	}
 }

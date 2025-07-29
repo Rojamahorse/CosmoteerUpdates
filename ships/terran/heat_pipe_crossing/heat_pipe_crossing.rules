@@ -15,6 +15,7 @@ Part : <../base_part_terran.rules>/Part
 	IsRotateable = true
 	SelectionPriority = 0
 	MaxHealth = 1000
+	TypeCategories = [ heat_management ]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	AllowedDoorLocations
 	[

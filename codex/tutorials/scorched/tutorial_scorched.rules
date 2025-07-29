@@ -1,7 +1,7 @@
 ID = scorched
 TitleKey = "Tutorials/Scorched/Title"
 TabNameKey = "Codex/Tutorials"
-TempShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.HasStatus(\"cosmoteer.scorched\")"
+TempShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.HasStatusValue(\"cosmoteer.scorched\", 1)"
 Entries
 [
 	{
