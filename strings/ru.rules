@@ -271,7 +271,7 @@ BuildBox
 	GrabTip = "<b>Захват</b>\n\nВ режиме захвата, нажав на часть корабля, вы захватите её и сможете переместить в другое место. Зажмите <btn id='Game.AppendSelection'/>, чтобы сделать дубликат части, а не перенести её.\n\nНажмите <btn id='General.UIAltClick'/>, чтобы выбрать этот вид части, как если бы вы нажали на эту кнопку.\n\nГорячая клавиша: <btn id='Design.GrabTool'/>"
 	HasDoorAccess = "<good>✓ Есть место для двери</good>"
 	HeatCapacity = Теплоемкость
-	HeatCapacityFmt = "{0:#,0.#;;0}<gray>МДж</gray>"
+	HeatCapacityFmt = "{0:#,0.#;;0} <gray>МДж</gray>"
 	HeatDissipation = "Рассеивание тепла"
 	HeatDissipationFmt = "{0:#,0}<gray>МДж/сек.</gray>"
 	HeatGeneration = "Выработка тепла"
@@ -1193,6 +1193,7 @@ Factions
 	Cabal = "Каббала Солнца"
 	Fringe = "Сопротивление Дальних рубежей"
 	Imperium = "Империя Центавра"
+	Io = "Великий дом Ио"
 	Monolith = "Кооператив «Монолит»"
 	None = Нет
 }
@@ -1930,6 +1931,8 @@ Inputs
 		missile_type_thermal = "Тип пускового модуля: Термоаккумулирующая ракета"
 		on_off_off = "Отключить питание части"
 		on_off_on = "Подключить питание части"
+		overclock_shield_extended = "Разогнанный щит увеличенный"
+		overclock_shield_reinforced = "Разогнанный щит усиленный"
 		rotate_off = "Поворот: выкл."
 		rotate_on = "Поворот: вкл."
 		thermal_overclock_off = "Разгон: Выкл."
@@ -2203,6 +2206,15 @@ Lore
 		Lore4 = "Вооруженные силы лишь немногим превосходят гражданское правительство в плане иерархии. Так как в битве крайне важно принимать решения быстро, на большинстве кораблей всё же есть капитаны, но их выбирают члены экипажа, которые по голосованию могут их и же сместить. Каждый корабль представляет собой отдельную организацию, которая вправе принимать любые тактические решения. Небольшим ограничением служат несколько правил ведения боя, принятых центаврийцами. (А центаврийцы считают, что в войне хороши все средства, пока они приносят богатство и славу главным системам Центавра.) Этот децентрализованный и непритязательный подход сделал армию Империи Центавра гибкой и безжалостной. Более крупные стратегические цели (например, заставить сдаться какую-либо звёздную систему) задаются гражданским населением, которое также определяет и награду за их достижение. Ради выполнения таких целей отдельные корабли собираются в стихийные флотилии, распадающиеся после выполнения поставленных задач. В некоторых случаях создаются конкурирующие флотилии, нацеленные на одну и ту же цель и награду. Это допустимо и поощряется среди центаврийцев как полезный стимул для улучшения боевых навыков. Однако прямые стычки между кораблями Центавра запрещены и жестоко караются своими же соплеменниками за солидную награду. В случае, если на награду претендует несколько кораблей или флотилий, решающий голос, как обычно, остаётся за гражданами Центавра."
 		Lore5 = "Гражданином Центавра считается только тот, кто либо жил в центральных системах во время образования Империи Центавра, либо чьи родители <i>оба</i> являются гражданами государства. Случаются исключения, но в каждом случае выдача гражданства должна быть одобрена всеми центаврийцами, поэтому натурализованные граждане — довольно редкое явление. (Обычно такой чести удостаиваются только те, кто внёс значительный вклад в развитие Империи.) В результате подавляющее большинство живущих за пределами центральных систем не считаются гражданами Центавра и не пользуются ни автономией, ни каким-либо подобием самоуправления. Центаврийцы много говорят о демократии и равенстве, а на деле проводят политику двойных стандартов на захваченных территориях, управляя жёстко и беспощадно."
 		Title = "Империя Центавра"
+	}
+	Io
+	{
+		
+		Lore1 = "Задолго до открытия Монолита Армстронга и разрушения Солнца, когда холодная война между Землей и Марсом набирала обороты, самые богатые и знатные семьи Имперского марсианского матриархата, известные как Великие дома, отказались от своей императрицы и покинули охваченный войной мир, чтобы колонизировать луны внешних газовых гигантов."
+		Lore2 = "Один из Великих домов, дом Родомон, управлял металлургической и строительной империей, которая охватывала всю систему Солнц, и стал пионером в области модульной сварки космических кораблей, которая используется и по сей день. Дом Родомон вместе с десятками тысяч своих слуг и наиболее квалифицированных работников обосновался на Ио, спутнике Юпитера, самом вулканически активном объекте в Солнечной системе, и официально взял новое имя — Великий дом Ио. Применяя знания в области металлургии, они укротили вулканы Ио и использовали их тепло для получения практически безграничной энергии. Все это заняло менее десяти лет."
+		Lore3 = "А затем, по причинам, известным только высшим матриархам Дома, они решили уйти. Реализовав самый масштабный и амбициозный строительный и геоинженерный проект в истории человечества, они превратили Ио в гигантский межзвездный корабль. Используя почти безграничное внутреннее тепло Ио в качестве топлива для самых мощных ракетных двигателей в истории, они преодолели гравитацию Юпитера и покинули Солнечную систему. На протяжении сотен лет Великий дом Ио считался погибшим."
+		Lore4 = "Но однажды Ио внезапно появилась на слабо охраняемых окраинах империи Центавра. Теперь на спутнике жили миллионы человек благодаря агрессивной программе размножения. Его окружали тысячи военных кораблей, оснащенных передовым тепловым оружием, выплавленным из раскаленного железного ядра Ио. Великий Дом Ио застал империю врасплох и быстро завоевал большую часть тыловых территорий, а также несколько звездных систем, расположенных на границе, тем самым нарушив хрупкий баланс сил в галактике. Они публично объявили о своей цели — объединить человечество под властью матриарха Ио и сосредоточить все ресурсы на борьбе с гораздо большей угрозой, которая, по их утверждениям, нависла над горизонтом. Но что это за угроза и что они видели за сотни лет путешествий между звездами, они не говорят."
+		Title = "Великий дом Ио"
 	}
 	Monolith
 	{
@@ -2725,7 +2737,7 @@ Parts
 	CannonDeckDesc = "Огромная двуствольная пушка, для надёжности размещаемая не по бокам, а сверху корабля. Каждый ствол во время выстрела сплавляет сразу двенадцать снарядов, и её грохот на короткое время оглушает и парализует находящихся рядом членов экипажа.\n\nПередняя и боковые пушки должны располагаться на расстоянии не ближе, чем две клетки от других пушек на крыше или выступающих частей."
 	CannonDeckIcon = "Палубная пушка"
 	CannonDeckOverclock = "Разогнанная палубная пушка"
-	CannonDeckOverclockDesc = "Увеличивает урон, скорость и точность снаряда, но прекращает пробитие, как только поражающий потенциал будет исчерпан. При стрельбе вырабатывает избыточное тепло."
+	CannonDeckOverclockDesc = "Увеличивает урон, скорость и точность снаряда, но снижает скорострельность и прекращает пробитие, как только поражающий потенциал будет исчерпан. При стрельбе вырабатывает избыточное тепло."
 	CannonLarge = "Большая пушка"
 	CannonLargeDesc = "Во время выстрела сплавляет сразу четыре снаряда, что увеличивает урон и глубину пробития по сравнению со стандартной пушкой."
 	CannonLargeIcon = "Большая пушка"
@@ -2735,7 +2747,7 @@ Parts
 	CannonMedDesc = "Стреляет одиночными снарядами, которые пробивают корпус вражеских кораблей и иногда могут вызвать пожар."
 	CannonMedIcon = Пушка
 	CannonMedOverclock = "Разогнанная стандартная пушка"
-	CannonMedOverclockDesc = "Стреляет залпами из нескольких снарядов небольшого калибра. С каждым зарядом урон и скорость заряда снижаются. При стрельбе вырабатывает избыточное тепло."
+	CannonMedOverclockDesc = "Стреляет залпами из нескольких снарядов на большое расстояние и с большой скоростью. При стрельбе вырабатывает избыточное тепло."
 	ChainGun = МАП
 	ChainGunDesc = "Скорострельная малокалиберная автоматическая пушка с вращающимся блоком стволов, которая наращивает скорость стрельбы по мере ведения огня и скрывается в защитном кожухе, когда не стреляет. Для увеличения продолжительности и скорострельности можно расширить ее боекомплект."
 	ChainGunIcon = МАП
@@ -2954,7 +2966,7 @@ Parts
 	FlakCannonLargeOverclock = "Разогнанная зенитная система"
 	FlakCannonLargeOverclockDesc = "Зенитные снаряды начинены шрапнелью, которая после взрыва на некоторое время остается в космосе, повреждая любые снаряды и блокируя любые проходящие через них энергетические лучи. При стрельбе вырабатывает избыточное тепло."
 	HeatExchanger = Теплообменник
-	HeatExchangerDesc = "Поглощает тепло из корпуса, передавая его в подключенную систему теплопередатчиков и генерируя некоторое количество дополнительного избыточного тепла."
+	HeatExchangerDesc = "Поглощает тепло из корпуса, передавая его в подключенную термальную сеть и генерируя некоторое количество дополнительного избыточного тепла."
 	HeatExchangerIcon = Теплообменник
 	HeatPipeAdaptive = Теплопередатчик
 	HeatPipeAdaptiveDesc = "Мгновенно передает тепловую энергию между соединенными элементами."
@@ -3023,7 +3035,7 @@ Parts
 	PowerStorageOverclock = "Разогнанный силовой накопитель"
 	PowerStorageOverclockDesc = "Утраивает емкость как самого силового накопителя, так и отдельных аккумуляторных батарей. Непрерывно генерирует избыточное тепло при хранении и приеме энергии."
 	Radiator = Радиатор
-	RadiatorDesc = "Рассеивает термальную энергию системы теплопередатчиков. Эффективность рассеивания тепла снижается, если пространство перед радиатором заблокировано."
+	RadiatorDesc = "Рассеивает тепло из подсоединенной термальной сети. Эффективность рассеивания тепла снижается, если пространство перед радиатором заблокировано."
 	RadiatorDissipationScoreFmt = "<good>{1:0.#}%\n({0:0.#}<gray>/сек.</gray>)</good>"
 	RadiatorIcon = Радиатор
 	Railgun = Рельсотрон
@@ -3123,13 +3135,13 @@ Parts
 	StructureWedgeDesc = "Основа корабля, благодаря которой он не распадается на части. Каркас изначально входит в структуру всех помещений и коридоров."
 	StructureWedgeIcon = "Каркасный клин"
 	ThermalAmplificationPump = "Помпа для усиления копья"
-	ThermalAmplificationPumpDesc = "Увеличивает интенсивность тепла всех термальных резонансных копий, подключенных к одной системе теплопередатчиков."
+	ThermalAmplificationPumpDesc = "Увеличивает интенсивность тепла всех термальных резонансных копий, подключенных к одной термальной сети."
 	ThermalAmplificationPumpIcon = "Помпа для усиления копья"
 	ThermalBattery = "Термальная батарея"
-	ThermalBatteryDesc = "Безопасно удерживает большой объем тепловой энергии, обеспечивая дополнительное накопление тепла для подключенной системы теплопередатчиков."
+	ThermalBatteryDesc = "Безопасно удерживает большой объем тепловой энергии, обеспечивая дополнительное накопление тепла для подключенной термальной сети."
 	ThermalBatteryIcon = "Термальная батарея"
 	ThermalDilationPump = "Помпа для расширения площади копья"
-	ThermalDilationPumpDesc = "Увеличивает площадь теплового воздействия всех термальных резонансных копий, подключенных к одной системе теплопередатчиков. Для достижения полного эффекта необходимо подсоединить оба порта помпы."
+	ThermalDilationPumpDesc = "Увеличивает площадь теплового воздействия всех термальных резонансных копий, подключенных к одной термальной сети. Для достижения полного эффекта необходимо подсоединить оба порта помпы."
 	ThermalDilationPumpIcon = "Помпа для расширения площади копья"
 	ThrusterBoost = Ускоритель
 	ThrusterBoostDesc = "Модификация большого двигателя, в камеры сгорания которого впрыскивается сырая плазма, что даёт кораблю мощный, но кратковременный рывок."
@@ -4311,7 +4323,7 @@ Stats
 	AccelerationDelayFmt = "<white>Задержка ускорения:</white> <good>{0:0.0#}</good> <gray>с</gray>"
 	AccelerationFmt = "<white>Ускорение:</white> <good>{0:0}</good> <gray>м/сек.²</gray>"
 	AmmoCapacityFmt = "<white>Объём хранимых снарядов:</white> <good>{0}</good>"
-	AmmoHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good><gray>МДж/боеприпас (</gray><good>{1:0.##}</good><gray>МДж/сек.)</gray>"
+	AmmoHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good> <gray>МДж/боеприпас (</gray><good>{1:0.##}</good> <gray>МДж/сек.)</gray>"
 	AmmoPowerUsageFmt = "<white>Расход энергии:</white> <good>{0:0.##}</good><gray>ед./снаряд (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	AmmoProductionFmt = "<white>Производительность:</white> <good>{0:0.##}</good><gray> боепр./сек.</gray>"
 	AmmoSulfurUsageFmt = "<white>Расход серы:</white> <good>{0:0.##}</good><gray>ед./снаряд (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
@@ -4321,7 +4333,7 @@ Stats
 	BaseAmplificationFmt = "<white>Усиление (базовое):</white> <good>{0:0.#}%</good>"
 	BaseDilationFmt = "<white>Расширение (базовое):</white> <good>{0:0.#}%</good>"
 	BaseHeatFactorFmt = "<white>Базовый тепловой коэффициент:</white> <good>{0:0.#}% ({1:0.#})</good>"
-	BatteryDeliveredHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:#,0.##}</good><gray>МДж на батарею</gray>"
+	BatteryDeliveredHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:#,0.##}</good> <gray>МДж на батарею</gray>"
 	BatteryFillTimeFmt = "<white>Время заряда батареи:</white> <good>{0:0.0#}</good> <gray>с</gray>"
 	BatterySizeFmt = "<white>Размер батареи:</white> <good>{0:0.0#}</good>"
 	BeamDamageFalloffFmt = "<white>Совокупное снижение урона:</white> <good>-{0}%</good><gray>/луч</gray>\n  <white>1-й луч:</white> <good>{1:0}%</good><gray> урона</gray>\n  <white>2-й луч:</white> <good>{2:0}%</good><gray> урона</gray>\n  <white>3-й луч:</white> <good>{3:0}%</good><gray> урона</gray>\n  <white>4-й луч:</white> <good>{4:0}%</good><gray> урона</gray>\n  <white>5-й луч:</white> <good>{5:0}%</good><gray> урона</gray>\n  ..."
@@ -4334,12 +4346,12 @@ Stats
 	Coil2CapacityFmt = "<white>Объём хранимых гиперспиралей:</white> <good>{0}</good>"
 	Coil2CoilUsageFmt = "<white>Расход спиралей:</white> <good>{0:0.##}</good><gray>шт./гиперспираль (</gray><good>{1:0.##}</good><gray>шт./сек.)</gray>"
 	Coil2CopperUsageFmt = "<white>Расход меди:</white> <good>{0:0.##}</good><gray>ед./гиперспираль (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
-	Coil2HeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good><gray>МДж/гиперспираль (</gray><good>{1:0.##}</good><gray>МДж/сек)</gray>"
+	Coil2HeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good> <gray>МДж/гиперспираль (</gray><good>{1:0.##}</good> <gray>МДж/сек.)</gray>"
 	Coil2PowerUsageFmt = "сек.<white>Расход энергии:</white> <good>{0:0.##}</good><gray>ед./гиперспираль (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	Coil2ProductionFmt = "<white>Производительность:</white> <good>{0:0.##}</good><gray> шт. гиперспиралей/сек.</gray>"
 	CoilCapacityFmt = "<white>Объём хранимых спиралей:</white> <good>{0}</good>"
 	CoilCopperUsageFmt = "<white>Расход меди:</white> <good>{0:0.##}</good><gray>ед./спираль (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
-	CoilHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good><gray>МДж/спираль (</gray><good>{1:0.##}</good><gray>МДж/сек)</gray>"
+	CoilHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good> <gray>МДж/спираль (</gray><good>{1:0.##}</good> <gray>МДж/сек.)</gray>"
 	CoilPowerUsageFmt = "<white>Расход энергии:</white> <good>{0:0.##}</good><gray>ед./спираль (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	CoilProductionFmt = "<white>Производительность:</white> <good>{0:0.##}</good><gray> шт. спиралей/сек.</gray>"
 	CommandPointsProvidedFmt = "<white>Очки командования:</white> <good>+{0}<image name='command_points' colored='true'/></good> <gray>(дано)</gray>"
@@ -4369,7 +4381,7 @@ Stats
 	DetonationRangeFmt = "<white>Радиус взрыва:</white> <good>{0:0}</good> <gray>м</gray>"
 	DiamondCapacityFmt = "<white>Объём хранимых алмазов:</white> <good>{0}</good>"
 	DiamondCarbonUsageFmt = "<white>Расход углерода:</white> <good>{0:0.##}</good><gray>ед./алмаз (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
-	DiamondPowerUsageFmt = "<white>Расход энергии:</white> <good>{0:0.##}</good><gray>МДж/алмаз (</gray><good>{1:0.##}</good><gray>/сек)</gray>"
+	DiamondPowerUsageFmt = "<white>Расход энергии:</white> <good>{0:0.##}</good> <gray>МДж/алмаз (</gray><good>{1:0.##}</good><gray>/сек.)</gray>"
 	DiamondProductionFmt = "<white>Производительность:</white> <good>{0:0.##}</good><gray> шт. алмазов/сек.</gray>"
 	DilationFactorFmt = "<white>Коэффициент расширения:</white> <good>{0:0.###}x</good>"
 	DilationHeatSpreadDistanceFmt = "<white>Расстояние распространения тепла:</white> <good>{0:0.##}</good><gray> м * расширение</gray>"
@@ -4378,7 +4390,7 @@ Stats
 	EMPResistPercentageFmt = "<white>Сопротивление ЭМИ:</white> <good>{0:0.#}%</good>"
 	EffectDurationFmt = "<white>Длительность эффекта:</white> <good>{0:0.##}</good> <gray>сек</gray>"
 	EnrichedUraniumCapacityFmt = "<white>Объём хранимого обогащенного урана:</white> <good>{0}</good>"
-	EnrichedUraniumHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good><gray>МДж/ед. обог. урана (</gray><good>{1:0.##}</good><gray>МДж/сек)</gray>"
+	EnrichedUraniumHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good> <gray>МДж/ед. обог. урана(</gray><good>{1:0.##}</good> <gray>МДж/сек.)</gray>"
 	EnrichedUraniumPowerUsageFmt = "<white>Расход энергии:</white> <good>{0:0.##}</good><gray>ед./ед. обог. урана (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	EnrichedUraniumProductionFmt = "<white>Производительность:</white> <good>{0:0.##}</good><gray> ед. обог. урана/сек.</gray>"
 	EnrichedUraniumUraniumUsageFmt = "<white>Расход урана:</white> <good>{0:0.##}</good><gray>ед./ед. обог. урана (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
@@ -4387,27 +4399,27 @@ Stats
 	FireDelayFmt = "<white>Задержка огня:</white> <good>{0:0.##}</good> <gray>сек</gray>"
 	FireIntervalFmt = "<white>Интервал огня:</white> <good>{0:0.##}</good> <gray>сек</gray>"
 	FireSizeFmt = "<white>Начальный размер огня:</white> <good>{0:0}%</good>"
-	FiringHeatGenerationFmt = "<white>Выработка тепла при стрельбе:</white> <good>{0:#,0.##}</good><gray>МДж/сек.</gray>"
+	FiringHeatGenerationFmt = "<white>Выработка тепла при стрельбе:</white> <good>{0:#,0.##}</good> <gray>МДж/сек.</gray>"
 	FtlMaxEfficiencyRangeFmt = "<white>Оптимальная эффективность:</white> <good>{0:0.##}</good><gray> м</gray>"
 	FtlMinEfficiencyRangeFmt = "<white>Минимальная эффективность:</white> <good>{0:0.##}</good><gray> м</gray>"
 	GoldCapacityFmt = "<white>Объём хранимого золота:</white> <good>{0}</good>"
 	HEMissileCapacityFmt = "<white>Объём хранимых фугасов:</white> <good>{0}</good>"
 	HPFmt = "<white>Очки урона:</white> <good>{0:n0}</good>"
-	HeatAbsorptionFmt = "<white>Поглощение тепла:</white> <good>{0:0.#}</good><gray>МДж/сек.</gray>"
+	HeatAbsorptionFmt = "<white>Поглощение тепла:</white> <good>{0:0.#}</good> <gray>МДж/сек.</gray>"
 	HeatAbsorptionInefficiencyFmt = "<white>Неэффективность поглощения:</white> <good>+{0:0.#}%</good> <gray>тепла</gray>"
 	HeatAbsorptionRadiusFmt = "<white>Радиус поглощения:</white> <good>{0:0.#}</good> <gray>м</gray>"
 	HeatAmplificationExponentFmt = "<white>Экспонента усиления теплового резервуара:</white> <good>{0.##}</good>"
-	HeatCapacityFmt = "<white>Теплоемкость:</white> <good>{0:#,0.##}</good><gray>МДж</gray>"
-	HeatDissipationFmt = "<white>Рассеивание тепла:</white> <good>{0:#,0.##}</good><gray>МДж/сек.</gray>"
+	HeatCapacityFmt = "<white>Теплоемкость:</white> <good>{0:#,0.##}</good> <gray>МДж</gray>"
+	HeatDissipationFmt = "<white>Рассеивание тепла:</white> <good>{0:#,0.##}</good> <gray>МДж/сек.</gray>"
 	HeatFireChanceFmt = "<white>Шанс перегрева при стрельбе:</white> <good>{0:0.##%}</good>"
-	HeatFireThresholdFmt = "<white>Порог перегрева при стрельбе:</white> <good>{0:#,0.#}</good><gray>МДж</gray>"
+	HeatFireThresholdFmt = "<white>Порог перегрева при стрельбе:</white> <good>{0:#,0.#}</good> <gray>МДж</gray>"
 	HeatGenerationFactorFmt = "<white>Коэффициент выработки тепла:</white> <good>{0:0.###}x</good>"
-	HeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:#,0.##}</good><gray>МДж/сек.</gray>"
-	HeatGenerationPerPartFmt = "<white>Выработка тепла:</white> <good>{0:#,0.##}</good><gray>МДж/сек/деталь</gray>"
-	HeatPerDamageFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good><gray>МДж/урон</gray>"
-	HeatPerRestockFmt = "<white>Выработка тепла:</white> <good>{0:0.#}</good><gray>МДж/восполнение</gray>"
-	HeatPerShotFmt = "<white>Выработка тепла:</white> <good>{0:0.#}</good><gray>МДж/выстрел</gray>"
-	HeatPerTileContinuousFmt = "<white>Применяемое тепло:</white> <good>{0:n1}</good><gray>МДж/кл/сек.</gray>"
+	HeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:#,0.##}</good> <gray>МДж/сек.</gray>"
+	HeatGenerationPerPartFmt = "<white>Выработка тепла:</white> <good>{0:#,0.##}</good> <gray>МДж/сек/деталь</gray>"
+	HeatPerDamageFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good> <gray>МДж/урон</gray>"
+	HeatPerRestockFmt = "<white>Выработка тепла:</white> <good>{0:0.#}</good> <gray>МДж/восполнение</gray>"
+	HeatPerShotFmt = "<white>Выработка тепла</white> <good>{0:0.#}</good> <gray>МДж/выстрел</gray>"
+	HeatPerTileContinuousFmt = "<white>Применяемое тепло:</white> <good>{0:n1}</good> <gray>МДж/кл/сек.</gray>"
 	HeatSpreadDistanceFmt = "<white>Расстояние распространения тепла:</white> <good>{0:0.##}</good><gray> м</gray>"
 	HeatTransferInefficiencyFmt = "<white>Неэффективность теплопередачи:</white> <good>+{0:0.#}%</good> <gray>тепла</gray>"
 	HitShieldHeatFactorFmt = "<white>Нагревание щита при ударе:</white> <good>{0:0.##}%</good>"
@@ -4425,14 +4437,14 @@ Stats
 	MaxDamageRangeFmt = "<white>Макс. урон:</white> <good>{0:n0}</good><gray>/выстрел (</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/сек.)</gray>"
 	MineAmmoUsageFmt = "<white>Расход снарядов:</white> <good>{0:0.##}</good><gray>шт./мина (</gray><good>{1:0.##}</good><gray>шт./сек.)</gray>"
 	MineCapacityFmt = "<white>Объём хранимых мин:</white> <good>{0}</good>"
-	MineHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good><gray>МДж/мина (</gray><good>{1:0.##}</good><gray>МДж/сек)</gray>"
+	MineHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good> <gray>МДж/мина (</gray><good>{1:0.##}</good> <gray>МДж/сек.)</gray>"
 	MineIronUsageFmt = "<white>Расход железа:</white> <good>{0:0.##}</good><gray>ед./мина (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	MinePartCapacityFmt = "<white>Объём хранимых предметов:</white> <good>{0}</good><gray> шт. частей (</gray><good>{1:0.##}</good><gray> шт. мин)</gray>"
 	MinePartsFmt = "<white>Собрано из:</white> <good>{0}</good><gray> шт. частей/мина</gray>"
 	MinePowerUsageFmt = "<white>Расход энергии:</white> <good>{0:0.##}</good><gray>ед./мина (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	MineProductionFmt = "<white>Производительность:</white> <good>{0:0.##}</good><gray> шт. мин/сек.</gray>"
 	MissileCopperUsageFmt = "<white>Расход меди:</white> <good>{0:0.##}</good><gray>ед./ракета (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
-	MissileHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good><gray>МДж/ракета (</gray><good>{1:0.##}</good><gray>МДж/сек)</gray>"
+	MissileHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good> <gray>МДж/ракета (</gray><good>{1:0.##}</good> <gray>МДж/сек.)</gray>"
 	MissileHeatUsageFmt = "<white>Расход тепла:</white> <good>{0:0.##}</good><gray>/ракета (</gray><good>{1:0.##}</good><gray>/сек.)</gray>"
 	MissileIronUsageFmt = "<white>Расход железа:</white> <good>{0:0.##}</good><gray>ед./ракета (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	MissileLauncherNotes = "<gray>Статистику боеприпаса можно посмотреть в статистике соответствующей фабрики.</gray>"
@@ -4455,14 +4467,14 @@ Stats
 	PowerDrainFmt = "<white>Утечка энергии при попадании:</white> <good>{0:0.##}</good><gray>/выстрел (</gray><good>{1:0.##}</good><gray>/сек.)</gray>"
 	PowerDrainOverTimeFmt = "<white>Утечка энергии:</white> <good>{0:0}</good> <gray>всего (</gray><good>{1:0.##}</good><gray>/сек)</gray>"
 	PowerGenerationFmt = "<white>Производство энергии:</white> <good>{0:0.###}</good><gray>ед./сек.</gray>"
-	PowerHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good><gray>МДж/ед энергии (</gray><good>{1:0.##}</good><gray>МДж/сек)</gray>"
+	PowerHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good> <gray>МДж/ед. энергии (</gray><good>{1:0.##}</good><gray>МДж/сек.)</gray>"
 	PowerUsageContinuousFmt = "<white>Расход энергии:</white> <good>{0:0.##}</good><gray>ед./сек.</gray>"
 	PowerUsageContinuousMinutesFmt = "<white>Расход энергии:</white> <good>{0:0.##}</good><gray>ед./мин</gray>"
 	PowerUsageFactorFmt = "<white>Коэффициент потребления энергии:</white> <good>{0:0.###}x</good>"
 	ProcessorCapacityFmt = "<white>Объём хранимых процессоров:</white> <good>{0}</good>"
 	ProcessorCoilUsageFmt = "<white>Расход спиралей:</white> <good>{0:0.##}</good><gray>шт./процессор (</gray><good>{1:0.##}</good><gray>шт./сек.)</gray>"
 	ProcessorGoldUsageFmt = "<white>Расход золота:</white> <good>{0:0.##}</good><gray>ед./процессор (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
-	ProcessorHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good><gray>МДж/процессор (</gray><good>{1:0.##}</good><gray>МДж/сек)</gray>"
+	ProcessorHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good> <gray>МДж/процессор (</gray><good>{1:0.##}</good> <gray>МДж/сек.)</gray>"
 	ProcessorPowerUsageFmt = "<white>Расход энергии:</white> <good>{0:0.##}</good><gray>ед./процессор (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	ProcessorProductionFmt = "<white>Производительность:</white> <good>{0:0.##}</good><gray> шт. процессоров/сек.</gray>"
 	PumpPowerUsageFactorFmt = "<white>Коэффициент потребления энергии помпами:</white> <good>{0:0.###}x</good>"
@@ -4474,12 +4486,12 @@ Stats
 	RailgunBuffExponentOverclockFmt = "<white>Экспонента усиления рельсотрона:</white> <good>{0:0.##}</good> <gray>(<good>+{1:0.##}</good>)</gray>"
 	RailgunBuffFmt = "<gray>Увеличение урона, бронебойности, дальности и скорости снарядов (в зависимости от количества ускорителей):</gray>\n  <TransparentWhite>0</TransparentWhite><white>1: </white><good>+{0:000}%</good>   <white>11: </white><good>+{10:000}%</good>   <white>21: </white><good>+{20:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>2: </white><good>+{1:000}%</good>   <white>12: </white><good>+{11:000}%</good>   <white>22: </white><good>+{21:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>3: </white><good>+{2:000}%</good>   <white>13: </white><good>+{12:000}%</good>   <white>23: </white><good>+{22:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>4: </white><good>+{3:000}%</good>   <white>14: </white><good>+{13:000}%</good>   <white>24: </white><good>+{23:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>5: </white><good>+{4:000}%</good>   <white>15: </white><good>+{14:000}%</good>   <white>25: </white><good>+{24:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>6: </white><good>+{5:000}%</good>   <white>16: </white><good>+{15:000}%</good>   <white>26: </white><good>+{25:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>7: </white><good>+{6:000}%</good>   <white>17: </white><good>+{16:000}%</good>   <white>27: </white><good>+{26:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>8: </white><good>+{7:000}%</good>   <white>18: </white><good>+{17:000}%</good>   <white>28: </white><good>+{27:000}%</good>\n  <TransparentWhite>0</TransparentWhite><white>9: </white><good>+{8:000}%</good>   <white>19: </white><good>+{18:000}%</good>   <white>29: </white><good>+{28:000}%</good>\n  <white>10: </white><good>+{9:000}%</good>   <white>20: </white><good>+{19:000}%</good>   <white>30: </white><good>+{29:000}%</good>"
 	RailgunNotes = "<gray>ПРИМЕЧАНИЕ: урон, пробитие, дальность, скорость снаряда и энергоёмкость увеличиваются с каждым дополнительным ускорителем рельсотрона.</gray>"
-	RailgunOverclockHeatOnShotFmt = "<white>Выработка тепла:</white> <good>{0:0.#}</good><gray>МДж/деталь/выстрел</gray>"
+	RailgunOverclockHeatOnShotFmt = "<white>Выработка тепла:</white> <good>{0:0.#}</good> <gray>МДж/деталь/выстрел</gray>"
 	RampUpSpeedFactorFmt = "<white>Фактор ускорения разгона:</white> <good>{0:0.#}%</good>"
 	RangeFmt = "<white>Дальнобойность:</white> <good>{0:0}</good> <gray>м</gray>"
 	RangeLimitedFmt = "<white>Дальнобойность:</white> <good>{0:0}</good> <gray>м (макс. </gray><good>{1:0}</good><gray> м)</gray>"
-	ResonanceHeatPoolFmt = "<white>Применяемое тепло (резервуар):</white> <good>{0:n1}</good><gray>МДж/сек * усиление^</gray><good>{1:0.##}</good>"
-	ResonanceTurretHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.#}</good><gray>МДж/сек + помпы</gray>"
+	ResonanceHeatPoolFmt = "<white>Применяемое тепло (резервуар):</white> <good>{0:n1}</good> <gray>МДж/сек * усиление^</gray><good>{1:0.##}</good>"
+	ResonanceTurretHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.#}</good> <gray>МДж/сек. + помпы</gray>"
 	Resources = "<white>Ресурсы:</white> "
 	RocketNotes = "<gray>ВАЖНО: тяга, время разгона, энергопотребление и выработка тепла увеличиваются с каждым дополнительным модулем расширения.</gray>"
 	SalvoFmt = "<white>Залп:</white> <good>{0:0.##}</good> <gray>выстр./</gray><good>{1:0.##}</good> <gray>с</gray>"
@@ -4515,11 +4527,11 @@ Stats
 	SizeFmt = "<white>Размер:</white> <good>{0}x{1}</good> <gray>м</gray>"
 	SpreadFmt = "<white>Разброс:</white> <gray>+/-</gray> <good>{0:0.#}°</good>"
 	SteelCapacityFmt = "<white>Объём хранимой стали:</white> <good>{0}</good>"
-	SteelHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good><gray>МДж/ед. стали (</gray><good>{1:0.##}</good><gray>МДж/сек)</gray>"
+	SteelHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good> <gray>МДж/ед.стали (</gray><good>{1:0.##}</good> <gray>МДж/сек.)</gray>"
 	SteelIronUsageFmt = "<white>Расход железа:</white> <good>{0:0.##}</good><gray>ед./ед. стали (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	SteelPowerUsageFmt = "<white>Расход энергии:</white> <good>{0:0.##}</good><gray>ед./ед. стали (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	SteelProductionFmt = "<white>Производительность:</white> <good>{0:0.##}</good><gray> ед. стали/сек.</gray>"
-	StorageHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:#,0.##}</good><gray>МДж/сек (при 100% заполнении)</gray>"
+	StorageHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:#,0.##}</good> <gray>МДж/сек. (при 100% заполнении)</gray>"
 	StorageTilesFmt = "<white>Хранилище:</white> <good>{0}</good> <gray>бл.</gray>"
 	StrengthAtMaxRangeFmt = "<white>Сила в максимальном диапазоне:</white> <good>{0:0.#}%</good>"
 	StretchRangeFmt = "<white>Дальность луча:</white> <good>{0:0}</good> <gray>м</gray>"
@@ -4532,7 +4544,7 @@ Stats
 	ThrusterBonusForceFmt = "<white>Базовая сила бонуса двигателя:</white> <good>+{0:0.##}</good> <gray>кН</gray>"
 	ThrusterBuffFmt = "<white>Усиление двигателя:</white> <good>+{0:0}%</good><gray> тяги и потребления энергии</gray>"
 	ThrusterForceFmt = "<white>Тяга:</white> <good>{0:#,0.#}</good><gray> кН</gray>"
-	ThrusterHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:#,0.##}</good><gray>МДж/сек (при 100% тяге)</gray>"
+	ThrusterHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:#,0.##}</good> <gray>МДж/сек (при 100% тяге)</gray>"
 	ThrusterPowerUsageFmt = "<white>Расход энергии:</white> <good>{0:0.##}</good><gray>ед./сек. (при 100% тяге)</gray>"
 	ThrusterPowerUsageRampFmt = "<white>Расход энергии: </white> <good>{0:0.##}–{1:0.##}</good><gray>/сек. (при 100% тяге)</gray>"
 	ThrusterPowerUsageRampTimeFmt = "<white>Время использования энергии при разгоне:</white> <good>{0:0.##}</good> <gray>сек</gray>"
@@ -4543,16 +4555,16 @@ Stats
 	TractorForceFmt = "<white>Сила буксировки:</white> <good>{0:#,0.#}</good><gray> кН</gray>"
 	TractorOverloadChargeTimeFmt = "<white>Время заряда перегрузки:</white> <good>{0:0.##}</good><gray> сек</gray>"
 	TractorOverloadForceFmt = "<white>Сила буксировки при перегрузке:</white> <good>{0:#,0.#}</good><gray> кН</gray>"
-	TractorOverloadHeatGenerationFmt = "<white>Выработка тепла при перегрузке:</white> <good>{0:0.#}</good><gray>МДж</gray>"
+	TractorOverloadHeatGenerationFmt = "<white>Выработка тепла при перегрузке:</white> <good>{0:0.#}</good> <gray>МДж</gray>"
 	TractorOverloadMinPowerFmt = "<white>Минимальная сила перегрузка:</white> <good>{0:0.##}%</good><gray> на хранении</gray>"
 	TractorOverloadRadiusFmt = "<white>Радиус перегрузки:</white> <good>{0:#,0.#}</good><gray> м</gray>"
 	TristeelCapacityFmt = "<white>Объём хранимой три-стали:</white> <good>{0}</good>"
-	TristeelHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good><gray>МДж/ед. три-стали (</gray><good>{1:0.##}</good><gray>МДж/сек)</gray>"
+	TristeelHeatGenerationFmt = "<white>Выработка тепла:</white> <good>{0:0.##}</good> <gray>МДж/ед. три-стали (</gray><good>{1:0.##}</good> <gray>МДж/сек.)</gray>"
 	TristeelPowerUsageFmt = "<white>Расход энергии:</white> <good>{0:0.##}</good><gray>ед./ед. три-стали (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	TristeelProductionFmt = "<white>Производительность:</white> <good>{0:0.##}</good><gray> ед. три-стали/сек.</gray>"
 	TristeelTritaniumUsageFmt = "<white>Расход тритания:</white> <good>{0:0.##}</good><gray>ед./ед. три-стали (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	TritaniumCapacityFmt = "<white>Объём хранимого тритания:</white> <good>{0}</good>"
-	TurretExtraHeatGenerationFmt = "<white>Выработка тепла турелью:</white> <good>{0:+0.#;-0.#}</good><gray>МДж/сек.</gray>"
+	TurretExtraHeatGenerationFmt = "<white>Выработка тепла турелью:</white> <good>{0:+0.#;-0.#}</good> <gray>МДж/сек.</gray>"
 	TurretPenResistFmt = "<white>Устойчивость к пробитию турелью:</white> <good>-{0}</good> <gray>м</gray>"
 	TurretSpeedFmt = "<white>Скорость турели:</white> <good>{0:0}°</good><gray>/сек.</gray>"
 	UraniumCapacityFmt = "<white>Объём хранимого урана:</white> <good>{0}</good>"
@@ -5336,7 +5348,7 @@ Tutorials
 	Fires
 	{
 		
-		Cause = "<red>Пожар</red> на борту может вспыхнуть в случае попадания из определённых видов оружия либо от взрыва энергозависимых частей. Если не заняться тушением пожара, он распространится по кораблю, нанося повреждения и убивая экипаж."
+		Cause = "<red>Пожары</red> могут возникнуть при воздействии определенных видов оружия, при взрыве хрупких деталей или при сильном нагревании корпуса корабля. Если пожар не потушить, он быстро распространится, нанося ущерб, убивая экипаж и <red>обжигая</red> части, делая их непригодными для эксплуатации до ремонта."
 		FireExtinguisher = "Обеспечьте ваше судно <good>огнетушителями</good>, чтобы члены команды могли бороться с огнём. С помощью огнетушителей они смогут потушить пожар. Каждый огнетушитель имеет ограниченную ёмкость, поэтому для тушения крупных пожаров может потребоваться несколько огнетушителей."
 		Spread = "<good>НА ЗАМЕТКУ:</good> Огонь может распространяться по открытым пространствам и через двери, но не через стены. Чем больше дверей на вашем корабле, тем выше риск возникновения крупного пожара."
 		Title = "Пожар на борту"
@@ -5378,6 +5390,27 @@ Tutorials
 		PlotJump = "Чтобы <good>полететь в другую систему</good>, нажмите <white>Запланировать гиперпрыжок</white>, а затем выберите систему, в которую хотите отправиться. Как и перемещения внутри системы, здесь используется некоторое количество <img name='resource.hyperium'/>гиперия — в зависимости от длины прыжка, размеров корабля и КПД гипердвигателя."
 		Relays = "Благодаря <good>гипервратам</good> корабль с гипердвигателем и достаточным запасом <img name='resource.hyperium'/>гиперия может перемещаться в другие звёздные системы."
 		Title = Гиперврата
+	}
+	Heat
+	{
+		
+		Cause = "Корпус корабля может <orange>нагреваться</orange> при попадании термического оружия или когда его детали вырабатывают <orange>избыточное тепло</orange>, которое некуда накапливать или отводить."
+		Effect = "Нагретый корпус становится более уязвим к повреждениям и пробоинам, он начинает гореть, а в конечном итоге плавится."
+		Exchanger = "<good>СОВЕТ:</good> Чтобы отвести тепло от корпуса, стройте <good>теплообменники</good> и подключайте их к радиаторам и термальным резервуарам."
+		OverTime = "Тепло распространяется естественным образом и при отсутствии активного источника со временем медленно рассеивается."
+		Title = "Нагревание корпуса"
+	}
+	HeatManagement
+	{
+		
+		Batteries = "<good>Термальные батареи</good> могут накапливать и безопасно хранить большие объемы тепла из других частей сети."
+		Excess = "Любое избыточное тепло, которое невозможно безопасно сохранить или отвести, приведет к <orange>нагреву корпуса</orange>, сделает ваш корабль более уязвимым, приведет к пожарам и в итоге расплавит его."
+		Exchangers = "А <good>теплообменники</good> будут поглощать <orange>тепло корпуса</orange> и передавать его в термальную сеть для безопасного хранения или рассеивания."
+		Icons = "Места, где деталь может быть подключена к термальной сети, обозначены оранжевыми значками «порт». Оранжевые линии показывают, как все элементы сети связаны между собой и, таким образом, могут передавать тепло."
+		Overview1 = "Некоторые виды оружия и другие части корабля, например, находящиеся в режиме разгона, вырабатывают <orange>избыточное тепло</orange>, которое, если его не контролировать, может привести к опасному <orange>нагреву корпуса</orange>."
+		Overview2 = "Чтобы это предотвратить, соединяйте их с другими деталями системы управления теплом с помощью <good>теплообменников</good>. Таким образом создается <good>термальная сеть</good>."
+		Radiators = "<good>Радиаторы</good> рассеивают тепло из подключенной сети, излучая его в пространство. Блокирование выпускного отверстия радиатора снизит скорость рассеивания тепла."
+		Title = "Управление теплом"
 	}
 	IonBeams
 	{
@@ -5465,6 +5498,14 @@ Tutorials
 		Title = "Облака и штормы"
 	}
 	NotInDemo = "<bad>Данная функция недоступна в Cosmoteer Demo.</bad>"
+	Overclocking
+	{
+		
+		HeatManagement = "<good>СОВЕТ:</good> Разогнанные детали следует подключать к <good>термальной сети</good> для хранения или отвода тепла. В противном случае избыточное тепло опасно <orange>нагреет корпус</orange>."
+		Overview1 = "Многие детали можно <bad>разогнать</bad>, что существенно изменит их функциональность, но при этом они будут выделять <orange>тепло</orange>."
+		Overview2 = "Чтобы увидеть, к чему приведет разгон детали, наведите на нее курсор, чтобы появилась подсказка, а затем нажмите <btn id='Design.ToggleSecondaryTooltip'/>."
+		Title = Разгон
+	}
 	Paint
 	{
 		
@@ -5545,6 +5586,13 @@ Tutorials
 		Tip = "<good>НА ЗАМЕТКУ:</good> если сбор материалов занимает слишком много времени, нажмите <white>&gt;&gt;</white>, чтобы увеличить скорость игры."
 		Title = "Сбор материалов"
 		WholeShip = "<white>Щелкните по поверженному кораблю, не перетаскивая его</white>, чтобы подобраться к нему ближе и добыть его ресурсы."
+	}
+	Scorched
+	{
+		
+		CauseAndEffect = "После долгого горения деталь становится <red>обгоревшей</red>. Обгоревшие детали не функционируют и замедляют передвижение экипажа."
+		Solution = "Чтобы восстановить функциональность детали, нужно ее починить."
+		Title = "Обгоревшие части"
 	}
 	Tactics
 	{

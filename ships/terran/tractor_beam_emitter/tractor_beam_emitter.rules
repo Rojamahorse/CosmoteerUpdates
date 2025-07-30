@@ -868,7 +868,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleID = "tractor_overload"
 			Default = 0
 			OperationalToggle = Overclock_CanOverload
-			AutoOffTrigger = Overclock_OverloadChargeTimer
+			AutoOffTrigger = Overclock_OverloadOffTrigger
 		}
 		Overclock_OverloadStartTrigger
 		{
@@ -877,11 +877,22 @@ Part : <../base_part_terran_overclock.rules>/Part
 			TriggerWhenOn = true
 			TriggerWhenOff = false
 		}
+		Overclock_OverloadOffTrigger
+		{
+			Type = MultiTrigger
+			Triggers = [Overclock_OverloadChargeTimer, Overclock_OnPartDestroying]
+		}
+		Overclock_OnPartDestroying
+		{
+			Type = DestroyedTrigger
+		}
 		Overclock_OverloadChargeTimer
 		{
 			Type = Timer
 			Duration = &~/OVERCLOCK/OVERLOAD_CHARGE_DURATION
 			StartTrigger = Overclock_OverloadStartTrigger
+			StopTrigger = Overclock_OnPartDestroying
+			ResetTrigger = Overclock_OnPartDestroying
 		}
 		Overclock_OverloadInverseChargeProgress
 		{

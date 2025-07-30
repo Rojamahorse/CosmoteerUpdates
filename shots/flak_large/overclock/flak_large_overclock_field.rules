@@ -6,7 +6,7 @@ Speed = 0
 RADIUS = 4
 LIFETIME = 7
 MAX_BULLET_DAMAGE = ceil(1000 / ((&RADIUS) * 2)) // 1000 damage if a bullet passes right through the center
-DAMAGE_POOL = 2000
+DAMAGE_POOL = 1600
 
 Components
 {

@@ -36,7 +36,14 @@ Bullet : BASE
 					}
 				]
 			}
-			HitOperational : ^/0/HitOperational
+			HitOperational : PenetratingOperational
+			{
+				HitEffects : ^/0/HitEffects
+				[
+					&~/BASE/Components/Hit/HitOperational/HitEffects/1
+				]
+			}
+			PenetratingOperational : ^/0/HitOperational
 			{
 				HitEffects
 				[
@@ -46,10 +53,8 @@ Bullet : BASE
 						StatusDuration = &~/DRAIN_DURATION
 						StatusValue = { BaseValue = (&~/DRAIN_PER_SECOND) / 1000; EffectScaleExponent = 1 }
 					}
-					&~/BASE/Components/Hit/HitOperational/HitEffects/1
 				]
 			}
-			PenetratingOperational = &HitOperational
 		}
 		// Necessary to prevent crash from FactorEffectsWith
 		//MediaEffects : ^/0/MediaEffects {}

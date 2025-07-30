@@ -271,7 +271,7 @@ Part : <../base_part_terran.rules>/Part
 		IsFiringTimer
 		{
 			Type = Timer
-			Duration = &../BeamEmitter/Duration
+			Duration = (&../BeamEmitter/Duration) + 1 / (&/Simulation/PhysicsUpdatesPerSecond)
 			StartTrigger = BeamEmitter
 			ResetTrigger = BeamEmitter
 			StartExpired = true

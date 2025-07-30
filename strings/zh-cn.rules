@@ -374,7 +374,7 @@ BuildBox
 		CommandPointsToggleTip = <b>指挥点数</b>
 		CoordinatesToggleTip = <b>光标坐标</b>
 		CrewToggleTip = <b>船员/床位</b>
-		DirectionChooserToggleTip = <b>选择飞行方向</b>
+		DirectionChooserToggleTip = <b>飞行方向选择</b>
 		FtlToggleTip = <b>超空间驱动效率</b>
 		MassToggleTip = <b>星舰质量</b>
 		PowerToggleTip = <b>能源</b>
@@ -1193,6 +1193,7 @@ Factions
 	Cabal = 拜日教
 	Fringe = 边缘星系抵抗军
 	Imperium = 半人马座帝国
+	Io = 埃欧大族议会
 	Monolith = 巨石合作社
 	None = 无
 }
@@ -1930,6 +1931,8 @@ Inputs
 		missile_type_thermal = 发射器类型：储热式导弹
 		on_off_off = 部件关机
 		on_off_on = 部件开机
+		overclock_shield_extended = 超频护盾模式：扩展
+		overclock_shield_reinforced = 超频护盾模式：加强
 		rotate_off = 旋转：关
 		rotate_on = 旋转：开
 		thermal_overclock_off = 超频模式：关
@@ -2203,6 +2206,15 @@ Lore
 		Lore4 = 而在半人马座帝国的军队中，权力也只比其执政模式略微集中些许。毕竟在战场上难免需要手握生杀大权的某人当机立断做出决定，因此大多数帝国星舰依然设有舰长，但这位舰长却是由其全体船员选举产生的，甚至可以在任何时候由船员们投票撤换。每艘帝国星舰都是一个独立的实体，可以自由地做出自己的战术决定，并且只受帝国公民们所规定的寥寥几条交战规则的限制。（帝国公民们认为，只要能够为半人马座核心星系带来更多财富与繁荣，几乎任何手段都是可以接受的。）这种能够自主决定的“不择手段”使得帝国的军队灵活而无情。对于较大的战略目标，会通过公民授权的赏金来协调，例如任何能强迫某个特定星系投降的人都将获得奖赏。为了完成这些较大的战略目标，个别星舰往往会组成临时舰队，一旦目标完成就会解散。在某些情况下，会同时存在多支舰队争夺赏金，而作为军事自由市场健康发展的印证，这种情况是被允许，甚至是得到鼓励的。但半人马座帝国的星舰或舰队之间严禁直接交战，违者将直接受到“格杀勿论”的悬赏。如果有多艘星舰或舰队同时前来认领同一赏金，则一如既往地由半人马座帝国的公民们来进行最终仲裁。
 		Lore5 = 公民权只授予那些在帝国成立时生活在半人马座核心星系内的人，或是<i>两位</i>半人马座帝国公民的孩子。仅有的例外情况必须得到全体公民的批准，这使得归化公民极为罕见。（一般来说，只有那些对帝国有巨大贡献的人才能获得这一殊荣。）因此，帝国中的大多数——那些生活在核心星系之外的半人马座帝国臣民都不算帝国公民，也无法享有任何形式的自治权。尽管那些核心星系张嘴闭嘴都是民主和平等，但事实是，他们对被征服的领土实行严厉的双重标准政策，实施着绝对的铁腕统治。
 		Title = 半人马座帝国
+	}
+	Io
+	{
+		
+		Lore1 = 在发现阿姆斯特朗巨石和太阳系毁灭之前，地球与火星之间的冷战愈演愈烈。帝国火星女皇治下最富有、最尊贵的家族，也就是所谓的众大族的一些成员，背弃了她们宣誓效忠的女皇，逃离了战火纷飞的家园，转而前往外层气态巨行星的卫星上殖民。
+		Lore2 = 罗多蒙特大族就是其中之一。他们曾拥有横跨整个太阳系的工业冶金与建筑帝国，并首创了沿用至今的模块化星舰焊接技术。带着成千上万的仆人，还有最顶尖的工程技师，罗多蒙特大族移居到了太阳系中火山活动最频繁的天体，木星的卫星埃欧之上，并正式更名为埃欧大族议会。凭借其卓越的冶金技术，他们降伏了埃欧的火山，并在不到十年的时间里将其热能转化为几近无限的能源。
+		Lore3 = 然而，之后他们突然决定离开，只有该家族最上层的女族长们才清楚个中缘由。埃欧大族发起了人类历史上最大规模、最雄心勃勃的工程项目：他们将整颗卫星埃欧改造成了一艘巨型的星际世代飞船。他们利用埃欧几乎取之不尽的内部热能来驱动史上最庞大的火箭推进器，使埃欧摆脱了木星的引力，驶离了太阳系。自此以后数百年间，埃欧大族再未现身，人们普遍认为他们已经灭亡，永远迷失太空之中。
+		Lore4 = 直到有一天，埃欧这颗卫星突然出现在哨戒薄弱的半人马座帝国边陲。此时的埃欧因其极端育种计划已拥有数百万人口，并配备了数千艘战舰。战舰上配备了先进的热能武器，正是以埃欧炽热的熔铁核心冶炼而成。埃欧大族出帝国不意，迅速占领了其大部分后方领地，以及若干边缘星系，由此打破了银河系中原本脆弱的势力平衡。同时，埃欧大族于第一时间向已知银河系公开广播其昭昭天命：他们声称有一个更大的威胁正在迫近银河系，因此，埃欧大族要将整个人类统一在埃欧女族长的统治之下，以便集中全人类的资源与之对抗。然而，这个威胁究竟是什么，又或者他们在穿越星际的数百年间到底见到了什么，他们至今仍讳莫如深。
+		Title = 埃欧大族议会
 	}
 	Monolith
 	{
@@ -2725,7 +2737,7 @@ Parts
 	CannonDeckDesc = "巨型双管炮，为了增加稳定性，安装在了星舰顶部而不是船舷上。每根炮管都能够融合 10 发炮弹，开炮时发出巨响，暂时震晕附近的船员。\n\n正面与侧面 2 单元格内不能存在其他甲板炮塔或“高大”部件。"
 	CannonDeckIcon = 甲板加农炮
 	CannonDeckOverclock = 超频甲板加农炮
-	CannonDeckOverclockDesc = 提升炮弹伤害、速度和精准度，但一旦其伤害潜力耗尽就会停止穿透。开火时会产生废热。
+	CannonDeckOverclockDesc = 提升炮弹伤害、弹速和精准度，但射速降低，且一旦其伤害潜力耗尽就会停止穿透。开火时会产生废热。
 	CannonLarge = 大型加农炮
 	CannonLargeDesc = 与标准加农炮相比，将四发炮弹融合在一起，大大增强了伤害和穿深。
 	CannonLargeIcon = 大型加农炮
@@ -2735,7 +2747,7 @@ Parts
 	CannonMedDesc = 发射单发炮弹，可以穿透敌舰，击穿后可能引发火灾。
 	CannonMedIcon = 加农炮
 	CannonMedOverclock = 超频标准加农炮
-	CannonMedOverclockDesc = 齐射多发小型炮弹，但每发炮弹的伤害和弹速都有所降低。发射时会产生废热。
+	CannonMedOverclockDesc = 齐射多发炮弹，弹速更高，射程更远。开火时会产生废热。
 	ChainGun = 链炮
 	ChainGunDesc = 拥有多根可旋转炮管的强大火炮，开火时射速会逐渐加快，不开火时会收入装甲外壳中。能够加装额外的弹药架以加快射速并延长射击时间。
 	ChainGunIcon = 链炮
@@ -2954,7 +2966,7 @@ Parts
 	FlakCannonLargeOverclock = 超频高射炮阵列
 	FlakCannonLargeOverclockDesc = 在高射炮弹中填充破片，爆炸后破片会在太空中残留一小段时间，对经过的炮弹造成伤害并阻挡能量束。开火时会产生废热。
 	HeatExchanger = 热交换器
-	HeatExchangerDesc = 从舰体吸收热能，并转移至连接的热管系统，同时会产生部分额外废热。
+	HeatExchangerDesc = 从舰体吸收热能，并转移至连接的热能网络，同时会产生部分额外废热。
 	HeatExchangerIcon = 热交换器
 	HeatPipeAdaptive = 热管
 	HeatPipeAdaptiveDesc = 在连通的部件之间瞬时传送热能。
@@ -3023,7 +3035,7 @@ Parts
 	PowerStorageOverclock = 超频能源电容器
 	PowerStorageOverclockDesc = 使电容器及其存储的电池容量提升三倍。在储能期间会持续产生废热，接收电力时更会额外产生废热。
 	Radiator = 散热器
-	RadiatorDesc = 从连接的热管系统中散热。若散热器正面被阻挡，散热效率会降低。
+	RadiatorDesc = 从连接的热能网络中散热。若散热器正面被阻挡，散热效率会降低。
 	RadiatorDissipationScoreFmt = "<good>{1:0.#}%\n（{0:0.#}<gray>/秒</gray>）</good>"
 	RadiatorIcon = 散热器
 	Railgun = 轨道炮
@@ -3123,13 +3135,13 @@ Parts
 	StructureWedgeDesc = 支撑一艘星舰的底层结构框架。结构自动包含在所有房间和走廊中。
 	StructureWedgeIcon = 结构（楔形）
 	ThermalAmplificationPump = 光矛增幅泵
-	ThermalAmplificationPumpDesc = 提升连接至同一热管系统的所有热共振光矛的热强度。
+	ThermalAmplificationPumpDesc = 提升连接至同一热能网络的所有热共振光矛的热强度。
 	ThermalAmplificationPumpIcon = 光矛增幅泵
 	ThermalBattery = 储热器
-	ThermalBatteryDesc = 安全储存大量热能，为连接的热管系统充当额外热能缓冲区。
+	ThermalBatteryDesc = 安全储存大量热能，为连接的热能网络充当额外热能缓冲区。
 	ThermalBatteryIcon = 储热器
 	ThermalDilationPump = 光矛膨胀泵
-	ThermalDilationPumpDesc = 提升连接至同一热管系统的所有热共振光矛的热能作用范围。泵的两端都必须连接才能正常运作。
+	ThermalDilationPumpDesc = 提升连接至同一热能网络的所有热共振光矛的热能作用范围。泵的两端都必须连接才能正常运作。
 	ThermalDilationPumpIcon = 光矛膨胀泵
 	ThrusterBoost = 加速推进器
 	ThrusterBoostDesc = 大型推进器的一个变种，可以将原始等离子体直接注入其燃烧室，获得强大但短暂的加速。
@@ -4325,7 +4337,7 @@ Stats
 	BatteryFillTimeFmt = "<white>电池充电时间：</white><good>{0:0.0#}</good> <gray>秒</gray>"
 	BatterySizeFmt = "<white>电池大小：</white><good>{0:0.0#}</good>"
 	BeamDamageFalloffFmt = "<white>组合衰减：</white> <good>-{0}%</good><gray>/光束</gray>\n  <white>第一光束：</white><good>{1:0}%</good><gray>伤害</gray>\n  <white>第二光束：</white><good>{2:0}%</good><gray>伤害</gray>\n  <white>第三光束：</white><good>{3:0}%</good><gray>伤害</gray>\n  <white>第四光束：</white><good>{4:0}%</good><gray>伤害</gray>\n  <white>第五光束：</white><good>{5:0}%</good><gray>伤害</gray>\n…"
-	BoostHeatFactorBatteryThresholdFmt = "<white>热能上升阈值：<gray>使用电池量达</gray></white><good>{0:0}</good>"
+	BoostHeatFactorBatteryThresholdFmt = "<white>热能上升阈值：<gray>使用电池量达</gray></white> <good>{0:0}</good>"
 	BoostHeatFactorPerBatteryFmt = "<white>热能因子：</white><good>{0:+0.#;-0.#;0}%</good><gray>/使用电池</gray>"
 	BoostHeatFactorPerSecondFmt = "<white>热能因子：</white><good>{0:+0.#;-0.#;0}%</good><gray>/秒（空闲时）</gray>"
 	BoostedPowerUsageContinuousFmt = "<zero>能源消耗：</zero><good>{0:0.##}</good><gray>/秒（持续）</gray>"
@@ -4396,7 +4408,7 @@ Stats
 	HeatAbsorptionFmt = "<white>热能吸收：</white> <good>{0:0.#}</good> <gray>兆焦/秒</gray>"
 	HeatAbsorptionInefficiencyFmt = "<white>吸收低效度：</white><good>+{0:0.#}%</good> <gray>热能</gray>"
 	HeatAbsorptionRadiusFmt = "<white>吸收范围：</white><good>{0:0.#}</good> <gray>米</gray>"
-	HeatAmplificationExponentFmt = "<white>热能池增幅量：</white><good>{0.##}</good>"
+	HeatAmplificationExponentFmt = "<white>热能总量增幅量：</white><good>{0.##}</good>"
 	HeatCapacityFmt = "<white>储热量：</white><good>{0:#,0.##}</good> <gray>兆焦</gray>"
 	HeatDissipationFmt = "<white>散热速率：</white><good>{0:#,0.##}</good> <gray>兆焦/秒</gray>"
 	HeatFireChanceFmt = "<white>热能达阈值后火灾几率：</white><good>{0:0.##%}</good>"
@@ -4478,7 +4490,7 @@ Stats
 	RampUpSpeedFactorFmt = "<white>加速度因子：</white><good>{0:0.#}%</good>"
 	RangeFmt = "<white>射程：</white><good>{0:0}</good> <gray>米</gray>"
 	RangeLimitedFmt = "<white>射程：</white><good>{0:0}</good> <gray>米（最大 </gray><good>{1:0}</good><gray>米）</gray>"
-	ResonanceHeatPoolFmt = "<white>传导热能（热能池）：</white><good>{0:n1} </good><gray>兆焦/秒 * 增幅^</gray><good>{1:0.##}</good>"
+	ResonanceHeatPoolFmt = "<white>传导热能（总量）：</white><good>{0:n1} </good><gray>兆焦/秒 * 增幅^</gray><good>{1:0.##}</good>"
 	ResonanceTurretHeatGenerationFmt = "<white>热能产生速率：</white><good>{0:0.#}</good> <gray>兆焦/秒 + 热泵</gray>"
 	Resources = "<white>资源：</white> "
 	RocketNotes = <gray>注意：每个拓展器都会增加推进器的最大推力、能耗、加速时间和热能产生速率。</gray>
@@ -4489,11 +4501,11 @@ Stats
 	ShieldArcFmt = "<white>护盾弧度：</white><good>{0:0}°</good>"
 	ShieldDamageFmt = "<white>对护盾伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><gray>/秒）</gray>"
 	ShieldDamageOverTimeFmt = "<white>对护盾伤害：</white><good>{0:0}</good><gray>总计（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
-	ShieldDamagePowerCostFmt = "<white>护盾伤害能量消耗:<gray>基础</gray></white> <good>{0:+0.#;-0.#}%</good>，<gray> * 增幅</gray> <good>{1:+0.#;-0.#}%</good>，<good><gray> * 膨胀</gray> {2:+0.#;-0.#}%</good>"
+	ShieldDamagePowerCostFmt = "<white>护盾伤害能量消耗:<gray>基础</gray></white> <good>{0:+0.#;-0.#}%</good>，<gray>* 增幅</gray> <good>{1:+0.#;-0.#}%</good>，<good><gray> * 膨胀</gray> {2:+0.#;-0.#}%</good>"
 	ShieldDistFmt = "<white>护盾距离：</white><good>{0}</good><gray>米</gray>"
 	ShieldHPFmt = "<white>护盾强度：</white><good>{0:n0}</good>"
 	ShieldPenResistFmt = "<white>护盾抗穿：</white><good>-{0}</good> <gray>米</gray>"
-	ShieldPenetrationFmt = "<white>护盾穿深：</white><good>{0:0.##}</good> <gray>米（换算）</gray>"
+	ShieldPenetrationFmt = "<white>护盾穿深减免：</white><good>{0:0.##}</good> <gray>米</gray>"
 	ShotAmmoUsageFmt = "<white>炮弹消耗：</white><good>{0:0.##}</good><gray>/发（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	ShotAmmoUsageRangeFmt = "<white>炮弹消耗：</white> <good>{0:0.##}</good><gray>/发（</gray><good>{1:0.##}</good><white> - </white><good>{2:0.##}</good><gray>/秒）</gray>"
 	ShotDamageFmt = "<white>对来袭射弹伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><gray>/秒）</gray>"
@@ -4505,7 +4517,7 @@ Stats
 	ShotSpeedFmt = "<white>飞行速度：</white><good>{0:0}</good> <gray>米/秒</gray>"
 	ShrapnelArcFmt = "<white>弹片弧度：</white><good>{0:0}°</good>"
 	ShrapnelFieldBulletDamageFmt = "<white>弹片区域炮弹伤害：</white><good>{0:0}</good><gray>/米</gray>"
-	ShrapnelFieldDamagePoolFmt = "<white>弹片区域伤害池：</white><good>{0:0}</good>"
+	ShrapnelFieldDamagePoolFmt = "<white>弹片区域伤害总量：</white><good>{0:0}</good>"
 	ShrapnelFieldLifetimeFmt = "<white>弹片区域持续时间：</white><good>{0:0.#}</good> <gray>秒</gray>"
 	ShrapnelFieldRadiusFmt = "<white>弹片区域半径：</white><good>{0:0.#}</good> <gray>米</gray>"
 	ShrapnelFmt = "<white>弹片：</white><good>{0}</good>"
@@ -5336,7 +5348,7 @@ Tutorials
 	Fires
 	{
 		
-		Cause = 在被某些武器击中或易燃易爆部件爆炸时，舰内可能会<red>起火</red>。如果不加处理，火势会迅速蔓延，造成损失并烧死船员。
+		Cause = 某些武器命中时会让星舰<red>起火</red>。易燃易爆部件爆炸或舰体过热也会导致火灾。如果不加处理，火势就会迅速蔓延，造成损失，烧死船员，最终<red>烧损</red>部件。烧损的部件需要修理后才能恢复运行。
 		FireExtinguisher = 在星舰上加装<good>灭火器</good>可以帮助灭火。船员会拿起灭火器来扑灭火势。可部署灭火器数量有一定上限，较大火势需使用多个灭火器才能扑灭。
 		Spread = <good>提示：</good>火势会通过开放区域以及舱门蔓延，但无法穿过墙壁。星舰上舱门数量越多，火势就越容易蔓延。
 		Title = 起火
@@ -5378,6 +5390,27 @@ Tutorials
 		PlotJump = "要<good>飞往另一个星系</good>，请点击<white>规划超空间跳跃</white>，然后点击目标星系。与星系内跳跃一样，跳跃到另一个星系会消耗一定量的<img name='resource.hyperium'/>超光素，具体取决于跳跃的距离、星舰的大小和超空间驱动器效率。"
 		Relays = "拥有超空间驱动器和足够<img name='resource.hyperium'/>超光素的星舰能够通过<good>超空间跳跃中继站</good>前往其他恒星系。"
 		Title = 超空间跳跃中继站
+	}
+	Heat
+	{
+		
+		Cause = 受到热能武器攻击，或某些部件产生<orange>废热</orange>，都会导致舰体<orange>受热</orange>。舰体热能无法直接通过散热器散发或储存。
+		Effect = 舰体越热，星舰受到的伤害就越高，敌方攻击的穿深也会变强，舰内还可能着火，最终熔化。
+		Exchanger = <good>提示：</good>你可以建造<good>热交换器</good>并将其连接到散热器或热能存储设备来摆脱舰体热能。
+		OverTime = 热能会自然传导到星舰各处，离开热源之后也会随时间自行散发。
+		Title = 舰体热能
+	}
+	HeatManagement
+	{
+		
+		Batteries = <good>储热器</good>可以从热能网络中的其他部件那里接受并安全储存大量热能。
+		Excess = 未经储存或散热的多余废热会转化为危险的<orange>舰体热能</orange>，星舰会因此更易受损，内部可能会因此起火，并最终熔化。
+		Exchangers = <good>热交换器</good>可以吸收<orange>舰体热能</orange>，将其输送到连接的热能网络中，供其储存或散发。
+		Icons = 部件可以通过“端口”连接到热能网络，以橙色图标表示。橙色的线路显示的则是整个热能网络的连接情况。热能会在各个部件之间传导。
+		Overview1 = 在超频模式等情况下，某些武器和其他星舰部件会产生<orange>废热</orange>。废热如果不加以管理就会变成危险的<orange>舰体热能</orange>。
+		Overview2 = 将此类部件用<good>热管</good>连接到热能管理部件上即可预防此类危险事故。这就是<good>热能网络</good>。
+		Radiators = <good>散热器</good>可以将同一热能网络中的热能散发到太空中。阻挡散热器的散热端口，其散热效率就会降低。
+		Title = 热能管理
 	}
 	IonBeams
 	{
@@ -5465,6 +5498,14 @@ Tutorials
 		Title = 星云与风暴
 	}
 	NotInDemo = <bad>以下功能在《Cosmoteer》试玩版中不可用。</bad>
+	Overclocking
+	{
+		
+		HeatManagement = <good>提示：</good>你应该将超频的部件连接到<good>热能网络</good>中，存储其产生的废热并散热，以保障星舰安全。否则废热会转化为危险的<orange>舰体热能</orange>。
+		Overview1 = 许多部件都可以通过<bad>超频</bad>强化其功能，但同时也会产生<orange>废热</orange>。
+		Overview2 = "将光标移动到部件上，然后按 <btn id='Design.ToggleSecondaryTooltip'/>，即可查看其超频效果。"
+		Title = 超频
+	}
 	Paint
 	{
 		
@@ -5545,6 +5586,13 @@ Tutorials
 		Tip = "<good>提示：</good>如果回收残骸的时间过长，请尝试使用<white>&gt;&gt;</white>按钮提高游戏速度。"
 		Title = 收集和回收材料
 		WholeShip = <white>点击但不拖动</white>战败的星舰，可以将你的星舰移动到旁边，将其彻底分解回收。
+	}
+	Scorched
+	{
+		
+		CauseAndEffect = 长时间燃烧的部件会<red>烧损</red>。烧损部件会停止运行，还会降低船员的移动速度。
+		Solution = 将部件血量修理到满值即可使其恢复运行。
+		Title = 烧损部件
 	}
 	Tactics
 	{
