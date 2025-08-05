@@ -221,7 +221,22 @@ Part : <../base_part_terran.rules>/Part
 			}
 			ComponentID = Weapon
 		}
-
+		
+		ProjectileStartTrigger
+		{
+			Type = TriggerProxy
+			PartLocation = [0, -1]
+			PartCriteria
+			{
+				Category = railgun_power
+				Rot = 0
+				Left = 0
+				Right = 2
+				Bottom = 0
+			}
+			ComponentID = ProjectileStartTrigger
+		}
+		
 		EmitTrigger
 		{
 			Type = TriggerProxy
@@ -819,7 +834,7 @@ Part : <../base_part_terran.rules>/Part
 		FireEffect
 		{
 			Type = TriggeredEffects
-			Trigger = WeaponTrigger
+			Trigger = ProjectileStartTrigger
 			Location = [1, 1]
 
 			MediaEffects

@@ -89,6 +89,7 @@ BASE_HEAT_SPREAD_BUDGET = 3.5
 HEAT_POOL_AMP_EXPONENT = 0.67
 SHIELD_HEAT_FACTOR = 7.5%
 
+SHIELD_OVERLOAD_DURATION = 1
 SHIELD_OVERLOAD_PER_AMP = 0.6%
 SHIELD_OVERLOAD_PER_DILATION = 10%
 SHIELD_OVERLOAD_BASE = 4.4%
@@ -162,7 +163,7 @@ HitOperational
 			Type = AreaShieldStatusApplication
 			StatusType = cosmoteer.shield_overload
 			Radius = &~/HitOperational/HitEffects/0/MaxCost
-			StatusDuration = 1
+			StatusDuration = &~/SHIELD_OVERLOAD_DURATION
 			StatusValue : MaxStatusValue
 			{
 				FACTOR = (&~/HitInterval) / (&~/SHIELD_OVERLOAD_RAMP_TIME);

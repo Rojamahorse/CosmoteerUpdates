@@ -419,7 +419,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = TriggeredEffects
 			ChainedTo = Turret
-			Trigger = Turret
+			Trigger = BulletEmitter
 			Location = [3, 0]
 
 			MediaEffects
@@ -435,6 +435,34 @@ Part : <../base_part_terran_overclock.rules>/Part
 					SpeedVariation = .25
 				}
 
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .075
+					Duration = .5
+				}
+			]
+		}
+		Overclock_FireEffect : FireEffect
+		{
+			Trigger = Overclock_BulletEmitter
+			MediaEffects
+			[
+				&<particles/cannon_shoot_large.rules>
+				&<particles/cannon_shoot_large_flash.rules>
+				&<particles/cannon_shoot_large_flare.rules>
+				&<particles/cannon_smoke_large.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds 
+					[
+						"sounds/large_cannon_overclocked_shot_01.wav"
+						"sounds/large_cannon_overclocked_shot_02.wav"
+						"sounds/large_cannon_overclocked_shot_03.wav"
+					]
+					SpeedVariation = .25
+				}
+				
 				: /BASE_SHAKE
 				{
 					ShakeAmount = .075

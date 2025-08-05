@@ -395,6 +395,33 @@ Part : <../base_part_terran_overclock.rules>/Part
 			TriggerWhenOff = true
 		}
 
+		Overclock_ChargingEffects
+		{
+			Type = ContinuousEffects
+			OperationalToggle = IsOverclockedAndCharging
+			MediaEffectsRequireShipInView = false
+			ParentToShip = true
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorZoomless
+				{
+					Sound = "sounds/railgun_charge_up_loop.wav"
+					OnlyWhenInSight = false
+					Volume = 2
+				}
+			]
+			StartMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorZoomless
+				{
+					Sound = "sounds/railgun_charge_up_start.wav"
+					OnlyWhenInSight = false
+					Volume = 2
+					VolumeOverIntensity = 1
+				}
+			]
+		}
+
 		Overclock_ChargeTimerReset
 		{
 			Type = MultiTrigger

@@ -68,8 +68,10 @@ RailgunShot
 	IconTextAdd = -100
 	ShowIconTextForZeroValue = false
 }
-RailgunShotOverclock : RailgunShot
+RailgunShotOverclock
 {
+	Multiplier = 20%
+	BaseValue = 100%
 	Exponent = 1
 }
 

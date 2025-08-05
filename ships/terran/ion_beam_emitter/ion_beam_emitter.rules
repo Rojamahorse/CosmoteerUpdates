@@ -287,6 +287,25 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Overclock_BeamEmitter : <./Data/shots/ion_beam/ion_beam_overclock.rules>/Beam, BeamEmitter
 		{
 			OperationalToggle = IsOperationalOverclocked
+			BeamMediaEffects : ^/0/BeamMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/ion_beam/ion_beam_emit.wav"
+					Volume = 1
+					MaxConcurrent = 1
+					MaxConcurrentVolume = 1
+					RampUpTime = .25
+					RampDownTime = .25
+				}
+			]
+		}
+
+		BeamEmittersToggle
+		{
+			Type = MultiToggle
+			Toggles = [BeamEmitter, Overclock_BeamEmitter]
+			Mode = Any
 		}
 
 		CrewLocation1
@@ -323,7 +342,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = Graphics
 			Location = [1, 0.75]
 			OperationalToggle = IsOperational
-			DoodadToggle = BeamEmitter
+			DoodadToggle = BeamEmittersToggle
 			ShowToggledDoodadsWhenNotOperational = false
 			Floor
 			{
@@ -423,7 +442,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = Graphics
 			Location = [1, 3]
 			OperationalToggle = IsOperational
-			DoodadToggle = BeamEmitter
+			DoodadToggle = BeamEmittersToggle
 			ShowToggledDoodadsWhenNotOperational = false
 			Floor
 			{

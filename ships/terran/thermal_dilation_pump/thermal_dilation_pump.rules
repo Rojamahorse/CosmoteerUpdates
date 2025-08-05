@@ -1015,14 +1015,23 @@ Part : <../base_part_terran.rules>/Part
 	}
 
 	Stats
-	{
-		ThermalDilation = (&~/Part/Components/BaseDilationPerPort/Value) * 100 * 2
-//		ThermalPumpMultiEfficiency = (&~/Part/Components/MultiUtilizationEfficiencyFactor/Value) * 100
+	{		
+		INVERSE_EFFICIENCY = 1 - (&~/Part/Components/MultiUtilizationEfficiencyExponent/EFFICIENCY)
+		UTILIZATION_SCALE = &~/Part/Components/UtilizationScale/Value
+		BASE_DIL = (&~/Part/Components/BaseDilationPerPort/Value) * 100 * 2
+		
+		ThermalDilation
+		[
+			(&../BASE_DIL) * (1 / (0 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY), (&../BASE_DIL) * (1 / (1 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)
+			(&../BASE_DIL) * (1 / (2 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY), (&../BASE_DIL) * (1 / (3 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)
+			(&../BASE_DIL) * (1 / (4 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY), (&../BASE_DIL) * (1 / (5 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)
+		]
+
 		TurretExtraHeatGeneration = (&~/Part/Components/AdditionalTurretHeatGeneration_Active/Value) * 2
 
-		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity/BaseValue) / (&~/Part/Components/PowerDrain/Interval) / 1000 * 2
+		ThermalPumpPowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity/BaseValue) / (&~/Part/Components/PowerDrain/Interval) / 1000 * 2
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
-		RecPower = &PowerUsageContinuous
+		RecPower = &ThermalPumpPowerUsageContinuous
 	}
 
 	StatsNotesKey = "Stats/ThermalDilationPumpNotes"

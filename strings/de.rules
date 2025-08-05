@@ -108,8 +108,8 @@ Brushes
 	Line = Linie
 	LineIcon = Linie
 	LineTip = "Halte <btn id='Design.RestrictShapeMode'/> gedrückt, um eine gerade Linie zu machen."
-	Oval = ""
-	OvalIcon = ""
+	Oval = Oval
+	OvalIcon = Oval
 	OvalTip = "Halte <btn id='Design.RestrictShapeMode'/> gedrückt, um einen perfekten Kreis zu machen."
 	Triangle = Dreieck
 	TriangleIcon = Drei.
@@ -4384,7 +4384,7 @@ Stats
 	DiamondPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good> <gray>MJ/Diamant (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	DiamondProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> Diamanten/Sek.</gray>"
 	DilationFactorFmt = "<white>Ausdehnungsfaktor:</white> <good>{0:0.###}x</good>"
-	DilationHeatSpreadDistanceFmt = "<white>Wärme-Streuungsdistanz:</white> <good>{0:0.##}</good><gray> Meter * Ausdehnung</gray>"
+	DilationHeatSpreadFmt = "<white>Wärme-Streuungsdistanz:</white> <good>{0:0.##}</good><gray> Meter * Ausdehnung</gray>"
 	EMPMissileCapacityFmt = "<white>EMP-Raketen-Kapazität:</white> <good>{0}</good>"
 	EMPResistFmt = "<white>Widerstand gegen EMP:</white> <good>-{0:0.##}</good> <gray>Energieentzug</gray>"
 	EMPResistPercentageFmt = "<white>Widerstand gegen EMP:</white> <good>{0:0.#} %</good>"
@@ -4408,7 +4408,7 @@ Stats
 	HeatAbsorptionFmt = "<white>Wärmeabsorption:</white> <good>{0:0.#}</good> <gray>MJ/Sek.</gray>"
 	HeatAbsorptionInefficiencyFmt = "<white>Absorptionsineffizienz:</white> <good>+{0:0.#} %</good> <gray>Wärme</gray>"
 	HeatAbsorptionRadiusFmt = "<white>Absorptionsradius:</white> <good>{0:0.#}</good> <gray>Meter</gray>"
-	HeatAmplificationExponentFmt = "<white>Wärme-Reservoir-Verstärkungsexponent:</white> <good>{0.##}</good>"
+	HeatPoolAmplificationExponentFmt = "<white>Wärme-Reservoir-Verstärkungsexponent:</white> <good>{0:0.##}</good>"
 	HeatCapacityFmt = "<white>Wärmekapazität:</white> <good>{0:#,0.##}</good> <gray>MJ</gray>"
 	HeatDissipationFmt = "<white>Wärmeableitung:</white> <good>{0:#,0.##}</good> <gray>MJ/Sek.</gray>"
 	HeatFireChanceFmt = "<white>Feuer-Chance bei Wärme-Grenzwert:</white> <good>{0:0.##%}</good>"
@@ -4501,7 +4501,9 @@ Stats
 	ShieldArcFmt = "<white>Schildbogen:</white> <good>{0:0}°</good>"
 	ShieldDamageFmt = "<white>Schaden gegen Schilde:</white> <good>{0:n0}</good><gray>/Schuss (</gray><good>{1:n0}</good><gray>/Sek.)</gray>"
 	ShieldDamageOverTimeFmt = "<white>Schaden gegen Schilde:</white> <good>{0:0}</good> <gray>Gesamt (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
-	ShieldDamagePowerCostFmt = "<white>Energiekosten für Schildschaden:</white> <good>{0:+0.#;-0.#} %</good> <gray>Basis</gray>, <good>{1:+0.#;-0.#} %</good><gray> * Verstärkung</gray>, <good>{2:+0.#;-0.#} %</good><gray> * Ausdehnung</gray>"
+	ShieldDamagePowerCostBaseFmt = "<white>Energiekosten für Schildschaden:</white> <good>{0:+0.#;-0.#} %</good> <gray>Basis</gray>"
+	ShieldDamagePowerCostAmplificationFmt = "<white>Energiekosten für Schildschaden:</white> <good>{0:+0.#;-0.#} %</good><gray> (100 % Verstärkung)</gray>"
+	ShieldDamagePowerCostDilationFmt = "<white>Energiekosten für Schildschaden:</white> <good>{0:+0.#;-0.#} %</good><gray> (100 % Ausdehnung)</gray>"
 	ShieldDistFmt = "<white>Schildentfernung:</white> <good>{0}</good><gray> Meter</gray>"
 	ShieldHPFmt = "<white>Schildstärke:</white> <good>{0:n0}</good>"
 	ShieldPenResistFmt = "<white>Schildwiderstand gegen Durchdringung:</white> <good>-{0}</good> <gray>Meter</gray>"

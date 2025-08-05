@@ -880,6 +880,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ChainedTo = Turret
 			Location = [240/64, -35/64]
 		}
+		Emitter1Proxy_Overclocked : Emitter1Proxy
+		{
+			ProxyToggle = IsOverclocked
+		}
+		Emitter1Proxy_NonOverclocked : Emitter1Proxy_Overclocked
+		{
+			InvertProxyToggle = true
+		}
 		Emitter2Proxy
 		{
 			Type = EmitterProxy
@@ -887,12 +895,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ChainedTo = Turret
 			Location = [240/64, 35/64]
 		}
+		Emitter2Proxy_Overclocked : Emitter2Proxy
+		{
+			ProxyToggle = IsOverclocked
+		}
+		Emitter2Proxy_NonOverclocked : Emitter2Proxy_Overclocked
+		{
+			InvertProxyToggle = true
+		}
 
 		FireEffect1
 		{
 			Type = TriggeredEffects
-			ChainedTo = Emitter1Proxy
-			Trigger = Emitter1Proxy
+			ChainedTo = Emitter1Proxy_NonOverclocked
+			Trigger = Emitter1Proxy_NonOverclocked
 			Location = [90/64, 0]
 
 			MediaEffects
@@ -917,8 +933,38 @@ Part : <../base_part_terran_overclock.rules>/Part
 		}
 		FireEffect2 : FireEffect1
 		{
-			ChainedTo = Emitter2Proxy
-			Trigger = Emitter2Proxy
+			ChainedTo = Emitter2Proxy_NonOverclocked
+			Trigger = Emitter2Proxy_NonOverclocked
+		}
+		Overclock_FireEffect1 : FireEffect1
+		{
+			ChainedTo = Emitter1Proxy_Overclocked
+			Trigger = &ChainedTo
+			
+			MediaEffects
+			[
+				&<particles/cannon_shoot_deck.rules>
+				&<particles/cannon_shoot_deck_flash.rules>
+				&<particles/cannon_shoot_deck_flare.rules>
+				&<particles/cannon_smoke_deck.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "sounds/deck_cannon_overclocked_shot.wav"
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .1
+					Duration = 1
+				}
+			]
+		}
+		Overclock_FireEffect2 : Overclock_FireEffect1
+		{
+			ChainedTo = Emitter2Proxy_Overclocked
+			Trigger = &ChainedTo
 		}
 
 		StunTrigger

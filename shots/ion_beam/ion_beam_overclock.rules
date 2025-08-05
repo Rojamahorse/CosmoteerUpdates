@@ -175,8 +175,8 @@ Beam : <ion_beam.rules>
 	
 			: /BASE_SOUNDS/AudioExterior
 			{
-				Sound = "ion_beam_hit.wav"
-				Volume = .5
+				Sound = "sounds/ion_beam_lightning.wav"
+				Db = 3
 				MaxConcurrent = 1
 				MaxConcurrentVolume = 1
 				RampUpTime = .25

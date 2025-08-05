@@ -49,8 +49,33 @@ Components : &BASE/Components
 				&../^/0/HitEffects/1
 				&~/SHRAPNEL_EFFECT
 			]
+			
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["sounds/large_cannon_overclocked_impact_01.wav",
+									"sounds/large_cannon_overclocked_impact_02.wav",
+									"sounds/large_cannon_overclocked_impact_03.wav"]
+					Volume = 1
+					SpeedVariation = .1
+				}
+			]
 		}
-		HitStructural = &~/BASE/Components/Hit/HitStructural
+		HitStructural : &~/BASE/Components/Hit/HitStructural
+		{
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["sounds/large_cannon_overclocked_impact_01.wav",
+									"sounds/large_cannon_overclocked_impact_02.wav",
+									"sounds/large_cannon_overclocked_impact_03.wav"]
+					Volume = 1
+					SpeedVariation = .1
+				}
+			]
+		}
 	}
 	
 	Sprite

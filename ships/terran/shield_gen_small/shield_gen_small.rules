@@ -875,7 +875,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [1, 2]
 		}
 
-		EmitterEffect
+		IsOperationalNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
+		}
+		BaseEmitterEffect
 		{
 			Type = ContinuousEffects
 			ChainedTo = ArcShield
@@ -933,7 +939,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 					ArcSpriteSegments = 12
 					Bucket = Upper1
 				}
-
+			]
+		}
+		EmitterSoundEffects : BaseEmitterEffect
+		{
+			OperationalToggle = IsOperationalNonOverclocked
+			MediaEffects
+			[
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
 					Sound = "shield_emitter_loop.wav"
@@ -943,6 +955,19 @@ Part : <../base_part_terran_overclock.rules>/Part
 					MaxConcurrentVolume = .4
 					IgnoreIntensity = true
 				}
+			]
+		}
+		Overclock_EmitterSoundEffects : BaseEmitterEffect
+		{
+			OperationalToggle = IsOperationalOverclocked
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "sounds/small_shield_energy_overclocked.wav"
+					Volume = 1
+					IgnoreIntensity = true
+				}	
 			]
 		}
 
@@ -972,6 +997,51 @@ Part : <../base_part_terran_overclock.rules>/Part
 					IgnoreIntensity = true
 				}
 			]
+		}
+		Overclock_ExtendedModeTweenMinToggle
+		{
+			Type = ThresholdToggle
+			ValueFrom = Overclock_ExtendedModeValue
+			MaxAmount = 0
+			Invert = true
+		}
+		Overclock_ReinforcedModeTweenMinToggle : Overclock_ExtendedModeTweenMinToggle
+		{
+			ValueFrom = Overclock_ReinforcedModeValue
+		}
+		Overclock_ExtendingEffectToggle
+		{
+			Type = MultiToggle
+			Toggles = [Overclock_ExtendedModeTweenMinToggle, IsOperationalOverclocked]
+			Mode = All
+		}
+		Overclock_ReinforcingEffectToggle : Overclock_ExtendingEffectToggle
+		{
+			Toggles = [Overclock_ReinforcedModeTweenMinToggle, IsOperationalOverclocked]
+		}
+		Overclock_ShieldExtendedEffects : ShieldOperationEffects
+		{
+			Toggle = Overclock_ExtendingEffectToggle
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "sounds/small_shield_overclock_wide.wav"
+				}
+			]
+			ToggledOffMediaEffects
+		}
+		Overclock_ShieldReinforcedEffects : ShieldOperationEffects
+		{
+			Toggle = Overclock_ReinforcingEffectToggle
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "sounds/small_shield_overclock_narrow.wav"
+				}
+			]
+			ToggledOffMediaEffects
 		}
 
 		Graphics

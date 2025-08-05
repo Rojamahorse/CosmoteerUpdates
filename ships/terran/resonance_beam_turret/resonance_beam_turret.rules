@@ -791,6 +791,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = DeathEffects
 			Location = [2, 2]
 			IncludeWhenUnderConstruction = false
+			FactorHitEffectsWith = HeatStorage
 
 			HitEffects
 			[
@@ -2023,18 +2024,26 @@ Part : <../base_part_terran.rules>/Part
 				ResonanceTurretHeatGeneration = (&~/Part/Components/BaseHeatGeneration/Value)
 
 				HeatPerTileContinuous = (&~/Part/Components/BeamEmitter/BASE_HEAT) / (&HitInterval)
-				ResonanceHeatPool = [(&~/Part/Components/BeamEmitter/BASE_HEAT_POOL) / (&../HitInterval), &~/Part/Components/BeamEmitter/HEAT_POOL_AMP_EXPONENT]
-				DilationHeatSpreadDistance = &~/Part/Components/BeamEmitter/BASE_HEAT_SPREAD_BUDGET
+				ResonanceHeatPool = (&~/Part/Components/BeamEmitter/BASE_HEAT_POOL) / (&HitInterval)
+				HeatPoolAmplificationExponent = &~/Part/Components/BeamEmitter/HEAT_POOL_AMP_EXPONENT
+				DilationHeatSpread = &~/Part/Components/BeamEmitter/BASE_HEAT_SPREAD_BUDGET
 				HitShieldHeatFactor = (&~/Part/Components/BeamEmitter/SHIELD_HEAT_FACTOR) * 100
-
-				SHIELD_OVERLOAD_BASE = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_BASE)
-				SHIELD_OVERLOAD_PER_AMP = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_PER_AMP)
-				SHIELD_OVERLOAD_PER_DILATION = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_PER_DILATION)
-				ShieldDamagePowerCost = [ (&../SHIELD_OVERLOAD_BASE) * 100, (&../SHIELD_OVERLOAD_PER_AMP) * 100, (&../SHIELD_OVERLOAD_PER_DILATION) * 100 ]
 
 				BaseAmplification = (&~/Part/Components/BaseAmplification/Value) * 100
 				BaseDilation = (&~/Part/Components/BaseDilation/Value) * 100
 			}
 		}
+		{
+			NameKey = "StatCategories/ShieldOverload"
+			Stats
+			{
+				ShieldDamagePowerCostBase = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_BASE) * 100
+				ShieldDamagePowerCostAmplification = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_PER_AMP) * 100
+				ShieldDamagePowerCostDilation = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_PER_DILATION) * 100
+				EffectDuration = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_DURATION)
+			}
+		}
 	]
+	
+	StatsNotesKey = "Stats/ThermalResonanceLanceNotes"
 }

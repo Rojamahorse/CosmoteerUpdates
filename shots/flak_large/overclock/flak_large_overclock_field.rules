@@ -84,6 +84,16 @@ Components
 			&<particles/flak_large_overclock_field_shrapnel.rules>
 			&<particles/flak_large_overclock_field_right.rules>
 			&<particles/flak_large_overclock_field_left.rules>
+			
+			: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "sounds/flak_cannon_overclocked_field.wav"
+					Volume = 1
+					SpeedVariation = .2
+					MaxConcurrent = 2
+					RampUpTime = .25
+					RampDownTime = .5
+				}
 		]
 	}
 }

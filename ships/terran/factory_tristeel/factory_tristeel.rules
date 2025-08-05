@@ -338,7 +338,25 @@ Part : <../base_part_terran_overclock.rules>/Part
 		BeltSpeedFactor
         {
         	Type = BuffableValue
-        	Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
+			Value
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = Factory
+						ModificationMode = Multiply
+					}
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+					}
+				]
+			}
         }
 
 		Graphics
@@ -529,6 +547,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [108/64, 79/64]
 			OperationalToggle = IsOperational
 			DoodadToggle = ResourceConverter
+			AnimationSpeedFactor = BeltSpeedFactor
 			ToggleOnDoodad
 			{
 				Layer = "walls" //walls layer so the Tritanium and Tristeel are draw over the belts

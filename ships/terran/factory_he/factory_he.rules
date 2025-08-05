@@ -844,7 +844,25 @@ Part : <../base_part_terran_overclock.rules>/Part
 		BeltSpeedFactor
 		{
 			Type = BuffableValue
-			Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
+			Value
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = Factory
+						ModificationMode = Multiply
+					}
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+					}
+				]
+			}
 		}
 
 		Graphics
@@ -1175,6 +1193,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					TotalDamage = 64500
 					Radius = 5
 					Delay = .05
+					StatusType = cosmoteer.fire
 					StatusChancePerNDamage = 100%
 					StatusValue = 1
 					StatusValueType = Interpolated

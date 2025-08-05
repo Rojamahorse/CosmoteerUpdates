@@ -30,7 +30,7 @@ Bullet : BASE
 			{
 				HitEffects
 				[
-					: ../../HitOperational/HitEffects/0
+					: ../../PenetratingOperational/HitEffects/0
 					{
 						StatusValue = { BaseValue = (&~/SHIELD_DRAIN_PER_SECOND) / 1000; EffectScaleExponent = 1 }
 					}

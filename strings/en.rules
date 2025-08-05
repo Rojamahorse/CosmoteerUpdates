@@ -4060,7 +4060,7 @@ Parts
 
 	FactoryThermal = "Thermal Canister Missile Factory"
 	FactoryThermalIcon = "T.C. Missiles"
-	FactoryThermalDesc = "Manufactures guided Thermal Canister Missiles that take thermal energy from their own ship's heat pipe network and inflict it upon the target in a small area of effect. Consumes iron and sulfur. Gains +25% production speed for each adjacent factory of any type."
+	FactoryThermalDesc = "Manufactures guided Thermal Canister Missiles that take thermal energy from their own ship's heat pipe network and inflict it upon the target in a small area of effect. Consumes copper and sulfur. Gains +25% production speed for each adjacent factory of any type."
 	FactoryThermalOverclock = "Overclocked Thermal Canister Missile Factory"
 	FactoryThermalOverclockDesc = "Significantly increases production speed. Produces waste heat while producing missile parts."
 
@@ -4154,7 +4154,7 @@ Parts
 
 	ResonanceBeamTurret = "Thermal Resonance Lance"
 	ResonanceBeamTurretIcon = "Thermal Resonance Lance"
-	ResonanceBeamTurretDesc = "A roof-mounted turret that fires a beam of pure heat energy but also produces a great deal of its own waste heat.\n\n"\
+	ResonanceBeamTurretDesc = "A roof-mounted turret that fires a beam of pure heat energy but also produces a great deal of its own waste heat. Weakens shields around the impact point.\n\n"\
 								"Cannot be within 2 tiles of other roof turrets or \"tall\" parts."
 
 	Radiator = "Radiator"
@@ -4701,12 +4701,16 @@ Stats
 	LightningDamageFmt = "<white>Lightning Damage:</white> <good>{0:0}</good> <gray>per strike</gray>"
 
 	HeatPerTileContinuousFmt = "<white>Heat Applied:</white> <good>{0:n1}</good> <gray>MJ/tile/sec</gray>"
-	ResonanceHeatPoolFmt = "<white>Heat Applied (Pool):</white> <good>{0:n1}</good> <gray>MJ/sec * amplification^</gray><good>{1:0.##}</good>"
-	HeatAmplificationExponentFmt = "<white>Heat Pool Amplification Exponent:</white> <good>{0.##}</good>"
-	DilationHeatSpreadDistanceFmt = "<white>Heat Spread Distance:</white> <good>{0:0.##}</good><gray> meters * dilation</gray>"
+	ResonanceHeatPoolFmt = "<white>Heat Applied (Pool):</white> <good>{0:n1}</good><gray><sup>[1]</sup> MJ/sec</gray>"
+	HeatPoolAmplificationExponentFmt = "<white>Heat Pool Amplification Exponent:</white> <good>{0:0.##}</good>"
+	DilationHeatSpreadFmt = "<white>Heat Spread:</white> <good>{0:0.##}</good><gray><sup>[2]</sup> meters</gray>"
 	HeatSpreadDistanceFmt = "<white>Heat Spread Distance:</white> <good>{0:0.##}</good><gray> meters</gray>"
 	HitShieldHeatFactorFmt = "<white>Hit Shield Heating:</white> <good>{0:0.##}%</good>"
-	ShieldDamagePowerCostFmt = "<white>Shield Damage Power Cost:</white> <good>{0:+0.#;-0.#}%</good> <gray>base</gray>, <good>{1:+0.#;-0.#}%</good><gray> * amplification</gray>, <good>{2:+0.#;-0.#}%</good><gray> * dilation</gray>"
+	ShieldDamagePowerCostBaseFmt = "<white>Shield Damage Power Cost:</white> <good>{0:+0.#;-0.#}%</good> <gray>base</gray>"
+	ShieldDamagePowerCostAmplificationFmt = "<white>Shield Damage Power Cost:</white> <good>{0:+0.#;-0.#}%</good> <gray>(100% amplification)</gray>"
+	ShieldDamagePowerCostDilationFmt = "<white>Shield Damage Power Cost:</white> <good>{0:+0.#;-0.#}%</good> <gray>(100% dilation)</gray>"
+	ThermalResonanceLanceNotes = "<gray><sup>1</sup> Scaled by amplification value raised to the relevant exponent.\n"\
+								 "<sup>2</sup> Scaled by the square root of the dilation value.</gray>"
 
 	PowerDrainFmt = "<white>Power Drain On Hit:</white> <good>{0:0.##}</good><gray>/shot (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	PowerDrainOverTimeFmt = "<white>Power Drain:</white> <good>{0:0}</good> <gray>total (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
@@ -4793,6 +4797,7 @@ Stats
 	EnrichedUraniumPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/e-uranium (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	EnrichedUraniumHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/e-uranium (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	PowerUsageContinuousFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/sec</gray>"
+	ThermalPumpPowerUsageContinuousFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/Lance/sec</gray>"
 	PowerUsageContinuousMinutesFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/min</gray>"
 	ThrusterPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/sec (100% thrust)</gray>"
 	ThrusterPowerUsageRampFmt = "<white>Power Use:</white> <good>{0:0.##}-{1:0.##}</good><gray>/sec (100% thrust)</gray>"
@@ -4894,8 +4899,15 @@ Stats
 
 	BaseAmplificationFmt = "<white>Amplification (Base):</white> <good>{0:0.#}%</good>"
 	BaseDilationFmt = "<white>Dilation (Base):</white> <good>{0:0.#}%</good>"
-	ThermalAmplificationFmt = "<white>Thermal Amplification:</white> <good>{0:+0.#;-0.#}%</good>"
-	ThermalDilationFmt = "<white>Thermal Dilation:</white> <good>{0:+0.#;-0.#}%</good>"
+	ThermalAmplificationFmt = "<white>Thermal Amplification (by active Lances):</white>\n"\
+							  "<gray>Value is provided to each Thermal Resonance Lance.</gray><monospace>\n"\
+							  " <white>1:</white><good>{0,4:+0}%</good> <white>3:</white><good>{2,4:+0}%</good> <white>5:</white><good>{4,4:+0}%</good>\n"\
+							  " <white>2:</white><good>{1,4:+0}%</good> <white>4:</white><good>{3,4:+0}%</good> <white>6:</white><good>{5,4:+0}%</good></monospace>"
+	ThermalDilationFmt = "<white>Thermal Dilation (by active Lances):</white>\n"\
+						 "<gray>Value is provided to each Thermal Resonance Lance.</gray><monospace>\n"\
+						 " <white>1:</white><good>{0,4:+0}%</good> <white>3:</white><good>{2,4:+0}%</good> <white>5:</white><good>{4,4:+0}%</good>\n"\
+						 " <white>2:</white><good>{1,4:+0}%</good> <white>4:</white><good>{3,4:+0}%</good> <white>6:</white><good>{5,4:+0}%</good></monospace>"
+
 	ThermalPumpMultiEfficiencyFmt = "<white>Multi-User Efficiency:</white> <good>{0:0.#}%</good><gray>^extra users</gray>"
 	AmplificationFactorFmt = "<white>Amplification Factor:</white> <good>{0:0.###}x</good>"
 	DilationFactorFmt = "<white>Dilation Factor:</white> <good>{0:0.###}x</good>"
@@ -4964,6 +4976,7 @@ StatCategories
 	ShieldSmall = "Small Shield"
 	ShieldLarge = "Large Shield"
 	ResonanceBeam = "Resonance Lance"
+	ShieldOverload = "Shield Overload"
 	Overclocked = "Overclocked"
 	OverclockedShrapnel = "Overclocked (Shrapnel)"
 	OverclockedBoost = "Boost: On (Overclocked)"

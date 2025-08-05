@@ -947,6 +947,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			MediaEffects
 			[
 				&<particles/tractor_beam_overload_shockwave.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+					{
+						Sound = "sounds/tractor_beam_pulse_push.wav"
+						Volume = 1
+						MaxConcurrent = 0
+						MaxConcurrentVolume = 1
+					}
 			]
 		}
 		Overclock_OverloadPullEffects
@@ -986,6 +994,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			MediaEffects
 			[
 				&<particles/tractor_beam_overload_shockwave_inverse.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+					{
+						Sound = "sounds/tractor_beam_pulse_pull.wav"
+						Volume = 1
+						MaxConcurrent = 0
+						MaxConcurrentVolume = 1
+					}
 			]
 		}
 		Overclock_OverloadEndPowerDrain
@@ -1013,6 +1029,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				&<particles/tractor_beam_overload_charging_glints.rules>
 				&<particles/tractor_beam_overload_charging_shockwave.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "sounds/tractor_beam_charge_up.wav"
+					Volume = 1
+					MaxConcurrent = 0
+					MaxConcurrentVolume = 1
+				}
 			]
 		}
 

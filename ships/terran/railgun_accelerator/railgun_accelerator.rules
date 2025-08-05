@@ -224,6 +224,21 @@ Part : <../base_part_terran.rules>/Part
 			}
 			ComponentID = Weapon
 		}
+		
+		ProjectileStartTrigger
+		{
+			Type = TriggerProxy
+			PartLocation = [0, -1]
+			PartCriteria
+			{
+				Category = railgun_power
+				Rot = 0
+				Left = 0
+				Right = 2
+				Bottom = 0
+			}
+			ComponentID = ProjectileStartTrigger
+		}
 
 		EmissionTriggered // This is called "EmissionTriggered" to allow chaining with the launcher.
 		{

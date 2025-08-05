@@ -302,6 +302,7 @@ ContinuousMediaEffects
 [
 	{
 		Type = TileQuad
+		HideWithUI = true
 		Sprite
 		{
 			Texture

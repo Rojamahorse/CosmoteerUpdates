@@ -640,8 +640,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [2, 5]
 		}
 
-
-		EmitterEffect
+		IsOperationalNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
+		}
+		BaseEmitterEffect
 		{
 			Type = ContinuousEffects
 			ChainedTo = ArcShield
@@ -701,7 +706,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 					ArcSpriteSegments = 12
 					Bucket = Lower1
 				}
-
+			]
+		}
+		EmitterSoundEffects : BaseEmitterEffect
+		{
+			OperationalToggle = IsOperationalNonOverclocked
+			MediaEffects
+			[
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
 					Sound = "../shield_gen_small/shield_emitter_loop.wav"
@@ -711,6 +722,18 @@ Part : <../base_part_terran_overclock.rules>/Part
 					MaxConcurrentVolume = .8
 					IgnoreIntensity = true
 				}
+			]
+		}
+		Overclock_EmitterSoundEffects : BaseEmitterEffect
+		{
+			OperationalToggle = IsOperationalOverclocked
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "sounds/large_shield_energy_overclocked.wav"
+					IgnoreIntensity = true
+				}	
 			]
 		}
 
@@ -737,6 +760,19 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Sound = "../shield_gen_small/deactivate.wav"
 					Volume = 1
 					Speed = .5
+					IgnoreIntensity = true
+				}
+			]
+		}
+		Overclock_StartEffects : ShieldOperationEffects
+		{
+			Toggle = IsOperationalOverclocked
+			ToggledOffMediaEffects
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "sounds/large_shield_overclock_start.wav"
 					IgnoreIntensity = true
 				}
 			]
