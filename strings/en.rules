@@ -4791,7 +4791,7 @@ Stats
 	Coil2HeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/h-coil (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	TristeelPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/tri-steel (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	TristeelHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/tri-steel (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
-	DiamondPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good> <gray>MJ/diamond (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	DiamondPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good> <gray>/diamond (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	ProcessorPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/processor (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	ProcessorHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/processor (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	EnrichedUraniumPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/e-uranium (</gray><good>{1:0.##}</good><gray>/sec)</gray>"

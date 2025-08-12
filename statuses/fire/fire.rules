@@ -20,13 +20,16 @@ FIRE_SELF_MODIFIER_LERP_MAP : ~/FIRE_SELF_MODIFIER_LERP
 // The total % of current health damage to reach max scorch
 MAX_SCORCH_DAMAGE_PERCENT = 75%
 // The time for a fully on-fire, full-health part with 1000 HP per tile to reach max scorch.
-FULL_HEALTH_SCORCH_TIME = 40
+FULL_HEALTH_SCORCH_TIME = 25
 
 SCORCH_PER_SECOND = (&MAX_SCORCH_DAMAGE_PERCENT) / (&FULL_HEALTH_SCORCH_TIME)
 SCORCH_PER_TICK = (&SCORCH_PER_SECOND) & (&TickInterval)
 
 DAMAGE_PER_SECOND = (&~/MAX_SCORCH_DAMAGE_PERCENT) / (&~/FULL_HEALTH_SCORCH_TIME) * 1000.0
 DAMAGE_PER_TICK = floor((&~/DAMAGE_PER_SECOND) * (&~/TickInterval))
+
+MAX_SPREAD_CHANCE_PER_TICK = 15%
+MAX_SPREAD_SIZE_FACTOR = 20%
 
 Layer = Tile
 StatusCombineMode = CombineValue
@@ -110,7 +113,7 @@ TickingEffects
 		StatusType = cosmoteer.fire
 		StatusChance
 		{
-			BaseValue = 0.4
+			BaseValue = &~/MAX_SPREAD_CHANCE_PER_TICK
 			Modifiers
 			[
 				: ~/FIRE_SELF_MODIFIER_LERP_MAP
@@ -129,7 +132,7 @@ TickingEffects
 		}
 		StatusValue
 		{
-			BaseValue = 0.2
+			BaseValue = &~/MAX_SPREAD_SIZE_FACTOR
 			Modifiers [ &~/FIRE_SELF_MODIFIER ]
 		}
 		MaxCost = 1

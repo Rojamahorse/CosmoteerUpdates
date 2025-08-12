@@ -14,6 +14,7 @@ Part : <../base_part_terran.rules>/Part
 	Size = [3, 4]
 	FlipHRotate = [0, 1, 2, 3] // Disable flipping UI.
 	FlipVRotate = [0, 1, 2, 3] // Disable flipping UI.
+	IgnoreRotationForMirroredSelection = true
 	SelectionTypeID = "quarters"
 	MaxHealth = 12000
 	TypeCategories = [provides_crew]

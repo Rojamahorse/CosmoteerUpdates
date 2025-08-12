@@ -2636,9 +2636,7 @@ PartFeatures
 	CoMForceApplication = 目的の質量中心に力を加える
 	FeatureFmt = ""
 	Features = <white>機能：</white>
-	ForcedThrusterOverclock = 強制スラスターオーバークロック
 	PenetratesOperational = 稼働部品を貫通する
-	ThrusterHeatTransfer = スラスター熱移行
 }
 PartTargeters
 {
@@ -2888,7 +2886,7 @@ Parts
 	EngineRoomDesc = 近接したスラスターの推進力および動力を50％増加します。また、近接したスラスターの中央運搬ポイントとして機能し、乗組員がそれぞれのスラスターを行き来せずにバッテリーを運搬できます。
 	EngineRoomIcon = 機関室
 	EngineRoomOverclock = オーバークロックした機関室
-	EngineRoomOverclockDesc = "接続されているスラスターにパワーを分配する際のパワー効率を向上させますが、接続されているすべてのスラスターをオーバークロックモードに強制的に切り替えます。\n\nさらに、付属のスラスターから廃熱を回収しますが、その際にさらに廃熱を発生させます。"
+	EngineRoomOverclockDesc = "接続されているスラスターに動力を分配する際の動力効率を向上させますが、動力を分配する間は廃熱が発生します。\n\nさらに、付属のスラスターから廃熱を回収しますが、その際にさらに廃熱が発生します。"
 	ExplosiveCharge = 爆発チャージ
 	ExplosiveChargeDesc = 手動で起爆可能な小型爆発物。主に船を意図的に分解させるために使用します。
 	ExplosiveChargeIcon = 爆発チャージ
@@ -2908,7 +2906,7 @@ Parts
 	FactoryCoilOverclock = オーバークロックしたコイル工場
 	FactoryCoilOverclockDesc = 生産速度が大幅に向上します。コイルを生産する際に廃熱が発生します。
 	FactoryDiamond = ダイヤモンド溶鉱炉
-	FactoryDiamondDesc = 生産速度が大幅に向上します。ダイヤモンドを生産する際に廃熱が発生します。
+	FactoryDiamondDesc = 上級船の一部のパーツの建造に使用するダイヤモンドを製造。炭素を消費します。
 	FactoryDiamondIcon = ダイヤモンド
 	FactoryEMP = EMPミサイル工場
 	FactoryEMPDesc = 広範囲にわたり敵のシステムの電力を消耗させる誘導電磁バルスミサイルを製造。鉄と銅を消費します。種類を問わず、隣接する工場1つにつき25％生産スピードが上昇します。
@@ -2941,7 +2939,7 @@ Parts
 	FactorySteelOverclock = オーバークロックした溶鉱炉
 	FactorySteelOverclockDesc = 生産速度が大幅に向上します。鋼鉄を生産する際に廃熱が発生します。
 	FactoryThermal = 熱弾頭ミサイル工場
-	FactoryThermalDesc = 自船の熱パイプ網から熱エネルギーを取り出し、狭い効果範囲内で標的に与える、誘導式熱弾道ミサイルを製造しています。鉄と硫黄を消費します。隣接するあらゆるタイプの工場1つにつき生産速度が25%アップします。
+	FactoryThermalDesc = 自船の熱パイプ網から熱エネルギーを取り出し、狭い効果範囲内で標的に与える、誘導式熱弾道ミサイルを製造しています。銅と硫黄を消費します。隣接するあらゆるタイプの工場1つにつき生産速度が25%アップします。
 	FactoryThermalIcon = T.C.ミサイル
 	FactoryThermalOverclock = オーバークロックした’熱弾頭ミサイル工場
 	FactoryThermalOverclockDesc = 生産速度が大幅に向上します。ミサイル部品を生産する際に廃熱が発生します。
@@ -3068,7 +3066,7 @@ Parts
 	ReactorSmallOverclock = オーバークロックした小型リアクター炉心
 	ReactorSmallOverclockDesc = 最大動力容量と生成率を増加させます。動力生成時に廃熱が発生します。
 	ResonanceBeamTurret = 熱共鳴ランス
-	ResonanceBeamTurretDesc = "屋根に設置されたタレットが、純粋な熱エネルギーのビームを発射しますが、大量の廃熱が発生します。\n\n他のルーフタレットまたは「高い」部分から2タイル以内に配置することはできません。"
+	ResonanceBeamTurretDesc = "屋根に設置されたタレットが、純粋な熱エネルギーのビームを発射しますが、大量の廃熱が発生します。着弾地点周辺のシールドを弱体化させます。\n\n他のルーフタレットまたは「高い」部分から2タイル以内に配置することはできません。"
 	ResonanceBeamTurretIcon = 熱共鳴ランス
 	Rock1x1 = "岩（1x1　柔らかい）"
 	Rock1x1Hard = "岩（1x1　硬い）"
@@ -4310,6 +4308,7 @@ StatCategories
 	ResonanceBeam = 共鳴ランス
 	ShieldExtended = シールドモード：拡張
 	ShieldLarge = 大型シールド
+	ShieldOverload = シールド過負荷
 	ShieldReinforced = シールドモード：強化
 	ShieldSmall = 小型シールド
 	TractorBeam = トラクタービーム
@@ -4323,7 +4322,7 @@ Stats
 	AccelerationDelayFmt = "<white>加速遅延：</white> <good>{0:0.0#}</good> <gray>秒</gray>"
 	AccelerationFmt = "<white>加速：</white> <good>{0:0}</good> <gray>メートル/秒²</gray>"
 	AmmoCapacityFmt = "<white>弾薬容量：</white> <good>{0}</good>"
-	AmmoHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good> <gray>MJ/弾薬（(</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
+	AmmoHeatGenerationFmt = "<white>熱生成：</white><good>{0:0.##}</good> <gray>MJ/弾薬（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
 	AmmoPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/弾薬（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	AmmoProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> 弾薬/秒</gray>"
 	AmmoSulfurUsageFmt = "<white>硫黄使用：</white> <good>{0:0.##}</good><gray>/弾薬（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
@@ -4333,7 +4332,7 @@ Stats
 	BaseAmplificationFmt = "<white>増幅（ベース）：</white><good>{0:0.#}%</good>"
 	BaseDilationFmt = "<white>拡張（ベース）：</white> <good>{0:0.#}%</good>"
 	BaseHeatFactorFmt = "<white>基礎熱係数：</white> <good>{0:0.#}% ({1:0.#})</good>"
-	BatteryDeliveredHeatGenerationFmt = "<white>熱生成：</white> バッテリー1個あたり<good>{0:#,0.##}</good><gray>MJ</gray>"
+	BatteryDeliveredHeatGenerationFmt = "<white>熱生成：</white> <good>{0:#,0.##}</good> <gray>バッテリー1個あたりのMJ</gray>"
 	BatteryFillTimeFmt = "<white>バッテリー交換時間：</white> <good>{0:0.0#}</good> <gray>秒</gray>"
 	BatterySizeFmt = "<white>バッテリーサイズ：</white> <good>{0:0.0#}</good>"
 	BeamDamageFalloffFmt = "<white>組み合わせ減衰：</white> <good>-{0}%</good><gray>/ビーム</gray>\n  <white>1番ビーム：</white> <good>{1:0}%</good><gray> ダメージ</gray>\n  <white>2番ビーム：</white> <good>{2:0}%</good><gray> ダメージ</gray>\n  <white>3番ビーム：</white> <good>{3:0}%</good><gray> ダメージ</gray>\n  <white>4番ビーム：</white> <good>{4:0}%</good><gray> ダメージ</gray>\n  <white>5番ビーム：</white> <good>{5:0}%</good><gray> ダメージ</gray>\n  ..."
@@ -4346,12 +4345,12 @@ Stats
 	Coil2CapacityFmt = "<white>ハイパーコイル容量：</white> <good>{0}</good>"
 	Coil2CoilUsageFmt = "<white>コイル使用：</white> <good>{0:0.##}</good><gray>/hコイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	Coil2CopperUsageFmt = "<white>銅使用：</white> <good>{0:0.##}</good><gray>/hコイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
-	Coil2HeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good> <gray>MJ/hコイル（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
+	Coil2HeatGenerationFmt = "<white>熱生成：</white><good>{0:0.##}</good> <gray>MJ/hコイル（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
 	Coil2PowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/hコイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	Coil2ProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> Hコイル/秒</gray>"
 	CoilCapacityFmt = "<white>コイル容量：</white> <good>{0}</good>"
 	CoilCopperUsageFmt = "<white>銅使用：</white> <good>{0:0.##}</good><gray>/コイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
-	CoilHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good> <gray>MJ/コイル（(</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
+	CoilHeatGenerationFmt = "<white>熱生成：</white><good>{0:0.##}</good> <gray>MJ/コイル（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
 	CoilPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/コイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	CoilProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> コイル/秒</gray>"
 	CommandPointsProvidedFmt = "<white>コマンドポイント：</white>　<good>＋{0}<image name='command_points' colored='true'/></good>　<gray>（供給）</gray>"
@@ -4384,13 +4383,13 @@ Stats
 	DiamondPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good> <gray>MJ/ダイヤモンド（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	DiamondProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> ダイヤモンド/秒</gray>"
 	DilationFactorFmt = "<white>拡張係数：</white> <good>{0:0.###}x</good>"
-	DilationHeatSpreadFmt = "<white>熱拡散距離：</white> <good>{0:0.##}</good><gray>メーター * 拡張</gray>"
+	DilationHeatSpreadFmt = "<white>熱拡散距離：</white> <good>{0:0.##}</good><gray><sup>[2]</sup>メーター</gray>"
 	EMPMissileCapacityFmt = "<white>EMPミサイル容量：</white>　<good>{0}</good>"
 	EMPResistFmt = "<white>EMP耐性：</white> <good>-{0:0.##}</good> <gray>動力消耗</gray>"
 	EMPResistPercentageFmt = "<white>EMP耐性：</white><good>{0:0.#}%</good>"
 	EffectDurationFmt = "<white>効果期間：</white> <good>{0:0.##}</good> <gray>秒</gray>"
 	EnrichedUraniumCapacityFmt = "<white>濃縮ウラン容量：</white> <good>{0}</good>"
-	EnrichedUraniumHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good> <gray>MJ/eウラン（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
+	EnrichedUraniumHeatGenerationFmt = "<white>熱生成：</white><good>{0:0.##}</good> <gray>MJ/eウラン（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
 	EnrichedUraniumPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/eウラン（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	EnrichedUraniumProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> eウラン/秒</gray>"
 	EnrichedUraniumUraniumUsageFmt = "<white>ウラン使用：</white> <good>{0:0.##}</good><gray>/eウラン（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
@@ -4398,8 +4397,7 @@ Stats
 	FireChanceFmt = "<white>出火：</white>　<good>{0:0}％</good><gray>　確率/タイル</gray>"
 	FireDelayFmt = "<white>発射遅延：</white> <good>{0:0.##}</good> <gray>秒</gray>"
 	FireIntervalFmt = "<white>発射間隔：</white> <good>{0:0.##}</good> <gray>秒</gray>"
-	FireSizeFmt = "<white>開始射撃規模：</white> <good>{0:0}%</good>"
-	FiringHeatGenerationFmt = "<white>発射熱生成：</white> <good>{0:#,0.##}</good><gray>MJ/秒</gray>"
+	FireSizeFmt = "<white>初期射撃規模：</white><good>{0:0}%</good>"
 	FtlMaxEfficiencyRangeFmt = "<white>最適効率：</white>　<good>-{0:0.##}</good><gray> メートル</gray>"
 	FtlMinEfficiencyRangeFmt = "<white>最低効率：</white>　<good>-{0:0.##}</good><gray> メートル</gray>"
 	GoldCapacityFmt = "<white>金容量：</white> <good>{0}</good>"
@@ -4408,7 +4406,6 @@ Stats
 	HeatAbsorptionFmt = "<white>熱吸収：</white> <good>{0:0.#}</good><gray>MJ/秒</gray>"
 	HeatAbsorptionInefficiencyFmt = "<white>吸収の非効率性：</white> <good>+{0:0.#}%</good> <gray>熱</gray>"
 	HeatAbsorptionRadiusFmt = "<white>吸収半径：</white> <good>{0:0.#}</good> <gray>メーター</gray>"
-	HeatPoolAmplificationExponentFmt = "<white>熱プール増幅指数：</white> <good>{0:0.##}</good>"
 	HeatCapacityFmt = "<white>熱容量：</white> <good>{0:#,0.##}</good> <gray>MJ</gray>"
 	HeatDissipationFmt = "<white>放熱：</white> <good>{0:#,0.##}</good><gray>MJ/秒</gray>"
 	HeatFireChanceFmt = "<white>熱しきい値発射率：</white> <good>{0:0.##%}</good>"
@@ -4416,10 +4413,11 @@ Stats
 	HeatGenerationFactorFmt = "<white>熱生成係数：</white> <good>{0:0.###}x</good>"
 	HeatGenerationFmt = "<white>熱生成：</white> <good>{0:#,0.##}</good> <gray>MJ/秒</gray>"
 	HeatGenerationPerPartFmt = "<white>熱生成：</white> <good>{0:#,0.##}</good> <gray>MJ/秒/パーツ</gray>"
-	HeatPerDamageFmt = "<white>熱生成：</white> <good>{0:0.##}</good><gray>MJ/ダメージ</gray>"
-	HeatPerRestockFmt = "<white>熱生成：</white> <good>{0:0.#}</good><gray>MJ/補充</gray>"
-	HeatPerShotFmt = "<white>熱生成：</white> <good>{0:0.#}</good><gray>MJ/発</gray>"
+	HeatPerDamageFmt = "<white>熱生成：</white><good>{0:0.##}</good> <gray>MJ/ダメージ</gray>"
+	HeatPerRestockFmt = "<white>熱生成：</white> <good>{0:0.#}</good> <gray>MJ/補充</gray>"
+	HeatPerShotFmt = "<white>熱生成：</white> <good>{0:0.#}</good> <gray>MJ/発</gray>"
 	HeatPerTileContinuousFmt = "<white>熱を加える：</white> <good>{0:n1}</good> <gray>MJ/タイル/秒</gray>"
+	HeatPoolAmplificationExponentFmt = "<white>熱プール増幅指数：</white><good>{0:0.##}</good>"
 	HeatSpreadDistanceFmt = "<white>熱拡散距離：</white> <good>{0:0.##}</good><gray>メーター</gray>"
 	HeatTransferInefficiencyFmt = "<white>熱伝達の非効率性：</white> <good>+{0:0.#}%</good> <gray>熱</gray>"
 	HitShieldHeatFactorFmt = "<white>ヒットシールド加熱：</white> <good>{0:0.##}%</good>"
@@ -4437,14 +4435,14 @@ Stats
 	MaxDamageRangeFmt = "<white>最大ダメージ：</white> <good>{0:n0}</good><gray>/発 （</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/秒）</gray>"
 	MineAmmoUsageFmt = "<white>弾薬使用：</white> <good>{0:0.##}</good><gray>/機雷 (</gray><good>{1:0.##}</good><gray>/秒)</gray>"
 	MineCapacityFmt = "<white>機雷容量：</white> <good>{0}</good>"
-	MineHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good> <gray>MJ/機雷（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
+	MineHeatGenerationFmt = "<white>熱生成：</white><good>{0:0.##}</good> <gray>MJ/機雷（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
 	MineIronUsageFmt = "<white>鉄使用：</white> <good>{0:0.##}</good><gray>/採掘 (</gray><good>{1:0.##}</good><gray>/秒)</gray>"
 	MinePartCapacityFmt = "<white>容量：</white> <good>{0}</good><gray> パーツ（</gray><good>{1:0.##}</good><gray> 機雷）</gray>"
 	MinePartsFmt = "<white>材料：</white>　<good>{0}</good><gray>　パーツ/機雷</gray>"
 	MinePowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/機雷 (</gray><good>{1:0.##}</good><gray>/秒)</gray>"
 	MineProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray>　機雷/秒</gray>"
 	MissileCopperUsageFmt = "<white>銅使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
-	MissileHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good> <gray>MJ/ミサイル（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
+	MissileHeatGenerationFmt = "<white>熱生成：</white><good>{0:0.##}</good> <gray>MJ/ミサイル（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
 	MissileHeatUsageFmt = "<white>熱使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MissileIronUsageFmt = "<white>鉄使用：</white> <good>{0:0.##}</good><gray>/ミサイル（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	MissileLauncherNotes = <gray>軍需品の統計については、各軍需品の種類に応じた工場を参照してください。</gray>
@@ -4474,7 +4472,7 @@ Stats
 	ProcessorCapacityFmt = "<white>プロセッサ容量：</white>　<good>{0}</good>"
 	ProcessorCoilUsageFmt = "<white>コイル使用：</white> <good>{0:0.##}</good><gray>/プロセッサ（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	ProcessorGoldUsageFmt = "<white>金使用：</white> <good>{0:0.##}</good><gray>/プロセッサ（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
-	ProcessorHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good> <gray>MJ/プロセッサ（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
+	ProcessorHeatGenerationFmt = "<white>熱生成：</white><good>{0:0.##}</good> <gray>MJ/プロセッサ（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
 	ProcessorPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/プロセッサ（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	ProcessorProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> プロセッサ/秒</gray>"
 	PumpPowerUsageFactorFmt = "<white>ポンプ動力使用係数：</white> <good>{0:0.###}x</good>"
@@ -4490,7 +4488,7 @@ Stats
 	RampUpSpeedFactorFmt = "<white>ランプタイム速度係数：</white> <good>{0:0.#}%</good>"
 	RangeFmt = "<white>射程：</white> <good>x{0:0}</good> <gray>メートル</gray>"
 	RangeLimitedFmt = "<white>射程：</white> <good>x{0:0}</good> <gray>メートル（最大</gray>　<good>{1:0}</good><gray>メートル）</gray>"
-	ResonanceHeatPoolFmt = "<white>熱を加える（プール）</white> <good>{0:n1}</good> <gray>MJ/秒 * 増幅^</gray><good>{1:0.##}</good>"
+	ResonanceHeatPoolFmt = "<white>熱を加える（プール）</white> <good>{0:n1}</good><gray><sup>[1]</sup>MJ/秒</gray>"
 	ResonanceTurretHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.#}</good> <gray>MJ/秒 + ポンプ</gray>"
 	Resources = "<white>資源：</white> "
 	RocketNotes = <gray>注意：推進、ランプアップ時間、動力使用、熱生成は、各追加のエクステンダーモジュールで増加します。</gray>
@@ -4501,7 +4499,9 @@ Stats
 	ShieldArcFmt = "<white>シールド範囲：</white> <good>{0:0}°</good>"
 	ShieldDamageFmt = "<white>シールドへのダメージ</white> <good>{0:n0}</good><gray>/発（</gray><good>{1:n0}</good><gray>/秒）</gray>"
 	ShieldDamageOverTimeFmt = "<white>シールドへのダメージ：</white> <good>{0:0}</good> <gray>合計（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
-	ShieldDamagePowerCostBaseFmt = "<white>シールドダメージ動力消費量：</white> <good>{0:+0.#;-0.#}%</good> <gray>ベース</gray>, <good>{1:+0.#;-0.#}%</good><gray> * 増幅n</gray>, <good>{2:+0.#;-0.#}%</good><gray> * 拡張</gray>"
+	ShieldDamagePowerCostAmplificationFmt = "<white>シールドダメージ動力消費量：</white><good>{0:+0.#;-0.#}%</good> <gray>（増幅100％）</gray>"
+	ShieldDamagePowerCostBaseFmt = "<white>シールドダメージ動力消費量：</white><good>{0:+0.#;-0.#}%</good> <gray>ベース</gray>"
+	ShieldDamagePowerCostDilationFmt = "<white>シールドダメージ動力消費量：</white><good>{0:+0.#;-0.#}%</good> <gray>（拡張100％）</gray>"
 	ShieldDistFmt = "<white>シールド距離：</white>　<good>-{0}</good><gray> メートル</gray>"
 	ShieldHPFmt = "<white>シールド強度：</white> <good>{0:n0}</good>"
 	ShieldPenResistFmt = "<white>シールド貫通耐性：</white> <good>-{0}</good> <gray>メートル</gray>"
@@ -4527,7 +4527,7 @@ Stats
 	SizeFmt = "<white>サイズ：</white> <good>{0}x{1}</good> <gray>メートル</gray>"
 	SpreadFmt = "<white>ランダム分散：</white>　<gray>+/-</gray> <good>{0:0.#}°</good>"
 	SteelCapacityFmt = "<white>鋼鉄容量：</white> <good>{0}</good>"
-	SteelHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good> <gray>MJ/鋼鉄（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
+	SteelHeatGenerationFmt = "<white>熱生成：</white><good>{0:0.##}</good> <gray>MJ/鋼鉄（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
 	SteelIronUsageFmt = "<white>鉄使用：</white> <good>{0:0.##}</good><gray>/鋼鉄（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	SteelPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/鋼鉄（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	SteelProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> 鋼鉄/秒</gray>"
@@ -4536,11 +4536,13 @@ Stats
 	StrengthAtMaxRangeFmt = "<white>最大範囲での強さ：</white> <good>{0:0.#}%</good>"
 	StretchRangeFmt = "<white>伸縮範囲：</white> <good>x{0:0}</good> <gray>メートル</gray>"
 	SulfurCapacityFmt = "<white>硫黄容量：</white> <good>{0}</good>"
-	ThermalAmplificationFmt = "<white>熱増幅：</white> <good>{0:+0.#;-0.#}%</good>"
-	ThermalDilationFmt = "<white>熱拡張：</white> <good>{0:+0.#;-0.#}%</good>"
+	ThermalAmplificationFmt = "<white>熱増幅（作動中ランスに起因）：</white>\n<gray>値は熱共鳴ランスそれぞれに供給されます。</gray><monospace>\n <white>1：</white><good>{0,4:+0}%</good> <white>3：</white><good>{2,4:+0}%</good> <white>5：</white><good>{4,4:+0}%</good>\n <white>2：</white><good>{1,4:+0}%</good> <white>4：</white><good>{3,4:+0}%</good> <white>6：</white><good>{5,4:+0}%</good></monospace>"
+	ThermalDilationFmt = "<white>熱膨張（作動中ランスに起因）：</white>\n<gray>値は熱共鳴ランスそれぞれに供給されます。</gray><monospace>\n <white>1：</white><good>{0,4:+0}%</good> <white>3：</white><good>{2,4:+0}%</good> <white>5：</white><good>{4,4:+0}%</good>\n <white>2：</white><good>{1,4:+0}%</good> <white>4：</white><good>{3,4:+0}%</good> <white>6：</white><good>{5,4:+0}%</good></monospace>"
 	ThermalDilationPumpNotes = <gray>注意：接続されたポートが1つの場合、拡張、熱生成、動力使用は半分になります。</gray>
 	ThermalMissileCapacityFmt = "<white>熱ミサイル容量：</white> <good>{0}</good>"
 	ThermalPumpMultiEfficiencyFmt = "<white>マルチユーザー効率：</white> <good>{0:0.#}%</good><gray>^追加ユーザー</gray>"
+	ThermalPumpPowerUsageContinuousFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/ランス（/秒）</gray>"
+	ThermalResonanceLanceNotes = "<gray><sup>1</sup>関連する指数をかけた増幅値に基づいて調整されます。\n<sup>2</sup>膨張値の平方根に基づいて調整されます。</gray>"
 	ThrusterBonusForceFmt = "<white>スラスターボーナスベースフォース：</white> <good>+{0:0.##}</good> <gray>kN</gray>"
 	ThrusterBuffFmt = "<white>スラスターのバフ：</white>　<good>+{0:0}%</good><gray>推進＆使用動力</gray>"
 	ThrusterForceFmt = "<white>推進：</white> <good>{0:#,0.#}</good><gray> kN</gray>"
@@ -4555,16 +4557,16 @@ Stats
 	TractorForceFmt = "<white>トラクターフォース：</white> <good>{0:#,0.#}</good><gray> kN</gray>"
 	TractorOverloadChargeTimeFmt = "<white>過負荷チャージ時間：</white> <good>{0:0.##}</good><gray>秒</gray>"
 	TractorOverloadForceFmt = "<white>過負荷トラクターフォース：</white> <good>{0:#,0.#}</good><gray> kN</gray>"
-	TractorOverloadHeatGenerationFmt = "<white>過負荷熱生成：</white> <good>{0:0.#}</good> <gray>MJ</gray>"
+	TractorOverloadHeatGenerationFmt = "<white>過負荷熱生成：</white><good>{0:0.#}</good> <gray>MJ</gray>"
 	TractorOverloadMinPowerFmt = "<white>過負荷最少動力：</white> <good>{0:0.##}%</good><gray>保管済み</gray>"
 	TractorOverloadRadiusFmt = "<white>過負荷半径：</white> <good>{0:#,0.#}</good><gray>メートル</gray>"
 	TristeelCapacityFmt = "<white>3重鋼鉄容量：</white>　<good>{0}</good>"
-	TristeelHeatGenerationFmt = "<white>熱生成：</white> <good>{0:0.##}</good> <gray>MJ/3重鋼鉄（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
+	TristeelHeatGenerationFmt = "<white>熱生成：</white><good>{0:0.##}</good> <gray>MJ/3重鋼鉄（</gray><good>{1:0.##}</good> <gray>MJ/秒）</gray>"
 	TristeelPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/3重鋼鉄（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	TristeelProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> 3重鋼鉄/秒</gray>"
 	TristeelTritaniumUsageFmt = "<white>トリタニウム使用：</white> <good>{0:0.##}</good><gray>/トリ鋼鉄（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	TritaniumCapacityFmt = "<white>トリタニウム容量：</white>　<good>{0}</good>"
-	TurretExtraHeatGenerationFmt = "<white>タレット熱生成：</white> <good>{0:+0.#;-0.#}</good><gray>MJ/秒</gray>"
+	TurretExtraHeatGenerationFmt = "<white>タレット熱生成：</white><good>{0:+0.#;-0.#}</good> <gray>MJ/秒</gray>"
 	TurretPenResistFmt = "<white>タレット貫通耐性：</white>　<good>-{0}</good><gray>メートル</gray>"
 	TurretSpeedFmt = "<white>タレット速度：</white> <good>{0:0}°</good><gray>/秒</gray>"
 	UraniumCapacityFmt = "<white>ウラン容量：</white> <good>{0}</good>"
