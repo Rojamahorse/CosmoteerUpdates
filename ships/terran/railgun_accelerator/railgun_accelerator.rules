@@ -1,4 +1,4 @@
-Part : <../base_part_terran.rules>/Part
+Part : <../base_med_part_terran.rules>/Part
 {
 	NameKey = "Parts/RailgunAccelerator"
 	IconNameKey = "Parts/RailgunAcceleratorIcon"
@@ -115,7 +115,7 @@ Part : <../base_part_terran.rules>/Part
 			MaxResources = 2000
 			ProvidedValueRange = 0
 			ProvidedValuePerResource = 1
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -290,8 +290,8 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
-		OverflowHeatStorage : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverflowHeatStorage {}
-		OverheatEffects : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverheatEffects {}
+		OverflowHeatStorage : <./Data/ships/terran/base_med_part_terran_overclock.rules>/Part/Components/OverflowHeatStorage {}
+		OverheatEffects : <./Data/ships/terran/base_med_part_terran_overclock.rules>/Part/Components/OverheatEffects {}
 
 		Network_OverflowHeatStorage
 		{
@@ -378,7 +378,7 @@ Part : <../base_part_terran.rules>/Part
 			CompatibleTypes = [ railgun_up ]
 		}
 
-		Port_Thermal_TopLeft : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/BASE_THERMAL_PORT
+		Port_Thermal_TopLeft : <./Data/ships/terran/base_med_part_terran_overclock.rules>/Part/BASE_THERMAL_PORT
 		{
 			OperationalToggle = IsOverclocked
 			BlueprintOperationalToggle = BlueprintNetwork_IsOverclocked

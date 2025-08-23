@@ -14,6 +14,25 @@ HitAttenuator
 
 HitCrew = &HitOperational
 
+StartMediaEffects
+[
+	: /BASE_SOUNDS/AudioExterior
+	{
+		RandomSounds = ["sounds/mining_laser_start_01.wav", "sounds/mining_laser_start_02.wav"]
+		Volume = 1.6
+		Speed = 1
+		MaxConcurrent = 1
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
 BeamMediaEffects
 [
 	// The beam itself.
@@ -99,8 +118,8 @@ BeamMediaEffects
 
 	: /BASE_SOUNDS/AudioExterior
 	{
-		Sound = "mining_beam.wav"
-		Volume = 1
+		Sound = "sounds/mining_laser_loop.wav"
+		Volume = 1.6
 		Speed = 1
 		MaxConcurrent = 1
 		RampUpTime = .5
@@ -115,16 +134,24 @@ BeamMediaEffects
 			UseCustomShapeForDistance = true
 		}
 	}
-
+]
+EndMediaEffects
+[
 	: /BASE_SOUNDS/AudioExterior
 	{
-		Sound = "../ion_beam/ion_beam.wav"
-		Volume = 0.75
-		Speed = 2
+		RandomSounds = ["sounds/mining_laser_finish_01.wav", "sounds/mining_laser_finish_02.wav"]
+		Volume = 5
+		Speed = 1
 		MaxConcurrent = 1
-		MaxConcurrentVolume = 1
-		RampUpTime = .25
-		RampDownTime = .25
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
 	}
 ]
 
@@ -190,5 +217,12 @@ HitOperational
 	MediaEffects
 	[
 		&<particles/mining_beam_hit_sparks.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "sounds/mining_laser_impact_loop.wav"
+				Volume = 1.7
+				SpeedVariation = .1
+			}
 	]
 }

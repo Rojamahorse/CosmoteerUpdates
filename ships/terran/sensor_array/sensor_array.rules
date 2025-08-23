@@ -6,7 +6,7 @@ OVERCLOCK
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_med_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/SensorArray"
 	IconNameKey = "Parts/SensorArrayIcon"
@@ -97,7 +97,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 8000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -663,15 +663,24 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "operating.wav"
-					Volume = .5
+					Sound = "sounds/sensors_exterior_idle.wav"
+					Volume = 1
 					Speed = 1
 					MaxConcurrent = 1
 					MaxConcurrentVolume = &Volume
 					DynamicVolume : ^/0/DynamicVolume
 					{
-						ExteriorVolume = .5
+						ExteriorVolume = .75
 					}
+				}
+				
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/sensors_interior_idle.wav"
+					Volume = 1
+					Speed = 1
+					MaxConcurrent = 1
+					MaxConcurrentVolume = &Volume
 				}
 			]
 		}

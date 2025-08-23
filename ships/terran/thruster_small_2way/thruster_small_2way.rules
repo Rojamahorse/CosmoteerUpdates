@@ -101,7 +101,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 1000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 			ToggleOnResources = &~/Part/FuelUsage
 			ToggleOffResources = 0
 		}
@@ -455,10 +455,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 							"dynamo_on2.png"
 							"dynamo_on3.png"
 							"dynamo_on4.png"
-							"dynamo_on5.png"
-							"dynamo_on6.png"
-							"dynamo_on7.png"
-							"dynamo_on8.png"
 						]
 						Size = [1, 1]
 						AnimationInterval = 0.075
@@ -532,9 +528,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ContinuousEffects
 			ChainedTo = MainThrusterBottom
 			Location = [-2/64, 0]
+			OperationalToggle = IsOverclocked
+			InvertOperationalToggle = true
 			FactorMediaEffectsIntensityWith = MainThrusterBottom
 			IntensityTweenDuration = 0.1
 			MinMediaEffectsIntensity = 1%
+			PlayEndMediaOnNonOperational = false
 			MediaEffects
 			[
 				&<../thruster_small/particles/thruster_plume_small.rules>
@@ -545,9 +544,64 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
-					Volume = .075
-					Speed = 2
-					MaxConcurrentVolume = .15
+					Sound = "../thruster_small/sounds/small_thruster_loop.wav"
+					Volume = .25
+					Speed = 1
+					Db = 5
+				}
+			]
+			EndMediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterBurst
+				{
+					RandomSounds = ["../thruster_small/sounds/small_thruster_finish_01.wav",
+									"../thruster_small/sounds/small_thruster_finish_02.wav"]
+					Volume = 0.25
+					Db = 6
+					Speed = 1
+					SpeedVariation = .1
+				}
+			]
+		}
+		
+		Overclock_ThrustEffectsBottom : ThrustEffectsBottom
+		{
+			InvertOperationalToggle = false
+			MediaEffects
+			[
+				// Particles
+				&../^/0/MediaEffects/0
+				&../^/0/MediaEffects/1
+				&../^/0/MediaEffects/2
+				&../^/0/MediaEffects/3
+				&../^/0/MediaEffects/4
+				
+				// SFX loop
+				: ../^/0/MediaEffects/5
+				{
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+				}
+				
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					RandomSounds
+					[
+						"../thruster_small/sounds/thruster_overclocked_01.wav"
+						"../thruster_small/sounds/thruster_overclocked_02.wav"
+						"../thruster_small/sounds/thruster_overclocked_03.wav"
+						"../thruster_small/sounds/thruster_overclocked_04.wav"
+					]
+				}
+			]
+			EndMediaEffects
+			[
+				: ../^/0/EndMediaEffects/0
+				{
+					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 				}
 			]
 		}
@@ -571,9 +625,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /COMMON_SOUNDS/ThrusterBurst
 				{
-					Volume = .125
-					Speed = 2
-					MaxConcurrentVolume = .25
+					RandomSounds = ["../thruster_small/sounds/small_thruster_start_01.wav",
+									"../thruster_small/sounds/small_thruster_start_02.wav"]
+					Volume = 0.25
+					Db = 6
+					Speed = 1
+					SpeedVariation = .1
 				}
 			]
 		}
@@ -619,29 +676,16 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Density = 1
 		}
 
-		ThrustEffectsRight
+		ThrustEffectsRight : ThrustEffectsBottom
 		{
-			Type = ContinuousEffects
 			ChainedTo = MainThrusterRight
-			Location = [-2/64, 0]
 			FactorMediaEffectsIntensityWith = MainThrusterRight
-			IntensityTweenDuration = 0.1
-			MinMediaEffectsIntensity = 1%
-			MediaEffects
-			[
-				&<../thruster_small/particles/thruster_plume_small.rules>
-				&<../thruster_small/particles/thruster_plume_light_small.rules>
-				&<../thruster_small/particles/thruster_sparks_small.rules>
-				&<../thruster_small/particles/thruster_fire_small.rules>
-				&<../thruster_small/particles/thruster_smoke_small.rules>
+		}
 
-				: /COMMON_SOUNDS/ThrusterRumble
-				{
-					Volume = .075
-					Speed = 2
-					MaxConcurrentVolume = .15
-				}
-			]
+		Overclock_ThrustEffectsRight : Overclock_ThrustEffectsBottom
+		{
+			ChainedTo = MainThrusterRight
+			FactorMediaEffectsIntensityWith = MainThrusterRight
 		}
 
 		BurstTriggerRight
@@ -663,9 +707,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /COMMON_SOUNDS/ThrusterBurst
 				{
-					Volume = .125
-					Speed = 2
-					MaxConcurrentVolume = .25
+					RandomSounds = ["../thruster_small/sounds/small_thruster_start_01.wav",
+									"../thruster_small/sounds/small_thruster_start_02.wav"]
+					Volume = 0.25
+					Db = 6
+					Speed = 1
+					SpeedVariation = .1
 				}
 			]
 		}

@@ -12,7 +12,7 @@ HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 BULLET = &~/Part/Components/BulletEmitter/Bullet
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_med_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/CannonMed"
 	IconNameKey = "Parts/CannonMedIcon"
@@ -186,7 +186,18 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = TriggeredEffects
 			Trigger = AmmoLoader
-			MediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					RandomSounds = ["sounds/cannon_reload_01.wav",
+									"sounds/cannon_reload_02.wav",
+									"sounds/cannon_reload_03.wav",
+									"sounds/cannon_reload_04.wav"]
+					Volume = 1.5
+					SpeedVariation = .05
+	}
+			]
 		}
 
 		External_Walls_Graphics

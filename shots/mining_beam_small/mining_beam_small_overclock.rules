@@ -20,6 +20,26 @@ Beam : BASE
     	MediaEffects = &~/Beam/HitOperational/MediaEffects
     }
     
+	StartMediaEffects
+	[
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "sounds/mining_laser_overclocked_start.wav"
+			Volume = 1.6
+			Speed = 1
+			MaxConcurrent = 1
+
+			DynamicVolume : ^/0/DynamicVolume
+			{
+				UseCustomShapeForDistance = true
+			}
+			DynamicFilter : ^/0/DynamicFilter
+			{
+				UseCustomShapeForDistance = true
+			}
+		}
+]
+	
 	BeamMediaEffects
 	[
 		// The beam itself.
@@ -106,13 +126,13 @@ Beam : BASE
 	
 		: /BASE_SOUNDS/AudioExterior
 		{
-			Sound = "mining_beam.wav"
-			Volume = 1
+			Sound = "sounds/mining_laser_overclocked_loop.wav"
+			Volume = 1.6
 			Speed = 1
 			MaxConcurrent = 1
 			RampUpTime = .5
 			RampDownTime = .5
-	
+
 			DynamicVolume : ^/0/DynamicVolume
 			{
 				UseCustomShapeForDistance = true
@@ -121,17 +141,6 @@ Beam : BASE
 			{
 				UseCustomShapeForDistance = true
 			}
-		}
-	
-		: /BASE_SOUNDS/AudioExterior
-		{
-			Sound = "../ion_beam/ion_beam.wav"
-			Volume = 0.75
-			Speed = 2
-			MaxConcurrent = 1
-			MaxConcurrentVolume = 1
-			RampUpTime = .25
-			RampDownTime = .25
 		}
 	]
 	
@@ -197,6 +206,13 @@ Beam : BASE
 		]
 		MediaEffects
 		[
+			: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "sounds/mining_laser_overclocked_impact.wav"
+					Volume = 1.7
+					SpeedVariation = .1
+				}
+
 			&<particles/mining_beam_oc_hit_sparks.rules>
 			{
 				Type = Quad

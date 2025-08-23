@@ -74,9 +74,12 @@ Components
 
 						: /BASE_SOUNDS/AudioExterior
 						{
-							Sound = "discharge.wav"
+							RandomSounds = ["sounds/disruptor_discharge_01.wav",
+											"sounds/disruptor_discharge_02.wav",
+											"sounds/disruptor_discharge_03.wav",
+											"sounds/disruptor_discharge_04.wav"]
 							Volume = 1
-							SpeedVariation = .2
+							SpeedVariation = .15
 						}
 					]
 				}
@@ -95,9 +98,12 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "disruptor_bolt_hit.wav"
-					Volume = .4
-					SpeedVariation = .4
+					RandomSounds = ["sounds/disruptor_impact_01.wav",
+									"sounds/disruptor_impact_02.wav",
+									"sounds/disruptor_impact_03.wav",
+									"sounds/disruptor_impact_04.wav"]
+					Volume = 1
+					SpeedVariation = .15
 				}
 			]
 		}
@@ -119,9 +125,12 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "disruptor_bolt_hit.wav"
-					Volume = .3
-					SpeedVariation = .4
+					RandomSounds = ["sounds/disruptor_impact_01.wav",
+									"sounds/disruptor_impact_02.wav",
+									"sounds/disruptor_impact_03.wav",
+									"sounds/disruptor_impact_04.wav"]
+					Volume = 1
+					SpeedVariation = .15
 				}
 			]
 		}

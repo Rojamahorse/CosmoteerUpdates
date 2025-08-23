@@ -1,4 +1,4 @@
-Part : <../base_part_terran.rules>/Part
+Part : <../base_large_part_terran.rules>/Part
 {
 	NameKey = "Parts/HyperdriveLarge"
 	IconNameKey = "Parts/HyperdriveLargeIcon"
@@ -72,7 +72,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = battery
 			MaxResources = 32000
 			InitToMaxResources = 0
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -98,7 +98,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = hyperium
 			MaxResources = 80
 			UITileRect = [1.5 + 7/64, 1.5 + 7/64, 1 - 14/64, 1 - 14/64]
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MineDeliver
 			DropResourcesWhenDestroyed = true
 		}
 		HyperiumConsumer
@@ -110,6 +110,7 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
+
 
 		FtlDrive
 		{
@@ -131,7 +132,7 @@ Part : <../base_part_terran.rules>/Part
 
 				: /BASE_SOUNDS/AudioExteriorZoomless
 				{
-					Sound = "../../common/ftl_zap_out.wav"
+					Sound = "../../common/sounds/ftl_zap_out.wav"
 					Volume = 1
 					MaxConcurrentVolume = 1
 					Speed = 1
@@ -155,7 +156,7 @@ Part : <../base_part_terran.rules>/Part
 				: /BASE_SOUNDS/AudioExteriorZoomless
 				{
 					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .8
-					Sound = "../../common/ftl_zap_in.wav"
+					Sound = "../../common/sounds/ftl_zap_in.wav"
 					Volume = 1
 					MaxConcurrentVolume = 1
 					Speed = 1
@@ -179,6 +180,37 @@ Part : <../base_part_terran.rules>/Part
 			ResourceStorages = [BatteryStorage]
 			ToggleOnResources = &../BatteryStorage/MaxResources
 			ToggleOffResource = (&../BatteryStorage/MaxResources) - 1
+		}
+
+		IsBatteryFull
+		{
+			Type = ThresholdToggle
+			ValueFrom = BatteryStorage
+			MinAmount = 100%
+		}
+		PlayFullBatteryEffectsTrigger // For turning off force fire
+		{
+			Type = ToggleTrigger
+			Toggle = IsBatteryFull
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+		FullBatteryEffects
+		{
+			Type = TriggeredEffects
+			Trigger = PlayFullBatteryEffectsTrigger
+			Location = [2, 2]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorZoomless
+				{
+					Sound = "../../common/hyperdrive_zap.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 3
+				}
+			]
 		}
 
 		Graphics
@@ -529,12 +561,21 @@ Part : <../base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "../hyperdrive_small/spin.wav"
+					Sound = "sounds/large_hyperdrive_spin.wav"
 					Volume = .5
 					Speed = 2.5
 					MaxConcurrent = 0
 					VolumeOverIntensity = 1
 					SpeedOverIntensity = [0, 1]
+				}
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "sounds/large_hyperdrive_rumble.wav"
+					Volume = 1
+					Speed = 1
+					MaxConcurrent = 1
+					VolumeOverIntensity = 1
 				}
 			]
 		}
@@ -930,8 +971,8 @@ Part : <../base_part_terran.rules>/Part
 			Type = ToggleEffects
 			Location = [2, 2]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOffLarge
 		}
 
 		ScorchedTrigger

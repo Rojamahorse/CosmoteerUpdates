@@ -48,15 +48,15 @@ HailingFailedIcon
 
 HailingSound
 {
-    Sound = "hailing_shortened.wav"
+    Sound = "sounds/hailing.wav"
 }
 HailAnsweredSound
 {
-    Sound = "hail_answered.wav"
+    Sound = "sounds/hail_answered.wav"
 }
 HailFailedSound
 {
-    Sound = "hail_failed.wav"
+    Sound = "sounds/hail_failed.wav"
 }
 
 CursorValid
@@ -180,7 +180,7 @@ HoldGuiOnAICallDuration = 3
 //Truce breaking animation
 TruceBrokenSound
 {
-	Sound = "../missions/mission_failed.wav"
+	Sound = "../missions/sounds/mission_failed.wav"
 }
 TruceBrokenTitleColorAnim
 [
@@ -212,3 +212,14 @@ TruceBrokenFameAnimOut
 TruceBrokenDelayBeforeFameDuration = .6
 TruceBrokenFameTickDuration = .5
 TruceBrokenHoldAnimDelayOut = 1.4
+LoopCommsWaveEmptySound
+{
+	Sound = "sounds/UI_comms_wave_empty.wav"
+	Volume = 0.4
+}
+LoopCommsWaveTargettingSound
+{
+	Sound = "sounds/UI_comms_wave_lock.wav"
+	Volume = 0.4
+}
+CommsWaveFalloffDuration = 0.3

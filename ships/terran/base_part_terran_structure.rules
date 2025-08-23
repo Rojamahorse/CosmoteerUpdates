@@ -6,15 +6,29 @@ Part : <../base_part.rules>/Part
 		&<../common/particles/salvage_progress_sparks.rules>
 		&<../common/particles/salvage_progress_ship_smoke.rules>
 		&<../common/particles/salvage_progress_ship_quad.rules>
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "../common/sounds/metal_deconstruct_loop.wav"
+			Volume = 1
+			Db = -2
+			VolumeOverIntensity = [0.5, 1]
+			SpeedOverIntensity = [2, 3]
+			SpeedVariation = .15
+			RampUpTime = .1
+			RampDownTime = .2
+			MaxConcurrent = 1
+		}
 	]
 
 	ConstructionFinishedMediaEffects
 	[
 		: /BASE_SOUNDS/AudioExterior
 		{
-			Sound = "../common/construction_complete_structure.wav"
-			Speed = 0.95
-			SpeedVariation = 0.15
+			RandomSounds = ["../common/sounds/structure_construct_01.wav",
+							"../common/sounds/structure_construct_02.wav",
+							"../common/sounds/structure_construct_03.wav"]
+			Speed = 1
+			SpeedVariation = 0.1
 		}
 	]
 
@@ -32,11 +46,23 @@ Part : <../base_part.rules>/Part
 				&<../common/particles/salvage_complete_ship_flash.rules>
 				&<../common/particles/salvage_complete_ship_smoke.rules>
 
-				: /BASE_SOUNDS/AudioExteriorDetail
+				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "../common/salvage_finish.wav"
-					Volume = 0.75
-					SpeedVariation = .25
+					RandomSounds = ["../common/sounds/metal_deconstruct_small_01.wav",
+									"../common/sounds/metal_deconstruct_small_02.wav",
+									"../common/sounds/metal_deconstruct_small_03.wav"]
+					Volume = 1.25
+					SpeedVariation = .15
+				}
+				
+				: /BASE_SOUNDS/AudioInterior
+				{
+					RandomSounds = ["../common/sounds/structure_deconstruct_01.wav",
+									"../common/sounds/structure_deconstruct_02.wav",
+									"../common/sounds/structure_deconstruct_03.wav",
+									"../common/sounds/structure_deconstruct_04.wav"]
+					Speed = 1
+					SpeedVariation = 0.1
 				}
 			]
 		}

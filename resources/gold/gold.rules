@@ -65,6 +65,6 @@ StackSprites
 	}
 ]
 
-StackReceiveMediaEffects = &/COMMON_EFFECTS/ElementDeliver
-StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+StackReceiveMediaEffects = &/COMMON_EFFECTS/MetalDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/MetalPickup
 NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

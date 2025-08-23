@@ -144,10 +144,13 @@ HitOperational
 
 		: /BASE_SOUNDS/AudioExterior
 		{
-			RandomSounds = ["chaingun_hit_01.wav", "chaingun_hit_02.wav", "chaingun_hit_03.wav", "chaingun_hit_04.wav"]
+			RandomSounds = ["sounds/chain_gun_impact_01.wav", 
+							"sounds/chain_gun_impact_02.wav", 
+							"sounds/chain_gun_impact_03.wav", 
+							"sounds/chain_gun_impact_04.wav",
+							"sounds/chain_gun_impact_05.wav"]
 			Speed = 1
-			Volume = .3
-			SpeedVariation = .4
+			SpeedVariation = .2
 			MaxConcurrent = 30
 		}
 	]

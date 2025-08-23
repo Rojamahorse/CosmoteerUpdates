@@ -19,9 +19,32 @@ Components
 		ToggleOffResources = 8
 		DelayBeforeReadyToUse = .5
 		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
-		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
+		ReceiveResourceMediaEffects
+		[
+							: /BASE_SOUNDS/AudioInterior
+			{
+				RandomSounds = ["../sounds/launcher_reload_01.wav",
+								"../sounds/launcher_reload_02.wav",
+								"../sounds/launcher_reload_03.wav"]
+				SpeedVariation = .1
+			}
+		]
 		DropResourcesWhenDestroyed = true
 		DropResourcesWhenRemoved = true
+	}
+	FullStorageEffect
+	{
+		Type = ToggleEffects
+		Toggle = MissileStorage
+		ToggledOnMediaEffects
+		 [
+			: /BASE_SOUNDS/AudioInterior
+			{
+				RandomSounds = ["../sounds/launcher_ready_01.wav",
+								"../sounds/launcher_ready_02.wav",
+								"../sounds/launcher_ready_03.wav"]
+			}
+		 ]
 	}
 	Consumer
 	{
@@ -121,8 +144,9 @@ Components
 
 			: /BASE_SOUNDS/AudioExterior
 			{
-				Sound = "../shoot.wav"
-				Speed = 0.25
+				RandomSounds = ["../sounds/launcher_launch_01.wav",
+								"../sounds/launcher_launch_02.wav",
+								"../sounds/launcher_launch_03.wav"]
 				SpeedVariation = .1
 			}
 		]
@@ -288,7 +312,10 @@ Components
 
 					: /BASE_SOUNDS/AudioExterior
 					{
-						Sound = "./Data/shots/disruptor_bolt/discharge.wav"
+						RandomSounds = ["./Data/shots/disruptor_bolt/sounds/disruptor_discharge_01.wav",
+										"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_02.wav",
+										"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_03.wav",
+										"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_04.wav"]
 						Volume = 1
 						SpeedVariation = .2
 					}

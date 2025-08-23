@@ -15,6 +15,25 @@ HitAttenuator
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
 
+StartMediaEffects
+[
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/ion_beam_start.wav"
+		Volume = 1
+		MaxConcurrent = 1
+		MaxConcurrentVolume = 1
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
 BeamMediaEffects
 [
 	// The beam itself.
@@ -102,13 +121,31 @@ BeamMediaEffects
 
 	: /BASE_SOUNDS/AudioExterior
 	{
-		Sound = "ion_beam.wav"
+		Sound = "sounds/ion_beam_loop.wav"
 		Volume = 1
 		MaxConcurrent = 1
 		MaxConcurrentVolume = 1
 		RampUpTime = .25
 		RampDownTime = .25
 
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
+EndMediaEffects
+[
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/ion_beam_finish.wav"
+		Db = 6
+		MaxConcurrent = 1
+		MaxConcurrentVolume = 1
 		DynamicVolume : ^/0/DynamicVolume
 		{
 			UseCustomShapeForDistance = true

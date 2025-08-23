@@ -62,9 +62,12 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "laser_bolt_small_hit.wav"
-					Volume = .4
-					SpeedVariation = .4
+					RandomSounds = ["sounds/laser_blaster_impact_01.wav",
+									"sounds/laser_blaster_impact_02.wav",
+									"sounds/laser_blaster_impact_03.wav",
+									"sounds/laser_blaster_impact_04.wav"]
+					Volume = 1
+					SpeedVariation = .15
 				}
 
 				: /BASE_SHAKE
@@ -96,9 +99,12 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "laser_bolt_small_hit.wav"
-					Volume = .3
-					SpeedVariation = .4
+					RandomSounds = ["sounds/laser_blaster_impact_01.wav",
+									"sounds/laser_blaster_impact_02.wav",
+									"sounds/laser_blaster_impact_03.wav",
+									"sounds/laser_blaster_impact_04.wav"]
+					Volume = 1
+					SpeedVariation = .15
 				}
 			]
 		}

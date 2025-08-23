@@ -71,9 +71,20 @@ Part : <../base_part_terran.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/common_effects/sounds/big_part_destroyed.wav"
+					RandomSounds = ["./Data/common_effects/sounds/large_part_destroyed_01.wav",
+									"./Data/common_effects/sounds/large_part_destroyed_02.wav",
+									"./Data/common_effects/sounds/large_part_destroyed_03.wav"]
 					Volume = 1
-					SpeedVariation = .25
+					SpeedVariation = .15
+				}
+				
+				: /BASE_SOUNDS/AudioExterior				
+				{					
+					RandomSounds = ["sounds/explosion_weapon/explosion_weapon_01.wav", 
+									"sounds/explosion_weapon/explosion_weapon_02.wav", 
+									"sounds/explosion_weapon/explosion_weapon_03.wav"]
+					Volume = 0.5
+					SpeedVariation = .15
 				}
 
 				: /BASE_SHAKE

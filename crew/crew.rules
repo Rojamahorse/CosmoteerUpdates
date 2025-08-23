@@ -2120,6 +2120,14 @@ Jets
 			&<particles/thruster_plume_crew.rules>
 			&<particles/thruster_plume_light_crew.rules>
 			&<particles/thruster_smoke_crew.rules>
+			: /BASE_SOUNDS/AudioExteriorDetail
+			{
+				Sound = "sounds/pod_propulsion_loop.wav"
+				RampUpTime = 0.25
+				MaxConcurrent = 4
+				MaxConcurrentVolume = 0.5
+				Volume = 0.3
+			}
 		]
 	}
 
@@ -2402,11 +2410,12 @@ SalvageBeams
 		[
 			: /BASE_SOUNDS/AudioExterior
 			{
-				Sound = "salvage.wav"
-				Volume = 0.3
+				Sound = "welding_machine.wav"
+				Volume = 2
+				Db = -3
 				//MaxConcurrentVolume = &Volume
 				MaxConcurrent = 1
-				//SpeedVariation = .25
+				//SpeedVariation = 0.2
 				RampUpTime = .5
 				RampDownTime = .5
 			}

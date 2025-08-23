@@ -1,0 +1,70 @@
+Part : <../base_part.rules>/Part
+{
+	Size = [1, 1]
+	Density = 10
+	MaxHealth = 10000
+	Flammable = false
+	UnderlyingPartPerTile = ""
+	CreatePartPerTileWhenGrabbed = ""
+	AllowedDoorLocations = []
+	IsRotateable = true
+	IgnoreRotationForMirroredSelection = true
+	CrewSpeedFactor = 0
+	TypeCategories = [asteroid]
+	InitialPenetrationResistance = 10
+	ContinuingPenetrationResistance = 10
+
+	SalvageProgressMediaEffectsTimeout = 1
+	SalvageProgressMediaEffects
+	[
+		&<../common/particles/salvage_progress_sparks.rules>
+		&<../common/particles/salvage_progress_asteroid_dust.rules>
+		&<../common/particles/salvage_progress_asteroid_quad.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "../common/sounds/asteroid_damage_loop.wav"
+				Volume = 0.75
+				SpeedOverIntensity = [1, 3] // Intensity over progress
+				VolumeOverIntensity = 1
+				RampUpTime = .2
+				RampDownTime = .5
+				MaxConcurrent = 0
+				
+				DynamicVolume
+				{
+					MinDistance = 0
+					MaxDistance = 10
+					DistanceFalloff = 2
+
+					MinZoom = 1
+					MaxZoom = 70
+					ZoomFalloff = 5
+				}
+			}
+	]
+
+	Components : ^/0/Components
+	{
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			Location = [.5, .5]
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				&<../common/particles/salvage_complete_asteroid_pebbles.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["../common/sounds/asteroid_deconstruct_small_01.wav",
+									"../common/sounds/asteroid_deconstruct_small_02.wav",
+									"../common/sounds/asteroid_deconstruct_small_03.wav"]
+					Volume = 1.1
+					SpeedVariation = .1
+				}
+			]
+		}
+	}
+}

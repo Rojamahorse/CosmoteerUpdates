@@ -1,4 +1,4 @@
-Part : <../base_part_terran.rules>/Part
+Part : <../base_med_part_terran.rules>/Part
 {
 	NameKey = "Parts/FactoryDiamond"
 	IconNameKey = "Parts/FactoryDiamondIcon"
@@ -92,7 +92,7 @@ Part : <../base_part_terran.rules>/Part
 			MaxResources = 20
 			DelayBeforeReadyToUse = 0.7
 			UITileRect = [.5 + 7/64, .4 + 7/64, 1 - 14/64, 1 - 14/64]
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MineDeliver
 			DropResourcesWhenDestroyed = true
 			AllowExternalPickupAndDelivery = true
 			DeliveryLocation = [1, 2.2]
@@ -108,6 +108,60 @@ Part : <../base_part_terran.rules>/Part
 			DefaultPriority = &/PRIORITIES/Factory_Supply
 			OperationalToggle = CommandConsumptionToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+
+		//Player media effects when carbon levels become zero (door opened) or when they become 20 (door closed)
+		HasFullCarbon
+		{
+			Type = ThresholdToggle
+			ValueFrom = CarbonStorage
+			MinAmount = 100%
+		}
+		HasNoCarbon
+		{
+			Type = ThresholdToggle
+			ValueFrom = CarbonStorage
+			MaxAmount = 0%
+		}
+		FullCarbonTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = HasFullCarbon
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+		NoCarbonTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = HasNoCarbon
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+		DoorCloseSounds
+		{
+			Type = TriggeredEffects
+			Trigger = FullCarbonTrigger
+			Location = [1, 1]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/diamond_factory_gate_close.wav"
+				}
+			]
+		}
+		DoorOpenSounds
+		{
+			Type = TriggeredEffects
+			Trigger = NoCarbonTrigger
+			Location = [1, 1]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/diamond_factory_gate_open.wav"
+				}
+			]
 		}
 
 		DiamondStorage
@@ -131,7 +185,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 2000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -182,11 +236,16 @@ Part : <../base_part_terran.rules>/Part
 			Location = [1, 1.5]
 			MediaEffects
 			[
-				: /BASE_SOUNDS/AudioInterior
+				: /BASE_SOUNDS/AudioInteriorDetail
 				{
-					Sound = "../factory_ammo/bullet_create.wav"
-					Volume = .1
-					Speed = .5
+					RandomSounds = ["sounds/diamond_factory_putdown_01.wav",
+									"sounds/diamond_factory_putdown_02.wav",
+									"sounds/diamond_factory_putdown_03.wav",
+									"sounds/diamond_factory_putdown_04.wav",
+									"sounds/diamond_factory_putdown_05.wav"]
+					Volume = 1.15
+					Db = -2
+					Speed = 1
 					SpeedVariation = .05
 				}
 			]
@@ -653,8 +712,25 @@ Part : <../base_part_terran.rules>/Part
 			Type = ToggleEffects
 			Location = [1, 1.5]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+		
+		ConvertingSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [1, 1]
+			OperationalToggle = ResourceConverter
+			MaxMediaEffectsZoom = 4
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/diamond_factory_run.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 1
+				}
+			]
 		}
 
 		ScorchedTrigger

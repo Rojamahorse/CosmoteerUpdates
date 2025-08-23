@@ -289,11 +289,12 @@ FtlEffects
 	[
 		: /BASE_SOUNDS/AudioExteriorZoomless
 		{
-			Sound = "common/ftl_jump_out.wav"
+			Sound = "common/sounds/ftl_jump_out.wav"
 			Volume = 2
 			MaxConcurrentVolume = 1
 			Speed = 1
 			MaxConcurrent = 3
+			OnlyWhenInSight = false
 		}
 	]
 	JumpOutDelay = [0, .5]
@@ -302,11 +303,12 @@ FtlEffects
 	[
 		: /BASE_SOUNDS/AudioExteriorZoomless
 		{
-			Sound = "common/ftl_jump_in.wav"
+			Sound = "common/sounds/ftl_jump_in.wav"
 			Volume = 1
 			MaxConcurrentVolume = 1
 			Speed = 1
 			MaxConcurrent = 3
+			OnlyWhenInSight = false
 		}
 	]
 	JumpInDelay = [0, .5]

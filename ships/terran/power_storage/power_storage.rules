@@ -94,7 +94,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			MinResourcesPickUp = 1000
 			MaxResourcesPickUp = 1000
 			IsIntermediateStorage = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			GiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryPickup
 		}
 
 		Overclock_BatteryProviderStorage

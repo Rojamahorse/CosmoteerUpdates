@@ -42,6 +42,8 @@ Misc
 	SteamNotInitialized = "<bad>Cosmoteer was unable to connect to the Steam client.</bad>\n\n"\
 	                      "Features such as online multiplayer, Steam Workshop, and cloud saves will not function. You may also find that your saved games and ships are missing because they are associated with your Steam user ID, which could not be determined.\n\n"\
 	                      "Please make sure that the Steam client is running and up-to-date, that you are not running it in administrator mode or as a different OS user, and that you have a valid Cosmoteer license on Steam."
+	SteamTimelineShipDeathTitle = "Ship Destroyed"
+	SteamTimelineShipDeathDesc = "{0} was destroyed"
 }
 
 Wishlist
@@ -1517,10 +1519,6 @@ Settings
 		PaintLbl = "Paint Editor"
 		CrewLbl = "Crew Manager"
 		ResourcesLbl = "Resource Manager"
-
-		ShowStatBars = "Show Recommendation Bars"
-		ShowStatBarsTip = "If checked, then the crew, power, and ammo recommendation bars will be displayed in the ship editor. "\
-		                  "The Hyperdrive efficiency percentage will always be displayed even if this option is unchecked."
 
 		BuildShowNearestPaths = "Show Nearest Crew/Power/Ammo"
 		BuildShowNearestPathsTip = "If checked, then the path and distance to the nearest sources for crew, power, and ammo will be displayed while building ships."
@@ -3354,6 +3352,8 @@ BuildBox
 	ShowResourceDeliveries = "Show Resource Deliveries"
 	ShowResourceDeliveriesTip = "If checked, scheduled deliveries of construction resources will be displayed."
 
+	NotInBlueprintMode = "Not available in blueprint mode."
+
 	InvalidReasons
 	{
 		NotContiguous = "<bad>Not connected</bad>"
@@ -4259,7 +4259,7 @@ Parts
 	ReactorLargeIcon = "Large Reactor"
 	ReactorLargeDesc = "A power generator that produces triple-capacity plasma batteries needed to power many of the ship's systems."
 	ReactorLargeOverclock = "Overclocked Large Reactor Core"
-	ReactorLargeOverclockDesc = "Increases maximum power capacity and generation rate. Additionally increases battery size from triple-capacity to quadruple-capacity. Produces waste heat while generating power."
+	ReactorLargeOverclockDesc = "Increases generation rate. Additionally increases battery size from triple-capacity to quadruple-capacity. Produces waste heat while generating power."
 
 	SensorArray = "Sensor Array"
 	SensorArrayIcon = "Sensors"
@@ -4373,7 +4373,7 @@ Parts
 	MiningLaserSmallIcon = &MiningLaserSmall
 	MiningLaserSmallDesc = "A pair of roof-mounted precision laser beams that can quickly extract resources from even the toughest asteroids. Also effective at salvaging ships, and in a pinch can be used as a short-range weapon."
 	MiningLaserSmallOverclock = "Overclocked Mining Laser"
-	MiningLaserSmallOverclockDesc = "Adds an area-of-effect to both mining beams. Produces waste heat when firing."
+	MiningLaserSmallOverclockDesc = "Adds an area-of-effect to both mining beams at the cost of slower precision mining. Produces waste heat when firing."
 
 	TractorBeamEmitter = "Tractor Beam Emitter"
 	TractorBeamEmitterIcon = "Tractor Beam"
@@ -4835,6 +4835,7 @@ Stats
 	ShrapnelFieldBulletDamageFmt = "<white>Shrapnel Field Bullet Damage:</white> <good>{0:0}</good><gray>/meter</gray>"
 	ShrapnelFieldDamagePoolFmt = "<white>Shrapnel Field Damage Pool:</white> <good>{0:0}</good>"
 	ShrapnelFieldLifetimeFmt = "<white>Shrapnel Field Duration:</white> <good>{0:0.#}</good> <gray>seconds</gray>"
+	Lifetime = "<white>Lifetime:</white> <good>{0:0.#}</good> <gray>seconds</gray>"
 	ShieldHPFmt = "<white>Shield Strength:</white> <good>{0:n0}</good>"
 	ShieldPenResistFmt = "<white>Shield Pen. Resist:</white> <good>-{0}</good> <gray>meters</gray>"
 	ShieldArcFmt = "<white>Shield Arc:</white> <good>{0:0}°</good>"
@@ -5384,6 +5385,7 @@ Tutorials
 		Blueprints = "Many weapons and other ship parts <good>cannot be constructed</good> until you acquire the necessary blueprints."
 		Purchase = "To buy blueprints, hail a space station and select the <white>Purchase Blueprints</white> tab."
 		Permanent = "Buying a blueprint <good>permanently unlocks</good> the ability to construct that type of part."
+		Overclocks = "Many parts also have more-powerful <orange>Overclock Modes</orange> which must be purchased separately from the base blueprints."
 	}
 
 	Thrusters
@@ -5643,6 +5645,7 @@ Tutorials
 		Title = "Overclocking"
 		Overview1 = "Many parts can be <bad>overclocked</bad>, changing their functionality in powerful ways, but causing them to generate <orange>waste heat</orange>."
 		Overview2 = "To see what overclocking a part will do, hover the mouse cursor over it to show the tooltip, and then press <btn id='Design.ToggleSecondaryTooltip'/>."
+		Blueprints = "Before you can overclock a part, you must first purchase the <fame_color>Overclock Blueprint</fame_color> from a space station."
 		HeatManagement = "<good>TIP:</good> Overclocked parts should be connected to a <good>thermal network</good> to safely store or radiate its waste heat, or else the waste heat will turn into dangerous <orange>hull heat</orange>."
 	}
 

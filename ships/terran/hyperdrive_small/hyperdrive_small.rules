@@ -64,7 +64,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = battery
 			MaxResources = 16000
 			InitToMaxResources = 0
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -90,7 +90,7 @@ Part : <../base_part_terran.rules>/Part
 			ResourceType = hyperium
 			MaxResources = 20
 			UITileRect = [.5 + 7/64, .5 + 7/64, 1 - 14/64, 1 - 14/64]
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MineDeliver
 			DropResourcesWhenDestroyed = true
 		}
 		HyperiumConsumer
@@ -123,7 +123,7 @@ Part : <../base_part_terran.rules>/Part
 
 				: /BASE_SOUNDS/AudioExteriorZoomless
 				{
-					Sound = "../../common/ftl_zap_out.wav"
+					Sound = "../../common/sounds/ftl_zap_out.wav"
 					Volume = 1
 					MaxConcurrentVolume = 1
 					Speed = 1
@@ -147,7 +147,7 @@ Part : <../base_part_terran.rules>/Part
 				: /BASE_SOUNDS/AudioExteriorZoomless
 				{
 					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .8
-					Sound = "../../common/ftl_zap_in.wav"
+					Sound = "../../common/sounds/ftl_zap_in.wav"
 					Volume = 1
 					MaxConcurrentVolume = 1
 					Speed = 1
@@ -171,6 +171,37 @@ Part : <../base_part_terran.rules>/Part
 			ResourceStorages = [BatteryStorage]
 			ToggleOnResources = &../BatteryStorage/MaxResources
 			ToggleOffResource = (&../BatteryStorage/MaxResources) - 1
+		}
+
+		IsBatteryFull
+		{
+			Type = ThresholdToggle
+			ValueFrom = BatteryStorage
+			MinAmount = 100%
+		}
+		PlayFullBatteryEffectsTrigger // For turning off force fire
+		{
+			Type = ToggleTrigger
+			Toggle = IsBatteryFull
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+		FullBatteryEffects
+		{
+			Type = TriggeredEffects
+			Trigger = PlayFullBatteryEffectsTrigger
+			Location = [1, 1]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorZoomless
+				{
+					Sound = "../../common/hyperdrive_zap.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 3
+				}
+			]
 		}
 
 		Graphics
@@ -524,7 +555,7 @@ Part : <../base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "spin.wav"
+					Sound = "sounds/small_hyperdrive_spin.wav"
 					Volume = .5
 					Speed = 2.5
 					MaxConcurrent = 0

@@ -131,7 +131,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 2000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -196,12 +196,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Trigger = ResourceConverter
 			Location = [1, 1]
 			MediaEffects
-			[
-				: /BASE_SOUNDS/AudioInterior
+			[			
+				: /BASE_SOUNDS/AudioInteriorDetail
 				{
-					Sound = "bullet_create.wav"
-					Volume = .075
-					SpeedVariation = .1
+					RandomSounds = ["sounds/cannon_ammo_factory_putdown_01.wav",
+									"sounds/cannon_ammo_factory_putdown_02.wav",
+									"sounds/cannon_ammo_factory_putdown_03.wav",
+									"sounds/cannon_ammo_factory_putdown_04.wav",
+									"sounds/cannon_ammo_factory_putdown_05.wav",
+									"sounds/cannon_ammo_factory_putdown_06.wav",
+									"sounds/cannon_ammo_factory_putdown_07.wav"]
+					Volume = 1
+					Db = -2
+					Speed = 1
+					SpeedVariation = .05
 				}
 			]
 		}
@@ -723,6 +731,25 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Toggle = IsOperational
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+		
+		OperationSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/cannon_ammo_factory_idle.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 1
+				}
+			]
 		}
 
 		ScorchedToggle

@@ -66,15 +66,25 @@ ResourceSink
 	[
     	&<particles/fire_extinguisher.rules>
 
-    	: /BASE_SOUNDS/AudioInterior
-    	{
-    		Sound = "fire_extinguisher.wav"
-    		Volume = .25
-    		MaxConcurrentVolume = &Volume
-    		RampUpTime = .05
-    		RampDownTime = .05
-    		MaxConcurrent = 1
-    	}
+		: /BASE_SOUNDS/AudioInterior
+		{
+			Sound = "fire_extinguish_01.wav"
+			Volume = .3
+			MaxConcurrentVolume = &Volume
+			RampUpTime = .05
+			RampDownTime = .05
+			MaxConcurrent = 1
+			Delay = 0.165
+			Start = [0, 5]
+		}
+
+		: /BASE_SOUNDS/AudioInterior
+		{
+			RandomSounds = ["fire_extinguish_start_01.wav", "fire_extinguish_start_02.wav", "fire_extinguish_start_03.wav"]
+			Volume = .3
+			MaxConcurrentVolume = &Volume
+			MaxConcurrent = 2
+		}
     ]
     DeliveryHitEffects
     [

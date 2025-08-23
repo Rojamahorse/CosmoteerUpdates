@@ -64,16 +64,6 @@ StackSprites
 	}
 ]
 
-StackReceiveMediaEffects
-[
-	: /BASE_SOUNDS/AudioInterior
-	{
-		Sound = "./Data/common_effects/sounds/metal_deliver.wav"
-		Volume = 0.75
-		Speed = 2
-		SpeedVariation = .05
-	}
-]
-
-StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+StackReceiveMediaEffects = &/COMMON_EFFECTS/ProcessorDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/ProcessorPickup
 NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

@@ -12,7 +12,26 @@ PenetratesStructure = false
 ShieldCollisions = { Shields=false; }
 InitHitLengthResetDelay = 1
 BeamMediaEffectsIntensity = { BaseValue=1; EffectScaleExponent=1; }
+StartMediaEffects
+[
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/tractor_beam_start.wav"
+		Volume = 1 / (&<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/BeamCount)
+		MaxConcurrent = 0 // Unlimited
+		MaxConcurrentVolume = 1
+		VolumeOverIntensity = 1
 
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
 BeamMediaEffects
 [
 	&<tractor_beam_glints.rules>
@@ -101,7 +120,7 @@ BeamMediaEffects
 
 	: /BASE_SOUNDS/AudioExterior
 	{
-		Sound = "tractor_beam_emit.wav"
+		Sound = "sounds/tractor_beam_emit.wav"
 		Volume = 1 / (&~/EMITTER/BeamCount)
 		MaxConcurrent = 0 // Unlimited
 		MaxConcurrentVolume = 1
@@ -114,7 +133,7 @@ BeamMediaEffects
 
 	: /BASE_SOUNDS/AudioExterior
 	{
-		Sound = "tractor_beam.wav"
+		Sound = "sounds/tractor_beam.wav"
 		Volume = 1 / (&~/EMITTER/BeamCount)
 		MaxConcurrent = 0 // Unlimited
 		MaxConcurrentVolume = 1
@@ -123,6 +142,26 @@ BeamMediaEffects
 		VolumeOverIntensity = 1
 		SpeedOverIntensity = [1, 2]
 		RampAffectsSpeedIntensity = true
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
+EndMediaEffects
+[
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/tractor_beam_finish.wav"
+		Volume = 1 / (&<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/BeamCount)
+		MaxConcurrent = 0 // Unlimited
+		MaxConcurrentVolume = 1
+		VolumeOverIntensity = 1
 
 		DynamicVolume : ^/0/DynamicVolume
 		{

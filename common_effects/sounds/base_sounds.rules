@@ -18,6 +18,41 @@ AudioInterior
 	MaxConcurrent = 3
 }
 
+AudioInteriorDetail
+{
+	Type = Audio
+
+	DynamicVolume
+	{
+		MinDistance = .5
+		MaxDistance = 1.25
+		DistanceFalloff = 1.25
+
+		MinZoom = 1
+		MaxZoom = 4
+		ZoomFalloff = 6
+
+		ExteriorVolume = 0
+	}
+	
+	DynamicFilter
+	{
+		MinZoom = 1
+		MaxZoom = 4
+		ZoomFalloff = 3
+
+		Filter
+		{
+			FilterType = LowPassAmplify
+			FromFrequency = 7350
+			ToFrequency = 500
+			FrequencyFactorExponent = 0.5
+		}
+	}
+
+	MaxConcurrent = 3
+}
+
 AudioExterior
 {
 	Type = Audio
@@ -100,4 +135,74 @@ AudioExteriorZoomless
 	}*/
 
 	MaxConcurrent = 5
+}
+
+AudioExteriorLongRange
+{
+	Type = Audio
+
+	DynamicVolume
+	{
+		MinDistance = 0
+		MaxDistance = 12
+		DistanceFalloff = 1
+
+		MinZoom = 1
+		MaxZoom = 70
+		ZoomFalloff = 0.75
+	}
+
+	DynamicFilter
+	{
+		MinDistance = 0
+		MaxDistance = 6
+		DistanceFalloff = 1
+
+		MinZoom = 1
+		MaxZoom = 12
+		ZoomFalloff = 0.75
+
+		Filter
+		{
+			FilterType = LowPassAmplify
+			FromFrequency = 7350
+			ToFrequency = 500
+			FrequencyFactorExponent = 0.5
+		}
+	}
+
+	MaxConcurrent = 5
+}
+
+AudioExteriorDetailBig
+{
+	Type = Audio
+
+	DynamicVolume
+	{
+		MinDistance = .5
+		MaxDistance = 6
+		DistanceFalloff = 1
+
+		MinZoom = 1
+		MaxZoom = 6
+		ZoomFalloff = 5
+	}
+	
+	DynamicFilter
+	{
+		MinDistance = .5
+		MaxDistance = 6
+		DistanceFalloff = .5
+
+		Filter
+		{
+			FilterType = LowPassAmplify
+			FromFrequency = 7350
+			ToFrequency = 500
+			FrequencyFactorExponent = 0.5
+		}
+	}
+
+	MaxConcurrent = 3
 }

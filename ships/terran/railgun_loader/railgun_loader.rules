@@ -1,4 +1,4 @@
-Part : <../base_part_terran.rules>/Part
+Part : <../base_med_part_terran.rules>/Part
 {
 	NameKey = "Parts/RailgunLoader"
 	IconNameKey = "Parts/RailgunLoaderIcon"
@@ -204,7 +204,10 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = TriggeredEffects
 			Trigger = AmmoLoader
-			MediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			MediaEffects = &/COMMON_EFFECTS/AmmoLoadWithIntensity
+			FactorMediaEffectsWith  = LoadedAmmo
+
+
 		}
 
 		WeaponTrigger
@@ -299,8 +302,8 @@ Part : <../base_part_terran.rules>/Part
 			]
 		}
 
-		OverflowHeatStorage : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverflowHeatStorage {}
-		OverheatEffects : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverheatEffects
+		OverflowHeatStorage : <./Data/ships/terran/base_med_part_terran_overclock.rules>/Part/Components/OverflowHeatStorage {}
+		OverheatEffects : <./Data/ships/terran/base_med_part_terran_overclock.rules>/Part/Components/OverheatEffects
 		{
 			Location = [1, 1.5]
 		}
@@ -358,7 +361,7 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
-		Port_Thermal_Left : <./Data/ships/terran/base_part_terran_overclock.rules>/Part/BASE_THERMAL_PORT
+		Port_Thermal_Left : <./Data/ships/terran/base_med_part_terran_overclock.rules>/Part/BASE_THERMAL_PORT
 		{
 			OperationalToggle = IsOverclocked
 			BlueprintOperationalToggle = BlueprintNetwork_IsOverclocked
@@ -841,9 +844,11 @@ Part : <../base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "shoot.wav"
-					Volume = 2
-					SpeedVariation = .25
+					RandomSounds = ["sounds/railgun_shot_01.wav",
+									"sounds/railgun_shot_02.wav",
+									"sounds/railgun_shot_03.wav"]
+					Volume = 1
+					SpeedVariation = .15
 				}
 			]
 		}

@@ -40,6 +40,13 @@ Components
 			&<particles/missile_nuke_thruster_plume_light.rules>
 			&<particles/missile_nuke_thruster_smoke.rules>
 			&<particles/missile_nuke_thruster_fire.rules>
+
+			//audio for nuke rumble
+			: /BASE_SOUNDS/AudioExterior
+			{
+				sound = "nuke_rumble.wav"
+			}
+
 		]
 	}
 

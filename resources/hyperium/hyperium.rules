@@ -304,7 +304,6 @@ StackSprites
 	}
 ]
 
-StackReceiveMediaEffects = &<../diamond/diamond.rules>/StackReceiveMediaEffects
-
-StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+StackReceiveMediaEffects = &/COMMON_EFFECTS/HyperiumDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/HyperiumPickup
 NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

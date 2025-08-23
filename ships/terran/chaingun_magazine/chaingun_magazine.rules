@@ -97,7 +97,16 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = bullet
 			MaxResources = 4
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			ReceiveResourceMediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					RandomSounds = ["../chaingun/sounds/chain_gun_reload_01.wav", 
+									"../chaingun/sounds/chain_gun_reload_02.wav", 
+									"../chaingun/sounds/chain_gun_reload_03.wav"]
+					SpeedVariation = .1
+				}
+			]
 			UITileRect = [7/64, 7/64, 1 - 14/64, 1 - 14/64]
 			AllowManualReceiveToggle = CanFillAmmo
 		}

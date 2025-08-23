@@ -8,7 +8,7 @@ OVERCLOCK
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_large_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/LaserBlasterLarge"
 	IconNameKey = "Parts/LaserBlasterLargeIcon"
@@ -144,7 +144,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 10000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -609,11 +609,27 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = TriggerProxy
 			ComponentID = ShootLeftTrigger
 		}
+		ShootLeftTriggerProxy_Overclocked : ShootLeftTriggerProxy
+		{
+			ProxyToggle = IsOverclocked
+		}
+		ShootLeftTriggerProxy_NonOverclocked : ShootLeftTriggerProxy_Overclocked
+		{
+			InvertProxyToggle = true
+		}
 
 		ShootRightTriggerProxy
 		{
 			Type = TriggerProxy
 			ComponentID = ShootRightTrigger
+		}
+		ShootRightTriggerProxy_Overclocked : ShootRightTriggerProxy
+		{
+			ProxyToggle = IsOverclocked
+		}
+		ShootRightTriggerProxy_NonOverclocked : ShootRightTriggerProxy_Overclocked
+		{
+			InvertProxyToggle = true
 		}
 
 		// Bullet emitters
@@ -709,28 +725,51 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Triggers = [ EmitterLeftProxy, EmitterRightProxy ]
 		}
 
-		ChargeEffectLeft
+		ChargeEffectLeft_NonOverclocked
 		{
 			Type = TriggeredEffects
 			ChainedTo = EmitterLeftProxy
-			Trigger = ShootLeftTriggerProxy
+			Trigger = ShootLeftTriggerProxy_NonOverclocked
 			AnchorMediaEffects = true
 
 			MediaEffects
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "../laser_blaster_small/charge.wav"
-					Volume = .9
-					Speed = .666
+					RandomSounds = ["sounds/heavy_laser_reload_01.wav",
+									"sounds/heavy_laser_reload_02.wav",
+									"sounds/heavy_laser_reload_03.wav"]
+					Volume = 1
+					Speed = 1
+				}
+			]
+		}
+		ChargeEffectLeft_Overclocked : ChargeEffectLeft_NonOverclocked
+		{
+			Trigger = ShootLeftTriggerProxy_Overclocked
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds
+					[
+						"sounds/heavy_laser_overclocked_reload_01.wav"
+						"sounds/heavy_laser_overclocked_reload_02.wav"
+						"sounds/heavy_laser_overclocked_reload_03.wav"
+					]
 				}
 			]
 		}
 
-		ChargeEffectRight : ChargeEffectLeft
+		ChargeEffectRight_NonOverclocked : ChargeEffectLeft_NonOverclocked
 		{
 			ChainedTo = EmitterRightProxy
-			Trigger = ShootRightTriggerProxy
+			Trigger = ShootRightTriggerProxy_NonOverclocked
+		}
+		ChargeEffectRight_Overclocked : ChargeEffectRight_NonOverclocked
+		{
+			Trigger = ShootRightTriggerProxy_Overclocked
+			MediaEffects = &~/Part/Components/ChargeEffectLeft_Overclocked/MediaEffects
 		}
 
 		FireEffectLeft
@@ -747,8 +786,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "shoot.wav"
-					Volume = .9
+					RandomSounds = ["sounds/heavy_laser_shot_01.wav",
+									"sounds/heavy_laser_shot_02.wav",
+									"sounds/heavy_laser_shot_03.wav",
+									"sounds/heavy_laser_shot_04.wav"]
+					Volume = 1
 					SpeedVariation = .15
 				}
 			]
@@ -758,6 +800,35 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			ChainedTo = EmitterRightProxy
 			Trigger = EmitterRightProxy
+		}
+		
+		OverclockFireEffectLeft
+		{
+			Type = TriggeredEffects
+			ChainedTo = EmitterLeftProxy
+			Trigger = Overclock_EmissionTriggered
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<particles/laser_blaster_large_shoot.rules>
+				&<particles/laser_blaster_large_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["sounds/heavy_laser_overclocked_shot_01.wav",
+									"sounds/heavy_laser_overclocked_shot_02.wav",
+									"sounds/heavy_laser_overclocked_shot_03.wav"]
+					Volume = 1
+					SpeedVariation = .15
+				}
+			]
+		}
+
+		OverclockFireEffectRight : OverclockFireEffectLeft
+		{
+			ChainedTo = EmitterRightProxy
+			Trigger = Overclock_EmissionTriggered
 		}
 
 		CrewLocation1
@@ -981,8 +1052,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ToggleEffects
 			Location = [1, 3.5]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOffLarge
 		}
 
 		ScorchedTrigger

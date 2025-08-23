@@ -8,7 +8,7 @@ HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
 ION_ENERGY = -(&Part/Components/BeamEmitter/HitOperational/HitEffects/4/Amount/BaseValue)
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_large_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/IonBeamEmitter"
 	IconNameKey = "Parts/IonBeamEmitterIcon"
@@ -138,7 +138,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 10000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -274,7 +274,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/ion_beam/ion_beam_emit.wav"
+					Sound = "./Data/shots/ion_beam/sounds/ion_beam_emit_loop.wav"
 					Volume = 1
 					MaxConcurrent = 1
 					MaxConcurrentVolume = 1
@@ -289,15 +289,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			OperationalToggle = IsOperationalOverclocked
 			BeamMediaEffects : ^/0/BeamMediaEffects
 			[
-				: /BASE_SOUNDS/AudioExterior
-				{
-					Sound = "./Data/shots/ion_beam/ion_beam_emit.wav"
-					Volume = 1
-					MaxConcurrent = 1
-					MaxConcurrentVolume = 1
-					RampUpTime = .25
-					RampDownTime = .25
-				}
+				&../../BeamEmitter/BeamMediaEffects/0
 			]
 		}
 
@@ -651,11 +643,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "operating.wav"
-					Volume = .2
-					Speed = 2
+					Sound = "sounds/ion_beam_idle.wav"
+					Volume = 1
+					Speed = 1
 					MaxConcurrent = 1
-					MaxConcurrentVolume = .2
+					MaxConcurrentVolume = 1
+				}
+				
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/ion_beam_idle_rumble.wav"
+					Volume = 1
+					Speed = 1
+					MaxConcurrent = 1
+					MaxConcurrentVolume = 1
 				}
 			]
 		}
@@ -720,8 +721,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ToggleEffects
 			Location = [1, 2.5]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOffLarge
 		}
 
 		ScorchedTrigger

@@ -12,7 +12,7 @@ OVERCLOCK
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_large_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/CannonDeck"
 	IconNameKey = "Parts/CannonDeckIcon"
@@ -288,7 +288,36 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = TriggeredEffects
 			Trigger = AmmoLoader
-			MediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			MediaEffects = &/COMMON_EFFECTS/AmmoLoadWithIntensity
+			FactorMediaEffectsWith  = CombinedLoadedAmmo
+		}
+		FullAmmoEffectLeft
+		{
+			Type = ToggleEffects
+			Toggle = LoadedAmmo1
+			ToggledOnMediaEffects
+			 [
+				: /BASE_SOUNDS/AudioInterior
+				{
+					RandomSounds = ["sounds/deck_cannon_reload_01.wav",
+									"sounds/deck_cannon_reload_02.wav",]
+					SpeedVariation = .05
+				}
+			 ]
+		}
+		FullAmmoEffectRight
+		{
+			Type = ToggleEffects
+			Toggle = LoadedAmmo2
+			ToggledOnMediaEffects
+			 [
+				: /BASE_SOUNDS/AudioInterior
+				{
+					RandomSounds = ["sounds/deck_cannon_reload_01.wav",
+									"sounds/deck_cannon_reload_02.wav",]
+					SpeedVariation = .05
+				}
+			 ]
 		}
 
 		OverclockStateValue
@@ -1593,8 +1622,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ToggleEffects
 			Location = [2, 2.5]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
 		}
 
 		ScorchedTrigger

@@ -463,35 +463,48 @@ SalvageCursor
 
 ShipSelectSound
 {
-	Sound = "select.wav"
+	Sound = "sounds/select.wav"
 	Volume = .25
 }
 ShipFocusSound
 {
-	Sound = "select.wav"
+	Sound = "sounds/select.wav" // NEIL: Maybe swap out.
 	Volume = .15
 }
 
 PartSelectSound
 {
-	Sound = "select.wav"
+	Sound = "sounds/select.wav"
 	Volume = .25
 	Speed = 1.075
 }
 
 PartDeselectSound
 {
-	Sound = "deselect.wav"
+	Sound = "sounds/deselect.wav"
 	Volume = .25
 }
 
 FtlReadySound
 {
-	Sound = "ftl_ready.wav"
+	Sound = "sounds/UI_hyperdrive_ready.wav"
+}
+SalvageMineSound
+{
+	Sound = "sounds/UI_gather_mine_resources.wav"
+	MaxConcurrent = 1
 }
 
-NuggetCollectSound = &<./Data/commands/command_move.rules>/MoveCommand/IssueSound
+NuggetCollectSound
+{
+	Sound = "sounds/UI_pickup_resources.wav"
+	Db = 2
+}
 NuggetCollectCancelSound = &NuggetCollectSound
 
-SalvageSound = &<./Data/commands/command_move.rules>/MoveCommand/IssueSound
+GatherFloatingResourcesSound
+{
+	Sound = "sounds/UI_pickup_resources.wav"
+	Db = 2
+}
 SalvageCancelSound = &NuggetCollectSound

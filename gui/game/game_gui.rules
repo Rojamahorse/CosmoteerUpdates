@@ -198,12 +198,12 @@ ObjectIndicators
 
 	PingSound
 	{
-		Sound = "radar_ping.wav"
+		Sound = "sounds/radar_ping.wav"
 		Volume = 0.5
 	}
 	EnemyPingSound
 	{
-		Sound = "radar_ping_enemy.wav"
+		Sound = "sounds/radar_ping_enemy.wav"
 		Volume = 0.5
 	}
 
@@ -323,19 +323,19 @@ ObjectIndicators
 
 MoneyTickUpSound
 {
-	Sound = "money_tick_up.wav"
-	Volume = .25
+	Sound = "sounds/money_tick_up.wav"
+	Volume = 1
 }
 MoneyTickDownSound
 {
-	Sound = "money_tick_down.wav"
-	Volume = .25
+	Sound = "sounds/money_tick_down.wav"
+	Volume = 1
 }
 
 FameTickUpSound
 {
-	Sound = "fame_tick.wav"
-	Volume = .5
+	Sound = "sounds/fame_tick.wav"
+	Volume = 1
 }
 FameTickDownSound = &FameTickUpSound
 
@@ -709,7 +709,7 @@ GalaxyMapIcon
 
 ErrorSound
 {
-	Sound = "../error.wav"
+	Sound = "../sounds/error.wav"
 	Volume = .5
 }
 ErrorFlashCount = 2
@@ -725,15 +725,19 @@ ErrorFlashSprite
 	Size = [36, 36]
 }
 
-PlotCourseSound
+PlotCourseLocalSound
 {
-	Sound = "ftl_plot_course.wav"
+	Sound = "sounds/UI_hyperdrive_course.wav"
+}
+PlotCourseGalaxySound
+{
+	Sound = "sounds/UI_hyperdrive_course_galaxy.wav"
 }
 
 SummonCrewSound
 {
-	Sound = "summon_crew.wav"
-	Volume = 40%
+	Sound = "sounds/recall_crew.wav"
+	Volume = 70%
 }
 
 ShipLogoColorFactor = [255, 255, 255, 204]
@@ -793,16 +797,120 @@ MPPlayerColors
 		Bf = 0.9091723
 	}
 ]
-
 ShipHiddenSound
 {
-	Sound = "ship_hidden.wav"
+	Sound = "sounds/ship_hidden.wav"
 	Volume = 50%
 }
 ShipRevealedSound
 {
-	Sound = "ship_revealed.wav"
+	Sound = "sounds/ship_revealed.wav"
 	Volume = 50%
 }
+LaunchGameSound
+{
+	Sound = "sounds/UI_launch_game.wav"
+}
+TimePauseSound
+{
+	Sound = "sounds/UI_time_pause.wav"
+	Volume = 0.3
+}
+TimeContinueSound
+{
+	Sound = "sounds/UI_time_continue.wav"
+	Volume = 0.3
+}
+OpenBuildRepairMenuSound
+{
+	Sound = "sounds/UI_build_repair_mode_on.wav"
+}
+OpenPaintMenuSound
+{
+	Sound = "sounds/UI_paint_mode_on.wav"
+}
+OpenCrewMenuSound
+{
+	Sound = "sounds/UI_crew_menu_on.wav"
+}
+OpenResourcesMenuSound
+{
+	Sound = "sounds/UI_resources_menu_on.wav"
+}
+OpenCommsMenuSound
+{
+	Sound = "sounds/UI_comms_menu_open.wav"
+}
+CloseCommsMenuSound
+{
+	Sound = "sounds/UI_comms_menu_close.wav"
+}
+CloseNonCommsMenuSound
+{
+	Sound = "sounds/UI_menu_off.wav"
+}
+StartSalvageSelectSound
+{
+	Sound = "sounds/UI_gather_salvage_mine_open.wav"
+}
+StopSalvageSelectSound
+{
+	Sound = "sounds/UI_gather_salvage_mine_close.wav"
+}
+CopySound
+{
+	Sound = "designer/sounds/UI_copy.wav"
+}
+CutSound
+{
+	Sound = "designer/sounds/UI_cut.wav"
+}
+PasteSound
+{
+	Sound = "designer/sounds/UI_paste.wav"
+}
+DeletePartInBinSound
+{
+	Sound = "designer/sounds/UI_delete_bin.wav"
+}
+ShowShipInteriorSound
+{
+	Sound = "sounds/UI_toggle_interior_on_01.wav"
+}
+HideShipInteriorSound
+{
+	Sound = "sounds/UI_toggle_interior_off_01.wav"
+}
+StartTradeSound
+{
+	Sound = "sounds/UI_trade_start.wav"
+}
+ShowGalaxyMapSound
+{
+	Sound = "sounds/UI_show_galaxy_map_01.wav"
+}
+HideGalaxyMapSound
+{
+	Sound = "sounds/UI_hide_galaxy_map_01.wav"
+}
+AllCrewInsideSound
+{
+	Sound = "sounds/UI_everyone_inside.wav"
+}
+BlueprintUnlockedSound
+{
+	Sound = "sounds/UI_blueprint_unlock.wav"
+}
+GenericPutdownSound
+{
+	Sound = "designer/sounds/UI_generic_putdown.wav"
+}
+AmbientTradeLoopSound
+{
+	Sound = "sounds/AL_trade.wav"
+}
+
+
+
 
 SeenShipPingDuration = 60

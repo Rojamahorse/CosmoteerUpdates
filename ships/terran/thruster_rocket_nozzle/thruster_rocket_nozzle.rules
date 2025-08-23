@@ -6,7 +6,7 @@ OVERCLOCK
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_large_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/ThrusterRocketNozzle"
 	IconNameKey = "Parts/ThrusterRocketNozzleIcon"
@@ -150,7 +150,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 2000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		LeftBatteryStorage
 		{
@@ -765,9 +765,24 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
-					Volume = .5
-					Speed = .75
-					MaxConcurrentVolume = 1
+					Sound = "../thruster_huge/sounds/huge_thruster_loop_01.wav"
+					Volume = 1
+				}
+
+				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
+				{
+					Sound = "../thruster_huge/sounds/huge_thruster_loop_02.wav"
+					Volume = 1
+				}
+			]
+			EndMediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterBurst
+				{
+					RandomSounds = ["../thruster_huge/sounds/huge_thruster_finish_01.wav",
+									"../thruster_huge/sounds/huge_thruster_finish_02.wav"]
+					Volume = 1
+					SpeedVariation = .1
 				}
 			]
 		}
@@ -793,9 +808,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				: /COMMON_SOUNDS/ThrusterBurst
 				{
-					Volume = .75
-					Speed = .75
-					MaxConcurrentVolume = 1
+					RandomSounds = ["../thruster_huge/sounds/huge_thruster_start_01.wav",
+									"../thruster_huge/sounds/huge_thruster_start_02.wav"]
+					Volume = 1
+					SpeedVariation = .1
 				}
 			]
 		}
@@ -805,8 +821,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ToggleEffects
 			Location = [1.5, 2]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
 		}
 
 		ScorchedTrigger

@@ -109,7 +109,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 6000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -414,6 +414,16 @@ Part : <../base_part_terran_overclock.rules>/Part
 				QuadCount = 64
 			}
 		}
+		TurretTriggered_Overclocked
+		{
+			Type = TriggerProxy
+			ComponentID = Turret
+			ProxyToggle = IsOverclocked
+		}
+		TurretTriggered_NonOverclocked : TurretTriggered_Overclocked
+		{
+			InvertProxyToggle = true
+		}
 
 		IsOperationalNonOverclocked
 		{
@@ -449,11 +459,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Bullet = &~/OVERCLOCK/BULLET/Bullet
 		}
 
-		ChargeEffect
+		ChargeEffect_NonOverclocked
 		{
 			Type = TriggeredEffects
 			ChainedTo = Turret
-			Trigger = Turret
+			Trigger = TurretTriggered_NonOverclocked
 			Location = [.85975, 0]
 			AnchorMediaEffects = true
 
@@ -461,37 +471,32 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "charge.wav"
-					Volume = .25
-					Speed = 1.5
+					RandomSounds = ["sounds/disruptor_reload_01.wav",
+									"sounds/disruptor_reload_02.wav",
+									"sounds/disruptor_reload_03.wav"]
+					Volume = 1
+					Speed = 1
+				}
+			]
+		}
+		ChargeEffect_Overclocked : ChargeEffect_NonOverclocked
+		{
+			Trigger = TurretTriggered_Overclocked
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds 
+					[
+						"sounds/disruptor_overclocked_reload_01.wav"
+						"sounds/disruptor_overclocked_reload_02.wav"
+						"sounds/disruptor_overclocked_reload_03.wav"
+					]
 				}
 			]
 		}
 
 		FireEffect
-		{
-			Type = TriggeredEffects
-			ChainedTo = Turret
-			Trigger = Overclock_BulletEmitter
-			Location = [.9,0]
-			AnchorMediaEffects = true
-
-			MediaEffects
-			[
-				&<particles/disruptor_shoot_rings.rules>
-				&<particles/disruptor_shoot_lightning.rules>
-				&<particles/disruptor_shoot_flash.rules>
-
-				: /BASE_SOUNDS/AudioExterior
-				{
-					Sound = "shoot.wav"
-					Volume = 1
-					SpeedVariation = .05
-				}
-			]
-		}
-
-		OverclockFireEffect
 		{
 			Type = TriggeredEffects
 			ChainedTo = Turret
@@ -507,7 +512,36 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "shoot.wav"
+					RandomSounds = ["sounds/disruptor_shot_01.wav",
+									"sounds/disruptor_shot_02.wav",
+									"sounds/disruptor_shot_03.wav",
+									"sounds/disruptor_shot_04.wav"]
+					Volume = 1
+					SpeedVariation = .05
+				}
+			]
+		}
+
+		OverclockFireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = Overclock_BulletEmitter
+			Location = [.9,0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<particles/disruptor_shoot_rings.rules>
+				&<particles/disruptor_shoot_lightning.rules>
+				&<particles/disruptor_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["sounds/disruptor_overclocked_shot_01.wav",
+									"sounds/disruptor_overclocked_shot_02.wav",
+									"sounds/disruptor_overclocked_shot_03.wav",
+									"sounds/disruptor_overclocked_shot_04.wav"]
 					Volume = 1
 					SpeedVariation = .05
 				}

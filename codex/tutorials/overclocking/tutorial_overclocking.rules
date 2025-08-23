@@ -12,6 +12,10 @@ Entries
 		TextKey = "Tutorials/Overclocking/Overview2"
 	}
 	{
+		Image { Texture { File="../techs/tab.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Overclocking/Blueprints"
+	}
+	{
 		Image { Texture { File="thermal_group.png"; SampleMode=Linear; } }
 		TextKey = "Tutorials/Overclocking/HeatManagement"
 	}

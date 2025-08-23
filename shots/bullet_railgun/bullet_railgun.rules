@@ -106,9 +106,11 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "bullet_railgun_hit.wav"
+					RandomSounds = ["sounds/railgun_impact_01.wav",
+									"sounds/railgun_impact_02.wav",
+									"sounds/railgun_impact_03.wav"]
 					Volume = { BaseValue=.75; BuffType=RailgunShot; BuffMode=Multiply; }
-					SpeedVariation = .4
+					SpeedVariation = .15
 				}
 
 				: /BASE_SHAKE
@@ -142,9 +144,11 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "bullet_railgun_hit_structure.wav"
+					RandomSounds = ["sounds/railgun_impact_01.wav",
+									"sounds/railgun_impact_02.wav",
+									"sounds/railgun_impact_03.wav"]
 					Volume = { BaseValue=.5; BuffType=RailgunShot; BuffMode=Multiply; }
-					SpeedVariation = .4
+					SpeedVariation = .15
 				}
 			]
 		}

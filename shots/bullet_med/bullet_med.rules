@@ -90,9 +90,12 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "bullet_med_hit.wav"
-					Volume = .4
-					SpeedVariation = .4
+					RandomSounds = ["sounds/cannon_impact_01.wav",
+									"sounds/cannon_impact_02.wav",
+									"sounds/cannon_impact_03.wav",
+									"sounds/cannon_impact_04.wav"]
+					Volume = 1
+					SpeedVariation = .15
 				}
 
 				: /BASE_SHAKE
@@ -127,7 +130,7 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "bullet_med_hit_structure.wav"
+					Sound = "sounds/bullet_med_hit_structure.wav"
 					Volume = .3
 					SpeedVariation = .4
 				}

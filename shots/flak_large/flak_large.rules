@@ -43,9 +43,13 @@ HitNothing
 
 		: /BASE_SOUNDS/AudioExterior
 		{
-			Sound = "flak_large_hit.wav"
+			RandomSounds = ["sounds/flak_cannon_impact_01.wav",
+							"sounds/flak_cannon_impact_02.wav",
+							"sounds/flak_cannon_impact_03.wav",
+							"sounds/flak_cannon_impact_04.wav"]
 			Volume = .5
 			SpeedVariation = .2
+			MaxConcurrent = 10
 		}
 
 		: /BASE_SHAKE

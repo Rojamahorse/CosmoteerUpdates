@@ -38,18 +38,26 @@ UntrackedIcon
 
 NewMissionSound
 {
-	Sound = "new_mission.wav"
+	Sound = "sounds/new_mission.wav"
+	Volume = 1.2
 }
 MissionCompletedSound
 {
-	Sound = "mission_completed.wav"
+	Sound = "sounds/mission_completed.wav"
 }
 MissionFailedSound
 {
-	Sound = "mission_failed.wav"
+	Sound = "sounds/mission_failed.wav"
+}
+FameLevelUpSound
+{
+	Sound = "sounds/fame_level_up.wav"
+}
+GoToMissionSound
+{
+	Sound = "sounds/mission_location.wav"
 }
 
-FameLevelUpSound = &MissionCompletedSound
 ReputationLevelUpSound = &MissionCompletedSound
 ReputationLevelDownSound = &MissionFailedSound
 

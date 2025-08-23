@@ -12,7 +12,7 @@ AngularDampingFactor = 50%
 DefaultAvoidDistance = 150
 ProhibitFtlJumpInThreshold = 50%
 ProhibitFtlJumpOutThreshold = 50%
-PathfindTravelCost = 100
+PathfindTravelCost = 25
 LodBias = 0.9
 
 HudTextKey = "Nebulas/ElectronHudFmt"

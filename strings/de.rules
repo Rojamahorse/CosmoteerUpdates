@@ -108,8 +108,8 @@ Brushes
 	Line = Linie
 	LineIcon = Linie
 	LineTip = "Halte <btn id='Design.RestrictShapeMode'/> gedrückt, um eine gerade Linie zu machen."
-	Oval = Oval
-	OvalIcon = Oval
+	Oval = ""
+	OvalIcon = ""
 	OvalTip = "Halte <btn id='Design.RestrictShapeMode'/> gedrückt, um einen perfekten Kreis zu machen."
 	Triangle = Dreieck
 	TriangleIcon = Drei.
@@ -3852,8 +3852,6 @@ Settings
 		ShowInvalidBlueprintsTip = "Bei Auswahl der Option werden illegale Baupläne in einem pulsierenden Rot angezeigt."
 		ShowMissingPartsWarning = "„Fehlende Teile“-Warnung anzeigen"
 		ShowMissingPartsWarningTip = "Bei Auswahl der Option wird eine Warnung angezeigt, wenn dem Schiff unerlässliche Teile fehlen."
-		ShowStatBars = "Empfehlungsleisten anzeigen"
-		ShowStatBarsTip = "Bei Auswahl der Option werden die Empfehlungsleisten für die Crew, die Energie und die Munition im Schiffseditor angezeigt. Die Effizient des Hyperantriebs wird immer angezeigt, selbst wenn diese Option nicht aktiviert ist."
 		TabName = Schiffseditor
 	}
 	DialogName = Einstellungen

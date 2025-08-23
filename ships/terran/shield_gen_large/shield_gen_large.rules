@@ -9,7 +9,7 @@ OVERCLOCK
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_large_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/ShieldGenLarge"
 	IconNameKey = "Parts/ShieldGenLargeIcon"
@@ -94,7 +94,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			MaxResources = 18000
 			ToggleOnResources = 17001
 			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 			DrainResistance
 			{
 				BaseValue = 0
@@ -277,11 +277,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Bucket = Lower2
 				}
 
+				// Non-Overclocked
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
-					Sound = "../shield_gen_small/shield_loop.wav"
-					Volume = .3
-					Speed = .25
+					Sound = "large_shield_energy_idle.wav"
+					Volume = { BaseValue=1; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ZERO] }
+					Speed = 1
 					MaxConcurrent = 1
 					MaxConcurrentVolume = .6
 					DynamicVolume : ^/0/DynamicVolume
@@ -290,6 +291,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 						MaxDistance = 1.5
 					}
 					IgnoreIntensity = true
+				}
+				
+				// Overclocked
+				: 1
+				{
+					Sound = "sounds/large_shield_energy_overclocked.wav"
+					Volume = { BaseValue=0; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ONE] }
 				}
 			]
 
@@ -706,33 +714,23 @@ Part : <../base_part_terran_overclock.rules>/Part
 					ArcSpriteSegments = 12
 					Bucket = Lower1
 				}
-			]
-		}
-		EmitterSoundEffects : BaseEmitterEffect
-		{
-			OperationalToggle = IsOperationalNonOverclocked
-			MediaEffects
-			[
+				
+				// Non-Overclocked
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
-					Sound = "../shield_gen_small/shield_emitter_loop.wav"
-					Volume = .4
-					Speed = .5
+					Sound = "large_shield_module_idle.wav"
+					Volume = { BaseValue=1; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ZERO] }
+					Speed = 1
 					MaxConcurrent = 1
 					MaxConcurrentVolume = .8
 					IgnoreIntensity = true
 				}
-			]
-		}
-		Overclock_EmitterSoundEffects : BaseEmitterEffect
-		{
-			OperationalToggle = IsOperationalOverclocked
-			MediaEffects
-			[
+				
+				// Overclocked
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
-					Sound = "sounds/large_shield_energy_overclocked.wav"
-					IgnoreIntensity = true
+					Sound = "sounds/large_shield_module_overclocked.wav"
+					Volume = { BaseValue=0; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ONE] }
 				}	
 			]
 		}
@@ -747,9 +745,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "../shield_gen_small/activate.wav"
+					Sound = "large_shield_start.wav"
 					Volume = 1
-					Speed = .5
+					Speed = 1
 					IgnoreIntensity = true
 				}
 			]
@@ -757,9 +755,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "../shield_gen_small/deactivate.wav"
+					Sound = "large_shield_stop.wav"
 					Volume = 1
-					Speed = .5
+					Speed = 1
 					IgnoreIntensity = true
 				}
 			]
@@ -770,10 +768,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggledOffMediaEffects
 			ToggledOnMediaEffects
 			[
-				: /BASE_SOUNDS/AudioExteriorDetail
+				: /BASE_SOUNDS/AudioExteriorDetailBig
 				{
 					Sound = "sounds/large_shield_overclock_start.wav"
 					IgnoreIntensity = true
+					Db = 3
 				}
 			]
 		}
@@ -1164,8 +1163,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = ToggleEffects
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOffLarge
 		}
 
 		ScorchedTrigger
@@ -1290,5 +1289,21 @@ Part : <../base_part_terran_overclock.rules>/Part
 			HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
 			HeatPerDamage = (&~/OVERCLOCK/HEAT_PER_DAMAGE)
 		}
+	}
+}
+
+MODIFIERS
+{
+	OVERCLOCK_TO_ONE
+	{
+		Type = BuffRemap
+		BuffType = Overclock
+		RemapFrom = [0, 1]
+		RemapTo = [0, 1]
+		ModificationMode = Replace
+	}
+	OVERCLOCK_TO_ZERO : OVERCLOCK_TO_ONE
+	{
+		RemapTo = [1, 0]
 	}
 }

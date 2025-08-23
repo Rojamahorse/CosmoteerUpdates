@@ -7,7 +7,7 @@ OVERCLOCK
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_med_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/FactoryProcessor"
 	IconNameKey = "Parts/FactoryProcessorIcon"
@@ -154,7 +154,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 4000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -273,11 +273,16 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [1.5, 1.5]
 			MediaEffects
 			[
-				: /BASE_SOUNDS/AudioInterior
+				: /BASE_SOUNDS/AudioInteriorDetail
 				{
-					Sound = "../factory_ammo/bullet_create.wav"
-					Volume = .1
-					Speed = .5
+					RandomSounds = ["sounds/processor_factory_putdown_01.wav",
+									"sounds/processor_factory_putdown_02.wav",
+									"sounds/processor_factory_putdown_03.wav",
+									"sounds/processor_factory_putdown_04.wav",
+									"sounds/processor_factory_putdown_05.wav"]
+					Volume = 1
+					Db = -2
+					Speed = 1
 					SpeedVariation = .05
 				}
 			]
@@ -1083,8 +1088,27 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ToggleEffects
 			Location = [1.5, 1.5]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
+		}
+
+		OperationSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/processor_factory_idle.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 1
+				}
+			]
 		}
 
 		ScorchedTrigger

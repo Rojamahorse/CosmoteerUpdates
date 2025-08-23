@@ -8,7 +8,7 @@ OVERCLOCK
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_large_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/CannonLarge"
 	IconNameKey = "Parts/CannonLargeIcon"
@@ -157,7 +157,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOnResources = 4
 			ToggleOffResources = 3
 			UITileRect = [1 + 7/64, .4 + 7/64, 1 - 14/64, 1 - 14/64]
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoDeliver
 			DropResourcesWhenDestroyed = true
 		}
 
@@ -488,7 +488,23 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = TriggeredEffects
 			Trigger = AmmoLoader
-			MediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			MediaEffects = &/COMMON_EFFECTS/AmmoLoadWithIntensity
+			FactorMediaEffectsWith  = LoadedAmmo
+		}
+
+		FullAmmoEffect
+		{
+			Type = ToggleEffects
+			Toggle = LoadedAmmo
+			ToggledOnMediaEffects
+			 [
+				: /BASE_SOUNDS/AudioInterior
+				{
+					RandomSounds = ["sounds/large_cannon_reload_01.wav",
+									"sounds/large_cannon_reload_02.wav",
+									"sounds/large_cannon_reload_03.wav",]
+				}
+			 ]
 		}
 
 		CrewLocation1
@@ -845,8 +861,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ToggleEffects
 			Location = [1.5, 1.5]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
 		}
 
 		ScorchedTrigger

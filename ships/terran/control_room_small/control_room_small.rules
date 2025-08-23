@@ -72,7 +72,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 2000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -422,10 +422,9 @@ Part : <../base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "operating.wav"
-					Volume = .15
-					MaxConcurrentVolume = .3
-					Speed = .75
+					Sound = "sounds/cockpit_idle.wav"
+					Volume = 0.75
+					MaxConcurrentVolume = 1
 					MaxConcurrent = 1
 				}
 			]

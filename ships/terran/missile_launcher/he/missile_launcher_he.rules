@@ -32,10 +32,60 @@ Components
 		ResourceStorages = [MissileStorageA, MissileStorageB, MissileStorageC]
 		AddMode = PrioritizeLeastEmptyCapacity
 		RemoveMode = PrioritizeMostEmptyCapacity
-		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
+		ReceiveResourceMediaEffects
+		[
+							: /BASE_SOUNDS/AudioInterior
+			{
+				RandomSounds = ["../sounds/launcher_reload_01.wav",
+								"../sounds/launcher_reload_02.wav",
+								"../sounds/launcher_reload_03.wav"]
+				SpeedVariation = .1
+			}
+		]
 		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
 	}
-
+	FullStorageEffectA
+	{
+		Type = ToggleEffects
+		Toggle = MissileStorageA
+		ToggledOnMediaEffects
+		[
+			: /BASE_SOUNDS/AudioInterior
+			{
+				RandomSounds = ["../sounds/launcher_ready_01.wav",
+								"../sounds/launcher_ready_02.wav",
+								"../sounds/launcher_ready_03.wav"]
+			}
+		]
+	}
+	FullStorageEffectB
+	{
+		Type = ToggleEffects
+		Toggle = MissileStorageB
+		ToggledOnMediaEffects
+		[
+			: /BASE_SOUNDS/AudioInterior
+			{
+				RandomSounds = ["../sounds/launcher_ready_01.wav",
+								"../sounds/launcher_ready_02.wav",
+								"../sounds/launcher_ready_03.wav"]
+			}
+		]
+	}
+	FullStorageEffectC
+	{
+		Type = ToggleEffects
+		Toggle = MissileStorageC
+		ToggledOnMediaEffects
+		[
+			: /BASE_SOUNDS/AudioInterior
+			{
+				RandomSounds = ["../sounds/launcher_ready_01.wav",
+								"../sounds/launcher_ready_02.wav",
+								"../sounds/launcher_ready_03.wav"]
+			}
+		]
+	}
 	Consumer
 	{
 		Type = ResourceConsumer
@@ -384,8 +434,10 @@ LaunchEffectBase
 
 		: /BASE_SOUNDS/AudioExterior
 		{
-			Sound = "../shoot.wav"
-			SpeedVariation = .25
+			RandomSounds = ["../sounds/launcher_launch_01.wav",
+							"../sounds/launcher_launch_02.wav",
+							"../sounds/launcher_launch_03.wav"]
+			SpeedVariation = .1
 		}
 	]
 }

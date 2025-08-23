@@ -16,11 +16,40 @@ Components
 		ResourceType = mine_part
 		MaxResources = 6*4
 		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
-		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/HeavyDeliver
+		ReceiveResourceMediaEffects
+		[
+							: /BASE_SOUNDS/AudioInterior
+			{
+				RandomSounds = ["../sounds/launcher_reload_01.wav",
+								"../sounds/launcher_reload_02.wav",
+								"../sounds/launcher_reload_03.wav"]
+				SpeedVariation = .1
+			}
+		]
         ToggleOnResources = 4
         ToggleOffResources = 3
 		DropResourcesWhenDestroyed = true
 		DropResourcesWhenRemoved = true
+	}
+	IsFullAmmo
+	{
+		Type = ThresholdToggle
+		ValueFrom = MineStorage
+		MinAmount = 100%
+	}
+	FullStorageEffect
+	{
+		Type = ToggleEffects
+		Toggle = IsFullAmmo
+		ToggledOnMediaEffects
+		 [
+			: /BASE_SOUNDS/AudioInterior
+			{
+				RandomSounds = ["../sounds/launcher_ready_01.wav",
+								"../sounds/launcher_ready_02.wav",
+								"../sounds/launcher_ready_03.wav"]
+			}
+		 ]
 	}
 	Consumer
 	{
@@ -163,9 +192,10 @@ Components
 
 			: /BASE_SOUNDS/AudioExterior
 			{
-				Sound = "../shoot.wav"
-				Speed = 0.5
-				SpeedVariation = .25
+				RandomSounds = ["sounds/launcher_launch_mine_01.wav",
+								"sounds/launcher_launch_mine_02.wav",
+								"sounds/launcher_launch_mine_03.wav"]
+				SpeedVariation = .1
 			}
 		]
 	}
@@ -483,6 +513,7 @@ MineStats
 		SeparationRange = &<./Data/shots/mine/mine_deployed.rules>/Components/Repulsion/Range
 		DetonationRange = &<./Data/shots/mine/mine_deployed.rules>/Components/DeathByEnemyProximity/Range
 		Shrapnel = &<./Data/shots/mine/mine_deployed.rules>/Components/DeathByEnemyProximity/OnDeath/HitEffects/0/Count
+		Lifetime = &<./Data/shots/mine/mine_deployed.rules>/Components/DeathByLifetime/Lifetime
 		MineParts = &~/Components/Emitter1/ResourcesUsed
 	}
 }

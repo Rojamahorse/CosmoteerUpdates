@@ -7,7 +7,7 @@ OVERCLOCK
 	RECOIL_FACTOR = 250%
 }
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_med_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/RailgunLauncher"
 	IconNameKey = "Parts/RailgunLauncherIcon"
@@ -162,7 +162,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 2000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -192,11 +192,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			BuffType = RailgunShot
 			ChainsFromBuffType = Railgun
 			BuffAmount = { BaseValue=0; BuffType=Railgun; BuffMode=Add; }
+			BlueprintOverlayToggle = OverclockModeToggle
+			InvertBlueprintOverlayToggle = true
 		}
 		Overclock_ShotBuffProvider : ShotBuffProvider
 		{
 			OperationalToggle = IsOverclocked
 			BuffType = RailgunShotOverclock
+			InvertBlueprintOverlayToggle = false
 		}
 
 		ReverseOperationBuffProvider
@@ -403,20 +406,22 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ParentToShip = true
 			MediaEffects
 			[
-				: /BASE_SOUNDS/AudioExteriorZoomless
+				: /BASE_SOUNDS/AudioExteriorLongRange
 				{
 					Sound = "sounds/railgun_charge_up_loop.wav"
 					OnlyWhenInSight = false
-					Volume = 2
+					Volume = 1.5
+					RampUpTime = 0.5
+					RampDownTime = 0.1
 				}
 			]
 			StartMediaEffects
 			[
-				: /BASE_SOUNDS/AudioExteriorZoomless
+				: /BASE_SOUNDS/AudioExteriorLongRange
 				{
 					Sound = "sounds/railgun_charge_up_start.wav"
 					OnlyWhenInSight = false
-					Volume = 2
+					Volume = 1.5
 					VolumeOverIntensity = 1
 				}
 			]
@@ -780,7 +785,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "rail.wav"
+					Sound = "sounds/rail.wav"
 					Volume = 2
 					Speed = .8
 					RampUpTime = .05

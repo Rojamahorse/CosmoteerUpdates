@@ -84,7 +84,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 10000 // TODO
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -324,7 +324,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			FireThresholdAngle = 20d
 			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamageContinuousEnemies
 			CanSalvage = true
-			IncludeInFirepowerEstimation = false
 			AlwaysShowCoverage = true
 			Emitter = WeaponEmitterSelector // Doesn't actually fire; only used for targeting.
 			AutoTargetCrewSafetyDist = 8

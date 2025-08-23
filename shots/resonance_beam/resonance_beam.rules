@@ -308,7 +308,7 @@ HitOperational
 		: /BASE_SOUNDS/AudioExterior
 		{
 			Sound = "sounds/thermal_resonance_beam_damage.wav"
-			Db = 4
+			Db = 6
 			MaxConcurrent = 1
 			RampUpTime = .25
 			RampDownTime = .25

@@ -5,6 +5,7 @@ DAMAGE = 350
 Range = &BASE/Range
 IdealRange = &BASE/IdealRange
 IdealRadius = &BASE/IdealRadius
+AntiPhasingRaycastDistance = 1
 
 AttenuationLimit = &HitOperational/HitEffects/0/Damage
 HitAttenuator

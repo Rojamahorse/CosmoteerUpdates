@@ -139,6 +139,6 @@ StackSprites
 	}
 ]
 
-StackReceiveMediaEffects = &/COMMON_EFFECTS/MissileDeliver
-StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+StackReceiveMediaEffects = &/COMMON_EFFECTS/PartDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/PartPickup
 NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

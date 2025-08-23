@@ -1,4 +1,4 @@
-Part : <../base_part_terran.rules>/Part
+Part : <../base_large_part_terran.rules>/Part
 {
 	NameKey = "Parts/HyperdriveBeacon"
 	IconNameKey = "Parts/HyperdriveBeaconIcon"
@@ -127,7 +127,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 12000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -657,15 +657,24 @@ Part : <../base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "operating.wav"
+					Sound = "sounds/hyperdrive_beacon_exterior_idle.wav"
 					Volume = 100%
 					Speed = 1
 					MaxConcurrent = 1
 					MaxConcurrentVolume = &Volume
 					DynamicVolume : ^/0/DynamicVolume
 					{
-						ExteriorVolume = .5
+						ExteriorVolume = .85
 					}
+				}
+				
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/hyperdrive_beacon_interior_idle.wav"
+					Volume = 100%
+					Speed = 1
+					MaxConcurrent = 1
+					MaxConcurrentVolume = &Volume
 				}
 			]
 		}
@@ -738,8 +747,8 @@ Part : <../base_part_terran.rules>/Part
 			Type = ToggleEffects
 			Location = [2, 2]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOffLarge
 		}
 
 		ScorchedTrigger

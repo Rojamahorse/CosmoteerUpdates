@@ -61,9 +61,11 @@ Components : &BASE/Components
 				
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "../laser_bolt_large_hit.wav"
-					Volume = .4
-					SpeedVariation = .4
+					RandomSounds = ["sounds/heavy_laser_overclocked_impact_01.wav",
+									"sounds/heavy_laser_overclocked_impact_02.wav",
+									"sounds/heavy_laser_overclocked_impact_03.wav"]
+					Volume = 1
+					SpeedVariation = .05
 				}
 
 				: /BASE_SHAKE

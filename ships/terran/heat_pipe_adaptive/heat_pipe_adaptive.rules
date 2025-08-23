@@ -4,6 +4,7 @@ Part : <../base_part_terran.rules>/Part
 	IconNameKey = "Parts/HeatPipeAdaptive"
 	ID = cosmoteer.heat_pipe_adaptive
 	OtherIDs = [ cosmoteer.heat_pipe, cosmoteer.heat_pipe_corner, cosmoteer.heat_pipe_3way_junction, cosmoteer.heat_pipe_4way_junction ]
+	SelectionTypeID = heat_pipe
 	EditorGroup = "Thermal"
 	EditorParentParts = [ "cosmoteer.resonance_beam_turret" ]
 	DescriptionKey = "Parts/HeatPipeAdaptiveDesc"

@@ -1,16 +1,34 @@
 LogoShip = "logo.ship.png"
 
 MasterVolumeAdjustSound = &EffectsVolumeAdjustSound
-EffectsVolumeAdjustSound = "sample_sfx.wav"
-InterfaceVolumeAdjustSound = "widget_press.wav"
+EffectsVolumeAdjustSound = "sounds/sample_sfx.wav"
+InterfaceVolumeAdjustSound = "sounds/widget_press.wav"
 CountdownBeepSound
 {
-	Sound = "countdown_beep.wav"
+	Sound = "sounds/countdown_beep.wav"
 }
 ChatMessageSound
 {
-	Sound = "chat_notif.wav"
+	Sound = "sounds/chat_notif.wav"
 }
+LogoShipFlyInSound
+{
+	Sound = "sounds/UI_start_game.wav"
+}
+LogoShipFlyOutSound
+{
+	Sound = "sounds/UI_quit_game.wav"
+}
+MultiplayerJoinedSound
+{
+	Sound = "sounds/UI_multiplayer_join.wav"
+}
+MultiplayerLeftSound
+{
+	Sound = "sounds/UI_multiplayer_leave.wav"
+}
+
+LogoShipFlyOutDelay = 0.3
 
 MainMenuBackgrounds
 [

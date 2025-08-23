@@ -70,6 +70,7 @@ Ships
 	:~{ File="Icarus.ship.png";                  Tier=11;  Difficulty=2; OtherIDs=["Icarus' Pride"]; }
 	:~{ File="Nashira.ship.png";                 Tier=11;  Difficulty=2; }
 	:~{ File="Lesath.ship.png";                  Tier=11;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Lyra Minor.ship.png";              Tier=11;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Shaula's Sacrament.ship.png";      Tier=12;  Difficulty=2; }
 	:~{ File="Stella Matutina.ship.png";         Tier=12;  Difficulty=2; }
 	:~{ File="Flaming Spire.ship.png";           Tier=12;  Difficulty=2; }
@@ -77,6 +78,7 @@ Ships
 	:~{ File="Gienah.ship.png";                  Tier=12;  Difficulty=2; }
 	:~{ File="Elagabalus.ship.png";              Tier=12;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Decrux.ship.png";                  Tier=12;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Delphinus.ship.png";               Tier=12;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Destroyers
 	:~{ File="Acolyte of Adhara.ship.png";       Tier=13;  Difficulty=2; }
@@ -97,6 +99,7 @@ Ships
 	:~{ File="Auriga.ship.png";                  Tier=15;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Sol Regius.ship.png";              Tier=15;  Difficulty=2; }
 	:~{ File="Redline.ship.png";                 Tier=15;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Lyra Major.ship.png";              Tier=15;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Sol Absentia.ship.png";            Tier=15;  Difficulty=3; }
 
 	// Battleships

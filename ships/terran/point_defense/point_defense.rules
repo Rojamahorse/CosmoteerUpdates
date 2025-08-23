@@ -148,7 +148,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 2000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		Overclock_BatteryProducer
 		{
@@ -437,9 +437,16 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "shoot.wav"
+					RandomSounds = ["sounds/point_defense_shot_01.wav",
+									"sounds/point_defense_shot_02.wav",
+									"sounds/point_defense_shot_03.wav"
+									"sounds/point_defense_shot_04.wav"
+									"sounds/point_defense_shot_05.wav"]
 					Volume = .25
-					SpeedVariation = .25
+					Db = 1
+					Speed = 1.1
+					SpeedVariation = .05
+					MaxConcurrent = 15
 				}
 			]
 		}

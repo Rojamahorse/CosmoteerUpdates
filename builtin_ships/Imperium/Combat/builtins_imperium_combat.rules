@@ -74,12 +74,14 @@ Ships
 	:~{ File="Cyrus.ship.png";         Tier=11;  Difficulty=3; }
 	:~{ File="Jackdaw.ship.png";       Tier=11;  Difficulty=3; }
 	:~{ File="Sulla.ship.png";         Tier=11;  Difficulty=3; }
+	:~{ File="Canary.ship.png";        Tier=11;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Besra.ship.png";         Tier=12;  Difficulty=2; }
 	:~{ File="Razorbill.ship.png";     Tier=12;  Difficulty=2; }
 	:~{ File="Knysna.ship.png";        Tier=12;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Aethon.ship.png";        Tier=12;  Difficulty=3; }
 	:~{ File="Crane.ship.png";         Tier=12;  Difficulty=3; }
 	:~{ File="Chrysaetos.ship.png";    Tier=12;  Difficulty=3; }
+	:~{ File="Nero.ship.png";          Tier=12;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Destroyers
 	:~{ File="Peregrine.ship.png";     Tier=13;  Difficulty=2; }

@@ -4,7 +4,7 @@ PluralNameKey = "Resource/MissilePartEMPPlural"
 DescriptionKey = "Resource/MissilePartEMPDesc"
 BuyPrice = 20
 SellPrice = (&BuyPrice) / 2
-MaxPerNugget = 1
+MaxPerNugget = 2
 MaxStackSize = 10
 FlexGridPriorityKey = "flex_grid_missile_part_emp"
 FlexGridDefaultPriority = 1
@@ -32,14 +32,23 @@ Overlay
 	Size = [1, 1]
 }
 
-NuggetSprite
-{
-	File = "missile_part_emp.png"
-	NormalsFile = "missile_part_emp_normals.png"
-	Size = [1, 1]
-	Offset = [.25, 0]
-	UVRotation = 1
-}
+NuggetSprites
+[
+	{
+		File = "missile_part_emp1.png"
+		NormalsFile = "missile_part_emp1_normals.png"
+		Size = [1, 1]
+		Offset = [.25, 0]
+		UVRotation = 1
+	}
+	{
+		File = "missile_part_emp2.png"
+		NormalsFile = "missile_part_emp2_normals.png"
+		Size = [1, 1]
+		Offset = [.25, 0]
+		UVRotation = 1
+	}
+]
 
 StackSprites
 [
@@ -85,7 +94,7 @@ StackSprites
 	}
 ]
 
-StackReceiveMediaEffects = &/COMMON_EFFECTS/MissileDeliver
-StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+StackReceiveMediaEffects = &/COMMON_EFFECTS/PartDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/PartPickup
 NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup
 

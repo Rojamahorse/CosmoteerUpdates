@@ -1,4 +1,4 @@
-Part : <../base_part_terran.rules>/Part
+Part : <../base_med_part_terran.rules>/Part
 {
 	NameKey = "Parts/ControlRoomMed"
 	IconNameKey = "Parts/ControlRoomMedIcon"
@@ -90,7 +90,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 4000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -450,10 +450,20 @@ Part : <../base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "../control_room_small/operating.wav"
-					Volume = .15
-					MaxConcurrentVolume = .3
-					Speed = .75
+					Sound = "sounds/control_room_idle.wav"
+					Volume = 0.75
+					MaxConcurrentVolume = 1
+					MaxConcurrent = 1
+				}
+				
+				: /BASE_SOUNDS/AudioInterior
+				{
+					RandomSounds = ["sounds/control_room_murmurs_01.wav",
+									"sounds/control_room_murmurs_02.wav",
+									"sounds/control_room_murmurs_03.wav",
+									"sounds/control_room_murmurs_04.wav"]
+					Volume = 1
+					MaxConcurrentVolume = 1
 					MaxConcurrent = 1
 				}
 			]

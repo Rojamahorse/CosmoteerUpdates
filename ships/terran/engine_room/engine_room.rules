@@ -7,7 +7,7 @@ OVERCLOCK
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_med_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/EngineRoom"
 	IconNameKey = "Parts/EngineRoomIcon"
@@ -107,7 +107,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ComponentIDs = [BatteryStorage, ExtendableBatteryStorage] // ExtendableBatteryStorage is used by rocket thrusters.
 			}
 			AddMode = PrioritizeLeastResources
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 
 		CombinedBatteryStorageProxy
@@ -561,10 +561,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 			MaxMediaEffectsZoom = 4
 			MediaEffects
 			[
-				: /COMMON_SOUNDS/ThrusterHum
+				: /BASE_SOUNDS/AudioInterior
 				{
-					Volume = .2
-					Speed = 1
+					Sound = "sounds/engine_room_idle.wav"
+					Volume = 0.75
 					MaxConcurrentVolume = 1
 				}
 			]
@@ -604,8 +604,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ToggleEffects
 			Location = [1, 1]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
 		}
 
 		ScorchedTrigger

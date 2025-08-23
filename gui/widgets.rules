@@ -168,9 +168,9 @@ MoverIcon
 	}
 }
 
-DialogOpenSoundEffect  { Sound="dialog_open.wav";  Volume=.25; }
-DialogCloseSoundEffect { Sound="dialog_close.wav"; Volume=.25; }
-DragAndDropCompleteSoundEffect { Sound="game/designer/blueprint_add.wav"; }
+DialogOpenSoundEffect  { Sound="sounds/dialog_open.wav";  Volume=.25; }
+DialogCloseSoundEffect { Sound="sounds/dialog_close.wav"; Volume=.25; }
+DragAndDropCompleteSoundEffect { Sound="game/designer/sounds/blueprint_add.wav"; }
 
 DisabledIconShader = "disabled.shader"
 PulsingIconShader = "pulsing.shader"
@@ -330,8 +330,8 @@ DynamicWidget : Widget
 
 	InputStateAudio
 	{
-		HighlightedSound { Sound="widget_hover.wav"; Volume=.05; }
-		PressedSound     { Sound="widget_press.wav"; }
+		HighlightedSound { Sound="sounds/widget_hover.wav"; Volume=.05; }
+		PressedSound     { Sound="sounds/widget_press.wav"; }
 	}
 }
 
@@ -678,7 +678,7 @@ TabButton : SelectableButton
 
 	SelectionStateAudio
 	{
-		SelectedSound   { Sound="panel_open.wav";  Volume=.2; }
+		SelectedSound   { Sound="sounds/panel_open.wav";  Volume=.2; }
 	}
 }
 
@@ -1130,8 +1130,8 @@ CodexItem : ListItem
 {
 	SelectionStateAudio
 	{
-		SelectedSound   { Sound="panel_open.wav";  Volume=.2; }
-		DeselectedSound { Sound="panel_close.wav"; Volume=.2; }
+		SelectedSound   { Sound="sounds/panel_open.wav";  Volume=.2; }
+		DeselectedSound { Sound="sounds/panel_close.wav"; Volume=.2; }
 	}
 }
 
@@ -1202,7 +1202,7 @@ ListItem : FlatButton
 
 	ClickAudio
 	{
-		Sound { Sound="toggle.wav";  Volume=.15; }
+		Sound { Sound="sounds/toggle.wav";  Volume=.15; }
 	}
 }
 
@@ -2126,8 +2126,8 @@ TreeItem : LayoutBox
 		ClickAudio {}
 		SelectionStateAudio
 		{
-			SelectedSound   { Sound="panel_open.wav";  Volume=.2; }
-			DeselectedSound { Sound="panel_close.wav"; Volume=.2; }
+			SelectedSound   { Sound="sounds/panel_open.wav";  Volume=.2; }
+			DeselectedSound { Sound="sounds/panel_close.wav"; Volume=.2; }
 		}
 	}
 
@@ -2189,7 +2189,7 @@ ToggleButton : FlatButton
 
 	ClickAudio
 	{
-		Sound { Sound="toggle.wav";  Volume=.15; }
+		Sound { Sound="sounds/toggle.wav";  Volume=.15; }
 	}
 }
 
@@ -2230,8 +2230,8 @@ ToggleExpanderButton : FlatButton
 
 	SelectionStateAudio
 	{
-		SelectedSound   { Sound="panel_open.wav";  Volume=.2; }
-		DeselectedSound { Sound="panel_close.wav"; Volume=.2; }
+		SelectedSound   { Sound="sounds/panel_open.wav";  Volume=.2; }
+		DeselectedSound { Sound="sounds/panel_close.wav"; Volume=.2; }
 	}
 }
 
@@ -2270,8 +2270,8 @@ DropButton : SelectableButton
 
 	FocusStateAudio
 	{
-		FocusedSound   { Sound="panel_open.wav";  Volume=.2; }
-		DefocusedSound { Sound="panel_close.wav"; Volume=.2; }
+		FocusedSound   { Sound="sounds/panel_open.wav";  Volume=.2; }
+		DefocusedSound { Sound="sounds/panel_close.wav"; Volume=.2; }
 	}
 }
 
@@ -2674,8 +2674,8 @@ MenuCategory : FlatButton, SelectableButton
 
 	FocusStateAudio
 	{
-		FocusedSound   { Sound="panel_open.wav";  Volume=.2; }
-		DefocusedSound { Sound="panel_close.wav"; Volume=.2; }
+		FocusedSound   { Sound="sounds/panel_open.wav";  Volume=.2; }
+		DefocusedSound { Sound="sounds/panel_close.wav"; Volume=.2; }
 	}
 }
 
@@ -2821,8 +2821,8 @@ ContextMenu : Scrollbox
 {
 	ActiveStateAudio
 	{
-		ActivatedSound   { Sound="panel_open.wav";  Volume=.2; }
-		DeactivatedSound { Sound="panel_close.wav"; Volume=.2; }
+		ActivatedSound   { Sound="sounds/panel_open.wav";  Volume=.2; }
+		DeactivatedSound { Sound="sounds/panel_close.wav"; Volume=.2; }
 	}
 }
 

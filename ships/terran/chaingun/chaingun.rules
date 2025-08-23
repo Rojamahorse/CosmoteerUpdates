@@ -15,7 +15,7 @@ OVERCLOCK
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_large_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/ChainGun"
 	IconNameKey = "Parts/ChainGunIcon"
@@ -311,7 +311,16 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = bullet
 			MaxResources = 6
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			ReceiveResourceMediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					RandomSounds = ["sounds/chain_gun_reload_01.wav",
+									"sounds/chain_gun_reload_02.wav",
+									"sounds/chain_gun_reload_03.wav"]
+					SpeedVariation = .1
+				}
+			]
 			UITileRect = [7/64, 4 + 7/64, 1 - 14/64, 1 - 14/64]
 			AllowManualReceiveToggle = IsShellFullyClosed
 		}
@@ -320,7 +329,16 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = bullet
 			MaxResources = 6
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			ReceiveResourceMediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					RandomSounds = ["sounds/chain_gun_reload_01.wav",
+									"sounds/chain_gun_reload_02.wav",
+									"sounds/chain_gun_reload_03.wav"]
+					SpeedVariation = .1
+				}
+			]
 			UITileRect = [2 + 7/64, 4 + 7/64, 1 - 14/64, 1 - 14/64]
 			AllowManualReceiveToggle = IsShellFullyClosed
 		}
@@ -473,6 +491,26 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = MultiToggle
 			Toggles = [TargetingAndCanShoot, ForceFireToggle]
 			Mode = Any
+		}
+		ShellOpenCloseAudio
+		{
+			Type = ToggleEffects
+			Toggle = ShellShouldOpen
+			Location = [96/64, 181/64]
+			ToggledOnMediaEffects
+			 [
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "sounds/chain_gun_come_out.wav"
+				}
+			 ]
+			 ToggledOffMediaEffects
+			 [
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "sounds/chain_gun_come_in.wav"
+				}
+			 ]
 		}
 		HasEnoughAmmoToStartShooting
 		{
@@ -668,7 +706,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ChainedTo = TurretSlider
 			Rotation = -90d // Relative to unrotated part.
 			MatchTransformOf = Turret
-			MatchRotationSpeed = 50d
+			MatchRotationSpeed = 100d
 			ResetTransformWhen = IsShellNotFullyOpen
 			ResetRotationSpeed = 120d
 			ClampRotationToArc = [-(&../../Turret/FiringArc)/2 - 90d, (&../../Turret/FiringArc)]
@@ -987,10 +1025,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					RandomSounds = ["chaingun_shot_01.wav", "chaingun_shot_02.wav", "chaingun_shot_03.wav", "chaingun_shot_04.wav"]
-					Speed = 2
-					SpeedVariation = .5
-					Volume = .5
+					RandomSounds = ["sounds/chain_gun_shot_01.wav",
+									"sounds/chain_gun_shot_02.wav",
+									"sounds/chain_gun_shot_03.wav",
+									"sounds/chain_gun_shot_04.wav",
+									"sounds/chain_gun_shot_05.wav"]
+					SpeedVariation = .1
+					Volume = 1
 					MaxConcurrent = 30
 				}
 
@@ -1138,6 +1179,33 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = ValueProxy
 			ComponentID = InverseShotInterval
+		}
+
+		RampingLoop
+		{
+			Type = ContinuousEffects
+			Location = [1.5, 5]
+			OperationalToggle = IsShellFullyOpen
+			FactorMediaEffectsIntensityWith = ChaingunRampupProgressBar
+			MinMediaEffectsIntensity = 1%
+			AllowStacking = false
+			StartMediaEffects
+			[
+			   : /BASE_SOUNDS/AudioExterior
+			   {
+				 Sound = "sounds/chain_gun_loop_start.wav"
+			   }
+			]
+			MediaEffects
+			[
+			   : /BASE_SOUNDS/AudioExterior
+			   {
+				 Sound = "sounds/chain_gun_loop.wav"
+				 VolumeOverIntensity = [0.5, 1.8]
+				 SpeedOverIntensity = [0.5, 1.8]
+				 MaxConcurrent = 0
+			   }
+			]
 		}
 
 		TurretWeaponShootingGraphics
@@ -2865,8 +2933,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ToggleEffects
 			Location = [1.5, 4.5]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
 		}
 
 		ScorchedTrigger

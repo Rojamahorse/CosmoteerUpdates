@@ -659,6 +659,7 @@ PartToggles
 		ToggleID = "thermal_overclock"
 		Style = OnAlertSwitch
 		ShowInEditor = true
+		DisabledToolTipKey = "CareerMode/PartLocked"
 		Choices
 		[
 			// Off
@@ -675,6 +676,7 @@ PartToggles
 					}
 					VertexColor = [0, 183, 255]
 				}
+				SelectedSound = { Sound="./Data/gui/game/sounds/UI_overclock_off.wav" }
 			}
 
 			// On
@@ -691,6 +693,7 @@ PartToggles
 					}
 					VertexColor = [255, 4, 0]
 				}
+				SelectedSound = { Sound="./Data/gui/game/sounds/UI_overclock_on.wav" }
 			}
 		]
 	}

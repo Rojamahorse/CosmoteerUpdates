@@ -152,9 +152,18 @@ ConstructionFinishedMediaEffects
 [
 	: /BASE_SOUNDS/AudioExterior
 	{
-		Sound = "./Data/gui/game/designer/build.wav"
-		Speed = 0.95*1.5
-		SpeedVariation = 0.15*1.5
+		RandomSounds = ["../../common/sounds/door_construct_01.wav", 
+						"../../common/sounds/door_construct_02.wav"] 
+		Speed = 1
+		SpeedVariation = 0.1
 	}
 ]
-DeconstructionFinishedMediaEffects = &ConstructionFinishedMediaEffects
+DeconstructionFinishedMediaEffects 
+[
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "../../common/sounds/door_deconstruct.wav"
+		Speed = 1
+		SpeedVariation = 0.1
+	}
+]

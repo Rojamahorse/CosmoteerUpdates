@@ -12,11 +12,15 @@ OVERCLOCK
 
 	BOOST_MAX_POWER_USAGE_FACTOR = 175%
 	BOOST_POWER_RAMP_TIME = 2
+	
+	AUDIO_SPEED_FACTOR = 115%
+	AUDIO_VOLUME_DB = 3
+	BOOST_AUDIO_VOLUME_DB = 1
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_large_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/ThrusterBoost"
 	IconNameKey = "Parts/ThrusterBoostIcon"
@@ -145,7 +149,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 6000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 			ToggleOnResources = (&MaxResources) - 999
 			ToggleOffResources = 0
 			ProvidedValueRange = 0
@@ -752,9 +756,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 						&<../thruster_large/particles/thruster_sparks_large.rules>
 						: /COMMON_SOUNDS/ThrusterBurst
 						{
-							Volume = .5
+							RandomSounds = ["../thruster_large/sounds/large_thruster_start_01.wav",
+											"../thruster_large/sounds/large_thruster_start_02.wav"]
 							Speed = 1
-							MaxConcurrentVolume = 1
+							Volume = 1
 						}
 					]
 				}
@@ -1012,9 +1017,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 						&<particles/thruster_sparks_boost.rules>
 						: /COMMON_SOUNDS/ThrusterBurst
 						{
-							Volume = .5
+							Sound = "sounds/boost_thruster_start.wav"
+							Volume = 1
 							Speed = 1
-							MaxConcurrentVolume = 1
 						}
 					]
 				}
@@ -1032,9 +1037,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ContinuousEffects
 			Location = [1, 4.5+14/64]
 			Rotation = 90d
+			OperationalToggle = IsOverclocked
+			InvertOperationalToggle = true
 			FactorMediaEffectsIntensityWith = MainThrusterProxy
 			IntensityTweenDuration = 0.1
 			MinMediaEffectsIntensity = 1%
+			PlayEndMediaOnNonOperational = false
 			MediaEffects
 			[
 				&<../thruster_large/particles/thruster_plume_large.rules>
@@ -1045,9 +1053,74 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
-					Volume = .25
+					Sound = "../thruster_large/sounds/large_thruster_loop_01.wav"
+					Volume = 0.6
 					Speed = 1
-					MaxConcurrentVolume = .5
+				}
+
+				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
+				{
+					Sound = "../thruster_large/sounds/large_thruster_loop_02.wav"
+					Volume = 0.6
+					Speed = 1
+				}
+			]
+			EndMediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterBurst
+				{
+					RandomSounds = ["../thruster_large/sounds/large_thruster_finish_01.wav",
+									"../thruster_large/sounds/large_thruster_finish_02.wav"]
+					Volume = 1
+					Speed = 1
+				}
+			]
+		}
+
+		Overclock_ThrustEffects : ThrustEffects
+		{
+			InvertOperationalToggle = false
+			MediaEffects
+			[
+				// Particles
+				&../^/0/MediaEffects/0
+				&../^/0/MediaEffects/1
+				&../^/0/MediaEffects/2
+				&../^/0/MediaEffects/3
+				&../^/0/MediaEffects/4
+				
+				// SFX loop
+				: ../^/0/MediaEffects/5
+				{
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+				}
+				: ../^/0/MediaEffects/6
+				{
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+				}
+				
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					RandomSounds
+					[
+						"../thruster_small/sounds/thruster_overclocked_01.wav"
+						"../thruster_small/sounds/thruster_overclocked_02.wav"
+						"../thruster_small/sounds/thruster_overclocked_03.wav"
+						"../thruster_small/sounds/thruster_overclocked_04.wav"
+					]
+				}
+			]
+			EndMediaEffects
+			[
+				: ../^/0/EndMediaEffects/0
+				{
+					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 				}
 			]
 		}
@@ -1063,9 +1136,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ContinuousEffects
 			Location = [1, 4.5+14/64]
 			Rotation = 90d
+			OperationalToggle = IsOverclocked
+			InvertOperationalToggle = true
 			FactorMediaEffectsIntensityWith = MainThrusterBoostedProxy
 			IntensityTweenDuration = 0.2
 			MinMediaEffectsIntensity = 1%
+			PlayEndMediaOnNonOperational = false
 			MediaEffects
 			[
 				&<particles/thruster_plume_boost.rules>
@@ -1076,10 +1152,54 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
-					Sound = "boost.wav"
+					Sound = "sounds/boost_thruster_loop.wav"
 					Volume = 1
-					MaxConcurrentVolume = 1
-					Speed = .5
+					Speed = 1
+				}
+			]
+			EndMediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterBurst
+				{
+					Sound = "sounds/boost_thruster_finish.wav"
+					Db = 6
+					Speed = 1
+				}
+			]
+		}
+		
+		Overclock_ThrustEffectsBoosted : ThrustEffectsBoosted
+		{
+			InvertOperationalToggle = false
+			MediaEffects
+			[
+				// Particles
+				&../^/0/MediaEffects/0
+				&../^/0/MediaEffects/1
+				&../^/0/MediaEffects/2
+				&../^/0/MediaEffects/3
+				&../^/0/MediaEffects/4
+				
+				// SFX loop
+				: ../^/0/MediaEffects/5
+				{
+					Db = (&~/OVERCLOCK/BOOST_AUDIO_VOLUME_DB)
+					Speed = (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/BOOST_AUDIO_VOLUME_DB")
+				}
+				
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					Sound = "sounds/boost_thruster_overclocked.wav"
+				}
+			]
+			EndMediaEffects
+			[
+				: ../^/0/EndMediaEffects/0
+				{
+					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					Db = (&^/0/Db) + db2vol("&~/OVERCLOCK/BOOST_AUDIO_VOLUME_DB")
+					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/BOOST_AUDIO_VOLUME_DB")
 				}
 			]
 		}
@@ -1312,8 +1432,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ToggleEffects
 			Location = [1, 1.5]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
 		}
 
 		ScorchedTrigger

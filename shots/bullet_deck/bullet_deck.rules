@@ -69,9 +69,11 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "bullet_deck_hit.wav"
-					Volume = .75
-					SpeedVariation = .4
+					RandomSounds = ["sounds/deck_cannon_impact_01.wav",
+									"sounds/deck_cannon_impact_01.wav",
+									"sounds/deck_cannon_impact_01.wav"]
+					Volume = 1
+					SpeedVariation = .15
 				}
 
 				: /BASE_SHAKE
@@ -106,9 +108,11 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "bullet_deck_hit_structure.wav"
-					Volume = .5
-					SpeedVariation = .4
+					RandomSounds = ["sounds/deck_cannon_impact_01.wav",
+									"sounds/deck_cannon_impact_01.wav",
+									"sounds/deck_cannon_impact_01.wav"]
+					Volume = 1
+					SpeedVariation = .15
 				}
 			]
 		}

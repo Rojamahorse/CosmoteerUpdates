@@ -1,7 +1,9 @@
 IssueSound
 {
-	Sound = "weapon_target.wav"
-	Volume = .25
+	RandomSounds = ["sounds/lock_target_detailed_01.wav",
+					"sounds/lock_target_detailed_02.wav",
+					"sounds/lock_target_detailed_03.wav"]
+	Volume = 1
 }
 
 TargetNineSlice = &<./Data/gui/game/sim_gui.rules>/SelectedPartNineSlice

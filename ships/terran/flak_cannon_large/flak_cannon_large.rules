@@ -7,7 +7,7 @@ OVERCLOCK
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_large_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/FlakCannonLarge"
 	IconNameKey = "Parts/FlakCannonLargeIcon"
@@ -602,10 +602,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "../cannon_med/shoot.wav"
-					Speed = 2
-					SpeedVariation = .5
-					Volume = .5
+					RandomSounds = ["sounds/flak_cannon_shot_01.wav",
+									"sounds/flak_cannon_shot_02.wav",
+									"sounds/flak_cannon_shot_03.wav",
+									"sounds/flak_cannon_shot_04.wav"]
+					Speed = 1
+					SpeedVariation = .15
+					Volume = .4
+					MaxConcurrent = 15
 				}
 
 				: /BASE_SHAKE
@@ -1055,8 +1059,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ToggleEffects
 			Location = [1.5, 3.5]
 			Toggle = IsOperational
-			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
-			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
 		}
 
 		ScorchedTrigger

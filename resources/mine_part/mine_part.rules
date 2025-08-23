@@ -4,7 +4,7 @@ PluralNameKey = "Resource/MinePartPlural"
 DescriptionKey = "Resource/MinePartDesc"
 BuyPrice = 52
 SellPrice = (&BuyPrice) / 2
-MaxPerNugget = 1
+MaxPerNugget = 2
 MaxStackSize = 8
 FlexGridPriorityKey = "flex_grid_mine_part"
 FlexGridDefaultPriority = 1
@@ -86,14 +86,23 @@ HitResponse
 	}
 }
 
-NuggetSprite
-{
-	File = "mine_part.png"
-	NormalsFile = "mine_part_normals.png"
-	Size = [1, 1]
-	Offset = [.25, 0]
-	UVRotation = 1
-}
+NuggetSprites
+[
+	{
+		File = "mine_part1.png"
+		NormalsFile = "mine_part1_normals.png"
+		Size = [1, 1]
+		Offset = [.25, 0]
+		UVRotation = 1
+	}
+	{
+		File = "mine_part2.png"
+		NormalsFile = "mine_part2_normals.png"
+		Size = [1, 1]
+		Offset = [.25, 0]
+		UVRotation = 1
+	}
+]
 
 StackSprites
 [
@@ -131,6 +140,6 @@ StackSprites
 	}
 ]
 
-StackReceiveMediaEffects = &/COMMON_EFFECTS/HeavyDeliver
-StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+StackReceiveMediaEffects = &/COMMON_EFFECTS/PartDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/PartPickup
 NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

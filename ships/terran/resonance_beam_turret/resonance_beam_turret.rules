@@ -1,4 +1,4 @@
-Part : <../base_part_terran.rules>/Part
+Part : <../base_large_part_terran.rules>/Part
 {
 	NameKey = "Parts/ResonanceBeamTurret"
 	IconNameKey = "Parts/ResonanceBeamTurretIcon"
@@ -253,7 +253,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 24000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 			ToggleOnResources = &../BeamEmitter/ResourcesUsed
 			ToggleOffResources = (&ToggleOnResources) - 1
 		}
@@ -498,7 +498,7 @@ Part : <../base_part_terran.rules>/Part
 			Location = [2, 2]
 			Trigger = OverflowHeatStorage
 			FactorHitEffectsWith = OverflowHeatStorage
-			HitEffects = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverheatEffects/HitEffects
+			HitEffects = &<./Data/ships/terran/base_large_part_terran_overclock.rules>/Part/Components/OverheatEffects/HitEffects
 		}
 
 		TurretCollider

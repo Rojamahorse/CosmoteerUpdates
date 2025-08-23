@@ -232,7 +232,17 @@ CancelPasteDecalsSprite
 
 PaintSound
 {
-	Sound = "decal.wav"
+	RandomSounds = ["sounds/decal_01.wav",
+					"sounds/decal_02.wav",
+					"sounds/decal_03.wav"]
+}
+SetBasePaintSound
+{
+	Sound = "sounds/UI_paint_base.wav"
+}
+DeleteDecalSound
+{
+	Sound = "sounds/UI_delete_decal.wav"
 }
 
 PaintSchemeIcon

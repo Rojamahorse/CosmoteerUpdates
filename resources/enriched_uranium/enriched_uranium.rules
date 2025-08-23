@@ -86,6 +86,6 @@ StackSprites
 	}
 ]
 
-StackReceiveMediaEffects = &/COMMON_EFFECTS/MissileDeliver // Yeah I know, not a missile, but it looks like a missile part!
-StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+StackReceiveMediaEffects = &/COMMON_EFFECTS/EnrichedUraniumDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/EnrichedUraniumPickup
 NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

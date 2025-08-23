@@ -268,15 +268,6 @@ StackSprites
 	}
 ]
 
-StackReceiveMediaEffects
-[
-	: /BASE_SOUNDS/AudioInterior
-	{
-		Sound = "coil_deliver.wav"
-		Volume = 1.0
-		SpeedVariation = .05
-	}
-]
-
-StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+StackReceiveMediaEffects = &/COMMON_EFFECTS/CoilDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/CoilPickup
 NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

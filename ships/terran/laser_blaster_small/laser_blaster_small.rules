@@ -110,7 +110,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 4000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{
@@ -394,6 +394,16 @@ Part : <../base_part_terran_overclock.rules>/Part
 				QuadCount = 64
 			}
 		}
+		TurretTriggered_Overclocked
+		{
+			Type = TriggerProxy
+			ComponentID = Turret
+			ProxyToggle = IsOverclocked
+		}
+		TurretTriggered_NonOverclocked : TurretTriggered_Overclocked
+		{
+			InvertProxyToggle = true
+		}
 
 		ReloadProgressBar
 		{
@@ -441,11 +451,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 			FireDelay = (&^/1/FireDelay) / (&~/OVERCLOCK/FIRE_RATE_FACTOR)
 		}
 
-		ChargeEffect
+		ChargeEffect_NonOverclocked
 		{
 			Type = TriggeredEffects
 			ChainedTo = Turret
-			Trigger = Turret
+			Trigger = TurretTriggered_NonOverclocked
 			Location = [1.1, 0]
 			AnchorMediaEffects = true
 
@@ -453,8 +463,26 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "charge.wav"
-					Volume = .6
+					RandomSounds = ["sounds/laser_blaster_reload_01.wav",
+									"sounds/laser_blaster_reload_02.wav",
+									"sounds/laser_blaster_reload_03.wav"]
+					Volume = 1
+				}
+			]
+		}
+		ChargeEffect_Overclocked : ChargeEffect_NonOverclocked
+		{
+			Trigger = TurretTriggered_Overclocked
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds 
+					[
+						"sounds/laser_overclocked_reload_01.wav"
+						"sounds/laser_overclocked_reload_02.wav"
+						"sounds/laser_overclocked_reload_03.wav"
+					]
 				}
 			]
 		}
@@ -474,13 +502,40 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "shoot.wav"
-					Volume = .6
-					SpeedVariation = .25
+					RandomSounds = ["sounds/laser_blaster_shot_01.wav",
+									"sounds/laser_blaster_shot_02.wav",
+									"sounds/laser_blaster_shot_03.wav",
+									"sounds/laser_blaster_shot_04.wav"]
+					Volume = 1
+					SpeedVariation = .2
 				}
 			]
 		}
+		
+		OverclockFireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = Overclock_BeamEmitter
+			Location = [1.1, 0]
+			AnchorMediaEffects = true
 
+			MediaEffects
+			[
+				&<particles/laser_blaster_small_shoot.rules>
+				&<particles/laser_blaster_small_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["sounds/laser_overclocked_shot_01.wav",
+									"sounds/laser_overclocked_shot_02.wav",
+									"sounds/laser_overclocked_shot_03.wav"]
+					Db = -2
+					SpeedVariation = .1
+				}
+			]
+		}
+		
 		CrewLocation
 		{
 			Type = CrewLocation

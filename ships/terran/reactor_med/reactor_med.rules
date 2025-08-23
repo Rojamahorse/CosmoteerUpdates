@@ -6,11 +6,14 @@ OVERCLOCK
 
 	BATTERY_PER_SEC = (&~/Part/Components/BatteryProducer/ToQuantity/BaseValue) * (&POWER_GENERATION_FACTOR) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
 	HEAT_PER_BATTERY = (&HEAT_PER_SECOND) / (&BATTERY_PER_SEC)
+	
+	AUDIO_SPEED_FACTOR = 115%
+	AUDIO_VOLUME_DB = 3
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_med_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/ReactorMed"
 	IconNameKey = "Parts/ReactorMedIcon"
@@ -72,11 +75,11 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Invert = true
 		}
 
-		IsNonOverclocked
+		IsOperationalNonOverclocked
 		{
 			Type = MultiToggle
-			Toggles = [ IsOverclocked ]
-			Mode = None
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
 		}
 		BatteryStorage
 		{
@@ -84,6 +87,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ResourceType = battery
 			MaxResources = 16000
 			StartingResources = &MaxResources
+			GiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryPickup
 		}
 		Overclock_BatteryStorage : BatteryStorage
 		{
@@ -423,7 +427,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 		ReactorLights_NonOverclocked_Components
 		{
 			Type = ToggledComponents
-			Toggle = IsNonOverclocked
+			Toggle = IsOverclocked
+			Invert = true
 			Components
 			{
 				ReactorLights_NonOverclocked_Graphics
@@ -576,21 +581,50 @@ Part : <../base_part_terran_overclock.rules>/Part
 		ReactorHum
 		{
 			Type = ContinuousEffects
-			OperationalToggle = IsOperational
+			OperationalToggle = IsOperationalNonOverclocked
 			Location = [1.5, 1.5]
 			MaxMediaEffectsZoom = 4
 			MediaEffects
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "../reactor_small/operating.wav"
-					Volume = .5
-					Speed = .5
+					Sound = "sounds/medium_reactor_exterior_idle.wav"
+					Db = -1.5
 					MaxConcurrent = 1
 					DynamicVolume : ^/0/DynamicVolume
 					{
-						ExteriorVolume = .5
+						ExteriorVolume = .75
 					}
+				}
+				
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/medium_reactor_interior_idle.wav"
+					Db = -3
+					MaxConcurrent = 1
+				}
+			]
+		}
+
+		Overclock_ReactorHum : ReactorHum
+		{
+			OperationalToggle = IsOperationalOverclocked
+			MediaEffects
+			[
+				: ../^/0/MediaEffects/0
+				{
+					Db = (&^/0/Db) + (&~/OVERCLOCK/AUDIO_VOLUME_DB)
+					Speed = (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+				}
+				: ../^/0/MediaEffects/1
+				{
+					Db = (&^/0/Db) + (&~/OVERCLOCK/AUDIO_VOLUME_DB)
+					Speed = (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+				}
+				
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/medium_reactor_overclocked.wav"
 				}
 			]
 		}
@@ -717,9 +751,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 						: /BASE_SOUNDS/AudioExterior
 						{
-							Sound = "./Data/shots/disruptor_bolt/discharge.wav"
+							RandomSounds = ["../reactor_small/sounds/disruptor_discharge_01.wav",
+											"../reactor_small/sounds/disruptor_discharge_02.wav",
+											"../reactor_small/sounds/disruptor_discharge_03.wav",
+											"../reactor_small/sounds/disruptor_discharge_04.wav"]
 							Volume = 1
-							SpeedVariation = .2
+							SpeedVariation = .15
 						}
 					]
 				}
@@ -747,10 +784,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "../reactor_small/destroyed.wav"
-					Volume = 1.5
-					Speed = .75
-					SpeedVariation = .25 * (&Speed)
+					RandomSounds = ["destroyed/destroyed_01.wav", "destroyed/destroyed_02.wav", "destroyed/destroyed_03.wav"]
+					Volume = 1
+					SpeedVariation = .25
 				}
 
 				: /BASE_SHAKE

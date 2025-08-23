@@ -169,7 +169,10 @@ Components
 
 						: /BASE_SOUNDS/AudioExterior
 						{
-							Sound = "../disruptor_bolt/discharge.wav"
+							RandomSounds = ["../disruptor_bolt/sounds/disruptor_discharge_01.wav",
+											"../disruptor_bolt/sounds/disruptor_discharge_02.wav",
+											"../disruptor_bolt/sounds/disruptor_discharge_03.wav",
+											"../disruptor_bolt/sounds/disruptor_discharge_04.wav"]
 							Volume = 1
 							SpeedVariation = .2
 						}
@@ -208,7 +211,8 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "missile_emp_hit.wav"
+					RandomSounds = ["sounds/launcher_emp_impact_01.wav",
+									"sounds/launcher_emp_impact_02.wav"]
 					Volume = 1
 					SpeedVariation = .2
 				}
@@ -231,7 +235,7 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "missile_emp_hit.wav"
+					Sound = "sounds/missile_emp_hit.wav"
 					Volume = 1
 					SpeedVariation = .2
 				}

@@ -86,9 +86,21 @@ CrewSelectionFillSprite
 }
 
 CrewSelectSound = &<../sim_gui.rules>/PartSelectSound
-AssignToSquadSound = &<./Data/commands/command_move.rules>/MoveCommand/IssueSound
+
+AssignToSquadSound
+	{
+		RandomSounds = ["sounds/squad_role_assign_01.wav",
+						"sounds/squad_role_assign_02.wav"]
+	}
+	
 ChangeRoleColorSound = &<../designer/paint_gui.rules>/PaintSound
-SetCrewRoleSound = &<../designer/build_gui.rules>/BlueprintAddSound
+
+SetCrewRoleSound 
+	{
+		RandomSounds = ["sounds/crew_assign_01.wav",
+						"sounds/crew_assign_02.wav"]
+	}
+	
 SquadSelectSound = &<../sim_gui.rules>/PartSelectSound
 SquadDeselectSound = &<../sim_gui.rules>/PartDeselectSound
 AddSquadTargetSound = &<../designer/build_gui.rules>/BlueprintAddSound

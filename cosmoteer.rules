@@ -129,7 +129,7 @@ Simulation
 
 		ZoomClickSound
 		{
-			Sound = "gui/game/zoom_tick.wav"
+			Sound = "gui/game/sounds/zoom_tick.wav"
 			Volume = .125
 			Speed = 1
 		}
@@ -139,13 +139,13 @@ Simulation
 
 	GameSpeeds
 	[
-		{ Speed=.125; NameKey="Hud/SpeedEighth"; LongNameKey="Hud/SpeedEighthLong" }
-		{ Speed=.25; NameKey="Hud/SpeedQuarter"; LongNameKey="Hud/SpeedQuarterLong" }
-		{ Speed=.5; NameKey="Hud/SpeedHalf"; LongNameKey="Hud/SpeedHalfLong" }
-		{ Speed=1; NameKey="Hud/Speed1"; LongNameKey="Hud/Speed1Long" }
-		{ Speed=2; NameKey="Hud/Speed2"; LongNameKey="Hud/Speed2Long" }
-		{ Speed=4; NameKey="Hud/Speed4"; LongNameKey="Hud/Speed4Long" }
-		{ Speed=8; NameKey="Hud/Speed8"; LongNameKey="Hud/Speed8Long" }
+		{ Speed=.125; NameKey="Hud/SpeedEighth"; LongNameKey="Hud/SpeedEighthLong"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_01.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_01.wav" } }
+		{ Speed=.25; NameKey="Hud/SpeedQuarter"; LongNameKey="Hud/SpeedQuarterLong"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_02.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_01.wav" } }
+		{ Speed=.5; NameKey="Hud/SpeedHalf"; LongNameKey="Hud/SpeedHalfLong"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_03.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_02.wav" } }
+		{ Speed=1; NameKey="Hud/Speed1"; LongNameKey="Hud/Speed1Long"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_04.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_03.wav" } }
+		{ Speed=2; NameKey="Hud/Speed2"; LongNameKey="Hud/Speed2Long"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_05.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_04.wav" } }
+		{ Speed=4; NameKey="Hud/Speed4"; LongNameKey="Hud/Speed4Long"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_06.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_05.wav" } }
+		{ Speed=8; NameKey="Hud/Speed8"; LongNameKey="Hud/Speed8Long"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_06.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_06.wav" } }
 	]
 
 	DebugPointLightSprite

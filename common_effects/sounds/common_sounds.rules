@@ -13,8 +13,6 @@ ThrusterBurst
 		ZoomFalloff = 5
 	}
 
-	Sound = "thruster_burst.wav"
-
 	MaxConcurrent = 2
 	ConcurrencyDuration = 1
 
@@ -37,11 +35,30 @@ ThrusterRumble
 		ZoomFalloff = 4
 	}
 
-	Sound = "thruster_rumble.wav"
-
 	MaxConcurrent = 1
 
 	RampUpTime = 1
+	RampDownTime = .1
+}
+
+ThrusterRumbleFadeIn
+{
+	Type = Audio
+
+	DynamicVolume
+	{
+		MinDistance = 0
+		MaxDistance = 1.5
+		DistanceFalloff = 1
+
+		MinZoom = 1
+		MaxZoom = 70
+		ZoomFalloff = 4
+	}
+
+	MaxConcurrent = 1
+
+	RampUpTime = 2
 	RampDownTime = .1
 }
 

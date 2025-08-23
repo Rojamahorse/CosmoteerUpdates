@@ -64,16 +64,6 @@ StackSprites
 	}
 ]
 
-StackReceiveMediaEffects
-[
-	: /BASE_SOUNDS/AudioInterior
-	{
-		Sound = "diamond_deliver.wav"
-		Volume = 1.0
-		Speed = 1.2
-		SpeedVariation = .05
-	}
-]
-
-StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+StackReceiveMediaEffects = &/COMMON_EFFECTS/DiamondDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/DiamondPickup
 NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

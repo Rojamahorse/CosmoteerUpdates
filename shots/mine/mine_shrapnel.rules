@@ -66,11 +66,12 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "../bullet_large/bullet_large_hit.wav"
-					Volume = .75
-					SpeedVariation = .4
+					RandomSounds = ["../bullet_large/sounds/large_cannon_impact_01.wav",
+									"../bullet_large/sounds/large_cannon_impact_01.wav",
+									"../bullet_large/sounds/large_cannon_impact_01.wav"]
+					Volume = 0.8
+					SpeedVariation = .2
 				}
-
 				: /BASE_SHAKE
 				{
 					ShakeAmount = .1
@@ -104,9 +105,11 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "../bullet_large/bullet_large_hit_structure.wav"
-					Volume = .5
-					SpeedVariation = .4
+					RandomSounds = ["../bullet_large/sounds/large_cannon_impact_01.wav",
+									"../bullet_large/sounds/large_cannon_impact_01.wav",
+									"../bullet_large/sounds/large_cannon_impact_01.wav"]
+					Volume = 0.8
+					SpeedVariation = .2
 				}
 			]
 		}

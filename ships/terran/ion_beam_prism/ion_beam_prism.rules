@@ -201,7 +201,7 @@ Part : <../base_part_terran.rules>/Part
 			OperationalToggle = TurretToggle
 			FireInterval = &~/ION_EMITTER/Part/Components/Weapon/FireInterval
 			FiringArc = 360d
-			RotateSpeed = 20d
+			RotateSpeed = 60d
 			FireThresholdAngle = 1d
 			AIFirepowerRating = 0
 			AddAIFirepowerRatingsWhenTargetedByPartCategories = [ion_beam_emitter, ion_beam_prism]
@@ -465,9 +465,9 @@ Part : <../base_part_terran.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/common_effects/sounds/small_part_destroyed.wav"
+					RandomSounds = ["sounds/explosion_part_energy/explosion_part_energy_01.wav", "sounds/explosion_part_energy/explosion_part_energy_02.wav", "sounds/explosion_part_energy/explosion_part_energy_03.wav"]
 					Volume = .5
-					SpeedVariation = .25
+					SpeedVariation = .2
 				}
 
 				: /BASE_SHAKE
@@ -502,9 +502,9 @@ Part : <../base_part_terran.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/common_effects/sounds/small_part_destroyed.wav"
+					RandomSounds = ["sounds/explosion_weapon_energy/explosion_weapon_energy_01.wav", "sounds/explosion_weapon_energy/explosion_weapon_energy_02.wav", "sounds/explosion_weapon_energy/explosion_weapon_energy_03.wav"]
 					Volume = .75
-					SpeedVariation = .25
+					SpeedVariation = .2
 				}
 
 				: /BASE_SHAKE

@@ -26,6 +26,7 @@ ProximityEffects
 {
 	InstantKillRadiusFactor = 1.0
 	EffectsRadiusFactor = 2.5
+	EffectsRadiusFactorShipQueryBuffer = &<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/Components/ArcShield/Radius
 	RaycastsPerDiameterPerSecond = 5
 	EffectsScaleOverDistance = [100%, 2.5%]
 	EffectsDistanceExponent = 0.5

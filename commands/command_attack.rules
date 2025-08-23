@@ -5,8 +5,8 @@ AttackCommand : <base_follow_command.rules>/BaseFollowCommand
 
 	IssueSound
 	{
-		Sound = "command_attack.wav"
-		Volume = .25
+		Sound = "sounds/lock_target.wav"
+		Volume = 1
 	}
 
 	Circle : <./Data/gui/game/sim_gui.rules>/SelectedShipCircle

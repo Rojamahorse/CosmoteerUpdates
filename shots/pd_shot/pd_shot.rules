@@ -113,7 +113,25 @@ Components
 					Damage = { BaseValue = 35; EffectScaleExponent = 1 }
 				}
 			]
-			MediaEffects = &../HitBullet/MediaEffects
+			MediaEffects
+			[
+				&<particles/pd_shot_spikes.rules>
+				&<particles/pd_shot_sparks.rules>
+				&<./Data/ships/terran/point_defense/particles/point_defense_shoot_flash.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["sounds/point_defense_impact_01.wav", 
+									"sounds/point_defense_impact_02.wav", 
+									"sounds/point_defense_impact_03.wav", 
+									"sounds/point_defense_impact_04.wav",
+									"sounds/point_defense_impact_05.wav"]
+					Db = -6
+					Speed = 1.15
+					SpeedVariation = 0.05
+					MaxConcurrent = 30
+				}
+			]
 		}
 		HitStructural = &HitOperational
 	}

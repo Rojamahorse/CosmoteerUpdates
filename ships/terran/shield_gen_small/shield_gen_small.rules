@@ -19,7 +19,7 @@ OVERCLOCK
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-Part : <../base_part_terran_overclock.rules>/Part
+Part : <../base_med_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/ShieldGenSmall"
 	IconNameKey = "Parts/ShieldGenSmallIcon"
@@ -155,7 +155,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			MaxResources = 6000
 			ToggleOnResources = 5001
 			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 			DrainResistance
 			{
 				BaseValue = 0
@@ -352,11 +352,12 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Bucket = Lower2
 				}
 
+				// Non-Overclocked
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
-					Sound = "shield_loop.wav"
-					Volume = .15
-					Speed = .5
+					Sound = "small_shield_energy_idle.wav"
+					Volume = { BaseValue=1; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ZERO] }
+					Speed = 1
 					MaxConcurrent = 1
 					MaxConcurrentVolume = .3
 					DynamicVolume : ^/0/DynamicVolume
@@ -365,6 +366,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 						MaxDistance = 1.5
 					}
 					IgnoreIntensity = true
+				}
+				
+				// Overclocked
+				: 1
+				{
+					Sound = "sounds/small_shield_energy_overclocked.wav"
+					Volume = { BaseValue=0; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ONE] }
 				}
 			]
 
@@ -452,7 +460,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Toggles = [Overclock_ReinforcedModeTweenToggle, IsOperationalOverclocked]
 		}
-		
+
 		Overclock_ExtendedAndOverclockedModeToggle
 		{
 			Type = MultiToggle
@@ -939,35 +947,24 @@ Part : <../base_part_terran_overclock.rules>/Part
 					ArcSpriteSegments = 12
 					Bucket = Upper1
 				}
-			]
-		}
-		EmitterSoundEffects : BaseEmitterEffect
-		{
-			OperationalToggle = IsOperationalNonOverclocked
-			MediaEffects
-			[
+				
+				// Non-Overclocked
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
-					Sound = "shield_emitter_loop.wav"
-					Volume = .2
+					Sound = "small_shield_module_idle.wav"
+					Volume = { BaseValue=1; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ZERO] }
 					Speed = 1
 					MaxConcurrent = 1
 					MaxConcurrentVolume = .4
 					IgnoreIntensity = true
 				}
-			]
-		}
-		Overclock_EmitterSoundEffects : BaseEmitterEffect
-		{
-			OperationalToggle = IsOperationalOverclocked
-			MediaEffects
-			[
-				: /BASE_SOUNDS/AudioExteriorDetail
+				
+				// Overclocked
+				: 1
 				{
-					Sound = "sounds/small_shield_energy_overclocked.wav"
-					Volume = 1
-					IgnoreIntensity = true
-				}	
+					Sound = "sounds/small_shield_module_overclocked.wav"
+					Volume = { BaseValue=0; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ONE] }
+				}
 			]
 		}
 
@@ -981,8 +978,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "activate.wav"
-					Volume = .5
+					Sound = "small_shield_start.wav"
+					Volume = 1
 					Speed = 1
 					IgnoreIntensity = true
 				}
@@ -991,8 +988,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "deactivate.wav"
-					Volume = .5
+					Sound = "small_shield_stop.wav"
+					Volume = 1
 					Speed = 1
 					IgnoreIntensity = true
 				}
@@ -1024,9 +1021,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Toggle = Overclock_ExtendingEffectToggle
 			ToggledOnMediaEffects
 			[
-				: /BASE_SOUNDS/AudioExteriorDetail
+				: /BASE_SOUNDS/AudioExteriorDetailBig
 				{
 					Sound = "sounds/small_shield_overclock_wide.wav"
+					Db = 3
 				}
 			]
 			ToggledOffMediaEffects
@@ -1036,9 +1034,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Toggle = Overclock_ReinforcingEffectToggle
 			ToggledOnMediaEffects
 			[
-				: /BASE_SOUNDS/AudioExteriorDetail
+				: /BASE_SOUNDS/AudioExteriorDetailBig
 				{
 					Sound = "sounds/small_shield_overclock_narrow.wav"
+					Db = 3
 				}
 			]
 			ToggledOffMediaEffects
@@ -1439,7 +1438,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				Stats
 				{
 					ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_FACTOR)
-					ShieldDist = (&~/Part/Components/ArcShield/Radius/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_RADIUS_FACTOR)
+					ShieldDist = (&~/Part/Components/ArcShield/Radius/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_RADIUS_FACTOR) - (&~/Part/Components/ArcShield/Location/1)
 					HeatPerDamage = (&~/OVERCLOCK/EXTENDED/HEAT_PER_DAMAGE)
 				}
 			}
@@ -1454,5 +1453,21 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 			}
 		]
+	}
+}
+
+MODIFIERS
+{
+	OVERCLOCK_TO_ONE
+	{
+		Type = BuffRemap
+		BuffType = Overclock
+		RemapFrom = [0, 1]
+		RemapTo = [0, 1]
+		ModificationMode = Replace
+	}
+	OVERCLOCK_TO_ZERO : OVERCLOCK_TO_ONE
+	{
+		RemapTo = [1, 0]
 	}
 }
