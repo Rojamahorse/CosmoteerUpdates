@@ -6032,7 +6032,7 @@ Tips
 		Tip1 = "You can use external art programs such as MS Paint, Paint.NET, Gimp, or Photoshop to create the basic shape outlines for your ships..."
 		Tip2 = "1. First, use any external art program of your choice to save a <b>white-on-black</b> PNG image file that represents the general shape of your ship. White pixels will be interpreted as corridor tiles, and black pixels will be interpreted as empty space."
 		Tip3 = "2. Then in the Ship Editor, open the <img name='hamburger_up'/> menu, and select <white>Load Shape From PNG</white>. Select the PNG image file that you saved."
-		Tip4 = "3. Your ship's current blueprints will be replaced with the blueprints created your PNG image file. Finish your ship by adding weapons, thrusters, defenses, and other parts as you see fit."
+		Tip4 = "3. Your ship's current blueprints will be replaced with the blueprints created from your PNG image file. Finish your ship by adding weapons, thrusters, defenses, and other parts as you see fit."
 	}
 	EditShipInfo
 	{

@@ -253,7 +253,7 @@ Part : <../base_large_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 24000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 			ToggleOnResources = &../BeamEmitter/ResourcesUsed
 			ToggleOffResources = (&ToggleOnResources) - 1
 		}
@@ -2044,6 +2044,6 @@ Part : <../base_large_part_terran.rules>/Part
 			}
 		}
 	]
-	
+
 	StatsNotesKey = "Stats/ThermalResonanceLanceNotes"
 }

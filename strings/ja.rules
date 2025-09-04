@@ -4551,7 +4551,7 @@ Stats
 	ThrusterRampDownFmt = "<white>弱化時間：</white> <good>{0:0.##}</good> <gray>秒</gray>"
 	ThrusterRampExponentFmt = "<white>ランプタイム指数：</white> <good>{0:0.##}</good>"
 	ThrusterRampUpFmt = "<white>強化時間：</white> <good>{0:0.##}</good> <gray>　秒</gray>"
-	TractorBeamNotes = <gray>注：上記の動力と電力の使用値は理論上の最大値です。実際の値はターゲットの距離に応じて変わります。
+	TractorBeamNotes = <gray>注：上記の動力と電力の使用値は理論上の最大値です。実際の値はターゲットの距離に応じて変わります。</gray>
 	TractorForceFmt = "<white>トラクターフォース：</white> <good>{0:#,0.#}</good><gray> kN</gray>"
 	TractorOverloadChargeTimeFmt = "<white>過負荷チャージ時間：</white> <good>{0:0.##}</good><gray>秒</gray>"
 	TractorOverloadForceFmt = "<white>過負荷トラクターフォース：</white> <good>{0:#,0.#}</good><gray> kN</gray>"

@@ -155,7 +155,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			MaxResources = 6000
 			ToggleOnResources = 5001
 			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 			DrainResistance
 			{
 				BaseValue = 0
@@ -367,7 +367,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 					}
 					IgnoreIntensity = true
 				}
-				
+
 				// Overclocked
 				: 1
 				{
@@ -947,7 +947,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 					ArcSpriteSegments = 12
 					Bucket = Upper1
 				}
-				
+
 				// Non-Overclocked
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
@@ -958,7 +958,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 					MaxConcurrentVolume = .4
 					IgnoreIntensity = true
 				}
-				
+
 				// Overclocked
 				: 1
 				{

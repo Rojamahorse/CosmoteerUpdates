@@ -12,7 +12,7 @@ OVERCLOCK
 
 	BOOST_MAX_POWER_USAGE_FACTOR = 175%
 	BOOST_POWER_RAMP_TIME = 2
-	
+
 	AUDIO_SPEED_FACTOR = 115%
 	AUDIO_VOLUME_DB = 3
 	BOOST_AUDIO_VOLUME_DB = 1
@@ -149,7 +149,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 6000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 			ToggleOnResources = (&MaxResources) - 999
 			ToggleOffResources = 0
 			ProvidedValueRange = 0
@@ -1054,15 +1054,17 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
 					Sound = "../thruster_large/sounds/large_thruster_loop_01.wav"
-					Volume = 0.6
+					Volume = 1
 					Speed = 1
+					MaxConcurrentVolume = 1.25
 				}
 
 				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
 				{
 					Sound = "../thruster_large/sounds/large_thruster_loop_02.wav"
-					Volume = 0.6
+					Volume = 1
 					Speed = 1
+					MaxConcurrentVolume = 1.25
 				}
 			]
 			EndMediaEffects
@@ -1088,21 +1090,21 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				&../^/0/MediaEffects/2
 				&../^/0/MediaEffects/3
 				&../^/0/MediaEffects/4
-				
+
 				// SFX loop
 				: ../^/0/MediaEffects/5
 				{
 					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
-					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 				}
 				: ../^/0/MediaEffects/6
 				{
 					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
-					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 				}
-				
+
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
 					RandomSounds
@@ -1167,7 +1169,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				}
 			]
 		}
-		
+
 		Overclock_ThrustEffectsBoosted : ThrustEffectsBoosted
 		{
 			InvertOperationalToggle = false
@@ -1179,7 +1181,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				&../^/0/MediaEffects/2
 				&../^/0/MediaEffects/3
 				&../^/0/MediaEffects/4
-				
+
 				// SFX loop
 				: ../^/0/MediaEffects/5
 				{
@@ -1187,7 +1189,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					Speed = (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
 					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/BOOST_AUDIO_VOLUME_DB")
 				}
-				
+
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
 					Sound = "sounds/boost_thruster_overclocked.wav"

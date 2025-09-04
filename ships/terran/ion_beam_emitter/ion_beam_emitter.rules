@@ -138,7 +138,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 10000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{
@@ -649,7 +649,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					MaxConcurrent = 1
 					MaxConcurrentVolume = 1
 				}
-				
+
 				: /BASE_SOUNDS/AudioInterior
 				{
 					Sound = "sounds/ion_beam_idle_rumble.wav"

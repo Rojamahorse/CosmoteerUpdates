@@ -6,7 +6,7 @@ OVERCLOCK
 
 	BATTERY_PER_SEC = (&~/Part/Components/BatteryProducer/ToQuantity/BaseValue) * (&POWER_GENERATION_FACTOR) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
 	HEAT_PER_BATTERY = (&HEAT_PER_SECOND) / (&BATTERY_PER_SEC)
-	
+
 	AUDIO_SPEED_FACTOR = 115%
 	AUDIO_VOLUME_DB = 3
 }
@@ -83,7 +83,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ResourceType = battery
 			MaxResources = 8000
 			StartingResources = &MaxResources
-			GiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryPickup
+			GiveResourceMediaEffects = &/COMMON_EFFECTS/PowerPickup
 		}
 		Overclock_BatteryStorage : BatteryStorage
 		{
@@ -555,7 +555,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						ExteriorVolume = .75
 					}
 				}
-				
+
 				: /BASE_SOUNDS/AudioInterior
 				{
 					Sound = "sounds/small_reactor_interior_idle.wav"
@@ -580,7 +580,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Db = (&^/0/Db) + (&~/OVERCLOCK/AUDIO_VOLUME_DB)
 					Speed = (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
 				}
-				
+
 				: /BASE_SOUNDS/AudioInterior
 				{
 					Sound = "sounds/small_reactor_overclocked.wav"

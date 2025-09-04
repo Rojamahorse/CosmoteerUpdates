@@ -84,7 +84,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 10000 // TODO
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{

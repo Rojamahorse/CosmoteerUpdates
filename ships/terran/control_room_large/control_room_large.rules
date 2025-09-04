@@ -98,7 +98,7 @@ Part : <../base_large_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 8000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{
@@ -528,7 +528,7 @@ Part : <../base_large_part_terran.rules>/Part
 					MaxConcurrentVolume = 1
 					MaxConcurrent = 1
 				}
-				
+
 				: /BASE_SOUNDS/AudioInterior
 				{
 					Sound = "sounds/bridge_murmurs.wav"

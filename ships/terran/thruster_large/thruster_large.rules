@@ -4,7 +4,7 @@ OVERCLOCK
 	MAX_POWER_USAGE_FACTOR = 175%
 	POWER_USAGE_FACTOR = 1 / (&THRUST_FACTOR) * (&MAX_POWER_USAGE_FACTOR)
 	THRUST_HEAT_PER_SECOND = 675
-	
+
 	AUDIO_SPEED_FACTOR = 115%
 	AUDIO_VOLUME_DB = 3
 }
@@ -123,7 +123,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 4000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 
 		PowerDistributionBuffToggle
@@ -591,15 +591,17 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
 					Sound = "sounds/large_thruster_loop_01.wav"
-					Volume = 0.6
+					Volume = 1
 					Speed = 1
+					MaxConcurrentVolume = 1.25
 				}
 
 				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
 				{
 					Sound = "sounds/large_thruster_loop_02.wav"
-					Volume = 0.6
+					Volume = 1
 					Speed = 1
+					MaxConcurrentVolume = 1.25
 				}
 			]
 			EndMediaEffects
@@ -626,21 +628,21 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 				&../^/0/MediaEffects/2
 				&../^/0/MediaEffects/3
 				&../^/0/MediaEffects/4
-				
+
 				// SFX loop
 				: ../^/0/MediaEffects/5
 				{
 					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
-					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 				}
 				: ../^/0/MediaEffects/6
 				{
 					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
-					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 				}
-				
+
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
 					RandomSounds

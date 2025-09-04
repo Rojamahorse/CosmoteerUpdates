@@ -83,7 +83,7 @@ Def
 				}
 			]
 			Name = ""
-			Enabled = true
+			Enabled = false
 			UpdateAfterInit = false
 		}
 		{
@@ -116,7 +116,7 @@ Def
 			Invert = false
 			ValueType = Int
 			FromValue = 0
-			ToValue = 24
+			ToValue = 12
 			Name = "add frames over life"
 			Enabled = true
 			UpdateAfterInit = false
@@ -166,32 +166,38 @@ Def
 			Colors
 			[
 				{
-					Rf = 0
-					Gf = 0
+					Rf = 0.19607843
+					Gf = 0.039215688
 					Bf = 0
 					Af = 1
 				}
 				{
-					Rf = 0.5882353
+					Rf = 0.39215687
 					Gf = 1
-					Bf = 1
-					Af = 1
+					Bf = 0.19607843
+					Af = 0.78431374
+				}
+				{
+					Rf = 0.4862745
+					Gf = 1
+					Bf = 0.19607843
+					Af = 0.5882353
+				}
+				{
+					Rf = 0.8627451
+					Gf = 0.19607843
+					Bf = 0.5882353
+					Af = 0.39215687
 				}
 				{
 					Rf = 1
-					Gf = 1
-					Bf = 1
-					Af = 0
-				}
-				{
-					Rf = 1
-					Gf = 1
-					Bf = 1
-					Af = 0
+					Gf = 0.039215688
+					Bf = 0
+					Af = 0.019607844
 				}
 			]
 			Name = ""
-			Enabled = false
+			Enabled = true
 			UpdateAfterInit = false
 		}
 		{
@@ -278,7 +284,7 @@ Def
 }
 EmitterDef
 {
-	EmitPerSecond = 10
+	EmitPerSecond = 2
 	EmitPerOneShot
 	{
 		Min = 0
@@ -341,6 +347,7 @@ EmitterDef
 }
 Bucket = DisruptorLightningUpper
 UseRealTime = false
+EmitImmediately = false
 PenetratingBucket
 MinIntensity = 0
 IsFancy = false
@@ -354,7 +361,7 @@ DontEmitWhenOffScreen = true
 DontEmitWhenOffScreenSizeInflate = 5
 UseCustomShapeForOffScreenCheck = false
 MaxEmissionZoom = 30
-MaxParticleCount = 2147483647
+MaxParticleCount = 10000
 ScaleEmissionWithIntensity = true
 ScaleEmissionWithBeamLength = false
 ScaleEmissionWithWorldVelocity = false

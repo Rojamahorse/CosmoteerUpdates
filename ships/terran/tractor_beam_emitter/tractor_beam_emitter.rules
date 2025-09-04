@@ -153,7 +153,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 24000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{
@@ -947,7 +947,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			MediaEffects
 			[
 				&<particles/tractor_beam_overload_shockwave.rules>
-				
+
 				: /BASE_SOUNDS/AudioExterior
 					{
 						Sound = "sounds/tractor_beam_pulse_push.wav"
@@ -994,7 +994,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			MediaEffects
 			[
 				&<particles/tractor_beam_overload_shockwave_inverse.rules>
-				
+
 				: /BASE_SOUNDS/AudioExterior
 					{
 						Sound = "sounds/tractor_beam_pulse_pull.wav"
@@ -1029,7 +1029,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			[
 				&<particles/tractor_beam_overload_charging_glints.rules>
 				&<particles/tractor_beam_overload_charging_shockwave.rules>
-				
+
 				: /BASE_SOUNDS/AudioExterior
 				{
 					Sound = "sounds/tractor_beam_charge_up.wav"

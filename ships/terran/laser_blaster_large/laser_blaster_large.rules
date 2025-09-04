@@ -144,7 +144,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 10000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{
@@ -706,29 +706,41 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			ChainedTo = Turret
 			Location = &../NonOverclockedComponents/Components/EmitterBase/Location
 		}
-		EmitterLeftProxy : EmitterBaseProxy
+		EmitterLeftProxy_NonOverclocked : EmitterBaseProxy
 		{
 			ComponentID = EmitterLeft
+			ProxyToggle = IsOverclocked
+			InvertProxyToggle = true
 			Location = &../NonOverclockedComponents/Components/EmitterLeft/Location
 		}
-		EmitterRightProxy : EmitterBaseProxy
+		EmitterRightProxy_NonOverclocked : EmitterBaseProxy
 		{
 			Type = EmitterProxy
+			ProxyToggle = IsOverclocked
+			InvertProxyToggle = true
 			ComponentID = EmitterRight
 			Location = &../NonOverclockedComponents/Components/EmitterRight/Location
+		}
+		EmitterLeftProxy_Overclocked : EmitterLeftProxy_NonOverclocked
+		{
+			InvertProxyToggle = false
+		}
+		EmitterRightProxy_Overclocked : EmitterRightProxy_NonOverclocked
+		{
+			InvertProxyToggle = false
 		}
 
 		Overclock_EmissionTriggered
 		{
 			Type = MultiTrigger
 			OperationalToggle = IsOverclocked
-			Triggers = [ EmitterLeftProxy, EmitterRightProxy ]
+			Triggers = [ EmitterLeftProxy_Overclocked, EmitterRightProxy_Overclocked ]
 		}
 
 		ChargeEffectLeft_NonOverclocked
 		{
 			Type = TriggeredEffects
-			ChainedTo = EmitterLeftProxy
+			ChainedTo = EmitterLeftProxy_NonOverclocked
 			Trigger = ShootLeftTriggerProxy_NonOverclocked
 			AnchorMediaEffects = true
 
@@ -763,7 +775,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 
 		ChargeEffectRight_NonOverclocked : ChargeEffectLeft_NonOverclocked
 		{
-			ChainedTo = EmitterRightProxy
+			ChainedTo = EmitterRightProxy_NonOverclocked
 			Trigger = ShootRightTriggerProxy_NonOverclocked
 		}
 		ChargeEffectRight_Overclocked : ChargeEffectRight_NonOverclocked
@@ -775,8 +787,8 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 		FireEffectLeft
 		{
 			Type = TriggeredEffects
-			ChainedTo = EmitterLeftProxy
-			Trigger = EmitterLeftProxy
+			ChainedTo = EmitterLeftProxy_NonOverclocked
+			Trigger = EmitterLeftProxy_NonOverclocked
 			AnchorMediaEffects = true
 
 			MediaEffects
@@ -798,15 +810,15 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 
 		FireEffectRight : FireEffectLeft
 		{
-			ChainedTo = EmitterRightProxy
-			Trigger = EmitterRightProxy
+			ChainedTo = EmitterRightProxy_NonOverclocked
+			Trigger = EmitterRightProxy_NonOverclocked
 		}
-		
+
 		OverclockFireEffectLeft
 		{
 			Type = TriggeredEffects
-			ChainedTo = EmitterLeftProxy
-			Trigger = Overclock_EmissionTriggered
+			ChainedTo = EmitterLeftProxy_Overclocked
+			Trigger = EmitterLeftProxy_Overclocked
 			AnchorMediaEffects = true
 
 			MediaEffects
@@ -827,8 +839,8 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 
 		OverclockFireEffectRight : OverclockFireEffectLeft
 		{
-			ChainedTo = EmitterRightProxy
-			Trigger = Overclock_EmissionTriggered
+			ChainedTo = EmitterRightProxy_Overclocked
+			Trigger = EmitterRightProxy_Overclocked
 		}
 
 		CrewLocation1

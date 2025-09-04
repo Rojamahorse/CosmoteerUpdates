@@ -176,7 +176,7 @@ SteelPickup
 ]
 
 
-BatteryPickup
+PowerPickup
 [
 	: /BASE_SOUNDS/AudioInterior
 	{
@@ -358,7 +358,7 @@ SteelDeliver
 ]
 
 
-BatteryDeliver
+PowerDeliver
 [
 	: /BASE_SOUNDS/AudioInterior
 	{
@@ -540,13 +540,25 @@ SmallPartDestroyed
 						"sounds/small_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
-	}
+		
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
 
-	: /BASE_SOUNDS/AudioExterior
-	{
-		Sound = "sounds/small_part_destroyed.wav"
-		Db = -13
-		SpeedVariation = .3
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 300
+				FrequencyFactorExponent = 0.5
+			}
+		}
 	}
 
 	: /BASE_SHAKE
@@ -570,13 +582,25 @@ SmallPartDestroyedDry
 						"sounds/small_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
-	}
+		
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
 
-	: /BASE_SOUNDS/AudioExterior
-	{
-		Sound = "sounds/small_part_destroyed.wav"
-		Db = -13
-		SpeedVariation = .3
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 300
+				FrequencyFactorExponent = 0.5
+			}
+		}
 	}
 
 	: /BASE_SHAKE
@@ -614,6 +638,25 @@ MedPartDestroyed
 						"sounds/med_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
+		
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
+
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 300
+				FrequencyFactorExponent = 0.5
+			}
+		}
 	}
 
 	: /BASE_SHAKE
@@ -638,6 +681,25 @@ MedPartDestroyedDry
 						"sounds/med_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
+		
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
+
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 300
+				FrequencyFactorExponent = 0.5
+			}
+		}
 	}
 
 	: /BASE_SHAKE
@@ -675,6 +737,25 @@ BigPartDestroyed
 						"sounds/large_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
+		
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
+
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 300
+				FrequencyFactorExponent = 0.5
+			}
+		}
 	}
 
 	: /BASE_SHAKE
@@ -710,6 +791,25 @@ HugePartDestroyed
 						"sounds/huge_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
+		
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
+
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 100
+				FrequencyFactorExponent = 0.5
+			}
+		}
 	}
 
 	: /BASE_SHAKE
@@ -744,6 +844,26 @@ StructureDestroyed
 						"sounds/small_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
+		Speed = 1.25
+		
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
+
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 300
+				FrequencyFactorExponent = 0.5
+			}
+		}
 	}
 
 	: /BASE_SHAKE

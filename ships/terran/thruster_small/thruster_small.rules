@@ -4,7 +4,7 @@ OVERCLOCK
 	POWER_USAGE_FACTOR = 1 / (&THRUST_FACTOR)
 	POWER_GENERATION_FACTOR = 3
 	THRUST_HEAT_PER_SECOND = 250
-	
+
 	AUDIO_SPEED_FACTOR = 115%
 	AUDIO_VOLUME_DB = 8
 }
@@ -106,7 +106,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 1000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 			ToggleOnResources = &~/Part/FuelUsage
 			ToggleOffResources = 0
 		}
@@ -600,9 +600,10 @@ Part : <../base_part_terran_overclock.rules>/Part
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
 					Sound = "sounds/small_thruster_loop.wav"
-					Volume = .25
+					Volume = 1
 					Speed = 1
-					Db = 5
+					Db = 7
+					MaxConcurrentVolume = 1.6
 				}
 			]
 			EndMediaEffects
@@ -630,15 +631,15 @@ Part : <../base_part_terran_overclock.rules>/Part
 				&../^/0/MediaEffects/2
 				&../^/0/MediaEffects/3
 				&../^/0/MediaEffects/4
-				
+
 				// SFX loop
 				: ../^/0/MediaEffects/5
 				{
 					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
-					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 				}
-				
+
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
 					RandomSounds
@@ -680,15 +681,17 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				&<particles/thruster_sparks_small.rules>
 
-				: /COMMON_SOUNDS/ThrusterBurst
-				{
-					RandomSounds = ["sounds/small_thruster_start_01.wav",
-									"sounds/small_thruster_start_02.wav"]
-					Volume = 0.25
-					Db = 6
-					Speed = 1
-					SpeedVariation = .1
-				}
+//				: /COMMON_SOUNDS/ThrusterBurst
+//				{
+//					RandomSounds = ["sounds/small_thruster_start_01.wav",
+//									"sounds/small_thruster_start_02.wav",
+//									"sounds/small_thruster_start_03.wav",
+//									"sounds/small_thruster_start_04.wav"]
+//					Volume = 0.5
+//					Db = 6
+//					Speed = 1
+//					SpeedVariation = .15
+//				}
 			]
 		}
 

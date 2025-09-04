@@ -137,6 +137,35 @@ AudioExteriorZoomless
 	MaxConcurrent = 5
 }
 
+AudioExteriorZoomlessFilter
+{
+	Type = Audio
+
+	DynamicVolume
+	{
+		MinDistance = 0
+		MaxDistance = 12
+		DistanceFalloff = 1
+	}
+
+	DynamicFilter
+	{
+		MinDistance = 0
+		MaxDistance = 6
+		DistanceFalloff = 1
+
+		Filter
+		{
+			FilterType = LowPassAmplify
+			FromFrequency = 7350
+			ToFrequency = 500
+			FrequencyFactorExponent = 0.5
+		}
+	}
+
+	MaxConcurrent = 5
+}
+
 AudioExteriorLongRange
 {
 	Type = Audio

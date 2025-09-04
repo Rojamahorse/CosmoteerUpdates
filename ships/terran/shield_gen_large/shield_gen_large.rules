@@ -94,7 +94,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			MaxResources = 18000
 			ToggleOnResources = 17001
 			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 			DrainResistance
 			{
 				BaseValue = 0
@@ -292,7 +292,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					}
 					IgnoreIntensity = true
 				}
-				
+
 				// Overclocked
 				: 1
 				{
@@ -714,7 +714,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					ArcSpriteSegments = 12
 					Bucket = Lower1
 				}
-				
+
 				// Non-Overclocked
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
@@ -725,13 +725,13 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					MaxConcurrentVolume = .8
 					IgnoreIntensity = true
 				}
-				
+
 				// Overclocked
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
 					Sound = "sounds/large_shield_module_overclocked.wav"
 					Volume = { BaseValue=0; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ONE] }
-				}	
+				}
 			]
 		}
 

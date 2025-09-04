@@ -110,7 +110,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 4000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{
@@ -477,7 +477,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					RandomSounds 
+					RandomSounds
 					[
 						"sounds/laser_overclocked_reload_01.wav"
 						"sounds/laser_overclocked_reload_02.wav"
@@ -511,7 +511,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 			]
 		}
-		
+
 		OverclockFireEffect
 		{
 			Type = TriggeredEffects
@@ -535,7 +535,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 			]
 		}
-		
+
 		CrewLocation
 		{
 			Type = CrewLocation

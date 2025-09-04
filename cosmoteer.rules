@@ -139,7 +139,7 @@ Simulation
 
 	GameSpeeds
 	[
-		{ Speed=.125; NameKey="Hud/SpeedEighth"; LongNameKey="Hud/SpeedEighthLong"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_01.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_01.wav" } }
+		{ Speed=.125; NameKey="Hud/SpeedEighth"; LongNameKey="Hud/SpeedEighthLong"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_01.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_00.wav" } }
 		{ Speed=.25; NameKey="Hud/SpeedQuarter"; LongNameKey="Hud/SpeedQuarterLong"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_02.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_01.wav" } }
 		{ Speed=.5; NameKey="Hud/SpeedHalf"; LongNameKey="Hud/SpeedHalfLong"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_03.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_02.wav" } }
 		{ Speed=1; NameKey="Hud/Speed1"; LongNameKey="Hud/Speed1Long"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_04.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_03.wav" } }

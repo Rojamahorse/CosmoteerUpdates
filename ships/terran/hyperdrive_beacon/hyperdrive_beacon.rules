@@ -127,7 +127,7 @@ Part : <../base_large_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 12000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{
@@ -667,7 +667,7 @@ Part : <../base_large_part_terran.rules>/Part
 						ExteriorVolume = .85
 					}
 				}
-				
+
 				: /BASE_SOUNDS/AudioInterior
 				{
 					Sound = "sounds/hyperdrive_beacon_interior_idle.wav"

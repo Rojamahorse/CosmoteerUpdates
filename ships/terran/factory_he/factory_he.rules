@@ -164,7 +164,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 4000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{
@@ -1159,7 +1159,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
 		}
-		
+
 		OperationSoundLoop
 		{
 			Type = ContinuousEffects

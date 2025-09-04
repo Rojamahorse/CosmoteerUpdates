@@ -814,12 +814,12 @@ LaunchGameSound
 TimePauseSound
 {
 	Sound = "sounds/UI_time_pause.wav"
-	Volume = 0.3
+	Volume = 1
 }
 TimeContinueSound
 {
 	Sound = "sounds/UI_time_continue.wav"
-	Volume = 0.3
+	Volume = 1
 }
 OpenBuildRepairMenuSound
 {

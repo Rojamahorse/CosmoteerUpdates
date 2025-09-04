@@ -148,7 +148,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 2000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		Overclock_BatteryProducer
 		{
@@ -446,7 +446,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Db = 1
 					Speed = 1.1
 					SpeedVariation = .05
-					MaxConcurrent = 15
+					MaxConcurrent = 50
 				}
 			]
 		}

@@ -287,10 +287,10 @@ FtlEffects
 
 	JumpOutMediaEffects
 	[
-		: /BASE_SOUNDS/AudioExteriorZoomless
+		: /BASE_SOUNDS/AudioExteriorZoomlessFilter
 		{
 			Sound = "common/sounds/ftl_jump_out.wav"
-			Volume = 2
+			Volume = 1
 			MaxConcurrentVolume = 1
 			Speed = 1
 			MaxConcurrent = 3
@@ -301,7 +301,7 @@ FtlEffects
 
 	JumpInMediaEffects
 	[
-		: /BASE_SOUNDS/AudioExteriorZoomless
+		: /BASE_SOUNDS/AudioExteriorZoomlessFilter
 		{
 			Sound = "common/sounds/ftl_jump_in.wav"
 			Volume = 1

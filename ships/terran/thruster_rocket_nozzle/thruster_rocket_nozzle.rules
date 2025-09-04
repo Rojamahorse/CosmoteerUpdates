@@ -150,7 +150,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 2000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		LeftBatteryStorage
 		{
@@ -766,13 +766,17 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
 					Sound = "../thruster_huge/sounds/huge_thruster_loop_01.wav"
+					Speed = 1
 					Volume = 1
+					MaxConcurrentVolume = 1.25
 				}
 
 				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
 				{
 					Sound = "../thruster_huge/sounds/huge_thruster_loop_02.wav"
+					Speed = 1
 					Volume = 1
+					MaxConcurrentVolume = 1.25
 				}
 			]
 			EndMediaEffects

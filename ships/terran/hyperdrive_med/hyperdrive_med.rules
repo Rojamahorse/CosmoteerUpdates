@@ -69,7 +69,7 @@ Part : <../base_med_part_terran.rules>/Part
 			ResourceType = battery
 			MaxResources = 24000
 			InitToMaxResources = 0
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{
@@ -126,7 +126,7 @@ Part : <../base_med_part_terran.rules>/Part
 			[
 				&<../../common/particles/ftl_gate_lightning_out.rules>
 
-				: /BASE_SOUNDS/AudioExteriorZoomless
+				: /BASE_SOUNDS/AudioExteriorZoomlessFilter
 				{
 					Sound = "../../common/sounds/ftl_zap_out.wav"
 					Volume = 1
@@ -149,7 +149,7 @@ Part : <../base_med_part_terran.rules>/Part
 					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .4
 				}
 
-				: /BASE_SOUNDS/AudioExteriorZoomless
+				: /BASE_SOUNDS/AudioExteriorZoomlessFilter
 				{
 					Delay = (&<./Data/ships/base_ship.rules>/FtlEffects/TotalDuration) - (&<./Data/ships/base_ship.rules>/FtlEffects/CropTime/1) - .8
 					Sound = "../../common/sounds/ftl_zap_in.wav"
@@ -198,7 +198,7 @@ Part : <../base_med_part_terran.rules>/Part
 			Location = [1.5, 1.5]
 			MediaEffects
 			[
-				: /BASE_SOUNDS/AudioExteriorZoomless
+				: /BASE_SOUNDS/AudioExterior
 				{
 					Sound = "../../common/hyperdrive_zap.wav"
 					Volume = 1

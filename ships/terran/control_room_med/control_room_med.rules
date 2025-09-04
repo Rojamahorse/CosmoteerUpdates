@@ -90,7 +90,7 @@ Part : <../base_med_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 4000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{
@@ -455,7 +455,7 @@ Part : <../base_med_part_terran.rules>/Part
 					MaxConcurrentVolume = 1
 					MaxConcurrent = 1
 				}
-				
+
 				: /BASE_SOUNDS/AudioInterior
 				{
 					RandomSounds = ["sounds/control_room_murmurs_01.wav",

@@ -115,7 +115,7 @@ Part : <../base_med_part_terran.rules>/Part
 			MaxResources = 2000
 			ProvidedValueRange = 0
 			ProvidedValuePerResource = 1
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{
@@ -224,7 +224,7 @@ Part : <../base_med_part_terran.rules>/Part
 			}
 			ComponentID = Weapon
 		}
-		
+
 		ProjectileStartTrigger
 		{
 			Type = TriggerProxy

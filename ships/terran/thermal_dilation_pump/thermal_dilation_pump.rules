@@ -80,7 +80,7 @@ Part : <../base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 8000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{
@@ -1015,11 +1015,11 @@ Part : <../base_part_terran.rules>/Part
 	}
 
 	Stats
-	{		
+	{
 		INVERSE_EFFICIENCY = 1 - (&~/Part/Components/MultiUtilizationEfficiencyExponent/EFFICIENCY)
 		UTILIZATION_SCALE = &~/Part/Components/UtilizationScale/Value
 		BASE_DIL = (&~/Part/Components/BaseDilationPerPort/Value) * 100 * 2
-		
+
 		ThermalDilation
 		[
 			(&../BASE_DIL) * (1 / (0 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY), (&../BASE_DIL) * (1 / (1 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)
