@@ -8,6 +8,13 @@ AttackCommand : <base_follow_command.rules>/BaseFollowCommand
 		Sound = "sounds/lock_target.wav"
 		Volume = 1
 	}
+	ReplaceSound
+	{
+		RandomSounds = ["sounds/lock_target_detailed_01.wav",
+						"sounds/lock_target_detailed_02.wav",
+						"sounds/lock_target_detailed_03.wav"]
+		Volume = 1
+	}
 
 	Circle : <./Data/gui/game/sim_gui.rules>/SelectedShipCircle
 	{

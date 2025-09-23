@@ -139,15 +139,15 @@ MissileLoad
 	}
 ]
 
-// ResourcePickup
-// [
-//	: /BASE_SOUNDS/AudioInterior
-//	{
-//		RandomSounds = ["sounds/resources/resource_pickup_01.wav", "sounds/resources/resource_pickup_02.wav", "sounds/resources/resource_pickup_03.wav"]
-//		Volume = 0.75
-//		SpeedVariation = .05
-//	}
-//]
+ResourcePickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/resource_pickup_01.wav", "sounds/resources/resource_pickup_02.wav", "sounds/resources/resource_pickup_03.wav"]
+		Volume = 0.75
+		SpeedVariation = .05
+	}
+]
 
 NuggetPickup
 [
@@ -433,6 +433,7 @@ PartDeliver
 	}
 ]
 
+ElementDeliver = &PartDeliver
 
 ProcessorDeliver
 [
@@ -540,7 +541,7 @@ SmallPartDestroyed
 						"sounds/small_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
-		
+
 		DynamicFilter
 		{
 			MinDistance = 0
@@ -582,7 +583,7 @@ SmallPartDestroyedDry
 						"sounds/small_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
-		
+
 		DynamicFilter
 		{
 			MinDistance = 0
@@ -638,7 +639,7 @@ MedPartDestroyed
 						"sounds/med_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
-		
+
 		DynamicFilter
 		{
 			MinDistance = 0
@@ -681,7 +682,7 @@ MedPartDestroyedDry
 						"sounds/med_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
-		
+
 		DynamicFilter
 		{
 			MinDistance = 0
@@ -737,7 +738,7 @@ BigPartDestroyed
 						"sounds/large_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
-		
+
 		DynamicFilter
 		{
 			MinDistance = 0
@@ -791,7 +792,7 @@ HugePartDestroyed
 						"sounds/huge_part_destroyed_03.wav"]
 		Volume = 1
 		SpeedVariation = .15
-		
+
 		DynamicFilter
 		{
 			MinDistance = 0
@@ -845,7 +846,7 @@ StructureDestroyed
 		Volume = 1
 		SpeedVariation = .15
 		Speed = 1.25
-		
+
 		DynamicFilter
 		{
 			MinDistance = 0

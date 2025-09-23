@@ -1085,7 +1085,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			EnrichedUraniumPowerUsage = [&../POWER_PER_ITEM, &../POWER_PER_SECOND]
 			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity)
 			HEAT_PER_ITEM = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT)
-			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/Part/Stats/Interval) * (&~/OVERCLOCK/SPEED_FACTOR);
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Stats/Interval) * (&~/OVERCLOCK/SPEED_FACTOR);
 			EnrichedUraniumHeatGeneration = [&../HEAT_PER_ITEM, &../HEAT_PER_SECOND]
 		}
 	}
