@@ -67,8 +67,8 @@ Components
 				: /BASE_SOUNDS/AudioExterior
 				{
 					RandomSounds = ["../bullet_large/sounds/large_cannon_impact_01.wav",
-									"../bullet_large/sounds/large_cannon_impact_01.wav",
-									"../bullet_large/sounds/large_cannon_impact_01.wav"]
+									"../bullet_large/sounds/large_cannon_impact_02.wav",
+									"../bullet_large/sounds/large_cannon_impact_03.wav"]
 					Volume = 0.8
 					SpeedVariation = .2
 				}
@@ -106,8 +106,8 @@ Components
 				: /BASE_SOUNDS/AudioExterior
 				{
 					RandomSounds = ["../bullet_large/sounds/large_cannon_impact_01.wav",
-									"../bullet_large/sounds/large_cannon_impact_01.wav",
-									"../bullet_large/sounds/large_cannon_impact_01.wav"]
+									"../bullet_large/sounds/large_cannon_impact_02.wav",
+									"../bullet_large/sounds/large_cannon_impact_03.wav"]
 					Volume = 0.8
 					SpeedVariation = .2
 				}

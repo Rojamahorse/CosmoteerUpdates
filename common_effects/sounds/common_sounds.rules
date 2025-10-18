@@ -67,3 +67,16 @@ ThrusterHum : /BASE_SOUNDS/AudioInterior
 	Sound = "thruster_operating.wav"
 	MaxConcurrent = 1
 }
+
+ReactorHumExterior : /BASE_SOUNDS/AudioInterior
+{
+	Sound = "reactor_exterior_idle.wav"
+	MaxConcurrent = 1
+	Volume = 0.5
+}
+
+ReactorHumInterior : /BASE_SOUNDS/AudioInterior
+{
+	Sound = "reactor_interior_idle.wav"
+	MaxConcurrent = 1
+}

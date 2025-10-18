@@ -659,7 +659,7 @@ PartToggles
 		ToggleID = "thermal_overclock"
 		Style = OnAlertSwitch
 		ShowInEditor = true
-		DisabledToolTipKey = "CareerMode/PartLocked"
+		NoChoicesToolTipKey = "CareerMode/PartLocked"
 		Choices
 		[
 			// Off

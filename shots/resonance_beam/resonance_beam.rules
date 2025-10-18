@@ -91,13 +91,13 @@ SHIELD_HEAT_FACTOR = 7.5%
 
 SHIELD_OVERLOAD_DURATION = 1
 SHIELD_OVERLOAD_PER_AMP = 0.6%
-SHIELD_OVERLOAD_PER_DILATION = 10%
+SHIELD_OVERLOAD_PER_DILATION = 12.5%
 SHIELD_OVERLOAD_BASE = 4.4%
 SHIELD_OVERLOAD_RAMP_TIME = 3
 
 AttenuationLimit : HitOperational/HitEffects/0/StatusValuePool
 {
-	BaseValue = ceil((&^/0/BaseValue) * 10%)
+	BaseValue = ceil((&^/0/BaseValue) * 30%)
 }
 HitAttenuator
 {

@@ -780,6 +780,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = DeathEffects
 			OperationalToggle = ScorchedToggle
+			FactorHitEffectsWith = AmmoStorage
 			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 			Location = [1, 1]
 
@@ -787,7 +788,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 40000
+					TotalDamage = {BaseValue=40000; EffectScaleExponent=1;}
 					Radius = 4
 					Delay = .05
 					StatusType = cosmoteer.fire
@@ -805,7 +806,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 11250
+					TotalDamage = {BaseValue=11250; EffectScaleExponent=1;}
 					Radius = 3
 					Delay = .05
 					Filter

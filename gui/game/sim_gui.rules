@@ -500,7 +500,12 @@ NuggetCollectSound
 	Sound = "sounds/UI_pickup_resources.wav"
 	Db = 2
 }
-NuggetCollectCancelSound = &NuggetCollectSound
+
+NuggetCollectCancelSound
+{
+	Sound = "sounds/UI_pickup_cancel.wav"
+	Db = 2
+}
 
 GatherFloatingResourcesSound
 {

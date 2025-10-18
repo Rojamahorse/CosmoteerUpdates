@@ -4392,7 +4392,7 @@ Stats
 	EnrichedUraniumProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> eウラン/秒</gray>"
 	EnrichedUraniumUraniumUsageFmt = "<white>ウラン使用：</white> <good>{0:0.##}</good><gray>/eウラン（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	FactoryBuffFmt = "<white>隣接工場：</white> <good>+{0:0}%</good><gray>生産率</gray>"
-	FireChanceFmt = "<white>出火：</white>　<good>{0:0}％</good><gray>　確率/タイル</gray>"
+	FireChanceFmt = "<white>出火：</white>　<good>{0:0.#}％</good><gray>　確率/タイル</gray>"
 	FireDelayFmt = "<white>発射遅延：</white> <good>{0:0.##}</good> <gray>秒</gray>"
 	FireIntervalFmt = "<white>発射間隔：</white> <good>{0:0.##}</good> <gray>秒</gray>"
 	FireSizeFmt = "<white>初期射撃規模：</white><good>{0:0}%</good>"

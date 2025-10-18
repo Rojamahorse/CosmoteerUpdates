@@ -89,22 +89,26 @@ CrewSelectSound = &<../sim_gui.rules>/PartSelectSound
 
 AssignToSquadSound
 	{
-		RandomSounds = ["sounds/squad_role_assign_01.wav",
-						"sounds/squad_role_assign_02.wav"]
+		Sound = "sounds/squad_assign.wav"
+		Db = 1
 	}
 	
 ChangeRoleColorSound = &<../designer/paint_gui.rules>/PaintSound
 
 SetCrewRoleSound 
-	{
-		RandomSounds = ["sounds/crew_assign_01.wav",
-						"sounds/crew_assign_02.wav"]
-	}
+{
+	Sound = "sounds/role_assign.wav",
+}
 	
 SquadSelectSound = &<../sim_gui.rules>/PartSelectSound
 SquadDeselectSound = &<../sim_gui.rules>/PartDeselectSound
-AddSquadTargetSound = &<../designer/build_gui.rules>/BlueprintAddSound
-RemoveSquadTargetSound = &<../designer/build_gui.rules>/BlueprintDeleteSound
+AddSquadTargetSound = &AssignToSquadSound
+
+RemoveSquadTargetSound
+	{
+		Sound = "sounds/squad_cancel.wav"
+		Db = 1
+	}
 
 TentativeCrewCircle
 {

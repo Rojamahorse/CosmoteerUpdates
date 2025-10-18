@@ -609,8 +609,7 @@ CancelPastePartsSprite
 
 BuildSound
 {
-	Sound = "sounds/build.wav"
-	Speed = [.9, 1.1]
+	Sound = "sounds/UI_delete_part.wav"
 }
 BlueprintModeOnSound
 {
@@ -626,7 +625,7 @@ BlueprintAddSound
 }
 BlueprintDeleteSound
 {
-	Sound = "sounds/UI_delete_01.wav"
+	Sound = "sounds/UI_delete_blueprint.wav"
 }
 BlueprintMakeItSoSound
 {
@@ -717,18 +716,12 @@ SmallModuleBlueprintPutdownSound
 {
 	Sound = "sounds/UI_small_blueprint_putdown.wav"
 }
-MediumModuleBlueprintPutdownSound
-{
-	Sound = "sounds/UI_medium_blueprint_putdown.wav"
-}
-LargeModuleBlueprintPutdownSound
-{
-	Sound = "sounds/UI_large_blueprint_putdown.wav"
-}
-StructureBlueprintPutdownSound
-{
-	Sound = "sounds/UI_structure_blueprint_putdown.wav"
-}
+MediumModuleBlueprintPutdownSound = &SmallModuleBlueprintPutdownSound
+
+LargeModuleBlueprintPutdownSound = &SmallModuleBlueprintPutdownSound
+
+StructureBlueprintPutdownSound = &FloorModuleBlueprintPutdownSound
+
 FloorModuleBlueprintPutdownSound
 {
 	Sound = "sounds/UI_floor_blueprint_putdown.wav"

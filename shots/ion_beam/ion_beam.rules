@@ -21,8 +21,9 @@ StartMediaEffects
 	{
 		Sound = "sounds/ion_beam_start.wav"
 		Volume = 1
-		MaxConcurrent = 1
+		MaxConcurrent = 2
 		MaxConcurrentVolume = 1
+		Speed = 0.7
 
 		DynamicVolume : ^/0/DynamicVolume
 		{

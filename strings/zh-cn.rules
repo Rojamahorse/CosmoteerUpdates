@@ -4392,7 +4392,7 @@ Stats
 	EnrichedUraniumProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>浓缩铀/秒</gray>"
 	EnrichedUraniumUraniumUsageFmt = "<white>铀消耗：</white><good>{0:0.##}</good><gray>/浓缩铀（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	FactoryBuffFmt = "<white>附近工厂：</white><good>+{0:0}%</good><gray> 生产速度</gray>"
-	FireChanceFmt = "<white>点燃几率：</white><good>{0:0}%</good><gray> 几率/单元格</gray>"
+	FireChanceFmt = "<white>点燃几率：</white><good>{0:0.#}%</good><gray> 几率/单元格</gray>"
 	FireDelayFmt = "<white>发射延迟：</white><good>{0:0.##}</good> <gray>秒</gray>"
 	FireIntervalFmt = "<white>发射间隔：</white><good>{0:0.##}</good> <gray>秒</gray>"
 	FireSizeFmt = "<white>初始发射尺寸：</white><good>{0:0}%</good>"

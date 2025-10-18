@@ -46,11 +46,26 @@ Components : BASE/Components
 		FactorEffectsWith = DamagePool
 		CalculateWorldHitNormal = true
 		
-		HitCrew = &HitOperational
-		HitShield = &HitOperational
+		HitCrew = &HitShield
+		HitShield : HitOperational
+		{
+			DamagePoolBulletSplitting
+		}
 		HitOperational : ^/0/HitOperational
 		{
 			ReduceEffectsByPenetration = false
+			DamagePoolBulletSplitting
+			{
+				DamagePool = DamagePool
+				DamagePerSplit = 2500
+				SpawnEffect
+				{
+					Bullet = &<bullet_railgun_overclock_fragment.rules>/Bullet
+					Count = 1
+					Spread = [-20d,20d]
+					EffectScale = {BaseValue=1; EffectScaleExponent=1;}
+				}
+			}
 			HitEffects
 			[
 				{
@@ -104,6 +119,7 @@ Components : BASE/Components
 		{
 			ReduceEffectsByPenetration = false
 			
+			DamagePoolBulletSplitting = &../HitOperational/DamagePoolBulletSplitting
 			HitEffects = &../HitOperational/HitEffects
 			MediaEffectsScale : ^/0/MediaEffectsScale { BuffType = RailgunShotOverclock; }
 		}

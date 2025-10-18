@@ -30,6 +30,7 @@ Ships
 	:~{ File="Anthe.ship.png";        Tier=4;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Donor.ship.png";        Tier=4;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Euboea.ship.png";       Tier=4;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Ianthe.ship.png";       Tier=4;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Sitri.ship.png";        Tier=5;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Foras.ship.png";        Tier=5;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Bune.ship.png";         Tier=6;  Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -38,6 +39,7 @@ Ships
 	:~{ File="Pele.ship.png";         Tier=6;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Carme.ship.png";        Tier=6;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Cyllene.ship.png";      Tier=6;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Clio.ship.png";         Tier=6;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Corvettes
 	:~{ File="Aitne.ship.png";        Tier=7;  Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -54,6 +56,7 @@ Ships
 	:~{ File="Asha.ship.png";         Tier=8;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Zepar.ship.png";        Tier=8;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Malthas.ship.png";      Tier=8;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Andrealphus.ship.png";  Tier=8;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Eirene.ship.png";       Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Focalor.ship.png";      Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Morax.ship.png";        Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -72,6 +75,8 @@ Ships
 	:~{ File="Ronove.ship.png";       Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Forneus.ship.png";      Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Savnock.ship.png";      Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Vine.ship.png";         Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Ananke.ship.png";       Tier=10; Difficulty=2; }
 	:~{ File="Eligos.ship.png";       Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Agares.ship.png";       Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Marduk.ship.png";       Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -83,10 +88,16 @@ Ships
 	:~{ File="Vassago.ship.png";      Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Stolas.ship.png";       Tier=11; Difficulty=2; }
 	:~{ File="Zaebos.ship.png";       Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Furfur.ship.png";       Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Amy.ship.png";          Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Lysithea.ship.png";     Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Lindwurm.ship.png";     Tier=12; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Marchosias.ship.png";   Tier=12; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Bifrons.ship.png";      Tier=12; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Allocer.ship.png";      Tier=12; Difficulty=2; }
+	:~{ File="Caligaris.ship.png";    Tier=12; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Aamon.ship.png";        Tier=12; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Vesta.ship.png";        Tier=12; Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Destroyers
 	:~{ File="Bathym.ship.png";       Tier=13; Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -105,6 +116,8 @@ Ships
 	:~{ File="Catoblepas.ship.png";   Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Crocell.ship.png";      Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Gremory.ship.png";      Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Murmur.ship.png";       Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Vestarka.ship.png";     Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Cruisers
 	:~{ File="Naberius.ship.png";     Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -115,6 +128,7 @@ Ships
 	:~{ File="Amdusias.ship.png";     Tier=15; Difficulty=2; }
 	:~{ File="Beleth.ship.png";       Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Manubia.ship.png";      Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Cetus.ship.png";        Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Battleships
 	:~{ File="Kalanos.ship.png";      Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -124,6 +138,9 @@ Ships
 	:~{ File="Sisyphus.ship.png";     Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Tiresias.ship.png";     Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Enyo.ship.png";         Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Janus.ship.png";        Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Lernean.ship.png";      Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Decarabia.ship.png";    Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Battlecruisers
 	:~{ File="Scylla.ship.png";       Tier=17; Difficulty=2; }
@@ -133,8 +150,11 @@ Ships
 	:~{ File="Sparagmos.ship.png";    Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Abaddon.ship.png";      Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Andromalius.ship.png";  Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Charybdis.ship.png";    Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Paimon.ship.png";       Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Flagships
 	:~{ File="Extinguisher.ship.png"; Tier=18; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Prometheus.ship.png";   Tier=18; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Surtr.ship.png";        Tier=18; Difficulty=2; Tags:~/Tags[empty_storage]; }
 ]

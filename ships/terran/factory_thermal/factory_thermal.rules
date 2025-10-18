@@ -795,6 +795,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = DeathEffects
 			OperationalToggle = ScorchedToggle
+			FactorHitEffectsWith = MissileStorage
 			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
 			Location = [1.5, 1.5]
 
@@ -802,7 +803,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 64500
+					TotalDamage = {BaseValue=64500; EffectScaleExponent=1;}
 					Radius = 5
 					Delay = .05
 					StatusChancePerNDamage = 100%
@@ -819,7 +820,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 20000
+					TotalDamage = {BaseValue=20000; EffectScaleExponent=1;}
 					Radius = 4
 					Delay = .05
 					Filter

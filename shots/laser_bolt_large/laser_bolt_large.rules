@@ -26,6 +26,10 @@ Components
 		Type = Targetable
 		Health = 300
 		TargetCategory = "laser"
+		DamageResistances
+		{
+			shrapnel = 50%
+		}
 	}
 
 	Hit

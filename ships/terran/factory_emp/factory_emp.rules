@@ -1007,13 +1007,15 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 		{
 			Type = DeathEffects
 			Location = [1.5, 2]
+			FactorHitEffectsWith = MissileStorage
+			FactorMediaEffectsWith = &FactorHitEffectsWith
 
 			HitEffects
 			[
 				{
 					Type = ExplosiveResourceDrain
 					ResourceType = battery
-					TotalDrain = 500000
+					TotalDrain = {BaseValue=500000; EffectScaleExponent=1;}
 					Radius = 12
 					Slices = 1
 					Delay = .05

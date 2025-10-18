@@ -15,7 +15,7 @@ Part : <../base_part.rules>/Part
 					SpeedVariation = .1
 					RampUpTime = .1
 					RampDownTime = .45
-					MaxConcurrent = 1
+					MaxConcurrent = 0
 				}
 	]
 

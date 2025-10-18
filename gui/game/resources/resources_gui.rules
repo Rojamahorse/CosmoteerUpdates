@@ -229,8 +229,8 @@ ClearResourceTypeTileHoverSprite
 	VertexColor = [246, 49, 43, 200]
 }
 
-SetResourceTypeSound = &<../designer/build_gui.rules>/BlueprintAddSound
-ClearResourceTypeSound = &<../designer/build_gui.rules>/BlueprintDeleteSound
+SetResourceTypeSound = &<../crew/crew_gui.rules>/SetCrewRoleSound
+ClearResourceTypeSound = &<../crew/crew_gui.rules>/RemoveSquadTargetSound
 
 MoveResourcesPickUpCursor = &<../designer/build_gui.rules>/GrabPartCursor
 MoveResourcesPutDownCursor
@@ -309,7 +309,7 @@ MoveResourcesCursorLine
 MoveResourcesCursorLineSpeed = 1
 
 PickUpResourcesSound = &<../sim_gui.rules>/PartSelectSound
-PutDownResourcesSound = &<./Data/commands/command_move.rules>/MoveCommand/IssueSound
+PutDownResourcesSound = &<../crew/crew_gui.rules>/AssignToSquadSound
 
 EjectResourcesSprite
 {
@@ -669,8 +669,8 @@ SupplyChainToolSelectionCursor
 
 SupplierSelectSound = &<../sim_gui.rules>/PartSelectSound
 SupplierDeselectSound = &<../sim_gui.rules>/PartDeselectSound
-AddSupplyTargetSound = &<../designer/build_gui.rules>/BlueprintAddSound
-RemoveSupplyTargetSound = &<../designer/build_gui.rules>/BlueprintDeleteSound
+AddSupplyTargetSound = &<../crew/crew_gui.rules>/AssignToSquadSound
+RemoveSupplyTargetSound = &<../crew/crew_gui.rules>/RemoveSquadTargetSound
 
 ResourceTransferProgressAnimationSprite
 {

@@ -2,7 +2,7 @@ OVERCLOCK
 {
 	POWER_GENERATION_FACTOR = 250%
 	EXTRA_CAPACITY_FACTOR = 150%
-	HEAT_PER_SECOND = 1400
+	HEAT_PER_SECOND = 1600
 
 	BATTERY_PER_SEC = (&~/Part/Components/BatteryProducer/ToQuantity/BaseValue) * (&POWER_GENERATION_FACTOR) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
 	HEAT_PER_BATTERY = (&HEAT_PER_SECOND) / (&BATTERY_PER_SEC)
@@ -586,22 +586,19 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			MaxMediaEffectsZoom = 4
 			MediaEffects
 			[
-				: /BASE_SOUNDS/AudioInterior
+				: /COMMON_SOUNDS/ReactorHumExterior
 				{
-					Sound = "sounds/medium_reactor_exterior_idle.wav"
-					Db = -1.5
-					MaxConcurrent = 1
+					Db = 0
 					DynamicVolume : ^/0/DynamicVolume
 					{
-						ExteriorVolume = .75
+						ExteriorVolume = .5
 					}
 				}
 
-				: /BASE_SOUNDS/AudioInterior
+				: /COMMON_SOUNDS/ReactorHumInterior
 				{
-					Sound = "sounds/medium_reactor_interior_idle.wav"
-					Db = -3
-					MaxConcurrent = 1
+					Sound = "sounds/reactor_interior_idle.wav"
+					Db = -4
 				}
 			]
 		}
@@ -625,6 +622,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 				: /BASE_SOUNDS/AudioInterior
 				{
 					Sound = "sounds/medium_reactor_overclocked.wav"
+					Db = -2
 				}
 			]
 		}

@@ -4392,7 +4392,7 @@ Stats
 	EnrichedUraniumProductionFmt = "<white>Taxa de produção:</white> <good>{0:0.##}</good><gray> urânio enr./s</gray>"
 	EnrichedUraniumUraniumUsageFmt = "<white>Uso de urânio:</white> <good>{0:0.##}</good><gray>/urânio enr. (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	FactoryBuffFmt = "<white>Fábricas adjacentes:</white> <good>+{0:0}%</good><gray> de taxa produção.</gray>"
-	FireChanceFmt = "<white>Chance de incendiar:</white> <good>{0:0}%</good><gray> chance/quadro</gray>"
+	FireChanceFmt = "<white>Chance de incendiar:</white> <good>{0:0.#}%</good><gray> chance/quadro</gray>"
 	FireDelayFmt = "<white>Atraso do incêndio:</white> <good>{0:0.##}</good> <gray>segundos</gray>"
 	FireIntervalFmt = "<white>Intervalo de incêndio:</white> <good>{0:0.##}</good> <gray>segundos</gray>"
 	FireSizeFmt = "<white>Tamanho inicial do incêndio:</white> <good>{0:0}%</good>"

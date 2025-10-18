@@ -1,9 +1,10 @@
 OVERCLOCK
 {
 	THRUST_FACTOR = 250%
+	RECOVERY_FACTOR = 50%
 	MAX_POWER_USAGE_FACTOR = 175%
 	POWER_USAGE_FACTOR = 1 / (&THRUST_FACTOR) * (&MAX_POWER_USAGE_FACTOR)
-	THRUST_HEAT_PER_SECOND = 675
+	THRUST_HEAT_PER_SECOND = 750
 
 	AUDIO_SPEED_FACTOR = 115%
 	AUDIO_VOLUME_DB = 3
@@ -56,7 +57,20 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 		]
 	}
 	ThrustDecreaseTime = 0
-	ThrustRecoveryTime = 2
+	ThrustRecoveryTime
+	{
+		BaseValue = 2
+		Modifiers
+		[
+			{
+				Type = BuffRemap
+				BuffType = Overclock
+				ModificationMode = Multiply
+				RemapFrom = [0, 1]
+				RemapTo = [1, (&~/OVERCLOCK/RECOVERY_FACTOR)]
+			}
+		]
+	}
 	FuelUsage = 200
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, EngineHeatCollection, ThermalActivity]
 	AllowedDoorLocations

@@ -823,20 +823,14 @@ TimeContinueSound
 }
 OpenBuildRepairMenuSound
 {
-	Sound = "sounds/UI_build_repair_mode_on.wav"
-}
-OpenPaintMenuSound
-{
-	Sound = "sounds/UI_paint_mode_on.wav"
-}
-OpenCrewMenuSound
-{
-	Sound = "sounds/UI_crew_menu_on.wav"
-}
-OpenResourcesMenuSound
-{
 	Sound = "sounds/UI_resources_menu_on.wav"
 }
+OpenPaintMenuSound = &OpenBuildRepairMenuSound
+
+OpenCrewMenuSound = &OpenBuildRepairMenuSound
+
+OpenResourcesMenuSound = &OpenBuildRepairMenuSound
+
 OpenCommsMenuSound
 {
 	Sound = "sounds/UI_comms_menu_open.wav"
@@ -860,10 +854,11 @@ StopSalvageSelectSound
 CopySound
 {
 	Sound = "designer/sounds/UI_copy.wav"
+	Db = -1.5
 }
 CutSound
 {
-	Sound = "designer/sounds/UI_cut.wav"
+	Sound = "designer/sounds/UI_grab_tool.wav"
 }
 PasteSound
 {
@@ -896,6 +891,15 @@ HideGalaxyMapSound
 AllCrewInsideSound
 {
 	Sound = "sounds/UI_everyone_inside.wav"
+}
+FirstCrewLeftSound
+{
+	Sound = "sounds/UI_crew_outside.wav"
+}
+CrewDistanceWarningSound
+{
+	Sound = "sounds/UI_crew_distance_warning.wav"
+	MaxConcurrent = 1
 }
 BlueprintUnlockedSound
 {

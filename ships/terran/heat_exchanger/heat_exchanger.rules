@@ -34,6 +34,19 @@ Part : <../base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [NonJunkToggle, IsAbleToAbsorb]
+			Mode = All
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
+		}
+
 		PowerToggle
 		{
 			Type = UIToggle
@@ -190,7 +203,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = Graphics
 			Location = [.5, .5]
-			OperationalToggle = IsAbleToAbsorb
+			OperationalToggle = IsOperational
 			Floor
 			{
 				Layer = "floors"
@@ -319,7 +332,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = Graphics
 			Location = [.5, .5]
-			OperationalToggle = IsAbleToAbsorb
+			OperationalToggle = IsOperational
 			OperationalRoofDoodad
 			{
 				Layer = "roof_doodads"

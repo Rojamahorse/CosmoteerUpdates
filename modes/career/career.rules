@@ -460,7 +460,7 @@ TradeShips
 	io_10b      : ~/BaseTradeShip { ShipID="Polyxio";      Faction=io; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=100; }
 	io_crew_5a  : ~/BaseTradeShip { ShipID="Orpheus";      Faction=io; TierRange=[1, 12];  StasisSpeed=85; StasisTradeTime=20; }
 	io_crew_8a  : ~/BaseTradeShip { ShipID="Eurydice";     Faction=io; TierRange=[6, 18];  StasisSpeed=85; StasisTradeTime=20; }
-	io_crew_11a : ~/BaseTradeShip { ShipID="Eurydice";     Faction=io; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
+	io_crew_11a : ~/BaseTradeShip { ShipID="Charon";       Faction=io; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
 }
 
 BaseTradeShip

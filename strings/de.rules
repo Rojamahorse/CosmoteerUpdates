@@ -108,8 +108,8 @@ Brushes
 	Line = Linie
 	LineIcon = Linie
 	LineTip = "Halte <btn id='Design.RestrictShapeMode'/> gedrückt, um eine gerade Linie zu machen."
-	Oval = Oval
-	OvalIcon = Oval
+	Oval = ""
+	OvalIcon = ""
 	OvalTip = "Halte <btn id='Design.RestrictShapeMode'/> gedrückt, um einen perfekten Kreis zu machen."
 	Triangle = Dreieck
 	TriangleIcon = Drei.
@@ -4392,7 +4392,7 @@ Stats
 	EnrichedUraniumProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> A-Uran/Sek.</gray>"
 	EnrichedUraniumUraniumUsageFmt = "<white>Uranverbrauch:</white> <good>{0:0.##}</good><gray>/A-Uran (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	FactoryBuffFmt = "<white>Angrenzende Fabriken:</white> <good>+{0:0} %</good><gray> Produktionsrate</gray>"
-	FireChanceFmt = "<white>Verursacht Brände:</white> <good>{0:0} %</good><gray> Chance/Kachel</gray>"
+	FireChanceFmt = "<white>Verursacht Brände:</white> <good>{0:0.#} %</good><gray> Chance/Kachel</gray>"
 	FireDelayFmt = "<white>Feuerverzögerung:</white> <good>{0:0.##}</good> <gray>Sekunden</gray>"
 	FireIntervalFmt = "<white>Feuerintervall:</white> <good>{0:0.##}</good> <gray>Sekunden</gray>"
 	FireSizeFmt = "<white>Anfänglicher Feuerumfang:</white> <good>{0:0} %</good>"

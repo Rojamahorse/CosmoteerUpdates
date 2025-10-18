@@ -4,9 +4,10 @@ Range = 0
 Speed = 0
 
 RADIUS = 4
+REPULSE_RANGE = 8
 LIFETIME = 7
-MAX_BULLET_DAMAGE = ceil(1000 / ((&RADIUS) * 2)) // 1000 damage if a bullet passes right through the center
-DAMAGE_POOL = 1600
+MAX_BULLET_DAMAGE = ceil(800 / ((&RADIUS) * 2)) // 1000 damage if a bullet passes right through the center
+DAMAGE_POOL = 800
 
 Components
 {
@@ -15,7 +16,31 @@ Components
 		Type = CirclePhysics
 		Radius = &~/RADIUS
 		Density = 1
-		FrameOfReferenceDuration = 0
+		LinearDamping = 25%
+	}
+	FieldRepulsion
+	{
+		Type = ProximityAcceleration
+		Range = &~/REPULSE_RANGE
+		Acceleration = -7
+		AccelerateTowardsShips = false
+		AccelerateTowardsBullets = true
+		AccelerateTowardsBulletCategories = [flak_field]
+		AccelerateTowardsFriendlies = true
+		AccelerateTowardsEnemies = false
+	}
+	ShipRepulsion
+	{
+		Type = ProximityAcceleration
+		Range = &~/REPULSE_RANGE
+		Acceleration = -7
+	}
+	Targetable
+	{
+		Type = Targetable
+		// Shouldn't be hit by anything
+		Health = 1
+		TargetCategory = "flak_field"
 	}
 	
 	LifetimeDeath

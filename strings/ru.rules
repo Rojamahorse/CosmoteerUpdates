@@ -4392,7 +4392,7 @@ Stats
 	EnrichedUraniumProductionFmt = "<white>Производительность:</white> <good>{0:0.##}</good><gray> ед. обог. урана/сек.</gray>"
 	EnrichedUraniumUraniumUsageFmt = "<white>Расход урана:</white> <good>{0:0.##}</good><gray>ед./ед. обог. урана (</gray><good>{1:0.##}</good><gray>ед./сек.)</gray>"
 	FactoryBuffFmt = "<white>Прилегающие фабрики:</white> <good>+{0:0}%</good><gray> к скорости произв-ва</gray>"
-	FireChanceFmt = "<white>Вероятность пожара:</white> <good>{0:0}%</good><gray> на клетку</gray>"
+	FireChanceFmt = "<white>Вероятность пожара:</white> <good>{0:0.#}%</good><gray> на клетку</gray>"
 	FireDelayFmt = "<white>Задержка огня:</white> <good>{0:0.##}</good> <gray>сек</gray>"
 	FireIntervalFmt = "<white>Интервал огня:</white> <good>{0:0.##}</good> <gray>сек</gray>"
 	FireSizeFmt = "<white>Исходный размер огня:</white> <good>{0:0}%</good>"

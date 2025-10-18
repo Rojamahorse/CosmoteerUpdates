@@ -2,13 +2,13 @@ BASE = &<./Data/shots/bullet_deck/bullet_deck.rules>
 
 ID = "cosmoteer.bullet_deck_overclock"
 Range = (&BASE/Range) * 2
-Speed = (&BASE/Speed) * 3
+Speed = (&BASE/Speed) * 2.75
 IdealRange = [75, &~/Range]
 IdealRadius = [5, 50]
 
 DAMAGE_POOL = 10200
 IMPULSE = (&BASE/Components/Hit/HitOperational/HitEffects/1/Impulse/BaseValue) * 200%
-HEALTH = (&BASE/Components/Targetable/Health) * 100%
+HEALTH = (&BASE/Components/Targetable/Health) * 80%
 
 Components : BASE/Components
 {

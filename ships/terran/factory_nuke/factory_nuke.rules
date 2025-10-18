@@ -896,13 +896,15 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 		{
 			Type = DeathEffects
 			OperationalToggle = ScorchedToggle
+			FactorHitEffectsWith = MissileStorage
+			FactorMediaEffectsWith = &FactorHitEffectsWith
 			Location = [2, 2]
 
 			HitEffects
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 200000
+					TotalDamage = {BaseValue=200000; EffectScaleExponent=1;}
 					Radius = 10
 					ExpandDuration = .8
 					ExpandStartRadius = 1
@@ -918,7 +920,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 60000
+					TotalDamage = {BaseValue=60000; EffectScaleExponent=1;}
 					Radius = 8
 					ExpandDuration = .8
 					ExpandStartRadius = 1

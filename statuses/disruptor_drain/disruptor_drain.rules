@@ -16,6 +16,7 @@ TickingEffects
 		Filter
 		{
 			Friendlies = true
+			Neutrals = true
 			Self = true
 		}
 //		MediaEffectsOnDrain = &<./Data/shots/disruptor_bolt/disruptor_bolt.rules>/Components/Hit/HitOperational/HitEffects/0/MediaEffectsOnDrain
