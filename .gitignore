@@ -1,2 +1,11 @@
-Bin/
-*.music
+# ConPort exports and local logs
+conport_export/
+logs/
+*.db
+*.db-shm
+*.db-wal
+
+# IDE cruft
+.vscode/extensions.local.json
+.DS_Store
+Thumbs.db
