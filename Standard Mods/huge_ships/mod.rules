@@ -1,0 +1,26 @@
+ID = cosmoteer.huge_ships
+Name = "Huge Ships"
+Version = 1.0.0
+CompatibleGameVersions = ["0.30.2_rc2"]
+ModifiesGameplay = true
+Author = "Walternate Realities"
+Description = "Increases the maximum ship size from 120x120 to 1000x1000\n\n"\
+              "<red>WARNING: Your computer probably can't handle ships this large! Use with caution!</red>"
+
+Actions
+[
+	{
+		Action = Overrides
+		OverrideIn = "<ships/base_ship.rules>"
+		Overrides
+		{
+			MaxBorders
+			{
+				Left = -500
+				Right = 500
+				Top = -500
+				Bottom = 500
+			}
+		}
+	}
+]

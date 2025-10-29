@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_processor
+Type = Resource
+DescriptionKey = "Resource/Processor"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/processor/processor.png"
+		MipLevels = 2
+	}
+}
+ResourceType = processor

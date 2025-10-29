@@ -1,0 +1,82 @@
+ThrusterBurst
+{
+	Type = Audio
+
+	DynamicVolume
+	{
+		MinDistance = 0
+		MaxDistance = 1.5
+		DistanceFalloff = 1
+
+		MinZoom = 1
+		MaxZoom = 12
+		ZoomFalloff = 5
+	}
+
+	MaxConcurrent = 2
+	ConcurrencyDuration = 1
+
+	RampUpTime = .1
+	RampDownTime = .1
+}
+
+ThrusterRumble
+{
+	Type = Audio
+
+	DynamicVolume
+	{
+		MinDistance = 0
+		MaxDistance = 1.5
+		DistanceFalloff = 1
+
+		MinZoom = 1
+		MaxZoom = 70
+		ZoomFalloff = 4
+	}
+
+	MaxConcurrent = 1
+
+	RampUpTime = 1
+	RampDownTime = .1
+}
+
+ThrusterRumbleFadeIn
+{
+	Type = Audio
+
+	DynamicVolume
+	{
+		MinDistance = 0
+		MaxDistance = 1.5
+		DistanceFalloff = 1
+
+		MinZoom = 1
+		MaxZoom = 70
+		ZoomFalloff = 4
+	}
+
+	MaxConcurrent = 1
+
+	RampUpTime = 2
+	RampDownTime = .1
+}
+
+ThrusterHum : /BASE_SOUNDS/AudioInterior
+{
+	Sound = "thruster_operating.wav"
+	MaxConcurrent = 1
+}
+
+ReactorHumExterior : /BASE_SOUNDS/AudioInterior
+{
+	Sound = "reactor_exterior_idle.wav"
+	MaxConcurrent = 1
+	Volume = 0.5
+}
+
+ReactorHumInterior : /BASE_SOUNDS/AudioInterior
+{
+	Sound = "reactor_interior_idle.wav"
+	MaxConcurrent = 1
+}

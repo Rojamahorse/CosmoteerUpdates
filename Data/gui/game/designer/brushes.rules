@@ -1,0 +1,279 @@
+Brushes
+[
+	// Block Brushes.
+	[
+		{
+			Type = Block
+			ID = block1
+			Size = [1, 1]
+			NameKey = "Brushes/Block1x1"
+			IconNameKey = "Brushes/Block1x1Icon"
+			DefaultEditorHotkey = [D1]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_1x1.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Block
+			ID = block2
+			Size = [2, 2]
+			NameKey = "Brushes/Block2x2"
+			IconNameKey = "Brushes/Block2x2Icon"
+			DefaultEditorHotkey = [D2]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_2x2.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Block
+			ID = block3
+			Size = [3, 3]
+			NameKey = "Brushes/Block3x3"
+			IconNameKey = "Brushes/Block3x3Icon"
+			DefaultEditorHotkey = [D3]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_3x3.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Block
+			ID = block4
+			Size = [4, 4]
+			NameKey = "Brushes/Block4x4"
+			IconNameKey = "Brushes/Block4x4Icon"
+			DefaultEditorHotkey = [D4]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_4x4.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Block
+			ID = block5
+			Size = [5, 5]
+			NameKey = "Brushes/Block5x5"
+			IconNameKey = "Brushes/Block5x5Icon"
+			DefaultEditorHotkey = [D5]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_5x5.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Block
+			ID = block6
+			Size = [6, 6]
+			NameKey = "Brushes/Block6x6"
+			IconNameKey = "Brushes/Block6x6Icon"
+			DefaultEditorHotkey = [D6]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_6x6.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Block
+			ID = block7
+			Size = [7, 7]
+			NameKey = "Brushes/Block7x7"
+			IconNameKey = "Brushes/Block7x7Icon"
+			DefaultEditorHotkey = [D7]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_7x7.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Block
+			ID = block8
+			Size = [8, 8]
+			NameKey = "Brushes/Block8x8"
+			IconNameKey = "Brushes/Block8x8Icon"
+			DefaultEditorHotkey = [D8]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_8x8.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Block
+			ID = block9
+			Size = [9, 9]
+			NameKey = "Brushes/Block9x9"
+			IconNameKey = "Brushes/Block9x9Icon"
+			DefaultEditorHotkey = [D9]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_9x9.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Block
+			ID = block10
+			Size = [10, 10]
+			NameKey = "Brushes/Block10x10"
+			IconNameKey = "Brushes/Block10x10Icon"
+			DefaultEditorHotkey = [D0]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_10x10.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+	]
+
+	// Misc brushes.
+	[
+		{
+			Type = Line
+			ID = line
+			NameKey = "Brushes/Line"
+			IconNameKey ="Brushes/LineIcon"
+			TipKey = "Brushes/LineTip"
+			DefaultEditorHotkey = [PlatformCmdCtrl, I]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_line.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Box
+			ID = box
+			NameKey = "Brushes/Box"
+			IconNameKey = "Brushes/BoxIcon"
+			TipKey = "Brushes/BoxTip"
+			DefaultEditorHotkey = [PlatformCmdCtrl, B]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_box.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Oval
+			ID = oval
+			NameKey = "Brushes/Oval"
+			IconNameKey = "Brushes/OvalIcon"
+			TipKey = "Brushes/OvalTip"
+			DefaultEditorHotkey = [PlatformCmdCtrl, O]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_oval.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Triangle
+			ID = triangle
+			NameKey = "Brushes/Triangle"
+			IconNameKey = "Brushes/TriangleIcon"
+			TipKey = "Brushes/TriangleTip"
+			DefaultEditorHotkey = [PlatformCmdCtrl, T]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_triangle.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		{
+			Type = Fill
+			ID = fill
+			NameKey = "Brushes/Fill"
+			IconNameKey ="Brushes/FillIcon"
+			DefaultEditorHotkey = [PlatformCmdCtrl, F]
+
+			Icon
+			{
+				Texture
+				{
+					File = "brush_fill.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+	]
+]

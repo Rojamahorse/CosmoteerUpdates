@@ -1,0 +1,1026 @@
+PartStats
+[
+	// Top-line default stats.
+	{
+		ID = Size
+		FormatKey = "Stats/SizeFmt"
+		DefaultBuiltinStat = Size
+	}
+	{
+		ID = CrewCapacity
+		FormatKey = "Stats/CrewCapacityFmt"
+		DefaultBuiltinStat = CrewCapacity
+	}
+	{
+		ID = CrewRequired
+		FormatKey = "Stats/CrewRequiredFmt"
+	}
+	{
+		ID = CrewRequiredBeams
+		FormatKey = "Stats/CrewRequiredBeamsFmt"
+	}
+	{
+		ID = CommandPointsProvided
+		FormatKey = "Stats/CommandPointsProvidedFmt"
+		DefaultBuiltinStat = CommandPointsProvided
+	}
+	{
+		ID = CommandPointsUsed
+		FormatKey = "Stats/CommandPointsUsedFmt"
+		DefaultBuiltinStat = CommandPointsUsed
+	}
+
+	// High-priority special stats.
+	{
+		ID = StorageTiles
+		FormatKey = "Stats/StorageTilesFmt"
+	}
+	{
+		ID = AbilityCooldown
+		FormatKey = "Stats/AbilityCooldownFmt"
+	}
+	{
+		ID = SightRange
+		FormatKey = "Stats/SightRangeFmt"
+	}
+	{
+		ID = RadarRange
+		FormatKey = "Stats/RadarRangeFmt"
+	}
+	{
+		ID = FtlMaxEfficiencyRange
+		FormatKey = "Stats/FtlMaxEfficiencyRangeFmt"
+	}
+	{
+		ID = FtlMinEfficiencyRange
+		FormatKey = "Stats/FtlMinEfficiencyRangeFmt"
+	}
+	{
+		ID = ThrusterForce
+		FormatKey = "Stats/ThrusterForceFmt"
+	}
+	{
+		ID = ThrusterRampUp
+		FormatKey = "Stats/ThrusterRampUpFmt"
+	}
+	{
+		ID = ThrusterRampDown
+		FormatKey = "Stats/ThrusterRampDownFmt"
+	}
+	{
+		ID = ThrusterRampExponent
+		FormatKey = "Stats/ThrusterRampExponentFmt"
+	}
+	{
+		ID = TractorForce
+		FormatKey = "Stats/TractorForceFmt"
+	}
+	{
+		ID = TractorOverloadForce
+		FormatKey = "Stats/TractorOverloadForceFmt"
+	}
+	{
+		ID = TractorOverloadRadius
+		FormatKey = "Stats/TractorOverloadRadiusFmt"
+	}
+	{
+		ID = TractorOverloadChargeTime
+		FormatKey = "Stats/TractorOverloadChargeTimeFmt"
+	}
+	{
+		ID = TractorOverloadMinPower
+		FormatKey = "Stats/TractorOverloadMinPowerFmt"
+	}
+	{
+		ID = TractorOverloadHeatGeneration
+		FormatKey = "Stats/TractorOverloadHeatGenerationFmt"
+	}
+	{
+		ID = ThrusterBuff
+		FormatKey = "Stats/ThrusterBuffFmt"
+	}
+	{
+		ID = ThrusterBonusForce
+		FormatKey = "Stats/ThrusterBonusForceFmt"
+	}
+	{
+		ID = PowerDistributionEfficiency
+		FormatKey = "Stats/PowerDistributionEfficiencyFmt"
+	}
+	{
+		ID = RailgunBuff
+		FormatKey = "Stats/RailgunBuffFmt"
+	}
+	{
+		ID = RailgunBuffExponentOverclock
+		FormatKey = "Stats/RailgunBuffExponentOverclockFmt"
+	}
+	{
+		ID = PowerGeneration
+		FormatKey = "Stats/PowerGenerationFmt"
+	}
+	{
+		ID = BatterySize
+		FormatKey = "Stats/BatterySizeFmt"
+	}
+	{
+		ID = BatteryFillTime
+		FormatKey = "Stats/BatteryFillTimeFmt"
+	}
+
+	// Damage & Weapons.
+	{
+		ID = Damage
+		FormatKey = "Stats/DamageFmt"
+	}
+	{
+		ID = MaxDamage
+		FormatKey = "Stats/MaxDamageFmt"
+	}
+	{
+		ID = DamageRange
+		FormatKey = "Stats/DamageRangeFmt"
+	}
+	{
+		ID = MaxDamageRange
+		FormatKey = "Stats/MaxDamageRangeFmt"
+	}
+	{
+		ID = SimpleDamage
+		FormatKey = "Stats/SimpleDamageFmt"
+	}
+	{
+		ID = SimpleMaxDamage
+		FormatKey = "Stats/SimpleMaxDamageFmt"
+	}
+	{
+		ID = DamageContinuous
+		FormatKey = "Stats/DamageContinuousFmt"
+	}
+	{
+		ID = DamageContinuousNear
+		FormatKey = "Stats/DamageContinuousNearFmt"
+	}
+	{
+		ID = DamageContinuousFar
+		FormatKey = "Stats/DamageContinuousFarFmt"
+	}
+	{
+		ID = DamageContinuousEnemies
+		FormatKey = "Stats/DamageContinuousEnemiesFmt"
+	}
+	{
+		ID = DamageContinuousShields
+		FormatKey = "Stats/DamageContinuousShieldsFmt"
+	}
+	{
+		ID = DamageContinuousJunk
+		FormatKey = "Stats/DamageContinuousJunkFmt"
+	}
+	{
+		ID = DamageContinuousAsteroids
+		FormatKey = "Stats/DamageContinuousAsteroidsFmt"
+	}
+	{
+		ID = ShieldDamage
+		FormatKey = "Stats/ShieldDamageFmt"
+	}
+	{
+		ID = ShieldDamageOverTime
+		FormatKey = "Stats/ShieldDamageOverTimeFmt"
+	}
+	{
+		ID = ShotDamage
+		FormatKey = "Stats/ShotDamageFmt"
+	}
+	{
+		ID = DamageArea
+		FormatKey = "Stats/DamageAreaFmt"
+	}
+	{
+		ID = DamageAreaFalloff
+		FormatKey = "Stats/DamageAreaFalloffFmt"
+	}
+
+	{
+		ID = StrengthAtMaxRange
+		FormatKey = "Stats/StrengthAtMaxRangeFmt"
+	}
+
+	{
+		ID = IonLightningInterval
+		FormatKey = "Stats/IonLightningIntervalFmt"
+	}
+	{
+		ID = LightningChance
+		FormatKey = "Stats/LightningChanceFmt"
+	}
+	{
+		ID = LightningRange
+		FormatKey = "Stats/LightningRangeFmt"
+	}
+	{
+		ID = LightningStrikeCountRange
+		FormatKey = "Stats/LightningStrikeCountRangeFmt"
+	}
+	{
+		ID = LightningMaxChain
+		FormatKey = "Stats/LightningMaxChainFmt"
+	}
+	{
+		ID = LightningChainChance
+		FormatKey = "Stats/LightningChainChanceFmt"
+	}
+	{
+		ID = LightningChainStrikeCountRange
+		FormatKey = "Stats/LightningChainStrikeCountRangeFmt"
+	}
+	{
+		ID = LightningDamage
+		FormatKey = "Stats/LightningDamageFmt"
+	}
+
+	{
+		ID = HeatPerTileContinuous
+		FormatKey = "Stats/HeatPerTileContinuousFmt"
+	}
+	{
+		ID = ResonanceHeatPool
+		FormatKey = "Stats/ResonanceHeatPoolFmt"
+	}
+	{
+		ID = HeatPoolAmplificationExponent
+		FormatKey = "Stats/HeatPoolAmplificationExponentFmt"
+	}
+	{
+		ID = DilationHeatSpread
+		FormatKey = "Stats/DilationHeatSpreadFmt"
+	}
+	{
+		ID = HeatSpreadDistance
+		FormatKey = "Stats/HeatSpreadDistanceFmt"
+	}
+	{
+		ID = HitShieldHeatFactor
+		FormatKey = "Stats/HitShieldHeatFactorFmt"
+	}
+	{
+		ID = ShieldDamagePowerCostBase
+		FormatKey = "Stats/ShieldDamagePowerCostBaseFmt"
+	}
+	{
+		ID = ShieldDamagePowerCostAmplification
+		FormatKey = "Stats/ShieldDamagePowerCostAmplificationFmt"
+	}
+	{
+		ID = ShieldDamagePowerCostDilation
+		FormatKey = "Stats/ShieldDamagePowerCostDilationFmt"
+	}
+
+	{
+		ID = PowerDrain
+		FormatKey = "Stats/PowerDrainFmt"
+	}
+	{
+		ID = PowerDrainOverTime
+		FormatKey = "Stats/PowerDrainOverTimeFmt"
+	}
+	{
+		ID = PowerDrainArea
+		FormatKey = "Stats/PowerDrainAreaFmt"
+	}
+	{
+		ID = EffectDuration
+		FormatKey = "Stats/EffectDurationFmt"
+	}
+	{
+		ID = Penetration
+		FormatKey = "Stats/PenetrationFmt"
+	}
+	{
+		ID = ArmorPenetrationResistance
+		FormatKey = "Stats/ArmorPenetrationResistanceFmt"
+	}
+	{
+		ID = PenetrationDamagePool
+		FormatKey = "Stats/PenetrationDamagePoolFmt"
+	}
+	{
+		ID = ShieldPenetration
+		FormatKey = "Stats/ShieldPenetrationFmt"
+	}
+	{
+		ID = FireChance
+		FormatKey = "Stats/FireChanceFmt"
+	}
+	{
+		ID = FireSize
+		FormatKey = "Stats/FireSizeFmt"
+	}
+	{
+		ID = Salvo
+		FormatKey = "Stats/SalvoFmt"
+	}
+	{
+		ID = ROF
+		FormatKey = "Stats/ROFFmt"
+	}
+	{
+		ID = ROFRange
+		FormatKey = "Stats/ROFRangeFmt"
+	}
+	{
+		ID = FireInterval
+		FormatKey = "Stats/FireIntervalFmt"
+	}
+	{
+		ID = FireDelay
+		FormatKey = "Stats/FireDelayFmt"
+	}
+	{
+		ID = RailgunBaseChargeTime
+		FormatKey = "Stats/RailgunBaseChargeTimeFmt"
+	}
+	{
+		ID = RailgunAcceleratorChargeTime
+		FormatKey = "Stats/RailgunAcceleratorChargeTimeFmt"
+	}
+	{
+		ID = Burst
+		FormatKey = "Stats/BurstFmt"
+	}
+	{
+		ID = Pellets
+		FormatKey = "Stats/PelletsFmt"
+	}
+	{
+		ID = PelletSpread
+		FormatKey = "Stats/PelletSpreadFmt"
+	}
+	{
+		ID = RampUpTime
+		FormatKey = "Stats/ThrusterRampUpFmt"
+	}
+	{
+		ID = RampUpSpeedFactor
+		FormatKey = "Stats/RampUpSpeedFactorFmt"
+	}
+	{
+		ID = Range
+		FormatKey = "Stats/RangeFmt"
+	}
+	{
+		ID = RangeLimited
+		FormatKey = "Stats/RangeLimitedFmt"
+	}
+	{
+		ID = StretchRange
+		FormatKey = "Stats/StretchRangeFmt"
+	}
+	{
+		ID = Arc
+		FormatKey = "Stats/ArcFmt"
+	}
+	{
+		ID = Spread
+		FormatKey = "Stats/SpreadFmt"
+	}
+	{
+		ID = TurretSpeed
+		FormatKey = "Stats/TurretSpeedFmt"
+	}
+	{
+		ID = ShotSpeed
+		FormatKey = "Stats/ShotSpeedFmt"
+	}
+	{
+		ID = ShotLaunchSpeed
+		FormatKey = "Stats/ShotLaunchSpeedFmt"
+	}
+	{
+		ID = Acceleration
+		FormatKey = "Stats/AccelerationFmt"
+	}
+	{
+		ID = AccelerationDelay
+		FormatKey = "Stats/AccelerationDelayFmt"
+	}
+	{
+		ID = ShotDeploySpeed
+		FormatKey = "Stats/ShotDeploySpeedFmt"
+	}
+	{
+		ID = ShotGuidance
+		FormatKey = "Stats/ShotGuidanceFmt"
+	}
+	{
+		ID = ShotHP
+		FormatKey = "Stats/ShotHPFmt"
+	}
+	{
+		ID = SeparationRange
+		FormatKey = "Stats/SeparationRangeFmt"
+	}
+	{
+		ID = DetonationRange
+		FormatKey = "Stats/DetonationRangeFmt"
+	}
+	{
+		ID = Shrapnel
+		FormatKey = "Stats/ShrapnelFmt"
+	}
+	{
+		ID = ShrapnelArc
+		FormatKey = "Stats/ShrapnelArcFmt"
+	}
+	{
+		ID = ShrapnelFieldRadius
+		FormatKey = "Stats/ShrapnelFieldRadiusFmt"
+	}
+	{
+		ID = ShrapnelFieldBulletDamage
+		FormatKey = "Stats/ShrapnelFieldBulletDamageFmt"
+	}
+	{
+		ID = ShrapnelFieldDamagePool
+		FormatKey = "Stats/ShrapnelFieldDamagePoolFmt"
+	}
+	{
+		ID = ShrapnelFieldLifetime
+		FormatKey = "Stats/ShrapnelFieldLifetimeFmt"
+	}
+	{
+		ID = Lifetime
+		FormatKey = "Stats/Lifetime"
+	}
+	{
+		ID = ShieldHP
+		FormatKey = "Stats/ShieldHPFmt"
+	}
+	{
+		ID = ShieldPenResist
+		FormatKey = "Stats/ShieldPenResistFmt"
+	}
+	{
+		ID = ShieldArc
+		FormatKey = "Stats/ShieldArcFmt"
+	}
+	{
+		ID = ShieldDist
+		FormatKey = "Stats/ShieldDistFmt"
+	}
+
+	// Thermal Beam
+	{
+		ID = BaseAmplification
+		FormatKey = "Stats/BaseAmplificationFmt"
+	}
+	{
+		ID = BaseDilation
+		FormatKey = "Stats/BaseDilationFmt"
+	}
+	{
+		ID = ThermalAmplification
+		FormatKey = "Stats/ThermalAmplificationFmt"
+	}
+	{
+		ID = ThermalDilation
+		FormatKey = "Stats/ThermalDilationFmt"
+	}
+	{
+		ID = ThermalPumpMultiEfficiency
+		FormatKey = "Stats/ThermalPumpMultiEfficiencyFmt"
+	}
+	{
+		ID = AmplificationFactor
+		FormatKey = "Stats/AmplificationFactorFmt"
+	}
+	{
+		ID = DilationFactor
+		FormatKey = "Stats/DilationFactorFmt"
+	}
+	{
+		ID = HeatGenerationFactor
+		FormatKey = "Stats/HeatGenerationFactorFmt"
+	}
+	{
+		ID = PowerUsageFactor
+		FormatKey = "Stats/PowerUsageFactorFmt"
+	}
+	{
+		ID = PumpPowerUsageFactor
+		FormatKey = "Stats/PumpPowerUsageFactorFmt"
+	}
+	{
+		ID = OverclockTransitionTime
+		FormatKey = "Stats/OverclockTransitionTimeFmt"
+	}
+	{
+		ID = HeatAbsorption
+		FormatKey = "Stats/HeatAbsorptionFmt"
+	}
+	{
+		ID = HeatAbsorptionInefficiency
+		FormatKey = "Stats/HeatAbsorptionInefficiencyFmt"
+	}
+	{
+		ID = HeatAbsorptionRadius
+		FormatKey = "Stats/HeatAbsorptionRadiusFmt"
+	}
+	{
+		ID = HeatTransferInefficiency
+		FormatKey = "Stats/HeatTransferInefficiencyFmt"
+	}
+	{
+		ID = TurretExtraHeatGeneration
+		FormatKey = "Stats/TurretExtraHeatGenerationFmt"
+	}
+	{
+		ID = RailgunOverclockHeatOnShot
+		FormatKey = "Stats/RailgunOverclockHeatOnShotFmt"
+	}
+	{
+		ID = HeatPerShot
+		FormatKey = "Stats/HeatPerShotFmt"
+	}
+	{
+		ID = HeatPerRestock
+		FormatKey = "Stats/HeatPerRestockFmt"
+	}
+	{
+		ID = HeatPerDamage
+		FormatKey = "Stats/HeatPerDamageFmt"
+	}
+
+	// Production rates.
+	{
+		ID = AmmoProduction
+		FormatKey = "Stats/AmmoProductionFmt"
+	}
+	{
+		ID = MissileProduction
+		FormatKey = "Stats/MissileProductionFmt"
+	}
+	{
+		ID = MineProduction
+		FormatKey = "Stats/MineProductionFmt"
+	}
+	{
+		ID = SteelProduction
+		FormatKey = "Stats/SteelProductionFmt"
+	}
+	{
+		ID = CoilProduction
+		FormatKey = "Stats/CoilProductionFmt"
+	}
+	{
+		ID = Coil2Production
+		FormatKey = "Stats/Coil2ProductionFmt"
+	}
+	{
+		ID = TristeelProduction
+		FormatKey = "Stats/TristeelProductionFmt"
+	}
+	{
+		ID = DiamondProduction
+		FormatKey = "Stats/DiamondProductionFmt"
+	}
+	{
+		ID = ProcessorProduction
+		FormatKey = "Stats/ProcessorProductionFmt"
+	}
+	{
+		ID = EnrichedUraniumProduction
+		FormatKey = "Stats/EnrichedUraniumProductionFmt"
+	}
+
+	{
+		ID = ResonanceTurretHeatGeneration
+		FormatKey = "Stats/ResonanceTurretHeatGenerationFmt"
+	}
+	{
+		ID = HeatGeneration
+		FormatKey = "Stats/HeatGenerationFmt"
+	}
+	{
+		ID = HeatGenerationPerPart
+		FormatKey = "Stats/HeatGenerationPerPartFmt"
+	}
+	{
+		ID = AmmoHeatGeneration
+		FormatKey = "Stats/AmmoHeatGenerationFmt"
+	}
+	{
+		ID = MissileHeatGeneration
+		FormatKey = "Stats/MissileHeatGenerationFmt"
+	}
+	{
+		ID = MineHeatGeneration
+		FormatKey = "Stats/MineHeatGenerationFmt"
+	}
+	{
+		ID = SteelHeatGeneration
+		FormatKey = "Stats/SteelHeatGenerationFmt"
+	}
+	{
+		ID = CoilHeatGeneration
+		FormatKey = "Stats/CoilHeatGenerationFmt"
+	}
+	{
+		ID = Coil2HeatGeneration
+		FormatKey = "Stats/Coil2HeatGenerationFmt"
+	}
+	{
+		ID = TristeelHeatGeneration
+		FormatKey = "Stats/TristeelHeatGenerationFmt"
+	}
+	{
+		ID = ProcessorHeatGeneration
+		FormatKey = "Stats/ProcessorHeatGenerationFmt"
+	}
+	{
+		ID = EnrichedUraniumHeatGeneration
+		FormatKey = "Stats/EnrichedUraniumHeatGenerationFmt"
+	}
+	{
+		ID = ThrusterHeatGeneration
+		FormatKey = "Stats/ThrusterHeatGenerationFmt"
+	}
+	{
+		ID = BaseHeatFactor
+		FormatKey = "Stats/BaseHeatFactorFmt"
+	}
+	{
+		ID = BoostHeatFactorPerBattery
+		FormatKey = "Stats/BoostHeatFactorPerBatteryFmt"
+	}
+	{
+		ID = BoostHeatFactorPerSecond
+		FormatKey = "Stats/BoostHeatFactorPerSecondFmt"
+	}
+	{
+		ID = BoostHeatFactorBatteryThreshold
+		FormatKey = "Stats/BoostHeatFactorBatteryThresholdFmt"
+	}
+	{
+		ID = PowerHeatGeneration
+		FormatKey = "Stats/PowerHeatGenerationFmt"
+	}
+	{
+		ID = StorageHeatGeneration
+		FormatKey = "Stats/StorageHeatGenerationFmt"
+	}
+	{
+		ID = BatteryDeliveredHeatGeneration
+		FormatKey = "Stats/BatteryDeliveredHeatGenerationFmt"
+	}
+
+	// Usage rates.
+	{
+		ID = ShotAmmoUsage
+		FormatKey = "Stats/ShotAmmoUsageFmt"
+	}
+	{
+		ID = ShotAmmoUsageRange
+		FormatKey = "Stats/ShotAmmoUsageRangeFmt"
+	}
+	{
+		ID = AmmoSulfurUsage
+		FormatKey = "Stats/AmmoSulfurUsageFmt"
+	}
+	{
+		ID = MissileIronUsage
+		FormatKey = "Stats/MissileIronUsageFmt"
+	}
+	{
+		ID = MissileCopperUsage
+		FormatKey = "Stats/MissileCopperUsageFmt"
+	}
+	{
+		ID = MissileUraniumUsage
+		FormatKey = "Stats/MissileUraniumUsageFmt"
+	}
+	{
+		ID = MissileSulfurUsage
+		FormatKey = "Stats/MissileSulfurUsageFmt"
+	}
+	{
+		ID = MissileHeatUsage
+		FormatKey = "Stats/MissileHeatUsageFmt"
+	}
+	{
+		ID = MineIronUsage
+		FormatKey = "Stats/MineIronUsageFmt"
+	}
+	{
+		ID = MineAmmoUsage
+		FormatKey = "Stats/MineAmmoUsageFmt"
+	}
+	{
+		ID = SteelIronUsage
+		FormatKey = "Stats/SteelIronUsageFmt"
+	}
+	{
+		ID = CoilCopperUsage
+		FormatKey = "Stats/CoilCopperUsageFmt"
+	}
+	{
+		ID = Coil2CoilUsage
+		FormatKey = "Stats/Coil2CoilUsageFmt"
+	}
+	{
+		ID = Coil2CopperUsage
+		FormatKey = "Stats/Coil2CopperUsageFmt"
+	}
+	{
+		ID = TristeelTritaniumUsage
+		FormatKey = "Stats/TristeelTritaniumUsageFmt"
+	}
+	{
+		ID = DiamondCarbonUsage
+		FormatKey = "Stats/DiamondCarbonUsageFmt"
+	}
+	{
+		ID = ProcessorCoilUsage
+		FormatKey = "Stats/ProcessorCoilUsageFmt"
+	}
+	{
+		ID = ProcessorGoldUsage
+		FormatKey = "Stats/ProcessorGoldUsageFmt"
+	}
+	{
+		ID = EnrichedUraniumUraniumUsage
+		FormatKey = "Stats/EnrichedUraniumUraniumUsageFmt"
+	}
+	{
+		ID = PowerUsageContinuous
+		FormatKey = "Stats/PowerUsageContinuousFmt"
+	}
+	{
+		ID = ThermalPumpPowerUsageContinuous
+		FormatKey = "Stats/ThermalPumpPowerUsageContinuousFmt"
+	}
+	{
+		ID = PowerUsageContinuousMinutes
+		FormatKey = "Stats/PowerUsageContinuousMinutesFmt"
+	}
+	{
+		ID = ShotPowerUsage
+		FormatKey = "Stats/ShotPowerUsageFmt"
+	}
+	{
+		ID = AmmoPowerUsage
+		FormatKey = "Stats/AmmoPowerUsageFmt"
+	}
+	{
+		ID = MissilePowerUsage
+		FormatKey = "Stats/MissilePowerUsageFmt"
+	}
+	{
+		ID = MinePowerUsage
+		FormatKey = "Stats/MinePowerUsageFmt"
+	}
+	{
+		ID = SteelPowerUsage
+		FormatKey = "Stats/SteelPowerUsageFmt"
+	}
+	{
+		ID = CoilPowerUsage
+		FormatKey = "Stats/CoilPowerUsageFmt"
+	}
+	{
+		ID = Coil2PowerUsage
+		FormatKey = "Stats/Coil2PowerUsageFmt"
+	}
+	{
+		ID = TristeelPowerUsage
+		FormatKey = "Stats/TristeelPowerUsageFmt"
+	}
+	{
+		ID = DiamondPowerUsage
+		FormatKey = "Stats/DiamondPowerUsageFmt"
+	}
+	{
+		ID = ProcessorPowerUsage
+		FormatKey = "Stats/ProcessorPowerUsageFmt"
+	}
+	{
+		ID = EnrichedUraniumPowerUsage
+		FormatKey = "Stats/EnrichedUraniumPowerUsageFmt"
+	}
+	{
+		ID = ThrusterPowerUsage
+		FormatKey = "Stats/ThrusterPowerUsageFmt"
+	}
+	{
+		ID = ThrusterPowerUsageRamp
+		FormatKey = "Stats/ThrusterPowerUsageRampFmt"
+	}
+	{
+		ID = ThrusterPowerUsageRampTime
+		FormatKey = "Stats/ThrusterPowerUsageRampTimeFmt"
+	}
+	{
+		ID = BoostedPowerUsageContinuous
+		FormatKey = "Stats/BoostedPowerUsageContinuousFmt"
+	}
+	{
+		ID = HeatDissipation
+		FormatKey = "Stats/HeatDissipationFmt"
+	}
+
+
+	// Capacities.
+	{
+		ID = HyperiumCapacity
+		FormatKey = "Stats/HyperiumCapacityFmt"
+	}
+	{
+		ID = AmmoCapacity
+		FormatKey = "Stats/AmmoCapacityFmt"
+	}
+	{
+		ID = MissilePartCapacity
+		FormatKey = "Stats/MissilePartCapacityFmt"
+	}
+	{
+		ID = MissileParts
+		FormatKey = "Stats/MissilePartsFmt"
+	}
+	{
+		ID = MineParts
+		FormatKey = "Stats/MinePartsFmt"
+	}
+	{
+		ID = HEMissileCapacity
+		FormatKey = "Stats/HEMissileCapacityFmt"
+	}
+	{
+		ID = EMPMissileCapacity
+		FormatKey = "Stats/EMPMissileCapacityFmt"
+	}
+	{
+		ID = ThermalMissileCapacity
+		FormatKey = "Stats/ThermalMissileCapacityFmt"
+	}
+	{
+		ID = NukeMissileCapacity
+		FormatKey = "Stats/NukeMissileCapacityFmt"
+	}
+	{
+		ID = MinePartCapacity
+		FormatKey = "Stats/MinePartCapacityFmt"
+	}
+	{
+		ID = MineCapacity
+		FormatKey = "Stats/MineCapacityFmt"
+	}
+	{
+		ID = SteelCapacity
+		FormatKey = "Stats/SteelCapacityFmt"
+	}
+	{
+		ID = CoilCapacity
+		FormatKey = "Stats/CoilCapacityFmt"
+	}
+	{
+		ID = Coil2Capacity
+		FormatKey = "Stats/Coil2CapacityFmt"
+	}
+	{
+		ID = TristeelCapacity
+		FormatKey = "Stats/TristeelCapacityFmt"
+	}
+	{
+		ID = DiamondCapacity
+		FormatKey = "Stats/DiamondCapacityFmt"
+	}
+	{
+		ID = ProcessorCapacity
+		FormatKey = "Stats/ProcessorCapacityFmt"
+	}
+	{
+		ID = EnrichedUraniumCapacity
+		FormatKey = "Stats/EnrichedUraniumCapacityFmt"
+	}
+	{
+		ID = IronCapacity
+		FormatKey = "Stats/IronCapacityFmt"
+	}
+	{
+		ID = CopperCapacity
+		FormatKey = "Stats/CopperCapacityFmt"
+	}
+	{
+		ID = TritaniumCapacity
+		FormatKey = "Stats/TritaniumCapacityFmt"
+	}
+	{
+		ID = CarbonCapacity
+		FormatKey = "Stats/CarbonCapacityFmt"
+	}
+	{
+		ID = GoldCapacity
+		FormatKey = "Stats/GoldCapacityFmt"
+	}
+	{
+		ID = UraniumCapacity
+		FormatKey = "Stats/UraniumCapacityFmt"
+	}
+	{
+		ID = SulfurCapacity
+		FormatKey = "Stats/SulfurCapacityFmt"
+	}
+	{
+		ID = PowerCapacity
+		FormatKey = "Stats/PowerCapacityFmt"
+	}
+	{
+		ID = HeatCapacity
+		FormatKey = "Stats/HeatCapacityFmt"
+	}
+	{
+		ID = HeatFireThreshold
+		FormatKey = "Stats/HeatFireThresholdFmt"
+	}
+	{
+		ID = HeatFireChance
+		FormatKey = "Stats/HeatFireChanceFmt"
+	}
+
+	// Low-priority special stats.
+	{
+		ID = FactoryBuff
+		FormatKey = "Stats/FactoryBuffFmt"
+	}
+	{
+		ID = BeamDamageFalloff
+		FormatKey = "Stats/BeamDamageFalloffFmt"
+	}
+
+	// Bottom-line default stats.
+	{
+		ID = Weight
+		FormatKey = "Stats/WeightFmt"
+		DefaultBuiltinStat = TotalWeight
+	}
+	{
+		ID = HP
+		FormatKey = "Stats/HPFmt"
+		DefaultBuiltinStat = MaxHealth
+	}
+	{
+		ID = PenResist
+		FormatKey = "Stats/PenResistFmt"
+		DefaultBuiltinStat = InitialPenetrationResistance
+	}
+	{
+		ID = TurretPenResist
+		FormatKey = "Stats/TurretPenResistFmt"
+	}
+	{
+		ID = ShellPenResist
+		FormatKey = "Stats/ShellPenResistFmt"
+	}
+	{
+		ID = ShellDamageResist
+		FormatKey = "Stats/ShellDamageResistFmt"
+	}
+	{
+		ID = AOEResist
+		FormatKey = "Stats/AOEResistFmt"
+	}
+	{
+		ID = EMPResist
+		FormatKey = "Stats/EMPResistFmt"
+	}
+	{
+		ID = EMPResistPercentage
+		FormatKey = "Stats/EMPResistPercentageFmt"
+	}
+	{
+		ID = CrewSpeed
+		FormatKey = "Stats/CrewSpeedFmt"
+		DefaultBuiltinStat = CrewSpeedFactor
+	}
+	{
+		ID = CrewSpeedFwd
+		FormatKey = "Stats/CrewSpeedFwdFmt"
+	}
+	{
+		ID = CrewSpeedAcr
+		FormatKey = "Stats/CrewSpeedAcrFmt"
+	}
+	{
+		ID = CrewSpeedRev
+		FormatKey = "Stats/CrewSpeedRevFmt"
+	}
+	{
+		ID = CrewStunDuration
+		FormatKey = "Stats/CrewStunDurationFmt"
+	}
+	{
+		ID = CrewStunRadius
+		FormatKey = "Stats/CrewStunRadiusFmt"
+	}
+]

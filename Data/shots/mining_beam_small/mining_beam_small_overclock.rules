@@ -1,0 +1,252 @@
+BASE = &<mining_beam_small.rules>
+
+RANGE = (&~/BASE/Range) + 50
+RADIUS = 2
+DAMAGE_FACTOR = 47.5%
+SHIELD_DAMAGE_FACTOR = 160% / ((&RADIUS) * 2)
+RADIUS_FALLOFF = 0 
+
+Beam : BASE
+{
+	Range = &~/Range
+	IdealRange = (&Range) - 10
+	
+	AttenuationLimit : HitOperational/HitEffects/0/Damage
+	{
+		BaseValue = (&^/0/BaseValue) * (&~/RADIUS)
+	}
+    HitAttenuator
+    {
+    	MediaEffects = &~/Beam/HitOperational/MediaEffects
+    }
+    
+	StartMediaEffects
+	[
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "sounds/mining_laser_overclocked_start.wav"
+			Volume = 1.6
+			Speed = 1
+			MaxConcurrent = 1
+
+			DynamicVolume : ^/0/DynamicVolume
+			{
+				UseCustomShapeForDistance = true
+			}
+			DynamicFilter : ^/0/DynamicFilter
+			{
+				UseCustomShapeForDistance = true
+			}
+		}
+]
+	
+	BeamMediaEffects
+	[
+		// The beam itself.
+		{
+			Type = Beam
+			Sprite
+			{
+				Texture
+				{
+					File = "./Data/crew/salvage_beam.png"
+					SampleMode = Linear
+					MipLevels = 1
+					UVMode = Clamp
+				}
+				_noiseTexture
+				{
+					File = ../../common_effects/particles/noise_distorted_voronoi.png
+					SampleMode = Linear
+					MipLevels = max
+					UVMode = Wrap
+				}
+				Shader = "./Data/crew/salvage_beam.shader"
+				_gradientPow = 0.35
+				_sineFreq = 2.5
+				_sineAmp = 0.03
+				_noiseAmp = 0.12
+				_gradientIntensity = 3
+				_endCapSize = .125
+				_startCapSize = .125
+				Size = [100%, 2]
+				VertexColor = [255, 255, 255, 255]
+				TargetBlendMode
+				{
+					SourceRgbFactor = SourceAlpha
+					DestRgbFactor = One
+					RgbOperator = Add
+					SourceAlphaFactor = InverseDestAlpha
+					DestAlphaFactor = One
+					AlphaOperator = Add
+				}
+			}
+			FadeInTime = .1
+			FadeOutTime = .1
+			RandomTimeOffset = [0, 1]
+			Bucket = Upper1
+		}
+	
+		// Beam lighting.
+		{
+			Type = Beam
+			Sprite
+			{
+				Texture
+				{
+					File = "./Data/common_effects/particles/blob.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Shader = "./Data/common_effects/fancy_beam_light.shader"
+				Size = [100%, 4]
+				_extraBeginLength = (&Size/1) / 2
+				_extraEndLength = (&Size/1) / 2
+				VertexColor = [255, 127, 0, 255]
+				_z = 0.1
+				_litReflectiveStrength = 8
+				_litAdditiveStrength = 0
+				_unlitAdditiveStrength = 0.25
+				_nrmlStrengthLimit = 0.2
+				TargetBlendMode
+				{
+					SourceRgbFactor = InverseDestColor
+					DestRgbFactor = One
+					RgbOperator = Add
+					SourceAlphaFactor = Zero
+					DestAlphaFactor = One
+					AlphaOperator = Add
+				}
+			}
+			Bucket = Upper4
+			IsLight = true
+			FadeInTime = .5
+			FadeOutTime = .1
+		}
+	
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "sounds/mining_laser_overclocked_loop.wav"
+			Volume = 1.6
+			Speed = 1
+			MaxConcurrent = 1
+			RampUpTime = .5
+			RampDownTime = .5
+
+			DynamicVolume : ^/0/DynamicVolume
+			{
+				UseCustomShapeForDistance = true
+			}
+			DynamicFilter : ^/0/DynamicFilter
+			{
+				UseCustomShapeForDistance = true
+			}
+		}
+	]
+	
+	HitShield = &HitOperational
+	HitStructural = &HitOperational
+	HitOperational : ^/0/HitOperational
+	{
+		HitEffects
+		[
+			//Damage to enemy ships
+			: ~/BASE/HitOperational/HitEffects/0
+			{
+				Type = AreaDamage
+				Damage : ^/0/Damage { BaseValue = ceil((&^/0/BaseValue) * (&~/DAMAGE_FACTOR)) }
+				Radius = &~/RADIUS
+				RectType = Normal
+				Falloff = &~/RADIUS_FALLOFF
+				Filter : ^/0/Filter
+				{
+					Shields = false
+				}
+			}
+			//Damage to enemy shields
+			: ~/BASE/HitOperational/HitEffects/0
+			{
+				Type = AreaDamage
+				Damage : ^/0/Damage { BaseValue = ceil((&^/0/BaseValue) * (&~/SHIELD_DAMAGE_FACTOR)) }
+				Radius = &~/RADIUS
+				Falloff = &~/RADIUS_FALLOFF
+				Filter : ^/0/Filter
+				{
+					OperationalHealth = false
+					StructuralHealth = false
+				} 
+			}
+			//Damage to junk
+			: ~/BASE/HitOperational/HitEffects/1
+			{
+				Type = AreaDamage
+				Damage : ^/0/Damage { BaseValue = ceil((&^/0/BaseValue) * (&~/DAMAGE_FACTOR)) }
+				Radius = &~/RADIUS
+				RectType = Normal
+				Falloff = &~/RADIUS_FALLOFF
+			}
+			//Damage to junk armor
+			: ~/BASE/HitOperational/HitEffects/2
+			{
+				Type = AreaDamage
+				Damage : ^/0/Damage { BaseValue = ceil((&^/0/BaseValue) * (&~/DAMAGE_FACTOR)) }
+				Radius = &~/RADIUS
+				RectType = Normal
+				Falloff = &~/RADIUS_FALLOFF
+			}
+			//Damage to asteroids
+			: ~/BASE/HitOperational/HitEffects/3
+			{
+				Type = AreaDamage
+				Damage : ^/0/Damage { BaseValue = ceil((&^/0/BaseValue) * (&~/DAMAGE_FACTOR)) }
+				Radius = &~/RADIUS
+				RectType = Normal
+				Falloff = &~/RADIUS_FALLOFF
+			}
+		]
+		MediaEffects
+		[
+			: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "sounds/mining_laser_overclocked_impact.wav"
+					Volume = 1.7
+					SpeedVariation = .1
+				}
+
+			&<particles/mining_beam_oc_hit_sparks.rules>
+			{
+				Type = Quad
+				Bucket = Upper1
+				FadeInTime = 0.2
+				FadeOutTime = 0.2
+				Sprite
+				{
+					Color = [255, 255, 255, 255]
+					Size = [4, 4]
+					Shader = ../ion_beam/particles/ion_storm.shader
+					Texture
+					{
+						File = ./Data/common_effects/particles/noise_marble4.png
+						SampleMode = Linear
+						MipLevels = max
+						UMode = Wrap
+						VMode = Wrap
+					}
+					_noiseTex1
+					{
+						File = ./Data/common_effects/particles/noise_fluid.png
+						SampleMode = Linear
+						MipLevels = max
+						UMode = Wrap
+						VMode = Wrap
+					}
+					_color1 = [255 * 2, 255 * 0.9, 255 * 0.46, 255]
+					_color2 = [500, 500, 500, 255]
+					_noise1ScrollSpeed = [-0.03, -0.3]
+					_noise2ScrollSpeed = [0.04, -0.34]
+					TargetBlendMode = Add
+				}
+			}
+		]
+	}
+}

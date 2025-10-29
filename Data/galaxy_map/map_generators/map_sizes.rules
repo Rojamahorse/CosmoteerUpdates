@@ -1,0 +1,14 @@
+None
+{
+	NameKey = "MapSizes/None"
+	TipKey = "MapSizes/NoneTip"
+	MapGenerator = &<galaxy_empty.rules>
+}
+
+Standard
+{
+	NameKey = "MapSizes/Standard"
+	TipKey = "MapSizes/StandardTip"
+	MapGenerator = &<galaxy_standard.rules>
+}
+

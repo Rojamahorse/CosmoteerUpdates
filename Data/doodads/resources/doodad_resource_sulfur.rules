@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_sulfur
+Type = Resource
+DescriptionKey = "Resource/Sulfur"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/sulfur/sulfur.png"
+		MipLevels = 2
+	}
+}
+ResourceType = sulfur

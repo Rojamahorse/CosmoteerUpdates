@@ -1,0 +1,27 @@
+ID = crew2
+TitleKey = "Tutorials/Crew2/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.HasSeenCodexPage('crew') and game.HasSeenCodexPage('fame') and sim.StationInSight"
+Entries
+[
+	{
+		Image { Texture { File="../build/build_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew2/Button"
+	}
+	{
+		Image { Texture { File="quarters.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew2/Quarters"
+	}
+	{
+		Image { Texture { File="door.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew2/Door"
+	}
+	{
+		Image { Texture { File="airlock.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew2/Airlock"
+	}
+	{
+		Image { Texture { File="crew_meter.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew2/Meter"
+	}
+]

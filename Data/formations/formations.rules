@@ -1,0 +1,86 @@
+Formations
+[
+	// Line
+	{
+		NameKey = "Formations/Line"
+		Icon
+		{
+			Texture
+			{
+				File = "formation_line.png"
+				MipLevels = 2
+			}
+		}
+
+		Type = Line
+		RadiusFactor = 2
+	}
+
+	// Wedge
+	{
+		NameKey = "Formations/Wedge"
+		Icon
+		{
+			Texture
+			{
+				File = "formation_wedge.png"
+				MipLevels = 2
+			}
+		}
+
+		Type = Line
+		RadiusFactor = 2
+		LeftWingAngle = -125d
+		RightWingAngle = 125d
+	}
+
+	// Claw
+	{
+		NameKey = "Formations/Claw"
+		Icon
+		{
+			Texture
+			{
+				File = "formation_claw.png"
+				MipLevels = 2
+			}
+		}
+
+		Type = Line
+		RadiusFactor = 2
+		LeftWingAngle = -55d
+		RightWingAngle = 55d
+	}
+]
+
+CustomFormations
+[
+	{
+		LetterKey = "Formations/A"
+		NameKey = "Formations/Alpha"
+	}
+	{
+		LetterKey = "Formations/B"
+		NameKey = "Formations/Bravo"
+	}
+	{
+		LetterKey = "Formations/C"
+		NameKey = "Formations/Charlie"
+	}
+	{
+		LetterKey = "Formations/D"
+		NameKey = "Formations/Delta"
+	}
+	{
+		LetterKey = "Formations/E"
+		NameKey = "Formations/Echo"
+	}
+	{
+		LetterKey = "Formations/F"
+		NameKey = "Formations/Foxtrot"
+	}
+	{
+		LetterKey = "Formations/G"
+		NameKey = "Formations/Gamma"
+	}
+]

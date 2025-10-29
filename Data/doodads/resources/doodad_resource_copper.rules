@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_copper
+Type = Resource
+DescriptionKey = "Resource/Copper"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/copper/copper.png"
+		MipLevels = 2
+	}
+}
+ResourceType = copper

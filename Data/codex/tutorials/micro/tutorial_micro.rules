@@ -1,0 +1,28 @@
+ID = micro
+TitleKey = "Tutorials/Micro/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 58"
+TempShowCondition = "? sim.HasSelectedParts"
+OnSeen = "> SetSetting('CtrlSelectsParts', False)"
+Entries
+[
+	{
+		Image { Texture { File="select_part.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Micro/Select"
+	}
+	{
+		Image { Texture { File="power_toggle.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Micro/Power"
+	}
+	{
+		Image { Texture { File="fire_mode.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Micro/FireMode"
+	}
+	{
+		Image { Texture { File="../tactics/target.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Micro/Target"
+	}
+	{
+		TextKey = "Tutorials/Micro/ControlGroups"
+	}
+]

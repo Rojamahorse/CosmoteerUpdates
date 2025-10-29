@@ -1,0 +1,24 @@
+ID = crew
+TitleKey = "Tutorials/Crew/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 15"
+TempShowCondition = "? game.HasPartCategoryInHand('provides_crew')"
+Entries
+[
+	{
+		Image { Texture { File="interior_toggle.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew/InteriorButton"
+	}
+	{
+		Image { Texture { File="crew.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew/Crew"
+	}
+	{
+		Image { Texture { File="./Data/gui/game/indicators/indicator_crew.png"; SampleMode=Linear; }; Size=[64, 64]; }
+		TextKey = "Tutorials/Crew/Indicator"
+	}
+	{
+		Image { Texture { File="path_lines.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew/PathLines"
+	}
+]

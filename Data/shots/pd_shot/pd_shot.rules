@@ -1,0 +1,138 @@
+ID = "cosmoteer.pd_shot"
+OtherIDs = ["point_defense_shot", "pd_shot"]
+Range = 150
+IdealRange = 65
+Speed = 420
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.1
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletLower1
+		Sprite
+		{
+			Texture
+			{
+				File = "pd_shot.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [8, .25]
+		}
+		Offset = [-3.5, 0]
+		LerpScaleFrom = [.25, 1]
+		LerpTime = .05
+	}
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Offset = [-3, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = pd_shot_glow.png
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [8, 2]
+			VertexColor = [255, 255, 255]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_z = 1
+            _nrmlStrengthLimit = 1
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.2
+		}
+		LerpScaleFrom = [.25, 1]
+		LerpTime = .05
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+
+        BulletCollisions
+        {
+            Enemies = true
+            Junk = true
+            Friendlies = true
+            Neutrals = true
+            OnlyBulletCategories = [missile, mine, bullet]
+        }
+		HitBullet
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue = 180; EffectScaleExponent = 1 }
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/pd_shot_spikes.rules>
+				&<particles/pd_shot_sparks.rules>
+				&<./Data/ships/terran/point_defense/particles/point_defense_shoot_flash.rules>
+			]
+		}
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue = 35; EffectScaleExponent = 1 }
+				}
+			]
+			MediaEffects
+			[
+				&<particles/pd_shot_spikes.rules>
+				&<particles/pd_shot_sparks.rules>
+				&<./Data/ships/terran/point_defense/particles/point_defense_shoot_flash.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["sounds/point_defense_impact_01.wav", 
+									"sounds/point_defense_impact_02.wav", 
+									"sounds/point_defense_impact_03.wav", 
+									"sounds/point_defense_impact_04.wav",
+									"sounds/point_defense_impact_05.wav"]
+					Db = -6
+					Speed = 1.15
+					SpeedVariation = 0.05
+					MaxConcurrent = 50
+				}
+			]
+		}
+		HitStructural = &HitOperational
+	}
+}

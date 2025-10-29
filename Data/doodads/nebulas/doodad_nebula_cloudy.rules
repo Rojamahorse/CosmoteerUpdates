@@ -1,0 +1,14 @@
+ID = cosmoteer.nebula_cloudy
+Type = Nebula
+NebulaID = cloudy
+DescriptionKey = "Nebulas/Cloudy"
+CategoryKey = "Doodads/Nebulas"
+Icon
+{
+	Texture
+	{
+		File = "nebula_cloudy.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}

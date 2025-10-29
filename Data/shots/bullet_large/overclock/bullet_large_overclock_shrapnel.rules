@@ -1,0 +1,159 @@
+BULLET = &<bullet_large_overclock.rules>
+
+ID = "cosmoteer.bullet_large_overclock_shrapnel"
+// Irrelevant, but not optional. Set for stats
+Range = (&Components/Death/Lifetime/0) * (&Speed)
+Speed = 150
+
+//DAMAGE_FACTOR = 0.65
+DAMAGE = 100
+IMPULSE = 4
+PENETRATION = 20
+ARMOR_PENETRATION_FACTOR = 150%
+FIRE_CHANCE = 3.5%
+FIRE_SIZE = 30%
+
+BASE_BULLET_DAMAGE = &BULLET/BASE/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
+//DAMAGE = ceil((&BASE_BULLET_DAMAGE) / (&BULLET/SHRAPNEL_EFFECT/Count) * (&DAMAGE_FACTOR))
+
+BASE_BULLET_IMPULSE = &BULLET/BASE/Components/Hit/HitOperational/HitEffects/1/Impulse/BaseValue
+//IMPULSE = (&BASE_BULLET_IMPULSE) / (&BULLET/SHRAPNEL_EFFECT/Count) * (&DAMAGE_FACTOR)
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.25
+		Density = 1
+		RandomExtraSpeed = [-15, 15]
+	}
+	
+	Death
+	{
+		Type = DeathByLifetime
+		Lifetime = [0.5, 0.65]
+	}
+	
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = &~/PENETRATION
+		PartCategoryPenetrationFactors
+		{
+			armor = &~/ARMOR_PENETRATION_FACTOR
+		}
+		
+		CrewCollisions = {Enemies=true; Junk=true}
+		PenetratesCrew = true
+		HitCrew = &HitOperational
+		
+		HitShield = &HitOperational
+		HitOperational
+		{
+			ReduceEffectsByPenetration = true
+			
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue = &~/DAMAGE; EffectScaleExponent = 1 }
+				}
+				{
+					Type = Impulse
+					Impulse = { BaseValue = &~/IMPULSE; EffectScaleExponent = 1 }
+				}
+			]
+			
+			MediaEffects = &~/BULLET/BASE/Components/Hit/HitOperational/MediaEffects
+		}
+		HitStructural
+		{
+			ReduceEffectsByPenetration = true
+			
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue = (&~/DAMAGE) / 2; EffectScaleExponent = 1 }
+				}
+				{
+					Type = Impulse
+					Impulse = { BaseValue = (&~/IMPULSE) / 2; EffectScaleExponent = 1 }
+				}
+			]
+			
+			MediaEffects = &~/BULLET/BASE/Components/Hit/HitStructural/MediaEffects
+		}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+			
+			HitEffects : ../HitOperational/HitEffects
+			[
+				{
+					Type = StatusApplication
+					StatusType = cosmoteer.fire
+					StatusChance = { BaseValue = (&~/FIRE_CHANCE); EffectScaleExponent = 1 }
+					StatusValue = &~/FIRE_SIZE
+					ValueType = Interpolated
+				}
+			]
+			
+//			MediaEffects = &~/BULLET/BASE/Components/Hit/PenetratingOperational/MediaEffects
+		}
+		FinishedPenetratingOperational = &PenetratingOperational
+	}
+	
+	Sprite
+	{
+		Type = Sprite
+//		RenderBucket = BulletUpper2
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/shots/mine/mine_shrapnel.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [1.5, 1.5]
+		}
+	}
+	
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Offset = [-1, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [8, 4]
+			VertexColor = [255, 100, 0]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.125
+		}
+	}
+	
+	MediaEffects
+	{
+		Type = MediaEffects
+		MediaEffects
+		[
+			&<particles/bullet_large_overclock_shrapnel_trail.rules>
+		]
+	}
+}

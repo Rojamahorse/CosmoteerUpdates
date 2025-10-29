@@ -1,0 +1,22 @@
+ID = reputation
+TitleKey = "Tutorials/Reputation/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.HighestReputation >= 100 or game.LowestReputation <= -100"
+Entries
+[
+	{
+		TextKey = "Tutorials/Reputation/ReputationScore"
+	}
+	{
+		Image { Texture { File="positive.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Reputation/Positive"
+	}
+	{
+		Image { Texture { File="negative.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Reputation/Negative"
+	}
+	{
+		Image { Texture { File="tab.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Reputation/View"
+	}
+]

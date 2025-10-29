@@ -1,0 +1,3176 @@
+OVERCLOCK
+{
+	BURST_COUNT = 4
+	BASE_BURST_DELAY = 0.4 / 4
+	HALF_SPREAD = 0.5d
+	FIRE_INTERVAL_FACTOR = 400%
+	RAMP_TIME = 10
+	MAX_FIRE_RATE = 10.5 / 4
+	HEAT_PER_SHOT = 600
+	BULLETS_PER_SHOT = 4
+	RECOIL = 300% * (&~/EMITTER/Recoil)
+
+	BEAM = &<./Data/shots/chaingun_shot/overclock/chaingun_shot_overclock.rules>/Beam
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_large_part_terran_overclock.rules>/Part
+{
+	NameKey = "Parts/ChainGun"
+	IconNameKey = "Parts/ChainGunIcon"
+	ID = cosmoteer.chaingun // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "WeaponsProjectile"
+	DescriptionKey = "Parts/ChainGunDesc"
+	Resources
+	[
+		[steel, 144]
+		[coil2, 38]
+		[tristeel, 45]
+	]
+	TypeCategories = [uses_ammo, is_crewed, chaingun, chaingun_ammo_requester]
+	SignificanceToggle = ScorchedToggle
+	ReceivableBuffs : ^/0/ReceivableBuffs [RateOfFire, ChaingunMagConnection]
+	Size = [3, 6]  //if you change this, need to also change TotalResourceStorage resource proxy checks.
+	PhysicalRect = [0, 2, 3, 4]
+	SaveRect = &PhysicalRect
+	Density = 2
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	MaxHealth = 18000
+	InitialPenetrationResistance = 3
+	ProhibitAbove = 1
+	AllowedDoorLocations
+	[
+		[-1, 5]
+		[0, 6]
+		[1, 6]
+		[2, 6]
+		[3, 5]
+	]
+	BlockedTravelCellDirections
+	[
+		{
+			Key = [0, 2]
+			Value = [Right]
+		}
+		{
+			Key = [0, 3]
+			Value = [Right]
+		}
+		{
+			Key = [0, 4]
+			Value = [Right]
+		}
+
+		{
+			Key = [1, 2]
+			Value = [Left, Right]
+		}
+		{
+			Key = [1, 3]
+			Value = [Left, Right]
+		}
+		{
+			Key = [1, 4]
+			Value = [Left, Right]
+		}
+
+		{
+			Key = [2, 2]
+			Value = [Left]
+		}
+		{
+			Key = [2, 3]
+			Value = [Left]
+		}
+		{
+			Key = [2, 4]
+			Value = [Left]
+		}
+	]
+	ForceManhattanPathInPart = true
+	ExternalWallsByCell
+	[
+		{
+			Key = [0, 2]
+			Value = [TopLeft, Left]
+		}
+		{
+			Key = [1, 2]
+			Value = None
+		}
+		{
+			Key = [2, 2]
+			Value = [TopRight, Right]
+		}
+	]
+	InternalWallsByCell
+	[
+		{
+			Key = [0, 1]
+			Value = [Left, TopLeft, Top, TopRight]
+		}
+		{
+			Key = [1, 1]
+			Value = [TopLeft, Top, TopRight]
+		}
+		{
+			Key = [2, 1]
+			Value = [Right, TopRight, Top, TopLeft]
+		}
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [45,90]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 6
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+
+		IsReloadedOrNotOpen
+		{
+			Type = MultiToggle
+			Toggles = [ FixedWeaponShooter, IsShellNotFullyOpen ]
+			Mode = Any
+		}
+
+		GunIsFiringTimer //Is on if we have fired a shot
+		{
+			Type = Timer
+			// Only count down while not reloading, unless the shell isn't fully open
+			OperationalToggle = IsReloadedOrNotOpen
+			Duration = &../ShellChangingValueTween/OffTweenDuration
+			StartTrigger = BulletEmitterProxy
+			ResetTrigger = BulletEmitterProxy
+			StartExpired = true
+			InvertToggle = true
+		}
+		GunIsFiring
+		{
+			Type = MultiToggle
+			Toggles = [GunIsFiringTimer, CombinedBulletSplitters]
+			Mode = All
+		}
+		RateOfFireRampUpBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = RateOfFire  //used as divide by the fixed weapon fire rate
+			BuffAmount = 1
+			BuffMultiplier = RampUpAccumulator
+		}
+
+		RampUpAccumulator
+		{
+			Type = ValueAccumulator
+			AccumulatingToggle = GunIsFiring
+			BASE_MAX_VALUE = 10.5 //30 shots per second if base value
+			BASE_RAMP_UP_TIME = 10
+			BASE_RAMP_DOWN_TIME = (&BASE_RAMP_UP_TIME) / 2
+			BASE_RAMP_PER_SEC = ((&BASE_MAX_VALUE) - (&MinValue)) / (&BASE_RAMP_UP_TIME)
+			OVERCLOCK_RAMP_PER_SEC = ((&~/OVERCLOCK/MAX_FIRE_RATE) - (&MinValue)) / (&~/OVERCLOCK/RAMP_TIME)
+			AccumulationRate
+			{
+				BaseValue = &../BASE_RAMP_PER_SEC
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Replace
+						RemapFrom = [0, 1]
+						RemapTo = [1, (&../../../../OVERCLOCK_RAMP_PER_SEC)]
+					}
+				]
+			}
+			DissipationRate : AccumulationRate
+			{
+				BaseValue = (&../BASE_RAMP_PER_SEC) * 2 //cooldown is half the ramp up
+				Modifiers
+				[
+					: ../^/0/Modifiers/0
+					{
+						RemapTo = [1, (&../../../../OVERCLOCK_RAMP_PER_SEC) * 2]
+					}
+				]
+			}
+			BaseValue = &MinValue
+			MinValue = 1
+			MaxValue
+			{
+				BaseValue = (&../BASE_MAX_VALUE)
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = Overclock
+						ModificationMode = Replace
+						MinValue = &~/OVERCLOCK/MAX_FIRE_RATE
+						MaxValue = &MinValue
+					}
+				]
+			}
+			BASE_TO_OC_FACTOR = (&BASE_RAMP_PER_SEC) / (&OVERCLOCK_RAMP_PER_SEC)
+			AccumulationTriggers
+			[
+				{
+					Trigger = OverclockToggledOnTrigger
+					Value = 1 / (&../../BASE_TO_OC_FACTOR)
+					Operation = MultiplyFromBase
+				}
+				{
+					Trigger = OverclockDisabledTrigger
+					Value = (&../../BASE_TO_OC_FACTOR)
+					Operation = MultiplyFromBase
+				}
+			]
+		}
+
+		ShellChangingValueTween
+		{
+			Type = ValueTween
+			OnTweenDuration = 0.6
+			OffTweenDuration = 1.2
+			IsOnToggle = ShellShouldOpen
+		}
+		IsShellFullyOpen
+		{
+			Type = ThresholdToggle
+			ValueFrom = ShellChangingValueTween
+			MinAmount = 100%
+		}
+		IsShellFullyClosed
+		{
+			Type = ThresholdToggle
+			ValueFrom = ShellChangingValueTween
+			MaxAmount = 0%
+		}
+
+		AmmoStorageLeft
+		{
+			Type = ResourceStorage
+			ResourceType = bullet
+			MaxResources = 6
+			ReceiveResourceMediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					RandomSounds = ["sounds/chain_gun_reload_01.wav",
+									"sounds/chain_gun_reload_02.wav",
+									"sounds/chain_gun_reload_03.wav"]
+					SpeedVariation = .1
+				}
+			]
+			UITileRect = [7/64, 4 + 7/64, 1 - 14/64, 1 - 14/64]
+			AllowManualReceiveToggle = IsShellFullyClosed
+		}
+		AmmoStorageRight
+		{
+			Type = ResourceStorage
+			ResourceType = bullet
+			MaxResources = 6
+			ReceiveResourceMediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					RandomSounds = ["sounds/chain_gun_reload_01.wav",
+									"sounds/chain_gun_reload_02.wav",
+									"sounds/chain_gun_reload_03.wav"]
+					SpeedVariation = .1
+				}
+			]
+			UITileRect = [2 + 7/64, 4 + 7/64, 1 - 14/64, 1 - 14/64]
+			AllowManualReceiveToggle = IsShellFullyClosed
+		}
+		CombinedAmmoStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = bullet
+			ResourceStorages = [AmmoStorageLeft, AmmoStorageRight]
+			RemoveMode = InOrder
+			CycleStorageOnRemove = true  //Will change the order of the storage list
+		}
+		BulletSplitterLeft
+		{
+			Type = InlineResourceConverter
+			ResourceType = bullet
+			FromStorage = AmmoStorageLeft
+			FromQuantity = 1
+			ToQuantity = 4
+		}
+		BulletSplitterRight
+		{
+			Type = InlineResourceConverter
+			ResourceType = bullet
+			FromStorage = AmmoStorageRight
+			FromQuantity = 1
+			ToQuantity = 4
+		}
+		CombinedBulletSplitters
+		{
+			Type = MultiResourceStorage
+			ResourceType = bullet
+			ResourceStorages = [BulletSplitterLeft, BulletSplitterRight]
+			RemoveMode = InOrder
+			CycleStorageOnRemove = true  //Will change the order of the storage list
+		}
+
+		ToggledOnAmmoConsumers
+		{
+			Type = ToggledComponents
+			Toggle = IsShellFullyClosed //if we are fully closed, turn on these consumers to allow ammo transfer to the belt
+			Components
+			{
+				AmmoConsumerLeft //For the crew to fill
+				{
+					Type = ResourceConsumer
+					ResourceType = bullet
+					Storage = AmmoStorageLeft
+					DefaultPriority = &/PRIORITIES/Weapon_Supply
+					OperationalToggle = CommandConsumptionToggle
+					ConsumptionToggleButtonOffset = [0, .4]
+				}
+				AmmoConsumerRight //For the crew to fill
+				{
+					Type = ResourceConsumer
+					ResourceType = bullet
+					Storage = AmmoStorageRight
+					DefaultPriority = &/PRIORITIES/Weapon_Supply
+					OperationalToggle = CommandConsumptionToggle
+					ConsumptionToggleButtonOffset = [0, .4]
+					OverridePriorityKey = AmmoConsumerLeft
+				}
+			}
+		}
+		ToggledOffAmmoConsumers
+		{
+			Type = ToggledComponents
+			Toggle = IsShellFullyClosed //if we are fully closed, turn on these consumers to allow ammo transfer to the belt
+			Invert = true
+			Components
+			{
+				// We need these resource consumers to always exist even though they don't do anything,
+				// because they are what keep resource assignments alive. If storage assignments thrash,
+				// then that causes resource AI issues.
+
+				AmmoConsumerLeft //For the crew to fill
+				{
+					Type = ResourceConsumer
+					ResourceType = bullet
+					Storage = AmmoStorageLeft
+					DefaultPriority = &/PRIORITIES/Weapon_Supply
+					OperationalToggle = IsShellFullyClosed // Will always be off!
+					ConsumptionToggleButtonOffset = [0, .4]
+					AllowNonOperationalMinPriorityDelivery = false
+				}
+				AmmoConsumerRight //For the crew to fill
+				{
+					Type = ResourceConsumer
+					ResourceType = bullet
+					Storage = AmmoStorageRight
+					DefaultPriority = &/PRIORITIES/Weapon_Supply
+					OperationalToggle = IsShellFullyClosed // Will always be off!
+					ConsumptionToggleButtonOffset = [0, .4]
+					AllowNonOperationalMinPriorityDelivery = false
+					OverridePriorityKey = AmmoConsumerLeft
+				}
+			}
+		}
+
+		IsRequestingRightToLeftAmmo //The belt only moves when we are firing, otherwise, it can be loaded
+		{
+			Type = ToggleProxy
+			ComponentID = ShellIsFullyOpenedAndRightMagNotPullingRight
+		}
+		IsRequestingLeftToRightAmmo
+		{
+			Type = ToggleProxy
+			ComponentID = ShellIsFullyOpenAndLeftMagNotPullingLeft
+		}
+		ShellIsFullyOpenAndLeftMagNotPullingLeft
+		{
+			Type = MultiToggle
+			Toggles = [IsShellFullyOpen, {Toggle = IsLeftMagazineBeingPulledLeft, Invert = true}]
+			Mode = All
+		}
+		ShellIsFullyOpenedAndRightMagNotPullingRight
+		{
+			Type = MultiToggle
+			Toggles = [IsShellFullyOpen, {Toggle = IsRightMagazineBeingPulledRight, Invert = true}]
+			Mode = All
+		}
+
+		HasMaxAmmo
+		{
+			Type = ThresholdToggle
+			ValueFrom = TotalResourceStorage
+			MinAmount = 100%
+		}
+
+		EitherWeaponIsTargeting
+		{
+			Type = MultiToggle
+			Toggles = [Turret, FixedWeaponAimer]
+			Mode = Any
+		}
+
+		TargetingAndCanShoot
+		{
+			Type = MultiToggle
+			Toggles = [CanFire, EitherWeaponIsTargeting, CombinedBulletSplitters, HasEnoughAmmoToStartShooting]
+			Mode = All
+		}
+		CanFire
+		{
+			Type = MultiToggle
+			Toggles = [FireModeToggle, IsInDCMode]
+			Mode = Any
+		}
+		ShellShouldOpen //Used by shell opening and closing
+		{
+			Type = MultiToggle
+			Toggles = [TargetingAndCanShoot, ForceFireToggle]
+			Mode = Any
+		}
+		ShellOpenCloseAudio
+		{
+			Type = ToggleEffects
+			Toggle = ShellShouldOpen
+			Location = [96/64, 181/64]
+			ToggledOnMediaEffects
+			 [
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "sounds/chain_gun_come_out.wav"
+				}
+			 ]
+			 ToggledOffMediaEffects
+			 [
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "sounds/chain_gun_come_in.wav"
+				}
+			 ]
+		}
+		HasEnoughAmmoToStartShooting
+		{
+			Type = MultiToggle
+			Toggles = [HasMaxAmmo, GunIsFiring, IsInDCMode]  //override the max ammo check if we're in DC
+			Mode = Any
+		}
+		IsInDCMode
+		{
+			Type = DirectControlToggle
+			Weapon = Turret
+			RequireWeaponBindingPressed = true
+		}
+		ForceFireToggle
+		{
+			Type = UIToggle
+			ToggleID = "force_fire_chaingun"
+			Default = 0
+			AutoOffTrigger = ShouldTurnOffForceFireTrigger
+			OperationalToggle = ForceFirePermission
+			RememberValue = false
+		}
+		ShouldTurnOffForceFireTrigger // For turning off force fire
+		{
+			Type = ToggleTrigger
+			Toggle = ShouldTurnOffForceFire
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+		ShouldTurnOffForceFire  //if turret taking over, or out of ammo
+		{
+			Type = MultiToggle
+			Toggles = [TargetingWithTurretAndCanShoot, {Toggle = CombinedAmmoStorage; Invert = true}, {Toggle = IsOperational; Invert = true}, AutoFireAndHasEnoughAmmoToStartShooting]
+			Mode = Any
+		}
+		AutoFireAndHasEnoughAmmoToStartShooting
+		{
+			Type = MultiToggle
+			Toggles = [AutoFireToggle, HasEnoughAmmoToStartShooting]
+			Mode = All
+		}
+
+		ForceFirePermission
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, {Toggle = ShouldTurnOffForceFire; Invert = true}]
+			Mode = All
+		}
+		TargetingWithTurretAndCanShoot //We need this check because we can't use the fixed weapon to determin targeting for the force fire toggle, as that is true when force firing
+		{
+			Type = MultiToggle
+			Toggles = [Turret, CombinedBulletSplitters, HasEnoughAmmoToStartShooting]
+			Mode = All
+		}
+
+		TotalResourceStorage //used for amount of ammo check
+		{
+			Type = MultiResourceStorage
+			ResourceType = bullet
+			ResourceStorages = [CombinedAmmoStorage, CombinedLeftBeltStoragesProxy, CombinedRightBeltStoragesProxy]
+		}
+		CombinedLeftBeltStoragesProxy //used for amount of ammo check
+		{
+			Type = ResourceStorageProxy
+			ProxyToggle = IsLeftMagazineBeingPulledLeft //Do not look left if left mag is turned the other way. (After invert)
+			InvertProxyToggle = true
+			ResourceType = bullet
+			PartLocation = [-1, 4]
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_supplier
+						Rot = 0 //is perfectly aligned
+						Right = 0
+						Bottom = 6
+					}
+					ComponentID = CombinedLeftBeltStorages
+				}
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_supplier
+						Rot = 2 //is perfectly aligned
+						Right = 0
+						Bottom = 5
+					}
+					ComponentID = CombinedRightBeltStorages
+				}
+			]
+		}
+		CombinedRightBeltStoragesProxy //used for amount of ammo check
+		{
+			Type = ResourceStorageProxy
+			ProxyToggle = IsRightMagazineBeingPulledRight //Do not look right if right mag is turned the other way. (After Invert)
+			InvertProxyToggle = true
+			ResourceType = bullet
+			PartLocation = [3, 4]
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_supplier
+						Rot = 0 //is perfectly aligned
+						Left = 3
+						bottom = 6
+					}
+					ComponentID = CombinedRightBeltStorages
+				}
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_supplier
+						Rot = 2 //is perfectly aligned
+						Left = 3
+						Bottom = 5
+					}
+					ComponentID = CombinedLeftBeltStorages
+				}
+			]
+		}
+		IsLeftMagazineBeingPulledLeft
+		{
+			Type = ToggleProxy
+			PartLocation = [-1, 4] //looking to the left
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_supplier
+						Rot = 0 //is perfectly aligned
+						Right = 0
+						Bottom = 6
+					}
+					ComponentID = IsRequestingRightToLeftAmmo
+				}
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_supplier
+						Rot = 2 //is perfectly aligned
+						Right = 0
+						Bottom = 5
+					}
+					ComponentID = IsRequestingLeftToRightAmmo
+				}
+			]
+		}
+		IsRightMagazineBeingPulledRight
+		{
+			Type = ToggleProxy
+			PartLocation = [3, 4] //looking to the right
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_supplier //making sure they have the special category
+						Rot = 0 //is perfectly aligned
+						Left = 3
+						Bottom = 6
+					}
+					ComponentID = IsRequestingLeftToRightAmmo
+				}
+				{
+					PartCriteria
+					{
+						Category = chaingun_ammo_supplier //making sure they have the special category
+						Rot = 2 //is perfectly aligned
+						Left = 3
+						Bottom = 5
+					}
+					ComponentID = IsRequestingRightToLeftAmmo
+				}
+			]
+		}
+
+		TurretSlider
+		{
+			Type = TransformLerp
+			ValueFrom = ShellChangingValueTween
+			StartLocation = [96/64, 181/64]
+			EndLocation = [96/64, 66/64]
+		}
+		AimingTurretSlider
+		{
+			Type = TransformMatch
+			OperationalToggle = IsShellFullyClosed
+			InvertOperationalToggle = true
+			ChainedTo = TurretSlider
+			Rotation = -90d // Relative to unrotated part.
+			MatchTransformOf = Turret
+			MatchRotationSpeed = 100d
+			ResetTransformWhen = IsShellNotFullyOpen
+			ResetRotationSpeed = 120d
+			ClampRotationToArc = [-(&../../Turret/FiringArc)/2 - 90d, (&../../Turret/FiringArc)]
+			ToggleOnRotationThreshold = 2d
+		}
+
+		IsShellNotFullyOpen
+		{
+			Type = MultiToggle
+			Toggles = [{Toggle = IsShellFullyOpen; Invert = true}]
+			Mode = All
+		}
+
+		Targeter
+		{
+			Type = UITargeter
+			TargeterID = chaingun_aim
+			Weapons = [Turret, FixedWeaponAimer]
+		}
+
+		Turret
+		{
+			Type = TurretWeapon
+			Location = &../TurretSlider/EndLocation
+			Rotation = -90d // Relative to unrotated part.
+			OperationalToggle = IsOperational //turret is always looking for targets
+			FireInterval = Infinity //only used in the fixed weapon
+			FiringArc = 220d
+			RotateSpeed = Infinity // AimingTurretSlider does the actual physical rotation.
+			FireThresholdAngle = 0
+			AIFirepowerRating = (&~/Part/StatsByCategory/0/Stats/DamagePerSecond/1) / 2 //Set to half the dps when its on, because of the down time.
+			TargetingEmitter = BulletEmitterProxy
+			InstantSearchesAfterTargetLost = 5
+			ToggleOnMode = HasTargetExceptShipRelative
+			SaveShipRelativeTargets = true
+			AimIncludesEmitterOffset = false
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SuppressDirectControlWhenTargetingShipRelativePoints = true
+			SuppressFirepowerEstimationWhenTargetingShipRelativePoints = true
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		AutoFireOrForceFire
+		{
+			Type = MultiToggle
+			Toggles = [AutoFireToggle, ForceFireToggle]
+			Mode = Any
+		}
+
+		FixedWeaponShooter
+		{
+			Type = FixedWeapon
+			OperationalToggle = IsShellFullyOpen//
+			AutoFireToggle = IsShellFullyOpen //
+			ToggleOnMode = IsReloaded
+			FireInterval
+			{
+				BaseValue=0.35
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = RateOfFire
+						ModificationMode = Divide
+					}
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, (&~/OVERCLOCK/FIRE_INTERVAL_FACTOR)]
+					}
+				]
+			}
+			Emitter = BulletEmitterProxy
+			DefaultDirectControlBinding = 0
+			CanBeGivenExplicitTarget = false
+
+			AutoTarget
+			{
+				TargetType = ShipParts
+				Toggle = False
+			}
+		}
+
+		False
+		{
+			Type = StaticToggle
+			ToggleOn = "false"
+		}
+
+		FixedWeaponAimer
+		{
+			Type = FixedWeapon
+			ChainedTo = Turret
+			OperationalToggle = IsOperational//Always checking for a target
+			AutoFireToggle = AutoFireToggle //
+			FireInterval = Infinity //only used in the fixed weapon
+			Emitter = BulletEmitterProxy
+			DefaultDirectControlBinding = 0
+			ToggleOnMode = WantsToFire
+			AIFirepowerRating = &../Turret/AIFirepowerRating
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SuppressFirepowerEstimationWhenNotTargetingShipRelativePoints = true
+			SaveShipRelativeTargets = true
+
+			AutoTarget
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+			}
+
+			CoverageLine
+			{
+				LineSprite
+				{
+					Texture = &/INDICATORS/RadialGradient
+					VertexColor = [255, 255, 255, 191]
+					UVRect = [.5, 0, 0, 1]
+				}
+				LineThickness = 2
+
+				BeginCapSprite : LineSprite
+				{
+					UVRect = [0, 0, .5, 1]
+				}
+				BeginCapSize = [1, 2]
+
+				EndCapSprite : LineSprite
+				{
+					UVRect = [.5, 0, .5, 1]
+				}
+				EndCapSize = [1, 2]
+			}
+		}
+
+		ChaingunRampupProgressBar
+		{
+			Type = ProgressBar
+			ShowProgressFor = RampUpAccumulator
+			OperationalToggle = IsChaingunPoweredDown
+			InvertOperationalToggle = true
+			ValueRange
+			[
+				&~/Part/Components/RampUpAccumulator/MinValue
+				{
+					BaseValue = &~/Part/Components/RampUpAccumulator/BASE_MAX_VALUE
+					Modifiers
+					[
+						{
+							Type = Buff
+							BuffType = Overclock
+							ModificationMode = Replace
+							MinValue = &~/OVERCLOCK/MAX_FIRE_RATE
+							MaxValue = &MinValue
+						}
+					]
+				}
+			]
+		}
+
+		IsChaingunPoweredDown
+		{
+			Type = ThresholdToggle
+			ValueFrom = RampUpAccumulator
+			MaxAmount = &../RampUpAccumulator/MinValue
+		}
+
+		CanEmit
+		{
+			Type = MultiToggle
+			Toggles = [AimingTurretSlider, GunIsFiring]
+			Mode = Any
+		}
+
+		EmissionComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Invert = true
+			IncludeInBlueprints = true
+			Components
+			{
+				BulletEmitter : <./Data/shots/chaingun_shot/chaingun_shot.rules>
+				{
+					Type = BeamEmitter
+					OperationalToggle = CanEmit
+					ChainedTo = AimingTurretSlider
+					FireTrigger = FixedWeaponShooter
+					GetTargetFrom = Turret
+					Location = [0, 0]
+					Duration = 0
+					ResourceStorage = CombinedBulletSplitters // Needed to prevent turret from trying to fire when out of ammo.
+					ResourcesUsed = 1
+					Spread = [-1.5d, 1.5d]
+					Recoil = 10
+					Burst = 1
+					BeamMediaEffectsOffset = [2, 0]
+					BeamMediaEffectsLengthOffset = -2
+				}
+				FireIntervalValue
+				{
+					Type = BuffableValue
+					Value
+					{
+						BaseValue = &~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue
+						Modifiers
+						[
+							{
+								Type = Buff
+								BuffType = RateOfFire
+								ModificationMode = Divide
+							}
+						]
+					}
+				}
+				InverseShotInterval
+				{
+					Type = MultiValue
+					Values = [FireIntervalValue]
+					OneOver = true
+					Mode = Add
+				}
+				BarrelAnimationResetTrigger
+				{
+					Type = MultiTrigger
+					Triggers = [BulletEmitter]
+				}
+			}
+		}
+		Overclock_EmissionComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Components
+			{
+				BulletEmitter : ~/OVERCLOCK/BEAM, ~/EMITTER
+				{
+					Recoil = &~/OVERCLOCK/RECOIL
+					Spread = [-(&~/OVERCLOCK/HALF_SPREAD), &~/OVERCLOCK/HALF_SPREAD]
+					Burst = &~/OVERCLOCK/BURST_COUNT
+					BurstDelay = { BaseValue = &~/OVERCLOCK/BASE_BURST_DELAY; BuffType=RateOfFire; BuffMode=Divide; }
+					ResourcesUsed = &~/OVERCLOCK/BULLETS_PER_SHOT
+					UseResourcePerShotInBurst = true
+				}
+				BurstDelayValue
+				{
+					Type = BuffableValue
+					Value = &../BulletEmitter/BurstDelay
+				}
+				InverseShotInterval
+				{
+					Type = MultiValue
+					Values = [BurstDelayValue]
+					OneOver = true
+					Mode = Add
+				}
+				BarrelAnimationResetTrigger
+				{
+					Type = Timer
+//					Duration : ../BulletEmitter/BurstDelay
+//					{
+//						BaseValue = (&^/0/BaseValue) * (&~/OVERCLOCK/BURST_COUNT)
+//					}
+					Duration = &../BulletEmitter/BurstDelay
+					AutoStart = true
+					Repeats = true
+				}
+			}
+		}
+
+		BulletEmitterProxy
+		{
+			Type = BeamEmitterProxy
+			Location = &~/EMITTER/Location
+			ChainedTo = &~/EMITTER/ChainedTo
+			ComponentID = BulletEmitter
+		}
+
+		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = BulletEmitterProxy
+			Trigger = BulletEmitterProxy
+			Location = [2.2, 0]
+
+			MediaEffects
+			[
+				&<particles/chaingun_shoot.rules>
+				&<particles/chaingun_shoot_flash.rules>
+				&<particles/chaingun_casing.rules>
+				&<particles/chaingun_shoot_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["sounds/chain_gun_shot_01.wav",
+									"sounds/chain_gun_shot_02.wav",
+									"sounds/chain_gun_shot_03.wav",
+									"sounds/chain_gun_shot_04.wav",
+									"sounds/chain_gun_shot_05.wav"]
+					SpeedVariation = .1
+					Volume = 1
+					MaxConcurrent = 50
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .025
+					Duration = .25
+				}
+			]
+		}
+
+		CrewLocation1
+		{
+			Type = CrewLocation
+			ChainedTo = AimingTurretSlider
+			Location = [0, 0]
+			Rotation = 90d
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [55/64, 322/64]
+			Rotation = -21d
+		}
+		CrewLocation3
+		{
+			Type = CrewLocation
+			Location = [137/64, 322/64]
+			Rotation = 21d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 3
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
+			HighPriorityPrerequisites = [CombinedAmmoStorage]
+			CrewDestinations //where the crew actually go
+			[
+				[1.5, 192/64]
+				[55/64, 322/64]
+				[137/64, 322/64]
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+				CrewLocation3
+			]
+		}
+
+		TurretCollider
+		{
+			Type = CircleCollider
+			ChainedTo = AimingTurretSlider
+			Radius = 54/64
+			Density = 1
+			IncludeWhenUnderConstruction = false
+		}
+
+		DefensiveShellColliderChangingValueTween
+		{
+			Type = ValueTween
+			OnTweenDuration = 0.35
+			OffTweenDuration = &../ShellChangingValueTween/OffTweenDuration
+			IsOnToggle = ShellShouldOpen
+		}
+		DefensiveShellSlider
+		{
+			Type = TransformLerp
+			ValueFrom = DefensiveShellColliderChangingValueTween
+			StartLocation = [96/64, 136/64]
+			EndLocation = [96/64, 244/64] //Fully Closed Position
+		}
+
+		DefensiveShellCollider
+		{
+			Type = CircleCollider
+			ChainedTo = DefensiveShellSlider
+			Radius = 94/64
+			Density = 2
+			IncludeWhenUnderConstruction = false
+			InitialPenetrationResistance = 14
+			DamageResistances =
+			{
+				default = 70%,
+				explosive = &default
+			}
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		Overclock_ShotHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_EmitterProxy
+			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
+		}
+
+		Overclock_EmitterProxy
+		{
+			Type = TriggerProxy
+			ComponentID = BulletEmitter
+			ProxyToggle = IsOverclocked
+		}
+
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 5]
+			Direction = Left
+		}
+		Port_Thermal_LeftDown : Port_Thermal_Left
+		{
+			Direction = Down
+		}
+		Port_Thermal_MidDown : Port_Thermal_LeftDown
+		{
+			Location = [1, 5]
+		}
+		Port_Thermal_RightDown : Port_Thermal_LeftDown
+		{
+			Location = [2, 5]
+		}
+		Port_Thermal_Right : Port_Thermal_RightDown
+		{
+			Direction = Right
+		}
+
+		BarrelAnimationResetTriggerProxy
+		{
+			Type = TriggerProxy
+			ComponentID = BarrelAnimationResetTrigger
+		}
+		InverseShotIntervalProxy
+		{
+			Type = ValueProxy
+			ComponentID = InverseShotInterval
+		}
+
+		RampingLoop
+		{
+			Type = ContinuousEffects
+			Location = [1.5, 5]
+			OperationalToggle = IsShellFullyOpen
+			FactorMediaEffectsIntensityWith = ChaingunRampupProgressBar
+			MinMediaEffectsIntensity = 1%
+			AllowStacking = false
+			StartMediaEffects
+			[
+			   : /BASE_SOUNDS/AudioExterior
+			   {
+				 Sound = "sounds/chain_gun_loop_start.wav"
+			   }
+			]
+			MediaEffects
+			[
+			   : /BASE_SOUNDS/AudioExterior
+			   {
+				 Sound = "sounds/chain_gun_loop.wav"
+				 VolumeOverIntensity = [0.5, 1.8]
+				 SpeedOverIntensity = [0.5, 1.8]
+				 MaxConcurrent = 0
+			   }
+			]
+		}
+
+		TurretWeaponShootingGraphics
+		{
+			Type = Graphics
+			ChainedTo = AimingTurretSlider
+			Rotation = 90d
+			OperationalToggle = IsShellFullyOpen
+			ResetAnimationTrigger = BarrelAnimationResetTriggerProxy
+			AnimationSpeedFactor = InverseShotIntervalProxy
+
+			OperationalDoodad
+			{
+				Layer = "weapons"
+				Offset = [0, -113/64]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"turret_barrel3_blur.png"
+							"turret_barrel5_blur.png"
+							"turret_barrel7_blur.png"
+							"turret_barrel1_blur.png"
+							"turret_barrel1.png"// Loop back to beginning and clamp there.
+						]
+						NormalsAnimationFiles
+						[
+							"turret_barrel_normals3_blur.png"
+							"turret_barrel_normals5_blur.png"
+							"turret_barrel_normals7_blur.png"
+							"turret_barrel_normals1_blur.png"
+							"turret_barrel_normals1.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 2]
+						AnimationInterval = 1/4
+						AnimationStartTime = MinValue
+						ClampAnimation = true
+					}
+				]
+			}
+		}
+//		Overclock_TurretWeaponHeatSprite
+//		{
+//			Type = Sprite
+//			ChainedTo = AimingTurretSlider
+//			Location = [106/64, -1/64]
+//			OperationalToggle = IsShellFullyOpen
+//			Layer = "lights_add"
+//			GetColorFrom = Overclock_TurretWeaponHeatColor
+//			AtlasSprite
+//			{
+//				File = "./Data/gui/gradient_weapon_arc.png"
+//				Size = [0.5, 0.46]
+//				UVRotation = 3
+//				VertexColor = [255, 188, 51, 255]
+//			}
+//		}
+//		Overclock_TurretWeaponHeatColor
+//		{
+//			Type = ValueColor
+//			AlphaFrom = Overclock_TurretWeaponHeatValue
+//		}
+//		Overclock_TurretWeaponHeatValue
+//		{
+//			Type = ValueAccumulator
+//			AccumulatingToggle = False
+//			MinValue = 0
+//			MaxValue = 1
+//			DissipationRate = 1 / 4
+//			AccumulationTriggers
+//			[
+//				{
+//					Trigger = Overclock_EmitterProxy
+//					Value = 0.1
+//				}
+//			]
+//		}
+
+		TurretWeaponExtendAndRetractGraphics
+		{
+			Type = Graphics
+			ChainedTo = AimingTurretSlider
+			Rotation = 90d
+
+			OperationalToggle = IsShellFullyOpen
+			InvertOperationalToggle = true
+			DoodadToggle = ShellShouldOpen
+			ShowToggledDoodadsWhenNotOperational = false
+
+			ToggleOnDoodad
+			{
+				Layer = "weapons"
+				Offset = [0, -113/64]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"turret_barrel_retracting4.png"
+							"turret_barrel_retracting3.png"
+							"turret_barrel_retracting2.png"
+							"turret_barrel_retracting1.png"
+							"turret_barrel1.png"// Loop back to beginning and clamp there.
+						]
+						NormalsAnimationFiles
+						[
+							"turret_barrel_retracting_normals4.png"
+							"turret_barrel_retracting_normals3.png"
+							"turret_barrel_retracting_normals2.png"
+							"turret_barrel_retracting_normals1.png"
+							"turret_barrel_normals1.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.08
+						ClampAnimation = true
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "weapons"
+				Offset = [0, -113/64]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"turret_barrel1.png"
+							"turret_barrel_retracting1.png"
+							"turret_barrel_retracting2.png"
+							"turret_barrel_retracting3.png"
+							"turret_barrel_retracting4.png"// Loop back to beginning and clamp there.
+						]
+						NormalsAnimationFiles
+						[
+							"turret_barrel_normals1.png"
+							"turret_barrel_retracting_normals1.png"
+							"turret_barrel_retracting_normals2.png"
+							"turret_barrel_retracting_normals3.png"
+							"turret_barrel_retracting_normals4.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.08
+						ClampAnimation = true
+					}
+				]
+			}
+		}
+
+		TurretGraphics
+		{
+			Type = Graphics
+			ChainedTo = AimingTurretSlider
+			Rotation = 90d
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "turret_floor.png"
+						Size = [2, 2]
+					}
+					{
+						File = "turret_floor_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "turret_floor_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"turret_doodads_on1.png"
+							"turret_doodads_on2.png"
+							"turret_doodads_on3.png"
+							"turret_doodads_on4.png"
+							"turret_doodads_on5.png"
+							"turret_doodads_on6.png"
+							"turret_doodads_on7.png"
+							"turret_doodads_on8.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"turret_doodads_on1_33.png"
+							"turret_doodads_on2_33.png"
+							"turret_doodads_on3_33.png"
+							"turret_doodads_on4_33.png"
+							"turret_doodads_on5_33.png"
+							"turret_doodads_on6_33.png"
+							"turret_doodads_on7_33.png"
+							"turret_doodads_on8_33.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"turret_doodads_on1_66.png"
+							"turret_doodads_on2_66.png"
+							"turret_doodads_on3_66.png"
+							"turret_doodads_on4_66.png"
+							"turret_doodads_on5_66.png"
+							"turret_doodads_on6_66.png"
+							"turret_doodads_on7_66.png"
+							"turret_doodads_on8_66.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "turret_doodads_off.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "turret_lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "turret_roof.png"
+						NormalsFile = "turret_roof_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "turret_roof_33.png"
+						NormalsFile = "turret_roof_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "turret_roof_66.png"
+						NormalsFile = "turret_roof_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+
+		TurretDoorGraphics
+		{
+			Type = Graphics
+			ChainedTo = AimingTurretSlider
+			Location = [-35/64, 0]
+			Rotation = -90d
+			OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"turret_door5.png"
+							"turret_door4.png"
+							"turret_door3.png"
+							"turret_door2.png"
+							"turret_door1.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.04
+						ClampAnimation = true
+					}
+					{
+						AnimationFiles
+						[
+							"turret_door5_33.png"
+							"turret_door4_33.png"
+							"turret_door3_33.png"
+							"turret_door2_33.png"
+							"turret_door1_33.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.04
+						ClampAnimation = true
+					}
+					{
+						AnimationFiles
+						[
+							"turret_door5_66.png"
+							"turret_door4_66.png"
+							"turret_door3_66.png"
+							"turret_door2_66.png"
+							"turret_door1_66.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.04
+						ClampAnimation = true
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"turret_door1.png"
+							"turret_door2.png"
+							"turret_door3.png"
+							"turret_door4.png"
+							"turret_door5.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.04
+						ClampAnimation = true
+					}
+					{
+						AnimationFiles
+						[
+							"turret_door1_33.png"
+							"turret_door2_33.png"
+							"turret_door3_33.png"
+							"turret_door4_33.png"
+							"turret_door5_33.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.04
+						ClampAnimation = true
+					}
+					{
+						AnimationFiles
+						[
+							"turret_door1_66.png"
+							"turret_door2_66.png"
+							"turret_door3_66.png"
+							"turret_door4_66.png"
+							"turret_door5_66.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.04
+						ClampAnimation = true
+					}
+				]
+			}
+		}
+
+		TurretAccessDoorGraphics
+		{
+			Type = Graphics
+			Location = [1.5, 4]
+			OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"turret_door5.png"
+							"turret_door4.png"
+							"turret_door3.png"
+							"turret_door2.png"
+							"turret_door1.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.04
+						ClampAnimation = true
+					}
+					{
+						AnimationFiles
+						[
+							"turret_door5_33.png"
+							"turret_door4_33.png"
+							"turret_door3_33.png"
+							"turret_door2_33.png"
+							"turret_door1_33.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.04
+						ClampAnimation = true
+					}
+					{
+						AnimationFiles
+						[
+							"turret_door5_66.png"
+							"turret_door4_66.png"
+							"turret_door3_66.png"
+							"turret_door2_66.png"
+							"turret_door1_66.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.04
+						ClampAnimation = true
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"turret_door1.png"
+							"turret_door2.png"
+							"turret_door3.png"
+							"turret_door4.png"
+							"turret_door5.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.04
+						ClampAnimation = true
+					}
+					{
+						AnimationFiles
+						[
+							"turret_door1_33.png"
+							"turret_door2_33.png"
+							"turret_door3_33.png"
+							"turret_door4_33.png"
+							"turret_door5_33.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.04
+						ClampAnimation = true
+					}
+					{
+						AnimationFiles
+						[
+							"turret_door1_66.png"
+							"turret_door2_66.png"
+							"turret_door3_66.png"
+							"turret_door4_66.png"
+							"turret_door5_66.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.04
+						ClampAnimation = true
+					}
+				]
+			}
+		}
+
+		External_Walls_Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			Walls
+			{
+				Layer = "external_walls"
+				DamageLevels
+				[
+					{
+						File = "external_walls.png"
+						NormalsFile = "external_walls_normals.png"
+						Size = [3, 1]
+					}
+					{
+						File = "external_walls_33.png"
+						NormalsFile = "external_walls_normals_33.png"
+						Size = [3, 1]
+					}
+					{
+						File = "external_walls_66.png"
+						NormalsFile = "external_walls_normals_66.png"
+						Size = [3, 1]
+					}
+				]
+			}
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 4]
+			OperationalToggle = IsOperational
+
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [3, 4]
+					}
+					{
+						File = "floor_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "floor_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, 0.5]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [3, 1]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [3, 1]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [3, 1]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [3, 4]
+					}
+					{
+						File = "walls_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "walls_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				Offset = [0, -.5]
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [3, 5]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [3, 5]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [3, 5]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				Offset = [0, 1.5]
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [3, 1]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [3, 1]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [3, 1]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, 10/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [5.5, 5.5]
+						Z = 0.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.5, 0, 0]
+					}
+				]
+			}
+		}
+
+		BulletDoorGraphics
+		{
+			Type = Graphics
+			Location = [1.5, 4.75]
+			OperationalToggle = IsShellFullyClosed
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "bullet_door_on.png"
+						Size = [3, 1]
+					}
+					{
+						File = "bullet_door_on_33.png"
+						Size = [3, 1]
+					}
+					{
+						File = "bullet_door_on_66.png"
+						Size = [3, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "bullet_door_off.png"
+						Size = [3, 1]
+					}
+					{
+						File = "bullet_door_off_33.png"
+						Size = [3, 1]
+					}
+					{
+						File = "bullet_door_off_66.png"
+						Size = [3, 1]
+					}
+				]
+			}
+		}
+
+		DefensiveShellSprite
+		{
+			Type = OpenCloseSprite
+			Location = [1.5, 2]
+			OperationalToggle = ShellShouldOpen
+			Layer = "roof_doodads"
+			OpenDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"defensive_shell1.png"
+						"defensive_shell2.png"
+						"defensive_shell3.png"
+						"defensive_shell4.png"
+						"defensive_shell5.png"
+						"defensive_shell6.png"
+						"defensive_shell7.png"
+						"defensive_shell8.png"
+						"defensive_shell9.png"
+						"defensive_shell10.png"
+						"defensive_shell11.png"
+						"defensive_shell12.png"
+					]
+					NormalsAnimationFiles
+					[
+						"defensive_shell_normals1.png"
+						"defensive_shell_normals2.png"
+						"defensive_shell_normals3.png"
+						"defensive_shell_normals4.png"
+						"defensive_shell_normals5.png"
+						"defensive_shell_normals6.png"
+						"defensive_shell_normals7.png"
+						"defensive_shell_normals8.png"
+						"defensive_shell_normals9.png"
+						"defensive_shell_normals10.png"
+						"defensive_shell_normals11.png"
+						"defensive_shell_normals12.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OnTweenDuration) / 12
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"defensive_shell1_33.png"
+						"defensive_shell2_33.png"
+						"defensive_shell3_33.png"
+						"defensive_shell4_33.png"
+						"defensive_shell5_33.png"
+						"defensive_shell6_33.png"
+						"defensive_shell7_33.png"
+						"defensive_shell8_33.png"
+						"defensive_shell9_33.png"
+						"defensive_shell10_33.png"
+						"defensive_shell11_33.png"
+						"defensive_shell12_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"defensive_shell_normals1_33.png"
+						"defensive_shell_normals2_33.png"
+						"defensive_shell_normals3_33.png"
+						"defensive_shell_normals4_33.png"
+						"defensive_shell_normals5_33.png"
+						"defensive_shell_normals6_33.png"
+						"defensive_shell_normals7_33.png"
+						"defensive_shell_normals8_33.png"
+						"defensive_shell_normals9_33.png"
+						"defensive_shell_normals10_33.png"
+						"defensive_shell_normals11_33.png"
+						"defensive_shell_normals12_33.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OnTweenDuration) / 12
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"defensive_shell1_66.png"
+						"defensive_shell2_66.png"
+						"defensive_shell3_66.png"
+						"defensive_shell4_66.png"
+						"defensive_shell5_66.png"
+						"defensive_shell6_66.png"
+						"defensive_shell7_66.png"
+						"defensive_shell8_66.png"
+						"defensive_shell9_66.png"
+						"defensive_shell10_66.png"
+						"defensive_shell11_66.png"
+						"defensive_shell12_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"defensive_shell_normals1_66.png"
+						"defensive_shell_normals2_66.png"
+						"defensive_shell_normals3_66.png"
+						"defensive_shell_normals4_66.png"
+						"defensive_shell_normals5_66.png"
+						"defensive_shell_normals6_66.png"
+						"defensive_shell_normals7_66.png"
+						"defensive_shell_normals8_66.png"
+						"defensive_shell_normals9_66.png"
+						"defensive_shell_normals10_66.png"
+						"defensive_shell_normals11_66.png"
+						"defensive_shell_normals12_66.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OnTweenDuration) / 12
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+			ClosedDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"defensive_shell12.png"
+						"defensive_shell11.png"
+						"defensive_shell10.png"
+						"defensive_shell9.png"
+						"defensive_shell8.png"
+						"defensive_shell7.png"
+						"defensive_shell6.png"
+						"defensive_shell5.png"
+						"defensive_shell4.png"
+						"defensive_shell3.png"
+						"defensive_shell2.png"
+						"defensive_shell1.png"
+					]
+					NormalsAnimationFiles
+					[
+						"defensive_shell_normals12.png"
+						"defensive_shell_normals11.png"
+						"defensive_shell_normals10.png"
+						"defensive_shell_normals9.png"
+						"defensive_shell_normals8.png"
+						"defensive_shell_normals7.png"
+						"defensive_shell_normals6.png"
+						"defensive_shell_normals5.png"
+						"defensive_shell_normals4.png"
+						"defensive_shell_normals3.png"
+						"defensive_shell_normals2.png"
+						"defensive_shell_normals1.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 12
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"defensive_shell12_33.png"
+						"defensive_shell11_33.png"
+						"defensive_shell10_33.png"
+						"defensive_shell9_33.png"
+						"defensive_shell8_33.png"
+						"defensive_shell7_33.png"
+						"defensive_shell6_33.png"
+						"defensive_shell5_33.png"
+						"defensive_shell4_33.png"
+						"defensive_shell3_33.png"
+						"defensive_shell2_33.png"
+						"defensive_shell1_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"defensive_shell_normals12_33.png"
+						"defensive_shell_normals11_33.png"
+						"defensive_shell_normals10_33.png"
+						"defensive_shell_normals9_33.png"
+						"defensive_shell_normals8_33.png"
+						"defensive_shell_normals7_33.png"
+						"defensive_shell_normals6_33.png"
+						"defensive_shell_normals5_33.png"
+						"defensive_shell_normals4_33.png"
+						"defensive_shell_normals3_33.png"
+						"defensive_shell_normals2_33.png"
+						"defensive_shell_normals1_33.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 12
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"defensive_shell12_66.png"
+						"defensive_shell11_66.png"
+						"defensive_shell10_66.png"
+						"defensive_shell9_66.png"
+						"defensive_shell8_66.png"
+						"defensive_shell7_66.png"
+						"defensive_shell6_66.png"
+						"defensive_shell5_66.png"
+						"defensive_shell4_66.png"
+						"defensive_shell3_66.png"
+						"defensive_shell2_66.png"
+						"defensive_shell1_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"defensive_shell_normals12_66.png"
+						"defensive_shell_normals11_66.png"
+						"defensive_shell_normals10_66.png"
+						"defensive_shell_normals9_66.png"
+						"defensive_shell_normals8_66.png"
+						"defensive_shell_normals7_66.png"
+						"defensive_shell_normals6_66.png"
+						"defensive_shell_normals5_66.png"
+						"defensive_shell_normals4_66.png"
+						"defensive_shell_normals3_66.png"
+						"defensive_shell_normals2_66.png"
+						"defensive_shell_normals1_66.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 12
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+		}
+
+		InternalDefensiveShellSprite
+		{
+			Type = OpenCloseSprite
+			Location = [1.5, 2]
+			OperationalToggle = ShellShouldOpen
+			Layer = "structure"
+			OpenDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"internal_defensive_shell1.png"
+						"internal_defensive_shell2.png"
+						"internal_defensive_shell3.png"
+						"internal_defensive_shell4.png"
+						"internal_defensive_shell5.png"
+						"internal_defensive_shell6.png"
+						"internal_defensive_shell7.png"
+						"internal_defensive_shell8.png"
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell9.png"
+					]
+					NormalsAnimationFiles
+					[
+						"internal_defensive_shell_normals1.png"
+						"internal_defensive_shell_normals2.png"
+						"internal_defensive_shell_normals3.png"
+						"internal_defensive_shell_normals4.png"
+						"internal_defensive_shell_normals5.png"
+						"internal_defensive_shell_normals6.png"
+						"internal_defensive_shell_normals7.png"
+						"internal_defensive_shell_normals8.png"
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals9.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OnTweenDuration) / 12
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"internal_defensive_shell1_33.png"
+						"internal_defensive_shell2_33.png"
+						"internal_defensive_shell3_33.png"
+						"internal_defensive_shell4_33.png"
+						"internal_defensive_shell5_33.png"
+						"internal_defensive_shell6_33.png"
+						"internal_defensive_shell7_33.png"
+						"internal_defensive_shell8_33.png"
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell9_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"internal_defensive_shell_normals1_33.png"
+						"internal_defensive_shell_normals2_33.png"
+						"internal_defensive_shell_normals3_33.png"
+						"internal_defensive_shell_normals4_33.png"
+						"internal_defensive_shell_normals5_33.png"
+						"internal_defensive_shell_normals6_33.png"
+						"internal_defensive_shell_normals7_33.png"
+						"internal_defensive_shell_normals8_33.png"
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals9_33.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OnTweenDuration) / 12
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"internal_defensive_shell1_66.png"
+						"internal_defensive_shell2_66.png"
+						"internal_defensive_shell3_66.png"
+						"internal_defensive_shell4_66.png"
+						"internal_defensive_shell5_66.png"
+						"internal_defensive_shell6_66.png"
+						"internal_defensive_shell7_66.png"
+						"internal_defensive_shell8_66.png"
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell9_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"internal_defensive_shell_normals1_66.png"
+						"internal_defensive_shell_normals2_66.png"
+						"internal_defensive_shell_normals3_66.png"
+						"internal_defensive_shell_normals4_66.png"
+						"internal_defensive_shell_normals5_66.png"
+						"internal_defensive_shell_normals6_66.png"
+						"internal_defensive_shell_normals7_66.png"
+						"internal_defensive_shell_normals8_66.png"
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals9_66.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OnTweenDuration) / 12
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+			ClosedDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell9.png"
+						"internal_defensive_shell8.png"
+						"internal_defensive_shell7.png"
+						"internal_defensive_shell6.png"
+						"internal_defensive_shell5.png"
+						"internal_defensive_shell4.png"
+						"internal_defensive_shell3.png"
+						"internal_defensive_shell2.png"
+						"internal_defensive_shell1.png"
+					]
+					NormalsAnimationFiles
+					[
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals9.png"
+						"internal_defensive_shell_normals8.png"
+						"internal_defensive_shell_normals7.png"
+						"internal_defensive_shell_normals6.png"
+						"internal_defensive_shell_normals5.png"
+						"internal_defensive_shell_normals4.png"
+						"internal_defensive_shell_normals3.png"
+						"internal_defensive_shell_normals2.png"
+						"internal_defensive_shell_normals1.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 12
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell9_33.png"
+						"internal_defensive_shell8_33.png"
+						"internal_defensive_shell7_33.png"
+						"internal_defensive_shell6_33.png"
+						"internal_defensive_shell5_33.png"
+						"internal_defensive_shell4_33.png"
+						"internal_defensive_shell3_33.png"
+						"internal_defensive_shell2_33.png"
+						"internal_defensive_shell1_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals9_33.png"
+						"internal_defensive_shell_normals8_33.png"
+						"internal_defensive_shell_normals7_33.png"
+						"internal_defensive_shell_normals6_33.png"
+						"internal_defensive_shell_normals5_33.png"
+						"internal_defensive_shell_normals4_33.png"
+						"internal_defensive_shell_normals3_33.png"
+						"internal_defensive_shell_normals2_33.png"
+						"internal_defensive_shell_normals1_33.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 12
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell9_66.png"
+						"internal_defensive_shell8_66.png"
+						"internal_defensive_shell7_66.png"
+						"internal_defensive_shell6_66.png"
+						"internal_defensive_shell5_66.png"
+						"internal_defensive_shell4_66.png"
+						"internal_defensive_shell3_66.png"
+						"internal_defensive_shell2_66.png"
+						"internal_defensive_shell1_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals9_66.png"
+						"internal_defensive_shell_normals8_66.png"
+						"internal_defensive_shell_normals7_66.png"
+						"internal_defensive_shell_normals6_66.png"
+						"internal_defensive_shell_normals5_66.png"
+						"internal_defensive_shell_normals4_66.png"
+						"internal_defensive_shell_normals3_66.png"
+						"internal_defensive_shell_normals2_66.png"
+						"internal_defensive_shell_normals1_66.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = (&~/Part/Components/ShellChangingValueTween/OffTweenDuration) / 12
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+		}
+
+		BeltAmmoSpritesLeft
+		{
+			Type = ResourceSprites
+			Location = [32/64, 163/64]
+			ResourceStorage = BulletSplitterLeft
+			Layer = "doodads_low"
+			AnimationSpeedFactor = RampUpAccumulator
+			AnimationSpeedFactorRenormalize = [0, 1 / (&~/Part/Components/RampUpAccumulator/BASE_MAX_VALUE)]
+			RangeLow = 4 //Gives the actual gun some extra to keep firing after the belt runs dry
+			RangeHigh = 19 + (&RangeLow) + (&~/Part/Components/BulletSplitterLeft/ToQuantity)  // 19 animations, then ToQuantity number of full animations
+			ResourceLevels
+			[
+				{
+					AnimationFiles
+					[
+						"loaded_bullets1.png"
+						"loaded_bullets1-2.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets2.png"
+						"loaded_bullets2-2.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets3.png"
+						"loaded_bullets3-2.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets4.png"
+						"loaded_bullets4-2.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets5.png"
+						"loaded_bullets5-2.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets6.png"
+						"loaded_bullets6-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets7.png"
+						"loaded_bullets7-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets8.png"
+						"loaded_bullets8-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets9.png"
+						"loaded_bullets9-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets10.png"
+						"loaded_bullets10-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets11.png"
+						"loaded_bullets11-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets12.png"
+						"loaded_bullets12-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets13.png"
+						"loaded_bullets13-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets14.png"
+						"loaded_bullets14-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets15.png"
+						"loaded_bullets15-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets16.png"
+						"loaded_bullets16-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets17.png"
+						"loaded_bullets17-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets18.png"
+						"loaded_bullets18-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets19.png"
+						"loaded_bullets19-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles //(full)
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles //(full)
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles //(full)
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles //(full)
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+				}
+			]
+		}
+
+		BeltAmmoSpritesRight
+		{
+			Type = ResourceSprites
+			Location = [160/64, 163/64]
+			ResourceStorage = BulletSplitterRight
+			Layer = "doodads_low"
+			AnimationSpeedFactor = RampUpAccumulator
+			AnimationSpeedFactorRenormalize = [0, 1 / (&~/Part/Components/RampUpAccumulator/BASE_MAX_VALUE)]
+			RangeLow = 3 //Gives the actual gun some extra to keep firing after the belt runs dry
+			RangeHigh = 19 + (&RangeLow) + (&~/Part/Components/BulletSplitterRight/ToQuantity)
+			ResourceLevels
+			[
+				{
+					AnimationFiles
+					[
+						"loaded_bullets1.png"
+						"loaded_bullets1-2.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets2.png"
+						"loaded_bullets2-2.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets3.png"
+						"loaded_bullets3-2.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets4.png"
+						"loaded_bullets4-2.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets5.png"
+						"loaded_bullets5-2.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets6.png"
+						"loaded_bullets6-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets7.png"
+						"loaded_bullets7-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets8.png"
+						"loaded_bullets8-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets9.png"
+						"loaded_bullets9-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets10.png"
+						"loaded_bullets10-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets11.png"
+						"loaded_bullets11-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets12.png"
+						"loaded_bullets12-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets13.png"
+						"loaded_bullets13-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets14.png"
+						"loaded_bullets14-2.png"
+					]
+					Size = [1, 2]
+					Offset = [0, 0.5]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets15.png"
+						"loaded_bullets15-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets16.png"
+						"loaded_bullets16-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets17.png"
+						"loaded_bullets17-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets18.png"
+						"loaded_bullets18-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"loaded_bullets19.png"
+						"loaded_bullets19-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles //(full)
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles //(full)
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles //(full)
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+				{
+					AnimationFiles //(full)
+					[
+						"loaded_bullets20.png"
+						"loaded_bullets20-2.png"
+					]
+					Size = [1, 3]
+					Offset = [0, 1]
+					AnimationInterval = 1/60
+					ClampAnimation = true
+					MirrorU = true
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1.5, 4.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [1.5, 4.5]
+		}
+		DestroyedHitEffects
+		{
+			Type = DeathEffects
+			IncludeWhenUnderConstruction = false
+			Location = [1.5, 4.5]
+			FactorHitEffectsWith = CombinedAmmoStorage
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = { BaseValue = 6000; EffectScaleExponent = 1 }
+					Radius = 3
+					Delay = .05
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 50%
+					StatusValue = 1
+					StatusValueType = Interpolated
+					NDamage = 1000
+					CrewKillChance = 10%
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = { BaseValue = 1200; EffectScaleExponent = 1 }
+					Radius = 2
+					Delay = .05
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+						Crew = false
+					}
+				}
+			]
+		}
+
+		HasEnoughAmmoForGraphics
+		{
+			Type = MultiToggle
+			Toggles = [OpenAndHasSomeAmmo, ClosedAndHasFullAmmo]
+			Mode = Any
+		}
+		OpenAndHasSomeAmmo
+		{
+			Type = MultiToggle
+			Toggles = [{Toggle = IsShellFullyClosed, Invert = true}, CombinedAmmoStorage]
+			Mode = All
+		}
+		ClosedAndHasFullAmmo  //Show ammo indicator if we aren't full
+		{
+			Type = MultiToggle
+			Toggles = [IsShellFullyClosed, HasMaxAmmo]
+			Mode = All
+		}
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1.5, 3.5]
+			Indicators
+			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3,4]
+				}
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [2,3,4]
+				}
+
+				// Out of ammo.
+				{
+					Toggle = HasEnoughAmmoForGraphics
+					Delay = 1//&~/Part/Components/Turret/FireInterval
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoAmmo
+						Size = [1, 1]
+					}
+				}
+
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+					HidesIndicators = [4]
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [3, 6]
+			Offset = [0, 0]
+		}
+
+		PeakHeatGenerationValue
+		{
+			Type = StaticValue
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/SecondaryToolTip/StatsByCategory/0/Stats/ROF_MAX)
+			Value = (&SHOT_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = PeakHeatGenerationValue
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		AmmoCapacity = (&~/Part/Components/AmmoStorageRight/MaxResources) + (&~/Part/Components/AmmoStorageLeft/MaxResources)
+
+		RecAmmo = (&AmmoCapacity) / 2
+		RecCrew = (&CrewRequired) + (&RecAmmo)
+		ShellPenResist = (&~/Part/Components/DefensiveShellCollider/InitialPenetrationResistance) - 1
+		ShellDamageResist = (&~/Part/Components/DefensiveShellCollider/DamageResistances/default) * 100
+	}
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/BulletChaingun"
+			Stats
+			{
+				RampUpTime = &~/Part/Components/RampUpAccumulator/BASE_RAMP_UP_TIME
+				DamagePerShot = &~/EMITTER/HitOperational/HitEffects/0/Damage/BaseValue
+				DamagePerSecond = [(&../DamagePerShot) * (&../ROFRange/0), (&../DamagePerShot) * (&../ROFRange/1)]
+				DamageRange = [&../DamagePerShot, &../DamagePerSecond/0, &../DamagePerSecond/1]
+				ROFRange
+				[
+					(&~/EMITTER/Burst) / (&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue)
+					(&~/EMITTER/Burst) / ((&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue) / (&~/Part/Components/RampUpAccumulator/MaxValue/BaseValue))
+				]
+				Range = &~/EMITTER/Range
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				Spread = deg(&~/EMITTER/Spread/1)
+				TurretSpeed = deg(&~/Part/Components/AimingTurretSlider/MatchRotationSpeed)
+				ShotSpeed = Infinity
+				AmmoPerShot = 1 / (&~/Part/Components/BulletSplitterRight/ToQuantity)
+				AmmoPerSecond = [(&../AmmoPerShot) * (&../ROFRange/0), (&../AmmoPerShot) * (&../ROFRange/1)]
+				ShotAmmoUsageRange = [&../AmmoPerShot, &../AmmoPerSecond/0, &../AmmoPerSecond/1]
+			}
+		}
+	]
+
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/ChainGunOverclockDesc"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/BulletChaingunOverclocked"
+				Stats
+				{
+					RampUpTime = &~/OVERCLOCK/RAMP_TIME
+
+					DAMAGE_PER_SHOT = &~/OVERCLOCK/BEAM/../DAMAGE
+					DAMAGE_PER_SECOND = [(&../DAMAGE_PER_SHOT) * (&../ROF_BASE), (&../DAMAGE_PER_SHOT) * (&../ROF_MAX)]
+					DamageRange = [&../DAMAGE_PER_SHOT, &../DAMAGE_PER_SECOND/0, &../DAMAGE_PER_SECOND/1]
+
+					DAMAGE_PER_SHOT_EXPLOSIVE = &~/OVERCLOCK/BEAM/../DAMAGE_EXPLOSIVE
+					DAMAGE_PER_SECOND_EXPLOSIVE = [(&../DAMAGE_PER_SHOT_EXPLOSIVE) * (&../ROF_BASE), (&../DAMAGE_PER_SHOT_EXPLOSIVE) * (&../ROF_MAX)]
+					MaxDamageRange = [&../DAMAGE_PER_SHOT_EXPLOSIVE, &../DAMAGE_PER_SECOND_EXPLOSIVE/0, &../DAMAGE_PER_SECOND_EXPLOSIVE/1]
+					DamageArea = &~/OVERCLOCK/BEAM/../RADIUS
+
+					INTERVAL_BASE = (&~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue) * (&~/OVERCLOCK/FIRE_INTERVAL_FACTOR)
+					ROF_BASE = (&~/OVERCLOCK/BURST_COUNT) / (&INTERVAL_BASE)
+					ROF_MAX = (&ROF_BASE) * (&~/OVERCLOCK/MAX_FIRE_RATE)
+					ROFRange
+					[
+						&../ROF_BASE
+						&../ROF_MAX
+					]
+					Spread = deg(&~/OVERCLOCK/HALF_SPREAD)
+					AmmoPerShot = (&~/OVERCLOCK/BULLETS_PER_SHOT) / (&~/Part/Components/BulletSplitterRight/ToQuantity)
+					AmmoPerSecond = [(&../AmmoPerShot) * (&../ROFRange/0), (&../AmmoPerShot) * (&../ROFRange/1)]
+					ShotAmmoUsageRange = [&../AmmoPerShot, &../AmmoPerSecond/0, &../AmmoPerSecond/1]
+					HeatPerShot = &~/OVERCLOCK/HEAT_PER_SHOT
+				}
+			}
+		]
+	}
+}
+EMITTER = &Part/Components/EmissionComponents/Components/BulletEmitter

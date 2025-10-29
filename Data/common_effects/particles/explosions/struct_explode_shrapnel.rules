@@ -1,0 +1,125 @@
+Type = Particles
+Def = &<../shrapnel_def.rules>
+EmitterDef
+{
+	EmitPerSecond = 0
+	EmitPerOneShot
+	{
+		Min = 12
+		Max = 24
+	}
+	PreInitializers
+	[
+		{
+			Type = SetRandomVelocity
+			DataOut = location
+			ValueType = Vector2
+			Value
+			{
+				X = -0.1
+				Y = 0
+			}
+			Name = "randomize velocity"
+			Enabled = true
+			UpdateAfterInit = false
+			VelocityOut = velocity
+			Speed
+			{
+				Min = 0.3
+				Max = 7
+			}
+			Direction
+			{
+				Min = 0d
+				Max = 360d
+			}
+		}
+		{
+			Type = SetValue
+			DataOut = dist
+			ValueType = Vector2
+			Value
+			{
+				X = 0.15
+				Y = 0.15
+			}
+			Name = "Set Spawn Distance"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = velocity
+			BIn = dist
+			ResultOut = location
+			Operator = Multiply
+			Name = "Offset Position by Distance and Velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = rot_vel
+			ValueType = Angle
+			FromValue = -999.9999d
+			ToValue = 999.9999d
+			Name = "Init rot velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = scale
+			ValueType = Float
+			FromValue = 0.05
+			ToValue = 0.5
+			Name = "Random scale"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	PostInitializers[]
+}
+Bucket = Upper2
+UseRealTime = false
+PenetratingBucket
+MinIntensity = 0
+IsFancy = true
+IsSimple = false
+Sharing = Global
+UnsharedRenderInWorldSpace = false
+DontEmitWhenOffScreen = true
+DontEmitWhenOffScreenSizeInflate = 3
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 3.4028235E+38
+ScaleEmissionWithIntensity = false
+ScaleEmissionWithBeamLength = false
+ScaleEmissionWithPartSize = false
+ScaleEmissionWithPartPhysicalSize = false
+CaptureBackBuffer = false
+Filter
+{
+	Ships = true
+	OperationalHealth = true
+	StructuralHealth = true
+	OnlyPartCategories
+	ExcludePartCategories
+	Shields = true
+	Bullets = true
+	OnlyBulletCategories
+	ExcludeBulletCategories
+	Crew = true
+	Nuggets = true
+	IgnoreInvulnerability = true
+	Self
+	TargetedSelf
+	Friendlies = true
+	TargetedFriendlies
+	Enemies = true
+	TargetedEnemies
+	Junk = true
+	TargetedJunk
+}
+Delay = 0
+IgnoreIntensity = false

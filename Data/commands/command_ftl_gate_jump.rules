@@ -1,0 +1,18 @@
+FtlGateJumpCommand : <command_follow.rules>/FollowCommand
+{
+	MaxFollowRadiusFactor = 0.5
+	DefaultDistRadiusFactor = 0.25
+	DestinationSeparationRadiusFactor = 1
+	CommandColor = [0, 188, 255]
+
+	CourseLine : <./Data/galaxy_map/galaxy_map.rules>/CourseLine
+	{
+		LineThickness = .3
+	}
+	CourseLinePulseInterval = 1
+	CourseLinePulseColorFactor = [255, 255, 255, 204]
+	CourseLineUOffsetSpeed = 8
+
+	DistIcon = &<./Data/gui/game/game_gui.rules>/FollowIcon
+	FtlReadinessIcon = &<./Data/gui/game/game_gui.rules>/FtlJumpIcon
+}

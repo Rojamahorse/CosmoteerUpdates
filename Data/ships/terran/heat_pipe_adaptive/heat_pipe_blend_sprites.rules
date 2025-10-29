@@ -1,0 +1,458 @@
+HUB
+{
+	SituationCode = "0000"
+	AllowRotation = false
+}
+STUB
+{
+	SituationCode = "0010"
+}
+STRAIGHT
+{
+	SituationCode = "1010"
+}
+CORNER
+{
+	SituationCode = "0110"
+}
+SPLIT_3WAY
+{
+	SituationCode = "1110"
+}
+SPLIT_4WAY
+{
+	SituationCode = "1111"
+}
+
+BASE_BLEND_SPRITES
+{
+	Type = ToggledBlendSprites
+	Location = [0.5, 0.5]
+	SituationToggles
+	[
+		Port_Up
+		Port_Right
+		Port_Down
+		Port_Left
+	]
+}
+
+FloorBlendSprites : BASE_BLEND_SPRITES
+{
+	Layer = "floors"
+	AmbiguousSprites
+	[
+		: ~/HUB
+		{
+			DamageLevelSprites 
+			[
+				{
+					File = "floor_hub.png"
+				}
+				{
+					File = "floor_hub_33.png"
+				}
+				{
+					File = "floor_hub_66.png"
+				}
+			]
+		}
+		: ~/STUB
+		{
+			DamageLevelSprites 
+			[
+				{
+					File = "floor_stub.png"
+				}
+				{
+					File = "floor_stub_33.png"
+				}
+				{
+					File = "floor_stub_66.png"
+				}
+			]
+		}
+		: ~/STRAIGHT
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "floor_straight.png"
+				}
+				{
+					File = "floor_straight_33.png"
+				}
+				{
+					File = "floor_straight_66.png"
+				}
+			]
+		}
+		: ~/CORNER
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "floor_corner.png"
+				}
+				{
+					File = "floor_corner_33.png"
+				}
+				{
+					File = "floor_corner_66.png"
+				}
+			]
+		}
+		: ~/SPLIT_3WAY
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "floor_3way.png"
+				}
+				{
+					File = "floor_3way_33.png"
+				}
+				{
+					File = "floor_3way_66.png"
+				}
+			]
+		}
+		: ~/SPLIT_4WAY
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "floor_4way.png"
+				}
+				{
+					File = "floor_4way_33.png"
+				}
+				{
+					File = "floor_4way_66.png"
+				}
+			]
+		}
+	]
+}
+
+GlowBlendSprites : BASE_BLEND_SPRITES
+{
+	Layer = "lights_add"
+	AmbiguousSprites
+	[
+		: ~/HUB
+		{
+			DamageLevelSprites []
+		}
+		: ~/STUB
+		{
+			DamageLevelSprites 
+			[
+				{
+					File = "pipe_glows_stub.png"
+				}
+			]
+		}
+		: ~/STRAIGHT
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "pipe_glows_straight.png"
+				}
+			]
+		}
+		: ~/CORNER
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "pipe_glows_corner.png"
+				}
+			]
+		}
+		: ~/SPLIT_3WAY
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "pipe_glows_3way.png"
+				}
+			]
+		}
+		: ~/SPLIT_4WAY
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "pipe_glows_4way.png"
+				}
+			]
+		}
+	]
+}
+
+RoofBlendSprites : BASE_BLEND_SPRITES
+{
+	Layer = "roofs"
+	AmbiguousSprites
+	[
+		: ~/HUB
+		{
+			DamageLevelSprites 
+			[
+				{
+					File = "roof_hub.png"
+					NormalsFile = "roof_normals_hub.png"
+				}
+				{
+					File = "roof_hub_33.png"
+					NormalsFile = "roof_normals_hub_33.png"
+				}
+				{
+					File = "roof_hub_66.png"
+					NormalsFile = "roof_normals_hub_66.png"
+				}
+			]
+		}
+		: ~/STUB
+		{
+			DamageLevelSprites 
+			[
+				{
+					File = "roof_stub.png"
+					NormalsFile = "roof_normals_stub.png"
+				}
+				{
+					File = "roof_stub_33.png"
+					NormalsFile = "roof_normals_stub_33.png"
+				}
+				{
+					File = "roof_stub_66.png"
+					NormalsFile = "roof_normals_stub_66.png"
+				}
+			]
+		}
+		: ~/STRAIGHT
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "roof_straight.png"
+					NormalsFile = "roof_normals_straight.png"
+				}
+				{
+					File = "roof_straight_33.png"
+					NormalsFile = "roof_normals_straight_33.png"
+				}
+				{
+					File = "roof_straight_66.png"
+					NormalsFile = "roof_normals_straight_66.png"
+				}
+			]
+		}
+		: ~/CORNER
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "roof_corner.png"
+					NormalsFile = "roof_normals_corner.png"
+				}
+				{
+					File = "roof_corner_33.png"
+					NormalsFile = "roof_normals_corner_33.png"
+				}
+				{
+					File = "roof_corner_66.png"
+					NormalsFile = "roof_normals_corner_66.png"
+				}
+			]
+		}
+		: ~/SPLIT_3WAY
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "roof_3way.png"
+					NormalsFile = "roof_normals_3way.png"
+				}
+				{
+					File = "roof_3way_33.png"
+					NormalsFile = "roof_normals_3way_33.png"
+				}
+				{
+					File = "roof_3way_66.png"
+					NormalsFile = "roof_normals_3way_66.png"
+				}
+			]
+		}
+		: ~/SPLIT_4WAY
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "roof_4way.png"
+					NormalsFile = "roof_normals_4way.png"
+				}
+				{
+					File = "roof_4way_33.png"
+					NormalsFile = "roof_normals_4way_33.png"
+				}
+				{
+					File = "roof_4way_66.png"
+					NormalsFile = "roof_normals_4way_66.png"
+				}
+			]
+		}
+	]
+}
+
+RoofGlowBlendSprites : BASE_BLEND_SPRITES
+{
+	Layer = "roof_doodads"
+	AmbiguousSprites
+	[
+		: ~/HUB
+		{
+			DamageLevelSprites []
+		}
+		: ~/STUB
+		{
+			DamageLevelSprites 
+			[
+				{
+					File = "roof_glows_stub.png"
+				}
+				{
+					File = "roof_glows_stub_33.png"
+				}
+				{
+					File = "roof_glows_stub_66.png"
+				}
+			]
+		}
+		: ~/STRAIGHT
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "roof_glows_straight.png"
+				}
+				{
+					File = "roof_glows_straight_33.png"
+				}
+				{
+					File = "roof_glows_straight_66.png"
+				}
+			]
+		}
+		: ~/CORNER
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "roof_glows_corner.png"
+				}
+				{
+					File = "roof_glows_corner_33.png"
+				}
+				{
+					File = "roof_glows_corner_66.png"
+				}
+			]
+		}
+		: ~/SPLIT_3WAY
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "roof_glows_3way.png"
+				}
+				{
+					File = "roof_glows_3way_33.png"
+				}
+				{
+					File = "roof_glows_3way_66.png"
+				}
+			]
+		}
+		: ~/SPLIT_4WAY
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "roof_glows_4way.png"
+				}
+				{
+					File = "roof_glows_4way_33.png"
+				}
+				{
+					File = "roof_glows_4way_66.png"
+				}
+			]
+		}
+	]
+}
+
+BlueprintBlendSprites : BASE_BLEND_SPRITES
+{
+	Type = BlueprintToggledBlendSprites
+	AmbiguousSprites
+	[
+		: ~/HUB
+		{
+			DamageLevelSprites 
+			[
+				{
+					File = "blueprints_hub.png"
+				}
+			]
+		}
+		: ~/STUB
+		{
+			DamageLevelSprites 
+			[
+				{
+					File = "blueprints_stub.png"
+				}
+			]
+		}
+		: ~/STRAIGHT
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "blueprints_straight.png"
+				}
+			]
+		}
+		: ~/CORNER
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "blueprints_corner.png"
+				}
+			]
+		}
+		: ~/SPLIT_3WAY
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "blueprints_3way.png"
+				}
+			]
+		}
+		: ~/SPLIT_4WAY
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "blueprints_4way.png"
+				}
+			]
+		}
+	]
+}

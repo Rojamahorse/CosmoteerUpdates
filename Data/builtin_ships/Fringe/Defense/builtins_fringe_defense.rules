@@ -1,0 +1,17 @@
+Faction = fringe
+IDPrefix = "Fringe"
+Tags = [defense]
+
+Ships
+[
+	// Platforms
+	:~{ File="Small Laser Platform.ship.png";         Tier=2; Difficulty=1; }
+	:~{ File="Small Cannon Platform.ship.png";        Tier=2; Difficulty=1; }
+	:~{ File="Small Point Defense Platform.ship.png"; Tier=2; Difficulty=1; }
+	:~{ File="Small Large Cannon Platform.ship.png";  Tier=4; Difficulty=1; }
+	:~{ File="Small Flak Platform.ship.png";          Tier=4; Difficulty=1; }
+	:~{ File="Small HE Missile Platform.ship.png";             Tier=4; Difficulty=1; }
+	:~{ File="Medium HE Missile Platform.ship.png";            Tier=7; Difficulty=2; }
+	:~{ File="Medium Cannon Platform.ship.png";                Tier=7; Difficulty=2; }
+	:~{ File="Medium Laser Platform.ship.png";                 Tier=7; Difficulty=2; }
+]

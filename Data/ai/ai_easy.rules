@@ -1,0 +1,52 @@
+NameKey = "AI/Easy"
+UpdateInterval = [.75, 1.25] // A random range.
+IsAvailableInCreativeMode = true
+IsAvailableInMultiplayer = true
+
+StrategyModules
+[
+	{
+		Type = AreaPatrol
+		DefaultPatrolRadius = 500
+		AvoidableDoodadTags = [sun, station]
+		AvoidableDoodadBuffer = 100
+	}
+	{
+		Type = FollowFleetLeader
+	}
+	{
+		Type = AggroEnemies
+		TargetSwitchThresholdFactor = 6
+		TargetDistanceFactorExponent = 1.5
+		AlreadyTargetedByAllyFactor = 0.7
+		TargetFirepowerCacheTime = 10
+		AcquireAggroWithinRadar = false
+		ReleaseAggroWithinRadar = false
+		AvoidableDoodadTags = [sun]
+	}
+	{
+		Type = ExitSector
+	}
+]
+
+TacticsModules
+[
+	{
+		Type = DefaultAttackRadiusAndRotation
+		AttackRotationSwitchThresholdFactor = 1.5
+		AttackRotationsToCheck = 4
+		UseSavedAboveHealth = 50%
+	}
+]
+
+CommsModules = &<ai_common.rules>/CommsModulesDefault
+
+StasisModules
+[
+	{
+		Type = ExitSector
+		DefaultStasisSpeed = 75
+		AvoidableDoodadTags = [sun, station]
+		AvoidableDoodadBuffer = 100
+	}
+]

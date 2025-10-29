@@ -1,0 +1,16 @@
+ID = cosmoteer.poi_unknown
+Type = POI
+DescriptionKey = "Doodads/POIUnknown"
+CategoryKey = "Doodads/POI"
+DefaultToUndiscovered = true
+Icon = &HudIcon
+HudIcon
+{
+	Texture
+	{
+		File = "poi_unknown.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+	Size = [32, 32]
+}

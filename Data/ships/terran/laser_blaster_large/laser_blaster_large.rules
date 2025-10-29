@@ -1,0 +1,1233 @@
+OVERCLOCK
+{
+	BULLET = &<./Data/shots/laser_bolt_large/overclock/laser_bolt_large_overclock.rules>
+	HEAT_PER_SHOT = 650
+	FIRE_RATE_FACTOR = 50%
+	POWER_USE_FACTOR = 200%
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_large_part_terran_overclock.rules>/Part
+{
+	NameKey = "Parts/LaserBlasterLarge"
+	IconNameKey = "Parts/LaserBlasterLargeIcon"
+	ID = cosmoteer.laser_blaster_large // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "WeaponsEnergy"
+	DescriptionKey = "Parts/LaserBlasterLargeDesc"
+	Resources
+	[
+		[steel, 96]
+		[coil, 14]
+		[coil2, 4]
+	]
+	TypeCategories = [weapon, uses_power, is_crewed]
+	SignificanceToggle = ScorchedToggle
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
+	Size = [2, 5]
+	PhysicalRect = [0, 2, 2, 3]
+	SaveRect = &PhysicalRect
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	MaxHealth = 12000
+	InitialPenetrationResistance = 1
+	ProhibitAbove = 2
+	AllowedDoorLocations
+	[
+		[-1, 4]
+		[0, 5]
+		[1, 5]
+		[2, 4]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [36.8, 92]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 4
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+
+		FireAlternatingToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_alternating"
+			Default = 0
+		}
+
+		IsFireSynchronised_NonOverclock
+		{
+			Type = MultiToggle
+			Toggles = [ FireAlternatingToggle, IsOverclocked ]
+			Mode = None
+		}
+		IsFireSynchronised_Overclock
+		{
+			Type = MultiToggle
+			Toggles = [ {Toggle=FireAlternatingToggle; Invert=true}, IsOverclocked ]
+			Mode = All
+		}
+		IsFireAlternating_NonOverclock
+		{
+			Type = MultiToggle
+			Toggles = [ FireAlternatingToggle, {Toggle=IsOverclocked; Invert=true} ]
+			Mode = All
+		}
+		IsFireAlternating_Overclock
+		{
+			Type = MultiToggle
+			Toggles = [ FireAlternatingToggle, IsOverclocked ]
+			Mode = All
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 10000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 1000
+			OperationalToggle = CommandConsumptionToggle
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		OverheatEffects : ^/0/OverheatEffects {}
+
+		Overclock_ShotHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_EmissionTriggered
+			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
+		}
+
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 4]
+			Direction = Left
+		}
+		Port_Thermal_LeftDown : Port_Thermal_Left
+		{
+			Direction = Down
+		}
+		Port_Thermal_RightDown : Port_Thermal_Right
+		{
+			Direction = Down
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Location = [1, 4]
+			Direction = Right
+		}
+
+		TurretHolder_Graphics
+		{
+			Type = Graphics
+			Location = [1, 1.5]
+			Floor
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					{
+						File = "turret_holder.png"
+						NormalsFile = "turret_holder_normals.png"
+						Size = [2, 1]
+					}
+					{
+						File = "turret_holder_33.png"
+						NormalsFile = "turret_holder_normals.png"
+						Size = [2, 1]
+					}
+					{
+						File = "turret_holder_66.png"
+						NormalsFile = "turret_holder_normals.png"
+						Size = [2, 1]
+					}
+				]
+			}
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 3.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -0.625]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [2, 3]
+						AnimationInterval = 0.1
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [2, 3]
+						AnimationInterval = 0.1
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [2, 3]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			WallsStencil
+			{
+				Layer = "walls_stencil"
+				Offset = [0, -2]
+				DamageLevels
+				[
+					{
+						File = "turret_holder_stencil.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, -.828125]
+				DamageLevels
+				[
+					{
+						File = "light_blob.png"
+						Size = [3, 3]
+						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.5, 0, 0]
+					}
+				]
+			}
+		}
+
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [1, 1]//[1, 1.3125] // Relative to upper-left corner of unrotated part.
+			Rotation = -90d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 0 // Uses separate fire timer.
+			FirePermissionToggle = FirePermissionToggle
+			FiringArc = 190d
+			RotateSpeed = 45d
+			FireThresholdAngle = 1d
+			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamagePerSecond
+			Emitter = EmitterBaseProxy // Doesn't actually fire; only used for targeting.
+			HoldTargetAfterCancel = &../NonOverclockedComponents/Components/EmitterBase/FireDelay
+			AutoTargetCrewSafetyDist = 8
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		ShootSynchronizedComponents
+		{
+			Type = ToggledComponents
+			Toggle = FireAlternatingToggle
+			Invert = true
+			Components
+			{
+				ShootLeftTrigger
+				{
+					Type = TriggerProxy
+					ComponentID = Turret
+				}
+
+				ShootRightTrigger
+				{
+					Type = TriggerProxy
+					ComponentID = Turret
+				}
+			}
+		}
+		ShootSynchronizedComponents_NonOverclocked
+		{
+			Type = ToggledComponents
+			Toggle = IsFireSynchronised_NonOverclock
+			Components
+			{
+				FireTimer
+				{
+					Type = Timer
+					OperationalToggle = IsOperational
+					Duration = 1.125
+					AutoStart = true
+					StartTrigger = Turret
+				}
+
+				ReloadProgressBar
+				{
+					Type = ProgressBar
+					OperationalToggle = IsOperational
+					ShowProgressFor = FireTimer
+					Invert = true
+				}
+			}
+		}
+		ShootSynchronizedComponents_Overclocked
+		{
+			Type = ToggledComponents
+			Toggle = IsFireSynchronised_Overclock
+			Components
+			{
+				FireTimer
+				{
+					Type = Timer
+					OperationalToggle = IsOperational
+					DURATION_BASE = (&~/Part/Components/ShootSynchronizedComponents_NonOverclocked/Components/FireTimer/Duration)
+					Duration = (&DURATION_BASE) / (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+					AutoStart = true
+					StartTrigger = Turret
+				}
+
+				ReloadProgressBar
+				{
+					Type = ProgressBar
+					OperationalToggle = IsOperational
+					ShowProgressFor = FireTimer
+					Invert = true
+				}
+			}
+		}
+
+		ShootAlternatingComponents
+		{
+			Type = ToggledComponents
+			Toggle = FireAlternatingToggle
+			Components
+			{
+				ShootCycle
+				{
+					Type = ModeCycle
+					ModeRange = [0, 1]
+					IncrementTrigger = Turret
+					StartingMode = 1 // First shot will switch to mode 0.
+				}
+
+				ShootLeftTrigger
+				{
+					Type = ModeTrigger
+					Mode = ShootCycle
+					TriggerInModes = [0]
+				}
+
+				ShootRightTrigger
+				{
+					Type = ModeTrigger
+					Mode = ShootCycle
+					TriggerInModes = [1]
+					OperationalToggle = FireAlternatingToggle
+				}
+			}
+		}
+		ShootAlternatingComponents_NonOverclocked
+		{
+			Type = ToggledComponents
+			Toggle = IsFireAlternating_NonOverclock
+			Components
+			{
+				FireTimer
+				{
+					Type = Timer
+					OperationalToggle = IsOperational
+					Duration = 0.5625
+					AutoStart = true
+					StartTrigger = Turret
+				}
+
+				ReloadProgressBar
+				{
+					Type = ProgressBar
+					OperationalToggle = IsOperational
+					ShowProgressFor = FireTimer
+					Invert = true
+				}
+			}
+		}
+		ShootAlternatingComponents_Overclocked
+		{
+			Type = ToggledComponents
+			Toggle = IsFireAlternating_Overclock
+			Components
+			{
+				FireTimer
+				{
+					Type = Timer
+					OperationalToggle = IsOperational
+					DURATION_BASE = (&~/Part/Components/ShootAlternatingComponents_NonOverclocked/Components/FireTimer/Duration)
+					Duration = (&DURATION_BASE) / (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+					AutoStart = true
+					StartTrigger = Turret
+				}
+
+				ReloadProgressBar
+				{
+					Type = ProgressBar
+					OperationalToggle = IsOperational
+					ShowProgressFor = FireTimer
+					Invert = true
+				}
+			}
+		}
+
+		FireTimerProxy
+		{
+			Type = ToggleProxy
+			ComponentID = FireTimer
+		}
+		FirePermissionToggle
+		{
+			Type = MultiToggle
+			Toggles = [FireTimerProxy, FireModeToggle]
+			Mode = All
+		}
+
+		ShootLeftTriggerProxy
+		{
+			Type = TriggerProxy
+			ComponentID = ShootLeftTrigger
+		}
+		ShootLeftTriggerProxy_Overclocked : ShootLeftTriggerProxy
+		{
+			ProxyToggle = IsOverclocked
+		}
+		ShootLeftTriggerProxy_NonOverclocked : ShootLeftTriggerProxy_Overclocked
+		{
+			InvertProxyToggle = true
+		}
+
+		ShootRightTriggerProxy
+		{
+			Type = TriggerProxy
+			ComponentID = ShootRightTrigger
+		}
+		ShootRightTriggerProxy_Overclocked : ShootRightTriggerProxy
+		{
+			ProxyToggle = IsOverclocked
+		}
+		ShootRightTriggerProxy_NonOverclocked : ShootRightTriggerProxy_Overclocked
+		{
+			InvertProxyToggle = true
+		}
+
+		// Bullet emitters
+		NonOverclockedComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Invert = true
+			IncludeInBlueprints = true
+			Components
+			{
+				EmitterBase // Doesn't actually fire; only used for targeting and as a base for the left and right emitters.
+        		{
+        			Type = BulletEmitter
+        			ChainedTo = Turret
+        			FireTrigger // none, but field is required
+        			GetTargetFrom = Turret
+        			Location = [1.484375, 0]
+        			OperationalToggle = IsOperational
+        			FireDelay = .6
+        			Bullet = &<./Data/shots/laser_bolt_large/laser_bolt_large.rules>
+        			ResourceStorage = BatteryStorage
+        			ResourcesUsed = 500
+        			MinResourcesUsed = 1
+        		}
+
+        		EmitterLeft : EmitterBase
+        		{
+        			FireTrigger = ShootLeftTriggerProxy
+        			Location = [1.35, -0.359375]
+        		}
+
+        		EmitterRight : EmitterBase
+        		{
+        			FireTrigger = ShootRightTriggerProxy
+        			Location = [1.35, 0.359375]//[1.484375, 0.359375]//0.67
+        		}
+			}
+		}
+
+		OverclockedComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Components
+			{
+				// Doesn't actually fire; only used for targeting and as a base for the left and right emitters.
+				EmitterBase : ~/Part/Components/NonOverclockedComponents/Components/EmitterBase
+        		{
+        			Type = BulletEmitter
+        			Bullet = &~/OVERCLOCK/BULLET
+        			ResourceStorage = BatteryStorage
+        			ResourcesUsed = floor(500 * (&~/OVERCLOCK/POWER_USE_FACTOR))
+        		}
+
+        		EmitterLeft : EmitterBase
+        		{
+        			FireTrigger = ShootLeftTriggerProxy
+        			Location = [1.35, -0.359375]
+        		}
+
+        		EmitterRight : EmitterBase
+        		{
+        			FireTrigger = ShootRightTriggerProxy
+        			Location = [1.35, 0.359375]//[1.484375, 0.359375]//0.67
+        		}
+			}
+		}
+
+		EmitterBaseProxy
+		{
+			Type = EmitterProxy
+			ComponentID = EmitterBase
+			ChainedTo = Turret
+			Location = &../NonOverclockedComponents/Components/EmitterBase/Location
+		}
+		EmitterLeftProxy_NonOverclocked : EmitterBaseProxy
+		{
+			ComponentID = EmitterLeft
+			ProxyToggle = IsOverclocked
+			InvertProxyToggle = true
+			Location = &../NonOverclockedComponents/Components/EmitterLeft/Location
+		}
+		EmitterRightProxy_NonOverclocked : EmitterBaseProxy
+		{
+			Type = EmitterProxy
+			ProxyToggle = IsOverclocked
+			InvertProxyToggle = true
+			ComponentID = EmitterRight
+			Location = &../NonOverclockedComponents/Components/EmitterRight/Location
+		}
+		EmitterLeftProxy_Overclocked : EmitterLeftProxy_NonOverclocked
+		{
+			InvertProxyToggle = false
+		}
+		EmitterRightProxy_Overclocked : EmitterRightProxy_NonOverclocked
+		{
+			InvertProxyToggle = false
+		}
+
+		Overclock_EmissionTriggered
+		{
+			Type = MultiTrigger
+			OperationalToggle = IsOverclocked
+			Triggers = [ EmitterLeftProxy_Overclocked, EmitterRightProxy_Overclocked ]
+		}
+
+		ChargeEffectLeft_NonOverclocked
+		{
+			Type = TriggeredEffects
+			ChainedTo = EmitterLeftProxy_NonOverclocked
+			Trigger = ShootLeftTriggerProxy_NonOverclocked
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["sounds/heavy_laser_reload_01.wav",
+									"sounds/heavy_laser_reload_02.wav",
+									"sounds/heavy_laser_reload_03.wav"]
+					Volume = 1
+					Speed = 1
+				}
+			]
+		}
+		ChargeEffectLeft_Overclocked : ChargeEffectLeft_NonOverclocked
+		{
+			Trigger = ShootLeftTriggerProxy_Overclocked
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds
+					[
+						"sounds/heavy_laser_overclocked_reload_01.wav"
+						"sounds/heavy_laser_overclocked_reload_02.wav"
+						"sounds/heavy_laser_overclocked_reload_03.wav"
+					]
+				}
+			]
+		}
+
+		ChargeEffectRight_NonOverclocked : ChargeEffectLeft_NonOverclocked
+		{
+			ChainedTo = EmitterRightProxy_NonOverclocked
+			Trigger = ShootRightTriggerProxy_NonOverclocked
+		}
+		ChargeEffectRight_Overclocked : ChargeEffectRight_NonOverclocked
+		{
+			Trigger = ShootRightTriggerProxy_Overclocked
+			MediaEffects = &~/Part/Components/ChargeEffectLeft_Overclocked/MediaEffects
+		}
+
+		FireEffectLeft
+		{
+			Type = TriggeredEffects
+			ChainedTo = EmitterLeftProxy_NonOverclocked
+			Trigger = EmitterLeftProxy_NonOverclocked
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<particles/laser_blaster_large_shoot.rules>
+				&<particles/laser_blaster_large_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["sounds/heavy_laser_shot_01.wav",
+									"sounds/heavy_laser_shot_02.wav",
+									"sounds/heavy_laser_shot_03.wav",
+									"sounds/heavy_laser_shot_04.wav"]
+					Volume = 1
+					SpeedVariation = .15
+				}
+			]
+		}
+
+		FireEffectRight : FireEffectLeft
+		{
+			ChainedTo = EmitterRightProxy_NonOverclocked
+			Trigger = EmitterRightProxy_NonOverclocked
+		}
+
+		OverclockFireEffectLeft
+		{
+			Type = TriggeredEffects
+			ChainedTo = EmitterLeftProxy_Overclocked
+			Trigger = EmitterLeftProxy_Overclocked
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<particles/laser_blaster_large_shoot.rules>
+				&<particles/laser_blaster_large_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["sounds/heavy_laser_overclocked_shot_01.wav",
+									"sounds/heavy_laser_overclocked_shot_02.wav",
+									"sounds/heavy_laser_overclocked_shot_03.wav"]
+					Volume = 1
+					SpeedVariation = .15
+				}
+			]
+		}
+
+		OverclockFireEffectRight : OverclockFireEffectLeft
+		{
+			ChainedTo = EmitterRightProxy_Overclocked
+			Trigger = EmitterRightProxy_Overclocked
+		}
+
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [.65625, 4.27]
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [1.34375, 4.27]
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 2
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				&../../CrewLocation1/Location
+				&../../CrewLocation2/Location
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+			]
+		}
+
+		TurretCollider
+		{
+			Type = CircleCollider
+			Location = &../Turret/Location
+			Radius = 0.84375
+			Density = .75
+			InitialPenetrationResistance = 5
+		}
+
+		TurretGraphics
+		{
+			Type = Graphics
+			ChainedTo = Turret
+			Rotation = 90d
+			OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"turret_doodads_on1.png"
+							"turret_doodads_on2.png"
+							"turret_doodads_on3.png"
+							"turret_doodads_on4.png"
+							"turret_doodads_on5.png"
+							"turret_doodads_on6.png"
+							"turret_doodads_on7.png"
+							"turret_doodads_on8.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "turret_doodads_off.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "doodads_high"
+				Offset = [0,-0.5]
+				DamageLevels
+				[
+					{
+						// None.
+					}
+					{
+						File = "turret_damage_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "turret_damage_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+		}
+
+		WeaponSpriteLeft
+		{
+			Type = Sprite
+			ChainedTo = Turret
+			Location = [0.5, -0.5]//[1-0.3125, -0.359375]
+			Rotation = 90d
+			Layer = "weapons"
+			ResetAnimationTrigger = ShootLeftTriggerProxy
+			AtlasSprite
+			{
+				AnimationFiles
+				[
+					"weapon2.png"
+					"weapon3.png"
+					"weapon4.png"
+					"weapon5.png"
+					"weapon6.png"
+					"weapon7.png"
+					"weapon8.png"
+					"weapon9.png"
+					"weapon10.png"
+					"weapon11.png"
+					"weapon12.png"
+					"weapon13.png"
+					"weapon14.png"
+					"weapon15.png"
+					"weapon1.png" // Loop back to beginning and clamp there.
+				]
+				NormalsAnimationFiles
+				[
+					"weapon_normals1-9.png"
+					"weapon_normals1-9.png"
+					"weapon_normals1-9.png"
+					"weapon_normals1-9.png"
+					"weapon_normals1-9.png"
+					"weapon_normals1-9.png"
+					"weapon_normals1-9.png"
+					"weapon_normals1-9.png"
+					"weapon_normals10-11.png"
+					"weapon_normals10-11.png"
+					"weapon_normals12.png"
+					"weapon_normals13.png"
+					"weapon_normals14.png"
+					"weapon_normals15.png"
+					"weapon_normals1-9.png"
+				]
+				Size = [1, 3]
+				AnimationInterval = 0.075//12 0.6
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		}
+
+		WeaponSpriteRight : WeaponSpriteLeft
+		{
+			Location = [0.5, 0.5]//[1-0.3125, 0.359375]
+			ResetAnimationTrigger = ShootRightTriggerProxy
+			AtlasSprite : ^/0/AtlasSprite
+			{
+				MirrorU = true
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1, 3.125]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Offset = [-0.5, -0.5]
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Offset = [0, -0.5]
+					Size = [2, 1]
+				}
+				{
+					File = "batteries3.png"
+					Offset = [0, -0.5]
+					Size = [2, 1]
+				}
+				{
+					File = "batteries4.png"
+					Offset = [0, -0.5]
+					Size = [2, 1]
+				}
+				{
+					File = "batteries5.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries6.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries7.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries8.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries9.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries10.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 3.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOffLarge
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [1, 3.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 3.5]
+			Indicators
+			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3,4]
+				}
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [2,3,4]
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					Delay = &~/Part/Components/ShootSynchronizedComponents_NonOverclocked/Components/FireTimer/Duration
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+					HidesIndicators = [4]
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 6]
+			Offset = [0, -.5]
+		}
+
+		PeakHeatGenerationValue
+		{
+			Type = StaticValue
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/SecondaryToolTip/StatsByCategory/0/Stats/ROF)
+			Value = (&SHOT_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = PeakHeatGenerationValue
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		TurretPenResist = &~/Part/Components/TurretCollider/InitialPenetrationResistance
+
+		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+	}
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/LaserBoltLarge"
+			Stats
+			{
+				DamagePerShot = &~/EMITTER_BASE/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
+				DamagePerSecond = (&DamagePerShot) * (&ROF)
+				Damage = [&../DamagePerShot, &../DamagePerSecond]
+				ROF = 1 / (&~/Part/Components/ShootAlternatingComponents_NonOverclocked/Components/FireTimer/Duration)
+				Range = &~/EMITTER_BASE/Bullet/Range
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+				ShotSpeed = &~/EMITTER_BASE/Bullet/Speed
+				ShotHP = &~/EMITTER_BASE/Bullet/Components/Targetable/Health
+				PowerPerShot = (&~/EMITTER_BASE/ResourcesUsed) / 1000
+				PowerPerSecond = (&PowerPerShot) * (&ROF)
+				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
+			}
+		}
+	]
+
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/LaserBlasterLargeOverclockDesc"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/LaserBoltLargeOverclocked"
+				Stats
+				{
+					DamagePerShot = &~/OVERCLOCK/BULLET/DAMAGE
+					DamagePerSecond = (&DamagePerShot) * (&ROF)
+					Damage = [&../DamagePerShot, &../DamagePerSecond]
+					ShieldDamagePerShot = &~/OVERCLOCK/BULLET/DAMAGE_SHIELD
+					ShieldDamagePerSecond = (&ShieldDamagePerShot) * (&ROF)
+					ShieldDamage = [&../ShieldDamagePerShot, &../ShieldDamagePerSecond]
+					DamageArea = &~/OVERCLOCK/BULLET/DAMAGE_RADIUS
+					ROF = (&~/Part/StatsByCategory/0/Stats/ROF) * (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+					PowerPerShot = (&~/EMITTER_BASE_OVERCLOCK/ResourcesUsed) / 1000
+					PowerPerSecond = (&PowerPerShot) * (&ROF)
+					ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
+					ShotHP = &~/OVERCLOCK/BULLET/HEALTH
+				}
+			}
+		]
+	}
+}
+EMITTER_BASE = &~/Part/Components/NonOverclockedComponents/Components/EmitterBase
+EMITTER_BASE_OVERCLOCK = &~/Part/Components/OverclockedComponents/Components/EmitterBase

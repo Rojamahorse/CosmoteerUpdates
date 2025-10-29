@@ -1,0 +1,875 @@
+PowerOn
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		RandomSounds = ["sounds/power_on_01.wav",
+						"sounds/power_on_02.wav"]
+		Volume = .75
+		Speed = 1.1
+		SpeedVariation = 0.1
+	}
+]
+
+PowerOff
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		RandomSounds = ["sounds/power_off_01.wav",
+						"sounds/power_off_02.wav"]
+		Volume = .75
+		Speed = 1.1
+		SpeedVariation = 0.1
+	}
+]
+
+PowerOnLarge
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		RandomSounds = ["sounds/power_on_01.wav",
+						"sounds/power_on_02.wav"]
+		Volume = .75
+		Speed = 0.8
+		SpeedVariation = 0.1
+	}
+]
+
+PowerOffLarge
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		RandomSounds = ["sounds/power_off_01.wav",
+						"sounds/power_off_02.wav"]
+		Volume = .75
+		Speed = 0.8
+		SpeedVariation = 0.1
+	}
+]
+
+MachinesOn
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		RandomSounds = ["sounds/machines_on_01.wav",
+						"sounds/machines_on_02.wav"]
+		Volume = .75
+		Speed = 1.1
+		SpeedVariation = 0.1
+	}
+]
+
+MachinesOff
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		RandomSounds = ["sounds/machines_off_01.wav",
+						"sounds/machines_off_02.wav"]
+		Volume = .75
+		Speed = 1.1
+		SpeedVariation = 0.1
+	}
+]
+
+MachinesOnLarge
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		RandomSounds = ["sounds/machines_on_01.wav",
+						"sounds/machines_on_02.wav"]
+		Volume = .75
+		Speed = 0.8
+		SpeedVariation = 0.1
+	}
+]
+
+MachinesOffLarge
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		RandomSounds = ["sounds/machines_off_01.wav",
+						"sounds/machines_off_02.wav"]
+		Volume = .75
+		Speed = 0.8
+		SpeedVariation = 0.1
+	}
+]
+
+AmmoLoad
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/ammo_load_01.wav",
+						"sounds/ammo_load_02.wav",
+						"sounds/ammo_load_03.wav",
+						"sounds/ammo_load_04.wav",
+						"sounds/ammo_load_05.wav",
+						"sounds/ammo_load_06.wav",
+						"sounds/ammo_load_07.wav",
+						"sounds/ammo_load_08.wav"]
+		Volume = 1.5
+		SpeedVariation = .05
+	}
+]
+
+AmmoLoadWithIntensity
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/ammo_load_01.wav",
+						"sounds/ammo_load_02.wav",
+						"sounds/ammo_load_03.wav",
+						"sounds/ammo_load_04.wav",
+						"sounds/ammo_load_05.wav",
+						"sounds/ammo_load_06.wav",
+						"sounds/ammo_load_07.wav",
+						"sounds/ammo_load_08.wav"]
+		VolumeOverIntensity = 1.5
+		SpeedOverIntensity = [0.5, 1.5]
+	}
+]
+
+MissileLoad
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		Sound = "sounds/missile_load.wav"
+		Volume = .4
+		Speed = .5
+		SpeedVariation = .05
+	}
+]
+
+ResourcePickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/resource_pickup_01.wav", "sounds/resources/resource_pickup_02.wav", "sounds/resources/resource_pickup_03.wav"]
+		Volume = 0.75
+		SpeedVariation = .05
+	}
+]
+
+NuggetPickup
+[
+	: /BASE_SOUNDS/AudioExteriorDetail
+	{
+		RandomSounds = ["sounds/resources/resource_pickup_01.wav", "sounds/resources/resource_pickup_02.wav", "sounds/resources/resource_pickup_03.wav"]
+		Volume = 0.5
+		SpeedVariation = .15
+	}
+]
+
+
+SteelPickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/steel_pickup_interior_01.wav",
+						"sounds/resources/steel_pickup_interior_02.wav",
+						"sounds/resources/steel_pickup_interior_03.wav",
+						"sounds/resources/steel_pickup_interior_04.wav",
+						"sounds/resources/steel_pickup_interior_05.wav"]
+		Db = -1
+		Volume = 1
+		SpeedVariation = .05
+	}
+]
+
+
+PowerPickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/battery_pickup_interior_01.wav",
+						"sounds/resources/battery_pickup_interior_02.wav",
+						"sounds/resources/battery_pickup_interior_03.wav",
+						"sounds/resources/battery_pickup_interior_04.wav",]
+		Volume = 1.15
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+CoilPickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/coil_pickup_interior_01.wav",
+						"sounds/resources/coil_pickup_interior_02.wav",
+						"sounds/resources/coil_pickup_interior_03.wav",
+						"sounds/resources/coil_pickup_interior_04.wav",
+						"sounds/resources/coil_pickup_interior_05.wav"]
+		Volume = 1.5
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+AmmoPickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/ammo_pickup_interior_01.wav",
+						"sounds/resources/ammo_pickup_interior_02.wav",
+						"sounds/resources/ammo_pickup_interior_03.wav",
+						"sounds/resources/ammo_pickup_interior_04.wav",
+						"sounds/resources/ammo_pickup_interior_05.wav"]
+		Volume = 1.25
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+
+HyperiumPickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/hyperium_pickup_interior_01.wav",
+						"sounds/resources/hyperium_pickup_interior_02.wav",
+						"sounds/resources/hyperium_pickup_interior_03.wav",
+						"sounds/resources/hyperium_pickup_interior_04.wav",
+						"sounds/resources/hyperium_pickup_interior_05.wav"]
+		Volume = 1.15
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+PartPickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/part_pickup_interior_01.wav",
+						"sounds/resources/part_pickup_interior_02.wav",
+						"sounds/resources/part_pickup_interior_03.wav",
+						"sounds/resources/part_pickup_interior_04.wav",
+						"sounds/resources/part_pickup_interior_05.wav"]
+		Volume = 1.15
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+
+ProcessorPickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/processor_pickup_interior_01.wav",
+						"sounds/resources/processor_pickup_interior_02.wav",
+						"sounds/resources/processor_pickup_interior_03.wav",
+						"sounds/resources/processor_pickup_interior_04.wav",
+						"sounds/resources/processor_pickup_interior_05.wav"]
+		Volume = 1.45
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+UraniumPickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/uranium_pickup_interior_01.wav",
+						"sounds/resources/uranium_pickup_interior_02.wav",
+						"sounds/resources/uranium_pickup_interior_03.wav",
+						"sounds/resources/uranium_pickup_interior_04.wav",
+						"sounds/resources/uranium_pickup_interior_05.wav"]
+		Volume = 1.35
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+EnrichedUraniumPickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/enriched_uranium_pickup_interior_01.wav",
+						"sounds/resources/enriched_uranium_pickup_interior_02.wav",
+						"sounds/resources/enriched_uranium_pickup_interior_03.wav",
+						"sounds/resources/enriched_uranium_pickup_interior_04.wav",
+						"sounds/resources/enriched_uranium_pickup_interior_05.wav"]
+		Volume = 1.25
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+MinePickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/mine_pickup_interior_01.wav",
+						"sounds/resources/mine_pickup_interior_02.wav",
+						"sounds/resources/mine_pickup_interior_03.wav",
+						"sounds/resources/mine_pickup_interior_04.wav",
+						"sounds/resources/mine_pickup_interior_05.wav"]
+		Volume = 1.3
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+MetalPickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/metal_pickup_interior_01.wav",
+						"sounds/resources/metal_pickup_interior_02.wav",
+						"sounds/resources/metal_pickup_interior_03.wav",
+						"sounds/resources/metal_pickup_interior_04.wav",
+						"sounds/resources/metal_pickup_interior_05.wav"]
+		Volume = 1.35
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+DiamondPickup
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/diamond_pickup_interior_01.wav",
+						"sounds/resources/diamond_pickup_interior_02.wav",
+						"sounds/resources/diamond_pickup_interior_03.wav",
+						"sounds/resources/diamond_pickup_interior_04.wav",
+						"sounds/resources/diamond_pickup_interior_05.wav"]
+		Volume = 1.15
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+SteelDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/steel_putdown_interior_01.wav",
+						"sounds/resources/steel_putdown_interior_02.wav",
+						"sounds/resources/steel_putdown_interior_03.wav",
+						"sounds/resources/steel_putdown_interior_04.wav",
+						"sounds/resources/steel_putdown_interior_05.wav"]
+		Volume = 0.95
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+
+PowerDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/battery_putdown_interior_01.wav",
+						"sounds/resources/battery_putdown_interior_02.wav",
+						"sounds/resources/battery_putdown_interior_03.wav",
+						"sounds/resources/battery_putdown_interior_04.wav",]
+		Volume = 1.15
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+CoilDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/coil_putdown_interior_01.wav",
+						"sounds/resources/coil_putdown_interior_02.wav",
+						"sounds/resources/coil_putdown_interior_03.wav",
+						"sounds/resources/coil_putdown_interior_04.wav",
+						"sounds/resources/coil_putdown_interior_05.wav"]
+		Volume = 1.6
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+AmmoDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/ammo_putdown_interior_01.wav",
+						"sounds/resources/ammo_putdown_interior_02.wav",
+						"sounds/resources/ammo_putdown_interior_03.wav",
+						"sounds/resources/ammo_putdown_interior_04.wav",
+						"sounds/resources/ammo_putdown_interior_05.wav"]
+		Volume = 1.15
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+
+HyperiumDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/hyperium_putdown_interior_01.wav",
+						"sounds/resources/hyperium_putdown_interior_02.wav",
+						"sounds/resources/hyperium_putdown_interior_03.wav",
+						"sounds/resources/hyperium_putdown_interior_04.wav",
+						"sounds/resources/hyperium_putdown_interior_05.wav"]
+		Volume = 1.25
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+PartDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/part_putdown_interior_01.wav",
+						"sounds/resources/part_putdown_interior_02.wav",
+						"sounds/resources/part_putdown_interior_03.wav",
+						"sounds/resources/part_putdown_interior_04.wav",
+						"sounds/resources/part_putdown_interior_05.wav"]
+		Volume = 1.25
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+ElementDeliver = &PartDeliver
+
+ProcessorDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/processor_putdown_interior_01.wav",
+						"sounds/resources/processor_putdown_interior_02.wav",
+						"sounds/resources/processor_putdown_interior_03.wav",
+						"sounds/resources/processor_putdown_interior_04.wav",
+						"sounds/resources/processor_putdown_interior_05.wav"]
+		Volume = 1.25
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+UraniumDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/uranium_putdown_interior_01.wav",
+						"sounds/resources/uranium_putdown_interior_02.wav",
+						"sounds/resources/uranium_putdown_interior_03.wav",
+						"sounds/resources/uranium_putdown_interior_04.wav",
+						"sounds/resources/uranium_putdown_interior_05.wav"]
+		Volume = 1.3
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+EnrichedUraniumDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/enriched_uranium_putdown_interior_01.wav",
+						"sounds/resources/enriched_uranium_putdown_interior_02.wav",
+						"sounds/resources/enriched_uranium_putdown_interior_03.wav",
+						"sounds/resources/enriched_uranium_putdown_interior_04.wav",
+						"sounds/resources/enriched_uranium_putdown_interior_05.wav"]
+		Volume = 1.4
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+MineDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/mine_putdown_interior_01.wav",
+						"sounds/resources/mine_putdown_interior_02.wav",
+						"sounds/resources/mine_putdown_interior_03.wav",
+						"sounds/resources/mine_putdown_interior_04.wav",
+						"sounds/resources/mine_putdown_interior_05.wav"]
+		Volume = 1.3
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+MetalDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/metal_putdown_interior_01.wav",
+						"sounds/resources/metal_putdown_interior_02.wav",
+						"sounds/resources/metal_putdown_interior_03.wav",
+						"sounds/resources/metal_putdown_interior_04.wav",
+						"sounds/resources/metal_putdown_interior_05.wav"]
+		Volume = 1.35
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+DiamondDeliver
+[
+	: /BASE_SOUNDS/AudioInterior
+	{
+		RandomSounds = ["sounds/resources/diamond_putdown_interior_01.wav",
+						"sounds/resources/diamond_putdown_interior_02.wav",
+						"sounds/resources/diamond_putdown_interior_03.wav",
+						"sounds/resources/diamond_putdown_interior_04.wav",
+						"sounds/resources/diamond_putdown_interior_05.wav"]
+		Volume = 1.05
+		Db = -1
+		SpeedVariation = .05
+	}
+]
+
+SmallPartDestroyed
+[
+	&<particles/explosions/small_part_explode_flash.rules>
+	&<particles/explosions/small_part_explode_sparks.rules>
+	&<particles/explosions/small_part_explode.rules>
+	&<particles/explosions/small_part_explode_shrapnel.rules>
+	&<particles/explosions/small_part_explode_debris.rules>
+	&<particles/explosions/small_part_explode_smoke.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		RandomSounds = ["sounds/small_part_destroyed_01.wav",
+						"sounds/small_part_destroyed_02.wav",
+						"sounds/small_part_destroyed_03.wav"]
+		Volume = 1
+		SpeedVariation = .15
+
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
+
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 300
+				FrequencyFactorExponent = 0.5
+			}
+		}
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .05
+		Duration = .5
+	}
+]
+
+SmallPartDestroyedDry
+[
+	&<particles/explosions/small_part_explode_dry_flash.rules>
+	&<particles/explosions/small_part_explode_dry_sparks.rules>
+	&<particles/explosions/small_part_explode_shrapnel.rules>
+	&<particles/explosions/small_part_explode_dry.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		RandomSounds = ["sounds/small_part_destroyed_01.wav",
+						"sounds/small_part_destroyed_02.wav",
+						"sounds/small_part_destroyed_03.wav"]
+		Volume = 1
+		SpeedVariation = .15
+
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
+
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 300
+				FrequencyFactorExponent = 0.5
+			}
+		}
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .05
+		Duration = .5
+	}
+]
+
+SmallPartScorched
+[
+	&<particles/explosions/small_part_explode_sparks.rules>
+	&<particles/explosions/small_part_explode_smoke.rules>
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .01
+		Duration = .1
+	}
+]
+
+MedPartDestroyed
+[
+	&<particles/explosions/med_part_explode_flash.rules>
+	&<particles/explosions/med_part_explode_sparks.rules>
+	&<particles/explosions/med_part_explode.rules>
+	&<particles/explosions/med_part_explode_shrapnel.rules>
+	&<particles/explosions/med_part_explode_debris.rules>
+	&<particles/explosions/med_part_explode_smoke.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		RandomSounds = ["sounds/med_part_destroyed_01.wav",
+						"sounds/med_part_destroyed_02.wav",
+						"sounds/med_part_destroyed_03.wav"]
+		Volume = 1
+		SpeedVariation = .15
+
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
+
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 300
+				FrequencyFactorExponent = 0.5
+			}
+		}
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .1
+		Duration = .75
+	}
+]
+
+MedPartDestroyedDry
+[
+	&<particles/explosions/med_part_explode_dry.rules>
+	&<particles/explosions/med_part_explode_dry_flash.rules>
+	&<particles/explosions/med_part_explode_dry_sparks.rules>
+	&<particles/explosions/med_part_explode_shrapnel.rules>
+	&<particles/explosions/med_part_explode_debris.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		RandomSounds = ["sounds/med_part_destroyed_01.wav",
+						"sounds/med_part_destroyed_02.wav",
+						"sounds/med_part_destroyed_03.wav"]
+		Volume = 1
+		SpeedVariation = .15
+
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
+
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 300
+				FrequencyFactorExponent = 0.5
+			}
+		}
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .1
+		Duration = .75
+	}
+]
+
+MedPartScorched
+[
+	&<particles/explosions/med_part_explode_sparks.rules>
+	&<particles/explosions/med_part_explode_smoke.rules>
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .02
+		Duration = .15
+	}
+]
+
+BigPartDestroyed
+[
+	&<particles/explosions/big_part_explode.rules>
+	&<particles/explosions/big_part_explode_flash.rules>
+	&<particles/explosions/big_part_explode_sparks.rules>
+	&<particles/explosions/big_part_explode_shrapnel.rules>
+	&<particles/explosions/big_part_explode_debris.rules>
+	&<particles/explosions/big_part_explode_smoke.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		RandomSounds = ["sounds/large_part_destroyed_01.wav",
+						"sounds/large_part_destroyed_02.wav",
+						"sounds/large_part_destroyed_03.wav"]
+		Volume = 1
+		SpeedVariation = .15
+
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
+
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 300
+				FrequencyFactorExponent = 0.5
+			}
+		}
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .15
+		Duration = 1
+	}
+]
+
+BigPartScorched
+[
+	&<particles/explosions/big_part_explode_sparks.rules>
+	&<particles/explosions/big_part_explode_smoke.rules>
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .03
+		Duration = .2
+	}
+]
+
+HugePartDestroyed
+[
+	&<particles/explosions/huge_part_explode.rules>
+	&<particles/explosions/huge_part_explode_flash.rules>
+	&<particles/explosions/huge_part_explode_debris.rules>
+	&<particles/explosions/huge_part_explode_smoke.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		RandomSounds = ["sounds/huge_part_destroyed_01.wav",
+						"sounds/huge_part_destroyed_02.wav",
+						"sounds/huge_part_destroyed_03.wav"]
+		Volume = 1
+		SpeedVariation = .15
+
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
+
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 100
+				FrequencyFactorExponent = 0.5
+			}
+		}
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .3
+		Duration = 1
+	}
+]
+
+HugePartScorched
+[
+	&<particles/explosions/huge_part_explode_smoke.rules>
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .06
+		Duration = .2
+	}
+]
+
+StructureDestroyed
+[
+	&<particles/explosions/struct_explode_flash.rules>
+	&<particles/explosions/struct_explode_sparks.rules>
+	&<particles/explosions/struct_explode_shrapnel.rules>
+	&<particles/explosions/struct_explode_debris.rules>
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		RandomSounds = ["sounds/small_part_destroyed_01.wav",
+						"sounds/small_part_destroyed_02.wav",
+						"sounds/small_part_destroyed_03.wav"]
+		Volume = 1
+		SpeedVariation = .15
+		Speed = 1.25
+
+		DynamicFilter
+		{
+			MinDistance = 0
+			MaxDistance = 2
+			DistanceFalloff = 1
+
+			MinZoom = 1
+			MaxZoom = 12
+			ZoomFalloff = 2
+
+			Filter
+			{
+				FilterType = LowPassAmplify
+				FromFrequency = 8000
+				ToFrequency = 300
+				FrequencyFactorExponent = 0.5
+			}
+		}
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .03
+		Duration = .3
+	}
+]

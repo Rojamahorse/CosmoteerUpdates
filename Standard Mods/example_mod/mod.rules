@@ -1,0 +1,296 @@
+// Every mod must have an ID that is used to uniquely identify the mod and differentiate it from other mods.
+// In order to avoid ID conflicts with other mods, you *must* follow the "author_name.mod_name" format.
+// Do *not* use "cosmoteer" as your author name -- that is reserved for official mods only!
+ID = cosmoteer.example_mod
+
+// You must give a human-readable name for your mod. This is what will be shown in the user interface.
+Name = "Example Mod"
+
+// The version of the mod that will be shown in the user interface. This is optional.
+Version = 1.0.0
+
+// This is a list of Cosmoteer versions that this mod is known to be compatible with.
+// If this mod is turned on and it isn't known to be compatible with the version of Cosmoteer
+// that the player is running, a warning will be displayed. When upgrading the game, mods
+// that aren't known to be compatible with the new version will also be automatically disabled.
+// Also, Cosmoteer supports multiple mod.rules or mod_*.rules files, optionally in sub-folders.
+// The mod.rules or mod_*.rules file with the CompatibleGameVersions that best matches the current
+// version of Cosmoteer will be selected. (And mod_*.rules files specifically will only be considered
+// if they contain a CompatibleGameVersions.)
+CompatibleGameVersions = ["0.30.2_rc2"]
+
+// This should be set to true for any mod that makes gameplay changes.
+// Setting this to false *MAY* make it possible to play multiplayer with someone else who doesn't have this mod,
+// so long as this mod doesn't actually make any gameplay changes. (Setting this to false will *NOT*
+// magically allow you to play with someone who doesn't have this mod; it will just make the error
+// less informative.) If omitted, the default is true.
+ModifiesGameplay = true
+
+// The name of the mod creator(s) that will be shown in the user interface. This is optional.
+Author = "Walternate Realities"
+
+// A logo to display for your mod in the user interface. This is optional.
+Logo = "logo.png"
+
+// A longer description of what your mod does to the game. This is optional.
+Description = "This is a mod that demonstrates how to create other mods.\n\n"\
+              "- Increases starting money on Builder difficulty to 200,000 credits.\n\n"\
+              "- Increases money and fame rewards on Builder difficulty to 300%.\n\n"\
+              "- Reactors no longer cause collateral damage when destroyed.\n\n"\
+              "- Cannons and railguns no longer use command points.\n\n"\
+              "- The \"Arclight\" ship will now spawn in Career mode.\n\n"\
+              "- Increased Control Room density to 3.0.\n\n"\
+              "- Control rooms now have an invisible 4-way thruster.\n\n"\
+              "- Adds \"Super Armor\" parts that have 2x the strength of regular armor for 3x the cost.\n\n"\
+              "- Adds a \"squiggle\" decal and "flowers" ship texture."
+
+// Mods can define their own per-language string files.
+// The values in a string file (such as en.rules) will add to
+// and override any values in the base string file (such as Data\strings\en.rules).
+// Each language supported should have its own string file named
+// after the two-letter 639-1 language code for that language.
+StringsFolder = "strings"
+
+// The primary way mods modify the game is through "actions".
+//
+// Actions are little commands that modify the game's .rules files *after* they have been
+// loaded into RAM. (The actual .rules files in the 'Data' folder are never modified
+// and so disabling a mod will cause the game to revert back to its vanilla state.)
+//
+// First, the game loads the vanilla .rules files normally.
+// Then, for every mod that is enabled, that mod's "actions" are run on
+// top of the loaded .rules files, modifying them.
+//
+// Using this technique, mods can make almost any change to the game
+// that *could* be made by modifying the .rules files directly, but
+// without actually having to make any permanent changes to the game files.
+//
+// The examples below show all the different kinds of "actions" that can be
+// performed on the vanilla .rules data.
+//
+// Note that it's very easy to make a modification that will cause the game
+// to crash when loading. The log .txt file may have details on why it crashed.
+//
+// There are a small number of .rules files that can't be modified using actions.
+// The most prominent example is the language string files (such as en.rules)
+// which are modified using the StringsFolder setting above.
+Actions
+[
+	// Increase starting funds on "Builder" economic difficulty to 200,000.
+	{
+		// The "Replace" action changes a vanilla data field to a modded data field.
+		Action = Replace
+
+		// This is the file and data field in it that should be replaced.
+		Replace = "<modes/career/career.rules>/EconDifficultyLevels/1/StartingMoney"
+
+		// If this is set to true, this action will do nothing if the 'Replace' doesn't exist instead of giving an error.
+		// This is optional and will default to false.
+		IgnoreIfNotExisting = false
+
+		// This is the value that the above data field should be replaced with.
+		// This works with single values (like below), but you can also
+		// replace entire {} groups, [] lists, and file references as well.
+		With = 200000
+	}
+
+	// Increase money and fame rewards on "Builder" economic difficulty to 300% each.
+	{
+		// The "Overrides" action allows multiple *named* data fields
+		// to be modified, or new named fields to be added.
+		Action = Overrides
+
+		// This is the file or {} group whose named data fields we want to override.
+		OverrideIn = "<modes/career/career.rules>/EconDifficultyLevels/1"
+
+		// If this is set to true, the 'OverrideIn' will be created if it doesn't exist.
+		// This is optional and will default to false.
+		CreateIfNotExisting = false
+
+		// If this is set to true, this action will do nothing if the 'OverrideIn' doesn't exist instead of giving an error.
+		// This is optional and will default to false.
+		IgnoreIfNotExisting = false
+
+		// This contains all of the data fields in the above file or {} group
+		// whose values we want to override. If such a data field doesn't
+		// already exist, it will be added instead of modified.
+		Overrides
+		{
+			MoneyRewardFactor = 300%
+			FameRewardFactor = 300%
+
+			// Note that we could have easily combined this Overrides action
+			// with the above Replace action by simply adding
+			// "StartingMoney = 200000" to this Overrides section. The only
+			// reason I didn't do that was to demonstrate the single-value Replace action.
+			// In general, you will probably find it more convenient to use
+			// an Overrides action instead of a Replace action, but Overrides
+			// can only be used on *named* data fields inside a file or {} group, while the Replace
+			// action can be used on unnamed data fields inside [] groups as well.
+		}
+	}
+
+	// Remove the DestroyedEffects/HitEffects component from the reactor to prevent it from causing collateral
+	// damage when it is destroyed.
+	{
+		// The "Remove" action deletes a vanilla data field from the game data.
+		Action = Remove
+
+		// This is the file and data field in it that should be removed.
+		// This works with any kind of data field, including single values
+		// {} groups, [] lists, and references.
+		Remove = "<ships/terran/reactor_small/reactor_small.rules>/Part/Components/DestroyedEffects/HitEffects"
+
+		// If this is set to true, this action will do nothing if the 'Remove' doesn't exist instead of giving an error.
+		// This is optional and will default to false.
+		IgnoreIfNotExisting = false
+	}
+
+	// Remove the CommandConsumer components from cannons and railguns.
+	{
+		// The "RemoveMany" action is just like the "Remove" action, but it allows
+		// you to remove multiple data fields without having to create a separate action
+		// for each data field you want to remove.
+		Action = RemoveMany
+
+		// This contains the list of data fields you want to remove.
+		RemoveMany
+		[
+			"<ships/terran/cannon_med/cannon_med.rules>/Part/Components/CommandConsumer"
+			"<ships/terran/cannon_large/cannon_large.rules>/Part/Components/CommandConsumer"
+			"<ships/terran/railgun_loader/railgun_loader.rules>/Part/Components/CommandConsumer"
+			"<ships/terran/railgun_accelerator/railgun_accelerator.rules>/Part/Components/CommandConsumer"
+			"<ships/terran/railgun_launcher/railgun_launcher.rules>/Part/Components/CommandConsumer"
+
+			// Note that we could have easily combined this RemoveMany action
+			// with the above Remove action by simply adding the reactor's
+			// DestroyedEffects/HitEffects component to this list. The only reason I didn't
+			// do that was to demonstrate the single-value Remove action.
+		]
+
+		// If this is set to true, then if any of the above 'RemoveMany' don't exist then they will be skipped instead of giving an error.
+		// This is optional and will default to false.
+		IgnoreIfNotExisting = false
+	}
+
+	// Add the Arclight ship as a ship that will spawn in Career mode.
+	{
+		// The "Add" action adds a new data field to an existing [] list.
+		Action = Add
+
+		// This is the file and [] list in it to which the data will be added.
+		AddTo = "<builtin_ships/builtins.rules>/Ships"
+
+		// If this is set to true, the 'AddTo' will be created if it doesn't exist.
+		// This is optional and will default to false.
+		CreateIfNotExisting = false
+
+		// If this is set to true, this action will do nothing if the 'AddTo' doesn't exist instead of giving an error.
+		// This is optional and will default to false.
+		IgnoreIfNotExisting = false
+
+		// This is the data field to add to the [] list.
+		// This data field can be any kind of data, including single values
+		// [] lists, {} groups (like below), or even references to other files.
+		ToAdd
+		{
+			File = "ships/Arclight.ship.png"
+			Faction = cabal
+			Tags = [combat]
+			Tier = 3
+			Difficulty = 2 // (Note: Difficulty is currently unused but may be used in the future, so you should still specify a difficulty between 1-3.)
+		}
+	}
+
+	// Make the control room have a density of 3.0
+	{
+		// "Add" actions can also be used to add named data fields to existing
+		// files or {} groups. But when adding a named data field, you must also specify the
+		// name of the data field being added to the group.
+		//
+		// In this example, the control_room_small.rules file doesn't normally have a Density
+		// field (which defaults to 1.0), and so we can add that field to it
+		// to give the control room a different density.
+
+		Action = Add
+		AddTo = "<ships/terran/control_room_small/control_room_small.rules>/Part"
+		Name = Density
+		ToAdd = 3.0
+
+		// If this is set to true, this action will do nothing if the 'Name' already exists instead of giving an error.
+		// This is optional and will default to false.
+		OnlyIfNotExisting = false
+
+		// Note that we could have also used an Overrides action to make this change
+		// which probably would have been clearer, but I wanted to demonstrate that
+		// the Add action also works with named values.
+	}
+
+	// Add the "super armor" parts.
+	{
+		// The "AddMany" action is similar to the "Add" action, but it can
+		// add multiple data fields to a single [] list, and it can't
+		// add named data fields. (You should use Overrides to add multiple named data fields.)
+		Action = AddMany
+
+		// This is the [] list to which we want to add data fields.
+		AddTo = "<ships/terran/terran.rules>/Terran/Parts"
+
+		// If this is set to true, the 'AddTo' will be created if it doesn't exist.
+		// This is optional and will default to false.
+		CreateIfNotExisting = false
+
+		// If this is set to true, this action will do nothing if the 'AddTo' doesn't exist instead of giving an error.
+		// This is optional and will default to false.
+		IgnoreIfNotExisting = false
+
+		// These are the data fields we want to add to the [] list.
+		ManyToAdd
+		[
+			&<super_armor/super_armor.rules>/Part
+			&<super_armor_wedge/super_armor_wedge.rules>/Part
+		]
+	}
+
+	// Add the control room thrusters.
+	{
+		// The "AddBase" action adds a reference to the inheritance list of an existing
+		// {} group or [] list.
+		Action = AddBase
+
+		// The {} group or [] list which should inherit from the below BaseToAdd.
+		AddBaseTo = "<ships/terran/control_room_small/control_room_small.rules>/Part/Components"
+
+		// If this is set to true, this action will do nothing if the 'AddBaseTo' doesn't exist instead of giving an error.
+		// This is optional and will default to false.
+		IgnoreIfNotExisting = false
+
+		// The file, {} group, or [] list which the above AddBaseTo should inherit from.
+		BaseToAdd = &<control_room_small_components.rules>
+	}
+
+	// Add custom roof decals. (In this example we're adding decals to the "shapes" category.
+	{
+		Action = Add
+		AddTo = "<roof_decals/roof_decals.rules>/Groups/3/Folders"
+		ToAdd = "roof_decals"
+	}
+
+	// Add custom roof textures.
+	{
+		Action = Add
+		AddTo = "<ships/terran/terran.rules>/Terran/Roofs/RoofTexturesFolders"
+		ToAdd = "roof_textures"
+	}
+]
+
+// Mods can add more root folders that the player will be able to select and browse from the Ship Library.
+// Sub-folders will be automatically included.
+ShipLibraries
+[
+	{
+		Folder = "ships"
+		NameKey = "ExampleModShips"
+		TooltipKey = "ExampleModShipsTip" // Optional
+	}
+]

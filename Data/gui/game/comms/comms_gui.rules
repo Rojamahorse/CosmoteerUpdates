@@ -1,0 +1,225 @@
+ToolIcon
+{
+	Texture
+	{
+		File = "hud_comms.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+HailIcon
+{
+	Texture
+	{
+		File = "hud_hail.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+AcceptHailIcon = &HailIcon
+DeclineHailIcon =  &HailingFailedIcon
+HailingIcon
+{
+	Texture
+	{
+		File = "hud_hailing.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+AIHailingIcon
+{
+	Texture
+	{
+		File = "hud_ai_hailing.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+HailingFailedIcon
+{
+	Texture
+	{
+		File = "hud_hailing_failed.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+HailingSound
+{
+    Sound = "sounds/hailing.wav"
+}
+HailAnsweredSound
+{
+    Sound = "sounds/hail_answered.wav"
+}
+HailFailedSound
+{
+    Sound = "sounds/hail_failed.wav"
+}
+
+CursorValid
+{
+	File = "cursor_comms_valid.png"
+	HotSpot = [8, 8]
+	Scale = .5
+}
+CursorInvalid
+{
+	File = "cursor_comms_invalid.png"
+	HotSpot = [8, 8]
+	Scale = .5
+}
+
+RadioUnderlayUntargetedMaterial
+{
+    Shader = "radio_underlay.shader"
+    Color = [255, 255, 255, 150]
+    _radioSpeed = 10
+    TargetBlendMode
+    {
+        SourceRgbFactor = SourceAlpha
+        DestRgbFactor = One
+        RgbOperator = Add
+        SourceAlphaFactor = InverseDestAlpha
+        DestAlphaFactor = One
+        AlphaOperator = Add
+    }
+}
+RadioUnderlayTargetedMaterial
+{
+    Shader = "radio_underlay.shader"
+    Color = [10, 212, 98, 255]
+    _radioSpeed = 10
+    TargetBlendMode
+    {
+        SourceRgbFactor = SourceAlpha
+        DestRgbFactor = One
+        RgbOperator = Add
+        SourceAlphaFactor = InverseDestAlpha
+        DestAlphaFactor = One
+        AlphaOperator = Add
+    }
+}
+HailUnderlayDecliningMaterial
+{
+    Shader = "radio_underlay.shader"
+    Color = [219, 72, 61, 255]
+    _radioSpeed = 10
+    TargetBlendMode
+    {
+        SourceRgbFactor = SourceAlpha
+        DestRgbFactor = One
+        RgbOperator = Add
+        SourceAlphaFactor = InverseDestAlpha
+        DestAlphaFactor = One
+        AlphaOperator = Add
+    }
+}
+HailUnderlayInCommsMaterial = &RadioUnderlayUntargetedMaterial
+HailUnderlayUntargetedMaterial = &RadioUnderlayUntargetedMaterial
+HailUnderlayTargetedMaterial = &RadioUnderlayTargetedMaterial
+
+MissionsTabIcon = &<../missions/missions_gui.rules>/LogIcon
+HireTabIcon = &<../crew/crew_gui.rules>/ToolIcon
+TradeTabIcon = &<../resources/resources_gui.rules>/ToolIcon
+TechsTabIcon = &<../designer/build_gui.rules>/BlueprintsOffSprite
+
+DialogueTabIcon
+{
+	Texture
+	{
+	    File = "dialogue.png"
+	    MipLevels = 2
+	    SampleMode = Linear
+	}
+}
+
+DefaultDialogueLineIcon
+{
+	Texture
+	{
+	    File = "default_dialogue_line.png"
+	    MipLevels = 2
+	    SampleMode = Linear
+	}
+	Size = [40, 40]
+}
+AcceptSurrenderIcon
+{
+	Texture
+	{
+	    File = "accept_surrender.png"
+	    MipLevels = 2
+	    SampleMode = Linear
+	}
+	Size = [40, 40]
+}
+RejectSurrenderIcon
+{
+	Texture
+	{
+	    File = "reject_surrender.png"
+	    MipLevels = 2
+	    SampleMode = Linear
+	}
+	Size = [40, 40]
+}
+OfferSurrenderIcon
+{
+	Texture
+	{
+	    File = "offer_surrender.png"
+	    MipLevels = 2
+	    SampleMode = Linear
+	}
+	Size = [40, 40]
+}
+HoldGuiOnAICallDuration = 3
+//Truce breaking animation
+TruceBrokenSound
+{
+	Sound = "../missions/sounds/mission_failed.wav"
+}
+TruceBrokenTitleColorAnim
+[
+	[0,    [255, 127, 127, 0]]
+	[.2,   [255, 127, 127, 255*2.5]]
+	[1,   [255, 4,   0,   255]]
+	[2.5,  [255, 4,   0,   255]]
+	[2.7,  [255, 4,   0,   0]]
+]
+TruceBrokenInfoColorAnim
+[
+	[0,    [255, 255, 255, 0]]
+	[.15,  [255, 255, 255, 0]]
+	[.35,  [255, 255, 255, 255*2.5]]
+	[1,  [255, 255, 255, 255]]
+	[2.5, [255, 255, 255, 255]]
+	[2.85, [255, 255, 255, 0]]
+]
+TruceBrokenFameAnimIn
+[
+	[0,   [255, 255, 255, 0]]
+	[.2,   [255, 255, 255, 255]]
+]
+TruceBrokenFameAnimOut
+[
+	[0,  [12,  255, 117, 255]]
+	[1,  [12,  255, 117, 0]]
+]
+TruceBrokenDelayBeforeFameDuration = .6
+TruceBrokenFameTickDuration = .5
+TruceBrokenHoldAnimDelayOut = 1.4
+LoopCommsWaveEmptySound
+{
+	Sound = "sounds/UI_comms_wave_empty.wav"
+	Volume = 0.4
+}
+LoopCommsWaveTargettingSound
+{
+	Sound = "sounds/UI_comms_wave_lock.wav"
+	Volume = 0.4
+}
+CommsWaveFalloffDuration = 0.3

@@ -1,0 +1,26 @@
+ID = build2
+TitleKey = "Tutorials/Build2/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.HasSeenCodexPage('build')"
+Entries
+[
+	{
+		Image { Texture { File="resources.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build2/Materials"
+	}
+	{
+		Image { Texture { File="grab_tool.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build2/Grab"
+	}
+	{
+		Image { Texture { File="delete_tool.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build2/Delete"
+	}
+	{
+		TextKey = "Tutorials/Build2/Tip"
+	}
+	{
+		Image { Texture { File="close_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Build2/Close"
+	}
+]

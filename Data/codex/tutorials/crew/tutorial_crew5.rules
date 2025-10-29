@@ -1,0 +1,18 @@
+ID = crew5
+TitleKey = "Tutorials/Crew5/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.HasSeenCodexPage('crew4')"
+Entries
+[
+	{
+		Image { Texture { File="squads.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew5/Squads"
+	}
+	{
+		TextKey = "Tutorials/Crew5/AssigningCrew"
+	}
+	{
+		Image { Texture { File="selected_role.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew5/SquadRoles"
+	}
+]

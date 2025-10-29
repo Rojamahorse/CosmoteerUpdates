@@ -1,0 +1,271 @@
+Type = FSM
+DebugName = "Cluster 1"
+MaxConsecutivePlays = 1
+IntroTracks
+[
+	&~/Track1_Intro
+]
+
+FadeOutAfter = 23*60 // Twenty minutes.
+FadeOutDuration = 15
+FadeOutCondition = "? battle == False and wanted == False"
+FadeOutOnSimPop = true
+SilenceAfterFadeOut = 2
+
+Track1_Intro
+{
+	Type = Layers
+	DebugName = "Cluster 1 intro"
+	Layers
+	[
+		{
+			Type = File
+			File = "Cluster1_Intro.music"
+
+            DynamicVolumeVelocity = 4
+            ZoomVolumes
+            [
+                [1, 90%]
+                [1000, 90%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 1
+        }
+	]
+	NextTracks
+	[
+		&~/Track1_1
+	]
+}
+
+Track1_1
+{
+	Type = Layers
+	DebugName = "Cluster 1.1"
+	MaxConsecutivePlays = 3
+	Layers
+	[
+		{
+			Type = File
+			File = "Cluster1.1_Main.music"
+            DynamicVolumeVelocity = 0.5
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 0.5
+            ZoomVolumeVelocityDown = 0.5
+		}
+		{
+			Type = File
+			File = "Cluster1.1_Explore.music"
+            DynamicVolumeVelocity = 0.5
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 0.5
+            ZoomVolumeVelocityDown = 0.5
+		}
+		{
+			Type = File
+			File = "Cluster1.1_Build.music"
+            DynamicCondition = "? (interior == True or battle == True or wanted == True) and paused == False"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [1, 90%]
+                [6, 0%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 1
+		}
+        {
+            Type = File
+            File = "Cluster1.1_Void.music"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [60, 0%]
+                [1000, 90%]
+            ]
+            ZoomVolumeVelocityUp = 0.5
+            ZoomVolumeVelocityDown = 0.5
+        }
+        {
+            Type = File
+            File = "Cluster1.1_Battle.music"
+            DynamicCondition = "? battle == True or wanted == True"
+            DynamicVolumeVelocity = 0.5
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 75%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 1
+        }
+	]
+	NextTracks
+	[
+		&~/Track1_1
+		&~/Track1_2
+	]
+
+}
+Track1_2
+{
+	Type = Layers
+	DebugName = "Cluster 1.2"
+	MaxConsecutivePlays = 3
+	Layers
+	[
+		{
+			Type = File
+			File = "Cluster1.2_Main.music"
+            DynamicVolumeVelocity = 0.5
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 0.5
+            ZoomVolumeVelocityDown = 0.5
+		}
+		{
+			Type = File
+			File = "Cluster1.2_Explore.music"
+            DynamicVolumeVelocity = 0.5
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 0.5
+            ZoomVolumeVelocityDown = 0.5
+		}
+		{
+			Type = File
+			File = "Cluster1.2_Build.music"
+            DynamicCondition = "? (interior == True or battle == True or wanted == True) and paused == False"
+            DynamicVolumeVelocity = 0.5
+            ZoomVolumes
+            [
+                [1, 90%]
+                [6, 0%]
+            ]
+            ZoomVolumeVelocityUp = 2
+            ZoomVolumeVelocityDown = 1
+		}
+        {
+            Type = File
+            File = "Cluster1.2_Void.music"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [60, 0%]
+                [1000, 90%]
+            ]
+            ZoomVolumeVelocityUp = 0.5
+            ZoomVolumeVelocityDown = 0.5
+        }
+        {
+            Type = File
+            File = "Cluster1.2_Battle.music"
+            DynamicCondition = "? battle == True or wanted == True"
+            DynamicVolumeVelocity = 0.5
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 75%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 1
+        }
+	]
+	NextTracks
+	[
+		&~/Track1_1
+		&~/Track1_2
+		&~/Track1_3
+	]
+
+}
+Track1_3
+{
+	Type = Layers
+	DebugName = "Cluster 1.3"
+	MaxConsecutivePlays = 3
+	Layers
+	[
+		{
+			Type = File
+			File = "Cluster1.3_Main.music"
+            DynamicVolumeVelocity = 0.5
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 1
+		}
+		{
+			Type = File
+			File = "Cluster1.3_Explore.music"
+            DynamicVolumeVelocity = 0.5
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 0%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 1
+		}
+		{
+			Type = File
+			File = "Cluster1.3_Build.music"
+            DynamicCondition = "? (interior == True or battle == True or wanted == True) and paused == False"
+            DynamicVolumeVelocity = 0.5
+            ZoomVolumes
+            [
+                [1, 90%]
+                [6, 0%]
+            ]
+            ZoomVolumeVelocityUp = 1
+            ZoomVolumeVelocityDown = 1
+		}
+        {
+            Type = File
+            File = "Cluster1.3_Void.music"
+            DynamicVolumeVelocity = 1
+            ZoomVolumes
+            [
+                [60, 0%]
+                [1000, 90%]
+            ]
+            ZoomVolumeVelocityUp = 0.5
+            ZoomVolumeVelocityDown = 0.5
+        }
+        {
+            Type = File
+            File = "Cluster1.3_Battle.music"
+            DynamicCondition = "? battle == True or wanted == True"
+            DynamicVolumeVelocity = 0.5
+            ZoomVolumes
+            [
+                [60, 90%]
+                [1000, 75%]
+            ]
+            ZoomVolumeVelocityUp = 4
+            ZoomVolumeVelocityDown = 1
+        }
+	]
+	NextTracks
+	[
+		&~/Track1_1
+		&~/Track1_3
+	]
+}

@@ -1,0 +1,20 @@
+ID = cosmoteer.8_player_career
+Name = "8 Players In Career"
+Version = 1.0.0
+CompatibleGameVersions = ["0.30.2_rc2"]
+ModifiesGameplay = true
+Author = "Walternate Realities"
+Description = "Increases the maximum number of players in Career mode from 4 to 8.\n\n"\
+              "<red>WARNING: Career mode is not designed or optimized to be played with more than 4 players. You may experience very slow progression and very poor performance.</red>"
+
+Actions
+[
+	{
+		Action = Overrides
+		OverrideIn = "<modes/career/career.rules>"
+		Overrides
+		{
+			MaxPlayers = 8
+		}
+	}
+]

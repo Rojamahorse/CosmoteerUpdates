@@ -1,0 +1,124 @@
+Part : <../base_part.rules>/Part
+{
+	SalvageProgressMediaEffectsTimeout = 1
+	SalvageProgressMediaEffects
+	[
+		&<../common/particles/salvage_progress_sparks.rules>
+		&<../common/particles/salvage_progress_ship_smoke.rules>
+		&<../common/particles/salvage_progress_ship_quad.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../common/sounds/metal_deconstruct_loop.wav"
+					Volume = 1
+					Db = -2
+					VolumeOverIntensity = [0.5, 1]
+					SpeedOverIntensity = [2, 3]
+					SpeedVariation = .15
+					RampUpTime = .1
+					RampDownTime = .2
+					MaxConcurrent = 0
+				}
+	]
+
+	ConstructionProgressMediaEffects
+	[
+		&<../common/particles/construction_scaffolding_progress_quad.rules>
+	]
+	ConstructionProgressMediaEffectsTimeout = 1
+
+	ConstructionSwapDelay = 0.2
+	ConstructionFinishedMediaEffects
+	[
+		&<construction/particles/scaffolding_poof_wisps.rules>
+		&<construction/particles/scaffolding_poof_energy.rules>
+		&<construction/particles/scaffolding_poof_energy_simple.rules>
+		&<construction/particles/scaffolding_poof_shadow_quad.rules>
+		&<construction/particles/scaffolding_poof_flash.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			RandomSounds = ["../common/sounds/floor_construct_01.wav",
+							"../common/sounds/floor_construct_02.wav",
+							"../common/sounds/floor_construct_03.wav",
+							"../common/sounds/floor_construct_04.wav",
+							"../common/sounds/floor_construct_05.wav"]
+			Speed = 1
+			SpeedVariation = 0.1
+		}
+	]
+
+	Components : ^/0/Components
+	{
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			//Location = [0.5, 0.5]
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				&<../common/particles/salvage_complete_ship_shrapnel.rules>
+				&<../common/particles/salvage_complete_ship_flash.rules>
+				&<../common/particles/salvage_complete_ship_smoke.rules>
+
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["../common/sounds/metal_deconstruct_small_01.wav",
+									"../common/sounds/metal_deconstruct_small_02.wav",
+									"../common/sounds/metal_deconstruct_small_03.wav"]
+					Volume = 1.3
+					SpeedVariation = .15
+				}
+				
+				: /BASE_SOUNDS/AudioInterior
+				{
+					RandomSounds = ["../common/sounds/floor_deconstruct_01.wav",
+									"../common/sounds/floor_deconstruct_02.wav",
+									"../common/sounds/floor_deconstruct_03.wav"]
+					Speed = 1
+					SpeedVariation = 0.1
+				}
+			]
+		}
+
+		ConstructionStructureSprites
+		{
+			Type = SpriteGrid
+			IncludeWhenUnderConstruction = true
+			IncludeWhenNotUnderConstruction = false
+			Layer = "structure"
+			RectType = Physical
+			RandomUVRotation = true
+			AtlasSprite = &<structure/structure.rules>/Part/Components/Graphics/Floor/DamageLevels/0
+		}
+
+		ConstructionProgressSprites
+		{
+			Type = BlendSpriteGrid
+			IncludeWhenUnderConstruction = true
+			IncludeWhenNotUnderConstruction = false
+			Layer = "construction"
+			AmbiguousSprites = &<construction/scaffolding.rules>/AmbiguousSprites
+			AllowUndefinedBlendSprites = true
+			BlendsWithCategories = []
+			AlwaysBlendWithSelf = true
+			UseConstructionProgressAsDamage = true
+		}
+
+		ConstructionProgressAnimationSprites
+		{
+			Type = BlendSpriteGrid
+			IncludeWhenUnderConstruction = true
+			IncludeWhenNotUnderConstruction = false
+			GetColorFrom = ConstructionTracker
+			Layer = "construction_delta"
+			AmbiguousSprites = &<construction/scaffolding_delta/scaffolding_delta.rules>/AmbiguousSprites
+			AllowUndefinedBlendSprites = true
+			BlendsWithCategories = []
+			AlwaysBlendWithSelf = true
+			UseConstructionProgressAsDamage = true
+		}
+	}
+}

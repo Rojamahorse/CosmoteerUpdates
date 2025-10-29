@@ -1,0 +1,169 @@
+EffectBuckets = &<common_effects/effect_buckets.rules>
+Crew = &<crew/crew.rules>
+Buffs = &<buffs/buffs.rules>
+Statuses = &<statuses/statuses.rules>
+Resources = &<resources/resources.rules>/Resources
+FtlFuelResource = hyperium
+Nuggets = &<resources/resources.rules>/Nuggets
+Nebulas = &<nebulas/nebulas.rules>
+Doodads = &<doodads/doodads.rules>/Doodads
+Factions = &<factions/factions.rules>/Factions
+Commands = &<commands/commands.rules>
+Formations = &<formations/formations.rules>/Formations
+CustomFormations = &<formations/formations.rules>/CustomFormations
+CareerMode = &<modes/career/career.rules>
+CreativeMode = &<modes/creative/creative.rules>
+EliminationMode = &<modes/pvp/pvp_elimination/pvp_elimination.rules>/Mode
+ArenaMode = &<modes/pvp/pvp_arena/pvp_arena.rules>/Mode
+DominationMode = &<modes/pvp/pvp_domination/pvp_domination.rules>/Mode
+BuildBattleMode = &<modes/pvp/pvp_buildbattle/pvp_buildbattle.rules>/Mode
+Codex = &<codex/codex.rules>
+ShipAIs = &<ai/ai.rules>
+BuiltinShips = &<builtin_ships/builtins.rules>/Ships
+GalaxyMap = &<galaxy_map/galaxy_map.rules>
+Planets = &<planets/planets.rules>
+TextSprites = &<gui/text_sprites.rules>
+Widgets = &<gui/widgets.rules>
+Menus = &<gui/menus.rules>
+PostShaders = &<post_shaders/post_shaders.rules>/Shaders
+Music = &<music/music.rules>
+LitSpriteShader = "sprite_lit.shader"
+SpriteNormalsShader = "sprite_normals.shader"
+IndicatorMaterial
+{
+	Shader = "indicators_cycle.shader"
+	_cycleInterval = 0.5
+	_maxScale = 2
+	_colorFluctuateLow = [255, 255, 255, 255*.7]
+	_colorFluctuateHigh = [255, 255, 255, 255*.9]
+	_fluctuateInterval = 1
+}
+
+BuiltInShipsFolder = "builtin_ships"
+
+DecalLayers = 3
+Ships
+[
+	&<ships/terran/terran.rules>/Terran
+	&<ships/asteroid/asteroid.rules>/Asteroid
+	&<ships/megaroid/megaroid.rules>/Megaroid
+]
+
+Roles
+{
+	DefaultRoleColor = Red
+	NewRoleColor = Red
+	RoleColorSRange = [0, 1]
+	RoleColorVRange = [.15, 1]
+}
+
+Game
+{
+	GameGui = &<gui/game/game_gui.rules>
+	Backgrounds = &<backgrounds/backgrounds.rules>
+	MapTransitionDuration = .5
+	MapTransitionSimZoomFactor = (&~/Simulation/Camera/MaxScale) * 2
+	MapTransitionMapZoomFactor = .01
+	MaxFtlFuelPurchase = 1000
+}
+
+Simulation
+{
+	SimGui = &<gui/game/sim_gui.rules>
+
+	AudioSpeedIncreaseDuration = .25
+	AudioSpeedDecreaseDuration = .25
+	PhysicsUpdatesPerSecond = 30
+	CCDThresholdVelocity = (&PhysicsUpdatesPerSecond) * 0.75
+	SightCircleFadeDuration = .5
+	SightCircleSizeTweenSpeed = 2
+	StasisCellSize = 2500
+	StasisLiveRange = &StasisCellSize
+	StasisPreloadRange = (&StasisLiveRange) * 1.5
+	StasisUpdateInterval = 1.0
+	StandardLightHeight = .3275
+	ShipHideAlphaTweenDuration = 0.25
+
+	Network
+	{
+		InputTicksPerSecond = 30
+		MinInputTickDelay = 2
+		MaxInputTickDelay = 60
+		InputTickDelayLatencyFactor = 1
+	}
+
+	Grid
+	{
+		LineColor = [255, 255, 255, 46]
+		CrossColor = [255, 255, 255, 46]
+		DotColor = [255, 255, 255, 255]
+		DesiredLinesAcross = 3
+		ResolutionIncrementFactor = 2
+	}
+
+	Camera
+	{
+		PixelOrthographicFactor = 1/64
+		DefaultScale = 4
+		MinScale = 1
+		MaxScale = 4000
+		MousePanBorderThickness = 4
+		MouseWheelZoomSpeed = 10
+		BorderClampPanSpeed = 10
+		FollowFactor = .9999
+		AutoTrackRampTime = 1
+		DirectControlOffsetFactor = .99
+		DirectControlZoomFactor = 8
+		DirectControlZoomDeadZone = .1
+		DirectControlSmoothStrength = 15
+		ScreenShakeExponent = 1
+		LinearShakeAmount = 1
+		AngularShakeAmount = 2d
+		FTLZoomOutBufferMult = 1.25
+
+		ShakePerlinNoise
+		{
+			GridSize = 4
+			Octaves = 2
+		}
+
+		ZoomClickSound
+		{
+			Sound = "gui/game/sounds/zoom_tick.wav"
+			Volume = .125
+			Speed = 1
+		}
+	}
+
+	Overlays = &<Overlays/overlays.rules>
+
+	GameSpeeds
+	[
+		{ Speed=.125; NameKey="Hud/SpeedEighth"; LongNameKey="Hud/SpeedEighthLong"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_01.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_00.wav" } }
+		{ Speed=.25; NameKey="Hud/SpeedQuarter"; LongNameKey="Hud/SpeedQuarterLong"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_02.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_01.wav" } }
+		{ Speed=.5; NameKey="Hud/SpeedHalf"; LongNameKey="Hud/SpeedHalfLong"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_03.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_02.wav" } }
+		{ Speed=1; NameKey="Hud/Speed1"; LongNameKey="Hud/Speed1Long"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_04.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_03.wav" } }
+		{ Speed=2; NameKey="Hud/Speed2"; LongNameKey="Hud/Speed2Long"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_05.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_04.wav" } }
+		{ Speed=4; NameKey="Hud/Speed4"; LongNameKey="Hud/Speed4Long"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_06.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_05.wav" } }
+		{ Speed=8; NameKey="Hud/Speed8"; LongNameKey="Hud/Speed8Long"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_06.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_06.wav" } }
+	]
+
+	DebugPointLightSprite
+	{
+		Size = [20, 20]
+		Shader = "common_effects/point_light.shader"
+		TargetBlendMode = Add
+		Color = [500, 0, 0]
+	}
+	DebugPointLightHeight = 1
+}
+
+// Convenience references; only used by other .rules files.
+COMMON_EFFECTS = &<common_effects/common_effects.rules>
+COMMON_SOUNDS = &<common_effects/sounds/common_sounds.rules>
+BASE_SOUNDS = &<common_effects/sounds/base_sounds.rules>
+BASE_SHAKE = &<common_effects/base_shake.rules>
+INDICATORS = &<gui/game/indicators/indicators.rules>
+PRIORITIES = &<ships/priorities.rules>
+TIER_TABLES = &<modes/career/tier_tables.rules>
+FLEET_TIER_REMAP_TABLE = &<modes/career/fleet_tier_remap_table.rules>

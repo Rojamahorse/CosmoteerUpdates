@@ -1,0 +1,17 @@
+ID = time
+TitleKey = "Tutorials/Time/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.CommandType == 'move'"
+Entries
+[
+	{
+		Image { Texture { File="speed_controls.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Time/Buttons"
+	}
+	{
+		TextKey = "Tutorials/Time/Faster"
+	}
+	{
+		TextKey = "Tutorials/Time/Tip"
+	}
+]

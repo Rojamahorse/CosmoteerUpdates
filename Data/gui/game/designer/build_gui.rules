@@ -1,0 +1,896 @@
+EditorGroups = &<editor_groups.rules>
+ColorReplaceShader = "color_replace.shader"
+StackedPartGroupGlowShader = "../ship_icon_glow.shader"
+StackedPartGroupGlowColor = [0, 183, 255, 255]
+StackedPartGroupGlowIterations = 5/128
+StackedPartGroupGlowDisplacement = 3
+StackedPartGroupIconScale = 0.8
+StatsGui
+{
+	StatWidgets = &<stat_widgets.rules>/StatWidgets
+	MaxToggleContainerWidth = 300
+	StatToggleButtons
+	{
+		DirectionChooser
+		{
+    		TooltipKey = "BuildBox/Stats/DirectionChooserToggleTip"
+    		EnabledByDefault = false
+    		Icon
+    		{
+    			Texture
+    			{
+    				File = "stat_direction_chooser.png"
+    				MipLevels = 2
+    				SampleMode = Linear
+    			}
+    			VertexColor = [0, 183, 255]
+    		}
+    	}
+		Value
+		{
+    		TooltipKey = "BuildBox/Stats/ValueToggleTip"
+    		EnabledByDefault = false
+    		Icon
+    		{
+    			Texture
+    			{
+    				File = "../../icon_money.png"
+    				MipLevels = 2
+    				SampleMode = Linear
+    			}
+    			VertexColor = [0, 183, 255]
+    		}
+    	}
+    	Mass
+    	{
+			TooltipKey = "BuildBox/Stats/MassToggleTip"
+			EnabledByDefault = false
+    		Icon
+    		{
+    			Texture
+    			{
+    				File = "stat_mass.png"
+    				MipLevels = 2
+    				SampleMode = Linear
+    			}
+    			VertexColor = [0, 183, 255]
+    		}
+    	}
+    	CenterOfMass
+    	{
+			TooltipKey = "BuildBox/Stats/CenterOfMassTip"
+			EnabledByDefault = false
+    		Icon
+    		{
+    			Texture
+    			{
+    				File = "mass_center_toggle.png"
+    				MipLevels = 2
+    				SampleMode = Linear
+    			}
+    			VertexColor = [0, 183, 255]
+    		}
+    	}
+    	Coordinates
+    	{
+    		TooltipKey = "BuildBox/Stats/CoordinatesToggleTip"
+    		EnabledByDefault = false
+    		Icon
+    		{
+    			Texture
+    			{
+    				File = "stat_coords.png"
+    				MipLevels = 2
+    				SampleMode = Linear
+    			}
+    			VertexColor = [0, 183, 255]
+    		}
+    	}
+    	Ftl
+    	{
+    		TooltipKey = "BuildBox/Stats/FtlToggleTip"
+    		Icon = &~/StatsGui/FtlStatSprite
+    	}
+    	CommandPoints
+    	{
+    		TooltipKey = "BuildBox/Stats/CommandPointsToggleTip"
+    		Icon = &~/StatsGui/CommandPointsSprite
+    	}
+		Crew
+		{
+			TooltipKey = "BuildBox/Stats/CrewToggleTip"
+			Icon
+			{
+				Texture
+				{
+					File = "stat_crew.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		Power
+		{
+			TooltipKey = "BuildBox/Stats/PowerToggleTip"
+			Icon
+			{
+				Texture
+				{
+					File = "stat_power.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+		Thermal
+		{
+			TooltipKey = "BuildBox/Stats/ThermalToggleTip"
+			Icon
+			{
+				Texture
+				{
+					File = "stat_thermal.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+				VertexColor = [0, 183, 255]
+			}
+		}
+	}
+	DefaultStatToggleButton : /Widgets/FlatButton, /Widgets/ImageListItem
+	{
+		SelectedNineSlice : StatePressedNineSlice
+    	{
+    		Flags = All
+    	}
+	}
+	DirectionChooserToggleButtonID = DirectionChooser
+	ValueStatToggleButtonID = Value
+	MassStatToggleButtonID = Mass
+	CenterOfMassToggleButtonID = CenterOfMass
+	CoordinatesStatToggleButtonID = Coordinates
+	FtlStatToggleButtonID = Ftl
+	CommandPointsStatToggleButtonID = CommandPoints
+
+	DefaultStatLabel : /Widgets/Label
+    {
+    	TextRenderer : ^/0/TextRenderer
+    	{
+    		Font = &/Widgets/ShadowFont
+    		HAlignment = Right
+    		FontSize = 24
+    		Padding = [10, 0, 0, 0]
+    	}
+    }
+    StatBarSegmentSprite
+    {
+    	Texture
+    	{
+    		File = "../../stat_block.png"
+    		UVMode = Wrap
+    		SampleMode = Linear
+    		MipLevels = max
+    	}
+    	Shader = "stat_block.shader"
+    }
+    StatBarColorLerp
+    [
+    	[255, 0, 0]
+    	[0, 255, 0]
+    ]
+    CommandPointsSprite
+    {
+    	Texture
+    	{
+    		File = "group_control.png"
+    		MipLevels = 2
+    		SampleMode = Linear
+    	}
+    }
+    CommandPointsSufficientColor = [0, 183, 255]
+    CommandPointsInsufficientColor = [255, 0, 0]
+    FtlStatSprite
+    {
+    	Texture
+    	{
+    		File = "stat_ftl.png"
+    		MipLevels = 2
+    		SampleMode = Linear
+    	}
+    }
+}
+
+MirrorLine
+{
+	MirrorLineColor = [10, 212, 98, 255]
+	HandleSprite
+	{
+		Texture
+		{
+			File = "mirror_drag_handle.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	HandleSize = [32, 32]
+}
+
+EditShipToolIcon
+{
+	Texture
+	{
+		File = "hud_build.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+ErrorFlashCount = 2
+ErrorFlashInterval = .1
+
+BlueprintUnderlayColor = [0, 0, 255, 38]
+
+AutoDoorValidColor = [10, 212, 98, 200]
+AutoDoorInvalidColor = [246, 49, 43, 200]
+AutoDoorInvalidCursorColor = [255, 255, 255, 200]
+
+LegalDoorLocationColor1 = [10, 212, 98, 25]
+LegalDoorLocationColor2 = [10, 212, 98, 229]
+LegalDoorLocationInterval = 1
+
+BlueprintsOffSprite
+{
+	Texture
+	{
+		File = "hud_blueprints.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+BlueprintsOnSprite
+{
+	Texture
+	{
+		File = "toggle_blueprints_on.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+RemovePartSprite
+{
+	Texture
+	{
+		File = "tool_delete.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+GrabPartSprite
+{
+	Texture
+	{
+		File = "../tool_grab.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+RepairToolSprite
+{
+	Texture
+	{
+		File = "tool_repair.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+ConstructionInProgressSprite
+{
+	VertexColor = [0, 183, 255, 127]
+	Shader = "./Data/gui/gui_in_progress.shader"
+	Texture = "./Data/gui/gui_in_progress_mask.png"
+	_rotSpeed = 1.0
+	TargetBlendMode
+	{
+		SourceRgbFactor = SourceAlpha
+		DestRgbFactor = One
+		RgbOperator = Add
+		SourceAlphaFactor = Zero
+		DestAlphaFactor = One
+		AlphaOperator = Add
+	}
+}
+
+SelectPartsSprite
+{
+	Texture
+	{
+		File = "../tool_select.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+MirrorOffSprite
+{
+	Texture
+	{
+		File = "toggle_mirror_off.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+MirrorOnSprite
+{
+	Texture
+	{
+		File = "toggle_mirror_on.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+SelectedPartNineSlice = & <./Data/gui/game/sim_gui.rules>/SelectedPartNineSlice
+SelectedMirroredPartNineSlice : SelectedPartNineSlice
+{
+	VertexColor = [255, 255, 255, 127]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+TentativeSelectedPartNineSlice = & <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+TentativeSelectedMirroredPartNineSlice : TentativeSelectedPartNineSlice
+{
+	VertexColor = [255, 255, 255, 127]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+PartSelectionOutlineSprite
+{
+	VertexColor = [255, 255, 255, 255]
+}
+PartSelectionFillSprite
+{
+	VertexColor = [255, 255, 255, 16]
+}
+
+RemovePartColor = [246, 49, 43, 63]
+RemovePartLineColor = [246, 49, 43, 255]
+
+RemovePartNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+{
+	VertexColor = [246, 49, 43, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+
+UnRemovePartNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+{
+	VertexColor = [127, 127, 127, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+
+RemovePartXLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/game/overlay_selection_dashed.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [246, 49, 43, 255]
+		UVRect = [.25, 0, .5, 1]
+	}
+	LineThickness = 1
+
+	BeginCapSprite : LineSprite
+	{
+		UVRect = [0, 0, .25, 1]
+	}
+	BeginCapSize = [.5, 1]
+
+	EndCapSprite : LineSprite
+	{
+		UVRect = [.75, 0, .25, 1]
+	}
+	EndCapSize = [.5, 1]
+}
+RemovePartXLineRectDeflate = .1
+
+GrabPartNineSlice = &TentativeSelectedPartNineSlice
+
+RepairPartNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+{
+	VertexColor = [10, 212, 98, 255]
+	TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+	TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+	TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+	LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+	CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+	RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+	BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+	BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+	BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+}
+
+GrabPartCursor
+{
+	File = "../cursor_grab.png"
+	HotSpot = [40, 40]
+	Scale = .5
+}
+RemovePartCursor
+{
+	File = "cursor_delete.png"
+	HotSpot = [8, 8]
+	Scale = .5
+}
+SelectPartsCursor = &<../sim_gui.rules>/PartModeCursor
+
+RepairCursor
+{
+	File = "cursor_repair.png"
+	HotSpot = [8, 8]
+	Scale = .5
+}
+
+ProhibitedZoneSprite
+{
+	Texture
+	{
+		File = "overlay_prohibited.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+	VertexColor = [255, 255, 255, 51]
+}
+
+DeletedTileSprite
+{
+	Texture
+	{
+		File = "overlay_deletion.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [80/64, 80/64]
+}
+DeletedHorizontalDoorSpriteSize = [(80/64)*(48/64), (80/64)*(14/64)]
+DeletedVerticalDoorSpriteSize = [(80/64)*(14/64), (80/64)*(48/64)]
+
+ConstructionBlockedSprite
+{
+	Texture
+	{
+		File = "overlay_blocked.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+	Shader = "./Data/gui/pulsing.shader"
+}
+
+RotateLeftSprite
+{
+	Texture
+	{
+		File = "tool_rotate_left.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+RotateRightSprite
+{
+	Texture
+	{
+		File = "tool_rotate_right.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+FlipHorizontalSprite
+{
+	Texture
+	{
+		File = "toggle_mirror_off.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+FlipVerticalSprite
+{
+	Texture
+	{
+		File = "tool_flip_vertical.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+TrashcanSprite
+{
+	Texture
+	{
+		File = "tool_delete_selected.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+DeletePartsSprite
+{
+	Texture
+	{
+		File = "tool_delete_selected.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+CopyPartsSprite
+{
+	Texture
+	{
+		File = "tool_copy.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+CutPartsSprite
+{
+	Texture
+	{
+		File = "tool_cut.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+PastePartsSprite
+{
+	Texture
+	{
+		File = "tool_paste.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+CancelPastePartsSprite
+{
+	Texture
+	{
+		File = "../../cancel.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
+BuildSound
+{
+	Sound = "sounds/UI_delete_part.wav"
+}
+BlueprintModeOnSound
+{
+	Sound = "sounds/UI_blueprint_mode_on.wav"
+}
+MakeItSoSound
+{
+	Sound = "sounds/construct.wav"
+}
+BlueprintAddSound
+{
+	Sound = "sounds/blueprint_add.wav"
+}
+BlueprintDeleteSound
+{
+	Sound = "sounds/UI_delete_blueprint.wav"
+}
+BlueprintMakeItSoSound
+{
+	Sound = "sounds/blueprint_construct.wav"
+}
+BlueprintDiscedModificationsPopupSound
+{
+	Sound = "sounds/UI_blueprint_mode_discard_appear.wav"
+}
+BlueprintDiscedModificationsConfirmedSound
+{
+	Sound = "sounds/UI_blueprint_mode_discard.wav"
+}
+RepairSound = &BuildSound
+RepairAllSound
+{
+	Sound = "sounds/repair_all.wav"
+}
+CancelConstructionSound
+{
+	Sound = "sounds/UI_cancel_construction.wav"
+}
+CancelAllSound
+{
+	Sound = "sounds/UI_cancel_all.wav"
+}
+ItemFlipFirstSound
+{
+	Sound = "sounds/UI_item_flip_R.wav"
+}
+ItemFlipSecondSound
+{
+	Sound = "sounds/UI_item_flip_L.wav"
+}
+RotateLeftSound
+{
+	Sound = "sounds/UI_rotate_L.wav"
+}
+RotateRightSound
+{
+	Sound = "sounds/UI_rotate_R.wav"
+}
+SmallModulePutdownSound
+{
+	RandomSounds = ["sounds/UI_small_module_putdown_01.wav",
+					"sounds/UI_small_module_putdown_02.wav",
+					"sounds/UI_small_module_putdown_03.wav",
+					"sounds/UI_small_module_putdown_04.wav"]
+	SpeedVariation = 0.1
+	Db = 1
+}
+MediumModulePutdownSound
+{
+	RandomSounds = ["sounds/UI_medium_module_putdown_01.wav",
+					"sounds/UI_medium_module_putdown_02.wav"]
+	SpeedVariation = 0.1
+	Db = 1
+}
+LargeModulePutdownSound
+{
+	Sound = "sounds/UI_large_module_putdown.wav"
+	SpeedVariation = 0.1
+	Db = 1.5
+}
+StructurePutdownSound
+{
+	RandomSounds = ["sounds/UI_structure_putdown_01.wav",
+					"sounds/UI_structure_putdown_02.wav"]
+	SpeedVariation = 0.1
+	Db = -1
+}
+FloorModulePutdownSound
+{
+	Sound = "sounds/UI_floor_putdown.wav"
+	SpeedVariation = 0.1
+	Db = -2
+}
+DoorModulePutdownSound
+{
+RandomSounds = ["sounds/UI_door_putdown_01.wav",
+				"sounds/UI_door_putdown_02.wav",
+				"sounds/UI_door_putdown_03.wav",
+				"sounds/UI_door_putdown_04.wav"]
+	SpeedVariation = 0.1
+}
+//Blueprint versions
+SmallModuleBlueprintPutdownSound
+{
+	Sound = "sounds/UI_small_blueprint_putdown.wav"
+}
+MediumModuleBlueprintPutdownSound = &SmallModuleBlueprintPutdownSound
+
+LargeModuleBlueprintPutdownSound = &SmallModuleBlueprintPutdownSound
+
+StructureBlueprintPutdownSound = &FloorModuleBlueprintPutdownSound
+
+FloorModuleBlueprintPutdownSound
+{
+	Sound = "sounds/UI_floor_blueprint_putdown.wav"
+}
+DoorModuleBlueprintPutdownSound
+{
+	Sound = "sounds/UI_door_blueprint_putdown.wav"
+}
+
+
+SmallModuleMaxArea = 6
+MediumModuleMaxArea = 12
+
+
+
+FtlOverlayAlpha = .5
+FtlOverlayHueRange = [0, 120]
+
+CrewPathLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	LineThickness = .3
+	LineUPerLength = 1
+
+	BeginCapSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	BeginCapSize = [.3, .3]
+	BeginCapOverlap = .15
+
+	EndCapSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	EndCapSize = [.3, .3]
+	EndCapOverlap = .15
+}
+CrewPathWarningLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_warning.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	LineThickness = .3
+	LineUPerLength = 1
+
+	BeginCapSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_warning_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	BeginCapSize = [.3, .3]
+	BeginCapOverlap = .15
+
+	EndCapSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_warning_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	EndCapSize = [.3, .3]
+	EndCapOverlap = .15
+}
+CrewPathStrongWarningLine
+{
+	LineSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_strong_warning.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	LineThickness = .3
+	LineUPerLength = 1
+
+	BeginCapSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_strong_warning_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	BeginCapSize = [.3, .3]
+	BeginCapOverlap = .15
+
+	EndCapSprite
+	{
+		Texture
+		{
+			File = "../crew/crew_path_strong_warning_cap.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		VertexColor = [255, 255, 255, 255]
+	}
+	EndCapSize = [.3, .3]
+	EndCapOverlap = .15
+}
+CrewPathLineWarningDist = 6
+CrewPathLineStrongWarningDist = 11
+CrewPathLineUSpeed = 4
+CrewPathOverlapSeparation = [.2, .2]
+
+FavoriteGroups = 3
+FavoriteSprite
+{
+	Texture
+	{
+		File = "group_favorites.png"
+		MipLevels = max
+		SampleMode = Linear
+	}
+	Size = [20, 20]
+}
+
+CenterOfMassSprite
+{
+	Texture
+	{
+		File = "mass_center.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+	VertexColor = [10, 212, 98]
+	Size = [2, 2]
+}

@@ -1,0 +1,300 @@
+Groups
+[
+	{
+		Folders = ["straights"]
+		NameKey = "DecalGroups/Straights"
+		Icon
+		{
+			Texture
+			{
+				File = "straights.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+	{
+		Folders = ["curves"]
+		NameKey = "DecalGroups/Curves"
+		Icon
+		{
+			Texture
+			{
+				File = "curves.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+	{
+		Folders = ["fades"]
+		NameKey = "DecalGroups/Fades"
+		Icon
+		{
+			Texture
+			{
+				File = "fades.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+	{
+		Folders = ["shapes"]
+		NameKey = "DecalGroups/Shapes"
+		Icon
+		{
+			Texture
+			{
+				File = "shapes.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+	{
+		Folders = ["icons"]
+		NameKey = "DecalGroups/Icons"
+		Icon
+		{
+			Texture
+			{
+				File = "icons.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+	{
+		Folders = ["text"]
+		NameKey = "DecalGroups/Text"
+		Icon
+		{
+			Texture
+			{
+				File = "text.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+]
+
+DefaultSizes
+{
+	faction_cabal = [2,2]
+	faction_fringe = [2,2]
+	faction_imperium = [2,2]
+	faction_monolith = [2,2]
+
+	icon_biohazard = [2,2]
+	icon_nuclear = [2,2]
+	icon_omega = [1,1]
+	icon_smiley = [1,1]
+	icon_star = [1,1]
+	icon_yinyang = [2,2]
+}
+
+// These are used to upgrade old decals in old saved games and ships into new decals.
+Upgrades
+[
+	{ Old="plain01";    New={ ID="box"; Rot0Size=[1,1]; }; }
+	{ Old="plain02";    New={ ID="triangle_half"; Rot0Size=[1,1]; }; }
+	{ Old="plain03";    New={ ID="triangle_quarter"; Rot0Size=[1,1]; Rotation=1; }; }
+	{ Old="plain04";    New={ ID="triangle_quarter"; Rot0Size=[1,1]; Rotation=2; Invert=true; }; }
+	{ Old="plain05";    New={ ID="triangle_quarter_double"; Rot0Size=[1,1]; Rotation=1; }; }
+	{ Old="plain06";    New={ ID="box_half"; Rot0Size=[1,1]; }; }
+	{ Old="plain07";    New={ ID="box_quarter"; Rot0Size=[1,1]; }; }
+	{ Old="plain08";    New={ ID="box_quarter_double"; Rot0Size=[1,1]; }; }
+	{ Old="plain09";    New={ ID="box_quarter"; Rot0Size=[1,1]; Rotation=3; Invert=true; }; }
+	{ Old="plain10";    New={ ID="triangle_half"; Rot0Size=[1,2]; FlipX=true; }; }
+	{ Old="plain10b";   New={ ID="triangle_half"; Rot0Size=[1,3]; FlipX=true; }; }
+	{ Old="plain11";    New={ ID="triangle_half"; Rot0Size=[1,2]; }; }
+	{ Old="plain11b";   New={ ID="triangle_half"; Rot0Size=[1,3]; }; }
+	{ Old="plain12";    New={ ID="triangle_eighth"; Rot0Size=[1,1]; }; }
+	{ Old="plain12-00"; New={ ID="triangle_eighth_offset"; Rot0Size=[1,1]; }; }
+	{ Old="plain12-01"; New={ ID="triangle_eighth"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="plain13";    New={ ID="triangle_eighth_twin"; Rot0Size=[1,1]; }; }
+	{ Old="plain13-01"; New={ ID="triangle_eighth_twin"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="plain14";    New={ ID="triangle_eighth_triple"; Rot0Size=[1,1]; }; }
+	{ Old="plain15";    New={ ID="triangle_eighth_quad"; Rot0Size=[1,1]; }; }
+	{ Old="plain16";    New={ ID="triangle_eighth_double"; Rot0Size=[1,1]; }; }
+	{ Old="plain17";    New={ ID="triangle_eighth_quad"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="plain18";    New={ ID="box_quarter_triangle_eighth"; Rot0Size=[1,1]; Rotation=3; FlipX=true; Invert=true; }; }
+	{ Old="plain19";    New={ ID="box_quarter_triangle_eighth"; Rot0Size=[1,1]; Rotation=3; FlipX=true; }; }
+	{ Old="plain20";    New={ ID="triangle_eighth_double"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="plain20-01"; New={ ID="stripe_diagonal"; Rot0Size=[1,1]; }; }
+	{ Old="plain21";    New={ ID="triangle_eighth_offset"; Rot0Size=[1,1]; Rotation=1; FlipX=true; Invert=true; }; }
+	{ Old="plain22";    New={ ID="box_quarter_stripe_diagonal"; Rot0Size=[1,1]; Rotation=1; }; }
+	{ Old="plain23";    New={ ID="stripe_diagonal"; Rot0Size=[1,1]; Rotation=2; Invert=true; }; }
+	{ Old="plain24";    New={ ID="stripe_diagonal_double"; Rot0Size=[1,1]; }; }
+	{ Old="plain25";    New={ ID="box_quarter_triangle_eighth_flipped"; Rot0Size=[1,1]; Rotation=1; }; }
+	{ Old="plain26";    New={ ID="triangle_wedge"; Rot0Size=[1,1]; Rotation=3; FlipX=true; Invert=true; }; }
+	{ Old="plain27";    New={ ID="stripe_diagonal_half"; Rot0Size=[1,1]; Rotation=3; FlipX=true; }; }
+	{ Old="plain28";    New={ ID="box_half_stripe_diagonal"; Rot0Size=[1,1]; Rotation=2; }; }
+	{ Old="plain29";    New={ ID="stripe_slant"; Rot0Size=[1,1]; Rotation=1; FlipX=true; Invert=true; }; }
+	{ Old="plain30";    New={ ID="box_quarter_triangle_eighth_flipped"; Rot0Size=[1,1]; Rotation=2; Invert=true; }; }
+	{ Old="plain37";    New={ ID="triangle_tall"; Rot0Size=[1,1]; Rotation=3; }; }
+	{ Old="plain38";    New={ ID="triangle_tall"; Rot0Size=[1,1]; Rotation=3; Invert=true; }; }
+	{ Old="plain48";    New={ ID="triangle_wedge"; Rot0Size=[1,1]; FlipX=true; }; }
+	{ Old="plain49";    New={ ID="stripe_slant"; Rot0Size=[1,1]; FlipX=true; }; }
+	{ Old="plain50";    New={ ID="triangle_wedge_offset"; Rot0Size=[1,1]; Rotation=2; FlipX=true; Invert=true; }; }
+	{ Old="plain51";    New={ ID="triangle_wedge_offset"; Rot0Size=[1,1]; FlipX=true; }; }
+	{ Old="plain52";    New={ ID="cutter_1_offset"; Rot0Size=[1,1]; }; }
+	{ Old="plain53";    New={ ID="cutter_2_offset"; Rot0Size=[1,1]; }; }
+	{ Old="plain54";    New={ ID="cutter_3_offset"; Rot0Size=[1,1]; }; }
+	{ Old="plain55";    New={ ID="cutter_4_offset"; Rot0Size=[1,1]; }; }
+	{ Old="plain56";    New={ ID="cutter_1"; Rot0Size=[1,1]; }; }
+	{ Old="plain57";    New={ ID="cutter_2"; Rot0Size=[1,1]; }; }
+	{ Old="plain58";    New={ ID="cutter_3"; Rot0Size=[1,1]; }; }
+	{ Old="plain59";    New={ ID="cutter_4"; Rot0Size=[1,1]; }; }
+	{ Old="plain60";    New={ ID="cutter_1_offset"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="plain61";    New={ ID="cutter_2_offset"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="plain62";    New={ ID="cutter_3_offset"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="plain63";    New={ ID="cutter_4_offset"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="plain64";    New={ ID="cutter_1"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="plain65";    New={ ID="cutter_2"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="plain66";    New={ ID="cutter_3"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="plain67";    New={ ID="cutter_4"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="plain68";    New={ ID="box_quarter_stripe_diagonal"; Rot0Size=[1,1]; Rotation=1; Invert=true; }; }
+
+	{ Old="curved01";   New={ ID="circle"; Rot0Size=[1,1]; }; }
+	{ Old="curved02";   New={ ID="arc_90"; Rot0Size=[1,1]; }; }
+	{ Old="curved03";   New={ ID="arc_180"; Rot0Size=[1,1]; }; }
+	{ Old="curved04";   New={ ID="arc_180"; Rot0Size=[1,1]; Rotation=1; Invert=true; }; }
+	{ Old="curved05";   New={ ID="arc_180_double"; Rot0Size=[1,1]; }; }
+	{ Old="curved06";   New={ ID="arc_180_double"; Rot0Size=[1,1]; Rotation=1; Invert=true; }; }
+	{ Old="curved07";   New={ ID="arc_90"; Rot0Size=[1,1]; Rotation=2; Invert=true; }; }
+	{ Old="curved08";   New={ ID="box_rounded_half_double"; Rot0Size=[1,1]; Rotation=3; Invert=true; }; }
+	{ Old="curved09";   New={ ID="box_rounded_twin"; Rot0Size=[1,1]; }; }
+	{ Old="curved10";   New={ ID="box_rounded_triple"; Rot0Size=[1,1]; }; }
+	{ Old="curved11";   New={ ID="arc_90_small"; Rot0Size=[1,1]; }; }
+	{ Old="curved12";   New={ ID="arc_90_small_twin"; Rot0Size=[1,1]; }; }
+	{ Old="curved13";   New={ ID="arc_90_small_triple"; Rot0Size=[1,1]; }; }
+	{ Old="curved14";   New={ ID="arc_90_small_quad"; Rot0Size=[1,1]; }; }
+	{ Old="curved15";   New={ ID="arc_90_small_double"; Rot0Size=[1,1]; }; }
+	{ Old="curved16";   New={ ID="arc_90_small_quad"; Rot0Size=[1,1]; Invert=true; }; }
+
+	{ Old="fade00";        New={ ID="fade_triangle_half_empty"; Rot0Size=[1,1]; }; }
+	{ Old="fade00b";       New={ ID="fade_corner_straight"; Rot0Size=[1,1]; }; }
+	{ Old="fade00-01";     New={ ID="fade_corner_straight"; Rot0Size=[1,1]; Rotation=2; Invert=true; }; }
+	{ Old="fade00c";       New={ ID="fade_triangle_half_corner_straight"; Rot0Size=[1,1]; }; }
+	{ Old="fade00d-01";    New={ ID="fade_triangle_half_empty"; Rot0Size=[1,2]; }; }
+	{ Old="fade00d-02";    New={ ID="fade_corner_straight"; Rot0Size=[1,2]; Rotation=2; Invert=true; }; }
+	{ Old="fade00d-12";    New={ ID="fade_corner_straight"; Rot0Size=[1,2]; }; }
+	{ Old="fade00e-01";    New={ ID="fade_triangle_half_empty"; Rot0Size=[1,3]; }; }
+	{ Old="fade00e-02";    New={ ID="fade_corner_straight"; Rot0Size=[1,3]; Rotation=2; Invert=true; }; }
+	{ Old="fade00e-12";    New={ ID="fade_corner_straight"; Rot0Size=[1,3]; }; }
+	{ Old="fade00-04-02";  New={ ID="fade_triangle_quarter_empty"; Rot0Size=[1,1]; Rotation=2; }; }
+	{ Old="fade00-04-03";  New={ ID="fade_triangle_quarter_tip"; Rot0Size=[1,1]; Rotation=2; }; }
+	{ Old="fade00-04-05";  New={ ID="fade_corner_straight_twin"; Rot0Size=[1,1]; }; }
+	{ Old="fade01";        New={ ID="fade_corner"; Rot0Size=[1,1]; Rotation=2; Invert=true; }; }
+	{ Old="fade02";        New={ ID="fade_straight"; Rot0Size=[1,1]; }; }
+	{ Old="fade03";        New={ ID="fade_corner"; Rot0Size=[1,1]; }; }
+	{ Old="fade04";        New={ ID="fade_corner_double"; Rot0Size=[1,1]; }; }
+	{ Old="fade05";        New={ ID="fade_straight_half"; Rot0Size=[1,1]; }; }
+	{ Old="fade06";        New={ ID="fade_straight_half"; Rot0Size=[1,1]; FlipX=true; Invert=true; }; }
+	{ Old="fade07";        New={ ID="fade_straight_triangle_half_empty"; Rot0Size=[1,1]; Rotation=1; FlipX=true; }; }
+	{ Old="fade08";        New={ ID="fade_straight_triangle_half"; Rot0Size=[1,1]; Rotation=1; FlipX=true; }; }
+
+	{ Old="faction_cabal_small";     New={ ID="faction_cabal"; Rot0Size=[1,1]; }; }
+	{ Old="faction_fringe_small";    New={ ID="faction_fringe"; Rot0Size=[1,1]; }; }
+	{ Old="faction_imperium_small";  New={ ID="faction_imperium"; Rot0Size=[1,1]; }; }
+	{ Old="faction_monolith_small";  New={ ID="faction_monolith"; Rot0Size=[1,1]; }; }
+
+	{ Old="icon_skull1";  New={ ID="icon_skull_1"; Rot0Size=[1,1]; }; }
+	{ Old="icon_skull2";  New={ ID="icon_skull_2"; Rot0Size=[2,2]; }; }
+
+	{ Old="text_0";        New={ ID="number_0"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_0";  New={ ID="number_0"; Rot0Size=[2,2]; }; }
+	{ Old="text_1";        New={ ID="number_1"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_1";  New={ ID="number_1"; Rot0Size=[2,2]; }; }
+	{ Old="text_2";        New={ ID="number_2"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_2";  New={ ID="number_2"; Rot0Size=[2,2]; }; }
+	{ Old="text_3";        New={ ID="number_3"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_3";  New={ ID="number_3"; Rot0Size=[2,2]; }; }
+	{ Old="text_4";        New={ ID="number_4"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_4";  New={ ID="number_4"; Rot0Size=[2,2]; }; }
+	{ Old="text_5";        New={ ID="number_5"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_5";  New={ ID="number_5"; Rot0Size=[2,2]; }; }
+	{ Old="text_6";        New={ ID="number_6"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_6";  New={ ID="number_6"; Rot0Size=[2,2]; }; }
+	{ Old="text_7";        New={ ID="number_7"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_7";  New={ ID="number_7"; Rot0Size=[2,2]; }; }
+	{ Old="text_8";        New={ ID="number_8"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_8";  New={ ID="number_8"; Rot0Size=[2,2]; }; }
+	{ Old="text_9";        New={ ID="number_9"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_9";  New={ ID="number_9"; Rot0Size=[2,2]; }; }
+	{ Old="text_a";        New={ ID="letter_a"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_a";  New={ ID="letter_a"; Rot0Size=[2,2]; }; }
+	{ Old="text_b";        New={ ID="letter_b"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_b";  New={ ID="letter_b"; Rot0Size=[2,2]; }; }
+	{ Old="text_c";        New={ ID="letter_c"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_c";  New={ ID="letter_c"; Rot0Size=[2,2]; }; }
+	{ Old="text_d";        New={ ID="letter_d"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_d";  New={ ID="letter_d"; Rot0Size=[2,2]; }; }
+	{ Old="text_e";        New={ ID="letter_e"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_e";  New={ ID="letter_e"; Rot0Size=[2,2]; }; }
+	{ Old="text_f";        New={ ID="letter_f"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_f";  New={ ID="letter_f"; Rot0Size=[2,2]; }; }
+	{ Old="text_g";        New={ ID="letter_g"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_g";  New={ ID="letter_g"; Rot0Size=[2,2]; }; }
+	{ Old="text_h";        New={ ID="letter_h"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_h";  New={ ID="letter_h"; Rot0Size=[2,2]; }; }
+	{ Old="text_i";        New={ ID="letter_i"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_i";  New={ ID="letter_i"; Rot0Size=[2,2]; }; }
+	{ Old="text_j";        New={ ID="letter_j"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_j";  New={ ID="letter_j"; Rot0Size=[2,2]; }; }
+	{ Old="text_k";        New={ ID="letter_k"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_k";  New={ ID="letter_k"; Rot0Size=[2,2]; }; }
+	{ Old="text_l";        New={ ID="letter_l"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_l";  New={ ID="letter_l"; Rot0Size=[2,2]; }; }
+	{ Old="text_m";        New={ ID="letter_m"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_m";  New={ ID="letter_m"; Rot0Size=[2,2]; }; }
+	{ Old="text_n";        New={ ID="letter_n"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_n";  New={ ID="letter_n"; Rot0Size=[2,2]; }; }
+	{ Old="text_o";        New={ ID="letter_o"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_o";  New={ ID="letter_o"; Rot0Size=[2,2]; }; }
+	{ Old="text_p";        New={ ID="letter_p"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_p";  New={ ID="letter_p"; Rot0Size=[2,2]; }; }
+	{ Old="text_q";        New={ ID="letter_q"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_q";  New={ ID="letter_q"; Rot0Size=[2,2]; }; }
+	{ Old="text_r";        New={ ID="letter_r"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_r";  New={ ID="letter_r"; Rot0Size=[2,2]; }; }
+	{ Old="text_s";        New={ ID="letter_s"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_s";  New={ ID="letter_s"; Rot0Size=[2,2]; }; }
+	{ Old="text_t";        New={ ID="letter_t"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_t";  New={ ID="letter_t"; Rot0Size=[2,2]; }; }
+	{ Old="text_u";        New={ ID="letter_u"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_u";  New={ ID="letter_u"; Rot0Size=[2,2]; }; }
+	{ Old="text_v";        New={ ID="letter_v"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_v";  New={ ID="letter_v"; Rot0Size=[2,2]; }; }
+	{ Old="text_w";        New={ ID="letter_w"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_w";  New={ ID="letter_w"; Rot0Size=[2,2]; }; }
+	{ Old="text_x";        New={ ID="letter_x"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_x";  New={ ID="letter_x"; Rot0Size=[2,2]; }; }
+	{ Old="text_y";        New={ ID="letter_y"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_y";  New={ ID="letter_y"; Rot0Size=[2,2]; }; }
+	{ Old="text_z";        New={ ID="letter_z"; Rot0Size=[1,1]; }; }
+	{ Old="text_large_z";  New={ ID="letter_z"; Rot0Size=[2,2]; }; }
+
+	{ Old="text2_and";                New={ ID="symbol_and"; Rot0Size=[1,1]; }; }
+	{ Old="text2_large_and";          New={ ID="symbol_and"; Rot0Size=[2,2]; }; }
+	{ Old="text2_comma";              New={ ID="symbol_comma"; Rot0Size=[1,1]; }; }
+	{ Old="text2_large_comma";        New={ ID="symbol_comma"; Rot0Size=[2,2]; }; }
+	{ Old="text2_dash";               New={ ID="symbol_dash"; Rot0Size=[1,1]; }; }
+	{ Old="text2_large_dash";         New={ ID="symbol_dash"; Rot0Size=[2,2]; }; }
+	{ Old="text2_dot";                New={ ID="symbol_dot"; Rot0Size=[1,1]; }; }
+	{ Old="text2_large_dot";          New={ ID="symbol_dot"; Rot0Size=[2,2]; }; }
+	{ Old="text2_exclamation";        New={ ID="symbol_exclamation"; Rot0Size=[1,1]; }; }
+	{ Old="text2_large_exclamation";  New={ ID="symbol_exclamation"; Rot0Size=[2,2]; }; }
+	{ Old="text2_question";           New={ ID="symbol_question"; Rot0Size=[1,1]; }; }
+	{ Old="text2_large_question";     New={ ID="symbol_question"; Rot0Size=[2,2]; }; }
+
+	// Upgrades for decals removed during the release candidate.
+	{ Old="fade_triangle_half_filled";     New={ ID="fade_corner_straight"; Rot0Size=[1,1]; Rotation=2; Invert=true; }; }
+	{ Old="fade_triangle_quarter_filled";  New={ ID="fade_corner_straight_twin"; Rot0Size=[1,1]; Rotation=2; Invert=true; }; }
+	{ Old="triangle_wedge_double";         New={ ID="stripe_slant"; Rot0Size=[1,1]; Invert=true; }; }
+	{ Old="box_rounded_twin_reversed";     New={ ID="box_rounded_half_double"; Rot0Size=[1,1]; }; }
+	{ Old="icon_skull";                    New={ ID="icon_skull_2"; Rot0Size=[1,1]; }; }
+]

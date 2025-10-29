@@ -1,0 +1,2049 @@
+Part : <../base_large_part_terran.rules>/Part
+{
+	NameKey = "Parts/ResonanceBeamTurret"
+	IconNameKey = "Parts/ResonanceBeamTurretIcon"
+	ID = cosmoteer.resonance_beam_turret
+	OtherIDs = []
+	EditorGroup = "WeaponsEnergy"
+	DescriptionKey = "Parts/ResonanceBeamTurretDesc"
+	Resources
+	[
+		[steel, 80]
+		[coil2, 20]
+		[diamond, 2]
+	]
+	Size = [4,4]
+	PhysicalRect = [0, 0, 4, 4]
+	SaveRect = &PhysicalRect
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	MaxHealth = 12500
+	TypeCategories = [weapon, uses_power, is_crewed, heat_management]
+	SignificanceToggle = ScorchedToggle
+	ReceivableBuffs : ^/0/ReceivableBuffs [ThermalIntensity, ThermalRadius, ThermalActivity]
+	Flammable = false
+	ProhibitedBy : ^/0/ProhibitedBy [tall]
+	ProhibitRects
+	[
+		[tall, [-2, -2, 8, 2]]
+		[tall, [-2, 0, 2, 6]]
+		[tall, [4, 0, 2, 6]]
+		[tall, [0, 4, 1, 2]]
+		[tall, [3, 4, 1, 2]]
+	]
+	BlockedTravelCells
+	[
+		[1, 0], [2, 0]
+		[1, 1], [2, 1]
+	]
+	ForceManhattanPathInPart = true
+	BlockedTravelCellDirections
+	[
+		{
+			Key = [1, 2]
+			Value = [Right]
+		}
+		{
+			Key = [2, 2]
+			Value = [Left]
+		}
+	]
+	AllowedDoorLocations
+	[
+		[0, -1]
+		[3, -1]
+		[-1,  1]
+		[-1,  2]
+		[ 4,  1]
+		[ 4,  2]
+		[ 1,  4]
+		[ 2,  4]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [61.3, 92]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, PartCrew, ScorchedToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 8
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
+		// Heat safety
+		BaseHeatPerInterval
+		{
+			Type = StaticValue
+			Value = &../HeatGenerationConverter/ToQuantity/BaseValue
+		}
+		HeatProducedPerInterval
+		{
+			Type = MultiValue
+			Values = [ BaseHeatPerInterval, CombinedHeatGeneration ]
+			Mode = Multiply
+		}
+		HeatProductionIntervalsPerEmission
+		{
+			Type = StaticValue
+			Value = "ceil((&../BeamEmitter/Duration) / (&../HeatGenerationConverter/Interval))"
+		}
+		HeatProducedPerEmission
+		{
+			Type = MultiValue
+			Values = [ HeatProducedPerInterval, HeatProductionIntervalsPerEmission ]
+			Mode = Multiply
+		}
+
+		AnticipatedSelfHeatProduction
+		{
+			Type = ValueProxy
+			ProxyToggle = IsFiring
+			ComponentID = HeatProducedPerEmission
+		}
+		Networked_AnticipatedSelfHeatProduction
+		{
+			Type = NetworkValue
+			ValueSource = AnticipatedSelfHeatProduction
+			Categories = [ anticipated_heat_generation ]
+		}
+		Network_AnticipatedHeatProduction
+		{
+			Type = NetworkValueReceiver
+			Mode = Add
+			AllowUncategorized = false
+			Categories = [ anticipated_heat_generation ]
+		}
+		AnticipatedRemainingHeatCapacity
+		{
+			Type = ValueOperation
+			Operator = Subtract
+			ValueOne = { ID = NetworkHeatInput; ValueID = "RemainingCapacity" }
+			ValueTwo = Network_AnticipatedHeatProduction
+		}
+		EmissionsUntilHeatFull
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne = AnticipatedRemainingHeatCapacity
+			ValueTwo = HeatProducedPerEmission
+			NaNFallbackValue = 1;
+		}
+		HasCapacityForBeamDurationHeatProduction
+		{
+			Type = ThresholdToggle
+			ValueFrom = EmissionsUntilHeatFull
+			MinAmount = 1
+		}
+
+//		HeatProductionIntervalsUntilFull
+//		{
+//			Type = ValueOperation
+//			Operator = Divide
+//			ValueOne = { ID = NetworkHeatInput; ValueID = "RemainingCapacity" }
+//			ValueTwo = HeatProducedPerInterval
+//			NaNFallbackValue = 1
+//		}
+//		HasCapacityForBeamDurationHeatProduction
+//		{
+//			Type = ThresholdToggle
+//			ValueFrom = HeatProductionIntervalsUntilFull
+//			// The number of heat production ticks that could occur from a single beam emitter trigger
+//			MinAmount = "ceil((&../BeamEmitter/Duration) / (&../HeatGenerationConverter/Interval))"
+//		}
+
+		SafetyToggle
+		{
+			Type = UIToggle
+			ToggleID = "thermal_safety"
+			Default = 1
+		}
+
+		OverclockModeToggle { Type = StaticToggle; ToggleOn = false; }
+
+		SafeModeFireToggle
+		{
+			Type = MultiToggle
+			Mode = All
+			Toggles
+			[
+				SafetyToggle,
+				HasCapacityForBeamDurationHeatProduction
+			]
+		}
+		FireSafetyToggle
+		{
+			Type = MultiToggle
+			Mode = Any
+			Toggles
+			[
+				{
+					Toggle = SafetyToggle
+					Invert = true
+				}
+				SafeModeFireToggle
+			]
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+
+		FirePermissionToggle
+		{
+			Type = MultiToggle
+			Mode = All
+			Toggles  [FireSafetyToggle, FireModeToggle]
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 24000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ToggleOnResources = &../BeamEmitter/ResourcesUsed
+			ToggleOffResources = (&ToggleOnResources) - 1
+		}
+
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = CommandConsumptionToggle
+		}
+
+		IsFiringTimer
+		{
+			Type = Timer
+			Duration = (&../BeamEmitter/Duration) + 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+			StartTrigger = BeamEmitter
+			ResetTrigger = BeamEmitter
+			StartExpired = true
+			InvertToggle = true
+		}
+
+		IsFiring
+		{
+			Type = MultiToggle
+			Toggles = [IsFiringTimer]
+			Mode = All
+		}
+
+		HeatStorage
+		{
+			Type = ResourceStorage
+			ResourceType = heat
+			MAX_STATUS_HEAT = 5000
+			MaxResources = (&MAX_STATUS_HEAT) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+			InitToMaxResources = 0
+			IgnoreResourcesForInitToMax = true
+		}
+
+		NetworkedHeatStorage
+		{
+			Type = NetworkResourceStore
+			ResourceType = heat
+			ResourceStorage = HeatStorage
+			Categories = [ thermal_storage ]
+		}
+
+		NetworkHeatInput
+		{
+			Type = NetworkResourceInput
+			ResourceType = heat
+			Mode = DistributeProportionallyByAvailable
+			Categories = [ thermal_storage ]
+		}
+
+		OverflowHeatStorage
+		{
+			Type = ResourceConsumingStorage
+			ResourceType = heat
+			TriggerThreshold = 0
+			ProvidedValuePerResource = (&<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO)
+		}
+
+		HeatDistributionStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = heat
+			ResourceStorages = [NetworkHeatInput, OverflowHeatStorage]
+			AddMode = InOrder
+			RemoveMode = InReverseOrder
+		}
+
+		HeatGenerationConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsFiring
+			ToStorage = HeatDistributionStorage
+			ToQuantity
+			{
+				BaseValue = (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO) * (&../Interval)
+				BuffType = ThermalActivity
+				BuffMode = Multiply
+			}
+			Interval = 0.5
+		}
+
+		NetworkHeatOutput
+		{
+			Type = NetworkResourceOutput
+			ResourceType = heat
+			Mode = DistributeProportionallyByAvailable
+		}
+
+		HeatDissipationConverter
+		{
+			Type = ResourceConverter
+			FromStorage = NetworkHeatOutput
+			MinFromQuantityForConversion = 1
+			BASE_DISSIPATION = 50
+			DISSIPATION_PER_SECOND = (&BASE_DISSIPATION) / (&Interval)
+			FromQuantity = (&BASE_DISSIPATION) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+			Interval = 0.5
+		}
+
+
+		BasePumpUtilization
+		{
+			Type = ToggleValueSelector
+			Toggle = IsIntendingToFire
+			ToggleOnValue = One
+			ToggleOffValue = Zero
+		}
+		PumpUtilization
+		{
+			Type = MultiValue
+			Values = [ BasePumpUtilization ]
+			Mode = Multiply
+		}
+
+		NetworkedPumpUtilization
+		{
+			Type = NetworkValue
+			ValueSource = PumpUtilization
+			Categories = [ thermal_pump_utilization ]
+		}
+		BlueprintNetworkedPumpUtilization : NetworkedPumpUtilization
+		{
+			ValueSource = One
+			IncludeInPhysical = false
+			IncludeInBlueprints = true
+		}
+
+		Network_PumpHeatGeneration
+		{
+			Type = NetworkValueReceiver
+			AllowUncategorized = false
+			Categories = [ thermal_activity ]
+			Mode = Add
+			IncludeInBlueprints = true
+		}
+
+		BaseHeatGeneration
+		{
+			Type = StaticValue
+			Value = 600
+		}
+		CombinedHeatGeneration
+		{
+			Type = MultiValue
+			Mode = Add
+			Values = [ BaseHeatGeneration, Network_PumpHeatGeneration ]
+			IncludeInBlueprints = Normal
+		}
+
+		NetworkAmplification
+		{
+			Type = NetworkValueReceiver
+			AllowUncategorized = false
+			Categories = [ thermal_amplification ]
+			Mode = Add
+			IncludeInBlueprints = true
+		}
+		NetworkDilation
+		{
+			Type = NetworkValueReceiver
+			AllowUncategorized = false
+			Categories = [ thermal_dilation ]
+			Mode = Add
+			IncludeInBlueprints = true
+		}
+
+		BaseAmplification
+		{
+			Type = StaticValue
+			Value = 100%
+		}
+
+		BaseDilation
+		{
+			Type = StaticValue
+			Value = 50%
+		}
+
+		CombinedAmplification
+		{
+			Type = MultiValue
+			Values = [ BaseAmplification, NetworkAmplification ]
+			Mode = Add
+			IncludeInBlueprints = All
+		}
+		CombinedDilation
+		{
+			Type = MultiValue
+			Values = [ BaseDilation, NetworkDilation ]
+			Mode = Add
+			IncludeInBlueprints = All
+		}
+
+		Zero
+		{
+			Type = StaticValue
+			Value = 0
+		}
+		One
+		{
+			Type = StaticValue
+			Value = 1
+		}
+		NegOne
+		{
+			Type = StaticValue
+			Value = -1
+		}
+
+		ThermalIntensityBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = ThermalIntensity
+			BuffAmount = 1
+			BuffMultiplier = CombinedAmplification
+		}
+		ThermalRadiusBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = ThermalRadius
+			BuffAmount = 1
+			BuffMultiplier = CombinedDilation
+		}
+		ThermalActivityBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = ThermalActivity
+			BuffAmount = 1
+			BuffMultiplier = CombinedHeatGeneration
+		}
+
+		OverheatEffects
+		{
+			Type = TriggeredEffects
+			Location = [2, 2]
+			Trigger = OverflowHeatStorage
+			FactorHitEffectsWith = OverflowHeatStorage
+			HitEffects = &<./Data/ships/terran/base_large_part_terran_overclock.rules>/Part/Components/OverheatEffects/HitEffects
+		}
+
+		TurretCollider
+		{
+			Type = CircleCollider
+			Location = &../Turret/Location
+			Radius = 85/64
+			IsHigh = true
+		}
+
+		Targeter
+		{
+			Type = UITargeter
+			TargeterID = thermal_aim
+			Weapons = [Turret, FixedWeapon]
+		}
+
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [2, 2]
+			Rotation = -90d
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FirePermissionToggle = FirePermissionToggle
+			TargetingEmitter = BeamEmitter
+			FireInterval = .2
+			FiringArc = 270d
+			RotateSpeed = 60d
+			FireThresholdAngle = 2d
+			AIFirepowerRating = 7500
+			IgnoreFriendlyShipLowLOSChecks = true
+			HoldTargetAfterCancel = 3
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SuppressDirectControlWhenTargetingShipRelativePoints = true
+			SaveShipRelativeTargets = true
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		InterpolatedTurret // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			Location = &../Turret/Location
+			MatchTransformOf = Turret
+			MatchRotationSpeed = Infinity
+			InterpolateRotation = true
+		}
+
+		FixedWeapon
+		{
+			Type = FixedWeapon
+			ChainedTo = Turret
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = &../Turret/FireInterval
+			AIFirepowerRating = 0
+			TargetingEmitter = BeamEmitter
+			DefaultDirectControlBinding = 0
+			FirePermissionToggle = FirePermissionToggle
+			IgnoreFriendlyShipLowLOSChecks = true
+
+			AutoTarget = &../Turret/AutoTargets/0
+		}
+
+		FixedWeaponHasResourcesTriggerProxy
+		{
+			Type = TriggerProxy
+			ComponentID = FixedWeapon
+			ProxyToggle = &../BeamEmitter/ResourceStorage
+		}
+		IsIntendingToFire
+		{
+			Type = TriggeredToggle
+			OnTrigger = FixedWeaponHasResourcesTriggerProxy
+			OffTrigger = IsFiringTimer
+		}
+
+		BeamEmitter : <./Data/shots/resonance_beam/resonance_beam.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = Turret
+			FireTrigger = FixedWeaponHasResourcesTriggerProxy
+			GetTargetFrom = Turret
+			AttachBeamMediaEffectsTo = InterpolatedTurret
+			Location = [1.2, 0]
+			OperationalToggle = IsOperational
+			Duration = 1
+			ResourceStorage = BatteryStorage
+			ResourcesUsed = 350
+			MinResourcesUsed = 1
+		}
+
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [69/64, 129/64]
+			Rotation = 101d
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [187/64, 129/64]
+			Rotation = -101d
+		}
+		CrewLocation3
+		{
+			Type = CrewLocation
+			Location = [82/64, 178/64]
+			Rotation = 50.5d
+		}
+		CrewLocation4
+		{
+			Type = CrewLocation
+			Location = [174/64, 178/64]
+			Rotation = -50.5d
+		}
+
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 4
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				&../../CrewLocation1/Location
+				&../../CrewLocation2/Location
+				&../../CrewLocation3/Location
+				&../../CrewLocation4/Location
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+				CrewLocation3
+				CrewLocation4
+			]
+		}
+
+		Port_TopLeft
+		{
+			Type = NetworkPort
+			Types = [ thermal ]
+			Location = [1, 0]
+			Direction = Up
+			RouteSource = NetworkHeatInput
+			RouteEndpoint = NetworkHeatInput
+			BlueprintRouteSource = BlueprintNetworkedPumpUtilization
+			BlueprintRouteEndpoint = BlueprintNetworkedPumpUtilization
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
+		}
+		Port_TopRight : Port_TopLeft
+		{
+			Location = [2, 0]
+		}
+
+		Port_RightTop : Port_TopLeft
+		{
+			Location = [3, 1]
+			Direction = Right
+		}
+		Port_RightBottom : Port_RightTop
+		{
+			Location = [3, 2]
+		}
+
+		Port_BottomRight : Port_TopLeft
+		{
+			Location = [2, 3]
+			Direction = Down
+		}
+		Port_BottomLeft : Port_BottomRight
+		{
+			Location = [1, 3]
+		}
+
+		Port_LeftBottom : Port_TopLeft
+		{
+			Location = [0, 2]
+			Direction = Left
+		}
+		Port_LeftTop : Port_LeftBottom
+		{
+			Location = [0, 1]
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[NetworkHeatInput, NetworkHeatOutput, 0]
+						[NetworkHeatInput, NetworkedHeatStorage, 0]
+						[NetworkHeatInput, NetworkedPumpUtilization, 0]
+						[NetworkHeatInput, Network_PumpHeatGeneration, 0]
+						[NetworkHeatInput, NetworkAmplification, 0]
+						[NetworkHeatInput, NetworkDilation, 0]
+						[NetworkHeatInput, Networked_AnticipatedSelfHeatProduction, 0]
+						[NetworkHeatInput, Network_AnticipatedHeatProduction, 0]
+					]
+				}
+			]
+		}
+		BlueprintRouter
+		{
+			Type = NetworkRouter
+			IncludeInPhysical = false
+			IncludeInBlueprints = All
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[Network_PumpHeatGeneration, BlueprintNetworkedPumpUtilization, 0]
+						[Network_PumpHeatGeneration, NetworkDilation, 0]
+						[Network_PumpHeatGeneration, NetworkAmplification, 0]
+					]
+				}
+			]
+		}
+
+		DilationValueOverlay
+		{
+			Type = BlueprintNetworkValueOverlay
+			FormatKey = "BuildBox/DilationBuffPercentageFmt"
+			BorderColor = [10, 212, 98, 160]
+			FillColor = [10, 212, 98, 64]
+			ValueSource = CombinedDilation
+			ValueScale = 100
+			ValidSignals = [ pump_dilation ]
+			SignalThroughNode = BlueprintNetworkedPumpUtilization
+			DrawOnHover = true
+		}
+		AmplificationValueOverlay : DilationValueOverlay
+		{
+			FormatKey = "BuildBox/AmplificationBuffPercentageFmt"
+			ValueSource = CombinedAmplification
+			ValidSignals = [ pump_amplification ]
+		}
+		PumpOverlaySignal_Dilation
+		{
+			Type = BlueprintNetworkOverlaySignal
+			Signal = pump_dilation
+			SignalThroughNode = BlueprintNetworkedPumpUtilization
+		}
+		PumpOverlaySignal_Amplification : PumpOverlaySignal_Dilation
+		{
+			Signal = pump_amplification
+		}
+
+		DestroyedHeatEffects
+		{
+			Type = DeathEffects
+			Location = [2, 2]
+			IncludeWhenUnderConstruction = false
+			FactorHitEffectsWith = HeatStorage
+
+			HitEffects
+			[
+				{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					HitPartSourceRectType = Normal
+					StatusValue = 0
+					StatusValuePool
+					{
+						BaseValue = &~/Part/Components/HeatStorage/MAX_STATUS_HEAT
+						EffectScaleExponent = 1
+					}
+					MaxCost = 3
+					EmptyTileCost = Infinity
+					ValueFalloff = 1
+					FalloffPadding = 1
+					Filter
+					{
+						Self = true
+					}
+				}
+			]
+		}
+		DestroyedMediaEffects
+		{
+			Type = DeathEffects
+			Location = [2, 2]
+			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedMediaEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/HugePartScorched
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [4,4]
+					}
+					{
+						File = "floor_33.png"
+						Size = [4,4]
+					}
+					{
+						File = "floor_66.png"
+						Size = [4,4]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer ="doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [3, 4]
+						AnimationInterval = 0.10
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [3, 4]
+						AnimationInterval = 0.10
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [3, 4]
+						AnimationInterval = 0.10
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [3, 4]
+					}
+					{
+						File = "doodads_off_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "doodads_off_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [4, 4]
+					}
+					{
+						File = "walls_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "walls_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [4, 4]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				Offset = [0, 1.5]
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [4, 1]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [4, 1]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [4, 1]
+					}
+				]
+			}
+		}
+
+		TurretGraphics
+		{
+			Type = Graphics
+			ChainedTo = InterpolatedTurret
+			Location = [81/64, 0]
+			Rotation = 90d
+			OperationalToggle = IsOperational
+			DoodadToggle = BeamEmitter
+			ShowToggledDoodadsWhenNotOperational = false
+			Floor
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "turret_shadow.png"
+						Size = [3, 5]
+						Offset = [0, 1]
+					}
+				]
+			}
+			ToggleOnDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"turret_firing1.png"
+							"turret_firing2.png"
+							"turret_firing3.png"
+							"turret_firing4.png"
+							"turret_firing5.png"
+							"turret_firing6.png"
+							"turret_firing7.png"
+							"turret_firing8.png"
+						]
+						NormalsAnimationFiles
+						[
+							"turret_firing_normals.png"
+							"turret_firing_normals.png"
+							"turret_firing_normals.png"
+							"turret_firing_normals.png"
+							"turret_firing_normals.png"
+							"turret_firing_normals.png"
+							"turret_firing_normals.png"
+							"turret_firing_normals.png"
+						]
+						Size = [4,7]
+						AnimationInterval = 0.05
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"turret_firing1_33.png"
+							"turret_firing2_33.png"
+							"turret_firing3_33.png"
+							"turret_firing4_33.png"
+							"turret_firing5_33.png"
+							"turret_firing6_33.png"
+							"turret_firing7_33.png"
+							"turret_firing8_33.png"
+						]
+						NormalsAnimationFiles
+						[
+							"turret_firing_normals_33.png"
+							"turret_firing_normals_33.png"
+							"turret_firing_normals_33.png"
+							"turret_firing_normals_33.png"
+							"turret_firing_normals_33.png"
+							"turret_firing_normals_33.png"
+							"turret_firing_normals_33.png"
+							"turret_firing_normals_33.png"
+						]
+						Size = [4,7]
+						AnimationInterval = 0.05
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"turret_firing1_66.png"
+							"turret_firing2_66.png"
+							"turret_firing3_66.png"
+							"turret_firing4_66.png"
+							"turret_firing5_66.png"
+							"turret_firing6_66.png"
+							"turret_firing7_66.png"
+							"turret_firing8_66.png"
+						]
+						NormalsAnimationFiles
+						[
+							"turret_firing_normals_66.png"
+							"turret_firing_normals_66.png"
+							"turret_firing_normals_66.png"
+							"turret_firing_normals_66.png"
+							"turret_firing_normals_66.png"
+							"turret_firing_normals_66.png"
+							"turret_firing_normals_66.png"
+							"turret_firing_normals_66.png"
+						]
+						Size = [4,7]
+						AnimationInterval = 0.05
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"turret_idle1.png"
+							"turret_idle2-8.png"
+							"turret_idle3-7.png"
+							"turret_idle4-6.png"
+							"turret_idle5.png"
+							"turret_idle4-6.png"
+							"turret_idle3-7.png"
+							"turret_idle2-8.png"
+						]
+						NormalsAnimationFiles
+						[
+							"turret_idle_normals.png"
+							"turret_idle_normals.png"
+							"turret_idle_normals.png"
+							"turret_idle_normals.png"
+							"turret_idle_normals.png"
+							"turret_idle_normals.png"
+							"turret_idle_normals.png"
+							"turret_idle_normals.png"
+						]
+						Size = [4,7]
+						AnimationInterval = 0.125
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"turret_idle1_33.png"
+							"turret_idle2-8_33.png"
+							"turret_idle3-7_33.png"
+							"turret_idle4-6_33.png"
+							"turret_idle5_33.png"
+							"turret_idle4-6_33.png"
+							"turret_idle3-7_33.png"
+							"turret_idle2-8_33.png"
+						]
+						NormalsAnimationFiles
+						[
+							"turret_idle_normals_33.png"
+							"turret_idle_normals_33.png"
+							"turret_idle_normals_33.png"
+							"turret_idle_normals_33.png"
+							"turret_idle_normals_33.png"
+							"turret_idle_normals_33.png"
+							"turret_idle_normals_33.png"
+							"turret_idle_normals_33.png"
+						]
+						Size = [4,7]
+						AnimationInterval = 0.125
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"turret_idle1_66.png"
+							"turret_idle2-8_66.png"
+							"turret_idle3-7_66.png"
+							"turret_idle4-6_66.png"
+							"turret_idle5_66.png"
+							"turret_idle4-6_66.png"
+							"turret_idle3-7_66.png"
+							"turret_idle2-8_66.png"
+						]
+						NormalsAnimationFiles
+						[
+							"turret_idle_normals_66.png"
+							"turret_idle_normals_66.png"
+							"turret_idle_normals_66.png"
+							"turret_idle_normals_66.png"
+							"turret_idle_normals_66.png"
+							"turret_idle_normals_66.png"
+							"turret_idle_normals_66.png"
+							"turret_idle_normals_66.png"
+						]
+						Size = [4,7]
+						AnimationInterval = 0.125
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						File = "turret_off.png"
+						NormalsFile = "turret_off_normals.png"
+						Size = [4,7]
+					}
+					{
+						File = "turret_off_33.png"
+						NormalsFile = "turret_off_normals_33.png"
+						Size = [4,7]
+					}
+					{
+						File = "turret_off_66.png"
+						NormalsFile = "turret_off_normals_66.png"
+						Size = [4,7]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [76/64, 85/64]
+				DamageLevels
+				[
+					{
+						File = "light_blob.png"
+						Size = [4, 4]
+						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255, 115, 55]
+					}
+				]
+			}
+		}
+
+		TurretGraphics_FancyLight2
+		{
+			Type = Graphics
+			ChainedTo = InterpolatedTurret
+			Location = [81/64, 0]
+			Rotation = 90d
+			OperationalToggle = IsOperational
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [-76/64, 85/64]
+				DamageLevels
+				[
+					{
+						File = "light_blob.png"
+						Size = [4, 4]
+						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255, 115, 55]
+						MirrorU = true
+					}
+				]
+			}
+		}
+
+		OverclockSpritesWhenTurretIsOperationalComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOperational
+			Components
+			{
+				OverclockOpenCloseSprite
+				{
+					Type = OpenCloseSprite
+					ChainedTo = InterpolatedTurret
+					Location = [177/64, 0]
+					Rotation = 90d
+					OperationalToggle = OverclockModeToggle
+//					OperationalToggle = SafetyToggle
+//					InvertOperationalToggle = true
+					Layer = "roof_turrets"
+					OpenDamageLevels
+					[
+						{
+							AnimationFiles
+							[
+								"turret_overclock0.png"
+								"turret_overclock1_on.png"
+								"turret_overclock2_on.png"
+								"turret_overclock3_on.png"
+							]
+							NormalsAnimationFiles
+							[
+								"turret_overclock_normals0.png"
+								"turret_overclock_normals1_on.png"
+								"turret_overclock_normals2_on.png"
+								"turret_overclock_normals3_on.png"
+							]
+							Size = [3, 2]
+							AnimationInterval = 0.1
+							AnimationStartTime = MinValue
+							ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"turret_overclock0_33.png"
+								"turret_overclock1_on_33.png"
+								"turret_overclock2_on_33.png"
+								"turret_overclock3_on_33.png"
+							]
+							NormalsAnimationFiles
+							[
+								"turret_overclock_normals0_33.png"
+								"turret_overclock_normals1_on_33.png"
+								"turret_overclock_normals2_on_33.png"
+								"turret_overclock_normals3_on_33.png"
+							]
+							Size = [3, 2]
+							AnimationInterval = 0.1
+							AnimationStartTime = MinValue
+							ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"turret_overclock0_66.png"
+								"turret_overclock1_on_66.png"
+								"turret_overclock2_on_66.png"
+								"turret_overclock3_on_66.png"
+							]
+							NormalsAnimationFiles
+							[
+								"turret_overclock_normals0_66.png"
+								"turret_overclock_normals1_on_66.png"
+								"turret_overclock_normals2_on_66.png"
+								"turret_overclock_normals3_on_66.png"
+							]
+							Size = [3, 2]
+							AnimationInterval = 0.1
+							AnimationStartTime = MinValue
+							ClampAnimation = true
+						}
+					]
+					ClosedDamageLevels
+					[
+						{
+							AnimationFiles
+							[
+								"turret_overclock3_on.png"
+								"turret_overclock2_on.png"
+								"turret_overclock1_on.png"
+								"turret_overclock0.png"
+							]
+							NormalsAnimationFiles
+							[
+								"turret_overclock_normals3_on.png"
+								"turret_overclock_normals2_on.png"
+								"turret_overclock_normals1_on.png"
+								"turret_overclock_normals0.png"
+							]
+							Size = [3, 2]
+							AnimationInterval = 0.1
+							AnimationStartTime = MinValue
+							ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"turret_overclock3_on_33.png"
+								"turret_overclock2_on_33.png"
+								"turret_overclock1_on_33.png"
+								"turret_overclock0_33.png"
+							]
+							NormalsAnimationFiles
+							[
+								"turret_overclock_normals3_on_33.png"
+								"turret_overclock_normals2_on_33.png"
+								"turret_overclock_normals1_on_33.png"
+								"turret_overclock_normals0_33.png"
+							]
+							Size = [3, 2]
+							AnimationInterval = 0.1
+							AnimationStartTime = MinValue
+							ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"turret_overclock3_on_66.png"
+								"turret_overclock2_on_66.png"
+								"turret_overclock1_on_66.png"
+								"turret_overclock0_66.png"
+							]
+							NormalsAnimationFiles
+							[
+								"turret_overclock_normals3_on_66.png"
+								"turret_overclock_normals2_on_66.png"
+								"turret_overclock_normals1_on_66.png"
+								"turret_overclock_normals0_66.png"
+							]
+							Size = [3, 2]
+							AnimationInterval = 0.1
+							AnimationStartTime = MinValue
+							ClampAnimation = true
+						}
+					]
+				}
+			}
+		}
+
+		OverclockSpritesWhenTurretIsNotOperationalComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOperational
+			Invert = true
+			Components
+			{
+				OverclockOpenCloseSprite
+				{
+					Type = OpenCloseSprite
+					ChainedTo = InterpolatedTurret
+					Location = [177/64, 0]
+					Rotation = 90d
+					OperationalToggle = OverclockModeToggle
+//					OperationalToggle = SafetyToggle
+//					InvertOperationalToggle = true
+					Layer = "roof_turrets"
+					OpenDamageLevels
+					[
+						{
+							AnimationFiles
+							[
+								"turret_overclock0.png"
+								"turret_overclock1_off.png"
+								"turret_overclock2_off.png"
+								"turret_overclock3_off.png"
+							]
+							NormalsAnimationFiles
+							[
+								"turret_overclock_normals0.png"
+								"turret_overclock_normals1_off.png"
+								"turret_overclock_normals2_off.png"
+								"turret_overclock_normals3_off.png"
+							]
+							Size = [3, 2]
+							AnimationInterval = 0.1
+							AnimationStartTime = MinValue
+							ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"turret_overclock0_33.png"
+								"turret_overclock1_off_33.png"
+								"turret_overclock2_off_33.png"
+								"turret_overclock3_off_33.png"
+							]
+							NormalsAnimationFiles
+							[
+								"turret_overclock_normals0_33.png"
+								"turret_overclock_normals1_off_33.png"
+								"turret_overclock_normals2_off_33.png"
+								"turret_overclock_normals3_off_33.png"
+							]
+							Size = [3, 2]
+							AnimationInterval = 0.1
+							AnimationStartTime = MinValue
+							ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"turret_overclock0_66.png"
+								"turret_overclock1_off_66.png"
+								"turret_overclock2_off_66.png"
+								"turret_overclock3_off_66.png"
+							]
+							NormalsAnimationFiles
+							[
+								"turret_overclock_normals0_66.png"
+								"turret_overclock_normals1_off_66.png"
+								"turret_overclock_normals2_off_66.png"
+								"turret_overclock_normals3_off_66.png"
+							]
+							Size = [3, 2]
+							AnimationInterval = 0.1
+							AnimationStartTime = MinValue
+							ClampAnimation = true
+						}
+					]
+					ClosedDamageLevels
+					[
+						{
+							AnimationFiles
+							[
+								"turret_overclock3_off.png"
+								"turret_overclock2_off.png"
+								"turret_overclock1_off.png"
+								"turret_overclock0.png"
+							]
+							NormalsAnimationFiles
+							[
+								"turret_overclock_normals3_off.png"
+								"turret_overclock_normals2_off.png"
+								"turret_overclock_normals1_off.png"
+								"turret_overclock_normals0.png"
+							]
+							Size = [3, 2]
+							AnimationInterval = 0.1
+							AnimationStartTime = MinValue
+							ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"turret_overclock3_off_33.png"
+								"turret_overclock2_off_33.png"
+								"turret_overclock1_off_33.png"
+								"turret_overclock0_33.png"
+							]
+							NormalsAnimationFiles
+							[
+								"turret_overclock_normals3_off_33.png"
+								"turret_overclock_normals2_off_33.png"
+								"turret_overclock_normals1_off_33.png"
+								"turret_overclock_normals0_33.png"
+							]
+							Size = [3, 2]
+							AnimationInterval = 0.1
+							AnimationStartTime = MinValue
+							ClampAnimation = true
+						}
+						{
+							AnimationFiles
+							[
+								"turret_overclock3_off_66.png"
+								"turret_overclock2_off_66.png"
+								"turret_overclock1_off_66.png"
+								"turret_overclock0_66.png"
+							]
+							NormalsAnimationFiles
+							[
+								"turret_overclock_normals3_off_66.png"
+								"turret_overclock_normals2_off_66.png"
+								"turret_overclock_normals1_off_66.png"
+								"turret_overclock_normals0_66.png"
+							]
+							Size = [3, 2]
+							AnimationInterval = 0.1
+							AnimationStartTime = MinValue
+							ClampAnimation = true
+						}
+					]
+				}
+			}
+		}
+
+		Turret_HeatSprites
+		{
+			Type = ResourceSprites
+			ChainedTo = InterpolatedTurret
+			Location = [-47/64, 0]
+			Rotation = 90d
+			ResourceStorage = HeatStorage
+			Layer = "roof_doodads"
+			HasZeroResourceSprite = true
+			ResourceLevels
+			[
+				{
+					File = "turret_heating0.png"
+					NormalsFile = "turret_heating_normals0.png"
+					Size = [2, 3]
+				}
+				{
+					File = "turret_heating1.png"
+					NormalsFile = "turret_heating_normals1.png"
+					Size = [2, 3]
+				}
+				{
+					File = "turret_heating2.png"
+					NormalsFile = "turret_heating_normals2.png"
+					Size = [2, 3]
+				}
+				{
+					File = "turret_heating3.png"
+					NormalsFile = "turret_heating_normals3.png"
+					Size = [2, 3]
+				}
+				{
+					File = "turret_heating4.png"
+					NormalsFile = "turret_heating_normals4.png"
+					Size = [2, 3]
+				}
+				{
+					File = "turret_heating5.png"
+					NormalsFile = "turret_heating_normals5.png"
+					Size = [2, 3]
+				}
+				{
+					File = "turret_heating6.png"
+					NormalsFile = "turret_heating_normals6.png"
+					Size = [2, 3]
+				}
+				{
+					File = "turret_heating7.png"
+					NormalsFile = "turret_heating_normals7.png"
+					Size = [2, 3]
+				}
+				{
+					File = "turret_heating8.png"
+					NormalsFile = "turret_heating_normals8.png"
+					Size = [2, 3]
+				}
+			]
+		}
+
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [128/64, 92/64]
+			ResourceStorage = BatteryStorage
+			Layer = "walls"		//needs to be over the doodad (doodads_low layer) and the HeatSprites (doors layer)
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+					Offset = [-0.5, -0.5]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+					Offset = [-0.5, -0.5]
+				}
+				{
+					File = "batteries3.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries4.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries5.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries6.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries7.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries8.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries9.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries10.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries11.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries12.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries13.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries14.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries15.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries16.png"
+					Size = [2, 1]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries17.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries18.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries19.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries20.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries21.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries22.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries23.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries24.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		BatteriesAreOverheating
+		{
+			Type = ThresholdToggle
+			ValueFrom = HeatStorage
+			MaxAmount = 88%
+			Invert = True
+		}
+		OverheatingBatterySpritesComponents
+		{
+			Type = ToggledComponents
+			Toggle = BatteriesAreOverheating
+			Components
+			{
+				OverheatingBatterySprites
+				{
+					Type = ResourceSprites
+					Location = [128/64, 96/64]
+					ResourceStorage = BatteryStorage
+					Layer = "lights_add"
+					ResourceLevels
+					[
+						{
+							File = "batteries_heating1.png"
+							Size = [3, 2]
+							Offset = [0, -0.5]
+						}
+						{
+							File = "batteries_heating2.png"
+							Size = [3, 2]
+							Offset = [0, -0.5]
+						}
+						{
+							File = "batteries_heating3.png"
+							Size = [3, 2]
+							Offset = [0, -0.5]
+						}
+						{
+							File = "batteries_heating4.png"
+							Size = [3, 2]
+							Offset = [0, -0.5]
+						}
+						{
+							File = "batteries_heating5.png"
+							Size = [3, 2]
+							Offset = [0, -0.5]
+						}
+						{
+							File = "batteries_heating6.png"
+							Size = [3, 2]
+							Offset = [0, -0.5]
+						}
+						{
+							File = "batteries_heating7.png"
+							Size = [3, 2]
+							Offset = [0, -0.5]
+						}
+						{
+							File = "batteries_heating8.png"
+							Size = [3, 2]
+							Offset = [0, -0.5]
+						}
+						{
+							File = "batteries_heating9.png"
+							Size = [3, 2]
+							Offset = [0, -0.5]
+						}
+						{
+							File = "batteries_heating10.png"
+							Size = [3, 2]
+							Offset = [0, -0.5]
+						}
+						{
+							File = "batteries_heating11.png"
+							Size = [3, 2]
+							Offset = [0, -0.5]
+						}
+						{
+							File = "batteries_heating12.png"
+							Size = [3, 2]
+							Offset = [0, -0.5]
+						}
+						{
+							File = "batteries_heating13.png"
+							Size = [3, 3]
+						}
+						{
+							File = "batteries_heating14.png"
+							Size = [3, 3]
+						}
+						{
+							File = "batteries_heating15.png"
+							Size = [3, 3]
+						}
+						{
+							File = "batteries_heating16.png"
+							Size = [3, 3]
+						}
+						{
+							File = "batteries_heating17.png"
+							Size = [3, 3]
+						}
+						{
+							File = "batteries_heating18.png"
+							Size = [3, 3]
+						}
+						{
+							File = "batteries_heating19.png"
+							Size = [3, 3]
+						}
+						{
+							File = "batteries_heating20.png"
+							Size = [3, 3]
+						}
+						{
+							File = "batteries_heating21.png"
+							Size = [3, 3]
+						}
+						{
+							File = "batteries_heating22.png"
+							Size = [3, 3]
+						}
+						{
+							File = "batteries_heating23.png"
+							Size = [3, 3]
+						}
+						{
+							File = "batteries_heating24.png"
+							Size = [3, 3]
+						}
+					]
+				}
+			}
+		}
+
+		HeatSprites
+		{
+			Type = ResourceSprites
+			Location = [2, 1.5]
+			ResourceStorage = HeatStorage
+			Layer = "doors"		//needs to be over the batteries (walls layer) and under the crew (crew layer)
+			ResourceLevels
+			[
+				{
+					File = "doodads_heating1.png"
+					Size = [3,3]
+				}
+				{
+					File = "doodads_heating2.png"
+					Size = [3,3]
+				}
+				{
+					File = "doodads_heating3.png"
+					Size = [3,3]
+				}
+				{
+					File = "doodads_heating4.png"
+					Size = [3,3]
+				}
+				{
+					File = "doodads_heating5.png"
+					Size = [3,3]
+				}
+				{
+					File = "doodads_heating6.png"
+					Size = [3,3]
+				}
+				{
+					File = "doodads_heating7.png"
+					Size = [3,3]
+				}
+				{
+					File = "doodads_heating8.png"
+					Size = [3,3]
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [2,2]
+			Layer = "indicators"
+			Indicators
+			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3,4]
+				}
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [2,3,4]
+				}
+				{
+					Toggle = BatteryStorage
+					Delay = &~/Part/Components/Turret/FireInterval
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+				{
+					Toggle = FireSafetyToggle
+					ShowWhenToggleOn = false
+					AtlasSprite : /INDICATORS/FullHeat
+					{
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [4, 4]
+		}
+
+		HeatDissipationStatValue
+		{
+			Type = StaticValue
+			Value = (&~/Part/Components/HeatDissipationConverter/DISSIPATION_PER_SECOND)
+		}
+		HeatDissipationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatDissipation
+			ValueFrom = HeatDissipationStatValue
+		}
+
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			ValueFrom = CombinedHeatGeneration
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = &../StatsByCategory/0/Stats/PowerUsageContinuous
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+
+		HeatCapacity = (&~/Part/Components/HeatStorage/MaxResources) / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+		HeatDissipation = (&~/Part/Components/HeatDissipationConverter/FromQuantity) / (&~/Part/Components/HeatDissipationConverter/Interval) / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+	}
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/ResonanceBeam"
+			Stats
+			{
+				HitInterval = &~/Part/Components/BeamEmitter/HitInterval
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+				Range = &~/Part/Components/BeamEmitter/Range/BaseValue
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000
+				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
+				ResonanceTurretHeatGeneration = (&~/Part/Components/BaseHeatGeneration/Value)
+
+				HeatPerTileContinuous = (&~/Part/Components/BeamEmitter/BASE_HEAT) / (&HitInterval)
+				ResonanceHeatPool = (&~/Part/Components/BeamEmitter/BASE_HEAT_POOL) / (&HitInterval)
+				HeatPoolAmplificationExponent = &~/Part/Components/BeamEmitter/HEAT_POOL_AMP_EXPONENT
+				DilationHeatSpread = &~/Part/Components/BeamEmitter/BASE_HEAT_SPREAD_BUDGET
+				HitShieldHeatFactor = (&~/Part/Components/BeamEmitter/SHIELD_HEAT_FACTOR) * 100
+
+				BaseAmplification = (&~/Part/Components/BaseAmplification/Value) * 100
+				BaseDilation = (&~/Part/Components/BaseDilation/Value) * 100
+			}
+		}
+		{
+			NameKey = "StatCategories/ShieldOverload"
+			Stats
+			{
+				ShieldDamagePowerCostBase = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_BASE) * 100
+				ShieldDamagePowerCostAmplification = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_PER_AMP) * 100
+				ShieldDamagePowerCostDilation = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_PER_DILATION) * 100
+				EffectDuration = (&~/Part/Components/BeamEmitter/SHIELD_OVERLOAD_DURATION)
+			}
+		}
+	]
+
+	StatsNotesKey = "Stats/ThermalResonanceLanceNotes"
+}

@@ -1,0 +1,22 @@
+ID = cosmoteer.planet_water
+Type = Planet
+DescriptionKey = "Doodads/PlanetWater"
+CategoryKey = "Doodads/Planets"
+Icon
+{
+	Texture
+	{
+		File = "planet_water.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+StyleID = water
+TextureSize = [512, 512]
+ScaleRange = [250, 1500]
+RandomScaleRange = [1000, 1500]
+DefaultScale = 1000
+DistanceRange = [50, 250]
+RandomDistanceRange = [100, 100]
+DefaultDistance = 150
+MinimapColorScale = [255, 255, 255, 127]

@@ -1,0 +1,318 @@
+Range = 350
+IdealRange = 300
+Width = .5
+HitInterval = 3 / (&/Simulation/PhysicsUpdatesPerSecond)
+HitEffectsScaleOverRange = [1, 80%]
+MediaEffectsScaleOverRange = &HitEffectsScaleOverRange
+BeamMediaEffectsIntensity = { BaseValue=1; EffectScaleExponent=1; }
+
+AttenuationLimit = &HitOperational/HitEffects/0/Damage
+HitAttenuator
+{
+	MediaEffects = &~/HitOperational/MediaEffects
+}
+
+CrewCollisions = {Enemies=true; Junk=true}
+HitCrew = &HitOperational
+
+StartMediaEffects
+[
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/ion_beam_start.wav"
+		Volume = 1
+		MaxConcurrent = 2
+		MaxConcurrentVolume = 1
+		Speed = 0.7
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
+BeamMediaEffects
+[
+	// The beam itself.
+	{
+		Type = Beam
+		Sprite
+		{
+			Texture
+			{
+				File = ../../common_effects/particles/noise_gradient.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_noiseTexture
+			{
+				File = ../../common_effects/particles/noise_voronoi.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			Shader = "ion_beam.shader"
+			_extraBeginLength = 0
+			_extraEndLength = 0.25
+			_sizePulseFactor = 1.2
+			_sizePulseInterval = .1
+			_sizePulseUOffsetFactor = -.03
+			_endCapSize = 4
+			Size = [100%, 3.5]
+			VertexColor = [255, 255, 255, 217]
+			_baseColor = [1, 0, 0, 1]
+			_halfHighlightColor = [0.5, 0.219, 0.213, 1]
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		FadeInTime = .25
+		FadeOutTime = .25
+		RandomTimeOffset = [0, 1]
+		Bucket = IonBeam
+	}
+
+	// Beam lighting.
+	{
+		Type = Beam
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Shader = "./Data/common_effects/fancy_beam_light.shader"
+			Size = [100%, 7]
+			_extraBeginLength = (&Size/1) / 2
+			_extraEndLength = (&Size/1) / 2
+			VertexColor = [255, 0, 0, 255]
+			_z = 0.4
+			_litReflectiveStrength = 12
+			_litAdditiveStrength = 0
+			_unlitAdditiveStrength = 0.25
+			_nrmlStrengthLimit = 1.0
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = Zero
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		Bucket = Upper4
+		IsLight = true
+		FadeInTime = .25
+		FadeOutTime = .25
+	}
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/ion_beam_loop.wav"
+		Volume = 1
+		MaxConcurrent = 1
+		MaxConcurrentVolume = 1
+		RampUpTime = .25
+		RampDownTime = .25
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
+EndMediaEffects
+[
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "sounds/ion_beam_finish.wav"
+		Db = 6
+		MaxConcurrent = 1
+		MaxConcurrentVolume = 1
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
+
+HitShield = &HitOperational
+HitOperational
+{
+	HitEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
+	MediaEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = { BaseValue=2500 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+			Filter
+			{
+				Enemies = false
+				Junk = false
+				Neutrals = false
+				ExcludePartCategories = [ion_beam_prism]
+			}
+		}
+		{
+			Type = Impulse
+			Impulse = { BaseValue = 2; EffectScaleExponent = 1 }
+			Filter
+			{
+				Enemies = false
+				Junk = false
+				ExcludePartCategories = [ion_beam_prism]
+			}
+		}
+		{
+			Type = Damage
+			Damage = { BaseValue=2500 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+			Filter
+			{
+				Friendlies = false
+				TargetedFriendlies = false
+			}
+		}
+		{
+			Type = Impulse
+			Impulse = { BaseValue = 2; EffectScaleExponent = 1 }
+			Filter
+			{
+				Friendlies = false
+				TargetedFriendlies = false
+			}
+		}
+		{
+			Type = ResourceDrain
+			ResourceType = ion_energy
+			Amount = { BaseValue = -1000; EffectScaleExponent = 1 }
+			Filter
+			{
+				Friendlies = true
+				IgnoreInvulnerability = true
+				OnlyPartCategories = [ion_beam_prism]
+			}
+		}
+	]
+
+	MediaEffects
+	[
+		: <particles/ion_beam_hit.rules>
+		{
+			Filter
+			{
+				ExcludePartCategories = [ion_beam_prism]
+			}
+		}
+
+		: <particles/ion_beam_hit_sparks.rules>
+		{
+			Filter
+			{
+				ExcludePartCategories = [ion_beam_prism]
+			}
+		}
+
+		: <particles/ion_beam_hit_spikes.rules>
+		{
+			Filter
+			{
+				ExcludePartCategories = [ion_beam_prism]
+			}
+		}
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "ion_beam_hit.wav"
+			Volume = .5
+			MaxConcurrent = 1
+			MaxConcurrentVolume = 1
+			RampUpTime = .25
+			RampDownTime = .25
+
+			Filter
+			{
+				ExcludePartCategories = [ion_beam_prism]
+			}
+		}
+
+		: /BASE_SHAKE
+		{
+			ShakeAmount = .05
+			Duration = .5
+
+			Filter
+			{
+				ExcludePartCategories = [ion_beam_prism]
+			}
+		}
+	]
+}
+
+HitStructural
+{
+	HitEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
+	MediaEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = { BaseValue=2000 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+			Filter
+			{
+				Enemies = false
+				Junk = false
+				Neutrals = false
+			}
+		}
+		{
+			Type = Impulse
+			Impulse = { BaseValue = 1; EffectScaleExponent = 1 }
+			Filter
+			{
+				Enemies = false
+				Junk = false
+			}
+		}
+		{
+			Type = Damage
+			Damage = { BaseValue=2000 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+			Filter
+			{
+				Friendlies = false
+				TargetedFriendlies = false
+			}
+		}
+		{
+			Type = Impulse
+			Impulse = { BaseValue = 1; EffectScaleExponent = 1 }
+			Filter
+			{
+				Friendlies = false
+				TargetedFriendlies = false
+			}
+		}
+	]
+}

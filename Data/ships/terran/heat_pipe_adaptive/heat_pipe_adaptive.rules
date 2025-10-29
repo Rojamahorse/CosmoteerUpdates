@@ -1,0 +1,168 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/HeatPipeAdaptive"
+	IconNameKey = "Parts/HeatPipeAdaptive"
+	ID = cosmoteer.heat_pipe_adaptive
+	OtherIDs = [ cosmoteer.heat_pipe, cosmoteer.heat_pipe_corner, cosmoteer.heat_pipe_3way_junction, cosmoteer.heat_pipe_4way_junction ]
+	SelectionTypeID = heat_pipe
+	EditorGroup = "Thermal"
+	EditorParentParts = [ "cosmoteer.resonance_beam_turret" ]
+	DescriptionKey = "Parts/HeatPipeAdaptiveDesc"
+	Resources
+	[
+		[steel, 4]
+		[coil, 2]
+	]
+	Size = [1, 1]
+	IsRotateable = false
+	IsFlippable = false
+	SelectionPriority = 0
+	MaxHealth = 1000
+	TypeCategories = [ heat_management ]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	CrewSpeedFactor = 0
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Port_Up
+		{
+			Type = NetworkPort
+			Location = [0, 0]
+			Direction = Up
+			Types = [ thermal ]
+			RouteSource = NetworkAverageThermalDissipationLoadValue
+			RouteEndpoint = NetworkAverageThermalDissipationLoadValue
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				IconDrawMode = Never
+				RouteDrawMode = Connected
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+			}
+		}
+		Port_Right : Port_Up
+		{
+			Direction = Right
+		}
+		Port_Down : Port_Up
+		{
+			Direction = Down
+		}
+		Port_Left : Port_Up
+		{
+			Direction = Left
+		}
+
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		//---------------------- PIPE CONNECTOR TOGGLES -----------------
+		Dont_Draw_Pipe_Connector_Into_This_Part { Type = Graphics }	//When this fake component is present, the Heat Pipes dont draw a Pipe Conector to this part.
+
+		Dont_Draw_PipeConnector_Up			//Determines whether a pipe connector doesn't need to be drawn at the top.
+		{
+			Type = ComponentPresenceToggle
+			PartLocation = [0, -1]
+			ComponentID = Dont_Draw_Pipe_Connector_Into_This_Part
+		}
+		Dont_Draw_PipeConnector_Down			//Determines whether a pipe connector doesn't need to be drawn at the bottom.
+		{
+			Type = ComponentPresenceToggle
+			PartLocation = [0, 1]
+			ComponentID = Dont_Draw_Pipe_Connector_Into_This_Part
+		}
+		Dont_Draw_PipeConnector_Left			//Determines whether a pipe connector doesn't need to be drawn on the left.
+		{
+			Type = ComponentPresenceToggle
+			PartLocation = [-1, 0]
+			ComponentID = Dont_Draw_Pipe_Connector_Into_This_Part
+		}
+		Dont_Draw_PipeConnector_Right			//Determines whether a pipe connector doesn't need to be drawn on the right.
+		{
+			Type = ComponentPresenceToggle
+			PartLocation = [1, 0]
+			ComponentID = Dont_Draw_Pipe_Connector_Into_This_Part
+		}
+
+		PipeConnector_Port_Up
+		{
+			Type = MultiToggle
+			Toggles = [Port_Up, {Toggle = Dont_Draw_PipeConnector_Up, invert = true}]
+			Mode = All
+		}
+		PipeConnector_Port_Down
+		{
+			Type = MultiToggle
+			Toggles = [Port_Down, {Toggle = Dont_Draw_PipeConnector_Down, invert = true}]
+			Mode = All
+		}
+		PipeConnector_Port_Left
+		{
+			Type = MultiToggle
+			Toggles = [Port_Left, {Toggle = Dont_Draw_PipeConnector_Left, invert = true}]
+			Mode = All
+		}
+		PipeConnector_Port_Right
+		{
+			Type = MultiToggle
+			Toggles = [Port_Right, {Toggle = Dont_Draw_PipeConnector_Right, invert = true}]
+			Mode = All
+		}
+		//-------------------- END PIPE CONNECTOR TOGGLES ---------------
+
+		NetworkAverageThermalDissipationLoadValue
+		{
+			Type = NetworkValueReceiver
+			Mode = Average
+			Categories = [ thermal_load_dissipation ]
+			AllowUncategorized = false
+		}
+
+		ThermalLoadGlowColorFactor
+		{
+			Type = ValueColor
+			AlphaFrom = NetworkAverageThermalDissipationLoadValue
+		}
+
+		FloorBlendSprites : <heat_pipe_blend_sprites.rules>/FloorBlendSprites {}
+		GlowBlendSprites : <heat_pipe_blend_sprites.rules>/GlowBlendSprites
+		{
+			GetColorFrom = ThermalLoadGlowColorFactor
+		}
+		RoofBlendSprites : <heat_pipe_blend_sprites.rules>/RoofBlendSprites {}
+		RoofGlowBlendSprites : <heat_pipe_blend_sprites.rules>/RoofGlowBlendSprites
+		{
+			GetColorFrom = ThermalLoadGlowColorFactor
+		}
+
+		BlueprintBlendSprites : <heat_pipe_blend_sprites.rules>/BlueprintBlendSprites {}
+
+
+		PipeConnectorBlendSprites : <pipe_connector/heat_pipe_connector_blend_sprites.rules>/PipeConnectorBlendSprites {}
+		PipeConnectorWallStencilBlendSprites : <pipe_connector/heat_pipe_connector_blend_sprites.rules>/PipeConnectorWallStencilBlendSprites {}
+		PipeConnectorRoofBlendSprites : <pipe_connector/heat_pipe_connector_blend_sprites.rules>/PipeConnectorRoofBlendSprites {}
+	}
+}

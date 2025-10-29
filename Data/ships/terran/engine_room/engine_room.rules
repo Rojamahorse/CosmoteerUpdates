@@ -1,0 +1,708 @@
+OVERCLOCK
+{
+	COLLECTED_HEAT_MULTIPLIER = 175%
+	POWER_DISTRIBUTION_MULTIPLIER = 150%
+	HEAT_PER_EXTRA_BATTERY = 200
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_med_part_terran_overclock.rules>/Part
+{
+	NameKey = "Parts/EngineRoom"
+	IconNameKey = "Parts/EngineRoomIcon"
+	ID = cosmoteer.engine_room
+	EditorGroup = "Flight"
+	DescriptionKey = "Parts/EngineRoomDesc"
+	Resources
+	[
+		[steel, 96]
+		[coil2, 32]
+	]
+	Size = [3, 3]
+	IsRotateable = false
+	SelectionPriority = 1
+	MaxHealth = 9000
+	TypeCategories = [engine_room, uses_power, is_crewed]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	BlockedTravelCells
+	[
+		[1, 1]
+	]
+	ForceManhattanPathInPart = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CommandToggle, BatteryStorage, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 6
+		}
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+		}
+
+		IsOperationalNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
+		}
+
+		CombinedBatteryStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [BatteryStorage]
+			ViaBuffs
+			{
+				OutgoingBuffProviders = [PowerDistributionBuffProvider]
+				ComponentIDs = [BatteryStorage, ExtendableBatteryStorage] // ExtendableBatteryStorage is used by rocket thrusters.
+			}
+			AddMode = PrioritizeLeastResources
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		CombinedBatteryStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ProxyToggle = IsOverclocked
+			InvertProxyToggle = true
+			ResourceType = battery
+			ComponentID = CombinedBatteryStorage
+		}
+		Overclock_CombinedBatteryStorageProxy : CombinedBatteryStorageProxy
+		{
+			InvertProxyToggle = false
+			ComponentID = CombinedBatteryStorage
+			QuantityScale = 1 / (&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER)
+		}
+		Overclock_DeliveryHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_CombinedBatteryStorageProxy
+			// Convert raw energy to just the bonus portion of the energy
+			BONUS_ENERGY_FACTOR = ((&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER) - 1) / (&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER)
+			HEAT_PER_VALUE = (&BONUS_ENERGY_FACTOR) * (&~/OVERCLOCK/HEAT_PER_EXTRA_BATTERY) / 1000
+			Amount = { BaseValue = floor((&../HEAT_PER_VALUE) * (&~/HEAT_TO_RESOURCE)); EffectScaleExponent = 1; MinValue = 0; }
+		}
+
+		BatteryDistributionStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [CombinedBatteryStorageProxy, Overclock_CombinedBatteryStorageProxy]
+		}
+
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryDistributionStorage
+			DefaultPriority = &/PRIORITIES/Thruster_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = CommandConsumptionToggle
+		}
+
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 100
+			MinFromQuantityForConversion = 1
+			Interval = 1
+		}
+
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = Engine
+			BuffAmount = 50%
+			GridDistance = 1
+			OperationalToggle = IsOperational
+		}
+
+		DistributePowerUIToggle
+		{
+			Type = UIToggle
+			ToggleID = "distribute_power"
+			Default = 1
+		}
+		DistributePowerToggle
+		{
+			Type = MultiToggle
+			Toggles = [DistributePowerUIToggle, IsOperational]
+			Mode = All
+		}
+		PowerDistributionBuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = EnginePowerDistribution
+			GridDistance = 1
+			OperationalToggle = DistributePowerToggle
+		}
+
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [0.47, 1.5]
+			Rotation = 90d
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [2.53, 1.5]
+			Rotation = -90d
+		}
+		CrewLocation3
+		{
+			Type = CrewLocation
+			Location = [1.5, 0.47]
+			Rotation = 180d
+		}
+		CrewLocation4
+		{
+			Type = CrewLocation
+			Location = [1.5, 2.53]
+			Rotation = 0d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 2
+			DefaultPriority = &/PRIORITIES/Thruster_Supply // Needs to be at least as high as the supply priority.
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				[0.4, 1.5]
+				[2.6, 1.5]
+				[1.5, 0.4]
+				[1.5, 2.6]
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+				CrewLocation3
+				CrewLocation4
+			]
+			SwitchLocationInterval = [5, 10]
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		EngineHeatCollectionStorage
+		{
+			Type = ResourceStorageProxy
+			ResourceType = heat
+			ComponentID = &~/Part/^/0/HEAT_TARGET_STORAGE
+			QuantityScale = 1 / (&~/OVERCLOCK/COLLECTED_HEAT_MULTIPLIER)
+		}
+
+		Overclock_HeatCollectionBuffProvider : PowerDistributionBuffProvider
+		{
+			BuffType = EngineHeatCollection
+			OperationalToggle = IsOperationalOverclocked
+		}
+
+		Port_Thermal_TopLeft : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0,0]
+			Direction = Left
+		}
+		Port_Thermal_LeftUp : Port_Thermal_TopLeft
+		{
+			Location = [0, 0]
+			Direction = Up
+		}
+		Port_Thermal_MidUp : Port_Thermal_LeftUp
+		{
+			Location = [1, 0]
+		}
+		Port_Thermal_RightUp : Port_Thermal_MidUp
+		{
+			Location = [2, 0]
+		}
+		Port_Thermal_TopRight : Port_Thermal_RightUp
+		{
+			Direction = Right
+		}
+		Port_Thermal_MidRight : Port_Thermal_TopRight
+		{
+			Location = [2,1]
+		}
+		Port_Thermal_BottomRight : Port_Thermal_TopRight
+		{
+			Location = [2,2]
+		}
+		Port_Thermal_RightDown : Port_Thermal_BottomRight
+		{
+			Direction = Down
+		}
+		Port_Thermal_MidDown : Port_Thermal_RightDown
+		{
+			Location = [1,2]
+		}
+		Port_Thermal_LeftDown : Port_Thermal_RightDown
+		{
+			Location = [0,2]
+		}
+		Port_Thermal_BottomLeft : Port_Thermal_LeftDown
+		{
+			Direction = Left
+		}
+		Port_Thermal_MidLeft : Port_Thermal_BottomLeft
+		{
+			Location = [0, 1]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [3, 3]
+					}
+					{
+						File = "floor_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "floor_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.075
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.075
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.075
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [2, 2]
+					}
+					{
+						File = "doodads_off_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "doodads_off_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"lights.png"
+							"lights2.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [3, 3]
+					}
+					{
+						File = "walls_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "walls_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [3, 3]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"roof_doodads_on1.png"
+							"roof_doodads_on2.png"
+							"roof_doodads_on3.png"
+							"roof_doodads_on4.png"
+							"roof_doodads_on5.png"
+							"roof_doodads_on6.png"
+							"roof_doodads_on7.png"
+							"roof_doodads_on8.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.075
+					}
+					{
+						AnimationFiles
+						[
+							"roof_doodads_on1_33.png"
+							"roof_doodads_on2_33.png"
+							"roof_doodads_on3_33.png"
+							"roof_doodads_on4_33.png"
+							"roof_doodads_on5_33.png"
+							"roof_doodads_on6_33.png"
+							"roof_doodads_on7_33.png"
+							"roof_doodads_on8_33.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.075
+					}
+					{
+						AnimationFiles
+						[
+							"roof_doodads_on1_66.png"
+							"roof_doodads_on2_66.png"
+							"roof_doodads_on3_66.png"
+							"roof_doodads_on4_66.png"
+							"roof_doodads_on5_66.png"
+							"roof_doodads_on6_66.png"
+							"roof_doodads_on7_66.png"
+							"roof_doodads_on8_66.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.075
+					}
+				]
+			}
+			NonOperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_doodads_off.png"
+						Size = [3, 3]
+					}
+					{
+						File = "roof_doodads_off_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "roof_doodads_off_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "light_blob.png"
+						Size = [3.5, 3.5]
+						Z = 2.50 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [255*1.0,116*1.0, 24*1.0]
+					}
+				]
+			}
+		}
+
+		EngineHum
+		{
+			Type = ContinuousEffects
+			Location = [1.5, 1.5]
+			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/engine_room_idle.wav"
+					Volume = 0.75
+					MaxConcurrentVolume = 1
+				}
+			]
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1.5, 1.5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Offset = [-0.5,-0.5]
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Offset = [0,-0.5]
+					Size = [2, 1]
+				}
+				{
+					File = "batteries3.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries4.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [1.5, 1.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1.5, 1.5]
+			Indicators
+			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3]
+				}
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [2,3]
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [3, 3]
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		ThrusterBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = &PowerUsageContinuous
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+	}
+
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/EngineRoomOverclockDesc"
+		Stats
+		{
+			PowerDistributionEfficiency = (&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER) * 100
+			HeatTransferInefficiency = ((&~/OVERCLOCK/COLLECTED_HEAT_MULTIPLIER) - 1) * 100
+			BatteryDeliveredHeatGeneration = (&~/OVERCLOCK/HEAT_PER_EXTRA_BATTERY) * ((&~/OVERCLOCK/POWER_DISTRIBUTION_MULTIPLIER) - 1)
+		}
+	}
+}

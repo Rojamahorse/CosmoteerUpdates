@@ -1,0 +1,89 @@
+BASE = &<disruptor_bolt.rules>
+
+RANGE = (&BASE/Range) + 50
+TOTAL_DRAIN = 300% * (&BASE/Components/Hit/HitOperational/HitEffects/0/Amount/BaseValue)
+TOTAL_SHIELD_DRAIN = 300% * (&Base/Components/Hit/HitShield/HitEffects/0/Amount/BaseValue)
+DRAIN_DURATION = 5
+PENETRATION = 10
+ARMOR_PENETRATION_FACTOR = 2/7
+
+DRAIN_PER_SECOND = (&TOTAL_DRAIN) / (&DRAIN_DURATION)
+SHIELD_DRAIN_PER_SECOND = (&TOTAL_SHIELD_DRAIN) / (&DRAIN_DURATION)
+
+Bullet : BASE
+{
+	ID = "cosmoteer.disruptor_bolt_overclock"
+	OtherIDs []
+	Range = &~/RANGE
+	IdealRange = [&../^/0/IdealRange/0, &~/RANGE]
+	Components : ^/0/Components
+	{
+		Hit : ^/0/Hit
+		{
+			Penetration = &~/PENETRATION
+			PenetratesOperational = true
+			PartCategoryPenetrationFactors
+			{
+				armor = &~/ARMOR_PENETRATION_FACTOR
+			}
+			HitShield : ^/0/HitShield
+			{
+				HitEffects
+				[
+					: ../../PenetratingOperational/HitEffects/0
+					{
+						StatusValue = { BaseValue = (&~/SHIELD_DRAIN_PER_SECOND) / 1000; EffectScaleExponent = 1 }
+					}
+				]
+			}
+			HitOperational : PenetratingOperational
+			{
+				HitEffects : ^/0/HitEffects
+				[
+					&~/BASE/Components/Hit/HitOperational/HitEffects/1
+				]
+			}
+			PenetratingOperational : ^/0/HitOperational
+			{
+				HitEffects
+				[
+					{
+						Type = StatusApplication
+						StatusType = cosmoteer.disruptor_drain
+						StatusDuration = &~/DRAIN_DURATION
+						StatusValue = { BaseValue = (&~/DRAIN_PER_SECOND) / 1000; EffectScaleExponent = 1 }
+					}
+				]
+			}
+		}
+		// Necessary to prevent crash from FactorEffectsWith
+		//MediaEffects : ^/0/MediaEffects {}
+		MediaEffects
+		{
+			Type = MediaEffects
+			FactorEffectsWith = Hit
+			FactorEffectsExponent = 0.5
+			MediaEffects
+			[
+				&<particles/disruptor_bolt_oc_lightning.rules>
+			]
+		}
+		Sprite
+		{
+			Type = Sprite
+			ReduceScaleWith = Hit
+			ReduceScaleExponent = 0.5
+			Sprite
+			{
+				Texture
+				{
+					File = "particles/disruptor_bolt_hit_orb.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				VertexColor = [240, 255, 150, 255]
+				Size = [2, 2] //0.35
+			}
+		}
+	}
+}

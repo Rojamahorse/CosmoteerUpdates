@@ -1,0 +1,22 @@
+ID = fleets
+TitleKey = "Tutorials/Fleets/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? sim.PlayerSignificantShipCount >= 2"
+Entries
+[
+	{
+		Image { Texture { File="selected.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Fleets/Selected"
+	}
+	{
+		Image { Texture { File="box_select.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Fleets/BoxSelect"
+	}
+	{
+		Image { Texture { File="synchronize.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Fleets/Synchronize"
+	}
+	{
+		TextKey = "Tutorials/Fleets/ControlGroups"
+	}
+]

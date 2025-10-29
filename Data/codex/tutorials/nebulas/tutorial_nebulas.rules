@@ -1,0 +1,14 @@
+ID = nebulas
+TitleKey = "Tutorials/Nebulas/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.IsInNebula"
+Entries
+[
+	{
+		TextKey = "Tutorials/Nebulas/Nebulas"
+	}
+	{
+		Image { Texture { File="gas_cloud.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Nebulas/Example"
+	}
+]

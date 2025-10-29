@@ -1,0 +1,47 @@
+// This particular mod is a "translation" mod. There's actually nothing special
+// about translation mods; they're just regular mods that typically have no "actions",
+// only language files.
+
+// Every mod must have an ID that is used to uniquely identify the mod and differentiate it from other mods.
+// In order to avoid ID conflicts with other mods, you *must* follow the "author_name.mod_name" format.
+// Do *not* use "cosmoteer" as your author name -- that is reserved for official mods only!
+ID = cosmoteer.example_translation
+
+// You must give a human-readable name for your mod. This is what will be shown in the user interface.
+Name = "Example Translation"
+
+// The version of the mod that will be shown in the user interface. This is optional.
+Version = 1.0.0
+
+// This is a list of Cosmoteer versions that this mod is known to be compatible with.
+// If this mod is turned on and it isn't known to be compatible with the version of Cosmoteer
+// that the player is running, a warning will be displayed. When upgrading the game, mods
+// that aren't known to be compatible with the new version will also be automatically disabled.
+CompatibleGameVersions = ["0.30.2_rc2"]
+
+// This should be set to true for any mod that makes gameplay changes.
+// Setting this to false *MAY* make it possible to play multiplayer with someone else who doesn't have this mod,
+// so long as this mod doesn't actually make any gameplay changes. (Setting this to false will *NOT*
+// magically allow you to play with someone who doesn't have this mod; it will just make the error
+// less informative.) If omitted, the default is true.
+ModifiesGameplay = false
+
+// The name of the mod creator(s) that will be shown in the user interface. This is optional.
+Author = "Walternate Realities"
+
+// A longer description of what your mod does to the game. This is optional.
+Description = "This is a translation mod that demonstrates how to create other translation mods.\n\n"\
+              "- It adds a fake language called \"Devlish\"."
+
+// Mods can define their own per-language string files.
+// The values in a string file (such as en.rules) will add to
+// and override any values in the base string file (such as Data\strings\en.rules).
+// Each language supported should have its own string file named
+// after the two-letter 639-1 language code for that language.
+//
+// A translation mod typically provides an entirely-new language instead of
+// overriding or adding to the languages supported in the base game.
+//
+// Once a translation mod is enabled, the player should be able to select any
+// language(s) added by the mod in the interface settings.
+StringsFolder = "strings"

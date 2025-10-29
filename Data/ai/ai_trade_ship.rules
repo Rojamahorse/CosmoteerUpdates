@@ -1,0 +1,56 @@
+UpdateInterval = [.75, 1.25] // A random range.
+
+StrategyModules
+[
+	{
+		Type = TradeShip
+	}
+	{
+		Type = HaltForComms
+		HaltForTrade = true
+	}
+	{
+		Type = SelfRepair
+		RepairChecksPerTick = 1
+		RepairDamaged = true
+		RebuildDestroyed = true
+		AllowPartialRepair = true
+		AllowPartialRebuild = false
+		AvoidableDoodadTags = [sun]
+		AvoidableDoodadBuffer = 100
+	}
+	{
+		Type = FleeFromEnemies
+		FleeDistance = 1000
+		RecallCrew = true
+		FtlAfter = [10, 20]
+	}
+	{
+		Type = ExitSector
+	}
+]
+
+CommsModules : <ai_common.rules>/CommsModulesDefault
+[
+	{
+		Type = Trade
+		AllowHumanTrade = true
+		AllowNpcTrade = true
+	}
+	{
+		Type = CrewProvider
+		CrewForHireFraction = 20%
+		CrewHireCostPerCrewRatio = &<./Data/modes/career/career.rules>/CrewHireCostPerCrewRatioTradeShips
+		CrewHireCostRoundToMultiple = &<./Data/modes/career/career.rules>/CrewHireCostRoundToMultiple
+	}
+]
+
+StasisModules
+[
+	{
+		Type = ExitSector
+		DefaultStasisSpeed = 75
+		AvoidableDoodadTags = [sun]
+		AvoidableDoodadBuffer = 100
+	}
+]

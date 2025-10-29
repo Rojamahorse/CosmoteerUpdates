@@ -1,0 +1,9 @@
+SalvageCommand : <command_follow.rules>/FollowCommand
+{
+	DistRadiusFactor = 1
+	QueueSalvageDistanceAsRadiusFraction = 1
+
+	CommandColor = [255, 200, 0]
+
+	DistIcon = &<./Data/gui/game/game_gui.rules>/FollowIcon
+}

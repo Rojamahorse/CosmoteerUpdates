@@ -1,0 +1,33 @@
+ID = heat_management
+TitleKey = "Tutorials/HeatManagement/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.HasPartCategoryInHand('heat_management') or game.PartInHandHasToggleMode('thermal_overclock', 1) or "\
+					"(game.HasTechUnlocked('cosmoteer.heat_management') and game.Fame > 0)"
+Entries
+[
+	{
+		TextKey = "Tutorials/HeatManagement/Overview1"
+	}
+	{
+		TextKey = "Tutorials/HeatManagement/Overview2"
+	}
+	{
+		Image { Texture { File="battery_placement.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/HeatManagement/Icons"
+	}
+	{
+		Image { Texture { File="battery.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/HeatManagement/Batteries"
+	}
+	{
+		Image { Texture { File="radiators.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/HeatManagement/Radiators"
+	}
+	{
+		TextKey = "Tutorials/HeatManagement/Excess"
+	}
+	{
+		Image { Texture { File="heat_exchanger_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/HeatManagement/Exchangers"
+	}
+]

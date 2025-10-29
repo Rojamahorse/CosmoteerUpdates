@@ -1,0 +1,185 @@
+EmitPerSecond = 0
+EmitPerOneShot = 0
+Initializers
+[
+	{
+		Type = LocationToWorldSpace
+		DataOut = energy
+		ValueType = Float
+		Value = 1
+		Name = "Convert location to world space."
+		Enabled = true
+		UpdateAfterInit = false
+		LocationIn = location
+		LocationOut = location
+	}
+	{
+		Type = SetRandom
+		LocationIn = location
+		LocationOut = location
+		Name = "Random Rotation"
+		Enabled = true
+		UpdateAfterInit = false
+		RotationIn = rot
+		RotationOut = rot
+		DataOut = rot
+		ValueType = Angle
+		FromValue = 0d
+		ToValue = 360d
+	}
+	{
+		Type = AddFrameOfReference
+		Name = "Add frame of reference"
+		VelocityIn = velocity
+		VelocityOut = velocity
+		Enabled = true
+		VelocityInOut = velocity
+		RotationIn = rot
+		RotationOut = rot
+		UpdateAfterInit = false
+	}
+{Type=ScaleToWorldSpace;ScaleIn=scale;ScaleOut=scale;Name="";Enabled=true;UpdateAfterInit=false;}]
+Updaters
+[
+	{
+		Type = Lifetime
+		EnergyInOut = energy
+		Lifetime = 1
+		Name = Lifetime
+		Enabled = true
+		UpdateAfterInit = false
+		LifeInOut = life
+	}
+	{
+		Type = Operator
+		DataType = Vector2D
+		AIn = location
+		BIn = velocity
+		ResultOut = location
+		Operator = AddDt
+		Name = "Apply velocity."
+		Enabled = true
+		UpdateAfterInit = false
+	}
+	{
+		Type = UvAnimation
+		LerpIn = energy
+		DataOut = scale
+		Invert = true
+		ValueType = Float
+		FromValue = 1
+		ToValue = 0
+		Name = "Animation"
+		Enabled = true
+		TimeIn = life
+		UvRectOut = uv_rect
+		Framerate = 32
+		TextureSize
+		{
+			X = 1024
+			Y = 2048
+		}
+		FrameSize
+		{
+			X = 256
+			Y = 256
+		}
+		FrameCount = 32
+		FramesPerRow = 4
+		PixelOffset
+		{
+			X = 0
+			Y = 0
+		}
+		Looping = false
+		AIn = time
+		ResultOut = time
+		Operator = AddDt
+		Value = 1
+		UpdateAfterInit = true
+	}
+	{
+		Type = ColorRamp
+		LerpIn = life
+		ColorOut = color
+		Invert = false
+		Colors
+		[
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 1
+			}
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 1
+			}
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 0
+			}
+		]
+		Name = "Color ramp"
+		Enabled = true
+		UpdateAfterInit = true
+	}
+]
+Renderer
+{
+	Type = StandardQuadRenderer
+	LocationIn = location
+	ScaleIn=scale
+	RotationIn = rot
+	ColorIn = color
+	BaseSize
+	{
+		X = 1
+		Y = 1
+	}
+	MaxScale = 1
+	UVRect
+	{
+		X = 0
+		Y = 0
+		Width = 1
+		Height = 1
+	}
+	Name = ""
+	UvRectIn = uv_rect
+}
+Material
+{
+	Texture
+	{
+		File = med_part_explode_dry.png
+		FixTransparentColors = false
+		PreMultiplyByAlpha = false
+		MipLevels = 9
+		SampleMode = Linear
+	}
+	TargetBlendMode
+	{
+		SourceRgbFactor = SourceAlpha
+		DestRgbFactor = InverseSourceAlpha
+		RgbOperator = Add
+		SourceAlphaFactor = InverseDestAlpha
+		DestAlphaFactor = One
+		AlphaOperator = Add
+	}
+	Color
+	{
+		Rf = 1
+		Gf = 1
+		Bf = 1
+		Af = 1
+	}
+}
+DeleteMode = KeepOrder
+UpdatedEmittedParticles = false
+EnableMultithreading = false
+InitCapacity=256;

@@ -1,0 +1,26 @@
+ID = cosmoteer.poi_asteroid_field
+Type = RingedPOI
+DescriptionKey = "Doodads/POIAsteroidField"
+UndiscoveredDescriptionKey = &<doodad_poi_unknown.rules>/DescriptionKey
+CategoryKey = "Doodads/POI"
+Icon = &HudIcon
+HudIcon
+{
+	Texture
+	{
+		File = "poi_asteroid_field.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+	Size = [32, 32]
+}
+UndiscoveredHudIcon = &<doodad_poi_unknown.rules>/HudIcon
+RingCircle = &<doodad_poi_ring.rules>/RingCircle
+CameraRelativeThickness = true
+DynamicUPerCircumference = 4
+DefaultScale = 1000
+MinimapThickness = 20
+MouseHoverColorFactor = [255, 255, 255, 255*2]
+MouseHoverColorTweenTime = .5
+DiscoveredAlphaTweenTime = 1
+FadeOutSizeRange = [0.25, 0.75]

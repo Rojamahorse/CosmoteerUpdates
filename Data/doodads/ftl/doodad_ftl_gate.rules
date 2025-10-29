@@ -1,0 +1,18 @@
+ID = cosmoteer.ftl_gate
+Type = FtlGate
+DescriptionKey = "Doodads/FTLGate"
+CategoryKey = "Doodads/Ftl"
+Icon
+{
+	Texture
+	{
+		File = "FTL Relay.ship.png"
+		Resize = [128, 128]
+		MipLevels = max
+		SampleMode = Linear
+	}
+}
+Allegiance = -1 // Neutral
+Ship = "FTL Relay.ship.png"
+JumpEffectsSource = [0, 22]
+IsFtlPoint = true

@@ -1,0 +1,95 @@
+ID = cosmoteer.planet_sun
+Type = Planet
+DescriptionKey = "Doodads/PlanetSun"
+CategoryKey = "Doodads/Planets"
+Icon
+{
+	Texture
+	{
+		File = "planet_sun.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+StyleID = sun
+TextureSize = [512, 512]
+ScaleRange = [1250, 10000]
+RandomScaleRange = 3000
+DefaultScale = 3000
+RenderStage = Upper
+IsLightSource = true
+ShowInMinimap = true
+MinimapColorScale = [255, 255, 255, 255]
+Tags = [sun]
+
+ProximityEffects
+{
+	InstantKillRadiusFactor = 1.0
+	EffectsRadiusFactor = 2.5
+	EffectsRadiusFactorShipQueryBuffer = &<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/Components/ArcShield/Radius
+	RaycastsPerDiameterPerSecond = 5
+	EffectsScaleOverDistance = [100%, 2.5%]
+	EffectsDistanceExponent = 0.5
+	IgnoreShipTypes = [cosmoteer.asteroid, cosmoteer.megaroid, cosmoteer.ancient]
+
+	HitOperationalEffects
+	[
+		{
+			Type = StatusApplication
+			StatusType = cosmoteer.heat
+			StatusValue = { BaseValue=800; EffectScaleExponent=1; }
+		}
+	]
+	HitStructuralEffects = &HitOperationalEffects
+	HitShieldEffects
+	[
+		{
+			Type = StatusApplication
+			StatusType = cosmoteer.heat
+			StatusValue = { BaseValue=80; EffectScaleExponent=1; }
+			ApplyToAllHitPartTiles = true;
+			DivideValueByPartArea = true;
+		}
+
+		{
+			Type = Damage
+			Damage = { BaseValue=120; EffectScaleExponent=1; }
+		}
+	]
+
+	MediaEffects
+	[
+		&<particles/sun_damage.rules>
+	]
+
+	WarningCircle
+	{
+		Thickness = 8
+		QuadCount = 256
+		UVRect = [0, 1, .25, -1]
+		Color = [255, 255, 255, 127]
+		Texture
+		{
+			File = "./Data/modes/pvp/perimeter.png"
+			UMode = Wrap
+			SampleMode = Linear
+			MipLevels = max
+		}
+		Shader = "./Data/modes/pvp/perimeter.shader"
+		TargetBlendMode
+		{
+			SourceRgbFactor = SourceAlpha
+			DestRgbFactor = One
+			RgbOperator = Add
+			SourceAlphaFactor = Zero
+			DestAlphaFactor = One
+			AlphaOperator = Add
+		}
+	}
+	WarningCircleThicknessZoomExponent = 0.4
+	WarningMinimapCircle : WarningCircle
+	{
+		Thickness = 4
+		Color = [255, 255, 255, 255]
+	}
+}

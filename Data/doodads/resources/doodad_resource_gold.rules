@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_gold
+Type = Resource
+DescriptionKey = "Resource/Gold"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/gold/gold.png"
+		MipLevels = 2
+	}
+}
+ResourceType = gold

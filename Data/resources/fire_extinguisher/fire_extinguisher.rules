@@ -1,0 +1,12 @@
+ID = fire_extinguisher
+NameKey = "Resource/FireExtinguisher"
+// dividing by (&<./Data/cosmoteer.rules>/Simulation/PhysicsUpdatesPerSecond) gives the extinguishing time in seconds
+MaxPerNugget = 300
+ReturnToStorage = false
+
+NuggetSprite
+{
+	File = "./Data/ships/terran/fire_extinguisher/extinguisher.png"
+	Size = [1, 1]
+	UVRotation = 1
+}

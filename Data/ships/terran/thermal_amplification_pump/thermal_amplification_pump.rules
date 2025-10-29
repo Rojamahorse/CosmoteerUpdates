@@ -1,0 +1,726 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ThermalAmplificationPump"
+	IconNameKey = "Parts/ThermalAmplificationPumpIcon"
+	ID = cosmoteer.thermal_amplification_pump
+	EditorGroups []
+	EditorParentParts = [ ["cosmoteer.resonance_beam_turret", -1] ]
+	DescriptionKey = "Parts/ThermalAmplificationPumpDesc"
+	Resources
+	[
+		[steel, 8]
+		[coil2, 1]
+		[diamond, 1]
+	]
+	Size = [1, 3]
+	IsRotateable = true
+	SelectionPriority = 0
+	MaxHealth = 2000
+	ReceivableBuffs : ^/0/ReceivableBuffs [ ThermalActivity ]
+	TypeCategories = [ uses_power, thermal_pump ]
+	BlockedTravelCells
+	[
+		[0, 1]
+		[0, 2]
+	]
+	AllowedDoorLocations
+	[
+		[0, -1]
+		[-1, 0], [1, 0]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [21.33, 64]
+		UVRect = [0, 1, 1, -1]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 1
+		}
+
+		// Battery is drained by turret part
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 6000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = CommandConsumptionToggle
+		}
+
+		True { Type=StaticToggle; ToggleOn=true; }
+		BaseAmplificationPerPort { Type=StaticValue; Value=1.1; }
+		BasePumpAmplification
+		{
+			Type = ToggleValueSelector
+			Toggle = IsOperational
+			BlueprintToggle = True
+			ToggleOnValue = BaseAmplificationPerPort
+			ToggleOffValue = Zero
+			IncludeInBlueprints = true
+		}
+
+		// amplificationFactor = (1 / ((beams - 1) * utilizationScale + 1)^(1-efficiency)
+		MultiUtilizationEfficiencyExponent
+		{
+			Type = StaticValue
+			EFFICIENCY = 50%
+			Value = 1 - (&EFFICIENCY)
+		}
+		UtilizationScale
+		{
+			Type = StaticValue
+			Value = 50%
+		}
+
+		AdditionalUtilization
+		{
+			Type = ValueOperation
+			Operator = Subtract
+			ValueOne = NetworkPumpUtilization
+			ValueTwo = One
+			MinValue = 0
+			IncludeInBlueprints = All
+		}
+		ScaledAdditionalUtilization
+		{
+			Type = MultiValue
+			Values = [AdditionalUtilization, UtilizationScale]
+			Mode = Multiply
+			IncludeInBlueprints = All
+		}
+		ScaledAmplificationFactor
+		{
+			Type = MultiValue
+			Values = [ScaledAdditionalUtilization, One]
+			Mode = Add
+			OneOver = true
+			IncludeInBlueprints = All
+		}
+
+		AmplificationFactor
+		{
+			Type = ValueOperation
+			Operator = Power
+			ValueOne = ScaledAmplificationFactor
+			ValueTwo = MultiUtilizationEfficiencyExponent
+			IncludeInBlueprints = All
+		}
+
+		PumpAmplification
+		{
+			Type = MultiValue
+			Values = [ BasePumpAmplification, AmplificationFactor]
+			Mode = Multiply
+			IncludeInBlueprints = All
+		}
+
+		NetworkedAmplification
+		{
+			Type = NetworkValue
+			ValueSource = PumpAmplification
+			Categories = [ thermal_amplification ]
+			IncludeInBlueprints = true
+		}
+
+		AdditionalTurretHeatGeneration
+		{
+			Type = ToggleValueSelector
+			Toggle = IsOperational
+			BlueprintToggle = true
+			ToggleOffValue = Zero
+			ToggleOnValue = AdditionalTurretHeatGeneration_Active
+			IncludeInBlueprints = true
+		}
+		Zero
+		{
+			Type = StaticValue
+			Value = 0
+		}
+		One { Type=StaticValue; Value=1; }
+		AdditionalTurretHeatGeneration_Active
+		{
+			Type = StaticValue
+			Value = 200
+		}
+
+		NetworkedActivity
+		{
+			Type = NetworkValue
+			ValueSource = AdditionalTurretHeatGeneration
+			Categories = [ thermal_activity ]
+			IncludeInBlueprints = true
+		}
+
+		NetworkPumpUtilization
+		{
+			Type = NetworkValueReceiver
+			AllowUncategorized = false
+			Categories = [ thermal_pump_utilization ]
+			Mode = Add
+			IncludeInBlueprints = true
+		}
+
+		UtilizationToggle
+		{
+			Type = ThresholdToggle
+			ValueFrom = NetworkPumpUtilization
+			MinAmount = 0
+			MaxAmount = 0
+			Invert = true
+		}
+
+		IsUtilized
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, UtilizationToggle ]
+			Mode = All
+		}
+
+		PowerDrainFactor
+		{
+			Type = MultiValue
+			Values = [ AmplificationFactor, NetworkPumpUtilization ]
+			Mode = Multiply
+		}
+
+		UtilizationBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = ThermalActivity
+			BuffAmount = 1
+			BuffMultiplier = PowerDrainFactor
+		}
+
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsUtilized
+			FromStorage = BatteryStorage
+			FromQuantity
+			{
+				BaseValue = 400
+				BuffType = ThermalActivity
+				BuffMode = Multiply
+			}
+			MinFromQuantityForConversion = 1
+			Interval = 1
+		}
+
+		Port_Down
+		{
+			Type = NetworkPort
+			Location = [0, 2]
+			Direction = Down
+			Types = [ thermal, thermal_out ]
+			IncompatibleTypes = [ thermal_out ]
+			RouteSource = NetworkedAmplification
+			RouteEndpoint = NetworkedAmplification
+			BlueprintRouteSource = NetworkedAmplification
+			BlueprintRouteEndpoint = NetworkedAmplification
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			IncludeInBlueprints = All
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[NetworkedAmplification, NetworkedActivity, 0]
+						[NetworkedAmplification, NetworkPumpUtilization, 0]
+					]
+				}
+			]
+		}
+
+		PumpOverlaySignal
+		{
+			Type = BlueprintNetworkOverlaySignal
+			Signal = pump_amplification
+			SignalThroughNode = NetworkedAmplification
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [0.5, 1.5]
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 1.5]
+			OperationalToggle = IsOperational
+			DoodadToggle = IsUtilized
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 3]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 3]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 3]
+					}
+				]
+			}
+			ToggleOnDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, 18/64]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.1
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.1
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [1, 2]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, 1]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [1, 1]
+					}
+					{
+						File = "doodads_off_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "doodads_off_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad : ToggleOffDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, 1]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [1, 1]
+					}
+					{
+						File = "doodads_off_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "doodads_off_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 3]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 3]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 3]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 3]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 3]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 3]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [1, 2]
+						Offset = [0, -0.5]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [1, 2]
+						Offset = [0, -0.5]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [1, 2]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+		}
+
+		Pipe_Components
+		{
+			Type = ToggledComponents
+			Toggle = Port_Down
+			Components
+			{
+				Pipes_Graphics
+				{
+					Type = Graphics
+					Location = [0.5, 2.5]
+					OperationalToggle = IsOperational
+					Floor
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "pipes.png"
+								Size = [1, 1]
+							}
+							{
+								File = "pipes_33.png"
+								Size = [1, 1]
+							}
+							{
+								File = "pipes_66.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					Roof
+					{
+						Layer = "roof_doodads"
+						Offset = [0, 0.5]
+						DamageLevels
+						[
+							{
+								File = "pipe_roof.png"
+								NormalsFile = "pipe_roof_normals.png"
+								Size = [1, 1]
+							}
+							{
+								File = "pipe_roof_33.png"
+								NormalsFile = "pipe_roof_normals.png"
+								Size = [1, 1]
+							}
+							{
+								File = "pipe_roof_66.png"
+								NormalsFile = "pipe_roof_normals.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+
+
+		PumpHeatAccumulator
+		{
+			Type = ValueAccumulator
+			AccumulatingToggle = IsUtilized
+			AccumulationRate = 0.2
+			DissipationRate = 0.2
+			MinValue = 0
+			MaxValue = 1
+		}
+		PumpHeatColorFactor
+		{
+			Type = ValueColor
+			AlphaFrom = PumpHeatAccumulator
+		}
+		PumpHeat_Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 2.5]
+			GetColorFrom =  PumpHeatColorFactor
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "pump_heat.png"
+						Size = [1, 1]
+					}
+					{
+						File = "pump_heat_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "pump_heat_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [0.5, 1.5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 2]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 2]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries4.png"
+					Size = [1, 2]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries5.png"
+					Size = [1, 2]
+					Offset = [0, -0.5]
+				}
+				{
+					File = "batteries6.png"
+					Size = [1, 2]
+					Offset = [0, -0.5]
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 1.5]
+			Layer = "indicators"
+			Indicators
+			[
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Pipe_Connected_Blueprints
+		{
+			Type = BlueprintSprite
+			Toggle = Port_Down
+			File = "blueprints_connected.png"
+			Size = [1, 3]
+		}
+/*		Pipe_Disconnected_Blueprints
+		{
+			Type = BlueprintSprite
+			Toggle = Port_Down
+			Invert = true
+			File = "blueprints_disconnected.png"
+			Size = [1, 3]
+		}
+*/
+
+		//------------------------ PIPE CONNECTOR ------------------------
+		Dont_Draw_Pipe_Connector_Into_This_Part { Type = Graphics }	//When this fake component is present, the Heat Pipes dont draw a Pipe Conector to this part.
+
+		//Draw a Pipe Connector Down if possible
+		PipeConnectorDown_DrawToggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_DrawToggle
+		{
+			PartLocation = [0, 3]
+		}
+		PipeConnectorDown_Toggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Toggle {}
+		PipeConnectorDown_Components : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components
+		{
+			Components
+			{
+				PipesConnectorDown_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components/Components/PipesConnectorDown_Graphics
+				{
+					Location = [0.5, 3.5]
+				}
+			}
+		}
+		//---------------------- END PIPE CONNECTOR ----------------------
+	}
+
+	Stats
+	{
+		INVERSE_EFFICIENCY = 1 - (&~/Part/Components/MultiUtilizationEfficiencyExponent/EFFICIENCY)
+		UTILIZATION_SCALE = &~/Part/Components/UtilizationScale/Value
+		BASE_AMP = (&~/Part/Components/BaseAmplificationPerPort/Value) * 100
+
+		ThermalAmplification
+		[
+			(&../BASE_AMP) * (1 / (0 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY), (&../BASE_AMP) * (1 / (1 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)
+			(&../BASE_AMP) * (1 / (2 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY), (&../BASE_AMP) * (1 / (3 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)
+			(&../BASE_AMP) * (1 / (4 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY), (&../BASE_AMP) * (1 / (5 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)
+		]
+
+		TurretExtraHeatGeneration = (&~/Part/Components/AdditionalTurretHeatGeneration_Active/Value)
+
+		ThermalPumpPowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity/BaseValue) / (&~/Part/Components/PowerDrain/Interval) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		RecPower = &ThermalPumpPowerUsageContinuous
+	}
+}

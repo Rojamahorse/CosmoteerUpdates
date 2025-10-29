@@ -1,0 +1,9 @@
+Spawners
+[
+	{
+		Type = Nebula
+		NebulaType = cloudy
+		NebulaRadius = 2000
+		MultiplyNebulaRadius = AreaRadiusKM
+	}
+]

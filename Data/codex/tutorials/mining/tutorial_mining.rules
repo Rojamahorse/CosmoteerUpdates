@@ -1,0 +1,22 @@
+ID = mining
+TitleKey = "Tutorials/Mining/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.HasSeenCodexPage('resources') and sim.HasShipClassWithCustomIconInSight('cosmoteer.asteroid')"
+Entries
+[
+	{
+		Image { Texture { File="deposits.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Mining/Asteroids"
+	}
+	{
+		Image { Texture { File="../salvaging/tool.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Mining/Mine"
+	}
+	{
+		Image { Texture { File="element_icon.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Mining/Icon"
+	}
+	{
+		TextKey = "Tutorials/Mining/Tip"
+	}
+]

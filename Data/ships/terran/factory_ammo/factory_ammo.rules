@@ -1,0 +1,956 @@
+OVERCLOCK
+{
+	HEAT_PER_CONVERSION = 100
+	SPEED_FACTOR = 300%
+	POWER_USE_FACTOR = 150%
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
+{
+	NameKey = "Parts/FactoryAmmo"
+	IconNameKey = "Parts/FactoryAmmoIcon"
+	ID = cosmoteer.factory_ammo // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [ammo_supply, ammo_factory, cosmoteer.ammo_factory]
+	EditorGroup = "Production"
+	DescriptionKey = "Parts/FactoryAmmoDesc"
+	Resources
+	[
+		[steel, 32]
+		[coil, 24]
+		[tristeel, 4]
+	]
+	Size = [2, 2]
+	IsFlippable = true
+	SelectionPriority = 1
+	MaxHealth = 4000
+	TypeCategories = [provides_ammo, uses_sulfur, uses_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
+	BlockedTravelCells
+	[
+		[0, 0]
+		[1, 0]
+	]
+	ForceManhattanPathInPart = true
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[2, 1]
+		[0, 2]
+		[1, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, NonJunkToggle, SulfurSplitter, BatteryStorage, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 1
+		}
+
+		SulfurStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = sulfur
+			GridRect = [0, 1, 1, 1]
+			Layer = "doodads_low"
+			SpriteInset = [12/64, 4/64, 6/64, 11/64]
+			AllowExternalPickupAndDelivery = true
+		}
+		SulfurConsumer
+		{
+			Type = TypedResourceGridConsumer
+			ResourceType = sulfur
+			Storage = SulfurStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			OperationalToggle = CommandConsumptionToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+		SulfurSplitter
+		{
+		    Type = InlineResourceConverter
+		    ResourceType = sulfur
+		    FromStorage = SulfurStorage
+		    FromQuantity = 1
+		    ToQuantity = 20
+		}
+
+		AmmoStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = bullet
+			GridRect = [1, 1, 1, 1]
+			Layer = "doodads_low"
+			SpriteInset = [6/64, 4/64, 12/64, 11/64]
+			SuppliesResources = true
+			SupplyToggleButtonOffset = [0, -.4]
+			InitToMaxResources = 0
+			AllowExternalPickupAndDelivery = true
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = CommandConsumptionToggle
+		}
+
+		ResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			From
+			[
+			    {
+			        Storage = SulfurSplitter
+			        Quantity = 1
+			    }
+			    {
+			        Storage = BatteryStorage
+			        Quantity
+			        {
+			        	BaseValue = 40
+			        	Modifiers
+			        	[
+			        		: ~/MODIFIERS/OVERCLOCK_LERP
+			        		{
+			        			MinValue = &../../BaseValue
+			        			MaxValue = (&MinValue) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			        		}
+			        	]
+			        }
+			        MinQuantityForConversion = 1
+			    }
+			]
+			ToStorage = AmmoStorage
+			ToQuantity = 1
+			Interval
+			{
+				BaseValue = 0.5
+				Modifiers
+				[
+					{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+						ModificationMode = Divide
+					}
+				]
+			}
+			CheckResourceLimits = true
+		}
+
+		ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ResourceConverter
+			Location = [1, 1]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInteriorDetail
+				{
+					RandomSounds = ["sounds/cannon_ammo_factory_putdown_01.wav",
+									"sounds/cannon_ammo_factory_putdown_02.wav",
+									"sounds/cannon_ammo_factory_putdown_03.wav",
+									"sounds/cannon_ammo_factory_putdown_04.wav",
+									"sounds/cannon_ammo_factory_putdown_05.wav",
+									"sounds/cannon_ammo_factory_putdown_06.wav",
+									"sounds/cannon_ammo_factory_putdown_07.wav"]
+					Volume = 1
+					Db = -2
+					Speed = 1
+					SpeedVariation = .05
+				}
+			]
+		}
+
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = Factory
+			BuffAmount = 25%
+			GridDistance = 1
+			OperationalToggle = BatteryStorage
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		Overclock_ConversionHeatProducer
+		{
+			Type = ResourceChange
+			OperationalToggle = IsOverclocked
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_ResourceConverterProxy
+			Amount = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/HEAT_TO_RESOURCE)
+		}
+
+		Overclock_ResourceConverterProxy
+		{
+			Type = TriggerProxy
+			ProxyToggle = IsOverclocked
+			ComponentID = ResourceConverter
+		}
+
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 1]
+			Direction = Left
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Location = [1, 1]
+			Direction = Right
+		}
+		Port_Thermal_Down0 : Port_Thermal_Left
+		{
+			Direction = Down
+		}
+		Port_Thermal_Down1 : Port_Thermal_Down0
+		{
+			Location = [1, 1]
+		}
+
+		SulfurSprites : <../factory_he/factory_he.rules>/Part/Components/SulfurSprites
+		{
+			Location = [.5-8/64, 0.5+2/64]
+		}
+
+		IdleDoodaddAndDamageLevels_Graphics
+		{
+			Type = Graphics
+			Location = [1, 40/64]
+			OperationalToggle = IsOperational
+			DoodadToggle = ResourceConverter
+			ToggleOnDoodad
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_waste_on1.png"
+							"doodads_waste_on2.png"
+							"doodads_waste_on3.png"
+							"doodads_waste_on4.png"
+						]
+						Size = [1, 1]
+						Offset = [-.5, -8/64]
+						AnimationInterval = 0.0625
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_waste_on1_33.png"
+							"doodads_waste_on2_33.png"
+							"doodads_waste_on3_33.png"
+							"doodads_waste_on4_33.png"
+							"doodads_waste_on5_33.png"
+							"doodads_waste_on6_33.png"
+							"doodads_waste_on7_33.png"
+							"doodads_waste_on8_33.png"
+						]
+						Size = [2, 1]
+						AnimationInterval = &../0/AnimationInterval
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_waste_on1_66.png"
+							"doodads_waste_on2_66.png"
+							"doodads_waste_on3_66.png"
+							"doodads_waste_on4_66.png"
+							"doodads_waste_on5_66.png"
+							"doodads_waste_on6_66.png"
+							"doodads_waste_on7_66.png"
+							"doodads_waste_on8_66.png"
+						]
+						Size = [2, 1]
+						AnimationInterval = &../0/AnimationInterval
+						AnimationStartTime = WhenSpawned
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_idle1.png"
+							"doodads_idle2.png"
+							"doodads_idle3.png"
+							"doodads_idle2.png"
+						]
+						Size = [2, 1]
+						AnimationInterval = 0.1125*2
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_idle1_33.png"
+							"doodads_idle2_33.png"
+							"doodads_idle3_33.png"
+							"doodads_idle4_33.png"
+							"doodads_idle5_33.png"
+							"doodads_idle6_33.png"
+							"doodads_idle7_33.png"
+							"doodads_idle8_33.png"
+						]
+						Size = [2, 1]
+						AnimationInterval = &../0/AnimationInterval
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_idle1_66.png"
+							"doodads_idle2_66.png"
+							"doodads_idle3_66.png"
+							"doodads_idle4_66.png"
+							"doodads_idle5_66.png"
+							"doodads_idle6_66.png"
+							"doodads_idle7_66.png"
+							"doodads_idle8_66.png"
+						]
+						Size = [2, 1]
+						AnimationInterval = &../0/AnimationInterval
+						AnimationStartTime = WhenSpawned
+					}
+				]
+			}
+		}
+
+		FloorSprite
+		{
+			Type = Sprite
+			OnlyWithFlip = false
+			Location = [1, 1]
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor.png"
+					Size = [2, 2]
+				}
+				{
+					File = "floor_33.png"
+					Size = [2, 2]
+				}
+				{
+					File = "floor_66.png"
+					Size = [2, 2]
+				}
+			]
+		}
+		FloorSpriteFlipped
+		{
+			Type = Sprite
+			OnlyWithFlip = true
+			Location = [1, 1]
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor_flipped.png"
+					Size = [2, 2]
+				}
+				{
+					File = "floor_flipped_33.png"
+					Size = [2, 2]
+				}
+				{
+					File = "floor_flipped_66.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+		BeltSpeedFactor
+		{
+			Type = BuffableValue
+			Value
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = Factory
+						ModificationMode = Multiply
+					}
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+					}
+				]
+			}
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			AnimationToggle = ResourceConverter
+			AnimationSpeedFactor = BeltSpeedFactor
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -24/64]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [2, 1]
+						AnimationInterval = 0.0625
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -24/64]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, -17/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [3, 3]
+						Z = 0.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.5, 0, 0]
+					}
+				]
+			}
+		}
+
+		RoofDoorOpenToggle
+		{
+			Type = CrewDestinationProximityToggle
+			Distance = 3
+		}
+		RoofDoorSprite
+		{
+			Type = OpenCloseSprite
+			Location = [1, 1]
+			OperationalToggle = RoofDoorOpenToggle
+			Layer = "roofs"
+			OpenDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"roof1.png"
+						"roof2.png"
+						"roof3.png"
+						"roof4.png"
+						"roof5.png"
+						"roof6.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals1.png"
+						"roof_normals2.png"
+						"roof_normals3.png"
+						"roof_normals4.png"
+						"roof_normals5.png"
+						"roof_normals6.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof1_33.png"
+						"roof2_33.png"
+						"roof3_33.png"
+						"roof4_33.png"
+						"roof5_33.png"
+						"roof6_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals1_33.png"
+						"roof_normals2_33.png"
+						"roof_normals3_33.png"
+						"roof_normals4_33.png"
+						"roof_normals5_33.png"
+						"roof_normals6_33.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof1_66.png"
+						"roof2_66.png"
+						"roof3_66.png"
+						"roof4_66.png"
+						"roof5_66.png"
+						"roof6_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals1_66.png"
+						"roof_normals2_66.png"
+						"roof_normals3_66.png"
+						"roof_normals4_66.png"
+						"roof_normals5_66.png"
+						"roof_normals6_66.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+			ClosedDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"roof6.png"
+						"roof5.png"
+						"roof4.png"
+						"roof3.png"
+						"roof2.png"
+						"roof1.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals6.png"
+						"roof_normals5.png"
+						"roof_normals4.png"
+						"roof_normals3.png"
+						"roof_normals2.png"
+						"roof_normals1.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof6_33.png"
+						"roof5_33.png"
+						"roof4_33.png"
+						"roof3_33.png"
+						"roof2_33.png"
+						"roof1_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals6_33.png"
+						"roof_normals5_33.png"
+						"roof_normals4_33.png"
+						"roof_normals3_33.png"
+						"roof_normals2_33.png"
+						"roof_normals1_33.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof6_66.png"
+						"roof5_66.png"
+						"roof4_66.png"
+						"roof3_66.png"
+						"roof2_66.png"
+						"roof1_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals6_66.png"
+						"roof_normals5_66.png"
+						"roof_normals4_66.png"
+						"roof_normals3_66.png"
+						"roof_normals2_66.png"
+						"roof_normals1_66.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [0.625, 1]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		OperationSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/cannon_ammo_factory_idle.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 1
+				}
+			]
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			MinStatusValue = 1
+			StatusType = cosmoteer.scorched
+			Invert = true
+			IncludeWhenUnderConstruction = true
+		}
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+		}
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &~/Part/Components/DestroyedEffects/Location
+			MediaEffects = &~/Part/Components/DestroyedEffects/MediaEffects
+			HitEffects = &~/Part/Components/DestroyedEffects/HitEffects
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			OperationalToggle = ScorchedToggle
+			FactorHitEffectsWith = AmmoStorage
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = {BaseValue=40000; EffectScaleExponent=1;}
+					Radius = 4
+					Delay = .05
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 100%
+					StatusValue = 1
+					StatusValueType = Interpolated
+					NDamage = 1000
+					CrewKillChance = 50%
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = {BaseValue=11250; EffectScaleExponent=1;}
+					Radius = 3
+					Delay = .05
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+						Crew = false
+					}
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [1,2,3]
+				}
+
+				// No sulfur.
+				{
+					Toggle = SulfurSplitter
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoResource
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			OnlyWithFlip = false
+			File = "blueprints.png"
+			Size = [2, 2]
+		}
+		BlueprintsFlipped
+		{
+			Type = BlueprintSprite
+			OnlyWithFlip = true
+			File = "blueprints_flipped.png"
+			Size = [2, 2]
+		}
+
+		Overclock_HeatProductionInterval
+		{
+			Type = BuffableValue
+			Value = &~/Part/Components/ResourceConverter/Interval
+			IncludeInBlueprints = true
+		}
+		Overclock_HeatPerConversion { Type = StaticValue; Value = &~/OVERCLOCK/HEAT_PER_CONVERSION; }
+		HeatGenerationValue
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne = Overclock_HeatPerConversion
+			ValueTwo = Overclock_HeatProductionInterval
+			NaNFallbackValue = 0
+			IncludeInBlueprints = Normal
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = HeatGenerationValue
+		}
+	}
+
+	Stats
+	{
+		AmmoProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
+		AmmoCapacity = (&~/Part/Components/AmmoStorage/GridRect/2) * (&~/Part/Components/AmmoStorage/GridRect/3) * (&<./Data/resources/bullet/bullet.rules>/MaxStackSize)
+		SulfurCapacity = (&~/Part/Components/SulfurStorage/GridRect/2) * (&~/Part/Components/SulfurStorage/GridRect/3) * (&<./Data/resources/sulfur/sulfur.rules>/MaxStackSize)
+		SulfurPerAmmo = (&~/Part/Components/SulfurSplitter/FromQuantity) / (&~/Part/Components/SulfurSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
+		SulfurPerSecond = (&~/Part/Components/SulfurSplitter/FromQuantity) / (&~/Part/Components/SulfurSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
+		AmmoSulfurUsage = [&../SulfurPerAmmo, &../SulfurPerSecond]
+		PowerPerAmmo = (&~/Part/Components/ResourceConverter/From/1/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
+		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/1/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / 1000
+		AmmoPowerUsage = [&../PowerPerAmmo, &../PowerPerSecond]
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+
+		RecPower = &PowerPerSecond
+		RecCrew = (&RecPower) * 4
+	}
+
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/FactoryAmmoOverclockDesc"
+		Stats
+		{
+			AmmoProduction = (&~/Part/Stats/AmmoProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
+			AmmoSulfurUsage = [(&~/Part/Stats/AmmoSulfurUsage/0), (&~/Part/Stats/AmmoSulfurUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			POWER_PER_AMMO = (&~/Part/Stats/AmmoPowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			POWER_PER_SECOND = (&~/Part/Stats/AmmoPowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
+			AmmoPowerUsage = [&../POWER_PER_AMMO, &../POWER_PER_SECOND]
+			AMMO_PER_CONVERSION = (&~/Part/Components/ResourceConverter/ToQuantity)
+			HEAT_PER_AMMO = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&AMMO_PER_CONVERSION)
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) * (&~/OVERCLOCK/SPEED_FACTOR);
+			AmmoHeatGeneration = [&../HEAT_PER_AMMO, &../HEAT_PER_SECOND]
+		}
+	}
+}
+
+MODIFIERS
+{
+	OVERCLOCK_LERP
+	{
+		Type = Buff
+		BuffType = Overclock
+		ModificationMode = Lerp
+	}
+}

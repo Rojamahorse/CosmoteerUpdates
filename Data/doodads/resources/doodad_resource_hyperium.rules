@@ -1,0 +1,14 @@
+ID = cosmoteer.resource_hyperium
+Type = Resource
+DescriptionKey = "Resource/Hyperium"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/hyperium/hyperium1-1.png"
+		MipLevels = 2
+	}
+}
+ResourceType = hyperium
+Quantity = 1

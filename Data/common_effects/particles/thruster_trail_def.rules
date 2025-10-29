@@ -1,0 +1,194 @@
+EmitPerSecond = 0
+EmitPerOneShot = 0
+Initializers
+[
+	{
+		Type = LocationToWorldSpace
+		DataOut = energy
+		ValueType = Float
+		Value = 1
+		Name = "Convert location to world space."
+		Enabled = true
+		UpdateAfterInit = false
+		LocationIn = location
+		LocationOut = location
+	}
+	{
+		Type = ScaleToWorldSpace
+		LocationIn = location
+		LocationOut = location
+		Name = "Convert scale to world space"
+		Enabled = true
+		UpdateAfterInit = false
+		VelocityIn = velocity
+		VelocityOut = velocity
+	ScaleIn=scale;ScaleOut=scale;}
+	{
+		Type = VelocityToWorldSpace
+		Name = "Convert initial velocity to world space."
+		VelocityIn = velocity
+		VelocityOut = velocity
+		Enabled = true
+		UpdateAfterInit = false
+		VelocityInOut = velocity
+	}
+	{
+		Type = AddFrameOfReference
+		VelocityInOut = velocity
+		Name = "Add frame of reference"
+		Enabled = true
+		UpdateAfterInit = false
+		DataOut = rotation
+		ValueType = Angle
+		FromValue = 0d
+		ToValue = 360d
+	}
+	{
+		Type = SetRandom
+		DataOut = rotation
+		ValueType = Angle
+		FromValue = 0d
+		ToValue = 360d
+		Name = "Initial rotation."
+		Enabled = true
+		UpdateAfterInit = false
+	}
+{Type=SetRandom;DataOut=rot_vel;ValueType=Angle;FromValue=-399.99997d;ToValue=399.99997d;Name="Initial rot velocity.";Enabled=true;UpdateAfterInit=false;}]
+Updaters
+[
+	{
+		Type = Lifetime
+		EnergyInOut = energy
+		Lifetime = 1
+		Name = "Lifetime"
+		Enabled = true
+		UpdateAfterInit = false
+		LifeInOut = life
+	}
+	{
+		Type = Operator
+		DataType = Vector2
+		AIn = location
+		BIn = velocity
+		ResultOut = location
+		Operator = AddDt
+		Name = "Apply velocity."
+		Enabled = true
+		UpdateAfterInit = false
+	}
+	{
+		Type = Operator
+		DataType = Angle
+		AIn = rotation
+		BIn = rot_vel
+		ResultOut = rotation
+		Operator = AddDt
+		Name = "Apply rot velocity."
+		Enabled = true
+		UpdateAfterInit = false
+	}
+	{
+		Type = ColorRamp
+		AIn = scale_vel
+		ResultOut = scale_vel
+		Operator = AddDt
+		ValueType = Float
+		Value = 0.25
+		Name = "Color Ramp"
+		Enabled = true
+		UpdateAfterInit = true
+		LerpIn = life
+		ColorOut = color
+		Invert = false
+		Colors
+		[
+			{
+				Rf = 1
+				Gf = 0.49803922
+				Bf = 0
+				Af = 0
+			}
+			{
+				Rf = 1
+				Gf = 0.49803922
+				Bf = 0
+				Af = 2.0078433
+			}
+			{
+				Rf = 1
+				Gf = 0.49803922
+				Bf = 0
+				Af = 2.0078433
+			}
+			{
+				Rf = 1
+				Gf = 0.49803922
+				Bf = 0
+				Af = 1
+			}
+			{
+				Rf = 1
+				Gf = 0.49803922
+				Bf = 0
+				Af = 0
+			}
+		]
+	}
+]
+Renderer
+{
+	Type = StandardQuadRenderer
+	LocationIn = location
+	ScaleIn = scale
+	RotationIn = rotation
+	ColorIn = color
+	BaseSize
+	{
+		X = 1
+		Y = 1
+	}
+	MaxScale = 1
+	UVRect
+	{
+		X = 0
+		Y = 0
+		Width = 1
+		Height = 1
+	}
+	Name = ""
+	UvRectIn
+
+
+
+}
+Material
+{
+	Texture
+	{
+		File = flame.png
+		FixTransparentColors = false
+		PreMultiplyByAlpha = false
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Color
+	{
+		Rf = 1
+		Gf = 1
+		Bf = 1
+		Af = 0.24705882
+	}
+	TargetBlendMode
+	{
+		SourceRgbFactor = SourceAlpha
+		DestRgbFactor = One
+		RgbOperator = Add
+		SourceAlphaFactor = InverseDestAlpha
+		DestAlphaFactor = One
+		AlphaOperator = Add
+	}
+}
+DeleteMode = Fast
+UpdatedEmittedParticles = false
+EnableMultithreading = false
+InitCapacity=5000;

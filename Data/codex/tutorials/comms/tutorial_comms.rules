@@ -1,0 +1,26 @@
+ID = comms
+TitleKey = "Tutorials/Comms/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.HasSeenCodexPage('time')"
+TempShowCondition = "? game.CommsUIOpen"
+Entries
+[
+	{
+		TextKey = "Tutorials/Comms/Interact"
+	}
+	{
+		Image { Texture { File="comms_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Comms/CommsButton"
+	}
+	{
+		Image { Texture { File="hail_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Comms/HailButton"
+	}
+	{
+		Image { Texture { File="services.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Comms/Stations"
+	}
+	{
+		TextKey = "Tutorials/Comms/Note"
+	}
+]

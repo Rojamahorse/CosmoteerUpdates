@@ -1,0 +1,84 @@
+Grid
+{
+	LineColor = [255, 255, 255, 31]
+	CrossColor = [255, 255, 255, 31]
+	DotColor = [255, 255, 255, 31]
+	DesiredLinesAcross = 20
+	ResolutionIncrementFactor = 2
+	MinViewSize = 10000
+}
+
+FriendlyPipSprite
+{
+	Texture
+	{
+		File = "minimap_pip_friendly.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [24, 24]
+}
+NeutralPipSprite
+{
+	Texture
+	{
+		File = "minimap_pip_neutral.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [12, 12]
+}
+EnemyPipSprite
+{
+	Texture
+	{
+		File = "minimap_pip_enemy.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [12, 12]
+}
+
+NorthArrowSprite
+{
+	Texture
+	{
+		File = "north_arrow.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Color = [255, 0, 0, 127]
+	Size = [24, 24]
+}
+
+ViewRectNineSlice
+{
+	TopLeftSprite
+	{
+		Texture
+		{
+			File = "minimap_rect.png"
+			SampleMode = Linear
+			MipLevels = 1
+		}
+		                                Source=[0,   0,   16, 16]
+	}
+	TopSprite : TopLeftSprite         { Source=[16,  0,   96, 16]; }
+	TopRightSprite : TopLeftSprite    { Source=[112, 0,   16, 16]; }
+	LeftSprite : TopLeftSprite        { Source=[0,   16,  16, 96]; }
+	RightSprite : TopLeftSprite       { Source=[112, 16,  16, 96]; }
+	BottomLeftSprite : TopLeftSprite  { Source=[0,   112, 16, 16]; }
+	BottomSprite : TopLeftSprite      { Source=[16,  112, 96, 16]; }
+	BottomRightSprite : TopLeftSprite { Source=[112, 112, 16, 16]; }
+
+	Borders = 9
+	Bleed = 8
+}
+
+ShroudMaterial
+{
+	Shader = "minimap_shroud.shader"
+	_bgColor = [0, 0, 0, .5]
+	_borderAddColor = [.5, .5, .5, 0]
+}
+SightMaskEdgeSize = 5

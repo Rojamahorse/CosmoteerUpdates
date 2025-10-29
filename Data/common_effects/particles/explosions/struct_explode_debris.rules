@@ -1,0 +1,113 @@
+Type = Particles
+Def = &<../debris_def.rules>
+EmitterDef
+{
+	EmitPerSecond = 0
+	EmitPerOneShot
+	{
+		Min = 2
+		Max = 3
+	}
+	PreInitializers
+	[
+		{
+			Type = SetRandomCircle
+			LocationOut = location
+			Circle
+			{
+				Center
+				{
+					X = 0
+					Y = 0
+				}
+				Radius = 0.4
+			}
+			Perimeter = true
+			Name = location
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = rand_vel
+			ValueType = Float
+			FromValue = 0.1
+			ToValue = 1
+			Name = "Random Velocity Modifier"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandomVelocityFromPoint
+			LocationIn = location
+			VelocityOut = velocity
+			Speed
+			{
+				Min = 3
+				Max = 3
+			}
+			AwayFromPoint
+			{
+				X = 0
+				Y = 0
+			}
+			Name = "Init velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ConstructVector2
+			DataXIn = rand_vel
+			DataYIn = rand_vel
+			DataOut = rand_vel_v2
+			Name = "Create Vector2 from Velocity Modifier"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = rot_vel
+			ValueType = Angle
+			FromValue = -600d
+			ToValue = 600d
+			Name = "Init rot velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Float
+			AIn = rand_vel
+			BIn = rot_vel
+			ResultOut = rot_vel
+			Operator = Multiply
+			Name = "Apply modifier to rot velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = rand_vel_v2
+			BIn = velocity
+			ResultOut = velocity
+			Operator = Multiply
+			Name = "Apply modifier to velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	PostInitializers[]
+}
+Bucket = Upper2
+Delay = 0
+IgnoreIntensity = false
+Sharing = Global
+MinIntensity = 0
+IsFancy = true
+DontEmitWhenOffScreen = true
+DontEmitWhenOffScreenSizeInflate = 3
+PenetratingBucket
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 3.40282347E+38
+ScaleEmissionWithIntensity = false

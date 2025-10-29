@@ -1,0 +1,13 @@
+Spawners
+[
+	: <base_galaxy.rules>/MapNodes
+	{
+		Count = 75
+	}
+
+	&<base_galaxy.rules>/Factions
+	&<base_galaxy.rules>/FactionTiers
+	&<base_galaxy.rules>/StartingNodePicker
+	&<base_galaxy.rules>/ProgressionTiers
+	&<base_galaxy.rules>/SectorTypes
+]

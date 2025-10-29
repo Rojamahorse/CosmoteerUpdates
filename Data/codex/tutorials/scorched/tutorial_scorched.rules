@@ -1,0 +1,14 @@
+ID = scorched
+TitleKey = "Tutorials/Scorched/Title"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? sim.SelectedShip != None and sim.SelectedShip.HasStatusValue(\"cosmoteer.scorched\", 1)"
+Entries
+[
+	{
+		Image { Texture { File="scorched.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Scorched/CauseAndEffect"
+	}
+	{
+		TextKey = "Tutorials/Scorched/Solution"
+	}
+]

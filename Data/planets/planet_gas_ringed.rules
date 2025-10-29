@@ -1,0 +1,970 @@
+HeightMaps
+[
+	{
+		Name = height
+		Enabled = true
+		BaseValue = 0
+		Layers
+		[
+			{
+				Type = Perlin
+				OpacityInRange
+				{
+					Min = -3.4028235E+38
+					Max = -3.4028235E+38
+				}
+				OpacityOutRange
+				{
+					Min = 3.4028235E+38
+					Max = 3.4028235E+38
+				}
+				PerlinNoise
+				{
+					Seed = 0
+					GridSize
+					{
+						X = 3
+						Y = 12
+					}
+					Repeat
+					{
+						X = 3
+						Y = 0
+					}
+					Octaves = 6
+					Persistence = 0.5
+					OutputExponent = 1
+					OutputScale = 1.25
+					OutputShift = 0
+					ClampOutput
+					{
+						Min = -10
+						Max = 10
+					}
+				}
+				EdgeEffects
+				{
+					LeftAdd = 0
+					LeftMultiply = 1
+					LeftExponent = 1
+					RightAdd = 0
+					RightMultiply = 1
+					RightExponent = 1
+					TopAdd = 0
+					TopMultiply = 1
+					TopExponent = 1
+					BottomAdd = 0
+					BottomMultiply = 1
+					BottomExponent = 1
+				}
+				Name = base
+				Enabled = true
+				Opacity = 1
+				BlendMode = Add
+				HeightScale = 1
+			}
+			{
+				Type = PerlinDistortion
+				Distortion = 0.005
+				OpacityInRange
+				{
+					Min = -3.4028235E+38
+					Max = -3.4028235E+38
+				}
+				OpacityOutRange
+				{
+					Min = 3.4028235E+38
+					Max = 3.4028235E+38
+				}
+				PerlinNoise
+				{
+					Seed = 0
+					GridSize
+					{
+						X = 64
+						Y = 128
+					}
+					Repeat
+					{
+						X = 64
+						Y = 0
+					}
+					Octaves = 1
+					Persistence = 0.5
+					OutputExponent = 1
+					OutputScale = 1
+					OutputShift = 0
+					ClampOutput
+					{
+						Min = -1
+						Max = 1
+					}
+				}
+				EdgeEffects
+				{
+					LeftAdd = 0
+					LeftMultiply = 1
+					LeftExponent = 1
+					RightAdd = 0
+					RightMultiply = 1
+					RightExponent = 1
+					TopAdd = 0
+					TopMultiply = 1
+					TopExponent = 1
+					BottomAdd = 0
+					BottomMultiply = 1
+					BottomExponent = 1
+				}
+				Name = "distortion small"
+				Enabled = true
+				Opacity = 1
+				BlendMode = Replace
+				HeightScale = 1
+			}
+			{
+				Type = PerlinDistortion
+				Distortion = 0.03
+				OpacityInRange
+				{
+					Min = -3.4028235E+38
+					Max = -3.4028235E+38
+				}
+				OpacityOutRange
+				{
+					Min = 3.4028235E+38
+					Max = 3.4028235E+38
+				}
+				PerlinNoise
+				{
+					Seed = 0
+					GridSize
+					{
+						X = 8
+						Y = 8
+					}
+					Repeat
+					{
+						X = 8
+						Y = 0
+					}
+					Octaves = 1
+					Persistence = 0.5
+					OutputExponent = 1
+					OutputScale = 1
+					OutputShift = 0
+					ClampOutput
+					{
+						Min = -1
+						Max = 1
+					}
+				}
+				EdgeEffects
+				{
+					LeftAdd = 0
+					LeftMultiply = 1
+					LeftExponent = 1
+					RightAdd = 0
+					RightMultiply = 1
+					RightExponent = 1
+					TopAdd = 0
+					TopMultiply = 1
+					TopExponent = 1
+					BottomAdd = 0
+					BottomMultiply = 1
+					BottomExponent = 1
+				}
+				Name = "distortion large"
+				Enabled = true
+				Opacity = 1
+				BlendMode = Replace
+				HeightScale = 1
+			}
+			{
+				Type = Swirl
+				Seed = 0
+				OpacityInRange
+				{
+					Min = -3.4028235E+38
+					Max = -3.4028235E+38
+				}
+				OpacityOutRange
+				{
+					Min = 3.4028235E+38
+					Max = 3.4028235E+38
+				}
+				SwirlAmount = 1
+				SwirlExponent = 4
+				MinScale
+				{
+					X = 0.1
+					Y = 0.2
+				}
+				MaxScale
+				{
+					X = 0.2
+					Y = 0.4
+				}
+				Count
+				{
+					Min = 0
+					Max = 5
+				}
+				PerlinNoise
+				{
+					Seed = 0
+					GridSize
+					{
+						X = 4
+						Y = 4
+					}
+					Repeat
+					{
+						X = 0
+						Y = 0
+					}
+					Octaves = 1
+					Persistence = 0.5
+					OutputExponent = 1
+					OutputScale = 1
+					OutputShift = 0
+					ClampOutput
+					{
+						Min = -1
+						Max = 1
+					}
+				}
+				EdgeEffects
+				{
+					LeftAdd = 0
+					LeftMultiply = 1
+					LeftExponent = 1
+					RightAdd = 0
+					RightMultiply = 1
+					RightExponent = 1
+					TopAdd = 0
+					TopMultiply = 1
+					TopExponent = 1
+					BottomAdd = 0
+					BottomMultiply = 1
+					BottomExponent = 1
+				}
+				Probabilities
+				[
+					{
+						Probability = 1
+						Position = -1
+					}
+					{
+						Probability = 1
+						Position = 1
+					}
+				]
+				WrapX = true
+				WrapY = false
+				Tries = 100
+				Name = swirls
+				Enabled = true
+				Opacity = 1
+				BlendMode = Replace
+				HeightScale = 1
+			}
+		]
+	}
+]
+Layers
+[
+	{
+		Type = HaloGenerator
+		OuterThickness = 0.0125
+		InnerThickness = 0
+		AnimateSpeed = 1
+		Generator
+		{
+			SampleMode = Linear
+			BaseColor
+			{
+				Rf = 0
+				Gf = 0
+				Bf = 0
+				Af = 1
+			}
+			Layers[]
+		}
+		NormalsGenerator
+		{
+			SampleMode = Linear
+			BaseColor
+			{
+				Rf = 0.49803922
+				Gf = 0.49803922
+				Bf = 1
+				Af = 1
+			}
+			Layers[]
+		}
+		Material
+		{
+			Shader
+			{
+				File = halo.shader
+			}
+			Color
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 0.19607843
+			}
+		}
+		Name = shadow
+		Enabled = true
+		Seed = 0
+		Chance = 1
+		Scale = 1.0125
+		LayerParamsSeed = 0
+		LayerSpin
+		{
+			Min = 0
+			Max = 0
+		}
+		DiffuseDarkness = 0.96
+		DarknessExponent = 1
+		InvertDarkness = false
+		SpecularStrength = 0
+		SpecularShine = 5
+	}
+	{
+		Type = TextureGenerator
+		Generator
+		{
+			SampleMode = Linear
+			BaseColor
+			{
+				Rf = 0
+				Gf = 0
+				Bf = 0
+				Af = 1
+			}
+			Layers
+			[
+				{
+					Type = Heightmap
+					HeightExponent = 1
+					Interpolate = Hsv
+					HeightMapName = height
+					Colors
+					[
+						{
+							Color
+							{
+								Rf = 0.8509804
+								Gf = 0.8039216
+								Bf = 0.7490196
+								Af = 1
+							}
+							Position = -1
+						}
+						{
+							Color
+							{
+								Rf = 0.9843137
+								Gf = 0.4627451
+								Bf = 0.105882354
+								Af = 1
+							}
+							Position = 0
+						}
+						{
+							Color
+							{
+								Rf = 0.5449268
+								Gf = 0.58431375
+								Bf = 0.039215684
+								Af = 1
+							}
+							Position = 1
+						}
+					]
+					Name = base
+					Enabled = true
+					Opacity = 1
+					BlendMode = AlphaBlend
+					ColorScale
+					{
+						Rf = 1
+						Gf = 1
+						Bf = 1
+						Af = 1
+					}
+					ReadClippingMask = false
+					WriteClippingMask = false
+					WriteTexture = true
+				}
+				{
+					Type = Swirls
+					Seed = 0
+					SwirlAmount = 1
+					SwirlExponent = 4
+					MinScale
+					{
+						X = 0.1
+						Y = 0.2
+					}
+					MaxScale
+					{
+						X = 0.2
+						Y = 0.4
+					}
+					Count
+					{
+						Min = 0
+						Max = 5
+					}
+					PerlinNoise
+					{
+						Seed = 0
+						GridSize
+						{
+							X = 4
+							Y = 4
+						}
+						Repeat
+						{
+							X = 0
+							Y = 0
+						}
+						Octaves = 1
+						Persistence = 0.5
+						OutputExponent = 1
+						OutputScale = 1
+						OutputShift = 0
+						ClampOutput
+						{
+							Min = -1
+							Max = 1
+						}
+					}
+					EdgeEffects
+					{
+						LeftAdd = 0
+						LeftMultiply = 1
+						LeftExponent = 1
+						RightAdd = 0
+						RightMultiply = 1
+						RightExponent = 1
+						TopAdd = 0
+						TopMultiply = 1
+						TopExponent = 1
+						BottomAdd = 0
+						BottomMultiply = 1
+						BottomExponent = 1
+					}
+					Probabilities
+					[
+						{
+							Probability = 1
+							Position = -1
+						}
+						{
+							Probability = 1
+							Position = 1
+						}
+					]
+					WrapX = true
+					WrapY = false
+					ReadClippingMaskProbability = false
+					Tries = 100
+					Name = swirls
+					Enabled = false
+					Opacity = 1
+					BlendMode = AlphaBlend
+					ColorScale
+					{
+						Rf = 1
+						Gf = 1
+						Bf = 1
+						Af = 1
+					}
+					ReadClippingMask = false
+					WriteClippingMask = false
+					WriteTexture = true
+				}
+				{
+					Type = ColorShift
+					Seed = 0
+					HueShift
+					{
+						Min = 0
+						Max = 360
+					}
+					SatShift
+					{
+						Min = -0.75
+						Max = 0.25
+					}
+					ValShift
+					{
+						Min = 0
+						Max = 0
+					}
+					AlphaShift
+					{
+						Min = 0
+						Max = 0
+					}
+					Name = "color shift"
+					Enabled = true
+					Opacity = 1
+					BlendMode = Replace
+					ColorScale
+					{
+						Rf = 1
+						Gf = 1
+						Bf = 1
+						Af = 1
+					}
+					ReadClippingMask = false
+					WriteClippingMask = false
+					WriteTexture = true
+				}
+			]
+		}
+		NormalsGenerator
+		{
+			SampleMode = Linear
+			BaseColor
+			{
+				Rf = 0.49803922
+				Gf = 0.49803922
+				Bf = 1
+				Af = 1
+			}
+			Layers
+			[
+				{
+					Type = HeightmapToNormals
+					HeightExponent = 1
+					HeightMapName = height
+					HeightFactor = 0.5
+					Name = "heightmap normals"
+					Enabled = true
+					Opacity = 1
+					BlendMode = AlphaBlend
+					ColorScale
+					{
+						Rf = 1
+						Gf = 1
+						Bf = 1
+						Af = 1
+					}
+					ReadClippingMask = false
+					WriteClippingMask = false
+					WriteTexture = true
+				}
+			]
+		}
+		Material
+		{
+			Shader
+			{
+				File = planet.shader
+			}
+		}
+		Name = surface
+		Enabled = true
+		Seed = 0
+		Chance = 1
+		Scale = 1
+		LayerParamsSeed = 0
+		LayerSpin
+		{
+			Min = 0
+			Max = 0
+		}
+		DiffuseDarkness = 0.92621976
+		DarknessExponent = 1
+		InvertDarkness = false
+		SpecularStrength = 0.4089493
+		SpecularShine = 5
+	}
+	{
+		Type = HaloGenerator
+		OuterThickness = 0.05
+		InnerThickness = 0.2
+		AnimateSpeed = 1
+		Generator
+		{
+			SampleMode = Linear
+			BaseColor
+			{
+				Rf = 0.9843137
+				Gf = 0.4627451
+				Bf = 0.105882354
+				Af = 1
+			}
+			Layers
+			[
+				{
+					Type = ColorShift
+					Seed = 0
+					HueShift
+					{
+						Min = 0
+						Max = 360
+					}
+					SatShift
+					{
+						Min = -0.75
+						Max = 0.25
+					}
+					ValShift
+					{
+						Min = 0
+						Max = 0
+					}
+					AlphaShift
+					{
+						Min = 0
+						Max = 0
+					}
+					Name = "color shift"
+					Enabled = true
+					Opacity = 1
+					BlendMode = Replace
+					ColorScale
+					{
+						Rf = 1
+						Gf = 1
+						Bf = 1
+						Af = 1
+					}
+					ReadClippingMask = false
+					WriteClippingMask = false
+					WriteTexture = true
+				}
+			]
+		}
+		NormalsGenerator
+		{
+			SampleMode = Linear
+			BaseColor
+			{
+				Rf = 0.49803922
+				Gf = 0.49803922
+				Bf = 1
+				Af = 1
+			}
+			Layers[]
+		}
+		Material
+		{
+			Shader = &~/Layers/0/Material/Shader
+			Color
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 0.5882353
+			}
+		}
+		Name = atmosphere
+		Enabled = true
+		Seed = 0
+		Chance = 1
+		Scale = 1.05
+		LayerParamsSeed = 0
+		LayerSpin
+		{
+			Min = 0
+			Max = 0
+		}
+		DiffuseDarkness = 0.9274436
+		DarknessExponent = 1
+		InvertDarkness = false
+		SpecularStrength = 0
+		SpecularShine = 5
+	}
+	{
+		Type = RingGenerator
+		RingThickness = 0.3
+		Resolution
+		{
+			X = 1
+			Y = 128
+		}
+		Tilt
+		{
+			Min = 9.999999d
+			Max = 34.999996d
+		}
+		Angle
+		{
+			Min = -45d
+			Max = 45d
+		}
+		ShadowSphereRadius = 0.9
+		Penumbra = 0.3
+		Generator
+		{
+			SampleMode = Linear
+			BaseColor
+			{
+				Rf = 1
+				Gf = 1
+				Bf = 1
+				Af = 0
+			}
+			Layers
+			[
+				{
+					Type = Perlin
+					Interpolate = Rgb
+					PerlinNoise
+					{
+						Seed = 0
+						GridSize
+						{
+							X = 1
+							Y = 8
+						}
+						Repeat
+						{
+							X = 1
+							Y = 0
+						}
+						Octaves = 4
+						Persistence = 0.5
+						OutputExponent = 1
+						OutputScale = 1
+						OutputShift = 0
+						ClampOutput
+						{
+							Min = -1
+							Max = 1
+						}
+					}
+					EdgeEffects
+					{
+						LeftAdd = 0
+						LeftMultiply = 1
+						LeftExponent = 1
+						RightAdd = 0
+						RightMultiply = 1
+						RightExponent = 1
+						TopAdd = -1
+						TopMultiply = 1
+						TopExponent = 10
+						BottomAdd = -1
+						BottomMultiply = 1
+						BottomExponent = 10
+					}
+					Colors
+					[
+						{
+							Color
+							{
+								Rf = 1
+								Gf = 1
+								Bf = 1
+								Af = 0
+							}
+							Position = -1
+						}
+						{
+							Color
+							{
+								Rf = 1
+								Gf = 1
+								Bf = 1
+								Af = 1
+							}
+							Position = 1
+						}
+					]
+					Name = transparency
+					Enabled = true
+					Opacity = 1
+					BlendMode = AlphaBlend
+					ColorScale
+					{
+						Rf = 1
+						Gf = 1
+						Bf = 1
+						Af = 1
+					}
+					ReadClippingMask = false
+					WriteClippingMask = false
+					WriteTexture = true
+				}
+				{
+					Type = Perlin
+					Interpolate = Hsv
+					PerlinNoise
+					{
+						Seed = 1
+						GridSize
+						{
+							X = 1
+							Y = 16
+						}
+						Repeat
+						{
+							X = 0
+							Y = 0
+						}
+						Octaves = 2
+						Persistence = 0.5
+						OutputExponent = 1
+						OutputScale = 1
+						OutputShift = 0
+						ClampOutput
+						{
+							Min = -1
+							Max = 1
+						}
+					}
+					EdgeEffects
+					{
+						LeftAdd = 0
+						LeftMultiply = 1
+						LeftExponent = 1
+						RightAdd = 0
+						RightMultiply = 1
+						RightExponent = 1
+						TopAdd = 0
+						TopMultiply = 1
+						TopExponent = 1
+						BottomAdd = 0
+						BottomMultiply = 1
+						BottomExponent = 1
+					}
+					Colors
+					[
+						{
+							Color
+							{
+								Rf = 0.9843137
+								Gf = 0.4627451
+								Bf = 0.105882354
+								Af = 1
+							}
+							Position = -1
+						}
+						{
+							Color
+							{
+								Rf = 0.8509804
+								Gf = 0.8039216
+								Bf = 0.7490196
+								Af = 1
+							}
+							Position = 0
+						}
+						{
+							Color
+							{
+								Rf = 0.58431375
+								Gf = 0.05490196
+								Bf = 0.039215688
+								Af = 1
+							}
+							Position = 1
+						}
+					]
+					Name = color
+					Enabled = true
+					Opacity = 1
+					BlendMode = Multiply
+					ColorScale
+					{
+						Rf = 1
+						Gf = 1
+						Bf = 1
+						Af = 1
+					}
+					ReadClippingMask = false
+					WriteClippingMask = false
+					WriteTexture = true
+				}
+				{
+					Type = ColorShift
+					Seed = 99
+					HueShift
+					{
+						Min = 0
+						Max = 360
+					}
+					SatShift
+					{
+						Min = -0.5
+						Max = 0
+					}
+					ValShift
+					{
+						Min = 0
+						Max = 0
+					}
+					AlphaShift
+					{
+						Min = 0
+						Max = 0
+					}
+					Name = "color shift"
+					Enabled = true
+					Opacity = 1
+					BlendMode = Replace
+					ColorScale
+					{
+						Rf = 1
+						Gf = 1
+						Bf = 1
+						Af = 1
+					}
+					ReadClippingMask = false
+					WriteClippingMask = false
+					WriteTexture = true
+				}
+			]
+		}
+		NormalsGenerator
+		{
+			SampleMode = Linear
+			BaseColor
+			{
+				Rf = 0.49803922
+				Gf = 0.49803922
+				Bf = 1
+				Af = 1
+			}
+			Layers[]
+		}
+		Material
+		{
+			Shader
+			{
+				File = ring.shader
+			}
+		}
+		Name = rings
+		Enabled = true
+		Seed = 1
+		Chance = 1
+		Scale = 1.6
+		LayerParamsSeed = 0
+		LayerSpin
+		{
+			Min = 0
+			Max = 0
+		}
+		DiffuseDarkness = 0.96
+		DarknessExponent = 1
+		InvertDarkness = false
+		SpecularStrength = 0
+		SpecularShine = 5
+	}
+]
+Spin
+{
+	Min = 0.0025
+	Max = 0.005
+}

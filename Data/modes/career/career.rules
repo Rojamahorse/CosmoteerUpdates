@@ -1,0 +1,764 @@
+MapSizes
+[
+	&<./Data/galaxy_map/map_generators/map_sizes.rules>/Standard
+]
+
+StarterShips
+[
+	{
+		Ship = "./Data/builtin_ships/Starter/Model-L.ship.png"
+		DescriptionKey = "StarterShips/ModelL"
+	}
+	{
+		Ship = "./Data/builtin_ships/Starter/Model-C.ship.png"
+		DescriptionKey = "StarterShips/ModelC"
+	}
+	{
+		Ship = "./Data/builtin_ships/Starter/Model-S.ship.png"
+		DescriptionKey = "StarterShips/ModelS"
+	}
+	{
+		Ship = "./Data/builtin_ships/Starter/Model-M.ship.png"
+		DescriptionKey = "StarterShips/ModelM"
+	}
+]
+
+CombatDifficultyLevels
+[
+	{
+		ID = "no_death"
+		NameKey = "CombatDifficulty/NoDeath"
+		TipKey = "CombatDifficulty/NoDeathTip"
+		IsPlayerInvulnerable = true
+		DamageVsEnemies = 100%
+		DamageFromEnemies = 100%
+		ResourceDrainVsEnemies = 100%
+		ResourceDrainFromEnemies = 100%
+		StatusFactorsVsEnemies
+		{
+			cosmoteer.fire = 100%
+		}
+		StatusFactorsFromEnemies
+		{
+			cosmoteer.fire = 100%
+		}
+		EnemyCombatNoBuildRadius = 0
+		EnemyCombatNoBuildDuration = 0
+	}
+	{
+		ID = "easy"
+		NameKey = "CombatDifficulty/Easy"
+		TipKey = "CombatDifficulty/EasyTip"
+		IsDefault = true
+		DamageVsEnemies = 140%
+		DamageFromEnemies = 70%
+		ResourceDrainVsEnemies = 140%
+		ResourceDrainFromEnemies = 70%
+		StatusFactorsVsEnemies
+		{
+			cosmoteer.fire = 140%
+		}
+		StatusFactorsFromEnemies
+		{
+			cosmoteer.fire = 70%
+		}
+		EnemyCombatNoBuildRadius = 800
+		EnemyCombatNoBuildDuration = 5
+	}
+	{
+		ID = "normal"
+		NameKey = "CombatDifficulty/Normal"
+		TipKey = "CombatDifficulty/NormalTip"
+		DamageVsEnemies = 100%
+		DamageFromEnemies = 100%
+		ResourceDrainVsEnemies = 100%
+		ResourceDrainFromEnemies = 100%
+		StatusFactorsVsEnemies
+		{
+			cosmoteer.fire = 100%
+		}
+		StatusFactorsFromEnemies
+		{
+			cosmoteer.fire = 100%
+		}
+		EnemyCombatNoBuildRadius = 800
+		EnemyCombatNoBuildDuration = 5
+	}
+	{
+		ID = "hard"
+		NameKey = "CombatDifficulty/Hard"
+		TipKey = "CombatDifficulty/HardTip"
+		DamageVsEnemies = 80%
+		DamageFromEnemies = 125%
+		ResourceDrainVsEnemies = 80%
+		ResourceDrainFromEnemies = 125%
+		StatusFactorsVsEnemies
+		{
+			cosmoteer.fire = 80%
+		}
+		StatusFactorsFromEnemies
+		{
+			cosmoteer.fire = 125%
+		}
+		EnemyCombatNoBuildRadius = 800
+		EnemyCombatNoBuildDuration = 5
+	}
+	{
+		ID = "very_hard"
+		NameKey = "CombatDifficulty/VeryHard"
+		TipKey = "CombatDifficulty/VeryHardTip"
+		DamageVsEnemies = 70%
+		DamageFromEnemies = 140%
+		ResourceDrainVsEnemies = 70%
+		ResourceDrainFromEnemies = 140%
+		StatusFactorsVsEnemies
+		{
+			cosmoteer.fire = 70%
+		}
+		StatusFactorsFromEnemies
+		{
+			cosmoteer.fire = 140%
+		}
+		EnemyCombatNoBuildRadius = 800
+		EnemyCombatNoBuildDuration = 5
+	}
+]
+
+EconDifficultyLevels
+[
+	{
+		ID = "free_build"
+		NameKey = "EconDifficulty/FreeBuild"
+		TipKey = "EconDifficulty/FreeBuildTip"
+		StartingMoney = 0
+		StartingFame = 0
+		EnemyResourceDropRateFactor = 100%
+		SelfResourceDropRateFactor = 100%
+		MoneyRewardFactor = 100%
+		FameRewardFactor = 100%
+		ReputationRewardFactor = 100%
+		ResourceSaleRefund = 50%
+		ConstructionMode = InstantFree
+	}
+	{
+		ID = "fast"
+		NameKey = "EconDifficulty/Fast"
+		TipKey = "EconDifficulty/FastTip"
+		IsDefault = true
+		StartingMoney = 65350+10000
+		StartingFame = 0
+		EnemyResourceDropRateFactor = 200%
+		SelfResourceDropRateFactor = 100%
+		MoneyRewardFactor = 200%
+		FameRewardFactor = 150%
+		ReputationRewardFactor = 150%
+		ResourceSaleRefund = 50%
+	}
+	{
+		ID = "normal"
+		NameKey = "EconDifficulty/Normal"
+		TipKey = "EconDifficulty/NormalTip"
+		StartingMoney = 65350+5000
+		StartingFame = 0
+		EnemyResourceDropRateFactor = 100%
+		SelfResourceDropRateFactor = 100%
+		MoneyRewardFactor = 100%
+		FameRewardFactor = 100%
+		ReputationRewardFactor = 100%
+		ResourceSaleRefund = 50%
+	}
+	{
+		ID = "slow"
+		NameKey = "EconDifficulty/Slow"
+		TipKey = "EconDifficulty/SlowTip"
+		StartingMoney = 65350+0
+		StartingFame = 0
+		EnemyResourceDropRateFactor = 50%
+		SelfResourceDropRateFactor = 100%
+		MoneyRewardFactor = 50%
+		FameRewardFactor = 75%
+		ReputationRewardFactor = 75%
+		ResourceSaleRefund = 50%
+	}
+]
+
+CrewScarcityLevels
+[
+	{
+		ID = "max"
+		NameKey = "CrewScarcity/Max"
+		TipKey = "CrewScarcity/MaxTip"
+		CrewFamePrereqFameRange = [0, &/TIER_TABLES/MaxFame]
+		CrewFamePrereqFameRoundToMultiple = 5
+		CrewFamePrereqCountRange = [2000, 2000]
+	}
+	{
+		ID = "plentiful"
+		NameKey = "CrewScarcity/Plentiful"
+		TipKey = "CrewScarcity/PlentifulTip"
+		CrewFamePrereqFameRange = [0, &/TIER_TABLES/MaxFame]
+		CrewFamePrereqFameRoundToMultiple = 5
+		CrewFamePrereqCountRange = [32, 2000]
+	}
+	{
+		ID = "standard"
+		NameKey = "CrewScarcity/Standard"
+		TipKey = "CrewScarcity/StandardTip"
+		IsDefault = true
+		CrewFamePrereqFameRange = [0, &/TIER_TABLES/MaxFame]
+		CrewFamePrereqFameRoundToMultiple = 5
+		CrewFamePrereqCountRange = [24, 1500]
+	}
+	{
+		ID = "scarce"
+		NameKey = "CrewScarcity/Scarce"
+		TipKey = "CrewScarcity/ScarceTip"
+		CrewFamePrereqFameRange = [0, &/TIER_TABLES/MaxFame]
+		CrewFamePrereqFameRoundToMultiple = 5
+		CrewFamePrereqCountRange = [16, 1000]
+	}
+]
+
+Icon
+{
+	Texture
+	{
+		File = "career.png"
+		SampleMode = Linear
+		MipLevels = 2
+	}
+}
+LargeIcon
+{
+	Texture
+	{
+		File = "career_large.png"
+		SampleMode = Linear
+		MipLevels = 2
+	}
+}
+
+Gui
+{
+    Comms = &<./Data/gui/game/comms/comms_gui.rules>
+    Missions = &<./Data/gui/game/missions/missions_gui.rules>
+
+	DangerLevelColors
+	[
+		{
+			Tier = 1;
+			Color = [10, 212, 98]
+		}
+		{
+			Tier = 18;
+			Color = [246, 49, 43]
+		}
+	]
+
+	TierValueMaximums = &/TIER_TABLES/TierValueMaximums
+	TierValueCombineOverhead = &/TIER_TABLES/TierValueCombineOverhead
+}
+
+Map
+{
+	FriendliesPresentSprite
+	{
+		Texture
+		{
+			File = "./Data/gui/icon_ship.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		Size = [.5, .5]
+	}
+	FriendliesPresentSpriteOffset = [.6, -.6]
+}
+
+Exploration
+{
+	SectorSize = 512
+	UnexploredRadius = 60 * (&SectorSize)
+	UnexploredTextureSizeFactor = 1
+	UnexploredMaterial
+	{
+		Shader = "unexplored.shader"
+		Color = [255*.5, 255*.5, 255*.5, 255*0.2]
+		TargetBlendMode = Add
+	}
+
+	BreadcrumbPoints = 600
+	BreadcrumbPointDistance = 50
+	BreadcrumbTrailBeginColor = [153, 153, 153, 128]
+	BreadcrumbTrailEndColor = [153, 153, 153, 0]
+	BreadcrumbMaterial
+	{
+		TargetBlendMode = AddAlphaBlend
+	}
+}
+
+Wanted
+{
+	SearchRadius = 4000
+	AggroRadius = 4000
+	SearchingExpireTime = 60
+	PoliceShipTags = [combat]
+	PoliceSpawnDistance = [2000, 3000]
+	PoliceSpawnAvoidableDoodadTags = [sun]
+	PoliceSpawnAvoidableDoodadBuffer = 100
+	PoliceAIType = Police
+	MultiThreadedPoliceSpawnDelay = 1
+
+	WantedAlertSound
+	{
+		Sound = "wanted_alert.wav"
+	}
+}
+
+Dialogue
+{
+	SurrenderAreaCheckRadius = 1500
+	PlayerSurrenderCancelDistance = 3000
+	PlayerSurrenderDuration = 1200 //20 min or when players leaves radius
+	AISurrenderDuration = Infinity
+	AIHailDuration = 10
+	SurrenderValidCheckBufferMult = 5%
+	SurrenderPayoutRoundToMultiple = 100
+	LastFireTimeToBeConsideredAttacking = 5
+	SurrenderFirepowerWeightExponent = 0.6
+	SurrenderShipCostWeightExponent = 0.4
+	PlayerSurrenderBaseCost = 4000
+	PlayerWantedPayoffCost = 6000
+	FameLostOnTruceBreak = 15;
+	AIInvincibilityOnSurrenderDuration = 2;
+}
+
+SystemVisitMissions
+{
+	Metatype = VisitSystem
+	FamePrereqPerLowTier = &/TIER_TABLES/StandardFamePrereqPerTier
+	Rewards
+	[
+		{
+			Type = Money
+			MoneyPerLowTier = &/TIER_TABLES/StandardMoneyPerTier
+			MoneyPerTierMultiplier = 0.5
+			RoundToMultiple = 500
+		}
+	]
+}
+
+MaxPlayers = 4
+Techs = &<techs.rules>/Techs
+SectorTypes = &<sectors/sectors.rules>/Sectors
+MissionMetatypes = &<mission_metatypes.rules>
+MissionCategories = &<mission_categories.rules>/Categories
+AllowedShipClasses = ["cosmoteer.terran"]
+AIStationAvoidanceDistance = 3000
+StationOperationalEnemyCheckDistance = &<./Data/ships/terran/control_room_small/control_room_small.rules>/Part/Components/Sensor/RadarRadius
+ReputationLossPerValueDamageMilitary = 1 / 10000
+ReputationLossPerValueDamageCivilian = 4 / 10000
+SalvagingDisabledMoneyRewardFactor = 2.0
+
+TradeShips
+{
+	// Fringe
+	fringe_3a       : ~/BaseTradeShip { ShipID="Courier";                Faction=fringe;   TierRange=[1, 9];   StasisSpeed=50; StasisTradeTime=40; }
+	fringe_3b       : ~/BaseTradeShip { ShipID="The Last Lightyear";     Faction=fringe;   TierRange=[1, 9];   StasisSpeed=53; StasisTradeTime=40; }
+	fringe_3c       : ~/BaseTradeShip { ShipID="Shamal";                 Faction=fringe;   TierRange=[1, 9];   StasisSpeed=53; StasisTradeTime=40; }
+	fringe_5a       : ~/BaseTradeShip { ShipID="Crate Bus";              Faction=fringe;   TierRange=[3, 12];  StasisSpeed=80; StasisTradeTime=60; }
+	fringe_5b       : ~/BaseTradeShip { ShipID="Loadspine";              Faction=fringe;   TierRange=[3, 12];  StasisSpeed=35; StasisTradeTime=60; }
+	fringe_5c       : ~/BaseTradeShip { ShipID="Harmattan";              Faction=fringe;   TierRange=[3, 12];  StasisSpeed=35; StasisTradeTime=60; }
+	fringe_7a       : ~/BaseTradeShip { ShipID="BuuLka FrEIghTa";        Faction=fringe;   TierRange=[6, 18];  StasisSpeed=28; StasisTradeTime=80; }
+	fringe_7b       : ~/BaseTradeShip { ShipID="Beautiful In Name Only"; Faction=fringe;   TierRange=[6, 18];  StasisSpeed=25; StasisTradeTime=80; }
+	fringe_7c       : ~/BaseTradeShip { ShipID="Impending Lawsuit";      Faction=fringe;   TierRange=[6, 18];  StasisSpeed=52; StasisTradeTime=80; }
+	fringe_10a      : ~/BaseTradeShip { ShipID="Ol' Reliable";           Faction=fringe;   TierRange=[12, 18]; StasisSpeed=78; StasisTradeTime=100; }
+	fringe_10b      : ~/BaseTradeShip { ShipID="Blockade Runner";        Faction=fringe;   TierRange=[12, 18]; StasisSpeed=88; StasisTradeTime=100; }
+	fringe_crew_5a  : ~/BaseTradeShip { ShipID="Target Practice";        Faction=fringe;   TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	fringe_crew_8a  : ~/BaseTradeShip { ShipID="Packed Like Sardines";   Faction=fringe;   TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	fringe_crew_11a : ~/BaseTradeShip { ShipID="Khrushchevka";           Faction=fringe;   TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
+
+	// Monolith
+	monolith_3a       : ~/BaseTradeShip { ShipID="Package Distributor";  Faction=monolith; TierRange=[1, 9];   StasisSpeed=85; StasisTradeTime=40; }
+	monolith_3b       : ~/BaseTradeShip { ShipID="Minor Shipper";        Faction=monolith; TierRange=[1, 9];   StasisSpeed=68; StasisTradeTime=40; }
+	monolith_3c       : ~/BaseTradeShip { ShipID="Dwarf Freighter";      Faction=monolith; TierRange=[1, 9];   StasisSpeed=68; StasisTradeTime=40; }
+	monolith_3d       : ~/BaseTradeShip { ShipID="Porter";               Faction=monolith; TierRange=[1, 9];   StasisSpeed=68; StasisTradeTime=40; }
+	monolith_5a       : ~/BaseTradeShip { ShipID="Minor Transport";      Faction=monolith; TierRange=[3, 12];  StasisSpeed=85; StasisTradeTime=60; }
+	monolith_5b       : ~/BaseTradeShip { ShipID="Minor Modulus";        Faction=monolith; TierRange=[3, 12];  StasisSpeed=75; StasisTradeTime=60; }
+	monolith_5c       : ~/BaseTradeShip { ShipID="Minor Freighter";      Faction=monolith; TierRange=[3, 12];  StasisSpeed=75; StasisTradeTime=60; }
+	monolith_5d       : ~/BaseTradeShip { ShipID="Minor Hauler";         Faction=monolith; TierRange=[3, 12];  StasisSpeed=75; StasisTradeTime=60; }
+	monolith_7a       : ~/BaseTradeShip { ShipID="Bulk Transport";       Faction=monolith; TierRange=[6, 18];  StasisSpeed=77; StasisTradeTime=80; }
+	monolith_7b       : ~/BaseTradeShip { ShipID="Bulk Shipper";         Faction=monolith; TierRange=[6, 18];  StasisSpeed=57; StasisTradeTime=80; }
+	monolith_7c       : ~/BaseTradeShip { ShipID="Workhorse";            Faction=monolith; TierRange=[6, 18];  StasisSpeed=57; StasisTradeTime=80; }
+	monolith_7d       : ~/BaseTradeShip { ShipID="Factotum";             Faction=monolith; TierRange=[6, 18];  StasisSpeed=57; StasisTradeTime=80; }
+	monolith_10a      : ~/BaseTradeShip { ShipID="Bulk Modulus";         Faction=monolith; TierRange=[12, 18]; StasisSpeed=83; StasisTradeTime=100; }
+	monolith_10b      : ~/BaseTradeShip { ShipID="Bulk Extractor";       Faction=monolith; TierRange=[12, 18]; StasisSpeed=75; StasisTradeTime=100; }
+	monolith_10c      : ~/BaseTradeShip { ShipID="Mass Freighter";       Faction=monolith; TierRange=[12, 18]; StasisSpeed=75; StasisTradeTime=100; }
+	monolith_10d      : ~/BaseTradeShip { ShipID="Bulk Hauler";          Faction=monolith; TierRange=[12, 18]; StasisSpeed=75; StasisTradeTime=100; }
+	monolith_10e      : ~/BaseTradeShip { ShipID="Atlas Freighter";      Faction=monolith; TierRange=[12, 18]; StasisSpeed=75; StasisTradeTime=100; }
+	monolith_crew_5a  : ~/BaseTradeShip { ShipID="Minor Connector";      Faction=monolith; TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	monolith_crew_8a  : ~/BaseTradeShip { ShipID="Bulk Connector";       Faction=monolith; TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	monolith_crew_11a : ~/BaseTradeShip { ShipID="Mass Connector";       Faction=monolith; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
+
+	// Cabal
+	cabal_3a       : ~/BaseTradeShip { ShipID="Missionary";   Faction=cabal;    TierRange=[1, 9];   StasisSpeed=77; StasisTradeTime=40; }
+	cabal_3b       : ~/BaseTradeShip { ShipID="Dia";          Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
+	cabal_3c       : ~/BaseTradeShip { ShipID="Supplicant";   Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
+	cabal_3d       : ~/BaseTradeShip { ShipID="Seeker";       Faction=cabal;    TierRange=[1, 9];   StasisSpeed=73; StasisTradeTime=40; }
+	cabal_5a       : ~/BaseTradeShip { ShipID="Preacher";     Faction=cabal;    TierRange=[3, 12];  StasisSpeed=55; StasisTradeTime=60; }
+	cabal_5b       : ~/BaseTradeShip { ShipID="Deliverance";  Faction=cabal;    TierRange=[3, 12];  StasisSpeed=86; StasisTradeTime=60; }
+	cabal_5c       : ~/BaseTradeShip { ShipID="Pilgrim";      Faction=cabal;    TierRange=[3, 12];  StasisSpeed=86; StasisTradeTime=60; }
+	cabal_5d       : ~/BaseTradeShip { ShipID="Trinity";      Faction=cabal;    TierRange=[3, 12];  StasisSpeed=86; StasisTradeTime=60; }
+	cabal_7a       : ~/BaseTradeShip { ShipID="Advocate";     Faction=cabal;    TierRange=[6, 18];  StasisSpeed=35; StasisTradeTime=80; }
+	cabal_7b       : ~/BaseTradeShip { ShipID="Acolyte";      Faction=cabal;    TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	cabal_7c       : ~/BaseTradeShip { ShipID="Ascetic";      Faction=cabal;    TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	cabal_7d       : ~/BaseTradeShip { ShipID="Minister";     Faction=cabal;    TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	cabal_10a      : ~/BaseTradeShip { ShipID="Celebrant";    Faction=cabal;    TierRange=[12, 18]; StasisSpeed=31; StasisTradeTime=100; }
+	cabal_10b      : ~/BaseTradeShip { ShipID="Witness";      Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
+	cabal_10c      : ~/BaseTradeShip { ShipID="Ecclesiarch";  Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
+	cabal_10d      : ~/BaseTradeShip { ShipID="Pontiff";      Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
+	cabal_crew_5a  : ~/BaseTradeShip { ShipID="Trailblazer";      Faction=cabal;    TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_5b  : ~/BaseTradeShip { ShipID="Pioneer";      Faction=cabal;    TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_8a  : ~/BaseTradeShip { ShipID="Wayfarer";     Faction=cabal;    TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_8b  : ~/BaseTradeShip { ShipID="Cicerone";     Faction=cabal;    TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_11a : ~/BaseTradeShip { ShipID="Originator";   Faction=cabal;    TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_11b : ~/BaseTradeShip { ShipID="Pathfinder";   Faction=cabal;    TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
+
+	// Imperium
+	imperium_3a       : ~/BaseTradeShip { ShipID="Auklet";       Faction=imperium; TierRange=[1, 9];   StasisSpeed=40; StasisTradeTime=40; }
+	imperium_3b       : ~/BaseTradeShip { ShipID="Dovekie";      Faction=imperium; TierRange=[1, 9];   StasisSpeed=61; StasisTradeTime=40; }
+	imperium_3c       : ~/BaseTradeShip { ShipID="Skua";         Faction=imperium; TierRange=[1, 9];   StasisSpeed=61; StasisTradeTime=40; }
+	imperium_3d       : ~/BaseTradeShip { ShipID="Gannet";       Faction=imperium; TierRange=[1, 9];   StasisSpeed=61; StasisTradeTime=40; }
+	imperium_5a       : ~/BaseTradeShip { ShipID="Cormorant";    Faction=imperium; TierRange=[3, 12];  StasisSpeed=67; StasisTradeTime=60; }
+	imperium_5b       : ~/BaseTradeShip { ShipID="Fulmar";       Faction=imperium; TierRange=[3, 12];  StasisSpeed=73; StasisTradeTime=60; }
+	imperium_5c       : ~/BaseTradeShip { ShipID="Murrelet";     Faction=imperium; TierRange=[3, 12];  StasisSpeed=73; StasisTradeTime=60; }
+	imperium_5d       : ~/BaseTradeShip { ShipID="Gull";         Faction=imperium; TierRange=[3, 12];  StasisSpeed=73; StasisTradeTime=60; }
+	imperium_7a       : ~/BaseTradeShip { ShipID="Pelican";      Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	imperium_7b       : ~/BaseTradeShip { ShipID="Petrel";       Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	imperium_7c       : ~/BaseTradeShip { ShipID="Guillemot";    Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	imperium_7d       : ~/BaseTradeShip { ShipID="Cygnus";       Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	imperium_7e       : ~/BaseTradeShip { ShipID="Penguin";      Faction=imperium; TierRange=[6, 18];  StasisSpeed=47; StasisTradeTime=80; }
+	imperium_10a      : ~/BaseTradeShip { ShipID="Albatross";    Faction=imperium; TierRange=[12, 18]; StasisSpeed=56; StasisTradeTime=100; }
+	imperium_10b      : ~/BaseTradeShip { ShipID="Shearwater";   Faction=imperium; TierRange=[12, 18]; StasisSpeed=90; StasisTradeTime=100; }
+	imperium_10c      : ~/BaseTradeShip { ShipID="Thalassarche"; Faction=imperium; TierRange=[12, 18]; StasisSpeed=90; StasisTradeTime=100; }
+	imperium_10d      : ~/BaseTradeShip { ShipID="Stenidae";     Faction=imperium; TierRange=[12, 18]; StasisSpeed=90; StasisTradeTime=100; }
+	imperium_crew_5a  : ~/BaseTradeShip { ShipID="Ardeola";      Faction=imperium; TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	imperium_crew_5b  : ~/BaseTradeShip { ShipID="Bacchus";      Faction=imperium; TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	imperium_crew_8a  : ~/BaseTradeShip { ShipID="Agami";        Faction=imperium; TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	imperium_crew_8b  : ~/BaseTradeShip { ShipID="Botaurus";     Faction=imperium; TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	imperium_crew_11a : ~/BaseTradeShip { ShipID="Ardea";        Faction=imperium; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
+	imperium_crew_11b : ~/BaseTradeShip { ShipID="Butorides";    Faction=imperium; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
+
+	// House Io
+	io_3a       : ~/BaseTradeShip { ShipID="Chalcis";      Faction=io; TierRange=[1, 9];   StasisSpeed=85; StasisTradeTime=40; }
+	io_3b       : ~/BaseTradeShip { ShipID="Erato";        Faction=io; TierRange=[1, 9];   StasisSpeed=85; StasisTradeTime=40; }
+	io_5a       : ~/BaseTradeShip { ShipID="Ismene";       Faction=io; TierRange=[3, 12];  StasisSpeed=85; StasisTradeTime=60; }
+	io_5b       : ~/BaseTradeShip { ShipID="Phaeo";        Faction=io; TierRange=[3, 12];  StasisSpeed=85; StasisTradeTime=60; }
+	io_5c       : ~/BaseTradeShip { ShipID="Coronis";      Faction=io; TierRange=[3, 12];  StasisSpeed=85; StasisTradeTime=60; }
+	io_7a       : ~/BaseTradeShip { ShipID="Synecho";      Faction=io; TierRange=[6, 18];  StasisSpeed=85; StasisTradeTime=80; }
+	io_7b       : ~/BaseTradeShip { ShipID="Eudora";       Faction=io; TierRange=[6, 18];  StasisSpeed=85; StasisTradeTime=80; }
+	io_10a      : ~/BaseTradeShip { ShipID="Aesyle";       Faction=io; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=100; }
+	io_10b      : ~/BaseTradeShip { ShipID="Polyxio";      Faction=io; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=100; }
+	io_crew_5a  : ~/BaseTradeShip { ShipID="Orpheus";      Faction=io; TierRange=[1, 12];  StasisSpeed=85; StasisTradeTime=20; }
+	io_crew_8a  : ~/BaseTradeShip { ShipID="Eurydice";     Faction=io; TierRange=[6, 18];  StasisSpeed=85; StasisTradeTime=20; }
+	io_crew_11a : ~/BaseTradeShip { ShipID="Charon";       Faction=io; TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
+}
+
+BaseTradeShip
+{
+	AI = TradeShip
+	RandomWeight = 1
+	MultiThreadedSpawnDelay = 1
+	AvoidableDoodadTags = [sun]
+	AvoidableDoodadBuffer = 100
+	TransferableCrew = 30%
+
+	EmptyTileChance = 40%
+	ResourcesCarried
+	[
+		{ ResourceType=hyperium;          RandomWeight=10; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=steel;             RandomWeight=40; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=coil;              RandomWeight=20; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=coil2;             RandomWeight=20; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=tristeel;          RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=diamond;           RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=processor;         RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=enriched_uranium;  RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=sulfur;            RandomWeight=10; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=iron;              RandomWeight=20; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=copper;            RandomWeight=10; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=tritanium;         RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=carbon;            RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=gold;              RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=uranium;           RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=bullet;            RandomWeight=20; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=missile_part_he;   RandomWeight=5;  RandomQuantity=[75%, 100%]; }
+		{ ResourceType=missile_part_emp;  RandomWeight=5;  RandomQuantity=[75%, 100%]; }
+		{ ResourceType=missile_part_nuke; RandomWeight=5;  RandomQuantity=[75%, 100%]; }
+		{ ResourceType=mine_part;         RandomWeight=3;  RandomQuantity=[75%, 100%]; }
+	]
+}
+
+
+CrewHireCostPerCrewRatioStations
+[
+	[20%, 200]
+	[40%, 500]
+	[50%, 500]
+	[50.001%, 1000]
+	[100%, 2000]
+]
+CrewHireCostPerCrewRatioTradeShips
+[
+	[20%, 300]
+	[40%, 750]
+	[50%, 750]
+	[50.001%, 1500]
+	[100%, 3000]
+]
+CrewHireCostRoundToMultiple = 25
+
+NonJunkShipCategorySets
+[
+	[reactor] // Destroy all reactors.
+	[command] // Or, destroy all control rooms.
+	[weapon, thruster] // Or, destroy all weapons and thrusters.
+]
+
+NpcSpawnedResourceFractions
+{
+	hyperium = [25%, 75%]
+}
+
+FameTitles
+[
+	{
+		Fame = 0
+		NameKey = "FameTitles/0"
+		WantedPoliceTier = 1
+		FameLevelMultiplier = 1
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/0/MaxFame
+		NameKey = "FameTitles/1"
+		WantedPoliceTier = 2
+		FameLevelMultiplier = 1.25
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/1/MaxFame
+		NameKey = "FameTitles/2"
+		WantedPoliceTier = 3
+		FameLevelMultiplier = 1.5
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/2/MaxFame
+		NameKey = "FameTitles/3"
+		WantedPoliceTier = 4
+		FameLevelMultiplier = 2
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/3/MaxFame
+		NameKey = "FameTitles/4"
+		WantedPoliceTier = 5
+		FameLevelMultiplier = 2.5
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/4/MaxFame
+		NameKey = "FameTitles/5"
+		WantedPoliceTier = 6
+		FameLevelMultiplier = 3
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/5/MaxFame
+		NameKey = "FameTitles/6"
+		WantedPoliceTier = 7
+		FameLevelMultiplier = 4
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/6/MaxFame
+		NameKey = "FameTitles/7"
+		WantedPoliceTier = 8
+		FameLevelMultiplier = 5
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/7/MaxFame
+		NameKey = "FameTitles/8"
+		WantedPoliceTier = 9
+		FameLevelMultiplier = 6.5
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/8/MaxFame
+		NameKey = "FameTitles/9"
+		WantedPoliceTier = 10
+		FameLevelMultiplier = 8.5
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/9/MaxFame
+		NameKey = "FameTitles/10"
+		WantedPoliceTier = 11
+		FameLevelMultiplier = 10
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/10/MaxFame
+		NameKey = "FameTitles/11"
+		WantedPoliceTier = 12
+		FameLevelMultiplier = 12.5
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/11/MaxFame
+		NameKey = "FameTitles/12"
+		WantedPoliceTier = 13
+		FameLevelMultiplier = 15
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/12/MaxFame
+		NameKey = "FameTitles/13"
+		WantedPoliceTier = 14
+		FameLevelMultiplier = 20
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/13/MaxFame
+		NameKey = "FameTitles/14"
+		WantedPoliceTier = 15
+		FameLevelMultiplier = 25
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/14/MaxFame
+		NameKey = "FameTitles/15"
+		WantedPoliceTier = 16
+		FameLevelMultiplier = 32.5
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/15/MaxFame
+		NameKey = "FameTitles/16"
+		WantedPoliceTier = 17
+		FameLevelMultiplier = 40
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/16/MaxFame
+		NameKey = "FameTitles/17"
+		WantedPoliceTier = 18
+		FameLevelMultiplier = 50
+	}
+	{
+		Fame = &/TIER_TABLES/StandardMaxFamePerTier/17/MaxFame
+		NameKey = "FameTitles/18"
+		WantedPoliceTier = 18
+		FameLevelMultiplier = 75
+		IsVictory = true
+	}
+]
+
+
+ReputationTitles
+[
+	{
+		Reputation = -2147483648
+		NameKey = "ReputationTitles/0"
+		TipKey = "ReputationTitleTips/0"
+		MissionMoneyRewardFactor = 60%
+		ResourceBuyCostFactor = 200%
+		CrewBuyCostFactor = 200%
+		TechBuyCostFactor = 200%
+		WantedDurationFactor = 300%
+		WantedPoliceCount = 7
+		WantedPayoffMultiple = 4
+	}
+	{
+		Reputation = -9999
+		NameKey = "ReputationTitles/1"
+		TipKey = "ReputationTitleTips/1"
+		MissionMoneyRewardFactor = 70%
+		ResourceBuyCostFactor = 175%
+		CrewBuyCostFactor = 175%
+		TechBuyCostFactor = 175%
+		WantedDurationFactor = 250%
+		WantedPoliceCount = 6
+		WantedPayoffMultiple = 2
+	}
+	{
+		Reputation = -2499
+		NameKey = "ReputationTitles/2"
+		TipKey = "ReputationTitleTips/2"
+		MissionMoneyRewardFactor = 80%
+		ResourceBuyCostFactor = 150%
+		CrewBuyCostFactor = 150%
+		TechBuyCostFactor = 150%
+		WantedDurationFactor = 200%
+		WantedPoliceCount = 5
+		WantedPayoffMultiple = 1.6
+	}
+	{
+		Reputation = -499
+		NameKey = "ReputationTitles/3"
+		TipKey = "ReputationTitleTips/3"
+		MissionMoneyRewardFactor = 90%
+		ResourceBuyCostFactor = 125%
+		CrewBuyCostFactor = 125%
+		TechBuyCostFactor = 125%
+		WantedDurationFactor = 150%
+		WantedPoliceCount = 4
+		WantedPayoffMultiple = 1.2
+	}
+	{
+		Reputation = -99
+		NameKey = "ReputationTitles/4"
+		TipKey = "ReputationTitleTips/4"
+		WantedPoliceCount = 3
+		WantedPayoffMultiple = 1
+	}
+	{
+		Reputation = 100
+		NameKey = "ReputationTitles/5"
+		TipKey = "ReputationTitleTips/5"
+		MissionMoneyRewardFactor = 110%
+		ResourceBuyCostFactor = 90%
+		CrewBuyCostFactor = 90%
+		TechBuyCostFactor = 90%
+		WantedPoliceCount = 3
+		WantedPayoffMultiple = 0.9
+	}
+	{
+		Reputation = 500
+		NameKey = "ReputationTitles/6"
+		TipKey = "ReputationTitleTips/6"
+		MissionMoneyRewardFactor = 120%
+		ResourceBuyCostFactor = 80%
+		CrewBuyCostFactor = 80%
+		TechBuyCostFactor = 80%
+		WantedPoliceCount = 3
+		WantedPayoffMultiple = 0.8
+	}
+	{
+		Reputation = 2500
+		NameKey = "ReputationTitles/7"
+		TipKey = "ReputationTitleTips/7"
+		MissionMoneyRewardFactor = 130%
+		ResourceBuyCostFactor = 70%
+		CrewBuyCostFactor = 70%
+		TechBuyCostFactor = 70%
+		WantedPoliceCount = 3
+		WantedPayoffMultiple = 0.7
+	}
+	{
+		Reputation = 10000
+		NameKey = "ReputationTitles/8"
+		TipKey = "ReputationTitleTips/8"
+		MissionMoneyRewardFactor = 140%
+		ResourceBuyCostFactor = 60%
+		CrewBuyCostFactor = 60%
+		TechBuyCostFactor = 60%
+		WantedPoliceCount = 3
+		WantedPayoffMultiple = 0.3
+	}
+]
+
+CustomMarkerDoodad = cosmoteer.poi_custom
+CustomMarkerIcon
+{
+	Texture
+	{
+		File = "custom_marker.png"
+		SampleMode = Linear
+		MipLevels = 2
+	}
+}

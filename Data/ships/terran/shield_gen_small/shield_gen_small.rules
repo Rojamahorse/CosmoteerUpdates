@@ -1,0 +1,1473 @@
+OVERCLOCK
+{
+	HEAT_PER_SECOND = 40
+	MODE_SWITCH_TIME = 1
+	EXTENDED
+	{
+		ARC_FACTOR = 150%
+		ARC_RADIUS_FACTOR = 150%
+		HEAT_PER_DAMAGE = 0.5
+	}
+	REINFORCED
+	{
+		ARC_FACTOR = 55%
+		DAMAGE_DRAIN_FACTOR = 1/2
+		EMP_RESIST = 33%
+		HEAT_PER_DAMAGE = 0.6
+	}
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_med_part_terran_overclock.rules>/Part
+{
+	NameKey = "Parts/ShieldGenSmall"
+	IconNameKey = "Parts/ShieldGenSmallIcon"
+	ID = cosmoteer.shield_gen_small // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [shield_generator]
+	EditorGroup = "Defenses"
+	DescriptionKey = "Parts/ShieldGenSmallDesc"
+	Resources
+	[
+		[steel, 40]
+		[coil, 40]
+	]
+	AIValueFactor = 5
+	Size = [2, 3]
+	SaveRect = [0, 1, 2, 2] // For backwards compatibility with old shield generators.
+	SelectionPriority = 1
+	SelectionTypeID = "shield_gen"
+	SelectionTypeByRotation = true
+	MaxHealth = 6000
+	TypeCategories = [defense, uses_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ ShieldOverclockExtended, ShieldOverclockReinforced ]
+	AllowedDoorLocations
+	[
+		[-1, 2]
+		[2, 2]
+		[0, 3]
+		[1, 3]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [42.66, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL ]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 3
+		}
+
+		Overclock_ShieldModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "overclock_shield"
+			Default = 0
+			VisibilityToggle = OverclockModeToggle
+		}
+		Overclock_ExtendedModeToggle
+		{
+			Type = ModeToggle
+			Mode = Overclock_ShieldModeToggle
+			OnModes = [ 0 ]
+		}
+		Overclock_ReinforcedModeToggle : Overclock_ExtendedModeToggle
+		{
+			OnModes = [ 1 ]
+		}
+		Overclock_ExtendedModeRawValue
+		{
+			Type = ValueTween
+			IsOnToggle = Overclock_ExtendedModeToggle
+			OnTweenDuration = &~/OVERCLOCK/MODE_SWITCH_TIME
+			OffTweenDuration = &OnTweenDuration
+		}
+		Overclock_ReinforcedModeRawValue : Overclock_ExtendedModeRawValue
+		{
+			IsOnToggle = Overclock_ReinforcedModeToggle
+		}
+		Overclock_ExtendedModeValue
+		{
+			Type = MultiValue
+			Values = [ Overclock_ExtendedModeRawValue, OverclockStateValue ]
+			Mode = Min
+		}
+		Overclock_ReinforcedModeValue : Overclock_ExtendedModeValue
+		{
+			Values = [ Overclock_ReinforcedModeRawValue, OverclockStateValue ]
+		}
+		Overclock_ExtendedModeBuff
+		{
+			Type = SelfBuffProvider
+			OperationalToggle = IsOverclocked
+			BuffType = ShieldOverclockExtended
+			BuffMultiplier = Overclock_ExtendedModeValue
+		}
+		Overclock_ReinforcedModeBuff : Overclock_ExtendedModeBuff
+		{
+			BuffType = ShieldOverclockReinforced
+			BuffMultiplier = Overclock_ReinforcedModeValue
+		}
+
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 6000
+			ToggleOnResources = 5001
+			DrainOnFtlJump = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			DrainResistance
+			{
+				BaseValue = 0
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockReinforced
+						ModificationMode = Add
+						RemapFrom = [0, 1]
+						RemapTo = [0, (&~/OVERCLOCK/REINFORCED/EMP_RESIST)]
+					}
+					{
+						Type = Status
+						StatusType = cosmoteer.shield_overload
+						ModificationMode = Subtract
+					}
+				]
+			}
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Defense_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = CommandConsumptionToggle
+		}
+
+		ProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			LowColor = [0, 0, 255]
+			HighColor = [0, 0, 255]
+			FullColor = [0, 0, 255]
+			Height = 10
+		}
+
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 100
+			MinFromQuantityForConversion = 1
+			Interval = 1
+		}
+
+		ArcShield
+		{
+			Type = ArcShield
+			Radius
+			{
+				BaseValue = 7.5
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockExtended
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/EXTENDED/ARC_RADIUS_FACTOR ]
+					}
+				]
+			}
+			Arc
+			{
+				BaseValue = 90d
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockExtended
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/EXTENDED/ARC_FACTOR ]
+					}
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockReinforced
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/REINFORCED/ARC_FACTOR ]
+					}
+				]
+			}
+			OperationalToggle = IsOperational
+			PenetrationResistance = [25, 0]
+			DrainResourcesFrom = BatteryStorage
+			ResourceDrainPerDamage
+			{
+				BaseValue = .4
+				Modifiers
+				[
+					{
+						Type = Status
+						StatusType = cosmoteer.shield_overload
+						ModificationMode = Multiply
+						BaseStatusValue = 1
+					}
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockReinforced
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/REINFORCED/DAMAGE_DRAIN_FACTOR ]
+					}
+				]
+			}
+			Rotation = -90d
+			Location = [1, 1.5]
+
+			BlueprintArcToggle = OverclockModeToggle
+			InvertBlueprintToggle = true
+			BlueprintArcSprite
+			{
+				Texture
+				{
+					File = "shield_energy.png"
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [0, 0, 255, 127]
+			}
+			BlueprintArcSpriteSegments = 64
+
+			CoverageArcSprite
+			{
+				Texture
+				{
+					File = "shield_energy.png"
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [255, 255, 255, 127]
+			}
+			CoverageArcSpriteSegments = 64
+
+			ShieldMediaEffects
+			[
+				{
+					Type = ArcShield
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = &~/Part/Components/ArcShield/Arc
+					FadeInTime = 0.25
+					FadeOutTime = 0.25
+					FadeFromScale = .8
+					ArcAngleAffectsUVs = true
+					UPerNinetyDegrees = 1
+					ArcSprite
+					{
+						Texture
+						{
+							File = "shield_energy.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						Shader = "shield.shader"
+						_waveTex
+						{
+							File = "shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "shield_mask.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = 1
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .35
+						_waveCurveUOffsetPerSecond = .2
+						_fullPowerColor1 = [54, 0, 91, 127]
+						_lowPowerColor1 = [54, 0, 91, 127]
+						_fullPowerColor2 = [0, 0, 255, 127]
+						_lowPowerColor2 = [255, 0, 0, 127]
+						_lowPowerThicknessExponent = .6
+						_xScale = 1
+						_hexDamageIntensity = 0.5
+						TargetBlendMode = Add
+						Size = [0, 1.5]
+					}
+					ArcSpriteSegments = 64
+					Bucket = Lower2
+				}
+
+				// Non-Overclocked
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "small_shield_energy_idle.wav"
+					Volume = { BaseValue=1; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ZERO] }
+					Speed = 1
+					MaxConcurrent = 1
+					MaxConcurrentVolume = .3
+					DynamicVolume : ^/0/DynamicVolume
+					{
+						MinDistance = .75
+						MaxDistance = 1.5
+					}
+					IgnoreIntensity = true
+				}
+
+				// Overclocked
+				: 1
+				{
+					Sound = "sounds/small_shield_energy_overclocked.wav"
+					Volume = { BaseValue=0; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ONE] }
+				}
+			]
+
+			HitMediaEffects
+			[
+				{
+					Type = ArcShield
+					FadeInTime = .1
+					FadeOutTime = .5
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = 20d
+					ArcSprite
+					{
+						Texture
+						{
+							File = "shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = max
+						}
+						Shader = "shield.shader"
+						_waveTex
+						{
+							File = "shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "shield_energy_original.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_waveSpeed = -2
+						_waveAlpha = .75
+						_waveCurveInterval = 1
+						_waveCurveMagnitude = .25
+						_waveCurveUOffsetPerSecond = 0
+						//TargetBlendMode = Add
+						_fullPowerColor1 = [0, 0, 255, 127]
+						_lowPowerColor1 = [255, 0, 0, 200]
+						_fullPowerColor2 = [154, 98, 238, 127]
+						_lowPowerColor2 = [236, 150, 234, 127]
+						_lowPowerThicknessExponent = .6
+						_xScale = 1
+						_hexDamageIntensity = 0.5
+						TargetBlendMode = Add
+						Size = [0, 3]
+					}
+					ArcSpriteSegments = 6
+					Bucket = Upper3
+				}
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["shield_hit_01.wav", "shield_hit_02.wav", "shield_hit_03.wav", "shield_hit_04.wav", "shield_hit_05.wav"]
+					Volume = 1
+					Speed = 1
+					IgnoreIntensity = true
+					SpeedVariation = .25
+					MaxConcurrent = 10
+				}
+			]
+		}
+
+		Overclock_ExtendedModeTweenToggle
+		{
+			Type = ThresholdToggle
+			ValueFrom = Overclock_ExtendedModeValue
+			MinAmount = 1
+		}
+		Overclock_ReinforcedModeTweenToggle : Overclock_ExtendedModeTweenToggle
+		{
+			ValueFrom = Overclock_ReinforcedModeValue
+		}
+
+		Overclock_ExtendedEffectToggle
+		{
+			Type = MultiToggle
+			Toggles = [Overclock_ExtendedModeTweenToggle, IsOperationalOverclocked]
+			Mode = All
+		}
+		Overclock_ReinforcedEffectToggle : Overclock_ExtendedEffectToggle
+		{
+			Toggles = [Overclock_ReinforcedModeTweenToggle, IsOperationalOverclocked]
+		}
+
+		Overclock_ExtendedAndOverclockedModeToggle
+		{
+			Type = MultiToggle
+			Toggles = [ OverclockModeToggle, Overclock_ExtendedModeToggle ]
+			Mode = All
+		}
+		Overclock_ReinforcedAndOverclockedModeToggle : Overclock_ExtendedAndOverclockedModeToggle
+		{
+			Toggles = [ OverclockModeToggle, Overclock_ReinforcedModeToggle ]
+		}
+
+		Overclock_ExtendedBlueprintArc
+		{
+			Type = ArcSprite
+			ChainedTo = ArcShield
+			VisibilityToggle = Overclock_ExtendedAndOverclockedModeToggle
+			Radius = (&../ArcShield/Radius/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_RADIUS_FACTOR)
+			Arc = (&../ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_FACTOR)
+			SpriteSegments = (&../ArcShield/BlueprintArcSpriteSegments)
+			Sprite
+			{
+				Texture
+				{
+					File = "shield_energy_oc.png"
+					UVMode = Wrap
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [36, 255, 244, 64]
+			}
+		}
+		Overclock_ReinforcedBlueprintArc : Overclock_ExtendedBlueprintArc
+		{
+			Type = ArcSprite
+			ChainedTo = ArcShield
+			VisibilityToggle = Overclock_ReinforcedAndOverclockedModeToggle
+			Radius = (&../ArcShield/Radius/BaseValue)
+			Arc = (&../ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/REINFORCED/ARC_FACTOR)
+			SpriteSegments = (&../ArcShield/BlueprintArcSpriteSegments)
+			Sprite
+			{
+				Texture
+				{
+					File = "shield_energy_oc.png"
+					UVMode = Wrap
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [255, 134, 36, 127]
+			}
+		}
+
+		Overclock_ExtendedEffect
+		{
+			Type = ShieldArcsMimic
+			Shield = ArcShield
+			ChainedTo = ArcShield
+			FactorMediaEffectsIntensityWith = BatteryStorage
+			MimicFadeInStartTime = false
+			OperationalToggle = Overclock_ExtendedEffectToggle
+			ContinuousEffects
+			[
+				{
+					Type = ArcShield
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = &~/Part/Components/ArcShield/Arc
+					FadeInTime = .25
+					FadeOutTime = .25
+					FadeFromScale = 1.025
+					ArcSprite
+					{
+						Texture
+						{
+							File = "shield_energy_oc.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						Shader = "shield.shader"
+						_waveTex
+						{
+							File = "shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "shield_mask_oc.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = 1
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .35
+						_waveCurveUOffsetPerSecond = .2
+						_fullPowerColor1 = [33, 192, 203, 64]
+						_lowPowerColor1 = [255, 0, 0, 64]
+						_fullPowerColor2 = [36, 255, 244, 64]
+						_lowPowerColor2 = [255, 50, 0, 64]
+						_lowPowerThicknessExponent = .6
+						_xScale = 3
+						_hexDamageIntensity = 0.8
+						TargetBlendMode = Add
+						Size = [0, 1.5]
+					}
+					ArcSpriteSegments = 64
+					Bucket = Lower1
+				}
+			]
+		}
+		Overclock_ReinforcedEffect : Overclock_ExtendedEffect
+		{
+			OperationalToggle = Overclock_ReinforcedEffectToggle
+			ContinuousEffects
+			[
+				: ../^/0/ContinuousEffects/0
+				{
+					ArcSprite : ^/0/ArcSprite
+					{
+						_fullPowerColor1 = [203, 80, 33, 127]
+						_lowPowerColor1 = [255, 0, 0, 127]
+						_fullPowerColor2 = [255, 134, 36, 255]
+						_lowPowerColor2 = [255, 50, 0, 127]
+						_xScale = 1
+					}
+				}
+			]
+		}
+
+		OverloadValue
+		{
+			Type = BuffableValue
+			Value
+			{
+				BaseValue = 0
+				Modifiers
+				[
+					{
+						Type = Status
+						StatusType = cosmoteer.shield_overload
+						ModificationMode = Replace
+						BaseStatusValue = 0
+					}
+				]
+			}
+		}
+
+		//IsOverloaded
+		//{
+			//Type = ThresholdToggle
+			//ValueFrom = OverloadValue
+			//MinAmount = 0
+			//MaxAmount = 0
+			//Invert = true
+		//}
+
+		IsOverloaded
+		{
+			Type = ThresholdToggle
+			ValueFrom = OverloadValue
+			MinAmount = 0.01
+		}
+
+
+		IsOperationalOverloaded
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, IsOverloaded ]
+			Mode = All
+		}
+		IsOperationalOverloaded_Extended
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperationalOverloaded, Overclock_ExtendedEffectToggle ]
+			Mode = All
+		}
+		IsOperationalOverloaded_Reinforced : IsOperationalOverloaded_Extended
+		{
+			Toggles = [ IsOperationalOverloaded, Overclock_ReinforcedEffectToggle ]
+		}
+
+		OverloadEffect
+		{
+			Type = ShieldArcsMimic
+			Shield = ArcShield
+			ChainedTo = ArcShield
+			FactorMediaEffectsIntensityWith = BatteryStorage
+			FactorRedVertexColorWith = OverloadValue
+			OperationalToggle = IsOperationalOverloaded
+			ContinuousEffects
+			[
+				{
+					Type = ArcShield
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = &~/Part/Components/ArcShield/Arc
+					FadeInTime = 0.25
+					FadeOutTime = 0.25
+					FadeFromScale = .8
+					ArcAngleAffectsUVs = true
+					UPerNinetyDegrees = 1
+					ArcSprite
+					{
+						Texture
+						{
+							File = "shield_overload.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						Shader = "shield_overload.shader"
+						_noiseTex1
+						{
+							File = "./Data/statuses/fire/particles/fire_noise.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_noiseTex2
+						{
+							File = "./Data/statuses/fire/particles/fire_noise.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_baseShieldTex
+						{
+							File = shield_mask.png
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = 1
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .35
+						_waveCurveUOffsetPerSecond = .2
+
+						_color1 = [255, 0, 255 * 0.31, 0]
+						_color2 = [255, 255 * 0.41, 0, 0]
+						_maxGreen = 0.9
+
+						_xScale = 1
+						_gradientXWidth = 1.05
+						_hexDamageIntensity = 0.8
+						_thermalIntensityExponent = 0.25
+						TargetBlendMode = Add
+						Size = [0, 1.5]
+					}
+					ArcSpriteSegments = 64
+					Bucket = Lower1
+				}
+			]
+		}
+
+		Overclock_OverloadEffect_Extended
+		{
+			Type = ShieldArcsMimic
+			Shield = ArcShield
+			ChainedTo = ArcShield
+			FactorMediaEffectsIntensityWith = BatteryStorage
+			FactorRedVertexColorWith = OverloadValue
+			OperationalToggle = IsOperationalOverloaded_Extended
+			ContinuousEffects
+			[
+				{
+					Type = ArcShield
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = &~/Part/Components/ArcShield/Arc
+					FadeInTime = .25
+					FadeOutTime = .25
+					FadeFromScale = 1.025
+					ArcSprite
+					{
+						Texture
+						{
+							File = "shield_overload_oc.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						Shader = "shield_overload.shader"
+						_noiseTex1
+						{
+							File = "./Data/statuses/fire/particles/fire_noise.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_noiseTex2
+						{
+							File = "./Data/statuses/fire/particles/fire_noise.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_baseShieldTex
+						{
+							File = shield_mask_oc.png
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = 1
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .35
+						_waveCurveUOffsetPerSecond = .2
+
+						_color1 = [255, 0, 255 * 0.31, 0]
+						_color2 = [255, 255 * 0.41, 0, 0]
+						_maxGreen = 0.9
+
+						_xScale = 3
+						_hexDamageIntensity = 0.8
+						_thermalIntensityExponent = 0.25
+						TargetBlendMode = Add
+						Size = [0, 1.5]
+					}
+					ArcSpriteSegments = 64
+					Bucket = Lower1
+				}
+			]
+		}
+		Overclock_OverloadEffect_Reinforced : Overclock_OverloadEffect_Extended
+		{
+			OperationalToggle = IsOperationalOverloaded_Reinforced
+			ContinuousEffects
+			[
+				: ../^/0/ContinuousEffects/0
+				{
+					ArcSprite : ^/0/ArcSprite
+					{
+						_xScale = 1
+					}
+				}
+			]
+		}
+
+		// Overclock / Thermal network
+		OverclockHeatProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperationalOverclocked
+			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/HEAT_PER_SECOND) * (&Interval))
+			ToQuantity = (&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
+			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Interval = 0.5
+		}
+		OverclockHitHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			// Provides the post-resistance damage value as EffectScale
+			Trigger = Overclock_ArcShieldProxy
+			Amount
+			{
+				BaseValue = 0
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockExtended
+						ModificationMode = Add
+						RemapFrom = [0, 1]
+						RemapTo = [0, (&~/OVERCLOCK/EXTENDED/HEAT_PER_DAMAGE) * (&~/HEAT_TO_RESOURCE)]
+					}
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockReinforced
+						ModificationMode = Add
+						RemapFrom = [0, 1]
+						RemapTo = [0, (&~/OVERCLOCK/REINFORCED/HEAT_PER_DAMAGE) * (&~/HEAT_TO_RESOURCE)]
+					}
+					{
+						Type = EffectScale
+						ModificationMode = Multiply
+					}
+					{
+						Type = Status
+						StatusType = cosmoteer.shield_overload
+						ModificationMode = Multiply
+						BaseStatusValue = 1
+					}
+				]
+			}
+		}
+		Overclock_ArcShieldProxy
+		{
+			Type = TriggerProxy
+			ComponentID = ArcShield
+			ProxyToggle = IsOverclocked
+		}
+		OverheatEffects : ^/0/OverheatEffects
+		{
+			Location = [1, 1.5]
+		}
+
+		Port_BL : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 2]
+			Direction = Left
+		}
+		Port_BR : Port_BL
+		{
+			Location = [1, 2]
+			Direction = Right
+		}
+		Port_BD0 : Port_BL
+		{
+			Location = [0, 2]
+			Direction = Down
+		}
+		Port_BD1 : Port_BD0
+		{
+			Location = [1, 2]
+		}
+
+		IsOperationalNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
+		}
+		BaseEmitterEffect
+		{
+			Type = ContinuousEffects
+			ChainedTo = ArcShield
+			FactorMediaEffectsIntensityWith = BatteryStorage
+			MaxMediaEffectsZoom = 12
+			Location = [2.2, 0]
+			OperationalToggle = IsOperational
+			ParentToShip = true
+			MediaEffects
+			[
+				{
+					Type = ArcShield
+					Radius = 2.2
+					Arc = 90d
+					FadeInTime = .25
+					FadeOutTime = .25
+					ArcSprite
+					{
+						Texture
+						{
+							File = "shield_energy.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						UVRect = [0, 1, 1, -1]
+						Shader = "shield.shader"
+						_waveTex
+						{
+							File = "shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "shield_mask.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = -1
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .35
+						_waveCurveUOffsetPerSecond = .2
+						_fullPowerColor1 = [54, 0, 91, 127]
+						_lowPowerColor1 = [54, 0, 91, 127]
+						_fullPowerColor2 = [0, 0, 255, 127]
+						_lowPowerColor2 = [255, 0, 0, 127]
+						_lowPowerThicknessExponent = .6
+						_hexDamageIntensity = 0.5
+						TargetBlendMode = Add
+						_xScale = 0.5
+						Size = [0, 1.0]
+					}
+					ArcSpriteSegments = 12
+					Bucket = Upper1
+				}
+
+				// Non-Overclocked
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "small_shield_module_idle.wav"
+					Volume = { BaseValue=1; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ZERO] }
+					Speed = 1
+					MaxConcurrent = 1
+					MaxConcurrentVolume = .4
+					IgnoreIntensity = true
+				}
+
+				// Overclocked
+				: 1
+				{
+					Sound = "sounds/small_shield_module_overclocked.wav"
+					Volume = { BaseValue=0; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ONE] }
+				}
+			]
+		}
+
+		ShieldOperationEffects
+		{
+			Type = ToggleEffects
+			ChainedTo = ArcShield
+			Location = [&~/Part/Components/ArcShield/Radius/BaseValue, 0]
+			Toggle = IsOperational
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "small_shield_start.wav"
+					Volume = 1
+					Speed = 1
+					IgnoreIntensity = true
+				}
+			]
+			ToggledOffMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "small_shield_stop.wav"
+					Volume = 1
+					Speed = 1
+					IgnoreIntensity = true
+				}
+			]
+		}
+		Overclock_ExtendedModeTweenMinToggle
+		{
+			Type = ThresholdToggle
+			ValueFrom = Overclock_ExtendedModeValue
+			MaxAmount = 0
+			Invert = true
+		}
+		Overclock_ReinforcedModeTweenMinToggle : Overclock_ExtendedModeTweenMinToggle
+		{
+			ValueFrom = Overclock_ReinforcedModeValue
+		}
+		Overclock_ExtendingEffectToggle
+		{
+			Type = MultiToggle
+			Toggles = [Overclock_ExtendedModeTweenMinToggle, IsOperationalOverclocked]
+			Mode = All
+		}
+		Overclock_ReinforcingEffectToggle : Overclock_ExtendingEffectToggle
+		{
+			Toggles = [Overclock_ReinforcedModeTweenMinToggle, IsOperationalOverclocked]
+		}
+		Overclock_ShieldExtendedEffects : ShieldOperationEffects
+		{
+			Toggle = Overclock_ExtendingEffectToggle
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetailBig
+				{
+					Sound = "sounds/small_shield_overclock_wide.wav"
+					Db = 3
+				}
+			]
+			ToggledOffMediaEffects
+		}
+		Overclock_ShieldReinforcedEffects : ShieldOperationEffects
+		{
+			Toggle = Overclock_ReinforcingEffectToggle
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetailBig
+				{
+					Sound = "sounds/small_shield_overclock_narrow.wav"
+					Db = 3
+				}
+			]
+			ToggledOffMediaEffects
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, -0.375]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.1
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.1
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [3, 3]
+						Z = 1 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [195*1.5, 60*1.5, 255*1.5]
+					}
+				]
+			}
+		}
+
+		External_Doodad_Graphics
+		{
+			Type = Graphics
+			Location = [1, 0.5]
+			OperationalDoodad
+			{
+				Layer = "weapons"
+				DamageLevels
+				[
+					{
+						File = "doodad_external.png"
+						NormalsFile = "doodad_external_normals.png"
+						Size = [2, 1]
+					}
+					{
+						File = "doodad_external_33.png"
+						NormalsFile = "doodad_external_normals_33.png"
+						Size = [2, 1]
+					}
+					{
+						File = "doodad_external_66.png"
+						NormalsFile = "doodad_external_normals_66.png"
+						Size = [2, 1]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1, 1.59375]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries3.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries4.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries5.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries6.png"
+					Size = [2, 1]
+				}
+			]
+		}
+		RoofBatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1, 1.6875]
+			ResourceStorage = BatteryStorage
+			Layer = "roof_doodads"
+			ResourceLevels
+			[
+				{
+					File = "roof_batteries1.png"
+					Offset = [-0.5, 0]
+					Size = [1, 1]
+				}
+				{
+					File = "roof_batteries2.png"
+					Size = [2, 1]
+				}
+				{
+					File = "roof_batteries3.png"
+					Size = [2, 1]
+				}
+				{
+					File = "roof_batteries4.png"
+					Size = [2, 1]
+				}
+				{
+					File = "roof_batteries5.png"
+					Size = [2, 1]
+				}
+				{
+					File = "roof_batteries6.png"
+					Size = [2, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/MedPartScorched
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1.5]
+			Indicators
+			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3]
+				}
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [2,3]
+				}
+
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+					HidesIndicators = [3]
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 3]
+		}
+
+		HeatGenerationValue
+		{
+			Type = StaticValue
+			Value = (&~/OVERCLOCK/HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = HeatGenerationValue
+		}
+	}
+
+	Stats
+	{
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = (&../StatsByCategory/0/Stats/PowerUsageContinuous) + 0.5
+		RecCrew = (&RecPower) * 4
+	}
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/ShieldSmall"
+			Stats
+			{
+				ShieldHP = (&~/Part/Components/BatteryStorage/MaxResources) / (&~/Part/Components/ArcShield/ResourceDrainPerDamage/BaseValue)
+				ShieldPenResist = &~/Part/Components/ArcShield/PenetrationResistance/0
+				ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue)
+				ShieldDist = (&~/Part/Components/ArcShield/Radius/BaseValue) - (&~/Part/Components/ArcShield/Location/1)
+				PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000
+			}
+		}
+	]
+
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/ShieldGenSmallOverclockDesc"
+		Stats
+		{
+			HeatGeneration = (&~/OVERCLOCK/HEAT_PER_SECOND)
+		}
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/ShieldExtended"
+				Stats
+				{
+					ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_FACTOR)
+					ShieldDist = (&~/Part/Components/ArcShield/Radius/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_RADIUS_FACTOR) - (&~/Part/Components/ArcShield/Location/1)
+					HeatPerDamage = (&~/OVERCLOCK/EXTENDED/HEAT_PER_DAMAGE)
+				}
+			}
+			{
+				NameKey = "StatCategories/ShieldReinforced"
+				Stats
+				{
+					ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/REINFORCED/ARC_FACTOR)
+					ShieldHP = (&~/Part/StatsByCategory/0/Stats/ShieldHP) / (&~/OVERCLOCK/REINFORCED/DAMAGE_DRAIN_FACTOR)
+					EMPResistPercentage = (&~/OVERCLOCK/REINFORCED/EMP_RESIST) * 100
+					HeatPerDamage = (&~/OVERCLOCK/REINFORCED/HEAT_PER_DAMAGE)
+				}
+			}
+		]
+	}
+}
+
+MODIFIERS
+{
+	OVERCLOCK_TO_ONE
+	{
+		Type = BuffRemap
+		BuffType = Overclock
+		RemapFrom = [0, 1]
+		RemapTo = [0, 1]
+		ModificationMode = Replace
+	}
+	OVERCLOCK_TO_ZERO : OVERCLOCK_TO_ONE
+	{
+		RemapTo = [1, 0]
+	}
+}

@@ -1,0 +1,30 @@
+ID = resources
+TitleKey = "Tutorials/Resources/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 30 and sim.StationInSight"
+Entries
+[
+	{
+		TextKey = "Tutorials/Resources/Resources"
+	}
+	{
+		Image = &<./Data/resources/steel/steel.rules>/Icon
+		TextKey = "Tutorials/Resources/Materials"
+	}
+	{
+		Image = &<./Data/resources/bullet/bullet.rules>/Icon
+		TextKey = "Tutorials/Resources/Munitions"
+	}
+	{
+		Image = &<./Data/resources/iron/iron.rules>/Icon
+		TextKey = "Tutorials/Resources/Elements"
+	}
+	{
+		Image { Texture { File="storage.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Resources/Storage"
+	}
+	{
+		Image { Texture { File="trade_tab.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Resources/Trade"
+	}
+]

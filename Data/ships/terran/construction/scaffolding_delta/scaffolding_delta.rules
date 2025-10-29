@@ -1,0 +1,314 @@
+AmbiguousSprites
+[
+	// No walls.
+	{
+		SituationCode = "11111111"
+		RandomDamageLevels
+		[
+			[
+				{
+					File = "scafolding00_v1_20%.png"
+					NormalsFile = "scafolding00_v1_20%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding00_v1_40%.png"
+					NormalsFile = "scafolding00_v1_40%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding00_v1_60%.png"
+					NormalsFile = "scafolding00_v1_60%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding00_v1_80%.png"
+					NormalsFile = "scafolding00_v1_80%_normals.png"
+					Size = [1, 1]
+				}
+			]
+			[
+				{
+					File = "scafolding00_v2_20%.png"
+					NormalsFile = "scafolding00_v2_20%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding00_v2_40%.png"
+					NormalsFile = "scafolding00_v2_40%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding00_v2_60%.png"
+					NormalsFile = "scafolding00_v2_60%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding00_v2_80%.png"
+					NormalsFile = "scafolding00_v2_80%_normals.png"
+					Size = [1, 1]
+				}
+			]
+		]
+	}
+
+	// All four walls.
+	{
+		SituationCode = "*0*0*0*0"
+		RandomDamageLevels
+		[
+			[
+				{
+					File = "scafolding05_v1_20%.png"
+					NormalsFile = "scafolding05_v1_20%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding05_v1_40%.png"
+					NormalsFile = "scafolding05_v1_40%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding05_v1_60%.png"
+					NormalsFile = "scafolding05_v1_60%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding05_v1_80%.png"
+					NormalsFile = "scafolding05_v1_80%_normals.png"
+					Size = [1, 1]
+				}
+			]
+			[
+				{
+					File = "scafolding05_v2_20%.png"
+					NormalsFile = "scafolding05_v2_20%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding05_v2_40%.png"
+					NormalsFile = "scafolding05_v2_40%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding05_v2_60%.png"
+					NormalsFile = "scafolding05_v2_60%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding05_v2_80%.png"
+					NormalsFile = "scafolding05_v2_80%_normals.png"
+					Size = [1, 1]
+				}
+			]
+		]
+	}
+
+	// Three walls.
+	{
+		SituationCode = "*0*0*1*0"
+		RandomDamageLevels
+		[
+			[
+				{
+					File = "scafolding04_v1_20%.png"
+					NormalsFile = "scafolding04_v1_20%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding04_v1_40%.png"
+					NormalsFile = "scafolding04_v1_40%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding04_v1_60%.png"
+					NormalsFile = "scafolding04_v1_60%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding04_v1_80%.png"
+					NormalsFile = "scafolding04_v1_80%_normals.png"
+					Size = [1, 1]
+				}
+			]
+			[
+				{
+					File = "scafolding04_v2_20%.png"
+					NormalsFile = "scafolding04_v2_20%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding04_v2_40%.png"
+					NormalsFile = "scafolding04_v2_40%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding04_v2_60%.png"
+					NormalsFile = "scafolding04_v2_60%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding04_v2_80%.png"
+					NormalsFile = "scafolding04_v2_80%_normals.png"
+					Size = [1, 1]
+				}
+			]
+		]
+	}
+
+	// Two walls joined at corner.
+	{
+		SituationCode = "*0*111*0"
+		RandomDamageLevels
+		[
+			[
+				{
+					File = "scafolding02_v1_20%.png"
+					NormalsFile = "scafolding02_v1_20%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding02_v1_40%.png"
+					NormalsFile = "scafolding02_v1_40%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding02_v1_60%.png"
+					NormalsFile = "scafolding02_v1_60%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding02_v1_80%.png"
+					NormalsFile = "scafolding02_v1_80%_normals.png"
+					Size = [1, 1]
+				}
+			]
+			[
+				{
+					File = "scafolding02_v2_20%.png"
+					NormalsFile = "scafolding02_v2_20%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding02_v2_40%.png"
+					NormalsFile = "scafolding02_v2_40%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding02_v2_60%.png"
+					NormalsFile = "scafolding02_v2_60%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding02_v2_80%.png"
+					NormalsFile = "scafolding02_v2_80%_normals.png"
+					Size = [1, 1]
+				}
+			]
+		]
+	}
+
+	// One wall.
+	{
+		SituationCode = "*0*11111"
+		RandomDamageLevels
+		[
+			[
+				{
+					File = "scafolding01_v1_20%.png"
+					NormalsFile = "scafolding01_v1_20%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding01_v1_40%.png"
+					NormalsFile = "scafolding01_v1_40%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding01_v1_60%.png"
+					NormalsFile = "scafolding01_v1_60%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding01_v1_80%.png"
+					NormalsFile = "scafolding01_v1_80%_normals.png"
+					Size = [1, 1]
+				}
+			]
+			[
+				{
+					File = "scafolding01_v2_20%.png"
+					NormalsFile = "scafolding01_v2_20%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding01_v2_40%.png"
+					NormalsFile = "scafolding01_v2_40%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding01_v2_60%.png"
+					NormalsFile = "scafolding01_v2_60%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding01_v2_80%.png"
+					NormalsFile = "scafolding01_v2_80%_normals.png"
+					Size = [1, 1]
+				}
+			]
+		]
+	}
+
+	// Two walls parallel.
+	{
+		SituationCode = "*1*0*1*0"
+		RandomDamageLevels
+		[
+			[
+				{
+					File = "scafolding03_v1_20%.png"
+					NormalsFile = "scafolding03_v1_20%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding03_v1_40%.png"
+					NormalsFile = "scafolding03_v1_40%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding03_v1_60%.png"
+					NormalsFile = "scafolding03_v1_60%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding03_v1_80%.png"
+					NormalsFile = "scafolding03_v1_80%_normals.png"
+					Size = [1, 1]
+				}
+			]
+			[
+				{
+					File = "scafolding03_v2_20%.png"
+					NormalsFile = "scafolding03_v2_20%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding03_v2_40%.png"
+					NormalsFile = "scafolding03_v2_40%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding03_v2_60%.png"
+					NormalsFile = "scafolding03_v2_60%_normals.png"
+					Size = [1, 1]
+				}
+				{
+					File = "scafolding03_v2_80%.png"
+					NormalsFile = "scafolding03_v2_80%_normals.png"
+					Size = [1, 1]
+				}
+			]
+		]
+	}
+]

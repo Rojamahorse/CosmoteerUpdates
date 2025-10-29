@@ -1,0 +1,103 @@
+		//UP
+		PipeConnectorUp_DrawToggle
+		{
+			Type = ComponentPresenceToggle
+			PartLocation = [0, -1]
+			ComponentID = Dont_Draw_Pipe_Connector_Into_This_Part
+		}
+		PipeConnectorUp_Toggle
+		{
+			Type = MultiToggle
+			Toggles = [Port_Up, {Toggle = PipeConnectorUp_DrawToggle, invert = true}]
+			Mode = All
+		}
+		PipeConnectorUp_Components
+		{
+			Type = ToggledComponents
+			Toggle = PipeConnectorUp_Toggle
+			Components
+			{
+				PipesConnectorUp_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_graphics.rules>/BASE_PIPE_CONNECTOR_GRAPHICS
+				{
+					Location = [0.5, -0.5]
+				}
+			}
+		}
+		//DOWN
+		PipeConnectorDown_DrawToggle
+		{
+			Type = ComponentPresenceToggle
+			PartLocation = [0, 1]
+			ComponentID = Dont_Draw_Pipe_Connector_Into_This_Part
+		}
+		PipeConnectorDown_Toggle
+		{
+			Type = MultiToggle
+			Toggles = [Port_Down, {Toggle = PipeConnectorDown_DrawToggle, invert = true}]
+			Mode = All
+		}
+		PipeConnectorDown_Components
+		{
+			Type = ToggledComponents
+			Toggle = PipeConnectorDown_Toggle
+			Components
+			{
+				PipesConnectorDown_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_graphics.rules>/BASE_PIPE_CONNECTOR_GRAPHICS
+				{
+					Location = [0.5, 1.5]
+					Rotation = 180d
+				}
+			}
+		}
+		//LEFT
+		PipeConnectorLeft_DrawToggle
+		{
+			Type = ComponentPresenceToggle
+			PartLocation = [-1, 0]
+			ComponentID = Dont_Draw_Pipe_Connector_Into_This_Part
+		}
+		PipeConnectorLeft_Toggle
+		{
+			Type = MultiToggle
+			Toggles = [Port_Left, {Toggle = PipeConnectorLeft_DrawToggle, invert = true}]
+			Mode = All
+		}
+		PipeConnectorLeft_Components
+		{
+			Type = ToggledComponents
+			Toggle = PipeConnectorLeft_Toggle
+			Components
+			{
+				PipesConnectorLeft_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_graphics.rules>/BASE_PIPE_CONNECTOR_GRAPHICS
+				{
+					Location = [-0.5, 0.5]
+					Rotation = -90d
+				}
+			}
+		}
+		//RIGHT
+		PipeConnectorRight_DrawToggle
+		{
+			Type = ComponentPresenceToggle
+			PartLocation = [1, 0]
+			ComponentID = Dont_Draw_Pipe_Connector_Into_This_Part
+		}
+		PipeConnectorRight_Toggle
+		{
+			Type = MultiToggle
+			Toggles = [Port_Right, {Toggle = PipeConnectorRight_DrawToggle, invert = true}]
+			Mode = All
+		}
+		PipeConnectorRight_Components
+		{
+			Type = ToggledComponents
+			Toggle = PipeConnectorRight_Toggle
+			Components
+			{
+				PipesConnectorRight_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_graphics.rules>/BASE_PIPE_CONNECTOR_GRAPHICS
+				{
+					Location = [1.5, 0.5]
+					Rotation = 90d
+				}
+			}
+		}

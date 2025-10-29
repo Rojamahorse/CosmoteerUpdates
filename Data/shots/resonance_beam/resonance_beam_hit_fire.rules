@@ -1,0 +1,426 @@
+Type = Particles
+Def
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 0
+	Initializers
+	[
+		{
+			Type = LocationToWorldSpace
+			LocationIn = location
+			LocationOut = location
+			Name = "Convert location to world space."
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = FpsCompensator
+			LocationInOut = location
+			VelocityIn
+			Mode = Uniform
+			Strength = 2
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = VelocityToWorldSpace
+			VelocityIn = base_velocity
+			VelocityOut = base_velocity
+			Name = "Convert velocity to world space"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = AlignToVelocity
+			VelocityIn = base_velocity
+			RotationInOut = rot
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = AddFrameOfReference
+			VelocityInOut = frame_velocity
+			Name = "Add frame of reference"
+			Enabled = false
+			UpdateAfterInit = false
+		}
+		{
+			Type = ScaleToWorldSpace
+			ScaleIn = base_scale
+			ScaleOut = base_scale
+			Name = "Base scale to world space"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = sprite_index
+			ValueType = Int
+			FromValue = 0
+			ToValue = 7
+			Name = "Sprite Index"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = UvSprites
+			SpriteIndexIn = sprite_index
+			UvRectOut = uv_rect
+			TextureSize
+			{
+				X = 256
+				Y = 512
+			}
+			SpriteSize
+			{
+				X = 128
+				Y = 128
+			}
+			SpriteCount = 8
+			SpritesPerRow = 2
+			PixelOffset
+			{
+				X = 0
+				Y = 0
+			}
+			Looping = false
+			Name = "Sprite UV Rect"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = lifetime
+			ValueType = Float
+			FromValue = 0.6
+			ToValue = 0.6
+			Name = "Random Lifetime"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	Updaters
+	[
+		{
+			Type = VariableLifetime
+			LifeInOut = life
+			LifetimeIn = lifetime
+			Name = "Variable Lifetime"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = frame_velocity
+			BIn = base_velocity
+			ResultOut = velocity
+			Operator = Add
+			Name = "add frame and base velocity to velocity"
+			Enabled = false
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2
+			AIn = location
+			BIn = base_velocity
+			ResultOut = location
+			Operator = AddDt
+			Name = "Apply velocity."
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Lerp
+			LerpIn = life
+			DataOut = life_scale
+			Invert = false
+			ValueType = Float
+			FromValue = 1
+			ToValue = 0
+			Name = "Scale over lifetime"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Angle
+			AIn = rot
+			BIn = rot_vel
+			ResultOut = rot
+			Operator = AddDt
+			Name = "Apply rot vel"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ColorRamp
+			LerpIn = life
+			ColorOut = color
+			Invert = false
+			Colors
+			[
+				{
+					Rf = 0.47058824
+					Gf = 0.78431374
+					Bf = 0
+					Af = 0.3137255
+				}
+				{
+					Rf = 0.5882353
+					Gf = 0.39215687
+					Bf = 0
+					Af = 0.11764706
+				}
+				{
+					Rf = 0.78431374
+					Gf = 0
+					Bf = 0
+					Af = 0
+				}
+			]
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Lerp
+			LerpIn = life
+			DataOut = scale_lerp
+			Invert = false
+			ValueType = Vector2
+			FromValue
+			{
+				X = 1
+				Y = 0.8
+			}
+			ToValue
+			{
+				X = 0.3
+				Y = 0.5
+			}
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ScalarOperator
+			AIn = base_scale
+			DataType = Vector2
+			BIn = scale_lerp
+			ResultOut = scale2
+			Operator = Multiply
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	Renderer
+	{
+		Type = StandardQuadRenderer
+		LocationIn = location
+		ScaleIn
+		Scale2In = scale2
+		RotationIn = rot
+		ColorIn = color
+		UvRectIn = uv_rect
+		BaseSize
+		{
+			X = 1
+			Y = 1
+		}
+		Offset
+		{
+			X = 0
+			Y = 0
+		}
+		Name = ""
+	}
+	Material
+	{
+		Texture
+		{
+			File = ../../common_effects/particles/fire.png
+			SampleMode = Linear
+		}
+		TargetBlendMode
+		{
+			SourceRgbFactor = SourceAlpha
+			DestRgbFactor = One
+			RgbOperator = Add
+			SourceAlphaFactor = InverseDestAlpha
+			DestAlphaFactor = One
+			AlphaOperator = Add
+		}
+	}
+	DeleteMode = Fast
+	FpsCompensation = Uniform
+	FpsCompensationStrength = 2
+	EnableMultithreading = false
+	InitCapacity = 256
+}
+EmitterDef
+{
+	EmitPerSecond = 30
+	EmitPerOneShot
+	{
+		Min = 0
+		Max = 0
+	}
+	PreInitializers
+	[
+		{
+			Type = SetRandomCircle
+			LocationOut = location
+			Circle
+			{
+				Center
+				{
+					X = 0
+					Y = 0
+				}
+				Radius = 0.021
+			}
+			Perimeter = false
+			Name = "Random location in circle"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandomVelocityFromPoint
+			LocationIn = location
+			VelocityOut = base_velocity
+			Speed
+			{
+				Min = 10
+				Max = 12
+			}
+			AwayFromPoint
+			{
+				X = -0.023
+				Y = 0
+			}
+			ConvertPointToWorldSpace = false
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ScaleFromIntensity
+			ScaleOut = intensity
+			ScaleFactor = 1
+			IntensityExponent = 0.5
+			Name = "get scale intensity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetRandom
+			DataOut = base_scale
+			ValueType = Float
+			FromValue = 4
+			ToValue = 12
+			Name = "random scale"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Float
+			AIn = intensity
+			BIn = base_scale
+			ResultOut = base_scale
+			Operator = Multiply
+			Name = "apply random scale"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = OperatorConst
+			AIn = base_velocity
+			ResultOut = base_velocity
+			Operator = Multiply
+			ValueType = Vector2
+			Value
+			{
+				X = 1
+				Y = 0.5
+			}
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = ScalarOperator
+			AIn = intensity
+			DataType = Vector2
+			BIn = base_velocity
+			ResultOut = base_velocity
+			Operator = Multiply
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+	]
+	PostInitializers[]
+}
+Bucket = ThermalLaserHitFire
+UseRealTime = false
+PenetratingBucket
+MinIntensity = 0
+IsFancy = true
+IsFancyLight = false
+IsSimpleLight = false
+IsSimple = false
+Sharing = Global
+UnsharedRenderInWorldSpace = false
+DontEmitWhenOffScreen = true
+DontEmitWhenOffScreenSizeInflate = 3
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 30
+MaxParticleCount = 2147483647
+ScaleEmissionWithIntensity = false
+ScaleEmissionWithBeamLength = false
+ScaleEmissionWithWorldVelocity = false
+ScaleEmissionWithPartSize = false
+ScaleEmissionWithPartPhysicalSize = false
+CaptureBackBuffer = false
+Filter
+{
+	Ships = true
+	OperationalHealth = true
+	StructuralHealth = true
+	OnlyPartCategories
+	ExcludePartCategories
+	Shields = true
+	Bullets = true
+	OnlyBulletCategories
+	ExcludeBulletCategories
+	OnlyStatuses
+	ExcludeStatuses
+	Crew = true
+	Nuggets = true
+	IgnoreInvulnerability = true
+	Self
+	TargetedSelf
+	Friendlies = true
+	TargetedFriendlies
+	Enemies = true
+	TargetedEnemies
+	Neutrals = true
+	TargetedNeutrals
+	Junk = true
+	TargetedJunk
+	Deconstruction
+}
+Delay
+{
+	BaseValue = 0
+	Modifiers
+	MinValue = -1.7976931348623157E+308
+	MaxValue = 1.7976931348623157E+308
+}
+IgnoreIntensity = false

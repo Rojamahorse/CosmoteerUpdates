@@ -1,0 +1,58 @@
+BASE_PIPE_CONNECTOR_GRAPHICS
+{
+	Type = Graphics
+	Location = [0, 0]
+	Floor
+	{
+		Layer = "turrets"
+		DamageLevels
+		[
+			{
+				File = "pipe_connector.png"
+				Size = [1, 1]
+			}
+			{
+				File = "pipe_connector_33.png"
+				Size = [1, 1]
+			}
+			{
+				File = "pipe_connector_66.png"
+				Size = [1, 1]
+			}
+		]
+	}
+	Roof
+	{
+		Layer = "roof_doodads"
+		Offset = [0, 0.5]
+		DamageLevels
+		[
+			{
+				File = "pipe_connector_roof.png"
+				NormalsFile = "pipe_connector_roof_normals.png"
+				Size = [1, 1]
+			}
+			{
+				File = "pipe_connector_roof_33.png"
+				NormalsFile = "pipe_connector_roof_normals.png"
+				Size = [1, 1]
+			}
+			{
+				File = "pipe_connector_roof_66.png"
+				NormalsFile = "pipe_connector_roof_normals.png"
+				Size = [1, 1]
+			}
+		]
+	}
+	WallsStencil
+	{
+		Layer = "walls_stencil"
+		DamageLevels
+		[
+			{
+				File = "pipe_connector_wall_stencil.png"
+				Size = [1, 1]
+			}
+		]
+	}
+}

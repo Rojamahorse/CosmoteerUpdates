@@ -1,0 +1,94 @@
+MoveCommand : <base_command.rules>/BaseCommand
+{
+	SeparationRadiusFactor = 2
+	SatisfiedDistanceAsRadiusFraction = 1
+	RightClickAdjustPixelThreshold = 16
+
+	IssueSound
+	{
+		Sound = "command_move.wav"
+		Volume = .25
+	}
+
+	Circle
+	{
+		Texture
+		{
+			File = "./Data/gui/game/overlay_selection.png"
+			SampleMode = Linear
+			MipLevels = 2
+		}
+		VertexColor = [255, 255, 255, 200]
+		Thickness = .5
+		QuadCount = 256
+	}
+	CircleDuration = 0.25
+	CircleGrowFactor = 1.25
+	PathLine
+	{
+		LineSprite
+		{
+			Texture
+			{
+				File = "./Data/gui/circle_filled.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			VertexColor = [255, 255, 255, 33]
+			UVRect = [.5, 0, 0, 1]
+		}
+		LineThickness = 2
+
+		BeginCapSprite : LineSprite
+		{
+			UVRect = [0, 0, .5, 1]
+		}
+		BeginCapSize = [1, 2]
+
+		EndCapSprite : LineSprite
+		{
+			UVRect = [.5, 0, .5, 1]
+		}
+		EndCapSize = [1, 2]
+	}
+	PathLineCamScaleExponent = .25
+	MinPathLineSize = .03
+	RotationTargetLine
+	{
+		LineSprite
+		{
+			Texture
+			{
+				File = "./Data/gui/game/overlay_selection_dashed.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			VertexColor = [255, 255, 255, 127]
+			UVRect = [.25, 0, .5, 1]
+		}
+		LineThickness = 0.5
+
+		BeginCapSprite : LineSprite
+		{
+			UVRect = [0, 0, .25, 1]
+		}
+		BeginCapSize = [.25, .5]
+
+		EndCapSprite : LineSprite
+		{
+			UVRect = [.75, 0, .25, 1]
+		}
+		EndCapSize = [.25, .5]
+	}
+	GhostColorFactor = [255, 255, 255, 63]
+	GhostBlinkColorFactor = [255, 255, 255, 102]
+	BlinkInterval = 0.15
+	BlinkCount = 2
+	FadeMinDistance = 0
+	FadeMaxDistance = 2
+	FadeMinAngle = 0d
+	FadeMaxAngle = 5d
+
+	MoveDistIcon = &<./Data/gui/game/game_gui.rules>/MoveIcon
+	StrafeDistIcon = &<./Data/gui/game/game_gui.rules>/StrafeIcon
+}

@@ -1,0 +1,31 @@
+ID = cosmoteer.disruptor_drain
+Layer = Part
+StatusCombineMode = ApplyNewInstance
+TickInterval = 0.2
+Filter
+{
+	OnlyPartCategories = [ uses_power, provides_power ]
+}
+// TODO: add soft-repair for instant repair only
+TickingEffects
+[
+	{
+		Type = ResourceDrain
+		ResourceType = battery
+		Amount = { BaseValue = (&~/TickInterval) * 1000; EffectScaleExponent = 1 }
+		Filter
+		{
+			Friendlies = true
+			Neutrals = true
+			Self = true
+		}
+//		MediaEffectsOnDrain = &<./Data/shots/disruptor_bolt/disruptor_bolt.rules>/Components/Hit/HitOperational/HitEffects/0/MediaEffectsOnDrain
+	}
+]
+ParentMediaEffectsToShip = true
+MediaIntensityValueType = Interpolated
+MediaIntensityInterpolationRange = [0, 6]
+ContinuousMediaEffects
+[
+	&<particles/electron_sizzle.rules>
+]

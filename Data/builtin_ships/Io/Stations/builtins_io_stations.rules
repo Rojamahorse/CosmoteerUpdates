@@ -1,0 +1,20 @@
+Faction = io
+Tags = [station]
+
+Ships
+[
+	// Civilian stations
+	:~{ File="Small Ionian Trade Station.ship.png";     Tier=4;  Tags : ~/Tags [trade_station, empty_storage]; StasisIcon="Small Ionian Trade Station.png" }
+	:~{ File="Small Ionian Trade Station II.ship.png";  Tier=4;  Tags : ~/Tags [trade_station, empty_storage]; StasisIcon="Small Ionian Trade Station II.png" }
+	:~{ File="Small Ionian Trade Station III.ship.png"; Tier=4;  Tags : ~/Tags [trade_station, empty_storage]; StasisIcon="Small Ionian Trade Station III.png" }
+	:~{ File="Med Ionian Trade Station.ship.png";       Tier=10; Tags : ~/Tags [trade_station, empty_storage]; StasisIcon="Med Ionian Trade Station.png" }
+	:~{ File="Large Ionian Trade Station.ship.png";     Tier=16; Tags : ~/Tags [trade_station, empty_storage]; StasisIcon="Large Ionian Trade Station.png" }
+
+	// Military stations
+	:~{ File="Tiny Ionian Arms Depot.ship.png";     Tier=6;  SpawnTier=3;  Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Tiny Ionian Arms Depot.png"; }
+	:~{ File="Small Ionian Arms Depot.ship.png";    Tier=9;  SpawnTier=7;  Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Small Ionian Arms Depot.png"; }
+	:~{ File="Med Ionian Arms Depot.ship.png";      Tier=12; SpawnTier=11; Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Med Ionian Arms Depot.png"; }
+	:~{ File="Med Ionian Arms Depot II.ship.png";   Tier=12; SpawnTier=11; Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Med Ionian Arms Depot II.png"; }
+	:~{ File="Large Ionian Arms Depot.ship.png";    Tier=16; SpawnTier=15; Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Large Ionian Arms Depot.png"; }
+	:~{ File="Large Ionian Arms Depot II.ship.png"; Tier=16; SpawnTier=15; Tags : ~/Tags [military_station, empty_storage]; StasisIcon="Large Ionian Arms Depot II.png"; }
+]

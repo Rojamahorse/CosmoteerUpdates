@@ -1,0 +1,869 @@
+Techs
+[
+	{
+		ID = cosmoteer.point_defense
+		NameKey = &<./Data/ships/terran/point_defense/point_defense.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/point_defense/point_defense.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/point_defense/point_defense.rules>/Part/EditorIcon
+		Category = [defenses]
+		PartsUnlocked = [&<./Data/ships/terran/point_defense/point_defense.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.point_defense-overclock
+		NameKey = "Parts/PointDefenseOverclock"
+		DescriptionKey = "Parts/PointDefenseOverclockDesc"
+		Icon = &<./Data/ships/terran/point_defense/point_defense.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.point_defense; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.point_defense]
+	}
+	{
+		ID = cosmoteer.missile_launcher_emp
+		NameKey = "MissileTypes/EMP"
+		DescriptionKey = "MissileTypes/EMPDesc"
+		Icon = &<./Data/ships/terran/missile_launcher/emp/missile_launcher_emp.rules>/EditorIcon
+		PartsUnlocked
+		[
+			&<./Data/ships/terran/factory_emp/factory_emp.rules>/Part/ID
+			&<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/ID
+		]
+		ResourcesUnlocked = [&<./Data/resources/missile_part_emp/missile_part_emp.rules>/ID]
+		ToggleChoicesUnlocked = [[missile_type, 1]]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.missile_launcher_thermal
+		NameKey = "MissileTypes/Thermal"
+		DescriptionKey = "MissileTypes/ThermalDesc"
+		Icon = &<./Data/ships/terran/missile_launcher/thermal/missile_launcher_thermal.rules>/EditorIcon
+		PartsUnlocked : ~/ThermalParts
+		[
+			&<./Data/ships/terran/factory_thermal/factory_thermal.rules>/Part/ID
+			&<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/ID
+		]
+		ResourcesUnlocked = [&<./Data/resources/missile_part_thermal/missile_part_thermal.rules>/ID]
+		ToggleChoicesUnlocked = [[missile_type, 4]]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.missile_launcher_nuke
+		NameKey = "MissileTypes/Nuke"
+		DescriptionKey = "MissileTypes/NukeDesc"
+		Icon = &<./Data/ships/terran/missile_launcher/nuke/missile_launcher_nuke.rules>/EditorIcon
+		Category = [weapons]
+		PartsUnlocked
+		[
+			&<./Data/ships/terran/factory_nuke/factory_nuke.rules>/Part/ID
+			&<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/ID
+		]
+		ResourcesUnlocked = [&<./Data/resources/missile_part_nuke/missile_part_nuke.rules>/ID]
+		ToggleChoicesUnlocked = [[missile_type, 2]]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+	}
+	{
+		ID = cosmoteer.missile_launcher_mine
+		NameKey = "MissileTypes/Mine"
+		DescriptionKey = "MissileTypes/MineDesc"
+		Icon = &<./Data/ships/terran/missile_launcher/mine/missile_launcher_mine.rules>/EditorIcon
+		PartsUnlocked
+		[
+			&<./Data/ships/terran/factory_mine/factory_mine.rules>/Part/ID
+			&<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/ID
+		]
+		ResourcesUnlocked = [&<./Data/resources/mine_part/mine_part.rules>/ID]
+		ToggleChoicesUnlocked = [[missile_type, 3]]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.laser_blaster_small
+		NameKey = &<./Data/ships/terran/laser_blaster_small/laser_blaster_small.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/laser_blaster_small/laser_blaster_small.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/laser_blaster_small/laser_blaster_small.rules>/Part/EditorIcon
+		Category = [weapons]
+		PartsUnlocked = [&<./Data/ships/terran/laser_blaster_small/laser_blaster_small.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.laser_blaster_small-overclock
+		NameKey = "Parts/LaserBlasterSmallOverclock"
+		DescriptionKey = "Parts/LaserBlasterSmallOverclockDesc"
+		Icon = &<./Data/ships/terran/laser_blaster_small/laser_blaster_small.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.laser_blaster_small; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.laser_blaster_small]
+	}
+	{
+		ID = cosmoteer.laser_blaster_large
+		NameKey = &<./Data/ships/terran/laser_blaster_large/laser_blaster_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/laser_blaster_large/laser_blaster_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/laser_blaster_large/laser_blaster_large.rules>/Part/EditorIcon
+		Category = [weapons]
+		PartsUnlocked = [&<./Data/ships/terran/laser_blaster_large/laser_blaster_large.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.laser_blaster_large-overclock
+		NameKey = "Parts/LaserBlasterLargeOverclock"
+		DescriptionKey = "Parts/LaserBlasterLargeOverclockDesc"
+		Icon = &<./Data/ships/terran/laser_blaster_large/laser_blaster_large.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.laser_blaster_large; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.laser_blaster_large]
+	}
+	{
+		ID = cosmoteer.cannon_med
+		NameKey = &<./Data/ships/terran/cannon_med/cannon_med.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/cannon_med/cannon_med.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/cannon_med/cannon_med.rules>/Part/EditorIcon
+		Category = [weapons]
+		PartsUnlocked = [&<./Data/ships/terran/cannon_med/cannon_med.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.cannon_med-overclock
+		NameKey = "Parts/CannonMedOverclock"
+		DescriptionKey = "Parts/CannonMedOverclockDesc"
+		Icon = &<./Data/ships/terran/cannon_med/cannon_med.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.cannon_med; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.cannon_med]
+	}
+	{
+		ID = cosmoteer.cannon_large
+		NameKey = &<./Data/ships/terran/cannon_large/cannon_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/cannon_large/cannon_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/cannon_large/cannon_large.rules>/Part/EditorIcon
+		Category = [weapons]
+		PartsUnlocked = [&<./Data/ships/terran/cannon_large/cannon_large.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.cannon_large-overclock
+		NameKey = "Parts/CannonLargeOverclock"
+		DescriptionKey = "Parts/CannonLargeOverclockDesc"
+		Icon = &<./Data/ships/terran/cannon_large/cannon_large.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.cannon_large; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.cannon_large]
+	}
+	{
+		ID = cosmoteer.cannon_deck
+		NameKey = &<./Data/ships/terran/cannon_deck/cannon_deck.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/cannon_deck/cannon_deck.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/cannon_deck/cannon_deck.rules>/Part/EditorIcon
+		Category = [weapons]
+		PartsUnlocked = [&<./Data/ships/terran/cannon_deck/cannon_deck.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+	}
+	{
+		ID = cosmoteer.cannon_deck-overclock
+		NameKey = "Parts/CannonDeckOverclock"
+		DescriptionKey = "Parts/CannonDeckOverclockDesc"
+		Icon = &<./Data/ships/terran/cannon_deck/cannon_deck.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.cannon_deck; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+		Prerequisites = [cosmoteer.cannon_deck]
+	}
+	{
+		ID = cosmoteer.disruptor
+		NameKey = &<./Data/ships/terran/disruptor/disruptor.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/disruptor/disruptor.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/disruptor/disruptor.rules>/Part/EditorIcon
+		PartsUnlocked = [&<./Data/ships/terran/disruptor/disruptor.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.disruptor-overclock
+		NameKey = "Parts/DisruptorOverclock"
+		DescriptionKey = "Parts/DisruptorOverclockDesc"
+		Icon = &<./Data/ships/terran/disruptor/disruptor.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.disruptor; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.disruptor]
+	}
+	{
+		ID = cosmoteer.ion_beam_emitter
+		NameKey = &<./Data/ships/terran/ion_beam_emitter/ion_beam_emitter.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/ion_beam_emitter/ion_beam_emitter.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/ion_beam_emitter/ion_beam_emitter.rules>/Part/EditorIcon
+		Category = [weapons]
+		PartsUnlocked
+		[
+			&<./Data/ships/terran/ion_beam_emitter/ion_beam_emitter.rules>/Part/ID
+			&<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/ID
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+	}
+	{
+		ID = cosmoteer.ion_beam_emitter-overclock
+		NameKey = "Parts/IonBeamEmitterOverclock"
+		DescriptionKey = "Parts/IonBeamEmitterOverclockDesc"
+		Icon = &<./Data/ships/terran/ion_beam_emitter/ion_beam_emitter.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.ion_beam_emitter; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+		Prerequisites = [cosmoteer.ion_beam_emitter]
+	}
+	{
+		ID = cosmoteer.resonance_beam_turret
+		NameKey = &<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/EditorIcon
+		Category = [weapons]
+		PartsUnlocked : ~/ThermalParts
+		[
+			&<./Data/ships/terran/resonance_beam_turret/resonance_beam_turret.rules>/Part/ID
+			&<./Data/ships/terran/thermal_dilation_pump/thermal_dilation_pump.rules>/Part/ID
+			&<./Data/ships/terran/thermal_amplification_pump/thermal_amplification_pump.rules>/Part/ID
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+	}
+	{
+		ID = cosmoteer.missile_launcher_he
+		NameKey = "MissileTypes/HE"
+		DescriptionKey = "MissileTypes/HEDesc"
+		Icon = &<./Data/ships/terran/missile_launcher/he/missile_launcher_he.rules>/EditorIcon
+		Category = [weapons]
+		PartsUnlocked
+		[
+			&<./Data/ships/terran/missile_launcher/missile_launcher.rules>/Part/ID
+			&<./Data/ships/terran/factory_he/factory_he.rules>/Part/ID
+		]
+		ResourcesUnlocked = [&<./Data/resources/missile_part_he/missile_part_he.rules>/ID]
+		ToggleChoicesUnlocked = [[missile_type, 0]]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.railgun
+		NameKey = "Parts/Railgun"
+		DescriptionKey = "Parts/RailgunDesc"
+		Icon = &<./Data/ships/terran/railgun_launcher/railgun_launcher.rules>/Part/EditorIcon
+		Category = [weapons]
+		PartsUnlocked
+		[
+			&<./Data/ships/terran/railgun_loader/railgun_loader.rules>/Part/ID
+			&<./Data/ships/terran/railgun_accelerator/railgun_accelerator.rules>/Part/ID
+			&<./Data/ships/terran/railgun_launcher/railgun_launcher.rules>/Part/ID
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+	}
+	{
+		ID = cosmoteer.railgun-overclock
+		NameKey = "Parts/RailgunOverclock"
+		DescriptionKey = "Parts/RailgunLauncherOverclockDesc"
+		Icon = &<./Data/ships/terran/railgun_launcher/railgun_launcher.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.railgun_launcher; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+		Prerequisites = [cosmoteer.railgun]
+	}
+	{
+		ID = cosmoteer.chaingun
+		NameKey = &<./Data/ships/terran/chaingun/chaingun.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/chaingun/chaingun.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/chaingun/chaingun.rules>/Part/EditorIcon
+		Category = [weapons]
+		PartsUnlocked
+		[
+			&<./Data/ships/terran/chaingun/chaingun.rules>/Part/ID
+			&<./Data/ships/terran/chaingun_magazine/chaingun_magazine.rules>/Part/ID
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+	}
+	{
+		ID = cosmoteer.chaingun-overclock
+		NameKey = "Parts/ChainGunOverclock"
+		DescriptionKey = "Parts/ChainGunOverclockDesc"
+		Icon = &<./Data/ships/terran/chaingun/chaingun.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.chaingun; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+		Prerequisites = [cosmoteer.chaingun]
+	}
+	{
+		ID = cosmoteer.flak_cannon_large
+		NameKey = &<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/EditorIcon
+		Category = [defenses]
+		PartsUnlocked = [&<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.flak_cannon_large-overclock
+		NameKey = "Parts/FlakCannonLargeOverclock"
+		DescriptionKey = "Parts/FlakCannonLargeOverclockDesc"
+		Icon = &<./Data/ships/terran/flak_cannon_large/flak_cannon_large.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.flak_cannon_large; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.flak_cannon_large]
+	}
+	{
+		ID = cosmoteer.shield_gen_small
+		NameKey = &<./Data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/EditorIcon
+		Category = [defenses]
+		PartsUnlocked = [&<./Data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.shield_gen_small-overclock
+		NameKey = "Parts/ShieldGenSmallOverclock"
+		DescriptionKey = "Parts/ShieldGenSmallOverclockDesc"
+		Icon = &<./Data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.shield_gen_small; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.shield_gen_small]
+	}
+	{
+		ID = cosmoteer.shield_gen_large
+		NameKey = &<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/EditorIcon
+		Category = [defenses]
+		PartsUnlocked = [&<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+	}
+	{
+		ID = cosmoteer.shield_gen_large-overclock
+		NameKey = "Parts/ShieldGenLargeOverclock"
+		DescriptionKey = "Parts/ShieldGenLargeOverclockDesc"
+		Icon = &<./Data/ships/terran/shield_gen_large/shield_gen_large.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.shield_gen_large; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+		Prerequisites = [cosmoteer.shield_gen_large]
+	}
+	{
+		ID = cosmoteer.control_room_med
+		NameKey = &<./Data/ships/terran/control_room_med/control_room_med.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/control_room_med/control_room_med.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/control_room_med/control_room_med.rules>/Part/EditorIcon
+		PartsUnlocked = [&<./Data/ships/terran/control_room_med/control_room_med.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+	}
+	{
+		ID = cosmoteer.control_room_large
+		NameKey = &<./Data/ships/terran/control_room_large/control_room_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/control_room_large/control_room_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/control_room_large/control_room_large.rules>/Part/EditorIcon
+		PartsUnlocked = [&<./Data/ships/terran/control_room_large/control_room_large.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 300000
+	}
+	{
+		ID = cosmoteer.thruster_small-overclock
+		NameKey = "Parts/ThrusterSmallOverclock"
+		DescriptionKey = "Parts/ThrusterSmallOverclockDesc"
+		Icon = &<./Data/ships/terran/thruster_small/thruster_small.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.thruster_small; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=cosmoteer.thruster_small_2way; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=cosmoteer.thruster_small_3way; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.thruster_med-overclock
+		NameKey = "Parts/ThrusterMedOverclock"
+		DescriptionKey = "Parts/ThrusterMedOverclockDesc"
+		Icon = &<./Data/ships/terran/thruster_med/thruster_med.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.thruster_med; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.thruster_large
+		NameKey = &<./Data/ships/terran/thruster_large/thruster_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/thruster_large/thruster_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/thruster_large/thruster_large.rules>/Part/EditorIcon
+		Category = [thrusters]
+		PartsUnlocked = [&<./Data/ships/terran/thruster_large/thruster_large.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.thruster_large-overclock
+		NameKey = "Parts/ThrusterLargeOverclock"
+		DescriptionKey = "Parts/ThrusterLargeOverclockDesc"
+		Icon = &<./Data/ships/terran/thruster_large/thruster_large.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.thruster_large; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.thruster_large]
+	}
+	{
+		ID = cosmoteer.thruster_huge
+		NameKey = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/EditorIcon
+		Category = [thrusters]
+		PartsUnlocked = [&<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+	}
+	{
+		ID = cosmoteer.thruster_huge-overclock
+		NameKey = "Parts/ThrusterHugeOverclock"
+		DescriptionKey = "Parts/ThrusterHugeOverclockDesc"
+		Icon = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.thruster_huge; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+		Prerequisites = [cosmoteer.thruster_huge]
+	}
+	{
+		ID = cosmoteer.thruster_rocket
+		NameKey = "Parts/ThrusterRocket"
+		DescriptionKey = "Parts/ThrusterRocketDesc"
+		Icon = &<./Data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/EditorIcon
+		Category = [thrusters]
+		PartsUnlocked
+		[
+			&<./Data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/ID
+			&<./Data/ships/terran/thruster_rocket_extender/thruster_rocket_extender.rules>/Part/ID
+			&<./Data/ships/terran/thruster_rocket_battery/thruster_rocket_battery.rules>/Part/ID
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 300000
+	}
+	{
+		ID = cosmoteer.thruster_rocket_nozzle-overclock
+		NameKey = "Parts/ThrusterRocketNozzleOverclock"
+		DescriptionKey = "Parts/ThrusterRocketNozzleOverclockDesc"
+		Icon = &<./Data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.thruster_rocket_nozzle; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 300000
+		Prerequisites = [cosmoteer.thruster_rocket]
+	}
+	{
+		ID = cosmoteer.thruster_rocket_extender-overclock
+		NameKey = "Parts/ThrusterRocketExtenderOverclock"
+		DescriptionKey = "Parts/ThrusterRocketExtenderOverclockDesc"
+		Icon = &<./Data/ships/terran/thruster_rocket_extender/thruster_rocket_extender.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.thruster_rocket_extender; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 300000
+		Prerequisites = [cosmoteer.thruster_rocket]
+	}
+	{
+		ID = cosmoteer.thruster_boost
+		NameKey = &<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/EditorIcon
+		Category = [thrusters]
+		PartsUnlocked = [&<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.thruster_boost-overclock
+		NameKey = "Parts/ThrusterBoostOverclock"
+		DescriptionKey = "Parts/ThrusterBoostOverclockDesc"
+		Icon = &<./Data/ships/terran/thruster_boost/thruster_boost.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.thruster_boost; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.thruster_boost]
+	}
+	{
+		ID = cosmoteer.engine_room
+		NameKey = &<./Data/ships/terran/engine_room/engine_room.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/engine_room/engine_room.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/engine_room/engine_room.rules>/Part/EditorIcon
+		Category = [thrusters]
+		PartsUnlocked = [&<./Data/ships/terran/engine_room/engine_room.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+	}
+	{
+		ID = cosmoteer.engine_room-overclock
+		NameKey = "Parts/EngineRoomOverclock"
+		DescriptionKey = "Parts/EngineRoomOverclockDesc"
+		Icon = &<./Data/ships/terran/engine_room/engine_room.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.engine_room; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+		Prerequisites = [cosmoteer.engine_room]
+	}
+	{
+		ID = cosmoteer.power_storage
+		NameKey = &<./Data/ships/terran/power_storage/power_storage.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/power_storage/power_storage.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/power_storage/power_storage.rules>/Part/EditorIcon
+		PartsUnlocked = [&<./Data/ships/terran/power_storage/power_storage.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.power_storage-overclock
+		NameKey = "Parts/PowerStorageOverclock"
+		DescriptionKey = "Parts/PowerStorageOverclockDesc"
+		Icon = &<./Data/ships/terran/power_storage/power_storage.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.power_storage; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.power_storage]
+	}
+	{
+		ID = cosmoteer.reactor_small-overclock
+		NameKey = "Parts/ReactorSmallOverclock"
+		DescriptionKey = "Parts/ReactorSmallOverclockDesc"
+		Icon = &<./Data/ships/terran/reactor_small/reactor_small.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.reactor_small; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+	}
+	{
+		ID = cosmoteer.reactor_med
+		NameKey = &<./Data/ships/terran/reactor_med/reactor_med.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/reactor_med/reactor_med.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/reactor_med/reactor_med.rules>/Part/EditorIcon
+		PartsUnlocked = [&<./Data/ships/terran/reactor_med/reactor_med.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+	}
+	{
+		ID = cosmoteer.reactor_med-overclock
+		NameKey = "Parts/ReactorMedOverclock"
+		DescriptionKey = "Parts/ReactorMedOverclockDesc"
+		Icon = &<./Data/ships/terran/reactor_med/reactor_med.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.reactor_med; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 200000
+		Prerequisites = [cosmoteer.reactor_med]
+	}
+	{
+		ID = cosmoteer.reactor_large
+		NameKey = &<./Data/ships/terran/reactor_large/reactor_large.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/reactor_large/reactor_large.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/reactor_large/reactor_large.rules>/Part/EditorIcon
+		PartsUnlocked = [&<./Data/ships/terran/reactor_large/reactor_large.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 300000
+	}
+	{
+		ID = cosmoteer.reactor_large-overclock
+		NameKey = "Parts/ReactorLargeOverclock"
+		DescriptionKey = "Parts/ReactorLargeOverclockDesc"
+		Icon = &<./Data/ships/terran/reactor_large/reactor_large.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.reactor_large; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 300000
+		Prerequisites = [cosmoteer.reactor_large]
+	}
+	{
+		ID = cosmoteer.tractor_beam_emitter
+		NameKey = &<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/Part/EditorIcon
+		PartsUnlocked = [&<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.tractor_beam_emitter-overclock
+		NameKey = "Parts/TractorBeamEmitterOverclock"
+		DescriptionKey = "Parts/TractorBeamEmitterOverclockDesc"
+		Icon = &<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.tractor_beam_emitter; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.tractor_beam_emitter]
+	}
+	{
+		ID = cosmoteer.sensor_array
+		NameKey = &<./Data/ships/terran/sensor_array/sensor_array.rules>/Part/NameKey
+		DescriptionKey = &<./Data/ships/terran/sensor_array/sensor_array.rules>/Part/DescriptionKey
+		Icon = &<./Data/ships/terran/sensor_array/sensor_array.rules>/Part/EditorIcon
+		PartsUnlocked = [&<./Data/ships/terran/sensor_array/sensor_array.rules>/Part/ID]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+	{
+		ID = cosmoteer.sensor_array-overclock
+		NameKey = "Parts/SensorArrayOverclock"
+		DescriptionKey = "Parts/SensorArrayOverclockDesc"
+		Icon = &<./Data/ships/terran/sensor_array/sensor_array.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.sensor_array; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+		Prerequisites = [cosmoteer.sensor_array]
+	}
+	{
+		ID = cosmoteer.fire_extinguisher-overclock
+		NameKey = "Parts/FireExtinguisherOverclock"
+		DescriptionKey = "Parts/FireExtinguisherOverclockDesc"
+		Icon = &<./Data/ships/terran/fire_extinguisher/fire_extinguisher.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		Category = [overclocks]
+		PartsUnlocked = &~/ThermalParts
+		ToggleChoicesUnlocked
+		[
+			{ PartID=cosmoteer.fire_extinguisher; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 5000
+		FundsThresholdBeforeOffered = 0
+	}
+]
+PartsWhitelist
+[
+	cosmoteer.airlock
+	cosmoteer.armor
+	cosmoteer.armor_1x2_wedge
+	cosmoteer.armor_1x3_wedge
+	cosmoteer.armor_2x1
+	cosmoteer.armor_structure_hybrid_1x1
+	cosmoteer.armor_structure_hybrid_1x2
+	cosmoteer.armor_structure_hybrid_1x3
+	cosmoteer.armor_structure_hybrid_tri
+	cosmoteer.armor_tri
+	cosmoteer.armor_wedge
+	cosmoteer.control_room_small
+	cosmoteer.conveyor
+	cosmoteer.corridor
+	cosmoteer.crew_quarters_med
+	cosmoteer.crew_quarters_small
+	cosmoteer.crew_quarters_large
+	cosmoteer.explosive_charge
+	cosmoteer.factory_ammo
+	cosmoteer.factory_coil
+	cosmoteer.factory_coil2
+	cosmoteer.factory_diamond
+	cosmoteer.factory_emp
+	cosmoteer.factory_he
+	cosmoteer.factory_mine
+	cosmoteer.factory_nuke
+	cosmoteer.factory_thermal
+	cosmoteer.factory_processor
+	cosmoteer.factory_steel
+	cosmoteer.factory_tristeel
+	cosmoteer.factory_uranium
+	cosmoteer.fire_extinguisher
+	cosmoteer.hyperdrive_beacon
+	cosmoteer.hyperdrive_large
+	cosmoteer.hyperdrive_med
+	cosmoteer.hyperdrive_small
+	cosmoteer.reactor_small
+	cosmoteer.roof_light
+	cosmoteer.roof_headlight
+	cosmoteer.storage_2x2
+	cosmoteer.storage_3x2
+	cosmoteer.storage_3x3
+	cosmoteer.storage_4x3
+	cosmoteer.storage_4x4
+	cosmoteer.structure
+	cosmoteer.structure_1x2_wedge
+	cosmoteer.structure_1x3_wedge
+	cosmoteer.structure_tri
+	cosmoteer.structure_wedge
+	cosmoteer.thruster_med
+	cosmoteer.thruster_small
+	cosmoteer.thruster_small_2way
+	cosmoteer.thruster_small_3way
+]
+
+ThermalParts
+[
+	&<./Data/ships/terran/heat_pipe_adaptive/heat_pipe_adaptive.rules>/Part/ID
+	&<./Data/ships/terran/heat_pipe_adaptive_structure/heat_pipe_adaptive_structure.rules>/Part/ID
+	&<./Data/ships/terran/heat_pipe_crossing/heat_pipe_crossing.rules>/Part/ID
+	&<./Data/ships/terran/radiator/radiator.rules>/Part/ID
+	&<./Data/ships/terran/thermal_battery/thermal_battery.rules>/Part/ID
+	&<./Data/ships/terran/heat_exchanger/heat_exchanger.rules>/Part/ID
+]
+
+OverclockIcon = &<./Data/modes/career/techs.rules>/OverclockIcon

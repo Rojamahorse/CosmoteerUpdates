@@ -1,0 +1,95 @@
+Spawners
+[
+	// Sun.
+	{
+		Type = Doodads
+		DoodadType = cosmoteer.planet_sun
+	}
+
+	// Inner planets.
+	{
+		Type = Doodads
+		Tags = [planet]
+		Count = [1, 2]
+		Distance = [4000, 8000]
+		SpawnsPerSlice = 1
+		SpawnSlicePadding = 25%
+		ScaleFactor = .75
+		DoodadTypes
+		[
+			cosmoteer.planet_rocky
+			cosmoteer.planet_sand
+			cosmoteer.planet_lava
+		]
+	}
+
+	// Middle planets.
+	{
+		Type = Doodads
+		Tags = [planet]
+		Count = [2, 3]
+		Distance = [10000, 15000]
+		SpawnsPerSlice = 1
+		SpawnSlicePadding = 25%
+		MinDistanceFromSiblingOrbits = 1000
+		DoodadTypes
+		[
+			cosmoteer.planet_terra
+			cosmoteer.planet_water
+			cosmoteer.planet_alien
+		]
+
+		// Moon
+		SubSpawners
+		[
+			{
+				Type = Doodads
+				Count = [0, 2]
+				Distance = [1000, 2000]
+				ScaleFactor = .25
+				MinDistanceFromSiblings = 1000
+				MinDistanceFromSiblingOrbits = 500
+				DoodadTypes
+				[
+					cosmoteer.planet_rocky
+					cosmoteer.planet_sand
+				]
+			}
+		]
+	}
+
+	// Outer planets.
+	{
+		Type = Doodads
+		Tags = [planet]
+		Count = [3, 4]
+		Distance = [20000, 40000]
+		SpawnsPerSlice = 1
+		SpawnSlicePadding = 25%
+		MinDistanceFromSiblingOrbits = 3000
+		DoodadTypes
+		[
+			cosmoteer.planet_gas
+			cosmoteer.planet_gas_ringed
+		]
+
+		// Moons
+		SubSpawners
+		[
+			{
+				Type = Doodads
+				Count = [0, 3]
+				Distance = [1000, 4000]
+				MinDistanceFromSiblings = 2000
+				MinDistanceFromSiblingOrbits = 500
+				ScaleFactor = .5
+				DoodadTypes
+				[
+					cosmoteer.planet_rocky
+					cosmoteer.planet_sand
+					cosmoteer.planet_lava
+				]
+			}
+		]
+	}
+]

@@ -1,0 +1,35 @@
+ID = advanced_commands
+TitleKey = "Tutorials/AdvancedCommands/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 70"
+OnSeen = "> SetSetting('ShowAdvancedCommands', True)"
+Entries
+[
+	{
+		TextKey = "Tutorials/AdvancedCommands/Info"
+	}
+	{
+		Image { Texture { File="move.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/AdvancedCommands/Move"
+	}
+	{
+		Image { Texture { File="attack.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/AdvancedCommands/Attack"
+	}
+	{
+		Image { Texture { File="halt.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/AdvancedCommands/Halt"
+	}
+	{
+		Image { Texture { File="rotate.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/AdvancedCommands/Rotate"
+	}
+	{
+		Image { Texture { File="strafe.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/AdvancedCommands/Strafe"
+	}
+	{
+		Image { Texture { File="direct_control.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/AdvancedCommands/DirectControl"
+	}
+]

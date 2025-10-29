@@ -1,0 +1,131 @@
+StatWidgets
+[
+	{
+		Type = StatBar
+		NameKey = "BuildBox/Crew"
+		ToggleButtonID = Crew
+		Icon
+		{
+			Texture
+			{
+				File = "stat_crew.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+		RecommendedStat = RecCrew
+		AddCrewToProvidedStat = true
+		RoundUp = true
+		CustomValueTextKey = "BuildBox/CrewFmt"
+		AdditionalStatMarkers
+		[
+			{
+				TooltipKey = "BuildBox/CrewOperatorsFmt"
+				Stat = CrewRequired
+				StatColor = &<./Data/gui/widgets.rules>/GoodTextColor
+				ShowOnTooltipOnly = true 
+			}
+		]
+	}
+	{
+		Type = StatBar
+		NameKey = "BuildBox/Power"
+		ToggleButtonID = Power
+		NumberFormat = "0.0"
+		Icon
+		{
+			Texture
+			{
+				File = "stat_power.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+		RecommendedStat = RecPower
+		ProvidedStat = PowerGeneration
+		BlocksPerValue = 10
+	}
+	{
+		Type = InlineContainer
+		ToggleButtonID = Thermal
+		StatWidgets
+		[
+			{
+        		Type = IconText
+        		NameKey = "BuildBox/HeatGeneration"
+        		CustomValueTextKey = "BuildBox/HeatGenerationFmt"
+        		CustomValueLabel : <build_gui.rules>/StatsGui/DefaultStatLabel
+        		{
+        			TextRenderer : ^/0/TextRenderer
+        			{
+        				Color = [246, 94, 4]
+        				FontSize = 20
+        			}
+        		}
+        		Icon
+        		{
+        			Texture
+        			{
+        				File = "stat_heat_generation.png"
+        				MipLevels = 2
+        				SampleMode = Linear
+        			}
+        			VertexColor = [0, 183, 255]
+        		}
+        		Stat = HeatGeneration
+        		StatMode = Providers
+        	}
+        	{
+        		Type = IconText
+        		NameKey = "BuildBox/HeatDissipation"
+        		CustomValueTextKey = "BuildBox/HeatDissipationFmt"
+        		CustomValueLabel : <build_gui.rules>/StatsGui/DefaultStatLabel
+        		{
+        			TextRenderer : ^/0/TextRenderer
+        			{
+        				Color = [67, 227, 231]
+        				FontSize = 20
+        			}
+        		}
+        		Icon
+        		{
+        			Texture
+        			{
+        				File = "stat_heat_dissipation.png"
+        				MipLevels = 2
+        				SampleMode = Linear
+        			}
+        			VertexColor = [0, 183, 255]
+        		}
+        		Stat = HeatDissipation
+        		StatMode = Providers
+        	}
+		]
+	}
+	{
+		Type = IconText
+		ToggleButtonID = Thermal
+		NameKey = "BuildBox/HeatCapacity"
+		CustomValueTextKey = "BuildBox/HeatCapacityFmt"
+		CustomValueLabel : <build_gui.rules>/StatsGui/DefaultStatLabel
+		{
+			TextRenderer : ^/0/TextRenderer
+			{
+				Color = [246, 149, 4]
+				FontSize = 20
+			}
+		}
+		Icon
+		{
+			Texture
+			{
+				File = "stat_thermal.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+			VertexColor = [0, 183, 255]
+		}
+		Stat = HeatCapacity
+		StatMode = ProvidersThenStatBlocks
+	}
+]

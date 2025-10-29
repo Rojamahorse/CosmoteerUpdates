@@ -1,0 +1,33 @@
+ID = cosmoteer.poi_ring
+Type = RingedPOI
+DescriptionKey = "Doodads/POIRing"
+CategoryKey = "Doodads/POI"
+Icon
+{
+	Texture
+	{
+		File = "poi_ring.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+	Size = [32, 32]
+}
+RingCircle
+{
+	Thickness = .5
+	QuadCount = 256
+	VertexColor = [255, 255, 255, 127]
+	Texture
+	{
+		File = "./Data/gui/game/overlay_selection_dashed.png"
+		UMode = Wrap
+		VMode = Clamp
+		SampleMode = Linear
+		MipLevels = 2
+	}
+	Shader = "./Data/gui/game/circle_dotted.shader"
+}
+CameraRelativeThickness = true
+DynamicUPerCircumference = 4
+DefaultScale = 1000
+MinimapThickness = 20

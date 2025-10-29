@@ -1,0 +1,245 @@
+OVERCLOCK
+{
+	RESTOCK_INTERVAL = 1.5
+	HEAT_PER_RESTOCK = 600
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
+{
+	NameKey = "Parts/FireExtinguisher"
+	IconNameKey = "Parts/FireExtinguisherIcon"
+	ID = cosmoteer.fire_extinguisher // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [fire_extinguisher]
+	EditorGroups = ["Defenses", "Thermal"]
+	DescriptionKey = "Parts/FireExtinguisherDesc"
+	Resources
+	[
+		[steel, 8]
+		[coil, 1]
+	]
+	TypeCategories = [fire_extinguisher]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Size = [1, 1]
+	MaxHealth = 1000
+	AllowedDoorLocations
+	[
+		[0, 1]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		ExtinguisherStorage
+		{
+			Type = ResourceStorage
+			ResourceType = fire_extinguisher
+			MaxResources = &<./Data/resources/fire_extinguisher/fire_extinguisher.rules>/MaxPerNugget
+			StartingResources = &MaxResources
+			SuppliesResources = true
+			// Overclock only
+			ExpectedResourceGenerationRate = (&MaxResources) / (&~/OVERCLOCK/RESTOCK_INTERVAL)
+			ExpectedResourceGenerationToggle = IsOverclocked
+		}
+
+		CanProduce
+		{
+			Type = MultiToggle
+			Toggles = [ { Toggle=ExtinguisherStorage; Invert=true }, &~/Part/^/0/OVERCLOCK_OPERATIONAL ]
+			Mode = All
+		}
+
+		ExtinguisherProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = CanProduce
+			ToStorage = ExtinguisherStorage
+			ToQuantity = &../ExtinguisherStorage/MaxResources
+			Interval
+			{
+				BaseValue = 15
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [&../../../BaseValue, &~/OVERCLOCK/RESTOCK_INTERVAL]
+						ModificationMode = Replace
+					}
+				]
+			}
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		Overclock_OnRestock
+		{
+			Type = TriggerProxy
+			ComponentID = ExtinguisherProducer
+			ProxyToggle = IsOverclocked
+		}
+
+		Overclock_RestockHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_OnRestock
+			Amount = (&~/OVERCLOCK/HEAT_PER_RESTOCK) * (&~/HEAT_TO_RESOURCE)
+		}
+
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 0]
+			Direction = Left
+		}
+		Port_Thermal_Up : Port_Thermal_Left
+		{
+			Direction = Up
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Direction = Right
+		}
+		Port_Thermal_Down : Port_Thermal_Left
+		{
+			Direction = Down
+		}
+
+		ProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = ExtinguisherProducer
+			ShowProgressFor = ExtinguisherProducer
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 1]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		ExtinguisherSprite
+		{
+			Type = ResourceSprites
+			Location = [.5, .5]
+			ResourceStorage = ExtinguisherStorage
+			Layer = "doodads_high"
+			HasZeroResourceSprite = false
+			ResourceLevels
+			[
+				{
+					File = "extinguisher.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		AbilityCooldown = &~/Part/Components/ExtinguisherProducer/Interval/BaseValue
+	}
+
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/FireExtinguisherOverclockDesc"
+		Stats
+		{
+			AbilityCooldown = &~/OVERCLOCK/RESTOCK_INTERVAL
+			HeatPerRestock = &~/OVERCLOCK/HEAT_PER_RESTOCK
+		}
+	}
+}

@@ -1,0 +1,56 @@
+ID = cosmoteer.huge_crews
+Name = "Huge Crews"
+Version = 1.0.0
+CompatibleGameVersions = ["0.30.2_rc2"]
+ModifiesGameplay = true
+Author = "Walternate Realities"
+Description = "Increases the maximum crew in Career mode to 100000 regardless of fame.\n\n"\
+              "<red>WARNING: Your computer probably can't handle crews this large! Use with caution!</red>"
+
+MAX_CREW = 100000
+
+Actions
+[
+	{
+		Action = Overrides
+		OverrideIn = "<modes/career/career.rules>/CrewScarcityLevels/0"
+		Overrides
+		{
+			CrewFamePrereqCountRange = [&~/MAX_CREW, &~/MAX_CREW]
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<modes/career/career.rules>/CrewScarcityLevels/1"
+		Overrides
+		{
+			CrewFamePrereqCountRange = [&~/MAX_CREW, &~/MAX_CREW]
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<modes/career/career.rules>/CrewScarcityLevels/2"
+		Overrides
+		{
+			CrewFamePrereqCountRange = [&~/MAX_CREW, &~/MAX_CREW]
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<modes/career/career.rules>/CrewScarcityLevels/3"
+		Overrides
+		{
+			CrewFamePrereqCountRange = [&~/MAX_CREW, &~/MAX_CREW]
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<crew/crew.rules>"
+		Overrides
+		{
+			JobAssignmentsPerSecond = 1000
+			LowPriorityJobAssignmentsPerSecond = 250
+			ResourceSearchesPerSecond = 1000
+		}
+	}
+]

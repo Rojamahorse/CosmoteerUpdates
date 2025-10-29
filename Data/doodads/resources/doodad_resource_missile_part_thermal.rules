@@ -1,0 +1,13 @@
+ID = cosmoteer.resource_missile_part_thermal
+Type = Resource
+DescriptionKey = "Resource/MissilePartThermal"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "./Data/resources/missile_part_thermal/missile_part_thermal1.png"
+		MipLevels = 2
+	}
+}
+ResourceType = missile_part_thermal

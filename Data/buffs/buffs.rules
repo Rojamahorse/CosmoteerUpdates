@@ -1,0 +1,216 @@
+Engine
+{
+	CombineMode = Max
+	BaseValue = 100%
+
+	Icon
+	{
+		Texture
+		{
+			File = "buff_engine.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+	ShowIconTextForZeroValue = false
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+EnginePowerDistribution
+{
+	// Only exists to piggyback engine room power distribution off the buff system.
+}
+EngineHeatCollection {}
+
+Factory
+{
+	CombineMode = Add
+	BaseValue = 100%
+
+	Icon
+	{
+		Texture
+		{
+			File = "buff_factory.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+Railgun
+{
+	CombineMode = Add
+}
+
+RailgunShot
+{
+	CombineMode = Add
+	Exponent = 0.8
+	Multiplier = 20%
+	BaseValue = 100%
+
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+	ShowIconTextForZeroValue = false
+}
+RailgunShotOverclock : RailgunShot
+{
+	Exponent = 1
+}
+
+RailgunOperation
+{
+	CombineMode = Add
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+RailgunReverseOperation
+{
+	CombineMode = Add
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+Rocket
+{
+	CombineMode = Add
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+RocketThrust
+{
+	CombineMode = Add
+	Exponent = 1.0
+	BaseValue = 0%
+
+	Icon
+	{
+		Texture
+		{
+			File = "buff_engine.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+	IconPriority = 1 // Override engine room buff icon.
+	ShowIconTextForZeroValue = false
+}
+
+RocketRampUp
+{
+	CombineMode = Add
+	Exponent = 0.5
+	BaseValue = 0%
+}
+RocketRampUpFinal
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
+
+RocketOperation
+{
+	CombineMode = Add
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+RocketExtraForce
+{
+	CombineMode = Add
+	BaseValue = 0
+}
+
+RocketBatteryConnection // Only used to show connection in blueprints.
+{
+	Icon
+	{
+		Texture
+		{
+			File = "buff_power.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+HeatDissipation {}
+ThermalIntensity {}
+ThermalRadius {}
+ThermalShieldPiercing {}
+ThermalActivity { MinValue = 0 }
+Overclock {}
+IonOverclockCharge {}
+BoostOverclockPowerRamp {}
+
+ShieldOverclockExtended {}
+ShieldOverclockReinforced {}
+
+RateOfFire
+{
+	CombineMode = Add
+}
+
+ChaingunMagConnection // Only used to show connection in blueprints.
+{
+	Icon
+	{
+		Texture
+		{
+			File = "buff_bullets.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+
+	RectBorderColor = [10, 212, 98, 160]
+	RectFillColor = [10, 212, 98, 64]
+}
+
+ElectronNebula
+{
+	CombineMode = Max
+	BaseValue = 0%
+}
+
+ElectronBuff
+{
+	CombineMode = Max
+	BaseValue = 100%
+}
+
+ElectronDebuff
+{
+	CombineMode = Min
+	BaseValue = 100%
+}

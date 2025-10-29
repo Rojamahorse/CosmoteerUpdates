@@ -1,0 +1,30 @@
+Thruster1
+{
+	Type = Thruster
+	Location = [1, 1] // Relative to upper-left corner of unrotated part.
+	Rotation = 0d // Relative to unrotated part.
+	OperationalToggle = IsOperational
+	Force = 100
+	MinActivation = 0
+	MaxActivation = 1
+	MinUncommandedActivation = 0
+	MaxUncommandedActivation = &MaxActivation
+	ActivationIncreaseTime = 0
+	ActivationRecoveryTime = 0
+}
+
+Thruster2 : Thruster1
+{
+	Rotation = 90d
+}
+
+Thruster3 : Thruster1
+{
+	Rotation = 180d
+}
+
+Thruster4 : Thruster1
+{
+	Rotation = 270d
+}
+

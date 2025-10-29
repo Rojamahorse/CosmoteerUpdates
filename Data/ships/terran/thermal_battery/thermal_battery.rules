@@ -1,0 +1,523 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ThermalBattery"
+	IconNameKey = "Parts/ThermalBatteryIcon"
+	ID = cosmoteer.thermal_battery
+	OtherIDs = [ cosmoteer.thermal_tank ]
+	EditorGroup = "Thermal"
+	EditorParentParts = [ "cosmoteer.resonance_beam_turret" ]
+	DescriptionKey = "Parts/ThermalBatteryDesc"
+	Resources
+	[
+		[steel, 40]
+		[coil, 15]
+	]
+	Size = [2, 2]
+	IsRotateable = true
+	IsFlippable = true
+	SelectionPriority = 0
+	MaxHealth = 4000
+	TypeCategories = [ heat_management ]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Flammable = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	CrewSpeedFactor = 0
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [56, 56]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [HeatStorage, Port_BottomLeft, Port_BottomRight]
+			Mode = Any
+		}
+
+		Port_BottomLeft
+		{
+			Type = NetworkPort
+			Location = [0, 1]
+			Direction = Down
+			Types = [ thermal ]
+			RouteSource = NetworkedHeatStorage
+			RouteEndpoint = NetworkedHeatStorage
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
+		}
+
+		Port_BottomRight : Port_BottomLeft
+		{
+			Location = [1, 1]
+		}
+
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
+
+		HeatStorage
+		{
+			Type = ResourceStorage
+			ResourceType = heat
+			MAX_STATUS_HEAT = 15000
+			MaxResources = (&MAX_STATUS_HEAT) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+			InitToMaxResources = 0
+			IgnoreResourcesForInitToMax = true
+		}
+
+		NetworkedHeatStorage
+		{
+			Type = NetworkResourceStore
+			ResourceType = heat
+			ResourceStorage = HeatStorage
+			Categories = [ thermal_storage ]
+		}
+
+		DestroyedHeatEffects
+		{
+			Type = DeathEffects
+			Location = [1, 1]
+			FactorHitEffectsWith = HeatStorage
+			IncludeWhenUnderConstruction = false
+
+			HitEffects
+			[
+				{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					HitPartSourceRectType = Normal
+					StatusValue = 0
+					StatusValuePool
+					{
+						BaseValue = &~/Part/Components/HeatStorage/MAX_STATUS_HEAT
+						EffectScaleExponent = 1
+					}
+					MaxCost = 3
+					EmptyTileCost = Infinity
+					ValueFalloff = 1
+					FalloffPadding = 1
+					Filter
+					{
+						Self = true
+					}
+				}
+			]
+		}
+		DestroyedMediaEffects
+		{
+			Type = DeathEffects
+			Location = [1, 1]
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+		}
+
+		HeatBatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1, 1]
+			ResourceStorage = HeatStorage
+			Layer = "doodads_low"
+			HasZeroResourceSprite = false
+			Round = Up
+			ResourceLevels
+			[
+				{
+					File = "thermal_batteries1.png"
+					Size = [2, 2]
+				}
+				{
+					File = "thermal_batteries2.png"
+					Size = [2, 2]
+				}
+				{
+					File = "thermal_batteries3.png"
+					Size = [2, 2]
+				}
+				{
+					File = "thermal_batteries4.png"
+					Size = [2, 2]
+				}
+				{
+					File = "thermal_batteries5.png"
+					Size = [2, 2]
+				}
+				{
+					File = "thermal_batteries6.png"
+					Size = [2, 2]
+				}
+				{
+					File = "thermal_batteries7.png"
+					Size = [2, 2]
+				}
+				{
+					File = "thermal_batteries8.png"
+					Size = [2, 2]
+				}
+			]
+		}
+
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+
+		Left_Pipe_Components
+		{
+			Type = ToggledComponents
+			Toggle = Port_BottomLeft
+			Components
+			{
+				Left_Pipes_Graphics
+				{
+					Type = Graphics
+					Location = [0.5, 1.5]
+					OperationalToggle = IsOperational
+					Floor
+					{
+						Layer = "doodads_low"
+						DamageLevels
+						[
+							{
+								File = "pipes.png"
+								Size = [1, 1]
+							}
+							{
+								File = "pipes_33.png"
+								Size = [1, 1]
+							}
+							{
+								File = "pipes_66.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					OperationalLighting
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "pipes_lights.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					WallsStencil
+					{
+						Layer = "walls_stencil"
+						DamageLevels
+						[
+							{
+								File = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_wall_stencil.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					Roof
+					{
+						Layer = "roof_doodads"
+						Offset = [0, 0.5]
+						DamageLevels
+						[
+							{
+								File = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof.png"
+								NormalsFile = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_normals.png"
+								Size = [1, 1]
+							}
+							{
+								File = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_33.png"
+								NormalsFile = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_normals.png"
+								Size = [1, 1]
+							}
+							{
+								File = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_66.png"
+								NormalsFile = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_normals.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+
+		Right_Pipe_Components
+		{
+			Type = ToggledComponents
+			Toggle = Port_BottomRight
+			Components
+			{
+				Right_Pipes_Graphics
+				{
+					Type = Graphics
+					Location = [1.5, 1.5]
+					OperationalToggle = IsOperational
+					Floor
+					{
+						Layer = "doodads_low"
+						DamageLevels
+						[
+							{
+								File = "pipes.png"
+								Size = [1, 1]
+								MirrorU = true
+							}
+							{
+								File = "pipes_33.png"
+								Size = [1, 1]
+								MirrorU = true
+							}
+							{
+								File = "pipes_66.png"
+								Size = [1, 1]
+								MirrorU = true
+							}
+						]
+					}
+					OperationalLighting
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "pipes_lights.png"
+								Size = [1, 1]
+								MirrorU = true
+							}
+						]
+					}
+					WallsStencil
+					{
+						Layer = "walls_stencil"
+						DamageLevels
+						[
+							{
+								File = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_wall_stencil.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					Roof
+					{
+						Layer = "roof_doodads"
+						Offset = [0, 0.5]
+						DamageLevels
+						[
+							{
+								File = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof.png"
+								NormalsFile = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_normals.png"
+								Size = [1, 1]
+							}
+							{
+								File = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_33.png"
+								NormalsFile = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_normals.png"
+								Size = [1, 1]
+							}
+							{
+								File = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_66.png"
+								NormalsFile = "./Data/ships/terran/heat_pipe_adaptive/pipe_connector/pipe_connector_roof_normals.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+
+		Left_Pipe_Connected_Blueprints
+		{
+			Type = BlueprintSprite
+			Toggle = Port_BottomLeft
+			File = "blueprints_connected.png"
+			Size = [2, 2]
+		}
+/*		Left_Pipe_Unconnected_Blueprints
+		{
+			Type = BlueprintSprite
+			Toggle = Port_BottomLeft
+			Invert = true
+			File = "blueprints_unconnected.png"
+			Size = [2, 2]
+		}
+*/		Right_Pipe_Connected_Blueprints
+		{
+			Type = BlueprintSprite
+			Toggle = Port_BottomRight
+			File = "blueprints_connected.png"
+			Size = [2, 2]
+			MirrorU = true
+		}
+/*		Right_Pipe_Unconnected_Blueprints
+		{
+			Type = BlueprintSprite
+			Toggle = Port_BottomRight
+			Invert = true
+			File = "blueprints_unconnected.png"
+			Size = [2, 2]
+			MirrorU = true
+		}
+*/
+
+		//------------------------ PIPE CONNECTOR ------------------------
+		Dont_Draw_Pipe_Connector_Into_This_Part { Type = Graphics }	//When this fake component is present, the Heat Pipes dont draw a Pipe Conector to this part.
+
+		//Draw a Pipe Connector Down Left if possible
+		PipeConnectorDownLeft_DrawToggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_DrawToggle
+		{
+			PartLocation = [0, 2]
+		}
+		PipeConnectorDownLeft_Toggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Toggle
+		{
+			Toggles = [Port_BottomLeft, {Toggle = PipeConnectorDownLeft_DrawToggle, invert = true}]
+		}
+		PipeConnectorDownLeft_Components : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components
+		{
+			Toggle = PipeConnectorDownLeft_Toggle
+			Components
+			{
+				PipesConnectorDownLeft_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components/Components/PipesConnectorDown_Graphics
+				{
+					Location = [0.5, 2.5]
+				}
+			}
+		}
+
+		//Draw a Pipe Connector Down Right if possible
+		PipeConnectorDownRight_DrawToggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_DrawToggle
+		{
+			PartLocation = [1, 2]
+		}
+		PipeConnectorDownRight_Toggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Toggle
+		{
+			Toggles = [Port_BottomRight, {Toggle = PipeConnectorDownRight_DrawToggle, invert = true}]
+		}
+		PipeConnectorDownRight_Components : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components
+		{
+			Toggle = PipeConnectorDownRight_Toggle
+			Components
+			{
+				PipesConnectorDownRight_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components/Components/PipesConnectorDown_Graphics
+				{
+					Location = [1.5, 2.5]
+				}
+			}
+		}
+		//---------------------- END PIPE CONNECTOR ----------------------
+	}
+
+	Stats
+	{
+		HeatCapacity = (&~/Part/Components/HeatStorage/MaxResources) / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+//		DeathFireSizeByHeat =
+	}
+}

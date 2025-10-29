@@ -1,0 +1,19 @@
+ID = tactics2
+TitleKey = "Tutorials/Tactics2/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 70 and game.HasSeenCodexPage('tactics')"
+Entries
+[
+	{
+		Image { Texture { File="drag_attack.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Tactics2/Drag"
+	}
+	{
+		Image { Texture { File="handles.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Tactics2/Handles"
+	}
+	{
+		Image { Texture { File="queue.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Tactics2/TargetQueue"
+	}
+]

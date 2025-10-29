@@ -1,0 +1,769 @@
+OVERCLOCK
+{
+	CAPACITY_FACTOR = 300%
+	BATTERY_SIZE_FACTOR = 300%
+	MAX_HEAT_PER_SECOND = 500
+	HEAT_PER_BATTERY_DELIVERED = 50
+	PICKUP_RATE = 1000
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
+{
+	NameKey = "Parts/PowerStorage"
+	IconNameKey = "Parts/PowerStorageIcon"
+	ID = cosmoteer.power_storage // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [power_supply, power_storage]
+	EditorGroup = "Power"
+	DescriptionKey = "Parts/PowerStorageDesc"
+	Resources
+	[
+		[steel, 32]
+		[coil, 22]
+	]
+	Size = [2, 2]
+	FlipHRotate = [0, 1, 2, 3] // Disable flipping UI.
+	FlipVRotate = [0, 1, 2, 3] // Disable flipping UI.
+	MaxHealth = 4000
+	TypeCategories = [provides_power, storage]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ThermalActivity]
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [56, 56]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
+		ConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		PowerToggleNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ ConsumptionToggle, { Toggle = IsOverclocked; Invert = true }]
+			Mode = All
+		}
+		PowerToggleOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ ConsumptionToggle, IsOverclocked ]
+			Mode = All
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 24000
+			StartingResources = 0
+			SuppliesResources = true
+			SuppliesResourcesToggle = PowerToggleNonOverclocked
+			MinResourcesPickUp = 1000
+			MaxResourcesPickUp = 1000
+			IsIntermediateStorage = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			GiveResourceMediaEffects = &/COMMON_EFFECTS/PowerPickup
+		}
+
+		Overclock_BatteryProviderStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [ BatteryStorage, Overclock_BatteryStorageProxy ]
+			RemoveMode = InReverseOrder
+			SuppliesResources = true
+			SuppliesResourcesToggle = PowerToggleOverclocked
+			MinResourcesPickUp = (&../BatteryStorage/MinResourcesPickUp) * (&~/OVERCLOCK/BATTERY_SIZE_FACTOR)
+			MaxResourcesPickUp = &MinResourcesPickUp
+			InitPickUp = (&MinResourcesPickUp) - 999
+			PickUpRate = &~/OVERCLOCK/PICKUP_RATE
+			IsIntermediateStorage = true
+			// Hack to get crew to respect the min pickup
+			ExpectedResourceGenerationRate = 1
+			ExpectedResourceGenerationToggle = Overclock_BatteryProviderStorage
+			ToggleOnResources = (&MinResourcesPickUp) + 1
+			ToggleOffResources = (&MinResourcesPickUp)
+		}
+
+		Overclock_ToggledBatteryStorage
+		{
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Components
+			{
+				Overclock_BatteryStorage
+				{
+					Type = ResourceStorage
+					ResourceType = battery
+					MaxResources = "ceil((&~/Part/Components/BatteryStorage/MaxResources) * ((&~/OVERCLOCK/CAPACITY_FACTOR) - 1))"
+					IsIntermediateStorage = true
+				}
+			}
+		}
+
+		Overclock_BatteryStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ResourceType = battery
+			ProxyToggle = IsOverclocked
+			ComponentID = Overclock_BatteryStorage
+		}
+
+		BatteryReceiverStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [ BatteryStorage, Overclock_BatteryStorageProxy ]
+			AddMode = InOrder
+			ReceiveResourceMediaEffects = &../BatteryStorage/ReceiveResourceMediaEffects
+			IsIntermediateStorage = true
+			ProvidedValueRange = 0
+			ProvidedValuePerResource = 1/1000
+		}
+
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryReceiverStorage
+			DefaultPriority = &/PRIORITIES/Storage_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = ConsumptionToggle
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		OverheatEffects : ^/0/OverheatEffects
+		{
+			Location = [1, 1]
+		}
+
+		Overclock_PowerDeliveredTrigger
+		{
+			Type = ValueChangeTrigger
+			OperationalToggle = IsOverclocked
+			ValueSource = BatteryReceiverStorage
+			TriggerOnDecrease = false
+		}
+		Overclock_DeliveryHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_PowerDeliveredTrigger
+			Amount = { BaseValue = (&~/OVERCLOCK/HEAT_PER_BATTERY_DELIVERED) * (&~/HEAT_TO_RESOURCE); EffectScaleExponent = 1; }
+		}
+
+		Overclock_ConstantHeatProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperationalOverclocked
+			HEAT_PER_INTERVAL = (&~/OVERCLOCK/MAX_HEAT_PER_SECOND) * (&Interval)
+			ToQuantity
+			{
+				BaseValue = ceil((&../HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE))
+				BuffType = ThermalActivity
+				BuffMode = Multiply
+			}
+			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Interval = 0.5
+		}
+		Overclock_FullnessBuff
+		{
+			Type = SelfBuffProvider
+			OperationalToggle = IsOverclocked
+			BuffType = ThermalActivity
+			BuffMultiplier = Overclock_BatteryProviderStorage
+		}
+
+		Port_Thermal_TopLeft : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0,0]
+			Direction = Left
+		}
+		Port_Thermal_LeftUp : Port_Thermal_TopLeft
+		{
+			Location = [0, 0]
+			Direction = Up
+		}
+		Port_Thermal_RightUp : Port_Thermal_LeftUp
+		{
+			Location = [1, 0]
+		}
+		Port_Thermal_TopRight : Port_Thermal_RightUp
+		{
+			Direction = Right
+		}
+		Port_Thermal_BottomRight : Port_Thermal_TopRight
+		{
+			Location = [1,1]
+		}
+		Port_Thermal_RightDown : Port_Thermal_BottomRight
+		{
+			Direction = Down
+		}
+		Port_Thermal_LeftDown : Port_Thermal_RightDown
+		{
+			Location = [0,1]
+		}
+		Port_Thermal_BottomLeft : Port_Thermal_LeftDown
+		{
+			Direction = Left
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.10
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.10
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.10
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [2, 2]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+
+		Overclock_Graphics_Components
+		{
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Components
+			{
+				Overclock_Light_Graphics
+				{
+					Type = Graphics
+					Location = [1, 1]
+					OperationalToggle = IsOperational
+					OperationalLighting
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "lights.png"
+								Size = [2, 2]
+							}
+						]
+					}
+				}
+
+				Overclock_BatterySprites1
+				{
+					Type = ResourceSprites
+					Location = [1, 40/64]
+					ResourceStorage = BatteryReceiverStorage
+					Layer = "doodads_low"
+					RangeLow = 0
+					RangeHigh = 18000
+					ResourceLevels
+					[
+						{
+							File = "batteries_overclock1.png"
+							Size = [1, 1]
+							Offset = [-0.5,0]
+						}
+						{
+							File = "batteries_overclock2.png"
+							Size = [1, 1]
+							Offset = [-0.5,0]
+						}
+						{
+							File = "batteries_overclock3.png"
+							Size = [1, 1]
+							Offset = [-0.5,0]
+						}
+						{
+							File = "batteries_overclock4.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock5.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock6.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock7.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock8.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock9.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock10.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock11.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock12.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock13.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock14.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock15.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock16.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock17.png"
+							Size = [2, 1]
+						}
+						{
+							File = "batteries_overclock18.png"
+							Size = [2, 1]
+						}
+					]
+				}
+				Overclock_BatterySprites2 : Overclock_BatterySprites1
+				{
+					Location = [1, 56/64]
+					RangeLow = 18001
+					RangeHigh = 36000
+				}
+				Overclock_BatterySprites3 : Overclock_BatterySprites1
+				{
+					Location = [1, 72/64]
+					RangeLow = 36001
+					RangeHigh = 54000
+				}
+				Overclock_BatterySprites4 : Overclock_BatterySprites1
+				{
+					Location = [1, 88/64]
+					RangeLow = 54001
+					RangeHigh = 72000
+				}
+			}
+		}
+
+		IsNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOverclocked ]
+			Mode = None
+		}
+
+		NonOverclock_Graphics_Components
+		{
+			Type = ToggledComponents
+			Toggle = IsNonOverclocked
+			Components
+			{
+				Overclock_BatterySprites
+				{
+					Type = ResourceSprites
+					Location = [1, 1]
+					ResourceStorage = BatteryReceiverStorage
+					Layer = "doodads_low"
+					ResourceLevels
+					[
+						{
+							File = "batteries1.png"
+							Size = [1, 1]
+							Offset = [-0.5,-0.5]
+						}
+						{
+							File = "batteries2.png"
+							Size = [2, 1]
+							Offset = [0,-0.5]
+						}
+						{
+							File = "batteries3.png"
+							Size = [2, 1]
+							Offset = [0,-0.5]
+						}
+						{
+							File = "batteries4.png"
+							Size = [2, 1]
+							Offset = [0,-0.5]
+						}
+						{
+							File = "batteries5.png"
+							Size = [2, 1]
+							Offset = [0,-0.5]
+						}
+						{
+							File = "batteries6.png"
+							Size = [2, 1]
+							Offset = [0,-0.5]
+						}
+						{
+							File = "batteries7.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries8.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries9.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries10.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries11.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries12.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries13.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries14.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries15.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries16.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries17.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries18.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries19.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries20.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries21.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries22.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries23.png"
+							Size = [2, 2]
+						}
+						{
+							File = "batteries24.png"
+							Size = [2, 2]
+						}
+					]
+				}
+			}
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/MedPartScorched
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Indicators
+			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3]
+				}
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [2,3]
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 2]
+		}
+
+		PeakHeatGenerationStatValue
+		{
+			Type = StaticValue
+			Value = (&~/OVERCLOCK/MAX_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = PeakHeatGenerationStatValue
+		}
+	}
+
+	Stats
+	{
+		BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+	}
+
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/PowerStorageOverclockDesc"
+		Stats
+		{
+			BatterySize = (&~/Part/Stats/BatterySize) * (&~/OVERCLOCK/BATTERY_SIZE_FACTOR)
+			PowerCapacity = (&~/Part/Stats/PowerCapacity) * (&~/OVERCLOCK/CAPACITY_FACTOR)
+			StorageHeatGeneration = (&~/OVERCLOCK/MAX_HEAT_PER_SECOND)
+			BatteryDeliveredHeatGeneration = (&~/OVERCLOCK/HEAT_PER_BATTERY_DELIVERED)
+		}
+	}
+}

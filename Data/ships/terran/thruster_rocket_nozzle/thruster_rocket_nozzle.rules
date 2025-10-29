@@ -1,0 +1,982 @@
+OVERCLOCK
+{
+	RAMP_EXPONENT = 0.6
+	BASE_THRUST_HEAT_PER_SECOND = 350
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_large_part_terran_overclock.rules>/Part
+{
+	NameKey = "Parts/ThrusterRocketNozzle"
+	IconNameKey = "Parts/ThrusterRocketNozzleIcon"
+	ID = cosmoteer.thruster_rocket_nozzle // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Flight"
+	DescriptionKey = "Parts/ThrusterRocketNozzleDesc"
+	Resources
+	[
+		[steel, 120]
+		[coil2, 30]
+		[tristeel, 15]
+	]
+	TypeCategories = [thruster, uses_power]
+	SignificanceToggle = ScorchedToggle
+	Size = [3, 5]
+	PhysicalRect = [0, 0, 3, 4]
+	SaveRect = &PhysicalRect
+	BoundingRectType = Physical
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	SelectionTypeID = "thrusters"
+	MaxHealth = 12000
+	ProhibitRects
+	[
+		[default, [0, 5, 3, 1]]
+		[default, [-1, 6, 5, 200]]
+	]
+	ThrusterForce = { BaseValue=10000; BuffType=RocketExtraForce; BuffMode=Add; }
+	ThrustIncreaseTime = { BaseValue=4; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
+	ThrustDecreaseTime = { BaseValue=2; BuffType=RocketThrust; BuffMode=Divide; }
+	ThrustRecoveryTime = { BaseValue=2; BuffType=RocketRampUpFinal; BuffMode=Multiply; }
+	FuelUsage = 300
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, EngineHeatCollection, Rocket, RocketThrust, RocketRampUp, RocketRampUpFinal, RocketOperation, RocketExtraForce, RocketBatteryConnection, ThermalActivity]
+	BlockedTravelCells
+	[
+		[1, 1]
+		[1, 2]
+		[1, 3]
+	]
+	ForceManhattanPathInPart = true
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[-1, 0]
+		[0, -1]
+		[2, -1]
+		[3, 0]
+		[3, 1]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 128]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CommandToggle, CombinedBatteryStorage, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [32/64, 67/64]
+			Rotation = 90d
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [160/64, 67/64]
+			Rotation = -90d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 2
+			DefaultPriority = &/PRIORITIES/Thruster_Crew
+			PrerequisitesBeforeCrewing = [CommandConsumptionToggle]
+			HighPriorityPrerequisites = [CombinedBatteryStorage]
+			CrewDestinations
+			[
+				&../../CrewLocation1/Location
+				&../../CrewLocation2/Location
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+			]
+		}
+
+		IsConnected // Needed to be referenced by extenders.
+		{
+			Type = ToggleProxy
+			ComponentID = CommandConsumptionToggle
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 16
+		}
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+
+		LocalBatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		LeftBatteryStorage
+		{
+			Type = ResourceStorageProxy
+			ResourceType = battery
+			PartLocation = [-1, 0]
+			ComponentID = LocalBatteryStorage
+			PartCriteria
+			{
+				ID = cosmoteer.thruster_rocket_battery
+				Rot = 0
+				Top = 0
+				Bottom = 2
+				Right = 0
+			}
+		}
+		RightBatteryStorage
+		{
+			Type = ResourceStorageProxy
+			ResourceType = battery
+			PartLocation = [3, 0]
+			ComponentID = LocalBatteryStorage
+			PartCriteria
+			{
+				ID = cosmoteer.thruster_rocket_battery
+				Rot = 0
+				Top = 0
+				Bottom = 2
+				Left = 3
+			}
+		}
+		ExtendableBatteryStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [LocalBatteryStorage, LeftBatteryStorage, RightBatteryStorage]
+		}
+		PrevPowerToggle
+		{
+			Type = ToggleProxy
+			PartLocation = [0, -1]
+			ComponentID = PowerToggle
+			PartCriteria
+			{
+				ID = cosmoteer.thruster_rocket_extender
+				Rot = 0
+				Left = 0
+				Right = 3
+				Bottom = 0
+			}
+		}
+		PrevCombinedBatteryStorage
+		{
+			Type = ResourceStorageProxy
+			ResourceType = battery
+			PartLocation = [0, -1]
+			ComponentID = CombinedBatteryStorage
+			ProxyToggle = PrevPowerToggle
+			PartCriteria
+			{
+				ID = cosmoteer.thruster_rocket_extender
+				Rot = 0
+				Left = 0
+				Right = 3
+				Bottom = 0
+			}
+		}
+		ToggledExtendableBatteryStorage
+		{
+			Type = ResourceStorageProxy
+			ResourceType = battery
+			ComponentID = ExtendableBatteryStorage
+			ProxyToggle = ExtendableBatteryStorage
+			LimitMaxResources = &../LocalBatteryStorage/MaxResources
+		}
+		CombinedBatteryStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [ToggledExtendableBatteryStorage, PrevCombinedBatteryStorage]
+			AddMode = DistributeProportionallyByCapacity
+			RemoveMode = DistributeProportionallyByCapacity
+		}
+
+		LocalPowerDistributionBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = EnginePowerDistribution
+		}
+		LeftPowerDistributionBuffToggle
+		{
+			Type = ToggleProxy
+			PartLocation = [-1, 0]
+			ComponentID = LocalPowerDistributionBuffToggle
+			PartCriteria
+			{
+				ID = cosmoteer.thruster_rocket_battery
+				Rot = 0
+				Top = 0
+				Right = 0
+			}
+		}
+		RightPowerDistributionBuffToggle
+		{
+			Type = ToggleProxy
+			PartLocation = [3, 0]
+			ComponentID = LocalPowerDistributionBuffToggle
+			PartCriteria
+			{
+				ID = cosmoteer.thruster_rocket_battery
+				Rot = 0
+				Top = 0
+				Left = 3
+			}
+		}
+		ExtendablePowerDistributionBuffToggle
+		{
+			Type = MultiToggle
+			Toggles = [LocalPowerDistributionBuffToggle, LeftPowerDistributionBuffToggle, RightPowerDistributionBuffToggle]
+			Mode = Any
+		}
+		ToggledBatteryConsumer
+		{
+			Type = ToggledComponents
+			Toggle = ExtendablePowerDistributionBuffToggle
+			Invert = true
+			IncludeInBlueprints = true
+			Components
+			{
+				BatteryConsumer
+				{
+					Type = ResourceConsumer
+					ResourceType = battery
+					Storage = ExtendableBatteryStorage
+					DefaultPriority = &/PRIORITIES/Thruster_Supply
+					ResupplyThreshold = 500
+					OperationalToggle = CommandConsumptionToggle
+				}
+			}
+		}
+
+		EngineBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = Rocket
+			ChainsFromBuffType = Engine
+			BuffAmount = { BaseValue=100%; BuffType=Engine; BuffMode=Multiply; }
+			OperationalToggle = ExtendableBatteryStorage
+		}
+
+		ThrustBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = RocketThrust
+			ChainsFromBuffType = Rocket
+			BuffAmount = { BaseValue=0; BuffType=Rocket; BuffMode=Add; MinValue=1; }
+		}
+
+		RampUpBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = RocketRampUp
+			ChainsFromBuffType = Rocket
+			BuffAmount = { BaseValue=0; BuffType=Rocket; BuffMode=Add; }
+		}
+
+		RampUpValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=RocketRampUp; BuffMode=Multiply; }
+		}
+		Overclock_RampExponent { Type = StaticValue; Value = &~/OVERCLOCK/RAMP_EXPONENT; }
+		ToggledRampExponent
+		{
+			Type = ToggleValueSelector
+			Toggle = IsOverclocked
+			ToggleOffValue = One
+			ToggleOnValue = Overclock_RampExponent
+		}
+		RampUpExponentOperation
+		{
+			Type = ValueOperation
+			Operator = Power
+			ValueOne = RampUpValue
+			ValueTwo = ToggledRampExponent
+		}
+		InvThrustBuffValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=RocketThrust; BuffMode=Divide; }
+		}
+		RampUpFinalValue
+		{
+			Type = MultiValue
+			Values = [RampUpExponentOperation, InvThrustBuffValue]
+			Mode = Multiply
+		}
+		RampUpFinalBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = RocketRampUpFinal
+			ChainsFromBuffType = RocketRampUp
+			BuffAmount = 1
+			BuffMultiplier = RampUpFinalValue
+		}
+
+		Two { Type=StaticValue; Value=2; }
+		OperationBuffMultiplier
+		{
+			Type = ValueLerp
+			InputValue = MainThruster
+			OutputRange = [1, 2]
+		}
+
+		RocketOperationBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = RocketOperation
+			BuffArea = [0, -1, 3, 1]
+			BuffMultiplier = OperationBuffMultiplier
+			OperationalToggle = IsOperational
+			Criteria
+			{
+				Rot = 0
+				Left = 0
+				Right = 3
+				Bottom = 0
+			}
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		Overclock_CombinedHeatInput
+		{
+			Type = MultiResourceStorage
+			ResourceType = heat
+			ResourceStorages = [ NetworkHeatInput ]
+			ViaBuffs
+			{
+				IncomingBuffTypes = [ EngineHeatCollection ]
+				ComponentIDs = [ EngineHeatCollectionStorage ]
+			}
+		}
+
+		// Overriding to use the combined heat input
+		HeatDistributionStorage : ^/0/HeatDistributionStorage
+		{
+			ResourceStorages = [Overclock_CombinedHeatInput, OverflowHeatStorage]
+		}
+
+		Overclock_ThrusterHeatProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperationalOverclocked
+			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/BASE_THRUST_HEAT_PER_SECOND) * (&Interval))
+			ToQuantity
+			{
+				BaseValue = (&../HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
+				BuffType = ThermalActivity
+				BuffMode = Multiply
+			}
+			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Interval = 0.5
+		}
+
+		Overclock_ActivationBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = ThermalActivity
+			BuffMultiplier = Overclock_SmoothedThrusterActivation
+		}
+
+		Overclock_SmoothedThrusterActivation
+		{
+			Type = SmoothedValue
+			ValueSource = MainThruster
+			MaxDelta = 1 / (&../Overclock_ThrusterHeatProducer/Interval)
+		}
+
+		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 0]
+			Direction = Left
+		}
+		Port_Thermal_Left1 : Port_Thermal_Left0
+		{
+			Location = [0, 1]
+		}
+		Port_Thermal_Up0 : Port_Thermal_Left0
+		{
+			Location = [0, 0]
+			Direction = Up
+		}
+		Port_Thermal_Up1 : Port_Thermal_Up0
+		{
+			Location = [2, 0]
+		}
+		Port_Thermal_Right0 : Port_Thermal_Left0
+		{
+			Location = [2, 0]
+			Direction = Right
+		}
+		Port_Thermal_Right1 : Port_Thermal_Right0
+		{
+			Location = [2, 1]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 2]
+			OperationalToggle = IsOperational
+			AnimationToggle = ExtendableBatteryStorage
+			AnimationSpeedFactor = MainThruster
+			AnimationSpeedFactorRenormalize = [0.75, 2.0]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [3, 4]
+					}
+					{
+						File = "floor_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "floor_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [3, 4]
+						AnimationInterval = 0.075
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [3, 4]
+						AnimationInterval = 0.075
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [3, 4]
+						AnimationInterval = 0.075
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [3, 4]
+					}
+					{
+						File = "doodads_off_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "doodads_off_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				Offset = [0, 1]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"lights.png"
+							"lights2.png"
+						]
+						Size = [3, 6]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [3, 4]
+					}
+					{
+						File = "walls_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "walls_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [3, 4]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [3, 4]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, 54/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [5, 8]
+						Z = 3.50 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [255*1.0,116*1.0, 24*1.0]
+					}
+				]
+			}
+		}
+
+		NozzleGraphics
+		{
+			Type = Graphics
+			Location = [1.5, 5]
+			Floor
+			{
+				Layer = "weapons"
+				DamageLevels
+				[
+					{
+						File = "nozzle.png"
+						NormalsFile = "nozzle_normals.png"
+						Size = [3, 2]
+					}
+					{
+						File = "nozzle_33.png"
+						NormalsFile = "nozzle_normals.png"
+						Size = [3, 2]
+					}
+					{
+						File = "nozzle_66.png"
+						NormalsFile = "nozzle_normals.png"
+						Size = [3, 2]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1.5, 2]
+			ResourceStorage = LocalBatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+					Offset = [-1, 0]
+				}
+				{
+					File = "batteries2.png"
+					Size = [3, 1]
+				}
+			]
+		}
+
+		MainThruster
+		{
+			Type = Thruster
+			Location = [1.5, 4.5]// Relative to upper-left corner of unrotated part.
+			Rotation = 90d// Relative to unrotated part.
+			SoftOperationalToggle = IsOperational
+			Force = &../../ThrusterForce
+			MinActivation = 0
+			MaxActivation = { BaseValue=1; BuffType=RocketThrust; BuffMode=Multiply; }
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationDecreaseTime = &../../ThrustDecreaseTime
+			ActivationRecoveryTime = &../../ThrustRecoveryTime
+			FuelStorage = CombinedBatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		RampProgressBar
+		{
+			Type = ProgressBar
+			ShowProgressFor = MainThruster
+			ValueRange = [0, &~/Part/Components/MainThruster/MaxActivation]
+			LowColor = [255, 127, 0]
+			HighColor = [255, 127, 0]
+			FullColor = [255, 127, 0]
+		}
+
+		NozzleCollider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[2/3, 4]
+				[7/3, 4]
+				[8/3, 5.2]
+				[1/3, 5.2]
+			]
+			Density = 1
+		}
+
+		ThrustEffects
+		{
+			Type = ContinuousEffects
+			ChainedTo = MainThruster
+			Location = [47/64, 0]
+			FactorMediaEffectsIntensityWith = MainThruster
+			IntensityTweenDuration = 0.1
+			MinMediaEffectsIntensity = 1%
+			MediaEffects
+			[
+				&<particles/thruster_plume_rocket.rules>
+				&<particles/thruster_plume_light_rocket.rules>
+				&<particles/thruster_fire_rocket.rules>
+				&<particles/thruster_sparks_rocket.rules>
+				&<particles/thruster_smoke_rocket.rules>
+
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					Sound = "../thruster_huge/sounds/huge_thruster_loop_01.wav"
+					Speed = 1
+					Volume = 1
+					MaxConcurrentVolume = 1.25
+				}
+
+				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
+				{
+					Sound = "../thruster_huge/sounds/huge_thruster_loop_02.wav"
+					Speed = 1
+					Volume = 1
+					MaxConcurrentVolume = 1.25
+				}
+			]
+			EndMediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterBurst
+				{
+					RandomSounds = ["../thruster_huge/sounds/huge_thruster_finish_01.wav",
+									"../thruster_huge/sounds/huge_thruster_finish_02.wav"]
+					Volume = 1
+					SpeedVariation = .1
+				}
+			]
+		}
+
+		BurstTrigger
+		{
+			Type = ThresholdTrigger
+			AmountFrom = MainThruster
+			MinAmount = .5
+		}
+
+		BurstEffects
+		{
+			Type = TriggeredEffects
+			ChainedTo = MainThruster
+			Trigger = BurstTrigger
+			FactorMediaEffectsIntensityWith = MainThruster
+			MinMediaEffectsIntensity = 1%
+			AnchorMediaEffects = true
+			MediaEffects
+			[
+				&<particles/thruster_sparks_rocket.rules>
+
+				: /COMMON_SOUNDS/ThrusterBurst
+				{
+					RandomSounds = ["../thruster_huge/sounds/huge_thruster_start_01.wav",
+									"../thruster_huge/sounds/huge_thruster_start_02.wav"]
+					Volume = 1
+					SpeedVariation = .1
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1.5, 2]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [1.5, 2]
+		}
+
+		ThrusterHum
+		{
+			Type = ContinuousEffects
+			Location = [1.5, 2]
+			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
+			MediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterHum
+				{
+					Volume = .3
+					Speed = .75
+					MaxConcurrentVolume = 1
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1.5, 2]
+			Indicators
+			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3,4]
+				}
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [2,3,4]
+				}
+
+				// Out of power.
+				{
+					Toggle = ExtendableBatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+					HidesIndicators = [4]
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [3, 6]
+			Offset = [0, .5]
+		}
+
+		MaxActivationValue
+		{
+			Type = BuffableValue
+			Value = &~/Part/Components/MainThruster/MaxActivation
+			IncludeInBlueprints = true
+		}
+		HeatPerActivationValue { Type = StaticValue; Value = &~/OVERCLOCK/BASE_THRUST_HEAT_PER_SECOND; }
+		PeakHeatGenerationStatValue
+		{
+			Type = MultiValue
+			Values = [MaxActivationValue, HeatPerActivationValue]
+			Mode = Multiply
+			IncludeInBlueprints = Normal
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = PeakHeatGenerationStatValue
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		ThrusterForce = &~/Part/ThrusterForce/BaseValue
+		ThrusterRampUp = &~/Part/ThrustIncreaseTime/BaseValue
+		ThrusterRampDown = &~/Part/ThrustDecreaseTime/BaseValue
+		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
+		PowerCapacity = (&~/Part/Components/LocalBatteryStorage/MaxResources) / 1000
+
+		RecPower = (&ThrusterPowerUsage) / 2
+		RecCrew = (&RecPower) * 4
+	}
+
+	StatsNotesKey = "Stats/RocketNotes"
+
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/ThrusterRocketNozzleOverclockDesc"
+		Stats
+		{
+			ThrusterRampExponent = &~/OVERCLOCK/RAMP_EXPONENT
+			ThrusterHeatGeneration = &~/OVERCLOCK/BASE_THRUST_HEAT_PER_SECOND
+		}
+	}
+}

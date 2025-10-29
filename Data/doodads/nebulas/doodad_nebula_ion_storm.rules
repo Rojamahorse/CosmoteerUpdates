@@ -1,0 +1,15 @@
+ID = cosmoteer.nebula_ion_storm
+Type = Nebula
+NebulaID = ion_storm
+DescriptionKey = "Nebulas/IonStorm"
+CategoryKey = "Doodads/Nebulas"
+Icon
+{
+	VertexColor = [255, 0, 0]
+	Texture
+	{
+		File = "nebula_cloudy.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}

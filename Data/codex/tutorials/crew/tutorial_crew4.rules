@@ -1,0 +1,34 @@
+ID = crew4
+TitleKey = "Tutorials/Crew4/Title"
+TabNameKey = "Codex/Tutorials"
+ShowCondition = "? game.Fame >= 76 and game.HasSeenCodexPage('crew3')"
+TempShowCondition = "? game.CrewUIOpen"
+Entries
+[
+	{
+		TextKey = "Tutorials/Crew4/Autonomous"
+	}
+	{
+		Image { Texture { File="crew_button.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew4/Button"
+	}
+	{
+		Image { Texture { File="role_buttons.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew4/Roles"
+	}
+	{
+		Image { Texture { File="add_role.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew4/AddRole"
+	}
+	{
+		Image { Texture { File="edit_role.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew4/EditRole"
+	}
+	{
+		Image { Texture { File="priorities.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Crew4/Priorities"
+	}
+	{
+		TextKey = "Tutorials/Crew4/Priorities2"
+	}
+]

@@ -1,0 +1,438 @@
+Part : <../base_part_terran.rules>/Part
+{
+	NameKey = "Parts/HeatExchanger"
+	IconNameKey = "Parts/HeatExchangerIcon"
+	ID = cosmoteer.heat_exchanger
+	EditorGroup = "Thermal"
+	EditorParentParts = [ "cosmoteer.resonance_beam_turret" ]
+	DescriptionKey = "Parts/HeatExchangerDesc"
+	Resources
+	[
+		[steel, 8]
+		[coil, 3]
+	]
+	Size = [1, 1]
+	IsRotateable = true
+	IsFlippable = true
+	SelectionPriority = 0
+	MaxHealth = 1000
+	TypeCategories = [ heat_management ]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Flammable = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	CrewSpeedFactor = 0
+	ForceBrushCompatibility = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [NonJunkToggle, IsAbleToAbsorb]
+			Mode = All
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		Port_Down
+		{
+			Type = NetworkPort
+			Location = [0, 0]
+			Direction = Down
+			Types = [ thermal ]
+			RouteSource = NetworkHeatInput
+			RouteEndpoint = NetworkHeatInput
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
+		}
+
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[Port_Down, NetworkHeatInput, 0]
+
+						[NetworkHeatInput, NetworkAverageThermalDissipationLoadValue, 0]
+					]
+				}
+			]
+		}
+
+		NetworkHeatInput
+		{
+			Type = NetworkResourceInput
+			ResourceType = heat
+			Mode = DistributeProportionallyByAvailable
+		}
+
+		IsNetworkHeatNonFull
+		{
+			Type = ThresholdToggle
+			ValueFrom = NetworkHeatInput
+			MinAmount = 0
+			MaxAmount = 0
+			Invert = true
+		}
+
+		IsAbleToAbsorb
+		{
+			Type = MultiToggle
+			Toggles = [ PowerToggle, IsNetworkHeatNonFull ]
+			Mode = All
+		}
+
+		HeatExchangerTimer
+		{
+			Type = Timer
+			OperationalToggle = IsAbleToAbsorb
+			Duration = 0.4
+			AutoStart = true
+			Repeats = true
+		}
+
+		HeatExchanger
+		{
+			Type = StatusValueRegulator
+			StatusType = cosmoteer.heat
+			Trigger = HeatExchangerTimer
+			Region
+			{
+				Type = EdgeDistance
+				Distance = 5
+			}
+			RegionHighlightID = "HeatExchangerArea"
+			TargetValue = 0
+			ValueDelta = 0
+			ValueDeltaPool = 360
+			ValueTargetStorage = NetworkHeatInput
+			INEFFICIENCY = 40%
+			ValuePerTargetResource = (&<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO) / (1 + (&INEFFICIENCY))
+			Falloff = 0
+			MediaEffectsOnDecrease
+			[
+				&<particles/heat_sink_absorb.rules>
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "sounds/heat_absorb.wav"
+					Db = -2
+					RampUpTime = .25
+					RampDownTime = .25
+				}
+			]
+		}
+
+		//HeatExchangerValueDeltaPool { Type = StaticValue; Value = (&~/Part/Components/HeatExchanger/ValueDeltaPool) }
+		HeatExchangerValueDeltaPool { Type = StaticValue; Value = 100 }
+
+		NormalizedAbsorptionValue
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne = HeatExchanger
+			ValueTwo = HeatExchangerValueDeltaPool
+		}
+		Zero { Type = StaticValue; Value = 0 }
+		AbsorptionSmoothingTargetValue
+		{
+			Type = ToggleValueSelector
+			Toggle = PowerToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = NormalizedAbsorptionValue
+		}
+		NormalizedAbsorptionValueSmoothed
+		{
+			Type = SmoothedValue
+			ValueSource = NormalizedAbsorptionValue
+			MaxDelta = 0.5
+			Deterministic = false
+		}
+
+		HeatExchangerEffects
+		{
+			Type = ContinuousEffects
+			Location = [.5, .5]
+			FactorMediaEffectsIntensityWith = NormalizedAbsorptionValueSmoothed
+			MediaEffects
+			[
+				&<particles/heat_sink_max.rules>
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [.5, .5]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"lights1.png"
+							"lights2.png"
+							"lights3.png"
+							"lights4.png"
+							"lights5.png"
+							"lights6.png"
+							"lights7.png"
+							"lights8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = .05
+						RotSpeed = -220d
+						AnimationStartTime = WhenSpawned
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"roof_doodads_on1.png"
+							"roof_doodads_on2.png"
+							"roof_doodads_on3.png"
+							"roof_doodads_on4.png"
+							"roof_doodads_on5.png"
+							"roof_doodads_on6.png"
+							"roof_doodads_on7.png"
+							"roof_doodads_on8.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = .05
+						RotSpeed = -90d
+						AnimationStartTime = WhenSpawned
+					}
+				]
+			}
+		}
+
+		NetworkAverageThermalDissipationLoadValue
+		{
+			Type = NetworkValueReceiver
+			Mode = Average
+			Categories = [ thermal_load_dissipation ]
+			AllowUncategorized = false
+		}
+
+		ThermalLoadGlowColorFactor
+		{
+			Type = ValueColor
+			AlphaFrom = NetworkAverageThermalDissipationLoadValue
+		}
+
+		Roof_Heat_Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = Port_Down
+			GetColorFrom = ThermalLoadGlowColorFactor
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		Roof_Rotor_Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = IsOperational
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_rotor.png"
+						NormalsFile =  "roof_rotor_normals.png"
+						Size = [1, 1]
+						RotSpeed = -180d
+					}
+					{
+						File = "roof_rotor_33.png"
+						NormalsFile =  "roof_rotor_normals.png"
+						Size = [1, 1]
+						RotSpeed = -180d
+					}
+					{
+						File = "roof_rotor_66.png"
+						NormalsFile =  "roof_rotor_normals.png"
+						Size = [1, 1]
+						RotSpeed = -180d
+					}
+				]
+			}
+			NonOperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_rotor.png"
+						NormalsFile =  "roof_rotor_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_rotor_33.png"
+						NormalsFile =  "roof_rotor_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_rotor_66.png"
+						NormalsFile =  "roof_rotor_normals.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, .5]
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [1]
+				}
+
+				// Heat storage full
+				{
+					Toggle = IsNetworkHeatNonFull
+					AtlasSprite : /INDICATORS/FullHeat
+					{
+						Size = [1, 1]
+					}
+					Delay = (&~/Part/Components/HeatExchangerTimer/Duration)
+				}
+			]
+		}
+
+		//------------------------ PIPE CONNECTOR ------------------------
+		Dont_Draw_Pipe_Connector_Into_This_Part { Type = Graphics }	//When this fake component is present, the Heat Pipes dont draw a Pipe Conector to this part.
+
+		//Draw a Pipe Connector Down if possible
+		PipeConnectorDown_DrawToggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_DrawToggle {}
+		PipeConnectorDown_Toggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Toggle {}
+		PipeConnectorDown_Components : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components {}
+		//---------------------- END PIPE CONNECTOR ----------------------
+	}
+
+	Stats
+	{
+		HeatAbsorption = (&~/Part/Components/HeatExchanger/ValueDeltaPool) / (&~/Part/Components/HeatExchangerTimer/Duration)
+		HeatAbsorptionInefficiency = (&~/Part/Components/HeatExchanger/INEFFICIENCY) * 100
+		HeatAbsorptionRadius = (&~/Part/Components/HeatExchanger/Region/Distance)
+
+	}
+}

@@ -1,0 +1,1227 @@
+OVERCLOCK
+{
+	HEAT_PER_CONVERSION = 125
+	SPEED_FACTOR = 300%
+	POWER_USE_FACTOR = 150%
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_med_part_terran_overclock.rules>/Part
+{
+	NameKey = "Parts/FactoryEMP"
+	IconNameKey = "Parts/FactoryEMPIcon"
+	ID = cosmoteer.factory_emp // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [cosmoteer.missile_factory_emp]
+	EditorGroup = "Production"
+	EditorParentParts = [ "cosmoteer.missile_launcher" ]
+	DescriptionKey = "Parts/FactoryEMPDesc"
+	Resources
+	[
+		[steel, 96]
+		[coil2, 32]
+		[diamond, 2]
+	]
+	Size = [3, 4]
+	IsFlippable = true
+	SelectionPriority = 1
+	MaxHealth = 12000
+	TypeCategories = [provides_emps, provides_launcher_parts, uses_iron, uses_copper, uses_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
+	BlockedTravelCells
+	[
+		[0, 0]
+		[1, 0]
+		[2, 0]
+		[0, 1]
+		[1, 1]
+		[2, 1]
+		[1, 2]
+	]
+	ForceManhattanPathInPart = true
+	AllowedDoorLocations
+	[
+	    [-1, 2]
+		[-1, 3]
+		[0, 4]
+		[1, 4]
+		[2, 4]
+		[3, 3]
+		[3, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [48, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, NonJunkToggle, IronSplitter, CopperSplitter, BatteryStorage, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 1
+		}
+
+		IronStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = iron
+			GridRect = [0, 2, 1, 1]
+			Layer = "doodads_low"
+			SpriteInset = [17/64, 9/64, 5/64, 5/64]
+			AllowExternalPickupAndDelivery = true
+		}
+		IronConsumer
+		{
+			Type = TypedResourceGridConsumer
+			ResourceType = iron
+			Storage = IronStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			OperationalToggle = CommandConsumptionToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+		IronSplitter
+		{
+			Type = InlineResourceConverter
+			ResourceType = iron
+			FromStorage = IronStorage
+			FromQuantity = 1
+			ToQuantity = 20
+		}
+
+		CopperStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = copper
+			GridRect = [2, 2, 1, 1]
+			Layer = "doodads_low"
+			SpriteInset = [5/64, 9/64, 17/64, 5/64]
+			AllowExternalPickupAndDelivery = true
+		}
+		CopperConsumer
+		{
+			Type = TypedResourceGridConsumer
+			ResourceType = copper
+			Storage = CopperStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			OperationalToggle = CommandConsumptionToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+		CopperSplitter
+		{
+			Type = InlineResourceConverter
+			ResourceType = copper
+			FromStorage = CopperStorage
+			FromQuantity = 1
+			ToQuantity = 20
+		}
+
+		MissileStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = missile_part_emp
+			GridRect = [0, 3, 3, 1]
+			Layer = "doodads_low"
+			SpriteInset = [9/64, 6/64, 9/64, 16/64]
+			SuppliesResources = true
+			SupplyToggleButtonOffset = [0, -.4]
+			InitToMaxResources = 0
+			AllowExternalPickupAndDelivery = true
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = CommandConsumptionToggle
+		}
+
+		ResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			From
+			[
+			    {
+			        Storage = IronSplitter
+			        Quantity = 1
+			    }
+			    {
+			        Storage = CopperSplitter
+			        Quantity = 1
+			    }
+			    {
+			        Storage = BatteryStorage
+			        Quantity
+			        {
+			        	BaseValue = 250
+			        	Modifiers
+			        	[
+			        		: ~/MODIFIERS/OVERCLOCK_LERP
+			        		{
+			        			MinValue = &../../BaseValue
+			        			MaxValue = (&MinValue) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			        		}
+			        	]
+			        }
+			        MinQuantityForConversion = 1
+			    }
+			]
+			ToStorage = MissileStorage
+			ToQuantity = 1
+			Interval
+			{
+				BaseValue = 0.5
+				Modifiers
+				[
+					{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+						ModificationMode = Divide
+					}
+				]
+			}
+			CheckResourceLimits = true
+		}
+
+		ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ResourceConverter
+			Location = [1.5, 2]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInteriorDetail
+				{
+					RandomSounds = ["sounds/emp_missile_factory_putdown_01.wav",
+									"sounds/emp_missile_factory_putdown_02.wav",
+									"sounds/emp_missile_factory_putdown_03.wav",
+									"sounds/emp_missile_factory_putdown_04.wav",
+									"sounds/emp_missile_factory_putdown_05.wav"]
+					Volume = 1
+					Db = -2
+					Speed = 1
+					SpeedVariation = .05
+				}
+			]
+		}
+
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = Factory
+			BuffAmount = 25%
+			GridDistance = 1
+			OperationalToggle = BatteryStorage
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		Overclock_ConversionHeatProducer
+		{
+			Type = ResourceChange
+			OperationalToggle = IsOverclocked
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_ResourceConverterProxy
+			Amount = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/HEAT_TO_RESOURCE)
+		}
+
+		Overclock_ResourceConverterProxy
+		{
+			Type = TriggerProxy
+			ProxyToggle = IsOverclocked
+			ComponentID = ResourceConverter
+		}
+
+		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 2]
+			Direction = Left
+		}
+		Port_Thermal_Left1 : Port_Thermal_Left0
+		{
+			Location = [0, 3]
+		}
+		Port_Thermal_Down0 : Port_Thermal_Left0
+		{
+			Location = [0, 3]
+			Direction = Down
+		}
+		Port_Thermal_Down1 : Port_Thermal_Down0
+		{
+			Location = [1, 3]
+		}
+		Port_Thermal_Down2 : Port_Thermal_Down0
+		{
+			Location = [2, 3]
+		}
+		Port_Thermal_Right0 : Port_Thermal_Left0
+		{
+			Location = [2, 2]
+			Direction = Right
+		}
+		Port_Thermal_Right1 : Port_Thermal_Right0
+		{
+			Location = [2, 3]
+		}
+
+		IronSprites : <../factory_he/factory_he.rules>/Part/Components/IronSprites
+		{
+			Location = [.5+1/64, 1.5+15/64]
+			Rotation = -90d
+		}
+
+		CopperSprites
+		{
+			Type = ResourceSprites
+			Location = [2.5-1/64, 1.5+15/64]
+			ResourceStorage = CopperSplitter
+			Layer = "doodads_high"
+			Modulus = &../CopperSplitter/ToQuantity
+			AnimationToggle = ResourceConverter
+			ResourceLevels
+			[
+				{
+					AnimationFiles
+					[
+						"copper1-2.png"
+						"copper1-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper2-2.png"
+						"copper2-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper3-2.png"
+						"copper3-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper4-2.png"
+						"copper4-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper5-2.png"
+						"copper5-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper6-2.png"
+						"copper6-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper7-2.png"
+						"copper7-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper8-2.png"
+						"copper8-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper9-2.png"
+						"copper9-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper10-2.png"
+						"copper10-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper11-2.png"
+						"copper11-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper12-2.png"
+						"copper12-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper13-2.png"
+						"copper13-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper14-2.png"
+						"copper14-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper15-2.png"
+						"copper15-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper16-2.png"
+						"copper16-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper17-2.png"
+						"copper17-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper18-2.png"
+						"copper18-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+				{
+					AnimationFiles
+					[
+						"copper19-2.png"
+						"copper19-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.075
+				}
+			]
+		}
+
+		FloorSprite
+		{
+			Type = Sprite
+			OnlyWithFlip = false
+			Location = [1.5, 2]
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor.png"
+					Size = [3, 4]
+				}
+				{
+					File = "floor_33.png"
+					Size = [3, 4]
+				}
+				{
+					File = "floor_66.png"
+					Size = [3, 4]
+				}
+			]
+		}
+
+		FloorSpriteFlipped
+		{
+			Type = Sprite
+			OnlyWithFlip = true
+			Location = [1.5, 2]
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor_flipped.png"
+					Size = [3, 4]
+				}
+				{
+					File = "floor_flipped_33.png"
+					Size = [3, 4]
+				}
+				{
+					File = "floor_flipped_66.png"
+					Size = [3, 4]
+				}
+			]
+		}
+
+		BeltSpeedFactor
+		{
+			Type = BuffableValue
+			Value
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = Factory
+						ModificationMode = Multiply
+					}
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+					}
+				]
+			}
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 2]
+			OperationalToggle = IsOperational
+			DoodadToggle = ResourceConverter
+			AnimationSpeedFactor = BeltSpeedFactor
+			ToggleOnDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [3, 4]
+						AnimationInterval = 0.0625
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [3, 4]
+						AnimationInterval = &../0/AnimationInterval
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [3, 4]
+						AnimationInterval = &../0/AnimationInterval
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -.5]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_idle1.png"
+							"doodads_idle2.png"
+							"doodads_idle3.png"
+							"doodads_idle4.png"
+							"doodads_idle5.png"
+							"doodads_idle6.png"
+							"doodads_idle7.png"
+							"doodads_idle8.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = 0.1125
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_idle1_33.png"
+							"doodads_idle2_33.png"
+							"doodads_idle3_33.png"
+							"doodads_idle4_33.png"
+							"doodads_idle5_33.png"
+							"doodads_idle6_33.png"
+							"doodads_idle7_33.png"
+							"doodads_idle8_33.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = &../0/AnimationInterval
+						AnimationStartTime = WhenSpawned
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_idle1_66.png"
+							"doodads_idle2_66.png"
+							"doodads_idle3_66.png"
+							"doodads_idle4_66.png"
+							"doodads_idle5_66.png"
+							"doodads_idle6_66.png"
+							"doodads_idle7_66.png"
+							"doodads_idle8_66.png"
+						]
+						Size = [3, 3]
+						AnimationInterval = &../0/AnimationInterval
+						AnimationStartTime = WhenSpawned
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -.5]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [3, 3]
+					}
+					{
+						File = "doodads_off_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "doodads_off_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [3, 4]
+					}
+					{
+						File = "walls_33.png"
+						Size = [3, 4]
+					}
+					{
+						File = "walls_66.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, -29/64+0.5]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [6, 6]
+						Z = 0.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.5, 0, 0]
+					}
+				]
+			}
+		}
+
+		RoofDoorOpenToggle
+		{
+			Type = CrewDestinationProximityToggle
+			Distance = 3
+		}
+		RoofDoorSprite
+		{
+			Type = OpenCloseSprite
+			Location = [1.5, 2]
+			OperationalToggle = RoofDoorOpenToggle
+			Layer = "roofs"
+			OpenDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"roof1.png"
+						"roof2.png"
+						"roof3.png"
+						"roof4.png"
+						"roof5.png"
+						"roof6.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals1.png"
+						"roof_normals2.png"
+						"roof_normals3.png"
+						"roof_normals4.png"
+						"roof_normals5.png"
+						"roof_normals6.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof1_33.png"
+						"roof2_33.png"
+						"roof3_33.png"
+						"roof4_33.png"
+						"roof5_33.png"
+						"roof6_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals1_33.png"
+						"roof_normals2_33.png"
+						"roof_normals3_33.png"
+						"roof_normals4_33.png"
+						"roof_normals5_33.png"
+						"roof_normals6_33.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof1_66.png"
+						"roof2_66.png"
+						"roof3_66.png"
+						"roof4_66.png"
+						"roof5_66.png"
+						"roof6_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals1_66.png"
+						"roof_normals2_66.png"
+						"roof_normals3_66.png"
+						"roof_normals4_66.png"
+						"roof_normals5_66.png"
+						"roof_normals6_66.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+			ClosedDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"roof6.png"
+						"roof5.png"
+						"roof4.png"
+						"roof3.png"
+						"roof2.png"
+						"roof1.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals6.png"
+						"roof_normals5.png"
+						"roof_normals4.png"
+						"roof_normals3.png"
+						"roof_normals2.png"
+						"roof_normals1.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof6_33.png"
+						"roof5_33.png"
+						"roof4_33.png"
+						"roof3_33.png"
+						"roof2_33.png"
+						"roof1_33.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals6_33.png"
+						"roof_normals5_33.png"
+						"roof_normals4_33.png"
+						"roof_normals3_33.png"
+						"roof_normals2_33.png"
+						"roof_normals1_33.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"roof6_66.png"
+						"roof5_66.png"
+						"roof4_66.png"
+						"roof3_66.png"
+						"roof2_66.png"
+						"roof1_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"roof_normals6_66.png"
+						"roof_normals5_66.png"
+						"roof_normals4_66.png"
+						"roof_normals3_66.png"
+						"roof_normals2_66.png"
+						"roof_normals1_66.png"
+					]
+					Size = [3, 4]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1.5, 2]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "./Data/ships/terran/factory_he/batteries1.png"
+					Size = [1, 1]
+					OffSet = [-1, 0]
+				}
+				{
+					File = "./Data/ships/terran/factory_he/batteries2.png"
+					Size = [2, 1]
+					OffSet = [-0.5, 0]
+				}
+				{
+					File = "./Data/ships/terran/factory_he/batteries3.png"
+					Size = [3, 1]
+				}
+				{
+					File = "./Data/ships/terran/factory_he/batteries4.png"
+					Size = [3, 1]
+				}
+			]
+		}
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1.5, 2]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOnLarge
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOffLarge
+		}
+
+		OperationSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/emp_missile_factory_idle.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 1
+				}
+			]
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [1.5, 2]
+			FactorHitEffectsWith = MissileStorage
+			FactorMediaEffectsWith = &FactorHitEffectsWith
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = battery
+					TotalDrain = {BaseValue=500000; EffectScaleExponent=1;}
+					Radius = 12
+					Slices = 1
+					Delay = .05
+					RadiusEffectScaleExponent = 0.5
+					Filter
+					{
+						Ships = true
+						Shields = true
+						Friendlies = true
+					}
+
+					MediaEffectsOnDrainFactor = .00025
+					MediaEffectsOnDrain
+					[
+						&<./Data/shots/missile_emp/particles/missile_emp_hit_sizzle.rules>
+						&<./Data/shots/missile_emp/particles/missile_emp_lightning.rules>
+						&<./Data/shots/missile_emp/particles/missile_emp_drain.rules>
+
+						: /BASE_SOUNDS/AudioExterior
+						{
+							RandomSounds = ["./Data/shots/disruptor_bolt/sounds/disruptor_discharge_01.wav",
+											"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_02.wav",
+											"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_03.wav",
+											"./Data/shots/disruptor_bolt/sounds/disruptor_discharge_04.wav"]
+							Volume = 1
+							SpeedVariation = .2
+						}
+					]
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/missile_emp/particles/missile_emp_hit_orb.rules>
+				&<./Data/shots/missile_emp/particles/missile_emp_hit_bolts.rules>
+				&<./Data/shots/missile_emp/particles/missile_emp_hit_shockwave.rules>
+			]
+		}
+
+		DestroyedEffects2 // A separate destroyed effects for the base destruction that doesn't get scale with ammo.
+		{
+			Type = DeathEffects
+			Location = [1.5, 2]
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1.5, 2]
+			Indicators
+			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3,4,5]
+				}
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [2,3,4,5]
+				}
+
+				// No iron.
+				{
+					Toggle = IronSplitter
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoResource
+						Size = [1, 1]
+					}
+				}
+
+				// No copper.
+				{
+					Toggle = CopperSplitter
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoResource
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			OnlyWithFlip = false
+			File = "blueprints.png"
+			Size = [3, 4]
+		}
+
+		BlueprintsFlipped
+		{
+			Type = BlueprintSprite
+			OnlyWithFlip = true
+			File = "blueprints_flipped.png"
+			Size = [3, 4]
+		}
+
+		Overclock_HeatProductionInterval
+		{
+			Type = BuffableValue
+			Value = &~/Part/Components/ResourceConverter/Interval
+			IncludeInBlueprints = true
+		}
+		Overclock_HeatPerConversion { Type = StaticValue; Value = &~/OVERCLOCK/HEAT_PER_CONVERSION; }
+		HeatGenerationValue
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne = Overclock_HeatPerConversion
+			ValueTwo = Overclock_HeatProductionInterval
+			NaNFallbackValue = 0
+			IncludeInBlueprints = Normal
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = HeatGenerationValue
+		}
+	}
+
+	Stats
+	{
+		PartsPerMissile = &<../missile_launcher/emp/missile_launcher_emp.rules>/Components/Emitter/ResourcesUsed
+		MissileProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / (&PartsPerMissile)
+		PartCapacity = (&~/Part/Components/MissileStorage/GridRect/2) * (&~/Part/Components/MissileStorage/GridRect/3) * (&<./Data/resources/missile_part_emp/missile_part_emp.rules>/MaxStackSize)
+		MissilePartCapacity = [&../PartCapacity, (&../PartCapacity) / (&../PartsPerMissile)]
+		IronCapacity = (&~/Part/Components/IronStorage/GridRect/2) * (&~/Part/Components/IronStorage/GridRect/3) * (&<./Data/resources/iron/iron.rules>/MaxStackSize)
+		IronPerMissile = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity) * (&PartsPerMissile)
+		IronPerSecond = (&~/Part/Components/IronSplitter/FromQuantity) / (&~/Part/Components/IronSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
+		MissileIronUsage = [&../IronPerMissile, &../IronPerSecond]
+		CopperCapacity = (&~/Part/Components/CopperStorage/GridRect/2) * (&~/Part/Components/CopperStorage/GridRect/3) * (&<./Data/resources/copper/copper.rules>/MaxStackSize)
+		CopperPerMissile = (&~/Part/Components/CopperSplitter/FromQuantity) / (&~/Part/Components/CopperSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/ToQuantity) * (&PartsPerMissile)
+		CopperPerSecond = (&~/Part/Components/CopperSplitter/FromQuantity) / (&~/Part/Components/CopperSplitter/ToQuantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
+		MissileCopperUsage = [&../CopperPerMissile, &../CopperPerSecond]
+		PowerPerMissile = (&~/Part/Components/ResourceConverter/From/2/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/ToQuantity) * (&PartsPerMissile) / 1000
+		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/2/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / 1000
+		MissilePowerUsage = [&../PowerPerMissile, &../PowerPerSecond]
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+
+		RecPower = &PowerPerSecond
+		RecCrew = (&RecPower) * 4
+	}
+
+	StatsByCategory
+	[
+		&<../missile_launcher/emp/missile_launcher_emp.rules>/MissileStats
+	]
+
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/FactoryEMPOverclockDesc"
+		Stats
+		{
+			MissileProduction = (&~/Part/Stats/MissileProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
+			MissileIronUsage = [(&~/Part/Stats/MissileIronUsage/0), (&~/Part/Stats/MissileIronUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			MissileCopperUsage = [(&~/Part/Stats/MissileCopperUsage/0), (&~/Part/Stats/MissileCopperUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			POWER_PER_MISSILE = (&~/Part/Stats/MissilePowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			POWER_PER_SECOND = (&~/Part/Stats/MissilePowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
+			MissilePowerUsage = [&../POWER_PER_MISSILE, &../POWER_PER_SECOND]
+			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity)
+			HEAT_PER_MISSILE = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT) * (&~/Part/Stats/PartsPerMissile)
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) * (&~/OVERCLOCK/SPEED_FACTOR);
+			MissileHeatGeneration = [&../HEAT_PER_MISSILE, &../HEAT_PER_SECOND]
+		}
+	}
+}
+
+MODIFIERS
+{
+	OVERCLOCK_LERP
+	{
+		Type = Buff
+		BuffType = Overclock
+		ModificationMode = Lerp
+	}
+}

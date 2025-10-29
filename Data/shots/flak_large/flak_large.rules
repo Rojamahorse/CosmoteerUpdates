@@ -1,0 +1,65 @@
+Range = 150
+IdealRange = 140
+ClipRangeToTarget = true
+RandomOffsetRadius = [1, 5] // Increases as range increases.
+
+HitNothing
+{
+	HitEffects
+	[
+		{
+			Type = ExplosiveDamage
+			TotalDamage = { BaseValue = 3000; EffectScaleExponent = 1 }
+			Radius = 4
+            Slices = 1
+			Filter
+			{
+				Ships = false
+				Shields = false
+				Bullets = true
+				OnlyBulletCategories = [missile, laser, bullet, mine]
+				Crew = true
+			}
+		}
+		{
+			Type = ExplosiveDamage
+			TotalDamage = { BaseValue = 1750; EffectScaleExponent = 1 }
+			Radius = 4
+			Filter
+			{
+				Ships = true
+				Shields = true
+				Bullets = false
+				Crew = false
+			}
+		}
+	]
+
+	MediaEffects
+	[
+		&<particles/flak_large_shrapnel.rules>
+		&<particles/flak_large_flash.rules>
+		&<particles/flak_large_smoke.rules>
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			RandomSounds = ["sounds/flak_cannon_impact_01.wav",
+							"sounds/flak_cannon_impact_02.wav",
+							"sounds/flak_cannon_impact_03.wav",
+							"sounds/flak_cannon_impact_04.wav"]
+			Volume = .5
+			SpeedVariation = .2
+			MaxConcurrent = 10
+		}
+
+		: /BASE_SHAKE
+		{
+			ShakeAmount = .05
+			Duration = .25
+		}
+	]
+}
+
+HitShield = &HitNothing
+HitOperational = &HitNothing
+HitStructural = &HitNothing

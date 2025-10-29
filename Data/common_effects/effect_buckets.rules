@@ -1,0 +1,167 @@
+LowerBuckets
+[
+	BulletLower1,
+	BulletLower2,
+	BulletLower3,
+
+	BulletSmoke,
+	BulletHit,
+
+	CannonShoot,
+
+    Lower1,
+    Lower2,
+
+	FlakShootSmoke,
+	FlakShrapnel,
+
+    Lower3,
+
+	OCFlakField,
+	OCFlakShrapnel,
+	OCFlakFlash,
+
+	DisruptorOrb,
+	DisruptorLightning,
+
+	RailgunTrailSparks,
+	RailgunTrailRings,
+	RailgunHitStruct,
+	RailgunHit,
+
+	IonHit,
+	IonBeam,
+	IonHitSpikes,
+	IonHitSparks,
+
+	PCDSpikes,
+	PDCSparks,
+
+	DistortionLower,
+	
+]
+
+InteriorSurfaceBuckets
+[
+	Scorched,
+	FireSmoke,
+	Fire,
+	FireExinguisher,
+	Foam,
+]
+
+MiddleBuckets
+[
+	BulletMiddle1,
+	BulletMiddle2,
+    default_bullet, // Don't delete this. Is the default bucket for bullets.
+	BulletMiddle3,
+
+	DisruptorLightningBullet,
+
+	BulletTrail,
+
+	PDCShoot,
+
+	FireEmbers,
+	
+	IonBeamLightning,
+
+    Middle1,
+    Middle2,
+    Middle3,
+]
+
+SurfaceBuckets
+[
+	ScaffoldingProgressGlow,
+	
+	ScaffoldingPoofShadow,
+	
+	ThermalLaserHitSmoke,
+	ThermalLaserHit,
+	ThermalLaserHitFire,
+
+    Surface1,
+    Surface2,
+    Surface3,
+
+	ScaffoldingPoofWisps,
+	ScaffoldingPoofEnergy,
+]
+
+UpperBuckets
+[
+
+	BulletUpper1,
+	BulletUpper2,
+	BulletUpper3,
+	BulletUpper4,
+
+	BulletTrailUpper,
+
+	RoofCannonShoot,
+	CannonFlare,
+
+	RailgunShoot,
+
+    Upper1,
+
+	TractorBeam,
+	TractorBeamGlints,
+
+	PDCShootFlash,
+
+	DisruptorLightningUpper,
+
+    Upper2,
+    
+	ThermalBeam,
+	ThermalBeamDistortion,
+
+	ChaingunHitSmoke,
+
+	PrismExplodeShockwave,
+	PrismExplodeHot,
+
+	FlakHitSmoke,
+	
+	MissileThermalShrapnel,
+	MissileThermalHit,
+
+    Upper3,
+
+	MissileHeHit,
+
+
+    Upper4,
+	
+	ChaingunDistortion,
+	ChaingunSmoke,
+	ChaingunBullet,
+	ChaingunShoot,
+	
+	ChaingunHit,
+	
+	NukeHit,
+
+	Upper5,
+	
+	OCHeavyLaserHit,
+	OCHeavyLaserSparks,
+	OCHeavyLaserFlash,
+
+	PrismFlash,
+
+	NukeFlash,
+
+	FlakFlash,
+
+	BulletHitSparks,
+
+	RailgunHitSparks,
+
+	RoofCannonSmoke,
+
+	DistortionUpper,
+]

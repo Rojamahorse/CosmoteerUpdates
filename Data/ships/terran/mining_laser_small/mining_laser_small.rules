@@ -1,0 +1,915 @@
+OVERCLOCK
+{
+	FIRING_HEAT_PER_SECOND = 450
+	BEAM = &<./Data/shots/mining_beam_small/mining_beam_small_overclock.rules>
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <../base_part_terran_overclock.rules>/Part
+{
+	NameKey = "Parts/MiningLaserSmall"
+	IconNameKey = "Parts/MiningLaserSmallIcon"
+	ID = cosmoteer.mining_laser_small // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroups = ["WeaponsEnergy", "Utilities"]
+	DescriptionKey = "Parts/MiningLaserSmallDesc"
+	Resources
+	[
+		[steel, 96]
+		[coil, 15]
+		[coil2, 7]
+	]
+	Size = [2, 3]
+	MaxHealth = 6000
+	SelectionPriority = 1
+	TypeCategories = [weapon, uses_power, is_crewed, mining]
+	SignificanceToggle = ScorchedToggle
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
+	ProhibitedBy : ^/0/ProhibitedBy [tall]
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[2, 1]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [42.66, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 3
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 10000 // TODO
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &<./Data/ships/base_ship.rules>/DefaultSalvagePriority
+			ResupplyThreshold = 1000
+			OperationalToggle = CommandConsumptionToggle
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		Overclock_FiringHeatProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = Overclock_BeamEmissionToggle
+			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/FIRING_HEAT_PER_SECOND) * (&Interval))
+			ToQuantity = (&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
+			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Interval = 0.5
+		}
+
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 1]
+			Direction = Left
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Location = [1, 1]
+			Direction = Right
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [2, 3]
+						AnimationInterval = 0.15
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_33.png"
+							"doodads_on2_33.png"
+							"doodads_on3_33.png"
+							"doodads_on4_33.png"
+							"doodads_on5_33.png"
+							"doodads_on6_33.png"
+							"doodads_on7_33.png"
+							"doodads_on8_33.png"
+						]
+						Size = [2, 3]
+						AnimationInterval = 0.15
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1_66.png"
+							"doodads_on2_66.png"
+							"doodads_on3_66.png"
+							"doodads_on4_66.png"
+							"doodads_on5_66.png"
+							"doodads_on6_66.png"
+							"doodads_on7_66.png"
+							"doodads_on8_66.png"
+						]
+						Size = [2, 3]
+						AnimationInterval = 0.15
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "walls_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [2, 3]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [2, 3]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, -31/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [1.75, 1.75]
+						Z = 1 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.0, 0, 0]
+					}
+				]
+			}
+		}
+
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [1, 2]// Relative to upper-left corner of unrotated part.
+			Rotation = -90d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 0.2
+			FiringArc = 270d
+			RotateSpeed = 20d
+			FireThresholdAngle = 20d
+			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamageContinuousEnemies
+			CanSalvage = true
+			AlwaysShowCoverage = true
+			Emitter = WeaponEmitterSelector // Doesn't actually fire; only used for targeting.
+			AutoTargetCrewSafetyDist = 8
+			IgnoreFriendlyShipLowLOSChecks = true
+			IgnoreJunkLOSChecks = true
+
+			AutoTargets
+			[
+				{
+					TargetType = Salvage
+					Toggle = FireModeToggle
+				}
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		InterpolatedTurret // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			Location = &../Turret/Location
+			MatchTransformOf = Turret
+			MatchRotationSpeed = Infinity
+			InterpolateRotation = true
+		}
+
+		TurretCollider
+		{
+			Type = CircleCollider
+			Location = &../Turret/Location
+			Radius = 2/3
+			IsHigh = true
+		}
+
+		IsOperationalNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
+		}
+
+		WeaponEmitterSelector
+		{
+			Type = ToggleEmitterSelector
+			Toggle = IsOverclocked
+			ToggleOffEmitter = BeamEmitterBase
+			ToggleOnEmitter = Overclock_BeamEmitterBase
+		}
+
+		BeamEmitterBase : <./Data/shots/mining_beam_small/mining_beam_small.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = Turret
+			FireTrigger // none, but field is required
+			GetTargetFrom = Turret
+			Location = [1.484375*.75, 0]
+			OperationalToggle = IsOperationalNonOverclocked
+			Duration = (&../Turret/FireInterval)
+			ResourceStorage = BatteryStorage
+			ResourcesUsed = 60
+			MinResourcesUsed = 1
+			Width = abs((&../BeamEmitterLeft/Location/1) - (&../BeamEmitterRight/Location/1)) + (&^/0/Width) / 2
+		}
+		LeftOscillator
+		{
+			Type = Oscillator
+			ChainedTo = Turret
+			OperationalToggle = BeamEmissionToggleLeft
+			Location = [59/64, -28/64]
+			Angle = -0.3333333333d
+			Interval = 4.0
+			ResetWhenOperational = true
+		}
+		InterpolatedLeftOscillator // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			MatchTransformOf = LeftOscillator
+			MatchLocationSpeed = Infinity
+			MatchRotationSpeed = Infinity
+			InterpolateLocation = true
+			InterpolateRotation = true
+		}
+		RightOscillator : LeftOscillator
+		{
+			OperationalToggle = BeamEmissionToggleRight
+			Location = [59/64, 28/64]
+			Angle = -(&../LeftOscillator/Angle)
+		}
+		InterpolatedRightOscillator // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			MatchTransformOf = RightOscillator
+			MatchLocationSpeed = Infinity
+			MatchRotationSpeed = Infinity
+			InterpolateLocation = true
+			InterpolateRotation = true
+		}
+		BeamEmitterLeft : BeamEmitterBase
+		{
+			ChainedTo = LeftOscillator
+			FireTrigger = Turret
+			Location = [0, 0]
+			Width = &<./Data/shots/mining_beam_small/mining_beam_small.rules>/Width // BeamEmitterBase overrides width for targeting purposes.
+			AttachBeamMediaEffectsTo = InterpolatedLeftOscillator
+		}
+		BeamEmitterRight : BeamEmitterBase
+		{
+			ChainedTo = RightOscillator
+			FireTrigger = Turret
+			Location = [0, 0]
+			Width = &<./Data/shots/mining_beam_small/mining_beam_small.rules>/Width // BeamEmitterBase overrides width for targeting purposes.
+			AttachBeamMediaEffectsTo = InterpolatedRightOscillator
+		}
+
+		BeamEmissionToggleLeft
+		{
+			Type = MultiToggle
+			Toggles = [BeamEmitterLeft, Overclock_BeamEmitterLeft]
+			Mode = Any
+		}
+		BeamEmissionToggleRight : BeamEmissionToggleLeft
+		{
+			Toggles = [BeamEmitterRight, Overclock_BeamEmitterRight]
+		}
+
+		Overclock_BeamEmitterBase : &~/OVERCLOCK/BEAM/Beam, BeamEmitterBase
+		{
+			OperationalToggle = IsOperationalOverclocked
+		}
+		Overclock_BeamEmitterLeft : Overclock_BeamEmitterBase, BeamEmitterLeft
+		{
+			ChainedTo = &^/1/ChainedTo
+			FireTrigger = &^/1/FireTrigger
+			Location = &^/1/Location
+		}
+		Overclock_BeamEmitterRight : Overclock_BeamEmitterBase, BeamEmitterRight
+		{
+			ChainedTo = &^/1/ChainedTo
+			FireTrigger = &^/1/FireTrigger
+			Location = &^/1/Location
+		}
+		Overclock_BeamEmissionToggle
+		{
+			Type = MultiToggle
+			Toggles = [Overclock_BeamEmitterLeft, Overclock_BeamEmitterRight]
+			Mode = Any
+		}
+
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [1, 0.68]
+			Rotation = 0d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			DefaultPriority = &<./Data/ships/base_ship.rules>/DefaultSalvagePriority
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				&../../CrewLocation/Location
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+
+		TurretGraphics
+		{
+			Type = Graphics
+			ChainedTo = InterpolatedTurret
+			Location = [0, 0]
+			Rotation = 90d
+			OperationalToggle = IsOperational
+			DoodadToggle = BeamEmitterLeft
+			ShowToggledDoodadsWhenNotOperational = false
+			Floor
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "rotor.png"
+						Size = [2, 2]
+						Offset = [0, -13/64]
+					}
+					{
+						File = "rotor_33.png"
+						Size = [2, 2]
+						Offset = [0, -13/64]
+					}
+					{
+						File = "rotor_66.png"
+						Size = [2, 2]
+						Offset = [0, -13/64]
+					}
+				]
+			}
+			ToggleOnDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"weapon_shooting1.png"
+							"weapon_shooting2.png"
+							"weapon_shooting3.png"
+							"weapon_shooting4.png"
+							"weapon_shooting5.png"
+							"weapon_shooting6.png"
+							"weapon_shooting7.png"
+						]
+						NormalsAnimationFiles
+						[
+							"weapon_normals_on.png"
+							"weapon_normals_on.png"
+							"weapon_normals_on.png"
+							"weapon_normals_on.png"
+							"weapon_normals_on.png"
+							"weapon_normals_on.png"
+							"weapon_normals_on.png"
+						]
+						Size = [2, 2]
+						Offset = [0, -13/64]
+						AnimationInterval = 0.09
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"weapon_shooting1_33.png"
+							"weapon_shooting2_33.png"
+							"weapon_shooting3_33.png"
+							"weapon_shooting4_33.png"
+							"weapon_shooting5_33.png"
+							"weapon_shooting6_33.png"
+							"weapon_shooting7_33.png"
+						]
+						NormalsAnimationFiles
+						[
+							"weapon_normals_on_33.png"
+							"weapon_normals_on_33.png"
+							"weapon_normals_on_33.png"
+							"weapon_normals_on_33.png"
+							"weapon_normals_on_33.png"
+							"weapon_normals_on_33.png"
+							"weapon_normals_on_33.png"
+						]
+						Size = [2, 2]
+						Offset = [0, -13/64]
+						AnimationInterval = 0.09
+						AnimationStartTime = Zero
+					}
+					{
+						AnimationFiles
+						[
+							"weapon_shooting1_66.png"
+							"weapon_shooting2_66.png"
+							"weapon_shooting3_66.png"
+							"weapon_shooting4_66.png"
+							"weapon_shooting5_66.png"
+							"weapon_shooting6_66.png"
+							"weapon_shooting7_66.png"
+						]
+						NormalsAnimationFiles
+						[
+							"weapon_normals_on_66.png"
+							"weapon_normals_on_66.png"
+							"weapon_normals_on_66.png"
+							"weapon_normals_on_66.png"
+							"weapon_normals_on_66.png"
+							"weapon_normals_on_66.png"
+							"weapon_normals_on_66.png"
+						]
+						Size = [2, 2]
+						Offset = [0, -13/64]
+						AnimationInterval = 0.09
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						File = "weapon_on.png"
+						NormalsFile = "weapon_normals_on.png"
+						Size = [2, 2]
+						Offset = [0, -13/64]
+					}
+					{
+						File = "weapon_on_33.png"
+						NormalsFile = "weapon_normals_on_33.png"
+						Size = [2, 2]
+						Offset = [0, -13/64]
+					}
+					{
+						File = "weapon_on_66.png"
+						NormalsFile = "weapon_normals_on_66.png"
+						Size = [2, 2]
+						Offset = [0, -13/64]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						File = "weapon_off.png"
+						NormalsFile = "weapon_normals_off.png"
+						Size = [2, 2]
+						Offset = [0, -13/64]
+					}
+					{
+						File = "weapon_off_33.png"
+						NormalsFile = "weapon_normals_off_33.png"
+						Size = [2, 2]
+						Offset = [0, -13/64]
+					}
+					{
+						File = "weapon_off_66.png"
+						NormalsFile = "weapon_normals_off_66.png"
+						Size = [2, 2]
+						Offset = [0, -13/64]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, 0.25]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [1.5, 1.5]
+						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.0, 0, 0]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1, 153/64]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Offset = [0.5, 0]
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Offset = [0.5, 0]
+					Size = [1, 1]
+				}
+				{
+					File = "batteries3.png"
+					Offset = [0.5, 0]
+					Size = [1, 1]
+				}
+				{
+					File = "batteries4.png"
+					Offset = [0.5, 0]
+					Size = [1, 1]
+				}
+				{
+					File = "batteries5.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries6.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries7.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries8.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries9.png"
+					Size = [2, 1]
+				}
+				{
+					File = "batteries10.png"
+					Size = [2, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/MedPartScorched
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1.5]
+			Indicators
+			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3,4]
+				}
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [2,3,4]
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					Delay = &~/Part/Components/Turret/FireInterval
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// Resetting from overclock
+				{
+					Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+					AtlasSprite : /INDICATORS/OverclockReset
+					{
+						Size = [1, 1]
+					}
+					HidesIndicators = [4]
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 3]
+		}
+
+		HeatGenerationValue
+		{
+			Type = StaticValue
+			Value = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = HeatGenerationValue
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = &../StatsByCategory/0/Stats/PowerUsageContinuous
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+	}
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/MiningBeam"
+			Stats
+			{
+				DamagePerShot = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/0/Damage/BaseValue) * 2
+				HitInterval = &~/Part/Components/BeamEmitterBase/HitInterval
+				DamageContinuousEnemies = (&DamagePerShot) / (&HitInterval)
+				DamagePerShotJunk = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/1/Damage/BaseValue) * 2
+				DamageContinuousJunk = (&DamagePerShotJunk) / (&HitInterval)
+				DamagePerShotAsteroids = (&~/Part/Components/BeamEmitterBase/HitOperational/HitEffects/3/Damage/BaseValue) * 2
+				DamageContinuousAsteroids = (&DamagePerShotAsteroids) / (&HitInterval)
+				Range = &~/Part/Components/BeamEmitterBase/Range
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+				ShotSpeed = Infinity
+				PowerPerShot = (&~/Part/Components/BeamEmitterBase/ResourcesUsed) * 2 / 1000
+				PowerUsageContinuous = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
+			}
+		}
+	]
+
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/MiningLaserSmallOverclockDesc"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/MiningBeamOverclocked"
+				Stats
+				{
+					HeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
+					DamageArea = (&~/OVERCLOCK/BEAM/RADIUS)
+					DamageAreaFalloff = (&~/OVERCLOCK/BEAM/RADIUS_FALLOFF)
+					DamageContinuousEnemies = (&~/Part/StatsByCategory/0/Stats/DamageContinuousEnemies) * (&~/OVERCLOCK/BEAM/DAMAGE_FACTOR)
+					DamageContinuousShields = (&~/Part/StatsByCategory/0/Stats/DamageContinuousEnemies) * (&~/OVERCLOCK/BEAM/SHIELD_DAMAGE_FACTOR)
+					DamageContinuousJunk = (&~/Part/StatsByCategory/0/Stats/DamageContinuousJunk) * (&~/OVERCLOCK/BEAM/DAMAGE_FACTOR)
+					DamageContinuousAsteroids = (&~/Part/StatsByCategory/0/Stats/DamageContinuousAsteroids) * (&~/OVERCLOCK/BEAM/DAMAGE_FACTOR)
+					Range = &~/OVERCLOCK/BEAM/RANGE
+				}
+			}
+		]
+	}
+}

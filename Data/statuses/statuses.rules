@@ -1,0 +1,13 @@
+AtlasTextureParams
+{
+	MipLevels = 7 // Assumes 64x64 min sprite size.
+}
+Statuses
+[
+	&<fire/fire.rules>
+	&<scorched/scorched.rules>
+	&<heat/heat.rules>
+	&<fire_foam/fire_foam.rules>
+	&<shield_overload/shield_overload.rules>
+	&<disruptor_drain/disruptor_drain.rules>
+]

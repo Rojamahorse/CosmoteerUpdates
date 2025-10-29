@@ -1,0 +1,64 @@
+BASE
+{
+	BEAM = &<../chaingun_shot.rules>
+	DAMAGE = &BEAM/HitOperational/HitEffects/0/Damage/BaseValue
+	IMPULSE = &BEAM/HitOperational/HitEffects/1/Impulse/BaseValue
+}
+
+DAMAGE = 300% * (&BASE/DAMAGE)
+DAMAGE_EXPLOSIVE = 400% * (&BASE/DAMAGE)
+IMPULSE = (&BASE/IMPULSE)
+IMPULSE_EXPLOSIVE = (&BASE/IMPULSE)
+RADIUS = 2.5
+SLICES = 5
+
+Beam : BASE/BEAM
+{
+	AttenuationLimit = &~/DAMAGE
+    HitAttenuator
+    {
+    	MediaEffects = &~/Beam/HitOperational/MediaEffects
+    }
+	HitOperational
+	{
+		Offset = [-0.25, 0]
+		HitEffects
+		[
+			{
+				Type = Damage
+				Damage = { BaseValue=&~/DAMAGE; EffectScaleExponent=1; }
+			}
+			{
+				Type = Impulse
+				Impulse = { BaseValue=&~/IMPULSE; EffectScaleExponent=1; }
+			}
+			{
+				Type = ExplosiveDamage
+				Radius = &~/RADIUS
+				Slices = &~/SLICES
+				TotalDamage = { BaseValue=&~/DAMAGE_EXPLOSIVE; EffectScaleExponent=1; }
+				ImpulsePerNDamage = &~/IMPULSE_EXPLOSIVE
+				NDamage = &TotalDamage/BaseValue
+			}
+		]
+		MediaEffects : ~/BASE/BEAM/HitOperational/MediaEffects
+		[
+			&<particles/chaingun_shot_overclock_hit.rules>
+		]
+	}
+	HitShield = &HitOperational
+	HitStructural : ~/BASE/BEAM/HitStructural
+	{
+		HitEffects
+		[
+			{
+				Type = Damage
+				Damage = { BaseValue=&~/DAMAGE; EffectScaleExponent=1; }
+			}
+			{
+				Type = Impulse
+				Impulse = { BaseValue=&~/IMPULSE; EffectScaleExponent=1; }
+			}
+		]
+	}
+}

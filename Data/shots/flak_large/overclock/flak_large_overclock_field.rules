@@ -1,0 +1,124 @@
+ID = "cosmoteer.flak_large_overclock_field"
+// Irrelevant
+Range = 0
+Speed = 0
+
+RADIUS = 4
+REPULSE_RANGE = 8
+LIFETIME = 7
+MAX_BULLET_DAMAGE = ceil(800 / ((&RADIUS) * 2)) // 1000 damage if a bullet passes right through the center
+DAMAGE_POOL = 800
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = &~/RADIUS
+		Density = 1
+		LinearDamping = 25%
+	}
+	FieldRepulsion
+	{
+		Type = ProximityAcceleration
+		Range = &~/REPULSE_RANGE
+		Acceleration = -7
+		AccelerateTowardsShips = false
+		AccelerateTowardsBullets = true
+		AccelerateTowardsBulletCategories = [flak_field]
+		AccelerateTowardsFriendlies = true
+		AccelerateTowardsEnemies = false
+	}
+	ShipRepulsion
+	{
+		Type = ProximityAcceleration
+		Range = &~/REPULSE_RANGE
+		Acceleration = -7
+	}
+	Targetable
+	{
+		Type = Targetable
+		// Shouldn't be hit by anything
+		Health = 1
+		TargetCategory = "flak_field"
+	}
+	
+	LifetimeDeath
+	{
+		Type = DeathByLifetime
+		Lifetime = &~/LIFETIME
+	}
+	DamagePoolDeath
+	{
+		Type = DeathByDamagePool
+		DamagePool = DamagePool
+	}
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = { BaseValue = (&~/DAMAGE_POOL); EffectScaleExponent = 1 }
+	}
+	
+	VolHit
+	{
+		Type = VolumeHit
+		BeamAttenuationDamagePool = DamagePool
+		HitBullet
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+					MaxDamageFromPool = { BaseValue = (&~/MAX_BULLET_DAMAGE); EffectScaleExponent = 1 }
+				}
+			]
+			MediaEffects
+			[
+				&<particles/sparks_field.rules>
+			]
+		}
+	}
+	
+	//Sprite
+	//{
+		//Type = Sprite
+		//RenderBucket = BulletLower1
+		//Sprite
+		//{
+			//Texture
+			//{
+				//File = "particles/circle_dashed.png"
+				//SampleMode = Linear
+				//MipLevels = max
+			//}
+			//Size = [(&~/RADIUS) * 2, &0]
+			//VertexColor = [207, 207, 207]
+		//}
+	//}
+
+	
+	MediaEffects
+	{
+		Type = MediaEffects
+		FactorEffectsWith = DamagePool
+		MediaEffects
+		[
+			&<particles/flak_large_overclock_field_shrapnel.rules>
+			&<particles/flak_large_overclock_field_right.rules>
+			&<particles/flak_large_overclock_field_left.rules>
+			
+			: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "sounds/flak_cannon_overclocked_field.wav"
+					Volume = 1
+					SpeedVariation = .2
+					MaxConcurrent = 2
+					RampUpTime = .25
+					RampDownTime = .5
+				}
+		]
+	}
+}
