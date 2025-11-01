@@ -1,6 +1,7 @@
 OVERCLOCK
 {
-	THRUST_FACTOR = 300%
+	THRUST = 3400
+	THRUST_FACTOR = (&THRUST) / (&~/Part/ThrusterForce)
 	MAX_POWER_USAGE_FACTOR = 200%
 	POWER_USAGE_FACTOR = 1 / (&THRUST_FACTOR) * (&MAX_POWER_USAGE_FACTOR)
 	THRUST_HEAT_PER_SECOND = 340
@@ -35,7 +36,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 	SelectionTypeID = "thrusters"
 	MaxHealth = 2000
 	ProhibitBelow = 5
-	ThrusterForce = 1200
+	ThrusterForce = 1300
 	ThrustIncreaseTime
 	{
 		BaseValue = 1

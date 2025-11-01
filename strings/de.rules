@@ -333,6 +333,7 @@ BuildBox
 	NoResourceAccessFmt = "<bad>✘ Ohne {0}</bad>"
 	NoResourceAccessWeakFmt = "<yellow>⚠ Ohne {0}</yellow>"
 	NoWorkNeeded = "KEINE ARBEIT ERFORDERLICH"
+	NotInBlueprintMode = "In Bauplanmodus nicht verfügbar."
 	NothingToForget = "Es kann nichts vergessen werden."
 	NothingToRedo = "Es gibt nichts, das wiederholt werden könnte."
 	NothingToUndo = "Es kann nichts rückgängig gemacht werden."
@@ -1986,6 +1987,7 @@ Inputs
 		FocusMidpoint = "Fokus auf ausgewählten/anvisierten Mittelpunkt"
 		FocusSelected = "Fokus auf ausgewählte Schiffe/Teile"
 		FocusTargets = "Fokus auf anvisierten Feind"
+		HideShipRoofUnderCursor = "Innenbereich des Schiffs unter Mauszeiger anzeigen"
 		Name = "Steuerung anzeigen"
 		PanDown = "Nach unten schwenken"
 		PanLeft = "Nach links schwenken"
@@ -2281,6 +2283,8 @@ Misc
 	ShortCostK = "{0:#,#,.#}T"
 	ShortCostM = "{0:#,#,,.#}Mio"
 	SteamNotInitialized = "<bad>Cosmoteer konnte keine Verbindung zum Steam-Client herstellen.</bad>\n\nFunktionen wie Online-Multiplayer, Steam Workshop und Speichern in der Cloud funktionieren nicht. Es kann auch sein, dass deine gespeicherten Spiele und Schiffe fehlen, da diese mit deiner Steam-ID verknüpft sind, die nicht bestimmt werden konnte.\n\nAchte bitte darauf, dass der Steam-Client läuft und aktuell ist, dass du ihn nicht im Administrator-Modus oder als anderer Nutzer des Betriebssystems laufen lässt und dass du eine gültige Cosmoteer-Lizenz auf Steam hast."
+	SteamTimelineShipDeathDesc = "{0} wurde zerstört"
+	SteamTimelineShipDeathTitle = "Schiff zerstört"
 	TransferReset = Zurücksetzen
 	Unknown = Unbekannt
 	Yes = Ja
@@ -3018,7 +3022,7 @@ Parts
 	MiningLaserSmallDesc = "Ein Paar auf dem Dach montierte Präzisionslaserstrahlen, die Ressourcen sogar vom härtesten Asteroiden schnell abbauen können. Ist auch beim Wiederverwerten von Schiffen sehr effektiv und kann im Notfall als Nahdistanzwaffe eingesetzt werden."
 	MiningLaserSmallIcon = Bergbaulaser
 	MiningLaserSmallOverclock = "Übertakteter Bergbaulaser"
-	MiningLaserSmallOverclockDesc = "Fügt bei beiden Bergbaustrahlen einen Wirkungsbereich hinzu. Erzeugt beim Abfeuern Restwärme."
+	MiningLaserSmallOverclockDesc = "Fügt bei beiden Bergbaustrahlen einen Wirkungsbereich hinzu – zulasten des Tempos beim Präzisionsabbau. Erzeugt beim Abfeuern Restwärme."
 	MissileLauncher = "Raketen- & Minenwerfer"
 	MissileLauncherDesc = "Feuert Raketen oder Minen jeglicher Art ab.\n\nDie Art der abgefeuerten Munition kann jederzeit während oder nach dem Bau geändert werden, sogar während des Kampfes."
 	MissileLauncherIcon = Werfer
@@ -3054,7 +3058,7 @@ Parts
 	ReactorLargeDesc = "Ein Energiegenerator, der Plasmabatterien mit dreifacher Kapazität produziert, die zum Betreiben vieler Schiffssysteme erforderlich sind."
 	ReactorLargeIcon = "Großer Reaktor"
 	ReactorLargeOverclock = "Übertakteter großer Reaktorkern"
-	ReactorLargeOverclockDesc = "Erhöht die maximale Energiekapazität und die Erzeugungsrate. Erhöht zudem die Batteriegröße von dreifacher auf vierfache Kapazität. Bei der Energieerzeugung entsteht Restwärme."
+	ReactorLargeOverclockDesc = "Erhöht die Erzeugungsrate. Erhöht zudem die Batteriegröße von dreifacher auf vierfache Kapazität. Bei der Energieerzeugung entsteht Restwärme."
 	ReactorMed = "Mittlerer Reaktorkern"
 	ReactorMedDesc = "Ein Energiegenerator, der Plasmabatterien mit doppelter Kapazität produziert, die zum Betreiben vieler Schiffssysteme erforderlich sind."
 	ReactorMedIcon = "Mittl. Reaktor"
@@ -3447,9 +3451,9 @@ Resource
 	MissilePartNuke = Nuklearraketen-Teil
 	MissilePartNukeDesc = "Teile, die zum Bau von Nuklearraketen verwendet werden."
 	MissilePartNukePlural = Nuklearraketen-Teile
-	MissilePartThermal = "Teil für thermische Kanisterrakete"
+	MissilePartThermal = TK-Raketen-Teil
 	MissilePartThermalDesc = "Teile, die zum Bau von thermischen Kanisterraketen verwendet werden."
-	MissilePartThermalPlural = "Teile für thermische Kanisterrakete"
+	MissilePartThermalPlural = TK-Raketen-Teile
 	NotMineable = "<b>Nicht von Crew abbaubar. Bergbaulaser erforderlich.</b>"
 	Processor = Prozessor
 	ProcessorDesc = "Eine wertvolle Computerkomponente, die beim Bau von einigen fortschrittlichen Schiffsteilen verwendet wird."
@@ -4378,7 +4382,7 @@ Stats
 	DetonationRangeFmt = "<white>Detonationsreichweite:</white> <good>{0:0}</good> <gray>Meter</gray>"
 	DiamondCapacityFmt = "<white>Diamantenkapazität:</white> <good>{0}</good>"
 	DiamondCarbonUsageFmt = "<white>Kohlenstoffverbrauch:</white> <good>{0:0.##}</good><gray>/Diamant (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
-	DiamondPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good> <gray>MJ/Diamant (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
+	DiamondPowerUsageFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Diamant (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	DiamondProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> Diamanten/Sek.</gray>"
 	DilationFactorFmt = "<white>Ausdehnungsfaktor:</white> <good>{0:0.###}x</good>"
 	DilationHeatSpreadFmt = "<white>Wärme-Streuung:</white> <good>{0:0.##}</good><gray><sup>[2]</sup> Meter</gray>"
@@ -4422,6 +4426,7 @@ Stats
 	HyperiumCapacityFmt = "<white>Hyperiumkapazität:</white> <good>{0}</good>"
 	IonLightningIntervalFmt = "<white>Blitz-Intervall:</white> <good>{0:0.#}</good> <gray>Sekunden (verringert durch Strahlstärke)</gray>"
 	IronCapacityFmt = "<white>Eisenkapazität:</white> <good>{0}</good>"
+	Lifetime = "<white>Lebensdauer:</white> <good>{0:0.#}</good> <gray>Sekunden</gray>"
 	LightningChainChanceFmt = "<white>Blitz-Ketten-Chance:</white> <good>{0:0.#} %</good> <gray>pro Schlag</gray>"
 	LightningChainStrikeCountRangeFmt = "<white>Blitz-Ketten-Schläge:</white> <good>{0}-{1}</good>"
 	LightningChanceFmt = "<white>Blitz-Chance:</white> <good>{0:0.#} %</good>"
@@ -4851,7 +4856,7 @@ Tips
 		Tip1 = "Du kannst externe Grafikprogramme wie MS Paint, Paint.NET, Gimp oder Photoshop verwenden, um die Umrisse der Basisform für deine Schiffe zu erstellen ..."
 		Tip2 = "1. Speichere zunächst mithilfe eines externen Grafikprogramms deiner Wahl eine <b>weiß-auf-schwarz</b>-PNG-Bilddatei, die die allgemeine Form deines Schiffs darstellt. Weiße Pixel werden als Korridorkacheln interpretiert und schwarze Pixel als leerer Raum."
 		Tip3 = "2. Öffne dann im Schiffseditor das <img name='hamburger_up'/>-Menü und wähle <white>Form von PNG laden</white>. Wähle die PNG-Bilddatei aus, die du gespeichert hast."
-		Tip4 = "3. Die aktuellen Baupläne deines Schiffs werden mit den Bauplänen aus deiner PNG-Bilddatei ersetzt. Stelle dein Schiff fertig, indem du Waffen, Schubdüsen, Verteidigungsanlagen und andere Teile hinzufügst, die du für sinnvoll hältst."
+		Tip4 = "3. Die aktuellen Baupläne deines Schiffs werden mit den aus deiner PNG-Bilddatei erstellten Bauplänen ersetzt. Stelle dein Schiff fertig, indem du Waffen, Schubdüsen, Verteidigungsanlagen und andere Teile hinzufügst, die du für sinnvoll hältst."
 		Title = "Form von PNG laden"
 	}
 	MidpointFocus
@@ -5341,7 +5346,7 @@ Tutorials
 		
 		Fame = "Dein aktueller <fame>RUHM</fame> wird in der rechten oberen Ecke unter deinen <money>CREDITS</money> angezeigt."
 		FameCrew = "Und mit steigendem <fame>RUHM</fame> wollen sich auch mehr Menschen deiner Crew anschließen! Mehr Crewmitglieder sind immer gut!"
-		IncreasingFame = "Wenn du <good>Feinde besiegst</good> und <good>Missionen abschließt</good>, steigt dein <fame>RUHM</fame>. Er wird sich nie verringern."
+		IncreasingFame = "Wenn du <good>Feinde besiegst</good> und <good>Missionen abschließt</good>, steigt dein <fame>RUHM</fame>."
 		Tip = "<good>TIPP:</good> Wenn du berühmter wirst, verdienst du bei Schiffen und Missionen mit niedrigeren Stufen keinen Ruhm mehr. Besiege Schiffe und schließe Missionen mit höheren Stufen ab, um deinen <fame>RUHM</fame> weiter zu erhöhen."
 		Title = "Berühmt werden"
 	}
@@ -5501,6 +5506,7 @@ Tutorials
 	Overclocking
 	{
 		
+		Blueprints = "Bevor du ein Teil übertakten kannst, musst du zuerst den <fame_color>Übertaktungsbauplan</fame_color> in einer Raumstation kaufen."
 		HeatManagement = "<good>TIPP:</good> Übertaktete Teile sollten an ein <good>thermisches Netzwerk</good> angeschlossen werden, um die Restwärme sicher zu speichern oder abzustrahlen, sonst wird aus der Restwärme gefährliche <orange>Rumpfwärme</orange>."
 		Overview1 = "Viele Teile können <bad>übertaktet</bad> werden, um ihre Funktionalität auf starke Weise zu verändern, wodurch sie aber auch <orange>Restwärme</orange> erzeugen."
 		Overview2 = "Um zu sehen, was das Übertakten eines Teils bewirkt, bewege den Mauszeiger darüber, um den Tooltip anzuzeigen, und drücke dann <btn id='Design.ToggleSecondaryTooltip'/>."
@@ -5613,6 +5619,7 @@ Tutorials
 	{
 		
 		Blueprints = "Viele Waffen und andere Schiffsteile <good>können erst gebaut werden</good>, wenn du die erforderlichen Baupläne hast."
+		Overclocks = "Viele Teile verfügen auch über mächtigere <orange>Übertaktungsmodi</orange>, die separat von den Basis-Bauplänen erworben werden müssen."
 		Permanent = "Durch den Kauf eines Bauplans wird die Fähigkeit, diese Art von Teil zu bauen, <good>dauerhaft freigeschaltet</good>."
 		Purchase = "Um Baupläne zu kaufen, rufe eine Raumstation und wähle den Tab <white>Baupläne kaufen</white>."
 		Title = "Baupläne erhalten"

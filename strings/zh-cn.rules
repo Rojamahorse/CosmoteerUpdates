@@ -333,6 +333,7 @@ BuildBox
 	NoResourceAccessFmt = "<bad>✘无{0}</bad>"
 	NoResourceAccessWeakFmt = "<yellow>✘无{0}</yellow>"
 	NoWorkNeeded = 无需工作
+	NotInBlueprintMode = 蓝图模式下不可用。
 	NothingToForget = 无可遗忘。
 	NothingToRedo = 无可重做。
 	NothingToUndo = 无可撤销。
@@ -1986,6 +1987,7 @@ Inputs
 		FocusMidpoint = 聚焦已选/目标中点
 		FocusSelected = 聚焦已选星舰/部件
 		FocusTargets = 聚焦被瞄准敌人
+		HideShipRoofUnderCursor = 显示光标处的星舰内装
 		Name = 查看控制
 		PanDown = 下移
 		PanLeft = 左移
@@ -2281,6 +2283,8 @@ Misc
 	ShortCostK = ""
 	ShortCostM = ""
 	SteamNotInitialized = "<bad>《Cosmoteer》无法连接到 Steam 客户端。</bad>\n\n无法使用在线多人游戏、创意工坊、云存档等功能。由于存档与 Steam 用户 ID 挂钩，而目前该 ID 无法进行认证，可能会出现游戏存档以及舰船存档丢失的情况。\n\n请确保 Steam 客户端正在运行且已更新到最新版本，且你没有以管理员模式或不同的操作系统用户身份运行该客户端，同时在 Steam 上拥有有效的《Cosmoteer》许可。"
+	SteamTimelineShipDeathDesc = "{0} 被摧毁"
+	SteamTimelineShipDeathTitle = 星舰被摧毁
 	TransferReset = 重置
 	Unknown = 未知
 	Yes = 是
@@ -3018,7 +3022,7 @@ Parts
 	MiningLaserSmallDesc = 安装在星舰顶部的双联装精准激光，能够迅速切割哪怕最为坚硬的小行星，从中提取资源。在回收弃舰方面也很有效，在紧要关头还可作为短程武器使用。
 	MiningLaserSmallIcon = 开采激光
 	MiningLaserSmallOverclock = 超频开采激光
-	MiningLaserSmallOverclockDesc = 两道开采激光能造成范围伤害。发射时会产生废热。
+	MiningLaserSmallOverclockDesc = 两道开采激光能造成范围伤害，但降低精准开采的速度。发射时会产生废热。
 	MissileLauncher = 导弹与空雷发射器
 	MissileLauncherDesc = "可发射任意类型的导弹或空雷。\n\n哪怕在战斗中，也可以随时更换其发射的弹药类型。"
 	MissileLauncherIcon = 发射器
@@ -3054,7 +3058,7 @@ Parts
 	ReactorLargeDesc = 发电装置，可为星舰各种系统生产三倍的供电等离子电池。
 	ReactorLargeIcon = 大型反应堆
 	ReactorLargeOverclock = 超频大型反应堆芯
-	ReactorLargeOverclockDesc = 提高最大电容量和功率。还会将电池大小从三倍提高到四倍。发电时会产生废热。
+	ReactorLargeOverclockDesc = 提高功率。还会将电池大小从三倍提高到四倍。发电时会产生废热。
 	ReactorMed = 中型反应堆芯
 	ReactorMedDesc = 发电装置，可为星舰各种系统生产双倍的供电等离子电池。
 	ReactorMedIcon = 中型反应堆
@@ -4378,7 +4382,7 @@ Stats
 	DetonationRangeFmt = "<white>引爆距离：</white><good>{0:0}</good> <gray>米</gray>"
 	DiamondCapacityFmt = "<white>金刚石容量：</white><good>{0}</good>"
 	DiamondCarbonUsageFmt = "<white>碳消耗：</white><good>{0:0.##}</good><gray>/金刚石（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
-	DiamondPowerUsageFmt = "<white>能耗：</white><good>{0:0.##}</good> <gray>兆焦/金刚石（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	DiamondPowerUsageFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/金刚石（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	DiamondProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>金刚石/秒</gray>"
 	DilationFactorFmt = "<white>膨胀因子：</white><good>{0:0.###}x</good>"
 	DilationHeatSpreadFmt = "<white>热能传导：</white><good>{0:0.##}</good><gray><sup>[2]</sup> 米</gray>"
@@ -4422,6 +4426,7 @@ Stats
 	HyperiumCapacityFmt = "<white>超光素容量：</white><good>{0}</good>"
 	IonLightningIntervalFmt = "<white>闪电触发间隔：</white><good>{0:0.#}</good> <gray>秒（光束越强，间隔越短）</gray>"
 	IronCapacityFmt = "<white>铁容量：</white><good>{0}</good>"
+	Lifetime = "<white>存在时间：</white><good>{0:0.#}</good> <gray>秒</gray>"
 	LightningChainChanceFmt = "<white>闪电链跳跃几率：<gray>（每次打击几率）</gray></white><good>{0:0.#}%</good>"
 	LightningChainStrikeCountRangeFmt = "<white>闪电链打击次数：</white><good>{0}-{1}</good>"
 	LightningChanceFmt = "<white>闪电触发几率：</white><good>{0:0.#}%</good>"
@@ -5341,7 +5346,7 @@ Tutorials
 		
 		Fame = 你当前的<fame>名望</fame>显示在右上角，<money>信用点</money>下面。
 		FameCrew = 随着<fame>名望</fame>的增加，会有更多人愿意加入你的队伍！船员永远不嫌多！
-		IncreasingFame = <good>击败敌人</good>、<good>完成任务</good>时，<fame>名望</fame>便会提升。名望值是永远不会下降的。
+		IncreasingFame = <good>击败敌人</good>、<good>完成任务</good>时，<fame>名望</fame>便会提升。
 		Tip = <good>提示：</good>随着你的名气越来越大，你很快就将无法通过摧毁低级别敌舰、完成低级别任务赚取名望。击败更高级别的敌舰，完成更困难的任务，稳步提升<fame>名望</fame>吧。
 		Title = 名扬四海
 	}
@@ -5501,6 +5506,7 @@ Tutorials
 	Overclocking
 	{
 		
+		Blueprints = 你需要事先在空间站购买<fame_color>超频蓝图</fame_color>，之后才能为部件超频。
 		HeatManagement = <good>提示：</good>你应该将超频的部件连接到<good>热能网络</good>中，存储其产生的废热并散热，以保障星舰安全。否则废热会转化为危险的<orange>舰体热能</orange>。
 		Overview1 = 许多部件都可以通过<bad>超频</bad>强化其功能，但同时也会产生<orange>废热</orange>。
 		Overview2 = "将光标移动到部件上，然后按 <btn id='Design.ToggleSecondaryTooltip'/>，即可查看其超频效果。"
@@ -5613,6 +5619,7 @@ Tutorials
 	{
 		
 		Blueprints = 没有必需的蓝图，就<good>无法建造</good>许多武器等其他星舰部件。
+		Overclocks = 许多部件会有更为强力的<orange>超频模式</orange>，需要与其基础蓝图分别购买。
 		Permanent = 购买蓝图能够<good>永久解锁</good>建造该类型部件的能力。
 		Purchase = 要购买蓝图，需要呼叫空间站并选择<white>购买蓝图</white>选项卡。
 		Title = 获取蓝图

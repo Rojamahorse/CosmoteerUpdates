@@ -888,8 +888,9 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			Type = TriggeredEffects
 			Trigger = ScorchedTrigger
 			Location = &~/Part/Components/DestroyedEffects/Location
-			MediaEffects = &~/Part/Components/DestroyedEffects/MediaEffects
+			MediaEffects = &~/Part/Components/DestroyedEffects2/MediaEffects
 			HitEffects = &~/Part/Components/DestroyedEffects/HitEffects
+			IncludeWhenUnderConstruction = false
 		}
 
 		DestroyedEffects
@@ -899,6 +900,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			FactorHitEffectsWith = MissileStorage
 			FactorMediaEffectsWith = &FactorHitEffectsWith
 			Location = [2, 2]
+			IncludeWhenUnderConstruction = false
 
 			HitEffects
 			[

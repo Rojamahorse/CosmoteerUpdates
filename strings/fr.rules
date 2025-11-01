@@ -333,6 +333,7 @@ BuildBox
 	NoResourceAccessFmt = "<bad>✘ Sans {0}</bad>"
 	NoResourceAccessWeakFmt = "<yellow>✘ Sans {0}</yellow>"
 	NoWorkNeeded = "AUCUN TRAVAIL REQUIS"
+	NotInBlueprintMode = "Non disponible en mode Plans."
 	NothingToForget = "Rien à oublier."
 	NothingToRedo = "Rien à rétablir."
 	NothingToUndo = "Rien à annuler."
@@ -1986,6 +1987,7 @@ Inputs
 		FocusMidpoint = "Centrer sur le point médian entre sélection et cible"
 		FocusSelected = "Centrer sur les vaisseaux/composants sélectionnés"
 		FocusTargets = "Centrer sur l'ennemi visé"
+		HideShipRoofUnderCursor = "Afficher l'intérieur des vaisseaux au passage du curseur"
 		Name = "Commandes d'affichage"
 		PanDown = "Panoramique en bas"
 		PanLeft = "Panoramique à gauche"
@@ -2281,6 +2283,8 @@ Misc
 	ShortCostK = "{0:#,#,.#} K"
 	ShortCostM = "{0:#,#,,.#} M"
 	SteamNotInitialized = "<bad>Cosmoteer n'a pas pu se connecter au client Steam.</bad>\n\nCertaines fonctionnalités comme les parties multijoueurs en ligne, le Workshop Steam et les sauvegardes cloud ne seront pas disponibles. Vos sauvegardes et vos vaisseaux enregistrés seront également susceptibles de ne pas vous être accessibles, car ils sont associés à votre identifiant Steam, qui n'a pas pu être déterminé.\n\nVeuillez vous assurer que le client Steam est en cours d'exécution et à jour, qu'il n'est pas ouvert en mode Administrateur ou sous un autre compte utilisateur de votre système d'exploitation, et que vous disposez d'une licence de Cosmoteer valide sur Steam."
+	SteamTimelineShipDeathDesc = "Le vaisseau {0} a été détruit"
+	SteamTimelineShipDeathTitle = "Vaisseau détruit"
 	TransferReset = Réinitialiser
 	Unknown = Inconnu
 	Yes = Oui
@@ -3018,7 +3022,7 @@ Parts
 	MiningLaserSmallDesc = "Une paire de deux rayons lasers de précision montés sur le toit, capables de rapidement extraire des ressources des astéroïdes les plus résistants. Également efficaces pour exploiter des épaves, et en cas de coup dur, peuvent servir d'arme courte portée."
 	MiningLaserSmallIcon = "Laser de forage"
 	MiningLaserSmallOverclock = "Laser de forage surchargé"
-	MiningLaserSmallOverclockDesc = "Ajoute une zone d'effet aux deux lasers de forage. Les tirs génèrent de la chaleur de récupération."
+	MiningLaserSmallOverclockDesc = "Ajoute une zone d'effet aux deux lasers de forage, au coût du ralentissement du minage de précision. Les tirs génèrent de la chaleur de récupération."
 	MissileLauncher = "Lance-missiles et mines"
 	MissileLauncherDesc = "Lance des missiles ou des mines de tous types.\n\nLe type de munitions lancées peut être modifié à tout moment pendant ou après la construction, voire au combat."
 	MissileLauncherIcon = Lanceur
@@ -3054,7 +3058,7 @@ Parts
 	ReactorLargeDesc = "Un générateur qui produit trois fois plus de batteries de plasma nécessaires à l'alimentation de nombreux systèmes du vaisseau."
 	ReactorLargeIcon = "Grand réacteur"
 	ReactorLargeOverclock = "Grand cœur de réacteur surchargé"
-	ReactorLargeOverclockDesc = "Augmente le taux de production et la capacité énergétique maximale. En outre, les batteries passent d'une capacité triplée à une capacité quadruplée. La production génère de la chaleur de récupération."
+	ReactorLargeOverclockDesc = "Augmente le taux de production. En outre, les batteries passent d'une capacité triplée à une capacité quadruplée. La production génère de la chaleur de récupération."
 	ReactorMed = "Cœur de réacteur moyen"
 	ReactorMedDesc = "Un générateur qui produit deux fois plus de batteries de plasma nécessaires à l'alimentation de nombreux systèmes du vaisseau."
 	ReactorMedIcon = "Réacteur moy."
@@ -4378,7 +4382,7 @@ Stats
 	DetonationRangeFmt = "<white>Portée de l'explosion :</white> <good>{0:0}</good> <gray>mètres</gray>"
 	DiamondCapacityFmt = "<white>Capacité en diamants :</white> <good>{0}</good>"
 	DiamondCarbonUsageFmt = "<white>Consommation de carbone :</white> <good>{0:0.##}</good><gray>/diamant (</gray><good>{1:0.##}</good><gray>/s)</gray>"
-	DiamondPowerUsageFmt = "<white>Consommation d'énergie :</white> <good>{0:0.##}</good> <gray>MJ/diamant (</gray><good>{1:0.##}</good> <gray>/s)</gray>"
+	DiamondPowerUsageFmt = "<white>Consommation d'énergie :</white> <good>{0:0.##}</good><gray>/diamant (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	DiamondProductionFmt = "<white>Taux de production :</white> <good>{0:0.##}</good><gray> diamants/s</gray>"
 	DilationFactorFmt = "<white>Facteur de dilatation :</white> <good>{0:0.###}x</good>"
 	DilationHeatSpreadFmt = "<white>Propagation thermique :</white> <good>{0:0.##}</good><gray><sup>[2]</sup> mètres</gray>"
@@ -4422,6 +4426,7 @@ Stats
 	HyperiumCapacityFmt = "<white>Capacité en hyperium :</white> <good>{0}</good>"
 	IonLightningIntervalFmt = "<white>Intervalle entre les éclairs :</white> <good>{0:0.#}</good> <gray>s (réduit en fonction de la puissance du rayon)</gray>"
 	IronCapacityFmt = "<white>Capacité en fer :</white> <good>{0}</good>"
+	Lifetime = "<white>Durée de vie :</white> <good>{0:0.#}</good> <gray>s</gray>"
 	LightningChainChanceFmt = "<white>Probabilité de frappe supplémentaire des éclairs :</white> <good>{0:0.#} %</good> <gray>par frappe</gray>"
 	LightningChainStrikeCountRangeFmt = "<white>Nombre de frappes des éclairs :</white> <good>{0}-{1}</good>"
 	LightningChanceFmt = "<white>Probabilité d'éclair :</white> <good>{0:0.#} %</good>"
@@ -5341,7 +5346,7 @@ Tutorials
 		
 		Fame = "Votre niveau actuel de <fame>RENOM</fame> est indiqué dans le coin supérieur droite, sous vos <money>CRÉDITS</money>."
 		FameCrew = "À mesure que votre <fame>RENOM</fame> augmente, votre popularité grandit et de nouveaux candidats voudront rejoindre votre équipage ! Plus votre équipage est important, mieux c'est !"
-		IncreasingFame = "Lorsque vous <good>battez des ennemis</good> et <good>terminez des missions</good>, votre <fame>RENOM</fame> augmente. Il ne diminuera jamais."
+		IncreasingFame = "Lorsque vous <good>battez des ennemis</good> et <good>terminez des missions</good>, votre <fame>RENOM</fame> augmente."
 		Tip = "<good>CONSEIL :</good> à mesure que votre réputation grandit, les missions et vaisseaux de faible niveau ne suffisent plus à faire votre renom. Venez à bout de vaisseaux et de missions de niveau supérieur afin de gagner toujours plus en <fame>RENOM</fame>."
 		Title = "Gagner en gloire"
 	}
@@ -5501,6 +5506,7 @@ Tutorials
 	Overclocking
 	{
 		
+		Blueprints = "Avant de pouvoir surcharger un composant, vous devez acheter le <fame_color>plan de surcharge</fame_color> auprès d'une station spatiale."
 		HeatManagement = "<good>CONSEIL :</good> les composants surchargés doivent être connectés à un <good>réseau thermique</good> de façon à emmagasiner sans risque ou à dissiper la chaleur de récupération produite. Dans le cas contraire, cette dernière fera <orange>surchauffer la coque</orange> de façon dangereuse."
 		Overview1 = "De nombreux composants peuvent être <bad>surchargés</bad>, ce qui modifiera leurs fonctionnalités de façon puissante, mais en contrepartie, leur fera générer de la <orange>chaleur de récupération</orange>."
 		Overview2 = "Pour savoir en quoi la surcharge modifie un composant, passez le curseur de votre souris dessus pour afficher son infobulle, puis appuyez sur <btn id='Design.ToggleSecondaryTooltip'/>."
@@ -5613,6 +5619,7 @@ Tutorials
 	{
 		
 		Blueprints = "De nombreuses armes et autres composants de vaisseaux <good>ne peuvent pas être construits</good> tant que vous n'avez pas obtenu les plans nécessaires."
+		Overclocks = "De nombreux composants proposent aussi des <orange>modes de surcharge</orange> plus puissants, qui doivent être achetés séparément des plans de base."
 		Permanent = "Acheter des plans vous permet de construire le composant <good>aussi souvent que vous le souhaitez</good>."
 		Purchase = "Pour acheter des plans, appelez une station spatiale, puis sélectionnez l'onglet <white>Plans</white>."
 		Title = "Obtenir des plans"

@@ -813,8 +813,9 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			Type = TriggeredEffects
 			Trigger = ScorchedTrigger
 			Location = &~/Part/Components/DestroyedEffects/Location
-			MediaEffects = &~/Part/Components/DestroyedEffects/MediaEffects
+			MediaEffects = &~/Part/Components/DestroyedEffects_UnderConstruction/MediaEffects
 			HitEffects = &~/Part/Components/DestroyedEffects/HitEffects
+			IncludeWhenUnderConstruction = false
 		}
 
 		DestroyedEffects
@@ -822,8 +823,8 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			Type = DeathEffects
 			OperationalToggle = ScorchedToggle
 			FactorHitEffectsWith = MineStorage
-			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
 			Location = [2, 1.5]
+			IncludeWhenUnderConstruction = false
 
 			HitEffects
 			[
@@ -858,6 +859,13 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 					}
 				}
 			]
+		}
+		// Unscaled by storage to prevent crash during construction
+		DestroyedEffects_UnderConstruction
+		{
+			Type = DeathEffects
+			Location = &~/Part/Components/DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
 		}
 
 		Indicators

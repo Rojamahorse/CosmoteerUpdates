@@ -1009,6 +1009,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			Location = [1.5, 2]
 			FactorHitEffectsWith = MissileStorage
 			FactorMediaEffectsWith = &FactorHitEffectsWith
+			IncludeWhenUnderConstruction = false
 
 			HitEffects
 			[

@@ -1,4 +1,4 @@
-__Name = "日本語"
+__Name = "英語"
 __DebugOnly = false
 AI
 {
@@ -333,6 +333,7 @@ BuildBox
 	NoResourceAccessFmt = "<bad>✘ なし{0}</bad>"
 	NoResourceAccessWeakFmt = "<yellow>⚠ なし{0}</yellow>"
 	NoWorkNeeded = 作業不要
+	NotInBlueprintMode = この機能は設計図モードでは利用できません。
 	NothingToForget = 削除するものはありません。
 	NothingToRedo = やり直すものはありません。
 	NothingToUndo = 元に戻すものはありません。
@@ -1368,7 +1369,7 @@ GameSetupScreen
 	CancelReady = 準備完了をキャンセル
 	CancelReadyTip = 「準備完了」を再びクリックするまでゲームを開始しないようにします。
 	CannotSelectGameMode = 現在のロビータイプではこのゲームモードは選択できません。
-	CantReadyTip = 艦隊には船を1隻以上追加する必要があります。
+	CantReadyTip = 艦隊に船を1隻以上追加する必要があります。
 	CantStartCountdownTip = 艦隊に船を1隻以上追加する必要があります。
 	CantStartOthersNotReadyTip = プレイヤー全員の準備が整うまでゲームを開始できません。
 	CantStartTip = 艦隊に船を1隻以上追加する必要があります。
@@ -1986,6 +1987,7 @@ Inputs
 		FocusMidpoint = 選択した/目標の中間地点に焦点を当てる
 		FocusSelected = 選択した船/パーツにフォーカス
 		FocusTargets = 狙った敵に焦点を当てる
+		HideShipRoofUnderCursor = カーソル位置の船内を表示
 		Name = コントロールを見る
 		PanDown = カメラを下に移動
 		PanLeft = カメラを左に移動
@@ -2114,7 +2116,7 @@ LobbyScreen
 		SettingFmt = ""
 		SettingNo = いいえ
 		SettingYes = はい
-		TimeRemainingFmt = "<bad>{0:m\\:ss}残り時間</bad>"
+		TimeRemainingFmt = "<bad>{0:m\\:ss}残り</bad>"
 		YourMods = あなたが使用中でホストが使用していないMOD：
 	}
 	GameJoinDenyReason
@@ -2281,6 +2283,8 @@ Misc
 	ShortCostK = ""
 	ShortCostM = ""
 	SteamNotInitialized = "<bad>CosmoteerはSteamクライアントに接続することができませんでした。</bad>\n\nオンラインマルチプレイやSteamワークショップ、またクラウドセーブといった機能が使えません。また、あなたのゲームと船のセーブデータはSteamユーザーIDと紐づいているため、SteamユーザーIDが特定できないとデータが見つからない場合もあります。\n\nSteamクライアントが作動していて、最新版であること、管理者として実行していないか、またSteamのCosmoteerライセンスが有効であるかをご確認ください。"
+	SteamTimelineShipDeathDesc = "{0}は破壊されました"
+	SteamTimelineShipDeathTitle = 船が破壊されました
 	TransferReset = リセット
 	Unknown = 不明
 	Yes = はい
@@ -3018,7 +3022,7 @@ Parts
 	MiningLaserSmallDesc = 2本のルーフ搭載型精密レーザービームで、頑丈な小惑星からも素早く資源を回収することができます。船のサルベージにも有効であり、また、危機的状況では短距離武器としても使えます。
 	MiningLaserSmallIcon = 採掘レーザー
 	MiningLaserSmallOverclock = オーバークロックした採掘レーザー
-	MiningLaserSmallOverclockDesc = 両方の採掘ビームの効果範囲が広くなります。発射時に廃熱が発生します。
+	MiningLaserSmallOverclockDesc = 精密採掘の速度が低下する代わりに、両方の採掘ビームの効果範囲が広くなります。発射時に廃熱が発生します。
 	MissileLauncher = ミサイル＆機雷ランチャー
 	MissileLauncherDesc = "種類を問わずミサイルと機雷を発射。\n\n発射する弾薬は建造中または建造後のいつでも、戦闘中であっても変更可能。"
 	MissileLauncherIcon = ランチャー
@@ -3054,7 +3058,7 @@ Parts
 	ReactorLargeDesc = 船の多くのシステムに動力を供給するのに必要なプラズマバッテリーを3倍の生産能力で生産する発電装置。
 	ReactorLargeIcon = 大型リアクター
 	ReactorLargeOverclock = オーバークロックした大型リアクター炉心
-	ReactorLargeOverclockDesc = 最大動力容量と生成率を増加させます。さらに、バッテリーサイズを3倍容量から4倍容量に拡大します。動力生成時に廃熱が発生します。
+	ReactorLargeOverclockDesc = 生成率を増加させます。さらに、バッテリーサイズを3倍容量から4倍容量に拡大します。動力生成時に廃熱が発生します。
 	ReactorMed = 中型リアクター炉心
 	ReactorMedDesc = 船の多くのシステムに動力を供給するのに必要なプラズマバッテリーを生産する発電装置。
 	ReactorMedIcon = 中型リアクター
@@ -3447,9 +3451,9 @@ Resource
 	MissilePartNuke = 核ミサイル部品
 	MissilePartNukeDesc = 核ミサイルの組み立てに使用する部品。
 	MissilePartNukePlural = 核ミサイル部品
-	MissilePartThermal = 熱弾頭ミサイル部品
+	MissilePartThermal = T.C.ミサイル部品
 	MissilePartThermalDesc = 熱弾頭ミサイルの組み立てに使用する部品。
-	MissilePartThermalPlural = 熱弾頭ミサイル部品
+	MissilePartThermalPlural = T.C.ミサイル部品
 	NotMineable = <b>乗組員では採掘不可能。採掘レーザーが必要です。</b>
 	Processor = プロセッサ
 	ProcessorDesc = 上級船の一部のパーツの建造に使用する、貴重なコンピューター構成部品。
@@ -3806,7 +3810,7 @@ Settings
 		BuildAutoRotateTip = このオプションをチェックすると、船の編集画面を開いた時に選択中の船に合わせて視界が自動的に回転します。
 		BuildGrabTool = グリップツール
 		BuildGrabToolTip = 「グリップツール」が船の編集画面を開いた時のデフォルトで設定されているツールになります。
-		BuildLbl = 船を編集
+		BuildLbl = 船の編集
 		BuildSelectTool = 選択ツール
 		BuildSelectToolTip = 「選択ツール」が船の編集画面を開いた時のデフォルトで設定されているツールになります。
 		BuildShowNearestPaths = 一番近くの乗組員/動力源/弾薬を表示
@@ -3960,7 +3964,7 @@ Settings
 		VelocityArrowsModeAllTip = 全ての船に速度の矢印が表示されます。
 		VelocityArrowsModeDirectControl = 直接操縦のみ
 		VelocityArrowsModeDirectControlTip = 直接操縦されている船にのみ速度の矢印が表示されます。
-		VelocityArrowsModeNone = 表示なし
+		VelocityArrowsModeNone = なし
 		VelocityArrowsModeNoneTip = どの船にも速度の矢印は表示されません。
 		VelocityArrowsModeSelected = 選択中の船
 		VelocityArrowsModeSelectedTip = 選択中の船のみ、または選択中のパーツがあるものに速度の矢印が表示されます。
@@ -4378,7 +4382,7 @@ Stats
 	DetonationRangeFmt = "<white>爆轟範囲：</white> <good>x{0:0}</good> <gray>メートル</gray>"
 	DiamondCapacityFmt = "<white>ダイヤモンド容量：</white> <good>{0}</good>"
 	DiamondCarbonUsageFmt = "<white>炭素使用：</white> <good>{0:0.##}</good><gray>/ダイヤモンド（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
-	DiamondPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good> <gray>MJ/ダイヤモンド（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	DiamondPowerUsageFmt = "<white>動力使用：</white> <good>{0:0.##}</good><gray>/ダイヤモンド（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	DiamondProductionFmt = "<white>生産率：</white> <good>{0:0.##}</good><gray> ダイヤモンド/秒</gray>"
 	DilationFactorFmt = "<white>拡張係数：</white> <good>{0:0.###}x</good>"
 	DilationHeatSpreadFmt = "<white>熱拡散距離：</white> <good>{0:0.##}</good><gray><sup>[2]</sup>メーター</gray>"
@@ -4422,6 +4426,7 @@ Stats
 	HyperiumCapacityFmt = "<white>ハイペリウム容量：</white> <good>{0}</good>"
 	IonLightningIntervalFmt = "<white>雷の間隔：</white><good>{0:0.#}</good> <gray>秒（ビームの強度によって減少）</gray>"
 	IronCapacityFmt = "<white>鉄容量：</white> <good>{0}</good>"
+	Lifetime = "<white>寿命：</white> <good>{0:0.#}</good> <gray>秒</gray>"
 	LightningChainChanceFmt = "<white>雷の連鎖率：</white><gray>落雷ごとに</gray><good>{0:0.#}%</good>"
 	LightningChainStrikeCountRangeFmt = "<white>落雷の連鎖：</white> <good>{0}-{1}</good>"
 	LightningChanceFmt = "<white>雷の確率：</white> <good>{0:0.#}%</good>"
@@ -4851,7 +4856,7 @@ Tips
 		Tip1 = MSペイント、Paint.NET、Gimp、Photoshop等の外部のアートプログラムを使用して船の基本の形の輪郭を作成することができます。
 		Tip2 = 1．まずお好みのアートプログラムを使用して船の全般的な形を描いた<b>白黒</b>PNGイメージファイルをセーブします。白のピクセルは通路タイルとして、黒のピクセルは空いたスペースとして判断されます。
 		Tip3 = "2．次に船の編集画面で<img name='hamburger_up'/>メニューを開き、<white>形をPNGから読み込む</white>を選択します。セーブしたPNGイメージを選択してください。"
-		Tip4 = 3．船の現在の設計図はPNGイメージファイルを作成したものに置き換わります。武器、スラスター、防衛装置やその他のパーツを追加してお好みの船を完成させましょう。
+		Tip4 = 3．現在の船の設計図は、PNG画像ファイルから作成された設計図に置き換えられます。。武器、スラスター、防衛装置やその他のパーツを追加してお好みの船を完成させましょう。
 		Title = PNGから形をロード
 	}
 	MidpointFocus
@@ -5341,7 +5346,7 @@ Tutorials
 		
 		Fame = 現在の<fame>名声</fame>は、右上隅にある<money>クレジット</money>の下に表示されます。
 		FameCrew = <fame>名声</fame>が上がるにつれ、より多くの乗組員があなたの船に加わりたいと思うようになります！乗組員なんて何人いてもいいですからね！
-		IncreasingFame = <good>敵を倒して</good><good>ミッションを完遂</good>すると、<fame>名声</fame>が上がります。下がることはありません。
+		IncreasingFame = <good>敵を倒して</good><good>ミッションを完遂</good>すると、<fame>名声</fame>が上がります。
 		Tip = "<good>ヒント：</good>　有名になると、低レベルの船やミッションからは名声が獲得できなくなります。より高いレベルの船を倒しミッションを完遂して、<fame>名声</fame>をどんどん上げていきましょう。"
 		Title = 名を揚げる
 	}
@@ -5501,6 +5506,7 @@ Tutorials
 	Overclocking
 	{
 		
+		Blueprints = パーツをオーバークロックする前に、まず宇宙ステーションで<fame_color>オーバークロック設計図</fame_color>を購入する必要があります。
 		HeatManagement = <good>ヒント：</good>オーバークロックした部品は<good>熱ネットワーク</good>に接続して安全に保管するか、その廃熱を放射します。そうしないと、廃熱は危険な<orange>船体熱</orange>へと変化してしまいます。
 		Overview1 = 多くの部品は<bad>オーバークロック</bad>が可能で、その機能を強化させますが、その結果<orange>廃熱</orange>が発生します。
 		Overview2 = "部品がオーバークロックするとどうなるか確認するには、カーソルを部品に合わせてツールチップを表示させ、<btn id='Design.ToggleSecondaryTooltip'/>を押してください。"
@@ -5613,6 +5619,7 @@ Tutorials
 	{
 		
 		Blueprints = 多くの武器やその他の船のパーツは、設計図を入手するまでは<good>建造できません</good>。
+		Overclocks = 多くのパーツには、基本設計図とは別に購入する必要がある、より強力な<orange>オーバークロックモード</orange>もあります。
 		Permanent = 設計図を購入すると、その種類のパーツを建造するアビリティが<good>永久に解放</good>されます。
 		Purchase = 設計図を購入するには、宇宙ステーションに交信し、<white>設計図の購入</white>タブを選択してください。
 		Title = 設計図を入手
@@ -5676,7 +5683,7 @@ Wishlist
 {
 	
 	Caption = 今すぐ購入！
-	ExitMsg = ""
+	ExitMsg = Cosmoteerの体験版をプレイしていただきありがとうございます！
 	FameLimitReached = "おめでとうございます！！！\n体験版での<fame>名声</fame>の最大値に到達しました。しかしまだ伝説には道半ばといったところです。もちろんプレイを続けても構いませんが、これ以上の名声は獲得できず、また他の星系へ行くこともできません。旅を続けるためには、ぜひ製品版をどうぞ！"
 	FeatureMissingMsg = <bad>この機能は体験版では使用できません。</bad>
 	Features = "<fame_color>フルバージョンには以下の内容が含まれます。</fame_color><s4>\n\n</s4>● 銀河系全体が探索可能。全星系が開放されています！<s4>\n\n</s4>● Co-opとPvPマルチプレイ<s4>\n\n</s4>● 武器と船の部品が増えています（レイルガン、核兵器、EPM、大型シールド、トラクタービームなどなど！）<s4>\n\n</s4>● 4つの勢力で利用可能な200以上の船のデザイン<s4>\n\n</s4>● ModとSteamワークショップのサポート"

@@ -385,7 +385,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			RotateSpeed = 90d
 			FireThresholdAngle = 1d
 			AIFirepowerRating = 600
-			Emitter = BulletEmitter
+			Emitter = WeaponEmitterSelector
 			FirePermissionToggle = FireModeToggle
 			AutoTargetCrewSafetyDist = 8
 			ToggleOnMode = IsReloaded
@@ -413,6 +413,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 				VertexColor = [255, 255, 255, 51]
 				QuadCount = 64
 			}
+		}
+		WeaponEmitterSelector
+		{
+			Type = ToggleEmitterSelector
+			Toggle = IsOverclocked
+			ToggleOffEmitter = BulletEmitter
+			ToggleOnEmitter = Overclock_BulletEmitter
 		}
 		TurretTriggered_Overclocked
 		{

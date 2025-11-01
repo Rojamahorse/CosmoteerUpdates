@@ -1,17 +1,21 @@
 OVERCLOCK
 {
-	THRUST_FACTOR = 250%
-	RECOVERY_FACTOR = 50%
+	THRUST = 7200
+	THRUST_FACTOR = (&THRUST) / (&~/Part/ThrusterForce)
+	
 	MAX_POWER_USAGE_FACTOR = 175%
 	POWER_USAGE_FACTOR = 1 / (&THRUST_FACTOR) * (&MAX_POWER_USAGE_FACTOR)
-	THRUST_HEAT_PER_SECOND = 750
+	THRUST_HEAT_PER_SECOND = 675
 
-	BASE_BOOST_HEAT_FACTOR = 175%
-	BOOST_HEAT_FACTOR_PER_BATTERY = 20%
+	BOOST_THRUST = 24000
+	BOOST_THRUST_FACTOR = (&BOOST_THRUST) / (&~/Part/BoostedThrusterForce)
+
+	BASE_BOOST_HEAT_FACTOR = 150%
+	BOOST_HEAT_FACTOR_PER_BATTERY = 24%
 	BOOST_HEAT_FACTOR_PER_SECOND = -6%
 	BOOST_HEAT_FACTOR_POWER_THRESHOLD = (&~/Part/Components/RealBatteryStorage/MaxResources)
 
-	BOOST_MAX_POWER_USAGE_FACTOR = 140%
+	BOOST_MAX_POWER_USAGE_FACTOR = 175%
 	BOOST_POWER_RAMP_TIME = 2
 
 	AUDIO_SPEED_FACTOR = 115%
@@ -44,7 +48,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 	SelectionTypeID = "thrusters"
 	MaxHealth = 6000
 	ProhibitBelow = 18
-	ThrusterForce = 3200
+	ThrusterForce = 3600
 	ThrustIncreaseTime
 	{
 		BaseValue = 2
@@ -65,20 +69,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 		]
 	}
 	ThrustDecreaseTime = 0
-	ThrustRecoveryTime
-	{
-		BaseValue = 2
-		Modifiers
-		[
-			{
-				Type = BuffRemap
-				BuffType = Overclock
-				ModificationMode = Multiply
-				RemapFrom = [0, 1]
-				RemapTo = [1, (&~/OVERCLOCK/RECOVERY_FACTOR)]
-			}
-		]
-	}
+	ThrustRecoveryTime = 2
 	FuelUsage = 200
 	BoostedThrusterForce = 9600
 	BoostedThrustIncreaseTime = 0
@@ -794,7 +785,18 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					SoftOperationalToggle = IsOperational
 					Force = &~/Part/BoostedThrusterForce
 					MinActivation = 0
-					MaxActivation = &~/Part/Components/BoostOffComponents/Components/MainThruster/MaxActivation
+					MaxActivation : ~/Part/Components/BoostOffComponents/Components/MainThruster/MaxActivation
+					{
+						Modifiers
+						[
+							&../^/0/Modifiers/0
+							// Overclock modifier
+							: ../^/0/Modifiers/1
+							{
+								RemapTo = [1, (&~/OVERCLOCK/BOOST_THRUST_FACTOR)]
+							}
+						]
+					}
 					MinUncommandedActivation = &MinActivation
 					MaxUncommandedActivation = &MaxActivation
 					ActivationIncreaseTime = &~/Part/BoostedThrustIncreaseTime
@@ -1606,7 +1608,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				NameKey = "StatCategories/OverclockedBoost"
 				Stats
 				{
-					ThrusterForce = (&~/Part/BoostedThrusterForce) * (&~/OVERCLOCK/THRUST_FACTOR)
+					ThrusterForce = (&~/Part/BoostedThrusterForce) * (&~/OVERCLOCK/BOOST_THRUST_FACTOR)
 					BASE_THRUSTER_POWER_USAGE = (&~/Part/BoostedFuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000
 					ThrusterPowerUsageRamp = [&../BASE_THRUSTER_POWER_USAGE, (&../BASE_THRUSTER_POWER_USAGE) * (&~/OVERCLOCK/BOOST_MAX_POWER_USAGE_FACTOR)]
 					ThrusterPowerUsageRampTime = (&~/OVERCLOCK/BOOST_POWER_RAMP_TIME)

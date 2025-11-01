@@ -333,6 +333,7 @@ BuildBox
 	NoResourceAccessFmt = "<bad>✘ Sin {0}</bad>"
 	NoResourceAccessWeakFmt = "<yellow>⚠ Sin {0}</yellow>"
 	NoWorkNeeded = "NO REQUIERE TRABAJO"
+	NotInBlueprintMode = "No está disponible en el modo de plano."
 	NothingToForget = "No hay nada que olvidar."
 	NothingToRedo = "No hay nada que rehacer."
 	NothingToUndo = "No hay nada que deshacer."
@@ -1986,6 +1987,7 @@ Inputs
 		FocusMidpoint = "Enfocar elemento seleccionado/apuntar al centro"
 		FocusSelected = "Enfocar las naves/partes seleccionadas"
 		FocusTargets = "Enfocar el enemigo apuntado"
+		HideShipRoofUnderCursor = "Ver el interior de la nave bajo el cursor"
 		Name = "Controles de vista"
 		PanDown = "Rotar hacia abajo"
 		PanLeft = "Rotar hacia la izquierda"
@@ -2281,6 +2283,8 @@ Misc
 	ShortCostK = ""
 	ShortCostM = ""
 	SteamNotInitialized = "<bad>Cosmoteer no pudo conectarse con el cliente de Steam.</bad>\n\nFunciones como el modo multijugador en línea, Steam Workshop y el guardado en la nube no funcionarán. También puedes encontrar que tus partidas y naves guardadas no están porque están asociadas con tu ID de usuario de Steam, que no se pudo determinar.\n\nPor favor asegúrate de que el cliente de Steam esté funcionando y actualizado, que no lo estés ejecutando en modo de administrador o como un usuario diferente del sistema operativo y que tienes una licencia válida de Cosmoteer en Steam."
+	SteamTimelineShipDeathDesc = "La nave {0} fue destruida."
+	SteamTimelineShipDeathTitle = "Nave destruida"
 	TransferReset = Restablecer
 	Unknown = "Se desconoce"
 	Yes = Sí
@@ -3018,7 +3022,7 @@ Parts
 	MiningLaserSmallDesc = "Un par de rayos láser de precisión montados en el techo que pueden extraer rápidamente recursos incluso de los asteroides más duros. También es eficaz en el rescate de naves y, en un apuro, puede usarse como arma de corto alcance."
 	MiningLaserSmallIcon = "Láser para Extracción"
 	MiningLaserSmallOverclock = "Láser para Extracción Sobreacelerado"
-	MiningLaserSmallOverclockDesc = "Agrega un área de efecto a ambos rayos de extracción. Al dispararlo, se genera calor residual."
+	MiningLaserSmallOverclockDesc = "Agrega un área de efecto a ambos rayos de extracción, pero son más lentos. Al dispararlo, se genera calor residual."
 	MissileLauncher = "Lanzador de Misiles y Minas"
 	MissileLauncherDesc = "Lanza misiles o minas de cualquier tipo.\n\nEl tipo de municiones lanzadas puede cambiarse en cualquier momento durante o después de la construcción, incluso durante la batalla."
 	MissileLauncherIcon = Lanzador
@@ -3054,7 +3058,7 @@ Parts
 	ReactorLargeDesc = "Un generador de energía que produce baterías de plasma de triple capacidad necesarias para alimentar muchos de los sistemas de la nave."
 	ReactorLargeIcon = "Reactor Grande"
 	ReactorLargeOverclock = "Núcleo de Reactor Grande Sobreacelerado"
-	ReactorLargeOverclockDesc = "Aumenta la capacidad energética máxima y la tasa de producción. Además, aumenta el tamaño de las baterías de triple a cuádruple capacidad. Al producir energía, se genera calor residual."
+	ReactorLargeOverclockDesc = "Aumenta la tasa de producción. Además, aumenta el tamaño de las baterías de triple a cuádruple capacidad. Al producir energía, se genera calor residual."
 	ReactorMed = "Núcleo de Reactor Mediano"
 	ReactorMedDesc = "Un generador de energía que produce baterías de plasma de doble capacidad necesarias para alimentar muchos de los sistemas de la nave."
 	ReactorMedIcon = "Reactor Med."
@@ -3447,9 +3451,9 @@ Resource
 	MissilePartNuke = "Parte de misil nuclear"
 	MissilePartNukeDesc = "Partes utilizadas para armar misiles nucleares."
 	MissilePartNukePlural = "Partes de misil nuclear"
-	MissilePartThermal = "Parte de misil encapsulado térmico"
+	MissilePartThermal = "Parte de misil ET"
 	MissilePartThermalDesc = "Partes utilizadas para armar misiles misil encapsulados térmicos."
-	MissilePartThermalPlural = "Partes de misil encapsulado térmico"
+	MissilePartThermalPlural = "Partes de misil ET"
 	NotMineable = "<b>No es explotable por parte de la tripulación. Se requiere láser de minería.</b>"
 	Processor = Procesador
 	ProcessorDesc = "Componente valioso de los sistemas de cómputo que se utiliza para construir algunas partes avanzadas de las naves."
@@ -4378,7 +4382,7 @@ Stats
 	DetonationRangeFmt = "<white>Rango de detonación:</white> <good>{0:0}</good> <gray>m</gray>"
 	DiamondCapacityFmt = "<white>Capacidad de Diamantes:</white> <good>{0}</good>"
 	DiamondCarbonUsageFmt = "<white>Uso de Carbono:</white> <good>{0:0.##}</good><gray>/diamante (</gray><good>{1:0.##}</good><gray>/s)</gray>"
-	DiamondPowerUsageFmt = "<white>Uso de Energía:</white> <good>{0:0.##}</good>°<gray>MJ/diamante (</gray><good>{1:0.##}</good><gray>/s)</gray>"
+	DiamondPowerUsageFmt = "<white>Uso de Energía:</white> <good>{0:0.##}</good> <gray>/diamante (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	DiamondProductionFmt = "<white>Tasa de producción:</white> <good>{0:0.##}</good><gray> diamantes/s</gray>"
 	DilationFactorFmt = "<white>Factor de la dilatación:</white> <good>{0:0.###}x</good>"
 	DilationHeatSpreadFmt = "<white>Extensión del calor:</white> <good>{0:0.##}</good><gray><sup>[2]</sup> m</gray>"
@@ -4422,6 +4426,7 @@ Stats
 	HyperiumCapacityFmt = "<white>Capacidad de Hiperio:</white> <good>{0}</good>"
 	IonLightningIntervalFmt = "<white>Intervalo del rayo:</white> <good>{0:0.#}</good> <gray>s (se reduce según la fuerza del rayo)</gray>"
 	IronCapacityFmt = "<white>Capacidad de Hierro:</white> <good>{0}</good>"
+	Lifetime = "<white>Vida útil:</white> <good>{0:0.#}</good> <gray>s</gray>"
 	LightningChainChanceFmt = "<white>Probabilidad de la cadena de rayos:</white> <good>{0:0.#} %</good> <gray>por impacto</gray>"
 	LightningChainStrikeCountRangeFmt = "<white>Impacto de la cadena de rayos:</white> <good>{0}-{1}</good>"
 	LightningChanceFmt = "<white>Probabilidad del rayo:</white> <good>{0:0.#} %</good>"
@@ -4851,7 +4856,7 @@ Tips
 		Tip1 = "Puedes usar programas de arte externos como MS Paint, Paint.NET, Gimp o Photoshop para crear los contornos básicos de las formas de las naves..."
 		Tip2 = "1. Primero, usa cualquier programa de arte externo que te guste para guardar un archivo de imagen PNG <b>blanco sobre negro</b> que represente la forma general de la nave. Los píxeles blancos se interpretarán como casillas de pasillos y los píxeles negros se interpretarán como espacios vacíos."
 		Tip3 = "2. Luego, en el Editor de naves, abre el menú <img name='hamburger_up'/> y selecciona <white>Cargar forma desde PNG</white>. Selecciona el archivo de imagen PNG que guardaste."
-		Tip4 = "3. Los planos de la nave actual serán reemplazados con los planos creados con el archivo de imagen PNG. Finaliza la nave agregando armas, propulsores, defensas y otras piezas que creas conveniente."
+		Tip4 = "3. Los planos de la nave actual se reemplazarán con los planos del archivo de imagen PNG. Dale los toques finales a la nave agregando armas, propulsores, defensas y todas las demás piezas que creas convenientes."
 		Title = "Cargar forma desde PNG"
 	}
 	MidpointFocus
@@ -5341,7 +5346,7 @@ Tutorials
 		
 		Fame = "Tu <fame>FAMA</fame> actual se muestra en la esquina superior derecha, debajo de tus <money>CRÉDITOS</money>."
 		FameCrew = "Y, a medida que tu <fame>FAMA</fame> aumente, ¡más personas querrán unirse a tu tripulación! ¡Más tripulación es siempre mejor!"
-		IncreasingFame = "A medida que <good>derrotes enemigos</good> y <good>completes misiones</good>, tu <fame>FAMA</fame> aumentará. Nunca disminuirá."
+		IncreasingFame = "A medida que <good>derrotes enemigos</good> y <good>completes misiones</good>, tu <fame>FAMA</fame> aumentará."
 		Tip = "<good>CONSEJO:</good> Como consecuencia de hacerte famoso, pronto dejarás de ganar fama en las naves y misiones de nivel inferior. Derrota naves y completa misiones de alto nivel para seguir aumentando tu <fame>FAMA</fame>."
 		Title = "Cómo hacerte famoso"
 	}
@@ -5501,6 +5506,7 @@ Tutorials
 	Overclocking
 	{
 		
+		Blueprints = "Para sobreacelerar una parte, debes comprar el <fame_color>plano de sobreaceleración</fame_color> en una estación espacial."
 		HeatManagement = "<good>CONSEJO:</good> Las partes sobreaceleradas deben estar conectadas al <good>sistema térmico</good> para que el calor residual que generan se almacene o se expulse de forma segura. De lo contrario, el calor residual generará un peligroso <orange>sobrecalentamiento de la estructura</orange>."
 		Overview1 = "Muchas partes se pueden <bad>sobreacelerar</bad> con el fin de potenciar su funcionalidad. Sin embargo, esto hace que generen <orange>calor residual</orange> al usarlas."
 		Overview2 = "Para conocer los beneficios del modo sobreaceleración de una parte, pasa el cursor del mouse sobre ella para ver su descripción y presiona <btn id='Design.ToggleSecondaryTooltip'/>."
@@ -5613,6 +5619,7 @@ Tutorials
 	{
 		
 		Blueprints = "Muchas armas y otras partes de las naves <good>son imposibles de construir</good> sin antes adquirir los planos necesarios."
+		Overclocks = "Muchas partes también cuentan con <orange>modos sobreacelerados</orange> más poderosos, que no vienen incluidos en los planos básicos y se compran por separado."
 		Permanent = "La compra de un plano <good>desbloquea permanentemente</good> la capacidad de construir ese tipo de parte."
 		Purchase = "Para comprar planos, haz clic en una estación espacial y selecciona la pestaña <white>Comprar planos</white>."
 		Title = "Cómo adquirir planos"

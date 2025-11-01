@@ -333,6 +333,7 @@ BuildBox
 	NoResourceAccessFmt = "<bad>✘ Sem {0}</bad>"
 	NoResourceAccessWeakFmt = "<yellow>⚠ Sem {0}</yellow>"
 	NoWorkNeeded = "NENHUM TRABALHO NECESSÁRIO"
+	NotInBlueprintMode = "Não está disponível no Modo Planta."
 	NothingToForget = "Não há nada a esquecer."
 	NothingToRedo = "Não há nada a refazer."
 	NothingToUndo = "Não há nada a desfazer."
@@ -1986,6 +1987,7 @@ Inputs
 		FocusMidpoint = "Focar no ponto selecionado/alvo"
 		FocusSelected = "Focar nas naves/peças selecionadas"
 		FocusTargets = "Focar no inimigo alvo"
+		HideShipRoofUnderCursor = "Exibir o interior da nave sob o cursor"
 		Name = "Ver controles"
 		PanDown = "Mover câmera para baixo"
 		PanLeft = "Mover câmera para a esquerda"
@@ -2281,6 +2283,8 @@ Misc
 	ShortCostK = ""
 	ShortCostM = ""
 	SteamNotInitialized = "<bad>Cosmoteer não conseguiu conectar com o cliente Steam.</bad>\n\nFuncionalidades como o modo multijogador online, o Steam Workshop, e salvamentos na nuvem não vão funcionar. Você também notará que seus jogos e naves salvos estão faltando, pois eles estão associados à sua ID de usuário Steam, que não pôde ser determinada.\n\nVerifique se o cliente Steam está operacional e atualizado, se você não o está executando no modo administrador ou como um usuário de sistema diferente, e se você tem uma licença Cosmoteer válida no Steam."
+	SteamTimelineShipDeathDesc = "{0} foi destruída"
+	SteamTimelineShipDeathTitle = "Nave destruída"
 	TransferReset = Redefinir
 	Unknown = Desconhecido
 	Yes = Sim
@@ -3018,7 +3022,7 @@ Parts
 	MiningLaserSmallDesc = "Um par de raios laser de precisão montado no teto, capaz de extrair recursos rapidamente até dos asteroides mais resistentes. Também é eficaz ao recuperar naves e pode ser usado como arma de curto alcance improvisada."
 	MiningLaserSmallIcon = "Laser de mineração"
 	MiningLaserSmallOverclock = "Laser de mineração (Overclocking)"
-	MiningLaserSmallOverclockDesc = "Adiciona uma área de efeito a ambos os raios de mineração. Produz calor ao disparar."
+	MiningLaserSmallOverclockDesc = "Adiciona uma área de efeito a ambos os raios de mineração, mas reduz a precisão ao minerar. Produz calor ao disparar."
 	MissileLauncher = "Lançador de míssil e mina"
 	MissileLauncherDesc = "Lança mísseis e minas de quaisquer tipos.\n\nO tipo de munição lançada pode ser mudado a qualquer momento durante ou depois da construção, até mesmo durante a batalha."
 	MissileLauncherIcon = Lançador
@@ -3054,7 +3058,7 @@ Parts
 	ReactorLargeDesc = "Um gerador de energia que produz as baterias de plasma de tripla capacidade necessárias para alimentar muitos dos sistemas da nave."
 	ReactorLargeIcon = "Reator grande"
 	ReactorLargeOverclock = "Núcleo de reator grande (Overclocking)"
-	ReactorLargeOverclockDesc = "Aumenta a capacidade de energia máxima e a taxa de geração. Além disso, aumenta o tamanho da bateria de tripla para quádrupla capacidade. Produz calor enquanto gera energia."
+	ReactorLargeOverclockDesc = "Aumenta a taxa de geração. Além disso, aumenta o tamanho da bateria de tripla para quádrupla capacidade. Produz calor enquanto gera energia."
 	ReactorMed = "Núcleo de reator médio"
 	ReactorMedDesc = "Um gerador de energia que produz as baterias de plasma de dupla capacidade necessárias para alimentar muitos dos sistemas da nave."
 	ReactorMedIcon = "Reator médio"
@@ -3447,9 +3451,9 @@ Resource
 	MissilePartNuke = "Peça de míssil nuclear"
 	MissilePartNukeDesc = "Peças usadas para montar mísseis nucleares."
 	MissilePartNukePlural = "Peças de míssil nuclear"
-	MissilePartThermal = "Peça de míssil térmico"
+	MissilePartThermal = "Peça de míssil T."
 	MissilePartThermalDesc = "Peças usadas para montar mísseis térmicos."
-	MissilePartThermalPlural = "Peças de míssil térmico"
+	MissilePartThermalPlural = "Peças de míssil T."
 	NotMineable = "<b>Não pode ser minerada pela tripulação. Necessário laser de mineração.</b>"
 	Processor = Processador
 	ProcessorDesc = "Componente valioso de computadores, usado para construir algumas peças avançadas de naves."
@@ -4378,7 +4382,7 @@ Stats
 	DetonationRangeFmt = "<white>Alcance de detonação:</white> <good>{0:0}</good> <gray>metros</gray>"
 	DiamondCapacityFmt = "<white>Capacidade de diamantes:</white> <good>{0}</good>"
 	DiamondCarbonUsageFmt = "<white>Uso de carbono:</white> <good>{0:0.##}</good><gray>/diamante (</gray><good>{1:0.##}</good><gray>/s)</gray>"
-	DiamondPowerUsageFmt = "<white>Uso de energia:</white> <good>{0:0.##}</good> <gray>MJ/diamante (</gray><good>{1:0.##}</good><gray>/s)</gray>"
+	DiamondPowerUsageFmt = "<white>Uso de energia:</white> <good>{0:0.##}</good> <gray>/Diamante (</gray><good>{1:0.##}</good><gray>/s)</gray>"
 	DiamondProductionFmt = "<white>Taxa de produção:</white> <good>{0:0.##}</good><gray> diamantes/s</gray>"
 	DilationFactorFmt = "<white>Fator de dilatação:</white> <good>{0:0.###}x</good>"
 	DilationHeatSpreadFmt = "<white>Dispersão do calor:</white> <good>{0:0.##}</good><gray><sup>[2]</sup> metros</gray>"
@@ -4422,6 +4426,7 @@ Stats
 	HyperiumCapacityFmt = "<white>Capacidade de hipério:</white> <good>{0}</good>"
 	IonLightningIntervalFmt = "<white>Intervalo do relâmpago:</white> <good>{0:0.#}</good> <gray>segundos (reduzido pela força do feixe)</gray>"
 	IronCapacityFmt = "<white>Capacidade de ferro:</white> <good>{0}</good>"
+	Lifetime = "<white>Duração:</white> <good>{0:0.#}</good> <gray>segundos</gray>"
 	LightningChainChanceFmt = "<white>Chance de cadeia de relâmpagos:</white> <good>{0:0.#}%</good> <gray>por relâmpago</gray>"
 	LightningChainStrikeCountRangeFmt = "<white>Relâmpagos na cadeia:</white> <good>{0}-{1}</good>"
 	LightningChanceFmt = "<white>Chance de relâmpago:</white> <good>{0:0.#}%</good>"
@@ -4851,7 +4856,7 @@ Tips
 		Tip1 = "Você pode usar programas de arte de terceiros, como MS Paint, Paint.NET, GIMP ou Photoshop para criar o rascunho da forma básica de suas naves..."
 		Tip2 = "1. Primeiro, use algum programa de arte de terceiros para salvar um arquivo de imagem PNG <b>preto e branco</b> que represente a forma geral da sua nave. Os pixels brancos são interpretados como corredores, e os pretos como espaço vazio."
 		Tip3 = "2. Depois, no Editor de Naves, abra o menu <img name='hamburger_up'/> e selecione <white>Carregar forma a partir de PNG</white>. Selecione o arquivo da imagem PNG que você salvou."
-		Tip4 = "3. As plantas atuais da sua nave serão substituídas pelas plantas criadas no seu arquivo de imagem PNG. Finalize sua nave adicionando armas, propulsores, defesas e outras peças que achar adequado."
+		Tip4 = "3. As plantas atuais da sua nave serão substituídas pelas plantas criadas no seu arquivo de imagem PNG. Finalize sua nave adicionando armas, propulsores, defesas e outras peças que achar adequadas."
 		Title = "Carregar forma a partir de PNG"
 	}
 	MidpointFocus
@@ -5341,7 +5346,7 @@ Tutorials
 		
 		Fame = "Sua <fame>FAMA</fame> atual é mostrada no canto superior direito, abaixo dos seus <money>CRÉDITOS</money>."
 		FameCrew = "Além disso, conforme a sua <fame>FAMA</fame> aumenta, mais pessoas vão querer fazer parte da sua tripulação! Uma tripulação maior é sempre melhor!"
-		IncreasingFame = "Conforme você <good>derrota inimigos</good> e <good>completa missões</good>, sua <fame>FAMA</fame> aumenta. Ela nunca vai diminuir."
+		IncreasingFame = "Conforme você <good>derrota inimigos</good> e <good>completa missões</good>, sua <fame>FAMA</fame> aumenta."
 		Tip = "<good>DICA:</good> à medida que você fica mais famoso, ficará mais difícil ganhar fama em naves e missões de níveis mais baixos. Derrote e complete naves e missões de nível mais alto para continuar aumentando a sua <fame>FAMA</fame>."
 		Title = "Como se tornar famoso"
 	}
@@ -5501,6 +5506,7 @@ Tutorials
 	Overclocking
 	{
 		
+		Blueprints = "Antes que você possa aplicar overclocking em uma peça, você primeiro precisa comprar a <fame_color>Planta de Overclocking</fame_color> de uma estação espacial."
 		HeatManagement = "<good>DICA:</good> Peças em overclocking devem ser conectadas a uma <good>rede térmica</good> capaz de dissipar ou armazenar o calor dela com segurança, ou esse calor da peça acabará <orange>aquecendo a fuselagem</orange>."
 		Overview1 = "Muitas partes podem ser postas em <bad>overclocking</bad>, o que as faz funcionar de formas novas e poderosas, mas fazendo-as gerar <orange>calor</orange>."
 		Overview2 = "Para ver qual será o efeito do overclocking de uma peça, passe o cursor do mouse sobre ela para mostrar a dica de ferramenta, depois aperte <btn id='Design.ToggleSecondaryTooltip'/>."
@@ -5613,6 +5619,7 @@ Tutorials
 	{
 		
 		Blueprints = "Muitas armas e outras peças de naves <good>não podem ser construídas</good> até você adquirir as plantas necessárias."
+		Overclocks = "Muitas peças têm <orange>Modos Overclocking</orange> mais poderosos, os quais precisam ser comprados separadamente com as plantas básicas."
 		Permanent = "Comprar uma planta <good>desbloqueia permanentemente</good> a habilidade de construir aquele tipo de peça."
 		Purchase = "Para comprar plantas, saúde uma estação espacial e selecione a aba <white>Comprar Plantas</white>."
 		Title = "Como adquirir plantas"
