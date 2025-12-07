@@ -350,6 +350,7 @@ Multiplayer
 	Host = "Host"
 	AI = "A.I."
 	AINameFmt = "A.I. Player {0}"
+	Observers = "Observers"
 	Observer = "Observer"
 	Disconnected = "Disconnected"
 	Waiting = "This player is slowing down the game."
@@ -4231,7 +4232,7 @@ Parts
 	RailgunLauncherDesc = "A required component of all railguns. Must be paired with a Loader and zero or more Accelerators.\n\n"\
 	                      "<string id='Parts/RailgunBaseDesc'/>\n\n"\
 	                      "Crew cannot walk from one side of a Railgun Launcher or Accelerator to the other."
-	RailgunLauncherOverclockDesc = "Improves the efficiency of longer Railguns and increases projectile speed and damage, but requires a charge-up before firing and stops penetration once its damage potential is exhausted. Produces waste heat when firing."
+	RailgunLauncherOverclockDesc = "Improves the efficiency of longer Railguns and increases projectile speed and damage, but requires a charge-up before firing and causes projectiles to fragment while penetrating and stop once their damage potential is exhausted. Produces waste heat when firing."
 
 	RailgunLoader = "Railgun Loader Module"
 	RailgunLoaderIcon = "Railgun Loader"
@@ -4720,6 +4721,7 @@ Stats
 	PenetrationFmt = "<white>Penetration:</white> <good>{0:0.##}</good> <gray>meters</gray>"
 	ArmorPenetrationResistanceFmt = "<white>Armor Penetration Resistance:</white> <good>{0:0}%</good>"
 	PenetrationDamagePoolFmt = "<white>Penetration:</white> <good>{0:0.##}</good> <gray>meters (max </gray><good>{1:n0}</good><gray> damage)</gray>"
+	FragmentationDamageThresholdFmt = "<white>Fragmentation Threshold:</white> <good>{0:n0}</good> <gray>damage</gray>"
 	FireChanceFmt = "<white>Starts Fires:</white> <good>{0:0.#}%</good><gray> chance/tile</gray>"
 	ShieldPenetrationFmt = "<white>Shield Penetration:</white> <good>{0:0.##}</good> <gray>meters equivalent</gray>"
 	FireSizeFmt = "<white>Initial Fire Size:</white> <good>{0:0}%</good>"
@@ -4798,7 +4800,10 @@ Stats
 	EnrichedUraniumPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/e-uranium (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	EnrichedUraniumHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/e-uranium (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	PowerUsageContinuousFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/sec</gray>"
-	ThermalPumpPowerUsageContinuousFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/Lance/sec</gray>"
+	ThermalPumpPowerUsageContinuousFmt = 	"<white>Power Use (by active Lances):</white>\n"\
+							  				"<gray>Value is per second.</gray><monospace>\n"\
+							 				" <white>1:</white><good>{0,5:0.00}</good> <white>3:</white><good>{2,5:0.00}</good> <white>5:</white><good>{4,5:0.00}</good>\n"\
+							  				" <white>2:</white><good>{1,5:0.00}</good> <white>4:</white><good>{3,5:0.00}</good> <white>6:</white><good>{5,5:0.00}</good></monospace>"
 	PowerUsageContinuousMinutesFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/min</gray>"
 	ThrusterPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/sec (100% thrust)</gray>"
 	ThrusterPowerUsageRampFmt = "<white>Power Use:</white> <good>{0:0.##}-{1:0.##}</good><gray>/sec (100% thrust)</gray>"
@@ -4902,7 +4907,7 @@ Stats
 	BaseAmplificationFmt = "<white>Amplification (Base):</white> <good>{0:0.#}%</good>"
 	BaseDilationFmt = "<white>Dilation (Base):</white> <good>{0:0.#}%</good>"
 	ThermalAmplificationFmt = "<white>Thermal Amplification (by active Lances):</white>\n"\
-							  "<gray>Value is provided to each Thermal Resonance Lance.</gray><monospace>\n"\
+							  "<gray>Value is provided to each Thermal Resonance Lance .</gray><monospace>\n"\
 							  " <white>1:</white><good>{0,4:+0}%</good> <white>3:</white><good>{2,4:+0}%</good> <white>5:</white><good>{4,4:+0}%</good>\n"\
 							  " <white>2:</white><good>{1,4:+0}%</good> <white>4:</white><good>{3,4:+0}%</good> <white>6:</white><good>{5,4:+0}%</good></monospace>"
 	ThermalDilationFmt = "<white>Thermal Dilation (by active Lances):</white>\n"\
@@ -4923,7 +4928,7 @@ Stats
 	HeatTransferInefficiencyFmt = "<white>Heat Transfer Inefficiency:</white> <good>+{0:0.#}%</good> <gray>heat</gray>"
 	TurretExtraHeatGenerationFmt = "<white>Turret Heat Gen.:</white> <good>{0:+0.#;-0.#}</good> <gray>MJ/sec</gray>"
 	RailgunOverclockHeatOnShotFmt = "<white>Heat Gen.:</white> <good>{0:0.#}</good> <gray>MJ/part/shot</gray>"
-	HeatPerShotFmt = "<white>Heat Gen.:</white> <good>{0:0.#}</good> <gray>MJ/shot</gray>"
+	HeatPerShotFmt = "<white>Heat Gen.:</white> <good>{0:n1}</good> <gray>MJ/shot</gray>"
 	HeatPerRestockFmt = "<white>Heat Gen.:</white> <good>{0:0.#}</good> <gray>MJ/restock</gray>"
 	HeatPerDamageFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/damage</gray>"
 }

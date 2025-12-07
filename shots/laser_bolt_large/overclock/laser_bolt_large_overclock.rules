@@ -8,7 +8,7 @@ Speed = &BASE/Speed
 ReceivableBuffs = &BASE/ReceivableBuffs
 
 DAMAGE = 150% * (&BASE/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue)
-DAMAGE_SHIELD = 160% * (&BASE/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue)
+DAMAGE_SHIELD = 70% * (&BASE/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue)
 DAMAGE_RADIUS = 2
 IMPULSE = 200% * (&BASE/Components/Hit/HitOperational/HitEffects/1/Impulse/BaseValue)
 HEALTH = 175% * (&BASE/Components/Targetable/Health)

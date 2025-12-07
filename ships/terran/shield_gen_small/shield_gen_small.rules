@@ -355,7 +355,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 				// Non-Overclocked
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
-					Sound = "small_shield_energy_idle.wav"
+					Sound = "sounds/small_shield_energy_idle.wav"
 					Volume = { BaseValue=1; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ZERO] }
 					Speed = 1
 					MaxConcurrent = 1
@@ -429,7 +429,11 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					RandomSounds = ["shield_hit_01.wav", "shield_hit_02.wav", "shield_hit_03.wav", "shield_hit_04.wav", "shield_hit_05.wav"]
+					RandomSounds = ["sounds/shield_hit_01.wav", 
+									"sounds/shield_hit_02.wav", 
+									"sounds/shield_hit_03.wav", 
+									"sounds/shield_hit_04.wav", 
+									"sounds/shield_hit_05.wav"]
 					Volume = 1
 					Speed = 1
 					IgnoreIntensity = true
@@ -951,7 +955,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 				// Non-Overclocked
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
-					Sound = "small_shield_module_idle.wav"
+					Sound = "sounds/small_shield_module_idle.wav"
 					Volume = { BaseValue=1; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ZERO] }
 					Speed = 1
 					MaxConcurrent = 1
@@ -978,20 +982,24 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "small_shield_start.wav"
+					RandomSounds = ["sounds/small_shield_start_01.wav",
+									"sounds/small_shield_start_02.wav"]
 					Volume = 1
 					Speed = 1
+					SpeedVariation = 0.025
 					IgnoreIntensity = true
+					MaxConcurrent = 1
 				}
 			]
 			ToggledOffMediaEffects
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "small_shield_stop.wav"
+					Sound = "sounds/small_shield_stop.wav"
 					Volume = 1
 					Speed = 1
 					IgnoreIntensity = true
+					MaxConcurrent = 1
 				}
 			]
 		}
@@ -1025,6 +1033,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 				{
 					Sound = "sounds/small_shield_overclock_wide.wav"
 					Db = 3
+					MaxConcurrent = 1
 				}
 			]
 			ToggledOffMediaEffects
@@ -1038,6 +1047,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 				{
 					Sound = "sounds/small_shield_overclock_narrow.wav"
 					Db = 3
+					MaxConcurrent = 1
 				}
 			]
 			ToggledOffMediaEffects

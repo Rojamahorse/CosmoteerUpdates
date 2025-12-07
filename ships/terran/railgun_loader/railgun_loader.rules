@@ -367,6 +367,7 @@ Part : <../base_med_part_terran.rules>/Part
 			BlueprintOperationalToggle = BlueprintNetwork_IsOverclocked
 			Location = [0, 2]
 			Direction = Left
+			BlueprintRouteSource = BlueprintNetwork_IsOverclocked
 			RouteSource = Network_OverclockStateValue
 			Overlay : ^/0/Overlay
 			{

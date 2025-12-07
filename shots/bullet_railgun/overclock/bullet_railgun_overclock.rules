@@ -17,10 +17,11 @@ Speed
 }
 ReceivableBuffs = [RailgunShotOverclock]
 
-DAMAGE_POOL = (&BASE/Components/DamagePool/Damage/BaseValue) * 200%
+DAMAGE_POOL = (&BASE/Components/DamagePool/Damage/BaseValue) * 160%
 HEALTH = (&BASE/Components/Targetable/Health) * 200%
 IMPULSE_FACTOR = 250%
 IMPULSE = (&BASE/Components/Hit/HitOperational/HitEffects/1/Impulse/BaseValue) * (&IMPULSE_FACTOR)
+DAMAGE_PER_SPLIT = 2500
 
 Components : BASE/Components
 {
@@ -57,7 +58,7 @@ Components : BASE/Components
 			DamagePoolBulletSplitting
 			{
 				DamagePool = DamagePool
-				DamagePerSplit = 2500
+				DamagePerSplit = &~/DAMAGE_PER_SPLIT
 				SpawnEffect
 				{
 					Bullet = &<bullet_railgun_overclock_fragment.rules>/Bullet

@@ -153,6 +153,10 @@ AudioExteriorZoomlessFilter
 		MinDistance = 0
 		MaxDistance = 6
 		DistanceFalloff = 1
+		
+		MinZoom = 1
+		MaxZoom = 70
+		ZoomFalloff = 2
 
 		Filter
 		{

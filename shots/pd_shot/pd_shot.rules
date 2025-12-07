@@ -1,8 +1,27 @@
+OVERCLOCK
+{
+	RANGE = 150
+}
+
 ID = "cosmoteer.pd_shot"
 OtherIDs = ["point_defense_shot", "pd_shot"]
-Range = 150
+Range
+{
+	BaseValue = 200
+	Modifiers
+	[
+		{
+			Type = BuffRemap
+			BuffType = Overclock
+			ModificationMode = Replace
+			RemapFrom = [0, 1]
+			RemapTo = [&../../../BaseValue, &~/OVERCLOCK/RANGE]
+		}
+	]
+}
 IdealRange = 65
 Speed = 420
+ReceivableBuffs = [ Overclock ]
 
 Components
 {

@@ -182,17 +182,29 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 		Overclock_PowerDeliveredTrigger
 		{
-			Type = ValueChangeTrigger
-			OperationalToggle = IsOverclocked
-			ValueSource = BatteryReceiverStorage
-			TriggerOnDecrease = false
+			Type = TriggerProxy
+			ComponentID = BatteryReceiverStorage
+			TriggerID = "CrewResourcesReceived"
+			ProxyToggle = IsOverclocked
 		}
 		Overclock_DeliveryHeatProducer
 		{
 			Type = ResourceChange
 			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
 			Trigger = Overclock_PowerDeliveredTrigger
-			Amount = { BaseValue = (&~/OVERCLOCK/HEAT_PER_BATTERY_DELIVERED) * (&~/HEAT_TO_RESOURCE); EffectScaleExponent = 1; }
+			Amount 
+			{ 
+				BaseValue = (&~/OVERCLOCK/HEAT_PER_BATTERY_DELIVERED) * (&~/HEAT_TO_RESOURCE)
+				Modifiers
+				[
+					{
+						Type = ScaledEffectScale
+						ModificationMode = Multiply
+						// 1000 power = 1 battery
+						Scale = 1/1000
+					}
+				] 
+			}
 		}
 
 		Overclock_ConstantHeatProducer

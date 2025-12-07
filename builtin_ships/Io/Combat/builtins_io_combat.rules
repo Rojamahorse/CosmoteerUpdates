@@ -66,6 +66,7 @@ Ships
 	:~{ File="Furcas.ship.png";       Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Raim.ship.png";         Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Themisto.ship.png";     Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Zent.ship.png";         Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Frigates
 	:~{ File="Gamigin.ship.png";      Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -98,6 +99,8 @@ Ships
 	:~{ File="Caligaris.ship.png";    Tier=12; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Aamon.ship.png";        Tier=12; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Vesta.ship.png";        Tier=12; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Sargus.ship.png";       Tier=12; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Lerna.ship.png";        Tier=12; Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Destroyers
 	:~{ File="Bathym.ship.png";       Tier=13; Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -118,6 +121,7 @@ Ships
 	:~{ File="Gremory.ship.png";      Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Murmur.ship.png";       Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Vestarka.ship.png";     Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Sabnock.ship.png";      Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Cruisers
 	:~{ File="Naberius.ship.png";     Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -141,6 +145,7 @@ Ships
 	:~{ File="Janus.ship.png";        Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Lernean.ship.png";      Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Decarabia.ship.png";    Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Vapula.ship.png";       Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Battlecruisers
 	:~{ File="Scylla.ship.png";       Tier=17; Difficulty=2; }

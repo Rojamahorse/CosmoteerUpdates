@@ -555,7 +555,7 @@ SmallPartDestroyed
 			Filter
 			{
 				FilterType = LowPassAmplify
-				FromFrequency = 8000
+				FromFrequency = 7350
 				ToFrequency = 300
 				FrequencyFactorExponent = 0.5
 			}
@@ -597,7 +597,7 @@ SmallPartDestroyedDry
 			Filter
 			{
 				FilterType = LowPassAmplify
-				FromFrequency = 8000
+				FromFrequency = 7350
 				ToFrequency = 300
 				FrequencyFactorExponent = 0.5
 			}
@@ -653,7 +653,7 @@ MedPartDestroyed
 			Filter
 			{
 				FilterType = LowPassAmplify
-				FromFrequency = 8000
+				FromFrequency = 7350
 				ToFrequency = 300
 				FrequencyFactorExponent = 0.5
 			}
@@ -696,7 +696,7 @@ MedPartDestroyedDry
 			Filter
 			{
 				FilterType = LowPassAmplify
-				FromFrequency = 8000
+				FromFrequency = 7350
 				ToFrequency = 300
 				FrequencyFactorExponent = 0.5
 			}
@@ -752,7 +752,7 @@ BigPartDestroyed
 			Filter
 			{
 				FilterType = LowPassAmplify
-				FromFrequency = 8000
+				FromFrequency = 7350
 				ToFrequency = 300
 				FrequencyFactorExponent = 0.5
 			}
@@ -806,7 +806,7 @@ HugePartDestroyed
 			Filter
 			{
 				FilterType = LowPassAmplify
-				FromFrequency = 8000
+				FromFrequency = 7350
 				ToFrequency = 100
 				FrequencyFactorExponent = 0.5
 			}
@@ -860,7 +860,7 @@ StructureDestroyed
 			Filter
 			{
 				FilterType = LowPassAmplify
-				FromFrequency = 8000
+				FromFrequency = 7350
 				ToFrequency = 300
 				FrequencyFactorExponent = 0.5
 			}

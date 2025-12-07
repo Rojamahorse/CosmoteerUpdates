@@ -593,16 +593,18 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 				{
 					Sound = "sounds/large_thruster_loop_01.wav"
 					Volume = 1
+					Db = -1.5
 					Speed = 1
-					MaxConcurrentVolume = 1.25
+					MaxConcurrentVolume = 1
 				}
 
 				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
 				{
 					Sound = "sounds/large_thruster_loop_02.wav"
 					Volume = 1
+					Db = -1.5
 					Speed = 1
-					MaxConcurrentVolume = 1.25
+					MaxConcurrentVolume = 1
 				}
 			]
 			EndMediaEffects
@@ -653,6 +655,8 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 						"../thruster_small/sounds/thruster_overclocked_03.wav"
 						"../thruster_small/sounds/thruster_overclocked_04.wav"
 					]
+					Speed = 2.5
+					Db = -5
 				}
 			]
 			EndMediaEffects

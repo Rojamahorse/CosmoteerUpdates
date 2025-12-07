@@ -548,7 +548,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "shoot.wav"
+					Sound = "sounds/cannon_med_shot.wav"
 					Volume = .75
 					SpeedVariation = .25
 				}

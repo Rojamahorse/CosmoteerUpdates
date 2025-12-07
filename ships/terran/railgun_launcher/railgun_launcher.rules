@@ -1270,6 +1270,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 					RailgunOverclockHeatOnShot = &~/OVERCLOCK/SHOT_HEAT_PER_MODULE
 					PenetrationDamagePool = [infinity, &~/OVERCLOCK/BULLET/DAMAGE_POOL]
 					Damage = [&~/OVERCLOCK/BULLET/DAMAGE_POOL, (&~/OVERCLOCK/BULLET/DAMAGE_POOL) * (&~/Part/StatsByCategory/0/Stats/ROF)]
+					FragmentationDamageThreshold = &~/OVERCLOCK/BULLET/DAMAGE_PER_SPLIT
 					ShotSpeed = (&~/OVERCLOCK/BULLET/Speed/BaseValue)
 					ShotHP = (&~/OVERCLOCK/BULLET/HEALTH)
 					RailgunBaseChargeTime = (&~/OVERCLOCK/BASE_CHARGE_TIME)

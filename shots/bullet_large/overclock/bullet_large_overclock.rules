@@ -4,7 +4,7 @@ ID = "cosmoteer.bullet_large_overclock"
 Range = &BASE/Range
 IdealRange = &BASE/IdealRange
 IdealRadius = &BASE/IdealRadius
-Speed = (&~/BASE/Speed) * 130%
+Speed = 170
 
 HEALTH = (&~/BASE/Components/Targetable/Health) * 0.5
 

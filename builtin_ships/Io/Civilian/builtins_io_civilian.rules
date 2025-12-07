@@ -12,7 +12,7 @@ Ships
 	:~{ File="Synecho.ship.png"; Tier=7;  Tags : ~/Tags [trade, empty_storage] }
 	:~{ File="Eudora.ship.png";  Tier=7;  Tags : ~/Tags [trade, empty_storage] }
 	:~{ File="Aesyle.ship.png";  Tier=10; Tags : ~/Tags [trade, empty_storage] }
-	:~{ File="Polyxio.ship.png"; Tier=10; Tags : ~/Tags [trade, empty_storage] }
+	:~{ File="Polyxo.ship.png";  Tier=10; Tags : ~/Tags [trade, empty_storage]; OtherIDs=["Polyxio"]; }
 
 	// Crew Transports
 	:~{ File="Orpheus.ship.png";  Tier=5;  Tags : ~/Tags [crew_transport] }

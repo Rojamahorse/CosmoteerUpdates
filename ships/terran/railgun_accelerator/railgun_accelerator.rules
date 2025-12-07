@@ -385,6 +385,7 @@ Part : <../base_med_part_terran.rules>/Part
 			Location = [0, 0]
 			Direction = Left
 			RouteSource = Network_OverclockStateValue
+			BlueprintRouteSource = BlueprintNetwork_IsOverclocked
 			Overlay : ^/0/Overlay
 			{
 				SpreadHighlightThroughNetwork = BlueprintNetwork_IsOverclocked

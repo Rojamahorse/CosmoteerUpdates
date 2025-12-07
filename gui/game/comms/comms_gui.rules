@@ -49,6 +49,7 @@ HailingFailedIcon
 HailingSound
 {
     Sound = "sounds/hailing.wav"
+	Db = -2
 }
 HailAnsweredSound
 {

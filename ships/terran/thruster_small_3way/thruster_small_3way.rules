@@ -545,8 +545,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Sound = "../thruster_small/sounds/small_thruster_loop.wav"
 					Volume = 1
 					Speed = 1
-					Db = 7
-					MaxConcurrentVolume = 1.6
+					Db = 5
+					MaxConcurrentVolume = 1.5
 				}
 			]
 			EndMediaEffects
@@ -592,6 +592,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						"../thruster_small/sounds/thruster_overclocked_03.wav"
 						"../thruster_small/sounds/thruster_overclocked_04.wav"
 					]
+					Db = -2
 				}
 			]
 			EndMediaEffects

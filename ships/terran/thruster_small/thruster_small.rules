@@ -6,7 +6,7 @@ OVERCLOCK
 	THRUST_HEAT_PER_SECOND = 250
 
 	AUDIO_SPEED_FACTOR = 115%
-	AUDIO_VOLUME_DB = 8
+	AUDIO_VOLUME_DB = 6
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -602,8 +602,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Sound = "sounds/small_thruster_loop.wav"
 					Volume = 1
 					Speed = 1
-					Db = 7
-					MaxConcurrentVolume = 1.6
+					Db = 5
+					MaxConcurrentVolume = 1.5
 				}
 			]
 			EndMediaEffects
@@ -649,6 +649,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 						"sounds/thruster_overclocked_03.wav"
 						"sounds/thruster_overclocked_04.wav"
 					]
+					Db = -2
 				}
 			]
 			EndMediaEffects
@@ -688,7 +689,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 //									"sounds/small_thruster_start_03.wav",
 //									"sounds/small_thruster_start_04.wav"]
 //					Volume = 0.5
-//					Db = 6
+//					Db = 5
 //					Speed = 1
 //					SpeedVariation = .15
 //				}

@@ -1026,12 +1026,16 @@ Part : <../base_part_terran.rules>/Part
 			(&../BASE_DIL) * (1 / (2 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY), (&../BASE_DIL) * (1 / (3 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)
 			(&../BASE_DIL) * (1 / (4 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY), (&../BASE_DIL) * (1 / (5 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)
 		]
-
+		BASE_POWER_USAGE = (&~/Part/Components/PowerDrain/FromQuantity/BaseValue) / (&~/Part/Components/PowerDrain/Interval) / 1000 * 2
+		ThermalPumpPowerUsageContinuous
+		[
+			(&../BASE_POWER_USAGE) * (1 / (0 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)*1, (&../BASE_POWER_USAGE) * (1 / (1 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)*2
+			(&../BASE_POWER_USAGE) * (1 / (2 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)*3, (&../BASE_POWER_USAGE) * (1 / (3 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)*4
+			(&../BASE_POWER_USAGE) * (1 / (4 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)*5, (&../BASE_POWER_USAGE) * (1 / (5 * (&../UTILIZATION_SCALE) + 1))^(&../INVERSE_EFFICIENCY)*6
+		]
 		TurretExtraHeatGeneration = (&~/Part/Components/AdditionalTurretHeatGeneration_Active/Value) * 2
-
-		ThermalPumpPowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity/BaseValue) / (&~/Part/Components/PowerDrain/Interval) / 1000 * 2
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
-		RecPower = &ThermalPumpPowerUsageContinuous
+		RecPower = &ThermalPumpPowerUsageContinuous/0
 	}
 
 	StatsNotesKey = "Stats/ThermalDilationPumpNotes"

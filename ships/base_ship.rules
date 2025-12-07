@@ -22,8 +22,8 @@ DefaultDoorID = ""
 LinearDrag
 {
 	Type = Exponential
-	Coefficient = 5*10^-6
-	Exponent = 3.815
+	Coefficient = 7.8125*10^-7
+	Exponent = 4
 	MinDampingCoefficient = 40%
 }
 

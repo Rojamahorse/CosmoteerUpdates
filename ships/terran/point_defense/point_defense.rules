@@ -1,8 +1,11 @@
 OVERCLOCK
 {
-	RECHARGE_USAGE_RATIO = 25%
-	RECHARGE_TIME_PER_SHOT = (&~/Part/Components/Turret/FireInterval) / (&RECHARGE_USAGE_RATIO)
-	RECHARGING_HEAT_PER_SECOND = 450
+	RECHARGE_PER_SEC = 125
+	RECHARGING_HEAT_PER_SECOND = 200
+	
+	RANGE = 150
+	FIRE_INTERVAL = 1/11.25
+	POWER_PER_SHOT = 40
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -155,9 +158,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceConverter
 			OperationalToggle = IsOverclocked
 			ToStorage = BatteryStorage
-			BATCH_COUNT = 6
-			ToQuantity = (&~/Part/Components/BulletEmitter/ResourcesUsed) * (&BATCH_COUNT)
-			Interval = (&~/OVERCLOCK/RECHARGE_TIME_PER_SHOT) * (&BATCH_COUNT)
+			ToQuantity = (&~/OVERCLOCK/RECHARGE_PER_SEC) * 1000
+			Interval = 1
 		}
 		BatteryConsumer
 		{
@@ -346,7 +348,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 2/30
+			FireInterval
+			{
+				BaseValue = 2/30
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Replace
+						RemapFrom = [0, 1]
+						RemapTo = [&../../../BaseValue, &~/OVERCLOCK/FIRE_INTERVAL]
+					}
+				]
+			}
 			FiringArc = 120d
 			RotateSpeed = 1080d
 			FireThresholdAngle = 1d
@@ -418,7 +433,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Bullet = &<./Data/shots/pd_shot/pd_shot.rules>
 			Spread = [-1d, 1d]
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 35
+			ResourcesUsed
+			{
+				BaseValue = 35
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Replace
+						RemapFrom = [0, 1]
+						RemapTo = [&../../../BaseValue, &~/OVERCLOCK/POWER_PER_SHOT]
+					}
+				]
+			}
 			MinResourcesUsed = 1
 		}
 
@@ -602,7 +630,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 				// Out of power.
 				{
 					Toggle = BatteryStorage
-					Delay = &~/Part/Components/Turret/FireInterval
+					Delay = &~/Part/Components/Turret/FireInterval/BaseValue
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
@@ -662,13 +690,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 				ShotDamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitBullet/HitEffects/0/Damage/BaseValue
 				ShotDamagePerSecond = (&ShotDamagePerShot) * (&ROF)
 				ShotDamage = [&../ShotDamagePerShot, &../ShotDamagePerSecond]
-				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
-				Range = &~/Part/Components/BulletEmitter/Bullet/Range
+				ROF = 1 / (&~/Part/Components/Turret/FireInterval/BaseValue)
+				Range = &~/Part/Components/BulletEmitter/Bullet/Range/BaseValue
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
 				Spread = deg(&~/Part/Components/BulletEmitter/Spread/1)
 				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
 				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
-				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed) / 1000
+				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed/BaseValue) / 1000
 				PowerPerSecond = (&PowerPerShot) * (&ROF)
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 			}
@@ -681,8 +709,27 @@ Part : <../base_part_terran_overclock.rules>/Part
 		DescriptionKey = "Parts/PointDefenseOverclockDesc"
 		Stats
 		{
-			PowerGeneration = (&~/Part/Components/BulletEmitter/ResourcesUsed) / (&~/OVERCLOCK/RECHARGE_TIME_PER_SHOT) / 1000
+			PowerGeneration = (&~/OVERCLOCK/RECHARGE_PER_SEC) / 1000
 			HeatGeneration = (&~/OVERCLOCK/RECHARGING_HEAT_PER_SECOND)
 		}
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/PDShot"
+				Stats
+				{
+					Range = &~/Part/Components/BulletEmitter/Bullet/OVERCLOCK/RANGE
+					ROF = 1 / (&~/OVERCLOCK/FIRE_INTERVAL)
+					
+					DAMAGE_PER_SHOT = &~/Part/StatsByCategory/0/Stats/ShotDamagePerShot
+					DAMAGE_PER_SEC = (&DAMAGE_PER_SHOT) * (&ROF)
+					ShotDamage = [&../DAMAGE_PER_SHOT, &../DAMAGE_PER_SEC]
+					
+					POWER_PER_SHOT = (&~/OVERCLOCK/POWER_PER_SHOT) / 1000
+					POWER_PER_SEC = (&POWER_PER_SHOT) * (&ROF)
+					ShotPowerUsage = [&../POWER_PER_SHOT, &../POWER_PER_SEC]
+				}
+			}
+		]
 	}
 }

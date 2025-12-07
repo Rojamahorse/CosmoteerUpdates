@@ -200,6 +200,7 @@ Part : <../base_med_part_terran.rules>/Part
 		ConversionTimer
 		{
 			Type = Timer
+			OperationalToggle = IsOperational
 			Duration = 1.3
 			AutoStart = true
 			Repeats = true

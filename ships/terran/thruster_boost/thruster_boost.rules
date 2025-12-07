@@ -18,9 +18,9 @@ OVERCLOCK
 	BOOST_MAX_POWER_USAGE_FACTOR = 175%
 	BOOST_POWER_RAMP_TIME = 2
 
-	AUDIO_SPEED_FACTOR = 115%
+	AUDIO_SPEED_FACTOR = 120%
 	AUDIO_VOLUME_DB = 3
-	BOOST_AUDIO_VOLUME_DB = 1
+	BOOST_AUDIO_VOLUME_DB = 2
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -1035,6 +1035,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 						{
 							Sound = "sounds/boost_thruster_start.wav"
 							Volume = 1
+							Db = 2
 							Speed = 1
 						}
 					]
@@ -1072,7 +1073,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					Sound = "../thruster_large/sounds/large_thruster_loop_01.wav"
 					Volume = 1
 					Speed = 1
-					MaxConcurrentVolume = 1.25
+					MaxConcurrentVolume = 1
 				}
 
 				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
@@ -1080,7 +1081,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					Sound = "../thruster_large/sounds/large_thruster_loop_02.wav"
 					Volume = 1
 					Speed = 1
-					MaxConcurrentVolume = 1.25
+					MaxConcurrentVolume = 1
 				}
 			]
 			EndMediaEffects
@@ -1130,6 +1131,8 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 						"../thruster_small/sounds/thruster_overclocked_03.wav"
 						"../thruster_small/sounds/thruster_overclocked_04.wav"
 					]
+					Speed = 2.5
+					Db = -5
 				}
 			]
 			EndMediaEffects
@@ -1172,6 +1175,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				{
 					Sound = "sounds/boost_thruster_loop.wav"
 					Volume = 1
+					Db = 1
 					Speed = 1
 				}
 			]

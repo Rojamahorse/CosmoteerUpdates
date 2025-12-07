@@ -280,7 +280,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				// Non-Overclocked
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
-					Sound = "large_shield_energy_idle.wav"
+					Sound = "sounds/large_shield_energy_idle.wav"
 					Volume = { BaseValue=1; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ZERO] }
 					Speed = 1
 					MaxConcurrent = 1
@@ -718,7 +718,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				// Non-Overclocked
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
-					Sound = "large_shield_module_idle.wav"
+					Sound = "sounds/large_shield_module_idle.wav"
 					Volume = { BaseValue=1; Modifiers [&~/MODIFIERS/OVERCLOCK_TO_ZERO] }
 					Speed = 1
 					MaxConcurrent = 1
@@ -745,20 +745,24 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "large_shield_start.wav"
+					RandomSounds = ["sounds/large_shield_start_01.wav",
+									"sounds/large_shield_start_02.wav"]
 					Volume = 1
 					Speed = 1
+					SpeedVariation = 0.025
 					IgnoreIntensity = true
+					MaxConcurrent = 1
 				}
 			]
 			ToggledOffMediaEffects
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "large_shield_stop.wav"
+					Sound = "sounds/large_shield_stop.wav"
 					Volume = 1
 					Speed = 1
 					IgnoreIntensity = true
+					MaxConcurrent = 1
 				}
 			]
 		}
@@ -773,6 +777,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					Sound = "sounds/large_shield_overclock_start.wav"
 					IgnoreIntensity = true
 					Db = 3
+					MaxConcurrent = 1
 				}
 			]
 		}

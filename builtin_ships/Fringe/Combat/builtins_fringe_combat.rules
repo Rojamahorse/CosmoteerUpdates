@@ -46,12 +46,14 @@ Ships
 	:~{ File="Scarab.ship.png";           Tier=5;  Difficulty=1; }
 	:~{ File="Stomper.ship.png";          Tier=5;  Difficulty=1; }
 	:~{ File="Tax Evader.ship.png";       Tier=5;  Difficulty=1; }
+	:~{ File="Hotshot.ship.png";          Tier=5;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Scrapknight.ship.png";      Tier=6;  Difficulty=1; }
 	:~{ File="Hunchback.ship.png";        Tier=6;  Difficulty=1; }
 	:~{ File="Reckless Warrior.ship.png"; Tier=6;  Difficulty=1; }
 	:~{ File="Retrograde.ship.png";       Tier=6;  Difficulty=1; }
 	:~{ File="Raghdirst.ship.png";        Tier=6;  Difficulty=1; }
 	:~{ File="Thornlark.ship.png";        Tier=6;  Difficulty=1; Tags:~/Tags[empty_storage]; }
+	:~{ File="Stoker.ship.png";           Tier=6;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ossipon.ship.png";          Tier=6;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Corvettes
@@ -76,6 +78,7 @@ Ships
 	:~{ File="Unclassified Misdemeanor.ship.png"; Tier=9; Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Opponent of Commerce.ship.png"; Tier=9; Difficulty=2; }
 	:~{ File="Pugachev.ship.png";         Tier=9; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Scorcher.ship.png";         Tier=9; Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Frigates
 	:~{ File="Loomer.ship.png";           Tier=10;  Difficulty=1; }
@@ -101,6 +104,7 @@ Ships
 	:~{ File="Two For Flinching.ship.png"; Tier=13;  Difficulty=1; }
 	:~{ File="Eviscerator.ship.png";       Tier=13;  Difficulty=1; }
 	:~{ File="Eviscerator Reborn.ship.png";Tier=13;  Difficulty=2; }
+	:~{ File="Smoulderer.ship.png";        Tier=13;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Revenant.ship.png";          Tier=13;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Umbrage.ship.png";           Tier=14;  Difficulty=1; }
 	:~{ File="Banshee.ship.png";           Tier=14;  Difficulty=2; }

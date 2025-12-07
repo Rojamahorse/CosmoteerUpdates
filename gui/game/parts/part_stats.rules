@@ -306,6 +306,10 @@ PartStats
 		FormatKey = "Stats/PenetrationDamagePoolFmt"
 	}
 	{
+		ID = FragmentationDamageThreshold
+		FormatKey = "Stats/FragmentationDamageThresholdFmt"
+	}
+	{
 		ID = ShieldPenetration
 		FormatKey = "Stats/ShieldPenetrationFmt"
 	}

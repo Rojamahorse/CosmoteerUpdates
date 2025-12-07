@@ -431,7 +431,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "shoot.wav"
+					Sound = "sounds/cannon_large_shot.wav"
 					SpeedVariation = .25
 				}
 

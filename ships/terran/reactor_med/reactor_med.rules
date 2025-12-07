@@ -782,7 +782,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					RandomSounds = ["destroyed/destroyed_01.wav", "destroyed/destroyed_02.wav", "destroyed/destroyed_03.wav"]
+					RandomSounds = ["destroyed/reactor_destroyed_01.wav", "destroyed/reactor_destroyed_02.wav", "destroyed/reactor_destroyed_03.wav"]
 					Volume = 1
 					SpeedVariation = .25
 				}
