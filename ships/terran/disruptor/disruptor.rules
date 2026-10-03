@@ -2,6 +2,7 @@ OVERCLOCK
 {
 	BULLET = &<./Data/shots/disruptor_bolt/disruptor_bolt_overclock.rules>
 	HEAT_PER_SHOT = 300
+	COMMAND_ROOM_EFFECTIVENESS = 25%
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -43,7 +44,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [13, 64]
+		Size = [16, 64]
 	}
 	Components : ^/0/Components
 	{
@@ -407,12 +408,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			BlueprintArcRadius = 10
 			BlueprintArcSpriteSegments = 64
 
-			CoverageSectorArc
-			{
-				Texture = &/INDICATORS/VerticalGradient
-				VertexColor = [255, 255, 255, 51]
-				QuadCount = 64
-			}
 		}
 		WeaponEmitterSelector
 		{
@@ -858,6 +853,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					SHIELD_DRAIN_PER_DAMAGE = &<../shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/ResourceDrainPerDamage/BaseValue
 					ShieldDamageOverTime = [(&~/OVERCLOCK/BULLET/TOTAL_SHIELD_DRAIN) / (&../SHIELD_DRAIN_PER_DAMAGE), (&~/OVERCLOCK/BULLET/SHIELD_DRAIN_PER_SECOND) / (&../SHIELD_DRAIN_PER_DAMAGE)]
 					EffectDuration = &~/OVERCLOCK/BULLET/DRAIN_DURATION
+					CommandRoomDrainOverTime = [(&../PowerDrainOverTime/0) * (&~/OVERCLOCK/COMMAND_ROOM_EFFECTIVENESS), (&../PowerDrainOverTime/1) * (&~/OVERCLOCK/COMMAND_ROOM_EFFECTIVENESS)]
 				}
 			}
 		]

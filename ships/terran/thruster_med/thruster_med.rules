@@ -57,7 +57,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 		]
 	}
 	ThrustDecreaseTime = 0
-	ThrustRecoveryTime = 2
+	ThrustRecoveryTime
+	{
+		BaseValue = 2
+		Modifiers
+		[
+			{
+				Type = BuffRemap
+				BuffType = Overclock
+				ModificationMode = Divide
+				RemapFrom = [0, 1]
+				RemapTo = [1, (&~/OVERCLOCK/THRUST_FACTOR)]
+			}
+		]
+	}
 	FuelUsage = 100
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, EngineHeatCollection, ThermalActivity]
 	AllowedDoorLocations
@@ -329,6 +342,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 				[
 					{
 						File = "doodads_off.png"
+						Size = [1, 2]
+					}
+					{
+						File = "doodads_off_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "doodads_off_66.png"
 						Size = [1, 2]
 					}
 				]

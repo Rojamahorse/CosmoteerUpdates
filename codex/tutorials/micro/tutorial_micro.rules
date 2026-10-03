@@ -15,12 +15,16 @@ Entries
 		TextKey = "Tutorials/Micro/Power"
 	}
 	{
+		Image { Texture { File="../tactics/target.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Micro/Target"
+	}
+	{
 		Image { Texture { File="fire_mode.png"; SampleMode=Linear; } }
 		TextKey = "Tutorials/Micro/FireMode"
 	}
 	{
-		Image { Texture { File="../tactics/target.png"; SampleMode=Linear; } }
-		TextKey = "Tutorials/Micro/Target"
+		Image { Texture { File="range_arc_direction.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Micro/RangeArcDirection"
 	}
 	{
 		TextKey = "Tutorials/Micro/ControlGroups"

@@ -457,6 +457,8 @@ CareerModeConfig
 	EconDifficultyTip = 赚取钱币、名望和资源具有多高的挑战性。将鼠标光标悬停在各个选项上可了解详情。
 	GalaxySeed = 银河系种子
 	GalaxySeedTip = 用于为随机银河系生成器提供“依据”的值。在同一版本的《Cosmoteer》中使用相同的值和相同的银河系大小将产生完全一致的银河系。
+	IronmanMode = 铁人模式
+	IronmanModeTip = “永久死亡”模式，仅有一个存档文件。如果所有星舰均已损毁，游戏立即结束，存档删除。
 	LoadShip = 加载自定义星舰
 	MapSize = 银河系规模
 	MapSizeTip = 银河系地图中恒星系的大致数量。
@@ -556,6 +558,7 @@ CommWindow
 	Hire = 雇佣
 	HireCrew = 雇佣船员
 	InitiateTrade = 发起交易
+	InitiateTradeFTLDisabledTip = 准备超空间跳跃时无法交易。
 	InsufficientBeds = 星舰上的床位已满。建造更多船员宿舍后才能雇佣更多船员。
 	InsufficientFame = "将<fame>名望</fame>提高至 {0} 便可劝说此人成为船员。"
 	InsufficientFunds = 资金不足
@@ -1558,7 +1561,7 @@ Hud
 	SpeedQuarter = ""
 	SpeedQuarterLong = 很慢（¼）
 	StrafeTip = "<b>平移</b>\n\n在不转向的前提下移动。（按住 <btn id='Game.InvertCollisionAvoidance'/> 可开/关防撞功能。）\n\n热键：<btn id='Game.Strafe'/>"
-	SummonCrewTip = "<b>召回船员</b>\n\n立即召唤所有船员回到星舰中。\n\n热键：<btn id='Game.Halt'/>"
+	SummonCrewTip = "<b>召回船员</b>\n\n立即召唤所有船员回到星舰中。\n\n按住 <b>Shift</b> 同时按下则会取消飞船命令。\n\n热键：<btn id='Game.Halt'/>"
 	TargetTip = "<b>武器瞄准</b>\n\n将选定的武器瞄准敌方特定部件。也可瞄准自身部件。\n\n热键：<btn id='Game.TargetWeapon'/>"
 	UnderConstructionTip = 您的星舰正在建造中，船员可能离舰执行建造任务。如果飞离太远，将会与其失去联络。
 	UnknownContact = 未知联系人
@@ -2058,9 +2061,13 @@ LoadSaveGame
 	ConfirmDeleteFmt = "确定要删除'{0}'？文件将被放入计算机回收站。"
 	ConfirmOverwrite = 覆盖现有游戏存档？
 	Delete = 删除
+	IronmanQuickLoadDisable = 无法重新加载目前的铁人模式存档。
+	IronmanSaveFailedConfirm = 铁人模式下无法存档。确定要继续吗？所有进度都将遗失。
+	IronmanTag = <bad>（铁人模式）</bad>
 	Loading = 正在加载游戏……
 	Manual = 已命名存档
 	ManualSave = 自命名存档
+	OkayIronmanSave = 创建铁人模式存档
 	OkayLoad = 加载游戏
 	OkaySave = 保存游戏
 	OpenFolder = 打开文件夹
@@ -2069,6 +2076,7 @@ LoadSaveGame
 	QuickSaveTip = "按 <btn id='Game.QuickSave'/> 进行快速保存。\n按 <btn id='Game.QuickLoad'/> 加载上个存档。"
 	QuickSaving = 正在快速保存……
 	Saving = 正在保存游戏……
+	TitleIronmanSave = 创建铁人模式存档
 	TitleLoad = 加载游戏
 	TitleSave = 保存游戏
 	UsesMods = "使用 Mod"
@@ -2499,6 +2507,7 @@ Multiplayer
 	LoadGameVoteFmt = "主机想要加载游戏存档，存档名为“<b>{0}</b>”。"
 	NextGameCountdownFmt = "将在{0}秒后返回游戏前……"
 	Observer = 观战
+	Observers = 观战
 	PlayerLeftFmt = "{0} 已离开游戏。"
 	RightClickChangeShip = 右键单击更换舰船。
 	ShuttingDown = 请等待……
@@ -2999,15 +3008,15 @@ Parts
 	IonBeamPrism = 离子光束棱镜
 	IonBeamPrismDesc = 为入射的离子光束重新定向，瞄准敌舰或其他离子光束棱镜。
 	IonBeamPrismIcon = 离子棱镜
-	LaserBlasterLarge = 重型激光炮
+	LaserBlasterLarge = 重型激光爆能炮
 	LaserBlasterLargeDesc = 在炮塔上安装了两门大型激光炮，牺牲射击精度、进一步特化功能，获得了更高的伤害。
 	LaserBlasterLargeIcon = 重型激光
-	LaserBlasterLargeOverclock = 超频重型激光炮
+	LaserBlasterLargeOverclock = 超频重型激光爆能炮
 	LaserBlasterLargeOverclockDesc = 提升每发激光爆能束的伤害，还能附带溅射伤害，但会导致射速下降。开火时会产生废热。
-	LaserBlasterSmall = 激光炮
+	LaserBlasterSmall = 激光爆能炮
 	LaserBlasterSmallDesc = 一种高精度多用途武器，发射单发爆能束，对敌舰造成中等程度的伤害。
 	LaserBlasterSmallIcon = 激光
-	LaserBlasterSmallOverclock = 超频激光炮
+	LaserBlasterSmallOverclock = 超频激光爆能炮
 	LaserBlasterSmallOverclockDesc = 提升射速，并将激光爆能束替换为同时发射的能量束，但每次攻击的伤害降低。开火时会产生废热。
 	ManipulatorBeam = 工程光束发射器
 	ManipulatorBeamDesc = "安装在星舰顶部的发射器最多可投射 16 根小型牵引光束，可收集资源并为出舱船员加速。一名船员最多可以控制四根光束，船员只在有任务需要协助时才会使用工程光束发射器。"
@@ -3049,7 +3058,7 @@ Parts
 	RailgunLauncher = 轨道炮发射器模块
 	RailgunLauncherDesc = "所有轨道炮的必要组成部分。必须与一个装填器配对，还可酌情安装任意数量的加速器。\n\n<string id='Parts/RailgunBaseDesc'/>\n\n轨道炮发射器以及加速器无法供船员通行。"
 	RailgunLauncherIcon = 轨道炮发射器
-	RailgunLauncherOverclockDesc = 提升较长轨道炮的作战效能，提高弹速和伤害，但开火前需充能，且一旦其伤害潜力耗尽就会停止穿透。开火时会产生废热。
+	RailgunLauncherOverclockDesc = 提升较长轨道炮的作战效能，提高弹速和伤害，但开火前需充能，穿透目标时弹药会碎裂旦其伤害潜力耗尽就会停止。开火时会产生废热。
 	RailgunLoader = 轨道炮装填器模块
 	RailgunLoaderDesc = "所有轨道炮的必要组成部分。必须与一个发射器配对，还可酌情安装任意数量的加速器。\n\n<string id='Parts/RailgunBaseDesc'/>"
 	RailgunLoaderIcon = 轨道炮装填器
@@ -3790,6 +3799,7 @@ Settings
 		CopyGalaxySeed = 复制银河系种子
 		DifficultyLbl = 难度
 		GalaxySeedFmt = "银河系种子：<b>{0}</b>"
+		IronmanMode = 铁人模式下无法更改难度。
 		OnlyHostChangeable = 只有游戏主机可以更改此设置。
 		TabName = 当前游戏
 	}
@@ -4261,7 +4271,7 @@ StarterShips
 {
 	
 	ModelC = "C 型星舰速度慢，装甲坚固，携带两门加农炮，虽然准头一般，但可以穿透敌舰。"
-	ModelL = "L 型星舰具有极强的机动性，携带三门激光炮，可有效地摧毁敌舰子系统。该型号星舰缺乏有效的防御。"
+	ModelL = "L 型星舰具有极强的机动性，携带三门激光爆能炮，可有效地摧毁敌舰子系统。该型号星舰缺乏有效的防御。"
 	ModelM = "M 型星舰并未配备传统武器，其使用的武器是采矿激光，不仅可有效地从小行星和废舰中获取资源，同时仍然能对敌舰造成不小的威胁。"
 	ModelS = "S 型星舰牺牲速度以及火力，换来了可以阻挡敌方火力的防御性护盾发生器。"
 }
@@ -4357,6 +4367,7 @@ Stats
 	CoilProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>线圈/秒</gray>"
 	CommandPointsProvidedFmt = "<white>指挥点数：</white><good>+{0}<image name='command_points' colored='true'/></good> <gray>（可使用）</gray>"
 	CommandPointsUsedFmt = "<white>指挥点数：</white><good>-{0}<image name='command_points' colored='true'/></good> <gray>（已使用）</gray>"
+	CommandRoomDrainOverTimeFmt = "<white>击中控制室耗能：</white><good>{0:0.##}</good> <gray>总计（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	CopperCapacityFmt = "<white>铜容量：</white><good>{0}</good>"
 	CostFmt = "<white>价值：</white><money>{0:n0}</money>"
 	CrewCapacityFmt = "<white>船员床位：</white><good>{0}</good>"
@@ -4400,6 +4411,7 @@ Stats
 	FireDelayFmt = "<white>发射延迟：</white><good>{0:0.##}</good> <gray>秒</gray>"
 	FireIntervalFmt = "<white>发射间隔：</white><good>{0:0.##}</good> <gray>秒</gray>"
 	FireSizeFmt = "<white>初始发射尺寸：</white><good>{0:0}%</good>"
+	FragmentationDamageThresholdFmt = "<white>碎裂阈值：</white><good>{0:n0}</good> <gray>伤害</gray>"
 	FtlMaxEfficiencyRangeFmt = "<white>最优效率：</white><good>{0:0.##}</good><gray>米</gray>"
 	FtlMinEfficiencyRangeFmt = "<white>最低效率：</white><good>{0:0.##}</good><gray>米</gray>"
 	GoldCapacityFmt = "<white>金容量：</white><good>{0}</good>"
@@ -4417,14 +4429,14 @@ Stats
 	HeatGenerationPerPartFmt = "<white>产热速率：</white><good>{0:#,0.##}</good> <gray>兆焦/秒/部件</gray>"
 	HeatPerDamageFmt = "<white>产热速率：</white><good>{0:0.##}</good> <gray>兆焦/伤害</gray>"
 	HeatPerRestockFmt = "<white>产热速率：</white><good>{0:0.#}</good> <gray>兆焦/补充</gray>"
-	HeatPerShotFmt = "<white>产热速率：</white><good>{0:0.#}</good> <gray>兆焦/发</gray>"
+	HeatPerShotFmt = "<white>产热速率：</white><good>{0:n1}</good> <gray>兆焦/发</gray>"
 	HeatPerTileContinuousFmt = "<white>传导热能：</white><good>{0:n1} </good><gray>兆焦/格/秒</gray>"
 	HeatPoolAmplificationExponentFmt = "<white>热能总量增幅量：</white><good>{0:0.##}</good>"
 	HeatSpreadDistanceFmt = "<white>热能传播距离：</white><good>{0:0.##}</good><gray> 米</gray>"
 	HeatTransferInefficiencyFmt = "<white>热能转移低效度：</white><good>+{0:0.#}%</good> <gray>热能</gray>"
 	HitShieldHeatFactorFmt = "<white>护盾击中时产热：</white> <good>{0:0.##}%</good>"
 	HyperiumCapacityFmt = "<white>超光素容量：</white><good>{0}</good>"
-	IonLightningIntervalFmt = "<white>闪电触发间隔：</white><good>{0:0.#}</good> <gray>秒（光束越强，间隔越短）</gray>"
+	IonLightningIntervalFmt = "<white>闪电触发间隔：</white><good>{0:0.#}</good> <gray>秒</gray>"
 	IronCapacityFmt = "<white>铁容量：</white><good>{0}</good>"
 	Lifetime = "<white>存在时间：</white><good>{0:0.#}</good> <gray>秒</gray>"
 	LightningChainChanceFmt = "<white>闪电链跳跃几率：<gray>（每次打击几率）</gray></white><good>{0:0.#}%</good>"
@@ -4466,7 +4478,7 @@ Stats
 	PowerDistributionEfficiencyFmt = "<white>能源分配效率：</white><good>{0:0.#}%</good>"
 	PowerDrainAreaFmt = "<white>耗能范围：</white><good>{0:0.#}</good><gray> 米半径</gray>"
 	PowerDrainFmt = "<white>击中时耗能：</white><good>{0:0.##}</good><gray>/发（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
-	PowerDrainOverTimeFmt = "<white>耗能：</white><good>{0:0}</good> <gray>总计（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
+	PowerDrainOverTimeFmt = "<white>耗能：</white><good>{0:0.##}</good> <gray>总计（</gray><good>{1:0.##}</good><gray>/秒）</gray>"
 	PowerGenerationFmt = "<white>发电量：</white><good>{0:0.###}</good><gray>/秒</gray>"
 	PowerHeatGenerationFmt = "<white>产热速率：</white><good>{0:0.##}</good> <gray>兆焦/能源（</gray><good>{1:0.##}</good> <gray>兆焦/秒）</gray>"
 	PowerUsageContinuousFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/秒</gray>"
@@ -4544,7 +4556,7 @@ Stats
 	ThermalDilationPumpNotes = <gray>注意：如果只连接了一个端口，热膨胀率、热能产生速率和能耗都会减半。</gray>
 	ThermalMissileCapacityFmt = "<white>储热导弹容量：</white><good>{0}</good>"
 	ThermalPumpMultiEfficiencyFmt = "<white>多端供热效率：</white><good>{0:0.#}%</good><gray>^额外用热部件数量</gray>"
-	ThermalPumpPowerUsageContinuousFmt = "<white>能源消耗：</white><good>{0:0.##}</good><gray>/光矛/秒</gray>"
+	ThermalPumpPowerUsageContinuousFmt = "<white>能耗（按启用的光矛计算）：</white>\n<gray>以下为每秒数值。</gray><monospace>\n <white>1：</white><good>{0,5:0.00}</good> <white>3：</white><good>{2,5:0.00}</good> <white>5：</white><good>{4,5:0.00}</good>\n <white>2：</white><good>{1,5:0.00}</good> <white>4：</white><good>{3,5:0.00}</good> <white>6：</white><good>{5,5:0.00}</good></monospace>"
 	ThermalResonanceLanceNotes = "<gray><sup>1</sup> 依照增幅值提升的相关量变化。\n<sup>2</sup> 随膨胀值的平方根变化。</gray>"
 	ThrusterBonusForceFmt = "<white>推进器加成基础加力：</white><good>+{0:0.##} </good><gray>千牛</gray>"
 	ThrusterBuffFmt = "<white>推进器增益：</white><good>+{0:0}%</good><gray> 推进力和能量消耗</gray>"
@@ -5696,9 +5708,11 @@ Wishlist
 Workshop
 {
 	
-	Changes = 更改备注：
+	Changes = <good>更改备注：</good>
 	Description = 描述：
 	FirstVersion = 第一版
+	MaxVersion = 最新游戏版本
+	MinVersion = 最旧游戏版本
 	Preview = 预览图片：
 	SelectPreviewFile = 选择文件
 	Upload = 开始上传

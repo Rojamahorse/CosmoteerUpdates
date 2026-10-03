@@ -90,12 +90,6 @@ Components
 			}
 		]
 
-		CoverageSectorArc
-		{
-			Texture = &/INDICATORS/VerticalGradient
-			VertexColor = [255, 255, 255, 51]
-			QuadCount = 64
-		}
 	}
 	FirePermissionToggle
 	{

@@ -1,7 +1,6 @@
 OVERCLOCK
 {
 	POWER_GENERATION_FACTOR = 250%
-	EXTRA_CAPACITY_FACTOR = 150%
 	HEAT_PER_SECOND = 1600
 
 	BATTERY_PER_SEC = (&~/Part/Components/BatteryProducer/ToQuantity/BaseValue) * (&POWER_GENERATION_FACTOR) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
@@ -88,24 +87,6 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			MaxResources = 16000
 			StartingResources = &MaxResources
 			GiveResourceMediaEffects = &/COMMON_EFFECTS/PowerPickup
-		}
-		Overclock_BatteryStorage : BatteryStorage
-		{
-			MaxResources = (&^/0/MaxResources) * (&~/OVERCLOCK/EXTRA_CAPACITY_FACTOR)
-			StartingResources = &MaxResources
-		}
-		Overclock_BatteryStorageProxy
-		{
-			Type = ResourceStorageProxy
-			ComponentID = Overclock_BatteryStorage
-			ProxyToggle = IsOverclocked
-			ResourceType = battery
-		}
-		CombinedBatteryStorage : BatteryStorage
-		{
-			Type = MultiResourceStorage
-			ResourceType = battery
-			ResourceStorages = [ BatteryStorage, Overclock_BatteryStorageProxy ]
 			SuppliesResources = true
 			MinResourcesPickUp = 2000
 			MaxResourcesPickUp = 2000
@@ -121,24 +102,12 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			ProvidedValueRange = 0
 			ProvidedValuePerResource = 1/1000
 		}
-		OverclockChangedTrigger
-		{
-			Type = MultiTrigger
-			Triggers = [OverclockEnabledTrigger, OverclockDisabledTrigger]
-		}
-		Overclock_DepleteBatteryOnOverclockChanged
-		{
-			Type = ResourceChange
-			Trigger = OverclockChangedTrigger
-			ResourceStorage = Overclock_BatteryStorage
-			Amount = -(&../Overclock_BatteryStorage/MaxResources)
-		}
 
 		BatteryProducer
 		{
 			Type = ResourceConverter
 			OperationalToggle = IsOperational
-			ToStorage = CombinedBatteryStorage
+			ToStorage = BatteryStorage
 			ToQuantity
 			{
 				BaseValue = 1000
@@ -171,7 +140,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 		{
 			Type = ValueChangeTrigger
 			OperationalToggle = IsOverclocked
-			ValueSource = CombinedBatteryStorage
+			ValueSource = BatteryStorage
 			TriggerOnDecrease = false;
 		}
 
@@ -669,7 +638,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 		{
 			Type = ResourceSprites
 			Location = [1.5, 1.5]
-			ResourceStorage = CombinedBatteryStorage
+			ResourceStorage = BatteryStorage
 			Layer = "doodads_high"
 			Round = Down
 			ResourceLevels
@@ -851,7 +820,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 				}
 				// Out of power.
 				{
-					Toggle = CombinedBatteryStorage
+					Toggle = BatteryStorage
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
@@ -893,9 +862,9 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 	Stats
 	{
 		PowerGeneration = (&~/Part/Components/BatteryProducer/ToQuantity/BaseValue) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
-		BatterySize = (&~/Part/Components/CombinedBatteryStorage/MaxResourcesPickUp) / 1000
-		BatteryFillTime = 1000 / (&~/Part/Components/CombinedBatteryStorage/PickUpRate)
-		PowerCapacity = (&~/Part/Components/CombinedBatteryStorage/MaxResources) / 1000
+		BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
+		BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 	}
 
 	SecondaryToolTip
@@ -904,7 +873,6 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 		DescriptionKey = "Parts/ReactorMedOverclockDesc"
 		Stats
 		{
-			PowerCapacity = (&~/Part/Stats/PowerCapacity) * (1 + (&~/OVERCLOCK/EXTRA_CAPACITY_FACTOR))
 			PowerGeneration = (&~/Part/Stats/PowerGeneration) * (&~/OVERCLOCK/POWER_GENERATION_FACTOR)
 			PowerHeatGeneration = [&~/OVERCLOCK/HEAT_PER_BATTERY, &~/OVERCLOCK/HEAT_PER_SECOND]
 		}

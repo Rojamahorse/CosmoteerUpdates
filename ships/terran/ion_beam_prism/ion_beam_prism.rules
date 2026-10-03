@@ -186,13 +186,6 @@ Part : <../base_part_terran.rules>/Part
 			TriggerWhenOff = false
 		}
 
-		Targeter
-		{
-			Type = UITargeter
-			TargeterID = prism_aim
-			Weapons = [Turret, IonBeamChainToggle]
-		}
-
 		Turret
 		{
 			Type = TurretWeapon
@@ -209,13 +202,9 @@ Part : <../base_part_terran.rules>/Part
 			ProhibitTargetPartsFilter = &FriendlyPrismFilter
 			AllowAimAtProhibitedTarget = true
 			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &FriendlyPrismFilter
-			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
 			SuppressDirectControlWhenTargetingPartsFilter = &FriendlyPrismFilter
-			SuppressDirectControlWhenTargetingShipRelativePoints = true
 			SuppressFirepowerEstimationWhenTargetingPartsFilter = &FriendlyPrismFilter
-			SuppressFirepowerEstimationWhenTargetingShipRelativePoints = true
 			SaveSelfTargetPartCategories = [ion_beam_prism]
-			SaveShipRelativeTargets = true
 			HoldTargetAfterCancel = 3.0
 			FirePermissionToggle = FireModeToggle
 
@@ -234,12 +223,6 @@ Part : <../base_part_terran.rules>/Part
 				}
 			]
 
-			CoverageSectorArc
-			{
-				Texture = &/INDICATORS/VerticalGradient
-				VertexColor = [255, 255, 255, 51]
-				QuadCount = 64
-			}
 		}
 
 		InterpolatedTurret // Do not hook any gameplay logic to this! It will cause desyncs!
@@ -254,6 +237,9 @@ Part : <../base_part_terran.rules>/Part
 		IonBeamChainToggle
 		{
 			Type = FixedWeapon
+
+			IncludeInFirepowerEstimation = false
+			MatchWeaponCoverage = Turret
 			ChainedTo = Turret
 			OperationalToggle = PowerToggle
 			AutoFireToggle = AutoFireToggle
@@ -263,14 +249,10 @@ Part : <../base_part_terran.rules>/Part
 			TargetingEmitter = BeamEmitter
 			ChainFireToggleComponent = IonBeamChainToggle
 			ProhibitTargetPartsFilter = &../Turret/FriendlyPrismFilter // Don't force fire on friendly ion prisms!
-			ProhibitShipRelativePointTargets = true
 			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &../Turret/FriendlyPrismFilter
-			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
 			SuppressDirectControlWhenTargetingPartsFilter = &../Turret/FriendlyPrismFilter
 			SuppressFirepowerEstimationWhenTargetingPartsFilter = &../Turret/FriendlyPrismFilter
-			SuppressFirepowerEstimationWhenNotTargetingShipRelativePoints = true
 			SaveSelfTargetPartCategories = [ion_beam_prism]
-			SaveShipRelativeTargets = true
 			DefaultDirectControlBinding = 0
 			FirePermissionToggle = FireModeToggle
 
@@ -280,28 +262,6 @@ Part : <../base_part_terran.rules>/Part
 				Toggle = AutoTargetToggle
 			}
 
-			CoverageLine
-			{
-				LineSprite
-				{
-					Texture = &/INDICATORS/RadialGradient
-					VertexColor = [255, 255, 255, 191]
-					UVRect = [.5, 0, 0, 1]
-				}
-				LineThickness = 2
-
-				BeginCapSprite : LineSprite
-				{
-					UVRect = [0, 0, .5, 1]
-				}
-				BeginCapSize = [1, 2]
-
-				EndCapSprite : LineSprite
-				{
-					UVRect = [.5, 0, .5, 1]
-				}
-				EndCapSize = [1, 2]
-			}
 		}
 
 		BeamEmitter : <./Data/shots/ion_beam/ion_beam.rules>

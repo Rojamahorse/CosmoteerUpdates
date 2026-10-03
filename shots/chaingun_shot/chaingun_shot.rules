@@ -155,4 +155,20 @@ HitOperational
 		}
 	]
 }
-HitStructural = &HitOperational
+HitStructural : &HitOperational
+{
+	StructuralDamageRetentionPerHit = 60%
+	MinStructuralDamageScale = 3%
+
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = { BaseValue = 150; EffectScaleExponent = 1 }
+		}
+		{
+			Type = Impulse;
+			Impulse = { BaseValue = 5; EffectScaleExponent = 1 }
+		}
+	]
+}

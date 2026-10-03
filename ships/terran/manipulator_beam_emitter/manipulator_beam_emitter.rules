@@ -75,6 +75,14 @@ Part : <../base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
+		
+		AlwaysCrewToggle
+		{
+		    Type = UIToggle
+		    ToggleID = "always_crew_part"
+		    default = 0
+		    RequiresCommand = false
+		}
 
 		ScorchedToggle
 		{
@@ -172,26 +180,20 @@ Part : <../base_part_terran.rules>/Part
 		PartCrew1Prereq
 		{
 			Type = MultiToggle
-			Toggles = [Turret1, Turret1b, Turret1c, Turret1d]
+			Toggles = [Turret1, Turret1b, Turret1c, Turret1d, AlwaysCrewToggle]
 			Mode = Any
 		}
-		PartCrew2Prereq
+		PartCrew2Prereq : PartCrew1Prereq
 		{
-			Type = MultiToggle
-			Toggles = [Turret2, Turret2b, Turret2c, Turret2d]
-			Mode = Any
+			Toggles = [Turret2, Turret2b, Turret2c, Turret2d, AlwaysCrewToggle]
 		}
-		PartCrew3Prereq
+		PartCrew3Prereq : PartCrew1Prereq
 		{
-			Type = MultiToggle
-			Toggles = [Turret3, Turret3b, Turret3c, Turret3d]
-			Mode = Any
+			Toggles = [Turret3, Turret3b, Turret3c, Turret3d, AlwaysCrewToggle]
 		}
-		PartCrew4Prereq
+		PartCrew4Prereq : PartCrew1Prereq
 		{
-			Type = MultiToggle
-			Toggles = [Turret4, Turret4b, Turret4c, Turret4d]
-			Mode = Any
+			Toggles = [Turret4, Turret4b, Turret4c, Turret4d, AlwaysCrewToggle]
 		}
 
 		Graphics
@@ -438,6 +440,7 @@ Part : <../base_part_terran.rules>/Part
 			FireThresholdAngle = 0.25d
 			AIFirepowerRating = 0
 			IncludeInFirepowerEstimation = false
+			AllowCustomCoverageEditing = false
 			CanBeGivenExplicitTarget = false
 			AllowDirectControl = false
 			ShowTargetButtons = false
@@ -1017,6 +1020,7 @@ Part : <../base_part_terran.rules>/Part
 				// No crew.
 				{
 					Toggle = Crew1Indicator
+					ShowWhenToggleOn = true
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoCrew
@@ -1025,6 +1029,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 				{
 					Toggle = Crew2Indicator
+					ShowWhenToggleOn = true
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoCrew
@@ -1033,6 +1038,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 				{
 					Toggle = Crew3Indicator
+					ShowWhenToggleOn = true
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoCrew
@@ -1041,6 +1047,7 @@ Part : <../base_part_terran.rules>/Part
 				}
 				{
 					Toggle = Crew4Indicator
+					ShowWhenToggleOn = true
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoCrew
@@ -1052,26 +1059,20 @@ Part : <../base_part_terran.rules>/Part
 		Crew1Indicator
 		{
 			Type = MultiToggle
-			Toggles = [{Toggle=Turret1; Invert=true}, PartCrew1]
-			Mode = Any
+			Toggles = [PartCrew1Prereq, {Toggle=PartCrew1, Invert=true}]
+			Mode = All
 		}
-		Crew2Indicator
+		Crew2Indicator : Crew1Indicator
 		{
-			Type = MultiToggle
-			Toggles = [{Toggle=Turret2; Invert=true}, PartCrew2]
-			Mode = Any
+			Toggles = [PartCrew2Prereq, {Toggle=PartCrew2, Invert=true}]
 		}
-		Crew3Indicator
+		Crew3Indicator : Crew1Indicator
 		{
-			Type = MultiToggle
-			Toggles = [{Toggle=Turret3; Invert=true}, PartCrew3]
-			Mode = Any
+			Toggles = [PartCrew3Prereq, {Toggle=PartCrew3, Invert=true}]
 		}
-		Crew4Indicator
+		Crew4Indicator : Crew1Indicator
 		{
-			Type = MultiToggle
-			Toggles = [{Toggle=Turret4; Invert=true}, PartCrew4]
-			Mode = Any
+			Toggles = [PartCrew4Prereq, {Toggle=PartCrew4, Invert=true}]
 		}
 
 		Blueprints

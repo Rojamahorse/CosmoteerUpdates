@@ -5,9 +5,9 @@ Speed = 0
 
 RADIUS = 4
 REPULSE_RANGE = 8
-LIFETIME = 7
-MAX_BULLET_DAMAGE = ceil(800 / ((&RADIUS) * 2)) // 1000 damage if a bullet passes right through the center
-DAMAGE_POOL = 800
+LIFETIME = 4
+MAX_BULLET_DAMAGE = ceil((&DAMAGE_POOL) / ((&RADIUS) * 2)) // Max damage if a bullet passes right through the center
+DAMAGE_POOL = 400
 
 Components
 {

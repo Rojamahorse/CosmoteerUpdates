@@ -720,14 +720,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			Mode = All
 		}
 
-		Targeter
-		{
-			Type = UITargeter
-			TargeterID = chaingun_aim
-			Weapons = [Turret, FixedWeaponAimer]
-		}
-
-		Turret
+		Turret //finds and tracks the target.
 		{
 			Type = TurretWeapon
 			Location = &../TurretSlider/EndLocation
@@ -740,12 +733,8 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			AIFirepowerRating = (&~/Part/StatsByCategory/0/Stats/DamagePerSecond/1) / 2 //Set to half the dps when its on, because of the down time.
 			TargetingEmitter = BulletEmitterProxy
 			InstantSearchesAfterTargetLost = 5
-			ToggleOnMode = HasTargetExceptShipRelative
-			SaveShipRelativeTargets = true
+			ToggleOnMode = HasTarget
 			AimIncludesEmitterOffset = false
-			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
-			SuppressDirectControlWhenTargetingShipRelativePoints = true
-			SuppressFirepowerEstimationWhenTargetingShipRelativePoints = true
 
 			AutoTargets
 			[
@@ -764,12 +753,6 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			BlueprintArcRadius = 10
 			BlueprintArcSpriteSegments = 64
 
-			CoverageSectorArc
-			{
-				Texture = &/INDICATORS/VerticalGradient
-				VertexColor = [255, 255, 255, 51]
-				QuadCount = 64
-			}
 		}
 
 		AutoFireOrForceFire
@@ -779,9 +762,11 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			Mode = Any
 		}
 
-		FixedWeaponShooter
+		FixedWeaponShooter //acts as the firing clock.
 		{
 			Type = FixedWeapon
+			AllowCustomCoverageEditing = false
+			IncludeInFirepowerEstimation = false
 			OperationalToggle = IsShellFullyOpen//
 			AutoFireToggle = IsShellFullyOpen //
 			ToggleOnMode = IsReloaded
@@ -821,9 +806,12 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			ToggleOn = "false"
 		}
 
-		FixedWeaponAimer
+		FixedWeaponAimer  //handles targeting/fire-intent.
 		{
 			Type = FixedWeapon
+			IncludeInFirepowerEstimation = false
+			MatchWeaponCoverage = Turret
+			MatchWeaponCoverageStrictFire = true
 			ChainedTo = Turret
 			OperationalToggle = IsOperational//Always checking for a target
 			AutoFireToggle = AutoFireToggle //
@@ -832,9 +820,6 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			DefaultDirectControlBinding = 0
 			ToggleOnMode = WantsToFire
 			AIFirepowerRating = &../Turret/AIFirepowerRating
-			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
-			SuppressFirepowerEstimationWhenNotTargetingShipRelativePoints = true
-			SaveShipRelativeTargets = true
 
 			AutoTarget
 			{
@@ -842,28 +827,6 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				Toggle = AutoTargetToggle
 			}
 
-			CoverageLine
-			{
-				LineSprite
-				{
-					Texture = &/INDICATORS/RadialGradient
-					VertexColor = [255, 255, 255, 191]
-					UVRect = [.5, 0, 0, 1]
-				}
-				LineThickness = 2
-
-				BeginCapSprite : LineSprite
-				{
-					UVRect = [0, 0, .5, 1]
-				}
-				BeginCapSize = [1, 2]
-
-				EndCapSprite : LineSprite
-				{
-					UVRect = [.5, 0, .5, 1]
-				}
-				EndCapSize = [1, 2]
-			}
 		}
 
 		ChaingunRampupProgressBar
@@ -1118,7 +1081,8 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			DamageResistances =
 			{
 				default = 70%,
-				explosive = &default
+				explosive = &default,
+				thermal = &default
 			}
 		}
 

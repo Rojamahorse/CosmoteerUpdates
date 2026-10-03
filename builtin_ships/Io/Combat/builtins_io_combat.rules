@@ -78,6 +78,8 @@ Ships
 	:~{ File="Savnock.ship.png";      Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Vine.ship.png";         Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ananke.ship.png";       Tier=10; Difficulty=2; }
+	:~{ File="Glasya.ship.png";       Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Labolas.ship.png";      Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Eligos.ship.png";       Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Agares.ship.png";       Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Marduk.ship.png";       Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -110,6 +112,7 @@ Ships
 	:~{ File="Barbatos.ship.png";     Tier=13; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Dantalion.ship.png";    Tier=13; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Raum.ship.png";         Tier=13; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Raura.ship.png";        Tier=13; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Nidhogg.ship.png";      Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Vepar.ship.png";        Tier=14; Difficulty=2; }
 	:~{ File="Saleos.ship.png";       Tier=14; Difficulty=2; }
@@ -133,6 +136,8 @@ Ships
 	:~{ File="Beleth.ship.png";       Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Manubia.ship.png";      Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Cetus.ship.png";        Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Andrus.ship.png";       Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Adrammelech.ship.png";  Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Battleships
 	:~{ File="Kalanos.ship.png";      Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
@@ -143,9 +148,11 @@ Ships
 	:~{ File="Tiresias.ship.png";     Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Enyo.ship.png";         Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Janus.ship.png";        Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
-	:~{ File="Lernean.ship.png";      Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Lernaean.ship.png";     Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; OtherIDs=["Lernean"]; }
 	:~{ File="Decarabia.ship.png";    Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Vapula.ship.png";       Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Melchom.ship.png";      Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Amphisbaena.ship.png";  Tier=16; Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Battlecruisers
 	:~{ File="Scylla.ship.png";       Tier=17; Difficulty=2; }
@@ -157,9 +164,16 @@ Ships
 	:~{ File="Andromalius.ship.png";  Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Charybdis.ship.png";    Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Paimon.ship.png";       Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Samghata.ship.png";     Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Belphegor.ship.png";    Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Leviathan.ship.png";    Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Haborym.ship.png";      Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Flagships
 	:~{ File="Extinguisher.ship.png"; Tier=18; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Prometheus.ship.png";   Tier=18; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Surtr.ship.png";        Tier=18; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Mars.ship.png";         Tier=18; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Behemoth.ship.png";     Tier=18; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Mammon.ship.png";       Tier=18; Difficulty=2; Tags:~/Tags[empty_storage]; }
 ]

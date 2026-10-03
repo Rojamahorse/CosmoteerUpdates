@@ -47,6 +47,7 @@ Ships
 	:~{ File="Stomper.ship.png";          Tier=5;  Difficulty=1; }
 	:~{ File="Tax Evader.ship.png";       Tier=5;  Difficulty=1; }
 	:~{ File="Hotshot.ship.png";          Tier=5;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Oghi.ship.png";             Tier=5;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Scrapknight.ship.png";      Tier=6;  Difficulty=1; }
 	:~{ File="Hunchback.ship.png";        Tier=6;  Difficulty=1; }
 	:~{ File="Reckless Warrior.ship.png"; Tier=6;  Difficulty=1; }
@@ -54,6 +55,8 @@ Ships
 	:~{ File="Raghdirst.ship.png";        Tier=6;  Difficulty=1; }
 	:~{ File="Thornlark.ship.png";        Tier=6;  Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Stoker.ship.png";           Tier=6;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Matchstick.ship.png";       Tier=6;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Orujo.ship.png";            Tier=6;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ossipon.ship.png";          Tier=6;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Corvettes
@@ -68,6 +71,7 @@ Ships
 	:~{ File="Sarro.ship.png";            Tier=8;  Difficulty=1; }
 	:~{ File="Toadvine.ship.png";         Tier=8;  Difficulty=1; }
 	:~{ File="Desperado.ship.png";        Tier=8;  Difficulty=1; Tags:~/Tags[empty_storage]; OtherIDs=["Can Opener"]; }
+	:~{ File="Shrapnel Kedge.ship.png";   Tier=8;  Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Phalanx III Heavy Escort.ship.png"; Tier=8; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Blacksmith.ship.png";       Tier=9;  Difficulty=1; }
 	:~{ File="Sepa.ship.png";             Tier=9;  Difficulty=1; Tags:~/Tags[empty_storage]; }
@@ -79,6 +83,7 @@ Ships
 	:~{ File="Opponent of Commerce.ship.png"; Tier=9; Difficulty=2; }
 	:~{ File="Pugachev.ship.png";         Tier=9; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Scorcher.ship.png";         Tier=9; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Zivania.ship.png";          Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Frigates
 	:~{ File="Loomer.ship.png";           Tier=10;  Difficulty=1; }
@@ -89,10 +94,13 @@ Ships
 	:~{ File="Crankshaft.ship.png";       Tier=10;  Difficulty=2; }
 	:~{ File="Hentzau.ship.png";          Tier=10;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Sicario.ship.png";          Tier=10;  Difficulty=2; }
+	:~{ File="Quicksilver Skirmisher.ship.png"; Tier=10; Difficulty=2; }
 	:~{ File="Cantiloupe.ship.png";       Tier=11;  Difficulty=1; }
 	:~{ File="Roko's Vengeance.ship.png"; Tier=11;  Difficulty=2; }
 	:~{ File="Hydra.ship.png";            Tier=11;  Difficulty=2; }
 	:~{ File="Poor Yorick.ship.png";      Tier=11;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Blackguard.ship.png";       Tier=11;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Aragh Sagi.ship.png";       Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Deathrito.ship.png";        Tier=12;  Difficulty=1; }
 	:~{ File="Staccato.ship.png";         Tier=12;  Difficulty=1; }
 	:~{ File="Bomb Anchor.ship.png";      Tier=12;  Difficulty=1; Tags:~/Tags[empty_storage]; }
@@ -105,6 +113,8 @@ Ships
 	:~{ File="Eviscerator.ship.png";       Tier=13;  Difficulty=1; }
 	:~{ File="Eviscerator Reborn.ship.png";Tier=13;  Difficulty=2; }
 	:~{ File="Smoulderer.ship.png";        Tier=13;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Smokestack.ship.png";       Tier=13; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Rakija.ship.png";           Tier=13; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Revenant.ship.png";          Tier=13;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Umbrage.ship.png";           Tier=14;  Difficulty=1; }
 	:~{ File="Banshee.ship.png";           Tier=14;  Difficulty=2; }
@@ -113,6 +123,7 @@ Ships
 	:~{ File="Desolator.ship.png";         Tier=14;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Shin Hanabi.ship.png";       Tier=14;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Tarakanova.ship.png";        Tier=14;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Long Goodbye.ship.png";      Tier=14;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Cruisers
 	:~{ File="Roko's Revenge.ship.png"; Tier=15;  Difficulty=1; }
@@ -147,4 +158,5 @@ Ships
 	// Flagships
 	:~{ File="All For Now.ship.png";    Tier=18;  Difficulty=2; }
 	:~{ File="Master of None.ship.png"; Tier=18;  Difficulty=2; }
+	:~{ File="Yesterday's Lie.ship.png";  Tier=18; Difficulty=2; Tags:~/Tags[empty_storage]; }
 ]

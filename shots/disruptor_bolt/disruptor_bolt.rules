@@ -3,7 +3,7 @@ OtherIDs = ["electro_bolt_shot", "electro_bolt", "cosmoteer.electro_bolt"]
 Range = 180
 IdealRange = [60, 180]
 IdealRadius = [5, 50]
-Speed = 216
+Speed = 180
 
 Components
 {
@@ -115,7 +115,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue = 75; EffectScaleExponent = 1 }
+					Damage = { BaseValue = 37; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -138,9 +138,10 @@ Components
 		{
 			// No effect.
 		}
-		PenetratingStructural
+		PenetratingStructural : &HitStructural
 		{
-			// No effect.
+			StructuralDamageRetentionPerHit = 60%
+			MinStructuralDamageScale = 3%
 		}
 		FinishedPenetratingOperational = &PenetratingOperational
 		FinishedPenetratingStructural = &PenetratingStructural

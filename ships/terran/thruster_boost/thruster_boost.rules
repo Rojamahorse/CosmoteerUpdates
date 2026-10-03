@@ -3,7 +3,9 @@ OVERCLOCK
 	THRUST = 7200
 	THRUST_FACTOR = (&THRUST) / (&~/Part/ThrusterForce)
 	
+	// Base power usage factor
 	MAX_POWER_USAGE_FACTOR = 175%
+	// Fuel usage modification factor, accounting for increased MaxActivation
 	POWER_USAGE_FACTOR = 1 / (&THRUST_FACTOR) * (&MAX_POWER_USAGE_FACTOR)
 	THRUST_HEAT_PER_SECOND = 675
 
@@ -15,7 +17,10 @@ OVERCLOCK
 	BOOST_HEAT_FACTOR_PER_SECOND = -6%
 	BOOST_HEAT_FACTOR_POWER_THRESHOLD = (&~/Part/Components/RealBatteryStorage/MaxResources)
 
-	BOOST_MAX_POWER_USAGE_FACTOR = 175%
+	// Base boost fuel usage modification factor, accounting for increased MaxActivation
+	BOOST_BASE_POWER_USAGE_FACTOR = 1 / (&BOOST_THRUST_FACTOR) * (&MAX_POWER_USAGE_FACTOR)
+	// Boost fuel usage modification factor when at max power usage ramp
+	BOOST_MAX_POWER_USAGE_FACTOR = 140%
 	BOOST_POWER_RAMP_TIME = 2
 
 	AUDIO_SPEED_FACTOR = 120%
@@ -69,7 +74,20 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 		]
 	}
 	ThrustDecreaseTime = 0
-	ThrustRecoveryTime = 2
+	ThrustRecoveryTime
+	{
+		BaseValue = 2
+		Modifiers
+		[
+			{
+				Type = BuffRemap
+				BuffType = Overclock
+				ModificationMode = Divide
+				RemapFrom = [0, 1]
+				RemapTo = [1, (&~/OVERCLOCK/THRUST_FACTOR)]
+			}
+		]
+	}
 	FuelUsage = 200
 	BoostedThrusterForce = 9600
 	BoostedThrustIncreaseTime = 0
@@ -383,6 +401,12 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			Values = [One, Overclock_BoostPowerUsedAdditionalHeatFactor]
 			Mode = Add
 		}
+		Overclock_MaxActivationHeatFactor
+		{
+			Type = MultiValue
+			Values = [Overclock_BaseHeatFactor, Overclock_BoostPowerUsedHeatFactor]
+			Mode = Multiply
+		}
 
 		OverclockStateValue
 		{
@@ -417,10 +441,10 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 		{
 			Type = ResourceConverter
 			OperationalToggle = IsOperationalOverclocked
-			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/THRUST_HEAT_PER_SECOND) * (&Interval))
+			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/THRUST_HEAT_PER_SECOND) * (&~/HEAT_TO_RESOURCE) * (&Interval))
 			ToQuantity
 			{
-				BaseValue = (&../HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
+				BaseValue = &../HEAT_PER_INTERVAL
 				BuffType = ThermalActivity
 				BuffMode = Multiply
 			}
@@ -438,7 +462,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 		Overclock_HeatProductionFactor
 		{
 			Type = MultiValue
-			Values = [Overclock_BoostPowerUsedHeatFactor, Overclock_SmoothedThrusterActivation]
+			Values = [Overclock_MaxActivationHeatFactor, Overclock_SmoothedThrusterActivation]
 			Mode = Multiply
 		}
 
@@ -454,7 +478,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			Type = ValueOperation
 			Operator = Divide
 			ValueOne = Overclock_CombinedThrusterActivation
-			ValueTwo = Overclock_MaxActivation
+			ValueTwo = Overclock_CurrentMaxActivation
 		}
 
 		Overclock_CombinedThrusterActivation
@@ -472,10 +496,11 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			Invert = true
 		}
 
-		Overclock_MaxActivation
+		Overclock_CurrentMaxActivation
 		{
-			Type = BuffableValue
-			Value = &~/Part/Components/BoostOffComponents/Components/MainThruster/MaxActivation
+			Type = ValueProxy
+			ComponentID = Overclock_MaxActivation
+			ValueWhenNotConnected = 1
 		}
 
 		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
@@ -552,6 +577,12 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 							}
 						]
 					}
+				}
+
+				Overclock_MaxActivation
+				{
+					Type = BuffableValue
+					Value = &../MainThruster/MaxActivation
 				}
 
 				RampProgressBar
@@ -806,14 +837,23 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					FuelUsagePerSecond : ~/Part/Components/BoostOffComponents/Components/MainThruster/FuelUsagePerSecond
 					{
 						BaseValue = &~/Part/BoostedFuelUsage
-						Modifiers : ^/0/Modifiers
+						Modifiers
 						[
-							: ^/0/0 {
+							: ../^/0/Modifiers/0 {
+								RemapTo = [1, (&~/OVERCLOCK/BOOST_BASE_POWER_USAGE_FACTOR)]
+							}
+							: 0 {
 								BuffType = BoostOverclockPowerRamp
 								RemapTo = [1, (&~/OVERCLOCK/BOOST_MAX_POWER_USAGE_FACTOR)]
 							}
 						]
 					}
+				}
+
+				Overclock_MaxActivation
+				{
+					Type = BuffableValue
+					Value = &../MainThrusterBoosted/MaxActivation
 				}
 
 				RampProgressBar

@@ -34,6 +34,7 @@ CombatDifficultyLevels
 		DamageFromEnemies = 100%
 		ResourceDrainVsEnemies = 100%
 		ResourceDrainFromEnemies = 100%
+		DisabledInIronmanMode = true
 		StatusFactorsVsEnemies
 		{
 			cosmoteer.fire = 100%
@@ -139,6 +140,7 @@ EconDifficultyLevels
 		ReputationRewardFactor = 100%
 		ResourceSaleRefund = 50%
 		ConstructionMode = InstantFree
+		DisabledInIronmanMode = true
 	}
 	{
 		ID = "fast"
@@ -365,12 +367,17 @@ TradeShips
 	fringe_3a       : ~/BaseTradeShip { ShipID="Courier";                Faction=fringe;   TierRange=[1, 9];   StasisSpeed=50; StasisTradeTime=40; }
 	fringe_3b       : ~/BaseTradeShip { ShipID="The Last Lightyear";     Faction=fringe;   TierRange=[1, 9];   StasisSpeed=53; StasisTradeTime=40; }
 	fringe_3c       : ~/BaseTradeShip { ShipID="Shamal";                 Faction=fringe;   TierRange=[1, 9];   StasisSpeed=53; StasisTradeTime=40; }
+	fringe_3d       : ~/BaseTradeShip { ShipID="Barrel's Bottom";        Faction=fringe;   TierRange=[1, 9];   StasisSpeed=53; StasisTradeTime=40; }
+	fringe_3e       : ~/BaseTradeShip { ShipID="Better Than Nothing";    Faction=fringe;   TierRange=[1, 9];   StasisSpeed=53; StasisTradeTime=40; }
 	fringe_5a       : ~/BaseTradeShip { ShipID="Crate Bus";              Faction=fringe;   TierRange=[3, 12];  StasisSpeed=80; StasisTradeTime=60; }
 	fringe_5b       : ~/BaseTradeShip { ShipID="Loadspine";              Faction=fringe;   TierRange=[3, 12];  StasisSpeed=35; StasisTradeTime=60; }
 	fringe_5c       : ~/BaseTradeShip { ShipID="Harmattan";              Faction=fringe;   TierRange=[3, 12];  StasisSpeed=35; StasisTradeTime=60; }
+	fringe_5d       : ~/BaseTradeShip { ShipID="Affordable";             Faction=fringe;   TierRange=[3, 12];  StasisSpeed=35; StasisTradeTime=60; }
+	fringe_5e       : ~/BaseTradeShip { ShipID="Drossbarge";             Faction=fringe;   TierRange=[3, 12];  StasisSpeed=35; StasisTradeTime=60; }
 	fringe_7a       : ~/BaseTradeShip { ShipID="BuuLka FrEIghTa";        Faction=fringe;   TierRange=[6, 18];  StasisSpeed=28; StasisTradeTime=80; }
 	fringe_7b       : ~/BaseTradeShip { ShipID="Beautiful In Name Only"; Faction=fringe;   TierRange=[6, 18];  StasisSpeed=25; StasisTradeTime=80; }
 	fringe_7c       : ~/BaseTradeShip { ShipID="Impending Lawsuit";      Faction=fringe;   TierRange=[6, 18];  StasisSpeed=52; StasisTradeTime=80; }
+	fringe_7d       : ~/BaseTradeShip { ShipID="Melquiades";             Faction=fringe;   TierRange=[6, 18];  StasisSpeed=52; StasisTradeTime=80; }
 	fringe_10a      : ~/BaseTradeShip { ShipID="Ol' Reliable";           Faction=fringe;   TierRange=[12, 18]; StasisSpeed=78; StasisTradeTime=100; }
 	fringe_10b      : ~/BaseTradeShip { ShipID="Blockade Runner";        Faction=fringe;   TierRange=[12, 18]; StasisSpeed=88; StasisTradeTime=100; }
 	fringe_crew_5a  : ~/BaseTradeShip { ShipID="Target Practice";        Faction=fringe;   TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
@@ -416,10 +423,11 @@ TradeShips
 	cabal_10b      : ~/BaseTradeShip { ShipID="Witness";      Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
 	cabal_10c      : ~/BaseTradeShip { ShipID="Ecclesiarch";  Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
 	cabal_10d      : ~/BaseTradeShip { ShipID="Pontiff";      Faction=cabal;    TierRange=[12, 18]; StasisSpeed=84; StasisTradeTime=100; }
-	cabal_crew_5a  : ~/BaseTradeShip { ShipID="Trailblazer";      Faction=cabal;    TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_5a  : ~/BaseTradeShip { ShipID="Trailblazer";  Faction=cabal;    TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
 	cabal_crew_5b  : ~/BaseTradeShip { ShipID="Pioneer";      Faction=cabal;    TierRange=[1,  12]; StasisSpeed=85; StasisTradeTime=20; }
 	cabal_crew_8a  : ~/BaseTradeShip { ShipID="Wayfarer";     Faction=cabal;    TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
 	cabal_crew_8b  : ~/BaseTradeShip { ShipID="Cicerone";     Faction=cabal;    TierRange=[6,  18]; StasisSpeed=85; StasisTradeTime=20; }
+	cabal_crew_9a  : ~/BaseTradeShip { ShipID="Shepherd";     Faction=cabal;    TierRange=[7,  18]; StasisSpeed=85; StasisTradeTime=20; }
 	cabal_crew_11a : ~/BaseTradeShip { ShipID="Originator";   Faction=cabal;    TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
 	cabal_crew_11b : ~/BaseTradeShip { ShipID="Pathfinder";   Faction=cabal;    TierRange=[12, 18]; StasisSpeed=85; StasisTradeTime=20; }
 
@@ -471,30 +479,32 @@ BaseTradeShip
 	AvoidableDoodadTags = [sun]
 	AvoidableDoodadBuffer = 100
 	TransferableCrew = 30%
+	RememberResourcesAndCrew = true
 
 	EmptyTileChance = 40%
 	ResourcesCarried
 	[
-		{ ResourceType=hyperium;          RandomWeight=10; RandomQuantity=[75%, 100%]; }
-		{ ResourceType=steel;             RandomWeight=40; RandomQuantity=[75%, 100%]; }
-		{ ResourceType=coil;              RandomWeight=20; RandomQuantity=[75%, 100%]; }
-		{ ResourceType=coil2;             RandomWeight=20; RandomQuantity=[75%, 100%]; }
-		{ ResourceType=tristeel;          RandomWeight=5;  RandomQuantity=[50%, 100%]; }
-		{ ResourceType=diamond;           RandomWeight=5;  RandomQuantity=[50%, 100%]; }
-		{ ResourceType=processor;         RandomWeight=5;  RandomQuantity=[50%, 100%]; }
-		{ ResourceType=enriched_uranium;  RandomWeight=5;  RandomQuantity=[50%, 100%]; }
-		{ ResourceType=sulfur;            RandomWeight=10; RandomQuantity=[75%, 100%]; }
-		{ ResourceType=iron;              RandomWeight=20; RandomQuantity=[75%, 100%]; }
-		{ ResourceType=copper;            RandomWeight=10; RandomQuantity=[75%, 100%]; }
-		{ ResourceType=tritanium;         RandomWeight=5;  RandomQuantity=[50%, 100%]; }
-		{ ResourceType=carbon;            RandomWeight=5;  RandomQuantity=[50%, 100%]; }
-		{ ResourceType=gold;              RandomWeight=5;  RandomQuantity=[50%, 100%]; }
-		{ ResourceType=uranium;           RandomWeight=5;  RandomQuantity=[50%, 100%]; }
-		{ ResourceType=bullet;            RandomWeight=20; RandomQuantity=[75%, 100%]; }
-		{ ResourceType=missile_part_he;   RandomWeight=5;  RandomQuantity=[75%, 100%]; }
-		{ ResourceType=missile_part_emp;  RandomWeight=5;  RandomQuantity=[75%, 100%]; }
-		{ ResourceType=missile_part_nuke; RandomWeight=5;  RandomQuantity=[75%, 100%]; }
-		{ ResourceType=mine_part;         RandomWeight=3;  RandomQuantity=[75%, 100%]; }
+		{ ResourceType=hyperium;              RandomWeight=10; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=steel;                 RandomWeight=40; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=coil;                  RandomWeight=20; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=coil2;                 RandomWeight=20; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=tristeel;              RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=diamond;               RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=processor;             RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=enriched_uranium;      RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=sulfur;                RandomWeight=10; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=iron;                  RandomWeight=20; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=copper;                RandomWeight=10; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=tritanium;             RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=carbon;                RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=gold;                  RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=uranium;               RandomWeight=5;  RandomQuantity=[50%, 100%]; }
+		{ ResourceType=bullet;                RandomWeight=20; RandomQuantity=[75%, 100%]; }
+		{ ResourceType=missile_part_he;       RandomWeight=5;  RandomQuantity=[75%, 100%]; }
+		{ ResourceType=missile_part_emp;      RandomWeight=5;  RandomQuantity=[75%, 100%]; }
+		{ ResourceType=missile_part_nuke;     RandomWeight=5;  RandomQuantity=[75%, 100%]; }
+		{ ResourceType=mine_part;             RandomWeight=3;  RandomQuantity=[75%, 100%]; }
+		{ ResourceType=missile_part_thermal;  RandomWeight=5;  RandomQuantity=[75%, 100%]; }
 	]
 }
 

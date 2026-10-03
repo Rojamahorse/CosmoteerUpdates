@@ -32,6 +32,7 @@ Ships
 	:~{ File="Bombardier.ship.png";  Tier=4;  Difficulty=2; }
 	:~{ File="Quad.ship.png";        Tier=4;  Difficulty=2; }
 	:~{ File="Middleman.ship.png";   Tier=4;  Difficulty=2; }
+	:~{ File="Hand Cannon.ship.png"; Tier=4;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Hellion.ship.png";     Tier=5;  Difficulty=1; }
 	:~{ File="Cannoneer.ship.png";   Tier=5;  Difficulty=2; }
 	:~{ File="Dyad.ship.png";        Tier=5;  Difficulty=2; }
@@ -44,6 +45,7 @@ Ships
 	:~{ File="Sapper.ship.png";      Tier=6;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Valkyrie.ship.png";    Tier=6;  Difficulty=2; }
 	:~{ File="Spotlight.ship.png";   Tier=6;  Difficulty=2; }
+	:~{ File="Flintlock.ship.png";   Tier=6;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Corvettes
 	:~{ File="Onset.ship.png";       Tier=7;  Difficulty=1; }
@@ -63,6 +65,7 @@ Ships
 	:~{ File="Rampart.ship.png";     Tier=9;  Difficulty=2; }
 	:~{ File="Balistraria.ship.png"; Tier=9;  Difficulty=2; }
 	:~{ File="Juridical.ship.png";   Tier=9;  Difficulty=2; }
+	:~{ File="Derringer.ship.png";   Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Frigates
 	:~{ File="Stalwart.ship.png";    Tier=10; Difficulty=1; }
@@ -78,6 +81,9 @@ Ships
 	:~{ File="Hullbreaker.ship.png"; Tier=11; Difficulty=2; }
 	:~{ File="Anvil.ship.png";       Tier=11; Difficulty=2; }
 	:~{ File="Gavel.ship.png";       Tier=11; Difficulty=2; }
+	:~{ File="Katar.ship.png";       Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Caestus.ship.png";     Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Vice.ship.png";        Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Dispatcher.ship.png";  Tier=11; Difficulty=3; }
 	:~{ File="Aspis.ship.png";       Tier=11; Difficulty=3; }
 	:~{ File="Saber.ship.png";       Tier=11; Difficulty=3; Tags:~/Tags[empty_storage]; }
@@ -90,6 +96,9 @@ Ships
 	:~{ File="Haymaker.ship.png";    Tier=12; Difficulty=3; }
 	:~{ File="Impaler.ship.png";     Tier=12; Difficulty=3; }
 	:~{ File="Praetor.ship.png";     Tier=12; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Sai.ship.png";         Tier=12; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Knuckleduster.ship.png"; Tier=12; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Halligan.ship.png";    Tier=12; Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Destroyers
 	:~{ File="Warden.ship.png";      Tier=13; Difficulty=2; }
@@ -98,14 +107,24 @@ Ships
 	:~{ File="Auditor.ship.png";     Tier=13; Difficulty=3; }
 	:~{ File="Sledgehammer.ship.png";Tier=13; Difficulty=3; }
 	:~{ File="Glaive.ship.png";      Tier=13; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Gatecrasher.ship.png"; Tier=13; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Auxilia.ship.png";     Tier=13; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Equites.ship.png";     Tier=13; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Atlatl.ship.png";      Tier=13; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Project Eilifnir.ship.png"; Tier=13; Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Peacekeeper.ship.png"; Tier=14; Difficulty=2; }
 	:~{ File="Liberator.ship.png";   Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Hangman.ship.png";     Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Project Svalinn.ship.png"; Tier=14; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Onslaught.ship.png";   Tier=14; Difficulty=3; }
 	:~{ File="Magistrate.ship.png";  Tier=14; Difficulty=3; }
 	:~{ File="Smasher.ship.png";     Tier=14; Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Project Dainsleif.ship.png"; Tier=14; Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Praetorian.ship.png";  Tier=14; Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Geironul.ship.png";    Tier=14; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Landsknecht.ship.png"; Tier=14; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Rainmaker.ship.png";   Tier=14; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Peltarion.ship.png";   Tier=14; Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Cruisers
 	:~{ File="Enforcer.ship.png";    Tier=15; Difficulty=2; }
@@ -114,6 +133,9 @@ Ships
 	:~{ File="Zweihander.ship.png";  Tier=15; Difficulty=2; }
 	:~{ File="Degenbrecher.ship.png";Tier=15; Difficulty=2; }
 	:~{ File="Bluescreen.ship.png";  Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Partisan.ship.png";    Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Kalashnikov.ship.png"; Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Marshal.ship.png";     Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Guardian.ship.png";    Tier=15; Difficulty=3; }
 	:~{ File="Project Mjolnir.ship.png"; Tier=15; Difficulty=3; }
 	:~{ File="Liquidator.ship.png";  Tier=15; Difficulty=3; }
@@ -122,16 +144,27 @@ Ships
 	// Battleships
 	:~{ File="Longspear.ship.png";   Tier=16; Difficulty=2; }
 	:~{ File="Interdictor.ship.png"; Tier=16; Difficulty=2; }
+	:~{ File="Ombudsman.ship.png";   Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Stormcaller.ship.png"; Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Tercio.ship.png";      Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Septadent.ship.png";   Tier=16; Difficulty=2; }
+	:~{ File="Fortbreaker.ship.png"; Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Stake Driver.ship.png"; Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Trishula.ship.png";    Tier=16; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Mitigator.ship.png";   Tier=16; Difficulty=3; }
 	:~{ File="Onager.ship.png";      Tier=16; Difficulty=3; }
 	:~{ File="Emancipator.ship.png"; Tier=16; Difficulty=3; Tags:~/Tags[empty_storage]; OtherIDs=["Eradicator"]; }
 	:~{ File="Verificator.ship.png"; Tier=16; Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Praefectus.ship.png";  Tier=16; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Gladiator.ship.png";   Tier=16; Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Battlecruisers
 	:~{ File="Tempest.ship.png";     Tier=17; Difficulty=2; }
 	:~{ File="Ambassador.ship.png";  Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Perfect Blue.ship.png";Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Trident.ship.png";     Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Project Laevateinn.ship.png"; Tier=17; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Inquisitor.ship.png";  Tier=17; Difficulty=2; ID="Inquisitor2"; Tags:~/Tags[empty_storage]; } // Explicit ID because "Inquisitor" is already taken by the Cabal's Zelator (as one of its OtherIDs).
 	:~{ File="Executor.ship.png";    Tier=17; Difficulty=3; }
 	:~{ File="Arbalest.ship.png";    Tier=17; Difficulty=3; }
 	:~{ File="Project Mistilteinn.ship.png"; Tier=17; Difficulty=3; Tags:~/Tags[empty_storage]; }
@@ -142,4 +175,10 @@ Ships
 	:~{ File="Arbiter.ship.png";     Tier=18; Difficulty=3; }
 	:~{ File="Shestopyor.ship.png";  Tier=18; Difficulty=3; }
 	:~{ File="Destructor.ship.png";  Tier=18; Difficulty=3; }
+	:~{ File="Firewall.ship.png";    Tier=18; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Adjudicatrix.ship.png";Tier=18; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Blockchain.ship.png";  Tier=18; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Algorithm.ship.png";   Tier=18; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Tribunal.ship.png";    Tier=18; Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Meteor.ship.png";      Tier=18; Difficulty=3; Tags:~/Tags[empty_storage]; }
 ]

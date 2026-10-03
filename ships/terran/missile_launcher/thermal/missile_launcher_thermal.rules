@@ -2,6 +2,7 @@ HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
 HEAT_PER_MISSILE = 8500
+APPLIED_HEAT_PER_MISSILE = 5000
 
 EditorIcon
 {
@@ -150,6 +151,7 @@ Components
 	{
 		Location = [.5, 1]
 		ShowExplicitTarget = false
+		MatchWeaponCoverage = WeaponB
 		Emitter = EmitterA
 	}
 
@@ -171,17 +173,10 @@ Components
 		]
 	}
 
-	WeaponB : ~/BASE/Weapon
+	WeaponB : ~/BASE/Weapon //primary weapon
 	{
-		Location = [1, 1]
+		Location = [1.5, 1]
 		Emitter = EmitterB
-
-		CoverageSectorArc
-		{
-			Texture = &/INDICATORS/VerticalGradient
-			VertexColor = [255, 255, 255, 51]
-			QuadCount = 64
-		}
 	}
 
 	EmitterB : ~/BASE/Emitter
@@ -848,6 +843,7 @@ MissileStats
 	NameKey = "StatCategories/MissileThermal"
 	Stats
 	{
+		HeatApplied = (&~/APPLIED_HEAT_PER_MISSILE)
 		HeatCapacity = (&~/HEAT_PER_MISSILE)
 		HeatSpreadDistance = &~/BASE/Emitter/Bullet/Components/Hit/HitOperational/HitEffects/0/MaxCost
 		ROF = 1 / (&<../missile_launcher.rules>/Part/Components/CommonReloadTimerThermal/Duration)

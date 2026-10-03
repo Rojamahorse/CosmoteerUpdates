@@ -372,12 +372,6 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			BlueprintArcRadius = 10
 			BlueprintArcSpriteSegments = 64
 
-			CoverageSectorArc
-			{
-				Texture = &/INDICATORS/VerticalGradient
-				VertexColor = [255, 255, 255, 51]
-				QuadCount = 64
-			}
 		}
 		FirePermission
 		{
@@ -1100,11 +1094,11 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 				Penetration = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/Penetration
 				FireChance = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/PenetratingOperational/HitEffects/1/StatusChance/BaseValue) * 100
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
-				Range = &~/Part/Components/BulletEmitter/Bullet/Range/BaseValue
+				Range = &~/Part/Components/BulletEmitter/Bullet/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
 				Spread = deg(&~/Part/Components/BulletEmitter/Spread/1/BaseValue)
 				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
-				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed/BaseValue
+				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
 				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
 				AmmoPerShot = &~/Part/Components/BulletEmitter/ResourcesUsed
 				AmmoPerSecond = (&AmmoPerShot) * (&ROF)
@@ -1126,10 +1120,8 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 					Burst = (&~/OVERCLOCK/BURST)
 					ROF = (&Burst) / (&FireInterval)
 					FireInterval = (&~/Part/Components/Turret/FireInterval) + (&~/OVERCLOCK/EXTRA_INTERVAL)
-					Range = &~/Part/Components/BulletEmitter/Bullet/OVERCLOCK/RANGE
 					Spread = deg(&~/OVERCLOCK/HALF_SPREAD)
 					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
-					ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/OVERCLOCK/SPEED
 				}
 			}
 		]

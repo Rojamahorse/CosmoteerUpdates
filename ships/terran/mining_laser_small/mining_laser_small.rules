@@ -63,6 +63,14 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
+		
+		AlwaysCrewToggle
+		{
+		    Type = UIToggle
+		    ToggleID = "always_crew_part"
+		    Default = 1
+		    RequiresCommand = false
+		}
 
 		ScorchedToggle
 		{
@@ -316,7 +324,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = TurretWeapon
 			Location = [1, 2]// Relative to upper-left corner of unrotated part.
 			Rotation = -90d // Relative to unrotated part.
-			OperationalToggle = IsOperational
+			OperationalToggle = CommandConsumptionToggle
 			AutoFireToggle = AutoFireToggle
 			FireInterval = 0.2
 			FiringArc = 270d
@@ -351,12 +359,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			BlueprintArcRadius = 10
 			BlueprintArcSpriteSegments = 64
 
-			CoverageSectorArc
-			{
-				Texture = &/INDICATORS/VerticalGradient
-				VertexColor = [255, 255, 255, 51]
-				QuadCount = 64
-			}
 		}
 
 		InterpolatedTurret // Do not hook any gameplay logic to this! It will cause desyncs!
@@ -501,7 +503,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = PartCrew
 			Crew = 1
 			DefaultPriority = &<./Data/ships/base_ship.rules>/DefaultSalvagePriority
-			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle, PartCrewPrereq]
 			HighPriorityPrerequisites = [BatteryStorage]
 			CrewDestinations
 			[
@@ -511,6 +513,13 @@ Part : <../base_part_terran_overclock.rules>/Part
 			[
 				CrewLocation
 			]
+		}
+		
+		PartCrewPrereq
+		{
+		    Type = MultiToggle
+		    Toggles = [Turret, AlwaysCrewToggle]
+		    Mode = Any
 		}
 
 		TurretGraphics
@@ -827,7 +836,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 				// No crew.
 				{
-					Toggle = PartCrew
+					Toggle = CrewIndicator
+					ShowWhenToggleOn = true
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoCrew
@@ -835,6 +845,26 @@ Part : <../base_part_terran_overclock.rules>/Part
 					}
 				}
 			]
+		}
+		
+		CrewIndicator
+		{
+		    Type = MultiToggle
+		    Toggles = [AlwaysCrewToggleOn, AlwaysCrewToggleOff]
+		    Mode = Any
+		}
+		
+		AlwaysCrewToggleOn
+		{
+		    Type = MultiToggle
+		    Toggles = [AlwaysCrewToggle, {Toggle=PartCrew, Invert=true}]
+		    Mode = All
+		}
+		AlwaysCrewToggleOff
+		{
+		    Type = MultiToggle
+		    Toggles = [{Toggle=AlwaysCrewToggle, Invert=true}, Turret, {Toggle=PartCrew, Invert=true}]
+		    Mode = All
 		}
 
 		Blueprints

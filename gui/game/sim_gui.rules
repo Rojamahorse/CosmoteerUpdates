@@ -225,6 +225,35 @@ FocusShipCircle : SelectedShipCircle
 {
 	VertexColor = [191, 228, 255, 255]
 }
+DefaultWeaponCoverageLine
+{
+	LineSprite
+	{
+		Texture = &/INDICATORS/RadialGradient
+		VertexColor = [255, 255, 255, 191]
+		UVRect = [.5, 0, 0, 1]
+	}
+	LineThickness = 2
+
+	BeginCapSprite : LineSprite
+	{
+		UVRect = [0, 0, .5, 1]
+	}
+	BeginCapSize = [1, 2]
+
+	EndCapSprite : LineSprite
+	{
+		UVRect = [.5, 0, .5, 1]
+	}
+	EndCapSize = [1, 2]
+}
+DefaultWeaponCoverageSectorArc
+{
+	Texture = &/INDICATORS/VerticalGradient
+	VertexColor = [255, 255, 255, 51]
+	QuadCount = 128
+}
+
 TentativeAttackCommandCircle : <./Data/commands/command_attack.rules>/AttackCommand/Circle
 {
 	VertexColor = [255, 255, 255, 204]

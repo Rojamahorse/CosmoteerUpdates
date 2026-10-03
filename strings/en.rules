@@ -51,14 +51,13 @@ Wishlist
 	Caption = "BUY NOW!"
 	ExitMsg = "Thanks for playing the Cosmoteer Demo!"
 	FeatureMissingMsg = "<bad>Sorry, that feature is not available in the demo.</bad>"
-	LaunchDiscount = "<s24><u>Don't miss the launch discount!</u></s24>"
 	Yes = "<s24>Buy Now</s24>\n(Or Add To Wishlist)"
 	No = "Maybe Later"
 	Features = "<fame_color>Full game includes...</fame_color><s4>\n\n</s4>"\
 	           "● Explore the whole galaxy... All star systems unlocked!<s4>\n\n</s4>"\
 	           "● Co-op &amp; PvP multiplayer<s4>\n\n</s4>"\
 	           "● More weapons and other ship parts (Railguns, Nukes, E.M.P.s, Large Shields, Tractor Beams, and more!)<s4>\n\n</s4>"\
-	           "● 200+ ship designs across four unique factions<s4>\n\n</s4>"\
+	           "● 800+ ship designs across five unique factions<s4>\n\n</s4>"\
 	           "● Mods &amp; Steam Workshop support"
 	HoursFmt = "You've been playing the Cosmoteer Demo for {0} hour(s). You can play for as long as you want, but if you're enjoying it, maybe you would like to buy the full version?"
 	FameLimitReached = "CONGRATULATIONS!!!\nYou've reached the maximum <fame>Fame</fame> in the demo, but you're well on your way to becoming \"Legendary\". "\
@@ -114,7 +113,7 @@ TitleScreen
 	Roadmap = "EARLY ACCESS ROADMAP"
 	Feedback = "SEND FEEDBACK"
 	NextUpdateFmt = "Next update in approximately {0} days, {1} hours."
-	WishlistNow = "<s24>BUY NOW!</s24>\n<regular>Don't miss the launch discount!</regular>"
+	WishlistNow = "<s24>BUY NOW!</s24>"
 	ConfirmExitGame = "Are you sure you wish to close the game?"
 }
 
@@ -551,8 +550,10 @@ LoadSaveGame
 {
 	TitleLoad = "Load Game"
 	TitleSave = "Save Game"
+	TitleIronmanSave = "Create Ironman Save"
 	OkayLoad = "Load Game"
 	OkaySave = "Save Game"
+	OkayIronmanSave = "Create Ironman Save"
 	OpenFolder = "Open Folder"
 	Delete = "Delete"
 	ConfirmDeleteFmt = "Are you sure you wish to delete '{0}'? This will put the file in your computer's trash / recycle bin."
@@ -571,6 +572,10 @@ LoadSaveGame
 	QuickSave = "Quick Save"
 
 	QuickSaveTip = "Press <btn id='Game.QuickSave'/> to quick-save.\nPress <btn id='Game.QuickLoad'/> to load the last save of any type."
+	IronmanQuickLoadDisable = "Reloading the current Ironman save is not allowed."
+
+	IronmanTag = "<bad> (Ironman)</bad>"
+	IronmanSaveFailedConfirm = "Unable to save Ironman game. Do you want to continue? Your progress will be lost."
 
 	UsesMods = "Uses Mods"
 }
@@ -714,6 +719,11 @@ Inputs
 		UseTool = "Use Tool"
 		CancelTool = "Cancel Tool"
 		TargetWeapon = "Target Weapon"
+		AdjustWeaponCoverage = "Set Range/Arc/Direction"
+		AdjustWeaponCoverageFinePrecision = "Set Range/Arc/Direction: Precision Mode"
+		AdjustWeaponCoverageEditAll = "Set Range/Arc/Direction: Edit All Mode"
+		AdjustWeaponCoverageRotateArc = "Set Range/Arc/Direction: Rotate Mode"
+		AdjustWeaponCoverageSymmetricSides = "Set Range/Arc/Direction: Symmetric Mode"
 		CancelWeaponTargets = "Cancel Weapon Targets"
 		ToggleMap = "Show/Hide Galaxy Map"
 		MissionLog = "Show Career Log"
@@ -787,21 +797,18 @@ Inputs
 		thermal_overclock_on = "Overclock: On"
 		overclock_shield_extended = "Overclocked Shield: Extended"
 		overclock_shield_reinforced = "Overclocked Shield: Reinforced"
+		always_crew_part_on = "Always Crew Part: On"
+		always_crew_part_off = "Always Crew Part: Off"
 	}
 
 	PartTargeters
 	{
 		tractor_beam = "Target Tractor Beam"
-		prism_aim = "Aim Ion Prism"
-		headlight_aim = "Aim Headlight"
-		chaingun_aim = "Aim Chaingun"
-		thermal_aim = "Aim Thermal Resonance Lance"
 	}
 
 	PartTargetCancelers
 	{
 		tractor_beam = "Cancel Tractor Beam"
-		headlight_aim = "Reset Headlight Aim"
 	}
 
 	View
@@ -907,6 +914,7 @@ Inputs
 		AddToSelection = "Add Single Crew To Selection"
 		SelectRange = "Add Crew Range To Selection"
 		RemoveSelected = "Remove Selected Crew"
+		ResetCrew = "Reset Crew"
 	}
 
 	Resources
@@ -1101,6 +1109,7 @@ Settings
 	{
 		TabName = "Current Game"
 		DifficultyLbl = "Difficulty"
+		IronmanMode = "Changing difficulty is disabled in Ironman Mode."
 		OnlyHostChangeable = "Only the game host can change this setting."
 		GalaxySeedFmt = "Galaxy Seed: <b>{0}</b>"
 		CopyGalaxySeed = "Copy Galaxy Seed"
@@ -1258,6 +1267,7 @@ Settings
 		OverlaysLbl = "Informational Overlays"
 		MultiplayerLbl = "Multiplayer"
 		CrewLbl = "Crew"
+		AdjustWeaponCoverageLbl = "Weapon Range/Arc/Direction"
 
 		AutoCollectNuggets = "Automatically Gather Resources"
 		AutoCollectNuggetsTip = "If checked, then resources from salvaging ships and mining asteroids will be automatically gathered."
@@ -1312,7 +1322,7 @@ Settings
 		CtrlSelectsPartsTip = "If checked, then the <btn id='Game.SelectParts'/> key must be held while clicking on parts to select them."
 
 		ShowNearbyMissions = "Show Nearby Missions On HUD"
-		ShowNearbyMissionsTip = "Up to this many of the closest missions will be automatically displayed in the top-left corner of the HUD."
+		ShowNearbyMissionsTip = "If checked, missions will be automatically displayed in the top-left corner of the HUD."
 
 		ShowAllCommands = "Show Commands For All Ships"
 		ShowAllCommandsTip = "If checked, command movement and attack paths will be shown for all ships under your control, not just the selected ships."
@@ -1325,6 +1335,12 @@ Settings
 
 		PreferWorldRelativeFollowAngle = "Prefer Grid-Relative Follow Angles"
 		PreferWorldRelativeFollowAngleTip = "If checked, right-clicking and dragging on a friendly ship will use a follow angle relative to the background grid instead of the friendly ship. Hold <btn id='Game.WorldRelativeFollowAngle'/> to use the other mode."
+
+		AdjustWeaponCoverageEditAll = "Edit All By Default"
+		AdjustWeaponCoverageEditAllTip = "If checked, dragging an edge will adjust all selected parts at once. Hold <btn id='Game.AdjustWeaponCoverageEditAll'/> to use the other mode."
+
+		AdjustWeaponCoverageIntegerSnapping = "Snap To Whole Numbers"
+		AdjustWeaponCoverageIntegerSnappingTip = "If checked, range adjustments will snap to {0}m increments and angle adjustments will snap to {1}° increments. Hold <btn id='Game.AdjustWeaponCoverageFinePrecision'/> to use the other mode."
 
 		DirectControlAutoBrake = "Automatically Brake"
 		DirectControlAutoBrakeTip = "If checked, then your ship will automatically brake to a stop when you are not holding any keys while in Direct Control Mode. Hold <btn id='Game.DirectControlBrake'/> to use the other mode."
@@ -1566,6 +1582,9 @@ Settings
 
 		PartToolTipsDefaultToStats = "Show Statistics By Default"
 		PartToolTipsDefaultToStatsTip = "If checked, then hovering the mouse cursor over a part will display its statistics in addition to its description."
+
+		ShiftClickToDragPartsAndDecals = "Require <btn id='Game.AppendSelection' xml='false'/> to Drag Favorite Parts and Decals"
+		ShiftClickToDragPartsAndDecalsTip = "If checked, then you will have to hold down <btn id='Game.AppendSelection'/> in order to drag favorite parts and decals."
 
 		DefaultBuildTool = "Default Tool"
 		DefaultBuildToolTip = "The default tool to select when opening the ship editor."
@@ -1874,11 +1893,15 @@ Workshop
 	k_ERemoteStoragePublishedFileVisibilityUnlisted = "Unlisted"
 
 	Description = "Description:"
+	UpdateDescription = "Update Description"
 	Preview = "Preview Image:"
+	UpdatePreview = "Update Preview Image"
 	SelectPreviewFile = "Select File"
 	ViewInWorkshop = "View In Workshop"
-	Changes = "Change Notes:"
+	Changes = "<good>Change Notes:</good>"
 	FirstVersion = "First Version"
+	MinVersion = "Min Game Version"
+	MaxVersion = "Max Game Version"
 }
 
 ModsWorkshop : Workshop
@@ -1887,6 +1910,7 @@ ModsWorkshop : Workshop
 	Warning = "<bad>WARNING:</bad> The ENTIRE contents of this mod's folder and all of its sub-folders will be uploaded to the Steam Workshop. "\
 	          "Do not include any files that you do not want or have the rights to make public."
 	Folder = "Mod Folder:"
+	UpdateName = "Update Mod Name"
 	Name = "Mod Name:"
 	UpdatingExisting = "<good>Updating Existing Mod:</good>"
 	UploadSuccessful = "Upload Successful! Press Okay to view your mod in the Steam Workshop. "\
@@ -1899,6 +1923,7 @@ FleetsWorkshop : Workshop
 	Warning = "<bad>WARNING:</bad> The ENTIRE contents of this folder and all of its sub-folders will be uploaded to the Steam Workshop. "\
 	          "Do not include any files that you do not want or have the rights to make public."
 	Folder = "Ship Collection Folder:"
+	UpdateName = "Update Ship Collection Name"
 	Name = "Ship Collection Name:"
 	UpdatingExisting = "<good>Updating Existing Collection:</good>"
 	UploadSuccessful = "Upload Successful! Press Okay to view your ship collection in the Steam Workshop. "\
@@ -2100,7 +2125,7 @@ CareerModeConfig
 	DisableCrewConstruction = "I Hate Crew Construction"
 	DisableCrewConstructionTip = "If checked, then ship modifications will be made instantly instead of by the crew."
 	DisableExploration = "I Hate Exploration"
-	DisableExplorationTip = "Reveals all <b>?</b> icons on the map without having to first uncover them in the fog of war."
+	DisableExplorationTip = "Shows the location of all the <b>?</b> icons on the map without having to first uncover them in the fog of war."
 	DisableNebulas = "I Hate Clouds & Storms"
 	DisableNebulasTip = "Clouds and storms will not appear in Career mode. (If changed after starting a new game, this will only affect unvisited star systems.)"
 	DisableSalvaging = "I Hate Salvaging"
@@ -2108,6 +2133,8 @@ CareerModeConfig
 	                      "● Ships cannot be salvaged for resources.\n"\
 	                      "● Can make ship modifications anywhere using only credits."
 	CantDisableSalvagingTip = "Must also enable 'I Hate Crew Construction'."
+	IronmanMode = "Ironman Mode"
+	IronmanModeTip = "\"Permadeath\" mode with a single saved game file. If all ships are destroyed, the game ends and the saved game file is deleted."
 	GalaxySeed = "Galaxy Seed"
 	GalaxySeedTip = "A value used to \"seed\" the random galaxy generator. The same values used with the same galaxy size in the same version of Cosmoteer will produce identical galaxies."
 	MapSize = "Galaxy Size"
@@ -2276,6 +2303,8 @@ CareerLog
 MissionLog
 {
 	TabName = "Mission Log"
+	HUDToggle = "Nearby Missions"
+	ShowMissions = "Show {0}"
 	TierFmt = "<b>DANGER LEVEL:</b> {0}"
 	Objectives = "OBJECTIVES"
 	Rewards = "REWARDS"
@@ -2945,6 +2974,15 @@ GameMenu
 	Abort = "Return to Setup"
 }
 
+WeaponCoverageEditor
+{
+	RangeFmt = "{0:0.#}m"
+	RangeDeltaFmt = "{0:+0.#;-0.#;0}m"
+	AngleFmt = "{0:+0.#;-0.#;0}°"
+	FineAngleFmt = "{0:+0.0;-0.0;0.0}°"
+	ResetFloatingText = "RESET"
+}
+
 Hud
 {
 	MenuTip = "Menu\n\nHotkey: <btn id='General.Cancel'/>"
@@ -3013,10 +3051,22 @@ Hud
 	FtlJumpDisabledTip = "The selected ship(s) are currently unable to make hyper-jumps."
 	FormationTip = "<b>Formations</b>\n\nOrganize your ships into a flight formation."
 	HaltTip = "<b>Halt</b>\n\nCancel all current orders.\n\nHotkey: <btn id='Game.Halt'/>"
-	SummonCrewTip = "<b>Recall Crew</b>\n\nImmediately summons all crew back to your ship.\n\nHotkey: <btn id='Game.Halt'/>"
+	SummonCrewTip = "<b>Recall Crew</b>\n\nImmediately summons all crew back to your ship.\n\nHold <b>Shift</b> to cancel ship orders instead.\n\nHotkey: <btn id='Game.Halt'/>"
 
 	TargetTip = "<b>Target Weapons</b>\n\nTarget the selected weapons on a specific enemy part. Can also be used to target your own parts.\n\nHotkey: <btn id='Game.TargetWeapon'/>"
+	AdjustWeaponCoverageTip = "<b>Set Range/Arc/Direction</b>\n\n"\
+	                          "Click to enable, and then drag an edge to set its range, arc, or direction.\n\n"\
+	                          "Hotkey: <btn id='Game.AdjustWeaponCoverage'/>\n\n"\
+	                          "When enabled:\n"\
+	                          "- <btn id='Game.CancelTool'/><gray>:</gray> Reset highlighted edge\n"\
+	                          "- <btn id='Game.AdjustWeaponCoverageEditAll'/><gray> (hold):</gray> Edit all mode\n"\
+	                          "- <btn id='Game.AdjustWeaponCoverageFinePrecision'/><gray> (hold):</gray> Precision mode\n"\
+	                          "- <btn id='Game.AdjustWeaponCoverageRotateArc'/><gray> (hold):</gray> Rotation mode\n"\
+	                          "- <btn id='Game.AdjustWeaponCoverageSymmetricSides'/><gray> (hold):</gray> Symmetry mode\n"\
+	                          "- <btn id='Game.AdjustWeaponCoverageRotateArc'/> + <btn id='Game.AdjustWeaponCoverageSymmetricSides'/><gray> (hold):</gray> Fixed direction mode"
 	CancelTargetTip = "Cancel weapon target(s).\n\nHotkey: <btn id='Game.CancelWeaponTargets'/>"
+	ResetCustomCoverages = "Reset Range/Arc/Direction"
+	ResetCustomCoveragesTip = "Restore the selection's range, arc, and direction to their default settings."
 
 	MoneyTip = "Credits"
 	FameTip = "Fame"
@@ -3042,6 +3092,7 @@ Hud
 	SelectMultipleShips = "Select at least two ships."
 	NoCommandsToCancel = "No commands to cancel."
 	NoTargetsToCancel = "No weapon targets to cancel."
+	NoCustomCoveragesToReset = "Nothing to reset."
 
 	ShipSpeedFmt = "<s14>{0:0.0}</s14>\n<s12><gray>m/s</gray></s12>"
 	ShipSpeedTip = "The current speed of the ship in meters per second."
@@ -3259,7 +3310,7 @@ BuildBox
 	ImportPngOpacity = "Use <b>Opacity</b>"
 	ImportPngFileType = "PNG image files (*.png)"
 	ImportPngSizeWarningFmt = "That image file is larger than the maximum ship size of {0}x{1} and will be cropped."
-	RepairTip = "<b>Repair Tool</b>\n\nWhen selected, click on red damaged or destroyed part will repair it.\n\nHotkey: <btn id='Design.RepairTool'/>"
+	RepairTip = "<b>Repair Tool</b>\n\nWhen selected, clicking on a red damaged or destroyed part will repair it.\n\nHotkey: <btn id='Design.RepairTool'/>"
 	GrabTip = "<b>Grab Tool</b>\n\nWhen selected, clicking on a ship's part will grab it and put it in hand so that you can place it elsewhere. Hold <btn id='Game.AppendSelection'/> to duplicate the part instead of moving it.\n\n"\
 	          "<btn id='General.UIAltClick'/> to instead select that type of part as if you had clicked on its button.\n\n"\
 	          "Hotkey: <btn id='Design.GrabTool'/>"
@@ -3545,6 +3596,7 @@ CrewBox
 	HireCrewDialogFmt = "Hire <b>{0} Crew</b> for {1}?"
 	RemoveSelected = "Fire Selected Crew"
 	RemoveSelectedConfirmFmt = "Are you sure you wish to fire the <b>{0}</b> selected crew? You will <i>not</i> receive a refund. This cannot be undone."
+	NumberOfCrew = "{0}/{1} crew"
 
 	CrewDeathLogFmt = "<b>{0}</b> of the <b>{1}</b> has perished! ({2})"
 	CrewAbandonedLogFmt = "<b>{0}</b> of the <b>{1}</b> was abandoned!"
@@ -3684,6 +3736,10 @@ ResourcesBox
 	EjectExcess = "Eject Excess"
 	EjectExcessTip = "Eject all resources of this type in excess of the resource limit, or if no limit is set, ejects the amount in excess of what can be stored in the tiles designated for this type."
 	EjectFailed = "Not all resources could be ejected because there was no path to an airlock."
+	PinResourceDisplay = "Pin Resource Display"
+	PinResourceDisplayTip = "Pins the quantity and capacity of this resource to the top right corner."
+	UnpinResourceDisplay = "Unpin Resource Display"
+	UnpinResourceDisplayTip = "Unpins the quantity and capacity of this resource to the top right corner."
 }
 
 CrewAndResourceTransfer
@@ -3748,6 +3804,7 @@ CommWindow
 	SellHeader = "SELL"
 	Balance = "TOTAL"
 	InitiateTrade = "Initiate Trade"
+	InitiateTradeFTLDisabledTip = "Cannot trade while preparing to Hyper-Jump."
 	UpdateTrade = "Update Trade"
 	InsufficientFunds = "Insufficient Funds"
 	CancelTrade = "Cancel Trade"
@@ -3795,12 +3852,12 @@ Dialogue
 {
 	Surrender
 	{
-		PlayerSurrenderDialogue = "<b>{0}:</b> <i>\"You are outmatched! Surrender now and pay us <money>{1:n0}</money>... or die!\"</i>"
-		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>\"Surrender now and pay us <money>{1:n0}</money>... or die!\"</i>"
+		PlayerSurrenderDialogue = "<b>{0}:</b> <i>\"You are outmatched! Surrender now and pay us {1}... or die!\"</i>"
+		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>\"Surrender now and pay us {1}... or die!\"</i>"
 		AISurrenderDialogue = "<b>{0}:</b> <i>\"We surrender! If you promise not to destroy us, we'll pay you <money>{1:n0}</money>!\"</i>"
-		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>\"Fugitive, the {2} has issued a bounty of <money>{1:n0}</money> for your destruction. Pay it now, or prepare to be destroyed.\"</i>"
-		PlayerSurrender = "<i>\"We surrender!\"</i> (Pay <money>{0:n0}</money>)"
-		PlayerSurrenderPayBounty = "<i>\"We'll pay the bounty.\"</i> (Pay <money>{0:n0}</money>)"
+		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>\"Fugitive, the {2} has issued a bounty of {1} for your destruction. Pay it now, or prepare to be destroyed.\"</i>"
+		PlayerSurrender = "<i>\"We surrender!\"</i> (Pay {0})"
+		PlayerSurrenderPayBounty = "<i>\"We'll pay the bounty.\"</i> (Pay {0})"
 		DeclinePlayerSurrender = "<i>\"Never!\"</i>"
 		AISurrender = "<i>\"We accept your surrender.\"</i>"
 		DeclineAISurrender = "[Terminate Connection]"
@@ -3945,7 +4002,7 @@ Parts
 	CannonMedIcon = "Cannon"
 	CannonMedDesc = "Fires single rounds of projectile ammunition that can penetrate into enemy ships, sometimes starting fires."
 	CannonMedOverclock = "Overclocked Standard Cannon"
-	CannonMedOverclockDesc = "Fires salvos of multiple shells at higher velocity and longer range. Produces waste heat when firing."
+	CannonMedOverclockDesc = "Fires salvos of multiple shells. Produces waste heat when firing."
 
 	CannonLarge = "Large Cannon"
 	CannonLargeIcon = &CannonLarge
@@ -4249,19 +4306,19 @@ Parts
 	ReactorSmallIcon = "Small Reactor"
 	ReactorSmallDesc = "A power generator that produces the plasma batteries needed to power many of the ship's systems."
 	ReactorSmallOverclock = "Overclocked Small Reactor Core"
-	ReactorSmallOverclockDesc = "Increases maximum power capacity and generation rate. Produces waste heat while generating power."
+	ReactorSmallOverclockDesc = "Increases power generation rate. Produces waste heat while generating power."
 
 	ReactorMed = "Medium Reactor Core"
 	ReactorMedIcon = "Med. Reactor"
 	ReactorMedDesc = "A power generator that produces double-capacity plasma batteries needed to power many of the ship's systems."
 	ReactorMedOverclock = "Overclocked Medium Reactor Core"
-	ReactorMedOverclockDesc = "Increases maximum power capacity and generation rate. Produces waste heat while generating power."
+	ReactorMedOverclockDesc = "Increases power generation rate. Produces waste heat while generating power."
 
 	ReactorLarge = "Large Reactor Core"
 	ReactorLargeIcon = "Large Reactor"
 	ReactorLargeDesc = "A power generator that produces triple-capacity plasma batteries needed to power many of the ship's systems."
 	ReactorLargeOverclock = "Overclocked Large Reactor Core"
-	ReactorLargeOverclockDesc = "Increases generation rate. Additionally increases battery size from triple-capacity to quadruple-capacity. Produces waste heat while generating power."
+	ReactorLargeOverclockDesc = "Increases power generation rate. Additionally increases battery size from triple-capacity to quadruple-capacity. Produces waste heat while generating power."
 
 	SensorArray = "Sensor Array"
 	SensorArrayIcon = "Sensors"
@@ -4597,6 +4654,9 @@ PartToggles
 
 	OverclockShield_Extended = "<b>Shield Overclock Mode: <good>Extended</good></b>\nIncreases the shield arc and projection distance by routing additional power to the shield's core."
 	OverclockShield_Reinforced = "<b>Shield Overclock Mode: <good>Reinforced</good></b>\nHardens the shield against damage and energy draining effects by routing power from the peripheral to central emitters."
+
+	AlwaysCrew_Off = "<b>Always Crew: <bad>Off</bad></b>\nPart will only be crewed when the turret has a target."
+	AlwaysCrew_On = "<b>Always Crew: <good>On</good></b>\nPart will always be crewed."
 }
 
 PartColors
@@ -4608,15 +4668,6 @@ PartTargeters
 {
 	TractorBeam = "<b>Target Tractor Beam</b>\n\nHold <btn id='Game.SelectParts'/> to target specific parts.\n\nHotkey: <btn id='PartTargeters.tractor_beam'/>"
 	TractorBeamCancel = "<b>Cancel Tractor Beam</b>\n\nHotkey: <btn id='PartTargetCancelers.tractor_beam'/>"
-
-	PrismAim = "<b>Aim Ion Prism</b>\n\nAims the selected Ion Beam Prism(s) at a desired location, or links it to fire through another Ion Beam Prism.\n\nHotkey: <btn id='PartTargeters.prism_aim'/>"
-
-	ThermalResonanceAim = "<b>Aim Thermal Resonance Lance</b>\n\nAims the selected Thermal Resonance Lance(s) at a desired location.\n\nHotkey: <btn id='PartTargeters.thermal_aim'/>"
-
-	HeadlightAim  = "<b>Aim Headlight</b>\n\nAims the selected Headlight(s) at a desired location.\n\nHotkey: <btn id='PartTargeters.headlight_aim'/>"
-	HeadlightAimCancel = "<b>Reset Headlight Aim</b>\n\nHotkey: <btn id='PartTargetCancelers.headlight_aim'/>"
-
-	ChaingunAim = "<b>Aim Chaingun</b>\n\nAims the selected Chaingun(s) at a desired location.\n\nHotkey: <btn id='PartTargeters.chaingun_aim'/>"
 }
 
 Stats
@@ -4693,7 +4744,7 @@ Stats
 
 	StrengthAtMaxRangeFmt = "<white>Strength at Max Range:</white> <good>{0:0.#}%</good>"
 
-	IonLightningIntervalFmt = "<white>Lightning Interval:</white> <good>{0:0.#}</good> <gray>seconds (reduced by beam strength)</gray>"
+	IonLightningIntervalFmt = "<white>Lightning Interval:</white> <good>{0:0.#}</good> <gray>seconds</gray>"
 	LightningChanceFmt = "<white>Lightning Chance:</white> <good>{0:0.#}%</good>"
 	LightningRangeFmt = "<white>Lightning Range:</white> <good>{0:0.#}</good> <gray>meters</gray>"
 	LightningStrikeCountRangeFmt = "<white>Lightning Strikes:</white> <good>{0}-{1}</good>"
@@ -4701,11 +4752,13 @@ Stats
 	LightningChainChanceFmt = "<white>Lightning Chain Chance:</white> <good>{0:0.#}%</good> <gray>per strike</gray>"
 	LightningChainStrikeCountRangeFmt = "<white>Lightning Chain Strikes:</white> <good>{0}-{1}</good>"
 	LightningDamageFmt = "<white>Lightning Damage:</white> <good>{0:0}</good> <gray>per strike</gray>"
+	LightningShieldDamageFmt = "<white>Lightning Dmg vs Shields:</white> <good>{0:0}</good> <gray>per strike</gray>"
 
 	HeatPerTileContinuousFmt = "<white>Heat Applied:</white> <good>{0:n1}</good> <gray>MJ/tile/sec</gray>"
 	ResonanceHeatPoolFmt = "<white>Heat Applied (Pool):</white> <good>{0:n1}</good><gray><sup>[1]</sup> MJ/sec</gray>"
 	HeatPoolAmplificationExponentFmt = "<white>Heat Pool Amplification Exponent:</white> <good>{0:0.##}</good>"
 	DilationHeatSpreadFmt = "<white>Heat Spread:</white> <good>{0:0.##}</good><gray><sup>[2]</sup> meters</gray>"
+	HeatAppliedFmt = "<white>Heat Applied:</white> <good>{0:#,0.##}</good> <gray>MJ</gray>"
 	HeatSpreadDistanceFmt = "<white>Heat Spread Distance:</white> <good>{0:0.##}</good><gray> meters</gray>"
 	HitShieldHeatFactorFmt = "<white>Hit Shield Heating:</white> <good>{0:0.##}%</good>"
 	ShieldDamagePowerCostBaseFmt = "<white>Shield Damage Power Cost:</white> <good>{0:+0.#;-0.#}%</good> <gray>base</gray>"
@@ -4715,7 +4768,8 @@ Stats
 								 "<sup>2</sup> Scaled by the square root of the dilation value.</gray>"
 
 	PowerDrainFmt = "<white>Power Drain On Hit:</white> <good>{0:0.##}</good><gray>/shot (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
-	PowerDrainOverTimeFmt = "<white>Power Drain:</white> <good>{0:0}</good> <gray>total (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	PowerDrainOverTimeFmt = "<white>Power Drain:</white> <good>{0:0.##}</good> <gray>total (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	CommandRoomDrainOverTimeFmt = "<white>Command Room Drain:</white> <good>{0:0.##}</good> <gray>total (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	PowerDrainAreaFmt = "<white>Power Drain Area:</white> <good>{0:0.#}</good><gray> meter radius</gray>"
 	EffectDurationFmt = "<white>Effect Duration:</white> <good>{0:0.##}</good> <gray>seconds</gray>"
 	PenetrationFmt = "<white>Penetration:</white> <good>{0:0.##}</good> <gray>meters</gray>"
@@ -4895,6 +4949,8 @@ Stats
 	HeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:#,0.##}</good> <gray>MJ/sec</gray>"
 	HeatGenerationPerPartFmt = "<white>Heat Gen.:</white> <good>{0:#,0.##}</good> <gray>MJ/sec/part</gray>"
 	ThrusterHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:#,0.##}</good> <gray>MJ/sec (100% thrust)</gray>"
+	DynamoHeatGenerationFmt = "<white>Dynamo Heat Gen.:</white> <good>{0:#,0.##}</good> <gray>MJ/sec (while generating power)</gray>"
+
 	BaseHeatFactorFmt = "<white>Base Heat Factor:</white> <good>{0:0.#}% ({1:0.#})</good>"
 	BoostHeatFactorPerBatteryFmt = "<white>Heat Factor:</white> <good>{0:+0.#;-0.#;0}%</good> <gray>/battery used</gray>"
 	BoostHeatFactorPerSecondFmt = "<white>Heat Factor:</white> <good>{0:+0.#;-0.#;0}%</good> <gray>/sec while idle</gray>"
@@ -5426,8 +5482,9 @@ Tutorials
 		Title = "Micromanaging Your Ship"
 		Select = "<white>Left-click</white> on an individual part to <good>select</good> it.\n\nYou can also shift-click on or drag a box around multiple parts."
 		Power = "Press the <white>Power</white> button to <good>turn it off</good>. Any crew operating the part will leave and help out elsewhere."
-		FireMode = "Press the <white>Fire Mode</white> button to tell a weapon to <good>hold fire</good>, <good>only fire at its given target</good>, or <good>fire infinitely</good> as you see fit."
 		Target = "With a weapon selected, <white>right-click</white> on an enemy part to <good>target</good> the weapon on it."
+		FireMode = "Press the <white>Fire Mode</white> button to tell a weapon to <good>hold fire</good>, <good>only fire at its given target</good>, or <good>fire infinitely</good> as you see fit."
+		RangeArcDirection = "To customize a weapon's <good>range and firing arc</good> or aim it in a <good>fixed direction</good>, press the <white>Set Range/Arc/Direction</white> button and drag the displayed edges."
 		ControlGroups = "<good>TIP:</good> Create a <good>control group</good> by selecting one or more parts and then pressing <white>Ctrl + 0-9</white>. Select that group by pressing <white>0-9</white>."
 	}
 
@@ -5556,7 +5613,8 @@ Tutorials
 		IonBeams = "<good>Ion Beams</good> are fixed-direction energy beam weapons that can't aim but deal high, continuous damage over time."
 		IonPrisms = "But if you place an <good>Ion Prism</good> in front of an Ion Beam, it can redirect the beam in any direction, such as at an enemy ship or even into another Ion Prism."
 		Combining = "Multiple <good>beams can be combined</good> into a single Prism, creating a single larger, more-powerful beam."
-		Aiming = "To <good>aim a Prism</good>, first exit build mode, select the Prism, and then click the <white>Aim Ion Prism</white> button."
+		Targeting = "To redirect a beam <good>into another Prism</good>, first exit build mode, select the Prism, click the <white>Target Weapons</white> button, and then click on the other Prism."
+		Aiming = "To instead aim a Prism <good>in a fixed direction</good>, select the Prism, click the <white>Set Range/Arc/Direction</white> button, and then drag the edges to create the desired firing cone or line."
 		Tip = "<good>TIP:</good> Combining multiple beams together lowers their total damage output. To maximize the damage of a single beam, always combine exactly two equal-sized beams per prism."
 	}
 
@@ -5927,7 +5985,7 @@ Tips
 	DisableUI
 	{
 		Title = "Disabling the U.I."
-		Tip = "Do you think your screenshots and GIFs would be prettier without the user interface? Press <btn id='Game.ToggleUI'/> to hide it. Press again to show un-hide it."
+		Tip = "Do you think your screenshots and GIFs would be prettier without the user interface? Press <btn id='Game.ToggleUI'/> to hide it. Press again to un-hide it."
 	}
 	AreYouSure
 	{

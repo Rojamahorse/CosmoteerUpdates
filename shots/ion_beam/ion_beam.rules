@@ -275,11 +275,14 @@ HitStructural
 {
 	HitEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
 	MediaEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
+	StructuralDamageRetentionPerHit = 50%
+	MinStructuralDamageScale = 3%
+
 	HitEffects
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=2000 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+			Damage = { BaseValue=1000 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 			Filter
 			{
 				Enemies = false
@@ -298,7 +301,7 @@ HitStructural
 		}
 		{
 			Type = Damage
-			Damage = { BaseValue=2000 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+			Damage = { BaseValue=1000 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 			Filter
 			{
 				Friendlies = false

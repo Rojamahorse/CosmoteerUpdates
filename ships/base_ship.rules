@@ -22,8 +22,8 @@ DefaultDoorID = ""
 LinearDrag
 {
 	Type = Exponential
-	Coefficient = 7.8125*10^-7
-	Exponent = 4
+	Coefficient = 7.111111*10^-5
+	Exponent = 3
 	MinDampingCoefficient = 40%
 }
 
@@ -63,7 +63,8 @@ BaseSightRadius = 25
 BaseRadarRadius = &BaseSightRadius
 MinCommsRadius = &<terran/control_room_small/control_room_small.rules>/Part/Components/Sensor/SightRadius
 WeaponActivationEnemyCheckRadius = &<terran/sensor_array/sensor_array.rules>/Part/Components/Sensor/SightRadius/BaseValue
-DefaultTargetingRangeFactor = 4.0
+DefaultTargetingRangeExtension = 400
+MinWeaponCoverageArcTargetWidth = 2d
 WeaponFireRevealDuration = 3
 
 MapJumpFuelCostPerMass = 0

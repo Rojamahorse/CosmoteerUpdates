@@ -135,8 +135,6 @@ Simulation
 		}
 	}
 
-	Overlays = &<Overlays/overlays.rules>
-
 	GameSpeeds
 	[
 		{ Speed=.125; NameKey="Hud/SpeedEighth"; LongNameKey="Hud/SpeedEighthLong"; DecreaseToSound { Sound="./Data/gui/game/sounds/UI_decrease_game_speed_01.wav" };IncreaseToSound { Sound="./Data/gui/game/sounds/UI_increase_game_speed_00.wav" } }

@@ -111,9 +111,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			InitPickUp = (&MinResourcesPickUp) - 999
 			PickUpRate = &~/OVERCLOCK/PICKUP_RATE
 			IsIntermediateStorage = true
-			// Hack to get crew to respect the min pickup
-			ExpectedResourceGenerationRate = 1
-			ExpectedResourceGenerationToggle = Overclock_BatteryProviderStorage
 			ToggleOnResources = (&MinResourcesPickUp) + 1
 			ToggleOffResources = (&MinResourcesPickUp)
 		}

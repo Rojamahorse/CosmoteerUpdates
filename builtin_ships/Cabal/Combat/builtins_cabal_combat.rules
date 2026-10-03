@@ -12,7 +12,7 @@ Ships
 	:~{ File="Vela.ship.png";                    Tier=1;  Difficulty=1; }
 	:~{ File="Candlewick.ship.png";              Tier=2;  Difficulty=1; }
 	:~{ File="Fervent Spark.ship.png";           Tier=2;  Difficulty=1; }
-	:~{ File="Scintillator.ship.png";            Tier=2;  Difficulty=1; }
+	:~{ File="Scintillator.ship.png";            Tier=2;  Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Glare.ship.png";                   Tier=2;  Difficulty=1; }
 	:~{ File="Sirius.ship.png";                  Tier=2;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Flicker Flare.ship.png";           Tier=2;  Difficulty=2; }
@@ -45,7 +45,7 @@ Ships
 
 	// Corvettes
 	:~{ File="Alsephina.ship.png";               Tier=7;  Difficulty=1; Tags:~/Tags[empty_storage]; OtherIDs=["Lightbringer"]; }
-	:~{ File="Rastaban.ship.png";                Tier=7;  Difficulty=1; }
+	:~{ File="Rastaban.ship.png";                Tier=7;  Difficulty=1; Tags:~/Tags[empty_storage]; }
 	:~{ File="Cleansing Whisper.ship.png";       Tier=7;  Difficulty=2; }
 	:~{ File="Menkent.ship.png";                 Tier=7;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Aldebaran.ship.png";               Tier=8;  Difficulty=1; Tags:~/Tags[empty_storage]; OtherIDs=["Sundancer"]; }
@@ -59,6 +59,8 @@ Ships
 	:~{ File="Zelator.ship.png";                 Tier=9;  Difficulty=2; OtherIDs=["Inquisitor"]; }
 	:~{ File="Catalyst.ship.png";                Tier=9;  Difficulty=2; }
 	:~{ File="Callisto.ship.png";                Tier=9;  Difficulty=2; }
+	:~{ File="Asellus Tertius.ship.png";         Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Taurus.ship.png";                  Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 
 	// Frigates
 	:~{ File="Alioth.ship.png";                  Tier=10;  Difficulty=1; }
@@ -71,6 +73,8 @@ Ships
 	:~{ File="Icarus.ship.png";                  Tier=11;  Difficulty=2; OtherIDs=["Icarus' Pride"]; }
 	:~{ File="Nashira.ship.png";                 Tier=11;  Difficulty=2; }
 	:~{ File="Lesath.ship.png";                  Tier=11;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Saclateni.ship.png";               Tier=11;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Flegetonte Minor.ship.png";        Tier=11; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Lyra Minor.ship.png";              Tier=11;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ignis Castus.ship.png";            Tier=11;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Shaula's Sacrament.ship.png";      Tier=12;  Difficulty=2; }
@@ -82,6 +86,7 @@ Ships
 	:~{ File="Decrux.ship.png";                  Tier=12;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Delphinus.ship.png";               Tier=12;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ignis Iustus.ship.png";            Tier=12;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Asellus Secundus.ship.png";        Tier=12;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Destroyers
 	:~{ File="Acolyte of Adhara.ship.png";       Tier=13;  Difficulty=2; }
@@ -95,6 +100,8 @@ Ships
 	:~{ File="Polaris.ship.png";                 Tier=14;  Difficulty=2; }
 	:~{ File="Atria.ship.png";                   Tier=14;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Antares.ship.png";                 Tier=14;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Camelopardalis.ship.png";          Tier=14;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Ignis Immeritus.ship.png";         Tier=14;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Hymn of Radiance.ship.png";        Tier=14;  Difficulty=3; }
 	:~{ File="Menkalinan.ship.png";              Tier=14;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ignis Nitidus.ship.png";           Tier=14;  Difficulty=3; Tags:~/Tags[empty_storage]; }
@@ -110,6 +117,8 @@ Ships
 	:~{ File="Ignis Recensus.ship.png";          Tier=15;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Sol Absentia.ship.png";            Tier=15;  Difficulty=3; }
 	:~{ File="Ignis Immanis.ship.png";           Tier=15;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Ignis Ardens.ship.png";            Tier=15;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Asellus Primus.ship.png";          Tier=15;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Battleships
 	:~{ File="Alnair.ship.png";                  Tier=16;  Difficulty=2; }
@@ -118,6 +127,7 @@ Ships
 	:~{ File="Sol Calidus.ship.png";             Tier=16;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Cassiopeia.ship.png";              Tier=16;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ignis Excaecator.ship.png";        Tier=16;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Ignis Benedictus.ship.png";        Tier=16;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Battlecruisers
 	:~{ File="Atlas.ship.png";                   Tier=17;  Difficulty=2; }
@@ -127,10 +137,13 @@ Ships
 	:~{ File="Sadalmelik.ship.png";              Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Sadalsuud.ship.png";               Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Alcor.ship.png";                   Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Ignis Indominus.ship.png";         Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Ignis Vorax.ship.png";             Tier=17; Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Flagships
 	:~{ File="Apotheosis.ship.png";              Tier=18;  Difficulty=2; }
 	:~{ File="Helios.ship.png";                  Tier=18;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Orion.ship.png";                   Tier=18;  Difficulty=3; }
 	:~{ File="Zaurak.ship.png";                  Tier=18;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Altair.ship.png";                  Tier=18;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 ]

@@ -95,19 +95,17 @@ Components : BASE/Components
 		HitStructural : ^/0/HitStructural
 		{
 			ReduceEffectsByPenetration = false
-			
 			HitEffects
 			[
 				{
 					Type = Damage
-					Damage = &../../^/0/HitEffects/0/Damage/BaseValue
+					Damage = { BaseValue=(&../../../^/0/HitEffects/0/Damage/BaseValue); EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse
-					Impulse = (&../../^/0/HitEffects/1/Impulse/BaseValue) * (&~/IMPULSE_FACTOR)
+					Impulse = { BaseValue=(&../../../^/0/HitEffects/1/Impulse/BaseValue) * (&~/IMPULSE_FACTOR); EffectScaleExponent=1; }
 				}
 			]
-			
 			MediaEffectsScale : ^/0/MediaEffectsScale { BuffType = RailgunShotOverclock; }
 			MediaEffects
 			[
@@ -115,6 +113,11 @@ Components : BASE/Components
 				&../^/0/MediaEffects/1
 				: ../^/0/MediaEffects/2 { Volume : ^/0/Volume { BuffType = RailgunShotOverclock; }}
 			]
+		}
+		PenetratingStructural : &HitStructural
+		{
+			StructuralDamageRetentionPerHit = 80%
+			MinStructuralDamageScale = 5%
 		}
 		PenetratingOperational : ^/0/PenetratingOperational
 		{

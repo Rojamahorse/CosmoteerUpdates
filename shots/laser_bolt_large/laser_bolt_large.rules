@@ -3,7 +3,7 @@ OtherIDs = ["laser_bolt_large"]
 Range = 260
 IdealRange = [90, 260]
 IdealRadius = [5, 50]
-Speed = 360
+Speed = 300
 ReceivableBuffs = [ElectronBuff]
 
 Components
@@ -95,7 +95,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=500; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+					Damage = { BaseValue=250; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse;
@@ -121,9 +121,10 @@ Components
 		{
 			// No effect.
 		}
-		PenetratingStructural
+		PenetratingStructural : &HitStructural
 		{
-			// No effect.
+			StructuralDamageRetentionPerHit = 60%
+			MinStructuralDamageScale = 3%
 		}
 		FinishedPenetratingOperational
 		{

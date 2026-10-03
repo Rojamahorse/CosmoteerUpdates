@@ -153,6 +153,7 @@ HitOperational
 			FalloffPadding = 0.5;
 			EmptyTileCost = 1000
 			AllowDiagonals = true
+			UseContiguity = true
 			Filter {
 				Friendlies = false
 				TargetedFriendlies = true
@@ -354,6 +355,8 @@ HitShield
 
 HitStructural
 {
+	StructuralDamageRetentionPerHit = 60%
+	MinStructuralDamageScale = 5%
 	HitEffects
 	[
 		{
@@ -361,7 +364,7 @@ HitStructural
 			DamageType = heat
 			Damage
 			{
-				BaseValue = 20
+				BaseValue = 10
 				Modifiers
 				[
 					{
@@ -372,6 +375,10 @@ HitStructural
 					{
 						Type = Buff
 						BuffType = ElectronBuff
+						ModificationMode = Multiply
+					}
+					{
+						Type = EffectScale
 						ModificationMode = Multiply
 					}
 				]

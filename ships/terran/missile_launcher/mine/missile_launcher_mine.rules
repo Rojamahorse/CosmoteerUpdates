@@ -99,8 +99,13 @@ Components
 		OperationalToggle = IsOperational
 		AutoFireToggle = AutoLaunch
 		FireInterval = 0 // Uses common reload timer.
-		FiringArc = 0d;
-		ValidArc = 90d;
+		FiringArc = 0d
+		ValidArc = 360d
+		DefaultWeaponCoverage
+		{
+			Range = 150
+			Arc = [-45d, 90d]
+		}
 		FireThresholdAngle = 45d;
 		RotateSpeed = 0d
 		AllowFireWithBlockedLOS = true
@@ -125,12 +130,6 @@ Components
 		BlueprintArcRadius = 10
 		BlueprintArcSpriteSegments = 64
 
-		CoverageSectorArc
-		{
-			Texture = &/INDICATORS/VerticalGradient
-			VertexColor = [255, 255, 255, 51]
-			QuadCount = 64
-		}
 	}
 	FirePermissionToggle
 	{

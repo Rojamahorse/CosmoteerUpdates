@@ -7,7 +7,7 @@ IdealRange
 	{ BaseValue=300; BuffType=RailgunShot; BuffMode=Multiply; MaxValue=600; }
 ]
 IdealRadius = [5, 50]
-Speed = { BaseValue=432; BuffType=RailgunShot; BuffMode=Multiply; MaxValue=1200; }
+Speed = { BaseValue=360; BuffType=RailgunShot; BuffMode=Multiply; MaxValue=1200; }
 ReceivableBuffs = [RailgunShot]
 
 Components
@@ -128,7 +128,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=2400; BuffType=RailgunShot; BuffMode=Multiply; EffectScaleExponent=1; }
+					Damage = { BaseValue=2500; BuffType=RailgunShot; BuffMode=Multiply; EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse
@@ -176,9 +176,10 @@ Components
 				&<particles/bullet_penetrate_railgun.rules>
 			]
 		}
-		PenetratingStructural
+		PenetratingStructural : &HitStructural
 		{
-			// No effect.
+			StructuralDamageRetentionPerHit = 80%
+			MinStructuralDamageScale = 5%
 		}
 		FinishedPenetratingOperational = &PenetratingOperational
 		FinishedPenetratingStructural = &PenetratingStructural

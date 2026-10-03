@@ -137,7 +137,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 10000
+			MaxResources = 16000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
@@ -227,28 +227,6 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				Toggle = AutoTargetToggle
 			}
 
-			CoverageLine
-			{
-				LineSprite
-				{
-					Texture = &/INDICATORS/RadialGradient
-					VertexColor = [255, 255, 255, 191]
-					UVRect = [.5, 0, 0, 1]
-				}
-				LineThickness = 2
-
-				BeginCapSprite : LineSprite
-				{
-					UVRect = [0, 0, .5, 1]
-				}
-				BeginCapSize = [1, 2]
-
-				EndCapSprite : LineSprite
-				{
-					UVRect = [.5, 0, .5, 1]
-				}
-				EndCapSize = [1, 2]
-			}
 		}
 
 		IsOperationalNonOverclocked
@@ -587,12 +565,12 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					}
 					{
 						File = "roof_33.png"
-						NormalsFile = "roof_normals.png"
+						NormalsFile = "roof_normals_33.png"
 						Size = [2, 5]
 					}
 					{
 						File = "roof_66.png"
-						NormalsFile = "roof_normals.png"
+						NormalsFile = "roof_normals_66.png"
 						Size = [2, 5]
 
 					}
@@ -676,8 +654,8 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				}
 				{
 					File = "batteries2.png"
-					Offset = [0, -0.5]
-					Size = [2, 1]
+					Offset = [-0.5, -0.5]
+					Size = [1, 1]
 				}
 				{
 					File = "batteries3.png"
@@ -711,6 +689,30 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				}
 				{
 					File = "batteries10.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries11.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries12.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries13.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries14.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries15.png"
+					Size = [2, 2]
+				}
+				{
+					File = "batteries16.png"
 					Size = [2, 2]
 				}
 			]
@@ -866,12 +868,14 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				{
 					HeatGeneration = (&~/OVERCLOCK/FIRING_HEAT_PER_SECOND)
 					SimpleDamage = 0
-					StrengthAtMaxRange = 100
+					StrengthAtMaxRange = (&~/OVERCLOCK/BEAM/Beam/HitEffectsScaleOverRange/1) * 100
 
+					IonLightningInterval = (&~/OVERCLOCK/BEAM/Beam/HitInterval)
 					LightningRange = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/InitialRadius)
 					LightningMaxChain = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING_BASE_CHAIN_LENGTH/1)
 					LightningChainStrikeCountRange = &~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/ChainStrikes
 					LightningDamage = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/HitEffects/0/Damage/BaseValue)
+					LightningShieldDamage = (&~/OVERCLOCK/BEAM/OVERCLOCK/LIGHTNING/HitEffects/1/Damage/BaseValue)
 				}
 			}
 		]

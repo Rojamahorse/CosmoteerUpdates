@@ -4,7 +4,8 @@ OVERCLOCK
 	LIGHTNING = &~/Beam/HitOperational/HitEffects/2
 	LIGHTNING_OFFSET = 8
 	LIGHTNING_BASE_CHAIN_LENGTH = [3,3]
-	LIGHTNING_DAMAGE = 180
+	LIGHTNING_DAMAGE = 150
+	LIGHTNING_SHIELD_DAMAGE = 120
 }
 
 BEAM_BASE = &<ion_beam.rules>
@@ -32,7 +33,7 @@ MODIFIABLE_DAMAGE
 
 Beam : <ion_beam.rules>
 {
-	HitEffectsScaleOverRange = 1
+	HitEffectsScaleOverRange = [1, 80%]
 	MediaEffectsScaleOverRange = 1
 	SecondaryWidth = (&~/OVERCLOCK/LIGHTNING_OFFSET) * 2
 	SecondaryFilter
@@ -114,6 +115,22 @@ Beam : <ion_beam.rules>
 						Filter
 						{
 							Self = true
+							Shields = false
+						}
+					}
+					{
+						Type = Damage
+						Damage : ~/MODIFIABLE_DAMAGE
+						{
+							BaseValue = &~/OVERCLOCK/LIGHTNING_SHIELD_DAMAGE
+						}
+						Filter
+						{
+							Self = true
+							Ships = false
+							Bullets = false
+							Crew = false
+							Nuggets = false
 						}
 					}
 				]

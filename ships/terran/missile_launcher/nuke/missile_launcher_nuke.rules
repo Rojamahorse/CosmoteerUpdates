@@ -75,9 +75,8 @@ Components
 		AutoFireToggle = AutoFireToggle
 		FireInterval = 0 // Uses common reload timer.
 		FiringArc = 0d
-		TargetingArc = 200d
 		ValidArc = 200d
-		FireThresholdAngle = (&TargetingArc) / 2
+		FireThresholdAngle = (&ValidArc) / 2
 		RotateSpeed = 0d
 		AllowFireWithBlockedLOS = true
 		AIFirepowerRating = &~/MissileStats/Stats/DamagePerSecond
@@ -101,12 +100,6 @@ Components
 		BlueprintArcRadius = 10
 		BlueprintArcSpriteSegments = 64
 
-		CoverageSectorArc
-		{
-			Texture = &/INDICATORS/VerticalGradient
-			VertexColor = [255, 255, 255, 51]
-			QuadCount = 64
-		}
 	}
 	FirePermissionToggle
 	{

@@ -70,7 +70,7 @@ RailgunShot
 }
 RailgunShotOverclock : RailgunShot
 {
-	Exponent = 1
+	Exponent = 0.9
 }
 
 RailgunOperation

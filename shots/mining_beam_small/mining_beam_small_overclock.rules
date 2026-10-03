@@ -144,7 +144,6 @@ Beam : BASE
 		}
 	]
 	
-	HitShield = &HitOperational
 	HitStructural = &HitOperational
 	HitOperational : ^/0/HitOperational
 	{
@@ -247,6 +246,14 @@ Beam : BASE
 					TargetBlendMode = Add
 				}
 			}
+		]
+	}
+	HitShield : HitOperational
+	{
+		HitEffects
+		[
+			// Only damage shields, not the parts behind them.
+			&../^/0/HitEffects/1
 		]
 	}
 }

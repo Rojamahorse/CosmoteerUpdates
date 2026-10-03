@@ -8,6 +8,7 @@ PriorityUtility_Supply = 8
 
 Thruster_Crew = 9
 Thruster_Supply = 8
+SmallThruster_Supply = 1 // Small thrusters generate their own power.
 
 Weapon_Crew = 7
 Weapon_Supply = 5

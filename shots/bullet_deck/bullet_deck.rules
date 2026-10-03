@@ -2,7 +2,7 @@ ID = "cosmoteer.bullet_deck"
 Range = 190
 IdealRange = [75, &~/Range]
 IdealRadius = [5, 50]
-Speed = 120
+Speed = 100
 
 Components
 {
@@ -92,7 +92,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue = 3600; EffectScaleExponent = 1 }
+					Damage = { BaseValue = 1800; EffectScaleExponent = 1 }
 				}
 				{
 					Type = Impulse;
@@ -144,9 +144,10 @@ Components
 				&<particles/bullet_hit_deck_sparks.rules>
 			]
 		}
-		PenetratingStructural
+		PenetratingStructural : &HitStructural
 		{
-			// No effect.
+			StructuralDamageRetentionPerHit = 60%
+			MinStructuralDamageScale = 3%
 		}
 		FinishedPenetratingOperational = &PenetratingOperational
 		FinishedPenetratingStructural = &PenetratingStructural

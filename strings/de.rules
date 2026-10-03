@@ -457,6 +457,8 @@ CareerModeConfig
 	EconDifficultyTip = "Wie schwierig es wird, Credits, Ruhm und Ressourcen zu verdienen. Gehe mit dem Mauszeiger über jede Option, um weitere Informationen zu erhalten."
 	GalaxySeed = Galaxie-Seed
 	GalaxySeedTip = "Ein Wert, der als „Seed“ für den Galaxie-Zufallsgenerator verwendet wird. Wenn dieselben Werte mit derselben Galaxiegröße in derselben Version von Cosmoteer verwendet werden, werden identische Galaxien erstellt."
+	IronmanMode = Ironman-Modus
+	IronmanModeTip = "„Endgültiger Tod“-Modus mit einer einzigen gespeicherten Spieldatei. Wenn alle Schiffe zerstört sind, endet das Spiel und die gespeicherte Spieldatei wird gelöscht."
 	LoadShip = "Benutzerdefiniertes Schiff laden"
 	MapSize = Galaxiegröße
 	MapSizeTip = "Die ungefähre Anzahl an Sternensystemen in der Galaxiekarte."
@@ -556,6 +558,7 @@ CommWindow
 	Hire = Anheuern
 	HireCrew = "Crew anheuern"
 	InitiateTrade = "Handel einleiten"
+	InitiateTradeFTLDisabledTip = "Handeln während Vorbereitung eines Hypersprungs nicht möglich."
 	InsufficientBeds = "Alle Betten auf deinem Schiff sind belegt. Baue mehr Quartiere für deine Crew, um mehr Crewmitglieder anzuheuern."
 	InsufficientFame = "Erhöhe deinen <fame>RUHM</fame> auf {0}, um diese Person zu überzeugen, sich deiner Crew anzuschließen."
 	InsufficientFunds = "Nicht genügend Guthaben"
@@ -1558,7 +1561,7 @@ Hud
 	SpeedQuarter = ""
 	SpeedQuarterLong = "Sehr langsam (¼)"
 	StrafeTip = "<b>Seitwärts bewegen</b>\n\nBewege dich, ohne dich zu drehen. (Halte <btn id='Game.InvertCollisionAvoidance'/> gedrückt, um die Kollisionsvermeidung ein- oder auszuschalten.)\n\nSchnelltaste: <btn id='Game.Strafe'/>"
-	SummonCrewTip = "<b>Crew zurückrufen</b>\n\nRuft alle Crewmitglieder sofort zurück auf dein Schiff.\n\nSchnelltaste: <btn id='Game.Halt'/>"
+	SummonCrewTip = "<b>Crew zurückrufen</b>\n\nRuft alle Crewmitglieder sofort zurück auf dein Schiff.\n\nHalte die <b>Umschalttaste</b> gedrückt, um stattdessen Schiffsbefehle abzubrechen.\n\nSchnelltaste: <btn id='Game.Halt'/>"
 	TargetTip = "<b>Waffen anvisieren</b>\n\nZielt auf die ausgewählten Waffen eines bestimmten Teils des Feindes. Kann auch verwendet werden, um deine eigenen Teile anzugreifen.\n\nSchnelltaste: <btn id='Game.TargetWeapon'/>"
 	UnderConstructionTip = "An deinem Schiff wird gebaut und deine Crewmitglieder kann es verlassen, um Arbeiten durchzuführen. Wenn du zu weit von deiner Crew wegfliegst, verlierst du sie."
 	UnknownContact = "Unbekannter Kontakt"
@@ -2058,9 +2061,13 @@ LoadSaveGame
 	ConfirmDeleteFmt = "Bist du sicher, dass du „{0}“ löschen möchtest? Dadurch wird die Datei in den Papierkorb deines Computers verschoben."
 	ConfirmOverwrite = "Bestehendes gespeichertes Spiel überschreiben?"
 	Delete = Löschen
+	IronmanQuickLoadDisable = "Das erneute Laden des aktuellen Ironman-Spielstands ist nicht möglich."
+	IronmanSaveFailedConfirm = "Speichern des Ironman-Spiels nicht möglich. Möchtest du fortfahren? Dein Fortschritt geht verloren."
+	IronmanTag = ""
 	Loading = "Spiel wird geladen ..."
 	Manual = "Benannte Speicherstände"
 	ManualSave = "Benannter Speicherstand"
+	OkayIronmanSave = "Ironman-Spielstand erstellen"
 	OkayLoad = "Spiel laden"
 	OkaySave = "Spiel speichern"
 	OpenFolder = "Ordner öffnen"
@@ -2069,6 +2076,7 @@ LoadSaveGame
 	QuickSaveTip = "Drücke <btn id='Game.QuickSave'/> für schnelles Speichern.\nMit <btn id='Game.QuickLoad'/> kannst du die letzte Speicherung eines beliebigen Typs laden."
 	QuickSaving = "Schnelles Speichern ..."
 	Saving = "Spiel wird gespeichert ..."
+	TitleIronmanSave = "Ironman-Spielstand erstellen"
 	TitleLoad = "Spiel laden"
 	TitleSave = "Spiel speichern"
 	UsesMods = "Verwendet Mods"
@@ -2499,6 +2507,7 @@ Multiplayer
 	LoadGameVoteFmt = "Der Host will das gespeicherte Spiel mit dem Namen „<b>{0}</b>“ laden."
 	NextGameCountdownFmt = "Zurück zum Menü vor dem Spiel in {0} Sekunden ..."
 	Observer = Beobachter
+	Observers = Beobachter
 	PlayerLeftFmt = "{0} hat das Spiel verlassen."
 	RightClickChangeShip = "Mit rechts klicken, um Schiff zu ändern."
 	ShuttingDown = "Bitte warten ..."
@@ -3049,7 +3058,7 @@ Parts
 	RailgunLauncher = Railgun-Werfer-Modul
 	RailgunLauncherDesc = "Eine erforderliche Komponente aller Railguns. Muss mit einer Ladeeinheit und keinem oder mehreren Beschleunigern gepaart werden.\n\n<string id='Parts/RailgunBaseDesc'/>\n\nDie Crew kann nicht von einer Seite eines Railgun-Werfers oder -Beschleunigers auf die andere laufen."
 	RailgunLauncherIcon = Railgun-Werfer
-	RailgunLauncherOverclockDesc = "Verbessert die Effizienz längerer Railguns und erhöht die Projektilgeschwindigkeit und den Schaden, erfordert aber vor dem Abfeuern eine Aufladung und beendet die Durchdringung, sobald das Schadenspotenzial erschöpft ist. Erzeugt beim Abfeuern Restwärme."
+	RailgunLauncherOverclockDesc = "Verbessert die Effizienz längerer Railguns und erhöht die Projektilgeschwindigkeit und den Schaden, erfordert aber vor dem Abfeuern eine Aufladung und sorgt dafür, dass die Projektile bei der Durchdringung zersplittern und stoppen, sobald ihr Schadenspotenzial erschöpft ist. Erzeugt beim Abfeuern Restwärme."
 	RailgunLoader = Railgun-Ladeeinheit-Modul
 	RailgunLoaderDesc = "Eine erforderliche Komponente aller Railguns. Muss mit einem Werfer und keinem oder mehreren Beschleunigern gepaart werden.\n\n<string id='Parts/RailgunBaseDesc'/>"
 	RailgunLoaderIcon = Railgun-Ladeeinheit
@@ -3790,6 +3799,7 @@ Settings
 		CopyGalaxySeed = "Galaxie-Seed kopieren"
 		DifficultyLbl = Schwierigkeitsgrad
 		GalaxySeedFmt = "Galaxie-Seed: <b>{0}</b>"
+		IronmanMode = "Wechselnde Schwierigkeit ist im Ironman-Modus deaktiviert."
 		OnlyHostChangeable = "Nur der Host des Spiels kann diese Einstellung ändern."
 		TabName = "Aktuelles Spiel"
 	}
@@ -4357,6 +4367,7 @@ Stats
 	CoilProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> Spulen/Sek.</gray>"
 	CommandPointsProvidedFmt = "<white>Kommandopunkte:</white> <good>+{0}<image name='command_points' colored='true'/></good> <gray>(zur Verfügung)</gray>"
 	CommandPointsUsedFmt = "<white>Kommandopunkte:</white> <good>-{0}<image name='command_points' colored='true'/></good> <gray>(verwendet)</gray>"
+	CommandRoomDrainOverTimeFmt = "<white>Kommandoraum-Entzug:</white> <good>{0:0.##}</good> <gray>Gesamt (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	CopperCapacityFmt = "<white>Kupferkapazität:</white> <good>{0}</good>"
 	CostFmt = "<white>Wert:</white> <money>{0:n0}</money>"
 	CrewCapacityFmt = "<white>Crewbetten:</white> <good>{0}</good>"
@@ -4400,6 +4411,7 @@ Stats
 	FireDelayFmt = "<white>Feuerverzögerung:</white> <good>{0:0.##}</good> <gray>Sekunden</gray>"
 	FireIntervalFmt = "<white>Feuerintervall:</white> <good>{0:0.##}</good> <gray>Sekunden</gray>"
 	FireSizeFmt = "<white>Anfänglicher Feuerumfang:</white> <good>{0:0} %</good>"
+	FragmentationDamageThresholdFmt = "<white>Fragmentierungsgrenzwert:</white> <good>{0:n0}</good> <gray>Schaden</gray>"
 	FtlMaxEfficiencyRangeFmt = "<white>Optimale Effizienz:</white> <good>{0:0.##}</good><gray> Meter</gray>"
 	FtlMinEfficiencyRangeFmt = "<white>Minimale Effizienz:</white> <good>{0:0.##}</good><gray> Meter</gray>"
 	GoldCapacityFmt = "<white>Goldkapazität:</white> <good>{0}</good>"
@@ -4417,14 +4429,14 @@ Stats
 	HeatGenerationPerPartFmt = "<white>Wärmeerz.:</white> <good>{0:#,0.##}</good> <gray>MJ/Sek./Teil</gray>"
 	HeatPerDamageFmt = "<white>Wärmeerz.:</white> <good>{0:0.##}</good> <gray>MJ/Schaden</gray>"
 	HeatPerRestockFmt = "<white>Wärmeerz.:</white> <good>{0:0.#}</good> <gray>MJ/Einheit</gray>"
-	HeatPerShotFmt = "<white>Wärmeerz.:</white> <good>{0:0.#}</good> <gray>MJ/Schuss</gray>"
+	HeatPerShotFmt = "<white>Wärmeerz.:</white> <good>{0:n1}</good> <gray>MJ/Schuss</gray>"
 	HeatPerTileContinuousFmt = "<white>Angewendete Wärme:</white> <good>{0:n1}</good> <gray>MJ/Kachel/Sek.</gray>"
 	HeatPoolAmplificationExponentFmt = "<white>Wärme-Reservoir-Verstärkungsexponent:</white> <good>{0:0.##}</good>"
 	HeatSpreadDistanceFmt = "<white>Wärme-Streuungsdistanz:</white> <good>{0:0.##}</good><gray> Meter</gray>"
 	HeatTransferInefficiencyFmt = "<white>Wärmeübertragungsineffizienz:</white> <good>+{0:0.#} %</good> <gray>Wärme</gray>"
 	HitShieldHeatFactorFmt = "<white>Erhitzung des getroffenen Schilds:</white> <good>{0:0.##} %</good>"
 	HyperiumCapacityFmt = "<white>Hyperiumkapazität:</white> <good>{0}</good>"
-	IonLightningIntervalFmt = "<white>Blitz-Intervall:</white> <good>{0:0.#}</good> <gray>Sekunden (verringert durch Strahlstärke)</gray>"
+	IonLightningIntervalFmt = "<white>Blitz-Intervall:</white> <good>{0:0.#}</good> <gray>Sekunden</gray>"
 	IronCapacityFmt = "<white>Eisenkapazität:</white> <good>{0}</good>"
 	Lifetime = "<white>Lebensdauer:</white> <good>{0:0.#}</good> <gray>Sekunden</gray>"
 	LightningChainChanceFmt = "<white>Blitz-Ketten-Chance:</white> <good>{0:0.#} %</good> <gray>pro Schlag</gray>"
@@ -4466,7 +4478,7 @@ Stats
 	PowerDistributionEfficiencyFmt = "<white>Energieverteilungseffizienz:</white> <good>{0:0.#} %</good>"
 	PowerDrainAreaFmt = "<white>Energieentzugsbereich:</white> <good>{0:0.#}</good><gray>-Meter-Radius</gray>"
 	PowerDrainFmt = "<white>Energieentzug bei Einschlag:</white> <good>{0:0.##}</good><gray>/Schuss (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
-	PowerDrainOverTimeFmt = "<white>Energieentzug:</white> <good>{0:0}</good> <gray>Gesamt (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
+	PowerDrainOverTimeFmt = "<white>Energieentzug:</white> <good>{0:0.##}</good> <gray>Gesamt (</gray><good>{1:0.##}</good><gray>/Sek.)</gray>"
 	PowerGenerationFmt = "<white>Energieerzeugung:</white> <good>{0:0.###}</good><gray>/Sek.</gray>"
 	PowerHeatGenerationFmt = "<white>Wärmeerz.:</white> <good>{0:0.##}</good> <gray>MJ/Batterie (</gray><good>{1:0.##}</good> <gray>MJ/Sek.)</gray>"
 	PowerUsageContinuousFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Sek.</gray>"
@@ -4544,7 +4556,7 @@ Stats
 	ThermalDilationPumpNotes = "<gray>HINWEIS: Ausdehnung, Wärmeerzeugung und Energieverbrauch werden mit nur einem verbundenen Anschluss halbiert.</gray>"
 	ThermalMissileCapacityFmt = "<white>„Thermische Raketen“-Kapazität:</white> <good>{0}</good>"
 	ThermalPumpMultiEfficiencyFmt = "<white>Merfachnutzer-Effizienz:</white> <good>{0:0.#} %</good><gray>^zusätzliche Nutzer</gray>"
-	ThermalPumpPowerUsageContinuousFmt = "<white>Energieverbrauch:</white> <good>{0:0.##}</good><gray>/Lanze/Sek.</gray>"
+	ThermalPumpPowerUsageContinuousFmt = "<white>Energieverbrauch (durch aktive Lanzen):</white>\n<gray>Wert pro Sekunde.</gray><monospace>\n <white>1:</white><good>{0,5:0.00}</good> <white>3:</white><good>{2,5:0.00}</good> <white>5:</white><good>{4,5:0.00}</good>\n <white>2:</white><good>{1,5:0.00}</good> <white>4:</white><good>{3,5:0.00}</good> <white>6:</white><good>{5,5:0.00}</good></monospace>"
 	ThermalResonanceLanceNotes = "<gray><sup>1</sup> Skaliert mit dem Verstärkungswert, erhöht um den entsprechenden Exponenten.\n<sup>2</sup> Skaliert mit der Quadratwurzel des Ausdehnungswertes.</gray>"
 	ThrusterBonusForceFmt = "<white>Schubdüsenbonus-Grundkraft:</white> <good>+{0:0.##}</good> <gray>kN</gray>"
 	ThrusterBuffFmt = "<white>Schubdüsen-Buff:</white> <good>+{0:0} %</good><gray> Schub &amp; Energieverbrauch</gray>"
@@ -5696,9 +5708,11 @@ Wishlist
 Workshop
 {
 	
-	Changes = "Änderungshinweise:"
+	Changes = "<good>Änderungshinweise:</good>"
 	Description = "Beschreibung:"
 	FirstVersion = "Erste Version"
+	MaxVersion = "Max. Spielversion"
+	MinVersion = "Min. Spielversion"
 	Preview = "Vorschaubild:"
 	SelectPreviewFile = "Datei auswählen"
 	Upload = "Upload starten"

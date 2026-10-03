@@ -3,7 +3,7 @@ OtherIDs = ["big_bullet", "bullet_big"]
 Range = 190
 IdealRange = [75, 190]
 IdealRadius = [5, 50]
-Speed = 150
+Speed = 125
 
 Components
 {
@@ -92,7 +92,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue = 1200; EffectScaleExponent = 1 }
+					Damage = { BaseValue = 600; EffectScaleExponent = 1 }
 				}
 				{
 					Type = Impulse;
@@ -144,9 +144,10 @@ Components
 				&<particles/bullet_hit_large_sparks.rules>
 			]
 		}
-		PenetratingStructural
+		PenetratingStructural : &HitStructural
 		{
-			// No effect.
+			StructuralDamageRetentionPerHit = 60%
+			MinStructuralDamageScale = 3%
 		}
 		FinishedPenetratingOperational = &PenetratingOperational
 		FinishedPenetratingStructural = &PenetratingStructural

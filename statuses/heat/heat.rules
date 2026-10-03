@@ -29,6 +29,7 @@ SoftRepair
 }
 Diffusion
 {
+	UseContiguity = true
 	Basis = 0
 	SpeedFactor = 0.01
 	MinDeltaThreshold = 0.1
@@ -48,7 +49,7 @@ DamageResistances
 		MultiplyByStatusCount = false
 		Resistance
 		{
-			BaseValue = -0.9%
+			BaseValue = -0.6%
 			Modifiers
 			[
 				{
@@ -56,7 +57,7 @@ DamageResistances
 					StatusType = cosmoteer.heat
 					ValueType = Raw
 					ModificationMode = Multiply
-					Exponent = 0.75
+					Exponent = 0.7
 				}
 			]
 		}

@@ -158,7 +158,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = ResourceConverter
 			OperationalToggle = IsOverclocked
 			ToStorage = BatteryStorage
-			ToQuantity = (&~/OVERCLOCK/RECHARGE_PER_SEC) * 1000
+			ToQuantity = (&~/OVERCLOCK/RECHARGE_PER_SEC)
 			Interval = 1
 		}
 		BatteryConsumer
@@ -187,10 +187,24 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Location = [0.5, 1.5]
 		}
 
+		IsBatteryNotFull
+		{
+			Type = ThresholdToggle
+			ValueFrom = BatteryStorage
+			MinAmount = 1
+			MaxAmount = 1
+			Invert = true
+		}
+		Overclock_IsRecharging
+		{
+			Type = MultiToggle
+			Toggles = [ IsOverclocked, IsBatteryNotFull ]
+			Mode = All
+		}
 		Overclock_RechargeHeatProducer
 		{
 			Type = ResourceConverter
-			OperationalToggle = Overclock_BatteryProducer
+			OperationalToggle = Overclock_IsRecharging
 			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/RECHARGING_HEAT_PER_SECOND) * (&Interval))
 			ToQuantity = (&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
 			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
@@ -400,12 +414,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 			BlueprintArcRadius = 10
 			BlueprintArcSpriteSegments = 64
 
-			CoverageSectorArc
-			{
-				Texture = &/INDICATORS/VerticalGradient
-				VertexColor = [255, 255, 255, 51]
-				QuadCount = 64
-			}
 		}
 
 		TurretCollider

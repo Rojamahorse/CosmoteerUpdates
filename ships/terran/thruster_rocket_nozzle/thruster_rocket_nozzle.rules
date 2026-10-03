@@ -1,7 +1,7 @@
 OVERCLOCK
 {
 	RAMP_EXPONENT = 0.6
-	BASE_THRUST_HEAT_PER_SECOND = 350
+	THRUST_HEAT_PER_SECOND = 1100
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -414,7 +414,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 		{
 			Type = ResourceConverter
 			OperationalToggle = IsOperationalOverclocked
-			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/BASE_THRUST_HEAT_PER_SECOND) * (&Interval))
+			HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/THRUST_HEAT_PER_SECOND) * (&Interval))
 			ToQuantity
 			{
 				BaseValue = (&../HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
@@ -431,11 +431,22 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			BuffType = ThermalActivity
 			BuffMultiplier = Overclock_SmoothedThrusterActivation
 		}
-
+		MaxActivationValue
+		{
+			Type = BuffableValue
+			Value = &~/Part/Components/MainThruster/MaxActivation
+		}
+		Overclock_NormalizedThrusterActivation
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne = MainThruster
+			ValueTwo = MaxActivationValue
+		}
 		Overclock_SmoothedThrusterActivation
 		{
 			Type = SmoothedValue
-			ValueSource = MainThruster
+			ValueSource = Overclock_NormalizedThrusterActivation
 			MaxDelta = 1 / (&../Overclock_ThrusterHeatProducer/Interval)
 		}
 
@@ -674,12 +685,12 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					}
 					{
 						File = "nozzle_33.png"
-						NormalsFile = "nozzle_normals.png"
+						NormalsFile = "nozzle_normals_33.png"
 						Size = [3, 2]
 					}
 					{
 						File = "nozzle_66.png"
-						NormalsFile = "nozzle_normals.png"
+						NormalsFile = "nozzle_normals_66.png"
 						Size = [3, 2]
 					}
 				]
@@ -931,20 +942,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 			Offset = [0, .5]
 		}
 
-		MaxActivationValue
-		{
-			Type = BuffableValue
-			Value = &~/Part/Components/MainThruster/MaxActivation
-			IncludeInBlueprints = true
-		}
-		HeatPerActivationValue { Type = StaticValue; Value = &~/OVERCLOCK/BASE_THRUST_HEAT_PER_SECOND; }
-		PeakHeatGenerationStatValue
-		{
-			Type = MultiValue
-			Values = [MaxActivationValue, HeatPerActivationValue]
-			Mode = Multiply
-			IncludeInBlueprints = Normal
-		}
+		PeakHeatGenerationStatValue { Type=StaticValue; Value=&~/OVERCLOCK/THRUST_HEAT_PER_SECOND; }
 		HeatGenerationStatProvider
 		{
 			Type = StatProvider
@@ -976,7 +974,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 		Stats
 		{
 			ThrusterRampExponent = &~/OVERCLOCK/RAMP_EXPONENT
-			ThrusterHeatGeneration = &~/OVERCLOCK/BASE_THRUST_HEAT_PER_SECOND
+			ThrusterHeatGeneration = &~/OVERCLOCK/THRUST_HEAT_PER_SECOND
 		}
 	}
 }

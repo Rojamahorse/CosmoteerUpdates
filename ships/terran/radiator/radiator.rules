@@ -204,6 +204,7 @@ Part : <../base_part_terran.rules>/Part
 				//&<particles/heat_sink_radiation_base2.rules>
 			]
 			OcclusionCheckInterval = (&~/Part/Components/HeatDissipationConverter/Interval) / 4;
+			OccludedByShields = true
 			OcclusionHitEffects
 			[
 				{
@@ -216,10 +217,26 @@ Part : <../base_part_terran.rules>/Part
 					}
 					Filter
 					{
-						Friendlies = true
+						Friendlies = false
 						Neutrals = false
 						Junk = true
 						Enemies = true
+						Shields = false
+					}
+				}
+				// Shield pass-through
+				: 0 {
+					StatusValue : ^/0/StatusValue
+					{
+						BaseValue = (&^/0/BaseValue) / 3
+					}
+					ApplyToAllHitPartTiles = true;
+					DivideValueByPartArea = true;
+					Filter
+					{
+						Shields = true
+						OperationalHealth = false
+						StructuralHealth = false
 					}
 				}
 			]

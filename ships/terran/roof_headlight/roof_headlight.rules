@@ -377,12 +377,6 @@ Part : <../base_part_terran.rules>/Part
 			}
 		}
 
-		Targeter
-		{
-			Type = UITargeter
-			TargeterID = headlight_aim
-			Weapons = [Turret]
-		}
 		Turret
 		{
 			Type = TurretWeapon
@@ -395,10 +389,9 @@ Part : <../base_part_terran.rules>/Part
 			RotateSpeed = 120d
 			FireThresholdAngle = 1d
 			AIFirepowerRating = 0
-			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
-			SuppressDirectControlWhenTargetingShipRelativePoints = true
-			SuppressFirepowerEstimationWhenTargetingShipRelativePoints = true
-			SaveShipRelativeTargets = true
+			IncludeInFirepowerEstimation = false
+			AllowCustomCoverageRangeEditing = false
+			ForceCustomCoverageWidthZero = true
 			AllowDirectControl = false
 			ShowTargetButtons = false
 

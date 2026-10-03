@@ -18,6 +18,18 @@ Components
 		Lifetime = [1, 1.3]
 	}
 
+	Targetable
+	{
+		Type = Targetable
+		Health = 1000
+		TargetCategory = "bullet"
+
+		OnDeath
+		{
+			MediaEffects = &~/Components/Hit/HitOperational/MediaEffects
+		}
+	}
+
 	Hit
 	{
 		Type = PenetratingHit
@@ -87,7 +99,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue = 2400; EffectScaleExponent = 1 }
+					Damage = { BaseValue = 1200; EffectScaleExponent = 1 }
 					Filter
 					{
 						Friendlies = true
@@ -149,9 +161,10 @@ Components
 				&<../bullet_large/particles/bullet_hit_large_sparks.rules>
 			]
 		}
-		PenetratingStructural
+		PenetratingStructural : &HitStructural
 		{
-			// No effect.
+			StructuralDamageRetentionPerHit = 60%
+			MinStructuralDamageScale = 3%
 		}
 		FinishedPenetratingOperational = &PenetratingOperational
 		FinishedPenetratingStructural = &PenetratingStructural

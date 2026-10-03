@@ -41,6 +41,7 @@ Ships
 	:~{ File="Pandion.ship.png";       Tier=6;  Difficulty=3; }
 	:~{ File="Selim.ship.png";         Tier=6;  Difficulty=3; }
 	:~{ File="Saker.ship.png";         Tier=6;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Anhinga.ship.png";       Tier=6;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Corvettes
 	:~{ File="Shikra.ship.png";        Tier=7;  Difficulty=2; }
@@ -50,6 +51,7 @@ Ships
 	:~{ File="Lanner.ship.png";        Tier=7;  Difficulty=3; }
 	:~{ File="Cooper Hawk.ship.png";   Tier=7;  Difficulty=3; }
 	:~{ File="Sharpshinned.ship.png";  Tier=7;  Difficulty=3; }
+	:~{ File="Woodpecker.ship.png";    Tier=7;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Tyto.ship.png";          Tier=8;  Difficulty=2; }
 	:~{ File="Arokotka.ship.png";      Tier=8;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Caracara.ship.png";      Tier=8;  Difficulty=3; }
@@ -58,13 +60,17 @@ Ships
 	:~{ File="Taita.ship.png";         Tier=9;  Difficulty=2; }
 	:~{ File="Hercinia.ship.png";      Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ani.ship.png";           Tier=9;  Difficulty=2; }
+	:~{ File="Groovebill.ship.png";    Tier=9;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Buzzard.ship.png";       Tier=9;  Difficulty=3; }
 	:~{ File="Strix.ship.png";         Tier=9;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Nighthawk.ship.png";     Tier=9;  Difficulty=3; }
+	:~{ File="Wryneck.ship.png";       Tier=9;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Frigates
 	:~{ File="Lammergeier.ship.png";   Tier=10;  Difficulty=2; }
 	:~{ File="Black Swan.ship.png";    Tier=10;  Difficulty=2; }
+	:~{ File="Viduidae.ship.png";      Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Aves.ship.png";          Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Cetan.ship.png";         Tier=10;  Difficulty=3; }
 	:~{ File="Goshawk.ship.png";       Tier=10;  Difficulty=3; }
 	:~{ File="Skein.ship.png";         Tier=10;  Difficulty=3; }
@@ -83,19 +89,26 @@ Ships
 	:~{ File="Crane.ship.png";         Tier=12;  Difficulty=3; }
 	:~{ File="Chrysaetos.ship.png";    Tier=12;  Difficulty=3; }
 	:~{ File="Nero.ship.png";          Tier=12;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Galapagos.ship.png";     Tier=12;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Firewhistle.ship.png";   Tier=12;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Athene.ship.png";        Tier=12; Difficulty=3; }
 
 	// Destroyers
 	:~{ File="Peregrine.ship.png";     Tier=13;  Difficulty=2; }
+	:~{ File="Buteo.ship.png";         Tier=13;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Caladrius.ship.png";     Tier=13;  Difficulty=3; }
 	:~{ File="Kiriyus.ship.png";       Tier=13;  Difficulty=3; }
 	:~{ File="Rufescent.ship.png";     Tier=13;  Difficulty=3; }
 	:~{ File="Tytonidae.ship.png";     Tier=13;  Difficulty=3; }
 	:~{ File="Kanishka.ship.png";      Tier=13;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Raven.ship.png";         Tier=13;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Roseate.ship.png";       Tier=13;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Nightjar.ship.png";      Tier=13;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 	:~{ File="Ictinia.ship.png";       Tier=14;  Difficulty=2; }
 	:~{ File="Elanus.ship.png";        Tier=14;  Difficulty=2; }
 	:~{ File="Harpy.ship.png";         Tier=14;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Alicanto.ship.png";      Tier=14;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Esarhaddon.ship.png";    Tier=14; Difficulty=2; }
 	:~{ File="Xerxes.ship.png";        Tier=14;  Difficulty=3; }
 	:~{ File="Semiramis.ship.png";     Tier=14;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
@@ -103,28 +116,36 @@ Ships
 	:~{ File="Griffin.ship.png";       Tier=15;  Difficulty=2; }
 	:~{ File="Zeno.ship.png";          Tier=15;  Difficulty=2; }
 	:~{ File="Lancea Libertatis.ship.png"; Tier=15;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Aegolius.ship.png";      Tier=15; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Temujin.ship.png";       Tier=15;  Difficulty=3; OtherIDs=["Temüjin"]; }
 	:~{ File="Shrike.ship.png";        Tier=15;  Difficulty=3; }
 	:~{ File="Daedalus.ship.png";      Tier=15;  Difficulty=3; }
 	:~{ File="Atropos.ship.png";       Tier=15;  Difficulty=3; }
 	:~{ File="Ashoka.ship.png";        Tier=15;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Ferruginous.ship.png";   Tier=15;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Aplomado.ship.png";      Tier=15;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Battleships
 	:~{ File="Stygil.ship.png";        Tier=16;  Difficulty=2; }
 	:~{ File="Alamgir.ship.png";       Tier=16;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Slipstream.ship.png";    Tier=16;  Difficulty=2; }
 	:~{ File="Damocles.ship.png";      Tier=16;  Difficulty=2; Tags:~/Tags[empty_storage]; }
+	:~{ File="Scipio.ship.png";        Tier=16;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Achaemenes.ship.png";    Tier=16;  Difficulty=3; }
 	:~{ File="Bonaparte.ship.png";     Tier=16;  Difficulty=3; }
 	:~{ File="Dromiceius.ship.png";    Tier=16;  Difficulty=3; }
 	:~{ File="Mithridates.ship.png";   Tier=16;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Agrippa.ship.png";       Tier=16;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Charlemagne.ship.png";   Tier=16;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Battlecruisers
+	:~{ File="Saladin.ship.png";       Tier=17;  Difficulty=2; }
 	:~{ File="Anzu.ship.png";          Tier=17;  Difficulty=3; }
 	:~{ File="Alexander.ship.png";     Tier=17;  Difficulty=3; }
 	:~{ File="Qin Shi Huang.ship.png"; Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
-	:~{ File="Saladin.ship.png";       Tier=17;  Difficulty=3; }
 	:~{ File="Sesostris.ship.png";     Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Jan Zizka.ship.png";     Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
+	:~{ File="Hannibal.ship.png";      Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Flagships
 	:~{ File="Voluntas.ship.png";      Tier=18;  Difficulty=3; }

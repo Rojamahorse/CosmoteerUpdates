@@ -5,13 +5,15 @@ OVERCLOCK
 	EXTENDED
 	{
 		ARC_FACTOR = 150%
+		DAMAGE_DRAIN_FACTOR = 1.25
 		ARC_RADIUS_FACTOR = 150%
 		HEAT_PER_DAMAGE = 0.5
 	}
 	REINFORCED
 	{
 		ARC_FACTOR = 55%
-		DAMAGE_DRAIN_FACTOR = 1/2
+		SHIELD_HEALTH = 39000
+		DAMAGE_DRAIN_FACTOR = (&~/Part/StatsByCategory/0/Stats/ShieldHP) / (&SHIELD_HEALTH)
 		EMP_RESIST = 33%
 		HEAT_PER_DAMAGE = 0.6
 	}
@@ -265,6 +267,13 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 						ModificationMode = Multiply
 						RemapFrom = [0, 1]
 						RemapTo = [1, &~/OVERCLOCK/REINFORCED/DAMAGE_DRAIN_FACTOR ]
+					}
+					{
+						Type = BuffRemap
+						BuffType = ShieldOverclockExtended
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/EXTENDED/DAMAGE_DRAIN_FACTOR ]
 					}
 				]
 			}
@@ -827,6 +836,8 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			Amount
 			{
 				BaseValue = 0
+				// Negative damage removing heat causes a crash
+				MinValue = 0
 				Modifiers
 				[
 					{
@@ -1448,6 +1459,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 				Stats
 				{
 					ShieldArc = deg(&~/Part/Components/ArcShield/Arc/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_FACTOR)
+					ShieldHP = (&~/Part/StatsByCategory/0/Stats/ShieldHP) / (&~/OVERCLOCK/EXTENDED/DAMAGE_DRAIN_FACTOR)
 					ShieldDist = (&~/Part/Components/ArcShield/Radius/BaseValue) * (&~/OVERCLOCK/EXTENDED/ARC_RADIUS_FACTOR) - (&~/Part/Components/ArcShield/Location/1)
 					HeatPerDamage = (&~/OVERCLOCK/EXTENDED/HEAT_PER_DAMAGE)
 				}

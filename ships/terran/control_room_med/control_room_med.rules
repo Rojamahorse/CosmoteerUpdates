@@ -20,6 +20,10 @@ Part : <../base_med_part_terran.rules>/Part
 	SignificanceToggle = ScorchedToggle
 	TypeCategories = [command, uses_power, is_crewed]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
+	StatusResistances
+	{
+		cosmoteer.disruptor_drain = { Value = 1-(&<./Data/ships/terran/disruptor/disruptor.rules>/OVERCLOCK/COMMAND_ROOM_EFFECTIVENESS) }
+	}
 	ForceManhattanPathInPart = true
 	BlockedTravelCells
 	[

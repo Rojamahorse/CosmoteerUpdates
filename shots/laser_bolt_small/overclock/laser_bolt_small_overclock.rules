@@ -30,11 +30,13 @@ HitOperational
 }
 HitStructural
 {
+	StructuralDamageRetentionPerHit = 60%
+	MinStructuralDamageScale = 3%
 	HitEffects
 	[
 		{
 			Type = Damage
-			Damage : ~/BASE/Components/Hit/HitStructural/HitEffects/0/Damage { BaseValue=ceil((&~/DAMAGE)/2) }
+			Damage : ~/BASE/Components/Hit/HitStructural/HitEffects/0/Damage { BaseValue=ceil((&~/DAMAGE)/4) }
 		}
 	]
 	MediaEffects = &~/BASE/Components/Hit/HitStructural/MediaEffects

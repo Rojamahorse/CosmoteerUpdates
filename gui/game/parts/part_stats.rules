@@ -239,6 +239,10 @@ PartStats
 		ID = LightningDamage
 		FormatKey = "Stats/LightningDamageFmt"
 	}
+	{
+		ID = LightningShieldDamage
+		FormatKey = "Stats/LightningShieldDamageFmt"
+	}
 
 	{
 		ID = HeatPerTileContinuous
@@ -255,6 +259,10 @@ PartStats
 	{
 		ID = DilationHeatSpread
 		FormatKey = "Stats/DilationHeatSpreadFmt"
+	}
+	{
+		ID = HeatApplied
+		FormatKey = "Stats/HeatAppliedFmt"
 	}
 	{
 		ID = HeatSpreadDistance
@@ -284,6 +292,10 @@ PartStats
 	{
 		ID = PowerDrainOverTime
 		FormatKey = "Stats/PowerDrainOverTimeFmt"
+	}
+	{
+		ID = CommandRoomDrainOverTime
+		FormatKey = "Stats/CommandRoomDrainOverTimeFmt"
 	}
 	{
 		ID = PowerDrainArea
@@ -649,6 +661,10 @@ PartStats
 	{
 		ID = ThrusterHeatGeneration
 		FormatKey = "Stats/ThrusterHeatGenerationFmt"
+	}
+	{
+		ID = DynamoHeatGeneration
+		FormatKey = "Stats/DynamoHeatGenerationFmt"
 	}
 	{
 		ID = BaseHeatFactor

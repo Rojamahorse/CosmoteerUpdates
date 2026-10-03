@@ -509,13 +509,6 @@ Part : <../base_large_part_terran.rules>/Part
 			IsHigh = true
 		}
 
-		Targeter
-		{
-			Type = UITargeter
-			TargeterID = thermal_aim
-			Weapons = [Turret, FixedWeapon]
-		}
-
 		Turret
 		{
 			Type = TurretWeapon
@@ -527,14 +520,11 @@ Part : <../base_large_part_terran.rules>/Part
 			TargetingEmitter = BeamEmitter
 			FireInterval = .2
 			FiringArc = 270d
-			RotateSpeed = 60d
+			RotateSpeed = 30d
 			FireThresholdAngle = 2d
 			AIFirepowerRating = 7500
 			IgnoreFriendlyShipLowLOSChecks = true
 			HoldTargetAfterCancel = 3
-			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
-			SuppressDirectControlWhenTargetingShipRelativePoints = true
-			SaveShipRelativeTargets = true
 
 			AutoTargets
 			[
@@ -553,12 +543,6 @@ Part : <../base_large_part_terran.rules>/Part
 			BlueprintArcRadius = 10
 			BlueprintArcSpriteSegments = 64
 
-			CoverageSectorArc
-			{
-				Texture = &/INDICATORS/VerticalGradient
-				VertexColor = [255, 255, 255, 51]
-				QuadCount = 64
-			}
 		}
 
 		InterpolatedTurret // Do not hook any gameplay logic to this! It will cause desyncs!
@@ -573,6 +557,9 @@ Part : <../base_large_part_terran.rules>/Part
 		FixedWeapon
 		{
 			Type = FixedWeapon
+
+			IncludeInFirepowerEstimation = false
+			MatchWeaponCoverage = Turret
 			ChainedTo = Turret
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
@@ -1279,9 +1266,9 @@ Part : <../base_large_part_terran.rules>/Part
 					ChainedTo = InterpolatedTurret
 					Location = [177/64, 0]
 					Rotation = 90d
-					OperationalToggle = OverclockModeToggle
-//					OperationalToggle = SafetyToggle
-//					InvertOperationalToggle = true
+//					OperationalToggle = OverclockModeToggle
+					OperationalToggle = SafetyToggle
+					InvertOperationalToggle = true
 					Layer = "roof_turrets"
 					OpenDamageLevels
 					[
@@ -1426,9 +1413,9 @@ Part : <../base_large_part_terran.rules>/Part
 					ChainedTo = InterpolatedTurret
 					Location = [177/64, 0]
 					Rotation = 90d
-					OperationalToggle = OverclockModeToggle
-//					OperationalToggle = SafetyToggle
-//					InvertOperationalToggle = true
+//					OperationalToggle = OverclockModeToggle
+					OperationalToggle = SafetyToggle
+					InvertOperationalToggle = true
 					Layer = "roof_turrets"
 					OpenDamageLevels
 					[

@@ -738,4 +738,43 @@ PartToggles
 			}
 		]
 	}
+	
+    // Always Crew Part toggle
+    {
+        ToggleID = "always_crew_part"
+        Style = Switch
+        SortOrder = -1
+        Choices
+        [
+            // Off
+            {
+                ChoiceID = "always_crew_part_off"
+                ButtonToolTipKey = "PartToggles/AlwaysCrew_Off"
+                ButtonSprite
+                {
+                    Texture
+                    {
+                        File = "./Data/gui/game/crew/tool_target_squads_off.png"
+                        MipLevels = 2
+                        SampleMode = Linear
+                    }
+                }
+            }
+            
+            // On
+            {
+                ChoiceID = "always_crew_part_on"
+                ButtonToolTipKey = "PartToggles/AlwaysCrew_On"
+                ButtonSprite
+                {
+                    Texture
+                    {
+                        File = "./Data/gui/game/crew/tool_target_squads_on.png"
+                        MipLevels = 2
+                        SampleMode = Linear
+                    }
+                }
+            }
+        ]
+    }
 ]

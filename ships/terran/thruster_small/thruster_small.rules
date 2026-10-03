@@ -1,9 +1,11 @@
 OVERCLOCK
 {
 	THRUST_FACTOR = 400%
-	POWER_USAGE_FACTOR = 1 / (&THRUST_FACTOR)
-	POWER_GENERATION_FACTOR = 3
-	THRUST_HEAT_PER_SECOND = 250
+	MAX_POWER_USAGE_FACTOR = 300%
+	POWER_USAGE_FACTOR = 1 / (&THRUST_FACTOR) * (&MAX_POWER_USAGE_FACTOR)
+	POWER_GENERATION_FACTOR = 450%
+	THRUST_HEAT_PER_SECOND = 200
+	GENERATION_HEAT_PER_SECOND = 125
 
 	AUDIO_SPEED_FACTOR = 115%
 	AUDIO_VOLUME_DB = 6
@@ -110,10 +112,31 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOnResources = &~/Part/FuelUsage
 			ToggleOffResources = 0
 		}
+		IsThrusterActive
+		{
+			Type = ThresholdToggle
+			ValueFrom = MainThruster
+			MinAmount = 0
+			MaxAmount = 0
+			Invert = true
+		}
+		// Do not generate power while thruster is activated
+		NotOverclockedOrNotThrusting
+		{
+			Type = MultiToggle
+			Toggles = [{Toggle=IsOverclocked;Invert=true}, {Toggle=IsThrusterActive;Invert=true}]
+			Mode = Any
+		}
+		CanGeneratePower
+		{
+			Type = MultiToggle
+			Toggles = [NotOverclockedOrNotThrusting, NonJunkToggle]
+			Mode = All
+		}
 		BatteryProducer
 		{
 			Type = ResourceConverter
-			OperationalToggle = NonJunkToggle
+			OperationalToggle = CanGeneratePower
 			ToStorage = BatteryStorage
 			ToQuantity = &~/Part/FuelUsage // Not a typo! See math below.
 			Interval
@@ -155,7 +178,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Type = ResourceConsumer
 					ResourceType = battery
 					Storage = BatteryStorage
-					DefaultPriority = &/PRIORITIES/Thruster_Supply
+					DefaultPriority = &/PRIORITIES/SmallThruster_Supply
 					ResupplyThreshold = 500
 					OperationalToggle = CommandConsumptionToggle
 					AccessWarningLevel = Weak
@@ -205,6 +228,20 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 			ToStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
 			Interval = 0.5
+		}
+		Overclock_GenerationHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_BatteryProducedTrigger
+			OC_INTERVAL = (&~/Part/FuelUsage) / (&~/Part/FuelRecharge) / (&~/OVERCLOCK/POWER_GENERATION_FACTOR)
+			Amount = floor((&~/OVERCLOCK/GENERATION_HEAT_PER_SECOND) * (&OC_INTERVAL) * (&~/HEAT_TO_RESOURCE))
+		}
+		Overclock_BatteryProducedTrigger
+		{
+			Type = TriggerProxy
+			ProxyToggle = IsOverclocked
+			ComponentID = BatteryProducer
 		}
 
 		Overclock_ActivationBuff
@@ -832,6 +869,8 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ThrusterForce = (&~/Part/ThrusterForce) * (&~/OVERCLOCK/THRUST_FACTOR)
 			PowerGeneration = (&~/Part/Stats/PowerGeneration) * (&~/OVERCLOCK/POWER_GENERATION_FACTOR)
 			ThrusterHeatGeneration = &~/OVERCLOCK/THRUST_HEAT_PER_SECOND
+			ThrusterPowerUsage = (&~/Part/FuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000
+			DynamoHeatGeneration = &~/OVERCLOCK/GENERATION_HEAT_PER_SECOND
 		}
 	}
 }

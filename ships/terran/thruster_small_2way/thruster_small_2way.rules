@@ -140,7 +140,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					Type = ResourceConsumer
 					ResourceType = battery
 					Storage = BatteryStorage
-					DefaultPriority = &/PRIORITIES/Thruster_Supply
+					DefaultPriority = &/PRIORITIES/SmallThruster_Supply
 					ResupplyThreshold = 500
 					OperationalToggle = CommandConsumptionToggle
 					AccessWarningLevel = Weak

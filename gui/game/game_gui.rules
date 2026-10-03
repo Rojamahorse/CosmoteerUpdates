@@ -632,6 +632,134 @@ CancelPartSelectionIcon
 TargetIcon = &AttackIcon
 CancelTargetIcon = &HaltIcon
 
+AdjustWeaponCoverage
+{
+	CoverageIcon
+	{
+		Texture
+		{
+			File = "parts/adjust_weapon_coverage.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+	}
+	CoverageCursor
+	{
+		File = "resources/cursor_drop.png"
+		HotSpot = [40, 40]
+		Scale = .5
+	}
+	CoverageResetSound = &../GenericPutdownSound
+	CoverageHitTolerance = 30
+	CoverageExtendedHitTolerance = 60
+	CoveragePartObstructedHitTolerance = 7
+	CoverageMinimumRange = 5
+	CoverageInfiniteRangeFallback = 10
+	CoverageRangeSnapIncrement = 1
+	CoverageFineRangeSnapIncrement = .1
+	CoverageAngleSnapIncrement = 1
+	CoverageFineAngleSnapIncrement = .1
+
+	CoverageThicknessScaleExponent = 0.85
+	CoverageThicknessScale = 1.0
+	CoverageColor = [168, 202, 229, 255]
+
+	CoverageHandleColor = [10, 212, 98, 255]
+	CoverageHandleThickness = &CoverageThicknessScale
+
+	CoveragePhysicalLimitColor = [127, 127, 127, 127]
+	CoveragePhysicalLimitThicknessScale = &CoverageThicknessScale
+
+	CoverageMirroredColor = &CoverageColor
+	//Uv Rect: .5 in x or y means start center instead of beginning.  The final 2 numbers are what % to go by, width and height
+	CoverageRim
+	{
+		// overlay_selection_capped.png is overlay_selection.png's profile (at 4x resolution) with round caps: the first quarter is the begin cap,
+		// the middle half is the body, and the last quarter is the end cap. Each cap is half as long as the texture is tall, so cap length = .5 of the thickness.
+		// The rim's caps overhang entirely outside the arc, the same way the edge lines' caps extend past their endpoints.
+		Texture
+		{
+			File = "./Data/gui/game/overlay_selection_capped.png"
+			SampleMode = Linear
+			MipLevels = max
+		}
+		UVRect = [0, 0, 1, 1]
+		Thickness = 1
+		QuadCount = 128
+		Dashes
+		[
+			{
+				DashURange = [.5, .5]
+				BeginCapLengthPerThickness = .5
+				BeginCapURange = [0, .25]
+				BeginCapOverhangFraction = 1
+				EndCapLengthPerThickness = .5
+				EndCapURange = [.75, 1]
+				EndCapOverhangFraction = 1
+			}
+		]
+	}
+	CoverageHandleRim = &CoverageRim
+	CoverageLine
+	{
+		LineSprite
+		{
+			Texture = &../../CoverageRim/Texture
+			UVRect = [.5, 0, 0, 1]
+		}
+		LineThickness = &../CoverageRim/Thickness
+		// Caps use the same cap regions as CoverageRim, so the line's core stops exactly at its endpoints and only the glow extends past them.
+		BeginCapSprite : LineSprite
+		{
+			UVRect = [0, 0, .25, 1]
+		}
+		BeginCapSize = [.5, 1]
+		EndCapSprite : BeginCapSprite
+		{
+			UVRect = [.75, 0, .25, 1]
+		}
+		EndCapSize = &BeginCapSize
+	}
+
+	CoverageArcFill
+	{
+		VertexColor = [168, 202, 229, 25]
+		Thickness = 1
+		QuadCount = 128
+	}
+	CoverageArcFillMaxOverlap = 3 // The maximum number of arc fills that will be drawn on top of each other at any point. (Max 255.)
+	CoverageUnaffectedAlphaMultiplier = 25% // Opacity multiplier for the lines weapons that the hovered/dragged handle won't affect.
+
+	// Physical limits are fractally dashed (like POI rings): the whole of overlay_selection_capped.png (a round-ended dash with transparent space
+	// on either side) is one dash. The code picks a power-of-2 number of dashes for each rim/line, and the shaders fade in new dashes between
+	// existing ones as the ideal count grows, so dashes never pop or scroll while zooming.
+	CoveragePhysicalLimitDashLengthPerThickness = 2 // The texture is twice as wide as it is tall, so this keeps the dashes' round ends undistorted.
+	CoveragePhysicalLimitRim
+	{
+		Texture
+		{
+			File = "./Data/gui/game/overlay_selection_capped.png"
+			SampleMode = Linear
+			MipLevels = max
+			UMode = Wrap
+		}
+		Shader = "./Data/gui/game/circle_fractal_dashed.shader"
+		UVRect = [0, 0, 1, 1]
+		Thickness = 0.5
+		QuadCount = 128
+	}
+	CoveragePhysicalLimitLine
+	{
+		LineSprite
+		{
+			Texture = &../../CoveragePhysicalLimitRim/Texture
+			Shader = "./Data/gui/game/line_fractal_dashed.shader"
+			UVRect = [0, 0, 1, 1]
+		}
+		LineThickness = &../CoveragePhysicalLimitRim/Thickness
+	}
+}
+
 AutoThrustOffIcon
 {
 	Texture

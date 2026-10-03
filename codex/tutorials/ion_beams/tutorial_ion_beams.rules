@@ -17,7 +17,11 @@ Entries
 		TextKey = "Tutorials/IonBeams/Combining"
 	}
 	{
-		Image { Texture { File="aim_prism.png"; SampleMode=Linear; } }
+		Image { Texture { File="../advanced_commands/attack.png"; SampleMode=Linear; } } // The Target Weapons button uses the same icon as the Attack button.
+		TextKey = "Tutorials/IonBeams/Targeting"
+	}
+	{
+		Image { Texture { File="../micro/range_arc_direction.png"; SampleMode=Linear; } }
 		TextKey = "Tutorials/IonBeams/Aiming"
 	}
 	{

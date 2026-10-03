@@ -34,7 +34,19 @@ Components
 		Type = DeathByLifetime
 		Lifetime = [0.5, 0.65]
 	}
-	
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 50
+		TargetCategory = "bullet"
+
+		OnDeath
+		{
+			MediaEffects = &~/Components/Hit/HitOperational/MediaEffects
+		}
+	}
+
 	Hit
 	{
 		Type = PenetratingHit
@@ -69,13 +81,11 @@ Components
 		}
 		HitStructural
 		{
-			ReduceEffectsByPenetration = true
-			
 			HitEffects
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue = (&~/DAMAGE) / 2; EffectScaleExponent = 1 }
+					Damage = { BaseValue = (&~/DAMAGE) / 4; EffectScaleExponent = 1 }
 				}
 				{
 					Type = Impulse
@@ -84,6 +94,11 @@ Components
 			]
 			
 			MediaEffects = &~/BULLET/BASE/Components/Hit/HitStructural/MediaEffects
+		}
+		PenetratingStructural : &HitStructural
+		{
+			StructuralDamageRetentionPerHit = 60%
+			MinStructuralDamageScale = 3%
 		}
 		PenetratingOperational
 		{

@@ -28,8 +28,8 @@ Mode : <../base_pvp.rules>
 	RespawnCheckDistanceIncrement = 150
 	ShipSpawnInvulnerabilityDuration = 5
 
-	JunkDamageFractionPerTick = .1
-	JunkDamageChancePerTick = 0.3 / (&/Simulation/PhysicsUpdatesPerSecond)
+	JunkDamageFractionPerTick = 1
+	JunkDamageChancePerTick = 1
 
 	EnemyDefeatedSound
 	{

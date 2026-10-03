@@ -76,6 +76,11 @@ Components : BASE/Components
 				}
 			]
 		}
+		PenetratingStructural : &HitStructural
+		{
+			StructuralDamageRetentionPerHit = &~/BASE/Components/Hit/PenetratingStructural/StructuralDamageRetentionPerHit
+			//MinStructuralDamageScale = &~/BASE/Components/Hit/PenetratingStructural/MinStructuralDamageScale  No min falloff, go to zero
+		}
 		PenetratingOperational : ^/0/PenetratingOperational
 		{
 			ReduceEffectsByPenetration = false
@@ -91,7 +96,7 @@ Components : BASE/Components
 				}
 				{
 					Type = Impulse
-					Impulse = &~/IMPULSE
+					Impulse = {BaseValue=&~/IMPULSE; EffectScaleExponent=1;}
 				}
 			]
 		}
