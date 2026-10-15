@@ -69,21 +69,12 @@ DeathHitEffects // Scaled with stack size.
 
 DeathMediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 
-HitResponse
+StatusResponse
 {
 	HitEffects = &~/DeathHitEffects
 	MediaEffects = &~/DeathMediaEffects
-	Chance = 0
-	ChancePerNDamage = 0
-	RequireDirectHit = true
-	DamageTypeOverrides
-	{
-		fire
-		{
-			ChancePerNDamage = 1%
-			NDamage = &<./Data/statuses/fire/fire.rules>/DAMAGE_PER_TICK
-		}
-	}
+	StatusType = cosmoteer.scorched
+	ValueRange = [1,1]
 }
 
 NuggetSprite

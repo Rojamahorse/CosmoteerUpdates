@@ -22,7 +22,6 @@ Part : <../base_part_terran.rules>/Part
 	DamageResistances
 	{
 		explosive = 50%
-		thermal = -25%
 	}
 	TypeCategories = [armor, non_flammable]
 	Flammable = false

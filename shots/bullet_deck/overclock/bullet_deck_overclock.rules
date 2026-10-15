@@ -78,7 +78,7 @@ Components : BASE/Components
 		}
 		PenetratingStructural : &HitStructural
 		{
-			StructuralDamageRetentionPerHit = &~/BASE/Components/Hit/PenetratingStructural/StructuralDamageRetentionPerHit
+			StructuralDamageRetentionPerHit = &/STRUCTURAL_DAMAGE_RETENTION_PER_HIT
 			//MinStructuralDamageScale = &~/BASE/Components/Hit/PenetratingStructural/MinStructuralDamageScale  No min falloff, go to zero
 		}
 		PenetratingOperational : ^/0/PenetratingOperational

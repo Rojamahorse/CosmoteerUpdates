@@ -1,10 +1,11 @@
 OVERCLOCK
 {
-	CAPACITY_FACTOR = 300%
+	CAPACITY_FACTOR = 200%
 	BATTERY_SIZE_FACTOR = 300%
 	MAX_HEAT_PER_SECOND = 500
 	HEAT_PER_BATTERY_DELIVERED = 50
 	PICKUP_RATE = 1000
+	MAX_DESTROYED_HEAT = 17000
 }
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
@@ -441,103 +442,106 @@ Part : <../base_part_terran_overclock.rules>/Part
 					ResourceStorage = BatteryReceiverStorage
 					Layer = "doodads_low"
 					RangeLow = 0
-					RangeHigh = 18000
+					RangeHigh = 3000
 					ResourceLevels
 					[
 						{
 							File = "batteries_overclock1.png"
 							Size = [1, 1]
-							Offset = [-0.5,0]
 						}
 						{
 							File = "batteries_overclock2.png"
 							Size = [1, 1]
-							Offset = [-0.5,0]
 						}
 						{
 							File = "batteries_overclock3.png"
 							Size = [1, 1]
-							Offset = [-0.5,0]
-						}
-						{
-							File = "batteries_overclock4.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock5.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock6.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock7.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock8.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock9.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock10.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock11.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock12.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock13.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock14.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock15.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock16.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock17.png"
-							Size = [2, 1]
-						}
-						{
-							File = "batteries_overclock18.png"
-							Size = [2, 1]
 						}
 					]
 				}
 				Overclock_BatterySprites2 : Overclock_BatterySprites1
 				{
-					Location = [1, 56/64]
-					RangeLow = 18001
-					RangeHigh = 36000
+					Location = [1, 48/64]
+					RangeLow = 3001
+					RangeHigh = 6000
 				}
 				Overclock_BatterySprites3 : Overclock_BatterySprites1
 				{
-					Location = [1, 72/64]
-					RangeLow = 36001
-					RangeHigh = 54000
+					Location = [1, 56/64]
+					RangeLow = 6001
+					RangeHigh = 15000
+					ResourceLevels
+					[
+						{
+							File = "batteries_overclock4.png"
+							Size = [1, 1]
+							Offset = [-0.5,0]
+						}
+						{
+							File = "batteries_overclock5.png"
+							Size = [1, 1]
+							Offset = [-0.5,0]
+						}
+						{
+							File = "batteries_overclock6.png"
+							Size = [1, 1]
+							Offset = [-0.5,0]
+						}
+						{
+							File = "batteries_overclock7.png"
+							Size = [2, 1]	
+						}
+						{
+							File = "batteries_overclock8.png"
+							Size = [2, 1]	
+						}
+						{
+							File = "batteries_overclock9.png"
+							Size = [2, 1]	
+						}
+						{
+							File = "batteries_overclock10.png"
+							Size = [2, 1]	
+						}
+						{
+							File = "batteries_overclock11.png"
+							Size = [2, 1]	
+						}
+						{
+							File = "batteries_overclock12.png"
+							Size = [2, 1]	
+						}
+					]
 				}
-				Overclock_BatterySprites4 : Overclock_BatterySprites1
+				Overclock_BatterySprites4 : Overclock_BatterySprites3
+				{
+					Location = [1, 64/64]
+					RangeLow = 15001
+					RangeHigh = 24000
+				}
+				Overclock_BatterySprites5 : Overclock_BatterySprites3
+				{
+					Location = [1, 72/64]
+					RangeLow = 24001
+					RangeHigh = 33000
+				}
+				Overclock_BatterySprites6 : Overclock_BatterySprites3
+				{
+					Location = [1, 80/64]
+					RangeLow = 33001
+					RangeHigh = 42000
+				}
+				Overclock_BatterySprites7 : Overclock_BatterySprites1
 				{
 					Location = [1, 88/64]
-					RangeLow = 54001
-					RangeHigh = 72000
+					RangeLow = 42001
+					RangeHigh = 45000
+				}
+				Overclock_BatterySprites8 : Overclock_BatterySprites1
+				{
+					Location = [1, 96/64]
+					RangeLow = 45001
+					RangeHigh = 48000
 				}
 			}
 		}
@@ -670,6 +674,104 @@ Part : <../base_part_terran_overclock.rules>/Part
 			}
 		}
 
+		OverclockOpenCloseSprite
+		{
+			Type = OpenCloseSprite
+			Location = [1, 1]
+			OperationalToggle = IsOverclocked
+			Layer = "walls"
+			OpenDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"doodads_overclock1.png"
+						"doodads_overclock2.png"
+						"doodads_overclock3.png"
+						"doodads_overclock4.png"
+						"doodads_overclock5.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.075
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"doodads_overclock1.png"
+						"doodads_overclock2_33.png"
+						"doodads_overclock3_33.png"
+						"doodads_overclock4_33.png"
+						"doodads_overclock5_33.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.075
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"doodads_overclock1.png"
+						"doodads_overclock2_66.png"
+						"doodads_overclock3_66.png"
+						"doodads_overclock4_66.png"
+						"doodads_overclock5_66.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.075
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+			ClosedDamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"doodads_overclock5.png"
+						"doodads_overclock4.png"
+						"doodads_overclock3.png"
+						"doodads_overclock2.png"
+						"doodads_overclock1.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.075
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"doodads_overclock5_33.png"
+						"doodads_overclock4_33.png"
+						"doodads_overclock3_33.png"
+						"doodads_overclock2_33.png"
+						"doodads_overclock1.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.075
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+				{
+					AnimationFiles
+					[
+						"doodads_overclock5_66.png"
+						"doodads_overclock4_66.png"
+						"doodads_overclock3_66.png"
+						"doodads_overclock2_66.png"
+						"doodads_overclock1.png"
+					]
+					Size = [2, 2]
+					AnimationInterval = 0.075
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+		}
+
 		ScorchedTrigger
 		{
 			Type = ToggleTrigger
@@ -690,6 +792,38 @@ Part : <../base_part_terran_overclock.rules>/Part
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 			Location = [1, 1]
+		}
+
+		Overclock_DestroyedHeatEffects
+		{
+			Type = DeathEffects
+			OperationalToggle = IsOverclocked
+			Location = [1, 1]
+			FactorHitEffectsWith = Overclock_BatteryProviderStorage
+			IncludeWhenUnderConstruction = false
+
+			HitEffects
+			[
+				{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					HitPartSourceRectType = Normal
+					StatusValue = 0
+					StatusValuePool
+					{
+						BaseValue = &~/OVERCLOCK/MAX_DESTROYED_HEAT
+						EffectScaleExponent = 1
+					}
+					MaxCost = 3
+					EmptyTileCost = Infinity
+					ValueFalloff = 1
+					FalloffPadding = 1
+					Filter
+					{
+						Self = true
+					}
+				}
+			]
 		}
 
 		Indicators

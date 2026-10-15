@@ -157,6 +157,6 @@ Ships
 
 	// Flagships
 	:~{ File="All For Now.ship.png";    Tier=18;  Difficulty=2; }
-	:~{ File="Master of None.ship.png"; Tier=18;  Difficulty=2; }
+	:~{ File="Master of None.ship.png"; Tier=18;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Yesterday's Lie.ship.png";  Tier=18; Difficulty=2; Tags:~/Tags[empty_storage]; }
 ]

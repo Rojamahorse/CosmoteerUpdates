@@ -352,7 +352,7 @@ BuildBox
 	RemoveTip = "<b>删除工具</b>\n\n选择后，点击星舰部件便可将其删除并给予退款。\n\n热键：<btn id='Design.EraseTool'/>\n\n按住 <btn id='Design.EraseCursorMode'/> 可以暂时切换到此工具。"
 	RepairAll = "<s20>修理所有</s20><s4>\n \n</s4>"
 	RepairDebtFmt = "修理星舰将花费<ins_money>{0:n0}</ins_money>，但您只有<money>{1:n0}</money>。可以选择举债维修，但在赤字期间多数采购将无法进行，直到还清债务。"
-	RepairTip = "<b>修复工具</b>\n\n选择后，点击红色的受损或被毁部件可将其修复。\n\n热键：<btn id='Design.RepairTool'/>"
+	RepairTip = "<b>修复工具</b>\n\n选择后，点击一个红色的受损或被毁部件可将其修复。\n\n热键：<btn id='Design.RepairTool'/>"
 	ResetMirrorLines = 重置镜像线
 	ResetMirrorLinesTip = 将水平、垂直镜像线重置到星舰中心。
 	RotateLeftTip = "逆时针旋转。\n\n热键：<btn id='Design.RotateLeft'/>"
@@ -448,7 +448,7 @@ CareerModeConfig
 	DisableCrewConstruction = 我讨厌建造
 	DisableCrewConstructionTip = 勾选后，星舰的任何改动将瞬间生效，无需船员慢慢建造。
 	DisableExploration = 我讨厌探索
-	DisableExplorationTip = "自动揭示地图上的所有 <b>?</b> 图标，不必通过探索战争迷雾揭示。"
+	DisableExplorationTip = "显示地图上所有 <b>?</b> 图标的位置，不必通过探索战争迷雾揭示。"
 	DisableNebulas = 我讨厌星云与风暴
 	DisableNebulasTip = 生涯模式中将不会出现星云与风暴。（若在游戏进行中更改此选项，则仅对未造访过的星系生效。）
 	DisableSalvaging = 我讨厌回收
@@ -840,6 +840,7 @@ CrewBox
 	NoPathToSource = <bad>无法抵达</bad>
 	NothingToRedo = 无可重做。
 	NothingToUndo = 无可撤销。
+	NumberOfCrew = "{0}/{1} 船员"
 	Paste = 粘贴
 	PasteInfo = 仅替换信息
 	PasteInsertAfter = 在之后插入新岗位
@@ -919,11 +920,11 @@ Dialogue
 		AISurrenderDialogue = "<b>{0}：</b><i>“我们投降！只要你承诺不杀我们，我们就付你 <money>{1:n0}</money>！”</i>"
 		DeclineAISurrender = "[通讯结束]"
 		DeclinePlayerSurrender = <i>“想都别想！”</i>
-		PlayerSurrender = "<i>“我们投降！”</i>（支付 <money>{0:n0}</money>）"
-		PlayerSurrenderDefaultedDialogue = "<b>{0}：</b><i>“要么现在投降，要么交出 <money>{1:n0}</money>……否则就只有死！”</i>"
-		PlayerSurrenderDialogue = "<b>{0}：</b><i>“你们根本不是对手！要么现在投降，要么交出 <money>{1:n0}</money>……否则就只有死！”</i>"
-		PlayerSurrenderPayBounty = "<i>“我们付你钱。”</i>（支付 <money>{0:n0}</money>）"
-		PlayerSurrenderPayBountyDialogue = "<b>{0}：</b><i>“逃犯听着，{2}现在出 <money>{1:n0}</money> 悬赏你们的人头。要么你来给我们这个数，要么就等着完蛋吧。”</i>"
+		PlayerSurrender = "<i>“我们投降！”</i>（支付 {0}）"
+		PlayerSurrenderDefaultedDialogue = "<b>{0}：</b><i>“要么现在投降，要么交出 {1}……否则就只有死！”</i>"
+		PlayerSurrenderDialogue = "<b>{0}：</b><i>“你们根本不是对手！要么现在投降，要么交出 {1}……否则就只有死！”</i>"
+		PlayerSurrenderPayBounty = "<i>“我们付你钱。”</i>（支付 {0}）"
+		PlayerSurrenderPayBountyDialogue = "<b>{0}：</b><i>“逃犯听着，{2}现在出 {1} 悬赏你们的人头。要么你来给我们这个数，要么就等着完蛋吧。”</i>"
 	}
 }
 DominationMapStyles
@@ -1250,6 +1251,7 @@ FleetsWorkshop: Workshop
 	DialogName = 创意工坊星舰系列加载器
 	Folder = 星舰系列文件夹：
 	Name = 星舰系列名称：
+	UpdateName = 更新星舰系列名称
 	UpdatingExisting = <good>更新现有系列：</good>
 	UploadSuccessful = 上传成功！点击“确认”在创意工坊中查看你的星舰系列。如果这是第一次通过创意工坊上传，那么还需要接受创意工坊的法律协议，然后才能让其他玩家看到。
 	Warning = "<bad>警告：</bad>此文件夹及其所有子文件夹的全部内容将被上传到 Steam Workshop。请勿在其中放置任何你不希望或没有权利公开的文件。"
@@ -1432,6 +1434,7 @@ Hud
 	
 	AbandonShip = 放弃星舰
 	AbandonShipTip = 指示所有船员尽快离开星舰。
+	AdjustWeaponCoverageTip = "<b>设置射程/射界/方向</b>\n\n点击启用，然后拖拽边界即可调整射程、射界或方向。\n\n热键：<btn id='Game.AdjustWeaponCoverage'/>\n\n启用后：\n- <btn id='Game.CancelTool'/><gray>：</gray>重置高亮显示边界\n- <btn id='Game.AdjustWeaponCoverageEditAll'/><gray>（按住）：</gray>全部编辑模式\n- <btn id='Game.AdjustWeaponCoverageFinePrecision'/><gray>（按住）：</gray>精细调整模式\n- <btn id='Game.AdjustWeaponCoverageRotateArc'/><gray>（按住）：</gray>旋转模式\n- <btn id='Game.AdjustWeaponCoverageSymmetricSides'/><gray>（按住）：</gray>对称模式\n- <btn id='Game.AdjustWeaponCoverageRotateArc'/> + <btn id='Game.AdjustWeaponCoverageSymmetricSides'/><gray>（按住）：</gray>固定方向模式"
 	AttackTip = "<b>攻击</b>\n\n攻击另一艘星舰。也可攻击自己的星舰。（按住 <btn id='Game.InvertCollisionAvoidance'/> 可开/关防撞功能。）\n\n热键：<btn id='Game.Attack'/>"
 	AutoThrustOffTip = "<b>推进器自动点火：<bad>关</bad></b>\n\n热键：<btn id='Game.ToggleAutoThrust'/>"
 	AutoThrustOnTip = "<b>推进器自动点火：<good>开</good></b>\n\n热键：<btn id='Game.ToggleAutoThrust'/>"
@@ -1502,6 +1505,7 @@ Hud
 	NewShipTip = "<b>建造新星舰</b>\n\n从无到有建造一艘新星舰。"
 	NewShipTooFar = <bad>距离太远</bad>
 	NoCommandsToCancel = 没有命令可以取消。
+	NoCustomCoveragesToReset = 无可重置。
 	NoTargetsToCancel = 没有武器目标可以取消。
 	NuggetCollectAlreadyClaimed = 已被认领
 	NuggetCollectFull = 存储已满
@@ -1512,6 +1516,8 @@ Hud
 	PauseTip = "暂停\n\n热键：<btn id='Game.PauseToggle'/>"
 	Paused = 已暂停
 	ReputationTipFmt = "{0}声誉"
+	ResetCustomCoverages = 重置射程/射界/方向
+	ResetCustomCoveragesTip = 将选中部件的射程、射界和方向恢复为默认设置。
 	ResetDefaults = 重置默认攻击
 	ResetDefaultsTip = 将保存的攻击距离和方向重置为初始值。
 	ResourceCountStorageFullFmt = "{0}<bad>（存储已满）</bad>"
@@ -1626,6 +1632,7 @@ Inputs
 		Name = 船员管理
 		OpenClose = 打开/关闭船员面板
 		RemoveSelected = 移除所选船员
+		ResetCrew = 重置船员
 		Roster = 显示/隐藏船员名册
 		SelectAll = 选择所有
 		SelectRange = 添加船员范围至选择
@@ -1689,6 +1696,11 @@ Inputs
 	Game
 	{
 		
+		AdjustWeaponCoverage = 设置射程/射界/方向
+		AdjustWeaponCoverageEditAll = 设置射程/射界/方向：全部编辑模式
+		AdjustWeaponCoverageFinePrecision = 设置射程/射界/方向：精细调整模式
+		AdjustWeaponCoverageRotateArc = 设置射程/射界/方向：旋转模式
+		AdjustWeaponCoverageSymmetricSides = 设置射程/射界/方向：对称模式
 		AllowSalvageOwnShip = 允许拆解回收本舰
 		AppendSelection = 挂件选择
 		Attack = 攻击
@@ -1768,12 +1780,9 @@ Inputs
 		Alt = ""
 		Apps = 应用
 		B = ""
-		BackslashPipe = 反斜线
 		Backspace = 退格
 		C = ""
 		CapsLock = 大写锁定
-		Colon = 冒号
-		CommaLesser = 逗号
 		Command = 命令
 		Control = ""
 		D = ""
@@ -1818,9 +1827,7 @@ Inputs
 		K = ""
 		L = ""
 		LeftArrow = 左箭头
-		LeftBracket = 左括号
 		M = ""
-		MinusUnderscore = 减号
 		N = ""
 		NumLock = 数字锁
 		NumPad0 = "小键盘 0"
@@ -1843,23 +1850,17 @@ Inputs
 		PageDown = 下页
 		PageUp = 上页
 		Pause = 暂停
-		PeriodGreater = 句号
 		PlatformCmdCtrl = ""
-		PlusEquals = 加号
 		PrintScreen = 截屏键
 		Q = ""
-		Quote = 引号
 		R = ""
 		RightArrow = 右箭头
-		RightBracket = 右括号
 		S = ""
 		ScrollLock = 滚轮锁
 		Shift = ""
-		SlashQuestion = 斜杠
 		Space = 空格
 		T = ""
 		Tab = ""
-		TildeBacktick = 波浪号
 		U = ""
 		UpArrow = 上箭头
 		V = ""
@@ -1889,16 +1890,11 @@ Inputs
 	PartTargetCancelers
 	{
 		
-		headlight_aim = 重置探照灯
 		tractor_beam = 取消牵引光束
 	}
 	PartTargeters
 	{
 		
-		chaingun_aim = 瞄准链炮
-		headlight_aim = 探照灯瞄准
-		prism_aim = 离子棱镜瞄准
-		thermal_aim = 热共振光矛瞄准
 		tractor_beam = 牵引光束瞄准
 	}
 	PartToggles
@@ -1908,6 +1904,8 @@ Inputs
 		airlock_type_closed = 气闸：关闭
 		airlock_type_entry = 气闸：只可进入
 		airlock_type_exit = 气闸：只可离开
+		always_crew_part_off = 始终配备船员：关
+		always_crew_part_on = 始终配备船员：开
 		distribute_power_off = 分配能源：关
 		distribute_power_on = 分配能源：开
 		fire_alternating_off = 开火模式：齐射
@@ -2339,6 +2337,7 @@ MissionLog
 	DistanceIconFmt = "<image name='target'/> {0:0.00} 公里"
 	DistanceLYFmt = "{0:0.0} 光年"
 	EnemyFactionWarningFmt = "该任务需攻击 {0}。将失去在该派系内的声誉，并暂时遭到这一派系通缉。"
+	HUDToggle = 附近任务
 	LocalOnly = 仅星系内
 	LocalOnlyTip = 如果勾选，则只显示在当前星系内的任务。
 	Location = 位置
@@ -2346,6 +2345,7 @@ MissionLog
 	NoMissions = "无激活\n任务"
 	Objectives = 目标
 	Rewards = 奖励
+	ShowMissions = "显示{0}"
 	SortByDistance = "<image name='sort'/>距离"
 	SortByFaction = "<image name='sort'/>派系"
 	SortByMissionType = "<image name='sort'/>任务类型"
@@ -2477,6 +2477,7 @@ ModsWorkshop: Workshop
 	DialogName = "创意工坊 Mod 上传工具"
 	Folder = "Mod 文件夹："
 	Name = "Mod 名称："
+	UpdateName = "更新 Mod 名称"
 	UpdatingExisting = "<good>更新现有 Mod：</good>"
 	UploadSuccessful = "上传成功！点击“确认”在创意工坊中查看你的 Mod。如果这是你第一次通过创意工坊上传，那么还需要接受创意工坊的法律协议，你的 Mod 才能让其他玩家看到。"
 	Warning = "<bad>警告：</bad>此 Mod 文件夹及其所有子文件夹的全部内容将被上传到创意工坊。请勿在其中放置任何你不希望或没有权利公开的文件。"
@@ -2654,17 +2655,14 @@ PartFeatures
 PartTargeters
 {
 	
-	ChaingunAim = "<b>瞄准链炮</b>\n\n将选定的链炮对准目标\n\n热键：<btn id='PartTargeters.chaingun_aim'/>"
-	HeadlightAim = "<b>探照灯瞄准</b>\n\n将选定的探照灯对准目标\n\n热键：<btn id='PartTargeters.headlight_aim'/>"
-	HeadlightAimCancel = "<b>重置探照灯瞄准</b>\n\n热键：<btn id='PartTargetCancelers.headlight_aim'/>"
-	PrismAim = "<b>瞄准离子棱镜</b>\n\n将选定离子光束棱镜对准目标或将其光束引导至另一个离子光束棱镜\n\n热键：<btn id='PartTargeters.prism_aim'/>"
-	ThermalResonanceAim = "<b>瞄准热共振光矛</b>\n\n将选定的热共振光矛对准目标\n\n热键：<btn id='PartTargeters.thermal_aim'/>"
 	TractorBeam = "<b>瞄准牵引光束</b>\n\n按住 <btn id='Game.SelectParts'/> 可瞄准特定部件。\n\n热键：<btn id='PartTargeters.tractor_beam'/>"
 	TractorBeamCancel = "<b>取消牵引光束</b>\n\n热键：<btn id='PartTargetCancelers.tractor_beam'/>"
 }
 PartToggles
 {
 	
+	AlwaysCrew_Off = "<b>始终配备船员：<bad>关</bad></b>\n仅当炮塔锁定目标时，才会为部件配备船员。"
+	AlwaysCrew_On = "<b>始终配备船员：<good>开</good></b>\n部件将始终配备船员。"
 	Boost_Off = "<b>加速：<bad>关</bad></b>\n\n热键：<btn id='PartToggles.thruster_boost_off'/>"
 	Boost_On = "<b>加速：<good>开</good></b>\n\n热键：<btn id='PartToggles.thruster_boost_on'/>"
 	DistributePower_Off = "<b>推进器能源分配：<bad>关</bad></b>\n\n热键：<btn id='PartToggles.distribute_power_off'/>"
@@ -2758,7 +2756,7 @@ Parts
 	CannonMedDesc = 发射单发炮弹，可以穿透敌舰，击穿后可能引发火灾。
 	CannonMedIcon = 加农炮
 	CannonMedOverclock = 超频标准加农炮
-	CannonMedOverclockDesc = 齐射多发炮弹，弹速更高，射程更远。开火时会产生废热。
+	CannonMedOverclockDesc = 齐射多发炮弹。开火时会产生废热。
 	ChainGun = 链炮
 	ChainGunDesc = 拥有多根可旋转炮管的强大火炮，开火时射速会逐渐加快，不开火时会收入装甲外壳中。能够加装额外的弹药架以加快射速并延长射击时间。
 	ChainGunIcon = 链炮
@@ -3067,17 +3065,17 @@ Parts
 	ReactorLargeDesc = 发电装置，可为星舰各种系统生产三倍的供电等离子电池。
 	ReactorLargeIcon = 大型反应堆
 	ReactorLargeOverclock = 超频大型反应堆芯
-	ReactorLargeOverclockDesc = 提高功率。还会将电池大小从三倍提高到四倍。发电时会产生废热。
+	ReactorLargeOverclockDesc = 提高发电功率。还会将电池大小从三倍提高到四倍。发电时会产生废热。
 	ReactorMed = 中型反应堆芯
 	ReactorMedDesc = 发电装置，可为星舰各种系统生产双倍的供电等离子电池。
 	ReactorMedIcon = 中型反应堆
 	ReactorMedOverclock = 超频中型反应堆芯
-	ReactorMedOverclockDesc = 提高最大电容量和功率。发电时会产生废热。
+	ReactorMedOverclockDesc = 提高发电功率。发电时会产生废热。
 	ReactorSmall = 小型反应堆芯
 	ReactorSmallDesc = 发电装置，可为星舰各种系统生产供电等离子电池。
 	ReactorSmallIcon = 小型反应堆
 	ReactorSmallOverclock = 超频小型反应堆芯
-	ReactorSmallOverclockDesc = 提高最大电容量和功率。发电时会产生废热。
+	ReactorSmallOverclockDesc = 提高发电功率。发电时会产生废热。
 	ResonanceBeamTurret = 热共振光矛
 	ResonanceBeamTurretDesc = "安装在星舰顶部的发射器，可以发射纯热能束，但自身也会产生大量废热。还会削弱命中点位的护盾。\n\n2 单元格内不能存在其他甲板炮塔或“高大”部件。"
 	ResonanceBeamTurretIcon = 热共振光矛
@@ -3529,6 +3527,8 @@ ResourcesBox
 	MirrorToggleTip = "<b>镜像模式</b>\n\n启用后，星舰的资源管理变更将沿其中轴线镜像映射。\n\n热键：<btn id='Design.ToggleMirrorMode'/>\n\n<btn id='General.UIAltClick'/>可修改镜像设置。"
 	NothingToRedo = 无可重做。
 	NothingToUndo = 无可撤销。
+	PinResourceDisplay = 固定资源显示
+	PinResourceDisplayTip = 将该资源的数量与容量固定显示在右上角。
 	Redo = " 重做 "
 	RedoTip = "撤销对星舰资源管理的上一次改动。\n\n热键：<btn id='Design.Redo'/>"
 	RemoveSupplyLineTip = "<regular>取消供应链\n（<btn id='Game.Command'/>）</regular>"
@@ -3556,6 +3556,8 @@ ResourcesBox
 	TransferCrewOrResourcesTip = 将此星舰的船员或资源转移至另一星舰。
 	TypeTipFmt = ""
 	UndoTip = "撤销对星舰资源管理的上一次改动。\n\n热键：<btn id='Design.Undo'/>"
+	UnpinResourceDisplay = 取消固定资源显示
+	UnpinResourceDisplayTip = 取消在右上角固定显示该资源的数量与容量。
 }
 Rewards
 {
@@ -3858,6 +3860,8 @@ Settings
 		ResourcesLbl = 资源管理器
 		RowsOfParts = 部件行数
 		RowsOfPartsTip = 不用滚动就能显示的部件行数。
+		ShiftClickToDragPartsAndDecals = "拖拽收藏部件和贴花时需按住 <btn id='Game.AppendSelection' xml='false'/>"
+		ShiftClickToDragPartsAndDecalsTip = "如果勾选，拖拽收藏部件和贴花时必须按住 <btn id='Game.AppendSelection'/>。"
 		ShowAutoRemovedDecals = 显示自动移除的贴花
 		ShowAutoRemovedDecalsTip = 如果勾选，将在被自动移除的贴花上显示红叉。
 		ShowAutoRemovedParts = 显示自动移除的部件
@@ -3872,6 +3876,11 @@ Settings
 	Gameplay
 	{
 		
+		AdjustWeaponCoverageEditAll = 默认全部编辑
+		AdjustWeaponCoverageEditAllTip = "如果勾选，拖拽边缘即可同时调整所有选中的部件。长按 <btn id='Game.AdjustWeaponCoverageEditAll'/> 可切换至另一模式。"
+		AdjustWeaponCoverageIntegerSnapping = 吸附至整数
+		AdjustWeaponCoverageIntegerSnappingTip = "如果勾选，调整射程时将以 {0} 米为单位吸附，调整角度时将以 {1}° 为单位吸附。按住 <btn id='Game.AdjustWeaponCoverageFinePrecision'/> 可切换至另一模式。"
+		AdjustWeaponCoverageLbl = 武器射程/射界/方向
 		AllowShipDeselection = 允许取消选择星舰
 		AllowShipDeselectionTip = 如果勾选，左键点击空白处将取消选择当前勾选的星舰。
 		AlwaysShowCommandWidgets = 始终显示调整手柄
@@ -3963,7 +3972,7 @@ Settings
 		ShowFavoriteCrewNamesOnHover = 光标悬停时显示收藏船员姓名
 		ShowFavoriteCrewNamesOnHoverTip = 若勾选，则光标悬停在被标记为“收藏”的船员上时，其下方将显示姓名。
 		ShowNearbyMissions = "在 HUD 上显示附近的任务"
-		ShowNearbyMissionsTip = "当前附近的任务将自动显示在 HUD 左上角。"
+		ShowNearbyMissionsTip = "如果勾选，任务将自动显示在 HUD 左上角。"
 		ShowResourcePickupLines = 显示飘浮资源连线
 		ShowResourcePickupLinesTip = 如果勾选，飘浮资源与计划储存设施间将以虚线相连。
 		ShowSpaceCrewLines = 显示出舱活动船员连线
@@ -4397,6 +4406,7 @@ Stats
 	DiamondProductionFmt = "<white>生产速度：</white><good>{0:0.##}</good><gray>金刚石/秒</gray>"
 	DilationFactorFmt = "<white>膨胀因子：</white><good>{0:0.###}x</good>"
 	DilationHeatSpreadFmt = "<white>热能传导：</white><good>{0:0.##}</good><gray><sup>[2]</sup> 米</gray>"
+	DynamoHeatGenerationFmt = "<white>发电机产热速率：</white><good>{0:#,0.##}</good> <gray>兆焦/秒（发电期间）</gray>"
 	EMPMissileCapacityFmt = "<white>EMP 导弹容量：</white><good>{0}</good>"
 	EMPResistFmt = "<white>抗 EMP：</white><good>-{0:0.##}</good> <gray>消耗能源</gray>"
 	EMPResistPercentageFmt = "<white>抗 EMP：</white><good>{0:0.#}%</good>"
@@ -4420,6 +4430,7 @@ Stats
 	HeatAbsorptionFmt = "<white>热能吸收：</white> <good>{0:0.#}</good> <gray>兆焦/秒</gray>"
 	HeatAbsorptionInefficiencyFmt = "<white>吸收低效度：</white><good>+{0:0.#}%</good> <gray>热能</gray>"
 	HeatAbsorptionRadiusFmt = "<white>吸收范围：</white><good>{0:0.#}</good> <gray>米</gray>"
+	HeatAppliedFmt = "<white>传导热能：</white><good>{0:#,0.##} </good><gray>兆焦</gray>"
 	HeatCapacityFmt = "<white>储热量：</white><good>{0:#,0.##}</good> <gray>兆焦</gray>"
 	HeatDissipationFmt = "<white>散热速率：</white><good>{0:#,0.##}</good> <gray>兆焦/秒</gray>"
 	HeatFireChanceFmt = "<white>热能达阈值后火灾几率：</white><good>{0:0.##%}</good>"
@@ -4445,6 +4456,7 @@ Stats
 	LightningDamageFmt = "<white>闪电伤害：<gray>每次打击</gray></white> <good>{0:0}</good>"
 	LightningMaxChainFmt = "<white>闪电链最多跳跃次数：</white><good>{0}</good> <gray>次闪电链跳跃</gray>"
 	LightningRangeFmt = "<white>闪电范围：</white><good>{0:0.#}</good> <gray>米</gray>"
+	LightningShieldDamageFmt = "<white>闪电对护盾伤害：</white><gray>每次打击</gray> <good>{0:0}</good>"
 	LightningStrikeCountRangeFmt = "<white>闪电打击次数：</white><good>{0}-{1}</good>"
 	MaxDamageFmt = "<white>最大伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><gray>/秒）</gray>"
 	MaxDamageRangeFmt = "<white>最大伤害：</white><good>{0:n0}</good><gray>/发（</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/秒）</gray>"
@@ -4752,7 +4764,7 @@ Tips
 	DisableUI
 	{
 		
-		Tip = "在截屏或制作Gif时嫌UI太碍事了？按<btn id='Game.ToggleUI'/>即可隐藏UI，再按一次重新显示UI。"
+		Tip = "在截屏或制作 Gif 时嫌 UI 太碍事了？按 <btn id='Game.ToggleUI'/> 即可隐藏 UI，再按一次重新显示 UI。"
 		Title = 隐藏UI
 	}
 	Discord
@@ -5153,7 +5165,7 @@ TitleScreen
 	Settings = 设置
 	ShipLibrary = 星舰库
 	Steam = "Steam 社区"
-	WishlistNow = "<s24>立即购买！</s24>\n<regular>不要错过发售折扣！</regular>"
+	WishlistNow = <s24>立即购买！</s24>
 }
 Tutorials
 {
@@ -5432,10 +5444,11 @@ Tutorials
 	IonBeams
 	{
 		
-		Aiming = 要<good>瞄准一个棱镜</good>，首先退出建造模式，选择棱镜，然后点击<white>瞄准离子棱镜</white>按钮。
+		Aiming = 如需让棱镜<good>朝固定方向</good>发射光束，请选中该棱镜，点击<white>设置射程/射界/方向</white>按钮，然后拖拽边界，调整出所需的扇形或直线射击范围即可。
 		Combining = 射入单个棱镜的<good>光束可以合并</good>，形成一道更大、更强的光束。
 		IonBeams = <good>离子光束</good>是方向固定的能量束武器，不能瞄准，但能在一段时间内造成持续的高伤害。
 		IonPrisms = 但如果把<good>离子棱镜</good>放在离子光束前面，它可以把离子光束投射到任何方向，比如敌舰，甚至是另一个离子棱镜。
+		Targeting = 如需将光束<good>折射至另一个棱镜</good>，请先退出建造模式，选中该棱镜，点击<white>武器瞄准</white>按钮，然后点击另一个棱镜即可。
 		Tip = <good>提示：</good>将多道光束组合在一起会降低它们的总伤害输出。为了最大化整束光的伤害，一定要让每个棱镜组合两道大小相同的光束。
 		Title = 离子光束和棱镜
 	}
@@ -5445,6 +5458,7 @@ Tutorials
 		ControlGroups = "<good>提示：</good>选择一个或多个部件，然后按 <white>Ctrl + 0-9</white>，可以创建一个<good>控制组</good>。按 <white>0-9</white> 即可选择该组。"
 		FireMode = 按下<white>开火模式</white>按钮，可以命令武器<good>停火</good>、<good>只向指定目标开火</good>或者<good>不停开火</good>，视你的需要而定。
 		Power = 按下<white>电源</white>按钮，<good>将其关闭</good>。所有操作该部件的船员都会离开，到其他地方帮忙。
+		RangeArcDirection = 按下<white>设置射程/射界/方向</white>按钮并拖拽显示边界，即可为一件武器自定义<good>射程和射界</good>，或者为其<good>固定瞄准方向</good>。
 		Select = "<white>左键单击</white>一个单独的部件，以将其<good>选定</good>。\n\n你也可以按住 shift 点击多个部件或拖出方框来一次选中多个部件。"
 		Target = 在选择了武器的情况下，<white>右键点击</white>敌舰的某个部件，可以让武器<good>瞄准</good>该部件。
 		Title = 星舰微管理
@@ -5691,6 +5705,15 @@ VitalCategories
 	Header = <b>警告</b>
 	Reactor = "⚠ 缺少反应堆"
 }
+WeaponCoverageEditor
+{
+	
+	AngleFmt = ""
+	FineAngleFmt = ""
+	RangeDeltaFmt = "{0:+0.#;-0.#;0} 米"
+	RangeFmt = "{0:0.#} 米"
+	ResetFloatingText = 重置
+}
 Wishlist
 {
 	
@@ -5698,9 +5721,8 @@ Wishlist
 	ExitMsg = 感谢您体验《Cosmoteer》试玩版！
 	FameLimitReached = "恭喜你！！！\n你已经达到了试玩版的最高<fame>名望</fame>值，但离成为“星海传奇”还有很长的路要走。你可以继续游玩试玩版，但将无法赚取更多名望值，也无法前往其他星系。快快购买完整版，继续你的旅程吧！"
 	FeatureMissingMsg = <bad>抱歉，该功能在试玩版中不可用。</bad>
-	Features = "<fame_color>完整游戏包括……</fame_color><s4>\n\n</s4>● 完整的银河系探索体验……所有星系都将解锁！<s4>\n\n</s4>● 多人合作与多人对战<s4>\n\n</s4>● 更多武器等星舰部件（轨道炮、核弹、EMP、大型护盾、牵引光束等等！）<s4>\n\n</s4>● 来自四大独特派系的 200 多种星舰设计<s4>\n\n</s4>● 模组及创意工坊支持"
+	Features = "<fame_color>完整游戏包括……</fame_color><s4>\n\n</s4>● 完整的银河系探索体验……所有星系都将解锁！<s4>\n\n</s4>● 多人合作与多人对战<s4>\n\n</s4>● 更多武器等星舰部件（轨道炮、核弹、EMP、大型护盾、牵引光束等等！）<s4>\n\n</s4>● 来自五大独特派系的 800 多种星舰设计<s4>\n\n</s4>● 模组及创意工坊支持"
 	HoursFmt = "你已经游玩了{0}小时的《Cosmoteer》试玩版。你可以想玩多久就玩多久，但如果你真的乐在其中，是否考虑购买一份完整版呢？"
-	LaunchDiscount = <s24><u>发售折扣不容错过！</u></s24>
 	No = 以后再说
 	NotInDemo = 试玩版中不可用
 	Yes = "<s24>现在购买</s24>\n（或添加到愿望单）"
@@ -5715,6 +5737,8 @@ Workshop
 	MinVersion = 最旧游戏版本
 	Preview = 预览图片：
 	SelectPreviewFile = 选择文件
+	UpdateDescription = 更新描述
+	UpdatePreview = 更新预览图片
 	Upload = 开始上传
 	UploadingFmt = "正在上传至创意工坊……{0}%"
 	ViewInWorkshop = 在创意工坊中查看

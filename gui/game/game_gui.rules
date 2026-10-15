@@ -651,7 +651,6 @@ AdjustWeaponCoverage
 	}
 	CoverageResetSound = &../GenericPutdownSound
 	CoverageHitTolerance = 30
-	CoverageExtendedHitTolerance = 60
 	CoveragePartObstructedHitTolerance = 7
 	CoverageMinimumRange = 5
 	CoverageInfiniteRangeFallback = 10
@@ -719,6 +718,38 @@ AdjustWeaponCoverage
 			UVRect = [.75, 0, .25, 1]
 		}
 		EndCapSize = &BeginCapSize
+	}
+
+	// The line that shows (and adjusts) where within its arc a turret rests when it has nothing to aim at.
+	// It's fractally dotted (see the physical limits below) with each dot being the whole of line_dotted.png, and ends in an arrow.
+	CoverageRestLineLength = 10
+	CoverageRestLineDotLengthPerThickness = 1 // The texture is square, so this keeps the dots undistorted.
+	CoverageRestLine
+	{
+		LineSprite
+		{
+			Texture
+			{
+				File = "./Data/gui/line_dotted.png"
+				SampleMode = Linear
+				MipLevels = max
+				UMode = Wrap
+			}
+			Shader = "./Data/gui/game/line_fractal_dashed.shader"
+			UVRect = [0, 0, 1, 1]
+		}
+		LineThickness = .35
+		EndCapSprite
+		{
+			Texture
+			{
+				File = "./Data/gui/line_arrow.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+		}
+		EndCapSize = [.5, .5]
+		EndCapOverlap = .1
 	}
 
 	CoverageArcFill

@@ -128,7 +128,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=2500; BuffType=RailgunShot; BuffMode=Multiply; EffectScaleExponent=1; }
+					Damage = { BaseValue=1200; BuffType=RailgunShot; BuffMode=Multiply; EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse
@@ -178,8 +178,8 @@ Components
 		}
 		PenetratingStructural : &HitStructural
 		{
-			StructuralDamageRetentionPerHit = 80%
-			MinStructuralDamageScale = 5%
+			StructuralDamageRetentionPerHit = &/STRUCTURAL_DAMAGE_RETENTION_PER_HIT
+			MinStructuralDamageScale = &/MIN_STRUCTURAL_DAMAGE_SCALE
 		}
 		FinishedPenetratingOperational = &PenetratingOperational
 		FinishedPenetratingStructural = &PenetratingStructural

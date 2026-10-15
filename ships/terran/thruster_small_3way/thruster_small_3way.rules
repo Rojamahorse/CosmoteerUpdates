@@ -103,10 +103,17 @@ Part : <../base_part_terran_overclock.rules>/Part
 			ToggleOnResources = &~/Part/FuelUsage
 			ToggleOffResources = 0
 		}
+		IsThrusterActive : &~/THRUSTER_SMALL/Part/Components/IsThrusterActive
+		{
+			ValueFrom = Overclock_TotalThrusterActivation
+		}
+		NotOverclockedOrNotThrusting = &~/THRUSTER_SMALL/Part/Components/NotOverclockedOrNotThrusting
+		CanGeneratePower = &~/THRUSTER_SMALL/Part/Components/CanGeneratePower
+
 		BatteryProducer
 		{
 			Type = ResourceConverter
-			OperationalToggle = NonJunkToggle
+			OperationalToggle = CanGeneratePower
 			ToStorage = BatteryStorage
 			ToQuantity = &~/Part/FuelUsage // Not a typo! See math below.
 			Interval : ~/THRUSTER_SMALL/Part/Components/BatteryProducer/Interval
@@ -157,8 +164,6 @@ Part : <../base_part_terran_overclock.rules>/Part
 		Zero { Type = StaticValue; Value = 0; }
 		One { Type = StaticValue; Value = 1; }
 
-
-
 		Overclock_CombinedHeatInput
 		{
 			Type = MultiResourceStorage
@@ -179,6 +184,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 
 		Overclock_ThrusterHeatProducer : ~/THRUSTER_SMALL/Part/Components/Overclock_ThrusterHeatProducer
 		{}
+
+		Overclock_GenerationHeatProducer = &~/THRUSTER_SMALL/Part/Components/Overclock_GenerationHeatProducer
+		Overclock_BatteryProducedTrigger = &~/THRUSTER_SMALL/Part/Components/Overclock_BatteryProducedTrigger
 
 		Overclock_ActivationBuff : ~/THRUSTER_SMALL/Part/Components/Overclock_ActivationBuff
 		{}

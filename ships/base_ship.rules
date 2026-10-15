@@ -64,7 +64,6 @@ BaseRadarRadius = &BaseSightRadius
 MinCommsRadius = &<terran/control_room_small/control_room_small.rules>/Part/Components/Sensor/SightRadius
 WeaponActivationEnemyCheckRadius = &<terran/sensor_array/sensor_array.rules>/Part/Components/Sensor/SightRadius/BaseValue
 DefaultTargetingRangeExtension = 400
-MinWeaponCoverageArcTargetWidth = 2d
 WeaponFireRevealDuration = 3
 
 MapJumpFuelCostPerMass = 0

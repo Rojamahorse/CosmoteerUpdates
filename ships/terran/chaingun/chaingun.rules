@@ -3008,7 +3008,7 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 				// Out of ammo.
 				{
 					Toggle = HasEnoughAmmoForGraphics
-					Delay = 1//&~/Part/Components/Turret/FireInterval
+					Delay = &~/Part/Components/FixedWeaponShooter/FireInterval/BaseValue
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoAmmo

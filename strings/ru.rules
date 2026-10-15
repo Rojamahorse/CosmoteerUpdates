@@ -352,7 +352,7 @@ BuildBox
 	RemoveTip = "<b>Удаление</b>\n\nНажав на часть корабля в режиме удаления, вы её удалите и получите возмещение её стоимости.\n\nГорячая клавиша: <btn id='Design.EraseTool'/>\n\nУдерживайте <btn id='Design.EraseCursorMode'/>, чтобы переключиться на этот инструмент временно."
 	RepairAll = "<s20>ПОЧИНИТЬ ВСЁ</s20><s4>\n \n</s4>"
 	RepairDebtFmt = "Ремонт корабля будет стоить <ins_money>{0:n0}</ins_money>, а у вас только <money>{1:n0}</money>. Вы можете уйти в минус, чтобы починить корабль, но в дальнейшем не сможете совершать большинство покупок, пока не вернёте долг."
-	RepairTip = "<b>Ремонт</b>\n\nВ режиме ремонта, нажав на красную повреждённую или уничтоженную часть, вы её почините.\n\nГорячая клавиша: <btn id='Design.RepairTool'/>"
+	RepairTip = "Инструмент <b>Ремонт</b>\n\nВ режиме ремонта, нажав на красную повреждённую или уничтоженную часть, вы её почините.\n\nГорячая клавиша: <btn id='Design.RepairTool'/>"
 	ResetMirrorLines = "Сбросить линии отражения"
 	ResetMirrorLinesTip = "Сброс горизонтальных и вертикальных линий до исходного положения по центру корабля."
 	RotateLeftTip = "Поворот против часовой стрелки.\n\nГорячая клавиша: <btn id='Design.RotateLeft'/>"
@@ -448,7 +448,7 @@ CareerModeConfig
 	DisableCrewConstruction = "Экипажу не место на верфи"
 	DisableCrewConstructionTip = "Если этот флажок установлен, то модификации корабля будут производиться мгновенно, без участия экипажа."
 	DisableExploration = "Ненавижу исследования"
-	DisableExplorationTip = "Отображение на карте всех значков <b>?</b> без необходимости сначала «рассеивать» туман войны."
+	DisableExplorationTip = "На карте видны все значки <b>?</b> без необходимости сначала «рассеивать» туман войны."
 	DisableNebulas = "Ненавижу облака и штормы"
 	DisableNebulasTip = "В режиме карьеры не будет облаков и штормов. (Если выбрать эту настройку это после начала игры, она повлияет только на непосещённые звездные системы.)"
 	DisableSalvaging = "Ненавижу cбор ресурсов"
@@ -840,6 +840,7 @@ CrewBox
 	NoPathToSource = "<bad>Невозможно добраться</bad>"
 	NothingToRedo = "Нечего возвращать."
 	NothingToUndo = "Нечего отменять."
+	NumberOfCrew = "Экипаж: {0}/{1}"
 	Paste = Вставить
 	PasteInfo = "Заменить только данные"
 	PasteInsertAfter = "Вставить новую роль после"
@@ -919,11 +920,11 @@ Dialogue
 		AISurrenderDialogue = "<b>{0}:</b> <i>«Мы сдаемся! Если вы обещаете нас не убивать, мы заплатим <money>{1:n0}</money>!»</i>"
 		DeclineAISurrender = "[Оборвать связь]"
 		DeclinePlayerSurrender = "<i>«Ни за что!»</i>"
-		PlayerSurrender = "<i>«Мы сдаемся!»</i> (Заплатить <money>{0:n0}</money>)"
-		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>«Сдавайтесь и заплатите <money>{1:n0}</money>...или умрите!»</i>"
-		PlayerSurrenderDialogue = "<b>{0}:</b> <i>«Вас слишком мало! Сдавайтесь и заплатите <money>{1:n0}</money>... или умрите!»</i>"
-		PlayerSurrenderPayBounty = "<i>«Мы выплатим сумму награды!»</i> (Заплатить <money>{0:n0}</money>)"
-		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>«{2} предлагает награду в размере <money>{1:n0}</money> за ваше уничтожение. Заплатите эту сумму сейчас или готовьтесь к смерти».</i>"
+		PlayerSurrender = "<i>«Мы сдаемся!»</i> (Заплатить {0})"
+		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>«Сдавайтесь и заплатите {1}...или умрите!»</i>"
+		PlayerSurrenderDialogue = "<b>{0}:</b> <i>«Вас слишком мало! Сдавайтесь и заплатите {1}... или умрите!»</i>"
+		PlayerSurrenderPayBounty = "<i>«Мы выплатим сумму награды!»</i> (Заплатить {0})"
+		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>«{2} предлагает награду в размере {1} за ваше уничтожение. Заплатите эту сумму сейчас или готовьтесь к смерти».</i>"
 	}
 }
 DominationMapStyles
@@ -1250,6 +1251,7 @@ FleetsWorkshop: Workshop
 	DialogName = "Загрузчик коллекции кораблей в Мастерскую Steam"
 	Folder = "Папка коллекции кораблей:"
 	Name = "Название коллекции кораблей:"
+	UpdateName = "Обновить название коллекции кораблей"
 	UpdatingExisting = "<good>Обновление коллекции:</good>"
 	UploadSuccessful = "Загрузка завершена! Нажмите ОК, чтобы посмотреть в Мастерской Steam загруженную коллекцию кораблей. Если это ваша первая загрузка, вы также должны будете принять условия юридического договора Мастерской Steam."
 	Warning = "<bad>ПРЕДУПРЕЖДЕНИЕ:</bad> В Мастерскую Steam будет загружено ВСЁ содержимое этой папки и папок, находящихся внутри неё. Не оставляйте в ней файлы, которые не хотите или не имеете права делать достоянием общественности."
@@ -1432,6 +1434,7 @@ Hud
 	
 	AbandonShip = "Бросить корабль"
 	AbandonShipTip = "Экипаж получает команду покинуть судно, если есть возможность."
+	AdjustWeaponCoverageTip = "<b>Задать дальнобойность/дугу/направление</b>\nНажмите, чтобы включить, а потом потяните край, чтобы изменить указанные параметры.\n\n\nГорячая клавиша: <btn id='Game.AdjustWeaponCoverage'/>\n\nЕсли выбрано:\n-<btn id='Game.CancelTool'/><gray>:</gray> сбросить выделение\n-<btn id='Game.AdjustWeaponCoverageEditAll'/><gray> (удерживать):</gray> режим «Изменить всё»\n-<btn id='Game.AdjustWeaponCoverageFinePrecision'/><gray> (удерживать:)</gray> прецизионный режим\n-<btn id='Game.AdjustWeaponCoverageRotateArc'/><gray> (удерживать):</gray> (режим вращения\n-<btn id='Game.AdjustWeaponCoverageSymmetricSides'/><gray> (удерживать):</gray> симметричный режим\n-<btn id='Game.AdjustWeaponCoverageRotateArc'/>+ <btn id='Game.AdjustWeaponCoverageSymmetricSides'/><gray> (удерживать):</gray> режим фиксированного направления"
 	AttackTip = "<b>Атака</b>\n\nНападение на другой корабль. Вы также можете нападать на собственные корабли. (Зажмите <btn id='Game.InvertCollisionAvoidance'/>, чтобы переключить предотвращение столкновений.)\n\nГорячая клавиша: <btn id='Game.Attack'/>"
 	AutoThrustOffTip = "<b>Автозапуск двигателя: <bad>выкл.</bad></b>\n\nГорячая клавиша: <btn id='Game.ToggleAutoThrust'/>"
 	AutoThrustOnTip = "<b>Автозапуск двигателя: <good>вкл.</good></b>\n\nГорячая клавиша: <btn id='Game.ToggleAutoThrust'/>"
@@ -1502,6 +1505,7 @@ Hud
 	NewShipTip = "<b>Построить новый корабль</b>\n\nПостройте новый корабль с нуля."
 	NewShipTooFar = "<bad>СЛИШКОМ ДАЛЕКО</bad>"
 	NoCommandsToCancel = "Нет команд для отмены."
+	NoCustomCoveragesToReset = "Нечего сбрасывать."
 	NoTargetsToCancel = "Нет целей, чтобы отменить."
 	NuggetCollectAlreadyClaimed = "УЖЕ ПОЛУЧЕНО"
 	NuggetCollectFull = "ХРАНИЛИЩЕ ЗАПОЛНЕНО"
@@ -1512,6 +1516,8 @@ Hud
 	PauseTip = "Пауза\n\nГорячая клавиша: <btn id='Game.PauseToggle'/>"
 	Paused = ПАУЗА
 	ReputationTipFmt = "Репутация у фракции {0}"
+	ResetCustomCoverages = "Сбросить дальнобойность/дугу/направление"
+	ResetCustomCoveragesTip = "Сбросить дальнобойность, дугу и направление выбранного оружия до значений по умолчанию."
 	ResetDefaults = "Восстановить исходные настройки атаки"
 	ResetDefaultsTip = "Сброс сохранённых настроек расстояния и ориентации для атаки до исходных значений."
 	ResourceCountStorageFullFmt = "{0} <bad>(хранилище заполнено)</bad>"
@@ -1626,6 +1632,7 @@ Inputs
 		Name = "Управление экипажем"
 		OpenClose = "Открыть/закрыть панель экипажа"
 		RemoveSelected = "Удалить выбранный экипаж"
+		ResetCrew = "Вернуть экипаж"
 		Roster = "Показать/скрыть список личного состава"
 		SelectAll = "Выбрать всё"
 		SelectRange = "Выбрать нескольких членов экипажа"
@@ -1689,6 +1696,11 @@ Inputs
 	Game
 	{
 		
+		AdjustWeaponCoverage = "Задать дальнобойность/дугу/направление"
+		AdjustWeaponCoverageEditAll = "Задать дальнобойность/дугу/направление: режим «Изменить всё»"
+		AdjustWeaponCoverageFinePrecision = "Задать дальнобойность/дугу/направление: прецизионный режим"
+		AdjustWeaponCoverageRotateArc = "Задать дальнобойность/дугу/направление: режим вращения"
+		AdjustWeaponCoverageSymmetricSides = "Задать дальнобойность/дугу/направление: симметричный режим"
 		AllowSalvageOwnShip = "Разрешить добычу своего корабля"
 		AppendSelection = "Добавить выбранное"
 		Attack = Атака
@@ -1768,12 +1780,9 @@ Inputs
 		Alt = ""
 		Apps = ""
 		B = ""
-		BackslashPipe = "\\"
 		Backspace = ""
 		C = ""
 		CapsLock = ""
-		Colon = ":"
-		CommaLesser = ","
 		Command = ""
 		Control = ""
 		D = ""
@@ -1818,9 +1827,7 @@ Inputs
 		K = ""
 		L = ""
 		LeftArrow = "Стрелка влево"
-		LeftBracket = (
 		M = ""
-		MinusUnderscore = -
 		N = ""
 		NumLock = ""
 		NumPad0 = "Цифр. 0"
@@ -1843,23 +1850,17 @@ Inputs
 		PageDown = ""
 		PageUp = ""
 		Pause = Пауза
-		PeriodGreater = .
 		PlatformCmdCtrl = ""
-		PlusEquals = +
 		PrintScreen = ""
 		Q = ""
-		Quote = "\""
 		R = ""
 		RightArrow = "Стрелка вправо"
-		RightBracket = )
 		S = ""
 		ScrollLock = ""
 		Shift = ""
-		SlashQuestion = /
 		Space = Пробел
 		T = ""
 		Tab = ""
-		TildeBacktick = ~
 		U = ""
 		UpArrow = "Стрелка вверх"
 		V = ""
@@ -1889,16 +1890,11 @@ Inputs
 	PartTargetCancelers
 	{
 		
-		headlight_aim = "Сбросить цель прожектора"
 		tractor_beam = "Отменить прицел буксировочного луча"
 	}
 	PartTargeters
 	{
 		
-		chaingun_aim = "Нацелить МАП"
-		headlight_aim = "Нацелить прожектор"
-		prism_aim = "Нацелить ионную призму"
-		thermal_aim = "Нацелить термальное резонансное копье"
 		tractor_beam = "Нацелить буксировочный луч"
 	}
 	PartToggles
@@ -1908,6 +1904,8 @@ Inputs
 		airlock_type_closed = "Шлюз: закрыт"
 		airlock_type_entry = "Шлюз: только вход"
 		airlock_type_exit = "Шлюз: только выход"
+		always_crew_part_off = "Всегда комплектовать экипажем: выкл"
+		always_crew_part_on = "Всегда комплектовать экипажем: вкл"
 		distribute_power_off = "Распределение мощности: откл."
 		distribute_power_on = "Распределение мощности: вкл."
 		fire_alternating_off = "Режим огня: синхронный"
@@ -2339,6 +2337,7 @@ MissionLog
 	DistanceIconFmt = "<image name='target'/> {0:0.00} км"
 	DistanceLYFmt = "{0:0.0} св. лет"
 	EnemyFactionWarningFmt = "Для выполнения миссии вам придется напасть на фракцию {0}. Вы потеряете их очки репутации и будете объявлены в розыск."
+	HUDToggle = "Ближайшие миссии"
 	LocalOnly = "Только в этой системе"
 	LocalOnlyTip = "Будут отображаться только миссии, доступные в текущей звёздной системе."
 	Location = МЕСТО
@@ -2346,6 +2345,7 @@ MissionLog
 	NoMissions = "Нет активных\nмиссий"
 	Objectives = ЗАДАЧИ
 	Rewards = НАГРАДА
+	ShowMissions = "Показать {0}"
 	SortByDistance = "<image name='sort'/> Расстояние"
 	SortByFaction = "<image name='sort'/> Фракция"
 	SortByMissionType = "<image name='sort'/> Вид миссии"
@@ -2477,6 +2477,7 @@ ModsWorkshop: Workshop
 	DialogName = "Загрузчик модификаций в Мастерскую Steam"
 	Folder = "Папка модификации:"
 	Name = "Имя модификации:"
+	UpdateName = "Обновить имя модификации"
 	UpdatingExisting = "<good>Обновление существующей модификации:</good>"
 	UploadSuccessful = "Загрузка завершена! Нажмите ОК, чтобы посмотреть свою модификацию в Мастерской Steam. Если это ваша первая загрузка, вы также должны будете принять условия юридического договора Мастерской Steam."
 	Warning = "<bad>ПРЕДУПРЕЖДЕНИЕ:</bad> В Мастерскую Steam будет загружено ВСЁ содержимое папки этой модификации и папок, находящихся внутри неё. Не оставляйте в ней файлы, которые не хотите или не имеете права делать достоянием общественности."
@@ -2654,17 +2655,14 @@ PartFeatures
 PartTargeters
 {
 	
-	ChaingunAim = "<b>Нацелить МАП</b>\n\nНацеливает выбранный МАП в определённое место.\n\nГорячая клавиша: <btn id='PartTargeters.chaingun_aim'/>"
-	HeadlightAim = "<b>Нацелить прожектор</b>\n\nНацеливает выбранный прожектор в определённое место.\n\nГорячая клавиша: <btn id='PartTargeters.headlight_aim'/>"
-	HeadlightAimCancel = "<b>Сбросить цель прожектора</b>\n\nГорячая клавиша: <btn id='PartTargetCancelers.headlight_aim'/>"
-	PrismAim = "<b>Нацелить ионную призму</b>\n\nНацеливает выбранную призму ионного луча (лучей) в определённое место или программирует на стрельбу через другую призму ионного луча.\n\nГорячая клавиша: <btn id='PartTargeters.prism_aim'/>"
-	ThermalResonanceAim = "<b>Прицел термального резонансного копья</b>\n\nНацеливает выбранное термальное резонансное копье в нужную точку.\n\nГорячая клавиша: <btn id='PartTargeters.thermal_aim'/>"
 	TractorBeam = "<b>Нацелить буксировочный луч</b>\n\nУдерживайте <btn id='Game.SelectParts'/>, чтобы взять в прицел отдельные части корабля.\n\nГорячая клавиша: <btn id='PartTargeters.tractor_beam'/>"
 	TractorBeamCancel = "<b>Отменить прицел буксировочного луча</b>\n\nГорячая клавиша: <btn id='PartTargetCancelers.tractor_beam'/>"
 }
 PartToggles
 {
 	
+	AlwaysCrew_Off = "<b>Всегда комплектовать экипажем:<bad> выкл</bad></b>\nЧасть будет укомплектована экипажем только при наличии цели у турели."
+	AlwaysCrew_On = "<b>Всегда комплектовать экипажем:<good> вкл</good></b>\nЧасть всегда будет укомплектована экипажем."
 	Boost_Off = "<b>Ускорение: <bad>Выкл.</bad></b>\n\nГорячая клавиша: <btn id='PartToggles.thruster_boost_off'/>"
 	Boost_On = "<b>Ускорение: <good>Вкл.</good></b>\n\nГорячая клавиша: <btn id='PartToggles.thruster_boost_on'/>"
 	DistributePower_Off = "<b>Распределение энергии на двигатели <bad>Выкл.</bad></b>\n\nГорячая клавиша: <btn id='PartToggles.distribute_power_off'/>"
@@ -2758,7 +2756,7 @@ Parts
 	CannonMedDesc = "Стреляет одиночными снарядами, которые пробивают корпус вражеских кораблей и иногда могут вызвать пожар."
 	CannonMedIcon = Пушка
 	CannonMedOverclock = "Разогнанная стандартная пушка"
-	CannonMedOverclockDesc = "Стреляет залпами из нескольких снарядов на большое расстояние и с большой скоростью. При стрельбе вырабатывает избыточное тепло."
+	CannonMedOverclockDesc = "Стреляет залпами из нескольких снарядов. При стрельбе вырабатывает избыточное тепло."
 	ChainGun = МАП
 	ChainGunDesc = "Скорострельная малокалиберная автоматическая пушка с вращающимся блоком стволов, которая наращивает скорость стрельбы по мере ведения огня и скрывается в защитном кожухе, когда не стреляет. Для увеличения продолжительности и скорострельности можно расширить ее боекомплект."
 	ChainGunIcon = МАП
@@ -3067,17 +3065,17 @@ Parts
 	ReactorLargeDesc = "Производит плазменные батареи тройной ёмкости, необходимые для питания различных систем корабля."
 	ReactorLargeIcon = "Большой реактор"
 	ReactorLargeOverclock = "Разогнанный большой ядерный реактор"
-	ReactorLargeOverclockDesc = "Увеличивает скорость выработки. Дополнительно увеличивает емкость аккумулятора с тройной до четверной. При выработке энергии вырабатывает избыточное тепло."
+	ReactorLargeOverclockDesc = "Повышает скорость выработки энергии. Увеличивает ёмкость батареи с тройной до четверной. При работе выделяет избыточное тепло."
 	ReactorMed = "Средний ядерный реактор"
 	ReactorMedDesc = "Производит плазменные батареи двойной ёмкости, необходимые для питания различных систем корабля."
 	ReactorMedIcon = "Средний реактор"
 	ReactorMedOverclock = "Разогнанный средний ядерный реактор"
-	ReactorMedOverclockDesc = "Увеличивает максимальную энергоемкость и скорость выработки энергии. При выработке энергии вырабатывает избыточное тепло."
+	ReactorMedOverclockDesc = "Повышает скорость выработки энергии. При работе выделяет избыточное тепло."
 	ReactorSmall = "Малый ядерный реактор"
 	ReactorSmallDesc = "Производит плазменные батареи, необходимые для питания различных систем корабля."
 	ReactorSmallIcon = "Малый реактор"
 	ReactorSmallOverclock = "Разогнанный малый ядерный реактор"
-	ReactorSmallOverclockDesc = "Увеличивает максимальную энергоемкость и скорость выработки энергии. При выработке энергии вырабатывает избыточное тепло."
+	ReactorSmallOverclockDesc = "Повышает скорость выработки энергии. При работе выделяет избыточное тепло."
 	ResonanceBeamTurret = "Термальное резонансное копье"
 	ResonanceBeamTurretDesc = "Установленная на крыше турель, которая стреляет лучом чистой тепловой энергии, но также генерирует значительное количество избыточного тепла. Ослабляет щиты вокруг места воздействия.\n\nНе может находиться ближе двух клеток от других турелей на крыше или «высоких» объектов."
 	ResonanceBeamTurretIcon = "Термальное резонансное копье"
@@ -3529,6 +3527,8 @@ ResourcesBox
 	MirrorToggleTip = "<b>Режим зеркала</b>\n\nПри активации изменения в организации ресурсов на корабле будут зеркально отражены вдоль линии, проходящей по его центру.\n\nГорячая клавиша: <btn id='Design.ToggleMirrorMode'/>\n\nНажмите <btn id='General.UIAltClick'/>, чтобы изменить зеркальные настройки."
 	NothingToRedo = "Нечего возвращать."
 	NothingToUndo = "Нечего отменять."
+	PinResourceDisplay = "Закрепить отображение ресурсов"
+	PinResourceDisplayTip = "Количество и объем ресурса будут отображаться в правом верхнем углу."
 	Redo = " Вернуть "
 	RedoTip = "Восстанавливает последнее изменение в распределении ресурсов корабля.\n\nГорячая клавиша: <btn id='Design.Redo'/>"
 	RemoveSupplyLineTip = "<regular>Отмена линии поставок\n(<btn id='Game.Command'/>)</regular>"
@@ -3556,6 +3556,8 @@ ResourcesBox
 	TransferCrewOrResourcesTip = "Перенести экипаж или ресурсы с этого корабля на другой."
 	TypeTipFmt = ""
 	UndoTip = "Отменяет последнее изменение в распределении ресурсов корабля.\n\nГорячая клавиша: <btn id='Design.Undo'/>"
+	UnpinResourceDisplay = "Открепить отображение ресурсов"
+	UnpinResourceDisplayTip = "Количество и объем ресурса не будут отображаться в правом верхнем углу."
 }
 Rewards
 {
@@ -3858,6 +3860,8 @@ Settings
 		ResourcesLbl = "Управление ресурсами"
 		RowsOfParts = "Ряды частей"
 		RowsOfPartsTip = "Количество рядов с частями, которые можно посмотреть без прокрутки."
+		ShiftClickToDragPartsAndDecals = "<btn id='Game.AppendSelection' xml='false'/> для перемещения избранных частей/знаков"
+		ShiftClickToDragPartsAndDecalsTip = "При выборе этого параметра вам нужно будет удерживать <btn id='Game.AppendSelection'/>, чтобы перетаскивать избранные части и знаки."
 		ShowAutoRemovedDecals = "Показывать знаки, удаляемые автоматически"
 		ShowAutoRemovedDecalsTip = "Над знаками, которые будут удалены автоматически, появятся красные крестики."
 		ShowAutoRemovedParts = "Показывать автоматически удаляемые части"
@@ -3872,6 +3876,11 @@ Settings
 	Gameplay
 	{
 		
+		AdjustWeaponCoverageEditAll = "«Изменить всё» по умолчанию"
+		AdjustWeaponCoverageEditAllTip = "При выборе этого параметра перетаскивание края позволит изменить все выделенные элементы одновременно. Удерживайте <btn id='Game.AdjustWeaponCoverageEditAll'/>, чтобы использовать другой режим."
+		AdjustWeaponCoverageIntegerSnapping = "Привязка к целым числам"
+		AdjustWeaponCoverageIntegerSnappingTip = "При выборе этого параметра дальнобойности будет меняться с шагом {0} м, а угол — с шагом {1}°. Удерживайте <btn id='Game.AdjustWeaponCoverageFinePrecision'/>, чтобы использовать другой режим."
+		AdjustWeaponCoverageLbl = "Дальнобойность/дуга/направление оружия"
 		AllowShipDeselection = "Разрешить отмену выбора корабля"
 		AllowShipDeselectionTip = "Нажав левой кнопкой мыши в любом свободном месте, вы отмените выбор любого выбранного корабля."
 		AlwaysShowCommandWidgets = "Всегда показывать элементы управления"
@@ -3963,7 +3972,7 @@ Settings
 		ShowFavoriteCrewNamesOnHover = "Отображать имена избранного экипажа"
 		ShowFavoriteCrewNamesOnHoverTip = "Имена избранных членов экипажа будут отображаться при наведении курсора."
 		ShowNearbyMissions = "Показывать ближайшие миссии на головном экране"
-		ShowNearbyMissionsTip = "Это количество ближайших миссий будет отображаться в левом верхнем углу головного экрана."
+		ShowNearbyMissionsTip = "При выборе этого параметра миссии будут автоматически отображаться в левом верхнем углу головного экрана."
 		ShowResourcePickupLines = "Показывать линии к ресурсам"
 		ShowResourcePickupLinesTip = "Отображать пунктирные линии, соединяющие ресурсы в вакууме с предназначенными для них хранилищами."
 		ShowSpaceCrewLines = "Показывать линии к экипажу в полёте"
@@ -4397,6 +4406,7 @@ Stats
 	DiamondProductionFmt = "<white>Производительность:</white> <good>{0:0.##}</good><gray> шт. алмазов/сек.</gray>"
 	DilationFactorFmt = "<white>Коэффициент расширения:</white> <good>{0:0.###}x</good>"
 	DilationHeatSpreadFmt = "<white>Распространение тепла:</white> <good>{0:0.##}</good><gray><sup>[2]</sup> метра</gray>"
+	DynamoHeatGenerationFmt = "<white>Выработка тепла генератором:</white> <good>{0:#,0.##}</good> <gray>МДж/сек (во время работы)</gray>"
 	EMPMissileCapacityFmt = "<white>Объём хранимых ЭМИ-ракет:</white> <good>{0}</good>"
 	EMPResistFmt = "<white>Устойчивость к ЭМИ:</white> <good>-{0:0.##}</good> <gray>утечки энергии</gray>"
 	EMPResistPercentageFmt = "<white>Сопротивление ЭМИ:</white> <good>{0:0.#}%</good>"
@@ -4420,6 +4430,7 @@ Stats
 	HeatAbsorptionFmt = "<white>Поглощение тепла:</white> <good>{0:0.#}</good> <gray>МДж/сек.</gray>"
 	HeatAbsorptionInefficiencyFmt = "<white>Неэффективность поглощения:</white> <good>+{0:0.#}%</good> <gray>тепла</gray>"
 	HeatAbsorptionRadiusFmt = "<white>Радиус поглощения:</white> <good>{0:0.#}</good> <gray>м</gray>"
+	HeatAppliedFmt = "<white>Действующее тепло:</white> <good>{0:#,0.##}</good> <gray>МДж</gray>"
 	HeatCapacityFmt = "<white>Теплоемкость:</white> <good>{0:#,0.##}</good> <gray>МДж</gray>"
 	HeatDissipationFmt = "<white>Рассеивание тепла:</white> <good>{0:#,0.##}</good> <gray>МДж/сек.</gray>"
 	HeatFireChanceFmt = "<white>Шанс перегрева при стрельбе:</white> <good>{0:0.##%}</good>"
@@ -4436,7 +4447,7 @@ Stats
 	HeatTransferInefficiencyFmt = "<white>Неэффективность теплопередачи:</white> <good>+{0:0.#}%</good> <gray>тепла</gray>"
 	HitShieldHeatFactorFmt = "<white>Нагревание щита при ударе:</white> <good>{0:0.##}%</good>"
 	HyperiumCapacityFmt = "<white>Объём хранимого гиперия:</white> <good>{0}</good>"
-	IonLightningIntervalFmt = "<white>Интервал молнии:</white> <good>{0:0.#}</good> <gray>сек</gray>"
+	IonLightningIntervalFmt = "<white>Интервал молнии:</white> <good>{0:0.#}</good> <gray>сек.</gray>"
 	IronCapacityFmt = "<white>Объём хранимого железа:</white> <good>{0}</good>"
 	Lifetime = "<white>Срок жизни:</white> <good>{0:0.#}</good> <gray>сек.</gray>"
 	LightningChainChanceFmt = "<white>Вероятность цепи молний:</white> <good>{0:0.#}%</good> <gray>на удар</gray>"
@@ -4445,6 +4456,7 @@ Stats
 	LightningDamageFmt = "<white>Урон от молний:</white> <good>{0:0}</good> <gray>на удар</gray>"
 	LightningMaxChainFmt = "<white>Макс. цепь молний:</white> <good>{0}</good> <gray>ударов подряд</gray>"
 	LightningRangeFmt = "<white>Диапазон молнии:</white> <good>{0:0.#}</good> <gray>м</gray>"
+	LightningShieldDamageFmt = "<white>Урон щитам от молнии:</white> <good>{0:0}</good> <gray>за удар</gray>"
 	LightningStrikeCountRangeFmt = "<white>Удары молнии:</white> <good>{0}–{1}</good>"
 	MaxDamageFmt = "<white>Макс. урон:</white> <good>{0:n0}</good><gray>/выстрел (</gray><good>{1:n0}</good><gray>/сек.)</gray>"
 	MaxDamageRangeFmt = "<white>Макс. урон:</white> <good>{0:n0}</good><gray>/выстрел (</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/сек.)</gray>"
@@ -4752,7 +4764,7 @@ Tips
 	DisableUI
 	{
 		
-		Tip = "Вы считаете, что ваши скриншоты и GIF-файлы смотрелись бы лучше без пользовательского интерфейса? Нажмите <btn id='Game.ToggleUI'/>, чтобы его скрыть. Повторное нажатие вернет интерфейс на место."
+		Tip = "Вам кажется, что ваши скриншоты и гифки красивее пользовательского интерфейса? Нажмите <btn id='Game.ToggleUI'/>, чтобы его скрыть. Нажмите ещё раз, чтобы вернуть."
 		Title = "Отключение интерфейса"
 	}
 	Discord
@@ -5153,7 +5165,7 @@ TitleScreen
 	Settings = НАСТРОЙКИ
 	ShipLibrary = "БИБЛИОТЕКА КОРАБЛЕЙ"
 	Steam = "Сообщество Steam"
-	WishlistNow = "<s24>КУПИТЕ СЕЙЧАС!</s24>\n<regular>Не упустите скидку в честь выхода игры!</regular>"
+	WishlistNow = "<s24>КУПИТЬ СЕЙЧАС!</s24>"
 }
 Tutorials
 {
@@ -5432,10 +5444,11 @@ Tutorials
 	IonBeams
 	{
 		
-		Aiming = "Чтобы <good>нацелить призму</good>, выйдите из режима строительства, выберите призму и нажмите <white>Нацелить ионную призму</white>."
+		Aiming = "Чтобы нацелить призму <good>в фиксированном направлении</good>, выберите призму, нажмите кнопку <white>Задать дальнобойность/дугу/направление</white>, а затем перетащите края, чтобы создать желаемый конус или линию стрельбы."
 		Combining = "Несколько <good>лучей можно совместить</good> в одной призме, в результате чего вы получите один мощнейший луч."
 		IonBeams = "<good>Ионные лучи</good> представляют собой оружие направленного действия. Их невозможно нацелить, но зато они наносят постоянный значительный урон."
 		IonPrisms = "Однако если перед лучом вы разместите <good>ионную призму</good>, она перенаправит его в любом направлении — например, на корабль противника или в другую призму."
+		Targeting = "Чтобы перенаправить луч <good>на другую призму</good>, сначала выйдите из режима строительства, выберите призму, нажмите кнопку <white>«Нацелить орудие»</white>, а затем выберите другую призму."
 		Tip = "<good>НА ЗАМЕТКУ:</good> Совмещение нескольких лучей снижает их совместный урон. Чтобы получить максимальный урон от комбинированного луча, всегда совмещайте в каждой призме лучи одинаково размера."
 		Title = "Ионные лучи и призмы"
 	}
@@ -5445,6 +5458,7 @@ Tutorials
 		ControlGroups = "<good>НА ЗАМЕТКУ:</good> Создайте <good>контрольную группу</good>, выбрав одну или более частей и нажав <white>Ctrl + 0-9</white>. Выберите эту группу, нажав <white>0-9</white>."
 		FireMode = "Настройте <white>режим огня</white> на один из удобных для вас: <good>отмену огня</good>, <good>огонь по цели</good> или <good>автоматический огонь</good>."
 		Power = "Нажмите кнопку <white>Питание</white>, чтобы его <good>отключить</good>. Все члены команды, обеспечивавшие работу этой части, оставят её и переместятся в другое место."
+		RangeArcDirection = "Чтобы настроить <good>дальнобойность и дугу стрельбы</good> оружия или нацелить его в <good>фиксированном направлении</good>, нажмите кнопку <white>Задать дальнобойность/дугу/направление</white> и перетащите нужные края."
 		Select = "Нажмите <white>ЛКМ</white> на часть корабля, чтобы её <good>выделить</good>.\n\nВы также можете нажать на неё в комбинации с Shift или выделить рамкой несколько частей сразу."
 		Target = "Выбрав орудие, нажмите <white>ПКМ</white> на часть вражеского корабля, чтобы взять её <good>на прицел</good>."
 		Title = "Микроменеджмент корабля"
@@ -5691,6 +5705,15 @@ VitalCategories
 	Header = <b>ВНИМАНИЕ</b>
 	Reactor = "⚠ Нет реактора"
 }
+WeaponCoverageEditor
+{
+	
+	AngleFmt = ""
+	FineAngleFmt = ""
+	RangeDeltaFmt = "{0:+0.#;-0.#;0} м"
+	RangeFmt = "{0:0.#} м"
+	ResetFloatingText = СБРОСИТЬ
+}
 Wishlist
 {
 	
@@ -5698,9 +5721,8 @@ Wishlist
 	ExitMsg = "Спасибо, что играете в Cosmoteer Demo!"
 	FameLimitReached = "ПОЗДРАВЛЯЕМ!\nВы достигли максимального уровня <fame>славы</fame> в демо-версии игры, но это лишь небольшой отрезок на пути к титулу «Живая легенда». Вы можете играть дальше, но больше не сможете зарабатывать славу и путешествовать в другие звёздные системы. Купите полную версию игры и продолжайте путь!"
 	FeatureMissingMsg = "<bad>Эта возможность недоступна в демо-версии.</bad>"
-	Features = "<fame_color>Полная версия игры содержит...</fame_color><s4>\n\n</s4>● Исследуйте всю галактику... Доступны все звёздные системы!<s4>\n\n</s4>● Кооперация и PvP-мультиплеер<s4>\n\n</s4>● Больше орудий и других частей кораблей (рельсотроны, ядерные ракеты, ЭМИ, большие щиты, буксировочные лучи и многое другое!)<s4>\n\n</s4>● Более 200 чертежей кораблей всех четырёх фракций<s4>\n\n</s4>● Поддержка модификаций и Мастерской Steam"
+	Features = "<fame_color>Полная версия игры содержит...</fame_color><s4>\n\n</s4>● Исследуйте всю галактику. Доступны все звёздные системы!<s4>\n\n</s4>● Кооперация и PvP-мультиплеер<s4>\n\n</s4>● Больше орудий и других частей кораблей (рельсотроны, ядерные ракеты, ЭМИ, большие щиты, буксировочные лучи и многое другое!)<s4>\n\n</s4>● Более 800 чертежей кораблей всех четырёх фракций<s4>\n\n</s4>● Поддержка модификаций и мастерской Steam"
 	HoursFmt = "Вы играете в демо-версию Cosmoteer уже {0} ч. Вы можете играть сколько угодно, но если вам понравилось, как насчет полной версии?"
-	LaunchDiscount = "<s24><u>Не упустите скидку в честь выхода игры!</u></s24>"
 	No = "Возможно, позже"
 	NotInDemo = "Не в демо-версии"
 	Yes = "<s24>Спешите купить</s24>\n(или добавить в список желаемого)"
@@ -5715,6 +5737,8 @@ Workshop
 	MinVersion = "Мин. версия игры"
 	Preview = "Предпросмотр изображения:"
 	SelectPreviewFile = "Выбрать файл"
+	UpdateDescription = "Обновить описание"
+	UpdatePreview = "Обновить предпросмотр изображения"
 	Upload = "Начать загрузку"
 	UploadingFmt = "Загрузка в Мастерскую Steam... {0}%"
 	ViewInWorkshop = "Посмотреть в Мастерской"

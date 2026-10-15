@@ -179,6 +179,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			OperationalToggle = IsOperational
 			ResourceType = fake
 			MaxResources = (&../ResourceConverter/From/1/Quantity) + 1		//Need to be +1 so the GoldLoader dont need to momentarily stop after loading the LoadedGold
+			InitToMaxResources = 0
 			ToggleOnResources = &../ResourceConverter/From/1/Quantity
 			ToggleOffResources = (&ToggleOnResources) - 1
 		}

@@ -275,8 +275,8 @@ HitStructural
 {
 	HitEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
 	MediaEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
-	StructuralDamageRetentionPerHit = 50%
-	MinStructuralDamageScale = 3%
+	StructuralDamageRetentionPerHit = &/STRUCTURAL_DAMAGE_RETENTION_PER_HIT
+	MinStructuralDamageScale = &/MIN_STRUCTURAL_DAMAGE_SCALE
 
 	HitEffects
 	[

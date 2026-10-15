@@ -448,7 +448,7 @@ CareerModeConfig
 	DisableCrewConstruction = "Detesto construção por tripulação"
 	DisableCrewConstructionTip = "Se marcado, as modificações da nave serão construídas instantaneamente em vez de pela tripulação."
 	DisableExploration = "Detesto exploração"
-	DisableExplorationTip = "Revela todos os ícones <b>?</b> no mapa sem ter que descobri-los primeiro na névoa da guerra."
+	DisableExplorationTip = "Exibe o local de todos os ícones <b>?</b> no mapa sem ter que descobri-los primeiro na névoa da guerra."
 	DisableNebulas = "Odeio nuvens e tempestades"
 	DisableNebulasTip = "Nuvens e tempestades não vão aparecer no modo Carreira (se esta opção for ativada no meio de um jogo, ela afetará apenas sistemas estelares ainda não visitados)."
 	DisableSalvaging = "Detesto recuperação"
@@ -840,6 +840,7 @@ CrewBox
 	NoPathToSource = "<bad>Impossível alcançar</bad>"
 	NothingToRedo = "Não há nada a refazer."
 	NothingToUndo = "Não há nada a desfazer."
+	NumberOfCrew = "{0}/{1} tripulação"
 	Paste = Colar
 	PasteInfo = "Substituir apenas informações"
 	PasteInsertAfter = "Inserir novo cargo depois"
@@ -919,11 +920,11 @@ Dialogue
 		AISurrenderDialogue = "<b>{0}:</b> <i>\"Nós nos rendemos! Se prometer não nos destruir, vamos pagar <money>{1:n0}</money>!\"</i>"
 		DeclineAISurrender = "[Encerrar conexão]"
 		DeclinePlayerSurrender = "<i>\"Jamais!\"</i>"
-		PlayerSurrender = "<i>\"Nós nos rendemos!\"</i> (Pagar <money>{0:n0}</money>)"
-		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>“Renda-se agora e pague <money>{1:n0}</money>... ou morra!\"</i>"
-		PlayerSurrenderDialogue = "<b>{0}:</b> <i>\"Você não tem chance! Renda-se agora e pague <money>{1:n0}</money>... ou morra!\"</i>"
-		PlayerSurrenderPayBounty = "<i>\"Vamos pagar a recompensa.\"</i> (Pagar <money>{0:n0}</money>)"
-		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>\"Nave fugitiva, {2} emitiu uma recompensa de <money>{1:n0}</money> pela sua destruição. Pague agora ou prepare-se para ser eliminada.\"</i>"
+		PlayerSurrender = "<i>\"Nós nos rendemos!\"</i> (Pagar {0})"
+		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>“Renda-se agora e pague {1}... ou morra!\"</i>"
+		PlayerSurrenderDialogue = "<b>{0}:</b> <i>\"Você não tem chance! Renda-se agora e pague {1}... ou morra!\"</i>"
+		PlayerSurrenderPayBounty = "<i>\"Vamos pagar a recompensa.\"</i> (Pagar {0})"
+		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>\"Nave fugitiva, {2} emitiu uma recompensa de {1} pela sua destruição. Pague agora ou prepare-se para ser eliminada.\"</i>"
 	}
 }
 DominationMapStyles
@@ -1250,6 +1251,7 @@ FleetsWorkshop: Workshop
 	DialogName = "Carregador de coleção de naves do Steam Workshop"
 	Folder = "Pasta de coleção de naves:"
 	Name = "Nome da coleção de naves:"
+	UpdateName = "Atualizar nome da coleção de naves"
 	UpdatingExisting = "<good>Atualizando coleção existente:</good>"
 	UploadSuccessful = "Enviado com sucesso! Aperte OK para ver sua nave no Steam Workshop. Se esta é a primeira vez que você carrega algo para o Workshop, você deverá aceitar o Contrato Legal do Steam Workshop para torná-lo visível a outros jogadores."
 	Warning = "<bad>AVISO:</bad> TODO o conteúdo desta pasta e de todas as suas subpastas será enviado para o Steam Workshop. Não inclua nenhum arquivo da qual você não tenha os direitos, ou que não queira que se torne público."
@@ -1432,6 +1434,7 @@ Hud
 	
 	AbandonShip = "Abandonar nave"
 	AbandonShipTip = "Instrui toda a tripulação a deixar a nave, se possível."
+	AdjustWeaponCoverageTip = "<b>Definir alcance/arco/direção</b>\n\nClique para habilitar e depois arraste uma borda para definir o alcance, arco ou direção.\n\nAtalho: <btn id='Game.AdjustWeaponCoverage'/>\n\nQuando habilitado:\n- <btn id='Game.CancelTool'/><gray>:</gray> Redefine a borda destacada\n- <btn id='Game.AdjustWeaponCoverageEditAll'/><gray> (segurar):</gray> Modo editar tudo\n- <btn id='Game.AdjustWeaponCoverageFinePrecision'/><gray> (segurar):</gray> Modo precisão\n- <btn id='Game.AdjustWeaponCoverageRotateArc'/><gray> (segurar):</gray> Modo rotação\n- <btn id='Game.AdjustWeaponCoverageSymmetricSides'/><gray> (segurar):</gray> Modo simetria\n- <btn id='Game.AdjustWeaponCoverageRotateArc'/> + <btn id='Game.AdjustWeaponCoverageSymmetricSides'/><gray> (segurar):</gray> Modo direção fixa"
 	AttackTip = "<b>Atacar</b>\n\nAtacar outra nave. Também pode ser usado para atacar as suas próprias naves. Segure <btn id='Game.InvertCollisionAvoidance'/> para ligar/desligar a prevenção de colisão.\n\nAtalho: <btn id='Game.Attack'/>"
 	AutoThrustOffTip = "<b>Propulsor de disparo automático: <bad>Desligado</bad></b>\n\nAtalho: <btn id='Game.ToggleAutoThrust'/>"
 	AutoThrustOnTip = "<b>Propulsor de disparo automático: <good>Ligado</good></b>\n\nAtalho: <btn id='Game.ToggleAutoThrust'/>"
@@ -1502,6 +1505,7 @@ Hud
 	NewShipTip = "<b>Construir nova nave</b>\n\nConstrua uma nova nave a partir do zero."
 	NewShipTooFar = "<bad>MUITO LONGE</bad>"
 	NoCommandsToCancel = "Nenhum comando para cancelar."
+	NoCustomCoveragesToReset = "Nada para redefinir."
 	NoTargetsToCancel = "Nenhum alvo de arma para cancelar."
 	NuggetCollectAlreadyClaimed = "JÁ COLETADO"
 	NuggetCollectFull = "ARMAZÉM CHEIO"
@@ -1512,6 +1516,8 @@ Hud
 	PauseTip = "Pausar\n\nAtalho: <btn id='Game.PauseToggle'/>"
 	Paused = PAUSADO
 	ReputationTipFmt = "Reputação com {0}"
+	ResetCustomCoverages = "Redefinir alcance/arco/direção"
+	ResetCustomCoveragesTip = "Restaura o alcance, arco e direção da seleção para as configurações padrão."
 	ResetDefaults = "Restaurar padrões de ataque"
 	ResetDefaultsTip = "Redefine a distância e orientação de ataque salvas para seus valores originais."
 	ResourceCountStorageFullFmt = "{0} <bad>(armazenamento cheio)</bad>"
@@ -1626,6 +1632,7 @@ Inputs
 		Name = "Gerenciamento de tripulação"
 		OpenClose = "Abrir/fechar Painel de Tripulação"
 		RemoveSelected = "Remover tripulação selecionada"
+		ResetCrew = "Redefinir tripulação"
 		Roster = "Mostrar/ocultar Lista da Tripulação"
 		SelectAll = "Selecionar todos"
 		SelectRange = "Adicionar intervalo de tripulação à seleção"
@@ -1689,6 +1696,11 @@ Inputs
 	Game
 	{
 		
+		AdjustWeaponCoverage = "Definir alcance/arco/direção"
+		AdjustWeaponCoverageEditAll = "Definir alcance/arco/direção: modo editar tudo"
+		AdjustWeaponCoverageFinePrecision = "Definir alcance/arco/direção: modo precisão"
+		AdjustWeaponCoverageRotateArc = "Definir alcance/arco/direção: modo rotação"
+		AdjustWeaponCoverageSymmetricSides = "Definir alcance/arco/direção: modo simétrico"
 		AllowSalvageOwnShip = "Permitir recuperar a própria nave"
 		AppendSelection = "Adicionar seleção"
 		Attack = Atacar
@@ -1768,12 +1780,9 @@ Inputs
 		Alt = ""
 		Apps = ""
 		B = ""
-		BackslashPipe = "Barra invertida"
 		Backspace = ""
 		C = ""
 		CapsLock = ""
-		Colon = "Dois pontos"
-		CommaLesser = Vírgula
 		Command = ""
 		Control = ""
 		D = ""
@@ -1818,9 +1827,7 @@ Inputs
 		K = ""
 		L = ""
 		LeftArrow = "Seta para esquerda"
-		LeftBracket = "Colchete esquerdo"
 		M = ""
-		MinusUnderscore = "Sinal de menos"
 		N = ""
 		NumLock = ""
 		NumPad0 = ""
@@ -1843,23 +1850,17 @@ Inputs
 		PageDown = PgDn
 		PageUp = PgUp
 		Pause = Pausar
-		PeriodGreater = Ponto
 		PlatformCmdCtrl = ""
-		PlusEquals = "Sinal de mais"
 		PrintScreen = ""
 		Q = ""
-		Quote = Aspas
 		R = ""
 		RightArrow = "Seta para direita"
-		RightBracket = "Colchete direito"
 		S = ""
 		ScrollLock = ""
 		Shift = ""
-		SlashQuestion = Barra
 		Space = Espaço
 		T = ""
 		Tab = ""
-		TildeBacktick = Til
 		U = ""
 		UpArrow = "Seta para cima"
 		V = ""
@@ -1889,16 +1890,11 @@ Inputs
 	PartTargetCancelers
 	{
 		
-		headlight_aim = "Redefinir mira de farol"
 		tractor_beam = "Cancelar Raio Trator"
 	}
 	PartTargeters
 	{
 		
-		chaingun_aim = "Mirar Canhão de Repetição"
-		headlight_aim = "Mirar farol"
-		prism_aim = "Mirar Prisma de Íons"
-		thermal_aim = "Mirar Raio de Ressonância Térmica"
 		tractor_beam = "Mirar Raio Trator"
 	}
 	PartToggles
@@ -1908,6 +1904,8 @@ Inputs
 		airlock_type_closed = "Escotilha: fechada"
 		airlock_type_entry = "Escotilha: somente entrada"
 		airlock_type_exit = "Escotilha: somente saída"
+		always_crew_part_off = "Sempre tripular peça: não"
+		always_crew_part_on = "Sempre tripular peça: sim"
 		distribute_power_off = "Distribuição de energia: desligada"
 		distribute_power_on = "Distribuição de energia: ligada"
 		fire_alternating_off = "Modo de fogo: sincronizado"
@@ -2339,6 +2337,7 @@ MissionLog
 	DistanceIconFmt = ""
 	DistanceLYFmt = "{0:0.0} anos-luz"
 	EnemyFactionWarningFmt = "É necessário atacar {0} para iniciar essa missão. Você perderá reputação com eles e ficará temporariamente como “procurado”."
+	HUDToggle = "Missões próximas"
 	LocalOnly = "Somente sistema local"
 	LocalOnlyTip = "Se marcado, somente as missões que acontecem no sistema estelar atual serão mostradas."
 	Location = LOCALIZAÇÃO
@@ -2346,6 +2345,7 @@ MissionLog
 	NoMissions = "Nenhuma missão\nativa"
 	Objectives = OBJETIVOS
 	Rewards = RECOMPENSAS
+	ShowMissions = "Exibir {0}"
 	SortByDistance = "<image name='sort'/> Distância"
 	SortByFaction = "<image name='sort'/> Facção"
 	SortByMissionType = "<image name='sort'/> Tipo de missão"
@@ -2477,6 +2477,7 @@ ModsWorkshop: Workshop
 	DialogName = "Carregador de mods do Steam Workshop"
 	Folder = "Pasta do mod:"
 	Name = "Nome do mod:"
+	UpdateName = "Atualizar nome de mod"
 	UpdatingExisting = "<good>Atualizando mod existente:</good>"
 	UploadSuccessful = "Enviado com sucesso! Aperte OK para ver seu mod no Steam Workshop. Se esta é a primeira vez que você envia algo para o Workshop, você deverá aceitar o Contrato Legal do Steam Workshop para torná-lo visível a outros jogadores."
 	Warning = "<bad>AVISO:</bad> TODO o conteúdo desta pasta de mod e todas as suas subpastas será enviado para o Steam Workshop. Não inclua nenhum arquivo da qual você não tenha os direitos, ou que não queira que se torne público."
@@ -2654,17 +2655,14 @@ PartFeatures
 PartTargeters
 {
 	
-	ChaingunAim = "<b>Mirar Canhão de Repetição</b>\n\nMira os canhões de repetição selecionados para o local desejado.\n\nAtalho: <btn id='PartTargeters.chaingun_aim'/>"
-	HeadlightAim = "<b>Mirar farol</b>\n\nMira os faróis selecionados para o local desejado.\n\nAtalho: <btn id='PartTargeters.headlight_aim'/>"
-	HeadlightAimCancel = "<b>Redefinir mira de farol</b>\n\nAtalho: <btn id='PartTargetCancelers.headlight_aim'/>"
-	PrismAim = "<b>Mirar Prisma de Íons</b>\n\nMira os Prismas de Feixe de Íons selecionados para o local desejado ou para outro prisma.\n\nAtalho: <btn id='PartTargeters.prism_aim'/>"
-	ThermalResonanceAim = "<b>Mirar Raio de Ressonância Térmica</b>\n\nMira os Raios de Ressonância Térmica selecionados para o local desejado.\n\nAtalho: <btn id='PartTargeters.thermal_aim'/>"
 	TractorBeam = "<b>Mirar Raio Trator</b>\n\nSegure <btn id='Game.SelectParts'/> para mirar em peças específicas.\n\nAtalho: <btn id='PartTargeters.tractor_beam'/>"
 	TractorBeamCancel = "<b>Cancelar Raio Trator</b>\n\nAtalho: <btn id='PartTargetCancelers.tractor_beam'/>"
 }
 PartToggles
 {
 	
+	AlwaysCrew_Off = "<b>Sempre tripular: <bad>Não</bad></b>\nA peça só será tripulada quando a torreta tiver um alvo."
+	AlwaysCrew_On = "<b>Sempre tripular: <good>Sim</good></b>\nA peça estará sempre tripulada."
 	Boost_Off = "<b>Impulso: <bad>desligado</bad></b>\n\nAtalho: <btn id='PartToggles.thruster_boost_off'/>"
 	Boost_On = "<b>Impulso: <good>ligado</good></b>\n\nAtalho: <btn id='PartToggles.thruster_boost_on'/>"
 	DistributePower_Off = "<b>Distribuição de energia do propulsor: <bad>desligada</bad></b>\n\nAtalho: <btn id='PartToggles.distribute_power_off'/>"
@@ -2758,7 +2756,7 @@ Parts
 	CannonMedDesc = "Dispara um único projétil capaz de penetrar as naves inimigas, e às vezes iniciar incêndios."
 	CannonMedIcon = Canhão
 	CannonMedOverclock = "Canhão padrão (Overclocking)"
-	CannonMedOverclockDesc = "Dispara saraivadas com vários projéteis, com mais velocidade e alcance. Produz calor ao disparar."
+	CannonMedOverclockDesc = "Dispara saraivadas com vários projéteis. Produz calor ao disparar."
 	ChainGun = "Canhão de repetição"
 	ChainGunDesc = "Um poderoso canhão rotativo cuja taxa de disparos aumenta conforme atira, com uma proteção para quando não está ativo. Anexe carregadores de munição adicionais se quiser aumentar a duração e a taxa de disparos."
 	ChainGunIcon = "Canhão de repetição"
@@ -3067,17 +3065,17 @@ Parts
 	ReactorLargeDesc = "Um gerador de energia que produz as baterias de plasma de tripla capacidade necessárias para alimentar muitos dos sistemas da nave."
 	ReactorLargeIcon = "Reator grande"
 	ReactorLargeOverclock = "Núcleo de reator grande (Overclocking)"
-	ReactorLargeOverclockDesc = "Aumenta a taxa de geração. Além disso, aumenta o tamanho da bateria de tripla para quádrupla capacidade. Produz calor enquanto gera energia."
+	ReactorLargeOverclockDesc = "Aumenta a taxa de geração de energia. Além disso, aumenta o tamanho da bateria de tripla para quádrupla capacidade. Produz calor enquanto gera energia."
 	ReactorMed = "Núcleo de reator médio"
 	ReactorMedDesc = "Um gerador de energia que produz as baterias de plasma de dupla capacidade necessárias para alimentar muitos dos sistemas da nave."
 	ReactorMedIcon = "Reator médio"
 	ReactorMedOverclock = "Núcleo de reator médio (Overclocking)"
-	ReactorMedOverclockDesc = "Aumenta a capacidade de energia máxima e a taxa de geração. Produz calor enquanto gera energia."
+	ReactorMedOverclockDesc = "Aumenta a energia e a taxa de geração. Produz calor enquanto gera energia."
 	ReactorSmall = "Núcleo de reator pequeno"
 	ReactorSmallDesc = "Um gerador de energia que produz as baterias de plasma necessárias para alimentar muitos dos sistemas da nave."
 	ReactorSmallIcon = "Reator pequeno"
 	ReactorSmallOverclock = "Núcleo de reator pequeno (Overclocking)"
-	ReactorSmallOverclockDesc = "Aumenta a capacidade de energia máxima e a taxa de geração. Produz calor enquanto gera energia."
+	ReactorSmallOverclockDesc = "Aumenta a energia e a taxa de geração. Produz calor enquanto gera energia."
 	ResonanceBeamTurret = "Raio de ressonância térmica"
 	ResonanceBeamTurretDesc = "Torreta montada no topo da nave que dispara um feixe de energia térmica pura, mas que também produz muito calor na própria nave. Enfraquece escudos ao redor do ponto de impacto.\n\nNão pode estar a menos de 2 quadros de outras torretas de teto ou peças \"altas\"."
 	ResonanceBeamTurretIcon = "Raio de ressonância térmica"
@@ -3529,6 +3527,8 @@ ResourcesBox
 	MirrorToggleTip = "<b>Modo Espelho</b>\n\nQuando ativado, as alterações à organização de recursos da nave serão espelhadas a partir da linha central da nave.\n\nAtalho: <btn id='Design.ToggleMirrorMode'/>\n\n<btn id='General.UIAltClick'/> para modificar as configurações de espelho."
 	NothingToRedo = "Não há nada a refazer."
 	NothingToUndo = "Não há nada a desfazer."
+	PinResourceDisplay = "Fixar display de recursos"
+	PinResourceDisplayTip = "Fixa a quantidade e capacidade deste recurso no canto superior direito."
 	Redo = " Refazer "
 	RedoTip = "Refaz a última alteração feita à organização de recursos da nave.\n\nAtalho: <btn id='Design.Redo'/>"
 	RemoveSupplyLineTip = "<regular>Cancelar conexão de suprimento\n(<btn id='Game.Command'/>)</regular>"
@@ -3556,6 +3556,8 @@ ResourcesBox
 	TransferCrewOrResourcesTip = "Transfere tripulação ou recursos desta nave para outra."
 	TypeTipFmt = ""
 	UndoTip = "Desfaz a última alteração feita à organização de recursos da nave.\n\nAtalho: <btn id='Design.Undo'/>"
+	UnpinResourceDisplay = "Desafixar display de recursos"
+	UnpinResourceDisplayTip = "Desafixa a quantidade e capacidade deste recurso no canto superior direito."
 }
 Rewards
 {
@@ -3858,6 +3860,8 @@ Settings
 		ResourcesLbl = "Gerenciamento de recursos"
 		RowsOfParts = "Linhas de peças"
 		RowsOfPartsTip = "O número de linhas de peças que serão exibidas sem precisar rolar a tela."
+		ShiftClickToDragPartsAndDecals = "Requisitar <btn id='Game.AppendSelection' xml='false'/> para arrastar peças favoritas e adesivos"
+		ShiftClickToDragPartsAndDecalsTip = "Se marcado, você terá que segurar <btn id='Game.AppendSelection'/> para arrastar peças favoritas e adesivos."
 		ShowAutoRemovedDecals = "Mostrar automaticamente adesivos removidos"
 		ShowAutoRemovedDecalsTip = "Se marcado, adesivos que serão automaticamente removidos serão marcados com X um vermelho."
 		ShowAutoRemovedParts = "Mostrar automaticamente peças removidas"
@@ -3872,6 +3876,11 @@ Settings
 	Gameplay
 	{
 		
+		AdjustWeaponCoverageEditAll = "Editar tudo por padrão"
+		AdjustWeaponCoverageEditAllTip = "Se marcado, arrastar uma borda ajustará todas as peças de uma só vez. Segure <btn id='Game.AdjustWeaponCoverageEditAll'/> para usar o outro modo."
+		AdjustWeaponCoverageIntegerSnapping = "Alinhar com números inteiros"
+		AdjustWeaponCoverageIntegerSnappingTip = "Se marcado, ajustes de alcance serão alinhados em incrementos de {0}m, e ajustes de ângulos serão alinhados em incrementos de {1}°. Segure <btn id='Game.AdjustWeaponCoverageFinePrecision'/> para usar o outro modo."
+		AdjustWeaponCoverageLbl = "Alcance/arco/direção da arma"
 		AllowShipDeselection = "Permitir remover seleção de nave"
 		AllowShipDeselectionTip = "Se marcado, clicar com o botão esquerdo em um espaço vazio vai remover a seleção de naves selecionadas."
 		AlwaysShowCommandWidgets = "Mostrar sempre as alças de comando"
@@ -3963,7 +3972,7 @@ Settings
 		ShowFavoriteCrewNamesOnHover = "Exibir tripulantes favoritos ao colocar o cursor"
 		ShowFavoriteCrewNamesOnHoverTip = "Se marcado, os nomes de tripulantes selecionados como \"favoritos\" aparecerão ao colocar o cursor."
 		ShowNearbyMissions = "Mostrar missões próximas no HUD"
-		ShowNearbyMissionsTip = "Muitas das missões mais próximas serão exibidas automaticamente no canto superior esquerdo do HUD."
+		ShowNearbyMissionsTip = "Se marcado, as missões serão exibidas automaticamente no canto superior esquerdo do HUD."
 		ShowResourcePickupLines = "Exibir linhas de recursos flutuantes"
 		ShowResourcePickupLinesTip = "Se marcado, linhas pontilhadas demonstrarão a conexão entre recursos flutuantes e os armazéns designados."
 		ShowSpaceCrewLines = "Exibir linhas de tripulação voadora"
@@ -4397,6 +4406,7 @@ Stats
 	DiamondProductionFmt = "<white>Taxa de produção:</white> <good>{0:0.##}</good><gray> diamantes/s</gray>"
 	DilationFactorFmt = "<white>Fator de dilatação:</white> <good>{0:0.###}x</good>"
 	DilationHeatSpreadFmt = "<white>Dispersão do calor:</white> <good>{0:0.##}</good><gray><sup>[2]</sup> metros</gray>"
+	DynamoHeatGenerationFmt = "<white>Ger. de calor do dínamo:</white> <good>{0:#,0.##}</good> <gray>MJ/s (enquanto gera energia)</gray>"
 	EMPMissileCapacityFmt = "<white>Capacidade de mísseis P.E.M.:</white> <good>{0}</good>"
 	EMPResistFmt = "<white>Resistência a P.E.M.:</white> <good>-{0:0.##}</good> <gray>de energia drenada</gray>"
 	EMPResistPercentageFmt = "<white>Resistência a P.E.M.:</white> <good>-{0:0.#}%</good>"
@@ -4420,6 +4430,7 @@ Stats
 	HeatAbsorptionFmt = "<white>Absorção de calor:</white> <good>{0:0.#}</good> <gray>MJ/s</gray>"
 	HeatAbsorptionInefficiencyFmt = "<white>Ineficiência da absorção:</white> <good>+{0:0.#}%</good> <gray>de calor</gray>"
 	HeatAbsorptionRadiusFmt = "<white>Raio da absorção:</white> <good>{0:0.#}</good> <gray>metros</gray>"
+	HeatAppliedFmt = "<white>Calor aplicado:</white> <good>{0:#,0.##}</good> <gray>MJ</gray>"
 	HeatCapacityFmt = "<white>Capacidade de calor:</white> <good>{0:#,0.##}</good> <gray>MJ</gray>"
 	HeatDissipationFmt = "<white>Dissipação de calor:</white> <good>{0:#,0.##}</good> <gray>MJ/s</gray>"
 	HeatFireChanceFmt = "<white>Chance de incêndio no limiar de calor:</white> <good>{0:0.##%}</good>"
@@ -4436,7 +4447,7 @@ Stats
 	HeatTransferInefficiencyFmt = "<white>Ineficiência da transferência de calor:</white> <good>+{0:0.#}%</good> <gray>de calor</gray>"
 	HitShieldHeatFactorFmt = "<white>Aquecimento do escudo ao acertar:</white> <good>{0:0.##}%</good>"
 	HyperiumCapacityFmt = "<white>Capacidade de hipério:</white> <good>{0}</good>"
-	IonLightningIntervalFmt = "<white>Intervalo do relâmpago:</white> <good>{0:0.#}</good> <gray>segundos</gray>"
+	IonLightningIntervalFmt = "<white>Intervalo de relâmpago:</white> <good>{0:0.#}</good> <gray>segundos</gray>"
 	IronCapacityFmt = "<white>Capacidade de ferro:</white> <good>{0}</good>"
 	Lifetime = "<white>Duração:</white> <good>{0:0.#}</good> <gray>segundos</gray>"
 	LightningChainChanceFmt = "<white>Chance de cadeia de relâmpagos:</white> <good>{0:0.#}%</good> <gray>por relâmpago</gray>"
@@ -4445,6 +4456,7 @@ Stats
 	LightningDamageFmt = "<white>Dano do relâmpago:</white> <good>{0:0}</good> <gray>por relâmpago</gray>"
 	LightningMaxChainFmt = "<white>Máx. de relâmpagos em cadeia:</white> <good>{0}</good> <gray>cadeias</gray>"
 	LightningRangeFmt = "<white>Alcance do relâmpago:</white> <good>{0:0.#}</good> <gray>metros</gray>"
+	LightningShieldDamageFmt = "<white>Dano de relâmpagos x escudos:</white> <good>{0:0}</good> <gray>por relâmpago</gray>"
 	LightningStrikeCountRangeFmt = "<white>Relâmpagos:</white> <good>{0}-{1}</good>"
 	MaxDamageFmt = "<white>Dano máximo:</white> <good>{0:n0}</good><gray>/disparo (</gray><good>{1:n0}</good><gray>/s)</gray>"
 	MaxDamageRangeFmt = "<white>Dano máximo:</white> <good>{0:n0}</good><gray>/disparo (</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/s)</gray>"
@@ -5153,7 +5165,7 @@ TitleScreen
 	Settings = CONFIGURAÇÕES
 	ShipLibrary = "BIBLIOTECA DE NAVES"
 	Steam = "Comunidade Steam"
-	WishlistNow = "<s24>COMPRE AGORA!</s24>\n<regular>Não perca o desconto de lançamento!</regular>"
+	WishlistNow = "<s24>COMPRE AGORA!</s24>"
 }
 Tutorials
 {
@@ -5432,10 +5444,11 @@ Tutorials
 	IonBeams
 	{
 		
-		Aiming = "Para <good>mirar um Prisma</good>, primeiro saia do modo construção, selecione o Prisma e depois clique no botão <white>Mirar Prisma de Íons</white>."
+		Aiming = "Para, em vez disso, mirar um Prisma <good>em uma direção fixa</good>, selecione o Prisma, clique no botão <white>Definir Alcance/Arco/Direção</white> e depois arraste as bordas para criar o cone ou linha de fogo."
 		Combining = "Múltiplos <good>feixes podem ser combinados</good> em um único Prisma, criando um único feixe, maior e mais poderoso."
 		IonBeams = "<good>Feixes de Íons</good> são armas de feixe de energia de direção fixa que não podem mirar, mas que causam dano grande e contínuo."
 		IonPrisms = "Contudo, se você colocar um <good>Prisma de Íons</good> na frente de um Feixe de Íons, ele pode redirecionar o feixe em qualquer direção, como em uma nave inimiga ou até em outro Prisma de Íons."
+		Targeting = "Para redirecionar um feixe <good>para um outro Prisma</good>, primeiro saia do modo construção, selecione o Prisma, clique no botão <white>Mirar Armas</white> e depois clique no outro Prisma."
 		Tip = "<good>DICA:</good> combinar múltiplos feixes juntos gera um total de dano menor que a soma dos danos individuais. Para maximizar o dano de um único feixe, sempre combine exatamente dois feixes de tamanho igual por prisma."
 		Title = "Prismas e feixes de íons"
 	}
@@ -5445,6 +5458,7 @@ Tutorials
 		ControlGroups = "<good>DICA:</good> crie um <good>grupo de controle</good> selecionando uma ou mais peças e aperte <white>Ctrl + 0 a 9</white>. Selecione esse grupo apertando <white>0 a 9</white>."
 		FireMode = "Aperte o botão <white>Modo de Fogo</white> para alternar entre os modos <good>cessar fogo</good>, <good>disparar apenas no alvo atribuído</good>, ou <good>disparar continuamente</good>."
 		Power = "Aperte o botão <white>Energia</white> para <good>desativá-la</good>. Quaisquer tripulantes que estejam operando a peça vão sair dali e ajudar em outro lugar."
+		RangeArcDirection = "Para personalizar o <good>alcance e o arco de fogo</good> ou mirar em uma <good>direção fixa</good>, aperte o botão <white>Definir Alcance/Arco/Direção</white> e arraste as bordas destacadas."
 		Select = "<white>Clique com o botão esquerdo</white> em uma peça específica para <good>selecioná-la</good>.\n\nVocê também pode apertar Shift e clicar em uma peça ou arrastar uma caixa ao redor de múltiplas peças."
 		Target = "Com uma arma selecionada, <white>clique com o botão direito</white> em uma peça inimiga para <good>mirar</good> a arma nela."
 		Title = "Como microgerenciar a sua nave"
@@ -5691,6 +5705,15 @@ VitalCategories
 	Header = <b>ATENÇÃO</b>
 	Reactor = "⚠ Reator faltando"
 }
+WeaponCoverageEditor
+{
+	
+	AngleFmt = ""
+	FineAngleFmt = ""
+	RangeDeltaFmt = ""
+	RangeFmt = ""
+	ResetFloatingText = REDEFINIR
+}
 Wishlist
 {
 	
@@ -5698,9 +5721,8 @@ Wishlist
 	ExitMsg = "Agradecemos por jogar Cosmoteer Demo!"
 	FameLimitReached = "PARABÉNS!!!\nVocê obteve o máximo de <fame>Fama</fame> na demo, e está no caminho certo para se tornar \"Lendário\". Você pode continuar jogando, mas não poderá ganhar mais fama nem viajar para outros sistemas estelares. Compre o jogo agora para continuar sua jornada!"
 	FeatureMissingMsg = "<bad>Esse recurso não está disponível na demo.</bad>"
-	Features = "<fame_color>O jogo completo inclui...</fame_color><s4>\n\n</s4>● Explore toda a galáxia! Todos os sistemas estelares desbloqueados!<s4>\n\n</s4>● Modo multijogador cooperativos e JxJ<s4>\n\n</s4>● Mais armas e outras peças de naves (Canhões Eletromagnéticos, Armas Nucleares, P.E.M.s, escudos grandes, Raios Tratores, e mais!)<s4>\n\n</s4>● Mais de 200 designs de naves em quatro facções originais<s4>\n\n</s4>● Suporte a Mods e ao Steam Workshop"
+	Features = "<fame_color>O jogo completo inclui...</fame_color><s4>\n\n</s4>● Explore toda a galáxia! Todos os sistemas estelares desbloqueados!<s4>\n\n</s4>● Modo multijogador cooperativos e JxJ<s4>\n\n</s4>● Mais armas e outras peças de naves (Canhões Eletromagnéticos, Armas Nucleares, P.E.M.s, escudos grandes, Raios Tratores, e mais!)<s4>\n\n</s4>● Mais de 800 designs de naves em cinco facções originais<s4>\n\n</s4>● Suporte a Mods e ao Steam Workshop"
 	HoursFmt = "Você está jogando Cosmoteer Demo há {0} hora(s). Você pode jogar por quanto tempo quiser, mas já que está gostando tanto, gostaria de comprar a versão completa?"
-	LaunchDiscount = "<s24><u>Não perca o desconto de lançamento!</u></s24>"
 	No = "Talvez mais tarde"
 	NotInDemo = "Ausente na Demo"
 	Yes = "<s24>Compre agora</s24>\n(ou adicione à Lista de Desejos)"
@@ -5715,6 +5737,8 @@ Workshop
 	MinVersion = "Versão de Jogo Mín."
 	Preview = "Prévia da imagem:"
 	SelectPreviewFile = "Selecionar arquivo"
+	UpdateDescription = "Atualizar descrição"
+	UpdatePreview = "Atualizar prévia da imagem"
 	Upload = "Iniciar envio"
 	UploadingFmt = "Enviando para o Steam Workshop... {0}%"
 	ViewInWorkshop = "Ver no Steam Workshop"

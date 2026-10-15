@@ -179,7 +179,7 @@ BuildBattleModeConfig: PvpModeConfig
 	BuildTimeLimitTip = "La cantidad máxima de tiempo que tienen los jugadores para construir sus naves en la fase de construcción en la ronda {0}."
 	CapturePointIncome = "Ingreso en puntos de control"
 	CapturePointIncomeTip = "La cantidad de créditos (<img name='money' colored='true'/>) generados por el punto de control central cada 10 s (a ½ de la velocidad)."
-	Description = "Se juega durante varias rondas, en las que los competidores construyen o mejoran sus naves usando una selección limitada y aleatoria de piezas y luego pelean contra los otros jugadores."
+	Description = "Se juega durante varias rondas, en las que los competidores construyen o mejoran sus naves usando una selección limitada y aleatoria de partes y luego pelean contra los otros jugadores."
 	Funds = "Créditos iniciales"
 	FundsPerRound = "Ronda {0} Fondos"
 	FundsPerRoundTip = "La cantidad de créditos (<img name='money' colored='true'/>) que cada jugador recibirá en la ronda {0}."
@@ -223,9 +223,9 @@ BuildBox
 	
 	AmplificationBuffPercentageFmt = "<b><good>Amplificación: {0:0} %</good></b>"
 	BlueprintsInvalid = "PLANOS NO VÁLIDOS"
-	BrushDisabledTip = "La pieza o herramienta seleccionada no admite formas o tamaños de pincel diferentes."
+	BrushDisabledTip = "La parte o herramienta seleccionada no admite formas o tamaños de pincel diferentes."
 	BrushHotkeyFmt = "Tecla de acceso rápido: <b>{0}</b>"
-	BrushTip = "Cambia la forma o el tamaño del pincel que se va a utilizar para la pieza o herramienta seleccionada."
+	BrushTip = "Cambia la forma o el tamaño del pincel que se va a utilizar para la parte o herramienta seleccionada."
 	BuffPercentageFmt = "<good>+{0:0} %</good>"
 	CancelAll = "<s20>CANCELAR TODOS</s20><s4>\n \n</s4>"
 	CancelAllTip = "Cancela todas las actividades de construcción, deconstrucción y reparación. \n\nTecla de acceso rápido: <btn id='Design.CancelAll'/>"
@@ -255,7 +255,7 @@ BuildBox
 	CrewOperatorsFmt = "Asientos del operador: <b>{0}</b>"
 	CutTip = "Cortar (copiar y eliminar) las partes seleccionadas.\n\nTecla de acceso rápido: <btn id='Design.CutSelected'/>"
 	DeletePartTip = "Borra la parte retenida.\n\nTecla de acceso rápido: <btn id='Design.Delete'/>"
-	DeleteTip = "Borrar las piezas seleccionadas.\n\nTecla de acceso rápido: <btn id='Design.Delete'/> (o <btn id='Design.DeleteDoors'/> para borrar solo las puertas)"
+	DeleteTip = "Borrar las partes seleccionadas.\n\nTecla de acceso rápido: <btn id='Design.Delete'/> (o <btn id='Design.DeleteDoors'/> para borrar solo las puertas)"
 	DilationBuffPercentageFmt = "<b><good>Dilatación: {0:0} %</good></b>"
 	Discard = "Descartar modificaciones"
 	DiscardModifications = "Descartar modificaciones"
@@ -266,7 +266,7 @@ BuildBox
 	FlipXTip = "Voltear horizontalmente.\n\nTecla de acceso rápido: <btn id='Design.FlipX'/>"
 	FlipYTip = "Voltear verticalmente.\n\nTecla de acceso rápido: <btn id='Design.FlipY'/>"
 	ForgetDestroyed = "Olvidar las partes destruidas"
-	ForgetDestroyedTip = "Se olvidan todas las piezas que hayan sido destruidas, pero que aún no se hayan reconstruido."
+	ForgetDestroyedTip = "Se olvidan todas las partes que hayan sido destruidas, pero que aún no se hayan reconstruido."
 	FtlEfficiency = "Eficiencia del Hiperimpulsor"
 	GrabTip = "<b>Herramienta Agarrar</b>\n\nSi está seleccionada, al hacer clic en una parte de una nave, esta será tomada y se pondrá a la mano para que puedas colocarla en otro lugar. Mantén presionada la tecla <btn id='Game.AppendSelection'/> para duplicar la parte en lugar de moverla.\n\n<btn id='General.UIAltClick'/> para seleccionar ese tipo de parte como si hubieras hecho clic en su botón.\n\nTecla de acceso rápido: <btn id='Design.GrabTool'/>"
 	HasDoorAccess = "<good>✘ Hay acceso a puertas</good>"
@@ -328,7 +328,7 @@ BuildBox
 	NoCrewAccessWeak = "<yellow>⚠ Sin tripulación</yellow>"
 	NoDoorAccess = "<bad>✘ Sin acceso de puertas</bad>"
 	NoDoorAccessWeak = "<yellow>⚠ Sin acceso de puertas</yellow>"
-	NoPartsCopied = "Aún no se copió ninguna pieza."
+	NoPartsCopied = "Aún no se copió ninguna parte."
 	NoPartsSelected = "No se han seleccionado partes."
 	NoResourceAccessFmt = "<bad>✘ Sin {0}</bad>"
 	NoResourceAccessWeakFmt = "<yellow>⚠ Sin {0}</yellow>"
@@ -352,7 +352,7 @@ BuildBox
 	RemoveTip = "<b>Herramienta Borrar</b>\n\nSi está seleccionada, hacer clic en la parte de una nave eliminará dicha parte y hará un reembolso.\n\nTecla de acceso rápido: <btn id='Design.EraseTool'/>\n\nMantén presionada la tecla <btn id='Design.EraseCursorMode'/> para cambiar temporalmente a esta herramienta."
 	RepairAll = "<s20>REPARAR TODO</s20><s4>\n \n</s4>"
 	RepairDebtFmt = "La reparación de la nave costará <ins_money>{0:n0}</ins_money>, pero solo tienes <money>{1:n0}</money>. Puedes endeudarte para repararla, pero mientras tengas deuda no podrás hacer compras de la mayoría de los tipos hasta que liquides la deuda."
-	RepairTip = "<b>Herramienta Reparar</b>\n\nSi está seleccionada, hacer clic en la parte dañada o destruida en color rojo la reparará.\n\nTecla de acceso rápido: <btn id='Design.RepairTool'/>"
+	RepairTip = "<b>Herramienta Reparar</b>\n\nSi está seleccionada, hacer clic en una parte dañada o destruida en color rojo la reparará.\n\nTecla de acceso rápido: <btn id='Design.RepairTool'/>"
 	ResetMirrorLines = "Restablecer ejes de reflexión"
 	ResetMirrorLinesTip = "Restablece los ejes de reflexión horizontal y vertical en el centro de la nave."
 	RotateLeftTip = "Girar hacia la izquierda.\n\nTecla de acceso rápido: <btn id='Design.RotateLeft'/>"
@@ -448,7 +448,7 @@ CareerModeConfig
 	DisableCrewConstruction = "Odio la construcción de tripulación"
 	DisableCrewConstructionTip = "Si esta opción está activada, las modificaciones a la nave se realizarán instantáneamente y no por la tripulación."
 	DisableExploration = "Odio la exploración"
-	DisableExplorationTip = "Muestra todos los iconos <b>?</b> del mapa sin tener que descubrirlos primero en la niebla de guerra."
+	DisableExplorationTip = "Muestra la ubicación de todos los iconos <b>?</b> del mapa sin tener que descubrirlos primero en la niebla de guerra."
 	DisableNebulas = "Odio las nubes y tormentas"
 	DisableNebulasTip = "Las nubes y tormentas no aparecerán en el modo Carrera. (Si se cambia después de comenzar un nuevo juego, esto solo afectará a los sistemas estelares no visitados)."
 	DisableSalvaging = "Odio Rescatar"
@@ -840,6 +840,7 @@ CrewBox
 	NoPathToSource = "<bad>No se puede llegar</bad>"
 	NothingToRedo = "No hay nada que rehacer."
 	NothingToUndo = "No hay nada que deshacer."
+	NumberOfCrew = "{0}/{1} tripulantes"
 	Paste = Pegar
 	PasteInfo = "Sustitución solo información"
 	PasteInsertAfter = "Insertar nuevo rol después"
@@ -919,11 +920,11 @@ Dialogue
 		AISurrenderDialogue = "<b>{0}:</b> <i>\"¡Nos rendimos! Si prometes no destruirnos, te pagaremos <money>{1:n0}</money>!\"</i>"
 		DeclineAISurrender = "[Finalizar la conexión]"
 		DeclinePlayerSurrender = "<i>\"¡Nunca!\"</i>"
-		PlayerSurrender = "<i>\"¡Nos rendimos!\"</i> (Paga <money>{0:n0}</money>)"
-		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>\"¡Ríndete ahora y páganos <money>{1:n0}</money>… o muere!\"</i>"
-		PlayerSurrenderDialogue = "<b>{0}:</b> <i>\"¡Estás en desventaja! ¡Ríndete ahora y páganos <money>{1:n0}</money>… o muere!\"</i>"
-		PlayerSurrenderPayBounty = "<i>\"Pagaremos la recompensa\".</i> (Paga <money>{0:n0}</money>)"
-		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>\"Fugitivo, el {2} ha ofrecido una recompensa de <money>{1:n0}</money> por tu destrucción. Paga ahora o prepárate para ser destruido\".</i>"
+		PlayerSurrender = "<i>\"¡Nos rendimos!\"</i> (Paga {0})"
+		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>\"¡Ríndete ahora y páganos {1}… o muere!\"</i>"
+		PlayerSurrenderDialogue = "<b>{0}:</b> <i>\"¡Estás en desventaja! ¡Ríndete ahora y páganos {1}… o muere!\"</i>"
+		PlayerSurrenderPayBounty = "<i>\"Pagaremos la recompensa\".</i> (Paga {0})"
+		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>\"Fugitivo, el {2} ha ofrecido una recompensa de {1} por tu destrucción. Paga ahora o prepárate para ser destruido\".</i>"
 	}
 }
 DominationMapStyles
@@ -1250,6 +1251,7 @@ FleetsWorkshop: Workshop
 	DialogName = "Cargador de Colecciones de Naves de Steam Workshop"
 	Folder = "Carpeta de la colección de naves:"
 	Name = "Nombre de la colección de naves:"
+	UpdateName = "Actualizar nombre de la colección de naves"
 	UpdatingExisting = "<good>Actualizando colección existente:</good>"
 	UploadSuccessful = "¡Carga correcta! Presiona Aceptar para ver tu colección de naves en Steam Workshop. Si esta es tu primera carga en Workshop, también tendrás que aceptar el Acuerdo Legal de Steam Workshop antes de que este sea visible para otros jugadores."
 	Warning = "<bad>ADVERTENCIA:</bad> TODO el contenido de esta carpeta y todas sus subcarpetas se cargarán en Steam Workshop. No incluyas ningún archivo que no desees o que no tengas el derecho de hacer público."
@@ -1432,6 +1434,7 @@ Hud
 	
 	AbandonShip = "Abandonar nave"
 	AbandonShipTip = "Instruye a toda la tripulación que abandone la nave si es posible."
+	AdjustWeaponCoverageTip = "<b>Establecer alcance/arco/dirección</b>\n\nHaz clic para activar esta opción y arrastra un borde para establecer su alcance, arco o dirección.\n\nTecla de acceso rápido: <btn id='Game.AdjustWeaponCoverage'/>\n\nSi esta opción está seleccionada:\n- <btn id='Game.CancelTool'/><gray>:</gray> Restablecer el borde resaltado\n- <btn id='Game.AdjustWeaponCoverageEditAll'/><gray> (mantener presionado):</gray> Modo de edición total\n- <btn id='Game.AdjustWeaponCoverageFinePrecision'/><gray> (mantener presionado):</gray> Modo de precisión\n- <btn id='Game.AdjustWeaponCoverageRotateArc'/><gray> (mantener presionado):</gray> Modo de rotación\n- <btn id='Game.AdjustWeaponCoverageSymmetricSides'/><gray> (mantener presionado):</gray> Modo simétrico\n- <btn id='Game.AdjustWeaponCoverageRotateArc'/> + <btn id='Game.AdjustWeaponCoverageSymmetricSides'/><gray> (mantener presionado):</gray> Modo de dirección fija"
 	AttackTip = "<b>Ataque</b>\n\nAtacar a otra nave. También se puede usar para atacar tus propias naves. (Mantén presionado <btn id='Game.InvertCollisionAvoidance'/> para alternar la prevención de colisiones).\n\nTecla de acceso rápido: <btn id='Game.Attack'/>"
 	AutoThrustOffTip = "<b>Encendido automático de propulsor: <bad>Apagar</bad></b>\n\nTecla de acceso rápido: <btn id='Game.ToggleAutoThrust'/>"
 	AutoThrustOnTip = "<b>Encendido automático de propulsor: <good>Activar</good></b>\n\nTecla de acceso rápido: <btn id='Game.ToggleAutoThrust'/>"
@@ -1502,6 +1505,7 @@ Hud
 	NewShipTip = "<b>Construir nave nueva</b>\n\nConstruye una nave nueva desde cero.."
 	NewShipTooFar = "<bad>DEMASIADO LEJOS</bad>"
 	NoCommandsToCancel = "No hay comandos para cancelar."
+	NoCustomCoveragesToReset = "No hay nada que restablecer."
 	NoTargetsToCancel = "No hay apuntamiento a las armas que cancelar."
 	NuggetCollectAlreadyClaimed = "YA RECLAMADO"
 	NuggetCollectFull = "ALMACENAMIENTO LLENO"
@@ -1512,6 +1516,8 @@ Hud
 	PauseTip = "Pausa\n\nTecla de acceso rápido: <btn id='Game.PauseToggle'/>"
 	Paused = "EN PAUSA"
 	ReputationTipFmt = "Reputación con {0}"
+	ResetCustomCoverages = "Restablecer alcance/arco/dirección"
+	ResetCustomCoveragesTip = "Restablece el alcance, arco y dirección de la selección a sus valores predeterminados."
 	ResetDefaults = "Restablecer valores predeterminados de ataque"
 	ResetDefaultsTip = "Restablece la distancia de ataque y la orientación guardadas a sus valores originales."
 	ResourceCountStorageFullFmt = "{0} <bad>(Almacenamiento lleno)</bad>"
@@ -1626,6 +1632,7 @@ Inputs
 		Name = "Gestión de tripulantes"
 		OpenClose = "Abrir/Cerrar el panel de tripulantes"
 		RemoveSelected = "Eliminar tripulante seleccionado"
+		ResetCrew = "Restablecer tripulación"
 		Roster = "Mostrar/Ocultar lista de tripulantes"
 		SelectAll = "Seleccionar todos"
 		SelectRange = "Añadir rango de tripulantes a la selección"
@@ -1645,8 +1652,8 @@ Inputs
 		ConfirmPartialRefund = "Confirmar el reembolso reducido"
 		Construct = "Hacerla así"
 		ContiguousSelectionMode = "Modo de selección contigua \"varita mágica\""
-		CopySelected = "Copiar piezas/calcomanías seleccionadas"
-		CutSelected = "Cortar piezas/calcomanías seleccionadas"
+		CopySelected = "Copiar partes/calcomanías seleccionadas"
+		CutSelected = "Cortar partes/calcomanías seleccionadas"
 		DecreaseDecalHeight = "Disminuir altura de la calcomanía"
 		DecreaseDecalWidth = "Disminuir ancho de la calcomanía"
 		Delete = "Borrar partes/calcomanías"
@@ -1654,8 +1661,8 @@ Inputs
 		EraseCursorMode = "Modo de cursor de borrado"
 		EraseTool = "Herramienta Borrar"
 		FillAllDoors = "Llenar todas las puertas"
-		FlipX = "Invertir piezas/calcomanías horiz."
-		FlipY = "Invertir piezas/calcomanías vert."
+		FlipX = "Invertir partes/calcomanías horiz."
+		FlipY = "Invertir partes/calcomanías vert."
 		ForceBlueprints = "Abrir en planos"
 		GrabTool = "Herramienta Agarrar"
 		ImportPng = "Importar PNG"
@@ -1666,12 +1673,12 @@ Inputs
 		NoAutoDoors = "No agregar puertas automáticamente"
 		OpenDecalResizer = "Abrir cambiador de tamaño de la calcomanía"
 		PaintOpenClose = "Abrir/Cerrar el panel de pintura"
-		Paste = "Pegar piezas/calcomanías"
+		Paste = "Pegar partes/calcomanías"
 		Redo = Rehacer
 		RepairTool = "Modo de Reparación"
 		RestrictShapeMode = "Modo de restricción de forma"
-		RotateLeft = "Girar piezas/calcomanías a la izquierda"
-		RotateRight = "Girar piezas/calcomanías a la derecha"
+		RotateLeft = "Girar partes/calcomanías a la izquierda"
+		RotateRight = "Girar partes/calcomanías a la derecha"
 		ScrollToolTip = "Permitir el desplazamiento en ventana de información emergente y estadísticas"
 		SelectAll = "Seleccionar todas las partes/calcomanías"
 		SelectionTool = "Herramienta Seleccionar/Copiar/Pegar"
@@ -1689,6 +1696,11 @@ Inputs
 	Game
 	{
 		
+		AdjustWeaponCoverage = "Establecer alcance/arco/dirección"
+		AdjustWeaponCoverageEditAll = "Establecer alcance/arco/dirección: Modo de edición total"
+		AdjustWeaponCoverageFinePrecision = "Establecer alcance/arco/dirección: Modo de precisión"
+		AdjustWeaponCoverageRotateArc = "Establecer alcance/arco/dirección: Modo de rotación"
+		AdjustWeaponCoverageSymmetricSides = "Establecer alcance/arco/dirección: Modo simétrico"
 		AllowSalvageOwnShip = "Permitir reciclar tu propia nave"
 		AppendSelection = "Agregar selección"
 		Attack = Ataque
@@ -1768,12 +1780,9 @@ Inputs
 		Alt = ""
 		Apps = ""
 		B = ""
-		BackslashPipe = "Barra invertida"
 		Backspace = Retroceso
 		C = ""
 		CapsLock = "Bloq Mayús"
-		Colon = "Dos puntos"
-		CommaLesser = Coma
 		Command = Cmd
 		Control = ""
 		D = ""
@@ -1818,9 +1827,7 @@ Inputs
 		K = ""
 		L = ""
 		LeftArrow = "Flecha izquierda"
-		LeftBracket = "Corchete izquierdo"
 		M = ""
-		MinusUnderscore = "Signo menos"
 		N = ""
 		NumLock = "Bloq Núm"
 		NumPad0 = "Teclado numérico 0"
@@ -1843,23 +1850,17 @@ Inputs
 		PageDown = "Av Pág"
 		PageUp = "Re Pág"
 		Pause = Pausa
-		PeriodGreater = Punto
 		PlatformCmdCtrl = ""
-		PlusEquals = "Signo más"
 		PrintScreen = "Imp Pant"
 		Q = ""
-		Quote = Comilla
 		R = ""
 		RightArrow = "Flecha derecha"
-		RightBracket = "Corchete derecho"
 		S = ""
 		ScrollLock = "Bloq Despl"
 		Shift = Mayús
-		SlashQuestion = Barra
 		Space = Espacio
 		T = ""
 		Tab = ""
-		TildeBacktick = ""
 		U = ""
 		UpArrow = "Flecha arriba"
 		V = ""
@@ -1889,16 +1890,11 @@ Inputs
 	PartTargetCancelers
 	{
 		
-		headlight_aim = "Restaurar Objetivo del Foco"
 		tractor_beam = "Cancelar rayo tractor"
 	}
 	PartTargeters
 	{
 		
-		chaingun_aim = "Apuntar cañón de cadena"
-		headlight_aim = "Apuntar Foco"
-		prism_aim = "Apuntar prisma iónico"
-		thermal_aim = "Apuntar lanza de resonancia térmica"
 		tractor_beam = "Apuntar el rayo tractor"
 	}
 	PartToggles
@@ -1908,6 +1904,8 @@ Inputs
 		airlock_type_closed = "Esclusa: Cerrada"
 		airlock_type_entry = "Esclusa: Solo entrada"
 		airlock_type_exit = "Esclusa: Solo salida"
+		always_crew_part_off = "Parte siempre con tripulación: Desactivada"
+		always_crew_part_on = "Parte siempre con tripulación: Activada"
 		distribute_power_off = "Distribuir energía: Desactivada"
 		distribute_power_on = "Distribuir energía: Activada"
 		fire_alternating_off = "Modo de fuego: Síncrono"
@@ -1933,8 +1931,8 @@ Inputs
 		missile_type_mine = "Tipo de lanzador: Mina"
 		missile_type_nuke = "Tipo de lanzador: Bomba nuclear"
 		missile_type_thermal = "Tipo de lanzador: Misil encapsulado térmico"
-		on_off_off = "Apagar la pieza"
-		on_off_on = "Encender la pieza"
+		on_off_off = "Apagar la parte"
+		on_off_on = "Encender la parte"
 		overclock_shield_extended = "Escudo sobreacelerado: Extendido"
 		overclock_shield_reinforced = "Escudo sobreacelerado: Reforzado"
 		rotate_off = "Girar: Desactivado"
@@ -2339,6 +2337,7 @@ MissionLog
 	DistanceIconFmt = ""
 	DistanceLYFmt = "{0:0.0} A.L."
 	EnemyFactionWarningFmt = "Esta misión requiere atacar a {0}. Perderás reputación con ellos y temporalmente serás perseguido."
+	HUDToggle = "Misiones cercanas"
 	LocalOnly = "Solo sistema local"
 	LocalOnlyTip = "Si esta casilla está marcada, solo se mostrarán las misiones que tengan lugar en el sistema estelar actual."
 	Location = UBICACIÓN
@@ -2346,6 +2345,7 @@ MissionLog
 	NoMissions = "No hay misiones\nactivas"
 	Objectives = OBJETIVOS
 	Rewards = RECOMPENSAS
+	ShowMissions = "Mostrar {0}"
 	SortByDistance = "<image name='sort'/> Distancia"
 	SortByFaction = "<image name='sort'/> Facción"
 	SortByMissionType = "<image name='sort'/> Tipo de misión"
@@ -2477,6 +2477,7 @@ ModsWorkshop: Workshop
 	DialogName = "Cargador de Mods de Steam Workshop"
 	Folder = "Carpeta del mod:"
 	Name = "Nombre del mod:"
+	UpdateName = "Actualizar nombre de mods"
 	UpdatingExisting = "<good>Actualizando mod existente:</good>"
 	UploadSuccessful = "¡Carga correcta! Presiona Aceptar para ver tu mod en Steam Workshop. Si esta es tu primera carga en Workshop, también tendrás que aceptar el Acuerdo Legal de Steam Workshop antes de que este sea visible para otros jugadores."
 	Warning = "<bad>ADVERTENCIA:</bad> TODO el contenido de esta carpeta de mods y todas sus subcarpetas se cargarán en Steam Workshop. No incluyas ningún archivo que no desees o que no tengas el derecho de hacer público."
@@ -2654,17 +2655,14 @@ PartFeatures
 PartTargeters
 {
 	
-	ChaingunAim = "<b>Apuntar cañón de cadena</b>\n\nApunta el cañón de cadena seleccionado a la ubicación deseada.\n\nTecla de acceso rápido: <btn id='PartTargeters.chaingun_aim'/>"
-	HeadlightAim = "<b>Apuntar foco</b>\n\nApunta el o los Focos seleccionados hacia el lugar deseado.\n\nCombinación de teclas: <btn id='PartTargeters.headlight_aim'/>"
-	HeadlightAimCancel = "<b>Restaurar objetivo del foco</b>\n\nTecla de acceso rápido: <btn id='PartTargetCancelers.headlight_aim'/>"
-	PrismAim = "<b>Apuntar prisma iónico</b>\n\nApunta los prismas para rayo de iones seleccionados hacia la ubicación deseada o los vincula para que el disparo salga por otro prisma de rayo de iones.\n\nTecla de acceso rápido: <btn id='PartTargeters.prism_aim'/>"
-	ThermalResonanceAim = "<b>Apuntar lanza de resonancia térmica</b>\n\nApunta las lanzas de resonancia térmica que seleccionaste a donde quieras.\n\nTecla de acceso rápido: <btn id='PartTargeters.thermal_aim'/>"
 	TractorBeam = "<b>Apuntar el rayo tractor</b>\n\nMantén <btn id='Game.SelectParts'/> para apuntar a partes específicas.\n\nTecla de acceso rápido: <btn id='PartTargeters.tractor_beam'/>"
 	TractorBeamCancel = "<b>Cancelar rayo tractor</b>\n\n Tecla de acceso rápido: <btn id='PartTargetCancelers.tractor_beam'/>"
 }
 PartToggles
 {
 	
+	AlwaysCrew_Off = "<b>Siempre con tripulación: <bad>Desactivado</bad></b>\nLa parte solo tendrá una tripulación cuando la torreta tenga un objetivo."
+	AlwaysCrew_On = "<b>Siempre con tripulación: <good>Activado</good></b>\nLa parte siempre tendrá una tripulación."
 	Boost_Off = "<b>Impulso: <bad>Apagar</bad></b>\n\nTecla de acceso rápido: <btn id='PartToggles.thruster_boost_off'/>"
 	Boost_On = "<b>Impulso: <good>Activar</good></b>\n\nTecla de acceso rápido: <btn id='PartToggles.thruster_boost_on'/>"
 	DistributePower_Off = "<b>Distribución de energía del propulsor: <bad>Inactiva</bad></b>\n\nTecla de acceso rápido: <btn id='PartToggles.distribute_power_off'/>"
@@ -2758,7 +2756,7 @@ Parts
 	CannonMedDesc = "Dispara rondas individuales de municiones de proyectil que pueden perforar las naves enemigas, a veces iniciando incendios."
 	CannonMedIcon = Cañón
 	CannonMedOverclock = "Cañón Estándar Sobreacelerado"
-	CannonMedOverclockDesc = "Dispara salvas de múltiples proyectiles con mayor alcance y velocidad. Al dispararlo, se genera calor residual."
+	CannonMedOverclockDesc = "Dispara salvas de múltiples proyectiles. Al disparar, se genera calor residual."
 	ChainGun = "Cañón de cadena"
 	ChainGunDesc = "Un poderoso cañón giratorio que aumenta su cadencia de tiro mientras más tiempo dispare y se esconde detrás de una carcasa protectora cuando no está disparando. Se pueden adjuntar cargadores de munición adicionales para aumentar la duración y la cadencia de tiro."
 	ChainGunIcon = "Cañón de cadena"
@@ -3067,17 +3065,17 @@ Parts
 	ReactorLargeDesc = "Un generador de energía que produce baterías de plasma de triple capacidad necesarias para alimentar muchos de los sistemas de la nave."
 	ReactorLargeIcon = "Reactor Grande"
 	ReactorLargeOverclock = "Núcleo de Reactor Grande Sobreacelerado"
-	ReactorLargeOverclockDesc = "Aumenta la tasa de producción. Además, aumenta el tamaño de las baterías de triple a cuádruple capacidad. Al producir energía, se genera calor residual."
+	ReactorLargeOverclockDesc = "Aumenta la tasa de producción de energía. Además, aumenta el tamaño de las baterías de triple a cuádruple capacidad. Al producir energía, se genera calor residual."
 	ReactorMed = "Núcleo de Reactor Mediano"
 	ReactorMedDesc = "Un generador de energía que produce baterías de plasma de doble capacidad necesarias para alimentar muchos de los sistemas de la nave."
 	ReactorMedIcon = "Reactor Med."
 	ReactorMedOverclock = "Núcleo de Reactor Mediano Sobreacelerado"
-	ReactorMedOverclockDesc = "Aumenta la capacidad energética máxima y la tasa de producción. Al producir energía, se genera calor residual."
+	ReactorMedOverclockDesc = "Aumenta la tasa de generación de energía. Genera calor residual al producir energía."
 	ReactorSmall = "Núcleo de Reactor Pequeño"
 	ReactorSmallDesc = "Un generador de energía que produce baterías de plasma necesarias para alimentar muchos de los sistemas de la nave."
 	ReactorSmallIcon = "Reactor Pequeño"
 	ReactorSmallOverclock = "Núcleo de Reactor Pequeño Sobreacelerado"
-	ReactorSmallOverclockDesc = "Aumenta la capacidad energética máxima y la tasa de producción. Al producir energía, se genera calor residual."
+	ReactorSmallOverclockDesc = "Aumenta la tasa de generación de energía. Genera calor residual al producir energía."
 	ResonanceBeamTurret = "Lanza de Resonancia Térmica"
 	ResonanceBeamTurretDesc = "Una torreta montada en el techo que dispara un rayo de calor puro y produce una gran cantidad de calor residual. Debilita los escudos alrededor de la zona de impacto.\n\nNo puede estar en un radio de 2 mosaicos alrededor de otras torretas de techo o partes \"altas\"."
 	ResonanceBeamTurretIcon = "Lanza de Resonancia Térmica"
@@ -3529,6 +3527,8 @@ ResourcesBox
 	MirrorToggleTip = "<b>Modo de espejo</b>\n\nSi está activado, los cambios en la organización de recursos de la nave se reflejarán usando como eje la línea central de la nave.\n\nTecla de acceso rápido: <btn id='Design.ToggleMirrorMode'/>\n\n<btn id='General.UIAltClick'/> Para modificar la configuración de reflexión en espejo."
 	NothingToRedo = "No hay nada que rehacer."
 	NothingToUndo = "No hay nada que deshacer."
+	PinResourceDisplay = "Fijar indicador de recursos"
+	PinResourceDisplayTip = "Fija la cantidad y la capacidad de este recurso en la esquina superior derecha."
 	Redo = " Rehacer "
 	RedoTip = "Rehace el último cambio realizado en la organización de recursos de la nave.\n\nTecla de acceso rápido: <btn id='Design.Redo'/>"
 	RemoveSupplyLineTip = "<regular>Cancelar enlace de suministro\n (<btn id='Game.Command'/>)</regular>"
@@ -3556,6 +3556,8 @@ ResourcesBox
 	TransferCrewOrResourcesTip = "Transferir tripulantes o recursos de esta nave a otra nave."
 	TypeTipFmt = ""
 	UndoTip = "Deshace el último cambio realizado en la organización de recursos de la nave.\n\nTecla de acceso rápido: <btn id='Design.Undo'/>"
+	UnpinResourceDisplay = "Desfijar indicador de recursos"
+	UnpinResourceDisplayTip = "Deja de mostrar la cantidad y la capacidad de este recurso en la esquina superior derecha."
 }
 Rewards
 {
@@ -3671,7 +3673,7 @@ Settings
 		DontDimBackgrounds = "No atenuar los fondos de los diálogos"
 		DontDimBackgroundsTip = "Si esta casilla está marcada, los fondos que hay detrás de los cuadros emergentes de diálogo <i>NO</i> se atenuarán."
 		DontFlashRedprints = "No resaltar las partes no válidas/destruidas"
-		DontFlashRedprintsTip = "Si está marcado, se deshabilitará la fluctuación de color de los planos no válidos y las piezas destruidas."
+		DontFlashRedprintsTip = "Si está marcado, se deshabilitará la fluctuación de color de los planos no válidos y las partes destruidas."
 		DontFlickerBlueprints = "Planos sin parpadeo"
 		DontFlickerBlueprintsTip = "Los planos de las naves muestran un sutil parpadeo que molesta a algunas personas. Si esta casilla está marcada, el parpadeo se desactivará."
 		Enemy = Enemigos
@@ -3809,11 +3811,11 @@ Settings
 		BlueprintAutoPause = "Pausar automáticamente en el modo de plano técnico"
 		BlueprintAutoPauseTip = "Si esta casilla está marcada, abrir el editor de planos técnicos hará que el juego se detenga automáticamente."
 		BuildAllowInsufficientCommand = "Permitir puntos de comando insuficientes"
-		BuildAllowInsufficientCommandTip = "Si esta casilla está marcada, no se te impedirá crear piezas adicionales cuando la nave no cuente con el respaldo de los <image name='command_points' colored='true'/> puntos de comando suficientes."
-		BuildAllowOverwrite = "Sobrescribir las piezas existentes"
-		BuildAllowOverwriteTip = "Si esta casilla está marcada, al intentar añadir una pieza a una nave en la que ya exista otra pieza, se sobrescribirá la existente."
+		BuildAllowInsufficientCommandTip = "Si esta casilla está marcada, no se te impedirá crear partes adicionales cuando la nave no cuente con el respaldo de los <image name='command_points' colored='true'/> puntos de comando suficientes."
+		BuildAllowOverwrite = "Sobrescribir las partes existentes"
+		BuildAllowOverwriteTip = "Si esta casilla está marcada, al intentar añadir una parte a una nave en la que ya exista otra parte, se sobrescribirá la existente."
 		BuildAutoDoors = "Agregar puertas automáticamente"
-		BuildAutoDoorsTip = "Si esta casilla está marcada, se añadirán puertas automáticamente al añadir una pieza a una nave."
+		BuildAutoDoorsTip = "Si esta casilla está marcada, se añadirán puertas automáticamente al añadir una parte a una nave."
 		BuildAutoInterior = "Mostrar automáticamente el interior de la nave"
 		BuildAutoInteriorTip = "Si esta casilla está marcada, se mostrará automáticamente el interior de la nave al abrir el editor de naves."
 		BuildAutoRotate = "Girar automáticamente hacia nave"
@@ -3837,7 +3839,7 @@ Settings
 		DiscardWhenCanceling = "Revertir planos al cancelar la construcción."
 		DiscardWhenCancelingTip = "Si esta casilla está marcada, cancelar la construcción al presionar el botón \"CANCELAR TODO\" revertirá todos los planos que no hayan comenzado a construirse."
 		GrabLeavesCorridors = "Mano de agarre deja pasillos"
-		GrabLeavesCorridorsTip = "Cuando se recoge una pieza con la Mano de Agarre, se dejan en su lugar mosaicos de pasillo."
+		GrabLeavesCorridorsTip = "Cuando se recoge una parte con la Mano de Agarre, se dejan en su lugar mosaicos de pasillo."
 		PaintAllowOverwrite = "Sobrescribir calcomanías existentes"
 		PaintAllowOverwriteTip = "Si esta casilla está marcada, al intentar agregar una calcomanía a una nave donde ya exista otra calcomanía se sobrescribirá la calcomanía existente."
 		PaintAutoRotate = "Girar automáticamente hacia nave"
@@ -3848,30 +3850,37 @@ Settings
 		PaintSelectTool = "Herramienta Seleccionar"
 		PaintSelectToolTip = "La herramienta Seleccionar será la herramienta predeterminada al abrir el editor de pintura."
 		PartToolTipsDefaultToStats = "Mostrar estadísticas de forma predeterminada"
-		PartToolTipsDefaultToStatsTip = "Si esta casilla está marcada, al pasar el cursor del mouse sobre una pieza se mostrarán tanto sus estadísticas como su descripción."
+		PartToolTipsDefaultToStatsTip = "Si esta casilla está marcada, al pasar el cursor del mouse sobre una parte se mostrarán tanto sus estadísticas como su descripción."
 		RepairAutoDoors = "Reparar las puertas automáticamente"
-		RepairAutoDoorsTip = "Si esta casilla está marcada, la reconstrucción de una pieza destruida también reconstruirá automáticamente las puertas que la conectan."
+		RepairAutoDoorsTip = "Si esta casilla está marcada, la reconstrucción de una parte destruida también reconstruirá automáticamente las puertas que la conectan."
 		RequirePartialRefundConfirmation = "Se requiere confirmación para los reembolsos reducidos"
-		RequirePartialRefundConfirmationTip = "Si esta casilla está marcada, deconstruir una pieza que solo ofrece un reembolso reducido de sus recursos requerirá que mantengas presionada la tecla <btn id='Design.ConfirmPartialRefund'/>."
+		RequirePartialRefundConfirmationTip = "Si esta casilla está marcada, deconstruir una parte que solo ofrece un reembolso reducido de sus recursos requerirá que mantengas presionada la tecla <btn id='Design.ConfirmPartialRefund'/>."
 		ResourcesAutoRotate = "Girar automáticamente hacia nave"
 		ResourcesAutoRotateTip = "Si esta casilla está marcada, se rotará automáticamente la vista para que coincida con la nave seleccionada al abrir el administrador de recursos."
 		ResourcesLbl = "Administrador de recursos"
 		RowsOfParts = "Filas de partes"
 		RowsOfPartsTip = "El número de filas de partes que se mostrarán sin necesidad de desplazarse."
+		ShiftClickToDragPartsAndDecals = "Requiere <btn id='Game.AppendSelection' xml='false'/> para arrastrar partes y calcomanías favoritas"
+		ShiftClickToDragPartsAndDecalsTip = "Si esta casilla está marcada, deberás mantener presionado <btn id='Game.AppendSelection'/> para arrastrar partes y calcomanías favoritas."
 		ShowAutoRemovedDecals = "Mostrar calcomanías eliminadas automáticamente"
 		ShowAutoRemovedDecalsTip = "Si esta casilla está marcada, entonces se mostrarán X rojas sobre las calcomanías que se eliminarán automáticamente."
 		ShowAutoRemovedParts = "Mostrar partes retiradas automáticamente"
-		ShowAutoRemovedPartsTip = "Si esta casilla está marcada, se mostrarán X rojas sobre las piezas que se eliminarán automáticamente."
+		ShowAutoRemovedPartsTip = "Si esta casilla está marcada, se mostrarán X rojas sobre las partes que se eliminarán automáticamente."
 		ShowInvalidBlueprints = "Mostrar los planos técnicos no válidos en rojo"
 		ShowInvalidBlueprintsTip = "Si esta casilla está marcada, los planos no válidos se mostrarán en rojo intermitente."
 		ShowMissingPartsWarning = "Mostrar advertencia de partes faltantes"
-		ShowMissingPartsWarningTip = "Si esta casilla está marcada, se mostrará una advertencia si a la nave le faltan piezas esenciales."
+		ShowMissingPartsWarningTip = "Si esta casilla está marcada, se mostrará una advertencia si a la nave le faltan partes esenciales."
 		TabName = "Editor de naves"
 	}
 	DialogName = Ajustes
 	Gameplay
 	{
 		
+		AdjustWeaponCoverageEditAll = "Editar todo por defecto"
+		AdjustWeaponCoverageEditAllTip = "Si esta casilla está marcada, arrastrar un borde ajustará todas las partes seleccionadas a la vez. Mantén presionado <btn id='Game.AdjustWeaponCoverageEditAll'/> para utilizar el otro modo."
+		AdjustWeaponCoverageIntegerSnapping = "Ajustar a números enteros"
+		AdjustWeaponCoverageIntegerSnappingTip = "Si esta casilla está marcada, los ajustes de alcance se ajustarán en incrementos de {0} m, y los de ángulo en incrementos de {1}°. Mantén presionado <btn id='Game.AdjustWeaponCoverageFinePrecision'/> para utilizar el otro modo."
+		AdjustWeaponCoverageLbl = "Alcance/arco/dirección de armas"
 		AllowShipDeselection = "Permitir la deselección de la nave"
 		AllowShipDeselectionTip = "Si esta casilla está marcada, al hacer clic con el botón izquierdo del mouse en un espacio vacío se deseleccionará cualquier nave seleccionada actualmente."
 		AlwaysShowCommandWidgets = "Mostrar siempre las empuñaduras de mando"
@@ -3894,7 +3903,7 @@ Settings
 		CommandsLbl = "Comandos de la nave"
 		CrewLbl = Tripulación
 		CtrlSelectsParts = "Requerir <btn id='Game.SelectParts' xml='false'/> para seleccionar partes"
-		CtrlSelectsPartsTip = "Si esta casilla está marcada, debes mantener presionada la tecla <btn id='Game.SelectParts'/> mientras haces clic en las piezas para seleccionarlas."
+		CtrlSelectsPartsTip = "Si esta casilla está marcada, debes mantener presionada la tecla <btn id='Game.SelectParts'/> mientras haces clic en las partes para seleccionarlas."
 		DirectControlAimAssist = "Ayuda para apuntar"
 		DirectControlAimAssistTip = "Si esta casilla está marcada, las armas se apuntarán automáticamente a la parte del enemigo más cercana al cursor del mouse."
 		DirectControlAutoBrake = "Frenar automáticamente"
@@ -3926,7 +3935,7 @@ Settings
 		OnShipIndicatorsTip = "Si esta casilla está marcada, se mostrarán íconos indicativos de estados de la nave como, por ejemplo, sin tripulantes, sin municiones y sin energía."
 		OverlaysLbl = "Superposiciones informativas"
 		PartToolTips = "Mostrar información emergente sobre partes de la nave"
-		PartToolTipsTip = "Si esta casilla está marcada, se mostrará información después de hacer una pausa breve con el cursor del mouse sobre una pieza de la nave."
+		PartToolTipsTip = "Si esta casilla está marcada, se mostrará información después de hacer una pausa breve con el cursor del mouse sobre una parte de la nave."
 		PauseOnOpenDialogueWithEnemy = "Pausar al dialogar con el enemigo"
 		PauseOnOpenDialogueWithEnemyTip = "Si esta casilla está marcada, el juego automáticamente pausará al abrir un diálogo con el enemigo."
 		PauseWhenHailedByEnemy = "Pausar al ser saludado por el enemigo"
@@ -3953,7 +3962,7 @@ Settings
 		ResourceDisplayModeOwnedTip = "Solo se mostrarán los recursos que existan en las naves seleccionadas actualmente."
 		ResourceDisplayModeTip = "Los tipos de recursos que deben aparecer en la esquina superior derecha de la pantalla debajo del contador de créditos."
 		SelectedPartStatusBars = "Mostrar barras de estado para las partes seleccionadas"
-		SelectedPartStatusBarsTip = "Si esta casilla está marcada, se mostrarán las barras de estado de las piezas seleccionadas."
+		SelectedPartStatusBarsTip = "Si esta casilla está marcada, se mostrarán las barras de estado de las partes seleccionadas."
 		ShowAdvancedCommands = "Mostrar comandos avanzados de la nave"
 		ShowAdvancedCommandsTip = "Si esta casilla está marcada, los comandos avanzados de la nave se mostrarán en la interfaz del usuario. Incluso si esta opción no está activada, puedes seguir utilizándolos mediante las teclas de acceso rápido."
 		ShowAllCommands = "Mostrar comandos para todas las naves"
@@ -3963,7 +3972,7 @@ Settings
 		ShowFavoriteCrewNamesOnHover = "Mostrar nombres de los tripulantes favoritos al mantener el mouse"
 		ShowFavoriteCrewNamesOnHoverTip = "Si está marcado, los nombres de los tripulantes indicados como \"favoritos\" se mostrarán debajo al mantener el mouse."
 		ShowNearbyMissions = "Mostrar las misiones cercanas en la HUD"
-		ShowNearbyMissionsTip = "Con esta opción activada, muchas de las misiones más cercanas se mostrarán automáticamente en la esquina superior izquierda de la HUD."
+		ShowNearbyMissionsTip = "Si esta casilla está marcada, las misiones se mostrarán automáticamente en la esquina superior izquierda de la interfaz."
 		ShowResourcePickupLines = ""
 		ShowResourcePickupLinesTip = "Si esta casilla está marcada, se mostrarán líneas punteadas que conectan los recursos flotantes con sus almacenes previstos."
 		ShowSpaceCrewLines = ""
@@ -4397,6 +4406,7 @@ Stats
 	DiamondProductionFmt = "<white>Tasa de producción:</white> <good>{0:0.##}</good><gray> diamantes/s</gray>"
 	DilationFactorFmt = "<white>Factor de la dilatación:</white> <good>{0:0.###}x</good>"
 	DilationHeatSpreadFmt = "<white>Extensión del calor:</white> <good>{0:0.##}</good><gray><sup>[2]</sup> m</gray>"
+	DynamoHeatGenerationFmt = "<white>Generación de calor del dínamo:</white> <good>{0:#,0.##}</good> <gray>MJ/s (al producir energía)</gray>"
 	EMPMissileCapacityFmt = "<white>Capacidad de Misiles EMP:</white> <good>{0}</good>"
 	EMPResistFmt = "<white>Resistencia a misiles EMP:</white> <good>-{0:0.##}</good> <gray>agotamiento de energía</gray>"
 	EMPResistPercentageFmt = "<white>Resistencia a misiles EMP:</white> <good>{0:0.#} %</good>"
@@ -4420,6 +4430,7 @@ Stats
 	HeatAbsorptionFmt = "<white>Absorción de calor:</white> <good>{0:0.#}</good>°<gray>MJ/s</gray>"
 	HeatAbsorptionInefficiencyFmt = "<white>Ineficiencia de la absorción:</white> <good>+{0:0.#} %</good> <gray>de calor</gray>"
 	HeatAbsorptionRadiusFmt = "<white>Alcance de la absorción:</white> <good>{0:0.#}</good> <gray>m</gray>"
+	HeatAppliedFmt = "<white>Calor aplicado:</white> <good>{0:#,0.##}</good> <gray>MJ</gray>"
 	HeatCapacityFmt = "<white>Capacidad calorífica:</white> <good>{0:#,0.##}</good>°<gray>MJ</gray>"
 	HeatDissipationFmt = "<white>Disipación de calor:</white> <good>{0:#,0.##}</good>°<gray>MJ/s</gray>"
 	HeatFireChanceFmt = "<white>Umbral de calor donde hay probabilidad de incendio:</white> <good>{0:0.##%}</good>"
@@ -4436,7 +4447,7 @@ Stats
 	HeatTransferInefficiencyFmt = "<white>Ineficiencia de la transferencia de calor:</white> <good>+{0:0.#} %</good> <gray>de calor</gray>"
 	HitShieldHeatFactorFmt = "<white>Calor por daño al escudo:</white> <good>{0:0.##} %</good>"
 	HyperiumCapacityFmt = "<white>Capacidad de Hiperio:</white> <good>{0}</good>"
-	IonLightningIntervalFmt = "<white>Intervalo del rayo:</white> <good>{0:0.#}</good> <gray>s</gray>"
+	IonLightningIntervalFmt = "<white>Frecuencia del rayo:</white> <good>{0:0.#}</good> <gray>s</gray>"
 	IronCapacityFmt = "<white>Capacidad de Hierro:</white> <good>{0}</good>"
 	Lifetime = "<white>Vida útil:</white> <good>{0:0.#}</good> <gray>s</gray>"
 	LightningChainChanceFmt = "<white>Probabilidad de la cadena de rayos:</white> <good>{0:0.#} %</good> <gray>por impacto</gray>"
@@ -4445,6 +4456,7 @@ Stats
 	LightningDamageFmt = "<white>Daño del rayo:</white> <good>{0:0}</good> <gray>por impacto</gray>"
 	LightningMaxChainFmt = "<white>Cadena de rayos máxima:</white> <good>{0}</good> <gray>rayos en cadena</gray>"
 	LightningRangeFmt = "<white>Alcance del rayo:</white> <good>{0:0.#}</good> <gray>m</gray>"
+	LightningShieldDamageFmt = "<white>Daño del rayo vs. escudos:</white> <good>{0:0}</good> <gray>por impacto</gray>"
 	LightningStrikeCountRangeFmt = "<white>Impacto del rayo:</white> <good>{0}-{1}</good>"
 	MaxDamageFmt = "<white>Daño Máximo:</white> <good>{0:n0}</good><gray>/disparo (</gray><good>{1:n0}</good><gray>/s)</gray>"
 	MaxDamageRangeFmt = "<white>Daño Máximo:</white> <good>{0:n0}</good><gray>/disparo (</gray><good>{1:n0}</good><white> - </white><good>{2:n0}</good><gray>/s)</gray>"
@@ -4660,7 +4672,7 @@ Tips
 	{
 		
 		Tip1 = "Puedes colocar una o más de tus naves en un \"grupo de control\" seleccionándolas y luego presionando <white>Ctrl + F1-F8</white>. Luego puedes seleccionar todas las naves de ese grupo presionando <white>F1-F8</white>."
-		Tip2 = "Así mismo, puedes colocar una o más armas individuales u otras piezas de la nave en grupos de control seleccionándolas y luego presionando <white>Ctrl + 0-9</white>. Luego puedes seleccionar todas las piezas del grupo presionando <white>0-9</white>."
+		Tip2 = "Así mismo, puedes colocar una o más armas individuales u otras partes de la nave en grupos de control seleccionándolas y luego presionando <white>Ctrl + 0-9</white>. Luego puedes seleccionar todas las partes del grupo presionando <white>0-9</white>."
 		Title = "Grupos de control"
 	}
 	CrewCustomization
@@ -4684,8 +4696,8 @@ Tips
 	CtrlSelectsParts
 	{
 		
-		Tip = "Si no puedes seleccionar armas individuales y otras piezas de la nave al clic en ellas, entonces debes mantener <btn id='Game.SelectParts'/> o desactivar el ajuste en <good>Ajustes -> Experiencia de juego -> Solicitar Ctrl para seleccionar las piezas</good>."
-		Title = "Solicitar Ctrl para seleccionar las piezas"
+		Tip = "Si no puedes seleccionar armas individuales y otras partes de la nave al clic en ellas, entonces debes mantener <btn id='Game.SelectParts'/> o desactivar el ajuste en <good>Ajustes -> Experiencia de juego -> Solicitar Ctrl para seleccionar las partes</good>."
+		Title = "Solicitar Ctrl para seleccionar las partes"
 	}
 	CtrlTargeting
 	{
@@ -4710,7 +4722,7 @@ Tips
 	{
 		
 		Tip = "En el Editor de naves o el Editor de pintura, puedes mantener presionado <btn id='Design.EraseCursorMode'/> para cambiar de forma temporal al modo de borrado."
-		Title = "Eliminar piezas y calcomanías"
+		Title = "Eliminar partes y calcomanías"
 	}
 	DesigningAsteroids
 	{
@@ -4752,7 +4764,7 @@ Tips
 	DisableUI
 	{
 		
-		Tip = "¿Crees que las capturas de pantalla y GIFs serían más lindos sin la interfaz de usuario? Presiona <btn id='Game.ToggleUI'/> para ocultarla. Vuelve a presionar para mostrarla."
+		Tip = "¿Crees que las capturas de pantalla y GIF serían más lindos sin la interfaz de usuario? Presiona <btn id='Game.ToggleUI'/> para ocultarla. Vuelve a presionar para mostrarla."
 		Title = "Desactivar la IU"
 	}
 	Discord
@@ -4788,9 +4800,9 @@ Tips
 	Favorites
 	{
 		
-		Tip1 = "Puedes guardar hasta tres conjuntos personalizados diferentes de piezas o calcomanías de pinturas de naves \"favoritas\". <btn id='General.UIAltClick'/> en la pieza o calcomanía para agregarla o eliminarla de cualquiera de esos conjuntos."
-		Tip2 = "También puedes <btn id='General.UIFocusClick'/> en una pieza o calcomanía para agregarla o eliminarla rápidamente de tus favoritos."
-		Title = "Piezas y calcomanías favoritas"
+		Tip1 = "Puedes guardar hasta tres conjuntos personalizados diferentes de partes o calcomanías de pinturas de naves \"favoritas\". <btn id='General.UIAltClick'/> en la parte o calcomanía para agregarla o eliminarla de cualquiera de esos conjuntos."
+		Tip2 = "También puedes <btn id='General.UIFocusClick'/> en una parte o calcomanía para agregarla o eliminarla rápidamente de tus favoritos."
+		Title = "Partes y calcomanías favoritas"
 	}
 	Feedback
 	{
@@ -4868,7 +4880,7 @@ Tips
 		Tip1 = "Puedes usar programas de arte externos como MS Paint, Paint.NET, Gimp o Photoshop para crear los contornos básicos de las formas de las naves..."
 		Tip2 = "1. Primero, usa cualquier programa de arte externo que te guste para guardar un archivo de imagen PNG <b>blanco sobre negro</b> que represente la forma general de la nave. Los píxeles blancos se interpretarán como casillas de pasillos y los píxeles negros se interpretarán como espacios vacíos."
 		Tip3 = "2. Luego, en el Editor de naves, abre el menú <img name='hamburger_up'/> y selecciona <white>Cargar forma desde PNG</white>. Selecciona el archivo de imagen PNG que guardaste."
-		Tip4 = "3. Los planos de la nave actual se reemplazarán con los planos del archivo de imagen PNG. Dale los toques finales a la nave agregando armas, propulsores, defensas y todas las demás piezas que creas convenientes."
+		Tip4 = "3. Los planos de la nave actual se reemplazarán con los planos del archivo de imagen PNG. Dale los toques finales a la nave agregando armas, propulsores, defensas y todas las demás partes que creas convenientes."
 		Title = "Cargar forma desde PNG"
 	}
 	MidpointFocus
@@ -4918,13 +4930,13 @@ Tips
 	PartBrushes
 	{
 		
-		Tip = "La mayoría de las piezas de tamaño 1x1 se pueden utilizar con una variedad de diferentes tamaños y formas de \"pinceles\". Haz clic en el botón de selección de pincel cuando esté disponible para ver todas las opciones."
-		Title = "Pinceles de piezas"
+		Tip = "La mayoría de las partes de tamaño 1x1 se pueden utilizar con una variedad de diferentes tamaños y formas de \"pinceles\". Haz clic en el botón de selección de pincel cuando esté disponible para ver todas las opciones."
+		Title = "Pinceles de partes"
 	}
 	PartRows
 	{
 		
-		Tip = "Puedes aumentar la cantidad de tipos de piezas visibles en el Editor de naves cambiando <good>Ajustes -> Editor de naves -> Filas de piezas</good>."
+		Tip = "Puedes aumentar la cantidad de tipos de partes visibles en el Editor de naves cambiando <good>Ajustes -> Editor de naves -> Filas de partes</good>."
 		Title = "Filas del editor de naves"
 	}
 	PipSettings
@@ -5042,8 +5054,8 @@ Tips
 	SelectSameType
 	{
 		
-		Tip = "Puedes <white>hacer doble clic</white> para seleccionar todas las piezas de la nave del mismo tipo. Para las piezas direccionales, como las armas, propulsores y escudos, solo se seleccionarán las piezas que apunten en la misma dirección. <white>Haz triple clic</white> para seleccionarlas a todas sin importar la dirección."
-		Title = "Seleccionar las piezas del mismo tipo"
+		Tip = "Puedes <white>hacer doble clic</white> para seleccionar todas las partes de la nave del mismo tipo. Para las partes direccionales, como las armas, propulsores y escudos, solo se seleccionarán las partes que apunten en la misma dirección. <white>Haz triple clic</white> para seleccionarlas a todas sin importar la dirección."
+		Title = "Seleccionar las partes del mismo tipo"
 	}
 	Settings
 	{
@@ -5153,7 +5165,7 @@ TitleScreen
 	Settings = AJUSTES
 	ShipLibrary = "BIBLIOTECA DE NAVES"
 	Steam = "Comunidad de Steam"
-	WishlistNow = "<s24>¡COMPRA EL JUEGO AHORA!</s24>\n<regular>¡No te pierdas el descuento de lanzamiento!</regular>"
+	WishlistNow = "<s24>¡COMPRA EL JUEGO AHORA!</s24>"
 }
 Tutorials
 {
@@ -5194,7 +5206,7 @@ Tutorials
 		
 		Close = "Cuando hayas terminado de mejorar tu nave, haz clic en el botón rojo <bad>X</bad> o presiona <btn id='General.Cancel'/> para salir del modo de construcción."
 		Delete = "Para <good>eliminar una parte</good> de tu nave, utiliza la herramienta <white>Borrar</white>. Recibirás un reembolso completo de todos los materiales utilizados para construirla."
-		Grab = "Para <good>tomar una pieza</good> y moverla a otro lugar, utiliza la herramienta <white>Agarrar</white>."
+		Grab = "Para <good>tomar una parte</good> y moverla a otro lugar, utiliza la herramienta <white>Agarrar</white>."
 		Materials = "Al igual que con las reparaciones, <good>la construcción utiliza materiales</good>. Si no tienes los suficientes, los materiales adicionales se <good>comprarán automáticamente</good> en cualquier estación cercana si tienes los <money>CRÉDITOS</money> necesarios y la estación tiene los materiales en existencias."
 		Tip = "<good>CONSEJO:</good> ¿Cometiste un error? Solo haz clic en el botón <white>Deshacer</white> o presiona <btn id='Design.Undo'/>."
 		Title = "Cómo mejorar tu nave (continuación)"
@@ -5432,10 +5444,11 @@ Tutorials
 	IonBeams
 	{
 		
-		Aiming = "Para <good>apuntar un prisma</good>, sal primero del modo de creación, selecciona \"Prisma\" y, a continuación, haz clic en el botón <white>Apuntar prisma iónico</white>."
+		Aiming = "Para apuntar un prisma <good>en una dirección fija</good>, selecciona el prisma, haz clic en el botón <white>Establecer alcance/arco/dirección</white> y luego arrastra los bordes para crear el cono o la línea de disparo deseados."
 		Combining = "Se pueden combinar varios <good>rayos</good> en un único prisma, creando un solo rayo más grande y potente."
 		IonBeams = "Los <good>rayos de iones</good> son armas de haz de energía de dirección fija que no se pueden apuntar, pero que causan grandes daños acumulables a lo largo del tiempo."
 		IonPrisms = "Pero si colocas un <good>prisma para rayo de iones</good> delante de un rayo de iones, puedes redirigir el rayo en cualquier dirección, como, por ejemplo, una nave enemiga o incluso otro prisma para rayo de iones."
+		Targeting = "Para redirigir un rayo <good>hacia otro prisma</good>, sal primero del modo de creación, selecciona \"Prisma\", haz clic en el botón <white>Apuntar a las armas</white> y, a continuación, haz clic en el otro prisma."
 		Tip = "<good>CONSEJO:</good> La combinación de varios haces reduce la producción total de daño. Para maximizar el daño de un solo rayo, combina siempre exactamente dos haces del mismo tamaño por cada prisma."
 		Title = "Rayos y prismas de iones"
 	}
@@ -5444,8 +5457,9 @@ Tutorials
 		
 		ControlGroups = "<good>CONSEJO:</good> Crea un <good>grupo de control</good> seleccionando una o más partes y, luego, presionando <white>Ctrl + 0-9</white>. Selecciona ese grupo presionando <white>0-9</white>."
 		FireMode = "Presiona el botón de <white>Modo de fuego</white> para indicarle a un arma que <good>mantenga el fuego</good>, <good>solo dispare a su objetivo determinado</good>, o <good>dispare infinitamente</good> según lo consideres oportuno."
-		Power = "Presiona el botón <white>Potencia</white> para <good>apagarla</good>. Todos los tripulantes que estén operando la pieza se irán y ayudarán en otro lugar."
-		Select = "<white>Haz clic con el botón izquierdo del mouse</white> en una pieza individual para <good>seleccionarla</good>.\n\nTambién puedes presionar Mayús y hacer clic sobre varias piezas o arrastrar para dibujar un cuadro alrededor de estas."
+		Power = "Presiona el botón <white>Potencia</white> para <good>apagarla</good>. Todos los tripulantes que estén operando la parte se irán y ayudarán en otro lugar."
+		RangeArcDirection = "Para personalizar el <good>alcance y arco de disparo</good> de un arma o apuntarla en una <good>dirección fija</good>, presiona el botón <white>Establecer alcance/arco/dirección</white> y arrastra los bordes que aparecen."
+		Select = "<white>Haz clic con el botón izquierdo del mouse</white> en una parte individual para <good>seleccionarla</good>.\n\nTambién puedes presionar Mayús y hacer clic sobre varias partes o arrastrar para dibujar un cuadro alrededor de estas."
 		Target = "Con un arma seleccionada, <white>haz clic con el botón derecho</white> en una parte enemiga para <good>apuntar</good> el arma hacia ella."
 		Title = "Microgestión de tu nave"
 	}
@@ -5536,7 +5550,7 @@ Tutorials
 	Power
 	{
 		
-		Crew = "Tu <good>tripulación</good> transportará baterías de plasma desde el <white>reactor</white> o el <white>condensador de potencia</white> hasta las piezas de tu nave."
+		Crew = "Tu <good>tripulación</good> transportará baterías de plasma desde el <white>reactor</white> o el <white>condensador de potencia</white> hasta las partes de tu nave."
 		Indicator = "Las partes que no tengan la suficiente energía para funcionar tendrán un <red>icono rojo</red>. Esto se debe generalmente a que no hay suficientes tripulantes para transportar las baterías o estos se encuentran demasiado lejos de una fuente de energía, aunque también puede suceder si los reactores de tu nave no están generando suficientes baterías."
 		Meter = "El <good>medidor de energía</good> muestra la cantidad total de energía generada por tus reactores, y la <good>barra verde vertical</good> muestra la cantidad recomendada."
 		Reactor = "Los <good>reactores</good> generan baterías de plasma para los propulsores, las armas de energía y otras partes de tu nave."
@@ -5592,7 +5606,7 @@ Tutorials
 		Manage = "Para administrar los recursos de tu nave, haz clic en el botón <white>Administrar recursos</white>."
 		Move = "Para decirle a tu tripulación que <good>mueva recursos</good> de un mosaico a otro, selecciona la herramienta <white>Mover recursos</white>, haz clic en la pila de recursos que desees mover y, a continuación, haz clic en el mosaico a donde se deben mover."
 		Stacks = "La mayoría de los recursos se almacenan en <good>pilas</good> dentro de <good>mosaicos de almacenamiento</good>. Los compartimientos de almacenamiento pueden contener pilas de cualquier tipo. Las armas, las fábricas y otras partes especializadas solo pueden contener recursos como los que realmente utilizan o producen."
-		SupplyChains = "Por último, también puedes configurar <good>cadenas de suministro</good> entre almacenes, fábricas, reactores, armas y otras piezas. Esto funciona de forma muy similar a las órdenes de los escuadrones de la tripulación: Cuando se agrega un enlace de suministro, el proveedor y el receptor nunca enviarán ni recibirán recursos de nadie más."
+		SupplyChains = "Por último, también puedes configurar <good>cadenas de suministro</good> entre almacenes, fábricas, reactores, armas y otras partes. Esto funciona de forma muy similar a las órdenes de los escuadrones de la tripulación: Cuando se agrega un enlace de suministro, el proveedor y el receptor nunca enviarán ni recibirán recursos de nadie más."
 		Title = "Administración de recursos"
 	}
 	Salvaging
@@ -5624,7 +5638,7 @@ Tutorials
 		
 		Drag = "Para elegir la <good>distancia</good> y la <good>dirección</good> desde donde atacar, <white>haz clic con el botón derecho del mouse</white> en la nave enemiga y <white>arrastra</white> en dirección contraria a ella."
 		Handles = "Para ajustar la <good>distancia</good>, <good>dirección</good> o <good>giro</good> después de atacar, mantén presionada la tecla <btn id='Game.AppendSelection'/> y, a continuación, arrastra una de las empuñaduras que aparezcan."
-		TargetQueue = "Para <good>poner en cola destinos adicionales</good>, mantén presionada la tecla <btn id='Game.AppendSelection'/> mientras haces clic con el botón derecho del mouse sobre las piezas."
+		TargetQueue = "Para <good>poner en cola destinos adicionales</good>, mantén presionada la tecla <btn id='Game.AppendSelection'/> mientras haces clic con el botón derecho del mouse sobre las partes."
 		Title = "Tácticas de combate (avanzado)"
 	}
 	Techs
@@ -5691,6 +5705,15 @@ VitalCategories
 	Header = <b>ADVERTENCIA</b>
 	Reactor = "⚠ Falta reactor"
 }
+WeaponCoverageEditor
+{
+	
+	AngleFmt = ""
+	FineAngleFmt = ""
+	RangeDeltaFmt = "{0:+0.#;-0.#;0} m"
+	RangeFmt = "{0:0.#} m"
+	ResetFloatingText = RESTABLECER
+}
 Wishlist
 {
 	
@@ -5698,9 +5721,8 @@ Wishlist
 	ExitMsg = "¡Gracias por jugar la demo de Cosmoteer!"
 	FameLimitReached = "¡FELICIDADES!\nAlcanzaste la <fame>fama</fame> máxima de la demo, pero estás en camino de convertirte en una leyenda. Puedes seguir jugando, pero no podrás ganar más fama ni viajar a otros sistemas estelares. ¡Compra el juego ahora para continuar tu viaje!"
 	FeatureMissingMsg = "<bad>Lo sentimos, esta función no está disponible en la demo.</bad>"
-	Features = "<fame_color>El juego completo incluye…</fame_color><s4>\n\n</s4>● Explora toda la galaxia… ¡Todos los sistemas estelares están desbloqueados!<s4>\n\n </s4>● Modos multijugador cooperativo y PvP<s4>\n\n </s4>● Más armas y otras partes de naves (cañones de riel, bombas nucleares, misiles EMP, grandes escudos, rayos tractores, ¡y mucho más!)<s4>\n\n </s4>● 200+ diseños de naves de cuatro facciones exclusivas<s4>\n\n </s4>● Mods y soporte de Steam Workshop"
+	Features = "<fame_color>El juego completo incluye…</fame_color><s4>\n\n</s4>● Explora toda la galaxia… ¡Todos los sistemas estelares están desbloqueados!<s4>\n\n</s4>● Modos multijugador cooperativo y PvP<s4>\n\n</s4>● Más armas y otras partes de naves (cañones de riel, bombas nucleares, misiles EMP, grandes escudos, rayos tractores, ¡y mucho más!)<s4>\n\n</s4>● Más de 800 diseños de naves de cinco facciones exclusivas<s4>\n\n</s4>● Mods y soporte de Steam Workshop"
 	HoursFmt = "Has estado jugando la demo de Cosmoteer durante {0} hora(s). Puedes jugar todo el tiempo que desees, pero si lo estás disfrutando, ¿te gustaría comprar la versión completa?"
-	LaunchDiscount = "<s24><u>¡No te pierdas el descuento de lanzamiento!</u></s24>"
 	No = "Tal vez después"
 	NotInDemo = "No está incluido en la demo"
 	Yes = "<s24>Compra el juego ahora</s24>\n(o agrégalo a la lista de deseos)"
@@ -5715,6 +5737,8 @@ Workshop
 	MinVersion = "Versión mínima compatible"
 	Preview = "Vista previa de imagen:"
 	SelectPreviewFile = "Seleccionar el archivo"
+	UpdateDescription = "Actualizar descripción"
+	UpdatePreview = "Actualizar vista previa de imagen"
 	Upload = "Iniciar la carga"
 	UploadingFmt = "Cargando a Steam Workshop… {0} %"
 	ViewInWorkshop = "Ver en Workshop"

@@ -75,7 +75,11 @@ Components
 		AutoFireToggle = AutoFireToggle
 		FireInterval = 0 // Uses common reload timer.
 		FiringArc = 0d
-		ValidArc = 200d
+		ValidArc = 360d
+		DefaultWeaponCoverage
+		{
+			Arc = [-100d, 200d]
+		}
 		FireThresholdAngle = (&ValidArc) / 2
 		RotateSpeed = 0d
 		AllowFireWithBlockedLOS = true

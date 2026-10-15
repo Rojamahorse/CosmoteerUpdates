@@ -157,8 +157,8 @@ HitOperational
 }
 HitStructural : &HitOperational
 {
-	StructuralDamageRetentionPerHit = 60%
-	MinStructuralDamageScale = 3%
+	StructuralDamageRetentionPerHit = &/STRUCTURAL_DAMAGE_RETENTION_PER_HIT
+	MinStructuralDamageScale = &/MIN_STRUCTURAL_DAMAGE_SCALE
 
 	HitEffects
 	[

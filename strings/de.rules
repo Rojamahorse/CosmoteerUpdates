@@ -448,7 +448,7 @@ CareerModeConfig
 	DisableCrewConstruction = "Ich hasse Crew-Bau"
 	DisableCrewConstructionTip = "Bei Auswahl der Option werden Schiffsmodifikationen sofort anstatt von der Crew vorgenommen."
 	DisableExploration = "Ich hasse Erkundung"
-	DisableExplorationTip = "Legt alle <b>?</b>-Symbole auf der Karte frei, ohne dass du sie vorher im Nebel des Krieges aufdecken musst."
+	DisableExplorationTip = "Zeigt den Standort aller <b>?</b>-Symbole auf der Karte, ohne dass du sie vorher im Nebel des Krieges aufdecken musst."
 	DisableNebulas = "Ich hasse Wolken & Stürme"
 	DisableNebulasTip = "Wolken und Stürme werden im Karrieremodus nicht angezeigt. (Wird diese Option nach dem Start eines neuen Spiels geändert, wirkt sie sich nur auf nicht besuchte Sternensysteme aus.)"
 	DisableSalvaging = "Ich hasse Wiederverwerten"
@@ -840,6 +840,7 @@ CrewBox
 	NoPathToSource = "<bad>Nicht erreichbar</bad>"
 	NothingToRedo = "Es gibt nichts, das wiederholt werden könnte."
 	NothingToUndo = "Es gibt nichts, das rückgängig gemacht werden könnte."
+	NumberOfCrew = "{0}/{1} Crewmitglied(er)"
 	Paste = Einfügen
 	PasteInfo = "Nur Info ersetzen"
 	PasteInsertAfter = "Neue Rolle danach einfügen"
@@ -915,15 +916,15 @@ Dialogue
 	Surrender
 	{
 		
-		AISurrender = "<i>Wir akzeptieren die Kapitulation.“</i>"
+		AISurrender = "<i>„Wir akzeptieren die Kapitulation.“</i>"
 		AISurrenderDialogue = "<b>{0}:</b> <i>„Wir ergeben uns! Wenn ihr versprecht, uns nicht zu zerstören, zahlen wir euch <money>{1:n0}</money>!“</i>"
 		DeclineAISurrender = "[Verbindung beenden]"
 		DeclinePlayerSurrender = <i>„Niemals“</i>
-		PlayerSurrender = "<i>„Wir ergeben uns!“</i> (<money>{0:n0}</money> bezahlen)"
-		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>„Ergebt euch jetzt und zahlt uns <money>{1:n0}</money> ... oder sterbt!“</i>"
-		PlayerSurrenderDialogue = "<b>{0}:</b> <i>„Ihr seid unterlegen! Ergebt euch jetzt und zahlt uns <money>{1:n0}</money> ... oder sterbt!“</i>"
-		PlayerSurrenderPayBounty = "<i>„Wir zahlen das Kopfgeld.“</i> (<money>{0:n0}</money> bezahlen)"
-		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>„Flüchtiger, {2} hat ein Kopfgeld von <money>{1:n0}</money> auf deine Zerstörung ausgesetzt. Zahle es jetzt oder mach dich bereit, erledigt zu werden.“</i>"
+		PlayerSurrender = "<i>„Wir ergeben uns!“</i> ({0} bezahlen)"
+		PlayerSurrenderDefaultedDialogue = "<b>{0}:</b> <i>„Ergebt euch jetzt und zahlt uns {1} ... oder sterbt!“</i>"
+		PlayerSurrenderDialogue = "<b>{0}:</b> <i>„Ihr seid unterlegen! Ergebt euch jetzt und zahlt uns {1} ... oder sterbt!“</i>"
+		PlayerSurrenderPayBounty = "<i>„Wir zahlen das Kopfgeld.“</i> ({0} bezahlen)"
+		PlayerSurrenderPayBountyDialogue = "<b>{0}:</b> <i>„Flüchtiger, {2} hat ein Kopfgeld von {1} auf deine Zerstörung ausgesetzt. Zahle es jetzt oder mach dich bereit, erledigt zu werden.“</i>"
 	}
 }
 DominationMapStyles
@@ -1250,6 +1251,7 @@ FleetsWorkshop: Workshop
 	DialogName = "„Steam Workshop“-Schiffsammlung-Uploader"
 	Folder = "Ordner Schiffsammlung:"
 	Name = "Name Schiffsammlung:"
+	UpdateName = "Name der Schiffsammlungs aktualisieren"
 	UpdatingExisting = "<good>Bestehende Sammlung aktualisieren:</good>"
 	UploadSuccessful = "Upload erfolgreich! Drücke „O. K.“, um dir deine Schiffsammlung im Steam Workshop anzusehen. Wenn dies dein erster Upload in den Workshop ist, musst du den Nutzungsvertrag des Steam Workshops akzeptieren, bevor dein Upload für andere Spieler sichtbar wird."
 	Warning = "<bad>WARNUNG:</bad> Der KOMPLETTE Inhalt dieses Ordners und alle Unterordner werden in Steam Workshop hochgeladen. Achte darauf, dass keine Dateien enthalten sind, die nicht veröffentlicht werden sollen oder bei denen du nicht die Rechte hast, um sie zu veröffentlichen."
@@ -1432,6 +1434,7 @@ Hud
 	
 	AbandonShip = "Schiff verlassen"
 	AbandonShipTip = "Weist alle Crewmitglieder an, das Schiff zu verlassen (wenn möglich)."
+	AdjustWeaponCoverageTip = "<b>Reichweite/Kurve/Richtung einstellen</b>\n\nKlicke zum Aktivieren und ziehe dann an einem Rand, um Reichweite, Kurve oder Richtung einzustellen.\n\nSchnelltaste: <btn id='Game.AdjustWeaponCoverage'/>\n\nWenn aktiviert:\n– <btn id='Game.CancelTool'/><gray>:</gray> Markierten Rand zurücksetzen\n– <btn id='Game.AdjustWeaponCoverageEditAll'/><gray>(gedrückt halten):</gray>„Alle bearbeiten“-Modus\n– <btn id='Game.AdjustWeaponCoverageFinePrecision'/><gray> (gedrückt halten):</gray> Präzisionsmodus\n– <btn id='Game.AdjustWeaponCoverageRotateArc'/><gray> (gedrückt halten):</gray> Rotationsmodus\n– <btn id='Game.AdjustWeaponCoverageSymmetricSides'/><gray> (gedrückt halten):</gray> Symmetriemodus\n– <btn id='Game.AdjustWeaponCoverageRotateArc'/> + <btn id='Game.AdjustWeaponCoverageSymmetricSides'/><gray> (gedrückt halten):</gray> „Feste Richtung“-Modus"
 	AttackTip = "<b>Angreifen</b>\n\nGreife ein anderes Schiff an. Kann auch verwendet werden, um dein eigenes Schiff anzugreifen. (Halte <btn id='Game.InvertCollisionAvoidance'/> gedrückt, um die Kollisionsvermeidung ein- oder auszuschalten.)\n\nSchnelltaste: <btn id='Game.Attack'/>"
 	AutoThrustOffTip = "<b>Autom. Schubdüse: <bad>Aus</bad></b>\n\nSchnelltaste: <btn id='Game.ToggleAutoThrust'/>"
 	AutoThrustOnTip = "<b>Autom. Schubdüse: <good>Ein</good></b>\n\nSchnelltaste: <btn id='Game.ToggleAutoThrust'/>"
@@ -1502,6 +1505,7 @@ Hud
 	NewShipTip = "<b>Neues Schiff bauen</b>\n\nBaue ein neues Schiff von Grund auf."
 	NewShipTooFar = "<bad>ZU WEIT</bad>"
 	NoCommandsToCancel = "Es gibt keine Befehle, die widerrufen werden können."
+	NoCustomCoveragesToReset = "Es gibt nichts, das zurückgesetzt werden könnte."
 	NoTargetsToCancel = "Es gibt keine Waffenziele, die widerrufen werden können."
 	NuggetCollectAlreadyClaimed = "BEREITS EINGESAMMELT"
 	NuggetCollectFull = "LAGER VOLL"
@@ -1512,6 +1516,8 @@ Hud
 	PauseTip = "Pause\n\nSchnelltaste: <btn id='Game.PauseToggle'/>"
 	Paused = PAUSIERT
 	ReputationTipFmt = "{0} – Ruf"
+	ResetCustomCoverages = "Reichweite/Kurve/Richtung zurücksetzen"
+	ResetCustomCoveragesTip = "Setze Reichweite, Kurve und Richtung der Auswahl auf die Standardeinstellungen zurück."
 	ResetDefaults = "Standardangriffswerte zurücksetzen"
 	ResetDefaultsTip = "Setze die gespeicherte Angriffsentfernung und -ausrichtung auf ihre ursprünglichen Werte zurück."
 	ResourceCountStorageFullFmt = "{0} <bad>(Lager voll)</bad>"
@@ -1626,6 +1632,7 @@ Inputs
 		Name = Crew-Verwaltung
 		OpenClose = "Crew-Tafel öffnen/schließen"
 		RemoveSelected = "Ausgewähltes Crewmitglied entfernen"
+		ResetCrew = "Crew zurücksetzen"
 		Roster = "Crew-Aufstellung anzeigen/ausblenden"
 		SelectAll = "Alle auswählen"
 		SelectRange = "Crewbereich zu Auswahl hinzufügen"
@@ -1674,7 +1681,7 @@ Inputs
 		RotateRight = "Teile/Aufkleber nach rechts drehen"
 		ScrollToolTip = "Tooltipp-Scrollen aktivieren/Werte anzeigen"
 		SelectAll = "Alle Teile/Aufkleber auswählen"
-		SelectionTool = "Auswählen/Kopieren/Einfügen-Werkzeug "
+		SelectionTool = Auswählen/Kopieren/Einfügen-Werkzeug
 		ToggleBlueprints = "Baupläne umschalten"
 		ToggleMirrorMode = "Spiegelmodus umschalten"
 		ToggleSecondaryToolTip = "Sekundäre Tooltipps ein-/ausschalten"
@@ -1689,6 +1696,11 @@ Inputs
 	Game
 	{
 		
+		AdjustWeaponCoverage = "Reichweite/Kurve/Richtung einstellen"
+		AdjustWeaponCoverageEditAll = "Reichweite/Kurve/Richtung einstellen: „Alle bearbeiten“-Modus"
+		AdjustWeaponCoverageFinePrecision = "Reichweite/Kurve/Richtung einstellen: Präzisionsmodus"
+		AdjustWeaponCoverageRotateArc = "Reichweite/Kurve/Richtung einstellen: Rotationsmodus"
+		AdjustWeaponCoverageSymmetricSides = "Reichweite/Kurve/Richtung einstellen: Symmetriemodus"
 		AllowSalvageOwnShip = "„Eigenes Schiff wiederverwerten“ erlauben"
 		AppendSelection = "Zu Auswahl hinzufügen"
 		Attack = Angreifen
@@ -1768,12 +1780,9 @@ Inputs
 		Alt = ""
 		Apps = ""
 		B = ""
-		BackslashPipe = ""
 		Backspace = Rücktaste
 		C = ""
 		CapsLock = Feststelltaste
-		Colon = Doppelpunkt
-		CommaLesser = Komma
 		Command = Befehl
 		Control = Strg
 		D = ""
@@ -1818,9 +1827,7 @@ Inputs
 		K = ""
 		L = ""
 		LeftArrow = Nach-Links-Taste
-		LeftBracket = "Klammer links"
 		M = ""
-		MinusUnderscore = ""
 		N = ""
 		NumLock = NUM
 		NumPad0 = "Ziffernblock 0"
@@ -1843,23 +1850,17 @@ Inputs
 		PageDown = Bild-Ab
 		PageUp = Bild-Auf
 		Pause = ""
-		PeriodGreater = Punkt
 		PlatformCmdCtrl = ""
-		PlusEquals = ""
 		PrintScreen = Druck
 		Q = ""
-		Quote = Anführungszeichen
 		R = ""
 		RightArrow = Nach-Rechts-Taste
-		RightBracket = "Klammer rechts"
 		S = ""
 		ScrollLock = Rollen
 		Shift = Umschalttaste
-		SlashQuestion = Schrägstrich
 		Space = Leertaste
 		T = ""
 		Tab = ""
-		TildeBacktick = ""
 		U = ""
 		UpArrow = Nach-Oben-Taste
 		V = ""
@@ -1889,16 +1890,11 @@ Inputs
 	PartTargetCancelers
 	{
 		
-		headlight_aim = "Scheinwerferausrichtung zurücksetzen"
 		tractor_beam = "Traktorstrahl abbrechen"
 	}
 	PartTargeters
 	{
 		
-		chaingun_aim = "Chain Gun ausrichten"
-		headlight_aim = "Scheinwerfer ausrichten"
-		prism_aim = "Ionen-Prisma ausrichten"
-		thermal_aim = "Thermische Resonanzlanze ausrichten"
 		tractor_beam = "Traktorstrahl anvisieren"
 	}
 	PartToggles
@@ -1908,6 +1904,8 @@ Inputs
 		airlock_type_closed = "Luftschleuse: Geschlossen"
 		airlock_type_entry = "Luftschleuse: Nur Eingang"
 		airlock_type_exit = "Luftschleuse: Nur Ausgang"
+		always_crew_part_off = "Teil immer besetzen: Aus"
+		always_crew_part_on = "Teil immer besetzen: An"
 		distribute_power_off = "Energie verteilen: Aus"
 		distribute_power_on = "Energie verteilen: Ein"
 		fire_alternating_off = "Feuermodus: Synchron"
@@ -2152,7 +2150,7 @@ LobbyScreen
 	LatencyFmt = ""
 	LobbiesTip = "Volle Lobbys werden nicht angezeigt."
 	Lobby = ""
-	LobbyItemFmt = "{0} <gray>({1}/{2})</gray>\r\n"
+	LobbyItemFmt = "{0} <gray>({1}/{2})</gray>"
 	LobbyJoinFailed = "Beitritt zur Lobby fehlgeschlagen."
 	LobbyTypeTip = "Nur Lobbys anzeigen, die diesem Typ entsprechen."
 	LobbyTypes
@@ -2339,6 +2337,7 @@ MissionLog
 	DistanceIconFmt = ""
 	DistanceLYFmt = "{0:0.0} Lj"
 	EnemyFactionWarningFmt = "Bei dieser Mission muss die Fraktion {0} angegriffen werden. Du verlierst an Ruf bei ihnen und wirst vorübergehend gesucht."
+	HUDToggle = "Missionen in der Nähe"
 	LocalOnly = "Nur lokales System"
 	LocalOnlyTip = "Bei Auswahl der Option werden nur Missionen angezeigt, die im aktuellen Sternensystem stattfinden."
 	Location = STANDORT
@@ -2346,6 +2345,7 @@ MissionLog
 	NoMissions = "Keine Missionen\naktiv"
 	Objectives = ZIELE
 	Rewards = BELOHNUNGEN
+	ShowMissions = "{0} anzeigen"
 	SortByDistance = "<image name='sort'/> Entfernung"
 	SortByFaction = "<image name='sort'/> Fraktion"
 	SortByMissionType = "<image name='sort'/> Missionstyp"
@@ -2477,6 +2477,7 @@ ModsWorkshop: Workshop
 	DialogName = "„Steam Workshop“-Mod-Uploader"
 	Folder = "Mod-Ordner:"
 	Name = "Mod-Name:"
+	UpdateName = "Mod-Name aktualisieren"
 	UpdatingExisting = "<good>Bestehende Mod aktualisieren:</good>"
 	UploadSuccessful = "Upload erfolgreich! Drücke „O. K.“, um dir deine Mod im Steam Workshop anzusehen. Wenn dies dein erster Upload in den Workshop ist, musst du den Nutzungsvertrag des Steam Workshops akzeptieren, bevor dein Upload für andere Spieler sichtbar wird."
 	Warning = "<bad>WARNUNG:</bad> Der KOMPLETTE Inhalt des Ordners dieser Mod und alle Unterordner werden in Steam Workshop hochgeladen. Achte darauf, dass keine Dateien enthalten sind, die nicht veröffentlicht werden sollen oder bei denen du nicht die Rechte hast, um sie zu veröffentlichen."
@@ -2654,17 +2655,14 @@ PartFeatures
 PartTargeters
 {
 	
-	ChaingunAim = "<b>Chain Gun ausrichten</b>\n\nRichtet eine oder mehrere ausgewählte Chain Gun(s) auf eine gewünschte Position aus.\n\nSchnelltaste: <btn id='PartTargeters.chaingun_aim'/>"
-	HeadlightAim = "<b>Scheinwerfer ausrichten</b>\n\nRichtet einen oder mehrere ausgewählte Scheinwerfer auf eine gewünschte Position aus.\n\nSchnelltaste: <btn id='PartTargeters.headlight_aim'/>"
-	HeadlightAimCancel = "<b>Scheinwerferausrichtung zurücksetzen</b>\n\nSchnelltaste: <btn id='PartTargetCancelers.headlight_aim'/>"
-	PrismAim = "<b>Ionen-Prisma ausrichten</b>\n\nZielt mit einem oder mehreren ausgewählten Ionenstrahl-Prismen auf einen gewünschten Ort oder verknüpft sie mit einem anderen Ionenstrahl-Prisma, um dadurch zu schießen.\n\nSchnelltaste: <btn id='PartTargeters.prism_aim'/>"
-	ThermalResonanceAim = "<b>Thermische Resonanzlanze ausrichten</b>\n\nRichtet eine oder mehrere thermische Resonanzlanze(n) auf eine gewünschte Position aus.\n\nSchnelltaste: <btn id='PartTargeters.thermal_aim'/>"
 	TractorBeam = "<b>Traktorstrahl ausrichten</b>\n\nHalte <btn id='Game.SelectParts'/> gedrückt, um bestimmte Teile anzuvisieren.\n\nSchnelltaste: <btn id='PartTargeters.tractor_beam'/>"
 	TractorBeamCancel = "<b>Traktorstrahl abbrechen</b>\n\nSchnelltaste: <btn id='PartTargetCancelers.tractor_beam'/>"
 }
 PartToggles
 {
 	
+	AlwaysCrew_Off = "<b>Immer besetzen: <bad>Aus</bad></b>\nTeil wird nur dann besetzt, wenn der Turm ein Ziel erfasst hat."
+	AlwaysCrew_On = "<b>Immer besetzen: <good>An</good></b>\nTeil wird immer besetzt."
 	Boost_Off = "<b>Boost: <bad>Aus</bad></b>\n\nSchnelltaste: <btn id='PartToggles.thruster_boost_off'/>"
 	Boost_On = "<b>Boost: <good>Ein</good></b>\n\nSchnelltaste: <btn id='PartToggles.thruster_boost_on'/>"
 	DistributePower_Off = "<b>Schubdüsen-Energieverteilung: <bad>Aus</bad></b>\n\nSchnelltaste: <btn id='PartToggles.distribute_power_off'/>"
@@ -2758,7 +2756,7 @@ Parts
 	CannonMedDesc = "Feuert einfache Projektilpatronen, die die Hülle von feindlichen Schiffen durchdringen und manchmal Brände verursachen können."
 	CannonMedIcon = Kanone
 	CannonMedOverclock = "Übertaktete Standardkanone"
-	CannonMedOverclockDesc = "Feuert Salven mehrerer Geschosse mit höherer Geschwindigkeit und größerer Reichweite ab. Erzeugt beim Feuern Abwärme."
+	CannonMedOverclockDesc = "Feuert Salven mehrerer Geschosse ab. Erzeugt beim Abfeuern Restwärme."
 	ChainGun = "Chain Gun"
 	ChainGunDesc = "Eine mächtige Gatling-Kanone, die ihre Feuerrate mit zunehmender Feuerdauer erhöht und in Feuerpausen hinter einem Schutzschild geschützt ist. Zusätzliche Munitionsmagazine können angebracht werden, um Feuerdauer und Feuerrate zu erhöhen."
 	ChainGunIcon = "Chain Gun"
@@ -3067,17 +3065,17 @@ Parts
 	ReactorLargeDesc = "Ein Energiegenerator, der Plasmabatterien mit dreifacher Kapazität produziert, die zum Betreiben vieler Schiffssysteme erforderlich sind."
 	ReactorLargeIcon = "Großer Reaktor"
 	ReactorLargeOverclock = "Übertakteter großer Reaktorkern"
-	ReactorLargeOverclockDesc = "Erhöht die Erzeugungsrate. Erhöht zudem die Batteriegröße von dreifacher auf vierfache Kapazität. Bei der Energieerzeugung entsteht Restwärme."
+	ReactorLargeOverclockDesc = "Erhöht die Energieerzeugungsrate. Erhöht zudem die Batteriegröße von dreifacher auf vierfache Kapazität. Bei der Energieerzeugung entsteht Restwärme."
 	ReactorMed = "Mittlerer Reaktorkern"
 	ReactorMedDesc = "Ein Energiegenerator, der Plasmabatterien mit doppelter Kapazität produziert, die zum Betreiben vieler Schiffssysteme erforderlich sind."
 	ReactorMedIcon = "Mittl. Reaktor"
 	ReactorMedOverclock = "Übertakteter mittlerer Reaktorkern"
-	ReactorMedOverclockDesc = "Erhöht die maximale Energiekapazität und die Erzeugungsrate. Bei der Energieerzeugung entsteht Restwärme."
+	ReactorMedOverclockDesc = "Erhöht die Energieerzeugungsrate. Bei der Energieerzeugung entsteht Restwärme."
 	ReactorSmall = "Kleiner Reaktorkern"
 	ReactorSmallDesc = "Ein Energiegenerator, der Plasmabatterien produziert, die zum Betreiben vieler Schiffssysteme erforderlich sind."
 	ReactorSmallIcon = "Kleiner Reaktor"
 	ReactorSmallOverclock = "Übertakteter kleiner Reaktorkern"
-	ReactorSmallOverclockDesc = "Erhöht die maximale Energiekapazität und die Erzeugungsrate. Bei der Energieerzeugung entsteht Restwärme."
+	ReactorSmallOverclockDesc = "Erhöht die Energieerzeugungsrate. Bei der Energieerzeugung entsteht Restwärme."
 	ResonanceBeamTurret = "Thermische Resonanzlanze"
 	ResonanceBeamTurretDesc = "Ein auf dem Dach montierter Turm, der einen Strahl aus reiner Wärmeenergie abfeuert, aber auch viel eigene Restwärme erzeugt. Schwächt Schilde rund um den Einschlagspunkt.\n\nMuss weiter als 2 Kacheln von anderen Dachtürmen oder „großen“ Teilen entfernt sein."
 	ResonanceBeamTurretIcon = "Thermische Resonanzlanze"
@@ -3529,6 +3527,8 @@ ResourcesBox
 	MirrorToggleTip = "<b>Spiegelmodus</b>\n\nWenn dieser Modus eingeschaltet ist, wird die Ressourcenorganisation des Schiffs über die Mittellinie des Schiffs gespiegelt.\n\nSchnelltaste: <btn id='Design.ToggleMirrorMode'/>\n\n<btn id='General.UIAltClick'/>, um die Spiegeleinstellungen zu verändern."
 	NothingToRedo = "Es gibt nichts, das wiederholt werden könnte."
 	NothingToUndo = "Es gibt nichts, das rückgängig gemacht werden könnte."
+	PinResourceDisplay = "Ressourcenanzeige anheften"
+	PinResourceDisplayTip = "Heftet Menge und Kapazität dieser Ressource oben rechts in der Ecke an."
 	Redo = " Wiederholen "
 	RedoTip = "Wiederholt die letzte Änderung an der Ressourcenorganisation des Schiffs.\n\nSchnelltaste: <btn id='Design.Redo'/>"
 	RemoveSupplyLineTip = "<regular>Versorgungslink abbrechen\n(<btn id='Game.Command'/>)</regular>"
@@ -3556,6 +3556,8 @@ ResourcesBox
 	TransferCrewOrResourcesTip = "Transferiert Crewmitglieder oder Ressourcen von diesem Schiff auf ein anderes Schiff."
 	TypeTipFmt = ""
 	UndoTip = "Macht die letzte Änderung an der Ressourcenorganisation des Schiffs rückgängig.\n\nSchnelltaste: <btn id='Design.Undo'/>"
+	UnpinResourceDisplay = "Ressourcenanzeige losheften"
+	UnpinResourceDisplayTip = "Heftet Menge und Kapazität dieser Ressource oben rechts in der Ecke los."
 }
 Rewards
 {
@@ -3858,6 +3860,8 @@ Settings
 		ResourcesLbl = Ressourcenverwaltung
 		RowsOfParts = "Reihe von Teilen"
 		RowsOfPartsTip = "Die Anzahl der Reihen von Teilen, die angezeigt wird, ohne dass du mit der Maus scrollen musst."
+		ShiftClickToDragPartsAndDecals = "Zum Ziehen von Teile- und Aufkleberfavoriten ist <btn id='Game.AppendSelection' xml='false'/> erforderlich"
+		ShiftClickToDragPartsAndDecalsTip = "Bei Auswahl der Option musst du <btn id='Game.AppendSelection'/> gedrückt halten, um Teile- und Aufkleberfavoriten zu ziehen."
 		ShowAutoRemovedDecals = "Automatisch entfernte Aufkleber anzeigen"
 		ShowAutoRemovedDecalsTip = "Bei Auswahl der Option wird über Aufklebern, die automatisch entfernt werden, ein rotes X angezeigt."
 		ShowAutoRemovedParts = "Automatisch entfernte Teile anzeigen"
@@ -3872,6 +3876,11 @@ Settings
 	Gameplay
 	{
 		
+		AdjustWeaponCoverageEditAll = "Standardmäßig alle bearbeiten"
+		AdjustWeaponCoverageEditAllTip = "Bei Auswahl der Option werden beim Ziehen eines Randes alle ausgewählten Teile gleichzeitig angepasst. Halte <btn id='Game.AdjustWeaponCoverageEditAll'/> gedrückt, um den anderen Modus zu verwenden."
+		AdjustWeaponCoverageIntegerSnapping = "An ganze Zahlen einrasten"
+		AdjustWeaponCoverageIntegerSnappingTip = "Bei Auswahl der Option rasten Reichweitenanpassungen in {0}-m-Schritten und Winkelanpassungen in {1}-°-Schritten ein. Halte <btn id='Game.AdjustWeaponCoverageFinePrecision'/>gedrückt, um den anderen Modus zu verwenden."
+		AdjustWeaponCoverageLbl = Waffen-Reichweite/-Kurve/-Richtung
 		AllowShipDeselection = "Schiffauswahl aufheben erlauben"
 		AllowShipDeselectionTip = "Bei Auswahl der Option wird durch einen Klick mit der linken Maustaste in einen leeren Raum die Auswahl aller ausgewählten Schiffe aufgehoben."
 		AlwaysShowCommandWidgets = "Steuerungswerkzeuge immer anzeigen"
@@ -3963,7 +3972,7 @@ Settings
 		ShowFavoriteCrewNamesOnHover = "Crew-Favoriten-Namen beim Drüberfahren anzeigen"
 		ShowFavoriteCrewNamesOnHoverTip = "Bei Auswahl der Option werden die als „Favoriten“ markierten Crew-Namen angezeigt, wenn du über sie fährst."
 		ShowNearbyMissions = "Zeige Missionen in der Nähe im HUD"
-		ShowNearbyMissionsTip = "Die Zahl bestimmt, bis zu wie viele der am nächsten gelegenen Missionen automatisch links oben im HUD angezeigt werden."
+		ShowNearbyMissionsTip = "Bei Auswahl der Option werden Missionen automatisch links oben im HUD angezeigt."
 		ShowResourcePickupLines = "Linien der schwebenden Ressourcen anzeigen"
 		ShowResourcePickupLinesTip = "Bei Auswahl der Option werden gepunktete Linien angezeigt, die schwebende Ressourcen mit ihren beabsichtigten Lagern verbinden."
 		ShowSpaceCrewLines = "Flugcrew-Linien anzeigen"
@@ -4397,6 +4406,7 @@ Stats
 	DiamondProductionFmt = "<white>Produktionsrate:</white> <good>{0:0.##}</good><gray> Diamanten/Sek.</gray>"
 	DilationFactorFmt = "<white>Ausdehnungsfaktor:</white> <good>{0:0.###}x</good>"
 	DilationHeatSpreadFmt = "<white>Wärme-Streuung:</white> <good>{0:0.##}</good><gray><sup>[2]</sup> Meter</gray>"
+	DynamoHeatGenerationFmt = "<white>Dynamo-Wärmeerz.:</white> <good>{0:#,0.##}</good> <gray>MJ/Sek. (bei Energieerzeugung)</gray>"
 	EMPMissileCapacityFmt = "<white>EMP-Raketen-Kapazität:</white> <good>{0}</good>"
 	EMPResistFmt = "<white>Widerstand gegen EMP:</white> <good>-{0:0.##}</good> <gray>Energieentzug</gray>"
 	EMPResistPercentageFmt = "<white>Widerstand gegen EMP:</white> <good>{0:0.#} %</good>"
@@ -4420,6 +4430,7 @@ Stats
 	HeatAbsorptionFmt = "<white>Wärmeabsorption:</white> <good>{0:0.#}</good> <gray>MJ/Sek.</gray>"
 	HeatAbsorptionInefficiencyFmt = "<white>Absorptionsineffizienz:</white> <good>+{0:0.#} %</good> <gray>Wärme</gray>"
 	HeatAbsorptionRadiusFmt = "<white>Absorptionsradius:</white> <good>{0:0.#}</good> <gray>Meter</gray>"
+	HeatAppliedFmt = "<white>Angewendete Wärme:</white> <good>{0:#,0.##}</good> <gray>MJ</gray>"
 	HeatCapacityFmt = "<white>Wärmekapazität:</white> <good>{0:#,0.##}</good> <gray>MJ</gray>"
 	HeatDissipationFmt = "<white>Wärmeableitung:</white> <good>{0:#,0.##}</good> <gray>MJ/Sek.</gray>"
 	HeatFireChanceFmt = "<white>Feuer-Chance bei Wärme-Grenzwert:</white> <good>{0:0.##%}</good>"
@@ -4445,6 +4456,7 @@ Stats
 	LightningDamageFmt = "<white>Blitzschaden:</white> <good>{0:0}</good> <gray>pro Schlag</gray>"
 	LightningMaxChainFmt = "<white>Max. Blitz-Kette:</white> <good>{0}</good> <gray>aneinandergereihte Schläge</gray>"
 	LightningRangeFmt = "<white>Blitz-Reichweite:</white> <good>{0:0.#}</good> <gray>Meter</gray>"
+	LightningShieldDamageFmt = "<white>Blitzschaden gegen Schilde:</white> <good>{0:0}</good> <gray>pro Schlag</gray>"
 	LightningStrikeCountRangeFmt = "<white>Blitzschläge:</white> <good>{0}-{1}</good>"
 	MaxDamageFmt = "<white>Max. Schaden:</white> <good>{0:n0}</good><gray>/Schuss (</gray><good>{1:n0}</good><gray>/Sek.)</gray>"
 	MaxDamageRangeFmt = "<white>Max. Schaden:</white> <good>{0:n0}</good><gray>/Schuss (</gray><good>{1:n0}</good><white> – </white><good>{2:n0}</good><gray>/Sek.)</gray>"
@@ -5153,7 +5165,7 @@ TitleScreen
 	Settings = EINSTELLUNGEN
 	ShipLibrary = SCHIFFSBIBLIOTHEK
 	Steam = Steam-Community
-	WishlistNow = "<s24>JETZT KAUFEN!</s24>\n<regular>Verpasse den Startrabatt nicht!</regular>"
+	WishlistNow = "<s24>JETZT KAUFEN!</s24>"
 }
 Tutorials
 {
@@ -5432,10 +5444,11 @@ Tutorials
 	IonBeams
 	{
 		
-		Aiming = "Wenn du mit <good>einem Prisma zielen</good> möchtest, verlasse zunächst den Baumodus, wähle das Prisma und klicke dann auf die Schaltfläche <white>Ionen-Prisma ausrichten</white>."
+		Aiming = "Um stattdessen mit einem Prisma <good>in eine feste Richtung</good> zu zielen, wähle das Prisma, klicke auf die Schaltfläche <white>„Reichweite/Kurve/Richtung einstellen“</white> und ziehe dann an den Rändern, um den gewünschten Schusskegel oder die gewünschte Schusslinie zu erstellen."
 		Combining = "Du kannst mehrere <good>Strahlen zu einem Prisma kombinieren</good>, um einen einzigen großen und mächtigeren Strahl zu erschaffen."
 		IonBeams = "<good>Ionenstrahlen</good> sind Energiestrahlwaffen mit einer festgelegten Richtung, die nicht zielen können, aber hohen andauernden Schaden über Zeit verursachen."
 		IonPrisms = "Aber wenn du ein <good>Ionenprisma</good> vor einem Ionenstrahl platzierst, kann dieses den Strahl in jede Richtung ablenken, wie z. B. auf ein feindliches Schiff oder sogar auf ein weiteres Ionen-Prisma."
+		Targeting = "Um einen Strahl <good>in ein anderes Prisma</good> umzulenken, verlasse zunächst den Baumodus, wähle das Prisma, klicke auf die Schaltfläche <white>„Waffen anvisieren“</white> und dann auf das andere Prisma."
 		Tip = "<good>TIPP:</good> Wenn du mehrere Strahlen kombinierst, verringert das den verursachten Gesamtschaden. Um den Schaden eines einzelnen Strahls zu maximieren, kombiniere immer genau zwei gleichgroße Strahlen pro Prisma."
 		Title = "Ionenstrahlen & Prismen"
 	}
@@ -5445,6 +5458,7 @@ Tutorials
 		ControlGroups = "<good>TIPP:</good> Erstelle eine <good>Steuerungsgruppe</good>, indem du ein oder mehrere Teile auswählst und <white>Strg + 0 bis 9</white> drückst. Du kannst die Gruppe auswählen, indem du entsprechend <white>0 bis 9</white> drückst."
 		FireMode = "Drücke die Schaltfläche <white>Feuermodus</white>, um einer Waffe den Befehl zu geben, <good>nicht zu feuern</good>, <good>nur auf festgelegte Ziele zu feuern</good>, oder <good>unendlich zu feuern</good> – ganz wie es dir beliebt."
 		Power = "Klicke auf die Schaltfläche <white>Energie</white>, um <good>es auszuschalten</good>. Jedes Crewmitglied, das dieses Teil betreibt, geht dann fort und hilft an einem anderen Ort."
+		RangeArcDirection = "Um die <good>Reichweite und Feuerkurve</good> einer Waffe anzupassen oder sie in eine <good>feste Richtung</good> zu zielen, drücke die Schaltfläche <white>„Reichweite/Kurve/Richtung einstellen“</white> und ziehe die angezeigten Ränder."
 		Select = "<white>Klicke mit der linken Maustaste</white> auf ein bestimmtes Teil, um es <good>auszuwählen</good>.\n\nDu kannst mehrere Teile auswählen, indem du beim Anklicken die Umschalttaste gedrückt hältst oder eine Box um mehrere Teile ziehst."
 		Target = "Wenn du eine Waffe ausgewählt hast, <white>klicke mit der rechten Maustaste</white> auf ein feindliches Teil, um mit der Waffe <good>darauf zu zielen</good>."
 		Title = "Dein Schiff im Detail verwalten"
@@ -5691,6 +5705,15 @@ VitalCategories
 	Header = <b>WARNUNG</b>
 	Reactor = "⚠ Fehlender Reaktor"
 }
+WeaponCoverageEditor
+{
+	
+	AngleFmt = ""
+	FineAngleFmt = ""
+	RangeDeltaFmt = "{0:+0.#;-0.#;0} m"
+	RangeFmt = "{0:0.#} m"
+	ResetFloatingText = ZURÜCKSETZEN
+}
 Wishlist
 {
 	
@@ -5698,9 +5721,8 @@ Wishlist
 	ExitMsg = "Danke, dass du die Cosmoteer-Demo gespielt hast!"
 	FameLimitReached = "HERZLICHEN GLÜCKWUNSCH!!!\nDu hast in der Demo den maximalen <fame>Ruhm</fame> erreicht, aber du bist auf dem besten Wege „legendär“ zu werden. Du kannst weiterspielen, aber du kannst keinen weiteren Ruhm verdienen und auch nicht in andere Sternensysteme reisen. Kaufe das Spiel jetzt, um deine Reise fortzusetzen!"
 	FeatureMissingMsg = "<bad>Leider ist diese Funktion in der Demo nicht verfügbar.</bad>"
-	Features = "<fame_color>Das vollständige Spiel enthält ...</fame_color><s4>\n\n</s4>● Erkunde die gesamte Galaxie ... Alle Sternensysteme freigeschaltet!<s4>\n\n</s4>● Koop &amp; PvP-Multiplayer<s4>\n\n</s4>● Mehr Waffen und andere Schiffsteile (Railguns, Nuklearwaffen, EMPs, große Schilde, Traktorstrahlen und vieles mehr!)<s4>\n\n</s4>● Über 200 Schiffsdesigns für vier einzigartige Fraktionen<s4>\n\n</s4>● Mods &amp; Unterstützung für Steam Workshop"
+	Features = "<fame_color>Das vollständige Spiel enthält ...</fame_color><s4>\n\n</s4>● Erkunde die gesamte Galaxie ... Alle Sternensysteme freigeschaltet!<s4>\n\n</s4>● Koop &amp; PvP-Multiplayer<s4>\n\n</s4>● Mehr Waffen und andere Schiffsteile (Railguns, Nuklearwaffen, EMPs, große Schilde, Traktorstrahlen und vieles mehr!)<s4>\n\n</s4>● Über 800 Schiffsdesigns für fünf einzigartige Fraktionen<s4>\n\n</s4>● Mods &amp; Unterstützung für Steam Workshop"
 	HoursFmt = "Du hast die Cosmoteer-Demo {0} Stunde(n) lang gespielt. Du kannst so lange spielen, wie du willst, aber wenn dir das Spiel gefällt, möchtest du vielleicht die Vollversion kaufen?"
-	LaunchDiscount = "<s24><u>Verpasse den Startrabatt nicht!</u></s24>"
 	No = "Vielleicht später"
 	NotInDemo = "Nicht in der Demo"
 	Yes = "<s24>Jetzt kaufen</s24>\n(Oder zur Wunschliste hinzufügen)"
@@ -5715,6 +5737,8 @@ Workshop
 	MinVersion = "Min. Spielversion"
 	Preview = "Vorschaubild:"
 	SelectPreviewFile = "Datei auswählen"
+	UpdateDescription = "Beschreibung aktualisieren"
+	UpdatePreview = "Vorschaubild aktualisieren"
 	Upload = "Upload starten"
 	UploadingFmt = "Hochladen in Steam Workshop ... {0} %"
 	ViewInWorkshop = "In Workshop ansehen"
