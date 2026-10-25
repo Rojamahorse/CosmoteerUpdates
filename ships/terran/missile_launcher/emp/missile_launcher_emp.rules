@@ -275,12 +275,35 @@ Components
 		]
 	}
 
+	FullMissileCount
+	{
+		Type = ToggleValueSelector
+		Toggle = MissileStorage
+		ToggleOffValue = Zero
+		ToggleOnValue = One
+	}
+	ScorchedTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = ScorchedToggle
+		TriggerWhenOn = false
+		TriggerWhenOff = true
+	}
+	ScorchedEffects
+	{
+		Type = TriggeredEffects
+		Trigger = ScorchedTrigger
+		Location = &~/Components/DestroyedEffects/Location
+		FactorHitEffectsWith = FullMissileCount
+		MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		HitEffects = &~/Components/DestroyedEffects/HitEffects
+	}
 	DestroyedEffects
 	{
 		Type = DeathEffects
 		Location = [1, 2]
-
-		FactorHitEffectsWith = MissileStorage
+		OperationalToggle = ScorchedToggle
+		FactorHitEffectsWith = FullMissileCount
 		HitEffects
 		[
 			{

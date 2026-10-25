@@ -14,7 +14,8 @@ Components
 	{
 		Type = ResourceStorage
 		ResourceType = mine_part
-		MaxResources = 6*4
+		MISSILE_COUNT = 4
+		MaxResources = 6*(&MISSILE_COUNT)
 		UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
 		ReceiveResourceMediaEffects
 		[
@@ -28,6 +29,7 @@ Components
 		]
         ToggleOnResources = 4
         ToggleOffResources = 3
+        ProvidedValueRange = [0, (&../MISSILE_COUNT)]
 		DropResourcesWhenDestroyed = true
 		DropResourcesWhenRemoved = true
 	}
@@ -35,7 +37,7 @@ Components
 	{
 		Type = ThresholdToggle
 		ValueFrom = MineStorage
-		MinAmount = 100%
+		MinAmount = (&../MineStorage/ProvidedValueRange/1)
 	}
 	FullStorageEffect
 	{
@@ -390,6 +392,13 @@ Components
 		]
 	}
 
+	FullMissileCount
+	{
+		Type = MultiValue
+		Values = [MineStorage]
+		Mode = Add
+		IndividualRounding = ToZero
+	}
 	ScorchedTrigger
 	{
 		Type = ToggleTrigger
@@ -402,8 +411,9 @@ Components
 		Type = TriggeredEffects
 		Trigger = ScorchedTrigger
 		Location = &~/Components/DestroyedEffects/Location
-		FactorHitEffectsWith = MineStorage
-		MediaEffects = &~/Components/DestroyedEffects2/MediaEffects
+		FactorHitEffectsWith = FullMissileCount
+		HitEffectsFactor = &~/Components/DestroyedEffects/HitEffectsFactor
+		MediaEffects = &/COMMON_EFFECTS/BigPartScorched
 		HitEffects = &~/Components/DestroyedEffects/HitEffects
 	}
 
@@ -412,7 +422,9 @@ Components
 		Type = DeathEffects
 		OperationalToggle = ScorchedToggle
 		Location = [1, 2]
-		FactorHitEffectsWith = MineStorage
+		FactorHitEffectsWith = FullMissileCount
+		// Rescales FullMissileCount to [0,1]
+		HitEffectsFactor = 1 / (&../MineStorage/MISSILE_COUNT)
 		HitEffects
 		[
 			{
@@ -422,7 +434,7 @@ Components
 				Delay = .05
 				StatusType = cosmoteer.fire
 				StatusChancePerNDamage = 50%
-				StatusValue = 1
+				StatusValue = [20%, 40%]
 				StatusValueType = Interpolated
 				NDamage = 1000
 				CrewKillChance = 50%

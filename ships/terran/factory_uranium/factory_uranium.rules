@@ -898,67 +898,7 @@ Part : <../base_med_part_terran_overclock.rules>/Part
 			MediaEffects = &/COMMON_EFFECTS/HugePartScorched
 		}
 
-		DestroyedEffects
-		{
-			Type = DeathEffects
-			Location = [1.5, 2]
-
-			HitEffects
-			[
-				{
-					Type = ExplosiveDamage
-					TotalDamage = 200000
-					Radius = 10
-					ExpandDuration = .8
-					ExpandStartRadius = 1
-					RadiusEffectScaleExponent = 0.5
-					ImpulsePerNDamage = 10
-					NDamage = 1000
-					Filter
-					{
-						OperationalHealth = true
-						StructuralHealth = false
-						Friendlies = true
-					}
-				}
-				{
-					Type = ExplosiveDamage
-					TotalDamage = 60000
-					Radius = 8
-					ExpandDuration = .8
-					ExpandStartRadius = 1
-					RadiusEffectScaleExponent = 0.5
-					ImpulsePerNDamage = 5
-					NDamage = 1000
-					Filter
-					{
-						OperationalHealth = false
-						StructuralHealth = true
-						Friendlies = true
-					}
-				}
-			]
-
-			MediaEffects
-			[
-				&<./Data/shots/missile_nuke/particles/missile_nuke_flash.rules>
-				&<./Data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
-
-				: /BASE_SOUNDS/AudioExterior
-				{
-					Sound = "./Data/shots/missile_nuke/missile_nuke_hit.wav"
-					Volume = 1
-				}
-
-				: /BASE_SHAKE
-				{
-					ShakeAmount = .15
-					Duration = .75
-				}
-			]
-		}
-
-		DestroyedEffects2 // A separate destroyed effects for the base destruction that doesn't get scale with ammo.
+		DestroyedEffects // A separate destroyed effects for the base destruction that doesn't get scale with ammo.
 		{
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed

@@ -704,9 +704,7 @@ Part : <../base_part_terran.rules>/Part
 			Trigger = ScorchedTrigger
 			IncludeWhenUnderConstruction = false
 			Location = &~/Part/Components/DestroyedEffects/Location
-			FactorHitEffectsWith = AmmoStorage
-			MediaEffects = &~/Part/Components/DestroyedEffects/MediaEffects
-			HitEffects = &~/Part/Components/DestroyedHitEffects/HitEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartScorched
 		}
 
 		DestroyedEffects
@@ -714,48 +712,6 @@ Part : <../base_part_terran.rules>/Part
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
 			Location = [0.5, 1]
-		}
-		DestroyedHitEffects
-		{
-			Type = DeathEffects
-			OperationalToggle = ScorchedToggle
-			IncludeWhenUnderConstruction = false
-			Location = [0.5, 1]
-			FactorHitEffectsWith = AmmoStorage
-			HitEffects
-			[
-				{
-					Type = ExplosiveDamage
-					TotalDamage = { BaseValue = 6000; EffectScaleExponent = 1 }
-					Radius = 3
-					Delay = .05
-					StatusType = cosmoteer.fire
-					StatusChancePerNDamage = 50%
-					StatusValue = 1
-					StatusValueType = Interpolated
-					NDamage = 1000
-					CrewKillChance = 10%
-					Filter
-					{
-						OperationalHealth = true
-						StructuralHealth = false
-						Friendlies = true
-					}
-				}
-				{
-					Type = ExplosiveDamage
-					TotalDamage = { BaseValue = 1200; EffectScaleExponent = 1 }
-					Radius = 2
-					Delay = .05
-					Filter
-					{
-						OperationalHealth = false
-						StructuralHealth = true
-						Friendlies = true
-						Crew = false
-					}
-				}
-			]
 		}
 
 		Blueprints

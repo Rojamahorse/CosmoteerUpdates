@@ -153,7 +153,7 @@ Ships
 	:~{ File="Big Iron.ship.png";       Tier=17;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Clytemnestra.ship.png";   Tier=17;  Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Bulkhead.ship.png";       Tier=17;  Difficulty=2; }
-	:~{ File="Vulcan.ship.png";         Tier=17;  Difficulty=3; }
+	:~{ File="Vulcan.ship.png";         Tier=17;  Difficulty=3; Tags:~/Tags[empty_storage]; }
 
 	// Flagships
 	:~{ File="All For Now.ship.png";    Tier=18;  Difficulty=2; }

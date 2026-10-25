@@ -585,6 +585,11 @@ Part : <../base_large_part_terran_overclock.rules>/Part
 					TargetType = ShipCenters
 					Toggle = AutoTargetToggle
 				}
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+					Overridable = true
+				}
 			]
 
 

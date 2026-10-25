@@ -62,4 +62,7 @@ HitNothing
 
 HitShield = &HitNothing
 HitOperational = &HitNothing
-HitStructural = &HitNothing
+HitStructural : HitNothing
+{
+	MaxStructuralPenetrations = 1
+}

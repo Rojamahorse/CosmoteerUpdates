@@ -46,6 +46,10 @@ Beam : <ion_beam.rules>
 		Ships = true
 		OperationalHealth = true
 		Self = true
+		Friendlies = true;
+		Enemies = false;
+		Neutrals = false;
+		Junk = false;
 		Shields = false
 		OnlyPartCategories = [ion_beam_prism]
 		IgnoreInvulnerability = true

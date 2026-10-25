@@ -727,5 +727,6 @@ Part : <../base_part_terran.rules>/Part
 		TurretExtraHeatGeneration = (&~/Part/Components/AdditionalTurretHeatGeneration_Active/Value)
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 		RecPower = &ThermalPumpPowerUsageContinuous/0
+		RecCrew = (&RecPower) * 4
 	}
 }

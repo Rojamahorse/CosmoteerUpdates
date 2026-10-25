@@ -512,6 +512,9 @@ Part : <../base_med_part_terran.rules>/Part
 			}
 		}
 
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
 		OperationEffects
 		{
 			Type = ToggleEffects

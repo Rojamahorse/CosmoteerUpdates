@@ -533,59 +533,6 @@ Components
 		TriggerWhenOn = false
 		TriggerWhenOff = true
 	}
-//	ScorchedEffects
-//	{
-//		Type = TriggeredEffects
-//		Trigger = ScorchedTrigger
-//		Location = &~/Components/DestroyedEffects/Location
-//		FactorHitEffectsWith = CombinedMissileStorage
-//		MediaEffects = &~/Components/DestroyedEffects/MediaEffects
-//		HitEffects = &~/Components/DestroyedEffects/HitEffects	
-//	}
-//
-//	DestroyedEffects
-//	{
-//		Type = DeathEffects
-//		OperationalToggle = ScorchedToggle
-//		MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
-//		Location = [1, 2]
-//
-//		FactorHitEffectsWith = CombinedMissileStorage
-//		HitEffects
-//		[
-//			{
-//				Type = ExplosiveDamage
-//				TotalDamage = { BaseValue = 30000; EffectScaleExponent = 1 }
-//				Radius = 5
-//				Delay = .05
-//				StatusType = cosmoteer.fire
-//				StatusChancePerNDamage = 50%
-//				StatusValue = 1
-//				StatusValueType = Interpolated
-//				NDamage = 1000
-//				CrewKillChance = 50%
-//				Filter
-//				{
-//					OperationalHealth = true
-//					StructuralHealth = false
-//					Friendlies = true
-//				}
-//			}
-//			{
-//				Type = ExplosiveDamage
-//				TotalDamage = { BaseValue = 10000; EffectScaleExponent = 1 }
-//				Radius = 4
-//				Delay = .05
-//				Filter
-//				{
-//					OperationalHealth = false
-//					StructuralHealth = true
-//					Friendlies = true
-//					Crew = false
-//				}
-//			}
-//		]
-//	}
 
 	DestroyedHeatEffects
 	{

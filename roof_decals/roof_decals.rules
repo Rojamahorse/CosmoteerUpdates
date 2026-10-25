@@ -297,4 +297,8 @@ Upgrades
 	{ Old="triangle_wedge_double";         New={ ID="stripe_slant"; Rot0Size=[1,1]; Invert=true; }; }
 	{ Old="box_rounded_twin_reversed";     New={ ID="box_rounded_half_double"; Rot0Size=[1,1]; }; }
 	{ Old="icon_skull";                    New={ ID="icon_skull_2"; Rot0Size=[1,1]; }; }
+
+	// Upgrades for decals removed for being inversions of existing decals.
+	{ Old="fade_triangle_half_full";   New={ ID="fade_corner_straight"; Rot0Size=[1,1]; Rotation=2; Invert=true; }; }
+	{ Old="fade_triangle_wedge_full";  New={ ID="fade_corner_wedge"; Rot0Size=[1,1]; Rotation=2; Invert=true; }; }
 ]

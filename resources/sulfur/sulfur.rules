@@ -44,7 +44,7 @@ DeathHitEffects // Scaled with stack size.
 		Delay = .05
 		StatusType = cosmoteer.fire
 		StatusChancePerNDamage = 50%
-		StatusValue = 1
+		StatusValue = [20%, 40%]
 		StatusValueType = Interpolated
 		NDamage = 1000
 		CrewKillChance = 10%

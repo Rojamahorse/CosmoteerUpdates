@@ -35,6 +35,7 @@ Part : <../base_part_terran.rules>/Part
 		{
 			Type = UITrigger
 			TriggerID = "detonate"
+			RequiresCommand = false
 		}
 
 		DetonateEffects

@@ -733,7 +733,7 @@ Part : <../base_part_terran_overclock.rules>/Part
 					ExpandLoss = 100%
 					StatusType = cosmoteer.fire
 					StatusChancePerNDamage = 50%
-					StatusValue = 1
+					StatusValue = [20%, 40%]
 					StatusValueType = Interpolated
 					ImpulsePerNDamage = 10
 					NDamage = 1000

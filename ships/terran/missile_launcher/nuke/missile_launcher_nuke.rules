@@ -265,6 +265,13 @@ Components
 		]
 	}
 
+	FullMissileCount
+	{
+		Type = ToggleValueSelector
+		Toggle = MissileStorage
+		ToggleOffValue = Zero
+		ToggleOnValue = One
+	}
 	ScorchedTrigger
 	{
 		Type = ToggleTrigger
@@ -277,9 +284,9 @@ Components
 		Type = TriggeredEffects
 		Trigger = ScorchedTrigger
 		Location = &~/Components/DestroyedEffects/Location
-		FactorHitEffectsWith = MissileStorage
-		MediaEffects = &~/Components/DestroyedEffects/MediaEffects
-		HitEffects = &~/Components/DestroyedEffects/HitEffects	
+		FactorHitEffectsWith = FullMissileCount
+		MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		HitEffects = &~/Components/DestroyedEffects/HitEffects
 	}
 
 	DestroyedEffects
@@ -289,7 +296,7 @@ Components
 		MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
 		Location = [1, 2]
 
-		FactorHitEffectsWith = MissileStorage
+		FactorHitEffectsWith = FullMissileCount
 		HitEffects
 		[
 			{
@@ -299,7 +306,7 @@ Components
 				Delay = .05
 				StatusType = cosmoteer.fire
 				StatusChancePerNDamage = 50%
-				StatusValue = 1
+				StatusValue = [20%, 40%]
 				StatusValueType = Interpolated
 				NDamage = 1000
 				CrewKillChance = 50%

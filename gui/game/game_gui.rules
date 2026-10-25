@@ -655,9 +655,9 @@ AdjustWeaponCoverage
 	CoverageMinimumRange = 5
 	CoverageInfiniteRangeFallback = 10
 	CoverageRangeSnapIncrement = 1
-	CoverageFineRangeSnapIncrement = .1
+	CoverageFineRangeSnapIncrement = .01
 	CoverageAngleSnapIncrement = 1
-	CoverageFineAngleSnapIncrement = .1
+	CoverageFineAngleSnapIncrement = .01
 
 	CoverageThicknessScaleExponent = 0.85
 	CoverageThicknessScale = 1.0

@@ -926,28 +926,9 @@ Part : <../base_part_terran_overclock.rules>/Part
 		}
 	}
 
-	Stats
-	{
-		ThrusterForce = &~/Part/ThrusterForce
-		ThrusterRampUp = &~/Part/ThrustIncreaseTime
-		ThrusterRampDown = &~/Part/ThrustDecreaseTime
-		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
-		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
-		PowerGeneration = (&~/Part/Components/BatteryProducer/ToQuantity) / (&~/Part/Components/BatteryProducer/Interval/BaseValue) / 1000
+	Stats : ~/THRUSTER_SMALL/Part/Stats
+	{}
 
-		RecPower = (&ThrusterPowerUsage) / 2
-		RecCrew = (&RecPower) * 4
-	}
-
-	SecondaryToolTip
-	{
-		TitleKey = "StatCategories/Overclocked"
-		DescriptionKey = "Parts/ThrusterSmallOverclockDesc"
-		Stats
-		{
-			ThrusterForce = (&~/Part/ThrusterForce) * (&~/OVERCLOCK/THRUST_FACTOR)
-			PowerGeneration = (&~/Part/Stats/PowerGeneration) * (&~/OVERCLOCK/POWER_GENERATION_FACTOR)
-			ThrusterHeatGeneration = &~/OVERCLOCK/THRUST_HEAT_PER_SECOND
-		}
-	}
+	SecondaryToolTip : ~/THRUSTER_SMALL/Part/SecondaryToolTip
+	{}
 }

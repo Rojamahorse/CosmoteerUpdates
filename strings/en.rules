@@ -2966,10 +2966,15 @@ GameMenu
 
 WeaponCoverageEditor
 {
-	RangeFmt = "{0:0.#}m"
-	RangeDeltaFmt = "{0:+0.#;-0.#;0}m"
-	AngleFmt = "{0:+0.#;-0.#;0}°"
-	FineAngleFmt = "{0:+0.0;-0.0;0.0}°"
+	RangeFmt = "{0:0.##}m"
+	IntegerRangeFmt = "{0:0}m"
+	FineRangeFmt = "{0:0.00}m"
+	RangeDeltaFmt = "{0:+0.##;-0.##;0}m"
+	IntegerRangeDeltaFmt = "{0:+0;-0;0}m"
+	FineRangeDeltaFmt = "{0:+0.00;-0.00;0.00}m"
+	AngleFmt = "{0:+0.##;-0.##;0}°"
+	IntegerAngleFmt = "{0:+0;-0;0}°"
+	FineAngleFmt = "{0:+0.00;-0.00;0.00}°"
 	ResetFloatingText = "RESET"
 }
 

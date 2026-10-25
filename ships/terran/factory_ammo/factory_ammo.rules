@@ -771,60 +771,16 @@ Part : <../base_part_terran_overclock.rules>/Part
 		{
 			Type = TriggeredEffects
 			Trigger = ScorchedTrigger
-			Location = &~/Part/Components/DestroyedEffects/Location
-			MediaEffects = &~/Part/Components/DestroyedEffects_UnderConstruction/MediaEffects
-			HitEffects = &~/Part/Components/DestroyedEffects/HitEffects
+			Location = &~/Part/Components/DestroyedEffects_UnderConstruction/Location
+			MediaEffects = &/COMMON_EFFECTS/MedPartScorched
 			IncludeWhenUnderConstruction = false
 		}
 
-		DestroyedEffects
-		{
-			Type = DeathEffects
-			OperationalToggle = ScorchedToggle
-			FactorHitEffectsWith = AmmoStorage
-			Location = [1, 1]
-			IncludeWhenUnderConstruction = false
-
-			HitEffects
-			[
-				{
-					Type = ExplosiveDamage
-					TotalDamage = {BaseValue=40000; EffectScaleExponent=1;}
-					Radius = 4
-					Delay = .05
-					StatusType = cosmoteer.fire
-					StatusChancePerNDamage = 100%
-					StatusValue = 1
-					StatusValueType = Interpolated
-					NDamage = 1000
-					CrewKillChance = 50%
-					Filter
-					{
-						OperationalHealth = true
-						StructuralHealth = false
-						Friendlies = true
-					}
-				}
-				{
-					Type = ExplosiveDamage
-					TotalDamage = {BaseValue=11250; EffectScaleExponent=1;}
-					Radius = 3
-					Delay = .05
-					Filter
-					{
-						OperationalHealth = false
-						StructuralHealth = true
-						Friendlies = true
-						Crew = false
-					}
-				}
-			]
-		}
 		// Unscaled by storage to prevent crash during construction
 		DestroyedEffects_UnderConstruction
 		{
 			Type = DeathEffects
-			Location = &~/Part/Components/DestroyedEffects/Location
+			Location = [1,1]
 			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 		}
 

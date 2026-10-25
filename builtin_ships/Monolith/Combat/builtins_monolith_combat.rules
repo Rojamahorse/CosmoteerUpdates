@@ -74,7 +74,7 @@ Ships
 	:~{ File="Iconoclast.ship.png";  Tier=10; Difficulty=2; }
 	:~{ File="Obviator.ship.png";    Tier=10; Difficulty=2; }
 	:~{ File="Aegis.ship.png";       Tier=10; Difficulty=2; }
-	:~{ File="Throne.ship.png";      Tier=10; Difficulty=2; }
+	:~{ File="Throne.ship.png";      Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Averter.ship.png";     Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Reginleif.ship.png";   Tier=10; Difficulty=2; Tags:~/Tags[empty_storage]; }
 	:~{ File="Crossguard.ship.png";  Tier=11; Difficulty=2; }
